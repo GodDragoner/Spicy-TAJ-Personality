@@ -1,0 +1,10 @@
+*.properties
+.idea
+*.iml
+out
+target
+.settings
+.project
+.classpath
+.git
+System/*

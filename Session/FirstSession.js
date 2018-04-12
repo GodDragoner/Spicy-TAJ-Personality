@@ -1,0 +1,2 @@
+sendMessage("Hello %subName%");
+endSession();
