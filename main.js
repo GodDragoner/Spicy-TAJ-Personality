@@ -1,5 +1,8 @@
 showImage("Images/Spicy/Grounding/BlackBase.jpg");
+run("Variables.js");
 run("Chat/ChatUtil.js");
+run("Slaves/Slaves.js");
+run("Session/Orgasm.js");
 
 sendSystemMessage("Launching Spicy " + getVar("personalityVersion"));
 
@@ -22,8 +25,16 @@ if(isVar("subDevotion")) {
 
 if(getVar("shopUnlockAll", false)) run("Shop/UnlockAll.js");
 
-if(!getVar("finishedSetup", false)) run("Startup/Setup.js");
+if(!getVar(VARIABLE_FINISHED_SETUP, false)) run("Startup/Setup.js");
 
-if(!getVar("finishedFirstSession", false)) run("Session/FirstSession.js");
+if(!getVar(VARIABLE_FINISHED_FIRST_SESSION, false)) run("Session/FirstSession.js");
 
-sendVirtualAssistantMessage("Hello");
+showImage("/Images/Spicy/Intro/SpicyGif*.gif", 3);
+
+//TODO: Academy
+
+if(isFullTime()) {
+    run("Startup/FullTime/FullTimeCheckup.js");
+}
+
+run("Assistant/AssistantLobby.js");
