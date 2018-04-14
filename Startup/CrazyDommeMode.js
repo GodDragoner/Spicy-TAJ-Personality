@@ -11,7 +11,7 @@ if(!isVar("crazyDommeModeSetDate")) {
 }
 
 function redistributeModes() {
-    setDate("crazyDommeModeSetDate").addDay(randomInteger(4, 10));
+    setDate("crazyDommeModeSetDate", setDate("crazyDommeModeSetDate").addDay(randomInteger(4, 10)));
 
     for(var x = 0; x < DOMME_MODES.length; x++) {
         if(randomInteger(1, 100) <= 20) {

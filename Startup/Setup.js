@@ -44,7 +44,9 @@ setVar("orgasmRatio", 50);
 setVar("lockUpPoints", 0);
 setVar("merits", 500);
 setDate("firstStart");
-setVar("punishmentPoints", 0);
+setVar(VARIABLE_PUNISHMENT_POINTS, 0);
+
+setVar(VARIABLE_MIN_WEEKLY_CHORES, 5);
 
 setVar("teaseModuleRatio", 60);
 setVar("slaveModuleRatio", 60);
@@ -122,10 +124,10 @@ answer = createInput();
 
 while (true) {
     if (answer.isLike("part time", "parttime", "part")) {
-        setVar("slaveType", 0);
+        setVar(VARIABLE_SLAVE_TYPE, 0);
         break;
     } else if (answer.isLike("full time", "fulltime", "full")) {
-        setVar("slaveType", 1);
+        setVar(VARIABLE_SLAVE_TYPE, 1);
         break;
     } else {
         sendVirtualAssistantMessage("Full time or part time slave?");
@@ -141,17 +143,17 @@ var answer = createInput();
 
 while (true) {
     if (answer.isLike("yes")) {
-        setVar("hasChastity", true);
+        setVar(VARIABLE_HAS_CHASTITY, true);
 
         sendVirtualAssistantMessage("Is it made of plastic or metal?", false);
         answer = createInput();
 
         while (true) {
             if (answer.isLike("metal")) {
-                setVar("chastityMaterialType", 0);
+                setVar(VARIABLE_CHASTITY_MATERIAL, 0);
                 break;
             } else if (answer.isLike("plastic")) {
-                setVar("chastityMaterialType", 1);
+                setVar(VARIABLE_CHASTITY_MATERIAL, 1);
                 break;
             } else {
                 sendVirtualAssistantMessage("Metal or plastic?");
@@ -165,11 +167,11 @@ while (true) {
 
         while (true) {
             if (answer.containsIgnoreCase("full", "belt")) {
-                setVar("chastityCageType", 0);
+                setVar(VARIABLE_CHASTITY_CAGE_TYPE, 0);
                 sendVirtualAssistantMessage("Full belt...");
                 break;
             } else if (answer.containsIgnoreCase("ball", "trap")) {
-                setVar("chastityCageType", 1);
+                setVar(VARIABLE_CHASTITY_CAGE_TYPE, 1);
                 sendVirtualAssistantMessage("Ball trap...");
                 break;
             } else {
@@ -269,7 +271,7 @@ while (true) {
                     if (answer.isLike("yes")) {
                         sendVirtualAssistantMessage("%Good%");
                         setVar("chastityLevel", 1);
-                        setVar("chastityTraining", true);
+                        setVar(VARIABLE_CHASTITY_TRAINING, true);
 
                         sendVirtualAssistantMessage("Slave I don't care if you sleep with your cage");
                         sendVirtualAssistantMessage("I think you should since it would constantly remind you who you belong to");
@@ -322,7 +324,7 @@ while (true) {
         sendVirtualAssistantMessage("Okay then!");
         break;
     } else if (answer.isLike("no")) {
-        setVar("hasChastity", false);
+        setVar(VARIABLE_HAS_CHASTITY, false);
         sendVirtualAssistantMessage("You should consider buying one for the full experience");
         break;
     } else {
@@ -385,7 +387,7 @@ while (true) {
             sendVirtualAssistantMessage("You can't choose a number higher than 15");
             answer.loop();
         } else {
-            setVar("denialLevel", result);
+            setVar(VARIABLE_DENIAL_LEVEL, result);
             break;
         }
     } else {
@@ -636,7 +638,7 @@ sendVirtualAssistantMessage("Well...");
 sendVirtualAssistantMessage("Mistress %domName% just texted me");
 sendVirtualAssistantMessage("She wants to meet you...");
 sendVirtualAssistantMessage("Transferring session...");
-setVar("finishedSetup", true);
+setVar(VARIABLE_FINISHED_SETUP, true);
 run("Session/FirstSession.js");
 
 function askForToy(toyName, variableName) {
