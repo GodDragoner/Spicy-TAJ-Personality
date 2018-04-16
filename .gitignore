@@ -8,3 +8,4 @@ target
 .classpath
 .git
 System/*
+!personality.properties

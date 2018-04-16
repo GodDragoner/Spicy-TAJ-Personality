@@ -19,7 +19,7 @@ if (!isVar(VARIABLE_NEXT_PUNISHMENT_DAY) || getDate(VARIABLE_NEXT_PUNISHMENT_DAY
         sendVirtualAssistantMessage("You are expected to report on tuesdays!");
     }
 
-    //Set the date to the next tuesday
+    //Set the date to the next thursday
     setDate(VARIABLE_NEXT_PUNISHMENT_DAY, setDate(VARIABLE_NEXT_PUNISHMENT_DAY).addDay(7).setHour(0).setMinute(0).setSecond(0));
 
     sendVirtualAssistantMessage("You have " + getVar(VARIABLE_PUNISHMENT_POINTS) + " punishment points");

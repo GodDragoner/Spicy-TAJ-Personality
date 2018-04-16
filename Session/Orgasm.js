@@ -7,10 +7,14 @@ var ORGASM_FREQUENCY_DOM = 4;
 
 function registerOrgasm() {
     setDate(VARIABLE_LAST_ORGASM);
+    setVar(VARIABLE_ORGASM_COUNTER, getVar(VARIABLE_ORGASM_COUNTER, 0) + 1);
+    registerEjaculation();
 }
 
 function registerRuin() {
     setDate(VARIABLE_LAST_RUINED_ORGASM);
+    setVar(VARIABLE_RUIN_COUNTER, getVar(VARIABLE_RUIN_COUNTER, 0) + 1);
+    registerEjaculation();
 }
 
 function registerEjaculation() {
