@@ -9,9 +9,9 @@ if (isVar(dayOfWeek + "MoodDate")) {
     //Check if we are still on the same day
     if (!(date.getDay() == todayDate.getDate() && date.getMonth() == todayDate.getMonth() && date.getYear() == todayDate.getFullYear())) {
         //Reset temp added values
-        setVar("happiness", getVar("happiness") - getVar(dayOfWeek + "Happiness"));
-        setVar("lust", getVar("lust") - getVar(dayOfWeek + "Lust"));
-        setVar("anger", getVar("anger") - getVar(dayOfWeek + "Anger"));
+        setVar(VARIABLE_HAPPINESS, getVar(VARIABLE_HAPPINESS) - getVar(dayOfWeek + "Happiness"));
+        setVar(VARIABLE_LUST, getVar(VARIABLE_LUST) - getVar(dayOfWeek + "Lust"));
+        setVar(VARIABLE_ANGER, getVar(VARIABLE_ANGER) - getVar(dayOfWeek + "Anger"));
         newDay = true;
     }
 } else {
@@ -233,9 +233,9 @@ if (newDay) {
     setVar(dayOfWeek + "Anger", tempAnger);
 
     //Add the daily based values
-    setVar("happiness", getVar("happiness") + tempHappiness);
-    setVar("lust", getVar("lust") + tempLust);
-    setVar("anger", getVar("anger") + tempAnger);
+    setVar(VARIABLE_HAPPINESS, getVar(VARIABLE_HAPPINESS) + tempHappiness);
+    setVar(VARIABLE_LUST, getVar(VARIABLE_LUST) + tempLust);
+    setVar(VARIABLE_ANGER, getVar(VARIABLE_ANGER) + tempAnger);
 }
 
 function activateRandomScenario(scenarioArray, idOffset, moodType) {

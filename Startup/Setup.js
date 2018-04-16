@@ -5,7 +5,7 @@ var TOY_BOTH_MODE = 2;
 showImage("Images/Spicy/Intro/Loading.jpg");
 sendSystemMessage("Initial start up..");
 java.lang.Thread.sleep(1000);
-sendSystemMessage("First session is very important and a long due to first time setup..");
+sendSystemMessage("The first session is very important and long due to first time setup...");
 java.lang.Thread.sleep(3000);
 sendSystemMessage("Do you have about 1 - 1.5 hours?");
 answer = createInput();
@@ -36,13 +36,13 @@ setVar("subPain", 3);
 setVar("subPainTolerance", 3);
 setVar("subEndurance", 3);
 setVar("subStrictness", 3);
-setVar("subDevotion", 45);
+setVar(VARIABLE_DEVOTION, 45);
 
 run("Settings/UpdateDevotion.js");
 
 setVar("orgasmRatio", 50);
 setVar("lockUpPoints", 0);
-setVar("merits", 500);
+setVar(VARIABLE_MERITS, 500);
 setDate("firstStart");
 setVar(VARIABLE_PUNISHMENT_POINTS, 0);
 
@@ -281,6 +281,7 @@ while (true) {
                         sendVirtualAssistantMessage("But again it would make me and your Mistress happy if you did");
                         break;
                     } else if (answer.isLike("no")) {
+                        setVar(VARIABLE_CHASTITY_TRAINING, false);
                         sendVirtualAssistantMessage("It's alright");
                         break;
                     } else {
@@ -304,16 +305,16 @@ while (true) {
 
         while (true) {
             if (answer.containsIgnoreCase("play")) {
-                setVar("toyChastityInteractionMode", TOY_PLAY_MODE);
+                setVar(VARIABLE_CHASTITY_TOY_MODE, TOY_PLAY_MODE);
                 break;
             } else if (answer.containsIgnoreCase("both")) {
-                setVar("toyChastityInteractionMode", TOY_BOTH_MODE);
+                setVar(VARIABLE_CHASTITY_TOY_MODE, TOY_BOTH_MODE);
                 break;
             } else if (answer.containsIgnoreCase("punishment")) {
-                setVar("toyChastityInteractionMode", TOY_PUNISHMENT_MODE);
+                setVar(VARIABLE_CHASTITY_TOY_MODE, TOY_PUNISHMENT_MODE);
                 break;
             } else if (answer.containsIgnoreCase("full", "time", "24/7")) {
-                setVar("toyChastityInteractionMode", TOY_BOTH_MODE + 1);
+                setVar(VARIABLE_CHASTITY_TOY_MODE, TOY_BOTH_MODE + 1);
                 break;
             } else {
                 sendVirtualAssistantMessage("Play, punishment, both or full time?");
@@ -369,7 +370,7 @@ sendVirtualAssistantMessage("Level 6 to 8 is for the trained");
 sendVirtualAssistantMessage("Level 9 to 11 is for the advanced");
 sendVirtualAssistantMessage("Level 12 to 15 is for the high skilled");
 sendVirtualAssistantMessage("The higher your level is the less messy ejaculations you will receive");
-sendVirtualAssistantMessage("Which is good since we basically want you horny..");
+sendVirtualAssistantMessage("Which is good since we basically want you horny...");
 sendVirtualAssistantMessage("A horny sub is an obedient sub");
 sendVirtualAssistantMessage("Now I recommend choosing your level with care!");
 sendVirtualAssistantMessage("Once in a while your Mistress will talk about this topic with you");

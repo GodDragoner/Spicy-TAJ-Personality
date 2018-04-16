@@ -1,14 +1,13 @@
 sendMessage("Hello %subName%");
 sendMessage("That was the last time I used your real name");
-setDate("LastTeaseSession");
+setDate(VARIABLE_LAST_TEASE_SESSION);
 sendMessage("From now on I will use whatever pet name I see fit");
 sendMessage("Wether that is cum lover, cocksucker or slave");
 sendMessage("Because you are a slave");
 sendMessage("My slut, cuck, plaything, chastity boy");
 sendMessage("And a lot of other lovable terms %Grin%");
 sendMessage("The point is you're mine!");
-sendMessage("Let that sink in for a moment...");
-sleep(10);
+sendMessage("Let that sink in for a moment...", 10);
 sendMessage("Now what is more important for you to understand is that the thing residing in your pants");
 sendMessage("Is not yours anymore", 0);
 playAudio("/Audio/Spicy/Starts/Intro/intro1.mp3", true);
@@ -240,8 +239,7 @@ sendMessage("Next");
 sendMessage("I think it's important that we start out with a clean history");
 sendMessage("I don't know when you cleaned your pipes the last time");
 sendMessage("So yes");
-sendMessage("You are gonna orgasm today");
-sleep(5);
+sendMessage("You are gonna orgasm today", 5);
 
 setVar(VARIABLE_ORGASM_POINTS, 0);
 registerOrgasm();
@@ -294,6 +292,7 @@ setVar(VARIABLE_FINISHED_FIRST_SESSION, true);
 
 sendMessage("When you're done with that...");
 if(getVar(VARIABLE_CHASTITY_TRAINING, false) || !getVar(VARIABLE_HAS_CHASTITY)) {
+    setVar(VARIABLE_CHASTITY_ON, false);
     sendMessage("I want you to put your %Cock% away...");
     sendMessage("Enjoy");
 } else {

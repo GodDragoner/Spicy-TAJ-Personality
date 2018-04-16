@@ -9,6 +9,8 @@ sendSystemMessage("Launching Spicy " + getVar("personalityVersion"));
 run("Utils/RandomUtils.js");
 run("Utils/StringUtils.js");
 run("Startup/UpdateVariables.js");
+run("Stroking/Stroke.js");
+run("Stroking/Edge.js");
 
 run("Assistant/Assistant.js");
 updatePictureSet();
@@ -17,6 +19,9 @@ run("Session/End/Games/EndGames.js");
 
 run("Startup/CrazyDommeMode.js");
 run("Personality/SetupMood.js");
+
+//Toys
+run("Toys/ChastityCage.js");
 
 //Update devotion only if the setup is complete which means the variable must exist
 if(isVar("subDevotion")) {

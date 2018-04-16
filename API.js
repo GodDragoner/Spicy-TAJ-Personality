@@ -13,3 +13,17 @@ function run(filePath) {}
 function createInput() {}
 
 function sendInput(message) {}
+
+function showCategoryImage() {}
+
+function showTeaseImage() {}
+
+function wait() {}
+function sleep() {}
+
+function playAudio() {}
+function playSound() {}
+function stopAudio() {}
+
+function unlockImages() {}
+function lockImages() {}
