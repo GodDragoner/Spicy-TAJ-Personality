@@ -1,88 +1,88 @@
-var VARIABLE_CHASTITY_ON = "chastityOn";
-var VARIABLE_LINGERIE_ON = "lingerieOn";
+const VARIABLE_CHASTITY_ON = "chastityOn";
+const VARIABLE_LINGERIE_ON = "lingerieOn";
 
-var VARIABLE_SLAVE_TYPE = "slaveType";
+const VARIABLE_SLAVE_TYPE = "slaveType";
 
-var VARIABLE_MIN_WEEKLY_VISITS = "minWeeklyVisits";
+const VARIABLE_MIN_WEEKLY_VISITS = "minWeeklyVisits";
 
-var VARIABLE_MIN_WEEKLY_CHORES = "minWeeklyChores";
+const VARIABLE_MIN_WEEKLY_CHORES = "minWeeklyChores";
 
-var VARIABLE_DENIAL_LIMIT = "denialLimit";
-var VARIABLE_DENIAL_LEVEL = "denialLevel";
+const VARIABLE_DENIAL_LIMIT = "denialLimit";
+const VARIABLE_DENIAL_LEVEL = "denialLevel";
 
-var VARIABLE_GOLD = "gold";
+const VARIABLE_GOLD = "gold";
 
-var VARIABLE_MERITS = "merits";
+const VARIABLE_MERITS = "merits";
 
-var VARIABLE_LOCKED_UP_LIMIT = "lockedUpLimit";
+const VARIABLE_LOCKED_UP_LIMIT = "lockedUpLimit";
 
-var VARIABLE_ORGASM_POINTS = "orgasmPoints";
-var VARIABLE_REQUIRED_ORGASM_POINTS = "requiredOrgasmPoints";
+const VARIABLE_ORGASM_POINTS = "orgasmPoints";
+const VARIABLE_REQUIRED_ORGASM_POINTS = "requiredOrgasmPoints";
 
-var VARIABLE_LAST_ORGASM = "lastOrgasm";
-var VARIABLE_LAST_RUINED_ORGASM = "lastRuined";
+const VARIABLE_LAST_ORGASM = "lastOrgasm";
+const VARIABLE_LAST_RUINED_ORGASM = "lastRuined";
 
-var VARIABLE_FINISHED_SETUP = "finishedSetup";
-var VARIABLE_FINISHED_FIRST_SESSION = "finishedFirstSession";
+const VARIABLE_FINISHED_SETUP = "finishedSetup";
+const VARIABLE_FINISHED_FIRST_SESSION = "finishedFirstSession";
 
-var VARIABLE_ORGASM_FREQUENCY = "orgasmFrequency";
+const VARIABLE_ORGASM_FREQUENCY = "orgasmFrequency";
 
 //Chastity
-var VARIABLE_HAS_CHASTITY = "hasChastity";
-var VARIABLE_CHASTITY_TRAINING = "chastityTraining";
-var VARIABLE_CHASTITY_MATERIAL = "chastityMaterialType";
-var VARIABLE_CHASTITY_CAGE_TYPE = "chastityCageType";
-var VARIABLE_CHASTITY_CAGE_PIERCED = "chastityCagePierced";
-var VARIABLE_CHASTITY_SPIKES_ON = "chastitySpikesOn";
-var VARIABLE_CHASTITY_TOY_MODE = "toyChastityInteractionMode";
+const VARIABLE_HAS_CHASTITY = "hasChastity";
+const VARIABLE_CHASTITY_TRAINING = "chastityTraining";
+const VARIABLE_CHASTITY_MATERIAL = "chastityMaterialType";
+const VARIABLE_CHASTITY_CAGE_TYPE = "chastityCageType";
+const VARIABLE_CHASTITY_CAGE_PIERCED = "chastityCagePierced";
+const VARIABLE_CHASTITY_SPIKES_ON = "chastitySpikesOn";
+const VARIABLE_CHASTITY_TOY_MODE = "toyChastityInteractionMode";
 
-var VARIABLE_LOCKED_DAYS_IN_ROW = "lockedUpDaysInRow";
+const VARIABLE_LOCKED_DAYS_IN_ROW = "lockedUpDaysInRow";
 
-var VARIABLE_LOCKED_UP_UNTIL = "lockedUpUntil";
+const VARIABLE_LOCKED_UP_UNTIL = "lockedUpUntil";
 
 //Modules
-var VARIABLE_STROKE_TRAINING_ACTIVE = "strokeTrainingActive";
-var VARIABLE_STROKE_TRAININGS_DONE = "strokeTrainingsDone";
-var VARIABLE_STROKE_TRAINING_LEVEL = "strokeTrainingLevel";
-var VARIABLE_STROKE_TRAINING_EDGES_DONE = "strokeTrainingEdgesDone";
+const VARIABLE_STROKE_TRAINING_ACTIVE = "strokeTrainingActive";
+const VARIABLE_STROKE_TRAININGS_DONE = "strokeTrainingsDone";
+const VARIABLE_STROKE_TRAINING_LEVEL = "strokeTrainingLevel";
+const VARIABLE_STROKE_TRAINING_EDGES_DONE = "strokeTrainingEdgesDone";
 
 //Sub
-var VARIABLE_DEVOTION = "subDevotion";
+const VARIABLE_DEVOTION = "subDevotion";
 
-var VARIABLE_EDGE_STARTED_DATE = "edgeStartedDate";
+const VARIABLE_EDGE_STARTED_DATE = "edgeStartedDate";
 
 //Stats
-var VARIABLE_SESSION_COUNTER = "sessionCounter";
-var VARIABLE_ORGASM_COUNTER = "orgasmCounter";
-var VARIABLE_RUIN_COUNTER = "ruinCounter";
+const VARIABLE_SESSION_COUNTER = "sessionCounter";
+const VARIABLE_ORGASM_COUNTER = "orgasmCounter";
+const VARIABLE_RUIN_COUNTER = "ruinCounter";
 
-var VARIABLE_EDGE_COUNTER = "edgeCounter";
-var VARIABLE_EDGE_TODAY_COUNTER = "edgeTodayCounter";
+const VARIABLE_EDGE_COUNTER = "edgeCounter";
+const VARIABLE_EDGE_TODAY_COUNTER = "edgeTodayCounter";
 
 //Full time
-var VARIABLE_LAST_ROUTINE_CHECK = "lastRoutineCheck";
-var VARIABLE_NEXT_WEEK_CHECK = "nextWeekCheck";
+const VARIABLE_LAST_ROUTINE_CHECK = "lastRoutineCheck";
+const VARIABLE_NEXT_WEEK_CHECK = "nextWeekCheck";
 
-var VARIABLE_WEEKLY_SLAVE_VISITS = "weeklySlaveVisits";
+const VARIABLE_WEEKLY_SLAVE_VISITS = "weeklySlaveVisits";
 
-var VARIABLE_SLAVE_LEAVE_UNTIL = "slaveLeaveUntil";
-var VARIABLE_SLAVE_VACATION_UNTIL = "slaveVacationUntil";
+const VARIABLE_SLAVE_LEAVE_UNTIL = "slaveLeaveUntil";
+const VARIABLE_SLAVE_VACATION_UNTIL = "slaveVacationUntil";
 
-var VARIABLE_PUNISHMENT_POINTS = "punishmentPoints";
+const VARIABLE_PUNISHMENT_POINTS = "punishmentPoints";
 
-var VARIABLE_NEXT_CONFESSION_DAY = "nextConfessionDay";
-var VARIABLE_NEXT_PUNISHMENT_DAY = "nextPunishmentDay";
+const VARIABLE_NEXT_CONFESSION_DAY = "nextConfessionDay";
+const VARIABLE_NEXT_PUNISHMENT_DAY = "nextPunishmentDay";
 
-var VARIABLE_WEEKLY_CHORES_COMPLETED = "weeklyChoresCompleted";
+const VARIABLE_WEEKLY_CHORES_COMPLETED = "weeklyChoresCompleted";
 
-var VARIABLE_FULL_TIME_TRIAL_UNTIL = "fullTimeTrialUntil";
+const VARIABLE_FULL_TIME_TRIAL_UNTIL = "fullTimeTrialUntil";
 
-var VARIABLE_LAST_TEASE_SESSION = "lastTeaseSession";
-var VARIABLE_CURRENT_SESSION_DATE = "currentSessionDate";
+const VARIABLE_LAST_TEASE_SESSION = "lastTeaseSession";
+const VARIABLE_CURRENT_SESSION_DATE = "currentSessionDate";
 
-var VARIABLE_HAPPINESS = "happiness";
-var VARIABLE_LUST = "lust";
-var VARIABLE_ANGER = "anger";
+const VARIABLE_HAPPINESS = "happiness";
+const VARIABLE_LUST = "lust";
+const VARIABLE_ANGER = "anger";
 
 function isMetalChastityCage() {
     return getVar(VARIABLE_CHASTITY_MATERIAL) == 0;

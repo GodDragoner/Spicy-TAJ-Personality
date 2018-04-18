@@ -1,5 +1,5 @@
 function letEdgeFadeVocabulary() {
-    var answers = [
+    const answers = [
         "Let the edge just fade away for a moment",
         "Just relax while the edge fades away",
         "Just let it all fade away",
@@ -20,4 +20,6 @@ function letEdgeFadeVocabulary() {
         "I bet that edging is a pure %Pain% for you %EmoteHappy&",
         "Just be glad you're edging, Imagine wearing a %ChastityCage%"
     ];
+
+    return answers[randomInteger(0, answer.length -1)];
 }

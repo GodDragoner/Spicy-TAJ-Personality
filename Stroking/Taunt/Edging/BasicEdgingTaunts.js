@@ -1,5 +1,5 @@
 if(getDate(VARIABLE_EDGE_STARTED_DATE).addMinute(2).hasPassed()) {
-    var tauntIndex = randomInteger(0, 8);
+    let tauntIndex = randomInteger(0, 8);
     switch (tauntIndex) {
         case 0:
             sendMessage("C'mon %SlaveName%, don't you want to get close for me?");
@@ -45,7 +45,7 @@ if(getDate(VARIABLE_EDGE_STARTED_DATE).addMinute(2).hasPassed()) {
             break;
     }
 } else {
-    var tauntIndex = randomInteger(0, 16);
+    let tauntIndex = randomInteger(0, 16);
     switch (tauntIndex) {
         case 0:
             sendMessage("Get close for me %SlaveName%");

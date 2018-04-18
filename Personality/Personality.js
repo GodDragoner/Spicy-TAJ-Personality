@@ -1,10 +1,14 @@
 run("Personality/Limits.js");
 
-var ENFORCING_PERSONALITY_ID = 1;
+const ENFORCING_PERSONALITY_ID = 1;
 
-var ACTIVE_PERSONALITY_ID = getVar("personalityType");
+const ACTIVE_PERSONALITY_ID = getVar("personalityType");
 
-var ACTIVE_PERSONALITY_STRICTNESS = getVar("personalityStrictness", 0);
+let ACTIVE_PERSONALITY_STRICTNESS = getVar("personalityStrictness", 0);
+
+const TOY_PLAY_MODE = 0;
+const TOY_PUNISHMENT_MODE = 1;
+const TOY_BOTH_MODE = 2;
 
 function setUpPersonalityVars() {
     switch(ACTIVE_PERSONALITY_ID) {
@@ -21,7 +25,7 @@ function setUpPersonalityVars() {
 
 //We should do this only at session start unlike spicy because otherwise you can just restart the program x times to increase your mood
 function loadMood() {
-    var mood = getMood();
+    const mood = getMood();
 
     if(mood === VERY_ANNOYED_MOOD) {
         setVar("Merits", getVar("Merits") + 30);
@@ -38,9 +42,9 @@ function updateMood() {
 function getMood() {
     updateMood();
 
-    var merits = getVar("Merits");
+    const merits = getVar("Merits");
 
-    var veryPleased, pleased, neutral, annoyed, veryAnnoyed;
+    let veryPleased, pleased, neutral, annoyed, veryAnnoyed;
     switch(ACTIVE_PERSONALITY_STRICTNESS) {
         case 0:
             veryPleased = 900;
@@ -69,8 +73,8 @@ function getMood() {
         return VERY_PLEASED_MOOD;
     } else if(merits >= PLEASED_MOOD) {
         return PLEASED_MOOD;
-    } else if(merits >= NEUTRLA_MOOD) {
-        return NEUTRLA_MOOD;
+    } else if(merits >= NEUTRAL_MOOD) {
+        return NEUTRAL_MOOD;
     } else if(merits >= ANNOYED_MOOD) {
         return ANNOYED_MOOD;
     } else if(merits >= VERY_ANNOYED_MOOD) {
@@ -93,17 +97,17 @@ function changeMeritHigh(negative) {
 }
 
 function changeMerit(level, negative) {
-    var index = ACTIVE_PERSONALITY_STRICTNESS*10;
-    var minChange;
-    var maxChange;
+    let index = ACTIVE_PERSONALITY_STRICTNESS*10;
+    let minChange;
+    let maxChange;
     if(getMonthlyBadDays() > getMonthlyGoodDays()) {
         index += 5;
     }
-    var mood = getMood();
+    const mood = getMood();
 
     if(mood == PLEASED_MOOD) {
         index += 1;
-    } else if(mood == NEUTRLA_MOOD) {
+    } else if(mood == NEUTRAL_MOOD) {
         index += 2;
     } else if(mood == ANNOYED_MOOD) {
         index += 3;
@@ -137,7 +141,7 @@ function changeMerit(level, negative) {
         }
     }
 
-    var meritChange = randomInteger(minChange[index], maxChange[index]);
+    let meritChange = randomInteger(minChange[index], maxChange[index]);
     if(negative) {
         meritChange *= -1;
     }

@@ -1,7 +1,7 @@
 
 function stopStrokingMessage() {
     stopStroking();
-    var answers = [
+    const answers = [
         "Stop stroking",
         "Hands off",
         "That's enough, hands off",

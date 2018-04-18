@@ -1,4 +1,4 @@
-var YES_OR_NO = "Yes or no?";
+const YES_OR_NO = "Yes or no?";
 
 function sendVirtualAssistantMessage(message, wait, skipImage) {
     textName = new javafx.scene.text.Text("[Vivienne]: ");

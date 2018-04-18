@@ -1,5 +1,5 @@
 function slaveNameVocabulary() {
-    var answers = ["slave",
+    const answers = ["slave",
         "slave",
         "slave",
         "slave",
@@ -123,16 +123,17 @@ function slaveNameVocabulary() {
         "sexy bitch",
         "filthy bitch",
         "filthy slut",
-        "filthy girl"];
+        "filthy girl"
+    ];
 
-    if(getVar(VARIABLE_CHASTITY_ON)) {
+    if(getVar(VARIABLE_CHASTITY_ON, false)) {
         answers.push("secured cuckie", "chained up boy", "secured slave", "locked slave", "locked cum consumer", "locked cream boy", "secured idiot");
         answers.push("locked up slut", "locked up girl", "caged slut", "secured slut", "caged girl", "secured girl");
     }
 
-    if(getVar(VARIABLE_LINGERIE_ON)) {
+    if(getVar(VARIABLE_LINGERIE_ON, false)) {
         answers.push("dressed up slut", "dressed up girl", "lingerie covered slut", "lingerie covered girl");
     }
 
-    return answers[randomInteger(0, answer.length -1)];
+    return answers[randomInteger(0, answers.length - 1)];
 }
