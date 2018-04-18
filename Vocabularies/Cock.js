@@ -1,10 +1,10 @@
 function cockVocabulary() {
-    var size = ["little", "poor", "cute little"];
-    var adjectives = ["desperate", "helpless", "sore", "frustrated", "denied", "aching", "leaky", "horny", "drippy", "dripping", "subservient", "wrinkly"];
-    var answers = ["dick", "cock", "fuckstick", "weiner", "pecker", "prick"];
+    const size = ["little", "poor", "cute little"];
+    const adjectives = ["desperate", "helpless", "sore", "frustrated", "denied", "aching", "leaky", "horny", "drippy", "dripping", "subservient", "wrinkly"];
+    const answers = ["dick", "cock", "fuckstick", "weiner", "pecker", "prick"];
 
 
-    var answer = "";
+    let answer = "";
 
     if(randomInteger(1, 4) == 2) {
         answer += adjectives[randomInteger(0, adjectives.length - 1)]  + " ";
@@ -15,7 +15,7 @@ function cockVocabulary() {
     }
 
     if(randomInteger(1, 4) == 2) {
-        playSound("/Audio/Spicy/Humiliation/SmallDick");
+        playSound("Audio/Spicy/Humiliation/SmallDick/*.mp3");
     }
 
     return answer + answers[randomInteger(0, answers.length - 1)];

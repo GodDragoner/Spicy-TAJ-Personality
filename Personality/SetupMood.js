@@ -1,11 +1,13 @@
-var DAYS_IN_WEEK = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+run("Personality/Mood.js");
 
-var todayDate = new Date();
-var dayOfWeek = DAYS_IN_WEEK[todayDate.getDay()];
-var newDay = false;
+const DAYS_IN_WEEK = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+
+const todayDate = new Date();
+const dayOfWeek = DAYS_IN_WEEK[todayDate.getDay()];
+let newDay = false;
 
 if (isVar(dayOfWeek + "MoodDate")) {
-    date = getVar(dayOfWeek + "MoodDate");
+    const date = getVar(dayOfWeek + "MoodDate");
     //Check if we are still on the same day
     if (!(date.getDay() == todayDate.getDate() && date.getMonth() == todayDate.getMonth() && date.getYear() == todayDate.getFullYear())) {
         //Reset temp added values
@@ -26,7 +28,7 @@ if (newDay) {
     setVar("activeMoodScenarios", ",");
 
     //Handle scenarios
-    var happyScenarios = [
+    const happyScenarios = [
         1, //Received a sweet text
         1, //Went shopping last night
         1, //Had a great day at work
@@ -79,11 +81,11 @@ if (newDay) {
         5 //Got praised at the job
     ];
 
-    var tempHappiness = activateRandomScenario(happyScenarios, 0, "Happiness");
+    let tempHappiness = activateRandomScenario(happyScenarios, 0, "Happiness");
 
     idOffset = happyScenarios.length;
 
-    var lustScenarios = [
+    const lustScenarios = [
         1, //Bought new lingerie
         1, //Got new lingerie as a gift
         1, //Got a new spanking instrument
@@ -135,11 +137,11 @@ if (newDay) {
         5, //Made a sub ruin after x weeks of denial
     ];
 
-    var tempLust = activateRandomScenario(lustScenarios, idOffset, "Lust");
+    let tempLust = activateRandomScenario(lustScenarios, idOffset, "Lust");
 
     idOffset += lustScenarios.length;
 
-    var angerScenarious = [
+    const angerScenarious = [
         1, //Finished a great book
         1, //Had a bad day at work
         1, //A sub came without permission
@@ -192,7 +194,7 @@ if (newDay) {
         5, //A new sex toy didn"t live to expectations
     ];
 
-    var tempAnger = activateRandomScenario(angerScenarious, idOffset, "Anger");
+    let tempAnger = activateRandomScenario(angerScenarious, idOffset, "Anger");
 
     //Handle special days
     //Christmas
@@ -239,11 +241,11 @@ if (newDay) {
 }
 
 function activateRandomScenario(scenarioArray, idOffset, moodType) {
-    var index = randomInteger(0, scenarioArray.length);
-    var scenario = scenarioArray[index];
-    var scenarioId = index + idOffset;
+    const index = randomInteger(0, scenarioArray.length);
+    const scenario = scenarioArray[index];
+    const scenarioId = index + idOffset;
 
-    var activeMoodScenarios = getVar("activeMoodScenarios");
+    const activeMoodScenarios = getVar("activeMoodScenarios");
     //Register the scenario as listed
     setVar("activeMoodScenarios", activeMoodScenarios + scenarioId + ",");
 

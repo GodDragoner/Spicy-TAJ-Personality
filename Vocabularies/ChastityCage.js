@@ -1,14 +1,14 @@
 function chastityCageVocabulary() {
-    var material = isMetalChastityCage()? "metal" : "plastic";
-    var cock = random("cock", "dick");
+    const material = isMetalChastityCage()? "metal" : "plastic";
+    const cock = random("cock", "dick");
 
-    var adjectives = [];
+    const adjectives = [];
 
-    var sizeAdjective = ["little"];
+    const sizeAdjective = ["little"];
 
-    var descriptive = ["lust detention"];
+    const descriptive = ["lust detention"];
 
-    var mood = getMood();
+    const mood = getMood();
     if(mood == VERY_PLEASED_MOOD || mood == PLEASED_MOOD) {
         adjectives.push("sweet", "delicious", "adorable", "delightful", "lovely");
     } else {
@@ -16,22 +16,23 @@ function chastityCageVocabulary() {
         sizeAdjective.push("teeny", "tiny");
     }
 
-    if(getVar(VARIABLE_CHASTITY_CAGE_PIERCED)) {
+    if(getVar(VARIABLE_CHASTITY_CAGE_PIERCED, false)) {
         descriptive.push("pierced");
     }
 
-    if(getVar(VARIABLE_CHASTITY_SPIKES_ON)) {
+    if(getVar(VARIABLE_CHASTITY_SPIKES_ON, false)) {
         descriptive.push("spiky", "spike encased", "spiked");
     }
 
-    var answers = ["prison", material + " prison"];
+    //Prison is kinda strange
+    const answers = /*["prison", material + " prison"]*/ [];
     if(isFullChastityBelt()) {
         answers.push("belt", material + " belt", "full belt", "full " + material + " belt");
     } else {
         answers.push("cage", material + " cage", "ball-trapping belt", material + " ball-trapping belt");
     }
 
-    var answer = "";
+    let answer = "";
 
     if(randomInteger(1, 4) == 2) {
         answer += adjectives[randomInteger(0, adjectives.length - 1)] + " ";

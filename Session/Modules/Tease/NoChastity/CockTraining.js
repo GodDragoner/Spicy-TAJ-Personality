@@ -196,7 +196,7 @@ function endStrokeTraining() {
 function playRandomStrokeTrainingBeat(level) {
     stopAudio();
 
-    var beats = [
+    const beats = [
         "Audio/Spicy/Modules/StrokeTraining/A.mp3",
         "Audio/Spicy/Modules/StrokeTraining/B.mp3",
         "Audio/Spicy/Modules/StrokeTraining/EasyBeat1.mp3",
@@ -399,6 +399,5 @@ function playRandomStrokeTrainingBeat(level) {
         "Audio/Spicy/Modules/StrokeTraining/HardBite.mp3",
     ];
 
-    var index = randomInteger((level-1)*4, (level-1)*4 + 3);
-    playAudio(beats[index]);
+    playAudio(beats[randomInteger((level-1)*4, (level-1)*4 + 3)]);
 }

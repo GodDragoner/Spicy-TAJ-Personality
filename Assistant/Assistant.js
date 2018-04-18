@@ -1,22 +1,22 @@
-ASSISTANT_CHRISTMAS_SET_ID = 100;
-ASSISTANT_CURRENT_SET_ID = -1;
+const ASSISTANT_CHRISTMAS_SET_ID = 100;
+let ASSISTANT_CURRENT_SET_ID = -1;
 
-SLAVE_FRIEND_1_CURRENT_SET_ID = -1;
-SLAVE_FRIEND_2_CURRENT_SET_ID = -1;
-SLAVE_FRIEND_3_CURRENT_SET_ID = -1;
-RECEPTION_CURRENT_SET_ID = -1;
+const SLAVE_FRIEND_1_CURRENT_SET_ID = -1;
+const SLAVE_FRIEND_2_CURRENT_SET_ID = -1;
+const SLAVE_FRIEND_3_CURRENT_SET_ID = -1;
+const RECEPTION_CURRENT_SET_ID = -1;
 
 function updatePictureSet() {
     //Set slave friend ids
-    SLAVE_FRIEND_1_CURRENT_SET_ID = randomInteger(0, 3);
-    SLAVE_FRIEND_2_CURRENT_SET_ID = randomInteger(0, 3);
-    SLAVE_FRIEND_3_CURRENT_SET_ID = randomInteger(0, 2);
+    const SLAVE_FRIEND_1_CURRENT_SET_ID = randomInteger(0, 3);
+    const SLAVE_FRIEND_2_CURRENT_SET_ID = randomInteger(0, 3);
+    const SLAVE_FRIEND_3_CURRENT_SET_ID = randomInteger(0, 2);
 
-    RECEPTION_CURRENT_SET_ID = randomInteger(0, 4);
+    const RECEPTION_CURRENT_SET_ID = randomInteger(0, 4);
 
     if(isVar("lastAssistantDressChange")) {
-        var lastAssistantDressChange = getDate("lastAssistantDressChange");
-        var date = new Date();
+        const lastAssistantDressChange = getDate("lastAssistantDressChange");
+        const date = new Date();
 
         //If the day hasn"t changed, or if it"s midnight don"t change dress
         if(lastAssistantDressChange.getDay() == date.getDate() || date.getHours() < 6) {
@@ -28,7 +28,7 @@ function updatePictureSet() {
     //We are gonna change the dress so lets update this
     setDate("lastAssistantDressChange");
 
-    var date = new Date();
+    const date = new Date();
 
     if(date.getMonth() == 12) {
         //Set the current set
@@ -43,10 +43,10 @@ function updatePictureSet() {
     }
 
     //Select random unused dress
-    var usedDresses = getVar("usedVirtualAssistantDresses");
+    const usedDresses = getVar("usedVirtualAssistantDresses");
 
-    var usedDressesAmount = (usedDresses.length - 3)/2;
-    var unusedDresses = [];
+    const usedDressesAmount = (usedDresses.length - 3)/2;
+    const unusedDresses = [];
 
     if(usedDressesAmount < 30) {
         for (x = 0; x < 31; x++) {
@@ -66,7 +66,7 @@ function updatePictureSet() {
         }
     }
 
-    var dressNumber = unusedDresses[randomInteger(0, unusedDresses.length - 1)];
+    const dressNumber = unusedDresses[randomInteger(0, unusedDresses.length - 1)];
 
     //Update the list of used dresses
     setVar("usedVirtualAssistantDresses", usedDresses + dressNumber + ",");

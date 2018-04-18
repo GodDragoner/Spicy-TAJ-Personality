@@ -10,14 +10,14 @@ function unlockChastityCage() {
     if(randomInteger(0, 2) == 2) playSound("Audio/Spicy/Chastity/ChastityOff/*.mp3");
     sendMessage(random("Remove your %ChastityCage%", "Get your %ChastityCage% off", "Remove the %ChastityCage% at once", "Hurry up and remove the %ChastityCage%", "Be quick and get your %ChastityCage% off"));
 
-    var timeout = randomInteger(20, 50);
+    let timeout = randomInteger(20, 50);
     if(ACTIVE_PERSONALITY_STRICTNESS == 1) {
         timeout = randomInteger(15, 40);
     } else if(ACTIVE_PERSONALITY_STRICTNESS == 2) {
         timeout = randomInteger(10, 30);
     }
 
-    var answer = sendInput(random("Let me know when you're done...", "Report to me when it's off", "Remember to tell me when it's off"), timeout);
+    const answer = sendInput(random("Let me know when you're done...", "Report to me when it's off", "Remember to tell me when it's off"), timeout);
     loop = 0;
     while(true) {
         if (answer.isTimeout()) {
@@ -63,14 +63,14 @@ function lockChastityCage() {
 
     sendMessage(random("Put on your %Cage%", "Get your %Cage% on", "Put on the %Cage% at once", "Hurry up and get the %Cage% back on", "Be quick and get your %Cage% back on", "Lock your %Cock% up"));
 
-    var timeout = randomInteger(30, 60);
+    let timeout = randomInteger(30, 60);
     if(ACTIVE_PERSONALITY_STRICTNESS == 1) {
         timeout = randomInteger(25, 50);
     } else if(ACTIVE_PERSONALITY_STRICTNESS == 2) {
         timeout = randomInteger(20, 40);
     }
 
-    var answer = sendInput(random("Let me know when you're done...", "Report to me when it's on", "Remember to tell me when it's on"), timeout);
+    const answer = sendInput(random("Let me know when you're done...", "Report to me when it's on", "Remember to tell me when it's on"), timeout);
     loop = 0;
     while(true) {
         if (answer.isTimeout()) {

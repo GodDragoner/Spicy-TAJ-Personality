@@ -1,9 +1,8 @@
-var ORGASM_FREQUENCY_VERY_RARE = 0;
-var ORGASM_FREQUENCY_RARE = 1;
-var ORGASM_FREQUENCY_SEMI_RARE = 2;
-var ORGASM_FREQUENCY_SOMEWHAT_RARE = 3;
-var ORGASM_FREQUENCY_DOM = 4;
-
+const ORGASM_FREQUENCY_VERY_RARE = 0;
+const ORGASM_FREQUENCY_RARE = 1;
+const ORGASM_FREQUENCY_SEMI_RARE = 2;
+const ORGASM_FREQUENCY_SOMEWHAT_RARE = 3;
+const ORGASM_FREQUENCY_DOM = 4;
 
 function registerOrgasm() {
     setDate(VARIABLE_LAST_ORGASM);
@@ -23,8 +22,8 @@ function registerEjaculation() {
 }
 
 function getRequiredOrgasmPoiunts() {
-    var denialLevel = getVar(VARIABLE_DENIAL_LEVEL);
-    var minPoints = 26.87*java.lang.Math.E^(0,2598*denialLevel);
-    var maxPoints = 68.559*java.lang.Math.E^(0,2401*denialLevel);
+    const denialLevel = getVar(VARIABLE_DENIAL_LEVEL);
+    const minPoints = 26.87*java.lang.Math.E^(0,2598*denialLevel);
+    const maxPoints = 68.559*java.lang.Math.E^(0,2401*denialLevel);
     return randomInteger(minPoints, maxPoints);
 }

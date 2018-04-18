@@ -1,1 +1,1 @@
-var END_GAME_STANDARD_ID = 0;
+const END_GAME_STANDARD_ID = 0;

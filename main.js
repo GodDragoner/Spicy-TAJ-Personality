@@ -34,7 +34,7 @@ if(!getVar(VARIABLE_FINISHED_SETUP, false)) run("Startup/Setup.js");
 
 if(!getVar(VARIABLE_FINISHED_FIRST_SESSION, false)) run("Session/FirstSession.js");
 
-showImage("/Images/Spicy/Intro/SpicyGif*.gif", 3);
+showImage("Images/Spicy/Intro/SpicyGif*.gif", 7);
 
 //TODO: Academy
 

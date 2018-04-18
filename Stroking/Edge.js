@@ -1,5 +1,5 @@
 function startEdging() {
-    var answers = [
+    const answers = [
         "Get to the %EdgeNoun%",
         "Get to the %EdgeNoun% for me",
         "I want you to get close to the edge",
@@ -44,7 +44,7 @@ function sendEdgeTaunts() {
     iterationsToGo = randomInteger(25, 55);
 
     //Just how long you want each iteration to take
-    var millisecondsToWait = 500;
+    const millisecondsToWait = 500;
     //Start our loop and continue until iterationsToGo are equal or less than zero
     while(iterationsToGo > 0) {
         //Is the sub on the edge?
