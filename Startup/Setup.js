@@ -343,11 +343,11 @@
 
     while (true) {
         if (answer.isLike("yes")) {
-            setVar("assLevel", 30);
+            setVar(VARIABLE_ASS_LEVEL, 30);
             sendVirtualAssistantMessage("I hope you are ready for that then...");
             break;
         } else if (answer.isLike("no")) {
-            setVar("assLevel", 1);
+            setVar(VARIABLE_ASS_LEVEL, 1);
             setVar("assTraining", true);
             sendVirtualAssistantMessage("I guess that means Mistress %domName% will work on this with you");
             break;

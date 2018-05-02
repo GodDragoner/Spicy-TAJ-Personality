@@ -21,7 +21,10 @@ run("Startup/CrazyDommeMode.js");
 run("Personality/SetupMood.js");
 
 //Toys
+run("Toys/Toys.js");
 run("Toys/ChastityCage.js");
+run("Toys/Buttplug.js");
+run("Toys/Gag.js");
 
 //Update devotion only if the setup is complete which means the variable must exist
 if(isVar("subDevotion")) {

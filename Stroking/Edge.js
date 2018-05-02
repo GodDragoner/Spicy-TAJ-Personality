@@ -1,4 +1,4 @@
-function startEdging() {
+function startEdging(holdSeconds) {
     const answers = [
         "Get to the %EdgeNoun%",
         "Get to the %EdgeNoun% for me",
@@ -36,6 +36,11 @@ function startEdging() {
     sendEdgeTaunts();
     stopStrokingEdgeMessage();
     endEdge();
+
+    if(holdSeconds !== undefined) {
+        sendHoldEdgeTaunts(holdSeconds);
+    }
+
     delVar(VARIABLE_EDGE_STARTED_DATE);
 }
 
@@ -61,6 +66,31 @@ function sendEdgeTaunts() {
 
     //Start the whole thing all over again
     sendEdgeTaunts();
+}
+
+function sendHoldEdgeTaunts(seconds) {
+    //Select a random amount of iterations and we will wait based on that random amount before sending a taunt message
+    iterationsToGo = randomInteger(10, 25);
+
+    //Just how long you want each iteration to take
+    const millisecondsToWait = 500;
+    //Start our loop and continue until iterationsToGo are equal or less than zero
+    while(iterationsToGo > 0) {
+        seconds -= millisecondsToWait/1000;
+
+        if(seconds <= 0) {
+            break;
+        }
+
+        //Sub is not on edge, which means we subtract one from our iterations and wait for 500 milliseconds afterwards
+        iterationsToGo--;
+        java.lang.Thread.sleep(millisecondsToWait);
+    }
+
+    run("Stroking/Taunt/HoldEdge/*.js");
+
+    //Start the whole thing all over again
+    sendHoldEdgeTaunts();
 }
 
 function addEdge() {

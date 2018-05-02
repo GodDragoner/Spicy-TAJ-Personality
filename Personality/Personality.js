@@ -9,6 +9,7 @@ let ACTIVE_PERSONALITY_STRICTNESS = getVar("personalityStrictness", 0);
 const TOY_PLAY_MODE = 0;
 const TOY_PUNISHMENT_MODE = 1;
 const TOY_BOTH_MODE = 2;
+const TOY_ASKED_BUY_MODE = 3;
 
 function setUpPersonalityVars() {
     switch(ACTIVE_PERSONALITY_ID) {
