@@ -40,16 +40,29 @@ const VARIABLE_LOCKED_DAYS_IN_ROW = "lockedUpDaysInRow";
 
 const VARIABLE_LOCKED_UP_UNTIL = "lockedUpUntil";
 
+//Toys
+
+const VARIABLE_IS_PLUGGED = "isPlugged";
+const VARIABLE_IS_GAGED = "isGaged";
+
 //Modules
 const VARIABLE_STROKE_TRAINING_ACTIVE = "strokeTrainingActive";
 const VARIABLE_STROKE_TRAININGS_DONE = "strokeTrainingsDone";
 const VARIABLE_STROKE_TRAINING_LEVEL = "strokeTrainingLevel";
 const VARIABLE_STROKE_TRAINING_EDGES_DONE = "strokeTrainingEdgesDone";
 
+const VARIABLE_EDGE_A_TONS_DONE = "edgeATonsDone";
+const VARIABLE_EDGE_A_TON_EDGE_RECORD = "edgeATonEdgeRecord";
+
 //Sub
 const VARIABLE_DEVOTION = "subDevotion";
 
 const VARIABLE_EDGE_STARTED_DATE = "edgeStartedDate";
+
+const VARIABLE_SOFT_COCK_LENGTH = "softCockLength";
+const VARIABLE_SECONDS_TO_GET_SOFT = "secondsToGetSoft";
+
+const VARIABLE_ASS_LEVEL = "assLevel";
 
 //Stats
 const VARIABLE_SESSION_COUNTER = "sessionCounter";
