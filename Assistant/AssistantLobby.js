@@ -1,10 +1,11 @@
 {
     sendVirtualAssistantMessage(getWelcomeMessage(), false);
 
-    let answer = createInput();
+    let answer = createInput("Session", "Chores", "Dungeon", "Settings", "Shop", "Fitness", "Exercise", "Study", "House Rules", "Pin Board", "End");
     while (true) {
         if (answer.containsIgnoreCase("session", "domme")) {
             startSession();
+            answer.clearOptions();
             answer.loop();
         } else if (answer.containsIgnoreCase("chore", "clean", "dust", "wipe", "wash")) {
             sendVirtualAssistantMessage("This is not supported yet!");
@@ -32,10 +33,12 @@
             answer.loop();
         } else if (answer.containsIgnoreCase("save", "end", "quit", "stop", "leave", "close", "finish")) {
             sendVirtualAssistantMessage(random("Bye", "Until next time", "See you", "I'm waiting for the next time", "Don't leave me alone to long", "Good bye", "Have a nice day", "I saved your process you can close the program"));
+            answer.clearOptions();
             endSession();
             break;
         } else if (answer.containsIgnoreCase("pin", "board", "notices", "news")) {
-            break;
+            sendVirtualAssistantMessage("This is not supported yet!");
+            answer.loop();
         } else {
             sendVirtualAssistantMessage("You have the following options %SlaveName%");
             sendVirtualAssistantMessage("Request a session with your Mistress");
@@ -52,6 +55,8 @@
             answer.loop();
         }
     }
+
+    answer.clearOptions();
 }
 
 function startSession() {
