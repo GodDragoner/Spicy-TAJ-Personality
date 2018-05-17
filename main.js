@@ -4,6 +4,8 @@ run("Chat/ChatUtil.js");
 run("Slaves/Slaves.js");
 run("Session/Orgasm.js");
 
+registerVariable("anallimit", "Anal Limit", "Is anal a hard limit, allowed, needs to be addressed or still a matter of discussion?");
+
 sendSystemMessage("Launching Spicy " + getVar("personalityVersion"));
 
 run("Utils/RandomUtils.js");
@@ -25,6 +27,9 @@ run("Toys/Toys.js");
 run("Toys/ChastityCage.js");
 run("Toys/Buttplug.js");
 run("Toys/Gag.js");
+run("Toys/Dildo.js");
+
+run("Startup/PictureSelector.js");
 
 //Update devotion only if the setup is complete which means the variable must exist
 if(isVar("subDevotion")) {
