@@ -79,7 +79,7 @@
     showImage("Images/Spicy/Intro/BugFeedback.jpg");
     java.lang.Thread.sleep(18 * 1000);
 
-    showImage("Images/Spicy/Intro/SpicyGof1.gif");
+    showImage("Images/Spicy/Intro/SpicyGif1.gif");
     java.lang.Thread.sleep(6 * 1000);
 
     sendVirtualAssistantMessage("Welcome %subName%");
