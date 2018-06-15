@@ -27,3 +27,11 @@ function stopAudio() {}
 
 function unlockImages() {}
 function lockImages() {}
+
+function addStrokingBPM(bpm) {}
+
+function getStrokingBPM() {}
+
+function stopStroking() {}
+
+function startStroking(bpm) {}
