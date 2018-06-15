@@ -19,3 +19,39 @@ function getMonthlyGoodDays() {
 function getMonthlyBadDays() {
     return 31 - getMonthlyGoodDays();
 }
+
+function feelsEvil() {
+    let mood = getMood();
+
+    if (mood === VERY_PLEASED_MOOD) {
+        if (isChance(ACTIVE_PERSONALITY_STRICTNESS * 10)) {
+            return true;
+        } else {
+            return false;
+        }
+    } else if (mood === PLEASED_MOOD) {
+        if (isChance(ACTIVE_PERSONALITY_STRICTNESS * 20)) {
+            return true;
+        } else {
+            return false;
+        }
+    } else if (mood === NEUTRAL_MOOD) {
+        if (isChance(ACTIVE_PERSONALITY_STRICTNESS * 25)) {
+            return true;
+        } else {
+            return false;
+        }
+    } else if (mood === ANNOYED_MOOD) {
+        if (isChance((ACTIVE_PERSONALITY_STRICTNESS + 1) * 20)) {
+            return true;
+        } else {
+            return false;
+        }
+    } else if (mood === VERY_ANNOYED_MOOD) {
+        if (isChance((ACTIVE_PERSONALITY_STRICTNESS + 1) * 25)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}

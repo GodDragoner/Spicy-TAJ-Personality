@@ -18,7 +18,7 @@ function sendVirtualAssistantMessage(message, wait, skipImage) {
     }
 
     if(wait === undefined || wait) {
-        java.lang.Thread.sleep(1000 + message.length * 50);
+        sleep(1000 + message.length * 50);
     }
 }
 

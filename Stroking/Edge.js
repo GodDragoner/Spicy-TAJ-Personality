@@ -46,7 +46,7 @@ function startEdging(holdSeconds) {
 
 function sendEdgeTaunts() {
     //Select a random amount of iterations and we will wait based on that random amount before sending a taunt message
-    iterationsToGo = randomInteger(25, 55);
+    let iterationsToGo = randomInteger(25, 55);
 
     //Just how long you want each iteration to take
     const millisecondsToWait = 500;
@@ -59,7 +59,7 @@ function sendEdgeTaunts() {
 
         //Sub is not on edge, which means we subtract one from our iterations and wait for 500 milliseconds afterwards
         iterationsToGo--;
-        java.lang.Thread.sleep(millisecondsToWait);
+        sleep(millisecondsToWait);
     }
 
     run("Stroking/Taunt/Edging/*.js");
@@ -70,7 +70,7 @@ function sendEdgeTaunts() {
 
 function sendHoldEdgeTaunts(seconds) {
     //Select a random amount of iterations and we will wait based on that random amount before sending a taunt message
-    iterationsToGo = randomInteger(10, 25);
+    let iterationsToGo = randomInteger(10, 25);
 
     //Just how long you want each iteration to take
     const millisecondsToWait = 500;
@@ -84,7 +84,7 @@ function sendHoldEdgeTaunts(seconds) {
 
         //Sub is not on edge, which means we subtract one from our iterations and wait for 500 milliseconds afterwards
         iterationsToGo--;
-        java.lang.Thread.sleep(millisecondsToWait);
+        sleep(millisecondsToWait);
     }
 
     run("Stroking/Taunt/HoldEdge/*.js");

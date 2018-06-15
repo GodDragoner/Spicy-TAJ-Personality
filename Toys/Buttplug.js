@@ -22,43 +22,13 @@ function putInButtplug() {
     const lubeType = getAssLubeType(getMood());
 
     if (lubeType == ANY_LUBE) {
-        sendMessage("Grab your lube and lube up the plug");
+        lubeUpToyWithLube(random("plug", "buttplug"));
     } else if (lubeType === SPIT_LUBE) {
-        sendMessage(random("Use your spit and lube it up", "Use your spit as lube", "Go ahead and use your spit as lube"));
-
-        if (isChance(50) && !isGaged()) {
-            sendMessage(random("I want you to suck it until I tell you to stop", "Give it a nice quick blowjob until I tell you to stop", "Give it a good and nice blowjob until it is soaked in your spit"));
-            wait(30);
-            sendMessage("You can stop now");
-        } else {
-            if(isGaged()) {
-                sendMessage("This is gonna be fun with that gag in your mouth");
-                sendMessage("Watching your desperately trying to get some spit on it");
-                sendMessage("Go ahead and try to drool some spit onto that plug");
-                sendMessage("If you can't make it your ass will get to feel it %Grin%");
-            } else {
-                sendMessage("Come on. Soak it in your spit and make it nice and slippery", 10);
-            }
-        }
-
+        lubeUpToyWithSpit(random("plug", "buttplug"), true);
     } else if (lubeType === TOOTHPASE_LUBE) {
-        if (!fetchToy("toothpaste")) {
-            sendMessage("Well if you don't my your toys around you will have to go without any lube %Grin%");
-        } else {
-            sendMessage("Apply a generous amount to the tip of your plug");
-            sendMessage("If you want to you can spread it all over it so it slips in more easily");
-            sendMessage(random("But it will be more painful once it is inside of you", "However it will hurt more like this", "But this way it will hurt you more afterwards",
-                "However this will be more painful afterwards") + " %Grin%", 10);
-        }
+        lubeUpToyWithToothpaste(random("plug", "buttplug"));
     } else if (lubeType === TIGER_HOT_LUBE) {
-        if (!fetchToy("tiger hot")) {
-            sendMessage("Well if you don't have my toys around you will have to go without any lube %Grin%");
-        } else {
-            sendMessage("Apply a generous amount to the tip of your plug");
-            sendMessage("If you want to you can spread it all over it so it slips in more easily");
-            sendMessage(random("But it will be more painful once it is inside of you", "However it will hurt more like this", "But this way it will hurt you more afterwards",
-                "However this will be more painful afterwards") + " %Lol%", 10);
-        }
+        lubeUpToyWithTigerHot(random("plug", "buttplug"));
     } else {
         sendMessage("Today I don't you to use any lube %Grin%");
     }
@@ -81,7 +51,7 @@ function putInButtplug() {
             sendMessage("Go all the way down until your ass cheeks are touching the floor and the plug is all the way in");
         } else {
             sendMessage("Put the tip of the plug on your asshole", 5);
-            sendMessage("Rub along your ass crack gently with the tip", 5);
+            sendMessage("Rub the tip gently along your ass crack", 5);
             sendMessage("Now...");
 
             sendMessage("Carefully start pushing that plug into your ass");
@@ -242,12 +212,12 @@ function removeButtplug() {
             sendMessage("But don't pull it all the way out yet %Grin%");
             sendMessage("Pull it until the biggest part of the plug is spreading your ass apart");
             sendMessage("Keep it there until I tell you to move on");
-            wait(randomInteger(5, 10));
+            sleep(randomInteger(5, 10));
             sendMessage("And now push it all the way back in %Lol%");
             sendMessage("Let's do that again");
             sendMessage("Pull it out until the thickest part of the plug is spreading your sphincter");
             sendMessage("Hold it...");
-            wait(randomInteger(5, 10));
+            sleep(randomInteger(5, 10));
             if (isChance(70)) {
                 if (isChance(50)) {
                     sendMessage("Just let go and if the plug pops out you are done");
@@ -259,7 +229,7 @@ function removeButtplug() {
                 sendMessage("Back into your ass it goes %EmoteHappy%");
                 sendMessage("One more time");
                 sendMessage("Pull and hold it in place...");
-                wait(randomInteger(5, 10));
+                sleep(randomInteger(5, 10));
                 if (isChance(30)) {
                     if (isChance(50)) {
                         sendMessage("Just let go and if the plug pops out you are done");
@@ -269,7 +239,7 @@ function removeButtplug() {
                         sendMessage("Slip it back in %SlaveName%");
                         sendMessage("Okay, let's do this yet another time");
                         sendMessage("Pull and hold it in place...");
-                        wait(randomInteger(5, 10));
+                        sleep(randomInteger(5, 10));
                         endLastPlugPull();
                     }
                 } else {
@@ -311,8 +281,9 @@ function removeButtplug() {
                     removeGag();
                 }
 
+                //TODO: Perform other stuff? corner time etc.
                 sendMessage("Go ahead and put that plug into your mouth");
-                wait(5);
+                sleep(5);
 
                 sendMessage("Look at you...");
                 sendMessage("Pathetic as you are");
@@ -329,7 +300,7 @@ function removeButtplug() {
                 sendMessage(random("Can you taste your own ass juice?", "Licking of your own ass juice", "Licking that plug that was in your ass not too long ago") + " %Lol%");
                 sendMessage("And all of that just to " + random("please me", "make me happy", "entertain me") + " %EmoteHappy%");
 
-                wait(randomInteger(10, 20));
+                sleep(randomInteger(10, 20));
 
                 sendMessage("You can stop now %EmoteHappy%");
                 sendMessage("Put the plug aside");
@@ -344,7 +315,7 @@ function endLastPlugPull() {
     if (isChance(30)) {
         sendMessage("I think I like this");
         sendMessage("Why don't you keep it like this for another few seconds? %Grin%");
-        wait(randomInteger(5, 15));
+        sleep(randomInteger(5, 15));
         sendMessage("%Good%");
     }
 

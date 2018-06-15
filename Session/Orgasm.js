@@ -18,10 +18,10 @@ function registerRuin() {
 
 function registerEjaculation() {
     setVar(VARIABLE_ORGASM_POINTS, 0);
-    setVar(VARIABLE_REQUIRED_ORGASM_POINTS, getRequiredOrgasmPoiunts());
+    setVar(VARIABLE_REQUIRED_ORGASM_POINTS, getRequiredOrgasmPoints());
 }
 
-function getRequiredOrgasmPoiunts() {
+function getRequiredOrgasmPoints() {
     const denialLevel = getVar(VARIABLE_DENIAL_LEVEL);
     const minPoints = 26.87*java.lang.Math.E^(0,2598*denialLevel);
     const maxPoints = 68.559*java.lang.Math.E^(0,2401*denialLevel);

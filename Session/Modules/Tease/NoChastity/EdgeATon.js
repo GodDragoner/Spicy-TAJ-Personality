@@ -195,7 +195,7 @@ function startEdgeATon(chosenByDom, edgesToDo) {
     sendMessage(random("You will hold it again for 10 seconds", "You're gonna hold it for another 10 seconds", "Like before you're gonna hold it for 10 seconds"));
     sendMessage(random("After which you are going to get completely soft!", "And then I want you get soft as fast as possible", "Then you need to get soft as fast as possible"));
     sendMessage(random("Breathe...","Relax","Calm yourself"));
-    wait(randomInteger(5, 15));
+    sleep(randomInteger(5, 15));
     startEdging(10);
     sendMessage("%LetEdgeFade%");
     growDickSoft();

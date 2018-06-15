@@ -24,10 +24,6 @@ run("Personality/SetupMood.js");
 
 //Toys
 run("Toys/Toys.js");
-run("Toys/ChastityCage.js");
-run("Toys/Buttplug.js");
-run("Toys/Gag.js");
-run("Toys/Dildo.js");
 
 run("Startup/PictureSelector.js");
 

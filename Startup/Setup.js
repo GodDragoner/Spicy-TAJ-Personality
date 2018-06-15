@@ -1,9 +1,9 @@
 {
     showImage("Images/Spicy/Intro/Loading.jpg");
     sendSystemMessage("Initial start up..");
-    java.lang.Thread.sleep(1000);
+    sleep(1000);
     sendSystemMessage("The first session is very important and long due to first time setup...");
-    java.lang.Thread.sleep(3000);
+    sleep(3000);
     sendSystemMessage("Do you have about 1 - 1.5 hours?");
     let answer = createInput();
 
@@ -21,13 +21,13 @@
     }
 
     sendSystemMessage("Commencing..");
-    java.lang.Thread.sleep(1000);
+    sleep(1000);
 
     sendSystemMessage("Setting up..");
-    java.lang.Thread.sleep(1000);
+    sleep(1000);
 
     sendSystemMessage("This might take a few minutes..");
-    java.lang.Thread.sleep(2000);
+    sleep(2000);
 
     setVar("subPain", 3);
     setVar("subPainTolerance", 3);
@@ -71,16 +71,16 @@
     }
 
     showImage("Images/Spicy/Intro/Disclaimer.jpg");
-    java.lang.Thread.sleep(18 * 1000);
+    sleep(18 * 1000);
 
     showImage("Images/Spicy/Intro/Tribute.jpg");
-    java.lang.Thread.sleep(13 * 1000);
+    sleep(13 * 1000);
 
     showImage("Images/Spicy/Intro/BugFeedback.jpg");
-    java.lang.Thread.sleep(18 * 1000);
+    sleep(18 * 1000);
 
     showImage("Images/Spicy/Intro/SpicyGof1.gif");
-    java.lang.Thread.sleep(6 * 1000);
+    sleep(6 * 1000);
 
     sendVirtualAssistantMessage("Welcome %subName%");
     sendVirtualAssistantMessage("My name is Vivienne");
