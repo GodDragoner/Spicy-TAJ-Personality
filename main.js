@@ -13,6 +13,10 @@ run("Utils/StringUtils.js");
 run("Startup/UpdateVariables.js");
 run("Stroking/Stroke.js");
 run("Stroking/Edge.js");
+run("Stroking/Anal.js");
+run("Stroking/Blowing.js");
+
+run("Session/Modules/Dynamic/BlowjobHumiliation.js");
 
 run("Assistant/Assistant.js");
 updatePictureSet();
