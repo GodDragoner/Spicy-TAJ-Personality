@@ -64,6 +64,8 @@ const VARIABLE_SECONDS_TO_GET_SOFT = "secondsToGetSoft";
 
 const VARIABLE_ASS_LEVEL = "assLevel";
 
+const VARIABLE_BLOWJOB_LEVEL = "blowjobLevel";
+
 //Stats
 const VARIABLE_SESSION_COUNTER = "sessionCounter";
 const VARIABLE_ORGASM_COUNTER = "orgasmCounter";
