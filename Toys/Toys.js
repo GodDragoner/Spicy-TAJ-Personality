@@ -31,7 +31,7 @@ function fetchToy(toy) {
 
     const answer = sendInput("Tell me when you are ready to continue.");
     while(true) {
-        if(answer.isLike("done", "yes")) {
+        if(answer.isLike("done", "yes", "ready")) {
             sendMessage("%Good%");
             break;
         } else if(answer.isLike("no", "don't", "can't")) {
