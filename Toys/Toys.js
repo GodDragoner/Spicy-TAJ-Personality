@@ -3,6 +3,7 @@ run("Toys/Buttplug.js");
 run("Toys/Gag.js");
 run("Toys/Dildo.js");
 run("Toys/Lube.js");
+run("Toys/Clamps.js");
 
 function hasDildoToy() {
     return getVar("toyDildo", false);
@@ -27,7 +28,7 @@ function readyInput() {
 }
 
 function fetchToy(toy) {
-    sendMessage("Go ahead and " + random("fetch", "get", "retrieve") +  " your " + toy);
+    sendMessage("Go ahead and " + random("fetch", "get", "retrieve") + " your " + toy);
 
     const answer = sendInput("Tell me when you are ready to continue.");
     while(true) {
@@ -40,10 +41,12 @@ function fetchToy(toy) {
             sendMessage("You should always have your toys around!");
             changeMeritHigh(true);
             sendMessage("Well then....");
-            break;
+            return false;
         } else {
             sendMessage("Are you done yet?");
             answer.loop();
         }
     }
+
+    return true;
 }

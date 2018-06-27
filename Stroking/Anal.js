@@ -26,7 +26,7 @@ function sendAnalTaunts(duration) {
         //Sub is not on edge, which means we subtract one from our iterations and wait for 500 milliseconds afterwards
         iterationsToGo--;
         duration -= millisecondsToWait;
-        sleep(millisecondsToWait);
+        sleep(millisecondsToWait, "MILLISECONDS");
     }
 
     run("Stroking/Taunt/Anal/*.js");

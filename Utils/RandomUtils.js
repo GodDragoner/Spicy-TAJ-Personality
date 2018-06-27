@@ -1,9 +1,13 @@
-function randomInteger(lowest, highest) {
-    if(lowest >= highest) {
-        return lowest;
+/**
+ * Returns a random integer between min (inclusive) and max (inclusive)
+ * Using Math.round() will give you a non-uniform distribution!
+ */
+function randomInteger(min, max) {
+    if(min >= max) {
+        return max;
     }
 
-    return Math.floor(Math.random() * highest) + lowest;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function isChance(percentage) {

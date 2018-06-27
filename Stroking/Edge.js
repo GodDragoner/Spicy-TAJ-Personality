@@ -59,7 +59,7 @@ function sendEdgeTaunts() {
 
         //Sub is not on edge, which means we subtract one from our iterations and wait for 500 milliseconds afterwards
         iterationsToGo--;
-        sleep(millisecondsToWait);
+        sleep(millisecondsToWait, "MILLISECONDS");
     }
 
     run("Stroking/Taunt/Edging/*.js");
@@ -84,7 +84,7 @@ function sendHoldEdgeTaunts(seconds) {
 
         //Sub is not on edge, which means we subtract one from our iterations and wait for 500 milliseconds afterwards
         iterationsToGo--;
-        sleep(millisecondsToWait);
+        sleep(millisecondsToWait, "MILLISECONDS");
     }
 
     run("Stroking/Taunt/HoldEdge/*.js");

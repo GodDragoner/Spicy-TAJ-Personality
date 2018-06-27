@@ -72,7 +72,7 @@
     } else if (moduleIndicator < slaveModuleChance + sissyModuleChance + teaseModuleChance) {
 
     } else if (moduleIndicator < humiliationModuleChance + slaveModuleChance + sissyModuleChance + teaseModuleChance) {
-
+        run("Session/Modules/Humiliation/Dynamic/*.js");
     }
 }
 

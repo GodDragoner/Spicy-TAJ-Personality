@@ -44,6 +44,7 @@ const VARIABLE_LOCKED_UP_UNTIL = "lockedUpUntil";
 
 const VARIABLE_IS_PLUGGED = "isPlugged";
 const VARIABLE_IS_GAGED = "isGaged";
+const VARIABLE_IS_BALLS_TIED = "isBallsTied";
 
 //Modules
 const VARIABLE_STROKE_TRAINING_ACTIVE = "strokeTrainingActive";
