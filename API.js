@@ -2,6 +2,7 @@
 function sendMessage(message) {}
 
 function setVar(varName, object) {}
+function setTempVar(varName, object) {}
 function getVar(varName) {}
 function delVar(varName) {}
 function setDate(message) {}

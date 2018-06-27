@@ -1,9 +1,9 @@
 {
     showImage("Images/Spicy/Intro/Loading.jpg");
     sendSystemMessage("Initial start up..");
-    sleep(1000);
+    sleep(1);
     sendSystemMessage("The first session is very important and long due to first time setup...");
-    sleep(3000);
+    sleep(3);
     sendSystemMessage("Do you have about 1 - 1.5 hours?");
     let answer = createInput();
 
@@ -21,13 +21,13 @@
     }
 
     sendSystemMessage("Commencing..");
-    sleep(1000);
+    sleep(1);
 
     sendSystemMessage("Setting up..");
-    sleep(1000);
+    sleep(1);
 
     sendSystemMessage("This might take a few minutes..");
-    sleep(2000);
+    sleep(2);
 
     setVar("subPain", 3);
     setVar("subPainTolerance", 3);
@@ -71,16 +71,16 @@
     }
 
     showImage("Images/Spicy/Intro/Disclaimer.jpg");
-    sleep(18 * 1000);
+    sleep(18);
 
     showImage("Images/Spicy/Intro/Tribute.jpg");
-    sleep(13 * 1000);
+    sleep(13);
 
     showImage("Images/Spicy/Intro/BugFeedback.jpg");
-    sleep(18 * 1000);
+    sleep(18);
 
     showImage("Images/Spicy/Intro/SpicyGof1.gif");
-    sleep(6 * 1000);
+    sleep(6);
 
     sendVirtualAssistantMessage("Welcome %subName%");
     sendVirtualAssistantMessage("My name is Vivienne");

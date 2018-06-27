@@ -11,13 +11,13 @@ sendSystemMessage("Launching Spicy " + getVar("personalityVersion"));
 
 run("Utils/RandomUtils.js");
 run("Utils/StringUtils.js");
+run("Utils/BodyParts.js");
+run("Session/Tasks.js");
 run("Startup/UpdateVariables.js");
 run("Stroking/Stroke.js");
 run("Stroking/Edge.js");
 run("Stroking/Anal.js");
 run("Stroking/Blowing.js");
-
-run("Session/Modules/Dynamic/BlowjobHumiliation.js");
 
 run("Assistant/Assistant.js");
 updatePictureSet();
@@ -50,5 +50,7 @@ showImage("Images/Spicy/Intro/SpicyGif*.gif", 7);
 if(isFullTime()) {
     run("Startup/FullTime/FullTimeCheckup.js");
 }
+
+run("Session/Modules/Humiliation/Dynamic/AnalHumiliation.js");
 
 run("Assistant/AssistantLobby.js");

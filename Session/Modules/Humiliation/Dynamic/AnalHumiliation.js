@@ -1,6 +1,6 @@
 {
     sendMessage("Let's see %SlaveName%");
-    sendMessage("I think it's time to work that %Ass%", "I guess it's time to work on your %Ass%", "Let's have som fun with your %Ass% shall we?");
+    sendMessage(random("I think it's time to work that ass", "I guess it's time to work on your ass", "Let's have som fun with your ass shall we?"));
 
     let plugPlay = hasButtplugToy() && isChance(50) && getVar(VARIABLE_ASS_LEVEL) >= 5;
     let dildoPlay = hasDildoToy() && getVar(VARIABLE_ASS_LEVEL) >= 5;
@@ -19,12 +19,14 @@
         } else {
             sendMessage("However I want you to keep that plug inside for now...");
             sendMessage("A bit more of a warmup can never be too bad right?");
+            sendMessage("But let's not waste the time we are waiting for your ass to stretch though");
             startTimePassTasks(5);
+            sendMessage("I think we waited long enough. Let's get back to your ass");
         }
     } else {
         let missingPlug = false;
         if (plugPlay) {
-            sendMessage("Let's start by stretching that %Ass% of yours");
+            sendMessage("Let's start by stretching that ass of yours");
             if (!putInButtplug()) {
                 missingPlug = true;
 
@@ -34,7 +36,9 @@
 
                 sendMessage("Well then...");
             } else {
-                //TODO: Some tasks to before while plugged?
+                sendMessage("Let's spend the time that the plug is stretching your ass with something useful");
+                startTimePassTasks(5);
+                sendMessage("I believe we waited long enough and your ass is ready for more now");
             }
         }
 
@@ -47,6 +51,8 @@
             } else {
                 sendMessage("Okay let's get started then");
             }
+        } else {
+            toy = "finger";
         }
 
         const lubeType = getAssLubeType(getMood());
@@ -76,7 +82,7 @@ function runAssCrackPreparation(toy) {
     sendMessage("Up...", 3);
     sendMessage("And down...", 3);
     sendMessage("Up...", 3);
-    sendMessage("Your ass must be begging for your " + toy, "Can you feel your ass preparing for being penetrated already?");
+    sendMessage(random("Your ass must be begging for your " + toy, "Can you feel your ass preparing for being penetrated already?"));
     sendMessage("Down...");
 
     sendMessage("Now go ahead and slowly push the tip of your " + toy + " in");
@@ -97,18 +103,18 @@ function runAssCrackPreparation(toy) {
 function startPenetratingSession(toy) {
     const finger = toy == "finger";
 
-    sendMessage("Now that your %Ass% is properly prepared go ahead and push it completely in");
+    sendMessage("Now that your ass is properly prepared go ahead and push it completely in");
     sendMessage("Keep it in there", 5);
     sendMessage("And pull it all the way out again");
 
     const durationMinutes = randomInteger(10, 30);
     const date = setDate();
 
-    while(!date.addMinutes(durationMinutes).hasPassed() && appendModule(toy)) {}
+    while(!date.addMinute(durationMinutes).hasPassed() && appendModule(toy)) {}
 
     sendMessage("%SlaveName%");
     sendMessage("You can put your toys aside");
-    sendMessage("We are done with that %Ass% for now");
+    sendMessage("We are done with that ass for now");
 }
 
 function appendModule(toy) {
@@ -188,6 +194,9 @@ function appendPenetratingSession(toy) {
         currentBlowjob = blowjob;
     }
 
+    const finger = toy == "finger";
+    let currentFingerCount = 1;
+
     //TODO: Don't have the same position twice
     choosePosition(toy, blowjob);
     sendMessage("Put the tip of your " + toy + " on your asshole");
@@ -206,7 +215,7 @@ function appendPenetratingSession(toy) {
         if (isChance(50) || !blowjob) {
             sendMessage("Let's change the position shall we? %Grin%");
             choosePosition(toy, blowjob);
-            sendMessage("And straight back to fucking that %Ass% of yours");
+            sendMessage("And straight back to fucking that ass of yours");
             if(currentBlowjob) {
                 sendMessage("And don't forget to keep that mouth " + random("busy", "occupied", "used", "filled") + " too %Lol%");
             }
@@ -218,7 +227,16 @@ function appendPenetratingSession(toy) {
                 startBlowjobFuckingInstructions(toy);
             }
 
-            sendMessage("And back to fucking that %Ass% %Grin%");
+            sendMessage("And back to fucking that ass %Grin%");
+        }
+
+        //TODO: Based on experience
+        if(isChance(50) && finger && currentFingerCount < 5) {
+            sendMessage("I think you are ready to take more than your " + currentFingerCount++ + pluralize("finger", currentFingerCount));
+            sendMessage("Go ahead and use " + currentFingerCount + pluralize("finger", currentFingerCount) + " from now on %Grin%");
+            if(currentFingerCount >= 4) {
+                sendMessage("Better spread that asshole for me");
+            }
         }
     }
 
@@ -265,7 +283,7 @@ function startBlowjobFuckingInstructions(toy, mountedToWall = false, inFront = f
         sendMessage("%SlaveName%");
         sendMessage("Grab your second dildo");
         sendMessage("You will yet again use that dildo of yours to rape your slutty mouth");
-        sendMessage("And not only will you be raping your mouth but also your %Ass% %Grin%");
+        sendMessage("And not only will you be raping your mouth but also your ass %Grin%");
     } else {
         sendMessage("%SlaveName%");
         sendMessage("We are gonna switch that blowjob thing up a bit");
@@ -567,10 +585,10 @@ function startSquatAnal(toy) {
 
                         if (noHands) {
                             sendMessage("You still aren't allowed to pick up the " + toy + " with your hands so you gotta find another way %Grin%");
-                            sendInput("Go ahead and find a way to position the " + toy + " again");
+                            sendMessage("Go ahead and find a way to position the " + toy + " again");
                             readyInput();
                         } else {
-                            sendInput("Go ahead and pick up your " + toy + " and position it again");
+                            sendMessage("Go ahead and pick up your " + toy + " and position it again");
                         }
 
                         sendMessage("Now sit all the way down on it again", 5);
@@ -662,7 +680,7 @@ function startSquatAnal(toy) {
                                 sendMessage("Don't feel bad");
                                 sendMessage("It might need some practice for you to make it");
                                 //TODO: Save this for future interaction?
-                                sendMessage("Which means we gotta work on that %Ass% even more");
+                                sendMessage("Which means we gotta work on that ass even more");
                                 sendMessage("You can go ahead and pull that " + toy + " out of your ass now");
                                 break;
                             } else {
