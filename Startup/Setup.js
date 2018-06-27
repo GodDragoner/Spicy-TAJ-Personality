@@ -71,18 +71,19 @@
     }
 
     showImage("Images/Spicy/Intro/Disclaimer.jpg");
-    sleep(18);
+    sleep(8 * 1);
 
     showImage("Images/Spicy/Intro/Tribute.jpg");
-    sleep(13);
+    sleep(3 * 1);
 
     showImage("Images/Spicy/Intro/BugFeedback.jpg");
-    sleep(18);
+    sleep(8 * 1);
 
     showImage("Images/Spicy/Intro/SpicyGof1.gif");
-    sleep(6);
+    sleep(6 * 1);
 
-    sendVirtualAssistantMessage("Welcome %subName%");
+    sendVirtualAssistantMessage("Welcome %SubName%");
+	sleep(.1);
     sendVirtualAssistantMessage("My name is Vivienne");
     sendVirtualAssistantMessage("I am Mistress %domName%\'s virtual assistant");
     sendVirtualAssistantMessage("You are here because you sent a request to become the property of Mistress %domName%");
@@ -337,7 +338,7 @@
     sendVirtualAssistantMessage("Are you experienced and capable of wearing butt plugs on a daily basis...");
     sendVirtualAssistantMessage("And fucking yourself with a huge dildo?");
     sendVirtualAssistantMessage("Maybe even taking a huge cock from Mistress %domName%\'s lover?");
-    sendVirtualAssistantMessage("You should answer this thruthfully for your own good...", false);
+    sendVirtualAssistantMessage("You should answer this truthfully for your own good...", false);
 
     answer = createInput();
 
@@ -455,14 +456,17 @@
     askForToy("Dildo");
     askForToyUsage("Dildo", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
-    askForToy("E-Stim", "eStim");
-    askForToyUsage("E-Stim", domChose, "eStim");
+    askForToy("Inflatable Butt Plugs");
+    askForToyUsage("Inflatable Butt Plugs", domChose);
+    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+    askForToy("Shock Collar", "eStim");
+    askForToyUsage("Shock Collar", domChose, "eStim");
     sendVirtualAssistantMessage("Tell me what level of shock you consider to be quite painful", false)
     answer = createInput();
 
     while (true) {
         if (answer.isDouble()) {
-            setVar("eStimPainHigh", answer.getDouble());
+            setVar("estimPainHigh", answer.getDouble());
             break;
         } else {
             sendVirtualAssistantMessage("This is not a valid number. Please just type a number such as 1, or 2.5");
@@ -496,10 +500,17 @@
         }
     }
 
+		
+
+	
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+	
+	askForToy("TENS unit");
+    askForToyUsage("TENS unit", domChose);
+    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+	
     askForToy("Gag");
     askForToyUsage("Gag", domChose);
-
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
     askForToy("Girlfriend");
@@ -543,7 +554,19 @@
     askForToy("Sounds");
     askForToyUsage("Sounds", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
-
+	
+	askForToy("Humbler");
+    askForToyUsage("Humbler", domChose);
+    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+	
+    askForToy("Nipple Clamps");
+    askForToyUsage("Nipple Clamps", domChose);
+    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+	
+	askForToy("Cock Ring");
+    askForToyUsage("Cock Ring", domChose);
+    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+	
     sendVirtualAssistantMessage("Next we need for you to setup a folder with pictures of YOU!");
     sendVirtualAssistantMessage("This is very simple actually...");
     sendVirtualAssistantMessage("Inside the Images/Spicy folder you'll find a folder named SelfHumiliation");
