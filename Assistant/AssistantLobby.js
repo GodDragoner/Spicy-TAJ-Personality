@@ -11,7 +11,8 @@
             sendVirtualAssistantMessage("This is not supported yet!");
             answer.loop();
         } else if (answer.containsIgnoreCase("dungeon", "spanking", "spankzchoir", "selfbondage", "pain", "torture", "chamber", "punish")) {
-            sendVirtualAssistantMessage("This is not supported yet!");
+           // sendVirtualAssistantMessage("This is not supported yet!");
+		   run("Dungeon/PunishmentBase.js"); 
             answer.loop();
         } else if (answer.containsIgnoreCase("setting", "clean", "adjust", "calibrate", "setup")) {
             sendVirtualAssistantMessage("This is not supported yet!");
@@ -20,11 +21,12 @@
             sendVirtualAssistantMessage("This is not supported yet!");
             answer.loop();
         } else if (answer.containsIgnoreCase("fitness", "health")) {
-            sendVirtualAssistantMessage("This is not supported yet!");
+			sendVirtualAssistantMessage("about to fitness");
+            run("Exercise/ExerciseBase.js"); 		    
+			//sendVirtualAssistantMessage("nice workout!");
             answer.loop();
         } else if (answer.containsIgnoreCase("report", "exercise")) {
             run("Exercise/reportexercise.js");
-			sendVirtualAssistantMessage("back from call!!");
             answer.loop();
         } else if (answer.containsIgnoreCase("work", "study")) {
             sendVirtualAssistantMessage("This is not supported yet!");
