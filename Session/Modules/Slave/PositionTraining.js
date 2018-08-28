@@ -1020,11 +1020,6 @@ function complicatedPositionTrainingSelection(totalPositions) {
             positionsDone++;
         }
     }
-
-    sendMessage("Looks like we're done with your training for today %SlaveName%");
-    sendMessage("Good job.");
-    setVar(VARIABLE_POSITION_LEVEL, position_level + 1);
-    changeMeritMedium(false);
 }
 
 function positionCheckBalance() {
