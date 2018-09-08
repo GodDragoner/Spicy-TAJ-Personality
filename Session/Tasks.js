@@ -206,7 +206,7 @@ function goToCorner(durationSeconds) {
 }
 
 function returnSlave() {
-    sendMessage(randomInteger("Return here", "Come back", "Get here", "Return", "Get back here", "Get back to me") + " %SlaveName%", 0);
+    sendMessage(randomInteger("Return here", "Come back", "Get here", "Return", "Get back here", "Get back to me", "Get your %Ass% over here..") + " %SlaveName%", 0);
     playBellSound();
     sleep(5);
 }
