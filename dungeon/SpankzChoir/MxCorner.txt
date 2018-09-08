@@ -1,0 +1,33 @@
+@NullResponse @CheckFlag(FirstCornerMx) 
+(Setup)
+@NullResponse @SetVar[CornerTimes]=[0] @TempFlag(FirstCornerMx)
+(FirstCornerMx)
+@NullResponse @If[CornertimeLimit]<=[CornerTimes]Then(Spanking)
+@SystemMessage #MxChat2 @RT(Go to the corner,To the corner slave!,Go to the corner right now!,Go on,, to the corner you go,Off into the corner with you,Go to the corner,Go to the corner) #MxPoint
+@SystemMessage #MxChat2 @RT(Hands on top of your head -fingers folded,Hands behind your back -arms locked,Hands placed on the wall - nose touching the wall), and @RT(legs lightly apart,feet together,legs spread far apart) #MxPoint
+@SystemMessage #MxChat2 @RT(Stay,stay there) until @RT(you hear the bell,you hear my bell,you hear a bell) #MxPoint
+(Timer)
+@NullResponse @ChangeVar[CornerTimes]=[CornerTimes]+[1]
+@NullResponse @SetVar[CornerTimer]=[0]
+(Timer2)
+@NullResponse @Wait(60) @ChangeVar[CornerTimer]=[CornerTimer]+[1]
+@NullResponse @If[CornerTimer]>=[CornertimeTimeLimit]Then(EndBell) @Chance10(EndBell) @Goto(Timer2)
+(EndBell)
+@NullResponse @PlayAudio[\GNMSounds\SpecialSounds\Bell.mp3]
+@SystemMessage #MxChat2 Are you back with me slave? #MxChat @Timeout(10, NotBack)
+[yes] #MxChat2 #GNMGood #MxChat
+@AcceptAnswer #GNMGood
+(End)
+@End
+(Spanking)
+@NullResponse @CallReturn(CR\BackgroundMode\Punishment\SpankzChoir\MxSpanking.txt)
+@End
+(NotBack)
+@SystemMessage #MxChat2 Slave either you're not back in time #MxChat
+@SystemMessage #MxChat2 You're not present #MxChat
+@SystemMessage #MxChat2 Or you're forgetting your manners #MxChat
+@SystemMessage #MxChat2 Either one is disrespectful! #MeritChangeNHigh #MxChat
+@SystemMessage #MxChat2 I've just sent you a fine for 50 gold.. #MxChat @ChangeVar[GNMGold]=[GNMGold]-[50]
+@SystemMessage #MxChat2 And a message for your domme #MxChat
+@SystemMessage #MxChat2 Show respect #SlaveName #MxChat 
+@NullResponse @Goto(End)

@@ -1,0 +1,36 @@
+#SlaveName #DT
+@NullResponse @CheckFlag(ParachutePunishment)
+#Fetch a wooden spoon #DT @Wait(15)
+@RT(This should be fun!,Well this is gonna be fun!,#GNMGrin) #DT @SetVar[Time]=[1]
+@Variable[SubPain]>=[10] @NullResponse @SetVar[Times]=[#Random(30,50)]
+@Variable[SubPain]>=[9] @NullResponse @SetVar[Times]=[#Random(25,45)]
+@Variable[SubPain]>=[8] @NullResponse @SetVar[Times]=[#Random(20,40)]
+@Variable[SubPain]>=[7] @NullResponse @SetVar[Times]=[#Random(15,35)]
+@Variable[SubPain]>=[6] @NullResponse @SetVar[Times]=[#Random(10,30)]
+@Variable[SubPain]>=[5] @NullResponse @SetVar[Times]=[#Random(10,25)]
+@Variable[SubPain]>=[4] @NullResponse @SetVar[Times]=[#Random(10,20)]
+@Variable[SubPain]>=[3] @NullResponse @SetVar[Times]=[#Random(5,15)]
+@Variable[SubPain]>=[2] @NullResponse @SetVar[Times]=[#Random(5,10)]
+@Variable[SubPain]>=[1] @NullResponse @SetVar[Times]=[5]
+@RT(You're going to smack those #GNMBalls,You'll soon be swatting those #GNMBalls,In a moment you're going to hit those #GNMBalls) #DT
+I'll count them for you #DT
+Get ready #DT @Wait(#Random(5,10))
+(Count)
+@ShowVar[Time] #DT @ChangeVar[Time]=[Time]+[1] @If[Time]>=[Times]Then(End)
+@NullResponse @Wait(#Random(2,8)) @Goto(Count)
+(ParachutePunishment)
+#Fetch your parachute #DT @Wait(20)
+@Variable[SubPainTolerance]>=[6] @RT(Apply,Add) @RT(1.5 kg's,2 kg's) to it #DT @Wait(20)
+@Variable[SubPainTolerance]<[6] @RT(Apply,Add) @RT(1 kg,1.5 kg's) to it #DT @Wait(20)
+@RT(Go to the corner hands above you head,Go the corner with your hands above your head) #DT
+Wait for the bell #DT
+@Flag(Personality1) @NullResponse @Wait(#Random(200,600))
+@Flag(Personality2) @NullResponse @Wait(#Random(400,900))
+@Flag(Personality3) @NullResponse @Wait(#Random(600,1200))
+@RT(Come back here,get back) #DT @PlayAudio[\GNMSounds\SpecialSounds\Bell.mp3] @Wait(15) @Goto(End)
+(End)
+@RT(That was it,We're done) #DT
+@RT(Good girl,Good slut,Good slave) #DT
+@TempFlag(E2Complete) 
+@TempFlag(PunishmentComplete) @CallReturn(CR\BackgroundMode\Punishment\PunishmentBaseEnd.txt)
+@End
