@@ -1,0 +1,113 @@
+@NullResponse @SetVar[GroundingCounter]=[0] @CheckFlag(D1Punisher)
+@NullResponse @CheckFlag(D2Punisher)
+@NullResponse @CheckFlag(D3Punisher)
+@NullResponse @CheckFlag(D4Punisher)
+(D1Punisher)
+@NullResponse @Goto(Hello)
+(D2Punisher)
+@SystemMessage [Miss A]: Contacting #DomHonorific #Contact1 .. #ReceptionChat
+@NullResponse @AddContact1
+@NullResponse @RemoveDomme @Goto(Hello)
+(D3Punisher)
+@SystemMessage [Miss A]: Contacting #DomHonorific #Contact2 .. #ReceptionChat
+@NullResponse @AddContact2
+@NullResponse @RemoveDomme @Goto(Hello)
+(D4Punisher)
+@SystemMessage [Miss A]: Contacting #DomHonorific #Contact3 .. #ReceptionChat
+@NullResponse @AddContact3
+@NullResponse @RemoveDomme @Goto(Hello)
+(Hello)
+Well @RT(hello,hi) #SlaveName #DT4 @Goto(Start)
+(Start)
+@Flag(D1Punisher) @NullResponse @Goto(Domme)
+@Flag(D2Punisher) @NullResponse @Goto(Contact1)
+@Flag(D3Punisher) @NullResponse @Goto(Contact2)
+@Flag(D4Punisher) @NullResponse @Goto(Contact3)
+(Domme)
+@RT(Well well,Oh my,Well) #SlaveName #DT4
+@RT(It's time to pay,We need to settle your recent behaviour,I believe I have just the thing to discipline you,I believe I know how to correct your bad behaviour!) #DT4
+@Flag(Personality1) @NullResponse @If[SubEndurance]<=[3]Then(PS2Easy)
+@Flag(Personality2) @NullResponse @If[SubEndurance]<=[5]Then(PS2Easy)
+@Flag(Personality3) @NullResponse @If[SubEndurance]>=[6]Then(PS2Hard)
+@NullResponse @Goto(PS2Medium)
+(Contact1)
+@RT(Well well,Oh my,Well) #SlaveName #DT4
+@RT(I'm absolute sure you're gonna hate this and that makes me love it!,We need to correct your poor behaviour,You need a little discipline,Its about time we did something about your behaviour) #DT4
+@NullResponse @If[SubEndurance]>[4]AND[SubEndurance]<[8]Then(PS2Medium)
+@NullResponse @If[SubEndurance]>=[8]Then(PS2Hard) @Goto(PS2Easy)
+(Contact2)
+@RT(Well well,Oh my,Well) #SlaveName #DT4
+@RT(Discipline I just love that,You're not gonna like this #GNMGrin,I don't think your #GNMCock will enjoy this,This is fun!) #DT4
+@NullResponse @If[SubEndurance]>[3]AND[SubEndurance]<[7]Then(PS2Medium)
+@NullResponse @If[SubEndurance]>=[7]Then(PS2Hard) @Goto(PS2Easy)
+(Contact3)
+@RT(Well well,Oh my,Well) #SlaveName #DT4
+@RT(Discipline can never be cruel enough,Discipline is all about being cruel,Discipline is about showing no mercy!,No mercy for the bad ones..) #DT4
+@NullResponse @If[SubEndurance]>[2]AND[SubEndurance]<[6]Then(PS2Medium)
+@NullResponse @If[SubEndurance]>=[6]Then(PS2Hard) @Goto(PS2Easy)
+(PS2Easy)
+Just a minute.. #DT4 @SetVar[GroundingSet]=[#Random(400, 600)]
+Then you'll be able to carry on with your punishment.. #DT4 @Goto(Intro)
+(PS2Medium)
+Just a minute.. #DT4 @SetVar[GroundingSet]=[#Random(460, 700)]
+Then you'll be able to carry on with your punishment.. #DT4 @Goto(Intro)
+(PS2Hard)
+Just a minute.. #DT4 @SetVar[GroundingSet]=[#Random(520, 800)]
+Then you'll be able to carry on with your punishment.. #DT4 @Goto(Intro)
+(Intro)
+So #SlaveName .. #DT4
+I'm grounding you to your computer with a rather simple task.. #DT4
+I'm turning the screen black #DT4
+Every once in a while a few numbers will appear and you will have exactly 5 seconds to write back the number colored red #DT4
+If not I promise you your #DomHonorific won't be happy.. #DT4
+And ohh.. #DT4
+Its gonna cost you 10 gold and the punishment prolonges #DT4 @SetVar[Timer]=[0]
+Enjoy! #DT4 @CountVar[Timer]
+(Task)
+@NullResponse @ShowImage[\GNMImages\Punishment\Grounding\BlackBase.*] @If[Timer]>=[GroundingSet]Then(End) @Wait(#Random(3,30))
+@NullResponse @Goto(Number1,Number2,Number3,Number4,Number5,Number6,Number7,Number8,Number9)
+(Number1)
+@NullResponse @ShowImage[\GNMImages\Punishment\Grounding\Numbers\Black1.*] @Timeout(5,Failed)
+[1]@SystemMessage Correct @ShowImage[\GNMImages\Punishment\Grounding\BlackBase.*] @Goto(Task)
+@AcceptAnswer Wrong.. You were supposed to write 1.. @ShowImage[\GNMImages\Punishment\Grounding\BlackBase.*] @Goto(Failed)
+(Number2)
+@NullResponse @ShowImage[\GNMImages\Punishment\Grounding\Numbers\Black2.*] @Timeout(5,Failed)
+[2]@SystemMessage Correct @ShowImage[\GNMImages\Punishment\Grounding\BlackBase.*] @Goto(Task)
+@AcceptAnswer Wrong.. You were supposed to write 2.. @ShowImage[\GNMImages\Punishment\Grounding\BlackBase.*] @Goto(Failed)
+(Number3)
+@NullResponse @ShowImage[\GNMImages\Punishment\Grounding\Numbers\Black3.*] @Timeout(5,Failed)
+[3]@SystemMessage Correct @ShowImage[\GNMImages\Punishment\Grounding\BlackBase.*] @Goto(Task)
+@AcceptAnswer Wrong.. You were supposed to write 3.. @ShowImage[\GNMImages\Punishment\Grounding\BlackBase.*] @Goto(Failed)
+(Number4)
+@NullResponse @ShowImage[\GNMImages\Punishment\Grounding\Numbers\Black4.*] @Timeout(5,Failed)
+[4]@SystemMessage Correct @ShowImage[\GNMImages\Punishment\Grounding\BlackBase.*] @Goto(Task)
+@AcceptAnswer Wrong.. You were supposed to write 4.. @ShowImage[\GNMImages\Punishment\Grounding\BlackBase.*] @Goto(Failed)
+(Number5)
+@NullResponse @ShowImage[\GNMImages\Punishment\Grounding\Numbers\Black5.*] @Timeout(5,Failed)
+[5]@SystemMessage Correct @ShowImage[\GNMImages\Punishment\Grounding\BlackBase.*] @Goto(Task)
+@AcceptAnswer Wrong.. You were supposed to write 5.. @ShowImage[\GNMImages\Punishment\Grounding\BlackBase.*] @Goto(Failed)
+(Number6)
+@NullResponse @ShowImage[\GNMImages\Punishment\Grounding\Numbers\Black6.*] @Timeout(5,Failed)
+[6]@SystemMessage Correct @ShowImage[\GNMImages\Punishment\Grounding\BlackBase.*] @Goto(Task)
+@AcceptAnswer Wrong.. You were supposed to write 6.. @ShowImage[\GNMImages\Punishment\Grounding\BlackBase.*] @Goto(Failed)
+(Number7)
+@NullResponse @ShowImage[\GNMImages\Punishment\Grounding\Numbers\Black7.*] @Timeout(5,Failed)
+[7]@SystemMessage Correct @ShowImage[\GNMImages\Punishment\Grounding\BlackBase.*] @Goto(Task)
+@AcceptAnswer Wrong.. You were supposed to write 7.. @ShowImage[\GNMImages\Punishment\Grounding\BlackBase.*] @Goto(Failed)
+(Number8)
+@NullResponse @ShowImage[\GNMImages\Punishment\Grounding\Numbers\Black8.*] @Timeout(5,Failed)
+[8]@SystemMessage Correct @ShowImage[\GNMImages\Punishment\Grounding\BlackBase.*] @Goto(Task)
+@AcceptAnswer Wrong.. You were supposed to write 8.. @ShowImage[\GNMImages\Punishment\Grounding\BlackBase.*] @Goto(Failed)
+(Number9)
+@NullResponse @ShowImage[\GNMImages\Punishment\Grounding\Numbers\Black9.*] @Timeout(5,Failed)
+[9]@SystemMessage Correct @ShowImage[\GNMImages\Punishment\Grounding\BlackBase.*] @Goto(Task)
+@AcceptAnswer Wrong.. You were supposed to write 9.. @ShowImage[\GNMImages\Punishment\Grounding\BlackBase.*] @Goto(Failed)
+(Failed)
+Time out.. @ShowImage[\GNMImages\Punishment\Grounding\BlackBase.*]
+@NullResponse #MeritChangeNLow
+@NullResponse @ChangeVar[GNMGold]=[GNMGold]-[10] @TempFlag(PunishmentComplete)
+@NullResponse @ChangeVar[GroundingCounter]=[GroundingCounter]+[#Random(60,180)] @Goto(Task)
+(End)
+@NullResponse @TempFlag(PunishmentComplete)
+@NullResponse @CountVar[Timer, stop] @TempFlag(S2Complete) @CallReturn(CR\BackgroundMode\Punishment\PunishmentBaseEnd.txt)
+@End

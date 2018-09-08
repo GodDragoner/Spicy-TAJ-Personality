@@ -1,0 +1,118 @@
+@NullResponse @SetVar[FailedPunishment]=[0] @CheckFlag(D1Punisher)
+@NullResponse @CheckFlag(D2Punisher)
+@NullResponse @CheckFlag(D3Punisher)
+@NullResponse @CheckFlag(D4Punisher)
+(D1Punisher)
+@NullResponse @Goto(Hello)
+(D2Punisher)
+@SystemMessage [Miss A]: Contacting #DomHonorific #Contact1 .. #ReceptionChat
+@NullResponse @AddContact1
+@NullResponse @RemoveDomme @Goto(Hello)
+(D3Punisher)
+@SystemMessage [Miss A]: Contacting #DomHonorific #Contact2 .. #ReceptionChat
+@NullResponse @AddContact2
+@NullResponse @RemoveDomme @Goto(Hello)
+(D4Punisher)
+@SystemMessage [Miss A]: Contacting #DomHonorific #Contact3 .. #ReceptionChat
+@NullResponse @AddContact3
+@NullResponse @RemoveDomme @Goto(Hello)
+(Hello)
+@RT(Hello,Hi) #SlaveName #DT4
+(Info)
+#GNMGrin #DT4
+You will not enjoy this! #DT4
+This punishment is rather simple.. #DT4
+But that doesn't mean its easy.. #DT4
+Fetch 2 pegs #SlaveName #DT4 @Wait(10)
+Got them? #DT4
+[yes]#GNMGood #DT4
+@AcceptAnswer #GNMGood #DT4
+Now in just a moment I will tell you attach the pegs to a certain part of your body #DT4
+You don't want to attach them too well..  #DT4
+because just a moment later I will tell you to rip them off #GNMEmoteHappy #DT4
+Neither do you want to attach them too loosely because you will have to flick them once or twice #DT4
+If they fall off I want you to report it too me by saying "fell off" #DT4 @CustomMode(fell off, Goto, FellOff)
+If they fall off due to a flick you will have to repeat this punishment in full and pay a small fee.. #DT4
+Let me just check my papers.. #DT4 @Goto(Start)
+(Start)
+@Flag(D1Punisher) @NullResponse @Goto(Domme)
+@Flag(D2Punisher) @NullResponse @Goto(Contact1)
+@Flag(D3Punisher) @NullResponse @Goto(Contact2)
+@Flag(D4Punisher) @NullResponse @Goto(Contact3)
+(Domme)
+@RT(Well well,Oh my,Well) #SlaveName #DT4
+@RT(Lets see what we can do about you #GNMGrin,Its time to make you repent your sins,I suppose we need to correct your recent behaviour,I have something for you..) #DT4
+@Flag(Personality1) @NullResponse @If[SubPainTolerance]<=[3]Then(PS4Easy)
+@Flag(Personality2) @NullResponse @If[SubPainTolerance]<=[5]Then(PS4Easy)
+@Flag(Personality3) @NullResponse @If[SubPainTolerance]>=[6]Then(PS4Hard)
+@NullResponse @Goto(PS4Medium)
+(Contact1)
+@RT(Well well,Oh my,Well) #SlaveName #DT4
+@RT(Oh my I love handling #DomName's pet,I'll be happy to punish you #GNMGrin,This is gonna be fun) #DT4
+@NullResponse @If[SubPainTolerance]>[4]AND[SubPainTolerance]<[8]Then(PS4Medium)
+@NullResponse @If[SubPainTolerance]>=[8]Then(PS4Hard) @Goto(PS4Easy)
+(Contact2)
+@RT(Well well,Oh my,Well) #SlaveName #DT4
+@RT(You're not gonna like this #GNMGrin,I'm not sure you'll enjoy this!,I don't think you'll enjoy this..) #DT4
+@NullResponse @If[SubPainTolerance]>[3]AND[SubPainTolerance]<[7]Then(PS4Medium)
+@NullResponse @If[SubPainTolerance]>=[7]Then(PS4Hard) @Goto(PS4Easy)
+(Contact3)
+@RT(Well well,Oh my,Well) #SlaveName #DT4
+@RT(This is entirely my pleasure #GNMLol,I'm gonna love this!,This is gonna be fun!) #DT4
+@NullResponse @If[SubPainTolerance]>[2]AND[SubPainTolerance]<[6]Then(PS4Medium)
+@NullResponse @If[SubPainTolerance]>=[6]Then(PS4Hard) @Goto(PS4Easy)
+(PS4Easy)
+Remember to say "yes #DomHonorific " right after you're done pulling them off.. #DT4 @SetVar[S4Round]=[0]
+@NullResponse @RapidCodeOn @SetVar[RipPegs]=[#Random(4,6)] @TempFlag(S4Easy) @Goto(RipBase)
+(PS4Medium)
+Remember to say "yes #DomHonorific " right after you're done pulling them off.. #DT4 @SetVar[S4Round]=[0]
+@NullResponse @RapidCodeOn @SetVar[RipPegs]=[#Random(6,8)] @TempFlag(S4Easy) @Goto(RipBase)
+(PS4Hard)
+Remember to say "yes #DomHonorific " right after you're done pulling them off.. #DT4 @SetVar[S4Round]=[0]
+@NullResponse @RapidCodeOn @SetVar[RipPegs]=[#Random(8,11)] @TempFlag(S4Easy) @Goto(RipBase)
+(RipBase)
+@NullResponse @ChangeVar[S4Round]=[S4Round]+[1]
+@NullResponse @If[RipPegs]<=[0]Then(End) @ChangeVar[RipPegs]=[RipPegs]-[1] @Goto(Feet,Nipples,Balls,Cock,Thigh,Nose,Eyebrows,Nipples,Nipples,Balls,Nipples,Thigh)
+(Feet)
+@RT(Attach,Place,Put) the pegs on to some sensitive skin below your feet #DT4 @Wait(5)
+@RT(Flick them once or twice,Flick them just once,Flick them a few times,Flick them) #DT4 @Wait(5) @Goto(Black)
+(Nipples)
+@RT(Attach,Place,Put) a peg on each of your nipples #DT4 @Wait(5)
+@RT(Flick them once or twice,Flick them just once,Flick them a few times,Flick them) #DT4 @Wait(5) @Goto(Black)
+(Balls)
+@RT(Attach,Place,Put) the pegs to your #GNMBalls #DT4 @Wait(5)
+@RT(Flick them once or twice,Flick them just once,Flick them a few times,Flick them) #DT4 @Wait(5) @Goto(Black)
+(Cock)
+@Flag(ChastityIsOn) @RT(Attach,Place,Put) the pegs on to your @RT(#GNMBalls,nipples) #DT4 @Wait(5)
+@NotFlag(ChastityIsOn) @RT(Attach,Place,Put) the pegs to some lose skin from your #GNMCock #DT4 @Wait(5)
+@RT(Flick them once or twice,Flick them just once,Flick them a few times,Flick them) #DT4 @Wait(5) @Goto(Black)
+(Thigh)
+@RT(Attach,Place,Put) a peg on each of your inner thighs, the closer to your groin the better.. #DT4 @Wait(5)
+@RT(Flick them once or twice,Flick them just once,Flick them a few times,Flick them) #DT4 @Wait(5) @Goto(Black)
+(Nose)
+@RT(Attach,Place,Put) the pegs to your nose #GNMGrin #DT4 @Wait(5)
+@RT(Flick them once or twice,Flick them just once,Flick them a few times,Flick them) #DT4 @Wait(5) @Goto(Black)
+(Eyebrows)
+@RT(Attach,Place,Put) a peg on each of your eyebrows #DT4 @Wait(5)
+@RT(Flick them once or twice,Flick them just once,Flick them a few times,Flick them) #DT4 @Wait(5) @Goto(Black)
+(Black)
+@RT(Be ready!,Prepare,Prepare yourself,Get ready,Stay ready,Ready yourself) @ShowImage[\GNMImages\Punishment\Grounding\BlackBase.*] @Wait(#Random(2,10))
+(Rip)
+@RT(Rip it off!,Pull them off,Rip it!,Pull them off completely!,Rip them away! #GNMGrin,Rip it off,Rip.. it.. off!,Rip it off..,Rip it off..,Rip it off..,Rip it off..) #DT4 @Timeout(8,Slow)
+[yes]Round @ShowVar[S4Round] done.. #DT4 @Goto(RipBase)
+@DifferentAnswer I only wanna hear a firm yes.. #DT4
+(Slow)
+Aww too slow.. #MeritChangeNMedium #DT4
+Remember to say "yes #DomHonorific" <i>after</i> the pegs have been pulled off.. #DT4 @ChangeVar[RipPegs]=[RipPegs]+[#Random(1,3)]
+I'm expecting you to follow my commands <i>when</i> I give them #DT4
+I don't accept delays just because something hurts a little.. #DT4
+Well then I'm just adding a few extra rounds #GNMGrin #DT4 @Goto(RipBase)
+(FellOff)
+Well well we're starting over I guess... #DT4 @ChangeVar[GNMGold]=[GNMGold]-[10] @TempFlag(PunishmentComplete)
+@Flag(S4Easy) @NullResponse @Goto(PS4Easy) 
+@Flag(S4Medium) @NullResponse @Goto(PS4Medium) 
+@Flag(S4Hard) @NullResponse @Goto(PS4Hard) 
+(End)
+No more rounds! #DT4 @TempFlag(S4Complete) @CustomMode(ModeText,Normal)
+@NullResponse @TempFlag(PunishmentComplete) @CallReturn(CR\BackgroundMode\Punishment\PunishmentBaseEnd.txt)
+@End
