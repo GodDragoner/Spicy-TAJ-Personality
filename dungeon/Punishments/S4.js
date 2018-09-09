@@ -52,7 +52,7 @@ switch(getVar("Punisher")) {
 	break;
 	case 2 :
 	//(Contact1)
-	sendMessage(random("Well well","Oh my","Well") + " %SlaveName" );// #DT4
+	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%" );// #DT4
 	//sendMessage(random("Lets see what we can do about you %GNMGrin%","Its time to make you repent your sins","I suppose we need to correct your recent behaviour","I have something for you..")); //#DT4
 	//sendMessage(random("I'm absolute sure you're gonna hate this and that makes me love it!","We need to correct your poor behaviour","You need a little discipline","Its about time we did something about your behaviour") );// #DT4
 	sendMessage(random("Oh my I love handling %DomName%'s pet","I'll be happy to punish you %GNMGrin%","This is gonna be fun")); //#DT4
@@ -129,7 +129,7 @@ switch(PS2)  {
 	
 }
 
-while (RipPegs<=S4Round)  {
+while (RipPegs>=S4Round)  {
 	 S4Round=S4Round+1;
 
 	 place=randomInteger(0,13);
@@ -189,8 +189,8 @@ while (RipPegs<=S4Round)  {
 	showImage("Images/SpicyPunishment/Grounding/BlackBase.*");
 	wait(randomInteger(2,10));
 	//(Rip)
-	sendMessage(random("Rip it off!","Pull them off","Rip it!","Pull them off completely!","Rip them away! %GNMGrin%","Rip it off","Rip.. it.. off!","Rip it off..","Rip it off..","Rip it off..","Rip it off..")); //#DT4 @Timeout(8,Slow)
-     response = sendInput("",8);
+	//sendMessage(random("Rip it off!","Pull them off","Rip it!","Pull them off completely!","Rip them away! %GNMGrin%","Rip it off","Rip.. it.. off!","Rip it off..","Rip it off..","Rip it off..","Rip it off..")); //#DT4 @Timeout(8,Slow)
+     response = sendInput((random("Rip it off!","Pull them off","Rip it!","Pull them off completely!","Rip them away! %GNMGrin%","Rip it off","Rip.. it.. off!","Rip it off..","Rip it off..","Rip it off..","Rip it off.."),8);
      while(true){
 		 if (response.isLike("yes")) {
 			 
@@ -219,4 +219,4 @@ while (RipPegs<=S4Round)  {
 	sendMessage("No more rounds! "); //#DT4 
 	setVar("PunishmentComplete", true);
 	setVar("punishmentCompleted", 04);
-	run("dungeon/Punishment.PunishmentBaseEnd.js");
+	run("dungeon/PunishmentBaseEnd.js");

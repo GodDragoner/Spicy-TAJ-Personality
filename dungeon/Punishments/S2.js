@@ -135,7 +135,7 @@ break;
 		  showImage("Images/Spicy/Punishment/Grounding/Numbers/Black"+answerval+".*"); 
 	 
 		//here to prompt an answer or does that hint too much?
-
+		answer=sendInput(5);
 		 while (true){
 			if( answer.isTimeout()) {
 			sendMessage("Time out.." );

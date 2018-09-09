@@ -316,10 +316,11 @@ switch (choice) {
 		break;
 
 	}
-	setVar("PunishmentComplete", true);
-	setVar("punishmentCompleted", 03);
-	run("dungeon/Punishment.PunishmentBaseEnd.js");
+
 	
 
 	}
 }
+	setVar("PunishmentComplete", true);
+	setVar("punishmentCompleted", 03);
+	run("dungeon/PunishmentBaseEnd.js");
