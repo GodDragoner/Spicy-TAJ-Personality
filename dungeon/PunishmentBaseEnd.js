@@ -89,22 +89,22 @@ if(isVar("SpankzChoirComplete") && isVar("SpankChoirSafeword")){
 
 switch(getVar("Punisher")) {
 	case 1:
-	sendmessage("Cya %SlaveName%"); //#DT4 
+	sendMessage("Cya %SlaveName%"); //#DT4 
 	delVar("Punisher"); 
 	break;
 	case 2:
-	sendmessage("Cya %SlaveName%");// #DT4 
+	sendMessage("Cya %SlaveName%");// #DT4 
 	delVar("Punisher");
 	setSender(1);
 	break;
 	case 3:	 
-	sendmessage("Cya %SlaveName%");// #DT4 Cya #SlaveName #DT4 
+	sendMessage("Cya %SlaveName%");// #DT4 Cya #SlaveName #DT4 
 	delVar("Punisher");
 	 setSender(1);
 
 	break;
 	case 4:	
-	sendmessage("Cya %SlaveName%");// #DT4 Cya #SlaveName #DT4 
+	sendMessage("Cya %SlaveName%");// #DT4 Cya #SlaveName #DT4 
 	delVar("Punisher");
 	 	setSender(1);
 	 break;
@@ -122,22 +122,29 @@ sendMessage( random("You're going to the nurses office","Heading for the nurse's
 	 conversationnum = 0;
 	sendNurseMessage( random("You failed your punishment","You didn't complete your punishment","You didn't go through with your punishment") + "%SubName%" );
 	delVar("PunishmentFailed");
+	noanswer=true;
 	answer= sendInput( random("Was it really hard to complete?","Was it that hard to complete?"), 10) ;
 		
 		while(true){
+		if (answer.isTimeout()){
+		break;
+		}
 		if(answer.containsIgnoreCase("yes", "yeah")){
-		sendNurseMessage( random("I see","Well..","Hmm..")
+		sendNurseMessage( random("I see","Well..","Hmm.."));
 		conversationnum = 3;
-		noanswer = false;	
+		noanswer = false;
+		break;		
 		}else if (answer.containsIgnoreCase("no", "nope")){
-			sendNurseMessage( random("Oh","Hmm..","Oh"," Hmm..") 
+			sendNurseMessage( random("Oh","Hmm..","Oh"," Hmm..") );
 			noanswer =  false;
+			break;
 			
 		}
 			else{
 				sendNurseMessage(" Yes or no %SubName%");
 
 			answer.loop;
+			break;
 			}
 	}
 	if (noanswer==true){
@@ -155,26 +162,33 @@ sendMessage( random("You're going to the nurses office","Heading for the nurse's
 			if(answer.containsIgnoreCase("i couldn't handle it","handle","couldn't","could not")){
 				sendNurseMessage(random("Aww sugar","Aww Honey","Aww dear") + " :/ ");  
 				conversationnum = 3;
+				break;
 			}else if(answer.containsIgnoreCase("pain","painfull","painful","too much","agony")) {
 				sendNurseMessage(random("Aww sugar","Aww Honey","Aww dear"));  
 				conversationnum = 3;
+				break;
 			}else if(answer.containsIgnoreCase("boring","borring", "Bored")){
 				sendNurseMessage( random("It was boring?..","Boring huh?","Boring you say?")); 
-				conversationnum = 1;				
+				conversationnum = 1;
+				break;				
 			}else if(answer.containsIgnoreCase("didn't want to","did not want to","no fun")){
 				sendNurseMessage( random("Hmm..","Well..")); 
-				conversationnum = 2;				
-			}else if(answer.containsIgnoreCase("bug","error") {
+				conversationnum = 2;
+				break;					
+			}else if(answer.containsIgnoreCase("bug","error")) {
 				sendNurseMessage( random("A bug huh?","Oh my an error?")); 
 				conversationnum = 9;	//bug
+				break;	
 			}else if(answer.containsIgnoreCase("i did","i did complete it","i did complete","i made it")) {
 				sendNurseMessage(random("You did?!","Oh my you did!?","Shit")); 
-				conversationnum = 9;	//bug			
+				conversationnum = 9;	//bug
+				break;					
 			}else {sendNurseMessage(" I'm sorry but your response doesn't make sense"); 
 				sendNurseMessage(" I urge that you tell Genome on Milovana why you didn't complete your punishment"); 
 				sendNurseMessage(" I know he would appreciate it.."); 
 				sendNurseMessage(" Thank you!");  
 				conversationnum = 10;	//
+				break;	
 			}
 		}
 	}
@@ -195,7 +209,7 @@ sendMessage( random("You're going to the nurses office","Heading for the nurse's
 	//@End
 	break;
 	   case 2 :
-	sendNurseMessage(" #SubName random(I think you and I need to have a little talk","We need to talk","We gotta talk","We need to have a little chat) 
+	sendNurseMessage(" %SubName% "+ random("I think you and I need to have a little talk","We need to talk","We gotta talk","We need to have a little chat")); 
 	sendNurseMessage(" Because not completing a punishment because you didn't want to isn't a proper reason.. ");
 	sendNurseMessage(random("You need to remember that it was you that came here","You need to remember that you signed up for this","It was you who signed up for this..")); 
 	sendNurseMessage(random("It was you who requested and signed up to become a slave","You.. Wanted.. This..","don't forget!")); 
@@ -254,22 +268,22 @@ sendMessage( random("You're going to the nurses office","Heading for the nurse's
 	 
 		sendNurseMessage(random("Good boy!","Good girl!","Good slut","Good slave"));  
 		delVar("S1Complete"); 
-		setVar("VARIABLE_PUNISHMENT_POINTS",getvar("VARIABLE_PUNISHMENT_POINTS")-randomInteger(50,100));
-		sendNurseMessage(random("You made it through the line writing!","You survived writing all those lines","You got through the linewriting!"));  @Goto(Continue)
+		setVar(VARIABLE_PUNISHMENT_POINTS,getVar(VARIABLE_PUNISHMENT_POINTS)-randomInteger(50,100));
+		sendNurseMessage(random("You made it through the line writing!","You survived writing all those lines","You got through the linewriting!"));  
 		break; 
 		case 02:
 	 
 		sendNurseMessage(random("Good boy!","Good girl!","Good slut","Good slave"));
 		delVar("S2Complete");
-		setVar("VARIABLE_PUNISHMENT_POINTS",getvar("VARIABLE_PUNISHMENT_POINTS")-randomInteger(50,100));
+		setVar(VARIABLE_PUNISHMENT_POINTS,getVar(VARIABLE_PUNISHMENT_POINTS)-randomInteger(50,100));
 		sendNurseMessage(random("You took your grounding like a proper slave","You handled that grounding like a good little girl")); 
-		sendNurseMessage(" You should be proud randombreak; case 0ugar","dear","honey","sweety")); 
+		sendNurseMessage(" You should be proud "+random("Sugar","dear","honey","sweety")); 
 		break;
 		case 03:
 	 
 		sendNurseMessage(random("Good boy!","Good girl!","Good slut","Good slave"));  
 		delVar("S3Complete");
-		setVar("VARIABLE_PUNISHMENT_POINTS",getvar("VARIABLE_PUNISHMENT_POINTS")-randomInteger(50,100));
+		setVar(VARIABLE_PUNISHMENT_POINTS,getVar(VARIABLE_PUNISHMENT_POINTS)-randomInteger(50,100));
 		sendNurseMessage(random("You really did good in the corner..","You did well in the corner","You stayed like you should in the corner")); 
 		sendNurseMessage(" You should be proud of yourself! ");  
 		break; 
@@ -277,14 +291,14 @@ sendMessage( random("You're going to the nurses office","Heading for the nurse's
 	 
 		sendNurseMessage(random("Good boy!","Good girl!","Good slut","Good slave"));
 		delVar("S4Complete"); 
-		setVar("VARIABLE_PUNISHMENT_POINTS",getvar("VARIABLE_PUNISHMENT_POINTS")-randomInteger(50,100));
+		setVar(VARIABLE_PUNISHMENT_POINTS,getVar(VARIABLE_PUNISHMENT_POINTS)-randomInteger(50,100));
 		sendNurseMessage(" You make me proud when you complete a punishment! "); 
 		break;
 		case 05:
 	 
 		sendNurseMessage(random("Good boy!","Good girl!","Good slut","Good slave")); 
 		delVar("S5Complete"); 
-		setVar("VARIABLE_PUNISHMENT_POINTS",getvar("VARIABLE_PUNISHMENT_POINTS")-randomInteger(50,100));
+		setVar(VARIABLE_PUNISHMENT_POINTS,getVar(VARIABLE_PUNISHMENT_POINTS)-randomInteger(50,100));
 		sendNurseMessage(" You make me proud when you complete a punishment ");
 		sendNurseMessage(" But show me your balls.. ",1,7); 
 		sendNurseMessage(" Well they seem alright");  
@@ -294,7 +308,7 @@ sendMessage( random("You're going to the nurses office","Heading for the nurse's
 	 
 		sendNurseMessage(random("Oh my","Hmm..","Well")); 
 		delVar("S6Complete"); 
-		setVar("VARIABLE_PUNISHMENT_POINTS",getvar("VARIABLE_PUNISHMENT_POINTS")-randomInteger(50,100));
+		setVar(VARIABLE_PUNISHMENT_POINTS,getVar(VARIABLE_PUNISHMENT_POINTS)-randomInteger(50,100));
 		if (isVar("HasChastity")) {
 			sendNurseMessage(random("I know its not easy being chastised like that","I know its not easy being forced into chastity")); 
 		  sendNurseMessage(random("But keep your head cool and you'll make it","But stay calm and you should be fine")); 
@@ -309,14 +323,14 @@ sendMessage( random("You're going to the nurses office","Heading for the nurse's
 	 
 		sendNurseMessage(random("Good boy!","Good girl!","Good slut","Good slave"));  
 		delVar("M1Complete");
-		setVar("VARIABLE_PUNISHMENT_POINTS",getvar("VARIABLE_PUNISHMENT_POINTS")-randomInteger(90,140));
+		setVar(VARIABLE_PUNISHMENT_POINTS,getVar(VARIABLE_PUNISHMENT_POINTS)-randomInteger(90,140));
 		sendNurseMessage(random("You made it through the line writing!","You survived writing all those lines","You got through the line writing!"));  
 		break; 
 		case 12:
 	 
 		sendNurseMessage(random("Good boy!","Good girl!","Good slut","Good slave"));  
 		delVar("M2Complete");
-		setVar("VARIABLE_PUNISHMENT_POINTS",getVar("VARIABLE_PUNISHMENT_POINTS")-randomInteger(90,140));
+		setVar(VARIABLE_PUNISHMENT_POINTS,getVar(VARIABLE_PUNISHMENT_POINTS)-randomInteger(90,140));
 		sendNurseMessage(random("You took your grounding like a proper slave","You handled that grounding like a good little girl")); 
 		sendNurseMessage(" You should be proud sugar! "); 
 		break; 
@@ -324,7 +338,7 @@ sendMessage( random("You're going to the nurses office","Heading for the nurse's
 	 
 		sendNurseMessage(random("Good boy!","Good girl!","Good slut","Good slave"));  
 		delVar("M3Complete");
-		setVar("VARIABLE_PUNISHMENT_POINTS",getVar("VARIABLE_PUNISHMENT_POINTS")-randomInteger(90,140));
+		setVar(VARIABLE_PUNISHMENT_POINTS,getVar(VARIABLE_PUNISHMENT_POINTS)-randomInteger(90,140));
 		sendNurseMessage(random("You really did good in the corner..","You did well in the corner","You stayed like you should in the corner")); 
 		sendNurseMessage(" You should be proud of yourself! "); 
 		break; 
@@ -332,14 +346,14 @@ sendMessage( random("You're going to the nurses office","Heading for the nurse's
 	 
 		sendNurseMessage(random("Good boy!","Good girl!","Good slut","Good slave")); 
 		delVar("M4Complete"); 
-		setVar("VARIABLE_PUNISHMENT_POINTS",getVar("VARIABLE_PUNISHMENT_POINTS")-randomInteger(90,140));
+		setVar(VARIABLE_PUNISHMENT_POINTS,getVar(VARIABLE_PUNISHMENT_POINTS)-randomInteger(90,140));
 		sendNurseMessage(" You make me proud when you complete a punishment!"); 
 		break; 
 		case 15:
 	 
 		sendNurseMessage(random("Good boy!","Good girl!","Good slut","Good slave!")); 
 		delVar("M5Complete"); 
-		setVar("VARIABLE_PUNISHMENT_POINTS",getVar("VARIABLE_PUNISHMENT_POINTS")-randomInteger(90,140));
+		setVar(VARIABLE_PUNISHMENT_POINTS,getVar(VARIABLE_PUNISHMENT_POINTS)-randomInteger(90,140));
 		sendNurseMessage(" You make me proud when you complete a punishment"); 
 		sendNurseMessage(" But show me your balls..",1,7);  
 		sendNurseMessage(" Well they seem alright ");
@@ -349,14 +363,14 @@ sendMessage( random("You're going to the nurses office","Heading for the nurse's
 	 
 		sendNurseMessage(" Oh my "); 
 		delVar("M6Complete"); 
-		setVar("VARIABLE_PUNISHMENT_POINTS",getVar("VARIABLE_PUNISHMENT_POINTS")-randomInteger(90,140));
+		setVar(VARIABLE_PUNISHMENT_POINTS,getVar(VARIABLE_PUNISHMENT_POINTS)-randomInteger(90,140));
 		if(isVar("HasChastity")) {
 		sendNurseMessage(random("I know its not easy being chastised like that","I know its not easy being forced into chastity")); 
 		sendNurseMessage(random("But keep your head cool and you'll make it","But stay calm and you should be fine")); 
 		sendNurseMessage(random("If it gets bad then remember that ice or a shower is great!","Stop with all the sexy thoughts!"));  
 		} else {
-		 sendNurseMessage(" I know its not easy being given no-touch days like that! "");
-		 sendNurseMessage(" But keep your head cool and you'll make it""); 
+		 sendNurseMessage(" I know its not easy being given no-touch days like that! ");
+		 sendNurseMessage(" But keep your head cool and you'll make it"); 
 		sendNurseMessage(" If it gets bad then remember that ice or a shower is great!"); 
 		}
 		break; 
@@ -364,18 +378,18 @@ sendMessage( random("You're going to the nurses office","Heading for the nurse's
 	 
 		sendNurseMessage(random("Good boy!","Good girl!","Good slut","Good slave"));  
 		delVar("H1Complete"); 
-		setVar("VARIABLE_PUNISHMENT_POINTS",getVar("VARIABLE_PUNISHMENT_POINTS")-randomInteger(130,180));
+		setVar(VARIABLE_PUNISHMENT_POINTS,getVar(VARIABLE_PUNISHMENT_POINTS)-randomInteger(130,180));
 		sendNurseMessage(random("You made it through the line writing!","You survived writing all those lines","You got through the line writing!")); 
 		sendNurseMessage(" And then on hard, that couldn't have been too easy ");
 		break; 
-		case 22:
+		case 27:
 	 
-		sendNurseMessage(" Turn around #SubName and show me your ass.. ",1,7); 
+		sendNurseMessage(" Turn around %SubName% and show me your ass.. ",1,7); 
 		delVar("H2Complete");
-		 setVar("VARIABLE_PUNISHMENT_POINTS",getVar("VARIABLE_PUNISHMENT_POINTS")-randomInteger(130,180));
+		 setVar(VARIABLE_PUNISHMENT_POINTS,getVar(VARIABLE_PUNISHMENT_POINTS)-randomInteger(130,180));
 		sendNurseMessage(" Jesus sweet boy! ");
 		sendNurseMessage(" Your touschy really took a beating this time.. ");
-		sendNurseMessage(" I'm proud you made"," but lets have a look at it shall we?"); 
+		sendNurseMessage(" I'm proud you made it, but lets have a look at it shall we?"); 
 		sendNurseMessage(" Please find a skin cream or something similar ");
 		sendNurseMessage(" Rub it on your inner thighs and butt cheeks ",1,30);  
 		//comfort flow below
@@ -392,7 +406,7 @@ sendMessage( random("You're going to the nurses office","Heading for the nurse's
 	 
 		sendNurseMessage(" Oh my ");
 		 delVar("H3Complete"); 
-		 setVar("VARIABLE_PUNISHMENT_POINTS",getVar("VARIABLE_PUNISHMENT_POINTS")-randomInteger(130,180));
+		 setVar(VARIABLE_PUNISHMENT_POINTS,getVar(VARIABLE_PUNISHMENT_POINTS)-randomInteger(130,180));
 		if (isVar("HasChastity")) {
 			sendNurseMessage(random("I know its not easy being chastized like that","I know its not easy being forced into chastity")); 
 			sendNurseMessage(random("But keep your head cool and you'll make it","But stay calm and you should be fine")); 
@@ -409,7 +423,7 @@ sendMessage( random("You're going to the nurses office","Heading for the nurse's
 	 
 		sendNurseMessage(" Oh my ");
 		 delVar("B1Complete");
-		 setVar("VARIABLE_PUNISHMENT_POINTS",getVar("VARIABLE_PUNISHMENT_POINTS")-randomInteger(130,200));
+		 setVar(VARIABLE_PUNISHMENT_POINTS,getVar(VARIABLE_PUNISHMENT_POINTS)-randomInteger(130,200));
 		sendNurseMessage(random("I know your tummy must be feeling weird right now","I know that was humiliating")); 
 		sendNurseMessage(random("But keep your head cool and you'll make it","But stay calm and you should be fine")); 
 		sendNurseMessage(random("you'll start feeling more normal soon","you might want to stay near the toilet though"));  
@@ -419,17 +433,17 @@ sendMessage( random("You're going to the nurses office","Heading for the nurse's
 	 
 		sendNurseMessage(" Oh my ");
 		  delVar("E1Complete");
-		 setVar("VARIABLE_PUNISHMENT_POINTS",getVar("VARIABLE_PUNISHMENT_POINTS")-randomInteger(150,200));
-		sendNurseMessage(random("I know its not easy being ball busted like that","I know its not easy having your nuts treated like that) 
-		sendNurseMessage(random("But keep your head cool and you'll make it","But stay calm and you should be fine) 
-		sendNurseMessage(random("Besides betas like you shouldnt procreate anyway!","what would you use those balls for anyway!) 
+		 setVar(VARIABLE_PUNISHMENT_POINTS,getVar(VARIABLE_PUNISHMENT_POINTS)-randomInteger(150,200));
+		sendNurseMessage(random("I know its not easy being ball busted like that","I know its not easy having your nuts treated like that") );
+		sendNurseMessage(random("But keep your head cool and you'll make it","But stay calm and you should be fine") );
+		sendNurseMessage(random("Besides betas like you shouldnt procreate anyway!","what would you use those balls for anyway!") );
 
 		break; 
 		case 42:
 	 
 		sendNurseMessage(" Oh my ");
 		 delVar("E2Complete");
-		 setVar("VARIABLE_PUNISHMENT_POINTS",getVar("VARIABLE_PUNISHMENT_POINTS")-randomInteger(150,200));
+		 setVar(VARIABLE_PUNISHMENT_POINTS,getVar(VARIABLE_PUNISHMENT_POINTS)-randomInteger(150,200));
 		sendNurseMessage(random("I know its not easy being ball busted like that","I know its not easy having your nuts treated like that")); 
 		sendNurseMessage(random("But keep your head cool and you'll make it","But stay calm and you should be fine")); 
 		sendNurseMessage(random("Besides betas like you shouldnt procreate anyway!","what would you use those balls for anyway!")); 
@@ -438,7 +452,7 @@ sendMessage( random("You're going to the nurses office","Heading for the nurse's
 	 
 		sendNurseMessage(" Oh my ");
 		 delVar("E3Complete");
-		 setVar("VARIABLE_PUNISHMENT_POINTS",getVar("VARIABLE_PUNISHMENT_POINTS")-randomInteger(150,200));
+		 setVar(VARIABLE_PUNISHMENT_POINTS,getVar(VARIABLE_PUNISHMENT_POINTS)-randomInteger(150,200));
 		sendNurseMessage(random("I know its not easy being ball busted like that","I know its not easy having your nuts treated like that")); 
 		sendNurseMessage(random("But keep your head cool and you'll make it","But stay calm and you should be fine")); 
 		sendNurseMessage(random("Besides betas like you shouldnt procreate anyway!","what would you use those balls for anyway!")); 
@@ -447,7 +461,7 @@ sendMessage( random("You're going to the nurses office","Heading for the nurse's
 	 
 		sendNurseMessage(" Oh my"," what a good bitch you were %SlaveName%"); 
 		 delVar("E4Complete");
-		 setVar("VARIABLE_PUNISHMENT_POINTS",getVar("VARIABLE_PUNISHMENT_POINTS")-randomInteger(150,200));
+		 setVar(VARIABLE_PUNISHMENT_POINTS,getVar(VARIABLE_PUNISHMENT_POINTS)-randomInteger(150,200));
 		sendNurseMessage(random("I know its not easy having your balls zapped like that","I know its not easy having your nuts treated like that")); 
 		sendNurseMessage(random("I don't see any permanent scars","I don't smell any burning... thats a good sign")); 
 		sendNurseMessage(random("But its over now and I think you learned an important lesson","But you made it through ok"," and I think you'll be more mindfull of the rules now")); 
