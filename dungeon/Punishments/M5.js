@@ -33,19 +33,19 @@ switch(getVar("Punisher")){
 	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%");// #DT4
 	sendMessage(random("It's time to pay","We need to settle your recent behaviour","I believe I have just the thing to discipline you","I believe I know how to correct your bad behaviour!")); //#DT4
 	//1 = easy, 2= medium 3= hard
-	PS2=2;
+	PM5=2;
 	switch(getVar("personalityStrictness")) {
 		case 1:
 		if(getVar("SubEndurance") <= 3) 
-		PS2=1;
+		PM5=1;
 		break;
 		case 2:
 		if(getVar("SubEndurance") <= 5) 
-		PS2=1;
+		PM5=1;
 		break;	
 		case 3:
 		if(getVar("SubEndurance") >= 6) 
-		PS2=3;
+		PM5=3;
 		break;
 	}
 
@@ -56,11 +56,11 @@ switch(getVar("Punisher")){
 	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%" );// #DT4
 	sendMessage(random("I'm absolute sure you're gonna hate this and that makes me love it!","We need to correct your poor behaviour","You need a little discipline","Its about time we did something about your behaviour") );// #DT4
 	if(getVar("SubEndurance")>=8) {
-	PS2=3;}
+	PM5=3;}
 	else if (getVar("SubEndurance")>4){
-	PS2=2;}
+	PM5=2;}
 	else  
-	PS2=1;
+	PM5=1;
 	break;
 	case 3 :
 	//(Contact2)
@@ -68,11 +68,11 @@ switch(getVar("Punisher")){
 	sendMessage(random("Discipline I just love that","You're not gonna like this %GNMGrin%","I don't think your %GNMCock% will enjoy this","This is fun!"));// #DT4
 
 	if (getVar("SubEndurance")>=7) {
-	PS2=3;}
+	PM5=3;}
 	else if (getVar("SubEndurance")>3){
-	PS2=2;}
+	PM5=2;}
 	else  
-	PS2=1;
+	PM5=1;
 	
 
 	break;
@@ -82,11 +82,11 @@ switch(getVar("Punisher")){
 	sendMessage(random("Discipline can never be cruel enough","Discipline is all about being cruel","Discipline is about showing no mercy!","No mercy for the bad ones.."));// #DT4
 
 	if (getVar("SubEndurance")>=6) {
-	PS2=3;}
+	PM5=3;}
 	else if (getVar("SubEndurance")>2){
-	PS2=2;}
+	PM5=2;}
 	else  
-	PS2=1;
+	PM5=1;
 	
 	break;
 
@@ -94,19 +94,19 @@ switch(getVar("Punisher")){
 }
 
 sendMessage("setting up your punishment");
-switch(PS2) {
+switch(PM5) {
 	
 	
 case 1 :
-	BallCrushing=randomInteger(13,20);
+	BallCrushing=randomInteger(18,26);
 
 break;
 case 2 :
-	BallCrushing=randomInteger(17,24);
+	BallCrushing=randomInteger(23,31);
 
 break;
 case 3 :
-	BallCrushing=randomInteger(21,28);
+	BallCrushing=randomInteger(30,36);
 
    
 break;
@@ -170,6 +170,7 @@ sendMessage("You used the magic word! "); //#DT4
 //@CustomMode(ModeText, Normal) 
 sendMessage("%GNMGrin%");
  if (BallCrushingCount<BallCrushing) {
+	 sendMessage("hmm and now just a little matter of suffering for 2 minutes"); wait(120);
 	sendMessage("Well to little surprise you failed.. "); //#DT4 
 	setVar(VARIABLE_GOLD, getVar(VARIABLE_GOLD)-25);
 	//@TempFlag(PunishmentComplete) 
@@ -179,7 +180,7 @@ sendMessage("%GNMGrin%");
 	setVar("punishmentCompleted", 05);
 	run("dungeon/PunishmentBaseEnd.js");
  } else {
-	
+	 sendMessage("hmm and now just a little matter of suffering for 2 minutes"); wait(120);
 	sendMessage("Well well you made it! "); //#DT4
 	sendMessage("I'm actually a little impressed "); //#DT4
 	changeMeritLow(false); 

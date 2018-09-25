@@ -31,19 +31,19 @@ switch(getVar("Punisher")){
 	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%");// #DT4
 	sendMessage(random("It's time to pay","We need to settle your recent behaviour","I believe I have just the thing to discipline you","I believe I know how to correct your bad behaviour!")); //#DT4
 	//1 = easy, 2= medium 3= hard
-	PS2=2;
+	PM3=2;
 	switch(getVar("personalityStrictness")) {
 		case 1:
 		if(getVar("SubEndurance") <= 3) 
-		PS2=1;
+		PM3=1;
 		break;
 		case 2:
 		if(getVar("SubEndurance") <= 5) 
-		PS2=1;
+		PM3=1;
 		break;	
 		case 3:
 		if(getVar("SubEndurance") >= 6) 
-		PS2=3;
+		PM3=3;
 		break;
 	}
 
@@ -54,11 +54,11 @@ switch(getVar("Punisher")){
 	sendMessage(random("Well well","Oh my","Well") + " %SlaveName" );// #DT4
 	sendMessage(random("I'm absolute sure you're gonna hate this and that makes me love it!","We need to correct your poor behaviour","You need a little discipline","Its about time we did something about your behaviour") );// #DT4
 	if(getVar("SubEndurance")>=8) {
-	PS2=3;}
+	PM3=3;}
 	else if (getVar("SubEndurance")>4){
-	PS2=2;}
+	PM3=2;}
 	else  
-	PS2=1;
+	PM3=1;
 	break;
 	case 3 :
 	//(Contact2)
@@ -66,11 +66,11 @@ switch(getVar("Punisher")){
 	sendMessage(random("Discipline I just love that","You're not gonna like this %GNMGrin%","I don't think your %GNMCock% will enjoy this","This is fun!"));// #DT4
 
 	if (getVar("SubEndurance")>=7) {
-	PS2=3;}
+	PM3=3;}
 	else if (getVar("SubEndurance")>3){
-	PS2=2;}
+	PM3=2;}
 	else  
-	PS2=1;
+	PM3=1;
 	
 
 	break;
@@ -80,11 +80,11 @@ switch(getVar("Punisher")){
 	sendMessage(random("Discipline can never be cruel enough","Discipline is all about being cruel","Discipline is about showing no mercy!","No mercy for the bad ones.."));// #DT4
 
 	if (getVar("SubEndurance")>=6) {
-	PS2=3;}
+	PM3=3;}
 	else if (getVar("SubEndurance")>2){
-	PS2=2;}
+	PM3=2;}
 	else  
-	PS2=1;
+	PM3=1;
 	
 	break;
 
@@ -92,20 +92,20 @@ switch(getVar("Punisher")){
 }
 
 sendMessage("setting up your punishment");
-switch(PS2) {
+switch(PM3) {
 	
 	
 case 1 :
 	sendMessage("Just a minute.."); //#DT4 
 	setVar("CornerTimeLife",8);
-	setVar("CornerTimeCounter", randomInteger(400,700));
+	setVar("CornerTimeCounter", randomInteger(660,1080));
    setVar("CornerTimeCounter2",0); 
 
 break;
 case 2 :
 	sendMessage("Just a minute.."); //#DT4 
 	setVar("CornerTimeLife",6);
-	setVar("CornerTimeCounter", randomInteger(450,800));
+	setVar("CornerTimeCounter", randomInteger(960,1380));
    setVar("CornerTimeCounter2",0); 
 
 break;
@@ -113,7 +113,7 @@ case 3 :
 
 	sendMessage("Just a minute.."); //#DT4 
 	setVar("CornerTimeLife",4);
-	setVar("CornerTimeCounter", randomInteger(500,900));
+	setVar("CornerTimeCounter", randomInteger(1260,1680));
    setVar("CornerTimeCounter2",0); 
    
 break;
@@ -137,7 +137,7 @@ switch (choice) {
 	changeMeritLow(false);
 	// @Goto(NoFee)
 	//@TempFlag(PunishmentComplete)
-	setVar("PunishmentCompleted",03);
+	setVar("PunishmentCompleted",13);
 	run("Dungeon\Punishment\PunishmentBaseEnd.js");
 	break;
 	
@@ -326,5 +326,5 @@ switch (choice) {
 		delVar("S3Recursion");
 	}
 	setVar("PunishmentComplete", true);
-	setVar("punishmentCompleted", 03);
+	setVar("punishmentCompleted", 13);
 	run("dungeon/PunishmentBaseEnd.js");

@@ -33,19 +33,19 @@ switch(getVar("Punisher")) {
 
 //	sendMessage(random("It's time to pay","We need to settle your recent behaviour","I believe I have just the thing to discipline you","I believe I know how to correct your bad behaviour!")); //#DT4
 	//1 = easy, 2= medium 3= hard
-	PS2=2;
+	PM4=2;
 	switch(getVar("personalityStrictness")) {
 		case 1:
 		if(getVar("SubEndurance") <= 3) 
-		PS2=1;
+		PM4=1;
 		break;
 		case 2:
 		if(getVar("SubEndurance") <= 5) 
-		PS2=1;
+		PM4=1;
 		break;	
 		case 3:
 		if(getVar("SubEndurance") >= 6) 
-		PS2=3;
+		PM4=3;
 		break;
 	}
 	
@@ -57,11 +57,11 @@ switch(getVar("Punisher")) {
 	//sendMessage(random("I'm absolute sure you're gonna hate this and that makes me love it!","We need to correct your poor behaviour","You need a little discipline","Its about time we did something about your behaviour") );// #DT4
 	sendMessage(random("Oh my I love handling %DomName%'s pet","I'll be happy to punish you %GNMGrin%","This is gonna be fun")); //#DT4
 	if(getVar("SubEndurance")>=8) {
-	PS2=3;}
+	PM4=3;}
 	else if (getVar("SubEndurance")>4){
-	PS2=2;}
+	PM4=2;}
 	else  
-	PS2=1;
+	PM4=1;
 	break;
 	case 3 :
 	//(Contact2)
@@ -70,11 +70,11 @@ switch(getVar("Punisher")) {
 sendMessage(random("Lets see what we can do about you %GNMGrin%","Its time to make you repent your sins","I suppose we need to correct your recent behaviour","I have something for you..")); //#DT4
 
 	if (getVar("SubEndurance")>=7) {
-	PS2=3;}
+	PM4=3;}
 	else if (getVar("SubEndurance")>3){
-	PS2=2;}
+	PM4=2;}
 	else  
-	PS2=1;
+	PM4=1;
 	
 
 	break;
@@ -84,11 +84,11 @@ sendMessage(random("Lets see what we can do about you %GNMGrin%","Its time to ma
 	//sendMessage(random("Discipline can never be cruel enough","Discipline is all about being cruel","Discipline is about showing no mercy!","No mercy for the bad ones.."));// #DT4
 	sendMessage(random("This is entirely my pleasure %GNMLol%","I'm gonna love this!","This is gonna be fun!")); //#DT4
 	if (getVar("SubEndurance")>=6) {
-	PS2=3;}
+	PM4=3;}
 	else if (getVar("SubEndurance")>2){
-	PS2=2;}
+	PM4=2;}
 	else  
-	PS2=1;
+	PM4=1;
 	
 	break;
 
@@ -116,15 +116,15 @@ sendMessage("If they fall off due to a flick you will have to repeat this punish
 sendMessage("Let me just check my papers.. "); //#DT4 @Goto(Start)
 sendMessage("Remember to say 'yes %DomHonorific% ' right after you're done pulling them off.. "); //#DT4 
 S4Round=0;
-switch(PS2)  {
+switch(PM4)  {
 	case 1 :
-	RipPegs=randomInteger(4,6);
+	RipPegs=randomInteger(9,12);
 	break;
 	case 2 :
-	RipPegs=randomInteger(6,8);
+	RipPegs=randomInteger(12,15);
 	break;
 	case 3 :
-	RipPegs=randomInteger(8,11);
+	RipPegs=randomInteger(15,18);
 	break;
 	
 }
@@ -219,5 +219,5 @@ while (RipPegs>=S4Round)  {
  
 	sendMessage("No more rounds! "); //#DT4 
 	setVar("PunishmentComplete", true);
-	setVar("punishmentCompleted", 04);
+	setVar("punishmentCompleted", 14);
 	run("dungeon/PunishmentBaseEnd.js");
