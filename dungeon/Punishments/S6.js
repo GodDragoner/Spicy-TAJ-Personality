@@ -1,75 +1,132 @@
-@NullResponse @CheckFlag(D1Punisher)
-@NullResponse @CheckFlag(D2Punisher)
-@NullResponse @CheckFlag(D3Punisher)
-@NullResponse @CheckFlag(D4Punisher)
-(D1Punisher)
-@NullResponse @Goto(Hello)
-(D2Punisher)
-@SystemMessage [Miss A]: Contacting #DomHonorific #Contact1 .. #ReceptionChat
-@NullResponse @AddContact1
-@NullResponse @RemoveDomme @Goto(Hello)
-(D3Punisher)
-@SystemMessage [Miss A]: Contacting #DomHonorific #Contact2 .. #ReceptionChat
-@NullResponse @AddContact2
-@NullResponse @RemoveDomme @Goto(Hello)
-(D4Punisher)
-@SystemMessage [Miss A]: Contacting #DomHonorific #Contact3 .. #ReceptionChat
-@NullResponse @AddContact3
-@NullResponse @RemoveDomme @Goto(Hello)
-(Hello)
-Well @RT(hello,hi) #SlaveName #DT4 @Goto(Start)
-(Start)
-@Flag(D1Punisher) @NullResponse @Goto(Domme)
-@Flag(D2Punisher) @NullResponse @Goto(Contact1)
-@Flag(D3Punisher) @NullResponse @Goto(Contact2)
-@Flag(D4Punisher) @NullResponse @Goto(Contact3)
-(Domme)
-@RT(Well well,Oh my,Well,#GNMGrin) #DT4
-@RT(It's time to pay,We need to settle your recent behaviour,I believe I have just the thing to discipline you,I believe I know how to correct your bad behaviour!) #DT4
-@Flag(Personality1) @NullResponse @If[SubEndurance]<=[3]Then(PS6Easy)
-@Flag(Personality2) @NullResponse @If[SubEndurance]<=[5]Then(PS6Easy)
-@Flag(Personality3) @NullResponse @If[SubEndurance]>=[6]Then(PS6Hard)
-@NullResponse @Goto(PS6Medium)
-(Contact1)
-@RT(Well well,Oh my,Well) #SlaveName #DT4
-@RT(I'm absolute sure you're gonna hate this and that makes me love it!,We need to correct your poor behaviour,You need a little discipline,Its about time we did something about your behaviour) #DT4
-@NullResponse @If[SubEndurance]>[4]AND[SubEndurance]<[8]Then(PS6Medium)
-@NullResponse @If[SubEndurance]>=[8]Then(PS6Hard) @Goto(PS6Easy)
-(Contact2)
-@RT(Well well,Oh my,Well) #SlaveName #DT4
-@RT(Discipline I just love that,You're not gonna like this #GNMGrin,I don't think your #GNMCock will enjoy this,This is fun!) #DT4
-@NullResponse @If[SubEndurance]>[3]AND[SubEndurance]<[7]Then(PS6Medium)
-@NullResponse @If[SubEndurance]>=[7]Then(PS6Hard) @Goto(PS6Easy)
-(Contact3)
-@RT(Well well,Oh my,Well) #SlaveName #DT4
-@RT(Discipline can never be cruel enough,Discipline is all about being cruel,Discipline is about showing no mercy!,No mercy for the bad ones..) #DT4
-@NullResponse @If[SubEndurance]>[2]AND[SubEndurance]<[6]Then(PS6Medium)
-@NullResponse @If[SubEndurance]>=[6]Then(PS6Hard) @Goto(PS6Easy)
-(PS6Easy)
-@RT(Due to your lack of good behaviour,Due to bad behaviour,Because of poor behaviour,Since you've been bad) #DT4
-@Flag(HasChastity) @RT(I'm putting you in chastity,I'm placing you in your #Cage,I'm going to cage that #GNMCock) #DT4
-@NotFlag(HasChastity) @RT(I'm putting you in a no-touch period,I'm gonna give you a no-touch period,You'll be punished by not touching that #GNMCock) #DT4
-@Variable[#DateDifference(PDenial, Hours)]<[PDenialSet] @NullResponse @ChangeVar[PDenialSet]=[PDenialSet]+[24] @Goto(CageCheck)
-@Variable[#DateDifference(PDenial, Hours)]>[PDenialSet] @NullResponse @SetVar[PDenialSet]=[24] @SetDate(PDenial, 0 Hours) @Goto(CageCheck)
-(PS6Medium)
-@RT(Due to your lack of good behaviour,Due to bad behaviour,Because of poor behaviour,Since you've been bad) #DT4 
-@Flag(HasChastity) @RT(I'm putting you in chastity,I'm placing you in your #Cage,I'm going to cage that #GNMCock) #DT4
-@NotFlag(HasChastity) @RT(I'm putting you in a no-touch period,I'm gonna give you a no-touch period,You'll be punished by not touching that #GNMCock) #DT4
-@Variable[#DateDifference(PDenial, Hours)]<[PDenialSet] @NullResponse @ChangeVar[PDenialSet]=[PDenialSet]+[48] @Goto(CageCheck)
-@Variable[#DateDifference(PDenial, Hours)]>[PDenialSet] @NullResponse @SetVar[PDenialSet]=[48] @SetDate(PDenial, 0 Hours) @Goto(CageCheck)
-(PS6Hard)
-@RT(Due to your lack of good behaviour,Due to bad behaviour,Because of poor behaviour,Since you've been bad) #DT4 
-@Flag(HasChastity) @RT(I'm putting you in chastity,I'm placing you in your #Cage,I'm going to cage that #GNMCock) #DT4
-@NotFlag(HasChastity) @RT(I'm putting you in a no-touch period,I'm gonna give you a no-touch period,You'll be punished by not touching that #GNMCock) #DT4
-@Variable[#DateDifference(PDenial, Hours)]<[PDenialSet] @NullResponse @ChangeVar[PDenialSet]=[PDenialSet]+[72] @Goto(CageCheck)
-@Variable[#DateDifference(PDenial, Hours)]>[PDenialSet] @NullResponse @SetVar[PDenialSet]=[72] @SetDate(PDenial, 0 Hours) @Goto(CageCheck)
-(CageCheck)
-@NotFlag(ChastityIsOn) And since you aren't caged yet.. #DT4 @TempFlag(PunishmentComplete) @Goto(CageOn)
-And since you're caged.. #DT4 @TempFlag(S6Complete)
-I think that concludes our business.. #DT4 @CallReturn(CR\BackgroundMode\Punishment\PunishmentBaseEnd.txt)
-@End
-(CageOn)
-@NullResponse @CallReturn(CR\GNMChastityOn.txt)
-@RT(Now that you're in the #Cage,Now that you're locked up) #DT4 @TempFlag(S6Complete)
-@RT(I think that concludes our business..,I believe our business to be concluded,I believe we're done here..) #DT4 @TempFlag(PunishmentComplete) @CallReturn(CR\BackgroundMode\Punishment\PunishmentBaseEnd.txt)
-@End
+
+switch(("Punisher")) {
+
+	case 1 :
+	// @Goto(Hello)
+	break;
+	case 2 :
+	setSender(2);
+	sendDungeonMessage(" Contacting %DomHonorific% " + "%domFriend1Name% ..",1);
+
+	break;
+	case 3 :
+	setSender(3);
+	sendDungeonMessage(" Contacting %DomHonorific% " + "%domFriend2Name% ..",1);
+
+	break;
+	case 4 :
+	setSender(4);
+	sendDungeonMessage(" Contacting %DomHonorific%" + "%domFriend3Name% ..",1);
+
+
+	break;
+}
+
+
+sendMessage("Well "+ random("hello","hi")+ " %SlaveName%");// #DT4 @Goto(Start)
+
+
+switch(getVar("Punisher")){
+	case 1 :
+	//(Domme)
+	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%");// #DT4
+	sendMessage(random("It's time to pay","We need to settle your recent behaviour","I believe I have just the thing to discipline you","I believe I know how to correct your bad behaviour!")); //#DT4
+	//1 = easy, 2= medium 3= hard
+	PS2=2;
+	switch(getVar("personalityStrictness")) {
+		case 1:
+		if(getVar("SubEndurance") <= 3) 
+		PS2=1;
+		break;
+		case 2:
+		if(getVar("SubEndurance") <= 5) 
+		PS2=1;
+		break;	
+		case 3:
+		if(getVar("SubEndurance") >= 6) 
+		PS2=3;
+		break;
+	}
+
+	
+	break;
+	case 2 :
+	//(Contact1)
+	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%" );// #DT4
+	sendMessage(random("I'm absolute sure you're gonna hate this and that makes me love it!","We need to correct your poor behaviour","You need a little discipline","Its about time we did something about your behaviour") );// #DT4
+	if(getVar("SubEndurance")>=8) {
+	PS2=3;}
+	else if (getVar("SubEndurance")>4){
+	PS2=2;}
+	else  
+	PS2=1;
+	break;
+	case 3 :
+	//(Contact2)
+	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%");// #DT4
+	sendMessage(random("Discipline I just love that","You're not gonna like this %GNMGrin%","I don't think your %GNMCock will enjoy this","This is fun!"));// #DT4
+
+	if (getVar("SubEndurance")>=7) {
+	PS2=3;}
+	else if (getVar("SubEndurance")>3){
+	PS2=2;}
+	else  
+	PS2=1;
+	
+
+	break;
+	case 4 :
+	//(Contact3)
+	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%");// #DT4
+	sendMessage(random("Discipline can never be cruel enough","Discipline is all about being cruel","Discipline is about showing no mercy!","No mercy for the bad ones.."));// #DT4
+
+	if (getVar("SubEndurance")>=6) {
+	PS2=3;}
+	else if (getVar("SubEndurance")>2){
+	PS2=2;}
+	else  
+	PS2=1;
+	
+	break;
+
+	
+}
+
+sendMessage("setting up your punishment");
+
+sendMessage(random("Due to your lack of good behaviour","Due to bad behaviour","Because of poor behaviour","Since you've been bad")); //#DT4
+if(getVar("HasChastity")) {
+	if(getVar("chastityon")) {sendMessage(random("I'm extending your chastity time","I'm leaving that  %Cage% on a little longer","I'm going to keep that %GNMCock% in prison a few more days")); 
+	sendMessage("And since you're caged.. "); //#DT4 @TempFlag(S6Complete)
+	sendMessage(random("I think that concludes our business..","I believe our business to be concluded","I believe we're done here..")); // #DT4 @CallReturn(CR\BackgroundMode\Punishment\PunishmentBaseEnd.txt)
+	}else
+	{sendMessage(random("I'm putting you in chastity","I'm placing you in your %Cage%","I'm going to cage that %GNMCock%"));
+	sendMessage("And since you aren't caged yet.. ");
+	lockChastityCage();
+
+	}
+}else {sendMessage(random("I'm putting you in a no-touch period","I'm gonna give you a no-touch period","You'll be punished by not touching that %GNMCock%")); //#DT4
+	sendMessage("%subName%, I trust that you'll honor my instructions not to touch... ");
+	sendMessage("I've had to force chastity on indolent slaves in the past... ");
+	sendMessage(random("their involuntary suffering was truly pathetic", "getting ones %GNMCock% pierced for chastity can be truly emasculating", "I've even castrated one or two.."));
+}
+switch(PS2) {
+	
+	
+case 1 :
+	addLockUpTime(24);
+break;
+case 2 :
+	addLockUpTime(48);
+break;
+case 3 :
+	addLockUpTime(72);
+break;
+   
+
+}
+
+
+	setVar("PunishmentComplete", true);
+	setVar("punishmentCompleted", 06);
+	run("dungeon/PunishmentBaseEnd.js");
