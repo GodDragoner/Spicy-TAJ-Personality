@@ -77,7 +77,7 @@ if(answer.containsIgnoreCase("how many","point","punishment point")){
     if(randomInteger(1,100) <15) {
 		setVar("punishmentpoints",getVar("punishmentpoints")+ randomInteger(25,75));
 		sendDungeonMessage( random("hey, while I have this file open let me add a few more", "well that's what you did have before I made a little addition", "that seems low, let me add some"),1,20);
-		sendDungeonMessage(random("You're welcome %SubName","%SlaveName%, you're welcome", "aren't you lucky I'm watching out for you?"));
+		sendDungeonMessage(random("You're welcome %SubName%","%SlaveName%, you're welcome", "aren't you lucky I'm watching out for you?"));
 		}
 	if (getVar("punishmentpoints") > 750 ){
 				sendDungeonMessage( random( "lol %SubName%, you're so fucked!", "oh %SlaveName%, you're ass is gonna bleed ", "you should be ashamed, %Subname%", "how did you let it get so bad?"));
@@ -136,7 +136,31 @@ if(getVar(VARIABLE_PUNISHMENT_POINTS) <100) {
  
 sendDungeonMessage(" Lets see if there is any specific reasons to why you've been given punishment points this week.. ");
 setVar("PunishmentActive",true);
-t
+
+if(isVar("PReason_skipping_punishment")) {  sendDungeonMessage(" skipping punishment day... Naughty %Slave%, are you too scared to come down here and face justice?",2);}  
+
+if(isVar("PReason_skipping_confession")) {  sendDungeonMessage(" skipping confession day... Naughty %Slave%",2);}  
+
+if(isVar("PReason_too_many_points")) {  sendDungeonMessage( random("Failure to complete punishments on time"," Not putting sufficient effort to reduce punishment points"," not submitting to required punishments"," Not suffering %DomHonorific% %DomName%'s proscribed punishments") ,2);} 
+
+if(isVar("Preason_not_degrading")) { sendDungeonMessage( random("Failure to follow %mistress% instructions"," Not following instructions"," not submitting to required degradation"," Not suffering %DomHonorific% %DomName%'s proscribed humiliation"),2 );} 
+
+if(isVar("Preason_not_worshiping")) { sendDungeonMessage( random("Failure to respect %mistress%"," being Disrespectful towards %DomHonorific% %DomName%"," not appropriately worshiping your Goddess %DomName%") ,2);}
+
+if(isVar("Preason_too_slow")) { sendDungeonMessage(random("being too slow to respond to %DomHonorific% %DomName%'s commands "," Not jumping to complete %DomHonorific% %DomName%'s commands"," disappointing %DomHonorific% %DomName% by not responding to commands in a timely way") ,2);} 
+
+if(isVar("BadExerciseEffort")) { sendDungeonMessage( random("Failure to complete your exercises properly"," Not putting sufficient effort while exercising"," Being lazy while working out"," Not meeting %DomHonorific% %DomName%'s exercise standard") ,2);} 
+
+if(isVar("BadChores")) { sendDungeonMessage( random("Failure to complete chores in a timely manner","Unfinished chores","Failure to do chores","Poor attitudes regarding chores","Failed to complete chores.."),2);} 
+
+if(isVar("BadCum")) { sendDungeonMessage( random("Unauthorized ejaculation","Cumming without permission"),2);} 
+
+if(isVar("BadEdging") ){ sendDungeonMessage( random("Unauthorized edging","Edging against %DomHonorific% %DomName%'s wishes"," being unable to resist Edging your %cock%" ),2);} 
+
+if(isVar("BadMouth")) { sendDungeonMessage( random("Filthy mouth","Talking back","Bad mouthing","Undesired talking","Failed to request permission to talk","Talking out of terms.."),2);}
+
+if(isVar("BadFullTime")) { sendDungeonMessage( random("Failed to fulfill full time duties","Laziness","Failure to meet demands for proper slavery"),2);} 
+
 sendDungeonMessage( random("Poor attitude","Poor performance","Lack of performance","Failed to perform properly","Poor results"),2); 
 
 sendDungeonMessage( random("Oh my it's good you came","Lets correct this immediately","Time to improve your behavior"),3); 
@@ -152,13 +176,13 @@ switch (getVar("Punisher")) {
 	sendDungeonMessage(" Well it will be your %DomHonorific% handling your punishment.. ",3);
 	break;
 	case 2:
-	sendDungeonMessage(" Well it will be %DomHonorific% %Contact1% handling your punishment..",3);
+	sendDungeonMessage(" Well it will be %DomHonorific% %domFriend1Name% handling your punishment..",3);
 	break;
 	case 3:
-	sendDungeonMessage(" Well it will be %DomHonorific% %Contact2% handling your punishment..",3);
+	sendDungeonMessage(" Well it will be %DomHonorific% %domFriend2Name% handling your punishment..",3);
 	break;
 	case 4:
-	sendDungeonMessage(" Well it will be %DomHonorific% %Contact3% handling your punishment..",3);
+	sendDungeonMessage(" Well it will be %DomHonorific% %domFriend3Name% handling your punishment..",3);
 	break;
 	
 }
@@ -169,7 +193,7 @@ sendDungeonMessage(" You can request a soft, medium, hard, or extreme punishment
 if(getVar(VARIABLE_PUNISHMENT_POINTS) >= 350)
 	{sendDungeonMessage(" I do recommend a hard one but its your choice ");}
 else if(getVar(VARIABLE_PUNISHMENT_POINTS) >= 200)
-	{sendDungeonMessage(" I do recommend a medium one but its your choice ")}
+	{sendDungeonMessage(" I do recommend a medium one but its your choice ");}
 else 
 	{sendDungeonMessage(" I recommend a soft  punishment ");}
 
@@ -206,15 +230,15 @@ if(answer.containsIgnoreCase("soft")){
 	switch(punish_severity) {
 		
 		case 1:
-		   punishmentchoice = randomInteger(2,3);
+		   punishmentchoice = randomInteger(6,6);
 		   run("dungeon/Punishments/S"+punishmentchoice+".js");
 		break;
 		case 2:
-		   punishmentchoice = randomInteger(1,6);
+		   punishmentchoice = randomInteger(2,2);
 		   run("dungeon/Punishments/M"+punishmentchoice+".js");		
 		break;
 		case 3:
-		   punishmentchoice = randomInteger(1,4);
+		   punishmentchoice = randomInteger(7,7);
 		   run("dungeon/Punishments/H"+punishmentchoice+".js");
 		
 		break;
