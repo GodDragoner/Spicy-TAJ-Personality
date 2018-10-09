@@ -1,0 +1,105 @@
+(M1)
+@Flag(SpankChoirSafeword) @SystemMessage [Miss A]: You wanted a safeword #ReceptionChat
+@Flag(SpankChoirSafeword) @SystemMessage [Miss A]: If you can't handle anymore just say "Cucumber" #ReceptionChat @CustomMode(cucumber, Goto, Safeword)
+@SystemMessage [Miss A]: Miss Alexis is ready to see you.. #ReceptionChat @Goto(M1a,M1b,M1c,M1d)
+(M1a)
+@NullResponse @TempFlag(M1a) @Goto(CheckStatus1)
+(M1b)
+@NullResponse @TempFlag(M1b) @Goto(CheckStatus1)
+(M1c)
+@NullResponse @TempFlag(M1c) @Goto(CheckStatus1)
+(M1d)
+@NullResponse @TempFlag(M1d) @Goto(CheckStatus1)
+(CheckStatus1)
+@NullResponse @CheckFlag(M1FirstVisit) @SetFlag(M1FirstVisit)
+@SystemMessage [Miss Alexis]: This is your first time with me @SetVar[M1Visit]=[1] #MxChat
+@SystemMessage [Miss Alexis]: You only need to know one thing.. #MxChat
+@SystemMessage [Miss Alexis]: I do accept apologies.. #MxChat
+@SystemMessage [Miss Alexis]: But only those made in cries of pain.. 'Evil Laugh' #MxChat
+@Flag(SpankzChoirLate) @NullResponse @Goto(SpankzChoirLate2)
+@NullResponse @Goto(Start)
+(M1FirstVisit)
+@NullResponse @ChangeVar[M1Visit]=[M1Visit]+[1] @CheckFlag(SpankzChoirSkipped)
+@NullResponse @CheckFlag(SpankzChoirLate) @Goto(Start)
+(SpankzChoirSkipped)
+@SystemMessage [Miss Alexis]: It's not a popular thing trying to quit..
+@SystemMessage [Miss Alexis]: Don't do it again.. @Goto(Start)
+(SpankzChoirLate)
+@SystemMessage [Miss Alexis]: @RT(Well hello there mr. late,Hi little late slut,Gretting #SlaveName) #MxChat 
+(SpankzChoirLate2)
+@SystemMessage [Miss Alexis]: @RT(If there is one thing I love more than a good spanking,One of the few things I enjoy more than spanking) #MxChat
+@SystemMessage [Miss Alexis]: It's an ass paying to be spanked #GNMLol #MxChat
+@SystemMessage [Miss Alexis]: This is your @ShowVar[M1Visit] time with me #MxChat
+(Start)
+@SystemMessage [Miss Alexis]: @RT(I see no reason to waste any time..,Lets not drag this out..,Lets not delay this..)
+@Flag(GagPunishment) @SystemMessage [Miss Alexis]: @RT(Fetch your gag and put it in.. - You may remove it after we're done..,Now I don't want too much noise from you #GNMGrin,No screaming..) @Wait(15)
+@SystemMessage [Miss Alexis]: I need you to @RT(fetch,retrieve,find,get) your #ChooseSpankingImplement #MxChat
+@SystemMessage [Miss Alexis]: When you have it just kneel down and present it with open hands #MxChat
+(SetVars)
+@NullResponse @RapidCodeOn
+
+@NullResponse @RapidCodeOff @Wait(#Random(20,55))
+(M1PunishmentSpanking)
+@NullResponse @ChangeVar[TotalSpanking]=[TotalSpanking]+[SpankingCount]
+(M1PunishmentSpankingOver)
+@NullResponse @If[TotalSpanking]>=[AuctionStrokes]Then(M1End)
+@NotFlag(M1FirstRound) @SystemMessage [Miss Alexis]: #M1S1 @TempFlag(M1FirstRound) #MxChat @Goto(M1PunishmentSpankinga)
+@Flag(M1FirstRound) @SystemMessage [Miss Alexis]: #M1S2 @TempFlag(M1SecondRound) @DeleteFlag(M1FirstRound) #MxChat @Goto(M1PunishmentSpankinga)
+@Flag(M1SecondRound) @SystemMessage [Miss Alexis]: #M1S3 @TempFlag(M1ThirdRound) @DeleteFlag(M1SecondRound) #MxChat @Goto(M1PunishmentSpankinga)
+@Flag(M1ThirdRound) @SystemMessage [Miss Alexis]: #M1S4 @TempFlag(M1FutureRound) @DeleteFlag(M1ThirdRound) #MxChat @Goto(M1PunishmentSpankinga)
+@Flag(M1FutureRound) @SystemMessage [Miss Alexis]: #M1S5 #MxChat @Goto(M1PunishmentSpankinga)
+(M1PunishmentSpankinga)
+@SystemMessage [Miss Alexis]: #SlaveName get over my lap and be ready.. #M1Lap @Wait(#Random(3,7))
+@NullResponse @SetVar[SpankingCount]=[0]
+(SpankingM1)
+@NullResponse @If[SpankingCount]>[StrokesPerRound]Then(M1Count) @Goto(10,20,30,40,50)
+(10)
+@SystemMessage [Miss Alexis]: #SpankPlacingRight10 #MxOverLap 
+@SystemMessage [Miss Alexis]: #SpankPlacingLeft10 #MxOverLap @Goto(SpankingM1)
+(20)
+@SystemMessage [Miss Alexis]: #SpankPlacingRight20 #MxOverLap 
+@SystemMessage [Miss Alexis]: #SpankPlacingLeft20 #MxOverLap @Goto(SpankingM1)
+(30)
+@SystemMessage [Miss Alexis]: #SpankPlacingRight30 #MxOverLap 
+@SystemMessage [Miss Alexis]: #SpankPlacingLeft30 #MxOverLap @Goto(SpankingM1)
+(40)
+@SystemMessage [Miss Alexis]: #SpankPlacingRight40 #MxOverLap 
+@SystemMessage [Miss Alexis]: #SpankPlacingLeft40 #MxOverLap @Goto(SpankingM1)
+(50)
+@SystemMessage [Miss Alexis]: #SpankPlacingRight50 #MxOverLap 
+@SystemMessage [Miss Alexis]: #SpankPlacingLeft50 #MxOverLap @Goto(SpankingM1)
+(M1Count)
+@SystemMessage [Miss Alexis]: How many strokes was that #SlaveName? #MxChat @InputVar[SpankedCount]
+@NullResponse @If[SpankedCount]=[SpankingCount]Then(M1Correct)
+(M1Wrong)
+@SystemMessage [Miss Alexis]: @RT(Thats wrong,Wrong,Incorrect,Thats incorrect,Nope,Sorry but that's not right..) #MxChat
+@SystemMessage [Miss Alexis]: The correct number was @ShowVar[SpankingCount] #MxChat @If[SubStrictness]<[#Random(1,15)]Then(M1Forgive)
+@SystemMessage [Miss Alexis]: I guess we have to start the round over #MxChat @Goto(M1PunishmentSpankingOver)
+(M1Forgive)
+@SystemMessage [Miss Alexis]: Next time count correctly.. #MxChat #MeritChangeNLow @Goto(M1PunishmentCorner)
+(M1Correct)
+@SystemMessage [Miss Alexis]: @RT(Correct!,Thats correct,Right!,Right on!,Thats right) #MxChat @Goto(M1PunishmentCorner)
+(M1PunishmentCorner)
+@NotFlag(M1FirstRound) @SystemMessage [Miss Alexis]: #M1S1a #MxChat @Goto(M1PunishmentCornera)
+@Flag(M1FirstRound) @SystemMessage [Miss Alexis]: #M1S2a #MxChat @Goto(M1PunishmentCornera)
+@Flag(M1SecondRound) @SystemMessage [Miss Alexis]: #M1S3a #MxChat @Goto(M1PunishmentCornera)
+@Flag(M1ThirdRound) @SystemMessage [Miss Alexis]: #M1S4a #MxChat @Goto(M1PunishmentCornera)
+@Flag(M1FutureRound) @SystemMessage [Miss Alexis]: #M1S5a #MxChat @Goto(M1PunishmentCornera)
+(M1PunishmentCornera)
+@SystemMessage [Miss Alexis]: Go to the corner #SlaveName #MxChat
+@SystemMessage [Miss Alexis]: Stay there until you hear my bell #MxChat @SetVar[CornerM1]=[0]
+(M1CornerTime)
+@NullResponse @If[CornerM1]>=[CornertimeTimeLimit]Then(M1EndCorner) @Wait(#Random(25,70))
+@NullResponse @ChangeVar[CornerM1]=[CornerM1]+[1] @Goto(M1CornerTime)
+(M1EndCorner)
+@SystemMessage [Miss Alexis]: Get back here! #MxChat @PlayAudio[\GNMSounds\SpecialSounds\Bell.mp3] @Goto(M1PunishmentSpanking)
+(M1End)
+
+(Safeword)
+@SystemMessage [Miss Alexis]: Oh my oh my @CustomMode(ModeText, Normal) #MxChat
+@SystemMessage [Miss Alexis]: Couldn't handle anymore huh? #MxChat
+@SystemMessage [Miss Alexis]: Well.. #MxChat
+@SystemMessage [Miss Alexis]: You used your safeword and that has meaning #GNMGrin #MxChat
+@SystemMessage [Miss Alexis]: First of all you now owe me a lot of gold #GNMGrin #MxChat @TempFlag(SpankzChoirComplete)
+@SystemMessage [Miss Alexis]: Cya slave #MxChat @TempFlag(SpankChoirSafeword) @CallReturn(CR\BackgroundMode\Punishment\PunishmentBaseEnd.txt)
+@End

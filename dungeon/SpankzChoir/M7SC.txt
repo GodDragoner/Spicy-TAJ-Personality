@@ -1,0 +1,109 @@
+(M7)
+@Flag(SpankChoirSafeword) @SystemMessage [Miss A]: You wanted a safeword #ReceptionChat
+@Flag(SpankChoirSafeword) @SystemMessage [Miss A]: If you can't handle anymore just say "Cucumber" #ReceptionChat @CustomMode(cucumber, Goto, Safeword)
+@SystemMessage [Miss A]: Miss Sadie is ready to see you.. #ReceptionChat @Goto(M7a,M7b)
+(M7a)
+@NullResponse @TempFlag(M7a) @Goto(CheckStatus1)
+(M7b)
+@NullResponse @TempFlag(M7b) @Goto(CheckStatus1)
+(CheckStatus1)
+@NullResponse @CheckFlag(M7FirstVisit) @SetFlag(M7FirstVisit)
+@SystemMessage [Miss Sadie]: This is your first time with me @SetVar[M7Visit]=[1] #MxChat
+@SystemMessage [Miss Sadie]: You only need to know one thing.. #MxChat
+@SystemMessage [Miss Sadie]: I do accept apologies.. #MxChat
+@SystemMessage [Miss Sadie]: But only those made in cries of pain.. 'Evil Laugh' #MxChat
+@Flag(SpankzChoirLate) @NullResponse @Goto(SpankzChoirLate2)
+@NullResponse @Goto(Start)
+(M7FirstVisit)
+@NullResponse @ChangeVar[M7Visit]=[M7Visit]+[1] @CheckFlag(SpankzChoirSkipped)
+@NullResponse @CheckFlag(SpankzChoirLate) @Goto(Start)
+(SpankzChoirSkipped)
+@SystemMessage [Miss Sadie]: It's not a popular thing trying to quit..
+@SystemMessage [Miss Sadie]: don't do it again.. @Goto(Start)
+(SpankzChoirLate)
+@SystemMessage [Miss Sadie]: @RT(Well hello there mr. late,Hi little late slut,Gretting #SlaveName) #MxChat 
+(SpankzChoirLate2)
+@SystemMessage [Miss Sadie]: @RT(If there is one thing I love more than a good spanking,One of the few things I enjoy more than spanking) #MxChat
+@SystemMessage [Miss Sadie]: It's an ass paying to be spanked #GNMLol #MxChat
+@SystemMessage [Miss Sadie]: This is your @ShowVar[M7Visit] time with me #MxChat
+(Start)
+@SystemMessage [Miss Sadie]: @RT(I see no reason to waste any time..,Lets not drag this out..,Lets not delay this..)
+@Flag(GagPunishment) @SystemMessage [Miss Sadie]: @RT(Fetch your gag and put it in.. - You may remove it after we're done..,Now I don't want too much noise from you #GNMGrin,No screaming..) @Wait(15)
+@SystemMessage [Miss Sadie]: I need you to @RT(fetch,retrieve,find,get) your @RT(#ChooseSpankingImplement) #MxChat
+@SystemMessage [Miss Sadie]: When you have it just kneel down and present it with open hands #MxChat
+(SetVars)
+@NullResponse @RapidCodeOn
+@NullResponse @SetVar[StrokesPerRound]=[0] @ChangeVar[StrokesPerRound]=[StrokesPerRound]+[AuctionStrokes] //Defines an approximate of strokes per round
+@NullResponse @ChangeVar[StrokesPerRound]=[StrokesPerRound]/[CornertimeLimit]
+@NullResponse @SetVar[TotalSpanking]=[0]
+@NullResponse @SetVar[SpankingCount]=[0]
+@NullResponse @RapidCodeOff @Wait(#Random(20,55))
+(M7PunishmentSpanking)
+@NullResponse @ChangeVar[TotalSpanking]=[TotalSpanking]+[SpankingCount]
+(M7PunishmentSpankingOver)
+@NullResponse @If[TotalSpanking]>=[AuctionStrokes]Then(M7End)
+@NotFlag(M7FirstRound) @SystemMessage [Miss Sadie]: #M7S1 @TempFlag(M7FirstRound) #MxChat @Goto(M7PunishmentSpankinga)
+@Flag(M7FirstRound) @SystemMessage [Miss Sadie]: #M7S2 @TempFlag(M7SecondRound) @DeleteFlag(M7FirstRound) #MxChat @Goto(M7PunishmentSpankinga)
+@Flag(M7SecondRound) @SystemMessage [Miss Sadie]: #M7S3 @TempFlag(M7ThirdRound) @DeleteFlag(M7SecondRound) #MxChat @Goto(M7PunishmentSpankinga)
+@Flag(M7ThirdRound) @SystemMessage [Miss Sadie]: #M7S4 @TempFlag(M7FutureRound) @DeleteFlag(M7ThirdRound) #MxChat @Goto(M7PunishmentSpankinga)
+@Flag(M7FutureRound) @SystemMessage [Miss Sadie]: #M7S5 #MxChat @Goto(M7PunishmentSpankinga)
+(M7PunishmentSpankinga)
+@SystemMessage [Miss Sadie]: #SlaveName get over my lap and be ready.. #M7Lap @Wait(#Random(3,7))
+@NullResponse @SetVar[SpankingCount]=[0]
+(SpankingM7)
+@NullResponse @If[SpankingCount]>[StrokesPerRound]Then(M7Count) @Goto(10,20,30,40,50)
+(10)
+@SystemMessage [Miss Sadie]: #SpankPlacingRight10 #MxOverLap 
+@SystemMessage [Miss Sadie]: #SpankPlacingLeft10 #MxOverLap @Goto(SpankingM7)
+(20)
+@SystemMessage [Miss Sadie]: #SpankPlacingRight20 #MxOverLap 
+@SystemMessage [Miss Sadie]: #SpankPlacingLeft20 #MxOverLap @Goto(SpankingM7)
+(30)
+@SystemMessage [Miss Sadie]: #SpankPlacingRight30 #MxOverLap 
+@SystemMessage [Miss Sadie]: #SpankPlacingLeft30 #MxOverLap @Goto(SpankingM7)
+(40)
+@SystemMessage [Miss Sadie]: #SpankPlacingRight40 #MxOverLap 
+@SystemMessage [Miss Sadie]: #SpankPlacingLeft40 #MxOverLap @Goto(SpankingM7)
+(50)
+@SystemMessage [Miss Sadie]: #SpankPlacingRight50 #MxOverLap 
+@SystemMessage [Miss Sadie]: #SpankPlacingLeft50 #MxOverLap @Goto(SpankingM7)
+(M7Count)
+@SystemMessage [Miss Sadie]: How many strokes was that #SlaveName? #MxChat @InputVar[SpankedCount]
+@NullResponse @If[SpankedCount]=[SpankingCount]Then(M7Correct)
+(M7Wrong)
+@SystemMessage [Miss Sadie]: @RT(Thats wrong,Wrong,Incorrect,Thats incorrect,Nope,Sorry but that's not right..) #MxChat
+@SystemMessage [Miss Sadie]: The correct number was @ShowVar[SpankingCount] #MxChat @If[SubStrictness]<[#Random(1,15)]Then(M7Forgive)
+@SystemMessage [Miss Sadie]: I guess we have to start the round over #MxChat @Goto(M7PunishmentSpankingOver)
+(M7Forgive)
+@SystemMessage [Miss Sadie]: Next time count correctly.. #MxChat #MeritChangeNLow @Goto(M7PunishmentCorner)
+(M7Correct)
+@SystemMessage [Miss Sadie]: @RT(Correct!,Thats correct,Right!,Right on!,Thats right) #MxChat @Goto(M7PunishmentCorner)
+(M7PunishmentCorner)
+@NotFlag(M7FirstRound) @SystemMessage [Miss Sadie]: #M7S1a #MxChat @Goto(M7PunishmentCornera)
+@Flag(M7FirstRound) @SystemMessage [Miss Sadie]: #M7S2a #MxChat @Goto(M7PunishmentCornera)
+@Flag(M7SecondRound) @SystemMessage [Miss Sadie]: #M7S3a #MxChat @Goto(M7PunishmentCornera)
+@Flag(M7ThirdRound) @SystemMessage [Miss Sadie]: #M7S4a #MxChat @Goto(M7PunishmentCornera)
+@Flag(M7FutureRound) @SystemMessage [Miss Sadie]: #M7S5a #MxChat @Goto(M7PunishmentCornera)
+(M7PunishmentCornera)
+@SystemMessage [Miss Sadie]: Go to the corner #SlaveName #MxChat
+@SystemMessage [Miss Sadie]: Stay there until you hear my bell #MxChat @SetVar[CornerM7]=[0]
+(M7CornerTime)
+@NullResponse @If[CornerM7]>=[CornertimeTimeLimit]Then(M7EndCorner) @Wait(#Random(25,70))
+@NullResponse @ChangeVar[CornerM7]=[CornerM7]+[1] @Goto(M7CornerTime)
+(M7EndCorner)
+@SystemMessage [Miss Sadie]: Get back here! #MxChat @PlayAudio[\GNMSounds\SpecialSounds\Bell.mp3] @Goto(M7PunishmentSpanking)
+(M7End)
+@SystemMessage [Miss Sadie]: #SlaveName ..
+@SystemMessage [Miss Sadie]: I enjoyed our time together #MxChat
+@SystemMessage [Miss Sadie]: Though I'm not sure your #GNMAss did #GNMLol #MxChat
+@SystemMessage [Miss Sadie]: I'm sure it would make your #DomHonorific happy  #MxChat
+@SystemMessage [Miss Sadie]: If you took a photo of your #GNMAss and placed it in your humiliation folder #GNMGrin #MxChat @TempFlag(SpankzChoirComplete) @CallReturn(CR\BackgroundMode\Punishment\PunishmentBaseEnd.txt)
+@End
+(Safeword)
+@SystemMessage [Miss Sadie]: Oh my oh my @CustomMode(ModeText, Normal) #MxChat
+@SystemMessage [Miss Sadie]: Couldn't handle anymore huh? #MxChat
+@SystemMessage [Miss Sadie]: Well.. #MxChat
+@SystemMessage [Miss Sadie]: You used your safeword and that has meaning #GNMGrin #MxChat
+@SystemMessage [Miss Sadie]: First of all you now owe me a lot of gold #GNMGrin #MxChat @TempFlag(SpankzChoirComplete)
+@SystemMessage [Miss Sadie]: Cya slave #MxChat @TempFlag(SpankChoirSafeword) @CallReturn(CR\BackgroundMode\Punishment\PunishmentBaseEnd.txt)
+@End

@@ -1,0 +1,99 @@
+@Flag(GagPunishment) @SystemMessage #MxChat2 @RT(Fetch,Retrieve,Get,Find) your gag and @RT(put it in,gag yourself,get gagged) #MxChat @Wait(20)
+@NullResponse @CheckFlag(M1R)
+@NullResponse @CheckFlag(M2R)
+@NullResponse @CheckFlag(M3R)
+@NullResponse @CheckFlag(M4R)
+@NullResponse @CheckFlag(M5R)
+@NullResponse @CheckFlag(M6R)
+@NullResponse @CheckFlag(M7R)
+@NullResponse @CheckFlag(M8R)
+(M1R)
+@NullResponse @CheckFlag(M1RFirst)
+@NullResponse @SetFlag(M1RFirst)
+@SystemMessage #MxChat2 Hi slave #MxChat
+@SystemMessage #MxChat2 My name is Miss Alexis #MxChat
+@SystemMessage #MxChat2 When I saw your ass up for auction I knew I had to win it! Lol #MxChat
+@SystemMessage #MxChat2 Oh my is your ass getting it today! #MxChat
+@SystemMessage #MxChat2 Lets not waste a moment! #MxChat @Goto(End)
+(M2R)
+@NullResponse @CheckFlag(M2RFirst)
+@NullResponse @SetFlag(M2RFirst)
+@SystemMessage #MxChat2 Hello my little toy #MxChat
+@SystemMessage #MxChat2 I am Miss Allison #MxChat
+@SystemMessage #MxChat2 And right now your ass is all mine! #MxChat
+@SystemMessage #MxChat2 I'm known as the cruel one #GNMLol #MxChat
+@SystemMessage #MxChat2 Let me prove it to you! #MxChat @Goto(End)
+(M3R)
+@NullResponse @CheckFlag(M3RFirst)
+@NullResponse @SetFlag(M3RFirst)
+@SystemMessage #MxChat2 Hi boy #MxChat
+@SystemMessage #MxChat2 I'm Miss Gigi #MxChat
+@SystemMessage #MxChat2 Mhmm I'm excited about whats to come in a moment! #MxChat
+@SystemMessage #MxChat2 You on the other hand look a bit shaky #GNMLol #MxChat
+@SystemMessage #MxChat2 I'm using my Hitachi later! #MxChat @Goto(End)
+(M4R)
+@NullResponse @CheckFlag(M4RFirst)
+@NullResponse @SetFlag(M4RFirst)
+@SystemMessage #MxChat2 Greetings slave #MxChat
+@SystemMessage #MxChat2 I go by Miss Jeanette #MxChat
+@SystemMessage #MxChat2 And you just the right victim for all of my built up aggressions! #MxChat
+@SystemMessage #MxChat2 Prepare yourself! "evil grin" #MxChat @Goto(End)
+(M5R)
+@NullResponse @CheckFlag(M5RFirst)
+@NullResponse @SetFlag(M5RFirst)
+@SystemMessage #MxChat2 Hi #SubName #MxChat
+@SystemMessage #MxChat2 I'm Miss Kordelia #MxChat
+@SystemMessage #MxChat2 And that is all you need to know #GNMGrin #MxChat @Goto(End)
+(M6R)
+@NullResponse @CheckFlag(M6RFirst)
+@NullResponse @SetFlag(M6RFirst)
+@SystemMessage #MxChat2 Hello #MxChat
+@SystemMessage #MxChat2 I go by Miss Kym #MxChat
+@SystemMessage #MxChat2 You look just like the right victim for a healthy spanking! #MxChat
+@SystemMessage #MxChat2 I do consider spankings a neccesary part of mens life #MxChat
+@SystemMessage #MxChat2 They are afterall the weaker sex.. #MxChat @Goto(End)
+(M7R)
+@NullResponse @CheckFlag(M7RFirst)
+@NullResponse @SetFlag(M7RFirst)
+@SystemMessage #MxChat2 Hi #SubName #MxChat
+@SystemMessage #MxChat2 You're cuter than in person than your profile picture! #MxChat
+@SystemMessage #MxChat2 My name is Sadie #MxChat
+@SystemMessage #MxChat2 Miss Sadie to you #MxChat
+@SystemMessage #MxChat2 #GNMGrin #MxChat @Goto(End)
+(M8R)
+@NullResponse @CheckFlag(M8RFirst)
+@NullResponse @SetFlag(M8RFirst)
+@SystemMessage #MxChat2 #SubName #MxChat
+@SystemMessage #MxChat2 Welcome! #MxChat
+@SystemMessage #MxChat2 I'm Miss Sarah #MxChat
+@SystemMessage #MxChat2 I'm famous on SpankzChoir.com #MxChat
+@SystemMessage #MxChat2 And you're about to discover why! #GNMLol #MxChat @Goto(End)
+(M1RFirst)
+(M2RFirst)
+(M3RFirst)
+(M4RFirst)
+(M5RFirst)
+(M6RFirst)
+(M7RFirst)
+(M8RFirst)
+@NullResponse @CheckFlag(SpankzChoirSkipped)
+@NullResponse @CheckFlag(SpankzChoirLate)
+@SystemMessage #MxChat2 @RT(Hi,Hello,Greetings) @RT(#SubName,#SlaveName,Slave,Slave,Slave,Slave) #MxChat
+@SystemMessage #MxChat2 @RT(I can't wait to get started!,Lets start right away,Lets proceed!,Lets get that ass sore) #MxChat
+@End
+(SpankzChoirSkipped)
+@SystemMessage #MxChat2 So you think you can escape a session with me? #MxChat
+@SystemMessage #MxChat2 Well you can't! #MxChat
+@SystemMessage #MxChat2 I wrote to #DomHonorific #DomName and informed her of your transgression #MxChat @SetFlag(Preason_not_degrading)
+@SystemMessage #MxChat2 I am to give you her regards #MxChat @ChangeVar[GNMPPoints]=[GNMPPoints]+[200]
+@SystemMessage #MxChat2 Oh and also a lot of punishment points #GNMGrin #MxChat #MeritChangeNHigh
+@SystemMessage #MxChat2 Well lets start your spanking all over! #GNMGrin #MxChat
+@End
+(SpankzChoirLate)
+@SystemMessage #MxChat2 Awww late for your auction huh? #MxChat
+@SystemMessage #MxChat2 Well don't worry! #MxChat
+@SystemMessage #MxChat2 You still get spanked #GNMLol #MxChat
+@SystemMessage #MxChat2 You just don't get paid! #GNMEmoteHappy #MxChat
+@End
+(End)
+@End

@@ -1,0 +1,99 @@
+(M4)
+@Flag(SpankChoirSafeword) @SystemMessage [Miss A]: You wanted a safeword #ReceptionChat
+@Flag(SpankChoirSafeword) @SystemMessage [Miss A]: If you can't handle anymore just say "Cucumber" #ReceptionChat @CustomMode(cucumber, Goto, Safeword)
+@SystemMessage [Miss A]: Miss Jeanette is ready to see you.. #ReceptionChat
+(M4a)
+@NullResponse @TempFlag(M4a) @Goto(CheckStatus1)
+(CheckStatus1)
+@NullResponse @CheckFlag(M4FirstVisit) @SetFlag(M4FirstVisit)
+@SystemMessage [Miss Jeanette]: This is your first time with me @SetVar[M4Visit]=[1] #MxChat
+@SystemMessage [Miss Jeanette]: You only need to know one thing.. #MxChat
+@SystemMessage [Miss Jeanette]: I do accept apologies.. #MxChat
+@SystemMessage [Miss Jeanette]: But only those made in cries of pain.. 'Evil Laugh' #MxChat
+@Flag(SpankzChoirLate) @NullResponse @Goto(SpankzChoirLate2)
+@NullResponse @Goto(Start)
+(M4FirstVisit)
+@NullResponse @ChangeVar[M4Visit]=[M4Visit]+[1] @CheckFlag(SpankzChoirSkipped)
+@NullResponse @CheckFlag(SpankzChoirLate) @Goto(Start)
+(SpankzChoirSkipped)
+@SystemMessage [Miss Jeanette]: It's not a popular thing trying to quit..
+@SystemMessage [Miss Jeanette]: don't do it again.. @Goto(Start)
+(SpankzChoirLate)
+@SystemMessage [Miss Jeanette]: @RT(Well hello there mr. late,Hi little late slut,Gretting #SlaveName) #MxChat 
+(SpankzChoirLate2)
+@SystemMessage [Miss Jeanette]: @RT(If there is one thing I love more than a good spanking,One of the few things I enjoy more than spanking) #MxChat
+@SystemMessage [Miss Jeanette]: It's an ass paying to be spanked #GNMLol #MxChat
+@SystemMessage [Miss Jeanette]: This is your @ShowVar[M4Visit] time with me #MxChat
+(Start)
+@SystemMessage [Miss Jeanette]: @RT(I see no reason to waste any time..,Lets not drag this out..,Lets not delay this..)
+@Flag(GagPunishment) @SystemMessage [Miss Jeanette]: @RT(Fetch your gag and put it in.. - You may remove it after we're done..,Now I don't want too much noise from you #GNMGrin,No screaming..) @Wait(15)
+@SystemMessage [Miss Jeanette]: I need you to @RT(fetch,retrieve,find,get) your @RT(#ChooseSpankingImplement) #MxChat
+@SystemMessage [Miss Jeanette]: When you have it just kneel down and present it with open hands #MxChat
+(SetVars)
+@NullResponse @RapidCodeOn
+@NullResponse @SetVar[StrokesPerRound]=[0] @ChangeVar[StrokesPerRound]=[StrokesPerRound]+[AuctionStrokes] //Defines an approximate of strokes per round
+@NullResponse @ChangeVar[StrokesPerRound]=[StrokesPerRound]/[CornertimeLimit]
+@NullResponse @SetVar[TotalSpanking]=[0]
+@NullResponse @SetVar[SpankingCount]=[0]
+@NullResponse @RapidCodeOff @Wait(#Random(20,55))
+(M4PunishmentSpanking)
+@NullResponse @ChangeVar[TotalSpanking]=[TotalSpanking]+[SpankingCount]
+(M4PunishmentSpankingOver)
+@NullResponse @If[TotalSpanking]>=[AuctionStrokes]Then(M4End)
+@NotFlag(M4FirstRound) @SystemMessage [Miss Jeanette]: #M4S1 @TempFlag(M4FirstRound) #MxChat @Goto(M4PunishmentSpankinga)
+@Flag(M4FirstRound) @SystemMessage [Miss Jeanette]: #M4S2 @TempFlag(M4SecondRound) @DeleteFlag(M4FirstRound) #MxChat @Goto(M4PunishmentSpankinga)
+@Flag(M4SecondRound) @SystemMessage [Miss Jeanette]: #M4S3 @TempFlag(M4ThirdRound) @DeleteFlag(M4SecondRound) #MxChat @Goto(M4PunishmentSpankinga)
+@Flag(M4ThirdRound) @SystemMessage [Miss Jeanette]: #M4S4 @TempFlag(M4FutureRound) @DeleteFlag(M4ThirdRound) #MxChat @Goto(M4PunishmentSpankinga)
+@Flag(M4FutureRound) @SystemMessage [Miss Jeanette]: #M4S5 #MxChat @Goto(M4PunishmentSpankinga)
+(M4PunishmentSpankinga)
+@SystemMessage [Miss Jeanette]: #SlaveName get over my lap and be ready.. #M4Lap @Wait(#Random(3,7))
+@NullResponse @SetVar[SpankingCount]=[0]
+(SpankingM4)
+@NullResponse @If[SpankingCount]>[StrokesPerRound]Then(M4Count) @Goto(10,20,30,40,50)
+(10)
+@SystemMessage [Miss Jeanette]: #SpankPlacingRight10 #MxOverLap 
+@SystemMessage [Miss Jeanette]: #SpankPlacingLeft10 #MxOverLap @Goto(SpankingM4)
+(20)
+@SystemMessage [Miss Jeanette]: #SpankPlacingRight20 #MxOverLap 
+@SystemMessage [Miss Jeanette]: #SpankPlacingLeft20 #MxOverLap @Goto(SpankingM4)
+(30)
+@SystemMessage [Miss Jeanette]: #SpankPlacingRight30 #MxOverLap 
+@SystemMessage [Miss Jeanette]: #SpankPlacingLeft30 #MxOverLap @Goto(SpankingM4)
+(40)
+@SystemMessage [Miss Jeanette]: #SpankPlacingRight40 #MxOverLap 
+@SystemMessage [Miss Jeanette]: #SpankPlacingLeft40 #MxOverLap @Goto(SpankingM4)
+(50)
+@SystemMessage [Miss Jeanette]: #SpankPlacingRight50 #MxOverLap 
+@SystemMessage [Miss Jeanette]: #SpankPlacingLeft50 #MxOverLap @Goto(SpankingM4)
+(M4Count)
+@SystemMessage [Miss Jeanette]: How many strokes was that #SlaveName? #MxChat @InputVar[SpankedCount]
+@NullResponse @If[SpankedCount]=[SpankingCount]Then(M4Correct)
+(M4Wrong)
+@SystemMessage [Miss Jeanette]: @RT(Thats wrong,Wrong,Incorrect,Thats incorrect,Nope,Sorry but that's not right..) #MxChat
+@SystemMessage [Miss Jeanette]: The correct number was @ShowVar[SpankingCount] #MxChat @If[SubStrictness]<[#Random(1,15)]Then(M4Forgive)
+@SystemMessage [Miss Jeanette]: I guess we have to start the round over #MxChat @Goto(M4PunishmentSpankingOver)
+(M4Forgive)
+@SystemMessage [Miss Jeanette]: Next time count correctly.. #MxChat #MeritChangeNLow @Goto(M4PunishmentCorner)
+(M4Correct)
+@SystemMessage [Miss Jeanette]: @RT(Correct!,Thats correct,Right!,Right on!,Thats right) #MxChat @Goto(M4PunishmentCorner)
+(M4PunishmentCorner)
+@NotFlag(M4FirstRound) @SystemMessage [Miss Jeanette]: #M4S1a #MxChat @Goto(M4PunishmentSpanking)
+@Flag(M4FirstRound) @SystemMessage [Miss Jeanette]: #M4S2a #MxChat @Goto(M4PunishmentSpanking)
+@Flag(M4SecondRound) @SystemMessage [Miss Jeanette]: #M4S3a #MxChat @Goto(M4PunishmentSpanking)
+@Flag(M4ThirdRound) @SystemMessage [Miss Jeanette]: #M4S4a #MxChat @Goto(M4PunishmentSpanking)
+@Flag(M4FutureRound) @SystemMessage [Miss Jeanette]: #M4S5a #MxChat @Goto(M4PunishmentSpanking)
+(M4End)
+@SystemMessage [Miss Jeanette]: #SlaveName ..
+@SystemMessage [Miss Jeanette]: I enjoyed our time together #MxChat
+@SystemMessage [Miss Jeanette]: Though I'm not sure your #GNMAss did #GNMLol #MxChat
+@SystemMessage [Miss Jeanette]: I'm sure it would make your #DomHonorific happy  #MxChat
+@SystemMessage [Miss Jeanette]: If you took a photo of your #GNMAss and placed it in your humiliation folder #GNMGrin #MxChat @TempFlag(SpankzChoirComplete) @CallReturn(CR\BackgroundMode\Punishment\PunishmentBaseEnd.txt)
+@End
+(Safeword)
+@SystemMessage [Miss Jeanette]: Oh my oh my @CustomMode(ModeText, Normal) #MxChat
+@SystemMessage [Miss Jeanette]: Couldn't handle anymore huh? #MxChat
+@SystemMessage [Miss Jeanette]: Well.. #MxChat
+@SystemMessage [Miss Jeanette]: You used your safeword and that has meaning #GNMGrin #MxChat
+@SystemMessage [Miss Jeanette]: First of all you now owe me a lot of gold #GNMGrin #MxChat @TempFlag(SpankzChoirComplete)
+@SystemMessage [Miss Jeanette]: Cya slave #MxChat @TempFlag(SpankChoirSafeword) @CallReturn(CR\BackgroundMode\Punishment\PunishmentBaseEnd.txt)
+@End

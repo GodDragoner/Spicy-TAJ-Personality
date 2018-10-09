@@ -12,6 +12,7 @@ sendSystemMessage("Launching Spicy " + getVar("personalityVersion"));
 run("Utils/RandomUtils.js");
 run("Utils/StringUtils.js");
 run("Utils/BodyParts.js");
+run("Utils/GoldUtils.js")
 run("Session/Tasks.js");
 run("Startup/UpdateVariables.js");
 run("Stroking/Stroke.js");
@@ -51,6 +52,6 @@ if(isFullTime()) {
     run("Startup/FullTime/FullTimeCheckup.js");
 }
 
-run("Session/Modules/Humiliation/Dynamic/AnalHumiliation.js");
+run("Session/StartSession.js");
 
 run("Assistant/AssistantLobby.js");

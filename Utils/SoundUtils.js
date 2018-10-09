@@ -1,4 +1,5 @@
 
 function playBellSound() {
-    //TODO: Bell sound
+        playSound("Audio/Spicy/SpecialSounds/Bell.mp3");
+
 }

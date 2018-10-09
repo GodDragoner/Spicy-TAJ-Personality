@@ -1,0 +1,104 @@
+@NullResponse @SetVar[FailedPunishment]=[0] @CheckFlag(D1Punisher)
+@NullResponse @CheckFlag(D2Punisher)
+@NullResponse @CheckFlag(D3Punisher)
+@NullResponse @CheckFlag(D4Punisher)
+(D1Punisher)
+@NullResponse @Goto(Hello)
+(D2Punisher)
+@SystemMessage [Miss A]: Contacting #DomHonorific #Contact1 .. #ReceptionChat
+@NullResponse @AddContact1
+@NullResponse @RemoveDomme @Goto(Hello)
+(D3Punisher)
+@SystemMessage [Miss A]: Contacting #DomHonorific #Contact2 .. #ReceptionChat
+@NullResponse @AddContact2
+@NullResponse @RemoveDomme @Goto(Hello)
+(D4Punisher)
+@SystemMessage [Miss A]: Contacting #DomHonorific #Contact3 .. #ReceptionChat
+@NullResponse @AddContact3
+@NullResponse @RemoveDomme @Goto(Hello)
+(Hello)
+Well @RT(hello,hi) #SlaveName  #DT4
+(Info)
+You..  #DT4
+Will..  #DT4
+Not.. #DT4
+Enjoy.. #DT4
+This.. #DT4
+#SlaveName .. #DT4
+@RT(Fetch,Retrieve,Bring me,Go and get,Go ahead and fetch) 4 large rubberbands #DT4
+Get naked if you're not already #DT4
+Put 1 rubberband around each buttcheek #DT4
+Place the remaining around your mid thigh #DT4
+A final warning.. #DT4
+You are entering a punishment that involves hits from a rubberband #DT4
+The number is between 100 and 300 based on your settings #DT4
+You will be hit on your buttcheeks and inner thighs #DT4
+There will be no going back after this point.. #DT4
+Are you sure you wish to proceed with this? #DT4
+[yes]Okay then.. #DT4 @Goto(Continue)
+[no]Okay I'm glad you know your limit..  #DT4
+@DifferentAnswer Yes or no #SlaveName #DT4
+@End
+(Continue)
+You will be given 4 different commands #DT4
+Left thigh #DT4
+Right thigh #DT4
+Whenever you are given a thigh related command I want you pull the rubberband far back #DT4
+You have to be worried that it might snap #DT4
+If you aren't you haven't pulled it far enough back.. #DT4
+Aim for your <i>inner</i> thigh #DT4
+The last 2 commands are #DT4
+Left buttcheek #DT4
+Right buttcheek #DT4
+Again as far back as it goes #DT4
+You may aim wherever you choose as long as you're aiming for a part of the buttcheek #DT4
+Let me just check a few things before we begin..  #DT4
+(Start)
+@Flag(D1Punisher) @NullResponse @Goto(Domme)
+@Flag(D2Punisher) @NullResponse @Goto(Contact1)
+@Flag(D3Punisher) @NullResponse @Goto(Contact2)
+@Flag(D4Punisher) @NullResponse @Goto(Contact3)
+(Domme)
+@RT(Well well,Oh my,Well) #SlaveName #DT4
+@RT(It's time to pay,We need to settle your recent behaviour,I believe I have just the thing to discipline you,I believe I know how to correct your bad behaviour!) #DT4
+@Flag(Personality1) @NullResponse @If[SubPain]<=[3]Then(PH2Easy)
+@Flag(Personality2) @NullResponse @If[SubPain]<=[5]Then(PH2Easy)
+@Flag(Personality3) @NullResponse @If[SubPain]>=[6]Then(PH2Hard)
+@NullResponse @Goto(PH2Medium)
+(Contact1)
+@RT(Well well,Oh my,Well) #SlaveName #DT4
+@RT(I'm absolute sure you're gonna hate this and that makes me love it!,We need to correct your poor behaviour,You need a little discipline,Its about time we did something about your behaviour) #DT4
+@NullResponse @If[SubPain]>[4]AND[SubPain]<[8]Then(PH2Medium)
+@NullResponse @If[SubPain]>=[8]Then(PH2Hard) @Goto(PH2Easy)
+(Contact2)
+@RT(Well well,Oh my,Well) #SlaveName #DT4
+@RT(Discipline I just love that,You're not gonna like this #GNMGrin,I don't think your #GNMCock will enjoy this,This is fun!) #DT4
+@NullResponse @If[SubPain]>[3]AND[SubPain]<[7]Then(PH2Medium)
+@NullResponse @If[SubPain]>=[7]Then(PH2Hard) @Goto(PH2Easy)
+(Contact3)
+@RT(Well well,Oh my,Well) #SlaveName #DT4
+@RT(Discipline can never be cruel enough,Discipline is all about being cruel,Discipline is about showing no mercy!,No mercy for the bad ones..) #DT4
+@NullResponse @If[SubPain]>[2]AND[SubPain]<[6]Then(PH2Medium)
+@NullResponse @If[SubPain]>=[6]Then(PH2Hard) @Goto(PH2Easy)
+(PH2Easy)
+Today you will be given 100 strikes #DT4 @SetVar[CaningNumber]=[100] @Goto(CaningBase2)
+(PH2Medium)
+Today you will be given 200 strikes #DT4 @SetVar[CaningNumber]=[200] @Goto(CaningBase2)
+(PH2Hard)
+Today you will be given 300 strikes #DT4 @SetVar[CaningNumber]=[300] @Goto(CaningBase2)
+(CaningBase)
+@Variable[CaningNumber]=[250] 250 strikes remaining.. #DT4
+@Variable[CaningNumber]=[200] 200 strikes remaining.. #DT4
+@Variable[CaningNumber]=[150] 150 strikes remaining.. #DT4
+@Variable[CaningNumber]=[100] 100 strikes remaining.. #DT4
+@Variable[CaningNumber]=[50] 50 strikes remaining.. #DT4
+(CaningBase2)
+@NullResponse @If[CaningNumber]<=[0]Then(End) @ChangeVar[CaningNumber]=[CaningNumber]-[1]
+@RT(Left thigh..,Right thigh..,Left Cheek..,Right Cheek..) #DT4 @Wait(#Random(1,2))
+Pull back! @Wait(#Random(1,3)) #DT4
+@NullResponse @PlayAudio[\GNMSounds\Punishment\SpankingCane\Cane1.mp3] @Goto(CaningBase)
+(End)
+Well done #SubName #DT4
+I'm impressed by your willpower today #DT4 #MeritChangePLow @TempFlag(PunishmentComplete)
+@NullResponse @TempFlag(H2Complete) @CallReturn(CR\BackgroundMode\Punishment\PunishmentBaseEnd.txt)
+@End

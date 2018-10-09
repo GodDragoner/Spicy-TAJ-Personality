@@ -1,0 +1,37 @@
+@NullResponse @RapidCodeOn @SetVar[Choice]=[0] @Chance25(End)
+@NullResponse @SetVar[Factor]=[0]
+@NullResponse @SetVar[TempStrokes]=[0]
+@NullResponse @ChangeVar[Choice]=[Choice]+[#Random(1,1000)]
+@FlagOr(M1R,M3R,M6R) @NullResponse @Goto(Easy)
+@FlagOr(M5R,M7R) @NullResponse @Goto(Medium)
+@FlagOr(M2R,M4R,M8R) @NullResponse @Goto(Hard)
+@End
+(Easy) \\ Easy
+@Variable[Choice]>[900] @NullResponse @ChangeVar[Factor]=[Factor]+[#Random(20,25)] @Goto(Add)
+@Variable[Choice]>[800] @NullResponse @ChangeVar[Factor]=[Factor]+[#Random(15,20)] @Goto(Add)
+@Variable[Choice]>[700] @NullResponse @ChangeVar[Factor]=[Factor]+[#Random(10,15)] @Goto(Add)
+@Variable[Choice]>[600] @NullResponse @ChangeVar[Factor]=[Factor]+[#Random(5,10)] @Goto(Add)
+@Variable[Choice]>=[1] @NullResponse @ChangeVar[Factor]=[Factor]+[#Random(1,5)] @Goto(Add)
+@End
+(Medium) \\ Medium
+@Variable[Choice]>[900] @NullResponse @ChangeVar[Factor]=[Factor]+[#Random(28,35)] @Goto(Add)
+@Variable[Choice]>[750] @NullResponse @ChangeVar[Factor]=[Factor]+[#Random(21,28)] @Goto(Add)
+@Variable[Choice]>[600] @NullResponse @ChangeVar[Factor]=[Factor]+[#Random(14,21)] @Goto(Add)
+@Variable[Choice]>[450] @NullResponse @ChangeVar[Factor]=[Factor]+[#Random(7,14)] @Goto(Add)
+@Variable[Choice]>=[1] @NullResponse @ChangeVar[Factor]=[Factor]+[#Random(1,7)] @Goto(Add)
+@End
+(Hard) \\ Hard
+@Variable[Choice]>[900] @NullResponse @ChangeVar[Factor]=[Factor]+[#Random(40,50)] @Goto(Add)
+@Variable[Choice]>[700] @NullResponse @ChangeVar[Factor]=[Factor]+[#Random(30,40)] @Goto(Add)
+@Variable[Choice]>[500] @NullResponse @ChangeVar[Factor]=[Factor]+[#Random(20,30)] @Goto(Add)
+@Variable[Choice]>[300] @NullResponse @ChangeVar[Factor]=[Factor]+[#Random(10,20)] @Goto(Add)
+@Variable[Choice]>=[1] @NullResponse @ChangeVar[Factor]=[Factor]+[#Random(1,10)] @Goto(Add)
+@End
+(Add)
+@NullResponse @ChangeVar[TempStrokes]=[TempStrokes]+[AuctionStrokes]
+@NullResponse @ChangeVar[TempStrokes]=[TempStrokes]/[100]
+@NullResponse @ChangeVar[TempStrokes]=[TempStrokes]*[Factor]
+@NullResponse @ChangeVar[AuctionStrokes]=[AuctionStrokes]+[TempStrokes]
+@End
+(End)
+@End

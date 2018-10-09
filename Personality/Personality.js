@@ -62,7 +62,7 @@ function getMood() {
             veryAnnoyed = 50;
             break;
         case 2:
-            veryPleased = 100;
+            veryPleased = 1000;
             pleased = 800;
             neutral = 750;
             annoyed = 300;
