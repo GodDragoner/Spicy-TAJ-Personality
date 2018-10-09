@@ -30,7 +30,7 @@ function registerBodyPart(name, maxClamps, side = NONE) {
         sidedName = "right " + name;
     }
 
-    const bodyPart = {id: currentBodyPartId++, name: name, sidedName: name, side: side, currentClamps: 0, maxClamps: maxClamps,
+    const bodyPart = {id: currentBodyPartId++, name: name, sidedName: sidedName, side: side, currentClamps: 0, maxClamps: maxClamps,
 
         getOppositeBodyPart : function() {
         if(this.side == LEFT) {
