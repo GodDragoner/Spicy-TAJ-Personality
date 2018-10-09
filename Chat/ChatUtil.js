@@ -18,7 +18,7 @@ function sendVirtualAssistantMessage(message, wait, skipImage) {
     }
 
     if(wait === undefined || wait) {
-        sleep(.2 + message.length * .01);
+        sleep(1000 + message.length * 50, "MILLISECONDS");
     }
 }
 
