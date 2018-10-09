@@ -1,0 +1,78 @@
+@NullResponse @SetVar[CBTLoops]=[0] @Goto(1,2,3)
+(1)
+Grab my #GNMBalls and squeeze them #DT @Wait(10)
+Squeeze them @RT(as hard as you can, so hard that your eyes start to tear) until I tell you to release your grip @RT(#SlaveName,#Slut,#SubName) #DT
+@Flag(Personality1) @Wait(5)
+@Flag(Personality2) @Wait(10)
+@Flag(Personality3) @Wait(20)
+You can stop squeezing my #GNMBalls now #SlaveName #DT 
+Are they @RT(blue, sore, purple, hurting) yet?
+[yes] #GNMMoan #DT
+[no] I am sure I can do something about that #SlaveName #DT @Goto(2,3)
+@DifferentAnswer #GNMYesOrNo #DT
+@Goto(End)
+(2)
+Be ready to bust my #GNMBalls #SlaveName #DT @ChangeVar[TempHits]=[SubPain]+[0]
+(Loop2)
+Hit them hard @ShowVar[TempHits] times #DT
+@RT(Let me know when you're done,Inform me when you're done) #SlaveName #DT @Timeout(45, Time)
+[done] #GNMGrin #DT @Goto(Continue2)
+@DifferentAnswer Are you trying to write 'done'? #DT
+(Time)
+@RT(This is taking too long, You are taking way too much time, How is this taking so long?) #DT #MeritChangeNLow
+@RT(I guess we have to try this again, Let's try this again shall we?) #DT @Goto(Loop2)
+(Continue2)
+Hit my #GNMBalls another @ShowVar[TempHits] times #SlaveName #DT @Timeout(45, Time)
+[done] #GNMGood #DT
+@DifferentAnswer Are you trying to write 'done'? #DT
+@Goto(End)
+(3)
+I want you to flick my balls #SlaveName #DT @ChangeVar[TempHits]=[SubPain]*[2]
+(Loop3)
+Flick each side @ShowVar[TempHits] times #DT
+@RT(Let me know when you're done,Inform me when you're done) #SlaveName #DT @Timeout(60, Time2)
+[done] #GNMGrin #DT @Goto(Continue3)
+@DifferentAnswer Are you trying to write 'done'? #DT
+(Time2)
+@RT(This is taking too long, You are taking way too much time, How is this taking so long?) #DT #MeritChangeNLow
+@RT(I guess we have to try this again, Let's try this again shall we?) #DT @Goto(Loop3)
+(Continue3)
+Does it @RT(hurt, burn, ache) yet?
+[yes] #GNMGood #DT
+[no] I am sure I can do something about that #SlaveName #DT @Goto(1,3)
+@DifferentAnswer #GNMYesOrNo #DT
+@End
+(End)
+@NullResponse @RapidCodeOn @ChangeVar[CBTLoops]=[CBTLoops]+[1]
+@NullResponse @ChangeVar[TempHits]=[SubPain]*[2]
+@NullResponse @CustomMode(done, Goto, End1)
+@NullResponse @Goto(a,b,c,d,e,f,g,h,i,j)
+(a)
+Let's give thoes #GNMBalls another @ShowVar[TempHits] smacks #GNMEmoteHappy #DT @Wait(400)
+(b)
+I want your #GNMBalls to really hurt. Give them another hard slap #DT @Wait(200)
+(c)
+Punch your #GNMBalls @ShowVar[TempHits] times for me #DT @Wait(200)
+(d)
+Now smack those #GNMBalls @ShowVar[SubPain] times as hard as you can #DT @Wait(200)
+(e)
+Now flick each testicle @ShowVar[TempHits] times #DT @Wait(200)
+(f)
+Now @ShowVar[TempHits] more smacks on each ball #DT @Wait(200)
+(g)
+@NullResponse @RapidCodeOn @ChangeVar[TempHits]=[SubPain]*[2]
+Give me @ShowVar[TempHits] more slaps #DT @Wait(400)
+(h)
+@ShowVar[TempHits] more smacks #DT @Wait(400)
+(i)
+I want @ShowVar[TempHits] more slaps #DT @Wait(400)
+(j)
+I want you to add @ShowVar[TempHits] more smacks to each ball #DT @Wait(200)
+(End1)
+@NullResponse @RapidCodeOn @CustomMode(ModeText, Normal)
+@NullResponse @Variable[CBTLoops]>[4] @Goto(FinalEnd)
+@NullResponse @Chance65(End)
+(FinalEnd)
+@TempFlag(E3Complete) 
+@TempFlag(PunishmentComplete) @CallReturn(CR\BackgroundMode\Punishment\PunishmentBaseEnd.txt)
+@End

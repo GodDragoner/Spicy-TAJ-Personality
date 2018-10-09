@@ -47,6 +47,9 @@ const VARIABLE_IS_GAGED = "isGaged";
 const VARIABLE_IS_BALLS_TIED = "isBallsTied";
 
 //Modules
+const VARIABLE_POSITION_TRAINING_STARTED = "positionTrainingStarted";
+const VARIABLE_POSITION_LEVEL = "positionLevel";
+
 const VARIABLE_STROKE_TRAINING_ACTIVE = "strokeTrainingActive";
 const VARIABLE_STROKE_TRAININGS_DONE = "strokeTrainingsDone";
 const VARIABLE_STROKE_TRAINING_LEVEL = "strokeTrainingLevel";

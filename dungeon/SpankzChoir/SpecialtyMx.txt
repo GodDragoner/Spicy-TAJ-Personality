@@ -1,0 +1,219 @@
+@NullResponse @CheckFlag(M1R) //
+@NullResponse @CheckFlag(M2R) //
+@NullResponse @CheckFlag(M3R) //
+@NullResponse @CheckFlag(M4R) //
+@NullResponse @CheckFlag(M5R) //
+@NullResponse @CheckFlag(M6R) //
+@NullResponse @CheckFlag(M7R) //
+@NullResponse @CheckFlag(M8R) //
+(M8R)
+(ExtraSpanking)
+@SystemMessage #MxChat2 I feel a bit evil #GNMGrin #MxChat
+@SystemMessage #MxChat2 I'm gonna make sure you get a few extra strokes #GNMLol #MxChat
+@SystemMessage #MxChat2 The funny part of that is <i>few</i> #MxChat @ChangeVar[StrokesPerRound]=[StrokesPerRound]+[#Random(25,75)]
+@SystemMessage #MxChat2 #GNMEmoteHappy #MxChat
+@End
+(M7R)
+(ExtraLongCorner)
+@SystemMessage #MxChat2 I feel like being a little nasty to you #GNMGrin #MxChat
+@SystemMessage #MxChat2 Actually I want to test your patience! #MxChat
+@SystemMessage #MxChat2 In a moment you'll go to the corner #MxChat
+@SystemMessage #MxChat2 You'll take a position #MxChat
+@SystemMessage #MxChat2 You'll stay in the corner, in your position #MxChat
+@SystemMessage #MxChat2 And you better not return before you hear a certain bell #MxChat
+@SystemMessage #MxChat2 Prepare for an extended corner time #GNMLol #MxChat @Goto(M7a,M7b,M7c,M7d,M7e)
+(M7a)
+@SystemMessage #MxChat2 Take this position @ShowImage[\GNMImages\Positions\Attention1] @Goto(Bell1)
+(M7b)
+@SystemMessage #MxChat2 Take this position @ShowImage[\GNMImages\Positions\BadBitch2] @Goto(Bell1)
+(M7c)
+@SystemMessage #MxChat2 Take this position @ShowImage[\GNMImages\Positions\BentOverOpen2] @Goto(Bell1)
+(M7d)
+@SystemMessage #MxChat2 Take this position @ShowImage[\GNMImages\Positions\StandOpen1] @Goto(Bell1)
+(M7e)
+@SystemMessage #MxChat2 Take this position @ShowImage[\GNMImages\Positions\Listen1] @Goto(Bell1)
+(Bell1)
+@SystemMessage #MxChat2 Now off to the corner! #MxChat 
+@Flag(Personality1) @Wait(#Random(600,900))
+@Flag(Personality2) @Wait(#Random(900,1200))
+@Flag(Personality3) @Wait(#Random(1200,1500))
+@SystemMessage #MxChat2 Get back here! #MxChat @PlayAudio[\GNMSounds\SpecialSounds\Bell.mp3]
+@End 
+(M1R)
+(Pegs)
+@SystemMessage #MxChat2 Slave #MxChat
+@SystemMessage #MxChat2 Fetch @RT(6,8,10) pegs #MxChat
+@SystemMessage #MxChat2 Place them anywhere you like on your body #MxChat
+@SystemMessage #MxChat2 But prioritize ball, nipples and cock #MxChat @Wait(30)
+@SystemMessage #MxChat2 When we're done later today you may remove them #MxChat
+@SystemMessage #MxChat2 Not before! #MxChat 
+@End        
+(M2R)
+(Patience) //wait x minutes, suddenly a picture appears, when you see it say stop.
+@SystemMessage #MxChat2 Slave #MxChat
+@SystemMessage #MxChat2 This is gonna be good #GNMGrin #MxChat
+@SystemMessage #MxChat2 In a moment I will turn your screen black #MxChat
+@SystemMessage #MxChat2 I want you stirring at it #GNMLol #MxChat
+@SystemMessage #MxChat2 You are to do so until you see a picture! #MxChat
+@SystemMessage #MxChat2 When you see a picture write 'stop' #MxChat
+@SystemMessage #MxChat2 Miss it and we'll start over until you see a picture #GNMLol #MxChat
+@SystemMessage #MxChat2 I got all day, don't know about you! #MxChat
+@SystemMessage #MxChat2 Enjoy! #MxChat
+(Patience2)
+@NullResponse @ShowImage[\GNMImages\BlackScreen.jpg]
+@NullResponse @Wait(#Random(300,900))
+@NullResponse @ShowImage @Timeout(5, Patience2)
+[stop] @SystemMessage #MxChat2 #GNMGood #MxChat
+@AcceptAnswer @SystemMessage #MxChat2 Enjoy! #MxChat
+@NullResponse 
+@End
+(M3R)
+(Sentences) //copy written senteces, fail and start over, slow and start over
+@SystemMessage #MxChat2 Slave #MxChat
+@SystemMessage #MxChat2 I will give you different sentences #MxChat
+@SystemMessage #MxChat2 Copy them to perfection or start over #MxChat
+@SystemMessage #MxChat2 Copy them in time or start over #MxChat
+@SystemMessage #MxChat2 It's as simple as that! #MxChat
+(Sentence1)
+@SystemMessage #MxChat2 I'm a slave #MxChat @Timeout(15, Sentence1)
+[i'm a slave] @SystemMessage #MxChat2 Correct... #MxChat
+@AcceptAnswer @SystemMessage #MxChat2 Incorrect... #MxChat @Goto(Sentence1)
+(Sentence2)
+@SystemMessage #MxChat2 An ass to be used #MxChat @Timeout(15, Sentence1)
+[an ass to be used] @SystemMessage #MxChat2 Correct... #MxChat
+@AcceptAnswer @SystemMessage #MxChat2 Incorrect... #MxChat @Goto(Sentence2)
+(Sentence3)
+@SystemMessage #MxChat2 spanked and humiliated #MxChat @Timeout(15, Sentence1)
+[spanked and humiliated] @SystemMessage #MxChat2 Correct... #MxChat
+@AcceptAnswer @SystemMessage #MxChat2 Incorrect... #MxChat @Goto(Sentence3)
+(Sentence4)
+@SystemMessage #MxChat2 A sad existance #MxChat @Timeout(15, Sentence1)
+[a sad existance] @SystemMessage #MxChat2 Correct... #MxChat
+@AcceptAnswer @SystemMessage #MxChat2 Incorrect... #MxChat @Goto(Sentence4)
+(Sentence5)
+@SystemMessage #MxChat2 Here to please and serve #MxChat @Timeout(15, Sentence1)
+[here to serve and please] @SystemMessage #MxChat2 Correct... #MxChat
+@AcceptAnswer @SystemMessage #MxChat2 Incorrect... #MxChat @Goto(Sentence5)
+(Sentence6)
+@SystemMessage #MxChat2 Or be punished #MxChat @Timeout(15, Sentence1)
+[or be punished] @SystemMessage #MxChat2 Correct... #MxChat
+@AcceptAnswer @SystemMessage #MxChat2 Incorrect... #MxChat @Goto(Sentence6)
+(Sentence7)
+@SystemMessage #MxChat2 I'm a weak willed sissy #MxChat @Timeout(15, Sentence1)
+[i'm a weak wiled sissy] @SystemMessage #MxChat2 Correct... #MxChat
+@AcceptAnswer @SystemMessage #MxChat2 Incorrect... #MxChat @Goto(Sentence7)
+(Sentence8)
+@SystemMessage #MxChat2 A slut to be used #MxChat @Timeout(15, Sentence1)
+[a slut to be used] @SystemMessage #MxChat2 Correct... #MxChat
+@AcceptAnswer @SystemMessage #MxChat2 Incorrect... #MxChat @Goto(Sentence8)
+(Sentence9)
+@SystemMessage #MxChat2 By real men #MxChat @Timeout(15, Sentence1)
+[by real men] @SystemMessage #MxChat2 Correct... #MxChat
+@AcceptAnswer @SystemMessage #MxChat2 Incorrect... #MxChat @Goto(Sentence9)
+(Sentence10)
+@SystemMessage #MxChat2 Forever fucked #MxChat @Timeout(15, Sentence1)
+[forever fucked] @SystemMessage #MxChat2 Correct... #MxChat
+@AcceptAnswer @SystemMessage #MxChat2 Incorrect... #MxChat @Goto(Sentence10)
+@NullResponse
+@End
+(M4R)
+(BellOut) //Count Bell rings, when she reaches X you say stop or start over
+@SystemMessage #MxChat2 We're gonna practice your ability to count and your patience #GNMGrin #MxChat
+@SystemMessage #MxChat2 And your patience #MxChat
+@SystemMessage #MxChat2 You'll hear the bell quite a few times #MxChat
+@SystemMessage #MxChat2 Count them #MxChat
+@SystemMessage #MxChat2 When I'm satisfied I'll be asking you how many times the bell rang #MxChat
+@SystemMessage #MxChat2 Get it right and we continue #MxChat
+@SystemMessage #MxChat2 Get it wrong and you'll spend more time counting bells #MxChat
+(BellOut1)
+@NullResponse @SetVar[BellCount]=[0]
+(BellOut2)
+@NullResponse @PlayAudio[\GNMSounds\SpecialSounds\Bell.mp3] @Wait(#Random(1,3))
+@NullResponse @ChangeVar[BellCount]=[BellCount]+[1]
+@NullResponse @Chance99(BellOut2)
+(BellOut3)
+@SystemMessage #MxChat2 So slave #MxChat
+@SystemMessage #MxChat2 How many bells did you just hear? #GNMGrin #MxChat @InputVar[BellCount2]
+@Variable[BellCount2]=[BellCount] @SystemMessage #MxChat2 Correct! #MxChat @Goto(End)
+@SystemMessage #MxChat2 Wrong.. #MxChat
+@SystemMessage #MxChat2 The number was @ShowVar[BellCount] #MxChat
+@SystemMessage #MxChat2 Lets try again.. #MxChat @Goto(BellOut1)
+(M5R)
+(Counting) // Count until you reach, then tell her stop, if too early or too late you start over
+@SystemMessage #MxChat2 Slave #MxChat
+@SystemMessage #MxChat2 I have something fun that will test your patience #MxChat
+@SystemMessage #MxChat2 You are to count! #GNMGrin #MxChat
+@SystemMessage #MxChat2 And say stop when you reach a specific number #MxChat
+@SystemMessage #MxChat2 Now #MxChat 
+@SystemMessage #MxChat2 I'll allow a difference of + - 10 seconds #MxChat 
+@SystemMessage #MxChat2 Earlier of later than that and you get to start over! #MxChat
+(Counting2) 
+@NullResponse @SetVar[NumberGoal]=[0]
+@NullResponse @SetVar[NumberGoal2]=[0]
+@NullResponse @ChangeVar[NumberGoal]=[NumberGoal]+[#Random(180,300)]
+@SystemMessage #MxChat2 The number is @ShowVar[NumberGoal] #MxChat
+@SystemMessage #MxChat2 You may start now! @CountVar[NumberGoal2] #MxChat
+@NullResponse @CustomMode(stop, Goto, Stop)
+@NullResponse @Wait(99999)
+(Stop)
+@SystemMessage #MxChat2 Well #GNMGrin #MxChat @CountVar[NumberGoal2, stop] @CustomMode(ModeText, Normal)
+@SystemMessage #MxChat2 I've counted to @ShowVar[NumberGoal2] #GNMGrin #MxChat
+@NullResponse @ChangeVar[NumberGoal2]=[NumberGoal2]-[NumberGoal]
+@Variable[NumberGoal2]<=[10]And[NumberGoal2]>=[-10] @SystemMessage #MxChat2 So you've counted within my limits! Good job! #MxChat @Goto(End)
+@SystemMessage #MxChat2 So you must have made a few miscounts #GNMLol #MxChat
+@SystemMessage #MxChat2 don't worry! #MxChat
+@SystemMessage #MxChat2 You'll get a new chance right now! #MxChat @Goto(Counting2)
+(M6R)
+(Focus) // Watch numbers on the screen, when X appears say stop or start over
+@SystemMessage #MxChat2 I'm gonna make numbers appear on your screen #MxChat
+@SystemMessage #MxChat2 When you see a specific number say stop before it disappears #MxChat
+@SystemMessage #MxChat2 Who knows when it will apear again? #GNMGrin #MxChat
+@SystemMessage #MxChat2 The number you need to watch for is 5 #MxChat
+@SystemMessage #MxChat2 Good luck! #MxChat
+(Focus2)
+@NullResponse @Chance01(5) @Goto(1,2,3,4,6,7,8,9,10)
+(1)
+@NullResponse @Timeout(5, Focus2)
+[stop] @SystemMessage #MxChat2 Wrong number #GNMLol #MxChat
+@AcceptAnswer @SystemMessage #MxChat2 Wrong number #GNMLol #MxChat
+(2)
+@NullResponse @Timeout(5, Focus2)
+[stop] @SystemMessage #MxChat2 Wrong number #GNMLol #MxChat
+@AcceptAnswer @SystemMessage #MxChat2 Wrong number #GNMLol #MxChat
+(3)
+@NullResponse @Timeout(5, Focus2)
+[stop] @SystemMessage #MxChat2 Wrong number #GNMLol #MxChat
+@AcceptAnswer @SystemMessage #MxChat2 Wrong number #GNMLol #MxChat
+(4)
+@NullResponse @Timeout(5, Focus2)
+[stop] @SystemMessage #MxChat2 Wrong number #GNMLol #MxChat
+@AcceptAnswer @SystemMessage #MxChat2 Wrong number #GNMLol #MxChat
+(5)
+@NullResponse @Timeout(5, Focus2)
+[stop] @SystemMessage #MxChat2 Well observed #GNMLol #MxChat @Goto(Stop2)
+@AcceptAnswer @SystemMessage #MxChat2 Well observed #GNMLol #MxChat @Goto(Stop2)
+(6)
+@NullResponse @Timeout(5, Focus2)
+[stop] @SystemMessage #MxChat2 Wrong number #GNMLol #MxChat
+@AcceptAnswer @SystemMessage #MxChat2 Wrong number #GNMLol #MxChat
+(7)
+@NullResponse @Timeout(5, Focus2)
+[stop] @SystemMessage #MxChat2 Wrong number #GNMLol #MxChat
+@AcceptAnswer @SystemMessage #MxChat2 Wrong number #GNMLol #MxChat
+(8)
+@NullResponse @Timeout(5, Focus2)
+[stop] @SystemMessage #MxChat2 Wrong number #GNMLol #MxChat
+@AcceptAnswer @SystemMessage #MxChat2 Wrong number #GNMLol #MxChat
+(9)
+@NullResponse @Timeout(5, Focus2)
+[stop] @SystemMessage #MxChat2 Wrong number #GNMLol #MxChat
+@AcceptAnswer @SystemMessage #MxChat2 Wrong number #GNMLol #MxChat
+(10)
+@NullResponse @Timeout(5, Focus2)
+[stop] @SystemMessage #MxChat2 Wrong number #GNMLol #MxChat
+@AcceptAnswer @SystemMessage #MxChat2 Wrong number #GNMLol #MxChat
+(Stop2)
+@SystemMessage #MxChat2 Lets continue #MxChat
+@End
+(End)
+@End
