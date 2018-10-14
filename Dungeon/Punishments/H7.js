@@ -188,4 +188,4 @@ sendMessage("I'm impressed by your willpower today "); //#DT4
 changeMeritLow(false);
 setVar("PunishmentComplete", true);
 setVar("punishmentCompleted", 27);
-run("dungeon/PunishmentBaseEnd.js");
+run("Dungeon/PunishmentBaseEnd.js");

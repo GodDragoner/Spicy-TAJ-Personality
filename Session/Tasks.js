@@ -103,7 +103,7 @@ function startTimePassTasks(durationMinutes, allowTeasing = true) {
 
                 break;
             case 4:
-                if(!isVar(VARIABLE_IS_BALLS_TIED) && !isVar(VARIABLE_CHASTITY_ON) && getPainLimit() == LIMIT_ASKED_YES && fetchToy("Rope")) {
+                if(!getVar(VARIABLE_IS_BALLS_TIED, false) && !getVar(VARIABLE_CHASTITY_ON, false) && getPainLimit() == LIMIT_ASKED_YES && fetchToy("Rope")) {
                     setTempVar(VARIABLE_IS_BALLS_TIED, true);
 
                     //TODO: Show tutorials etc. and tell the sub what exactly to do
@@ -206,7 +206,7 @@ function goToCorner(durationSeconds) {
 }
 
 function returnSlave() {
-    sendMessage(randomInteger("Return here", "Come back", "Get here", "Return", "Get back here", "Get back to me", "Get your %Ass% over here..") + " %SlaveName%", 0);
+    sendMessage(randomInteger("Return here", "Come back", "Get here", "Return", "Get back here", "Get back to me", "Get your %Ass% over here") + " %SlaveName%", 0);
     playBellSound();
     sleep(5);
 }

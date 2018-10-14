@@ -50,6 +50,10 @@ function unlockChastityCage() {
     return;
 }
 
+function isInChastity() {
+    return isVar(VARIABLE_CHASTITY_ON) && getVar(VARIABLE_CHASTITY_ON);
+}
+
 
 function lockChastityCage() {
     if(!getVar(VARIABLE_HAS_CHASTITY) || getVar(VARIABLE_CHASTITY_ON)) {

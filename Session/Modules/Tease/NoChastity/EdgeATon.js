@@ -73,8 +73,8 @@ if (getVar(VARIABLE_EDGE_A_TONS_DONE, 0) == 0) {
     //Saturday TODO: Implement competition
     if (date.getDay() == 6 && false) {
         if (getVar(VARIABLE_EDGE_A_TONS_DONE) > 15) {
-            const answer = sendInput("And I have another good news...");
-            const answer = sendInput("Today is saturday!");
+            sendMessage("And I have another good news...");
+            sendMessage("Today is saturday!");
 
             if (getVar(VARIABLE_GOLD) < 20) {
                 sendMessage("Oh...");

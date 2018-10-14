@@ -12,7 +12,7 @@ if(isStroking()) {
     }
 } else {
     sendMessage("Okay %SlaveName%");
-    if(!getVar(VARIABLE_STROKE_TRAININGS_DONE, 0) == 0) {
+    if(getVar(VARIABLE_STROKE_TRAININGS_DONE, 0) != 0) {
         sendMessage("I think it's time for some stroke training again %EmoteHappy%")
     }
 }

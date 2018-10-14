@@ -281,7 +281,7 @@ switch (choice) {
 		if(response.containsIgnoreCase("repeat","punish'","punishment","yes")) {
 			sendMessage ("Again it is then.. "); //#DT4 
 			setVar("S3Recursion", True);
-			run("dungeon/punishment/S3.js");
+			run("Dungeon/punishment/S3.js");
 			break;
 		}
 		
@@ -327,4 +327,4 @@ switch (choice) {
 	}
 	setVar("PunishmentComplete", true);
 	setVar("punishmentCompleted", 03);
-	run("dungeon/PunishmentBaseEnd.js");
+	run("Dungeon/PunishmentBaseEnd.js");

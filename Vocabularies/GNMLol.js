@@ -1,3 +1,5 @@
+//TODO: Duplicate with Lol REMOVE
+
 function GNMLolVocabulary() {
 
 		const answers = [" laugh "," giggle "," lol "," haha ","hehe "," xD ","lmao ","lmfao "," LOL"," *grin*","*smile* ","*wicked grin*  ","*smiles innocently* "," *grins at you* ","*looks at you innocently*  ","*looks at you and grins*  ","*evil grin* ","*mischievous grin* "," *innocent grin*", " *naughty grin*", " *coy smile*" ];
