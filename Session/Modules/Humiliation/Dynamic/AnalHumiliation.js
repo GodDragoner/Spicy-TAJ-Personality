@@ -22,6 +22,7 @@
             sendMessage("But let's not waste the time we are waiting for your ass to stretch though");
             startTimePassTasks(5);
             sendMessage("I think we waited long enough. Let's get back to your ass");
+            removeButtplug();
         }
     } else {
         let missingPlug = false;
@@ -39,6 +40,7 @@
                 sendMessage("Let's spend the time that the plug is stretching your ass with something useful");
                 startTimePassTasks(5);
                 sendMessage("I believe we waited long enough and your ass is ready for more now");
+                removeButtplug();
             }
         }
 
@@ -110,7 +112,8 @@ function startPenetratingSession(toy) {
     const durationMinutes = randomInteger(10, 30);
     const date = setDate();
 
-    while(!date.addMinute(durationMinutes).hasPassed() && appendModule(toy)) {}
+    while (!date.addMinute(durationMinutes).hasPassed() && appendModule(toy)) {
+    }
 
     sendMessage("%SlaveName%");
     sendMessage("You can put your toys aside");
@@ -129,13 +132,36 @@ function appendModule(toy) {
         sendMessage("You already know what's coming next don't you?");
 
         //TODO: Ask what the sub guesses he has to do
+
+        let subGuess = 0;
+        let answer = createInput(7);
+
+        if(!answer.isTimeout()) {
+            if (answer.isLike("blow")) {
+                subGuess = 1;
+            } else if (answer.isLike("squat", "ass")) {
+                subGuess = 2;
+            }
+        }
+
         let blowjob = false;
         if (isChance(50) && getASMLimit() == LIMIT_ASKED_YES) {
             //Blowjob
             sendMessage("%SlaveName% I want you to sit down in front of it and give it a nice blowjob");
 
+            if(subGuess != 0 && subGuess == 2) {
+                sendMessage("Well you guessed wrong");
+                sendMessage("No fucking your ass...");
+                sendMessage("...yet %Grin%");
+                sendMessage("Don't worry we will get back to that ass of yours soon enough");
+            } else if(subGuess != 0 && subGuess == 1) {
+                sendMessage("You did actually guess right!");
+                sendMessage("I hope you will enjoy this as much as I already do");
+            }
+
             if (isChance(30)) sendMessage("Hopefully you cleaned your ass before because otherwise this might be quite gross %Grin%");
             sendMessage("You will probably taste that ass juice of yours %Lol%");
+
             startBlowToy(toy);
             sendMessage("See! Much better");
             sendMessage("Now the dildo looks clean again and can go right back up your ass %Grin%");
@@ -158,6 +184,16 @@ function appendModule(toy) {
         if (!blowjob || isChance(30)) {
             if (blowjob) {
                 sendMessage("Let's do what I originally had in mind before I decided to let you blow it first %Grin%");
+            } else {
+                if(subGuess != 0 && subGuess == 2) {
+                    sendMessage("Well you guessed right");
+                    sendMessage("Your ass will be violated again");
+                    sendMessage("However this time in a special position %Grin%");
+                } else if(subGuess != 0 && subGuess == 1) {
+                    //TODO: ASM interaction if sub is against asm like: A blowjob? I thought you aren't into ASM...
+                    sendMessage("No %SlaveName%. I won't make you blow that " + toy);
+                    sendMessage("Silly you. It will be much better than a blowjob %Grin%");
+                }
             }
 
             sendMessage("%SlaveName% I want you to squat above it");
@@ -173,7 +209,7 @@ function appendModule(toy) {
         } else if (blowjob) {
             sendMessage("Let's see...");
         }
-    } else if(!assModulesDone.contains(1)) {
+    } else if (!assModulesDone.contains(1)) {
         assModulesDone.add(1);
         appendPenetratingSession(toy);
     } else {
@@ -216,7 +252,7 @@ function appendPenetratingSession(toy) {
             sendMessage("Let's change the position shall we? %Grin%");
             choosePosition(toy, blowjob);
             sendMessage("And straight back to fucking that ass of yours");
-            if(currentBlowjob) {
+            if (currentBlowjob) {
                 sendMessage("And don't forget to keep that mouth " + random("busy", "occupied", "used", "filled") + " too %Lol%");
             }
         } else {
@@ -231,10 +267,10 @@ function appendPenetratingSession(toy) {
         }
 
         //TODO: Based on experience
-        if(isChance(50) && finger && currentFingerCount < 5) {
+        if (isChance(50) && finger && currentFingerCount < 5) {
             sendMessage("I think you are ready to take more than your " + currentFingerCount++ + pluralize("finger", currentFingerCount));
             sendMessage("Go ahead and use " + currentFingerCount + pluralize("finger", currentFingerCount) + " from now on %Grin%");
-            if(currentFingerCount >= 4) {
+            if (currentFingerCount >= 4) {
                 sendMessage("Better spread that asshole for me");
             }
         }
@@ -473,7 +509,7 @@ function startSquatAnal(toy) {
         //TODO: Could need something like this more often
         if (isChance(40)) {
             //Only send this when the sub is not in chastity
-            if (!isVar(VARIABLE_CHASTITY_ON)) {
+            if (!getVar(VARIABLE_CHASTITY_ON, false)) {
                 sendMessage("But no touching that %Cock%");
             }
         } else {

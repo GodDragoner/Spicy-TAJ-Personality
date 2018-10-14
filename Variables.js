@@ -45,6 +45,7 @@ const VARIABLE_LOCKED_UP_UNTIL = "lockedUpUntil";
 const VARIABLE_IS_PLUGGED = "isPlugged";
 const VARIABLE_IS_GAGED = "isGaged";
 const VARIABLE_IS_BALLS_TIED = "isBallsTied";
+const VARIABLE_IS_BALL_CRUSHER_ON = "isBallCrusherOn";
 
 //Modules
 const VARIABLE_POSITION_TRAINING_STARTED = "positionTrainingStarted";
@@ -54,6 +55,11 @@ const VARIABLE_STROKE_TRAINING_ACTIVE = "strokeTrainingActive";
 const VARIABLE_STROKE_TRAININGS_DONE = "strokeTrainingsDone";
 const VARIABLE_STROKE_TRAINING_LEVEL = "strokeTrainingLevel";
 const VARIABLE_STROKE_TRAINING_EDGES_DONE = "strokeTrainingEdgesDone";
+
+const VARIABLE_LICK_TRAININGS_DONE = "lickTrainingsDone";
+
+const VARIABLE_MODEL_RATINGS = "modelRatings";
+const VARIABLE_MODEL_RATINGS_DONE = "modelRatingsDone";
 
 const VARIABLE_EDGE_A_TONS_DONE = "edgeATonsDone";
 const VARIABLE_EDGE_A_TON_EDGE_RECORD = "edgeATonEdgeRecord";

@@ -1,4 +1,3 @@
-
 function getDildoSize() {
     let assLevel = getVar(VARIABLE_ASS_LEVEL);
 

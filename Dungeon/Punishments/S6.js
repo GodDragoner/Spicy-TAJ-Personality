@@ -129,4 +129,4 @@ break;
 
 	setVar("PunishmentComplete", true);
 	setVar("punishmentCompleted", 06);
-	run("dungeon/PunishmentBaseEnd.js");
+	run("Dungeon/PunishmentBaseEnd.js");

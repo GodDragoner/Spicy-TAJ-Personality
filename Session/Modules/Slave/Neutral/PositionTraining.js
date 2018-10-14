@@ -1,40 +1,41 @@
-if (getVar(VARIABLE_POSITION_TRAINING_STARTED, false) == false) {
-    setVar(VARIABLE_POSITION_LEVEL, 1);
-    setVar(VARIABLE_POSITION_TRAINING_STARTED, "positionTrainingStarted");
+{
+    if (!getVar(VARIABLE_POSITION_TRAINING_STARTED, false)) {
+        setVar(VARIABLE_POSITION_LEVEL, 1);
+        setVar(VARIABLE_POSITION_TRAINING_STARTED, true);
 
-    sendMessage("Now %SlaveName%");
-	sendMessage("I consider it rather important that you know your positions by heart.");
-	sendMessage("So of course we're gonna spend some time once in a while making sure you know your positions.");
-	sendMessage("Pay attention as I walk you through the different positions..");
+        sendMessage("Now %SlaveName%");
+        sendMessage("I consider it rather important that you know your positions by heart.");
+        sendMessage("So of course we're gonna spend some time once in a while making sure you know your positions.");
+        sendMessage("Pay attention as I walk you through the different positions..");
 
-    positionWalkthrough();
-
-} else {
-    sendMessage("%SlaveName%")
-    if (randomInteger(1, 2) === 1) {
-        sendMessage("A quick reminder of all the positions...");
         positionWalkthrough();
-    }
-}
-
-var position_level = getVar(VARIABLE_POSITION_LEVEL, 1);
-
-if (position_level <= 15) {
-    simplePositionTrainingSelection(1);
-} else if (position_level >= 30) {
-    let chance = randomInteger(0, 100);
-    if (chance < 5) {
-        complicatedPositionTrainingSelection(3);
-    } else if (chance < 35) {
-        simplePositionTrainingSelection(randomInteger(1,2));
-    } else if (chance < 70) {
-        positionTrainingTestSelection();
     } else {
-        complicatedPositionTrainingSelection(randomInteger(1,2))
+        sendMessage("%SlaveName%")
+        if (randomInteger(1, 2) === 1) {
+            sendMessage("A quick reminder of all the positions...");
+            positionWalkthrough();
+        }
     }
-}
 
-positionTrainingEnd();
+    const positionLevel = getVar(VARIABLE_POSITION_LEVEL, 1);
+
+    if (positionLevel <= 15) {
+        simplePositionTrainingSelection(1);
+    } else if (positionLevel >= 30) {
+        let chance = randomInteger(0, 100);
+        if (chance < 5) {
+            complicatedPositionTrainingSelection(3);
+        } else if (chance < 35) {
+            simplePositionTrainingSelection(randomInteger(1, 2));
+        } else if (chance < 70) {
+            positionTrainingTestSelection();
+        } else {
+            complicatedPositionTrainingSelection(randomInteger(1, 2))
+        }
+    }
+
+    positionTrainingEnd();
+}
 
 function positionWalkthrough() {
     lockImages();
@@ -80,7 +81,7 @@ function simplePositionTrainingIntro() {
     sendMessage(random("To make sure you understand it fully","So I'm sure you won't have any excuses","So we both know you understand it completely!","This way you won't have any excuses.."));
     sendMessage(random("When I'm done explaining","Once I've finished explaining","After I've explained it properly","Once it has been explained properly"));
     sendMessage(random("You're going to take the position","Your gonna take the position","You will take the position"));
-    sendMessage(random("And you won't break it until you hear my bell","And you'll keep the position until the sound of my bell","And only once you hear my bell may you break it.."));
+    sendMessage(random("And you won't leave it until you hear my bell","And you'll keep the position until the sound of my bell","And only once you hear my bell may you leave it..."));
 
     while (true) {
         let answer = sendInput("Understood?", 10);
@@ -88,8 +89,9 @@ function simplePositionTrainingIntro() {
             changeMeritMedium(true);
             sendMessage("Not being answered is a sign of disrespect");
             sendMessage("I don't like being disrespected");
+            //TODO: Add punishment reason
+            addPunishmentPoints(25);
             return;
-            //TODO: Punish (GNM points + 25)
         } else if (answer.containsIgnoreCase("yes")) {
             changeMeritLow(false);
             sendMessage("%Good%");
@@ -97,10 +99,11 @@ function simplePositionTrainingIntro() {
         } else if (answer.containsIgnoreCase("no")) {
             changeMeritMedium(true);
             sendMessage("Don't take me for a fool");
+            addPunishmentPoints(25);
             return;
         } else {
             changeMeritLow(true);
-            sendMessage(YES_OR_NO + "%SlaveName%");
+            sendMessage(YES_OR_NO);
             answer.loop();
         }
     }
@@ -109,7 +112,7 @@ function simplePositionTrainingIntro() {
 function simplePositionTrainingSelection(totalPositions) {
 
     simplePositionTrainingIntro();
-    sendMessage("now then...")
+    sendMessage("Now then...")
 
     var simpleTraining = {
         currentTraining_a1 : function () {
@@ -374,7 +377,7 @@ function simplePositionTrainingSelection(totalPositions) {
         }
     };
 
-    var positionsDone = 0;
+    let positionsDone = 0;
 
     let trainingSet = ["a1", "a2", "a3", "a4", "a5", "a6", "a7", "a8", "a9", "a10", "a11", "a12", "a13", "a14", "a15", "a16"];
     while (positionsDone < totalPositions) {
@@ -392,10 +395,10 @@ function simplePositionTrainingSelection(totalPositions) {
 
 function positionTrainingTimer() {
     // let position_level = getVar(VARIABLE_POSITION_LEVEL);
-    if (position_level <= 15) {
+    if (positionLevel <= 15) {
         sleep(randomInteger(120, 240));
         returnSlave();      
-    } else if (position_level >= 30) {
+    } else if (positionLevel >= 30) {
         sleep(randomInteger(240, 360));
         returnSlave();      
     } else {
@@ -457,7 +460,7 @@ function positionTestPunish(){
     sendMessage("I've awarded you punishment points..");
     setVar(VARIABLE_PUNISHMENT_POINTS, getVar(VARIABLE_PUNISHMENT_POINTS + randomInteger(50,150)));
     sendMessage("Next time I expect more from you!");
-    setVar(VARIABLE_POSITION_LEVEL, position_level - 1);
+    setVar(VARIABLE_POSITION_LEVEL, positionLevel - 1);
 }
 
 function positionTestReward(){
@@ -473,7 +476,7 @@ function positionTestReward(){
         sendMessage("Since you had 2 mistakes afterall I'm not giving you too much gold");
         rewardGoldLow();
     }
-    setVar(VARIABLE_POSITION_LEVEL, position_level + 1);
+    setVar(VARIABLE_POSITION_LEVEL, positionLevel + 1);
     sendMessage("I've transferred the gold");
     sendMessage("And you now have " + getGold() + " gold");
     sendMessage("Brave %EmoteHappy%");
@@ -573,8 +576,8 @@ function positionTrainingEnd() {
     playSound("Audio/Spicy/SpecialSounds/Bell.mp3");
     sendMessage(random("It was fun!", "I had a lot of fun", "I enjoyed it", "Well this was fun!", "I had a blast", "I really enjoyed this!", "Oh my was this fun"));
     changeMeritMedium(false);
-    if (position_level < 50) {
-        setVar(VARIABLE_POSITION_LEVEL, position_level + 1);
+    if (positionLevel < 50) {
+        setVar(VARIABLE_POSITION_LEVEL, positionLevel + 1);
     }
 }
 
@@ -1037,7 +1040,7 @@ function positionCheckBalance() {
         } else {
             sendMessage("That many!");
             sendMessage("Not good enough %SlaveName%");
-            setVar(VARIABLE_POSITION_LEVEL = position_level - 1);
+            setVar(VARIABLE_POSITION_LEVEL = positionLevel - 1);
             sendMessage("I'm disappointed..");
             changeMeritMedium(true);
             return;
@@ -1064,7 +1067,7 @@ function checkPositionToys() {
 
 function complicatedPositionTrainingTimer() {
     let personalityStrictness = getVar("personalityStrictness", 0);
-    if (position_level <= 15) {
+    if (positionLevel <= 15) {
         switch(personalityStrictness) {
             case 0:
                 sleep(randomInteger(200, 300));
@@ -1079,7 +1082,7 @@ function complicatedPositionTrainingTimer() {
                 returnSlave();
                 break;
         }
-    } else if (position_level >= 30) {
+    } else if (positionLevel >= 30) {
         switch(personalityStrictness) {
             case 0:
                 sleep(randomInteger(400, 500));

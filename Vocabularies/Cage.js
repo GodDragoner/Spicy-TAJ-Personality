@@ -1,3 +1,4 @@
+//TODO: Duplicate with ChastityCage REMOVE
 function CageVocabulary() {
  switch(getVar(VARIABLE_CHASTITY_CAGE_TYPE)) {
  

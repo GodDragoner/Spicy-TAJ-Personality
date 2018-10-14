@@ -105,7 +105,7 @@ sendMessage(" %Slave%, @ShowVar[GirlfriendName] doesn't accept failure", randomI
 	break;
   }
   
-  
+  /*
 (Full)
 sendMessage(" Stop the flow of water @Wait(13)"); //#EnemaChat
 sendMessage(" Awe... does someone need a little break??? @Wait(#Random(10,20))"); //#EnemaChat
@@ -139,13 +139,13 @@ sendMessage(" let me know when you're cramps have SUBSIDED @Wait(#Random(5,10))"
  
 
 
-(Toilet)
+//(Toilet)
 sendMessage(" ut oh slave....did you evacuate yourself without permission?"); //#EnemaChat
 [no]
 [yes]
 @differentAnswer
 
-(Done)
+//(Done)
 sendMessage(" Good boy!  I'm so glad you took that whole bag for me."); //#EnemaChat
 sendMessage(" close the valve on the enema bag, and remove the plug/nozzle @Wait(5)"); //#EnemaChat
 sendMessage(" #SlaveName, please keep in mind that you don't have permission to leak a drop yet. #GNMlol"); //#EnemaChat
@@ -166,4 +166,4 @@ sendMessage(" when you're all done say "finished" and we'll move on @SetFlag(Pun
 [finished, Finished] sendMessage(" good,  I hope I'll be taking more advantage of that clean hole of yours soon.   @TempFlag(B1Complete) @CallReturn(CR\BackgroundMode\Punishment\PunishmentBaseEnd.txt)#EnemaChat
 @DifferentAnswer  sendMessage(" you're so full of shit, you don't make sense
 @End
-
+*/
