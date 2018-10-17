@@ -14,6 +14,10 @@ function pluralize(string, amount = 2) {
     }
 }
 
+function returnYourOrMy() {
+    return random('your', 'my');
+}
+
 function pluralizeArticle(article, amount = 2) {
     if(amount > 1) {
         return "them";

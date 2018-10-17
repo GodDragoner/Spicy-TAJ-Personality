@@ -59,6 +59,7 @@
                     sendMessage('Put that ball crusher on %Grin%');
                 } else {
                     sendMessage('Now put that ball crusher on %Grin%');
+                    setVar(VARIABLE_IS_BALL_CRUSHER_ON, true);
                 }
 
                 //TODO: Based on reference values that were set previously or setup ball crusher thing
@@ -140,7 +141,7 @@
                 //TODO: Could also punish with other stuff such as anal etc.
 
                 if (hasBallCrusher) {
-                    sendMessage('Aaaand twist %Grin%');
+                    sendMessage('Aaaand twist %Grin%', 5);
                 } else if (getPainLimit() == LIMIT_ASKED_YES) {
                     //Means it is the first time the sub failed
                     if (fails == 0) {
@@ -157,9 +158,15 @@
                     //TODO: Maybe more creative consequences for non pain slaves such as corner time or other stuff
                     sendMessage('I am gonna subtract some gold from you');
                     addGold(-50);
-                    sendMessage('Did you really think that there are no consequences to this?');
+                    sendMessage('Did you really think that there are no consequences to this game?');
                 }
             }
+        }
+
+        if(hasBallCrusher) {
+            sendMessage('You may remove the ball crusher now %SlaveName%');
+            setVar(VARIABLE_IS_BALL_CRUSHER_ON, true);
+            sendMessage('Feels good, doesn\'t it?');
         }
 
         sendMessage('We\'re at the end! %Grin%');
