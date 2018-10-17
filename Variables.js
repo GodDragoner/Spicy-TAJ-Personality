@@ -66,6 +66,7 @@ const VARIABLE_EDGE_A_TON_EDGE_RECORD = "edgeATonEdgeRecord";
 
 //Sub
 const VARIABLE_DEVOTION = "subDevotion";
+const VARIABLE_SUB_PAIN = "subPain";
 
 const VARIABLE_EDGE_STARTED_DATE = "edgeStartedDate";
 
