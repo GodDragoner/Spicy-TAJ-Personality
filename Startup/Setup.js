@@ -29,8 +29,8 @@
     sendSystemMessage("This might take a few minutes..");
     sleep(2);
 
-    setVar(VARIABLE_SUB_PAIN, 3);
-    setVar("subPainTolerance", 3);
+    setVar(VARIABLE_SUB_PAIN_TOLERANCE, 3);
+    //setVar("subPain", 3);
     setVar("subEndurance", 3);
     setVar("subStrictness", 3);
     setVar(VARIABLE_DEVOTION, 45);

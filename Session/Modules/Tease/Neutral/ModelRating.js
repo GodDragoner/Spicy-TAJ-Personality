@@ -145,13 +145,11 @@
                 } else if (getPainLimit() == LIMIT_ASKED_YES) {
                     //Means it is the first time the sub failed
                     if (fails == 0) {
-                        //TODO: Replace by real pain punishment based on endurance
-
-                        sendMessage('Slap your balls ' + random(3, 5) + ' times');
-
+                        smallPunishment(true, false);
                         sendMessage('Did you really think you are gonna just play this game without consequences? %Lol%');
                     } else {
                         sendMessage(random('I guess I have to punish you for that again', 'You already know what happens now don\'t you?', 'That\'s gonna hurt', 'Well ') + ' %Lol%');
+                        smallPunishment(true, false);
 
                     }
                 } else {
