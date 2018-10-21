@@ -158,7 +158,7 @@ switch (choice) {
 	sendMessage("Now I'm not done %GNMGrin%"); // #DT4
 	sendMessage("I want you to count the number of commands I give in your head"); // #DT4
 	sendMessage("Everytime you hear a command I want you say 'Thank You %DomHonorific%'"); //#DT4
-	sendMessage("Lastly I want you to count everytime your heel strikes the floor or you loose your balance.."); // #DT4
+	sendMessage("Lastly I want you to count every time your heel strikes the floor or you loose your balance.."); // #DT4
 	sendMessage("If both heels strikes at the same time it counts as two! "); //#DT4
 	sendMessage("I never said this would be easy %GNMLol%"); // #DT4 
 	CornerCommandsGiven = 0 ;
@@ -241,7 +241,7 @@ switch (choice) {
 	fee=false;
 	if(!Failed2){
 		sendMessage("Now I need you to be honest with me.."); // #DT4
-		response = getInput("Did you remember to say 'thank you %DomHonorific% ' <i>everytime</i> I gave a command? ",8); //#DT4 
+		response = getInput("Did you remember to say 'thank you %DomHonorific% ' <i>every time</i> I gave a command? ",8); //#DT4
 		while(true){
 			if(response.containsIgnoreCase("yes", "yep", "yeah", "I did")){
 			sendMessage("%GNMGood%");// #DT4 
