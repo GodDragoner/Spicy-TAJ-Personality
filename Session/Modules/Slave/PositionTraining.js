@@ -767,7 +767,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             showImage("Images/Spicy/Positions/BentOver2.jpg");
             sendMessage("Head down");
             sendMessage("Stay there until you hear my bell");
-            sendMessage("I want you to count everytime you lose your balance");
+            sendMessage("I want you to count every time you lose your balance");
             //TODO: No More ((If you absolutely can't handle anymore just say 'stop'))
             sendMessage("Get into position %SlaveName%");
             unlockImages();
@@ -782,7 +782,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             showImage("Images/Spicy/Positions/BentOverOpen2.jpg");
             sendMessage("Head down");
             sendMessage("Stay there until you hear my bell");
-            sendMessage("I want you to count everytime you lose your balance");
+            sendMessage("I want you to count every time you lose your balance");
             //TODO: No More ((If you absolutely can't handle anymore just say 'stop'))
             sendMessage("Get into position %SlaveName%");
             unlockImages();
@@ -856,7 +856,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             showImage("Images/Spicy/Positions/Judgement1.jpg");
             sendMessage("Stay there until you hear my bell");
             sendMessage("Just so we're clear your heels may not touch the ground..");
-            sendMessage("I want you to count everytime you lose your balance or your heels touch the ground");
+            sendMessage("I want you to count every time you lose your balance or your heels touch the ground");
             //TODO: No More ((If you absolutely can't handle anymore just say 'stop'))
             sendMessage("Get into position %SlaveName%");
             unlockImages();
@@ -958,7 +958,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             lockImages();
             showImage("Images/Spicy/Positions/Stand1.jpg");
             sendMessage("Stay there until you hear my bell");
-            sendMessage("I want you to count everytime you lose your balance");
+            sendMessage("I want you to count every time you lose your balance");
             //TODO: No More ((If you absolutely can't handle anymore just say 'stop'))
             sendMessage("Get into position %SlaveName%");
             unlockImages();
@@ -972,7 +972,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             lockImages();
             showImage("Images/Spicy/Positions/StandOpen1.jpg");
             sendMessage("Stay there until you hear my bell");
-            sendMessage("I want you to count everytime you lose your balance");
+            sendMessage("I want you to count every time you lose your balance");
             //TODO: No More ((If you absolutely can't handle anymore just say 'stop'))
             sendMessage("Get into position %SlaveName%");
             unlockImages();

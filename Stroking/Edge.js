@@ -34,12 +34,14 @@ function startEdging(holdSeconds) {
     startEdge();
     startStroking(randomInteger(150, 200));
     sendEdgeTaunts();
-    stopStrokingEdgeMessage();
-    endEdge();
-
+    
     if(holdSeconds !== undefined) {
+        //TODO: Hold message
         sendHoldEdgeTaunts(holdSeconds);
     }
+
+    stopStrokingEdgeMessage();
+    endEdge();
 
     delVar(VARIABLE_EDGE_STARTED_DATE);
 }

@@ -1,10 +1,46 @@
 //TODO: If has spoon nearby => use spoon sometimes or other stuff or even make the sub get the spoon
+//TODO: Spanking if chastity is on
 
-function smallPunishment(balls = true, penis = true) {
-    if (isInChastity() && penis) {
-        penis = false;
+function smallPunishment(cbt = true, spanking = true) {
+    //TODO: Spanking too in the future at random
+    if(isInChastity() || !cbt && spanking) {
+        smallSpankingPunishment();
+    } else {
+        smallCBTPunishment();
+    }
+}
+
+
+function smallSpankingPunishment() {
+    const implement = fetchSpankingImplement();
+    sendMessage('Let\'s get get started %Grin%');
+    //TODO: Voice commands etc.?
+    sendMessage('I want you to ' + random('kneel', 'bend over a chair', 'stand') + ' for this');
+    sendMessage('Now get ready to spank your ass cheeks on my command %SlaveName%!', 5);
+
+    let countLoud = isChance(30);
+    if(countLoud) {
+        sendMessage(random('I want you to count out loud!', 'I want you to count along', 'I want you to count with me'));
     }
 
+    //TODO: Sounds
+    let maxLoops = getVar(VARIABLE_SUB_PAIN_TOLERANCE)*3;
+
+    while(maxLoops > 0) {
+        maxLoops--;
+
+        if(maxLoops%2 == 0) {
+            sendMessage('Left cheek!', 1);
+        } else {
+            sendMessage('Right cheek!', 1);
+        }
+    }
+
+    sendMessage('You can stop now %SlaveName%');
+    sendMessage('Get back to your chair!');
+}
+
+function smallCBTPunishment(balls = true, penis = true) {
     switch (randomInteger(0, 2)) {
         case 0:
             punishSmallSqueezeBalls();
@@ -24,6 +60,7 @@ function smallPunishment(balls = true, penis = true) {
 //Personality strictness should not influence pain!
 
 function punishSmallBustBallsMultiple(maxLoops = getVar(VARIABLE_SUB_PAIN_TOLERANCE), earlyExitChance = 60 - getVar(VARIABLE_SUB_PAIN_TOLERANCE)*2) {
+    //TODO: Count out loud?
     while(maxLoops > 0) {
         maxLoops--;
 

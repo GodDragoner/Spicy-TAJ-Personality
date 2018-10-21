@@ -26,7 +26,7 @@ if(getVar(VARIABLE_STROKE_TRAININGS_DONE, 0) == 0) {
     sendMessage("At the very beginning you'll start with a warmup round that ends with you edging once");
     sendMessage("Afterwards the real fun begins");
     sendMessage("You have 3 \"lives\"");
-    sendMessage("So everytime you are edging during this training you'll tell me about it and then you'll lose one life");
+    sendMessage("So every time you are edging during this training you'll tell me about it and then you'll lose one life");
     sendMessage("When you edged a total of 4 times, that is 1 warmup edge and 3 training edges, the training will end");
     sendMessage("After each edge you'll be given a short break");
     sendMessage("You will be stroking to a slideshow and you are not permitted to look away from the images");
