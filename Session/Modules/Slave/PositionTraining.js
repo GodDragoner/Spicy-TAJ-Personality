@@ -36,6 +36,21 @@ if (position_level <= 15) {
 
 positionTrainingEnd();
 
+function startKneeling() {
+    //TODO: Sound and random
+    sendMessage('Kneel for me %SlaveName%');
+    setVar(VARIABLE_IS_KNEELING, true);
+}
+
+function stopKneeling() {
+    sendMessage('You can stand up %SlaveName%');
+    setVar(VARIABLE_IS_KNEELING, false);
+}
+
+function isKneeling() {
+    return getVar(VARIABLE_IS_KNEELING, false);
+}
+
 function positionWalkthrough() {
     lockImages();
 	sendMessage("Attention");
@@ -109,7 +124,7 @@ function simplePositionTrainingIntro() {
 function simplePositionTrainingSelection(totalPositions) {
 
     simplePositionTrainingIntro();
-    sendMessage("now then...")
+    sendMessage("Now then...")
 
     var simpleTraining = {
         currentTraining_a1 : function () {

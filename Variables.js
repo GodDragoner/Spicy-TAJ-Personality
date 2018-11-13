@@ -47,6 +47,8 @@ const VARIABLE_IS_GAGED = "isGaged";
 const VARIABLE_IS_BALLS_TIED = "isBallsTied";
 const VARIABLE_IS_BALL_CRUSHER_ON = "isBallCrusherOn";
 
+const VARIABLE_IS_KNEELING = "isKneeling";
+
 //Modules
 const VARIABLE_POSITION_TRAINING_STARTED = "positionTrainingStarted";
 const VARIABLE_POSITION_LEVEL = "positionLevel";

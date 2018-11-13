@@ -64,16 +64,36 @@
     const moduleIndicator = randomInteger(0, max);
 
     if (moduleIndicator < teaseModuleChance) {
+        if(!isInChastity()) {
+            //TODO: Dynamic
+            if(isChance(50)) {
+                run("Session/Modules/Tease/Neutral/*.js");
+            } else {
+                run("Session/Modules/Tease/NoChastity/*.js");
+            }
+
+            //run("Session/Modules/Tease/Dymanic/*.js");
+        } else {
+            //TODO: No chastity
+            run("Session/Modules/Tease/Neutral/*.js");
+            /*if(isChance(50)) {
+                run("Session/Modules/Tease/Neutral/*.js");
+            } else {
+                run("Session/Modules/Tease/Neutral/*.js");
+            }*/
+        }
 
     } else if (moduleIndicator < sissyModuleChance + teaseModuleChance) {
-
+        run("Session/Modules/Sissy/Dynamic/*.js");
     } else if (moduleIndicator < painModuleChance + sissyModuleChance + teaseModuleChance) {
-
-    } else if (moduleIndicator < slaveModuleChance + sissyModuleChance + teaseModuleChance) {
-
-    } else if (moduleIndicator < humiliationModuleChance + slaveModuleChance + sissyModuleChance + teaseModuleChance) {
+        run("Session/Modules/Pain/Dynamic/*.js");
+    } else if (moduleIndicator < painModuleChance + sissyModuleChance + teaseModuleChance + slaveModuleChance) {
+        run("Session/Modules/Slave/Neutral/*.js");
+    } else if (moduleIndicator < painModuleChance + sissyModuleChance + teaseModuleChance + slaveModuleChance + humiliationModuleChance) {
         run("Session/Modules/Humiliation/Dynamic/*.js");
     }
+
+    //TODO: Links or something
 }
 
 

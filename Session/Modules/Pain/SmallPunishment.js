@@ -1,5 +1,4 @@
 //TODO: If has spoon nearby => use spoon sometimes or other stuff or even make the sub get the spoon
-//TODO: Spanking if chastity is on
 
 function smallPunishment(cbt = true, spanking = true) {
     //TODO: Spanking too in the future at random
