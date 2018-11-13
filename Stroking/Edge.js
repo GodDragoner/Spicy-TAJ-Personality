@@ -34,7 +34,7 @@ function startEdging(holdSeconds) {
     startEdge();
     startStroking(randomInteger(150, 200));
     sendEdgeTaunts();
-    
+
     if(holdSeconds !== undefined) {
         //TODO: Hold message
         sendHoldEdgeTaunts(holdSeconds);

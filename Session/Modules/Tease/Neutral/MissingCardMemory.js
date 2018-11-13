@@ -119,6 +119,27 @@
             }
         }
     } else {
+        if(wins == 7) {
+            sendMessage('You made it!');
+            sendMessage('You\'ve won a total of 7 games and that\'s enough for now');
+            sendMessage('Rest %SlaveName%');
+        } else {
+            sendMessage('Well...');
+            sendMessage('You\'ve failed 7 times');
+            sendMessage('I guess that is enough for now...');
+            sendMessage('But because you\'ve disappointed your %DomHonorific% you will edge 3 mores time for me %Grin%');
 
+            startEdging();
+            sendMessage("%LetEdgeFade%", randomInteger(5, 10));
+
+            startEdging();
+            sendMessage("%LetEdgeFade%", randomInteger(5, 10));
+
+            startEdging();
+            sendMessage("%LetEdgeFade%", randomInteger(5, 10));
+
+            sendMessage('Rest %SlaveName%');
+            sendMessage('You will be happy about that rest you\'ve just had soon %Lol%')
+        }
     }
 }
