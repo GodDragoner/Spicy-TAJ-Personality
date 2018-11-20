@@ -6,6 +6,9 @@ function lubeUpToyWithLube(toy) {
         sendMessage("Go ahead and grab your lube and...");
         sendMessage("Lube that %Ass% and " + toy + " of yours up for me");
     }
+
+    sendMessage('Tell me when you are done %EmoteHappy%');
+    waitForDone();
 }
 
 function lubeUpToyWithSpit(toy, canBlowjob = true) {
@@ -24,6 +27,9 @@ function lubeUpToyWithSpit(toy, canBlowjob = true) {
         } else {
             sendMessage("Come on. Soak it in your spit and make it nice and slippery", 10);
         }
+
+        sendMessage('Tell me when you are done %EmoteHappy%');
+        waitForDone();
     }
 }
 
@@ -36,6 +42,9 @@ function lubeUpToyWithToothpaste(toy) {
         sendMessage(random("But it will be more painful once it is inside of you", "However it will hurt more like this", "But this way it will hurt you more afterwards",
             "However this will be more painful afterwards") + " %Grin%", 10);
     }
+
+    sendMessage('Tell me when you are done %EmoteHappy%');
+    waitForDone();
 }
 
 function lubeUpToyWithTigerHot(toy) {
@@ -47,4 +56,7 @@ function lubeUpToyWithTigerHot(toy) {
         sendMessage(random("But it will be more painful once it is inside of you", "However it will hurt more like this", "But this way it will hurt you more afterwards",
             "However this will be more painful afterwards") + " %Lol%", 10);
     }
+
+    sendMessage('Tell me when you are done %EmoteHappy%');
+    waitForDone();
 }

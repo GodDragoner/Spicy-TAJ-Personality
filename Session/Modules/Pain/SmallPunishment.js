@@ -211,15 +211,16 @@ function punishSmallBustBalls() {
     }
 }
 
-function waitForDone() {
-    const answer = createInput(100);
+function waitForDone(timeout = 100) {
+    const answer = createInput(timeout);
     while (true) {
         if (answer.isTimeout()) {
             //TODO: Better timeout options?
             break;
-        } else if (answer.isLike('done', 'ready')) {
+        } else if (answer.isLike('done', 'ready', 'yes')) {
             break;
         } else {
+            sendMessage('Are you done?');
             answer.loop();
         }
     }

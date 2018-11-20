@@ -112,7 +112,7 @@ function startPenetratingSession(toy) {
     const durationMinutes = randomInteger(10, 30);
     const date = setDate();
 
-    while (!date.addMinute(durationMinutes).hasPassed() && appendModule(toy)) {
+    while (!date.clone().addMinute(durationMinutes).hasPassed() && appendModule(toy)) {
     }
 
     sendMessage("%SlaveName%");

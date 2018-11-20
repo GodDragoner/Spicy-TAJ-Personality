@@ -221,4 +221,6 @@
         sendMessage('Hopefully this was as much fun for you as for me');
         sendMessage('I guess it was if you have a good memory %Lol%');
     }
+
+    setVar(VARIABLE_MODEL_RATINGS_DONE, getVar(VARIABLE_MODEL_RATINGS_DONE) + 1);
 }

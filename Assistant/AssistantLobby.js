@@ -70,7 +70,7 @@
 }
 
 function startSession() {
-    if (getDate(VARIABLE_LAST_TEASE_SESSION).addHour(16).hasPassed()) {
+    if (getDate(VARIABLE_LAST_TEASE_SESSION).clone().addHour(16).hasPassed()) {
         if (getVar(VARIABLE_PUNISHMENT_POINTS) > 400) {
             sendVirtualAssistantMessage("Session denied %SlaveName%");
             sendVirtualAssistantMessage("You have too many punishment points");
@@ -96,7 +96,7 @@ function startSession() {
         return;
     } else {
         sendVirtualAssistantMessage("%SlaveName% you had a session recently");
-        if (getDate(VARIABLE_LAST_TEASE_SESSION).addHour(14).hasPassed()) {
+        if (getDate(VARIABLE_LAST_TEASE_SESSION).clone().addHour(14).hasPassed()) {
             sendVirtualAssistantMessage("You will be eligible for a session again soon");
         }
     }

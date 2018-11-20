@@ -1,4 +1,4 @@
-addResponseRegex("fell off", "fell([ ]|$)", "felloff",);
+addResponseRegex("fell off", "fell([ ]|$)", "felloff");
 
 function fellOffResponse(message) {
     if(getVar("S4Round")>0) {   ///use this to qualify that your in the intended punishment routine that needs a asynchronous response

@@ -49,6 +49,8 @@ const VARIABLE_IS_BALL_CRUSHER_ON = "isBallCrusherOn";
 
 const VARIABLE_IS_KNEELING = "isKneeling";
 
+const VARIABLE_BALL_CRUSHER_MAX_TWISTS = "ballCrusherMaxTwists";
+
 //Modules
 const VARIABLE_POSITION_TRAINING_STARTED = "positionTrainingStarted";
 const VARIABLE_POSITION_LEVEL = "positionLevel";
@@ -65,6 +67,8 @@ const VARIABLE_MODEL_RATINGS_DONE = "modelRatingsDone";
 
 const VARIABLE_EDGE_A_TONS_DONE = "edgeATonsDone";
 const VARIABLE_EDGE_A_TON_EDGE_RECORD = "edgeATonEdgeRecord";
+
+
 
 //Sub
 const VARIABLE_DEVOTION = "subDevotion";

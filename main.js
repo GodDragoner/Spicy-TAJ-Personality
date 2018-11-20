@@ -52,6 +52,6 @@ if(isFullTime()) {
     run("Startup/FullTime/FullTimeCheckup.js");
 }
 
-run("Session/StartSession.js");
+//run("Session/StartSession.js");
 
 run("Assistant/AssistantLobby.js");
