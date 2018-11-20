@@ -6,7 +6,7 @@ function startTimePassTasks(durationMinutes, allowTeasing = true) {
 
     let iterations = 0;
     const date = setDate();
-    while(!date.addMinute(durationMinutes).hasPassed()) {
+    while(!date.clone().addMinute(durationMinutes).hasPassed()) {
 
         //Only send this when we are about to give another task to the sup
         if(iterations > 0) {
@@ -32,6 +32,8 @@ function startTimePassTasks(durationMinutes, allowTeasing = true) {
         if(option != 0) {
             tasksDone.add(tasksDone);
         }
+
+        //TODO: don't repeat stuff
 
         switch(option) {
             case 0:

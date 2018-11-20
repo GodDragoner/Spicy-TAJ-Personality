@@ -49,7 +49,7 @@ function updatePictureSet() {
     const unusedDresses = [];
 
     if(usedDressesAmount < 30) {
-        for (number = 0; x < 31; x++) {
+        for (let x = 0; x < 31; x++) {
             //Check whether that dress is already used
             if (!usedDresses.contains(+"," + x + ",")) {
                 unusedDresses.push(x);
@@ -61,7 +61,7 @@ function updatePictureSet() {
         setVar("usedVirtualAssistantDresses", ",");
 
         //Add all possible dresses
-        for(number = 0; x < 31; x++) {
+        for(let x = 0; x < 31; x++) {
             unusedDresses.push(x);
         }
     }

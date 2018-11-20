@@ -14,7 +14,7 @@ const TOY_ASKED_BUY_MODE = 3;
 function setUpPersonalityVars() {
     switch(ACTIVE_PERSONALITY_ID) {
         case ENFORCING_PERSONALITY_ID:
-            for(number = 0; x < LIMITS.length; x++) {
+            for(let x = 0; x < LIMITS.length; x++) {
                 if(getVar(LIMITS[x], LIMIT_NEVER_ASKED) != LIMIT_NEVER) setVar(LIMITS[x], LIMIT_ASKED_YES);
             }
             break;

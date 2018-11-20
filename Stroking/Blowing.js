@@ -44,6 +44,8 @@ function sendBlowingTaunts(duration) {
 
 function startBlowToy(toy) {
     sendMessage("Okay...");
+    sendMessage('Place that ' + toy + ' in front of you', 5);
+
     let rightToIt = true;
     const caressingTip = isChance(50);
 
@@ -83,7 +85,7 @@ function startBlowToy(toy) {
                 sendMessage("All the way down and up", randomInteger(10, 20));
                 sendMessage("Be passionate and imagine it being another men's cock", randomInteger(10, 20));
                 //TODO: ASM interactions
-                sendMessage("");
+                //sendMessage("");
             }
         }
     }
@@ -126,12 +128,60 @@ function randomBlowjobModule(toy) {
         position = getIntoBlowjobPosition(toy, getPosition())
     }
 
-    if (getBlowjobLevel() < 30) {
-
+    if (getBlowjobLevel() < 30 || isChance(50)) {
+        startNormalBlowjobModule();
     } else {
         startDeepthroatModule();
     }
-    sendMessage('Let\'s start ')
+
+    //sendMessage('You can put your ' + toy + ' away for now %EmoteHappy%');
+}
+
+
+function startNormalBlowjobModule() {
+    sendMessage('Let\'s go easy on you for now');
+    sendMessage('');
+
+    //TODO: Signal sounds and explanation
+
+    let startDate = setDate();
+    startDate.addMinute(randomInteger(8, 15));
+
+    while (!startDate.hasPassed()) {
+        switch (randomInteger(0, 6)) {
+            case 0:
+                sendMessage(random("Light sucks", "Stick with the beat!", "Keep the beat", "Light sucking to the beat", "Suck lightly to the beat", "Light sucking - only the cockhead..."));
+                if (isChance(50)) playSound("Audio\\Spicy\\Modules\\BJTraining\\BJLightSucksVaried\\12345_1min.mp3", true);
+                else playSound("Audio\\Spicy\\Modules\\BJTraining\\BJLightSucksVaried\\123123_1min.mp3", true);
+                break;
+            case 1:
+                sendMessage(random("Light sucks", "Stick with the beat!", "Keep the beat", "Light sucking to the beat", "Suck lightly to the beat", "Light sucking - only the cockhead..."));
+                if (isChance(50) && getBlowjobLevel() >= 15) playSound("Audio\\Spicy\\Modules\\BJTraining\\BJLightSucks\\MediumSuck1min.mp3", true);
+                else playSound("Audio\\Spicy\\Modules\\BJTraining\\BJLightSucks\\MediumSuck15sec.mp3", true);
+                break;
+            case 2:
+                sendMessage(random("Swirl your tongue", "Swirl that tongue around", "Swirl your tongue around that cockhead!", "Use the tongue!"));
+                //TODO: Might be too long and I renamed the folder from BJTounge to BJTongue
+                playSound("Audio\\Spicy\\Modules\\BJTraining\\BJTongueExercise\\*.mp3", true);
+                break;
+            case 3:
+                sendMessage(random("Stroke it", "Stroke the dildo", "Stroke that dick", "Stroke that cock", "Stroke that huge dildo", "Stroke it!", "Stroke stroke stroke!"));
+
+                playSound("Audio\\Spicy\\Modules\\BJTraining\\BJHandStroking\\*.mp3");
+                sleep(4);
+                stopAudio();
+
+                playSound("Audio\\Spicy\\Stroking\\Metronome2\\*.mp3");
+                sleep(20);
+                stopAudio();
+                break;
+            case 4:
+                sendMessage(random("Suck fast!", "Fast sucking!", "Suck it fast", "Suck it swiftly", "Suck it fast!", "Make sure you suck it fast!"));
+
+                playSound("Audio\\Spicy\\Modules\\BJTraining\\BJFastSucking\\FastSuck1min.mp3");
+                break;
+        }
+    }
 }
 
 //TODO: Use to create some lube? Warning: Think of disabling other spit usage then
@@ -146,10 +196,10 @@ function startDeepthroatModule() {
 
     const bowl = isChance(50);
 
-    if(true) {
+    if (true) {
         sendMessage('And remember: Good sissys only swallow cum and no spit!');
 
-        if(bowl) {
+        if (bowl) {
             sendMessage('Which is why you should get a bowl to catch all that nasty spit!');
         } else {
             sendMessage('Try to keep all that spit in your mouth and anything that leaves your mouth should be slowly dripping onto your body %Grin%');
@@ -163,8 +213,8 @@ function startDeepthroatModule() {
         let taskIndex = randomInteger(0, 10);
 
         //Try to find a new different task
-        if(usedBlowjobInstructions.size() >= 1 && usedBlowjobInstructions.get(usedBlowjobInstructions.size() - 1) == taskIndex ||
-            usedBlowjobInstructions.size() >= 2 &&  usedBlowjobInstructions.get(usedBlowjobInstructions.size() - 2) == taskIndex) {
+        if (usedBlowjobInstructions.size() >= 1 && usedBlowjobInstructions.get(usedBlowjobInstructions.size() - 1) == taskIndex ||
+            usedBlowjobInstructions.size() >= 2 && usedBlowjobInstructions.get(usedBlowjobInstructions.size() - 2) == taskIndex) {
             continue;
         }
 
@@ -235,7 +285,7 @@ function startDeepthroatModule() {
                 break;
             case 8:
                 //Too few spit
-                if(usedBlowjobInstructions.isEmpty()) {
+                if (usedBlowjobInstructions.isEmpty()) {
                     continue;
                 }
 
@@ -248,7 +298,7 @@ function startDeepthroatModule() {
                 break;
             case 9:
                 //Too few spit or already used spit in previous task
-                if(usedBlowjobInstructions.isEmpty() || usedBlowjobInstructions.get(usedBlowjobInstructions.length() - 1) == 10) {
+                if (usedBlowjobInstructions.isEmpty() || usedBlowjobInstructions.get(usedBlowjobInstructions.length() - 1) == 10) {
                     continue;
                 }
 
@@ -256,7 +306,7 @@ function startDeepthroatModule() {
                 break;
             case 10:
                 //Too few spit or already used spit in previous task
-                if(usedBlowjobInstructions.isEmpty() || usedBlowjobInstructions.get(usedBlowjobInstructions.length() - 1) == 9) {
+                if (usedBlowjobInstructions.isEmpty() || usedBlowjobInstructions.get(usedBlowjobInstructions.length() - 1) == 9) {
                     continue;
                 }
 
@@ -266,12 +316,21 @@ function startDeepthroatModule() {
 
         const level = random(0, tasks.length);
 
-        if(usedBlowjobInstructions.contains(taskIndex)) {
+        if (usedBlowjobInstructions.contains(taskIndex)) {
             //TODO: Variation
             sendMessage('And yet again ' + decapitalize(tasks[level]));
         } else {
             sendMessage(tasks[level]);
         }
+
+        if (tasksDone == 0) {
+            sendMessage('Tell me when you are done!');
+        } else if (tasksDone == 1) {
+            sendMessage('And yet again tell me when you are done');
+        }
+
+        //TODO: Can't do it interaction?
+        waitForDone(1000);
 
         usedBlowjobInstructions.add(taskIndex);
         tasksDone++;

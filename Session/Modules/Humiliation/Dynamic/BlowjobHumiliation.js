@@ -8,6 +8,7 @@
         sendMessage("But don't expect it to be pleasant after you disappointed me like that %Lol%");
     } else {
         startBlowToy(toy);
+        randomBlowjobModule(toy);
 
         sendMessage("Good work %SlaveName%");
         sendMessage("You can put that " + toy + " aside for now");
