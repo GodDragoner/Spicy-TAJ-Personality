@@ -37,7 +37,7 @@
                 break;
             } else if (lobbyAnswer.containsIgnoreCase("rule", "house", "commands", "orders")) {
                 //sendVirtualAssistantMessage("This is not supported yet!");
-                run("rules/HouseRules.js");
+                run("Rules/HouseRules.js");
                 sendVirtualAssistantMessage("back to the assistant from rules");
                 break;
             } else if (lobbyAnswer.containsIgnoreCase("save", "end", "quit", "stop", "leave", "close", "finish")) {
