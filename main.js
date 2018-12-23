@@ -49,7 +49,7 @@ showImage("Images/Spicy/Intro/SpicyGif*.gif", 7);
 //TODO: Academy
 
 if(isFullTime()) {
-    run("Startup/FullTime/FullTimeCheckup.js");
+    run("Startup/FullTime/FullTimeCheck.js");
 }
 
 //run("Session/StartSession.js");
