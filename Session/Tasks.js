@@ -105,23 +105,8 @@ function startTimePassTasks(durationMinutes, allowTeasing = true) {
 
                 break;
             case 4:
-                if(!getVar(VARIABLE_IS_BALLS_TIED, false) && !getVar(VARIABLE_CHASTITY_ON, false) && getPainLimit() == LIMIT_ASKED_YES && fetchToy("Rope")) {
-                    setTempVar(VARIABLE_IS_BALLS_TIED, true);
+                if(!getVar(VARIABLE_IS_BALLS_TIED, false) && !getVar(VARIABLE_CHASTITY_ON, false) && getPainLimit() == LIMIT_ASKED_YES && tieBalls()) {
 
-                    //TODO: Show tutorials etc. and tell the sub what exactly to do
-                    sendMessage("Now take that rope and tie up your balls");
-                    sendMessage("Do it real nice and tight");
-                    const answer = sendInput("Tell me when you are ready to continue");
-
-                    while(true) {
-                        if(answer.isLike("done", "yes", "ready")) {
-                            sendMessage("%Good%");
-                            break;
-                        } else {
-                            sendMessage("If you aren't done yet don't bother me.");
-                            answer.loop();
-                        }
-                    }
                 } else {
                     //Reset task counter because if we fail fetch toy we already send the message "Well then..." so we don't want another connector message
                     iterations = 0;
