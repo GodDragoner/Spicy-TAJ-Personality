@@ -83,7 +83,7 @@
     sleep(6 * 1);
 
     sendVirtualAssistantMessage("Welcome %SubName%");
-	sleep(.1);
+	  sleep(.1);
     sendVirtualAssistantMessage("My name is Vivienne");
     sendVirtualAssistantMessage("I am Mistress %domName%\'s virtual assistant");
     sendVirtualAssistantMessage("You are here because you sent a request to become the property of Mistress %domName%");
@@ -403,7 +403,7 @@
     }
 
     setupBlackmail();
-    //TODO: Check for and create the FFriends folder
+    //TODO: Check for and create the FFriends folder if needed
     sendVirtualAssistantMessage("One more thing! %Grin%");
     sendVirtualAssistantMessage("Inside the image folders you'll find a folder named 'FFriends'");
 	  showImage("Images/Spicy/Toys/3friends.jpg",3);
@@ -455,7 +455,8 @@
         }
     }
 
-
+    // askForToy("text",variable,"image name")
+    // where "text" is turned into the image name and used if "image name" is not given. No .jpg required.
     askForToy("Ball Crusher");
     askForToyUsage("BallCrusher", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
@@ -465,11 +466,9 @@
     askForToy("Dildo");
     askForToyUsage("Dildo", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
-	//showImage("Images/Spicy/Toys/InflatablePlug.jpg",3);
     askForToy("Inflatable Butt Plugs",undefined,"InflatablePlug");
     askForToyUsage("Inflatable Butt Plugs", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
-  //showImage("Images/Spicy/Toys/ShockCollar.jpg",3);
     askForToy("Shock Collar");
     askForToyUsage("ShockCollar", domChose);
     sendVirtualAssistantMessage("Tell me what level of shock you consider to be quite painful", false)
@@ -522,9 +521,7 @@
     askForToyUsage("Gag", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
     askForToy("Girl friend");
-	  //showImage("Images/Spicy/Toys/LingerieSet*.jpg",3);
     askForToy("Basic Lingerie",undefined,"LingerieSet");
-	  //showImage("Images/Spicy/Toys/LingerieSet2*.jpg",3);
     askForToy("Advanced Lingerie",undefined,"LingerieSet2");
     askForToy("Parachute");
     askForToyUsage("Parachute", domChose);
@@ -572,7 +569,7 @@
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 	  unlockImages();
 
-    //TODO: Check for and create the SelfHumiliation folder
+    //TODO: Check for and create the SelfHumiliation folder if needed
     sendVirtualAssistantMessage("Next we need for you to setup a folder with pictures of YOU!");
     sendVirtualAssistantMessage("This is very simple actually...");
     sendVirtualAssistantMessage("Inside the Images/Spicy folder you'll find a folder named SelfHumiliation");
