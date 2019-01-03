@@ -466,7 +466,7 @@
     askForToyUsage("Dildo", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 	//showImage("Images/Spicy/Toys/InflatablePlug.jpg",3);
-    askForToy("Inflatable Butt Plugs",undefined,"InflatablePlug.jpg");
+    askForToy("Inflatable Butt Plugs",undefined,"InflatablePlug");
     askForToyUsage("Inflatable Butt Plugs", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
   //showImage("Images/Spicy/Toys/ShockCollar.jpg",3);
@@ -523,7 +523,7 @@
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
     askForToy("Girl friend");
 	  //showImage("Images/Spicy/Toys/LingerieSet*.jpg",3);
-    askForToy("Basic Lingerie",undefined,"LingerieSet.jpg");
+    askForToy("Basic Lingerie",undefined,"LingerieSet");
 	  //showImage("Images/Spicy/Toys/LingerieSet2*.jpg",3);
     askForToy("Advanced Lingerie",undefined,"LingerieSet2");
     askForToy("Parachute");
