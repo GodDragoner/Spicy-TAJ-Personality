@@ -3,7 +3,7 @@
     sendMessage('I think they are having way too much fun');
     sendMessage('But don\'t worry I will take care of that');
 
-    //TODO: Only once at first time
+
     sendMessage('First of all let\'s refresh the terminology a bit');
     sendMessage('Slap means to use your open hand to bust those balls');
     sendMessage('Flick means to use your index finger to flick your balls');

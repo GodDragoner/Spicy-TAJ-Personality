@@ -6,7 +6,7 @@
             sendMessage("Blow that cock gently");
             break;
         case 0:
-            sendMessage("Image you blowing a real dick %Lol%");
+            sendMessage("Imagine blowing a real dick %Lol%");
             break;
     }
 }
