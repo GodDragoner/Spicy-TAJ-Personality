@@ -47,7 +47,7 @@ function distributeClamps(amount) {
     let firstRun = true;
 
     while(amount > 0) {
-        let randomBodyPart = BODY_PARTS[randomInteger(0, 9)];
+        let randomBodyPart = BODY_PARTS[randomInteger(0, BODY_PARTS.length)];
 
         if(randomBodyPart.currentClamps >= randomBodyPart.maxClamps) {
             //If there is no opposite or the opposite part is also filled already skip
