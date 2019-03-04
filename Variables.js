@@ -72,6 +72,11 @@ const VARIABLE_EDGE_A_TON_EDGE_RECORD = "edgeATonEdgeRecord";
 
 //Sub
 const VARIABLE_DEVOTION = "subDevotion";
+
+/**
+ * Number between 1 - 10
+ * @type {string}
+ */
 const VARIABLE_SUB_PAIN_TOLERANCE = "subPainTolerance";
 
 const VARIABLE_EDGE_STARTED_DATE = "edgeStartedDate";
