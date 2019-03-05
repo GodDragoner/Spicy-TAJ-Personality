@@ -61,6 +61,8 @@
         const max = teaseModuleChance + sissyModuleChance + painModuleChance + slaveModuleChance + humiliationModuleChance;
         const moduleIndicator = randomInteger(0, max);
 
+        //TODO: Contstruct run strings/paths here instead of per module
+
         if (moduleIndicator < teaseModuleChance) {
             if (!isInChastity()) {
                 //TODO: More Dynamic
@@ -70,7 +72,7 @@
                     run("Session/Modules/Tease/NoChastity/*.js");
                 }*/
 
-                run(random("Session/Modules/Tease/NoChastity/*.js", "Session/Modules/Tease/Dymanic/*.js", "Session/Modules/Tease/Neutral/*.js"));
+                run(random("Session/Modules/Tease/NoChastity/*.js", "Session/Modules/Tease/Dynamic/*.js", "Session/Modules/Tease/Neutral/*.js"));
             } else {
                 //TODO: No chastity
                 run("Session/Modules/Tease/Neutral/*.js");
@@ -84,11 +86,20 @@
         } else if (moduleIndicator < sissyModuleChance + teaseModuleChance) {
             run("Session/Modules/Sissy/Dynamic/*.js");
         } else if (moduleIndicator < painModuleChance + sissyModuleChance + teaseModuleChance) {
-            run("Session/Modules/Pain/Dynamic/*.js");
+            if(!isInChastity()) {
+                run(random("Session/Modules/Pain/NoChastity/*.js", "Session/Modules/Pain/Dynamic/*.js"/*, "Session/Modules/Pain/Neutral/*.js"*/));
+            } else {
+                run("Session/Modules/Pain/Dynamic/*.js" /*, "Session/Modules/Pain/Neutral/*.js"*/);
+            }
+
         } else if (moduleIndicator < painModuleChance + sissyModuleChance + teaseModuleChance + slaveModuleChance) {
             run("Session/Modules/Slave/Neutral/*.js");
         } else if (moduleIndicator < painModuleChance + sissyModuleChance + teaseModuleChance + slaveModuleChance + humiliationModuleChance) {
-            run("Session/Modules/Humiliation/Dynamic/*.js");
+            if(!isInChastity()) {
+                run(random("Session/Modules/Pain/Neutral/*.js", "Session/Modules/Pain/Dynamic/*.js"/*, "Session/Modules/Humiliation/NoChastity/*.js"*/));
+            } else {
+                run(random("Session/Modules/Pain/Neutral/*.js", "Session/Modules/Pain/Dynamic/*.js"));
+            }
         }
 
         sendMessage('Some Link here!');
