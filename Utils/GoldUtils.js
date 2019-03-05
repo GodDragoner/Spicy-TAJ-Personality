@@ -61,9 +61,3 @@ function rewardGoldLow() {
 function getGold() {
 	return getVar(VARIABLE_GOLD);
 }
-
-function addGold(amount) {
-	currentGold = getGold();
-	newGold = currentGold + amount;
-	setVar(VARIABLE_GOLD, newGold);
-}

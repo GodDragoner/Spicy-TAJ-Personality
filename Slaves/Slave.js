@@ -10,7 +10,7 @@ function addPunishmentPoints(amount) {
 }
 
 function addGold(amount) {
-    const gold = getVar(VARIABLE_GOLD);
+    const gold = getGold();
 
     if(gold + amount > 0) {
         setVar(VARIABLE_GOLD, gold + amount);

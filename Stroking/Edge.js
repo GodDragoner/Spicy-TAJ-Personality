@@ -1,4 +1,5 @@
-function startEdging(holdSeconds) {
+//TODO: Function to get hold seconds based on mood etc.
+function startEdging(holdSeconds, skipStop = false) {
     const answers = [
         "Get to the %EdgeNoun%",
         "Get to the %EdgeNoun% for me",
@@ -40,7 +41,10 @@ function startEdging(holdSeconds) {
         sendHoldEdgeTaunts(holdSeconds);
     }
 
-    stopStrokingEdgeMessage();
+    if(!skipStop) {
+        stopStrokingEdgeMessage();
+    }
+
     endEdge();
 
     delVar(VARIABLE_EDGE_STARTED_DATE);

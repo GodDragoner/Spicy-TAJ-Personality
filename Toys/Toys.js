@@ -7,6 +7,9 @@ run("Toys/Clamps.js");
 run("Toys/Clamps.js");
 run("Toys/BallCrusher.js");
 run("Toys/Rope.js");
+run("Toys/Room.js");
+run("Toys/Device.js");
+
 
 function hasDildoToy() {
     return getVar("toyDildo", false);

@@ -20,6 +20,20 @@ function getMonthlyBadDays() {
     return 31 - getMonthlyGoodDays();
 }
 
+function allowTeasingStroking() {
+    return !feelsLikePunishingSlave() && isChance(30);
+}
+
+//TODO: Add own implementation
+function feelsLikePunishingSlave() {
+    return feelsEvil();
+}
+
+//TODO: Add own implementation
+function isAnnoyed() {
+    return feelsEvil();
+}
+
 function feelsEvil() {
     let mood = getMood();
 

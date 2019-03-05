@@ -7,6 +7,17 @@ function hasBallGag() {
     return getVar("toyGag", false);
 }
 
+function putInGag() {
+    if (!fetchToy('gag')) {
+        return false;
+    }
+
+    sendMessage('Now put it in. Tell me when you are done %SlaveName%');
+    waitForDone();
+
+    return true;
+}
+
 function removeGag() {
     sendMessage("%SlaveName% go ahead and remove that gag from your mouth");
     let answer = sendInput("Tell me when you are ready to continue");

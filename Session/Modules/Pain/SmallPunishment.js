@@ -108,10 +108,15 @@ function punishSmallBustBallsMultiple(maxLoops = getVar(VARIABLE_SUB_PAIN_TOLERA
 
         }
 
-        if(isChance(earlyExitChance)) {
+        if(isChance(getEarlyPunishmentExitChance())) {
             break;
         }
     }
+}
+
+function getEarlyPunishmentExitChance() {
+    let earlyExitChance = 60 - getVar(VARIABLE_SUB_PAIN_TOLERANCE)*2 - (feelsLikePunishingSlave()? 30 : 0);
+    return earlyExitChance;
 }
 
 function punishSmallSqueezeBalls() {

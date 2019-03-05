@@ -52,7 +52,8 @@
             teaseModuleChance -= 10;
         }
 
-        let sissyModuleChance = moduleChance;
+        //Not used atm
+        let sissyModuleChance = 0;
         let painModuleChance = moduleChance;
         let slaveModuleChance = moduleChance;
         let humiliationModuleChance = moduleChance;

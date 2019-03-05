@@ -1,6 +1,6 @@
 {
     sendMessage("Let's see %SlaveName%");
-    sendMessage(random("I think it's time to work that ass", "I guess it's time to work on your ass", "Let's have som fun with your ass shall we?"));
+    sendMessage(random("I think it's time to work that ass", "I guess it's time to work on your ass", "Let's have some fun with your ass shall we?"));
 
     let plugPlay = hasButtplugToy() && isChance(50) && getVar(VARIABLE_ASS_LEVEL) >= 5;
     let dildoPlay = hasDildoToy() && getVar(VARIABLE_ASS_LEVEL) >= 5;
@@ -108,6 +108,7 @@ function startPenetratingSession(toy) {
     sendMessage("Now that your ass is properly prepared go ahead and push it completely in");
     sendMessage("Keep it in there", 5);
     sendMessage("And pull it all the way out again");
+    //TODO: Sit on dildo for some duration
 
     const durationMinutes = randomInteger(10, 30);
     const date = setDate();
@@ -122,7 +123,7 @@ function startPenetratingSession(toy) {
 
 function appendModule(toy) {
     let assModulesDone = getVar("assModulesDone", new java.util.ArrayList());
-    setVar("assModulesDone", assModulesDone);
+    setTempVar("assModulesDone", assModulesDone);
 
     const finger = toy == "finger";
 
@@ -426,8 +427,7 @@ function announceSwitchDildos() {
 }
 
 function choosePosition(toy, needsTwoHands = false) {
-    const random = randomInteger(0, 5);
-    switch (random) {
+    switch (randomInteger(0, 5)) {
         case 0:
             sendMessage("I want you to sit back in your chair");
             sendMessage("And put your legs on the desk in front of you %Grin%");

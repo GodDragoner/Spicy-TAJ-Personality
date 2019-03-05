@@ -78,7 +78,7 @@ function startBlowToy(toy) {
             }
 
             //Increase chance if we didn't just play with the tip
-            if (isChance(50) && tip || !tip && isChance(80)) {
+            if (isChance(50) && caressingTip || !caressingTip && isChance(80)) {
                 sendMessage("So now...");
                 //TODO: Duration based on mood
                 sendMessage("Start licking up and down the whole " + toy, randomInteger(10, 20));

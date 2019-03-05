@@ -1,4 +1,5 @@
 showImage("Images/Spicy/Grounding/BlackBase.jpg");
+
 run("Variables.js");
 run("Utils/SoundUtils.js");
 run("Chat/ChatUtil.js");
@@ -19,6 +20,9 @@ run("Stroking/Stroke.js");
 run("Stroking/Edge.js");
 run("Stroking/Anal.js");
 run("Stroking/Blowing.js");
+run("Session/Modules/Pain/SmallPunishment.js");
+run("Session/Orgasm/OrgasmSpecial.js");
+
 
 run("Assistant/Assistant.js");
 updatePictureSet();

@@ -1,4 +1,8 @@
 
+function hasChastityCage() {
+    return getVar(VARIABLE_HAS_CHASTITY);
+}
+
 function unlockChastityCage() {
     if(!getVar(VARIABLE_HAS_CHASTITY) || !getVar(VARIABLE_CHASTITY_ON)) {
         return;
