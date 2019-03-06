@@ -96,7 +96,7 @@ function sendHoldEdgeTaunts(seconds) {
     run("Stroking/Taunt/HoldEdge/*.js");
 
     //Start the whole thing all over again
-    sendHoldEdgeTaunts();
+    sendHoldEdgeTaunts(seconds);
 }
 
 function addEdge() {

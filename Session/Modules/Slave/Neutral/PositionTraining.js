@@ -394,7 +394,8 @@ function simplePositionTrainingSelection(totalPositions) {
 }
 
 function positionTrainingTimer() {
-    // let position_level = getVar(VARIABLE_POSITION_LEVEL);
+    let positionLevel = getVar(VARIABLE_POSITION_LEVEL);
+
     if (positionLevel <= 15) {
         sleep(randomInteger(120, 240));
         returnSlave();      
@@ -1040,7 +1041,7 @@ function positionCheckBalance() {
         } else {
             sendMessage("That many!");
             sendMessage("Not good enough %SlaveName%");
-            setVar(VARIABLE_POSITION_LEVEL = positionLevel - 1);
+            setVar(VARIABLE_POSITION_LEVEL, positionLevel - 1);
             sendMessage("I'm disappointed..");
             changeMeritMedium(true);
             return;
