@@ -1,106 +1,110 @@
 {
-    sendMessage("%SlaveName%... " + random("I want to have a bit of fun with your %Balls%", "Lets play a bit with those %Balls%"));
+    if(getCBTLimit() != LIMIT_ASKED_YES) {
+        runModuleCategory('Pain');
+    } else {
+        sendMessage("%SlaveName%... " + random("I want to have a bit of fun with your %Balls%", "Lets play a bit with those %Balls%"));
 
-    if (fetchToy("ball crusher")) {
-        sendMessage('Go ahead and attach it...');
-        sendMessage('Tell me when you are done %SlaveName%');
-        waitForDone();
+        if (fetchToy("ball crusher")) {
+            sendMessage('Go ahead and attach it...');
+            sendMessage('Tell me when you are done %SlaveName%');
+            waitForDone();
 
-        setTempVar(VARIABLE_IS_BALL_CRUSHER_ON, true);
+            setTempVar(VARIABLE_IS_BALL_CRUSHER_ON, true);
 
-        sendMessage('Now.. ');
-        sendMessage('I need you to tighten the screws so that it applies pressure to your %Balls%');
-        sendMessage('Stop twisting them right before it would start to hurt');
-        sendMessage('Tell me when you are ready to continue %SlaveName%');
-        waitForDone();
+            sendMessage('Now.. ');
+            sendMessage('I need you to tighten the screws so that it applies pressure to your %Balls%');
+            sendMessage('Stop twisting them right before it would start to hurt');
+            sendMessage('Tell me when you are ready to continue %SlaveName%');
+            waitForDone();
 
-        if (!isVar(VARIABLE_BALL_CRUSHER_MAX_TWISTS)) {
-            sendMessage('Since this is the first we play with your %Balls% like this');
-            sendMessage('We need to determine your threshold ');
-            sendMessage('That point where you can\'t absolutely stand another single twist!');
-            sendMessage('Now for some terms');
-            sendMessage('Half a twist means to tighten all the screws a half round');
-            sendMessage('A full twist means to tighten all the screws a full round!');
-            sendMessage('As simple as that...');
-            sendMessage('Now for this next exercise');
-            sendMessage('You\'re going to twist them 1 full round each 15 seconds');
-            sendMessage('I want you to make me proud! ');
-            sendMessage('Endure the pain!');
-            sendMessage('Say stop when you reach the limit!');
+            if (!isVar(VARIABLE_BALL_CRUSHER_MAX_TWISTS)) {
+                sendMessage('Since this is the first we play with your %Balls% like this');
+                sendMessage('We need to determine your threshold ');
+                sendMessage('That point where you can\'t absolutely stand another single twist!');
+                sendMessage('Now for some terms');
+                sendMessage('Half a twist means to tighten all the screws a half round');
+                sendMessage('A full twist means to tighten all the screws a full round!');
+                sendMessage('As simple as that...');
+                sendMessage('Now for this next exercise');
+                sendMessage('You\'re going to twist them 1 full round each 15 seconds');
+                sendMessage('I want you to make me proud! ');
+                sendMessage('Endure the pain!');
+                sendMessage('Say stop when you reach the limit!');
 
-            let stop = false;
-            while (!stop) {
-                sendMessage('Twist it...');
-                showTeaseImage();
-                setVar(VARIABLE_BALL_CRUSHER_MAX_TWISTS, getVar(VARIABLE_BALL_CRUSHER_MAX_TWISTS, 0) + 2);
+                let stop = false;
+                while (!stop) {
+                    sendMessage('Twist it...');
+                    showTeaseImage();
+                    setVar(VARIABLE_BALL_CRUSHER_MAX_TWISTS, getVar(VARIABLE_BALL_CRUSHER_MAX_TWISTS, 0) + 2);
 
-                const answer = createInput(15, 'stop');
-                while (true) {
-                    if (answer.isTimeout()) {
-                        break;
-                    } else if (answer.isLike('stop', 'end')) {
-                        stop = true;
-                        break;
+                    const answer = createInput(15, 'stop');
+                    while (true) {
+                        if (answer.isTimeout()) {
+                            break;
+                        } else if (answer.isLike('stop', 'end')) {
+                            stop = true;
+                            break;
+                        }
                     }
+
+                    answer.clearOptions();
                 }
 
-                answer.clearOptions();
+                const maxTwists = getVar(VARIABLE_BALL_CRUSHER_MAX_TWISTS);
+
+                if (maxTwists > 40) {
+                    sendMessage('You did extremely well! %Grin%');
+                    changeMeritHigh(false);
+                } else if (maxTwists > 35) {
+                    sendMessage('You did great! %Grin%');
+                    changeMeritMedium(false);
+                } else if (maxTwists > 30) {
+                    sendMessage('You did alright! %Grin%');
+                    changeMeritLow(false);
+                } else if (maxTwists > 20) {
+                    sendMessage('Well I suppose you wasn\'t terrible... %Grin%');
+                } else if (maxTwists > 15) {
+                    sendMessage('Already done?! Bvarh..  %Grin%');
+                    changeMeritLow(true);
+                } else if (maxTwists > 10) {
+                    sendMessage('OMG you have got to be kidding me... %Grin%');
+                    changeMeritMedium(true);
+                } else {
+                    sendMessage('Wauv.. that was awful! %Grin%');
+                    changeMeritHigh(true);
+                }
+
+                sendMessage('Well now that we have that part sorted out...');
+                sendMessage('Oh.... I forgot about my %Balls% right? %Lol%');
+                sendMessage('You may relieve the pressure on your %Balls% %Grin%');
+                sendMessage('BUT make sure that tension is still applied');
+                sendMessage('It just shouldn\'t be painful %EmoteHappy%');
+                sendMessage('I hope you enjoy that relief because it will only be short-lived %Grin%');
             }
 
-            const maxTwists = getVar(VARIABLE_BALL_CRUSHER_MAX_TWISTS);
+            //TODO: More than just "now" like Let's see etc. generalize this somewhere as a function
+            sendMessage('Now...');
 
-            if (maxTwists > 40) {
-                sendMessage('You did extremely well! %Grin%');
-                changeMeritHigh(false);
-            } else if (maxTwists > 35) {
-                sendMessage('You did great! %Grin%');
-                changeMeritMedium(false);
-            } else if (maxTwists > 30) {
-                sendMessage('You did alright! %Grin%');
-                changeMeritLow(false);
-            } else if (maxTwists > 20) {
-                sendMessage('Well I suppose you wasn\'t terrible... %Grin%');
-            } else if (maxTwists > 15) {
-                sendMessage('Already done?! Bvarh..  %Grin%');
-                changeMeritLow(true);
-            } else if (maxTwists > 10) {
-                sendMessage('OMG you have got to be kidding me... %Grin%');
-                changeMeritMedium(true);
-            } else {
-                sendMessage('Wauv.. that was awful! %Grin%');
-                changeMeritHigh(true);
+            switch (randomInteger(0, 2)) {
+                case 0:
+                    ballCrusherSlideshow();
+                    break;
+                case 1:
+                    ballCrusherGame();
+                    break;
+                case 2:
+                    ballCrusherRubberPlay();
+                    break;
             }
+            //TODO: More events after first game round
 
-            sendMessage('Well now that we have that part sorted out...');
-            sendMessage('Oh.... I forgot about my %Balls% right? %Lol%');
-            sendMessage('You may relieve the pressure on your %Balls% %Grin%');
-            sendMessage('BUT make sure that tension is still applied');
-            sendMessage('It just shouldn\'t be painful %EmoteHappy%');
-            sendMessage('I hope you enjoy that relief because it will only be short-lived %Grin%');
+            sendMessage('You can remove the ball crusher now %Grin%');
+            sendMessage(random('I hope they aren\'t dead!', 'I really hope those %Balls% aren\'t dead', 'You should probably take a look at those %Balls% %Lol%'));
+        } else {
+            sendMessage("I guess I have to think of something different to play with your balls");
+
+            //TODO: Different cbt thing
         }
-
-        //TODO: More than just "now" like Let's see etc. generalize this somewhere as a function
-        sendMessage('Now...');
-
-        switch(randomInteger(0, 2)) {
-            case 0:
-                ballCrusherSlideshow();
-                break;
-            case 1:
-                ballCrusherGame();
-                break;
-            case 2:
-                ballCrusherRubberPlay();
-                break;
-        }
-        //TODO: More events after first game round
-
-        sendMessage('You can remove the ball crusher now %Grin%');
-        sendMessage(random('I hope they aren\'t dead!', 'I really hope those %Balls% aren\'t dead', 'You should probably take a look at those %Balls% %Lol%'));
-    } else {
-        sendMessage("I guess I have to think of something different to play with your balls");
-
-        //TODO: Different cbt thing
     }
 }
 

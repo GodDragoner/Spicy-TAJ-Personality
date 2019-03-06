@@ -1,3 +1,5 @@
+//TODO: Competitions are actually a great idea but right now hitting this module on a saturday is not gonna happen too frequently
+
 if (isStroking()) {
     sendMessage("Stop stroking %SlaveName%", 0);
     stopStroking();
@@ -43,7 +45,7 @@ if (getVar(VARIABLE_EDGE_A_TONS_DONE, 0) == 0) {
                 if (result > 7) {
                     sendMessage("Well that seems almost decent ");
                 } else {
-                    sendMessage("Wow that small! For your sake I hope you're a \"grower\"");
+                    sendMessage("Wow that\'s small! For your sake I hope you're a \"grower\"");
                 }
 
                 sendMessage("My lover's cock is 13cm when soft and he's a grower");

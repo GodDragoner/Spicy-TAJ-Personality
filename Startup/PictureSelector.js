@@ -7,5 +7,4 @@ var SpicyPictureSelector = Java.extend(PictureSelector, {
     }
 });
 
-var TeaseAI = Java.type("me.goddragon.teaseai.TeaseAI");
 TeaseAI.application.getSession().getActivePersonality().setPictureSelector(new SpicyPictureSelector());

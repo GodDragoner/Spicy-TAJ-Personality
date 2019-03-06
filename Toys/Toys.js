@@ -1,3 +1,4 @@
+//TODO: Replace with running through the folder and fetching all files
 run("Toys/ChastityCage.js");
 run("Toys/Buttplug.js");
 run("Toys/Gag.js");
@@ -9,7 +10,7 @@ run("Toys/BallCrusher.js");
 run("Toys/Rope.js");
 run("Toys/Room.js");
 run("Toys/Device.js");
-
+run("Toys/Lingerie.js");
 
 function hasDildoToy() {
     return getVar("toyDildo", false);

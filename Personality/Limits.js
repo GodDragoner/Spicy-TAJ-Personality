@@ -3,7 +3,7 @@ const LIMIT_ASKED_YES = 1;
 const LIMIT_ASKED_MAYBE = 2;
 const LIMIT_NEVER = 3;
 
-const LIMITS = ["analLimit", "ceiLimit", "painLimit", "assToMouthLimit", "peeLimit", "cbtLimit", "sissyLimit"];
+const LIMITS = ["analLimit", "ceiLimit", "painLimit", "assToMouthLimit", "peeLimit", "cbtLimit", "sissyLimit", "cuckoldLimit", "verbalHumiliation", "humiliation"];
 
 function getAnalLimit() {
     return getVar(LIMITS[0]);
@@ -31,4 +31,16 @@ function getCBTLimit() {
 
 function getSissyLimit() {
     return getVar(LIMITS[6]);
+}
+
+function getCuckoldLimit() {
+    return getVar(LIMITS[7]);
+}
+
+function getVerbalHumilationLimit() {
+    return getVar(LIMITS[8]);
+}
+
+function getHumilationLimit() {
+    return getVar(LIMITS[9]);
 }

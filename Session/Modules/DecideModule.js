@@ -54,6 +54,7 @@
 
         //Not used atm
         let sissyModuleChance = 0;
+
         let painModuleChance = moduleChance;
         let slaveModuleChance = moduleChance;
         let humiliationModuleChance = moduleChance;
@@ -61,45 +62,16 @@
         const max = teaseModuleChance + sissyModuleChance + painModuleChance + slaveModuleChance + humiliationModuleChance;
         const moduleIndicator = randomInteger(0, max);
 
-        //TODO: Contstruct run strings/paths here instead of per module
-
         if (moduleIndicator < teaseModuleChance) {
-            if (!isInChastity()) {
-                //TODO: More Dynamic
-                /*if(isChance(50)) {
-                    run("Session/Modules/Tease/Neutral/*.js");
-                } else {
-                    run("Session/Modules/Tease/NoChastity/*.js");
-                }*/
-
-                run(random("Session/Modules/Tease/NoChastity/*.js", "Session/Modules/Tease/Dynamic/*.js", "Session/Modules/Tease/Neutral/*.js"));
-            } else {
-                //TODO: No chastity
-                run("Session/Modules/Tease/Neutral/*.js");
-                /*if(isChance(50)) {
-                    run("Session/Modules/Tease/Neutral/*.js");
-                } else {
-                    run("Session/Modules/Tease/Neutral/*.js");
-                }*/
-            }
-
+            runModuleCategory('Tease');
         } else if (moduleIndicator < sissyModuleChance + teaseModuleChance) {
-            run("Session/Modules/Sissy/Dynamic/*.js");
-        } else if (moduleIndicator < painModuleChance + sissyModuleChance + teaseModuleChance) {
-            if(!isInChastity()) {
-                run(random("Session/Modules/Pain/NoChastity/*.js", "Session/Modules/Pain/Dynamic/*.js"/*, "Session/Modules/Pain/Neutral/*.js"*/));
-            } else {
-                run("Session/Modules/Pain/Dynamic/*.js" /*, "Session/Modules/Pain/Neutral/*.js"*/);
-            }
-
-        } else if (moduleIndicator < painModuleChance + sissyModuleChance + teaseModuleChance + slaveModuleChance) {
-            run("Session/Modules/Slave/Neutral/*.js");
-        } else if (moduleIndicator < painModuleChance + sissyModuleChance + teaseModuleChance + slaveModuleChance + humiliationModuleChance) {
-            if(!isInChastity()) {
-                run(random("Session/Modules/Pain/Neutral/*.js", "Session/Modules/Pain/Dynamic/*.js"/*, "Session/Modules/Humiliation/NoChastity/*.js"*/));
-            } else {
-                run(random("Session/Modules/Pain/Neutral/*.js", "Session/Modules/Pain/Dynamic/*.js"));
-            }
+            runModuleCategory('Sissy');
+        } else if (moduleIndicator < sissyModuleChance + teaseModuleChance + painModuleChance) {
+            runModuleCategory('Pain');
+        } else if (moduleIndicator < sissyModuleChance + teaseModuleChance + painModuleChance + slaveModuleChance) {
+            runModuleCategory('Slave');
+        } else if (moduleIndicator < sissyModuleChance + teaseModuleChance + painModuleChance + slaveModuleChance + humiliationModuleChance) {
+            runModuleCategory('Humiliation');
         }
 
         sendMessage('Some Link here!');
@@ -107,6 +79,32 @@
     }
 
     //TODO: End session
+}
+
+function runModuleCategory(category) {
+    const neutralPath =  getModuleTypeCategoryPath(category, 'Neutral');
+    const noChastityPath =  getModuleTypeCategoryPath(category, 'NoChastity');
+    const dynamicPath =  getModuleTypeCategoryPath(category, 'Dynamic');
+
+    const paths = [];
+
+    if(getFile(getPersonalityPath() + PATH_SEPERATOR + neutralPath).exists()) {
+        paths.push(neutralPath + PATH_SEPERATOR + "*.js");
+    }
+
+    if(getFile(getPersonalityPath() + PATH_SEPERATOR + noChastityPath).exists() && !isInChastity()) {
+        paths.push(noChastityPath + PATH_SEPERATOR + "*.js");
+    }
+
+    if(getFile(getPersonalityPath() + PATH_SEPERATOR + dynamicPath).exists()) {
+        paths.push(dynamicPath + PATH_SEPERATOR + "*.js");
+    }
+
+    run(paths[randomInteger(0, paths.length - 1)]);
+}
+
+function getModuleTypeCategoryPath(category, type) {
+    return 'Session' + PATH_SEPERATOR + 'Modules' + PATH_SEPERATOR + category + PATH_SEPERATOR + type;
 }
 
 

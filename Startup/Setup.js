@@ -405,8 +405,8 @@
     setupBlackmail();
     //TODO: Check for and create the FFriends folder if needed
     sendVirtualAssistantMessage("One more thing! %Grin%");
-    sendVirtualAssistantMessage("Inside the image folders you'll find a folder named 'FFriends'");
-	  showImage("Images/Spicy/Toys/3friends.jpg",3);
+    sendVirtualAssistantMessage("Inside the spicy image folder you'll find a folder named 'FFriends'");
+    showImage("Images/Spicy/Toys/3friends.jpg",3);
     sendVirtualAssistantMessage("\"Female Friends\" in case you were wondering");
     sendVirtualAssistantMessage("Inside it you'll find three folders named 1, 2 and 3");
     sendVirtualAssistantMessage("Inside the folders I want pictures of those contacts you just provided me with");
@@ -510,11 +510,8 @@
         }
     }
 
-
-
-
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
-	  askForToy("EStim");
+    askForToy("EStim");
     askForToyUsage("EStim", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
     askForToy("Gag");
