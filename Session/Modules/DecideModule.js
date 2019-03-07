@@ -52,7 +52,9 @@
             teaseModuleChance -= 10;
         }
 
-        //Not used atm
+
+
+        //Not used atm.
         let sissyModuleChance = 0;
 
         let painModuleChance = moduleChance;
@@ -62,26 +64,28 @@
         const max = teaseModuleChance + sissyModuleChance + painModuleChance + slaveModuleChance + humiliationModuleChance;
         const moduleIndicator = randomInteger(0, max);
 
+        setTempVar('findModuleTries', 0);
+
         if (moduleIndicator < teaseModuleChance) {
-            runModuleCategory('Tease');
+            runModuleCategory(CATEGORY_TEASE);
         } else if (moduleIndicator < sissyModuleChance + teaseModuleChance) {
-            runModuleCategory('Sissy');
+            runModuleCategory(CATEGORY_SISSY);
         } else if (moduleIndicator < sissyModuleChance + teaseModuleChance + painModuleChance) {
-            runModuleCategory('Pain');
+            runModuleCategory(CATEGORY_PAIN);
         } else if (moduleIndicator < sissyModuleChance + teaseModuleChance + painModuleChance + slaveModuleChance) {
-            runModuleCategory('Slave');
+            runModuleCategory(CATEGORY_SLAVE);
         } else if (moduleIndicator < sissyModuleChance + teaseModuleChance + painModuleChance + slaveModuleChance + humiliationModuleChance) {
-            runModuleCategory('Humiliation');
+            runModuleCategory(CATEGORY_HUMILATION);
         }
 
-        sendMessage('Some Link here!');
-        //TODO: Links or something
+        run("Session/Link/Module/DecideLink.js");
     }
 
     //TODO: End session
 }
 
 function runModuleCategory(category) {
+    setTempVar('lastModuleCategory', category);
     const neutralPath =  getModuleTypeCategoryPath(category, 'Neutral');
     const noChastityPath =  getModuleTypeCategoryPath(category, 'NoChastity');
     const dynamicPath =  getModuleTypeCategoryPath(category, 'Dynamic');
@@ -100,7 +104,72 @@ function runModuleCategory(category) {
         paths.push(dynamicPath + PATH_SEPERATOR + "*.js");
     }
 
+    //Keep track of how many times we tried to find a module in a category since last decide Moudle call
+    setTempVar('findModuleTries', getVar('findModuleTries', 0) + 1);
+
     run(paths[randomInteger(0, paths.length - 1)]);
+}
+
+function tryRunModuleFetchId(minModulesSinceRun = 3) {
+   return tryRunModule(getCurrentScriptName(), getVar('lastModuleCategory'), minModulesSinceRun);
+}
+
+function tryRunModule(moduleId, category, minModulesSinceRun = 3) {
+    let maxTries = 10;
+
+    //If we already ran that module today try more than 10 times
+    if(isVar('todaysModuleHistory') && getVar('todaysModuleHistory').contains(moduleId)) {
+        maxTries = 30;
+    }
+
+    if(isVar('moduleHistory')) {
+        let history = getVar('moduleHistory');
+
+        moduleId = moduleId.toLowerCase();
+
+        if(history.contains(moduleId)) {
+            //Check whether not enough modules have passed since last time we ran this module
+            if(history.size() - history.lastIndexOf(moduleId) < minModulesSinceRun) {
+                if(getVar('findModuleTries') < maxTries/2) {
+                    //Try to run from same category
+                    runModuleCategory(category);
+                    return false;
+                } else if(getVar('findModuleTries') < maxTries) {
+                    //Try to find a different module
+                    run("Session/Modules/DecideModule.js");
+                    return false;
+                }
+                //Else
+                //We tried too often so we gotta let this pass
+            }
+        }
+    }
+
+    addRunModule(moduleId);
+    return true;
+}
+
+function addRunModule(moduleId) {
+    setVar('moduleHistory', getAndAddRunModuleFromVarArray(moduleId, 'moduleHistory'));
+    setTempVar('todaysModuleHistory', getAndAddRunModuleFromVarArray(moduleId, 'todaysModuleHistory'));
+}
+
+function getAndAddRunModuleFromVarArray(moduleId, varName) {
+    let history = new java.util.ArrayList();
+
+    if(isVar(varName)) {
+        history = getVar(varName);
+    }
+
+    moduleId = moduleId.toLowerCase();
+
+    if(history.contains(moduleId)) {
+        history.remove(moduleId);
+    }
+
+    history.add(moduleId);
+
+    return history;
 }
 
 function getModuleTypeCategoryPath(category, type) {

@@ -1,7 +1,7 @@
 {
     if(getCBTLimit() != LIMIT_ASKED_YES) {
         runModuleCategory('Pain');
-    } else {
+    } else if(tryRunModuleFetchId()) {
         sendMessage("%SlaveName%... " + random("I want to have a bit of fun with your %Balls%", "Lets play a bit with those %Balls%"));
 
         if (fetchToy("ball crusher")) {

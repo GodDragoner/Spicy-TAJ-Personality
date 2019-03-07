@@ -1,74 +1,76 @@
-setVar(VARIABLE_STROKE_TRAINING_ACTIVE, true);
-if(isStroking()) {
-    sendMessage("Stop stroking %SlaveName%", 0);
-    stopStroking();
-    sendMessage("Trust me. You'll need the pause and it won't last too long anyway %Grin%");
+if(tryRunModuleFetchId()) {
+    setVar(VARIABLE_STROKE_TRAINING_ACTIVE, true);
+    if (isStroking()) {
+        sendMessage("Stop stroking %SlaveName%", 0);
+        stopStroking();
+        sendMessage("Trust me. You'll need the pause and it won't last too long anyway %Grin%");
 
-    if(getVar(VARIABLE_STROKE_TRAININGS_DONE, 0) == 0) {
-        sendMessage("So...");
+        if (getVar(VARIABLE_STROKE_TRAININGS_DONE, 0) == 0) {
+            sendMessage("So...");
+        } else {
+            sendMessage("Because...");
+            sendMessage("It's time for your stroke training %EmoteHappy%")
+        }
     } else {
-        sendMessage("Because...");
-        sendMessage("It's time for your stroke training %EmoteHappy%")
+        sendMessage("Okay %SlaveName%");
+        if (getVar(VARIABLE_STROKE_TRAININGS_DONE, 0) != 0) {
+            sendMessage("I think it's time for some stroke training again %EmoteHappy%")
+        }
     }
-} else {
-    sendMessage("Okay %SlaveName%");
-    if(getVar(VARIABLE_STROKE_TRAININGS_DONE, 0) != 0) {
-        sendMessage("I think it's time for some stroke training again %EmoteHappy%")
+
+    if (getVar(VARIABLE_STROKE_TRAININGS_DONE, 0) == 0) {
+        sendMessage("Right now I want to try something new");
+        sendMessage("I call it \"stroke training\"");
+        sendMessage("Cock'xercise you might call it %Lol%");
+        sendMessage("Well!");
+        sendMessage("It's rather simple");
+        sendMessage("At the very beginning you'll start with a warmup round that ends with you edging once");
+        sendMessage("Afterwards the real fun begins");
+        sendMessage("You have 3 \"lives\"");
+        sendMessage("So every time you are edging during this training you'll tell me about it and then you'll lose one life");
+        sendMessage("When you edged a total of 4 times, that is 1 warmup edge and 3 training edges, the training will end");
+        sendMessage("After each edge you'll be given a short break");
+        sendMessage("You will be stroking to a slideshow and you are not permitted to look away from the images");
+        sendMessage("You will stroke to the beat and you will only stop stroking once you edge");
+        sendMessage("It goes without saying that cumming/ejaculating is NOT allowed...");
+        sendMessage("At the end I will grant you a level ranging from 1 - 50 based on your performance");
+        sendMessage("Of course you'll start at level 1");
+        sendMessage("The goal is to simply reach the highest level possible");
+        sendMessage("If you dream about being anything else than a house slave I suggest you aim for level 50 %Lol%");
+        sendMessage("The beat patterns will also increase in difficulty");
+        sendMessage("It requires some serious stamina to go above level 40");
+        sendMessage("Oh and on a final note...");
+        sendMessage("After each training session you will be reduced by 5 levels unless you're below level 10...");
+        sendMessage("So lets stop wasting time and just get you started %Lol%");
     }
+
+    setTempVar(VARIABLE_STROKE_TRAINING_ACTIVE, true);
+    setVar(VARIABLE_STROKE_TRAININGS_DONE, getVar(VARIABLE_STROKE_TRAININGS_DONE, 0) + 1);
+
+    sendMessage("We are gonna start by warm you up a little... ");
+    sendMessage("Start stroking slowly");
+    sendMessage("When you start to hear the pace you are gonna stroke it to the beat");
+    startStroking(60);
+    showTeaseImage(5);
+    showTeaseImage(5);
+    showTeaseImage(5);
+    showTeaseImage(5);
+    showTeaseImage(5);
+    showTeaseImage(5);
+    showTeaseImage(5);
+    stopStrokingMessage();
+    startEdging();
+    sendMessage("%LetEdgeFade%");
+    sleep(randomInteger(3, 7));
+
+    sendMessage("Rest a minute while I look up your level");
+    sendMessage("But be ready");
+    sendMessage("We will start the moment you hear the beat");
+    sendMessage("Make me proud %SlaveName%");
+    startStrokeTraining();
+    var timeToIncreaseLevel = 0;
+    var level = getVar(VARIABLE_STROKE_TRAINING_LEVEL, 1);
 }
-
-if(getVar(VARIABLE_STROKE_TRAININGS_DONE, 0) == 0) {
-    sendMessage("Right now I want to try something new");
-    sendMessage("I call it \"stroke training\"");
-    sendMessage("Cock'xercise you might call it %Lol%");
-    sendMessage("Well!");
-    sendMessage("It's rather simple");
-    sendMessage("At the very beginning you'll start with a warmup round that ends with you edging once");
-    sendMessage("Afterwards the real fun begins");
-    sendMessage("You have 3 \"lives\"");
-    sendMessage("So every time you are edging during this training you'll tell me about it and then you'll lose one life");
-    sendMessage("When you edged a total of 4 times, that is 1 warmup edge and 3 training edges, the training will end");
-    sendMessage("After each edge you'll be given a short break");
-    sendMessage("You will be stroking to a slideshow and you are not permitted to look away from the images");
-    sendMessage("You will stroke to the beat and you will only stop stroking once you edge");
-    sendMessage("It goes without saying that cumming/ejaculating is NOT allowed...");
-    sendMessage("At the end I will grant you a level ranging from 1 - 50 based on your performance");
-    sendMessage("Of course you'll start at level 1");
-    sendMessage("The goal is to simply reach the highest level possible");
-    sendMessage("If you dream about being anything else than a house slave I suggest you aim for level 50 %Lol%");
-    sendMessage("The beat patterns will also increase in difficulty");
-    sendMessage("It requires some serious stamina to go above level 40");
-    sendMessage("Oh and on a final note...");
-    sendMessage("After each training session you will be reduced by 5 levels unless you're below level 10...");
-    sendMessage("So lets stop wasting time and just get you started %Lol%");
-}
-
-setTempVar(VARIABLE_STROKE_TRAINING_ACTIVE, true);
-setVar(VARIABLE_STROKE_TRAININGS_DONE, getVar(VARIABLE_STROKE_TRAININGS_DONE, 0) + 1);
-
-sendMessage("We are gonna start by warm you up a little... ");
-sendMessage("Start stroking slowly");
-sendMessage("When you start to hear the pace you are gonna stroke it to the beat");
-startStroking(60);
-showTeaseImage(5);
-showTeaseImage(5);
-showTeaseImage(5);
-showTeaseImage(5);
-showTeaseImage(5);
-showTeaseImage(5);
-showTeaseImage(5);
-stopStrokingMessage();
-startEdging();
-sendMessage("%LetEdgeFade%");
-sleep(randomInteger(3, 7));
-
-sendMessage("Rest a minute while I look up your level");
-sendMessage("But be ready");
-sendMessage("We will start the moment you hear the beat");
-sendMessage("Make me proud %SlaveName%");
-startStrokeTraining();
-var timeToIncreaseLevel = 0;
-var level = getVar(VARIABLE_STROKE_TRAINING_LEVEL, 1);
 
 function startStrokeTraining() {
     while(true) {

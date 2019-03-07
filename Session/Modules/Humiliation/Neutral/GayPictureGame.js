@@ -1,45 +1,47 @@
 {
-    sendMessage("%SlaveName%");
-    sendMessage(random("There is nothing more empowering ", "I can\'t imagine anything that satifies me more ", "There is nothing that gets me more wet "));
-    sendMessage("Than " + random("watching a man pleasure another man against his will ", "watching a man give a blowjob despite his will ", "watching you pleasure a man against your will ") + "%Lol%");
-    sendMessage("Forced into an act of homosexuality you might call it!");
-    sendMessage(random("Well since you don\'t have anyone there with you ", "Since you\'re alone ", "Because you\'re alone "));
-    sendMessage(random("We\'re gonna have to do it a bit differently ", "This is gonna be done a bit differently "));
-    sendMessage("%Lol%");
-    sendMessage("I\'m gonna slide through images fast");
-    //if(getVar("HumiliationUpdate3", false))
-    //{
-    sendMessage("I\'m gonna draw from your gay images, Lesbian, Boobs, Butts and Lezdom images");
-    //}
-    /*if(!getVar("HumiliationUpdate3", false))
-    {
-        sendMessage("I\'m gonna draw from your gay images, Butts and Lezdom images");
+    if (tryRunModuleFetchId()) {
+        sendMessage("%SlaveName%");
+        sendMessage(random("There is nothing more empowering ", "I can\'t imagine anything that satifies me more ", "There is nothing that gets me more wet "));
+        sendMessage("Than " + random("watching a man pleasure another man against his will ", "watching a man give a blowjob despite his will ", "watching you pleasure a man against your will ") + "%Lol%");
+        sendMessage("Forced into an act of homosexuality you might call it!");
+        sendMessage(random("Well since you don\'t have anyone there with you ", "Since you\'re alone ", "Because you\'re alone "));
+        sendMessage(random("We\'re gonna have to do it a bit differently ", "This is gonna be done a bit differently "));
+        sendMessage("%Lol%");
+        sendMessage("I\'m gonna slide through images fast");
+        //if(getVar("HumiliationUpdate3", false))
+        //{
+        sendMessage("I\'m gonna draw from your gay images, Lesbian, Boobs, Butts and Lezdom images");
+        //}
+        /*if(!getVar("HumiliationUpdate3", false))
+        {
+            sendMessage("I\'m gonna draw from your gay images, Butts and Lezdom images");
 
-    }*/
+        }*/
 
-    sendMessage('Gay image = edge');
-    sendMessage('Lesbian = 100 super slow strokes');
-    sendMessage('Boobs = 20 very fast strokes');
-    sendMessage('Butts = a small pause');
-    sendMessage('Lezdom = add a peg to anywhere on your body');
+        sendMessage('Gay image = edge');
+        sendMessage('Lesbian = 100 super slow strokes');
+        sendMessage('Boobs = 20 very fast strokes');
+        sendMessage('Butts = a small pause');
+        sendMessage('Lezdom = add a peg to anywhere on your body');
 
-    //TODO: Fetch pegs
+        //TODO: Fetch pegs
 
-    sendMessage("Now there a few extra rules depending on how many pictures of each you\'ve landed on");
-    sendMessage('7 gay images = orgasm to a picture of a dick');
-    sendMessage('3 lesbian images = 4 edges in a row');
-    sendMessage('5 boobs pictures = 100 gold');
-    sendMessage('5 butts images = the game ends');
+        sendMessage("Now there a few extra rules depending on how many pictures of each you\'ve landed on");
+        sendMessage('7 gay images = orgasm to a picture of a dick');
+        sendMessage('3 lesbian images = 4 edges in a row');
+        sendMessage('5 boobs pictures = 100 gold');
+        sendMessage('5 butts images = the game ends');
 
-    if (hasChastityCage()) {
-        sendMessage('7 lezdom pictures = 2 days in chastity and the game ends');
-    } else {
-        sendMessage('7 lezdom pictures = 2 days of complete denial and the game ends');
+        if (hasChastityCage()) {
+            sendMessage('7 lezdom pictures = 2 days in chastity and the game ends');
+        } else {
+            sendMessage('7 lezdom pictures = 2 days of complete denial and the game ends');
+        }
+
+        sendMessage("%Lol%");
+        sendMessage("Let the game begin!");
+        startGayPictureRound();
     }
-
-    sendMessage("%Lol%");
-    sendMessage("Let the game begin!");
-    startGayPictureRound();
 }
 
 function startGayPictureRound() {

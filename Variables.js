@@ -88,6 +88,13 @@ const VARIABLE_ASS_LEVEL = "assLevel";
 
 const VARIABLE_BLOWJOB_LEVEL = "blowjobLevel";
 
+//Sub status
+const VARIABLE_SUB_IS_VIRGIN = 'subIsVirgin';
+const VARIABLE_SUB_IS_MARRIED = 'subIsMarried';
+const VARIABLE_SUB_HAS_GIRLFRIEND = 'toyGirlFriend';
+
+const VARIABLE_SUB_PARTNER_NAME = 'subPartnerName';
+
 //Stats
 const VARIABLE_SESSION_COUNTER = "sessionCounter";
 const VARIABLE_ORGASM_COUNTER = "orgasmCounter";
@@ -120,6 +127,14 @@ const VARIABLE_CURRENT_SESSION_DATE = "currentSessionDate";
 const VARIABLE_HAPPINESS = "happiness";
 const VARIABLE_LUST = "lust";
 const VARIABLE_ANGER = "anger";
+
+
+//Module Categories
+const CATEGORY_HUMILATION = 'Humiliation';
+const CATEGORY_PAIN = 'Pain';
+const CATEGORY_SLAVE = 'Slave';
+const CATEGORY_SISSY = 'Sissy';
+const CATEGORY_TEASE = 'Tease';
 
 function isMetalChastityCage() {
     return getVar(VARIABLE_CHASTITY_MATERIAL) == 0;

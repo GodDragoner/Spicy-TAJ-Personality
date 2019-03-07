@@ -1,36 +1,38 @@
 {
-    if (!getVar(VARIABLE_POSITION_TRAINING_STARTED, false)) {
-        setVar(VARIABLE_POSITION_LEVEL, 1);
-        setVar(VARIABLE_POSITION_TRAINING_STARTED, true);
+    if(tryRunModuleFetchId()) {
+        if (!getVar(VARIABLE_POSITION_TRAINING_STARTED, false)) {
+            setVar(VARIABLE_POSITION_LEVEL, 1);
+            setVar(VARIABLE_POSITION_TRAINING_STARTED, true);
 
-        sendMessage("Now %SlaveName%");
-        sendMessage("I consider it rather important that you know your positions by heart.");
-        sendMessage("So of course we're gonna spend some time once in a while making sure you know your positions.");
-        sendMessage("Pay attention as I walk you through the different positions..");
+            sendMessage("Now %SlaveName%");
+            sendMessage("I consider it rather important that you know your positions by heart.");
+            sendMessage("So of course we're gonna spend some time once in a while making sure you know your positions.");
+            sendMessage("Pay attention as I walk you through the different positions..");
 
-        positionWalkthrough();
-    } else {
-        sendMessage("%SlaveName%")
-        if (randomInteger(1, 2) === 1) {
-            sendMessage("A quick reminder of all the positions...");
             positionWalkthrough();
-        }
-    }
-
-    const positionLevel = getVar(VARIABLE_POSITION_LEVEL, 1);
-
-    if (positionLevel <= 15) {
-        simplePositionTrainingSelection(1);
-    } else if (positionLevel >= 30) {
-        let chance = randomInteger(0, 100);
-        if (chance < 5) {
-            complicatedPositionTrainingSelection(3);
-        } else if (chance < 35) {
-            simplePositionTrainingSelection(randomInteger(1, 2));
-        } else if (chance < 70) {
-            positionTrainingTestSelection();
         } else {
-            complicatedPositionTrainingSelection(randomInteger(1, 2))
+            sendMessage("%SlaveName%")
+            if (randomInteger(1, 2) === 1) {
+                sendMessage("A quick reminder of all the positions...");
+                positionWalkthrough();
+            }
+        }
+
+        const positionLevel = getVar(VARIABLE_POSITION_LEVEL, 1);
+
+        if (positionLevel <= 15) {
+            simplePositionTrainingSelection(1);
+        } else if (positionLevel >= 30) {
+            let chance = randomInteger(0, 100);
+            if (chance < 5) {
+                complicatedPositionTrainingSelection(3);
+            } else if (chance < 35) {
+                simplePositionTrainingSelection(randomInteger(1, 2));
+            } else if (chance < 70) {
+                positionTrainingTestSelection();
+            } else {
+                complicatedPositionTrainingSelection(randomInteger(1, 2))
+            }
         }
     }
 
