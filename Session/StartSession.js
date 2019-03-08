@@ -39,50 +39,8 @@
             if (getVar(VARIABLE_LOCKED_DAYS_IN_ROW, 0) > getVar(VARIABLE_LOCKED_UP_LIMIT)) {
                 unlockChastityStart();
             } else {
-                let choice = randomInteger(1, 100);
-                if (getVar(VARIABLE_HAPPINESS) > getVar(VARIABLE_ANGER)) {
-                    choice += randomInteger(1, 25);
-                } else {
-                    choice -= randomInteger(1, 25);
-                }
-
-                if (getVar(VARIABLE_LUST) > 30) {
-                    choice += randomInteger(1, 25);
-                }
-
-
-                let choices = [30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 1, 5, 5, 10, 10, 15, 25, 30, 35, 40];
-                let index = 0;
-
-                if (getMonthlyGoodDays() <= getMonthlyBadDays()) {
-                    index += 1;
-                }
-
-                if (ACTIVE_PERSONALITY_STRICTNESS == 1) {
-                    choices = [35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 5, 10, 10, 15, 15, 20, 30, 35, 40, 50];
-                } else if (ACTIVE_PERSONALITY_STRICTNESS == 2) {
-                    choices = [40, 45, 50, 55, 60, 70, 75, 80, 85, 90, 10, 15, 15, 20, 20, 30, 40, 50, 60, 70];
-                }
-
-                if (!isVar("chastityMode")) {
-                    index += 10;
-                }
-
-                const mood = getMood();
-                if (mood == PLEASED_MOOD) {
-                    index += 2;
-                } else if (mood == NEUTRAL_MOOD) {
-                    index += 4;
-                } else if (mood == ANNOYED_MOOD) {
-                    index += 6;
-                } else if (mood == VERY_ANNOYED_MOOD) {
-                    index += 8;
-                }
-
-                const choiceToReach = choices[index];
-
                 //Unlock
-                if (choice >= choiceToReach) {
+                if (!willKeepChastityOn()) {
                     unlockChastityStart();
                 }
                 //Denied
@@ -111,7 +69,7 @@
         run("Session/Start/NoChastity/*.js");
     }
 
-    if (getVar(VARIABLE_CHASTITY_ON)) {
+    if (isInChastity()) {
         setVar(VARIABLE_LOCKED_DAYS_IN_ROW, getVar(VARIABLE_LOCKED_DAYS_IN_ROW) + 1);
     } else if (getVar(VARIABLE_LOCKED_DAYS_IN_ROW) > 0) {
         setVar(VARIABLE_LOCKED_DAYS_IN_ROW, 0);

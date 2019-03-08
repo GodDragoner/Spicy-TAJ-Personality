@@ -40,6 +40,14 @@ const VARIABLE_LOCKED_DAYS_IN_ROW = "lockedUpDaysInRow";
 
 const VARIABLE_LOCKED_UP_UNTIL = "lockedUpUntil";
 
+const VARIABLE_CHASTITY_LEVEL = 'chastityLevel';
+const VARIABLE_CHASTITY_EXPERIENCE = 'chastityExperience';
+const VARIABLE_CHASTITY_TRAININGS_DONE = 'chastityTrainingsDone';
+
+const VARIABLE_AFRAID_OF_CHASTITY = 'afraidOfChastity';
+
+const VARIABLE_LONG_TERM_CHASTITY = 'chastityLongTerm';
+
 //Toys
 
 const VARIABLE_IS_PLUGGED = "isPlugged";

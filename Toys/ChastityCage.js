@@ -1,4 +1,60 @@
 
+function willKeepChastityOn(end) {
+    let choice = randomInteger(1, 100);
+
+    if(end) {
+        if(getVar(VARIABLE_LONG_TERM_CHASTITY, false)) {
+            return true;
+        }
+
+        //Lower base chance of unlocking at end
+        choice = randomInteger(1, 100 - getVar(VARIABLE_CHASTITY_LEVEL, 0)*3);
+    }
+
+    if (getVar(VARIABLE_HAPPINESS) > getVar(VARIABLE_ANGER)) {
+        choice += randomInteger(1, 25);
+    } else {
+        choice -= randomInteger(1, 25);
+    }
+
+    if (getVar(VARIABLE_LUST) > 30) {
+        choice += randomInteger(1, 25);
+    }
+
+    let choices = [30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 1, 5, 5, 10, 10, 15, 25, 30, 35, 40];
+    let index = 0;
+
+    if (getMonthlyGoodDays() <= getMonthlyBadDays()) {
+        index += 1;
+    }
+
+    if (ACTIVE_PERSONALITY_STRICTNESS == 1) {
+        choices = [35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 5, 10, 10, 15, 15, 20, 30, 35, 40, 50];
+    } else if (ACTIVE_PERSONALITY_STRICTNESS == 2) {
+        choices = [40, 45, 50, 55, 60, 70, 75, 80, 85, 90, 10, 15, 15, 20, 20, 30, 40, 50, 60, 70];
+    }
+
+    if (!isVar("chastityMode")) {
+        index += 10;
+    }
+
+    const mood = getMood();
+    if (mood == PLEASED_MOOD) {
+        index += 2;
+    } else if (mood == NEUTRAL_MOOD) {
+        index += 4;
+    } else if (mood == ANNOYED_MOOD) {
+        index += 6;
+    } else if (mood == VERY_ANNOYED_MOOD) {
+        index += 8;
+    }
+
+    const choiceToReach = choices[index];
+
+    return choiceToReach > choice;
+}
+
+
 function hasChastityCage() {
     return getVar(VARIABLE_HAS_CHASTITY);
 }
@@ -71,6 +127,9 @@ function lockChastityCage() {
 
     sendMessage(random("Put on your %Cage%", "Get your %Cage% on", "Put on the %Cage% at once", "Hurry up and get the %Cage% back on", "Be quick and get your %Cage% back on", "Lock your %Cock% up"));
 
+
+    //TODO: Timeout based on chastity level and then punish like with icing down cock or cbt or icy hot or something
+
     let timeout = randomInteger(30, 60);
     if(ACTIVE_PERSONALITY_STRICTNESS == 1) {
         timeout = randomInteger(25, 50);
@@ -79,7 +138,7 @@ function lockChastityCage() {
     }
 
     const answer = sendInput(random("Let me know when you're done...", "Report to me when it's on", "Remember to tell me when it's on"), timeout);
-    loop = 0;
+    let loop = 0;
     while(true) {
         if (answer.isTimeout()) {
             loop++;

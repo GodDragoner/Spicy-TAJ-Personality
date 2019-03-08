@@ -69,3 +69,17 @@ function feelsEvil() {
         }
     }
 }
+
+function handleTodaysMood() {
+    const dayOfMonth = setDate().getDay();
+
+    //Positive
+    if(getMood() < 2) {
+        setVar('day' + dayOfMonth + 'Good',  true);
+    } else if(getMood() > 2) {
+        //Annoyed
+        setVar('day' + dayOfMonth + 'Good',  false);
+    }
+
+    //Otherwise no change
+}

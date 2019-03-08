@@ -256,8 +256,8 @@
 
             while (true) {
                 if (answer.isLike("yes")) {
-                    setVar("chastityLevel", 30);
-                    setVar("chastityLongTerm", true);
+                    setVar(VARIABLE_CHASTITY_LEVEL, 30);
+                    setVar(VARIABLE_LONG_TERM_CHASTITY, true);
                     sendVirtualAssistantMessage("This should be fun...");
                     break;
                 } else if (answer.isLike("no")) {
@@ -271,7 +271,7 @@
                     while (true) {
                         if (answer.isLike("yes")) {
                             sendVirtualAssistantMessage("%Good%");
-                            setVar("chastityLevel", 1);
+                            setVar(VARIABLE_CHASTITY_LEVEL, 1);
                             setVar(VARIABLE_CHASTITY_TRAINING, true);
 
                             sendVirtualAssistantMessage("Slave I don't care if you sleep with your cage");
