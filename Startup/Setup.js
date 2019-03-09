@@ -50,7 +50,7 @@
     setVar("sissyModuleRatio", 60);
     setVar("painModuleRation", 60);
 
-    setVar("activeEndGameId", END_GAME_STANDARD_ID);
+    setVar(VARIABLE_ACTIVE_END_GAME_ID, END_GAME_STANDARD_ID);
 
     setupSlaveCompetitorStats("Female1", 8, 3, 2, 1, 1, 2, 1, 0);
     setupSlaveCompetitorStats("Female2", 6, 6, 5, 5, 2, 1, 3, 0);

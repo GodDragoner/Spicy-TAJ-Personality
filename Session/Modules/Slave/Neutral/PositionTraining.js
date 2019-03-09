@@ -21,17 +21,17 @@
         const positionLevel = getVar(VARIABLE_POSITION_LEVEL, 1);
 
         if (positionLevel <= 15) {
-            simplePositionTrainingSelection(1);
+            simplePositionTrainingSelection(randomInteger(1, 3));
         } else if (positionLevel >= 30) {
             let chance = randomInteger(0, 100);
             if (chance < 5) {
                 complicatedPositionTrainingSelection(3);
             } else if (chance < 35) {
-                simplePositionTrainingSelection(randomInteger(1, 2));
+                simplePositionTrainingSelection(randomInteger(2, 4));
             } else if (chance < 70) {
                 positionTrainingTestSelection();
             } else {
-                complicatedPositionTrainingSelection(randomInteger(1, 2))
+                complicatedPositionTrainingSelection(randomInteger(1, 3))
             }
         }
     }
@@ -116,7 +116,7 @@ function simplePositionTrainingSelection(totalPositions) {
     simplePositionTrainingIntro();
     sendMessage("Now then...")
 
-    var simpleTraining = {
+    const simpleTraining = {
         currentTraining_a1 : function () {
             lockImages();
             showImage("Images/Spicy/Positions/Attention1.jpg");
@@ -411,8 +411,8 @@ function positionTrainingTimer() {
 }
 
 function positionTrainingTestSelection() {
-    positionTestWrong = 0;
-    positionTestRight = 0;
+    let positionTestWrong = 0;
+    let positionTestRight = 0;
 
     sendMessage("I think it's time for a little test");
     sendMessage("I think its important for a %SlaveName%");
@@ -423,7 +423,7 @@ function positionTrainingTestSelection() {
     sendMessage("Get 3 wrong and you will be awarded with punishment points");
     sendMessage("So lets get to it..");
 
-    var positionTests = {
+    const positionTests = {
         currentTest_position1 : function(){positionTest("1", "attention", "Images/Spicy/Positions/Attention1.jpg")},        
         currentTest_position2 : function(){positionTest("2", "bad bitch", "Images/Spicy/Positions/BadBitch2.jpg")},
         currentTest_position3 : function(){positionTest("3", "bent over", "Images/Spicy/Positions/BentOver2.jpg")},
@@ -576,11 +576,11 @@ function positionTest(number, name, image) {
 
 function positionTrainingEnd() {
     sendMessage(random("We're at the end of your position training", "That was it", "We're at the end", "Well that was it", "Oh my we're finally at the end %Grin%") + " %SlaveName%");
-    playSound("Audio/Spicy/SpecialSounds/Bell.mp3");
+    //playSound("Audio/Spicy/SpecialSounds/Bell.mp3");
     sendMessage(random("It was fun!", "I had a lot of fun", "I enjoyed it", "Well this was fun!", "I had a blast", "I really enjoyed this!", "Oh my was this fun"));
     changeMeritMedium(false);
-    if (positionLevel < 50) {
-        setVar(VARIABLE_POSITION_LEVEL, positionLevel + 1);
+    if (getVar(VARIABLE_POSITION_LEVEL) < 50) {
+        incrementVar(VARIABLE_POSITION_LEVEL, 1);
     }
 }
 
@@ -596,7 +596,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
     ));
     sendMessage(random("A real challenge","A bit of a challenge","A fun challenge","An exciting challenge","Definitely a challenge") + " %Lol%" );
 
-    var complicatedTraining = {
+    const complicatedTraining = {
         currentTraining_b1 : function () {
             sendMessage("For this one you'll need your gag and " + randomInteger(4,8) + " pegs");
             sendMessage("Go and fetch them.");
@@ -999,8 +999,8 @@ function complicatedPositionTrainingSelection(totalPositions) {
         }
     };
 
-    var positionsDone = 0;
-    var incompleteTraining = 0;
+    let positionsDone = 0;
+    let incompleteTraining = 0;
 
     let trainingSet = ["b1", "b2", "b3", "b4", "b5", "b6", "b7", "b8", "b9", "b10", "b11", "b12", "c7"];
     while (positionsDone < totalPositions) {

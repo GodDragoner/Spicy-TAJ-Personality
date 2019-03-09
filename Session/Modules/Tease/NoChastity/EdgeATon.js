@@ -52,7 +52,7 @@ if(tryRunModuleFetchId()) {
                     sendMessage("My lover's cock is 13cm when soft and he's a grower");
                     sendMessage("And oh my... It sure does grow %Grin%");
                     sendMessage("I bet your friend " + getVar("blackmailName1") + " wouldn't be impressed by your size either %Lol%")
-                    setVar(VARIABLE_DENIAL_LEVEL, result);
+                    setVar(VARIABLE_SOFT_COCK_LENGTH, result);
                     break;
                 }
             } else {

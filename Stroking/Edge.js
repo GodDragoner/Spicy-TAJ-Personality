@@ -37,6 +37,7 @@ function startEdging(holdSeconds, skipStop = false) {
     sendEdgeTaunts();
 
     if(holdSeconds !== undefined) {
+        stopStroking();
         //TODO: Hold message
         sendHoldEdgeTaunts(holdSeconds);
     }
@@ -76,21 +77,19 @@ function sendEdgeTaunts() {
 
 function sendHoldEdgeTaunts(seconds) {
     //Select a random amount of iterations and we will wait based on that random amount before sending a taunt message
-    let iterationsToGo = randomInteger(10, 25);
+    let iterationsToGo = randomInteger(8, 16);
 
-    //Just how long you want each iteration to take
-    const millisecondsToWait = 500;
     //Start our loop and continue until iterationsToGo are equal or less than zero
     while(iterationsToGo > 0) {
-        seconds -= millisecondsToWait/1000;
+        seconds--;
 
         if(seconds <= 0) {
-            break;
+            return;
         }
 
         //Sub is not on edge, which means we subtract one from our iterations and wait for 500 milliseconds afterwards
         iterationsToGo--;
-        sleep(millisecondsToWait, "MILLISECONDS");
+        sleep(1);
     }
 
     run("Stroking/Taunt/HoldEdge/*.js");

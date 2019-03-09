@@ -1,4 +1,4 @@
-if(tryRunModuleFetchId()) {
+if (tryRunModuleFetchId()) {
     setVar(VARIABLE_STROKE_TRAINING_ACTIVE, true);
     if (isStroking()) {
         sendMessage("Stop stroking %SlaveName%", 0);
@@ -18,7 +18,7 @@ if(tryRunModuleFetchId()) {
         }
     }
 
-    if (getVar(VARIABLE_STROKE_TRAININGS_DONE, 0) == 0) {
+    if (setTempVar(VARIABLE_STROKE_TRAININGS_DONE, 0) == 0) {
         sendMessage("Right now I want to try something new");
         sendMessage("I call it \"stroke training\"");
         sendMessage("Cock'xercise you might call it %Lol%");
@@ -50,15 +50,16 @@ if(tryRunModuleFetchId()) {
     sendMessage("We are gonna start by warm you up a little... ");
     sendMessage("Start stroking slowly");
     sendMessage("When you start to hear the pace you are gonna stroke it to the beat");
+
     startStroking(60);
-    showTeaseImage(5);
-    showTeaseImage(5);
-    showTeaseImage(5);
-    showTeaseImage(5);
-    showTeaseImage(5);
-    showTeaseImage(5);
-    showTeaseImage(5);
+
+    for (let x = 0; x < randomInteger(18, 25); x++) {
+        showTeaseImage(5);
+    }
+
     stopStrokingMessage();
+    sleep(5);
+
     startEdging();
     sendMessage("%LetEdgeFade%");
     sleep(randomInteger(3, 7));
@@ -68,39 +69,47 @@ if(tryRunModuleFetchId()) {
     sendMessage("We will start the moment you hear the beat");
     sendMessage("Make me proud %SlaveName%");
     startStrokeTraining();
-    var timeToIncreaseLevel = 0;
-    var level = getVar(VARIABLE_STROKE_TRAINING_LEVEL, 1);
+
 }
 
 function startStrokeTraining() {
-    while(true) {
-        if(timeToIncreaseLevel >= 50) {
+    let timeToIncreaseLevel = 0;
+    setTempVar('timeToIncreaseLevel', timeToIncreaseLevel);
+
+    let level = getVar(VARIABLE_STROKE_TRAINING_LEVEL, 1);
+
+    while (true) {
+        timeToIncreaseLevel = getVar('timeToIncreaseLevel');
+
+        if (timeToIncreaseLevel >= 50) {
             timeToIncreaseLevel = 0;
+            incrementVar(VARIABLE_STROKE_TRAINING_LEVEL, 1);
             level += 1;
-            if(level >= 50) {
+            if (level >= 50) {
                 break;
             }
         }
 
-        playRandomStrokeTrainingBeat();
+        playRandomStrokeTrainingBeat(level);
 
         timeToIncreaseLevel += randomInteger(0, 10);
+        setTempVar('timeToIncreaseLevel', timeToIncreaseLevel);
 
         showTeaseImage(randomInteger(5, 10));
 
-        if(isChance(10)) continue;
+        if (isChance(10)) continue;
         showTeaseImage(randomInteger(5, 10));
 
-        if(isChance(20)) continue;
+        if (isChance(20)) continue;
         showTeaseImage(randomInteger(5, 10));
 
-        if(isChance(30)) continue;
+        if (isChance(30)) continue;
         showTeaseImage(randomInteger(5, 10));
     }
 
-    if(level >= 50) {
+    if (level >= 50) {
         sendMessage("You're at the highest level...", "You're at the very top", "You reached the highest level!");
-        if(ACTIVE_PERSONALITY_STRICTNESS == 0) {
+        if (ACTIVE_PERSONALITY_STRICTNESS == 0) {
             sendMessage("I'm impressed!");
         }
 
@@ -116,52 +125,54 @@ function strokeTrainingEdge() {
     stopStrokingEdgeMessage();
     sendMessage("%LetEdgeFade%");
 
-    if(getVar(VARIABLE_STROKE_TRAINING_EDGES_DONE) == 3) {
+    let level = getVar(VARIABLE_STROKE_TRAINING_LEVEL);
+
+    if (getVar(VARIABLE_STROKE_TRAINING_EDGES_DONE) == 3) {
         sendMessage(random("%Grin%", "%Lol%", "%EmoteHappy%"));
         sendMessage(random("Couldn't handle more huh?", "I guess that was it huh", "So \"no more\" I guess..."));
 
-        if(level >= 50) {
-            if(ACTIVE_PERSONALITY_STRICTNESS == 0) {
+        if (level >= 50) {
+            if (ACTIVE_PERSONALITY_STRICTNESS == 0) {
                 sendMessage(random("I guess I can't expect more from you when you're at level 50 %Lol%", "I suppose I shouldn't expect more since 50 is the very top %Grin%", "Bravo, you reached level 50!", "Good job, you reached level 50!", "Oh my, you reached level 50!"));
                 addMerits(35);
-            } else if(ACTIVE_PERSONALITY_STRICTNESS == 1) {
+            } else if (ACTIVE_PERSONALITY_STRICTNESS == 1) {
                 sendMessage(random("Level 50... Good!", "There is hope for you slave", "You did good %SlaveName", "You should feel a little proud slave"));
                 addMerits(30);
-            } else if(ACTIVE_PERSONALITY_STRICTNESS == 2) {
+            } else if (ACTIVE_PERSONALITY_STRICTNESS == 2) {
                 sendMessage(random("Well well I suppose that was okay", "Oh wauw you actually went higher than level 20...", "I'm surprised you even lasted for a few minutes..."));
                 addMerits(25);
             }
-        } else if(level > 40) {
-            if(ACTIVE_PERSONALITY_STRICTNESS == 0) {
+        } else if (level > 40) {
+            if (ACTIVE_PERSONALITY_STRICTNESS == 0) {
                 sendMessage(random("You are above level 40!", "Well done!", "Excellent job", "You did good %SlaveName", "Bravo %SlaveName", "That was excellent work %SlaveName", "I'm applauding you %SlaveName%"));
                 addMerits(25);
-            } else if(ACTIVE_PERSONALITY_STRICTNESS == 1) {
+            } else if (ACTIVE_PERSONALITY_STRICTNESS == 1) {
                 sendMessage(random("It seems you did quite alright today!", "Oh my you made it passed level 40...", "Well it seem you made it pass level 40"));
                 addMerits(20);
-            } else if(ACTIVE_PERSONALITY_STRICTNESS == 2) {
+            } else if (ACTIVE_PERSONALITY_STRICTNESS == 2) {
                 sendMessage(random("Not at level 50 huh...", "Oh you actually went higher than 40", "I feel like you've cheated a little..."));
                 addMerits(10);
             }
-        } else if(level > 30) {
-            if(ACTIVE_PERSONALITY_STRICTNESS == 0) {
+        } else if (level > 30) {
+            if (ACTIVE_PERSONALITY_STRICTNESS == 0) {
                 sendMessage(random("You did okay", "You effort was mediocre", "I must admit I expected a little more", "I suppose I really wasn't expecting much more from you"));
                 addMerits(10);
-            } else if(ACTIVE_PERSONALITY_STRICTNESS == 1) {
+            } else if (ACTIVE_PERSONALITY_STRICTNESS == 1) {
                 sendMessage(random("Above 30 is alright slave", "Well below 40 is still OK", "You could probably do better... Maybe...", "You need to work harder slave"));
                 addMerits(5);
-            } else if(ACTIVE_PERSONALITY_STRICTNESS == 2) {
+            } else if (ACTIVE_PERSONALITY_STRICTNESS == 2) {
                 sendMessage(random("Below level 40 huh...", "Oh wauv you do absolutely not impress...", "I was expecting more from you %SlaveName%"));
                 addMerits(-10);
             }
-        } else if(level > 20) {
+        } else if (level > 20) {
             //TODO: Actually lock up the slave
-            if(ACTIVE_PERSONALITY_STRICTNESS == 0) {
+            if (ACTIVE_PERSONALITY_STRICTNESS == 0) {
                 sendMessage(random("I did expect more...", "Below 30 is for cuckolds...", "Below 30 isn't worth anything...", "You went below 30 you lousy fuck.."));
                 addMerits(-10);
-            } else if(ACTIVE_PERSONALITY_STRICTNESS == 1) {
+            } else if (ACTIVE_PERSONALITY_STRICTNESS == 1) {
                 sendMessage(random("Going below 30 makes me consider permanent chastity for you...", "Below 30 does make me think about locking you up...", "With a low score like that I feel sad for you..."));
                 addMerits(-15);
-            } else if(ACTIVE_PERSONALITY_STRICTNESS == 2) {
+            } else if (ACTIVE_PERSONALITY_STRICTNESS == 2) {
                 sendMessage(random("Wow, your score is ridiculous!", "I guess your %Cock% is crying for its %ChastityCage% with such a low score..."));
                 addMerits(-25);
             }
@@ -172,10 +183,10 @@ function strokeTrainingEdge() {
             addMerits(-35);
         }
 
-        if(level < 10) {
+        if (level < 10) {
             sendMessage("Since you're pathetic and haven't even gone above level 10 I'm not decreasing your level...");
         } else {
-            level -= 5;
+            incrementVar(VARIABLE_STROKE_TRAINING_LEVEL, -5);
         }
 
         endStrokeTraining();
@@ -184,15 +195,14 @@ function strokeTrainingEdge() {
 
     stopStrokingEdgeMessage();
     sendMessage("%LetEdgeFade%");
-    timeToIncreaseLevel -= 15;
+    setTempVar('timeToIncreaseLevel', getVar('timeToIncreaseLevel') - 15);
     sendMessage("Rest before you start again");
     sleep(randomInteger(10, 25));
     startStrokeTraining();
 }
 
 function endStrokeTraining() {
-    setVar(VARIABLE_STROKE_TRAINING_LEVEL, level);
-    run("Session/Modules/DecideModule.js");
+    //run("Session/Modules/DecideModule.js");
 }
 
 function playRandomStrokeTrainingBeat(level) {
@@ -401,5 +411,5 @@ function playRandomStrokeTrainingBeat(level) {
         "Audio/Spicy/Modules/StrokeTraining/HardBite.mp3",
     ];
 
-    playAudio(beats[randomInteger((level-1)*4, (level-1)*4 + 3)]);
+    playAudio(beats[randomInteger((level - 1) * 4, (level - 1) * 4 + 3)]);
 }

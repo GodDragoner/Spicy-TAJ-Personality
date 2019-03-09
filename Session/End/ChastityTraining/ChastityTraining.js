@@ -1,32 +1,66 @@
 {
+    //By default we want to send a new assignment
+    let completedExercise = true;
     if (getVar(VARIABLE_CHASTITY_TRAININGS_DONE, 0) == 0) {
         firstChastityTraining();
     } else {
         //Exam
         //ADvice
-        //Exercise check
-        //ChastityLevel
 
-        //if assignemnts done apply new assignments {
-        //Exercuse set
-        //Roll
-        // }
-        //Denial level
+        if (checkChastityExercise()) {
+            if(getChastityEXPForLevel(getVar(VARIABLE_CHASTITY_LEVEL) + 1) > getVar(VARIABLE_CHASTITY_EXPERIENCE)) {
+                incrementVar(VARIABLE_CHASTITY_LEVEL, 1);
+            }
+
+            sendMessage('Your current chastity level is ' + getVar(VARIABLE_CHASTITY_LEVEL));
+
+            //if assignemnts done apply new assignments {
+            //Roll
+            // }
+        } else {
+            completedExercise = false;
+        }
+    }
+
+    if(completedExercise) {
+        sendNewChastityExercise();
     }
 
 
     setVar(VARIABLE_CHASTITY_TRAININGS_DONE, getVar(VARIABLE_CHASTITY_TRAININGS_DONE) + 1);
 }
 
+function getChastityEXPForLevel(level) {
+    let loopLevel = 1;
+    let exp = 0;
+
+    while (loopLevel < level) {
+        if (loopLevel >= 20) {
+            exp += 300;
+        } else if (loopLevel >= 10) {
+            exp += 200;
+        } else {
+            exp += 100;
+        }
+
+        loopLevel++;
+    }
+}
+
 function sendNewChastityExercise() {
     sendMessage(random("Your next assignment", "For your next task", "Your next task at hand", "For this exercise"));
     sendBasicChastityTrainingTask();
 
-    if(getVar(VARIABLE_AFRAID_OF_CHASTITY, false) && isChance(20)) {
+    let task = null;
 
+    if (getVar(VARIABLE_AFRAID_OF_CHASTITY, false) && isChance(20)) {
+        task = getRandomSpecialChastityTask(afraidTasks);
     } else {
-        
+        task = getRandomSpecialChastityTask(chastityTasks);
     }
+
+    setVar(VARIABLE_TASK_CHASTITY_EXPERIENCE, task.exp * getVar(VARIABLE_CHASTITY_EXPERIENCE_MULTIPLIER, 1));
+    setVar(VARIABLE_LAST_CHASTITY_TASK_ID, task.id);
 }
 
 function sendBasicChastityTrainingTask() {
@@ -49,25 +83,137 @@ function sendBasicChastityTrainingTask() {
         sendMessage(randomInstruction + ' for at least ' + randomHourAmount + " hours");
     } else {
         //TODO: More tasks to make it less boring
-        if(chastityLevel >= 28) {
+        if (chastityLevel >= 28) {
             sendMessage(randomInstruction + ' until next session');
             putOnChastity = true;
-        } else if(chastityLevel >= 25) {
+        } else if (chastityLevel >= 25) {
             sendMessage(randomInstruction + ' whenever you are outside and for at least ' + randomHourAmount + ' hours in total');
-        } else if(chastityLevel >= 20) {
+        } else if (chastityLevel >= 20) {
             sendMessage(randomInstruction + ' whenever you are outside and for at least ' + randomHourAmount + ' hours in total');
-        } else if(chastityLevel >= 15)  {
+        } else if (chastityLevel >= 15) {
             sendMessage(randomInstruction + ' whenever you are home and for at least ' + randomHourAmount + ' hours in total');
         }
     }
 
-    if(chastityLevel < 20) {
+    if (chastityLevel < 20) {
         sendMessage('It\'s okay if you can\'t sleep in it');
     }
 
-    if(!isInChastity())  {
+    if (!isInChastity()) {
         lockChastityCage();
     }
+}
+
+function checkChastityExercise() {
+    const answer = sendInput("Have you completed the last assignment I gave you?");
+    while (true) {
+        if (answer.isLike('yes')) {
+            sendMessage('%Good%');
+            changeMeritLow(false);
+
+            sendMessage("Let me just update your exp...");
+            incrementVar(VARIABLE_CHASTITY_TASKS_IN_ROW, 1);
+
+            //TODO: Randomize message
+            if (getVar(VARIABLE_CHASTITY_TASKS_IN_ROW) == 15) {
+                sendMessage('I am very happy %SlaveName');
+                sendMessage("You have been completing your chastity " + random("assignments ", "tasks ") + "for 15 days in a row");
+                sendMessage("Thus I will multiply your chastity exp by 4 from now on");
+                setVar(VARIABLE_CHASTITY_EXPERIENCE_MULTIPLIER, 4);
+            } else if (getVar(VARIABLE_CHASTITY_TASKS_IN_ROW == 10)) {
+                sendMessage('You will be pleased to hear this %SlaveName% %Grin%');
+                sendMessage("You have completed your chastity " + random("assignments ", "tasks ") + "for the last 10 days %Grin%");
+                sendMessage("Because you have been acting that disciplined I will reward you with three times the chastity exp from now on");
+                setVar(VARIABLE_CHASTITY_EXPERIENCE_MULTIPLIER, 3);
+            } else if (getVar(VARIABLE_CHASTITY_TASKS_IN_ROW == 5)) {
+                sendMessage('Looks like the training is working out for you %SlaveName%');
+                sendMessage("You have been following my chastity " + random("assignments ", "tasks ") + "for 5 days in a row now");
+                sendMessage("Thus I will multiply your chastity exp by 2 from now on");
+                setVar(VARIABLE_CHASTITY_EXPERIENCE_MULTIPLIER, 2);
+            }
+
+            incrementVar(VARIABLE_CHASTITY_EXPERIENCE, getVar(VARIABLE_TASK_CHASTITY_EXPERIENCE));
+            sendMessage("I updated your exp and points..");
+
+            if (getVar(VARIABLE_AFRAID_OF_CHASTITY, false) && isAfraidTask(getVar(VARIABLE_LAST_CHASTITY_TASK_ID))) {
+                const afraidAnswer = sendInput('Tell me, are you still afraid of your cage showing in the public?');
+
+                while (true) {
+                    if (afraidAnswer.isLike('yes')) {
+                        sendMessage(random("I guess we will need to work on that ", "Trust me we will work on that ", "Looks like my job is not done yet ") + "%SlaveName% %Grin%");
+                        break;
+                    } else if (afraidAnswer.isLike('no')) {
+                        sendMessage("%Good% " + random("I am happy that you have overcome your fear ", "Looks like my training was successful ", "This means we can focus on working on wearing it 24/7 "));
+                        changeMeritLow(false);
+                        setVar(VARIABLE_AFRAID_OF_CHASTITY, false);
+                        break;
+                    } else {
+                        sendMessage(YES_OR_NO);
+                        afraidAnswer.loop();
+                    }
+                }
+            }
+
+            break;
+        } else if (answer.isLike('no')) {
+            sendMessage("I expect more from you %SlaveName%");
+
+            const whyUnableAnswer = sendInput("Tell me %SlaveName%, why were you unable to complete the assignment?");
+            while (true) {
+                if (whyUnableAnswer.isLike("forgot", "forget")) {
+                    sendMessage("You should know it does not make me happy if you forget stuff %SlaveName%!");
+                    changeMeritHigh(true);
+                    break;
+                } else if (whyUnableAnswer.isLike("time", "time", "time")) {
+                    sendMessage(random("You should always find the time to wear your ", "You should always have time to wear your ") + "%Cage%");
+                    changeMeritMedium(true);
+                    ;
+                    break;
+                } else if (whyUnableAnswer.isLike("afraid")) {
+                    sendMessage("My poor %SlaveName% is afraid? %Lol%");
+                    changeMeritLow(true);
+
+                    sendMessage(random("You must not be afraid of it showing in public ", "You will have to deal with that ") + "%SlaveName% %Lol%");
+                    setVar(VARIABLE_AFRAID_OF_CHASTITY, true);
+                    sendMessage("As a proper slave of mine you don\'t care about other people");
+                    sendMessage("Because " + random("your solely purpose is to please me ", "your only interest should be to please me ", "you should only be interested in following my commands "));
+                    return;
+                } else if (whyUnableAnswer.isLike("pain", "much", "handle", "uncomfortable")) {
+                    sendMessage("You should be able to handle pain %SlaveName%");
+                    changeMeritMedium(true);
+
+                    if (isChance(50)) {
+                        if (getVar(VARIABLE_CHASTITY_SPIKES_ON, false)) {
+                            sendMessage(random("If it hurts you should prevent yourself from being aroused with all those spikes in your cage ", "No wonder it hurts with all those spikes in the cage ") + "%Lol%");
+                            break;
+                        } else if (getVar(VARIABLE_CHASTITY_CAGE_PIERCED, false)) {
+                            sendMessage(random("If the piercing is uncomfortable ", "If the piercing hurts ") + "you should consider rearranging it or getting another cage %SlaveName%");
+                            break;
+                        }
+                    }
+
+                    sendMessage("If it " + random("hurts too much ", "cuts into your flesh ", "is really uncomfortable ", "pinches your skin ") + "you should consider getting a new cage or trying different ring sizes");
+                    sendMessage("Sometimes it might help to wrap something " + random("soft ", "smooth ") + "around parts of the cage to make it more comfortable");
+                    break;
+                } else {
+                    sendMessage("You have to complete your tasks %SlaveName%. You want to become a proper slave, don\'t you?");
+                    break;
+                }
+            }
+
+            sendMessage("Anyhow not completing your " + random("task ", "assignment ") + "displeases me");
+            sendMessage("But I guess in the end this means you just don\'t get to cum %GNMGrin%");
+            setVar(VARIABLE_CHASTITY_TASKS_IN_ROW, 0);
+            setVar(VARIABLE_CHASTITY_EXPERIENCE_MULTIPLIER, 1);
+            sendMessage("Complete your task until the next session");
+            return false;
+        } else {
+            sendMessage(YES_OR_NO);
+            answer.loop();
+        }
+    }
+
+    return true;
 }
 
 
@@ -81,20 +227,20 @@ function firstChastityTraining() {
     sendMessage("It\'s rather simple how this work.");
     sendMessage("After each session");
     sendMessage("You will be asked whether you completed your current assignment");
-    sendMessage("If you did you are rewarded with exp and lock up points");
-    sendMessage("We use a measure of chastity level");
+    sendMessage("If you did you are rewarded with exp");
+    sendMessage("We use a so called chastity level to measure your experience with chastity");
     sendMessage("Level 1 is having a hard time wearing the cage");
     sendMessage("Level 30 means that you can wear the cage at all time without problems");
     sendMessage("EXP makes you grow in level at a slow pace");
     sendMessage("Each new level requires a higher amount of EXP");
     sendMessage("As your level grows the assignments increase in difficulty");
-    sendMessage("Now!");
+    /*sendMessage("Now!");
     sendMessage("You also earned lock up points for completing assignments");
     sendMessage("The points are spent on pleasure %Grin%");
     sendMessage("For each 100 points you earn a die roll");
     sendMessage("The die roll is rather simple");
     sendMessage("1 you lose and nothing happens");
     sendMessage("2-7 to get to ruin your orgasm");
-    sendMessage("8-10 you get an actual orgasm");
+    sendMessage("8-10 you get an actual orgasm");*/
     sendMessage("It\'s really as simple as that");
 }

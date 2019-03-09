@@ -71,7 +71,7 @@
 
     if (isInChastity()) {
         setVar(VARIABLE_LOCKED_DAYS_IN_ROW, getVar(VARIABLE_LOCKED_DAYS_IN_ROW) + 1);
-    } else if (getVar(VARIABLE_LOCKED_DAYS_IN_ROW) > 0) {
+    } else if (getVar(VARIABLE_LOCKED_DAYS_IN_ROW, 0) > 0) {
         setVar(VARIABLE_LOCKED_DAYS_IN_ROW, 0);
     }
 

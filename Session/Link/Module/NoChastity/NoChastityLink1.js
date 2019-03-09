@@ -6,6 +6,7 @@
             if(answer.isLike('yes')) {
                 sendMessage("You\'re " + random("so transparent ", "so predictable ", "so easy to read ", "like an open book ") + "%SlaveName%");
                 sendMessage('Lets see what I got in store for you %Grin%');
+                break;
             } else if(answer.isLike('no')) {
                 sendMessage("Oh good, " + random("then ", "that means ") + "I can " + random("take a moment to ", "go ") + "get myself %SomethingToDrink%");
                 sendMessage("Don\'t go anywhere %PetName%, and don\'t touch that %Cock%");
@@ -22,6 +23,7 @@
                 while(true) {
                     if(answer2.isLike('yes')) {
                         sendMessage("That makes me very happy %Grin%");
+                        break;
                     } else if(answer2.isLike('no')) {
                         sendMessage("You disappoint me %SlaveName%");
                         changeMeritMedium(true);
@@ -44,11 +46,13 @@
 
                         smallCBTPunishment();
                         sendMessage("I really shouldn\'t have to remind you to follow instructions %SlaveName%");
+                        break;
                     } else {
                         sendMessage(YES_OR_NO);
                         answer2.loop();
                     }
                 }
+                break;
             } else if(answer.isLike('trick', 'trap')) {
                 sendMessage("Ooh you think you\'re " + random("so smart ", "clever ") + "don\'t you");
                 sendMessage("No it wasn\'t a trick question");
@@ -57,6 +61,7 @@
                 sendMessage("Lightly touch the skin of your %Cock% with your fingertips");
                 sendMessage("Feel how it\'s aching to be stroked again");
                 sendMessage("I know it\'s ready for more");
+                break;
             } else {
                 sendMessage(YES_OR_NO);
                 answer.loop();

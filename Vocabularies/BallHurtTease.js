@@ -1,4 +1,4 @@
-function BallHurtTeaseVocabulary() {
+function ballHurtTeaseVocabulary() {
     const answers = ['I think we are gonna break %MyBalls% %Balls% today',
     'Poor %SlaveName%... ' + random('Do %MyBalls% %Balls% hurt ' + random('yet','')+  '?', 'Are %MyBalls% %Balls% changing color ' + random('yet','')+  '?') + ' %Grin%',
     'Oh my. %MyBalls% %Balls% seem to change color %Grin%',

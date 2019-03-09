@@ -62,7 +62,7 @@
                     sendMessage('You did alright! %Grin%');
                     changeMeritLow(false);
                 } else if (maxTwists > 20) {
-                    sendMessage('Well I suppose you wasn\'t terrible... %Grin%');
+                    sendMessage('Well I suppose you weren\'t terrible... %Grin%');
                 } else if (maxTwists > 15) {
                     sendMessage('Already done?! Bvarh..  %Grin%');
                     changeMeritLow(true);
@@ -190,10 +190,13 @@ function ballCrusherGame() {
                 break;
             } else if (answer.isLike('boob', 'breast', 'tit')) {
                 answerType = 0;
+                break;
             } else if (answer.isLike('butt', 'ass')) {
                 answerType = 1;
+                break;
             } else if (answer.isLike('hentai')) {
                 answerType = 2;
+                break;
             } else {
                 sendMessage('Boobs, butt or hentai %SlaveName%?');
                 answer.loop();
@@ -260,7 +263,7 @@ function ballCrusherRubberPlay() {
     sendMessage('I will continue until we reach your highscore...');
 
     let currentTwists = 0;
-    while (currenTwists < getVar(VARIABLE_BALL_CRUSHER_MAX_TWISTS)) {
+    while (currentTwists < getVar(VARIABLE_BALL_CRUSHER_MAX_TWISTS)) {
         showTeaseImage(random(9, 15));
         currentTwists += 2;
     }

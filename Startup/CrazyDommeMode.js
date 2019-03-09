@@ -1,4 +1,4 @@
-var DOMME_MODES = ["slutMode", "slaveMode", "cuckMode", "loverMode", "chastityMode"];
+const DOMME_MODES = ["slutMode", "slaveMode", "cuckMode", "loverMode", "chastityMode"];
 
 //First time?
 if(!isVar("crazyDommeModeSetDate")) {

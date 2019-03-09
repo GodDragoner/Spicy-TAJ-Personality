@@ -15,6 +15,7 @@ run("Utils/RandomUtils.js");
 run("Utils/StringUtils.js");
 run("Utils/BodyParts.js");
 run("Utils/GoldUtils.js")
+run("Utils/TAJUtils.js")
 run("Session/Tasks.js");
 run("Startup/UpdateVariables.js");
 run("Stroking/Stroke.js");
@@ -23,6 +24,8 @@ run("Stroking/Anal.js");
 run("Stroking/Blowing.js");
 run("Session/Modules/Pain/SmallPunishment.js");
 run("Session/Orgasm/OrgasmSpecial.js");
+
+run('Session/End/ChastityTraining/ChastitySpecialTask.js');
 
 
 run("Assistant/Assistant.js");
@@ -58,5 +61,4 @@ if(isFullTime()) {
 }
 
 //run("Session/StartSession.js");
-
 run("Assistant/AssistantLobby.js");

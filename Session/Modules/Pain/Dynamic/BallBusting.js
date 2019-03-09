@@ -115,7 +115,7 @@
                     return true;
                 },
             };
-            modules[simpleBallBustingModule.id] = simpleBallBustingModule;
+            modules.push(simpleBallBustingModule);
 
             const toiletCrushing = {
                 id: currentModuleId++,
@@ -179,7 +179,7 @@
                     return true;
                 },
             };
-            modules[toiletCrushing.id] = toiletCrushing;
+            modules.push(toiletCrushing);
 
             const maxLoops = painLevel / 2;
 
@@ -202,7 +202,7 @@ function getBallHitLevelIndex(loop, maxLoops, painToleranceLevel, isBeginning) {
     let mediumChance = 20 + loop + maxLoops;
     let hardChance = 10 + maxLoops;
 
-    const hitLevel = getWinnerIndex({lightChance, mediumChance, hardChance});
+    const hitLevel = getWinnerIndex([lightChance, mediumChance, hardChance]);
 
     return hitLevel;
 }
@@ -220,7 +220,7 @@ function getToiletLidTask(hitLevel, hasPortableDevice, map) {
 
     if (currentAmount > 0) {
         let answers = [
-            random('Go ahead and', 'I want you to') + random('yet', '') + ' again raise the toilet lid to ' + hitTypes[hitType] + ' and let it fall on %MyBalls% %Balls% ' + hitAmount + ' times',
+            random('Go ahead and', 'I want you to') + random('yet', '') + ' again raise the toilet lid to ' + hitLevels[hitLevel] + ' and let it fall on %MyBalls% %Balls% ' + hitAmount + ' times',
         ];
 
         sendMessage(answers[randomInteger(0, answers.length - 1)]);
@@ -265,7 +265,7 @@ function sendBallHitTask(hitLevel, hitType, loops, isBeginning, map) {
         }
 
         let answers = [
-            'I want you to ' + hitTypes[hitType] + ' %MyBalls% %Balls% ' + hitLevels[hitLevel] + hitAmount + ' times',
+            'I want you to ' + hitTypes[hitType] + ' %MyBalls% %Balls% ' + hitLevels[hitLevel] + ' ' +  hitAmount + ' times',
             random('Give', 'Go ahead and give', 'Let\'s give ') + ' %MyBalls% %Balls% ' + hitAmount + ' ' + hitLevels[hitLevel] + ' ' + pluralize(hitTypes[hitType], hitAmount),
         ];
 

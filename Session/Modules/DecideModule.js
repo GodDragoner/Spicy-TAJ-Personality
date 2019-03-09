@@ -81,7 +81,7 @@
         run("Session/Link/Module/DecideLink.js");
     }
 
-    //TODO: End session
+    run('Session/End/DecideEnd.js')
 }
 
 function runModuleCategory(category) {

@@ -60,7 +60,7 @@
                     break;
             }
 
-            sleep(20, 45);
+            sleep(randomInteger(30, 60));
         }
     }
 }

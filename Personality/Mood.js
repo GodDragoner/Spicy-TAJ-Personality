@@ -74,9 +74,9 @@ function handleTodaysMood() {
     const dayOfMonth = setDate().getDay();
 
     //Positive
-    if(getMood() < 2) {
+    if(getMood() < NEUTRAL_MOOD) {
         setVar('day' + dayOfMonth + 'Good',  true);
-    } else if(getMood() > 2) {
+    } else if(getMood() > NEUTRAL_MOOD) {
         //Annoyed
         setVar('day' + dayOfMonth + 'Good',  false);
     }

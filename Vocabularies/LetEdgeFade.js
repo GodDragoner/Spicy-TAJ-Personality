@@ -21,5 +21,5 @@ function letEdgeFadeVocabulary() {
         "Just be glad you're edging, Imagine wearing a %ChastityCage%"
     ];
 
-    return answers[randomInteger(0, answer.length -1)];
+    return answers[randomInteger(0, answers.length -1)];
 }

@@ -40,11 +40,15 @@ const VARIABLE_LOCKED_DAYS_IN_ROW = "lockedUpDaysInRow";
 
 const VARIABLE_LOCKED_UP_UNTIL = "lockedUpUntil";
 
+//Chastity training
 const VARIABLE_CHASTITY_LEVEL = 'chastityLevel';
 const VARIABLE_CHASTITY_EXPERIENCE = 'chastityExperience';
+const VARIABLE_TASK_CHASTITY_EXPERIENCE = 'taskChastityExperience';
 const VARIABLE_CHASTITY_TRAININGS_DONE = 'chastityTrainingsDone';
-
 const VARIABLE_AFRAID_OF_CHASTITY = 'afraidOfChastity';
+const VARIABLE_LAST_CHASTITY_TASK_ID = 'lastChastityTaskId';
+const VARIABLE_CHASTITY_EXPERIENCE_MULTIPLIER = 'chastityEXPMultiplier';
+const VARIABLE_CHASTITY_TASKS_IN_ROW = 'chastityTasksInRow';
 
 const VARIABLE_LONG_TERM_CHASTITY = 'chastityLongTerm';
 
@@ -136,6 +140,8 @@ const VARIABLE_HAPPINESS = "happiness";
 const VARIABLE_LUST = "lust";
 const VARIABLE_ANGER = "anger";
 
+//End
+const VARIABLE_ACTIVE_END_GAME_ID = 'activeEndGameId';
 
 //Module Categories
 const CATEGORY_HUMILATION = 'Humiliation';
