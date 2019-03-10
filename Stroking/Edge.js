@@ -1,5 +1,9 @@
+const EDGE_END_NORMAL = 0;
+const EDGE_END_RUIN = 0;
+const EDGE_END_ORGASM = 0;
+
 //TODO: Function to get hold seconds based on mood etc.
-function startEdging(holdSeconds, skipStop = false) {
+function startEdging(holdSeconds, skipStop = false, endIn = EDGE_END_NORMAL) {
     const answers = [
         "Get to the %EdgeNoun%",
         "Get to the %EdgeNoun% for me",
@@ -44,6 +48,14 @@ function startEdging(holdSeconds, skipStop = false) {
 
     if(!skipStop) {
         stopStrokingEdgeMessage();
+    }
+
+    if(endIn == EDGE_END_RUIN) {
+        sendMessage('%RuinForMe%');
+        registerRuin();
+    } else if(endIn == EDGE_END_ORGASM) {
+        sendMessage('%CumForMe%');
+        registerOrgasm();
     }
 
     endEdge();

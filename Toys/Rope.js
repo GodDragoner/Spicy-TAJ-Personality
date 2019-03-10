@@ -3,7 +3,7 @@ function hasBallsTied() {
 }
 
 function tieBalls() {
-    if(!hasBallsTied() && !isInChastity() && fetchToy("rope")) {
+    if(!hasBallsTied() && !isInChastity() && fetchToy("shoelace")) {
         setTempVar(VARIABLE_IS_BALLS_TIED, true);
 
         //TODO: Show tutorials etc. and tell the sub what exactly to do

@@ -173,6 +173,8 @@ function lockChastityCage() {
             }
         }
     }
+
+    setVar(VARIABLE_CHASTITY_ON, true);
 }
 
 function isForcedLockedUp() {

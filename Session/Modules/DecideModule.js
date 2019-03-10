@@ -53,7 +53,6 @@
         }
 
 
-
         //Not used atm.
         let sissyModuleChance = 0;
 
@@ -86,21 +85,21 @@
 
 function runModuleCategory(category) {
     setTempVar('lastModuleCategory', category);
-    const neutralPath =  getModuleTypeCategoryPath(category, 'Neutral');
-    const noChastityPath =  getModuleTypeCategoryPath(category, 'NoChastity');
-    const dynamicPath =  getModuleTypeCategoryPath(category, 'Dynamic');
+    const neutralPath = getModuleTypeCategoryPath(category, 'Neutral');
+    const noChastityPath = getModuleTypeCategoryPath(category, 'NoChastity');
+    const dynamicPath = getModuleTypeCategoryPath(category, 'Dynamic');
 
     const paths = [];
 
-    if(getFile(getPersonalityPath() + PATH_SEPERATOR + neutralPath).exists()) {
+    if (getFile(getPersonalityPath() + PATH_SEPERATOR + neutralPath).exists()) {
         paths.push(neutralPath + PATH_SEPERATOR + "*.js");
     }
 
-    if(getFile(getPersonalityPath() + PATH_SEPERATOR + noChastityPath).exists() && !isInChastity()) {
+    if (getFile(getPersonalityPath() + PATH_SEPERATOR + noChastityPath).exists() && !isInChastity()) {
         paths.push(noChastityPath + PATH_SEPERATOR + "*.js");
     }
 
-    if(getFile(getPersonalityPath() + PATH_SEPERATOR + dynamicPath).exists()) {
+    if (getFile(getPersonalityPath() + PATH_SEPERATOR + dynamicPath).exists()) {
         paths.push(dynamicPath + PATH_SEPERATOR + "*.js");
     }
 
@@ -111,65 +110,38 @@ function runModuleCategory(category) {
 }
 
 function tryRunModuleFetchId(minModulesSinceRun = 3) {
-   return tryRunModule(getCurrentScriptName(), getVar('lastModuleCategory'), minModulesSinceRun);
+    return tryRunModule(getCurrentScriptName(), getVar('lastModuleCategory'), minModulesSinceRun);
 }
 
 function tryRunModule(moduleId, category, minModulesSinceRun = 3) {
     let maxTries = 10;
 
+    moduleId = moduleId.toLowerCase();
+
     //If we already ran that module today try more than 10 times
-    if(isVar('todaysModuleHistory') && getVar('todaysModuleHistory').contains(moduleId)) {
+    if (MODULE_HISTORY.isInTodaysHistory(moduleId)) {
         maxTries = 30;
     }
 
-    if(isVar('moduleHistory')) {
-        let history = getVar('moduleHistory');
-
-        moduleId = moduleId.toLowerCase();
-
-        if(history.contains(moduleId)) {
-            //Check whether not enough modules have passed since last time we ran this module
-            if(history.size() - history.lastIndexOf(moduleId) < minModulesSinceRun) {
-                if(getVar('findModuleTries') < maxTries/2) {
-                    //Try to run from same category
-                    runModuleCategory(category);
-                    return false;
-                } else if(getVar('findModuleTries') < maxTries) {
-                    //Try to find a different module
-                    run("Session/Modules/DecideModule.js");
-                    return false;
-                }
-                //Else
-                //We tried too often so we gotta let this pass
+    if (MODULE_HISTORY.isInHistory(moduleId)) {
+        //Check whether not enough modules have passed since last time we ran this module
+        if (MODULE_HISTORY.getModulesSinceHistory(moduleId) < minModulesSinceRun) {
+            if (getVar('findModuleTries') < maxTries / 2) {
+                //Try to run from same category
+                runModuleCategory(category);
+                return false;
+            } else if (getVar('findModuleTries') < maxTries) {
+                //Try to find a different module
+                run("Session/Modules/DecideModule.js");
+                return false;
             }
+            //Else
+            //We tried too often so we gotta let this pass
         }
     }
 
-    addRunModule(moduleId);
+    MODULE_HISTORY.adddHistoryRun(moduleId);
     return true;
-}
-
-function addRunModule(moduleId) {
-    setVar('moduleHistory', getAndAddRunModuleFromVarArray(moduleId, 'moduleHistory'));
-    setTempVar('todaysModuleHistory', getAndAddRunModuleFromVarArray(moduleId, 'todaysModuleHistory'));
-}
-
-function getAndAddRunModuleFromVarArray(moduleId, varName) {
-    let history = new java.util.ArrayList();
-
-    if(isVar(varName)) {
-        history = getVar(varName);
-    }
-
-    moduleId = moduleId.toLowerCase();
-
-    if(history.contains(moduleId)) {
-        history.remove(moduleId);
-    }
-
-    history.add(moduleId);
-
-    return history;
 }
 
 function getModuleTypeCategoryPath(category, type) {

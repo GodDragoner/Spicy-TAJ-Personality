@@ -1,31 +1,36 @@
 {
-    //By default we want to send a new assignment
-    let completedExercise = true;
-    if (getVar(VARIABLE_CHASTITY_TRAININGS_DONE, 0) == 0) {
-        firstChastityTraining();
+    if(getVar(VARIABLE_CHASTITY_LEVEL) >= 30 || isVar('ChastityExamStartDate')) {
+        run('Session/End/ChastityTraining/ChastityExam.js');
     } else {
-        //Exam
-        //ADvice
-
-        if (checkChastityExercise()) {
-            if(getChastityEXPForLevel(getVar(VARIABLE_CHASTITY_LEVEL) + 1) > getVar(VARIABLE_CHASTITY_EXPERIENCE)) {
-                incrementVar(VARIABLE_CHASTITY_LEVEL, 1);
-            }
-
-            sendMessage('Your current chastity level is ' + getVar(VARIABLE_CHASTITY_LEVEL));
-
-            //if assignemnts done apply new assignments {
-            //Roll
-            // }
+        //By default we want to send a new assignment
+        let completedExercise = true;
+        if (getVar(VARIABLE_CHASTITY_TRAININGS_DONE, 0) == 0) {
+            firstChastityTraining();
         } else {
-            completedExercise = false;
+            if (checkChastityExercise()) {
+                if (getChastityEXPForLevel(getVar(VARIABLE_CHASTITY_LEVEL) + 1) > getVar(VARIABLE_CHASTITY_EXPERIENCE)) {
+                    incrementVar(VARIABLE_CHASTITY_LEVEL, 1);
+                }
+
+                sendMessage('Your current chastity level is ' + getVar(VARIABLE_CHASTITY_LEVEL));
+
+                //if assignemnts done apply new assignments {
+                //Roll
+                // }
+            } else {
+                completedExercise = false;
+            }
+        }
+
+        if (completedExercise) {
+            sendNewChastityExercise();
+        }
+
+
+        if (isChance(20)) {
+            randomChastityAdvice();
         }
     }
-
-    if(completedExercise) {
-        sendNewChastityExercise();
-    }
-
 
     setVar(VARIABLE_CHASTITY_TRAININGS_DONE, getVar(VARIABLE_CHASTITY_TRAININGS_DONE) + 1);
 }
@@ -61,6 +66,36 @@ function sendNewChastityExercise() {
 
     setVar(VARIABLE_TASK_CHASTITY_EXPERIENCE, task.exp * getVar(VARIABLE_CHASTITY_EXPERIENCE_MULTIPLIER, 1));
     setVar(VARIABLE_LAST_CHASTITY_TASK_ID, task.id);
+}
+
+function randomChastityAdvice() {
+    switch(randomInteger(0, 4)) {
+        case 0:
+            sendMessage(random("Remember it\'s a good idea to use moisterizer cream ", "I strongly recommend using a moisterizer ", "don\'t forget using moisterizer! "));
+            sendMessage(random("It protects against chafing/friction and overall provides with a better experience ", "It protects against chafing ", "It will greatly enhance your lock up time %Grin% "));
+            sendMessage(random("Make sure to at least use it around your scrotum ", "At least use it around your scrotum! ", "Keep your scrotum from getting irritated "));
+            sendMessage(random("It can easily make all the difference during sleep ", "It might even improve your sleep! "));
+            sendMessage(random("It even makes it easier to put on the %Cage%", "It also makes it easier to put the %Cage% on "));
+            break;
+        case 1:
+            sendMessage(random("A great advice is Q-tips ", "Q-tips are your best friends! ") + "%Grin%");
+            sendMessage(random("They are excellent for hygienic purposes during long term chastity ", "Really great for the overall hygiene! "));
+            break;
+        case 2:
+            sendMessage(random("Make sure you\'re using the right sizing ring for your", "Don\'t use the wrong size O-ring! %Cage%"));
+            sendMessage(random("Being too big or too small also contributes to discomfort", "Whether it\'s too big or small can create discomfort"));
+            break;
+        case 3:
+            sendMessage(random("I will recommend you to use a rubber coated lock for your %Cage% ", "I like to recommend a rubber coated padlock "));
+            sendMessage(random("Protects against unwanted pinching and noise ", "Removes the chance of pinching and noise! "));
+            break;
+        case 4:
+            sendMessage(random("Trim your pubic hair ", "Make sure to trim those pubic hairs! "));
+            sendMessage(random("don\'t shave it off completely since this might cause skin irritation ", "Don\'t necessarily remove it completely, but keeping them short is really recommended "));
+            sendMessage(random("But don\'t let it grow too long either since this puts you in the risk of pubic hair getting caught ", "Do not let them grow too long! "));
+            sendMessage(random("Again causing pain or discomfort ", "Again to enhance your comfort! "));
+            break;
+    }
 }
 
 function sendBasicChastityTrainingTask() {

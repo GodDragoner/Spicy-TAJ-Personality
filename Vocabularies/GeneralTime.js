@@ -1,0 +1,3 @@
+function generalTimeVocabulary() {
+    return 'today';
+}

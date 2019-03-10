@@ -4,6 +4,10 @@ const ORGASM_FREQUENCY_SEMI_RARE = 2;
 const ORGASM_FREQUENCY_SOMEWHAT_RARE = 3;
 const ORGASM_FREQUENCY_DOM = 4;
 
+const ORGASM_CATEGORY_ALLOWED = 0;
+const ORGASM_CATEGORY_RUINED = 1;
+const ORGASM_CATEGORY_DENIED = 2;
+
 function registerOrgasm() {
     setDate(VARIABLE_LAST_ORGASM);
     setVar(VARIABLE_ORGASM_COUNTER, getVar(VARIABLE_ORGASM_COUNTER, 0) + 1);
@@ -27,6 +31,25 @@ function getLastEjaculationDate() {
     }
 
     return getDate(VARIABLE_LAST_RUINED_ORGASM);
+}
+
+function waitForCumAnswer() {
+    let answer = createInput();
+
+    while(true) {
+        if(answer.isLike('came', 'cum', 'orgasm', 'ruin')) {
+            changeMeritLow(true);
+            sendMessage('%Good%');
+            sendMessage(random('A "thank you" would be nice %Slave%', 'How about you thank your %DomHonorific%?'));
+            answer.loop();
+        } else if(answer.isLike('thanks', 'thank you', "merci", "gracias", "grateful")) {
+            sendMessage('You\'re welcome %SlaveName% %Grin%');
+        } else {
+            sendMessage('How about you thank your %DomHonorific%?');
+            changeMeritLow(true);
+            answer.loop();
+        }
+    }
 }
 
 function distributeOrgasmPoints() {
@@ -72,6 +95,55 @@ function getRequiredOrgasmPoints() {
     const minPoints = 26.87*java.lang.Math.E^(0,2598*denialLevel);
     const maxPoints = 68.559*java.lang.Math.E^(0,2501*denialLevel);
     return randomInteger(minPoints, maxPoints);
+}
+
+
+function runOrgasmCategory(category) {
+    category = category.toLowerCase();
+
+    setTempVar('lastOrgasmCategory', category);
+
+    let path = 'Session/Orgasm/Allowed/*.js';
+
+    switch(category) {
+        case ORGASM_CATEGORY_DENIED:
+            path = 'Session/Orgasm/Denied/*.js';
+            break;
+        case ORGASM_CATEGORY_RUINED:
+            path = 'Session/Orgasm/Ruined/*.js';
+            break;
+    }
+
+    //Keep track of how many times we tried to find an orgasm file
+    setTempVar('findOrgasmTries', getVar('findOrgasmTries', 0) + 1);
+
+    run(path);
+}
+
+function tryRunOrgasmFetchId(minFilesSinceRun = 5) {
+    return tryRunOrgasm(getCurrentScriptName(), getVar('lastOrgasmCategory'), minFilesSinceRun);
+}
+
+function tryRunOrgasm(moduleId, category, minFilesSinceRun = 5) {
+    let maxTries = 10;
+
+    moduleId = moduleId.toLowerCase();
+
+    if (ORGASM_HISTORY.isInHistory(moduleId)) {
+        //Check whether not enough modules have passed since last time we ran this module
+        if (ORGASM_HISTORY.getModulesSinceHistory(moduleId) < minFilesSinceRun) {
+            if (getVar('findOrgasmTries') < maxTries) {
+                //Try to run from same category
+                runOrgasmCategory(category);
+                return false;
+            }
+            //Else
+            //We tried too often so we gotta let this pass
+        }
+    }
+
+    ORGASM_HISTORY.adddHistoryRun(moduleId);
+    return true;
 }
 
 function askAboutDenialLevel() {

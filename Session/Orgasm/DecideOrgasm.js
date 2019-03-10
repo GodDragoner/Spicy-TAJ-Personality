@@ -1,0 +1,4 @@
+{
+    setTempVar('findOrgasmTries', 0);
+}
+
