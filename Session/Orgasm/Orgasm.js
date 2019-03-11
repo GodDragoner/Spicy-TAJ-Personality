@@ -50,6 +50,7 @@ function waitForCumAnswer() {
             answer.loop();
         } else if(answer.isLike('thanks', 'thank you', "merci", "gracias", "grateful")) {
             sendMessage('You\'re welcome %SlaveName% %Grin%');
+            break;
         } else {
             sendMessage('How about you thank your %DomHonorific%?');
             changeMeritLow(true);
@@ -289,6 +290,7 @@ function askAboutDenialLevel() {
                             }
                         }
 
+                        break;
                     } else {
                         sendMessage(YES_OR_NO);
                         answer.loop();

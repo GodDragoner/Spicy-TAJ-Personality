@@ -3,33 +3,19 @@
         if (hasChastityCage()) {
             sendMessage("I think your %Cock% might be overheating in its cage");
         } else {
-            const answer = sendInput("How is your %Cock% doing, is it hard?");
-
-            while(true) {
-                if(answer.isLike('yes')) {
-                    sendMessage("Hmm we should do something about that...");
-                } else if(answer.isLike('no')) {
-                    sendMessage("Too much denial will do that to it...");
-                    sendMessage('You will be hard all times but won\'t be allowed to stroke without permissions %Grin%');
-                } else {
-                    sendMessage(YES_OR_NO);
-                    answer.loop();
-                }
+            if(sendYesOrNoQuestion("How is your %Cock% doing, is it hard?")) {
+                sendMessage("Hmm we should do something about that...");
+            } else {
+                sendMessage("Too much denial will do that to it...");
+                sendMessage('You will be hard all times but won\'t be allowed to stroke without permissions %Grin%');
             }
         }
 
         if(askAndFetchIceCubes()) {
-            const answer = sendInput("How is your %Cock% doing, is it hard?");
-
-            while(true) {
-                if(answer.isLike('yes')) {
-                    sendMessage("You know where this is going right? %Grin%");
-                } else if(answer.isLike('no')) {
-                    sendMessage("You should put them on now");
-                } else {
-                    sendMessage(YES_OR_NO);
-                    answer.loop();
-                }
+            if(sendYesOrNoQuestion("Are you wearing any underwear right now?")) {
+                sendMessage("You know where this is going right? %Grin%");
+            } else {
+                sendMessage("You should put them on now");
             }
 
             sendMessage("Put those ice cubes in your underwear, so that your %Balls% rest on them");

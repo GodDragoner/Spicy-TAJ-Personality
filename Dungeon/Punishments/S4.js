@@ -219,5 +219,5 @@ while (RipPegs>=S4Round)  {
  
 	sendMessage("No more rounds! "); //#DT4 
 	setVar("PunishmentComplete", true);
-	setVar("punishmentCompleted", 04);
+	setVar("punishmentCompleted", 4);
 	run("Dungeon/PunishmentBaseEnd.js");

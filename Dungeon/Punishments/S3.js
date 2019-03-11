@@ -137,7 +137,7 @@ switch (choice) {
 	changeMeritLow(false);
 	// @Goto(NoFee)
 	//@TempFlag(PunishmentComplete)
-	setVar("PunishmentCompleted",03);
+	setVar("PunishmentCompleted", 3);
 	run("Dungeon\Punishment\PunishmentBaseEnd.js");
 	break;
 	

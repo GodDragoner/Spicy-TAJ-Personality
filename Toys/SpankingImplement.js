@@ -29,22 +29,15 @@ function fetchSpankingImplement(level = -1) {
     }
 
     if(!fetchToy(spankingImplement)) {
-        const answer = sendInput('Do you have a similar spanking implement around? A ruler, a belt, a spoon or something similar?');
-
-        while(true) {
-            if(answer.isLike('yes')) {
-                sendMessage('Well I guess that is somehow satisfactory...');
-                const answer = sendInput('Do you have another spanking implement around? A ruler, a belt, a spoon or something similar?');
-                //Remove any additions to the word itself
-                spankingImplement = answer.getAnswer().replace('a ', '').repalce('the ', '').replace('an  ', '');
-            } else if(answer.isLike('no')) {
-                sendMessage('Well then %SlaveName%...');
-                sendMessage('This looks like a time where you will use your own hand to spank yourself');
-                spankingImplement = 'hand';
-            } else {
-                sendMessage(YES_OR_NO);
-                answer.loop();
-            }
+        if(sendYesOrNoQuestion('Do you have a similar spanking implement around? A ruler, a belt, a spoon or something similar?')) {
+            sendMessage('Well I guess that is somehow satisfactory...');
+            const answer = sendInput('Do you have another spanking implement around? A ruler, a belt, a spoon or something similar?');
+            //Remove any additions to the word itself
+            spankingImplement = answer.getAnswer().replace('a ', '').repalce('the ', '').replace('an  ', '');
+        } else {
+            sendMessage('Well then %SlaveName%...');
+            sendMessage('This looks like a time where you will use your own hand to spank yourself');
+            spankingImplement = 'hand';
         }
     }
 

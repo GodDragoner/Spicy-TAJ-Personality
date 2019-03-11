@@ -34,10 +34,13 @@
                         while(true) {
                             if(answer3.isLike("first", "stroke", "stroked", "stroking")) {
                                 sendMessage("I should have known %Lol%");
+                                break;
                             } else if(answer3.isLike("second", "stay", "put", "staying")) {
                                 sendMessage("Wow, I would have thought that was the easy part");
+                                break;
                             } else if(answer3.isLike("both", "neither", "none")) {
                                 sendMessage("So... you walked away while %JerkingOff% %EmoteFlustered%");
+                                break;
                             } else {
                                 sendMessage('"Which instruction did you not follow, the first or the second?');
                                 answer.loop();
