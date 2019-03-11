@@ -31,10 +31,11 @@
             waitForCumAnswer();
             sendMessage("It\'s nice to have some pain mixed in with your pleasure, isn\'t it?");
             //TODO: Answer
+        }
 
-            if (shouldCEI()) {
-                sendEatInstructions();
-            }
+
+        if (shouldCEI()) {
+            sendEatInstructions();
         }
     }
 }

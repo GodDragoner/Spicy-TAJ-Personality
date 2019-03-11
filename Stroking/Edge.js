@@ -72,7 +72,7 @@ function sendEdgeTaunts() {
     //Start our loop and continue until iterationsToGo are equal or less than zero
     while(iterationsToGo > 0) {
         //Is the sub on the edge?
-        if(isOnEdge()) {
+        if(isOnEdge() || !isEdging()) {
             return;
         }
 

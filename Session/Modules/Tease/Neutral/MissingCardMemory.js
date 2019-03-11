@@ -5,6 +5,7 @@
         sendMessage('I have a cool memory game for us');
         sendMessage('I will show you 12 out of 13 different cards from a deck of poker cards');
         sendMessage('For example I might show you ace(1), two(2), three(3), four(4), five(5), seven(7), eight(8), nine(9), ten(10), knight(11), queen(12) and king(13)');
+        //TODO: show example
         sendMessage('In this example the six was missing');
         sendMessage('It doesn\'t matter whether the card is club, heart, spade or diamond');
         sendMessage('Only the card value is important for now');
@@ -46,9 +47,11 @@
 
             for (let number = 1; number < 14; number++) {
                 if (number != numberMissing) {
-                    numberArray.push(number);
+                    numberArray[randomInteger(0, 12)] = number;
                 }
             }
+
+            shuffle(numberArray);
 
             for (let index = 0; index < numberArray.length; index++) {
                 showImage('Images/Spicy/Deck/' + numberArray[index] + '/*.jpg', 1);
@@ -72,6 +75,8 @@
                     answer.loop();
                 }
             }
+
+            answer.clearOptions();
 
             if (rightAnswer) {
                 wins++;

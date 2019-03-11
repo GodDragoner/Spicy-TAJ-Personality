@@ -37,7 +37,7 @@
 
     run("Settings/UpdateDevotion.js");
 
-    setVar("orgasmRatio", 50);
+    setVar(VARIABLE_ORGASM_RATION, 50);
     setVar("lockUpPoints", 0);
     setVar(VARIABLE_MERITS, 500);
     setDate("firstStart");

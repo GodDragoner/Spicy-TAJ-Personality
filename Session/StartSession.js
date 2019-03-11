@@ -33,7 +33,7 @@
             showPicture("Images/Spicy/Chastity/ChastityOffDenied/*.*", 5);
             sendMessage(random("You're under strict lockdown", "You're strictly locked", "You're not gonna be released"), 5);
             //, "You are still being punished", "You're serving a punishment" TODO: Punishment flag
-            sendMessage(random("Meaning there will be no release from that %Cage%...", "Meaning you won't be released for this session", "So there won't be any release today"), 5);
+            sendMessage(random("Meaning there will be no release from that %ChastityCage%...", "Meaning you won't be released for this session", "So there won't be any release today"), 5);
             unlockImages();
         } else {
             if (getVar(VARIABLE_LOCKED_DAYS_IN_ROW, 0) > getVar(VARIABLE_LOCKED_UP_LIMIT)) {

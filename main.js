@@ -11,6 +11,9 @@ registerVariable("anallimit", "Anal Limit", "Is anal a hard limit, allowed, need
 
 sendSystemMessage("Launching Spicy " + getVar("personalityVersion"));
 
+//TODO: Apply and remove toys dynamically at random like gag, collar, plug etc.
+//TODO: Rules that are added and removed at random (permanent and temporary ones, always wear collar, plug, gag etc., always thank for orgasm, always naked)
+
 run("Utils/RandomUtils.js");
 run("Utils/StringUtils.js");
 run("Utils/BodyParts.js");

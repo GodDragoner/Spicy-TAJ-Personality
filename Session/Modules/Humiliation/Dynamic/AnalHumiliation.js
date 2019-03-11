@@ -6,6 +6,7 @@
         let plugPlay = hasButtplugToy() && isChance(50) && getVar(VARIABLE_ASS_LEVEL) >= 5;
         let dildoPlay = hasDildoToy() && getVar(VARIABLE_ASS_LEVEL) >= 5;
 
+        //TODO: Check for time spent plugged/work up sizes of plug
         if (isPlugged()) {
             if (isChance(50)) {
                 sendMessage("Plugging you beforehand was a great idea");
@@ -251,9 +252,9 @@ function appendPenetratingSession(toy) {
         startAnal(30, randomInteger(120, 240));
         iterations--;
 
-        if (isChance(50) || !blowjob) {
+        if (isChance(50) || !currentBlowjob) {
             sendMessage("Let's change the position shall we? %Grin%");
-            choosePosition(toy, blowjob);
+            choosePosition(toy, currentBlowjob);
             sendMessage("And straight back to fucking that ass of yours");
             if (currentBlowjob) {
                 sendMessage("And don't forget to keep that mouth " + random("busy", "occupied", "used", "filled") + " too %Lol%");
@@ -282,7 +283,7 @@ function appendPenetratingSession(toy) {
     sendMessage("Pull your " + toy + " out of your ass");
 }
 
-//TODO: Has second dildo
+//TODO: Has second dildo and tell to fetch a second dildo
 function addBlowjobToFucking(toy, mountedToWall = false, inFront = false) {
     const hasSecondDildo = true;
 
@@ -291,14 +292,15 @@ function addBlowjobToFucking(toy, mountedToWall = false, inFront = false) {
             return false;
         }
 
-        addBlowjobToFucking(toy, mountedToWall, inFront);
+        startBlowjobFuckingInstructions(toy, mountedToWall, inFront);
     }
 
     return hasSecondDildo;
 }
 
-function stopBlowjobFuckingInstructions(toy) {
-    let usedBlowjobInstructions = getVar("usedBlowjobInstructions");
+function stopBlowjobFuckingInstructions() {
+    let usedBlowjobInstructions = getVar("usedBlowjobInstructions", new java.util.ArrayList());
+
     //Number to state that we had instructions before but stopped them
     usedBlowjobInstructions.add(1000);
     sendMessage("%SlaveName% put that second dildo aside for now. You can stop raping your mouth for now %Grin%");
@@ -330,7 +332,7 @@ function startBlowjobFuckingInstructions(toy, mountedToWall = false, inFront = f
     }
 
     let skipASM = false;
-    if (isChance(50) || getVar(VARIABLE_BLOWJOB_LEVEL) < 30) {
+    if (isChance(50) || getBlowjobLevel() < 30) {
         //Either because we haven't been doing this already or because the last thing we did was the normal blowjob beat
         if (isChance(20) && usedBlowjobInstructions.get(usedBlowjobInstructions.size() - 1) != 5 || usedBlowjobInstructions.get(usedBlowjobInstructions.size() - 1) == 0) {
             //Means the last thing we did was blowjob to the beat
@@ -513,11 +515,11 @@ function startSquatAnal(toy) {
             //Only send this when the sub is not in chastity
             if (!getVar(VARIABLE_CHASTITY_ON, false)) {
                 sendMessage("But no touching that %Cock%");
+            } else {
+                sendMessage("Luckily I don't have to worry about your cock");
+                sendMessage("It's locked up in it's %ChastityCage% and it is gonna stay this way for now");
+                if (isChance(50)) sendMessage("Maybe even for ever %Grin%");
             }
-        } else {
-            sendMessage("Luckily I don't have to worry about your cock");
-            sendMessage("It's locked up in it's %Cage% and it is gonna stay this way for now");
-            if (isChance(50)) sendMessage("Maybe even for ever %Grin%");
         }
     }
 

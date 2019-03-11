@@ -11,6 +11,6 @@
         sendMessage("Maybe...");
         sendMessage("Just one more...? %Grin%");
         startEdging();
-        sendMessage("%LetTheEdgeFade%");
+        sendMessage("%LetEdgeFade%");
     }
 }

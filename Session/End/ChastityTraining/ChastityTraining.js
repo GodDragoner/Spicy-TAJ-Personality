@@ -75,18 +75,18 @@ function randomChastityAdvice() {
             sendMessage(random("It protects against chafing/friction and overall provides with a better experience ", "It protects against chafing ", "It will greatly enhance your lock up time %Grin% "));
             sendMessage(random("Make sure to at least use it around your scrotum ", "At least use it around your scrotum! ", "Keep your scrotum from getting irritated "));
             sendMessage(random("It can easily make all the difference during sleep ", "It might even improve your sleep! "));
-            sendMessage(random("It even makes it easier to put on the %Cage%", "It also makes it easier to put the %Cage% on "));
+            sendMessage(random("It even makes it easier to put on the %ChastityCage%", "It also makes it easier to put the %ChastityCage% on "));
             break;
         case 1:
             sendMessage(random("A great advice is Q-tips ", "Q-tips are your best friends! ") + "%Grin%");
             sendMessage(random("They are excellent for hygienic purposes during long term chastity ", "Really great for the overall hygiene! "));
             break;
         case 2:
-            sendMessage(random("Make sure you\'re using the right sizing ring for your", "Don\'t use the wrong size O-ring! %Cage%"));
+            sendMessage(random("Make sure you\'re using the right sizing ring for your", "Don\'t use the wrong size O-ring! %ChastityCage%"));
             sendMessage(random("Being too big or too small also contributes to discomfort", "Whether it\'s too big or small can create discomfort"));
             break;
         case 3:
-            sendMessage(random("I will recommend you to use a rubber coated lock for your %Cage% ", "I like to recommend a rubber coated padlock "));
+            sendMessage(random("I will recommend you to use a rubber coated lock for your %ChastityCage% ", "I like to recommend a rubber coated padlock "));
             sendMessage(random("Protects against unwanted pinching and noise ", "Removes the chance of pinching and noise! "));
             break;
         case 4:
@@ -104,7 +104,7 @@ function sendBasicChastityTrainingTask() {
     let min = Math.ceil(chastityLevel / 2.9);
     let randomHourAmount = randomInteger(min, min + 3);
 
-    let randomInstruction = random('You are to wear your', 'You have to wear the', 'You gotta wear the', 'You should wear the', 'You need to wear the') + " %Cage%";
+    let randomInstruction = random('You are to wear your', 'You have to wear the', 'You gotta wear the', 'You should wear the', 'You need to wear the') + " %ChastityCage%";
 
     let putOnChastity = false;
 
@@ -200,7 +200,7 @@ function checkChastityExercise() {
                     changeMeritHigh(true);
                     break;
                 } else if (whyUnableAnswer.isLike("time", "time", "time")) {
-                    sendMessage(random("You should always find the time to wear your ", "You should always have time to wear your ") + "%Cage%");
+                    sendMessage(random("You should always find the time to wear your ", "You should always have time to wear your ") + "%ChastityCage%");
                     changeMeritMedium(true);
                     ;
                     break;
@@ -255,10 +255,10 @@ function checkChastityExercise() {
 function firstChastityTraining() {
     sendMessage("This is your very first session of chastity training");
     setVar(VARIABLE_CHASTITY_LEVEL, 1);
-    sendMessage("We\'re going to practice and make you train your ability to wear the %Cage%");
+    sendMessage("We\'re going to practice and make you train your ability to wear the %ChastityCage%");
     setVar(VARIABLE_CHASTITY_EXPERIENCE, 0);
-    sendMessage("Essentially our goal is to make that %Cage% feel like home");
-    sendMessage("We want you at a point where you\'ll feel naked without the %Cage%");
+    sendMessage("Essentially our goal is to make that %ChastityCage% feel like home");
+    sendMessage("We want you at a point where you\'ll feel naked without the %ChastityCage%");
     sendMessage("It\'s rather simple how this work.");
     sendMessage("After each session");
     sendMessage("You will be asked whether you completed your current assignment");

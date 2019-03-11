@@ -10,6 +10,7 @@
             sendMessage('1 being not so hot %Lol%');
             //sendMessage('@NullResponse @CallReturn(CR\Modules\Tease\ModuleParts\ModelRatingPart1.txt)');
 
+            lockImage();
             for (let index = 1; index <= 100; index++) {
                 showImage('Images/Spicy//Games/ModelGame/' + index + '.*');
                 const answer = createInput();
@@ -37,6 +38,7 @@
                     }
                 }
             }
+            unlockImages();
 
 
             sendMessage('We\'re gonna stop here');

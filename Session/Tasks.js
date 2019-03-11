@@ -82,7 +82,7 @@ function startTimePassTasks(durationMinutes, allowTeasing = true) {
                 //TODO: Has sissy outfit? And check for other stuff that the sub might be wearing right now and tell to make photos of it
                 sendMessage("But I want them to show you either naked or in that cute little sissy outfit of yours");
                 sendMessage("Go ahead and take some now and return when you hear my bell");
-                sleep(randomInteger(45, 90));
+                sleep(randomInteger(75, 120));
                 returnSlave();
                 sendMessage("I want you to place those pictures inside your self humiliation folder");
                 sendMessage("But you can do so after the session");
@@ -92,7 +92,7 @@ function startTimePassTasks(durationMinutes, allowTeasing = true) {
                 if(!isPlugged() && getAnalLimit() == LIMIT_ASKED_YES) {
                     if(putInButtplug()) {
                         if(isChance(50)) {
-
+                            //TODO: What was I planning on doing?
                         }
                     } else {
                         iterations = 0;

@@ -16,16 +16,16 @@ function createHistory(name) {
 
             let historyArray = getVar(this.historyVar);
 
-            return historyArray.size() - history.lastIndexOf(moduleId);
+            return historyArray.size() - historyArray.lastIndexOf(moduleId);
         },
 
         isInTodaysHistory : function(moduleId) {
             return isVar(this.todaysHistoryVar) && getVar(this.todaysHistoryVar).contains(moduleId);
         },
 
-        adddHistoryRun : function(moduleId) {
-            setVar(this.historyVar, getAndAddRunModuleFromVarArray(moduleId, this.historyVar));
-            setTempVar(this.todaysHistoryVar, getAndAddRunModuleFromVarArray(moduleId, this.todaysHistoryVar));
+        addHistoryRun : function(moduleId) {
+            setVar(this.historyVar, this.getAndAddHistoryFromVarArray(moduleId, this.historyVar));
+            setTempVar(this.todaysHistoryVar, this.getAndAddHistoryFromVarArray(moduleId, this.todaysHistoryVar));
         },
 
         getAndAddHistoryFromVarArray : function(moduleId, varName) {
@@ -46,4 +46,6 @@ function createHistory(name) {
             return history;
         }
     };
+
+    return history;
 }

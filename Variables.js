@@ -18,6 +18,8 @@ const VARIABLE_LOCKED_UP_LIMIT = "lockedUpLimit";
 
 const VARIABLE_ORGASM_POINTS = "orgasmPoints";
 const VARIABLE_REQUIRED_ORGASM_POINTS = "requiredOrgasmPoints";
+const VARIABLE_ORGASM_RATION = "orgasmRatio";
+
 
 const VARIABLE_LAST_ORGASM = "lastOrgasm";
 const VARIABLE_LAST_RUINED_ORGASM = "lastRuined";

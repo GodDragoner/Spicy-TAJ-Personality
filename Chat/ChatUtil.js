@@ -1,12 +1,13 @@
 const YES_OR_NO = "Yes or no?";
+const TAJ_CHAT_HANDLER = Java.type('me.goddragon.teaseai.api.chat.ChatHandler');
 
 function sendVirtualAssistantMessage(message, wait, skipImage) {
-    textName = new javafx.scene.text.Text("[Vivienne]: ");
+    let textName = new javafx.scene.text.Text("[Vivienne]: ");
     textName.setFill(javafx.scene.paint.Color.ROYALBLUE);
     textName.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.BOLD, 14));
 
     message = replaceVocab(message);
-    text = new javafx.scene.text.Text(message);
+    let text = new javafx.scene.text.Text(message);
     text.setFill(javafx.scene.paint.Color.ROYALBLUE);
     text.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.MEDIUM, 13));
 
@@ -23,9 +24,51 @@ function sendVirtualAssistantMessage(message, wait, skipImage) {
 }
 
 function sendSystemMessage(message) {
-    text = new javafx.scene.text.Text(message);
+    let text = new javafx.scene.text.Text(message);
     text.setFill(javafx.scene.paint.Color.RED);
     text.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.BOLD, 13));
 
     sendCustomMessage(text);
+}
+
+
+function addContact(id) {
+    let contactName = "";
+
+    if(id > 2) {
+        contactName = '%domFriend' + (id - 2) + 'Name%';
+    } else {
+        contactName = '%domName%';
+    }
+
+    let textName = new javafx.scene.text.Text(replaceVocab(contactName));
+    textName.setFill(TAJ_CHAT_HANDLER.getHandler().getParticipantById(id).getNameColor());
+    textName.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.BOLD, 14));
+
+
+    let text = new javafx.scene.text.Text(' joined the chat');
+    text.setFill(javafx.scene.paint.Color.AQUA);
+    text.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.BOLD, 14));
+
+    sendCustomMessage(textName, text);
+}
+
+function removeContact(id) {
+    let contactName = "";
+
+    if(id > 2) {
+        contactName = '%domFriend' + (id - 2) + 'Name%';
+    } else {
+        contactName = '%domName%';
+    }
+
+    let textName = new javafx.scene.text.Text(replaceVocab(contactName));
+    textName.setFill(TAJ_CHAT_HANDLER.getHandler().getParticipantById(id).getNameColor());
+    textName.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.BOLD, 14));
+
+    let text = new javafx.scene.text.Text(' left the chat');
+    text.setFill(javafx.scene.paint.Color.AQUA);
+    text.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.BOLD, 14));
+
+    sendCustomMessage(textName, text);
 }

@@ -26,7 +26,12 @@ function registerEjaculation() {
 }
 
 function getLastEjaculationDate() {
-    if(getDate(VARIABLE_LAST_RUINED_ORGASM).after(getDate(VARIABLE_LAST_ORGASM))) {
+    if(!isVar(VARIABLE_LAST_RUINED_ORGASM) && !isVar(VARIABLE_LAST_ORGASM)) {
+        //Just some really old date if the sub hasn't cum yet for some reason (although the date should be set in the startup file)
+        return setDate().addYear(-10);
+    }
+
+    if(!isVar(VARIABLE_LAST_RUINED_ORGASM) || getDate(VARIABLE_LAST_RUINED_ORGASM).after(getDate(VARIABLE_LAST_ORGASM))) {
         return getDate(VARIABLE_LAST_ORGASM);
     }
 
@@ -40,6 +45,7 @@ function waitForCumAnswer() {
         if(answer.isLike('came', 'cum', 'orgasm', 'ruin')) {
             changeMeritLow(true);
             sendMessage('%Good%');
+            //TODO: Force only after rule has been set up like, from now on you will always thank me
             sendMessage(random('A "thank you" would be nice %Slave%', 'How about you thank your %DomHonorific%?'));
             answer.loop();
         } else if(answer.isLike('thanks', 'thank you', "merci", "gracias", "grateful")) {
@@ -49,6 +55,75 @@ function waitForCumAnswer() {
             changeMeritLow(true);
             answer.loop();
         }
+    }
+}
+
+function decideOrgasm() {
+    let decide = 0;
+
+    let array = [
+        //First personality
+        /*VPleased*/ 100, 170,  /*PLeased*/ 90, 160,  /*Neutral*/ 80, 150,  /*Annoyed*/70, 140, /*VAnnoyed*/60, 130,
+        //Second personality
+        /*VPleased*/ 90, 150,  /*PLeased*/ 80, 140,  /*Neutral*/ 70, 130,  /*Annoyed*/60, 120, /*VAnnoyed*/50, 110,
+        //Third personality
+        /*VPleased*/ 80, 130,  /*PLeased*/ 70, 120,  /*Neutral*/ 60, 110,  /*Annoyed*/50, 100, /*VAnnoyed*/40, 90,
+    ];
+
+    const personalityOffset = ACTIVE_PERSONALITY_STRICTNESS*5*2;
+    decide += randomInteger(array[personalityOffset], array[personalityOffset + 1]);
+
+    let goodDays = getMonthlyGoodDays();
+
+    //Bad days > good days
+    if(goodDays < 31 - goodDays) {
+        decide -= 31 - goodDays;
+    }
+
+    if(getVar(VARIABLE_HAPPINESS) < getVar(VARIABLE_ANGER)) {
+        decide -= getVar(VARIABLE_ANGER);
+    }
+
+    if(getVar(VARIABLE_LUST) > 27) {
+        decide += getVar(VARIABLE_LUST);
+    }
+
+    if(decide >= 100 && getVar(VARIABLE_ORGASM_RATION) >= randomInteger(1, 100)) {
+        let ratioArray = [
+            //First personality
+            25,
+            //Second personality
+            65,
+            //Third personality
+            100,
+        ];
+
+        incrementVar(VARIABLE_ORGASM_RATION, -ratioArray[ACTIVE_PERSONALITY_STRICTNESS]);
+
+        if(getVar('slaveMode', false)) {
+            incrementVar(VARIABLE_ORGASM_RATION, -45);
+        }
+
+        return ORGASM_CATEGORY_ALLOWED;
+    } else if(decide >= 80) {
+        let ratioArray = [
+            //First personality
+            9,
+            //Second personality
+            8,
+            //Third personality
+            6,
+        ];
+
+        incrementVar(VARIABLE_ORGASM_RATION, ratioArray[ACTIVE_PERSONALITY_STRICTNESS]);
+
+        if(getVar('slaveMode', false)) {
+            incrementVar(VARIABLE_ORGASM_RATION, -4);
+        }
+
+        return ORGASM_CATEGORY_RUINED;
+    } else {
+        return ORGASM_CATEGORY_DENIED;
     }
 }
 
@@ -62,7 +137,7 @@ function distributeOrgasmPoints() {
         /*VPleased*/ 2, 10,  /*PLeased*/ 1, 8,  /*Neutral*/ 0, 6,  /*Annoyed*/0, 4, /*VAnnoyed*/0,1, /*Lover mode*/ 0, 14, /*Good days*/ 5, 10, /*Lust*/ 5, 25, /*Denial*/ 1, 9,
     ];
 
-    const personalityOffset = ACTIVE_PERSONALITY_ID*9*2;
+    const personalityOffset = ACTIVE_PERSONALITY_STRICTNESS*9*2;
     const moodOffset = getMood()*2;
     const loverOffset = 5*2;
     const goodDaysOffset = 6*2;
@@ -86,6 +161,8 @@ function distributeOrgasmPoints() {
     if(getLastEjaculationDate().addDay(getVar(VARIABLE_DENIAL_LEVEL).hasPassed())) {
         totalToAdd += randomInteger(points[personalityOffset + denialOffset], points[personalityOffset + denialOffset + 1]);
     }
+
+    //TODO: Orgasm  frequency
 
     incrementVar(VARIABLE_ORGASM_POINTS, totalToAdd);
 }
@@ -142,7 +219,7 @@ function tryRunOrgasm(moduleId, category, minFilesSinceRun = 5) {
         }
     }
 
-    ORGASM_HISTORY.adddHistoryRun(moduleId);
+    ORGASM_HISTORY.addHistoryRun(moduleId);
     return true;
 }
 

@@ -140,7 +140,7 @@ function tryRunModule(moduleId, category, minModulesSinceRun = 3) {
         }
     }
 
-    MODULE_HISTORY.adddHistoryRun(moduleId);
+    MODULE_HISTORY.addHistoryRun(moduleId);
     return true;
 }
 

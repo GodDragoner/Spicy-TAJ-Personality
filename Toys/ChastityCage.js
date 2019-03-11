@@ -84,7 +84,7 @@ function unlockChastityCage() {
             loop++;
 
             if(loop > 1) {
-                sendMessage(random("You've taken way too long to get that %Cage% off...", "You are taking way to long to get that %Cage% off", "It took you too long to get that cage off..."));
+                sendMessage(random("You've taken way too long to get that %ChastityCage% off...", "You are taking way to long to get that %ChastityCage% off", "It took you too long to get that cage off..."));
                 sendMessage(random("I don't like when you make me wait", "I don't like to wait", "I don't like waiting"));
                 sendMessage(random("I'm giving you punishment points", "I've assigned you some punishment points", "I've increased your number of punishment points"));
                 addPunishmentPoints(100);
@@ -125,7 +125,7 @@ function lockChastityCage() {
     showImage("Images/Spicy/Chastity/ChastityOn/*.{jpg,png,gif}");
     if(randomInteger(0, 2) == 2) playSound("Audio/Spicy/Chastity/ChastityOn/*.mp3");
 
-    sendMessage(random("Put on your %Cage%", "Get your %Cage% on", "Put on the %Cage% at once", "Hurry up and get the %Cage% back on", "Be quick and get your %Cage% back on", "Lock your %Cock% up"));
+    sendMessage(random("Put on your %ChastityCage%", "Get your %ChastityCage% on", "Put on the %ChastityCage% at once", "Hurry up and get the %ChastityCage% back on", "Be quick and get your %ChastityCage% back on", "Lock your %Cock% up"));
 
 
     //TODO: Timeout based on chastity level and then punish like with icing down cock or cbt or icy hot or something
@@ -144,13 +144,13 @@ function lockChastityCage() {
             loop++;
 
             if(loop > 1) {
-                sendMessage(random("You've taken way too long to get that %Cage% on...", "You are taking way to long to get that %Cage% on", "It took you too long to get that cage on..."));
+                sendMessage(random("You've taken way too long to get that %ChastityCage% on...", "You are taking way to long to get that %ChastityCage% on", "It took you too long to get that cage on..."));
 
                 if(getVar(VARIABLE_CHASTITY_TRAINING)) {
                     sendMessage(random("But since you're in training", "But due to you being in training", "But because of your chastity training") + " I won't punish you...");
                 } else {
                     if(isForcedLockedUp()) {
-                        sendMessage("So as a punishment I'm placing you in the %Cage% for the next 24 hours...")
+                        sendMessage("So as a punishment I'm placing you in the %ChastityCage% for the next 24 hours...")
                     } else {
                         sendMessage("So as a punishment I'm increasing your locked up period by 24 hours...")
                     }

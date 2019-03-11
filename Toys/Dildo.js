@@ -14,7 +14,7 @@ function getDildoModifier(blowjob = false) {
     if(!blowjob) {
         return getDildoSize();
     } else {
-        let blowjobLevel = getVar(VARIABLE_BLOWJOB_LEVEL);
+        let blowjobLevel = getBlowjobLevel();
 
         if (blowjobLevel < 15) {
             return "small";

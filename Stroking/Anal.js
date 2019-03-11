@@ -29,6 +29,7 @@ function sendAnalTaunts(duration) {
         sleep(millisecondsToWait, "MILLISECONDS");
     }
 
+    //TODO: Only speed or slow if certain limits aren't reached yet
     run("Stroking/Taunt/Anal/*.js");
 
     //Start the whole thing all over again

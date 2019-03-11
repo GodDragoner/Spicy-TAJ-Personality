@@ -59,5 +59,5 @@ function rewardGoldLow() {
 }
 
 function getGold() {
-	return getVar(VARIABLE_GOLD);
+	return getVar(VARIABLE_GOLD, 0);
 }

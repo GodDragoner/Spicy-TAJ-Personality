@@ -22,7 +22,7 @@ function stopStrokingMessage() {
         "No more stroking, just let go of your %Cock%",
         "Okay, stop",
         "Okay That's enough for now. You're going to squirt before I'm done with you."
-    ]
+    ];
 
     sendMessage(answers[randomInteger(0, answers.length - 1)], 0);
 
@@ -32,5 +32,6 @@ function stopStrokingMessage() {
 }
 
 function stopStrokingEdgeMessage() {
+    //TODO: Different messages
     stopStrokingMessage();
 }

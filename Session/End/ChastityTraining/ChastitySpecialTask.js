@@ -8,7 +8,7 @@ const afraidTasks = [];
 
         sendInstructions: function () {
             sendMessage("%InAddition% " + random("I want you to spend ", "you should also spend ") + randomInteger(5, 15) + " minutes naked and caged in the corner");
-            sendMessage("While in the corner I want you to think about " + random("why you are wearing the %Cage% ", "a strategy to make the %Cage% more comfortable ", "the importance of you being caged"));
+            sendMessage("While in the corner I want you to think about " + random("why you are wearing the %ChastityCage% ", "a strategy to make the %ChastityCage% more comfortable ", "the importance of you being caged"));
         },
     };
     chastityTasks.push(chastityTask);
@@ -17,7 +17,7 @@ const afraidTasks = [];
         id: taskId++, exp: 33, minLevel: 1,
 
         sendInstructions: function () {
-            sendMessage("But while in the %Cage%");
+            sendMessage("But while in the %ChastityCage%");
 
             let walkDuration = randomInteger(5, 10);
 
@@ -41,7 +41,7 @@ const afraidTasks = [];
         id: taskId++, exp: 37, minLevel: 1,
 
         sendInstructions: function () {
-            sendMessage("But while in the %Cage%");
+            sendMessage("But while in the %ChastityCage%");
             sendMessage(random("I want you to lie down ", "I need you to lie down ") );
             sendMessage("It can be in your bed or where ever you want");
             sendMessage("It can be as you sleep, nap or just relax");
@@ -55,11 +55,11 @@ const afraidTasks = [];
 
         sendInstructions: function () {
             sendMessage("%InAddition% during lock up...");
-            sendMessage("I want you to remove your %Cage%");
+            sendMessage("I want you to remove your %ChastityCage%");
             sendMessage("Then " + random("edge for me ", "get to the edge") );
             sendMessage("I also want you to have a timer ready...");
             sendMessage("As soon as you edge");
-            sendMessage('I want you to stop stroking and time how quickly you can go from the edge to back in the %Cage%');
+            sendMessage('I want you to stop stroking and time how quickly you can go from the edge to back in the %ChastityCage%');
             sendMessage("Repeat this exercise " + randomInteger(3, 10) + " times thoroughly");
         },
     };
@@ -72,9 +72,9 @@ const afraidTasks = [];
             sendMessage("%InAddition% during lock up...");
             sendMessage("I have a rather simple task");
             sendMessage("Before you take your next shower");
-            sendMessage("Wear the %Cage% beforehand");
-            sendMessage("While in the shower remove the %Cage%");
-            sendMessage("Clean your genitals and reapply the %Cage%");
+            sendMessage("Wear the %ChastityCage% beforehand");
+            sendMessage("While in the shower remove the %ChastityCage%");
+            sendMessage("Clean your genitals and reapply the %ChastityCage%");
         },
     };
     chastityTasks.push(chastityTask);
@@ -85,7 +85,7 @@ const afraidTasks = [];
         sendInstructions: function () {
             sendMessage("%InAddition% during lock up...");
             sendMessage("You might " + random("consider this ", "think of this as being ", "believe this to be ") + random("hard ", "tough ", "difficult ") );
-            sendMessage("I want you to apply the %Cage% while watching a " + random("porno ", "slideshow ") + "that turns you on...");
+            sendMessage("I want you to apply the %ChastityCage% while watching a " + random("porno ", "slideshow ") + "that turns you on...");
 
             if (randomInteger(0, 100) <= 25) {
                 sendMessage("Consider it as a cock control exercise..");
@@ -101,7 +101,7 @@ const afraidTasks = [];
 
         sendInstructions: function () {
             sendMessage("%InAddition%" );
-            sendMessage("You are to simply clean your %Cage% thoroughly");
+            sendMessage("You are to simply clean your %ChastityCage% thoroughly");
 
             if (randomInteger(0, 100) <= 25) {
                 sendMessage("Proper hygiene is important...");
@@ -146,7 +146,7 @@ const afraidTasks = [];
         id: taskId++, exp: 65, minLevel: 25,
 
         sendInstructions: function () {
-            sendMessage(random("However ", "But ") + "I want you to spend at least a full night in the %Cage%");
+            sendMessage(random("However ", "But ") + "I want you to spend at least a full night in the %ChastityCage%");
         },
     };
     chastityTasks.push(chastityTask);

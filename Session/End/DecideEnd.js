@@ -1,7 +1,7 @@
 {
 
     sendMessage('%SlaveName%');
-    sendMessage('We\'re at the end mark of today\'s session', 'We\'re at the end of our session' ,'This is the end of our session');
+    sendMessage(random('We\'re at the end mark of today\'s session', 'We\'re at the end of our session' ,'This is the end of our session'));
 
     if (isForcedLockedUp()) {
         //TODO: Endings with chastity on

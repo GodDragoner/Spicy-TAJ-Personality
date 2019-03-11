@@ -37,6 +37,6 @@ function tryRunLink(moduleId, minLinksSinceRun = 20) {
         }
     }
 
-    LINK_HISTORY.adddHistoryRun(moduleId);
+    LINK_HISTORY.addHistoryRun(moduleId);
     return true;
 }

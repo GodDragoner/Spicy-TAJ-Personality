@@ -14,7 +14,7 @@ function startBlowing(bpm, duration, avoidStop = false) {
 }
 
 function getBlowjobLevel() {
-    return getVar(VARIABLE_BLOWJOB_LEVEL);
+    return getVar(VARIABLE_BLOWJOB_LEVEL, 0);
 }
 
 function sendBlowingTaunts(duration) {
