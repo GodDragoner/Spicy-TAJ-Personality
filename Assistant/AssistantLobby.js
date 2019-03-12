@@ -13,22 +13,26 @@
                 sendVirtualAssistantMessage("This is not supported yet!");
                 break;
             } else if (lobbyAnswer.containsIgnoreCase("dungeon", "spanking", "spankzchoir", "selfbondage", "pain", "torture", "chamber", "punish")) {
+                lobbyAnswer.clearOptions();
                 // sendVirtualAssistantMessage("This is not supported yet!");
                 run("Dungeon/PunishmentBase.js");
                 sendVirtualAssistantMessage("back to the assistant from dungeon");
                 break;
-            } else if (lobbyAnswer.containsIgnoreCase("setting", "clean", "adjust", "calibrate", "setup")) {
-                sendVirtualAssistantMessage("This is not supported yet!");
+            } else if (lobbyAnswer.containsIgnoreCase("setting", "adjust", "calibrate", "setup")) {
+                lobbyAnswer.clearOptions();
+                run('Assistant/Settings/Settings.js');
                 break;
             } else if (lobbyAnswer.containsIgnoreCase("shop", "buy", "purchase", "spent", "gold", "store")) {
                 sendVirtualAssistantMessage("This is not supported yet!");
                 break;
             } else if (lobbyAnswer.containsIgnoreCase("fitness", "health")) {
+                lobbyAnswer.clearOptions();
                 sendVirtualAssistantMessage("about to fitness");
                 run("Exercise/ExerciseBase.js");
                 sendVirtualAssistantMessage("nice workout!");
                 break;
             } else if (lobbyAnswer.containsIgnoreCase("report", "exercise")) {
+                lobbyAnswer.clearOptions();
                 run("Exercise/reportexercise.js");
                 sendVirtualAssistantMessage("back to the assistant from reporting exercise");
                 break;

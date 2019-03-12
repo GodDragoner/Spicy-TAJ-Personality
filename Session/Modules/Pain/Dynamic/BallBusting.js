@@ -184,7 +184,7 @@
             const maxLoops = painLevel / 2;
 
             while (doneModules.size() < maxLoops) {
-                modules[randomInteger(0, modules.length)].startModule();
+                modules[randomInteger(0, modules.length - 1)].startModule();
 
                 if (isChance(getEarlyPunishmentExitChance())) {
                     break;

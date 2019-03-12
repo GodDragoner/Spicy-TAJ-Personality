@@ -21,7 +21,7 @@ sendMessage(" Hmmm how to show you that you're my special slave....",10); //#Ene
 sendMessage(" oh, I know!  Fill your bag with " + random("Warm water","Warm water with Soap","Warm water","Warm water with Soap","Warm water","Warm water with Soap","cold water with soap","cold water","glycerine and water","carbonated soda","Epsom salts in warm water"), 30); //#EnemaChat
 sendMessage(" Make sure you get all the air out of the line....", 10); //#EnemaChat @Wait(10)
 sendMessage(" or don't that might make things more uncomfortable. %Smile%", 10); //#EnemaChat @Wait(10)
-sendMessage(" now get to it! %Slave%",90); //#EnemaChat @wait(90)
+sendMessage(" now get to it! %Slave%",90); //#EnemaChat @sleep(90)
 (filling)
 sendMessage(" when your enema is prepared say 'ready'"); //#EnemaChat
 [ready","Ready","ok","OK","yes","Yes] sendMessage(" %GNMGood% !"); //#EnemaChat
@@ -123,7 +123,7 @@ sendMessage(" open that valve back up a little so the water flows again @Wait(#R
 sendMessage(" close the valve @Wait(8)"); //#EnemaChat
 sendMessage(" Aw... does my little sub's tummy hurt?? @Wait(#Random(10,20))"); //#EnemaChat
 sendMessage(" I know what will help with that..."); //#EnemaChat
-sendMessage(" random("(Rub your stomach where the cramp is"," rock back and forth"," get into a prayer position with your knees wide) @wait(#Random(20,30))"); //#EnemaChat
+sendMessage(" random("(Rub your stomach where the cramp is"," rock back and forth"," get into a prayer position with your knees wide) @sleep(#Random(20,30))"); //#EnemaChat
 sendMessage(" of course this is supposed to be a PUNISHMENT enema "); //#EnemaChat
 sendMessage(" Lets really make you feel this...#Laugh"); //#EnemaChat
 sendMessage(" Open the valve all the way @Wait(#Random(5,10))#EnemaChat

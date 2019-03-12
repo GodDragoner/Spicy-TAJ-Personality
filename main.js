@@ -32,6 +32,8 @@ run("Session/History.js");
 run("Session/Orgasm/CEI/CEIHandler.js");
 run('Session/End/ChastityTraining/ChastitySpecialTask.js');
 
+run('Session/End/AnalTraining/AnalTrainingTasks.js');
+
 
 run("Assistant/Assistant.js");
 updatePictureSet();

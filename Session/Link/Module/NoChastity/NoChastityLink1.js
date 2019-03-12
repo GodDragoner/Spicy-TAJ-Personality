@@ -14,7 +14,7 @@
                 showTaggedImage("boobs");
                 lockImages();
                 sendMessage("I\'ll be right back!");
-                wait(110);
+                sleep(110);
                 sendMessage("I\'m back %Grin%");
                 unlockImages();
 

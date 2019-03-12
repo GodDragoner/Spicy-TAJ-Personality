@@ -1,8 +1,9 @@
-let taskId = 0;
 const chastityTasks = [];
 const afraidTasks = [];
 
 {
+    let taskId = 0;
+
     let chastityTask = {
         id: taskId++, exp: 29, minLevel: 1,
 

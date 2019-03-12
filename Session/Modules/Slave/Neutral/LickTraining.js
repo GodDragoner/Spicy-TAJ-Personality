@@ -26,7 +26,7 @@
             sendMessage('Green means slow and sensual', 0);
             showImage('Images/Spicy/Modules/LickExercises/Down/DownSlow.jpg', 5);
 
-            sendMessage('Arrow up means to lick "up" the pussy, 0');
+            sendMessage('Arrow up means to lick "up" the pussy', 0);
             showImage('Images/Spicy/Modules/LickExercises/Up/*.jpg', 5);
 
             sendMessage('Then there is of course down', 0);
@@ -148,12 +148,13 @@
             @NullResponse @ShowImage[\GNMImages\Modules\LickExercises\ABC\ABCFast.jpg] @PlayAudio[\GNMSounds\Stroking\MetronomeLick\FastABC\*.mp3] @Wait(#Random(2,9)) @Goto(Start3)
             (End)*/
 
-            sleep(randomInteger(2, 9));
+            sleep(randomInteger(4, 10));
         }
 
         stopAudio();
         sendMessage('Stop!');
         sendMessage('I hope your tongue isn\'t too sore %Grin%');
         sendMessage('Practice makes perfect, remember that');
+        incrementVar(VARIABLE_LICK_TRAININGS_DONE, 1);
     }
 }

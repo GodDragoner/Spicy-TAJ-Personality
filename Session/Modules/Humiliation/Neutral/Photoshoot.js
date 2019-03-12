@@ -1,5 +1,5 @@
 {
-    if (getHumilationLimit() != LIMIT_ASKED_YES) {
+    if (getHumiliationLimit() != LIMIT_ASKED_YES) {
         runModuleCategory('Humiliation');
     }
 
@@ -25,7 +25,7 @@
                 sendMessage(random("I want you to refresh your memory about the catwalk", "You need to refresh what you know about the catwalk"));
                 sendMessage(random("Use youtube to watch a video about it", "Go ahead, google it and read about it"));
                 sendMessage(random("Return when you hear my bell", "Come back when you hear my bell"));
-                wait(randomInteger(120, 180));
+                sleep(randomInteger(120, 180));
 
                 sendMessage(random("Now", "Well") + "%SlaveName%");
                 sendMessage(random("It\'s time for you to set up a recording device!", "You need to set up your recording device now"));
@@ -73,7 +73,7 @@
         showImage('Images/Spicy/FFriends/' + blackmailIndex + '/*.jpg', 2);
         sendMessage("Imagine me calling her");
         sendMessage(random("Telling her all about you", "Spilling all I have about you"));
-        sendMessage(random("Think she would be", "Do you believe she would be") + random("disgusted?", "excited?", "interested?"));
+        sendMessage(random("Think she would be", "Do you believe she would be ") + random("disgusted?", "excited?", "interested?"));
         sendMessage(random("Maybe she would be turned on?", "Perhaps she would be calling all of her friends", "Maybe she would never talk to you again!"));
         sendMessage(random("Imagine her face as she receives my text messages", "Can you imagine her reaction as she sees all those ugly images of you"));
         showImage('Images/Spicy/SelfHumiliation/*.jpg', 5);
@@ -103,7 +103,7 @@
                     showImage('Images/Spicy/SelfHumiliation/*.jpg', 2);
                 }
 
-                sendMessage(random('I think I might invite', 'Perhaps I should invite', 'I bet you wouldn\'t mind if I were to invite') + getVar('blackmailName1') + ',' + getVar('blackmailName2') + ' and ' + getVar('blackmailName3') + ' over');
+                sendMessage(random('I think I might invite', 'Perhaps I should invite', 'I bet you wouldn\'t mind if I were to invite') + ' ' + getVar('blackmailName1') + ', ' + getVar('blackmailName2') + ' and ' + getVar('blackmailName3') + ' over');
                 sendMessage(random("I\'m thinking video night!", "Maybe we\'ll take a good look at your images"));
                 sendMessage(random("You might even get to serve tea", "Perhaps you could make us dinner"));
                 sendMessage(random("Soo many possibilities!", "I can\'t decide!"));

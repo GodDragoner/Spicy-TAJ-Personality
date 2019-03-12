@@ -54,6 +54,15 @@ const VARIABLE_CHASTITY_TASKS_IN_ROW = 'chastityTasksInRow';
 
 const VARIABLE_LONG_TERM_CHASTITY = 'chastityLongTerm';
 
+//Anal training
+const VARIABLE_ASS_LEVEL = "assLevel";
+const VARIABLE_ASS_TASKS_IN_ROW = "assTasksInRow";
+const VARIABLE_ASS_EXPERIENCE = 'assExperience';
+const VARIABLE_TASK_ASS_EXPERIENCE = 'taskAssExperience';
+const VARIABLE_LAST_ASS_TASK_ID = 'lastAssTaskId';
+const VARIABLE_ASS_TRAINING = 'assTraining';
+const VARIABLE_ASS_TRAININGS_DONE = 'assTrainingsDone';
+
 //Toys
 
 const VARIABLE_IS_PLUGGED = "isPlugged";
@@ -98,7 +107,6 @@ const VARIABLE_EDGE_STARTED_DATE = "edgeStartedDate";
 const VARIABLE_SOFT_COCK_LENGTH = "softCockLength";
 const VARIABLE_SECONDS_TO_GET_SOFT = "secondsToGetSoft";
 
-const VARIABLE_ASS_LEVEL = "assLevel";
 
 const VARIABLE_BLOWJOB_LEVEL = "blowjobLevel";
 

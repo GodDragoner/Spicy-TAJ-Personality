@@ -181,6 +181,7 @@ function getButtplugSize() {
     }
 }
 
+
 function removeButtplug() {
     if (isChance(30)) {
         sendMessage("%SlaveName%");

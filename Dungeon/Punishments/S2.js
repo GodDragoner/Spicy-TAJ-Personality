@@ -129,7 +129,7 @@ break;
 	while(!(donetime.hasPassed())){
 //(Task)
 		 showImage("Images/Spicy/Punishment/Grounding/BlackBase.*"); 
-		 wait(randomInteger(3,30));
+		 sleep(randomInteger(3,30));
 		 answerval= randomInteger(1,9);
 		 
 		  showImage("Images/Spicy/Punishment/Grounding/Numbers/Black"+answerval+".*",1); 

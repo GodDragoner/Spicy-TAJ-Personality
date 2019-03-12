@@ -1,5 +1,5 @@
 {
-    sendMessage(random("%SlaveName%");
+    sendMessage(random("%SlaveName%"));
     sendMessage(random("We\'ve crossed your hard limit of", "It seems we\'re at your hard limit of") + ' ' + getVar(VARIABLE_DENIAL_LIMIT) + ' days');
     sendMessage(random("I do respect your limits ", "Despite what you might think I care about your limits.. ", "I fully respect your limits ") + "");
     sendMessage(random("Now ", "Meaning.. ", "Well ") + "");

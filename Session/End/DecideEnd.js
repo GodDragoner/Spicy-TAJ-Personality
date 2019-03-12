@@ -30,6 +30,10 @@
         }
     }
 
+    if(getVar(VARIABLE_ASS_TRAINING, false)) {
+        run('Session/End/AnalTraining/AnalTraining.js');
+    }
+
     run('Session/End/Farewell.js');
 
     //Update last session date

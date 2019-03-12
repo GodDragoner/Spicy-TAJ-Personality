@@ -187,7 +187,7 @@ while (RipPegs>=S4Round)  {
 	//(Black)
 	sendMessage(random("Be ready!","Prepare","Prepare yourself","Get ready","Stay ready","Ready yourself"));
 	showImage("Images/SpicyPunishment/Grounding/BlackBase.*");
-	wait(randomInteger(2,10));
+	sleep(randomInteger(2,10));
 	//(Rip)
 	//sendMessage(random("Rip it off!","Pull them off","Rip it!","Pull them off completely!","Rip them away! %GNMGrin%","Rip it off","Rip.. it.. off!","Rip it off..","Rip it off..","Rip it off..","Rip it off..")); //#DT4 @Timeout(8,Slow)
      response = sendInput(random("Rip it off!","Pull them off","Rip it!","Pull them off completely!","Rip them away! %GNMGrin%","Rip it off","Rip.. it.. off!","Rip it off..","Rip it off..","Rip it off..","Rip it off.."),8);

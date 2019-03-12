@@ -127,10 +127,10 @@ switch (choice) {
 	sendMessage("Naked of course in case you doubted that..") //#DT4
 	sendMessage("In the corner you will "+ random("just be standing with your fingers folded behind your hear","simply be standing","kneel and fold your fingers behind your head","simply be standing and pressing a coin against the wall with your nose arms down"));// #DT4
 	sendMessage("Stay there until you hear my bell, now go!"); // #DT4 
-	wait(getVar("CornerTimeCounter"));
+	sleep(getVar("CornerTimeCounter"));
 	sendMessage("Get back here.."); // 
 	playAudio("Audio/GNMSounds/SpecialSounds/Bell.mp3");
-	wait(6);
+	sleep(6);
 	//(Success)
 	sendMessage("I know this was rough %SlaveName%"); // #DT4 
 	sendMessage("But it makes me happy knowing you completed it!"); // #DT4 
@@ -164,7 +164,7 @@ switch (choice) {
 	CornerCommandsGiven = 0 ;
 	sendMessage("Now go to the corner, stand on your toes and don't return before you hear the bell!"); // #DT4
 	 CornerTimeDown = true;
-	 wait(5);
+	 sleep(5);
 	//(CornerTime2)
 	playAudio("audio/GNMSounds/Punishment/Corner/OnYourToes.mp3"); 
 	//@CountVar[CornerTimeCounter2]
@@ -172,22 +172,22 @@ switch (choice) {
 	setDate("donetime").addSecond(getVar("CornerTimeCounter"));
 	sendMessage("debug1 here");
 	while( !(getDate("donetime").hasPassed()) ) {
-		wait(randomInteger(5,25));
+		sleep(randomInteger(5,25));
 		if(randomInteger(1,100) < 25 )
 			{playAudio("audio/GNMSounds/Punishment/Corner/OnYourToes.mp3"); 
 			}
-			wait(randomInteger(5,25));
+			sleep(randomInteger(5,25));
 			
 			if(CornerTimeDown){
 				playAudio("GNMSounds/Punishment/Corner/Down/*.mp3");
 				CornerCommandsGiven=CornerCommandsGiven+ 1 ;
-				wait(1);
+				sleep(1);
 				CornerTimeDown=false;
 
 			}else{
 				playAudio("GNMSounds/Punishment/Corner/Up/*.mp3");
 				CornerCommandsGiven=CornerCommandsGiven+ 1 ;
-				wait(1);
+				sleep(1);
 				CornerTimeDown=true;
 
 			}

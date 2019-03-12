@@ -20,7 +20,7 @@ function showCategoryImage() {}
 
 function showTeaseImage() {}
 
-function wait() {}
+function sleep() {}
 function sleep() {}
 
 function playAudio() {}

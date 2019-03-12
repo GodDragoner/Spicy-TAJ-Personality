@@ -94,7 +94,7 @@ function unlockChastityCage() {
                 changeMeritMedium(true);
                 answer.loop();
             }
-        } else if (answer.containsIgnoreCase("done", "off", "uncaged", "unlocked", "out", "belt")) {
+        } else if (answer.isLike("done", "off", "uncaged", "unlocked", "out", "belt", 'yes')) {
             if(loop == 1) {
                 sendMessage(random("Finally", "About time...", "Took you long enough", "Be faster next time", "Don't waste my time again..."));
                 break;
@@ -102,6 +102,9 @@ function unlockChastityCage() {
                 sendMessage("%Good%");
                 break;
             }
+        } else {
+            sendMessage('Don\'t bother me if you aren\'t done yet...');
+            answer.loop();
         }
     }
 
@@ -163,7 +166,7 @@ function lockChastityCage() {
                 changeMeritMedium(true);
                 answer.loop();
             }
-        } else if (answer.containsIgnoreCase("done", "on", "caged", "locked", "lock", "belt")) {
+        } else if (answer.isLike("done", "on", "caged", "locked", "lock", "belt", 'yes')) {
             if(loop == 1) {
                 sendMessage(random("Finally", "About time...", "Took you long enough", "Be faster next time", "Don't waste my time again..."));
                 break;
@@ -171,6 +174,9 @@ function lockChastityCage() {
                 sendMessage("%Good%");
                 break;
             }
+        } else {
+            sendMessage('Don\'t bother me if you aren\'t done yet...');
+            answer.loop();
         }
     }
 

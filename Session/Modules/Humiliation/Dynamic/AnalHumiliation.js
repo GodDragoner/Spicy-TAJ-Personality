@@ -1,7 +1,18 @@
 {
     if (tryRunModuleFetchId()) {
+        //TODO: More limit handling
+        if(getAnalLimit() == LIMIT_NEVER) {
+            //Try to find a different module
+            tryRunModuleFetchId();
+        }
+
         sendMessage("Let's see %SlaveName%");
         sendMessage(random("I think it's time to work that ass", "I guess it's time to work on your ass", "Let's have some fun with your ass shall we?"));
+
+        //Run ass intro
+        if(!isVar('assIntro')) {
+            runAssIntro();
+        }
 
         let plugPlay = hasButtplugToy() && isChance(50) && getVar(VARIABLE_ASS_LEVEL) >= 5;
         let dildoPlay = hasDildoToy() && getVar(VARIABLE_ASS_LEVEL) >= 5;

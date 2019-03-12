@@ -170,7 +170,7 @@ sendMessage("You used the magic word! "); //#DT4
 //@CustomMode(ModeText, Normal) 
 sendMessage("%GNMGrin%");
  if (BallCrushingCount<BallCrushing) {
-	 sendMessage("hmm and now just a little matter of suffering for 2 minutes"); wait(120);
+	 sendMessage("hmm and now just a little matter of suffering for 2 minutes"); sleep(120);
 	sendMessage("Well to little surprise you failed.. "); //#DT4 
 	setVar(VARIABLE_GOLD, getVar(VARIABLE_GOLD)-25);
 	//@TempFlag(PunishmentComplete) 
@@ -180,7 +180,7 @@ sendMessage("%GNMGrin%");
 	setVar("punishmentCompleted", 05);
 	run("Dungeon/PunishmentBaseEnd.js");
  } else {
-	 sendMessage("hmm and now just a little matter of suffering for 2 minutes"); wait(120);
+	 sendMessage("hmm and now just a little matter of suffering for 2 minutes"); sleep(120);
 	sendMessage("Well well you made it! "); //#DT4
 	sendMessage("I'm actually a little impressed "); //#DT4
 	changeMeritLow(false); 

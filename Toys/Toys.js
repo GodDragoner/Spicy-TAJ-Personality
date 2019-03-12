@@ -12,6 +12,7 @@ run("Toys/Room.js");
 run("Toys/Device.js");
 run("Toys/Lingerie.js");
 run("Toys/Vibrator.js");
+run("Toys/Enema.js");
 
 function hasDildoToy() {
     return getVar("toyDildo", false);

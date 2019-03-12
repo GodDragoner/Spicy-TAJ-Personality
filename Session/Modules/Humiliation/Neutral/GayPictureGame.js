@@ -119,7 +119,7 @@ function startGayPictureRound() {
             }
 
             sendMessage("Just relax for a little bit");
-            wait(randomInteger(15, 30));
+            sleep(randomInteger(15, 30));
             break;
         case 2:
             newValue = getVar("gayPictureGameButts", 0) + 1;
@@ -285,7 +285,7 @@ function startGayPictureRound() {
                         sendMessage('Put it back in %SlaveName%');
                         sendMessage('And now follow the beat and fuck yourself %Grin%');
                         startStroking(randomInteger(30, 60));
-                        wait(20);
+                        sleep(20);
                         stopStroking();
                         sendMessage('Stop %SlaveName%');
                         sendMessage('Now pull it out...');
@@ -297,7 +297,7 @@ function startGayPictureRound() {
                             sendMessage('And now put it back in %Grin%');
                             sendMessage('Here we go again %SlaveName%. Follow the beat!');
                             startStroking(randomInteger(30, 60));
-                            wait(20);
+                            sleep(20);
                             stopStroking();
                             sendMessage('Stop %SlaveName%');
                             sendMessage('Pull it out and put that dildo in front of you');
@@ -331,7 +331,7 @@ function startGayPictureRound() {
                     sendMessage('Now start by giving the tip a gentle blowjob');
                     sendMessage('Don\'t go all the way down yet. Just the tip...');
                     startStroking(45);
-                    wait(15);
+                    sleep(15);
                     sendMessage('Now start going further down the dildo');
                     sendMessage('As far as you can go without gagging');
                     sendMessage('And don\'t you dare swallow anything yet!');
@@ -344,7 +344,7 @@ function startGayPictureRound() {
 
                     sendMessage('Let\'s speed things up a bit shall we?');
                     addStrokingBPM(15);
-                    wait(20);
+                    sleep(20);
 
                     //TODO: More teasing with gay stuff
                     if(getBlowjobLevel() > 30) {
@@ -363,14 +363,14 @@ function startGayPictureRound() {
                         sendMessage('Don\'t disappoint me!', 5);
                         sendMessage('Okay, you can go back up but don\'t take that dildo out of your mouth!', 0);
                         playBellSound();
-                        wait(3);
+                        sleep(3);
                         sendMessage('Good %SlaveName%');
                         sendMessage('And back to your throat');
                         sendMessage('Go all the way down on it %SlaveName%');
                         sendMessage('I want to see you gag and cry %Lol%', 10);
                         sendMessage('Go back up...', 0);
                         playBellSound();
-                        wait(3);
+                        sleep(3);
                         sendMessage('And one last time');
                         sendMessage('Go balls deep %SlaveName%! Now!');
 
@@ -385,7 +385,7 @@ function startGayPictureRound() {
 
                         sendMessage('You can back off now', 0);
                         playBellSound();
-                        wait(3);
+                        sleep(3);
 
                         sendMessage('That wasn\'t that hard was it?');
 
@@ -415,7 +415,7 @@ function startGayPictureRound() {
 
                         sendMessage('You can go back up %SlaveName%', 0);
                         playBellSound();
-                        wait(3);
+                        sleep(3);
 
                         sendMessage('That was quite impressive');
                         sendMessage('Looks like I found another throat slut to abuse %EmoteHappy%');
@@ -426,7 +426,7 @@ function startGayPictureRound() {
 
                         sendMessage('Stop %SlaveName%', 0);
                         playBellSound();
-                        wait(3);
+                        sleep(3);
 
                         sendMessage('%Good%');
                         sendMessage('You did it! Now...');

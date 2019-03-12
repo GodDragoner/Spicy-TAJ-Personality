@@ -57,12 +57,12 @@
                 sendMessage('I will show you two images at a time and you will tell me which one you rated higher');
                 sendMessage('IF you can remember %Lol%');
             } else {
-                sendMessage('I will show you one images at a time and we will see whether you can remember the exact rating you gave it %Grin%');
+                sendMessage('I will show you one image at a time and we will see whether you can remember the exact rating you gave it %Grin%');
             }
 
-            let hasBallCrusher = hasBallCrusher();
+            let ballCrusher = hasBallCrusher();
 
-            if (hasBallCrusher && !isInChastity()) {
+            if (ballCrusher && !isInChastity()) {
                 if (fetchToy('ball crusher')) {
                     if (hasBallsTied()) {
                         untieBalls();
@@ -84,7 +84,7 @@
                     }
 
                 } else {
-                    hasBallCrusher = false;
+                    ballCrusher = false;
                     sendMessage('I guess we have to stick to the good old basic methods then');
                     sendMessage('And because you are unable to fetch your toys and didn\'t tell me preemptively');
                     sendMessage('We will directly start with some pain');
@@ -188,7 +188,7 @@
 
                     //TODO: Could also punish with other stuff such as anal etc. or edge twice as often
 
-                    if (hasBallCrusher) {
+                    if (ballCrusher) {
                         sendMessage('Aaaand twist %Grin%', 5);
                     } else if (getPainLimit() == LIMIT_ASKED_YES) {
                         //Means it is the first time the sub failed
@@ -214,7 +214,7 @@
                 }
             }
 
-            if (hasBallCrusher) {
+            if (ballCrusher) {
                 sendMessage('You may remove the ball crusher now %SlaveName%');
                 setVar(VARIABLE_IS_BALL_CRUSHER_ON, true);
                 sendMessage('Feels good, doesn\'t it?');

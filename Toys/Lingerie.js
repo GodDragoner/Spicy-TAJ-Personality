@@ -25,37 +25,37 @@ function putOnLingerie() {
     switch(randomInteger(0, hasAdvancedLingerie()? 4 : 1)) {
         case 0:
             sendMessage('These panties', 0);
-            showTeaseImage('Images/Spicy/Lingerie/Panties/*.jpg', 5);
+            showImage('Images/Spicy/Lingerie/Panties/*.jpg', 5);
             break;
         case 1:
             sendMessage('These panties', 0);
-            showTeaseImage('Images/Spicy/Lingerie/Panties/*.jpg', 5);
+            showImage('Images/Spicy/Lingerie/Panties/*.jpg', 5);
             sendMessage('And this bra', 0);
-            showTeaseImage('Images/Spicy/Lingerie/Bras/*.jpg', 5);
+            showImage('Images/Spicy/Lingerie/Bras/*.jpg', 5);
             break;
         case 2:
             sendMessage('This garter belt', 0);
-            showTeaseImage('Images/Spicy/Lingerie/GarterBelt/*.jpg', 5);
+            showImage('Images/Spicy/Lingerie/GarterBelt/*.jpg', 5);
             sendMessage('And these stockings', 0);
-            showTeaseImage('Images/Spicy/Lingerie/Stockings/*.jpg', 5);
+            showImage('Images/Spicy/Lingerie/Stockings/*.jpg', 5);
             break;
         case 3:
             sendMessage('This garter belt', 0);
-            showTeaseImage('Images/Spicy/Lingerie/GarterBelt/*.jpg', 5);
+            showImage('Images/Spicy/Lingerie/GarterBelt/*.jpg', 5);
             sendMessage('These panties', 0);
-            showTeaseImage('Images/Spicy/Lingerie/Panties/*.jpg', 5);
+            showImage('Images/Spicy/Lingerie/Panties/*.jpg', 5);
             sendMessage('And these stockings', 0);
-            showTeaseImage('Images/Spicy/Lingerie/Stockings/*.jpg', 5);
+            showImage('Images/Spicy/Lingerie/Stockings/*.jpg', 5);
             break;
         case 4:
             sendMessage('This garter belt', 0);
-            showTeaseImage('Images/Spicy/Lingerie/GarterBelt/*.jpg', 5);
+            showImage('Images/Spicy/Lingerie/GarterBelt/*.jpg', 5);
             sendMessage('These panties', 0);
-            showTeaseImage('Images/Spicy/Lingerie/Panties/*.jpg', 5);
+            showImage('Images/Spicy/Lingerie/Panties/*.jpg', 5);
             sendMessage('This bra', 0);
-            showTeaseImage('Images/Spicy/Lingerie/Bras/*.jpg', 5);
+            showImage('Images/Spicy/Lingerie/Bras/*.jpg', 5);
             sendMessage('And these stockings', 0);
-            showTeaseImage('Images/Spicy/Lingerie/Stockings/*.jpg', 5);
+            showImage('Images/Spicy/Lingerie/Stockings/*.jpg', 5);
             break;
     }
 

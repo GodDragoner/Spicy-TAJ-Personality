@@ -69,7 +69,6 @@ if (tryRunModuleFetchId()) {
     sendMessage("We will start the moment you hear the beat");
     sendMessage("Make me proud %SlaveName%");
     startStrokeTraining();
-
 }
 
 function startStrokeTraining() {
@@ -78,7 +77,14 @@ function startStrokeTraining() {
 
     let level = getVar(VARIABLE_STROKE_TRAINING_LEVEL, 1);
 
+    let edgesAtStart = getVar(VARIABLE_STROKE_TRAINING_EDGES_DONE);
+
     while (true) {
+        //Interruption occurred
+        if(getVar(VARIABLE_STROKE_TRAINING_EDGES_DONE) != edgesAtStart) {
+            break;
+        }
+
         timeToIncreaseLevel = getVar('timeToIncreaseLevel');
 
         if (timeToIncreaseLevel >= 50) {
@@ -121,6 +127,9 @@ function startStrokeTraining() {
 
 function strokeTrainingEdge() {
     setTempVar(VARIABLE_STROKE_TRAINING_EDGES_DONE, getVar(VARIABLE_STROKE_TRAINING_EDGES_DONE, 0) + 1);
+
+    //Stop previous audio
+    stopAudio();
 
     stopStrokingEdgeMessage();
     sendMessage("%LetEdgeFade%");
@@ -193,8 +202,6 @@ function strokeTrainingEdge() {
         return;
     }
 
-    stopStrokingEdgeMessage();
-    sendMessage("%LetEdgeFade%");
     setTempVar('timeToIncreaseLevel', getVar('timeToIncreaseLevel') - 15);
     sendMessage("Rest before you start again");
     sleep(randomInteger(10, 25));

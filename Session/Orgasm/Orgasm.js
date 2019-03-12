@@ -159,7 +159,7 @@ function distributeOrgasmPoints() {
         totalToAdd += randomInteger(points[personalityOffset + lustOffset], points[personalityOffset + lustOffset + 1]);
     }
 
-    if(getLastEjaculationDate().addDay(getVar(VARIABLE_DENIAL_LEVEL).hasPassed())) {
+    if(getLastEjaculationDate().addDay(getVar(VARIABLE_DENIAL_LEVEL)).hasPassed()) {
         totalToAdd += randomInteger(points[personalityOffset + denialOffset], points[personalityOffset + denialOffset + 1]);
     }
 

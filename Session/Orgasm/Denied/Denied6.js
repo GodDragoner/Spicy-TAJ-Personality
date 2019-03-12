@@ -10,9 +10,9 @@
         sendMessage("10");
         sendMessage("9");
         sendMessage("8");
-        wait(4);
+        sleep(4);
         sendMessage("7");
-        wait(5);
+        sleep(5);
         sendMessage("6");
         sendMessage("5");
         sendMessage("4");
@@ -33,7 +33,7 @@
             sendMessage("Almost there...");
             sendMessage("3");
             sendMessage("2");
-            wait(5);
+            sleep(5);
             sendMessage("1...");
         }
 

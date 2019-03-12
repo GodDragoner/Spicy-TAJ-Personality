@@ -83,7 +83,7 @@
     sleep(6 * 1);
 
     sendVirtualAssistantMessage("Welcome %SubName%");
-	  sleep(.1);
+    sleep(.1);
     sendVirtualAssistantMessage("My name is Vivienne");
     sendVirtualAssistantMessage("I am Mistress %domName%\'s virtual assistant");
     sendVirtualAssistantMessage("You are here because you sent a request to become the property of Mistress %domName%");
@@ -135,7 +135,7 @@
     lockImages();
     sendVirtualAssistantMessage("%Good%");
     sendVirtualAssistantMessage("Mistress %domName% would prefer it if you are able to handle wearing a chastity device at all times");
-	  showImage("Images/Spicy/Toys/MetalChastity.jpg",4);
+    showImage("Images/Spicy/Toys/MetalChastity.jpg", 4);
     sendVirtualAssistantMessage("But she also understands that it takes practice to learn");
     sendVirtualAssistantMessage("Do you own a chastity device?", false);
     answer = createInput();
@@ -144,17 +144,17 @@
         if (answer.isLike("yes")) {
             setVar(VARIABLE_HAS_CHASTITY, true);
             sendVirtualAssistantMessage("Is it made of plastic or metal?", false);
-			showImage("Images/Spicy/Toys/PlasticChastity.jpg",3);
+            showImage("Images/Spicy/Toys/PlasticChastity.jpg", 3);
             answer = createInput();
 
             while (true) {
                 if (answer.isLike("metal")) {
                     setVar(VARIABLE_CHASTITY_MATERIAL, 0);
-					showImage("Images/Spicy/Toys/MetalChastity.jpg",3);
+                    showImage("Images/Spicy/Toys/MetalChastity.jpg", 3);
                     break;
                 } else if (answer.isLike("plastic")) {
                     setVar(VARIABLE_CHASTITY_MATERIAL, 1);
-					showImage("Images/Spicy/Toys/PlasticChastity.jpg",3);
+                    showImage("Images/Spicy/Toys/PlasticChastity.jpg", 3);
                     break;
                 } else {
                     sendVirtualAssistantMessage("Metal or plastic?");
@@ -338,10 +338,10 @@
     sendVirtualAssistantMessage("Moving on...");
     sendVirtualAssistantMessage("I don't know whether you have any experience when it comes to ass play");
     sendVirtualAssistantMessage("Meaning fucking yourself or wearing butt plugs");
-	  showImage("Images/Spicy/Toys/ButtPlugs.jpg",3);
+    showImage("Images/Spicy/Toys/ButtPlugs.jpg", 3);
     sendVirtualAssistantMessage("Are you experienced and capable of wearing butt plugs on a daily basis...");
     sendVirtualAssistantMessage("And fucking yourself with a huge dildo?");
-    showImage("Images/Spicy/Toys/Dildo.jpg",3);
+    showImage("Images/Spicy/Toys/Dildo.jpg", 3);
     sendVirtualAssistantMessage("Maybe even taking a huge cock from Mistress %domName%\'s lover?");
     sendVirtualAssistantMessage("You should answer this truthfully for your own good...", false);
 
@@ -354,8 +354,8 @@
             break;
         } else if (answer.isLike("no")) {
             setVar(VARIABLE_ASS_LEVEL, 1);
-            setVar("assTraining", true);
-            sendVirtualAssistantMessage("I guess that means Mistress %domName% will work on this with you");
+            setVar(VARIABLE_ASS_TRAINING, true);
+            sendVirtualAssistantMessage("I guess that means %DomHonorific% %domName% will work on this with you");
             break;
         } else {
             sendVirtualAssistantMessage(YES_OR_NO);
@@ -406,15 +406,15 @@
     //TODO: Check for and create the FFriends folder if needed
     sendVirtualAssistantMessage("One more thing! %Grin%");
     sendVirtualAssistantMessage("Inside the spicy image folder you'll find a folder named 'FFriends'");
-    showImage("Images/Spicy/Toys/3friends.jpg",3);
+    showImage("Images/Spicy/Toys/3friends.jpg", 3);
     sendVirtualAssistantMessage("\"Female Friends\" in case you were wondering");
     sendVirtualAssistantMessage("Inside it you'll find three folders named 1, 2 and 3");
     sendVirtualAssistantMessage("Inside the folders I want pictures of those contacts you just provided me with");
     sendVirtualAssistantMessage("Folder 1 is for " + getVar('blackmailName1'));
     sendVirtualAssistantMessage("Folder 2 is for " + getVar('blackmailName2'));
     sendVirtualAssistantMessage("Folder 3 is for " + getVar('blackmailName3'));
-  	sendVirtualAssistantMessage("Let me know when you have added pictures for " + getVar('blackmailName1') + ", "+ getVar('blackmailName2') + ", and " + getVar('blackmailName3') + "." );
-	  answer = createInput();
+    sendVirtualAssistantMessage("Let me know when you have added pictures for " + getVar('blackmailName1') + ", " + getVar('blackmailName2') + ", and " + getVar('blackmailName3') + ".");
+    answer = createInput();
     sendVirtualAssistantMessage("good, Should you ever think of quiting your service to the Mistress");
     sendVirtualAssistantMessage("This will make sure you don't %Lol%");
     sendVirtualAssistantMessage("Don't worry you'll be reminded to serve properly!");
@@ -466,7 +466,7 @@
     askForToy("Dildo");
     askForToyUsage("Dildo", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
-    askForToy("Inflatable Butt Plugs",undefined,"InflatablePlug");
+    askForToy("Inflatable Butt Plugs", undefined, "InflatablePlug");
     askForToyUsage("Inflatable Butt Plugs", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
     askForToy("Shock Collar");
@@ -518,12 +518,12 @@
     askForToyUsage("Gag", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
     askForToy("Girl friend");
-    askForToy("Basic Lingerie",undefined,"LingerieSet");
-    askForToy("Advanced Lingerie",undefined,"LingerieSet2");
+    askForToy("Basic Lingerie", undefined, "LingerieSet");
+    askForToy("Advanced Lingerie", undefined, "LingerieSet2");
     askForToy("Parachute");
     askForToyUsage("Parachute", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
-	  showImage("Images/Spicy/Toys/HotSauce.jpg",3);
+    showImage("Images/Spicy/Toys/HotSauce.jpg", 3);
     sendVirtualAssistantMessage("Hot sauce or icy hot? Toothpaste can work too for the time being.", false);
     showPicture("Images/Spicy/Toys/HotSauce.jpg");
 
@@ -554,17 +554,17 @@
     askForToy("Sounds");
     askForToyUsage("Sounds", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
-	  askForToy("Humbler");
+    askForToy("Humbler");
     askForToyUsage("Humbler", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
     askForToy("Nipple Clamps");
     askForToyUsage("NippleClamps", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
-	  askForToy("Cock Ring");
+    askForToy("Cock Ring");
     askForToyUsage("CockRing", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
-	  unlockImages();
+    unlockImages();
 
     //TODO: Check for and create the SelfHumiliation folder if needed
     sendVirtualAssistantMessage("Next we need for you to setup a folder with pictures of YOU!");
@@ -579,8 +579,8 @@
     sendVirtualAssistantMessage("All I want is your face clearly on display");
     sendVirtualAssistantMessage("While doing something you would consider to be humiliating");
     sendVirtualAssistantMessage("Hopefully the video is never viewed by others %Lol%");
-	  sendVirtualAssistantMessage("Let me know when you've completed submitting your first evidence of self humiliation" );
-  	answer = createInput();
+    sendVirtualAssistantMessage("Let me know when you've completed submitting your first evidence of self humiliation");
+    answer = createInput();
     sendVirtualAssistantMessage("oh %subName%, those are some good ones! %Lol%");
     sendVirtualAssistantMessage("Finally we need to set up your spanking implements");
     sendVirtualAssistantMessage("I expect you to have at least 3 %Grin%");

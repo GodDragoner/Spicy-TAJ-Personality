@@ -41,6 +41,6 @@ function getVerbalHumilationLimit() {
     return getVar(LIMITS[8]);
 }
 
-function getHumilationLimit() {
+function getHumiliationLimit() {
     return getVar(LIMITS[9]);
 }

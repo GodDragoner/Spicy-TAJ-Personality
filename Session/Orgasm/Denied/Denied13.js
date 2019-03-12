@@ -25,7 +25,7 @@
 
         sendMessage('Start stroking %Grin%', 0);
         startStroking();
-        wait(3);
+        sleep(3);
         sendMessage("Try to get close for me now");
         startEdging();
         sendMessage("%LetEdgeFade%");
