@@ -13,14 +13,9 @@ run("Toys/Device.js");
 run("Toys/Lingerie.js");
 run("Toys/Vibrator.js");
 run("Toys/Enema.js");
+loadDildos();
 
-function hasDildoToy() {
-    return getVar("toyDildo", false);
-}
 
-function getDildoToyMode() {
-    return getVar("toyDildoInteractionMode");
-}
 
 function readyInput() {
     const answer = sendInput("Tell me when you are ready %SlaveName%", "Are you ready?", "Are you ready %SlaveName%?");

@@ -75,18 +75,6 @@
         setVar(VARIABLE_LOCKED_DAYS_IN_ROW, 0);
     }
 
-    //Start session with stroking
-    if(!isInChastity()) {
-        startStrokeInterval(randomInteger(3, 5));
-    }
-
-    //TODO: Different start scenarios
-    /*if(!feelsLikePunishingSlave()) {
-
-    } else {
-        //Pain module
-    }*/
-
     run("Session/Modules/DecideModule.js");
 }
 

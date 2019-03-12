@@ -74,6 +74,8 @@ const VARIABLE_IS_KNEELING = "isKneeling";
 
 const VARIABLE_BALL_CRUSHER_MAX_TWISTS = "ballCrusherMaxTwists";
 
+const VARIABLE_MAX_DILDO_THICKNESS_TODAY = "maxDildoThicknessToday";
+
 //Modules
 const VARIABLE_POSITION_TRAINING_STARTED = "positionTrainingStarted";
 const VARIABLE_POSITION_LEVEL = "positionLevel";

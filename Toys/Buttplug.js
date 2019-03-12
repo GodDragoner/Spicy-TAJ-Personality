@@ -169,6 +169,7 @@ function getAssLubeType(mood) {
     return lubeTypes[randomInteger(0, lubeTypes.length - 1)];
 }
 
+//TODO: Register different types of butt plugs with sizes etc.
 function getButtplugSize() {
     let assLevel = getVar(VARIABLE_ASS_LEVEL);
 

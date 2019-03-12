@@ -1,4 +1,4 @@
-
+//TODO: Enema tasks (idea: Enema -> plug it for x duration, do sports, go for a walk etc.)
 
 function getEnemaLevel() {
     if(getVar(VARIABLE_ASS_LEVEL) >= 25) {

@@ -6,7 +6,7 @@
         sendMessage("Let's see %SlaveName%");
         sendMessage("I think your throat is not sore enough yet and we should work on that %Grin%");
 
-        let toy = getDildoModifier(true) + " dildo";
+        let toy = getDildo(true).name;
 
         if(!hasDildoToy()) {
             if(sendYesOrNoQuestion('Since you own no dildo. Do you have anything else around that is dildo shaped?')) {

@@ -2,9 +2,13 @@
     let tauntIndex = randomInteger(0, 16);
     switch (tauntIndex) {
         case 0:
-            //TODO: For big stuff only
-            sendMessage("Is your ass gaping yet?");
-            break;
+            if(currentDildo.diameter >= 4) {
+                sendMessage("Is your ass gaping yet?");
+                break;
+            } else {
+                sendMessage("You\'re %Ass% might start gaping soon %Grin%");
+                break;
+            }
         case 1:
             sendMessage("Push in and pull out %Grin%");
             break;

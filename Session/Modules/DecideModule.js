@@ -1,6 +1,16 @@
+//TODO: Pain Modules: Parachute, Sounding, Electric Kit
+
 {
     //End session
     while (!getDate(VARIABLE_CURRENT_SESSION_DATE).clone().addMinute(getVar(VARIABLE_DEVOTION)).hasPassed()) {
+        if(!isInChastity()) {
+            //Some stroking sometimes
+            if(!isVar('lastStrokingPause') || getVar('lastStrokingPause').addMinute(getVar(VARIABLE_DEVOTION)/3).hasPassed()) {
+                startStrokeInterval(randomInteger(2, 3));
+                setDate('lastStrokingPause');
+            }
+        }
+
         const moduleChance = 50;
         let teaseModuleChance = moduleChance;
         const teaseModuleAdditions = [
@@ -76,6 +86,8 @@
         } else if (moduleIndicator < sissyModuleChance + teaseModuleChance + painModuleChance + slaveModuleChance + humiliationModuleChance) {
             runModuleCategory(CATEGORY_HUMILATION);
         }
+
+        //TODO: Random toys apply (based on mood) (swap out plug for the next bigger one etc.)
 
         run("Session/Link/Module/DecideLink.js");
     }

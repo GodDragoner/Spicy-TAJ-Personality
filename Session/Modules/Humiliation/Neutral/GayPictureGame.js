@@ -195,7 +195,7 @@ function startGayPictureRound() {
 
                 //TODO: Convince of CEI if LIMIT IS MAYBE or force
                 if (hasDildoToy() && (dildoCEI || dildoAnal)) {
-                    cumOnDildo = fetchToy(getDildoModifier(true) + ' dildo');
+                    cumOnDildo = fetchToy(getDildo(true).name);
 
                     if (cumOnDildo) {
                         sendMessage('You probably already know what is about to come right?');

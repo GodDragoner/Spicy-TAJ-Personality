@@ -1,3 +1,5 @@
+//TODO: use ice cubes, food?
+
 {
     if (tryRunModuleFetchId()) {
         //TODO: More limit handling
@@ -299,7 +301,7 @@ function addBlowjobToFucking(toy, mountedToWall = false, inFront = false) {
     const hasSecondDildo = true;
 
     if (hasSecondDildo) {
-        if (!fetchToy(getDildoModifier(true) + " dildo")) {
+        if (!fetchToy(getDildo(true).name)) {
             return false;
         }
 
@@ -605,7 +607,7 @@ function startSquatAnal(toy) {
                         sendMessage("What?!");
                         sendMessage("But I never told you to stop!");
                         sendMessage("This misbehaviour deserves a proper punishment...");
-                        //TODO: Small punishment
+                        smallCBTPunishment();
                         changeMeritMedium(true);
                         sendMessage("And now go ahead and sit all they way down on that " + toy + " again");
                         break;

@@ -20,7 +20,7 @@ const analTasks = [];
         id: taskId++, exp: 30, minLevel: 1,
 
         sendInstructions: function () {
-            sendMessage("I want you to fuck yourself using your " + getDildoModifier() + " for " + getDildoTaskDurationMinutes() + " minutes today");
+            sendMessage("I want you to fuck yourself using your " + getAnalDildoForTask().name + " for " + getDildoTaskDurationMinutes() + " minutes today");
         },
 
         isApplicable: function () {
@@ -57,7 +57,7 @@ const analTasks = [];
         id: taskId++, exp: 40, minLevel: 10,
 
         sendInstructions: function () {
-            sendMessage("I want you to stick your " + getDildoModifier() + " dildo up your %Ass% and keep it in there for " + random(10, 30) + " minutes");
+            sendMessage("I want you to stick your " + getAnalDildoForTask(10, 2) + " dildo up your %Ass% and keep it in there for " + random(10, 30) + " minutes");
         },
 
         isApplicable: function () {
