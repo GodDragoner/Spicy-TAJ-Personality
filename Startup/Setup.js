@@ -403,7 +403,9 @@
     }
 
     setupBlackmail();
-    //TODO: Check for and create the FFriends folder if needed
+
+    setupFFriendsFolder();
+    
     sendVirtualAssistantMessage("One more thing! %Grin%");
     sendVirtualAssistantMessage("Inside the spicy image folder you'll find a folder named 'FFriends'");
     showImage("Images/Spicy/Toys/3friends.jpg", 3);
@@ -793,6 +795,12 @@
             }
         }
     }
+}
+
+function setupFFriendsFolder() {
+    tryCreateFolder(getImageSubFolder('FFriends' + PATH_SEPARATOR + '1'));
+    tryCreateFolder(getImageSubFolder('FFriends' + PATH_SEPARATOR + '2'));
+    tryCreateFolder(getImageSubFolder('FFriends' + PATH_SEPARATOR + '3'));
 }
 
 function setupSlaveCompetitorStats(slaveName, endurance, painTolerance, painEndurance, humiliationCheck, dildoPussy, dildoAss, personality, orgasm) {

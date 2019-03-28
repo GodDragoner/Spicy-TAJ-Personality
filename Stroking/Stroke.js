@@ -112,8 +112,12 @@ function sendStrokeTaunts(durationSeconds, nextInstruction) {
         }
 
         if(nextInstruction == undefined || nextInstruction <= 0) {
+            //Only send stroke instructions after the initial stroking
+            if(nextInstruction !== undefined) {
+                sendNewStrokeInstruction();
+            }
+
             nextInstruction = randomInteger(30, 90);
-            sendNewStrokeInstruction();
         }
 
         iterationsToGo--;

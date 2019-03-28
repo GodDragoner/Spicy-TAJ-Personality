@@ -10,6 +10,6 @@
         sendMessage('Don\'t you dare look away and make sure your volume is up');
         playVideo('Videos/Spicy/Modules/Sissy/Brainwash/*.mp4', true);
 
-        sendMessage(random('I hope you\'re feeling more submissive', 'If you were here you would stuff like this daily') + '%EmoteHappy%');
+        sendMessage(random('I hope you\'re feeling more submissive', 'If you were here you would stuff like this daily') + ' %EmoteHappy%');
     }
 }

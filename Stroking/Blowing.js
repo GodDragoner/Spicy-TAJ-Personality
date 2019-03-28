@@ -140,7 +140,6 @@ function randomBlowjobModule(toy) {
 
 function startNormalBlowjobModule() {
     sendMessage('Let\'s go easy on you for now');
-    sendMessage('');
 
     //TODO: Signal sounds and explanation
 
@@ -148,16 +147,25 @@ function startNormalBlowjobModule() {
     startDate.addMinute(randomInteger(8, 15));
 
     while (!startDate.hasPassed()) {
+        if(isChance(30)) {
+            playSound("Audio\\Spicy\\Modules\\BJTraining\\GeneralEncourage\\*.mp3", true);
+        }
+
         switch (randomInteger(0, 6)) {
             case 0:
-                sendMessage(random("Light sucks", "Stick with the beat!", "Keep the beat", "Light sucking to the beat", "Suck lightly to the beat", "Light sucking - only the cockhead..."));
+                sendMessage(random("Light sucks", "Stick with the beat!", "Follow the beat", "Light sucking to the beat", "Suck lightly to the beat", "Light sucking - only the cockhead..."));
+
                 if (isChance(50)) playSound("Audio\\Spicy\\Modules\\BJTraining\\BJLightSucksVaried\\12345_1min.mp3", true);
                 else playSound("Audio\\Spicy\\Modules\\BJTraining\\BJLightSucksVaried\\123123_1min.mp3", true);
                 break;
             case 1:
-                sendMessage(random("Light sucks", "Stick with the beat!", "Keep the beat", "Light sucking to the beat", "Suck lightly to the beat", "Light sucking - only the cockhead..."));
-                if (isChance(50) && getBlowjobLevel() >= 15) playSound("Audio\\Spicy\\Modules\\BJTraining\\BJLightSucks\\MediumSuck1min.mp3", true);
-                else playSound("Audio\\Spicy\\Modules\\BJTraining\\BJLightSucks\\MediumSuck15sec.mp3", true);
+                sendMessage(random("Light sucks", "Stick with the beat!", "Follow the beat", "Light sucking to the beat", "Suck lightly to the beat", "Light sucking - only the cockhead..."));
+
+                if (isChance(50) && getBlowjobLevel() >= 15) {
+                    playSound("Audio\\Spicy\\Modules\\BJTraining\\BJLightSucks\\MediumSuck1min.mp3", true);
+                } else {
+                    playSound("Audio\\Spicy\\Modules\\BJTraining\\BJLightSucks\\MediumSuck15sec.mp3", true);
+                }
                 break;
             case 2:
                 sendMessage(random("Swirl your tongue", "Swirl that tongue around", "Swirl your tongue around that cockhead!", "Use the tongue!"));
@@ -167,9 +175,7 @@ function startNormalBlowjobModule() {
             case 3:
                 sendMessage(random("Stroke it", "Stroke the dildo", "Stroke that dick", "Stroke that cock", "Stroke that huge dildo", "Stroke it!", "Stroke stroke stroke!"));
 
-                playSound("Audio\\Spicy\\Modules\\BJTraining\\BJHandStroking\\*.mp3");
-                sleep(4);
-                stopAudio();
+                playSound("Audio\\Spicy\\Modules\\BJTraining\\BJHandStroking\\*.mp3", true);
 
                 playSound("Audio\\Spicy\\Stroking\\Metronome2\\*.mp3");
                 sleep(20);
@@ -178,7 +184,7 @@ function startNormalBlowjobModule() {
             case 4:
                 sendMessage(random("Suck fast!", "Fast sucking!", "Suck it fast", "Suck it swiftly", "Suck it fast!", "Make sure you suck it fast!"));
 
-                playSound("Audio\\Spicy\\Modules\\BJTraining\\BJFastSucking\\FastSuck1min.mp3");
+                playSound("Audio\\Spicy\\Modules\\BJTraining\\BJFastSucking\\FastSuck1min.mp3", true);
                 break;
         }
     }
@@ -197,7 +203,7 @@ function startDeepthroatModule() {
     const bowl = isChance(50);
 
     if (true) {
-        sendMessage('And remember: Good sissys only swallow cum and no spit!');
+        sendMessage('And remember: Good sissies only swallow cum and no spit!');
 
         if (bowl) {
             sendMessage('Which is why you should get a bowl to catch all that nasty spit!');

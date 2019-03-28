@@ -103,16 +103,16 @@ function runModuleCategory(category) {
 
     const paths = [];
 
-    if (getFile(getPersonalityPath() + PATH_SEPERATOR + neutralPath).exists()) {
-        paths.push(neutralPath + PATH_SEPERATOR + "*.js");
+    if (getFile(getPersonalityPath() + PATH_SEPARATOR + neutralPath).exists()) {
+        paths.push(neutralPath + PATH_SEPARATOR + "*.js");
     }
 
-    if (getFile(getPersonalityPath() + PATH_SEPERATOR + noChastityPath).exists() && !isInChastity()) {
-        paths.push(noChastityPath + PATH_SEPERATOR + "*.js");
+    if (getFile(getPersonalityPath() + PATH_SEPARATOR + noChastityPath).exists() && !isInChastity()) {
+        paths.push(noChastityPath + PATH_SEPARATOR + "*.js");
     }
 
-    if (getFile(getPersonalityPath() + PATH_SEPERATOR + dynamicPath).exists()) {
-        paths.push(dynamicPath + PATH_SEPERATOR + "*.js");
+    if (getFile(getPersonalityPath() + PATH_SEPARATOR + dynamicPath).exists()) {
+        paths.push(dynamicPath + PATH_SEPARATOR + "*.js");
     }
 
     //Keep track of how many times we tried to find a module in a category since last decide Moudle call
@@ -158,7 +158,7 @@ function tryRunModule(moduleId, category, minModulesSinceRun = 3) {
 }
 
 function getModuleTypeCategoryPath(category, type) {
-    return 'Session' + PATH_SEPERATOR + 'Modules' + PATH_SEPERATOR + category + PATH_SEPERATOR + type;
+    return 'Session' + PATH_SEPARATOR + 'Modules' + PATH_SEPARATOR + category + PATH_SEPARATOR + type;
 }
 
 

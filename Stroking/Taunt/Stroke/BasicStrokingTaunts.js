@@ -15,7 +15,7 @@
         'Keep stroking %SlaveName%',
         'Keep going',
         'Keep %JerkingOff% just like that... good %SlaveName%',
-        'Don\'t stop stroking ',
+        'Don\'t stop stroking',
         'Don\'t stop %SlaveName%, I want you even ' + 'more aroused', 'harder',
         'I know you can keep going for me, %SlaveName%',
         'You have no choice but to keep stroking for me',
