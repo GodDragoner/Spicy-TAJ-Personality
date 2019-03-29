@@ -122,21 +122,6 @@ function getAssEXPMultiplier() {
     return 1;
 }
 
-function runAssIntro() {
-    sendMessage("As a hopefully future slave of mine ");
-    sendMessage("You will often find yourself with a cock in your %Ass%! %Lol% ");
-    sendMessage("Which means you have to be able to take one");
-    sendMessage("And heck...");
-    sendMessage("You might even learn to love it!");
-
-    if(hasEnemaKit()) {
-        runEnemaIntro();
-    }
-
-    sendMessage("Now...");
-    setVar('assIntro', true);
-}
-
 function firstTimeAnalTraining() {
     sendMessage("This is gonna be our very first ass training");
 

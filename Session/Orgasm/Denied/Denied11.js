@@ -65,7 +65,7 @@
 
             setSender(2);
             sendMessage("Mmm I don\'t know...");
-            startEdging(10);
+            startEdging(getEdgeHoldSeconds());
 
             sendMessage("Sorry %SlaveName% but %domFriend1Name% is right");
             sendMessage("It\'s much more fun to keep you denied %Grin%");
@@ -82,7 +82,7 @@
             sendMessage("And you know what, that exactly the way I like it");
             sendMessage("Yes, that means I\'ve changed my mind about letting you cum");
             sendMessage("So I\'m going to make you edge one more time, but you\'re not going to cum");
-            startEdging(10);
+            startEdging(getEdgeHoldSeconds());
             sendMessage("%LetEdgeFade%");
         }
     }

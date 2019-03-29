@@ -274,9 +274,9 @@ function ballCrusherRubberPlay() {
     sendMessage('Aim for the center of your %Balls%');
     sendMessage('And release %Grin%');
 
-    const subPain = getVar(VARIABLE_SUB_PAIN_TOLERANCE);
-    const min = Math.min(subPain * 2, 20);
-    const max = Math.min(2, 4242 * subPain + 4, 6667, 30);
+    const subPain = Math.max(1, getVar(VARIABLE_SUB_PAIN_TOLERANCE));
+    const min = Math.max(3, Math.min(subPain));
+    const max = Math.max(3, subPain * 2);
 
     let strikes = randomInteger(min, max);
 

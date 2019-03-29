@@ -1,4 +1,3 @@
-
 function stopStrokingMessage() {
     stopStroking();
     const answers = [
@@ -24,29 +23,31 @@ function stopStrokingMessage() {
         "Okay That's enough for now. You're going to squirt before I'm done with you."
     ];
 
-    sendMessage(answers[randomInteger(0, answers.length - 1)], 0);
+    sendMessage(findRandomUnusedElement(answers, createHistory('stopStroking')), 0);
 
-    if(randomInteger(0, 5) > 0) {
+    if (isChance(80)) {
         playSound("Audio/Spicy/Stroking/StopStroking/*.mp3");
     }
 }
 
 function startStrokeInterval(durationMinutes) {
-    //TODO: Start stroking sound and message
-    sendMessage("Go ahead %SlaveName% and start stroking that %Cock%", 0);
+    sendMessage("%StartStroking%", 0);
+
+    if (isChance(80)) {
+        playSound("Audio/Spicy/Stroking/StartStroking/*.mp3");
+    }
 
     startStroking(60);
-    sendStrokeTaunts(durationMinutes*60);
+    sendStrokeTaunts(durationMinutes * 60);
 
-    //TODO: More Taunts and don't repeat taunts, stroke timed based on mood etc.
+    //TODO: More Taunts and stroke timed based on mood etc.
 
     stopStrokingMessage();
 }
 
 function sendNewStrokeInstruction() {
-    const randomModule = randomInteger(0, 12);
+    const randomModule = findRandomUnusedIndex(12, createHistory('strokingInstruction'));
     switch (randomModule) {
-        //TODO: and don't repeat modules
         case 0:
             sendMessage('I want you to stroke the whole %Cock%!');
             break;
@@ -81,7 +82,7 @@ function sendNewStrokeInstruction() {
         case 8:
             sendMessage('Try stroking with both hands');
 
-            if(getVerbalHumilationLimit() == LIMIT_ASKED_YES) {
+            if (getVerbalHumilationLimit() == LIMIT_ASKED_YES) {
                 sendMessage('It\'s probably impossible with such a small %Cock% but this might be even more humiliating then %Lol%');
             }
             break;
@@ -105,15 +106,15 @@ function sendStrokeTaunts(durationSeconds, nextInstruction) {
     let iterationsToGo = randomInteger(10, 30);
 
     //Start our loop and continue until iterationsToGo are equal or less than zero
-    while(iterationsToGo > 0) {
+    while (iterationsToGo > 0) {
         //Is the sub still stroking?
-        if(!isStroking() || durationSeconds <= 0) {
+        if (!isStroking() || durationSeconds <= 0) {
             return;
         }
 
-        if(nextInstruction == undefined || nextInstruction <= 0) {
+        if (nextInstruction == undefined || nextInstruction <= 0) {
             //Only send stroke instructions after the initial stroking
-            if(nextInstruction !== undefined) {
+            if (nextInstruction !== undefined) {
                 sendNewStrokeInstruction();
             }
 
@@ -134,5 +135,7 @@ function sendStrokeTaunts(durationSeconds, nextInstruction) {
 
 function stopStrokingEdgeMessage() {
     //TODO: Different messages and sound
+
+
     stopStrokingMessage();
 }

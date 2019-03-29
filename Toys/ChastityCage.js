@@ -130,14 +130,12 @@ function lockChastityCage() {
 
     sendMessage(random("Put on your %ChastityCage%", "Get your %ChastityCage% on", "Put on the %ChastityCage% at once", "Hurry up and get the %ChastityCage% back on", "Be quick and get your %ChastityCage% back on", "Lock your %Cock% up"));
 
-
-    //TODO: Timeout based on chastity level and then punish like with icing down cock or cbt or icy hot or something
-
-    let timeout = randomInteger(30, 60);
+    const chastityLevel = getVar(VARIABLE_CHASTITY_LEVEL);
+    let timeout = randomInteger(60 - chastityLevel, 90 - chastityLevel);
     if(ACTIVE_PERSONALITY_STRICTNESS == 1) {
-        timeout = randomInteger(25, 50);
+        timeout = randomInteger(55 - chastityLevel, 80 - chastityLevel);
     } else if(ACTIVE_PERSONALITY_STRICTNESS == 2) {
-        timeout = randomInteger(20, 40);
+        timeout = randomInteger(50 - chastityLevel, 70 - chastityLevel);
     }
 
     const answer = sendInput(random("Let me know when you're done...", "Report to me when it's on", "Remember to tell me when it's on"), timeout);
@@ -149,8 +147,8 @@ function lockChastityCage() {
             if(loop > 1) {
                 sendMessage(random("You've taken way too long to get that %ChastityCage% on...", "You are taking way to long to get that %ChastityCage% on", "It took you too long to get that cage on..."));
 
-                if(getVar(VARIABLE_CHASTITY_TRAINING)) {
-                    sendMessage(random("But since you're in training", "But due to you being in training", "But because of your chastity training") + " I won't punish you...");
+                if(chastityLevel < 20) {
+                    sendMessage(random("But since you're in chastity training", "But due to you being in chastity training", "But because of your chastity training") + " I won't punish you...");
                 } else {
                     if(isForcedLockedUp()) {
                         sendMessage("So as a punishment I'm placing you in the %ChastityCage% for the next 24 hours...")
@@ -159,6 +157,39 @@ function lockChastityCage() {
                     }
 
                     addLockUpTime(24);
+
+                    if(getCBTLimit() == LIMIT_ASKED_YES) {
+                        sendMessage('And to get that %Cock% into its cage quickly now...');
+
+                        switch (randomInteger(0, 2)) {
+                            case 0:
+                                if (hasTigerHot() && fetchToy('icy hot')) {
+                                    sendMessage('I want you to spread some icy hot on your shaft, balls and glans %Grin%');
+                                    sendMessage('That cock doesn\'t deserve any different and because it won\'t obey it will need to suffer');
+                                    sendMessage('When you are done wait for it to be soft');
+                                    sendMessage('I don\'t care how long it takes or how much it hurts, just report back to me %Lol%');
+                                    waitForDone(100000);
+                                    sendMessage('%Good%. Now lock that %Cock% up already');
+                                    break;
+                                }
+                            case 1:
+                                sendMessage('Bring me a bowl with some water in it and...');
+                                if (fetchIceCubes(5)) {
+                                    sendMessage('Put those ice cubes into the bowl and dip your balls and cock into it until they are soft %Grin%');
+                                    sendMessage('I don\'t care how long it takes or how much it hurts, just report back to me %Lol%');
+                                    waitForDone(100000);
+                                    sendMessage('%Good%. Now lock that %Cock% up already');
+                                    break;
+                                }
+                            case 2:
+                                smallCBTPunishment();
+                                sendMessage('I hope it is soft now');
+
+                                //TODO: Interaction
+                                sendMessage('Now lock that %Cock% up already');
+                                break;
+                        }
+                    }
                 }
                 break;
             } else {

@@ -1,40 +1,42 @@
-if (getVar(VARIABLE_POSITION_TRAINING_STARTED, false) == false) {
-    setVar(VARIABLE_POSITION_LEVEL, 1);
-    setVar(VARIABLE_POSITION_TRAINING_STARTED, "positionTrainingStarted");
+{
+    if (getVar(VARIABLE_POSITION_TRAINING_STARTED, false) == false) {
+        setVar(VARIABLE_POSITION_LEVEL, 1);
+        setVar(VARIABLE_POSITION_TRAINING_STARTED, "positionTrainingStarted");
 
-    sendMessage("Now %SlaveName%");
-	sendMessage("I consider it rather important that you know your positions by heart.");
-	sendMessage("So of course we're gonna spend some time once in a while making sure you know your positions.");
-	sendMessage("Pay attention as I walk you through the different positions..");
+        sendMessage("Now %SlaveName%");
+        sendMessage("I consider it rather important that you know your positions by heart.");
+        sendMessage("So of course we're gonna spend some time once in a while making sure you know your positions.");
+        sendMessage("Pay attention as I walk you through the different positions..");
 
-    positionWalkthrough();
-
-} else {
-    sendMessage("%SlaveName%")
-    if (randomInteger(1, 2) === 1) {
-        sendMessage("A quick reminder of all the positions...");
         positionWalkthrough();
-    }
-}
 
-var position_level = getVar(VARIABLE_POSITION_LEVEL, 1);
-
-if (position_level <= 15) {
-    simplePositionTrainingSelection(1);
-} else if (position_level >= 30) {
-    let chance = randomInteger(0, 100);
-    if (chance < 5) {
-        complicatedPositionTrainingSelection(3);
-    } else if (chance < 35) {
-        simplePositionTrainingSelection(randomInteger(1,2));
-    } else if (chance < 70) {
-        positionTrainingTestSelection();
     } else {
-        complicatedPositionTrainingSelection(randomInteger(1,2))
+        sendMessage("%SlaveName%")
+        if (randomInteger(1, 2) === 1) {
+            sendMessage("A quick reminder of all the positions...");
+            positionWalkthrough();
+        }
     }
-}
 
-positionTrainingEnd();
+    let position_level = getVar(VARIABLE_POSITION_LEVEL, 1);
+
+    if (position_level <= 15) {
+        simplePositionTrainingSelection(1);
+    } else if (position_level >= 30) {
+        let chance = randomInteger(0, 100);
+        if (chance < 5) {
+            complicatedPositionTrainingSelection(3);
+        } else if (chance < 35) {
+            simplePositionTrainingSelection(randomInteger(1, 2));
+        } else if (chance < 70) {
+            positionTrainingTestSelection();
+        } else {
+            complicatedPositionTrainingSelection(randomInteger(1, 2))
+        }
+    }
+
+    positionTrainingEnd();
+}
 
 function startKneeling() {
     //TODO: Sound and random
@@ -103,8 +105,8 @@ function simplePositionTrainingIntro() {
             changeMeritMedium(true);
             sendMessage("Not being answered is a sign of disrespect");
             sendMessage("I don't like being disrespected");
+            addPunishmentPoints(25);
             return;
-            //TODO: Punish (GNM points + 25)
         } else if (answer.containsIgnoreCase("yes")) {
             changeMeritLow(false);
             sendMessage("%Good%");
@@ -171,7 +173,7 @@ function simplePositionTrainingSelection(totalPositions) {
             sendMessage("It gives the sub a feeling of submission");
 
             showImage("Images/Spicy/Positions/BentOver1.jpg");
-            sendMessage("Even though in on these pictures the heels are touching the ground");
+            sendMessage("Even though on these pictures the heels are touching the ground");
 
             showImage("Images/Spicy/Positions/BentOver3.jpg");
             sendMessage("I want you to raise your heels from the ground");
@@ -241,10 +243,10 @@ function simplePositionTrainingSelection(totalPositions) {
             sendMessage("This is the Dog position");
             sendMessage("The dog is actually excellent as a spanking position");
 
-            showImage("Images/Spicy/Positions/Box2.jpg");
+            showImage("Images/Spicy/Positions/Dog2.jpg");
             sendMessage("Notice how the legs and lower arms are pressed together");
 
-            showImage("Images/Spicy/Positions/Box3.jpg");
+            showImage("Images/Spicy/Positions/Dog3.jpg");
             sendMessage("It's not one I use a lot but it still has its merit");
             unlockImages();
 

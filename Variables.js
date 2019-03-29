@@ -93,6 +93,8 @@ const VARIABLE_MODEL_RATINGS_DONE = "modelRatingsDone";
 const VARIABLE_EDGE_A_TONS_DONE = "edgeATonsDone";
 const VARIABLE_EDGE_A_TON_EDGE_RECORD = "edgeATonEdgeRecord";
 
+const VARIABLE_STROKE_MODULE_PAUSE_FREQUENCY = 'strokeModulePauseFrequency';
+
 
 
 //Sub

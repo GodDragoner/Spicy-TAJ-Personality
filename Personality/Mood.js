@@ -24,16 +24,20 @@ function allowTeasingStroking() {
     return !feelsLikePunishingSlave() && isChance(30);
 }
 
-//TODO: Add own implementation
+//Just bad behaviour etc.
 function feelsLikePunishingSlave() {
-    return feelsEvil();
+    const mood = getMood();
+
+    return getVar(VARIABLE_PUNISHMENT_POINTS) >= 250 || mood >= NEUTRAL_MOOD && isChance(mood*25);
 }
 
 //TODO: Add own implementation
+//Annoyed by too many questions or disobedience etc.
 function isAnnoyed() {
     return feelsEvil();
 }
 
+//Meant in a playful but evil kind of way (not really pain or anything)
 function feelsEvil() {
     let mood = getMood();
 
@@ -71,6 +75,9 @@ function feelsEvil() {
 }
 
 function handleTodaysMood() {
+    //Update mood at the end of session (prevents cheating by restarting the session over and over)
+    loadMood();
+
     const dayOfMonth = setDate().getDay();
 
     //Positive

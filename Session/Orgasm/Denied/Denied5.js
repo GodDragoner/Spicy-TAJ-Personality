@@ -8,7 +8,7 @@
 
         if (isChance(50)) {
             sendMessage("You know what, give me another edge %Grin%");
-            startEdging(randomInteger(10, 20));
+            startEdging(getEdgeHoldSeconds());
             sendMessage("Mmm good boy");
             sendMessage("One last time never really means one last time %SlaveName%");
 

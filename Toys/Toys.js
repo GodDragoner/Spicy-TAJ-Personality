@@ -14,6 +14,7 @@ run("Toys/Lingerie.js");
 run("Toys/Vibrator.js");
 run("Toys/Enema.js");
 loadDildos();
+loadButtplugs();
 
 
 

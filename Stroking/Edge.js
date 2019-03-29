@@ -2,7 +2,11 @@ const EDGE_END_NORMAL = 0;
 const EDGE_END_RUIN = 1;
 const EDGE_END_ORGASM = 2;
 
-//TODO: Function to get hold seconds based on mood etc.
+const EDGE_HOLD_DOM = 0;
+const EDGE_HOLD_SHORT = 1;
+const EDGE_HOLD_MEDIUM = 2;
+const EDGE_HOLD_LONG = 3;
+
 function startEdging(holdSeconds, skipStop = false, endIn = EDGE_END_NORMAL) {
     const answers = [
         "Get to the %EdgeNoun%",
@@ -42,7 +46,11 @@ function startEdging(holdSeconds, skipStop = false, endIn = EDGE_END_NORMAL) {
 
     if(holdSeconds !== undefined) {
         stopStroking();
-        //TODO: Hold message
+
+        //Show the initial message to tell the sub to stay on the edge
+        setTempVar('initialEdgeHold');
+        run("Stroking/Taunt/HoldEdge/BasicHoldingTaunts.js");
+
         sendHoldEdgeTaunts(holdSeconds);
     }
 
@@ -108,6 +116,29 @@ function sendHoldEdgeTaunts(seconds) {
 
     //Start the whole thing all over again
     sendHoldEdgeTaunts(seconds);
+}
+
+function getEdgeHoldSeconds(edgeHold = EDGE_HOLD_DOM) {
+    //TODO: Edge hold seconds based on sub experience?
+    let mood = 0;
+    let strictness = ACTIVE_PERSONALITY_STRICTNESS;
+
+    switch (edgeHold) {
+        case EDGE_HOLD_DOM:
+            mood = getMood();
+            break;
+        case EDGE_HOLD_SHORT:
+            mood = 0;
+            break;
+        case EDGE_HOLD_MEDIUM:
+            mood = 2;
+            break;
+        case EDGE_HOLD_LONG:
+            mood = 4;
+            break;
+    }
+
+    return randomInteger((mood + 1)*(5 + strictness*4), (mood + 1)*(10 + strictness*4))
 }
 
 function addEdge() {

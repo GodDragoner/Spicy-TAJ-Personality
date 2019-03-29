@@ -20,7 +20,7 @@
             sendMessage("That means you need to do some more edges");
 
             for(let x = 0; x < randomInteger(3, 5); x++) {
-                startEdging(randomInteger(5, 7));
+                startEdging(getEdgeHoldSeconds(EDGE_HOLD_SHORT));
             }
 
             sendMessage("%LetEdgeFade%");

@@ -164,7 +164,7 @@ function simplePositionTrainingSelection(totalPositions) {
             sendMessage("It gives the sub a feeling of submission");
 
             showImage("Images/Spicy/Positions/BentOver1.jpg");
-            sendMessage("Even though in on these pictures the heels are touching the ground");
+            sendMessage("Even though on these pictures the heels are touching the ground");
 
             showImage("Images/Spicy/Positions/BentOver3.jpg");
             sendMessage("I want you to raise your heels from the ground");

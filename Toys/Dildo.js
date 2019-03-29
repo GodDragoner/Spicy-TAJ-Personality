@@ -9,6 +9,22 @@ function getDildoToyMode() {
     return getVar("toyDildoInteractionMode");
 }
 
+function runAssIntro() {
+    sendMessage("As a hopefully future slave of mine ");
+    sendMessage("You will often find yourself with a cock in your %Ass%! %Lol% ");
+    sendMessage("Which means you have to be able to take one");
+    sendMessage("And heck...");
+    sendMessage("You might even learn to love it!");
+
+    if(hasEnemaKit()) {
+        runEnemaIntro();
+    }
+
+    sendMessage("Now...");
+    setVar('assIntro', true);
+}
+
+
 function getAnalDildoForTask(minLength = 0, minThickness = 0) {
     let availableDildos = [];
 
@@ -42,17 +58,7 @@ function getAnalDildo(minLength = 0, minThickness = 0, forceBigger = false) {
 
     let availableDildos = [];
 
-    let maxDiameterIncrease = 1;
-
-    let assLevel = getVar(VARIABLE_ASS_LEVEL);
-
-    if(assLevel >= 30) {
-        maxDiameterIncrease = 2.5;
-    } else if(assLevel >= 23) {
-        maxDiameterIncrease = 2;
-    } else if(assLevel >= 15) {
-        maxDiameterIncrease = 1.5;
-    }
+    let maxDiameterIncrease = getMaxDiameterIncrease();
 
     for (let y = 0; y < dildos.length; y++) {
         let dildo = dildos[y];

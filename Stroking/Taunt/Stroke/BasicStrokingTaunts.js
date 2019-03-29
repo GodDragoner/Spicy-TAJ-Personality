@@ -191,7 +191,7 @@
         }
 
     } else {*/
-        let answer = answers[randomInteger(0, answers.length - 1)];
+        let answer = findRandomUnusedElement(answers, createHistory('basicStrokingTaunt'));
 
         let tag = '@StrokeSlower';
         let strokeSlower = answer.indexOf(tag) !== -1;

@@ -1,11 +1,31 @@
 //TODO: Pain Modules: Parachute, Sounding, Electric Kit
+//TODO: Prevent two ball pain modules in a row etc.
 
 {
     //End session
     while (!getDate(VARIABLE_CURRENT_SESSION_DATE).clone().addMinute(getVar(VARIABLE_DEVOTION)).hasPassed()) {
+        //TODO: Chastity version of distraction / punishment distraction
+
         if(!isInChastity()) {
+            //TODO: Ask in setup file
+            let strokeFrequency = getVar(VARIABLE_STROKE_MODULE_PAUSE_FREQUENCY, 0);
+
+            let minTimePassed = 0;
+
+            //Dom choose
+            if(strokeFrequency == 0) {
+                const mood = getMood();
+                const strictness = ACTIVE_PERSONALITY_STRICTNESS;
+
+                minTimePassed = getVar(VARIABLE_DEVOTION)/Math.min(4, Math.max(1, 5 - strictness - mood - 1));
+            } else {
+                //Other frequency
+                getVar(VARIABLE_DEVOTION)/(strokeFrequency + 1);
+            }
+
             //Some stroking sometimes
-            if(!isVar('lastStrokingPause') || getVar('lastStrokingPause').addMinute(getVar(VARIABLE_DEVOTION)/3).hasPassed()) {
+            if((!isVar('lastStrokingPause') && getVar(VARIABLE_CURRENT_SESSION_DATE).addMinute(minTimePassed).hasPassed()) || getVar('lastStrokingPause').addMinute(minTimePassed).hasPassed()) {
+                //TODO: Duration based on mood
                 startStrokeInterval(randomInteger(2, 3));
                 setDate('lastStrokingPause');
             }
@@ -61,6 +81,9 @@
         if (getVar(VARIABLE_ANGER) > 25) {
             teaseModuleChance -= 10;
         }
+
+        //Don't go below zero
+        teaseModuleChance = Math.max(teaseModuleChance, 0);
 
 
         //Not used atm.
@@ -134,16 +157,18 @@ function tryRunModule(moduleId, category, minModulesSinceRun = 3) {
     //If we already ran that module today try more than 10 times
     if (MODULE_HISTORY.isInTodaysHistory(moduleId)) {
         maxTries = 30;
+        minModulesSinceRun = 10;
     }
 
     if (MODULE_HISTORY.isInHistory(moduleId)) {
         //Check whether not enough modules have passed since last time we ran this module
         if (MODULE_HISTORY.getModulesSinceHistory(moduleId) < minModulesSinceRun) {
-            if (getVar('findModuleTries') < maxTries / 2) {
+            let tries = getVar('findModuleTries');
+            if (tries < maxTries / 2) {
                 //Try to run from same category
                 runModuleCategory(category);
                 return false;
-            } else if (getVar('findModuleTries') < maxTries) {
+            } else if (tries < maxTries) {
                 //Try to find a different module
                 run("Session/Modules/DecideModule.js");
                 return false;

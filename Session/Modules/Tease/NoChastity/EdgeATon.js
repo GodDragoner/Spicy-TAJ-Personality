@@ -116,7 +116,7 @@ if(tryRunModuleFetchId()) {
     sendMessage(random("So, Well, Hmm") + "...");
 
 //Will dom determine the edges? Only if  this is not the first run
-    if (isChance(30 * (ACTIVE_PERSONALITY_STRICTNESS + 1)) && !getVar(VARIABLE_EDGE_A_TONS_DONE) == 1) {
+    if (isChance(30 * (ACTIVE_PERSONALITY_STRICTNESS + 1)) && getVar(VARIABLE_EDGE_A_TONS_DONE) !== 1) {
         sendMessage("Let's do this a bit differently today %SlaveName%");
         sendMessage("I fell like taking some more control today");
         sendMessage("I will choose how many edges you'll do today %EmoteHappy%");
@@ -183,7 +183,7 @@ function startEdgeATon(chosenByDom, edgesToDo) {
     }
 
     while (edgesToDo > 0) {
-        startEdging(10);
+        startEdging(getEdgeHoldSeconds(EDGE_HOLD_SHORT));
         sendMessage("%LetEdgeFade%");
         sleep(randomInteger(20));
         edgesToDo--;
@@ -200,9 +200,20 @@ function startEdgeATon(chosenByDom, edgesToDo) {
     sendMessage(random("After which you are going to get completely soft!", "And then I want you get soft as fast as possible", "Then you need to get soft as fast as possible"));
     sendMessage(random("Breathe...", "Relax", "Calm yourself"));
     sleep(randomInteger(5, 15));
-    startEdging(10);
+    startEdging(getEdgeHoldSeconds());
     sendMessage("%LetEdgeFade%");
-    growDickSoft();
+
+    if(!growDickSoft() && feelsLikePunishingSlave() && hasChastityCage()) {
+        sendMessage('You know what?');
+        sendMessage('Since it took you that long to get soft and you are already soft');
+        sendMessage('Why don\'t we keep it that way for now? %Grin%');
+        sendMessage('You know what is coming right? %EmoteHappy%');
+        lockChastityCage();
+        sendMessage('Much better, isn\'t it?');
+        sendMessage('Now you won\'t have to go through the trouble of getting soft at the end anymore and I really don\'t want to wait that long again');
+        sendMessage('Just get soft quicker next time and don\'t annoy me %Lol%');
+    }
+
     sendMessage("Well that was it for your edge a ton today %Grin%");
 }
 
@@ -232,8 +243,10 @@ function growDickSoft() {
         if (getVar(VARIABLE_SECONDS_TO_GET_SOFT) > timePassed) {
             sendMessage("Which seems to be a new record!");
             setVar(VARIABLE_SECONDS_TO_GET_SOFT, timePassed);
+            return true;
         } else {
             sendMessage("Which isn't a new record... %EmoteSad%");
+            return false;
         }
     }
 }

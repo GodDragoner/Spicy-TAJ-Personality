@@ -1,5 +1,5 @@
 {
-    let tauntIndex = randomInteger(0, 16);
+    let tauntIndex = findRandomUnusedIndex(16, createHistory('basicAnalTaunt'));
     switch (tauntIndex) {
         case 0:
             if(currentDildo.diameter >= 4) {

@@ -405,7 +405,7 @@
     setupBlackmail();
 
     setupFFriendsFolder();
-    
+
     sendVirtualAssistantMessage("One more thing! %Grin%");
     sendVirtualAssistantMessage("Inside the spicy image folder you'll find a folder named 'FFriends'");
     showImage("Images/Spicy/Toys/3friends.jpg", 3);
@@ -464,11 +464,39 @@
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
     askForToy("Butt Plugs");
     askForToyUsage("ButtPlugs", domChose);
+
+    if(hasButtplugToy()) {
+        sendVirtualAssistantMessage('Okay %SlaveName%. Tell me, how many different buttplugs do you have?', false);
+        answer = createInput();
+
+        while (true) {
+            if (answer.isInteger()) {
+                const result = answer.getInt();
+                if (result <= 0) {
+                    sendVirtualAssistantMessage("You can't choose a number equal to 0 or lower");
+                    answer.loop();
+                } else {
+                    sendVirtualAssistantMessage('We are gonna setup your buttplugs now, one by one.');
+
+                    for (let x = 0; x < result; x++) {
+                        setupNewButtplug();
+                    }
+
+                    sendVirtualAssistantMessage('This should do it regarding plugs');
+                    sendVirtualAssistantMessage('You can always setup new buttplugs in the settings menu');
+                }
+            } else {
+                sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
+                answer.loop();
+            }
+        }
+    }
+
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
     askForToy("Dildo");
     askForToyUsage("Dildo", domChose);
 
-    if(hasDildoToy()) {
+    if (hasDildoToy()) {
         sendVirtualAssistantMessage('Okay %SlaveName%. Tell me, how many different dildos do you have?', false);
         answer = createInput();
 
@@ -481,7 +509,7 @@
                 } else {
                     sendVirtualAssistantMessage('We are gonna setup your dildos now, one by one.');
 
-                    for(let x = 0; x < result; x++) {
+                    for (let x = 0; x < result; x++) {
                         setupNewDildo();
                     }
 
@@ -496,8 +524,11 @@
     }
 
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
+    //TODO: Ask whether it can vibrate
     askForToy("Inflatable Butt Plugs", undefined, "InflatablePlug");
     askForToyUsage("Inflatable Butt Plugs", domChose);
+
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
     askForToy("Shock Collar");
     askForToyUsage("ShockCollar", domChose);

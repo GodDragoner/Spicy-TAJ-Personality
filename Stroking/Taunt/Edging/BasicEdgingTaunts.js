@@ -1,5 +1,6 @@
 if(getDate(VARIABLE_EDGE_STARTED_DATE).addMinute(2).hasPassed()) {
-    let tauntIndex = randomInteger(0, 10);
+    //TODO: Could use the same concept as in stroking taunts and use an array and strings containing stuff like @ShowTeaseImage etc.
+    let tauntIndex = findRandomUnusedIndex(10, createHistory('basicEdgingTaunt'));;
     switch (tauntIndex) {
         case 0:
             sendMessage("C'mon %SlaveName%, don't you want to get close for me?");

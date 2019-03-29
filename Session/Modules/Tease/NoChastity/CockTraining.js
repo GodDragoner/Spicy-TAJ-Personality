@@ -49,7 +49,7 @@ if (tryRunModuleFetchId()) {
 
     sendMessage("We are gonna start by warm you up a little... ");
     sendMessage("Start stroking slowly");
-    sendMessage("When you start to hear the pace you are gonna stroke it to the beat");
+    sendMessage("When you start to hear the pace you are gonna stroke to the beat");
 
     startStroking(60);
 
@@ -173,23 +173,26 @@ function strokeTrainingEdge() {
                 sendMessage(random("Below level 40 huh...", "Oh wauv you do absolutely not impress...", "I was expecting more from you %SlaveName%"));
                 addMerits(-10);
             }
-        } else if (level > 20) {
-            //TODO: Actually lock up the slave
+        } else {
+            let meritMult = level <= 20? 2 : 1;
+
             if (ACTIVE_PERSONALITY_STRICTNESS == 0) {
                 sendMessage(random("I did expect more...", "Below 30 is for cuckolds...", "Below 30 isn't worth anything...", "You went below 30 you lousy fuck.."));
-                addMerits(-10);
+                addMerits(-10*meritMult);
             } else if (ACTIVE_PERSONALITY_STRICTNESS == 1) {
                 sendMessage(random("Going below 30 makes me consider permanent chastity for you...", "Below 30 does make me think about locking you up...", "With a low score like that I feel sad for you..."));
-                addMerits(-15);
+                addMerits(-15*meritMult);
             } else if (ACTIVE_PERSONALITY_STRICTNESS == 2) {
-                sendMessage(random("Wow, your score is ridiculous!", "I guess your %Cock% is crying for its %ChastityCage% with such a low score..."));
-                addMerits(-25);
+                sendMessage(random("Wow, your score is ridiculously bad!", "I guess your %Cock% is crying for its %ChastityCage% with such a low score..."));
+                addMerits(-25*meritMult);
             }
-        } else {
-            sendMessage("Oh well that was it for your stroke training today!");
-            sendMessage("Not reaching level 20 is so pitiful");
-            sendMessage("You will never be able to please a woman %Lol%");
-            addMerits(-35);
+
+            if(feelsLikePunishingSlave() && ACTIVE_PERSONALITY_STRICTNESS >= 1) {
+                sendMessage('I guess locking up that %Cock% is the right choice now %Lol%');
+                lockChastityCage();
+                sendMessage('Feels much more adequate, right?');
+                sendMessage("You will never be able to please a woman %Lol%");
+            }
         }
 
         if (level < 10) {

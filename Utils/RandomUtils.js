@@ -46,6 +46,26 @@ function shuffle(a) {
     return a;
 }
 
+function findRandomUnusedIndex(indexMax, history, minElementsSinceLastRun = indexMax/2) {
+    let randomIndex = randomInteger(0, indexMax);
+
+    let triedIndexes = [];
+
+    //At least a bit of diversity
+    while(history.isInHistory(randomIndex + '') && history.getModulesSinceHistory(randomIndex  + '') < minElementsSinceLastRun) {
+        //If we already tried that index right now don't check against the history again (more time consuming)
+        while(triedIndexes.indexOf(triedIndexes) != -1) {
+            randomIndex = randomInteger(0, indexMax);
+        }
+
+        triedIndexes.push(randomIndex);
+    }
+
+    history.addHistoryRun(randomIndex  + '');
+
+    return randomIndex;
+}
+
 function isChance(percentage) {
     return randomInteger(1, 100) <= percentage;
 }

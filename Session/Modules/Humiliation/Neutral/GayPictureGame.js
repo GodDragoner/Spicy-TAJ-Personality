@@ -82,10 +82,11 @@ function startGayPictureRound() {
     setTempVar('interruptPictureGame', false);
 
     let currentIndex = getVar('gayPictureGameIndex');
+    let newValue = -1;
 
     switch (currentIndex) {
         case 0:
-            let newValue = getVar("gayPictureGameLesbian", 0) + 1;
+            newValue = getVar("gayPictureGameLesbian", 0) + 1;
             setTempVar("gayPictureGameLesbian", newValue);
 
             if (newValue % 3 == 0 && newValue != 0) {
@@ -228,7 +229,7 @@ function startGayPictureRound() {
                 sendMessage("You will stare at that image!");
                 sendMessage("Your eyes are to be locked on the screen!");
                 sendMessage("Now..");
-                startEdging(randomInteger(5, 10), true);
+                startEdging(getEdgeHoldSeconds(), true);
 
                 let ruin = false;
 
@@ -265,7 +266,7 @@ function startGayPictureRound() {
 
                 unlockImages();
 
-                if(cumOnDildo) {
+                if (cumOnDildo) {
                     sendMessage('Okay so firstly we gotta try to get as much cum onto that dildo as possible %Grin%');
                     sendMessage('Try to rub your dildo in the cum without losing anything that\'s already on there', 5);
                     sendMessage('%Good%');
@@ -273,11 +274,11 @@ function startGayPictureRound() {
                     //TODO: Yes or no interaction
                     sendMessage('Are you exited for what\'s gonna happen next %SlaveName%?');
 
-                    if(dildoAnal) {
+                    if (dildoAnal) {
                         sendMessage('Well I want you to get on all fours');
                         sendMessage('Yes, you heard me correctly');
                         sendMessage('No blowing that dildo');
-                        sendMessage('That would be to boring right? %Grin%');
+                        sendMessage('That would be too boring right? %Grin%');
                         sendMessage('Go ahead and place that tip of the dildo on your asshole');
                         sendMessage('And now slowly push it in', 10);
                         sendMessage('And pull it all the way back out');
@@ -291,7 +292,7 @@ function startGayPictureRound() {
                         sendMessage('Now pull it out...');
                         sendMessage('And...');
 
-                        if(isChance(75)) {
+                        if (isChance(75)) {
                             sendMessage('Dip it into the cum that is remaining on your plate or floor');
                             sendMessage('Try to get it all wet and slippery again');
                             sendMessage('And now put it back in %Grin%');
@@ -309,11 +310,11 @@ function startGayPictureRound() {
 
                         //TODO: Interaction
 
-                        if(getASMLimit() == LIMIT_ASKED_YES || getCEILimit() == LIMIT_ASKED_YES) {
+                        if (getASMLimit() == LIMIT_ASKED_YES && getCEILimit() == LIMIT_ASKED_YES) {
                             sendMessage('Would you like to clean it with your tongue?');
                         }
 
-                        sendMessage()
+                        sendMessage();
                     }
 
                     sendMessage('I want you to place that dildo in front of you');
@@ -336,7 +337,7 @@ function startGayPictureRound() {
                     sendMessage('As far as you can go without gagging');
                     sendMessage('And don\'t you dare swallow anything yet!');
 
-                    if(dildoAnal) {
+                    if (dildoAnal) {
                         sendMessage('Keep that disgusting mixture of cum, spit and anal juice all in your mouth %Grin%');
                     } else {
                         sendMessage('Keep that tasty cum and spit mixture all in your mouth');
@@ -347,10 +348,10 @@ function startGayPictureRound() {
                     sleep(20);
 
                     //TODO: More teasing with gay stuff
-                    if(getBlowjobLevel() > 30) {
+                    if (getBlowjobLevel() > 30) {
                         sendMessage('In a minute I want you to deepthroat that dildo real good');
 
-                        if(dildoAnal) {
+                        if (dildoAnal) {
                             sendMessage('Press all that cum and ass juice down your throat %Grin%');
                         } else {
                             sendMessage('Press all that cum and spit down your throat %Grin%');
@@ -389,7 +390,7 @@ function startGayPictureRound() {
 
                         sendMessage('That wasn\'t that hard was it?');
 
-                        if(dildoAnal) {
+                        if (dildoAnal) {
                             sendMessage('Go ahead and swallow all that cum, spit and ass juice %Grin%');
                         } else {
                             sendMessage('Go ahead and swallow all that cum and spit %Grin%');
@@ -407,7 +408,7 @@ function startGayPictureRound() {
                         sendMessage('Go ahead and start slowing pushing that dildo down your throat');
                         sendMessage('Try to go as far as you can go. Balls deep would be the best %Grin%');
 
-                        if(dildoAnal) {
+                        if (dildoAnal) {
                             sendMessage('Press all that cum and ass juice down your throat %Grin%');
                         } else {
                             sendMessage('Press all that cum and spit down your throat %Grin%');
@@ -456,7 +457,7 @@ function startGayPictureRound() {
                             answer.loop();
                         }
                     }
-                } else if(getCEILimit() == LIMIT_ASKED_YES) {
+                } else if (getCEILimit() == LIMIT_ASKED_YES) {
                     sendMessage('Now go ahead and lick up that tasty cum of yours');
                     sendMessage('We don\'t want it to go to waste, do we? %Grin%');
                     sendMessage('Tell me when you are done %SlaveName%');
@@ -466,7 +467,7 @@ function startGayPictureRound() {
 
                 sendMessage('I hope you enjoyed that orgasm %Grin%');
 
-                if(ruin) {
+                if (ruin) {
                     //TODO: Could reuse for same scenarios in other cum modules
                     sendMessage('I never said that you are gonna enjoy a full orgasm');
                     sendMessage('Ruining is still an orgasm, isn\'t it?');
@@ -480,8 +481,7 @@ function startGayPictureRound() {
                 sendMessage("We will end this here...");
                 sendMessage("Cya!");
 
-                //TODO: End session
-                endSession();
+                endSpicySession();
                 return;
             }
 
@@ -496,7 +496,7 @@ function startGayPictureRound() {
 function endGayPictureGame() {
     unlockImages();
 
-    if(!feelsLikePunishingSlave() && getTotalAttachedClamps() > 0) {
+    if (!feelsLikePunishingSlave() && getTotalAttachedClamps() > 0) {
         sendMessage('I will be generous today');
         sendMessage('You may already remove all clamps from your body %SlaveName%');
     }

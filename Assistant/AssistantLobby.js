@@ -47,7 +47,7 @@
             } else if (lobbyAnswer.containsIgnoreCase("save", "end", "quit", "stop", "leave", "close", "finish")) {
                 sendVirtualAssistantMessage(random("Bye", "Until next time", "See you", "I'm waiting for the next time", "Don't leave me alone to long", "Good bye", "Have a nice day", "I saved your process you can close the program"));
                 lobbyAnswer.clearOptions();
-                endSession();
+                endSpicySession();
                 break;
             } else if (lobbyAnswer.containsIgnoreCase("pin", "board", "notices", "news")) {
                 sendVirtualAssistantMessage("This is not supported yet!");
@@ -96,7 +96,7 @@ function startSession() {
         }
 
         sendVirtualAssistantMessage(random("Launching", "Initiating", "Starting", "Establishing") + " session with Mistress");
-        run("Session/StartSession.js")
+        run("Session/StartSession.js");
         return;
     } else {
         sendVirtualAssistantMessage("%SlaveName% you had a session recently");

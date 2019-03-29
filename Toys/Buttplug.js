@@ -4,6 +4,10 @@ const TIGER_HOT_LUBE = 2;
 const TOOTHPASE_LUBE = 3;
 const NO_LUBE = 4;
 
+const buttplugs = [];
+let currentPlug = null;
+
+
 function hasButtplugToy() {
     return getVar("toyButtPlugs");
 }
@@ -182,6 +186,59 @@ function getButtplugSize() {
     }
 }
 
+function getMaxDiameterIncrease() {
+    let maxDiameterIncrease = 1;
+
+    let assLevel = getVar(VARIABLE_ASS_LEVEL);
+
+    if(assLevel >= 30) {
+        maxDiameterIncrease = 2.5;
+    } else if(assLevel >= 23) {
+        maxDiameterIncrease = 2;
+    } else if(assLevel >= 15) {
+        maxDiameterIncrease = 1.5;
+    }
+
+    return maxDiameterIncrease;
+}
+
+function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = false) {
+    let maxPlugThickness = getVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, 0);
+
+    let availablePlugs = [];
+
+    let maxDiameterIncrease = getMaxDiameterIncrease();
+
+    for (let y = 0; y < buttplugs.length; y++) {
+        let buttplug = buttplugs[y];
+
+        if(buttplug.diameter >= minThickness && buttplug.length >= minLength) {
+            //Don't over extent with too big dildos too quickly
+            if(forceBigger? buttplug.diameter > maxPlugThickness : buttplug.diameter >= maxPlugThickness && buttplug.diameter <= Math.max(3, maxPlugThickness + maxDiameterIncrease)) {
+                availablePlugs.push(buttplug);
+            }
+        }
+    }
+
+    if(availablePlugs.length == 0) {
+        if(forceBigger) {
+            //TODO: Just compare to biggest plug we have stored
+            //Try again without force bigger because we might have the biggest plug right now
+            return getAnalPlug(minLength, minThickness);
+        } else {
+            //TODO: Better fallback
+            incrementVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, -1);
+            return getAnalDildo(0, 0);
+        }
+    }
+
+    let plug = availablePlugs[randomInteger(0, availablePlugs.length - 1)];
+
+    setVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, Math.max(getVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, 0), plug.diameter));
+    currentPlug = plug;
+}
+
+
 
 function removeButtplug() {
     if (isChance(30)) {
@@ -322,4 +379,315 @@ function endLastPlugPull() {
     }
 
     sendMessage("Okay you are allowed to remove it completely now");
+}
+
+
+function loadButtplugs() {
+    if (!isVar('buttplugs')) {
+        setVar('buttplugs', new java.util.ArrayList());
+    } else {
+        let arrayList = getVar('buttplugs');
+
+        for (let x = 0; x < arrayList.size(); x++) {
+            let entry = arrayList.get(x);
+            let splitArray = entry.split(',');
+
+            let name = 'undefined';
+            let diameter = -1;
+            let length = -1;
+            let vibrating = false;
+            let textured = false;
+            let glass = false;
+            let metal = false;
+            let hollow = false;
+            let tail = false;
+
+            for (let y = 0; y < splitArray.length; y++) {
+                let valueEntry = splitArray[y];
+
+                if (valueEntry.indexOf('name:') !== -1) {
+                    name = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                } else if (valueEntry.indexOf('diameter:')  !== -1) {
+                    diameter = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                } else if (valueEntry.indexOf('length:') !== -1) {
+                    length = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                } else if (valueEntry.indexOf('vibrating:') !== -1) {
+                    vibrating = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                } else if (valueEntry.indexOf('textured:') !== -1) {
+                    textured = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                } else if (valueEntry.indexOf('glass:') !== -1) {
+                    glass = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                } else if (valueEntry.indexOf('metal:') !== -1) {
+                    metal = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                } else if (valueEntry.indexOf('hollow:') !== -1) {
+                    hollow = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                } else if (valueEntry.indexOf('tail:') !== -1) {
+                    tail = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                }
+            }
+
+            let buttplug = {
+                name: name,
+                diameter: diameter,
+                length: length,
+                vibrating: vibrating,
+                textured: textured,
+                glass: glass,
+                metal: metal,
+                hollow: hollow,
+                tail: tail
+            };
+            buttplugs.push(buttplug);
+        }
+    }
+}
+
+
+function buttplugToString(buttplug) {
+    let string = 'name:' + buttplug.name + ',length:' + buttplug.length + ',diameter:' + buttplug.diameter;
+
+    if (buttplug.vibrating) {
+        string += ',vibrating:' + buttplug.vibrating;
+    }
+
+    if (buttplug.textured) {
+        string += ',textured:' + buttplug.textured;
+    }
+
+    if (buttplug.glass) {
+        string += ',glass:' + buttplug.glass;
+    }
+
+    if (buttplug.metal) {
+        string += ',metal:' + buttplug.metal;
+    }
+
+    if (buttplug.hollow) {
+        string += ',hollow:' + buttplug.hollow;
+    }
+
+    if (buttplug.tail) {
+        string += ',tail:' + buttplug.tail;
+    }
+
+    return string;
+}
+
+function saveButtplugs() {
+    let arrayList = new java.util.ArrayList();
+
+    for (let y = 0; y < buttplugs.length; y++) {
+        arrayList.add(buttplugToString(buttplugs[y]));
+    }
+
+    setVar('buttplugs', arrayList);
+}
+
+function getButtplugByName(name) {
+    for (let y = 0; y < buttplugs.length; y++) {
+        if (name.toUpperCase() === buttplugs[y].name.toUpperCase()) {
+            return buttplugs[y];
+        }
+    }
+
+    return null;
+}
+
+function setupNewButtplug() {
+    sendVirtualAssistantMessage('Please enter a name for your new buttplug', 0);
+
+    let answer = createInput();
+    let name = 'undefined';
+
+    while (true) {
+        if (getButtplugByName(answer.getAnswer()) != null) {
+            sendVirtualAssistantMessage('A buttplug with a similar name already exists. Please choose a different name.', 0);
+            answer.loop();
+        } else {
+            name = answer.getAnswer();
+            break;
+        }
+    }
+
+    //TODO: More interaction based on length and diameter etc.
+
+    sendVirtualAssistantMessage('Please make sure to add a picture of your buttplug named like your buttplug to your buttplugs folder.');
+    sendVirtualAssistantMessage('So in this case make sure to add a picture called "' + name + '.jpg" to the buttplugs folder');
+
+    sendVirtualAssistantMessage('Next please tell me the length of the buttplug in centimeters (measure everything that\'s insertable)', 0);
+    answer = createInput();
+    let length = -1;
+
+    while (true) {
+        if (answer.isInteger()) {
+            length = answer.getInt();
+            break;
+        } else {
+            sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
+            answer.loop();
+        }
+    }
+
+    sendVirtualAssistantMessage('Now please tell me the diameter of the buttplug in centimeters (choose the biggest piece of the buttplug to measure)', 0);
+    answer = createInput();
+    let diameter = -1;
+
+    while (true) {
+        if (answer.isInteger()) {
+            diameter = answer.getInt();
+            break;
+        } else {
+            sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
+            answer.loop();
+        }
+    }
+
+    let metal = false;
+    let textured = false;
+    let glass = false;
+    let vibrating = false;
+    let tail = false;
+    let hollow = false;
+
+    sendVirtualAssistantMessage('Is there anything else special about it? (Glass, Textured, Metal, Tail, Hollow, Vibrating)', 0);
+    answer = createInput();
+
+    while (true) {
+        if (answer.isLike("yes")) {
+            sendVirtualAssistantMessage("%Good%");
+            sendVirtualAssistantMessage('Then we are continuing...');
+
+            sendVirtualAssistantMessage('Is it made out of glass?', 0);
+            answer = createInput();
+
+            while (true) {
+                if (answer.isLike("yes")) {
+                    glass = true;
+                    break;
+                } else if (answer.isLike("no")) {
+                    break;
+                } else {
+                    sendVirtualAssistantMessage(YES_OR_NO);
+                    answer.loop();
+                }
+            }
+
+            if(!glass) {
+                sendVirtualAssistantMessage('Is it made out of metal?', 0);
+                answer = createInput();
+
+                while (true) {
+                    if (answer.isLike("yes")) {
+                        metal = true;
+                        break;
+                    } else if (answer.isLike("no")) {
+                        break;
+                    } else {
+                        sendVirtualAssistantMessage(YES_OR_NO);
+                        answer.loop();
+                    }
+                }
+            }
+
+            sendVirtualAssistantMessage('Does it have the possibility to vibrate?', 0);
+            answer = createInput();
+
+            while (true) {
+                if (answer.isLike("yes")) {
+                    vibrating = true;
+                    sendVirtualAssistantMessage('This should be fun %Grin%');
+                    break;
+                } else if (answer.isLike("no")) {
+                    break;
+                } else {
+                    sendVirtualAssistantMessage(YES_OR_NO);
+                    answer.loop();
+                }
+            }
+
+            sendVirtualAssistantMessage('Is it hollow/has a hole in the middle?', 0);
+            answer = createInput();
+
+            while (true) {
+                if (answer.isLike("yes")) {
+                    hollow = true;
+                    sendVirtualAssistantMessage('Interesting. We\'ll see how we can integrate this %Lol%');
+                    break;
+                } else if (answer.isLike("no")) {
+                    break;
+                } else {
+                    sendVirtualAssistantMessage(YES_OR_NO);
+                    answer.loop();
+                }
+            }
+
+            sendVirtualAssistantMessage('Does it have a special texture to it? (Rippled etc.)', 0);
+            answer = createInput();
+
+            while (true) {
+                if (answer.isLike("yes")) {
+                    textured = true;
+                    sendVirtualAssistantMessage('Going for that intense feeling are we?');
+                    break;
+                } else if (answer.isLike("no")) {
+                    break;
+                } else {
+                    sendVirtualAssistantMessage(YES_OR_NO);
+                    answer.loop();
+                }
+            }
+
+            sendVirtualAssistantMessage('Does it have a tail attached to it?', 0);
+            answer = createInput();
+
+            while (true) {
+                if (answer.isLike("yes")) {
+                    tail = true;
+                    sendVirtualAssistantMessage('I like buttplugs with tails %Grin%');
+                    break;
+                } else if (answer.isLike("no")) {
+                    break;
+                } else {
+                    sendVirtualAssistantMessage(YES_OR_NO);
+                    answer.loop();
+                }
+            }
+
+            sendVirtualAssistantMessage('Finishing setup...');
+            break;
+        } else if (answer.isLike("no")) {
+            sendVirtualAssistantMessage("%EmoteSad%");
+            sendVirtualAssistantMessage('But we all need basic toys right? %Grin%');
+            sendVirtualAssistantMessage('Finishing setup...');
+            break;
+        } else {
+            sendVirtualAssistantMessage(YES_OR_NO);
+            answer.loop();
+        }
+    }
+
+    let buttplug = {
+        name: name,
+        diameter: diameter,
+        length: length,
+        vibrating: vibrating,
+        textured: textured,
+        glass: glass,
+        metal: metal,
+        hollow: hollow,
+        tail: tail
+    };
+
+    buttplug.push(buttplug);
+
+    saveButtplugs();
+
+    sendVirtualAssistantMessage('Saved your new toy');
+    sendVirtualAssistantMessage('Enjoy %Grin%');
+}
+
+
+
+function getButtplugImagePath(buttplug) {
+    return 'Images/Spicy/Toys/Buttplugs/' + buttplug.name + '.*';
 }

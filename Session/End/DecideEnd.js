@@ -1,7 +1,6 @@
 {
-
     sendMessage('%SlaveName%');
-    sendMessage(random('We\'re at the end mark of today\'s session', 'We\'re at the end of our session' ,'This is the end of our session'));
+    sendMessage(random('We\'re at the end mark of today\'s session', 'We\'re at the end of our session', 'This is the end of our session'));
 
     if (isForcedLockedUp()) {
         //TODO: Endings with chastity on
@@ -14,10 +13,14 @@
     }
 
     //Denial limit reached
-    if(getLastEjaculationDate().addDay(VARIABLE_DENIAL_LIMIT).hasPassed()) {
+    if (getLastEjaculationDate().addDay(VARIABLE_DENIAL_LIMIT).hasPassed()) {
         run('Session/End/HardLimit.js');
     }
 
+    endSpicySession();
+}
+
+function endSpicySession() {
     askAboutDenialLevel();
 
     if(getVar(VARIABLE_CHASTITY_TRAINING, false) && !isForcedLockedUp()) {
