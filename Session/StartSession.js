@@ -1,5 +1,7 @@
 {
     setDate(VARIABLE_CURRENT_SESSION_DATE);
+    setTempVar(VARIABLE_CURRENT_SESSION_ACTIVE, true);
+
 //TODO: Special day test (birthday etc.)
 
     const greeting = ["Hello", "Greetings", "Hey", "Hi"];

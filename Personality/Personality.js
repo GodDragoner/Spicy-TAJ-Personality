@@ -11,6 +11,7 @@ const TOY_PUNISHMENT_MODE = 1;
 const TOY_BOTH_MODE = 2;
 const TOY_ASKED_BUY_MODE = 3;
 
+
 function setUpPersonalityVars() {
     switch(ACTIVE_PERSONALITY_ID) {
         case ENFORCING_PERSONALITY_ID:

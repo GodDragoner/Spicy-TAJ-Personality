@@ -61,13 +61,13 @@
                     sendMessage("Suit yourself %SlaveName%");
                     break;
                 } else {
-                    sendVirtualAssistantMessage(YES_OR_NO);
+                    sendMessage(YES_OR_NO);
                     answer.loop();
                 }
             }
             break;
         } else {
-            sendVirtualAssistantMessage(YES_OR_NO);
+            sendMessage(YES_OR_NO);
             answer.loop();
         }
     }

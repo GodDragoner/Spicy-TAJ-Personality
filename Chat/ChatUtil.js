@@ -1,5 +1,13 @@
 const YES_OR_NO = "Yes or no?";
 const TAJ_CHAT_HANDLER = Java.type('me.goddragon.teaseai.api.chat.ChatHandler');
+const DEBUG_MODE = true;
+
+
+function sendDebugMessage(message) {
+    if(DEBUG_MODE) {
+        sendVirtualAssistantMessage(message, false, true);
+    }
+}
 
 function sendVirtualAssistantMessage(message, wait, skipImage) {
     let textName = new javafx.scene.text.Text("[Vivienne]: ");

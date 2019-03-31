@@ -16,6 +16,7 @@ function createHistory(name) {
 
             let historyArray = getVar(this.historyVar);
 
+            sendDebugMessage('Modules in ' + name + ' history since id: ' + (historyArray.size() - historyArray.lastIndexOf(moduleId)));
             return historyArray.size() - historyArray.lastIndexOf(moduleId);
         },
 

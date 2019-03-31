@@ -71,9 +71,18 @@ function startBlowToy(toy) {
                 sendMessage("Draw some nice circles around the tip");
                 sendMessage("Be creative and make good use of your tongue", 5);
 
+                let answers = ["Keep going", "Keep it up %SlaveName%", "Lick it... Gentle and slowly", "Come on %SlaveName%. Show some passion!"];
+
+                if(getCuckoldLimit() == LIMIT_ASKED_YES) {
+                    answers.push("Lick it like it was my lover's cock");
+                }
+
                 for (let x = 0; x < randomInteger(2, 4); x++) {
-                    //TODO: Only if cuckholding is a thing and don't repeat lines
-                    sendMessage(random("Keep going", "Keep it up %SlaveName%", "Lick it... Gentle and slowly", "Come on %SlaveName%. Show some passion!", "Lick it like it was my lover's cock"), 10);
+                    let randomAnswer = randomInteger(0, answers.length - 1);
+                    sendMessage(answers[randomAnswer], 10);
+
+                    //Do not resuse answers
+                    answers = removeIndexFromArray(answers, randomAnswer);
                 }
             }
 
@@ -118,8 +127,6 @@ function startBlowToy(toy) {
 }
 
 function randomBlowjobModule(toy) {
-    //TODO: Position
-
     let position;
     if (getBlowjobLevel() < 30) {
         sendMessage('%SlaveName%');

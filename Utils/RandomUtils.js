@@ -47,18 +47,25 @@ function shuffle(a) {
 }
 
 function findRandomUnusedIndex(indexMax, history, minElementsSinceLastRun = indexMax/2) {
-    let randomIndex = randomInteger(0, indexMax);
+    let indexesToTry = new java.util.ArrayList();
 
-    let triedIndexes = [];
+    for(let x = 0; x <= indexMax; x++) {
+        indexesToTry.add(x);
+    }
+
+    let randomIndex = null;
 
     //At least a bit of diversity
-    while(history.isInHistory(randomIndex + '') && history.getModulesSinceHistory(randomIndex  + '') < minElementsSinceLastRun) {
-        //If we already tried that index right now don't check against the history again (more time consuming)
-        while(triedIndexes.indexOf(triedIndexes) != -1) {
-            randomIndex = randomInteger(0, indexMax);
+    while(randomIndex == null || (history.isInHistory(randomIndex + '') && history.getModulesSinceHistory(randomIndex  + '') < minElementsSinceLastRun)) {
+        //We tried all possibilities
+        if(indexesToTry.isEmpty()) {
+            break;
         }
 
-        triedIndexes.push(randomIndex);
+        randomIndex = randomInteger(0, indexesToTry.size() - 1);
+
+        //Remove from array so we won't get it again
+        indexesToTry.remove(randomIndex);
     }
 
     history.addHistoryRun(randomIndex  + '');

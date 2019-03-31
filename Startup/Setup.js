@@ -363,6 +363,31 @@
         }
     }
 
+    sendVirtualAssistantMessage("Now...");
+    sendVirtualAssistantMessage("I don't know whether you have any experience when it comes to blowjobs either");
+    sendVirtualAssistantMessage("Meaning fucking your throat and caressing cocks with your mouth");
+    sendVirtualAssistantMessage("Are you experienced and capable of holding deepthroats?");
+    sendVirtualAssistantMessage("Maybe even taking a huge cock from Mistress %domName%\'s lover down your throat?");
+    sendVirtualAssistantMessage("You should answer this truthfully for your own good...", false);
+
+    answer = createInput();
+
+    while (true) {
+        if (answer.isLike("yes")) {
+            setVar(VARIABLE_BLOWJOB_LEVEL, 30);
+            sendVirtualAssistantMessage("I hope you are ready for what's about to come then...");
+            break;
+        } else if (answer.isLike("no")) {
+            setVar(VARIABLE_BLOWJOB_LEVEL, 1);
+            setVar(VARIABLE_BLOWJOB_TRAINING, true);
+            sendVirtualAssistantMessage("I guess that means %DomHonorific% %domName% will work on this with you");
+            break;
+        } else {
+            sendVirtualAssistantMessage(YES_OR_NO);
+            answer.loop();
+        }
+    }
+
     sendVirtualAssistantMessage("Let's see...");
     sendVirtualAssistantMessage("Well I don't know how well you handle denial");
     sendVirtualAssistantMessage("And neither does your Mistress");
@@ -575,9 +600,27 @@
     askForToy("EStim");
     askForToyUsage("EStim", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
+    askForToy("Ball Gag");
+    askForToyUsage("Ball Gag", domChose);
+    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
+    askForToy("Spider Gag");
+    askForToyUsage("Spider Gag", domChose);
+    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
+    askForToy("Dildo Gag");
+    askForToyUsage("Dildo Gag", domChose);
+    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
+    askForToy("Inflatable Gag");
+    askForToyUsage("Inflatable Gag", domChose);
+    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
     askForToy("Gag");
     askForToyUsage("Gag", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
     askForToy("Girl friend");
     askForToy("Basic Lingerie", undefined, "LingerieSet");
     askForToy("Advanced Lingerie", undefined, "LingerieSet2");
@@ -734,7 +777,7 @@
         }
 
         if (imageName === undefined) {
-            imageName = toyName.replace(/ /g, "");
+            imageName = variableName;
         }
 
         sendVirtualAssistantMessage(toyName + "?", false);
@@ -760,6 +803,13 @@
     function askForToyUsage(toyName, domChose, variableName) {
         if (variableName === undefined) {
             variableName = decapitalize(toyName).replace(/ /g, "");
+        }
+
+        let toyVarName = 'toy' + variableName;
+
+        //Sub disabled this toy
+        if(getVar(toyVarName, false)) {
+            return;
         }
 
         if (domChose) {

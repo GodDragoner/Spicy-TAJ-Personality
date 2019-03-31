@@ -42,9 +42,11 @@ function startEdging(holdSeconds, skipStop = false, endIn = EDGE_END_NORMAL) {
     setDate(VARIABLE_EDGE_STARTED_DATE);
     startEdge();
     startStroking(randomInteger(150, 200));
+    sendDebugMessage('Here Stroking');
     sendEdgeTaunts();
+    sendDebugMessage('Here Stroking2');
 
-    if(holdSeconds !== undefined) {
+    if(holdSeconds !== undefined && holdSeconds !== 0) {
         stopStroking();
 
         //Show the initial message to tell the sub to stay on the edge
@@ -52,11 +54,17 @@ function startEdging(holdSeconds, skipStop = false, endIn = EDGE_END_NORMAL) {
         run("Stroking/Taunt/HoldEdge/BasicHoldingTaunts.js");
 
         sendHoldEdgeTaunts(holdSeconds);
+        sendDebugMessage('Here Stroking3');
     }
 
+    sendDebugMessage('Here Stroking4');
+
     if(!skipStop) {
+        sendDebugMessage('Here Stroking5');
         stopStrokingEdgeMessage();
     }
+
+    sendDebugMessage('Here Stroking6');
 
     if(endIn == EDGE_END_RUIN) {
         sendMessage('%RuinForMe%');
@@ -66,9 +74,15 @@ function startEdging(holdSeconds, skipStop = false, endIn = EDGE_END_NORMAL) {
         registerOrgasm();
     }
 
+    sendDebugMessage('Here Stroking7');
+
     endEdge();
 
+    sendDebugMessage('Here Stroking8');
+
     delVar(VARIABLE_EDGE_STARTED_DATE);
+
+    sendDebugMessage('Here Stroking9');
 }
 
 function sendEdgeTaunts() {

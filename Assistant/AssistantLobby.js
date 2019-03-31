@@ -47,7 +47,7 @@
             } else if (lobbyAnswer.containsIgnoreCase("save", "end", "quit", "stop", "leave", "close", "finish")) {
                 sendVirtualAssistantMessage(random("Bye", "Until next time", "See you", "I'm waiting for the next time", "Don't leave me alone to long", "Good bye", "Have a nice day", "I saved your process you can close the program"));
                 lobbyAnswer.clearOptions();
-                endSpicySession();
+                endSession();
                 break;
             } else if (lobbyAnswer.containsIgnoreCase("pin", "board", "notices", "news")) {
                 sendVirtualAssistantMessage("This is not supported yet!");

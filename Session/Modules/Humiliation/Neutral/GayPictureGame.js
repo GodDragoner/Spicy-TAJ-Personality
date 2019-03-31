@@ -78,10 +78,15 @@ function startGayPictureRound() {
         sleep(200, 'MILLISECONDS ');
     }
 
+
     //Reset var
     setTempVar('interruptPictureGame', false);
 
     let currentIndex = getVar('gayPictureGameIndex');
+
+    //Delete var
+    delVar('gayPictureGameIndex');
+
     let newValue = -1;
 
     switch (currentIndex) {
@@ -196,7 +201,7 @@ function startGayPictureRound() {
 
                 //TODO: Convince of CEI if LIMIT IS MAYBE or force
                 if (hasDildoToy() && (dildoCEI || dildoAnal)) {
-                    cumOnDildo = fetchToy(getDildo(true).name);
+                    cumOnDildo = fetchDildoToy(getDildo(true).name);
 
                     if (cumOnDildo) {
                         sendMessage('You probably already know what is about to come right?');

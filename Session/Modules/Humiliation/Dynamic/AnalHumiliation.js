@@ -19,7 +19,6 @@
         let plugPlay = hasButtplugToy() && isChance(50) && getVar(VARIABLE_ASS_LEVEL) >= 5;
         let dildoPlay = hasDildoToy() && getVar(VARIABLE_ASS_LEVEL) >= 5;
 
-        //TODO: Check for time spent plugged/work up sizes of plug
         if (isPlugged()) {
             if (isChance(50)) {
                 sendMessage("Plugging you beforehand was a great idea");
@@ -29,7 +28,7 @@
                 sendMessage("You look quite pathetic plugged up as you are %Lol%");
             }
 
-            if (!plugPlay) {
+            if (!plugPlay && getDate(VARIABLE_LAST_PLUG_DATE).addMinute(5).hasPassed()) {
                 removeButtplug();
             } else {
                 sendMessage("However I want you to keep that plug inside for now...");
@@ -58,37 +57,38 @@
                     removeButtplug();
                 }
             }
-
-            let toy = "small dildo";
-            if (dildoPlay) {
-                if (!fetchToy(toy)) {
-                    lastAlternativeFingerPlay();
-                    toy = "finger";
-                    dildoPlay = false;
-                } else {
-                    sendMessage("Okay let's get started then");
-                }
-            } else {
-                toy = "finger";
-            }
-
-            const lubeType = getAssLubeType(getMood());
-
-            if (lubeType == ANY_LUBE) {
-                lubeUpToyWithLube(toy);
-            } else if (lubeType === SPIT_LUBE) {
-                lubeUpToyWithSpit(toy, false);
-            } else if (lubeType === TOOTHPASE_LUBE) {
-                lubeUpToyWithToothpaste(toy);
-            } else if (lubeType === TIGER_HOT_LUBE) {
-                lubeUpToyWithTigerHot(toy);
-            } else {
-                sendMessage("Today I don't you to use any lube %Grin%");
-            }
-
-            runAssCrackPreparation(toy);
-            startPenetratingSession(toy);
         }
+
+
+        let toy = getAnalDildo().name;
+        if (dildoPlay) {
+            if (!fetchDildoToy(toy)) {
+                lastAlternativeFingerPlay();
+                toy = "finger";
+                dildoPlay = false;
+            } else {
+                sendMessage("Okay let's get started then");
+            }
+        } else {
+            toy = "finger";
+        }
+
+        const lubeType = getAssLubeType(getMood());
+
+        if (lubeType == ANY_LUBE) {
+            lubeUpToyWithLube(toy);
+        } else if (lubeType === SPIT_LUBE) {
+            lubeUpToyWithSpit(toy, false);
+        } else if (lubeType === TOOTHPASE_LUBE) {
+            lubeUpToyWithToothpaste(toy);
+        } else if (lubeType === TIGER_HOT_LUBE) {
+            lubeUpToyWithTigerHot(toy);
+        } else {
+            sendMessage("Today I don't you to use any lube %Grin%");
+        }
+
+        runAssCrackPreparation(toy);
+        startPenetratingSession(toy);
     }
 }
 
@@ -236,6 +236,8 @@ function appendModule(toy) {
     return true;
 }
 
+
+//TODO: Switch toy?
 function appendPenetratingSession(toy) {
     //TODO: Generalize append transition
     sendMessage("Now...");
@@ -301,7 +303,7 @@ function addBlowjobToFucking(toy, mountedToWall = false, inFront = false) {
     const hasSecondDildo = true;
 
     if (hasSecondDildo) {
-        if (!fetchToy(getDildo(true).name)) {
+        if (!fetchDildoToy(getDildo(true).name)) {
             return false;
         }
 
@@ -444,7 +446,10 @@ function announceSwitchDildos() {
 }
 
 function choosePosition(toy, needsTwoHands = false) {
-    switch (randomInteger(0, 5)) {
+    let history = createHistory('analPosition');
+    let position = findRandomUnusedIndex(5, history);
+
+    switch (position) {
         case 0:
             sendMessage("I want you to sit back in your chair");
             sendMessage("And put your legs on the desk in front of you %Grin%");

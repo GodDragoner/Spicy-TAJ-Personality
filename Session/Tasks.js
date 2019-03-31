@@ -31,9 +31,8 @@ function startTimePassTasks(durationMinutes, allowTeasing = true) {
         //Don't do it for corner tasks, we can do that more frequently
         if(option != 0) {
             tasksDone.add(tasksDone);
+            setTempVar("tasksDone", tasksDone);
         }
-
-        //TODO: don't repeat stuff
 
         switch(option) {
             case 0:
@@ -105,14 +104,7 @@ function startTimePassTasks(durationMinutes, allowTeasing = true) {
 
                 break;
             case 4:
-                if(!getVar(VARIABLE_IS_BALLS_TIED, false) && !getVar(VARIABLE_CHASTITY_ON, false) && getPainLimit() == LIMIT_ASKED_YES && tieBalls()) {
-
-                } else {
-                    //Reset task counter because if we fail fetch toy we already send the message "Well then..." so we don't want another connector message
-                    iterations = 0;
-                    continue;
-                }
-
+                interactWithRandomToys();
                 break;
             case 5:
                 if(!distributeClamps(randomInteger(5, 10))) {

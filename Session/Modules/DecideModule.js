@@ -4,6 +4,10 @@
 {
     //End session
     while (!getDate(VARIABLE_CURRENT_SESSION_DATE).clone().addMinute(getVar(VARIABLE_DEVOTION)).hasPassed()) {
+
+        //Apply random toys
+        interactWithRandomToys();
+
         //TODO: Chastity version of distraction / punishment distraction
 
         if(!isInChastity()) {
@@ -23,11 +27,18 @@
                 getVar(VARIABLE_DEVOTION)/(strokeFrequency + 1);
             }
 
+            sendDebugMessage('Min time passed: ' + minTimePassed);
+
             //Some stroking sometimes
             if((!isVar('lastStrokingPause') && getVar(VARIABLE_CURRENT_SESSION_DATE).addMinute(minTimePassed).hasPassed()) || getVar('lastStrokingPause').addMinute(minTimePassed).hasPassed()) {
                 //TODO: Duration based on mood
+
+                sendDebugMessage('Start of stroking interval');
+
                 startStrokeInterval(randomInteger(2, 3));
                 setDate('lastStrokingPause');
+
+                sendDebugMessage('End of stroking interval');
             }
         }
 
@@ -110,8 +121,7 @@
             runModuleCategory(CATEGORY_HUMILATION);
         }
 
-        //TODO: Random toys apply (based on mood) (swap out plug for the next bigger one etc.)
-
+        sendDebugMessage('Running link');
         run("Session/Link/Module/DecideLink.js");
     }
 
@@ -119,7 +129,7 @@
 }
 
 function runModuleCategory(category) {
-    setTempVar('lastModuleCategory', category);
+    setTempVar('lastModuleCategory', category);run
     const neutralPath = getModuleTypeCategoryPath(category, 'Neutral');
     const noChastityPath = getModuleTypeCategoryPath(category, 'NoChastity');
     const dynamicPath = getModuleTypeCategoryPath(category, 'Dynamic');

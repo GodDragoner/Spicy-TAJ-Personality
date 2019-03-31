@@ -44,37 +44,37 @@
 
 function positionWalkthrough() {
     lockImages();
-	sendMessage("Attention");
+	sendMessage("Attention", 0);
     showPicture("Images/Spicy/Positions/Attention1.jpg", 3);
-	sendMessage("Bad bitch");
+	sendMessage("Bad bitch", 0);
     showPicture("Images/Spicy/Positions/BadBitch2.jpg", 3);
-    sendMessage("Bent over");
+    sendMessage("Bent over", 0);
     showPicture("Images/Spicy/Positions/BentOver1.jpg", 3);
-    sendMessage("Bent over open");
+    sendMessage("Bent over open", 0);
     showPicture("Images/Spicy/Positions/BentOverOpen2.jpg", 3);
-    sendMessage("Box");
+    sendMessage("Box", 0);
     showPicture("Images/Spicy/Positions/Box1.jpg", 3);
-    sendMessage("Come fuck me");
+    sendMessage("Come fuck me", 0);
     showPicture("Images/Spicy/Positions/CFM1.jpg", 3);
-    sendMessage("Dog");
+    sendMessage("Dog", 0);
     showPicture("Images/Spicy/Positions/Dog1.jpg", 3);
-	sendMessage("Judgment");
+	sendMessage("Judgment", 0);
     showPicture("Images/Spicy/Positions/Judgement1.jpg", 3);
-    sendMessage("Kneel");
+    sendMessage("Kneel", 0);
     showPicture("Images/Spicy/Positions/Kneel1.jpg", 3);
-	sendMessage("Listen");
+	sendMessage("Listen", 0);
     showPicture("Images/Spicy/Positions/Listen1.jpg", 3);
-	sendMessage("Punishment");
+	sendMessage("Punishment", 0);
     showPicture("Images/Spicy/Positions/Punishment1.jpg", 3);
-	sendMessage("Slut");
+	sendMessage("Slut", 0);
     showPicture("Images/Spicy/Positions/Slut1.jpg", 3);
-    sendMessage("Spanking");
+    sendMessage("Spanking", 0);
     showPicture("Images/Spicy/Positions/Spanking1.jpg", 3);
-    sendMessage("Stand");
+    sendMessage("Stand", 0);
     showPicture("Images/Spicy/Positions/Stand1.jpg", 3);
-    sendMessage("Stand open");
+    sendMessage("Stand open", 0);
     showPicture("Images/Spicy/Positions/StandOpen1.jpg", 3);
-    sendMessage("Worship");
+    sendMessage("Worship", 0);
     showPicture("Images/Spicy/Positions/Worship1.jpg", 3);
     unlockImages();
 }
@@ -1017,7 +1017,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             return;
         }
 
-        if (totalPositions - positionsDone == 1 && positionsDone != 0) {
+        if (totalPositions - positionsDone === 1 && positionsDone !== 0) {
             sendMessage("We're doing 1 more position...");
         }
 

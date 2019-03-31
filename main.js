@@ -17,6 +17,7 @@ run("Utils/StringUtils.js");
 run("Utils/BodyParts.js");
 run("Utils/GoldUtils.js")
 run("Utils/TAJUtils.js")
+run("Utils/LegacyUtils.js")
 run("Session/Tasks.js");
 run("Startup/UpdateVariables.js");
 run("Stroking/Stroke.js");
@@ -36,6 +37,7 @@ run('Session/End/AnalTraining/AnalTrainingTasks.js');
 run("Assistant/Assistant.js");
 updatePictureSet();
 
+run("Session/Session.js");
 run("Session/End/Games/EndGames.js");
 
 run("Startup/CrazyDommeMode.js");
@@ -65,6 +67,8 @@ showImage("Images/Spicy/Intro/SpicyGif*.gif", 7);
 if(isFullTime()) {
     run("Startup/FullTime/FullTimeCheck.js");
 }
+
+
 
 //run("Session/StartSession.js");
 run("Assistant/AssistantLobby.js");

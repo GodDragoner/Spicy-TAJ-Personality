@@ -63,7 +63,7 @@ function sendNewChastityExercise() {
         task = getRandomSpecialChastityTask(chastityTasks);
     }
 
-    setVar(VARIABLE_TASK_CHASTITY_EXPERIENCE, task.exp * getChastityEXPMultiplier());
+    setVar(VARIABLE_TASK_CHASTITY_EXPERIENCE, task.exp * getTrainingEXPMultiplier(getVar(VARIABLE_CHASTITY_TASKS_IN_ROW)));
     setVar(VARIABLE_LAST_CHASTITY_TASK_ID, task.id);
 }
 
@@ -226,6 +226,7 @@ function checkChastityExercise() {
                     sendMessage("Sometimes it might help to wrap something " + random("soft ", "smooth ") + "around parts of the cage to make it more comfortable");
                     break;
                 } else {
+                    changeMeritMedium(true);
                     sendMessage("You have to complete your tasks %SlaveName%. You want to become a proper slave, don\'t you?");
                     break;
                 }
@@ -244,18 +245,6 @@ function checkChastityExercise() {
     }
 
     return true;
-}
-
-function getChastityEXPMultiplier() {
-    if (getVar(VARIABLE_CHASTITY_TASKS_IN_ROW) >= 15) {
-        return 4;
-    } else if (getVar(VARIABLE_CHASTITY_TASKS_IN_ROW) >= 10) {
-        return 3;
-    } else if (getVar(VARIABLE_CHASTITY_TASKS_IN_ROW) >= 5) {
-        return 2;
-    }
-
-    return 1;
 }
 
 function firstChastityTraining() {

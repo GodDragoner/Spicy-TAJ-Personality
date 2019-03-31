@@ -42,7 +42,7 @@ function sendNewAnalTask() {
 
     let task = getRandomAnalTask(analTasks);
 
-    setVar(VARIABLE_TASK_ASS_EXPERIENCE, task.exp * getAssEXPMultiplier());
+    setVar(VARIABLE_TASK_ASS_EXPERIENCE, task.exp * getTrainingEXPMultiplier(getVar(VARIABLE_ASS_TASKS_IN_ROW)));
     setVar(VARIABLE_LAST_ASS_TASK_ID, task.id);
 }
 
@@ -64,7 +64,7 @@ function checkAnalExercise() {
         } else if (getVar(VARIABLE_ASS_TASKS_IN_ROW == 10)) {
             sendMessage('You will be pleased to hear this %SlaveName% %Grin%');
             sendMessage("You have completed your anal " + random("assignments ", "tasks ") + "for the last 10 days %Grin%");
-            sendMessage("Because you have been acting that disciplined I will reward you with three times the chastity exp from now on");
+            sendMessage("Because you have been acting that disciplined I will reward you with three times the ass exp from now on");
         } else if (getVar(VARIABLE_ASS_TASKS_IN_ROW == 5)) {
             sendMessage('Looks like the training is working out for you %SlaveName%');
             sendMessage("You have been following my anal " + random("assignments ", "tasks ") + "for 5 days in a row now");
@@ -95,6 +95,7 @@ function checkAnalExercise() {
                 sendMessage("You can do that by only entering the tip over and over again or by starting with smaller toys");
                 break;
             } else {
+                changeMeritMedium(true);
                 sendMessage("You have to complete your tasks %SlaveName%. You want to become a proper slave, don\'t you?");
                 break;
             }
@@ -108,18 +109,6 @@ function checkAnalExercise() {
     }
 
     return true;
-}
-
-function getAssEXPMultiplier() {
-    if (getVar(VARIABLE_ASS_TASKS_IN_ROW) >= 15) {
-        return 4;
-    } else if (getVar(VARIABLE_ASS_TASKS_IN_ROW) >= 10) {
-        return 3;
-    } else if (getVar(VARIABLE_ASS_TASKS_IN_ROW) >= 5) {
-        return 2;
-    }
-
-    return 1;
 }
 
 function firstTimeAnalTraining() {

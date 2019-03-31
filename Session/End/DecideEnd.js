@@ -20,30 +20,3 @@
     endSpicySession();
 }
 
-function endSpicySession() {
-    askAboutDenialLevel();
-
-    if(getVar(VARIABLE_CHASTITY_TRAINING, false) && !isForcedLockedUp()) {
-        run('Session/End/ChastityTraining/ChastityTraining.js');
-    } else {
-        //Lock up part
-        if (!isInChastity() && willKeepChastityOn()) {
-            lockChastityCage();
-            //TODO: Interactive stuff?
-        }
-    }
-
-    if(getVar(VARIABLE_ASS_TRAINING, false)) {
-        run('Session/End/AnalTraining/AnalTraining.js');
-    }
-
-    run('Session/End/Farewell.js');
-
-    //Update last session date
-    setDate(VARIABLE_LAST_TEASE_SESSION);
-
-    handleTodaysMood();
-
-    //Back to the lobby
-    run("Assistant/AssistantLobby.js");
-}

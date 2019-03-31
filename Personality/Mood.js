@@ -28,50 +28,58 @@ function allowTeasingStroking() {
 function feelsLikePunishingSlave() {
     const mood = getMood();
 
-    return getVar(VARIABLE_PUNISHMENT_POINTS) >= 250 || mood >= NEUTRAL_MOOD && isChance(mood*25);
+    let chance = 0;
+
+    if (mood === VERY_PLEASED_MOOD) {
+        chance = ACTIVE_PERSONALITY_STRICTNESS * 10;
+    } else if (mood === PLEASED_MOOD) {
+        chance = ACTIVE_PERSONALITY_STRICTNESS * 15;
+    } else if (mood === NEUTRAL_MOOD) {
+        chance = (ACTIVE_PERSONALITY_STRICTNESS + 1) * 20;
+    } else if (mood === ANNOYED_MOOD) {
+        chance = (ACTIVE_PERSONALITY_STRICTNESS + 1) * 25;
+    } else if (mood === VERY_ANNOYED_MOOD) {
+        chance = (ACTIVE_PERSONALITY_STRICTNESS + 1) * 30;
+    }
+
+    return getVar(VARIABLE_PUNISHMENT_POINTS) >= 250 || isChance(chance);
 }
 
-//TODO: Add own implementation
-//Annoyed by too many questions or disobedience etc.
-function isAnnoyed() {
-    return feelsEvil();
+//Annoyed by too many questions  etc.
+function isAnnoyedByTalking() {
+    let mood = getMood();
+
+    //TODO: More stuff like complaining etc.
+
+    let chance = 0;
+
+    //Talking issues
+    chance += getVar(VARIABLE_FORGETTING_HONORIFIC_COUNT, 0)*10*mood;
+    chance += getVar(VARIABLE_UNALLOWED_TALKS, 0)*10*mood;
+
+
+    return isChance(Math.min(100, chance));
 }
 
 //Meant in a playful but evil kind of way (not really pain or anything)
 function feelsEvil() {
     let mood = getMood();
 
+    let chance = 0;
+
     if (mood === VERY_PLEASED_MOOD) {
-        if (isChance(ACTIVE_PERSONALITY_STRICTNESS * 10)) {
-            return true;
-        } else {
-            return false;
-        }
+        chance = ACTIVE_PERSONALITY_STRICTNESS * 10;
     } else if (mood === PLEASED_MOOD) {
-        if (isChance(ACTIVE_PERSONALITY_STRICTNESS * 20)) {
-            return true;
-        } else {
-            return false;
-        }
+        chance = ACTIVE_PERSONALITY_STRICTNESS * 15;
     } else if (mood === NEUTRAL_MOOD) {
-        if (isChance(ACTIVE_PERSONALITY_STRICTNESS * 25)) {
-            return true;
-        } else {
-            return false;
-        }
+        chance = (ACTIVE_PERSONALITY_STRICTNESS + 1) * 20;
     } else if (mood === ANNOYED_MOOD) {
-        if (isChance((ACTIVE_PERSONALITY_STRICTNESS + 1) * 20)) {
-            return true;
-        } else {
-            return false;
-        }
+        chance = (ACTIVE_PERSONALITY_STRICTNESS + 1) * 25;
     } else if (mood === VERY_ANNOYED_MOOD) {
-        if (isChance((ACTIVE_PERSONALITY_STRICTNESS + 1) * 25)) {
-            return true;
-        } else {
-            return false;
-        }
+        chance = (ACTIVE_PERSONALITY_STRICTNESS + 1) * 30;
     }
+
+    return isChance(chance);
 }
 
 function handleTodaysMood() {
@@ -89,4 +97,29 @@ function handleTodaysMood() {
     }
 
     //Otherwise no change
+}
+
+function registerUnallowedTalk() {
+    if(getVar(VARIABLE_UNALLOWED_TALKS, 0) > 3) {
+        changeMeritHigh(true);
+    } else if(getVar(VARIABLE_UNALLOWED_TALKS) > 1) {
+        changeMeritMedium(true);
+    } else {
+        changeMeritLow(true);
+    }
+
+    setTempVar(VARIABLE_UNALLOWED_TALKS, getVar(VARIABLE_UNALLOWED_TALKS, 0) + 1);
+}
+
+function registerForgetHonorific() {
+    if(getVar(VARIABLE_FORGETTING_HONORIFIC_COUNT, 0) > 3) {
+        changeMeritHigh(true);
+    } else if(getVar(VARIABLE_FORGETTING_HONORIFIC_COUNT) > 1) {
+        changeMeritMedium(true);
+    } else {
+        changeMeritLow(true);
+    }
+
+
+    setTempVar(VARIABLE_FORGETTING_HONORIFIC_COUNT, getVar(VARIABLE_FORGETTING_HONORIFIC_COUNT, 0) + 1);
 }

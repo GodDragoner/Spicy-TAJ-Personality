@@ -1,6 +1,11 @@
 const dildos = [];
 let currentDildo = null;
 
+let longestDildo = null;
+let thickestDildo = null;
+let shortestDildo = null;
+let smallestDildo = null;
+
 function hasDildoToy() {
     return getVar("toyDildo", false);
 }
@@ -53,40 +58,68 @@ function getAnalDildoForTask(minLength = 0, minThickness = 0) {
     return availableDildos[randomInteger(0, availableDildos.length - 1)];
 }
 
-function getAnalDildo(minLength = 0, minThickness = 0, forceBigger = false) {
-    let maxDildoThickness = getVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, 0);
+/**
+ * Finds a fitting dildo for usage
+ * @param minLength Min length of the dildo (included)
+ * @param minThickness Min thickness of the dildo (included)
+ * @param forceThicker Should it be forced to be thicker than the max size used today?
+ * @param forceLonger Should it be longer than the current dildo?
+ * @param smallerFactor How much smaller should the current dildo be allowed to be
+ * @returns A random dildo that fits the parameters
+ */
+function getAnalDildo(minLength = 0, minThickness = 0, forceThicker = false, forceLonger = false, smallerFactor = 0) {
+    let maxDildoThickness = getVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, 0) - smallerFactor;
+
+    if(maxDildoThickness >= thickestDildo.diameter) {
+        //We don't have any thicker dildo
+        maxDildoThickness = thickestDildo.diameter;
+    }
+
+    if(forceThicker && minThickness === 0) {
+        //Limit to min thickness is of course our thickest dildo
+        minThickness = Math.min(maxDildoThickness + 0.1, thickestDildo.diameter);
+    }
+
+    if(forceLonger && minLength === 0) {
+        //Limit to min length is of course our longest dildo
+        minLength = Math.min(currentDildo.length + 0.1, longestDildo.length);
+    }
 
     let availableDildos = [];
 
     let maxDiameterIncrease = getMaxDiameterIncrease();
 
-    for (let y = 0; y < dildos.length; y++) {
-        let dildo = dildos[y];
+    while(availableDildos.length === 0 && dildos.length !== 0) {
+        for (let y = 0; y < dildos.length; y++) {
+            let dildo = dildos[y];
 
-        if(dildo.diameter >= minThickness && dildo.length >= minLength) {
-            //Don't over extent with too big dildos too quickly
-            if(forceBigger? dildo.diameter > maxDildoThickness : dildo.diameter >= maxDildoThickness && dildo.diameter <= Math.max(3, maxDildoThickness + maxDiameterIncrease)) {
-                availableDildos.push(dildo);
+            if(dildo.diameter >= minThickness && dildo.length >= minLength) {
+                //Don't over extent with too big dildos too quickly
+                if(dildo.diameter >= maxDildoThickness && dildo.diameter <= Math.max(smallestDildo.diameter, maxDildoThickness + maxDiameterIncrease)) {
+                    availableDildos.push(dildo);
+                }
             }
+        }
+
+        if(availableDildos.length === 0) {
+            //Seems like we don't have any dildo within our given diameter increase range so we are gonna increase our range
+            maxDiameterIncrease += 0.5;
+
+            //We are also decrease our min length and min thickness
+            if(minLength > 0) minLength -= 0.5;
+            if(minThickness > 0) minThickness -= 0.5;
         }
     }
 
-    if(availableDildos.length == 0) {
-        if(forceBigger) {
-            //TODO: Just compare to biggest dildo we have stored
-            //Try again without force bigger because we might have the biggest dildo right now
-            return getAnalDildo(minLength, minThickness);
-        } else {
-            //TODO: Better fallback
-            incrementVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, -1);
-            return getAnalDildo(0, 0);
-        }
+    if(availableDildos.length === 0) {
+        return null;
     }
 
     let dildo = availableDildos[randomInteger(0, availableDildos.length - 1)];
 
-    setVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, Math.max(getVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, 0), dildo.diameter));
+    setTempVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, Math.max(getVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, 0), dildo.diameter));
     currentDildo = dildo;
+    return dildo;
 }
 
 
@@ -96,22 +129,30 @@ function getDildo(blowjob = false) {
     } else {
         let blowjobLevel = getBlowjobLevel();
 
-        let minDiameter = blowjobLevel/8;
-        let minLength = blowjobLevel/3;
+        let minDiameter = Math.max(smallestDildo.diameter, Math.min(thickestDildo.diameter, blowjobLevel/8));
+        let minLength = Math.max(shortestDildo.length, Math.min(longestDildo.length, blowjobLevel/3));
+
+        let maxLength = minLength + blowjobLevel/3;
+        let maxDiameter = minDiameter + blowjobLevel/15;
 
         let availableDildos = [];
 
-        for (let y = 0; y < dildos.length; y++) {
-            let dildo = dildos[y];
+        while(availableDildos.length === 0 && dildos.length !== 0) {
+            for (let y = 0; y < dildos.length; y++) {
+                let dildo = dildos[y];
 
-            if(dildo.diameter >= minDiameter && dildo.length >= minLength && dildo.length <= minLength + 5 && dildo.diameter <= minDiameter + 2) {
-                availableDildos.push(dildo);
+
+                if (dildo.diameter >= minDiameter && dildo.length >= minLength && dildo.length <= maxLength && dildo.diameter <= maxDiameter) {
+                    availableDildos.push(dildo);
+                }
             }
+
+            maxLength += 0.5;
+            maxDiameter += 0.5;
         }
 
-        //TODO: Better fallback option
         if(availableDildos.length === 0) {
-            return dildos[randomInteger(0, dildos.length - 1)];
+            return null;
         }
 
         return availableDildos[randomInteger(0, availableDildos.length - 1)];
@@ -170,7 +211,28 @@ function loadDildos() {
                 cumInjection: cumInjection,
                 suctionCup: suctionCup
             };
+
             dildos.push(dildo);
+
+            //Find smallest dildo
+            if(smallestDildo == null || smallestDildo.diameter > dildo.diameter) {
+                smallestDildo = dildo;
+            }
+
+            //Find shortest dildo
+            if(shortestDildo == null || shortestDildo.length > dildo.length) {
+                shortestDildo = dildo;
+            }
+
+            //Find thickest dildo
+            if(thickestDildo == null || thickestDildo.diameter < dildo.diameter) {
+                thickestDildo = dildo;
+            }
+
+            //Find longest dildo
+            if(longestDildo == null || longestDildo.length < dildo.length) {
+                longestDildo = dildo;
+            }
         }
     }
 }
@@ -240,16 +302,20 @@ function setupNewDildo() {
 
     //TODO: More interaction based on length and diameter etc.
 
-    sendVirtualAssistantMessage('Please make sure to add a picture of your dildo named like your dildo to your dildos folder.');
-    sendVirtualAssistantMessage('So in this case make sure to add a picture called "' + name + '.jpg" to the dildos folder');
+    sendVirtualAssistantMessage('Please make sure to add a picture of your dildo named like your dildo to your dildos folder.', false);
+    sleep(1);
+    sendVirtualAssistantMessage('So in this case make sure to add a picture called "' + name + '.jpg" to the dildos folder', false);
+    sleep(1);
+    sendVirtualAssistantMessage('If it already exists a picture of it should show up now', false, true);
+    showImage(getDildoImagePath(name), 3);
 
     sendVirtualAssistantMessage('Next please tell me the length of the dildo in centimeters (measure everything that\'s insertable)', 0);
     answer = createInput();
     let length = -1;
 
     while (true) {
-        if (answer.isInteger()) {
-            length = answer.getInt();
+        if (answer.isDouble()) {
+            length = answer.getDouble();
             break;
         } else {
             sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
@@ -262,8 +328,8 @@ function setupNewDildo() {
     let diameter = -1;
 
     while (true) {
-        if (answer.isInteger()) {
-            diameter = answer.getInt();
+        if (answer.isDouble()) {
+            diameter = answer.getDouble();
             break;
         } else {
             sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
@@ -395,6 +461,10 @@ function setupNewDildo() {
     sendVirtualAssistantMessage('Enjoy %Grin%');
 }
 
-function getDildoImagePath(dildo) {
-    return 'Images/Spicy/Toys/Dildos/' + dildo.name + '.*';
+function fetchDildoToy(toy) {
+    return fetchToy(toy, getDildoImagePath(toy));
+}
+
+function getDildoImagePath(name) {
+    return 'Images/Spicy/Toys/Dildos/' + name + '.*';
 }

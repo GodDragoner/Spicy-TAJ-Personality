@@ -23,9 +23,12 @@
         }
 
         if(toy != null) {
-            if (!fetchToy(toy)) {
+            if (!fetchDildoToy(toy)) {
                 sendMessage("I guess we have to do something different then");
                 sendMessage("But don't expect it to be pleasant after you disappointed me like that %Lol%");
+
+                //Punishment module
+                runModuleCategory(CATEGORY_PAIN);
             } else {
                 startBlowToy(toy);
                 randomBlowjobModule(toy);

@@ -13,7 +13,7 @@
 
         const totalMode = isChance(50);
 
-        //TODO: Punish mode instead of gold and edges?
+        //TODO: Punish mode instead of gold and edges? (Ball crusher?)
         if (totalMode) {
             sendMessage('Be correct 7 times and you will earn 150 gold');
             sendMessage('Be wrong 7 times and you will have to edge 15 times %Grin%');
@@ -47,7 +47,7 @@
 
             for (let number = 1; number < 14; number++) {
                 if (number != numberMissing) {
-                    numberArray[randomInteger(0, 12)] = number;
+                    numberArray[number - 1] = number;
                 }
             }
 

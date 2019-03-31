@@ -173,12 +173,12 @@ function ballCrusherGame() {
     sendMessage('I\'ll then show you a picture');
     sendMessage('Guess wrong and you have to tighten it a full round');
     sendMessage('Guess right and you can loosen it half a round');
-    sendMessage('When you\'ve made 10 right guesses the game is over!');
+    sendMessage('When you\'ve made 15 right guesses the game is over!');
     sendMessage('If you absolutely can\'t take another twist just say stop');
     sendMessage('It\'s a simple game, right? %Grin%');
 
     let right = 0;
-    while (right < 10) {
+    while (right < 15) {
 
         let answerType = 0;
         const answer = sendInput('Boobs, butt or hentai?');

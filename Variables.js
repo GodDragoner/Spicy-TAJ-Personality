@@ -63,9 +63,20 @@ const VARIABLE_LAST_ASS_TASK_ID = 'lastAssTaskId';
 const VARIABLE_ASS_TRAINING = 'assTraining';
 const VARIABLE_ASS_TRAININGS_DONE = 'assTrainingsDone';
 
+//Blowjob training
+const VARIABLE_BLOWJOB_LEVEL = "blowjobLevel";
+const VARIABLE_BLOWJOB_TASKS_IN_ROW = "blowjobTasksInRow";
+const VARIABLE_BLOWJOB_EXPERIENCE = 'blowjobExperience';
+const VARIABLE_TASK_BLOWJOB_EXPERIENCE = 'taskAssExperience';
+const VARIABLE_LAST_BLOWJOB_TASK_ID = 'lastAssTaskId';
+const VARIABLE_BLOWJOB_TRAINING = 'blowjobTraining';
+const VARIABLE_BLOWJOB_TRAININGS_DONE = 'blowjobTrainingsDone';
+
 //Toys
 
 const VARIABLE_IS_PLUGGED = "isPlugged";
+const VARIABLE_LAST_PLUG_DATE = "lastPlugDate";
+
 const VARIABLE_IS_GAGED = "isGaged";
 const VARIABLE_IS_BALLS_TIED = "isBallsTied";
 const VARIABLE_IS_BALL_CRUSHER_ON = "isBallCrusherOn";
@@ -111,9 +122,6 @@ const VARIABLE_EDGE_STARTED_DATE = "edgeStartedDate";
 const VARIABLE_SOFT_COCK_LENGTH = "softCockLength";
 const VARIABLE_SECONDS_TO_GET_SOFT = "secondsToGetSoft";
 
-
-const VARIABLE_BLOWJOB_LEVEL = "blowjobLevel";
-
 //Sub status
 const VARIABLE_SUB_IS_VIRGIN = 'subIsVirgin';
 const VARIABLE_SUB_IS_MARRIED = 'subIsMarried';
@@ -149,10 +157,14 @@ const VARIABLE_FULL_TIME_TRIAL_UNTIL = "fullTimeTrialUntil";
 
 const VARIABLE_LAST_TEASE_SESSION = "lastTeaseSession";
 const VARIABLE_CURRENT_SESSION_DATE = "currentSessionDate";
+const VARIABLE_CURRENT_SESSION_ACTIVE = "currentSessionActive";
 
 const VARIABLE_HAPPINESS = "happiness";
 const VARIABLE_LUST = "lust";
 const VARIABLE_ANGER = "anger";
+
+const VARIABLE_UNALLOWED_TALKS = 'unallowedTalks';
+const VARIABLE_FORGETTING_HONORIFIC_COUNT = 'forgettingHonorificCount';
 
 //End
 const VARIABLE_ACTIVE_END_GAME_ID = 'activeEndGameId';

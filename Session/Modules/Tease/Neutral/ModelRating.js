@@ -26,8 +26,8 @@
                             changeMeritLow(true);
                             answer.loop();
                         } else {
-                            let modelRatings = getVar(VARIABLE_MODEL_RATINGS, []);
-                            modelRatings.push(result);
+                            let modelRatings = new java.util.ArrayList();
+                            modelRatings.add(result);
                             setVar(VARIABLE_MODEL_RATINGS, modelRatings);
                             break;
                         }
@@ -68,14 +68,20 @@
                         untieBalls();
                         sendMessage('So now that those balls are untied...');
                         sendMessage('Put that ball crusher on %Grin%');
+                        setVar(VARIABLE_IS_BALL_CRUSHER_ON, true);
+                        sendMessage('Tell me when you are done');
+                        waitForDone();
                     } else {
                         sendMessage('Now put that ball crusher on %Grin%');
                         setVar(VARIABLE_IS_BALL_CRUSHER_ON, true);
+                        sendMessage('Tell me when you are done');
+                        waitForDone();
                     }
 
                     //TODO: Based on reference values that were set previously or setup ball crusher thing
 
                     sendMessage('So this is how this will go from here on');
+                    sendMessage('Turn the screws until it applies low pressure to your balls');
                     sendMessage('Everytime you are wrong you will turn both screws once');
                     sendMessage('I really hope that you have a good memory %Lol%');
 
@@ -111,8 +117,8 @@
                     }
 
                     const modelRatings = getVar(VARIABLE_MODEL_RATINGS);
-                    const firstPictureScore = modelRatings[randomIndex];
-                    const secondPictureScore = modelRatings[randomIndex2];
+                    const firstPictureScore = modelRatings.get(randomIndex);
+                    const secondPictureScore = modelRatings.get(randomIndex2);
 
                     showImage('Images/Spicy//Games/ModelGame/' + (randomIndex + 1) + '.*', 3);
                     showImage('Images/Spicy//Games/ModelGame/' + (randomIndex2 + 1) + '.*', 3);
@@ -170,8 +176,8 @@
                 if (right) {
                     sendMessage(random('Correct!', 'Right on', 'Right on!', 'You\'re right', 'You are right!', 'That\'s correct', 'That\'s right') + ' %Grin%');
 
-                    //TODO: Think of alternative if chastity is on
-                    if (!isInChastity()) {
+                    //TODO: Think of alternative if chastity is on and maybe while wearing the ball crusher
+                    if (!isInChastity() && !ballCrusher) {
 
                         startEdging();
                         sendMessage("%LetEdgeFade%");

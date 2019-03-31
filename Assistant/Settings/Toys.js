@@ -2,7 +2,7 @@
     sendVirtualAssistantMessage('Toy Settings Menu:', 0);
     sendVirtualAssistantMessage('Options:', 0);
     sendVirtualAssistantMessage('1. Add new dildo', 0);
-    sendVirtualAssistantMessage('1. Add new buttplug', 0);
+    sendVirtualAssistantMessage('2. Add new buttplug', 0);
 
     let lobbyAnswer = createInput("Add new dildo", 'Add new buttplug');
     while (true) {

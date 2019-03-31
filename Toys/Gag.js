@@ -1,14 +1,27 @@
 
+const GAG_TYPE_SPIDER_GAG = {id: 0, name: 'spider gag'};
+const GAG_TYPE_BALL_GAG = {id: 1, name: 'ball gag'};
+const GAG_TYPE_BUTTPLUG_GAG = {id: 2, name: 'buttplug'};
+const GAG_TYPE_INFLATEABLE_GAG = {id: 3, name: 'inflateable gag'};
+const GAG_TYPE_DILDO_GAG = {id: 4, name: 'dildo gag'};
+
+let currentGagType = GAG_TYPE_BALL_GAG;
+
 function isGaged() {
     return getVar(VARIABLE_IS_GAGED, false);
 }
 
-function hasBallGag() {
-    return getVar("toyGag", false);
+function setGaged(gaged) {
+    return setVar(VARIABLE_IS_GAGED, gaged);
 }
 
-function putInGag() {
-    if (!fetchToy('gag')) {
+function hasBallGag() {
+    return getVar("toyBallGag", false);
+}
+
+//TODO: Different gag types
+function putInGag(gagType = GAG_TYPE_BALL_GAG) {
+    if (!fetchToy(gagType.name)) {
         return false;
     }
 

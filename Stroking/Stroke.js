@@ -1,5 +1,9 @@
 function stopStrokingMessage() {
-    stopStroking();
+
+    if(isStroking()) {
+        stopStroking();
+    }
+
     const answers = [
         "Stop stroking",
         "Hands off",
@@ -73,8 +77,19 @@ function sendNewStrokeInstruction() {
             sendMessage('Only use one finger for now and rub it up and down your %Cock% %Grin%');
             break;
         case 6:
-            //TODO: Punish with no lube or refer to certain lube?
-            sendMessage('Start palming your cock head. Use some lube if needed %EmoteHappy%');
+            var lubeType = getAssLubeType(getMood(), 30);
+            sendMessage('Start palming your cock head %EmoteHappy%');
+
+            if (lubeType == ANY_LUBE) {
+                sendMessage('Use some lube if needed');
+            } else if (lubeType === SPIT_LUBE) {
+                sendMessage('Use some spit if needed');
+            } else {
+                //Too annoying to get another lube right now during stroking, so we are gonna tell him to use nothing
+                //TODO: Could stop stroking here and order sub to get a different lube/do it a different time
+                sendMessage('You are not allowed to use any lube %Grin%');
+            }
+
             break;
         case 7:
             sendMessage('Go ahead and role your %Cock% between your hands. Imagine starting a fire %Grin%');

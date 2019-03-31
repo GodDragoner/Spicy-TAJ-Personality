@@ -5,6 +5,8 @@ const TOOTHPASE_LUBE = 3;
 const NO_LUBE = 4;
 
 const buttplugs = [];
+let smallestButtplug = null;
+let biggestButtplug = null;
 let currentPlug = null;
 
 
@@ -16,11 +18,25 @@ function isPlugged() {
     return getVar(VARIABLE_IS_PLUGGED, false);
 }
 
-function putInButtplug() {
+function putInButtplug(forceBigger = false) {
     sendMessage("%SlaveName%");
 
-    if (!fetchToy(getButtplugSize() + " buttplug")) {
+    if (!fetchButtplugToy(getAnalPlug(0, 0, forceBigger).name)) {
         return false;
+    }
+
+    if(feelsEvil() && isChance(50) && getVar(VARIABLE_ASS_LEVEL) > 15) {
+        sendMessage('But before we are gonna stick that buttplug up your %Ass%');
+        let iceCubes = randomInteger(2, 5);
+        if(fetchIceCubes(iceCubes)) {
+            //TODO: Interaction and cooldown
+            sendMessage('You already know what is coming now don\'t you?');
+            sendMessage('I want you to push those ice cubes up your ass one by one');
+            sendMessage('Afterwards we are gonna plug your %Ass% and let them slowly melt inside you %Grin%');
+            sendMessage('Tell me when you are done...');
+            waitForDone();
+            sendMessage('How is it feeling? Cold? %Grin%');
+        }
     }
 
     const lubeType = getAssLubeType(getMood());
@@ -95,11 +111,13 @@ function putInButtplug() {
 
     setTempVar("pluggedToday", true);
     setTempVar(VARIABLE_IS_PLUGGED, true);
+    setDate(VARIABLE_LAST_PLUG_DATE);
+
     return true;
 }
 
-function getAssLubeType(mood) {
-    if (getVar(VARIABLE_ASS_LEVEL) < 30) {
+function getAssLubeType(mood, level = getVar(VARIABLE_ASS_LEVEL)) {
+    if (level < 30) {
         return ANY_LUBE;
     }
 
@@ -173,7 +191,6 @@ function getAssLubeType(mood) {
     return lubeTypes[randomInteger(0, lubeTypes.length - 1)];
 }
 
-//TODO: Register different types of butt plugs with sizes etc.
 function getButtplugSize() {
     let assLevel = getVar(VARIABLE_ASS_LEVEL);
 
@@ -202,43 +219,58 @@ function getMaxDiameterIncrease() {
     return maxDiameterIncrease;
 }
 
-function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = false) {
+function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
     let maxPlugThickness = getVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, 0);
+
+    if(forceBigger && minThickness === 0) {
+        minThickness = maxPlugThickness + 0.1;
+    }
 
     let availablePlugs = [];
 
     let maxDiameterIncrease = getMaxDiameterIncrease();
 
-    for (let y = 0; y < buttplugs.length; y++) {
-        let buttplug = buttplugs[y];
+    if(maxPlugThickness >= biggestButtplug.diameter) {
+        //We don't have any bigger plug
+        maxPlugThickness = biggestButtplug.diameter;
+    }
 
-        if(buttplug.diameter >= minThickness && buttplug.length >= minLength) {
-            //Don't over extent with too big dildos too quickly
-            if(forceBigger? buttplug.diameter > maxPlugThickness : buttplug.diameter >= maxPlugThickness && buttplug.diameter <= Math.max(3, maxPlugThickness + maxDiameterIncrease)) {
-                availablePlugs.push(buttplug);
+    minThickness = Math.min(minThickness, biggestButtplug.diameter);
+
+    //TODO: Handle min length too (smallest plug etc.)
+
+    while(availablePlugs.length === 0 && buttplugs.length !== 0) {
+        for (let y = 0; y < buttplugs.length; y++) {
+            let buttplug = buttplugs[y];
+
+            if(buttplug.diameter >= minThickness && buttplug.length >= minLength) {
+                //Don't over extent with too big plugs too quickly
+                if(buttplug.diameter >= maxPlugThickness && buttplug.diameter <= Math.max(smallestButtplug.diameter, maxPlugThickness + maxDiameterIncrease)) {
+                    availablePlugs.push(buttplug);
+                }
             }
+        }
+
+        if(availablePlugs.length === 0) {
+            //Seems like we don't have any plug within our given diameter increase range so we are gonna increase our range
+            maxDiameterIncrease += 0.5;
+
+            if(minLength > 0) minLength -= 0.5;
+            if(minThickness > 0) minThickness -= 0.5;
         }
     }
 
-    if(availablePlugs.length == 0) {
-        if(forceBigger) {
-            //TODO: Just compare to biggest plug we have stored
-            //Try again without force bigger because we might have the biggest plug right now
-            return getAnalPlug(minLength, minThickness);
-        } else {
-            //TODO: Better fallback
-            incrementVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, -1);
-            return getAnalDildo(0, 0);
-        }
+    if(availablePlugs.length === 0) {
+        return null;
     }
 
     let plug = availablePlugs[randomInteger(0, availablePlugs.length - 1)];
 
-    setVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, Math.max(getVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, 0), plug.diameter));
+    setTempVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, Math.max(getVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, 0), plug.diameter));
     currentPlug = plug;
+
+    return plug;
 }
-
-
 
 function removeButtplug() {
     if (isChance(30)) {
@@ -348,6 +380,9 @@ function removeButtplug() {
                 sendMessage("Pathetic as you are");
                 sendMessage(random("Can you taste your own ass juice? %Lol%", "Your mouth filled with a plug that has been in your ass for quite some time"));
                 sendMessage("And all of that just to " + random("please me", "make me happy", "entertain me") + " %EmoteHappy%");
+
+                setGaged(true);
+                currentGagType = GAG_TYPE_BUTTPLUG_GAG;
             } else {
                 sendMessage(random("I want you to blow it like you would blow a dildo", "I want you to lick it from the top to the bottom"));
                 sendMessage("Our toy should be shining and spotless");
@@ -438,6 +473,16 @@ function loadButtplugs() {
                 tail: tail
             };
             buttplugs.push(buttplug);
+
+            //Find smallest plug
+            if(smallestButtplug == null || smallestButtplug.diameter > buttplug.diameter) {
+                smallestButtplug = buttplug;
+            }
+
+            //Find biggest plug
+            if(biggestButtplug == null || biggestButtplug.diameter < buttplug.diameter) {
+                biggestButtplug = buttplug;
+            }
         }
     }
 }
@@ -511,16 +556,21 @@ function setupNewButtplug() {
 
     //TODO: More interaction based on length and diameter etc.
 
-    sendVirtualAssistantMessage('Please make sure to add a picture of your buttplug named like your buttplug to your buttplugs folder.');
-    sendVirtualAssistantMessage('So in this case make sure to add a picture called "' + name + '.jpg" to the buttplugs folder');
+
+    sendVirtualAssistantMessage('Please make sure to add a picture of your buttplug named like your buttplug to your buttplugs folder.', false);
+    sleep(1);
+    sendVirtualAssistantMessage('So in this case make sure to add a picture called "' + name + '.jpg" to the buttplugss folder', false);
+    sleep(1);
+    sendVirtualAssistantMessage('If it already exists a picture of it should show up now', false, true);
+    showImage(getButtplugImagePath(name), 3);
 
     sendVirtualAssistantMessage('Next please tell me the length of the buttplug in centimeters (measure everything that\'s insertable)', 0);
     answer = createInput();
     let length = -1;
 
     while (true) {
-        if (answer.isInteger()) {
-            length = answer.getInt();
+        if (answer.isDouble()) {
+            length = answer.getDouble();
             break;
         } else {
             sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
@@ -533,8 +583,8 @@ function setupNewButtplug() {
     let diameter = -1;
 
     while (true) {
-        if (answer.isInteger()) {
-            diameter = answer.getInt();
+        if (answer.isDouble()) {
+            diameter = answer.getDouble();
             break;
         } else {
             sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
@@ -678,7 +728,7 @@ function setupNewButtplug() {
         tail: tail
     };
 
-    buttplug.push(buttplug);
+    buttplugs.push(buttplug);
 
     saveButtplugs();
 
@@ -686,8 +736,12 @@ function setupNewButtplug() {
     sendVirtualAssistantMessage('Enjoy %Grin%');
 }
 
+function fetchButtplugToy(toy) {
+    return fetchToy(toy, getButtplugImagePath(toy));
+}
 
 
-function getButtplugImagePath(buttplug) {
-    return 'Images/Spicy/Toys/Buttplugs/' + buttplug.name + '.*';
+
+function getButtplugImagePath(name) {
+    return 'Images/Spicy/Toys/Buttplugs/' + name + '.*';
 }

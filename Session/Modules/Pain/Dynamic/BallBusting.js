@@ -45,7 +45,7 @@
             if (!isGaged() && hasBallGag() && isChance(25)) {
                 chanceLeftToys /= 2;
 
-                if (isAnnoyed()) {
+                if (isAnnoyedByTalking()) {
                     sendMessage('You know what %SlaveName%');
                     sendMessage('I am not in the mood to hear your whimpering today');
                 }
@@ -75,7 +75,7 @@
                     doneModules.add(this.id);
 
                     let hitMap = new Map();
-                    let maxLoops = painLevel;
+                    let maxLoops = Math.max(1, painLevel*2);
 
                     //Start with light ones
                     let isBeginning = doneModules.size() < 3;
@@ -92,7 +92,7 @@
 
                         const hitType = getWinnerIndex([flickChance, hitChance, punchChane]);
 
-                        if (!hasBallsTied() && isChance(10 + painLevel * 2)) {
+                        if (!hasBallsTied() && loops != 0 && isChance(10 + painLevel * 2)) {
                             sendMessage('I think we need to change this up a bit');
                             tieBalls();
                             sendMessage('Much better isn\'t it? %Grin%');
@@ -120,12 +120,12 @@
             const toiletCrushing = {
                 id: currentModuleId++,
                 startModule: function () {
-                    doneModules.add(this.id);
-
                     //Pain level too low
                     if (painLevel < 6 || !askForBathroom() || isInChastity()) {
                         return false;
                     }
+
+                    doneModules.add(this.id);
 
                     let hitMap = new Map();
 
@@ -181,7 +181,7 @@
             };
             modules.push(toiletCrushing);
 
-            const maxLoops = painLevel / 2;
+            const maxLoops = Math.max(1, painLevel / 2);
 
             while (doneModules.size() < maxLoops) {
                 modules[randomInteger(0, modules.length - 1)].startModule();
@@ -220,19 +220,19 @@ function getToiletLidTask(hitLevel, hasPortableDevice, map) {
 
     if (currentAmount > 0) {
         let answers = [
-            random('Go ahead and', 'I want you to') + random('yet', '') + ' again raise the toilet lid to ' + hitLevels[hitLevel] + ' and let it fall on %MyBalls% %Balls% ' + hitAmount + ' times',
+            random('Go ahead and', 'I want you to') + random('yet', '') + ' again raise the toilet lid to ' + hitLevels[hitLevel] + ' and let it fall on %MyBalls% %Balls% ' + hitAmount + pluralize(' times', hitAmount),
         ];
 
         sendMessage(answers[randomInteger(0, answers.length - 1)]);
         waitForDone();
     } else {
         //First time we are doing this
-        if (hitLevel == 2 || hitLevel == 1 && !map.has(2) && hasPortableDevice) {
+        if (map.has(0) && (hitLevel == 2 || hitLevel == 1 && !map.has(2)) && hasPortableDevice) {
             sendMessage(random('I think we can go higher than before %Grin%', 'I think we need to up that level a bit because otherwise ' + random('you might get used to it', 'I might go to easy on you') + ' %Lol%'));
         }
 
         let answers = [
-            'I want you to raise the toilet lid to ' + hitLevels[hitLevel] + ' and let it fall on %MyBalls% %Balls% ' + hitAmount + ' times',
+            'I want you to raise the toilet lid to ' + hitLevels[hitLevel] + ' and let it fall on %MyBalls% %Balls% ' + hitAmount + pluralize(' times', hitAmount),
         ];
 
         return answers[randomInteger(0, answers.length - 1)];
@@ -252,26 +252,26 @@ function sendBallHitTask(hitLevel, hitType, loops, isBeginning, map) {
 
     if (currentAmount > 0) {
         let answers = [
-            'I want you to yet again ' + hitTypes[hitType] + ' %MyBalls% %Balls% ' + hitLevels[hitLevel] + hitAmount + ' times',
+            'I want you to yet again ' + hitTypes[hitType] + ' %MyBalls% %Balls% ' + hitLevels[hitLevel] + hitAmount + pluralize(' times', hitAmount),
             random('Give', 'Go ahead and give', 'Let\'s give ') + ' %MyBalls% %Balls% another ' + hitAmount + ' ' + hitLevels[hitLevel] + ' ' + pluralize(hitTypes[hitType], hitAmount),
         ];
 
-        sendMessage(answers[randomInteger(0, answers.length - 1)]);
+        sendMessage(answers[randomInteger(0, answers.length - 1)], 0);
         waitForDone();
     } else {
         //First time we are doing this
-        if (hitLevel == 2 || hitLevel == 1 && !map.has(2)) {
+        if (map.has(0) && (hitLevel == 2 || hitLevel == 1 && !map.has(2))) {
             sendMessage(random('I think we can go higher than before %Grin%', 'I think we need to up that level a bit because otherwise ' + random('you might get used to it', 'I might go to easy on you') + ' %Lol%'));
         }
 
         let answers = [
-            'I want you to ' + hitTypes[hitType] + ' %MyBalls% %Balls% ' + hitLevels[hitLevel] + ' ' +  hitAmount + ' times',
+            'I want you to ' + hitTypes[hitType] + ' %MyBalls% %Balls% ' + hitLevels[hitLevel] + ' ' +  hitAmount + pluralize(' times', hitAmount),
             random('Give', 'Go ahead and give', 'Let\'s give ') + ' %MyBalls% %Balls% ' + hitAmount + ' ' + hitLevels[hitLevel] + ' ' + pluralize(hitTypes[hitType], hitAmount),
         ];
 
-        sendMessage(answers[randomInteger(0, answers.length - 1)]);
+        sendMessage(answers[randomInteger(0, answers.length - 1)], 0);
         waitForDone();
     }
 
-    map.set(2, currentAmount + hitAmount);
+    map.set(hitType, currentAmount + hitAmount);
 }

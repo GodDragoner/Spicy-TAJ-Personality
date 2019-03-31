@@ -36,4 +36,6 @@ function getStrokingBPM() {}
 
 function stopStroking() {}
 
+function replaceVocab(string) {}
+
 function startStroking(bpm) {}

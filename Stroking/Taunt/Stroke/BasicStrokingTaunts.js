@@ -1,6 +1,4 @@
 {
-    let maxTaunts = 10;
-
     let answers = [
         'Make it feel good %SlaveName%',
         'Make that %Cock% feel ' + random('amazing', 'good'),
@@ -16,7 +14,8 @@
         'Keep going',
         'Keep %JerkingOff% just like that... good %SlaveName%',
         'Don\'t stop stroking',
-        'Don\'t stop %SlaveName%, I want you even ' + 'more aroused', 'harder',
+        'Don\'t stop %SlaveName%, I want you even ' + 'more aroused',
+        'Don\'t stop %SlaveName%, I want you even ' + 'harder',
         'I know you can keep going for me, %SlaveName%',
         'You have no choice but to keep stroking for me',
         'Don\'t speed up or slow down, just keep going at this pace',
@@ -61,7 +60,8 @@
         'Make yourself ache for my ' + random('enjoyment', 'pleasure'),
         'Ache for me',
         'Keep aching for me',
-        'Let every stroke make you ' + 'ache for me even more', 'even more desperate',
+        'Let every stroke make you ' + 'ache for me even more',
+        'Let every stroke make you ' + 'even more desperate',
         'Let your hand slide up and down that %Cock%',
         'Just switch off you brain and %JerkOff% now',
         'I\'m going to make this so much worse on you',
@@ -193,84 +193,8 @@
     } else {*/
         let answer = findRandomUnusedElement(answers, createHistory('basicStrokingTaunt'));
 
-        let tag = '@StrokeSlower';
-        let strokeSlower = answer.indexOf(tag) !== -1;
-        if (strokeSlower) {
-            answer = answer.replace(tag, '');
-        }
+        interpretLegacyTaunt(answer);
 
-        tag = '@StrokeSlowest';
-        let strokeSlowest = answer.indexOf(tag) !== -1;
-        if (strokeSlowest) {
-            answer = answer.replace(tag, '');
-        }
-
-        tag = '@StrokeFaster';
-        let strokeFaster = answer.indexOf(tag) !== -1;
-        if (strokeFaster) {
-            answer = answer.replace(tag, '');
-        }
-
-        tag = '@StrokeFastest';
-        let strokeFastest = answer.indexOf(tag) !== -1;
-        if (strokeFastest) {
-            answer = answer.replace(tag, '');
-        }
-
-        tag = '@ShowBoobsImage';
-        let showBoobsImage = answer.indexOf(tag) !== -1;
-        if (showBoobsImage) {
-            answer = answer.replace(tag, '');
-        }
-
-        tag = '@ShowBlogImage';
-        let showBlogImage = answer.indexOf(tag) !== -1;
-        if (showBlogImage) {
-            answer = answer.replace(tag, '');
-        }
-
-        tag = '@ShowLocalImage';
-        let showLocalImage = answer.indexOf(tag) !== -1;
-        if (showLocalImage) {
-            answer = answer.replace(tag, '');
-        }
-
-        tag = '@ShowLesbianImage';
-        let showLesbianImage = answer.indexOf(tag) !== -1;
-        if (showLesbianImage) {
-            answer = answer.replace(tag, '');
-        }
-
-        tag = '@ShowCaptionImage';
-        let showCaptionImage = answer.indexOf(tag) !== -1;
-        if (showCaptionImage) {
-            answer = answer.replace(tag, '');
-        }
-
-        answer.trim();
-
-        sendMessage(answer, 0);
-
-        if (strokeSlower) {
-            addStrokingBPM(-5);
-        } else if (strokeFaster) {
-            addStrokingBPM(5);
-        } else if (strokeFastest) {
-            addStrokingBPM(180 - getStrokingBPM());
-        } else if (strokeSlowest) {
-            addStrokingBPM(20 - getStrokingBPM());
-        }
-
-        if (showBoobsImage) {
-            showCategoryImage('BOOBS');
-        } else if (showBlogImage) {
-            showTeaseImage();
-        } else if (showLocalImage) {
-            showTeaseImage();
-        } else if(showLesbianImage) {
-            showCategoryImage('LESBIAN');
-        } else if(showCaptionImage) {
-            showCategoryImage('CAPTIONS');
-        }
+        sendDebugMessage('Send stroking taunt');
     //}
 }
