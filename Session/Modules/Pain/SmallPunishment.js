@@ -150,7 +150,7 @@ function punishSmallFlickBalls() {
                 changeMeritLow(true);
                 sendMessage(random('I guess we have to try this again', 'Let\'s try this again shall we?'));
                 break;
-            } else if (answer.isLike('done')) {
+            } else if (answer.isLike('done', 'yes')) {
                 sendMessage('%Grin%');
 
                 if (askBallPain()) {
@@ -193,7 +193,7 @@ function punishSmallBustBalls() {
                 sendMessage('Hit my %Balls% another ' + hits + ' times %SlaveName%');
                 answer = createInput(45);
                 while (true) {
-                    if (answer.isLike('done')) {
+                    if (answer.isLike('done', 'yes')) {
                         sendMessage('%Good%');
                         completedInTime = true;
                         break;

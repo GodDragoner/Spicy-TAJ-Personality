@@ -60,12 +60,12 @@
     setupSlaveCompetitorStats("Male2", 5, 5, 5, 3, 0, 2, 3, 0);
     setupSlaveCompetitorStats("Male3", 7, 2, 8, 2, 0, 1, 1, 0);
 
-//20 good days
+    //20 good days
     for (let day = 0; day < 20; day++) {
         setVar("day" + day + "Good", true);
     }
 
-//11 bad days
+    //11 bad days
     for (let day = 20; day < 31; day++) {
         setVar("day" + day + "Good", false);
     }

@@ -83,9 +83,13 @@ const VARIABLE_IS_BALL_CRUSHER_ON = "isBallCrusherOn";
 
 const VARIABLE_IS_KNEELING = "isKneeling";
 
+const VARIABLE_BALL_CRUSHER_TWISTS_TO_APPLY = "ballCrusherTwistsToApply";
 const VARIABLE_BALL_CRUSHER_MAX_TWISTS = "ballCrusherMaxTwists";
 
 const VARIABLE_MAX_DILDO_THICKNESS_TODAY = "maxDildoThicknessToday";
+
+
+const VARIABLE_LAST_DILDO_SWAP_DATE = "lastDildoSwapDate";
 
 //Modules
 const VARIABLE_POSITION_TRAINING_STARTED = "positionTrainingStarted";

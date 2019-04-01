@@ -6,8 +6,8 @@
         let lobbyAnswer = createInput("Session", "Chores", "Dungeon", "Settings", "Shop", "Fitness", "Exercise", "Study", "House Rules", "Pin Board", "End");
         while (true) {
             if (lobbyAnswer.containsIgnoreCase("session", "domme")) {
-                startSession();
                 lobbyAnswer.clearOptions();
+                startSession();
                 break;
             } else if (lobbyAnswer.containsIgnoreCase("chore", "clean", "dust", "wipe", "wash")) {
                 sendVirtualAssistantMessage("This is not supported yet!");

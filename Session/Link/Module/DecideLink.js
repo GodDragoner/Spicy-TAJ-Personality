@@ -3,18 +3,28 @@
 
     if(isInChastity()) {
         sendDebugMessage('Running chastity link');
+
+        setTempVar('minLinksSinceRun', neutralLinkAmount + chastityLinkAmount);
+
         run(random('Session/Link/Module/Neutral/*.js', 'Session/Link/Module/Chastity/*.js'));
     } else {
         sendDebugMessage('Running non chastity link');
+
+        setTempVar('minLinksSinceRun',  neutralLinkAmount + nonChastityLinkAmount);
+
         run(random('Session/Link/Module/NoChastity/*.js', 'Session/Link/Module/Neutral/*.js'))
     }
 }
 
-function tryRunLinkFetchId(minLinksSinceRun = 20) {
+function tryRunLinkFetchId(minLinksSinceRun) {
     return tryRunLink(getCurrentScriptName(),  minLinksSinceRun);
 }
 
-function tryRunLink(linkId, minLinksSinceRun = 20) {
+function tryRunLink(linkId, minLinksSinceRun) {
+    if(minLinksSinceRun === undefined) {
+        minLinksSinceRun = getVar('minLinksSinceRun', 0);
+    }
+
     //Keep track of how many times we tried to find a link
     setTempVar('findLinkTries', getVar('findLinkTries', 0) + 1);
 

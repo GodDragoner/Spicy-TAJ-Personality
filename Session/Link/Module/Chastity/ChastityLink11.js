@@ -7,9 +7,9 @@
         }
 
         sendMessage("You want to badly to jerk it, don\'t you...");
-        sendMessage("Sorry %PetName%, but that\'s not going to happen right now");
+        sendMessage("Sorry %SlaveName%, but that\'s not going to happen right now");
 
-        if(sendYesOrNoQuestion('"Would you like me to hurt your %Balls% instead?"')) {
+        if(sendYesOrNoQuestion('Would you like me to hurt your %Balls% instead?')) {
             sendMessage("Just to keep your mind focused on something else for e few minutes");
             //TODO: Check for full size cage unreachable balls?
             smallCBTPunishment(true, false);

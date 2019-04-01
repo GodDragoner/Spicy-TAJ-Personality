@@ -10,7 +10,9 @@
             sendMessage('1 being not so hot %Lol%');
             //sendMessage('@NullResponse @CallReturn(CR\Modules\Tease\ModuleParts\ModelRatingPart1.txt)');
 
-            lockImage();
+            let modelRatings = new java.util.ArrayList();
+
+            lockImages();
             for (let index = 1; index <= 100; index++) {
                 showImage('Images/Spicy//Games/ModelGame/' + index + '.*');
                 const answer = createInput();
@@ -26,7 +28,6 @@
                             changeMeritLow(true);
                             answer.loop();
                         } else {
-                            let modelRatings = new java.util.ArrayList();
                             modelRatings.add(result);
                             setVar(VARIABLE_MODEL_RATINGS, modelRatings);
                             break;

@@ -117,6 +117,7 @@ function getAnalDildo(minLength = 0, minThickness = 0, forceThicker = false, for
 
     let dildo = availableDildos[randomInteger(0, availableDildos.length - 1)];
 
+    //TODO: Can't do this here. Can only do it if getting it was confirmed (fetch toy)
     setTempVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, Math.max(getVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, 0), dildo.diameter));
     currentDildo = dildo;
     return dildo;

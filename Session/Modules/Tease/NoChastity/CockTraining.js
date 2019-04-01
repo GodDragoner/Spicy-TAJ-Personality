@@ -1,5 +1,4 @@
 if (tryRunModuleFetchId()) {
-    setVar(VARIABLE_STROKE_TRAINING_ACTIVE, true);
     if (isStroking()) {
         sendMessage("Stop stroking %SlaveName%", 0);
         stopStroking();
@@ -44,7 +43,6 @@ if (tryRunModuleFetchId()) {
         sendMessage("So lets stop wasting time and just get you started %Lol%");
     }
 
-    setTempVar(VARIABLE_STROKE_TRAINING_ACTIVE, true);
     setVar(VARIABLE_STROKE_TRAININGS_DONE, getVar(VARIABLE_STROKE_TRAININGS_DONE, 0) + 1);
 
     sendMessage("We are gonna start by warm you up a little... ");
@@ -68,6 +66,10 @@ if (tryRunModuleFetchId()) {
     sendMessage("But be ready");
     sendMessage("We will start the moment you hear the beat");
     sendMessage("Make me proud %SlaveName%");
+
+    setTempVar(VARIABLE_STROKE_TRAINING_ACTIVE, true);
+    setTempVar(VARIABLE_STROKE_TRAINING_EDGES_DONE, 0);
+
     startStrokeTraining();
 }
 
@@ -77,12 +79,12 @@ function startStrokeTraining() {
 
     let level = getVar(VARIABLE_STROKE_TRAINING_LEVEL, 1);
 
-    let edgesAtStart = getVar(VARIABLE_STROKE_TRAINING_EDGES_DONE);
+    let edgesAtStart = getVar(VARIABLE_STROKE_TRAINING_EDGES_DONE, 0);
 
     while (true) {
         //Interruption occurred
-        if(getVar(VARIABLE_STROKE_TRAINING_EDGES_DONE) != edgesAtStart) {
-            break;
+        if(getVar(VARIABLE_STROKE_TRAINING_EDGES_DONE) !== edgesAtStart || !getVar(VARIABLE_STROKE_TRAINING_ACTIVE, false)) {
+            return;
         }
 
         timeToIncreaseLevel = getVar('timeToIncreaseLevel');
@@ -120,6 +122,7 @@ function startStrokeTraining() {
         }
 
         sendMessage("Keep it up %SlaveName%");
+        incrementVar(VARIABLE_STROKE_TRAINING_LEVEL, -5);
         endStrokeTraining();
         return;
     }
@@ -136,7 +139,7 @@ function strokeTrainingEdge() {
 
     let level = getVar(VARIABLE_STROKE_TRAINING_LEVEL);
 
-    if (getVar(VARIABLE_STROKE_TRAINING_EDGES_DONE) == 3) {
+    if (getVar(VARIABLE_STROKE_TRAINING_EDGES_DONE) >= 3) {
         sendMessage(random("%Grin%", "%Lol%", "%EmoteHappy%"));
         sendMessage(random("Couldn't handle more huh?", "I guess that was it huh", "So \"no more\" I guess..."));
 
@@ -212,6 +215,7 @@ function strokeTrainingEdge() {
 }
 
 function endStrokeTraining() {
+    setTempVar(VARIABLE_STROKE_TRAINING_ACTIVE, false);
     //run("Session/Modules/DecideModule.js");
 }
 

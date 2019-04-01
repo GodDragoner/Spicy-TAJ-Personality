@@ -117,7 +117,7 @@ function simplePositionTrainingIntro() {
 function simplePositionTrainingSelection(totalPositions) {
 
     simplePositionTrainingIntro();
-    sendMessage("Now then...")
+    sendMessage("Now then...");
 
     const simpleTraining = {
         currentTraining_a1 : function () {
@@ -387,7 +387,7 @@ function simplePositionTrainingSelection(totalPositions) {
     let trainingSet = ["a1", "a2", "a3", "a4", "a5", "a6", "a7", "a8", "a9", "a10", "a11", "a12", "a13", "a14", "a15", "a16"];
     while (positionsDone < totalPositions) {
 
-        if (totalPositions - positionsDone == 1) {
+        if (totalPositions - positionsDone == 1 && positionsDone > 0) {
             sendMessage("We're doing 1 more position...");
         }
 

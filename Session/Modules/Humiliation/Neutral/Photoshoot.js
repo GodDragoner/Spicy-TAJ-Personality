@@ -35,10 +35,10 @@
                 sendMessage(random("Put on music as well!", "Put on a song as well!") + "%Grin%");
                 sendMessage("When you\'re done transfer the video to your humiliation folder");
                 sendMessage("Who knows");
-                sendMessage(random("Maybe ", "Perhaps ") + getVar('blackmailName1') + random(' would like to see it as well?', ' wouldn\'t mind seeing them as well', 'would enjoy watching them!') + ' %Lol%');
+                sendMessage(random("Maybe ", "Perhaps ") + getVar('blackmailName1') + random(' would like to see it as well?', ' wouldn\'t mind seeing them as well', ' would enjoy watching them!') + ' %Lol%');
                 break;
             case 1:
-                sendMessage(random("I want you to", "You need to") + "find, think of, imagine as best as you can - different poses");
+                sendMessage(random("I want you to", "You need to") + " find, think of, imagine as best as you can - different poses");
                 sendMessage(random("Poses you can use while lying on your bed", "Poses for to take while shooting different images") + "%Grin%");
                 sendMessage(random("It\'s really quite simple", "It\'s rather simple", "It\'s not complicated"));
                 sendMessage(random("I want you to snap a few image", "You\'re going to snap some pictures"));

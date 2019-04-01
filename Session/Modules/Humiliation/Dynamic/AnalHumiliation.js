@@ -67,6 +67,7 @@
                 toy = "finger";
                 dildoPlay = false;
             } else {
+                setDate(VARIABLE_LAST_DILDO_SWAP_DATE);
                 sendMessage("Okay let's get started then");
             }
         } else {
@@ -126,7 +127,7 @@ function startPenetratingSession(toy) {
     sendMessage("And pull it all the way out again");
     //TODO: Sit on dildo for some duration
 
-    const durationMinutes = randomInteger(10, 30);
+    const durationMinutes = getAnalSessionLength();
     const date = setDate();
 
     while (!date.clone().addMinute(durationMinutes).hasPassed() && appendModule(toy)) {
@@ -135,6 +136,36 @@ function startPenetratingSession(toy) {
     sendMessage("%SlaveName%");
     sendMessage("You can put your toys aside");
     sendMessage("We are done with that ass for now");
+}
+
+function getAnalSessionLength() {
+    //Max one third of session anal
+    let maxMinutes = Math.ceil(getVar(VARIABLE_DEVOTION)/3);
+
+    //TODO: Anal themed session
+
+    let min = Math.max(5, getVar(VARIABLE_ASS_LEVEL)/2);
+    let max = Math.max(10, getVar(VARIABLE_ASS_LEVEL));
+
+    let mood = getMood();
+
+    min += randomInteger(mood*ACTIVE_PERSONALITY_STRICTNESS, mood*(ACTIVE_PERSONALITY_STRICTNESS + 1));
+    max += randomInteger(mood*ACTIVE_PERSONALITY_STRICTNESS, mood*(ACTIVE_PERSONALITY_STRICTNESS + 1));
+
+    let previousMin = min;
+
+    min = Math.min(previousMin, max);
+    max = Math.max(previousMin, max);
+
+    //Domme mode
+    if(isVar('analWhoreMode')) {
+        maxMinutes = Math.ceil(getVar(VARIABLE_DEVOTION)/2);
+
+        min *= 1.5;
+        max *= 1.5;
+    }
+
+    return Math.min(maxMinutes, randomInteger(Math.ceil(min), Math.ceil(max)));
 }
 
 function appendModule(toy) {
@@ -230,14 +261,14 @@ function appendModule(toy) {
         assModulesDone.add(1);
         appendPenetratingSession(toy);
     } else {
-        return false;
+        assModulesDone.add(1);
+        appendPenetratingSession(toy);
     }
 
     return true;
 }
 
 
-//TODO: Switch toy?
 function appendPenetratingSession(toy) {
     //TODO: Generalize append transition
     sendMessage("Now...");
@@ -252,8 +283,8 @@ function appendPenetratingSession(toy) {
     const finger = toy == "finger";
     let currentFingerCount = 1;
 
-    //TODO: Don't have the same position twice
-    choosePosition(toy, blowjob);
+    toy = choosePosition(toy, blowjob);
+
     sendMessage("Put the tip of your " + toy + " on your asshole");
     sendMessage("Be ready");
     sendMessage("Because you are going to push it in and out to the beat %Grin%");
@@ -269,8 +300,9 @@ function appendPenetratingSession(toy) {
 
         if (isChance(50) || !currentBlowjob) {
             sendMessage("Let's change the position shall we? %Grin%");
-            choosePosition(toy, currentBlowjob);
+            toy = choosePosition(toy, currentBlowjob);
             sendMessage("And straight back to fucking that ass of yours");
+
             if (currentBlowjob) {
                 sendMessage("And don't forget to keep that mouth " + random("busy", "occupied", "used", "filled") + " too %Lol%");
             }
@@ -285,8 +317,7 @@ function appendPenetratingSession(toy) {
             sendMessage("And back to fucking that ass %Grin%");
         }
 
-        //TODO: Based on experience
-        if (isChance(50) && finger && currentFingerCount < 5) {
+        if (isChance(50) && finger && currentFingerCount < getVar(VARIABLE_ASS_LEVEL)/6 && currentFingerCount < 5) {
             sendMessage("I think you are ready to take more than your " + currentFingerCount++ + pluralize("finger", currentFingerCount));
             sendMessage("Go ahead and use " + currentFingerCount + pluralize("finger", currentFingerCount) + " from now on %Grin%");
             if (currentFingerCount >= 4) {
@@ -479,6 +510,20 @@ function choosePosition(toy, needsTwoHands = false) {
             sendMessage("And to bend your legs so that your feet touch the ground %Grin%");
             break;
     }
+
+    if(getDate(VARIABLE_LAST_DILDO_SWAP_DATE).addMinutes(10 - Math.ceil(getVar(VARIABLE_ASS_LEVEL)/6))) {
+        let newToy = getDildo(false).name;
+
+        if(fetchDildoToy(newToy)) {
+            sendMessage('I want you to use your ' + newToy + ' for now instead %Grin%');
+            setDate(VARIABLE_LAST_DILDO_SWAP_DATE);
+            toy = newToy;
+        } else {
+            sendMessage('Let\'s continue with your ' + toy + ' then %EmoteSad%');
+        }
+    }
+
+    return toy;
 }
 
 function startSquatAnal(toy) {

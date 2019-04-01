@@ -33,7 +33,7 @@
         while (true) {
             //TODO: Unified check for thank you answer with Honorific attached!
             if (answer.isLike("you", "thanks", "gracias", "merci", "grateful", "gratitude")) {
-                sendMessage("You\'re welcome %PetName% %Smile%");
+                sendMessage("You\'re welcome %SlaveName% %Smile%");
                 break;
             } else {
                 sendMessage('"No... try again');

@@ -1,4 +1,22 @@
 
+function getTrainingEXPMultiplier(tasksInRow) {
+    if (getVar(tasksInRow) >= 15) {
+        return 4;
+    } else if (getVar(tasksInRow) >= 10) {
+        return 3;
+    } else if (getVar(tasksInRow) >= 5) {
+        return 2;
+    }
+
+    return 1;
+}
+
+function startKneeling() {
+    //TODO: Sound and random
+    sendMessage(random('Kneel for me', 'Get down on your knees', 'Down on your knees, right now', 'I want you to kneel for me,') + ' %SlaveName%');
+    setTempVar(VARIABLE_IS_KNEELING, true);
+}
+
 function addPunishmentPoints(amount) {
     const points = getVar(VARIABLE_PUNISHMENT_POINTS);
 

@@ -21,6 +21,13 @@ function hasBallGag() {
 
 //TODO: Different gag types
 function putInGag(gagType = GAG_TYPE_BALL_GAG) {
+    //TODO: Maybe tell to remove the pin in some cases
+    if(BODY_PART_TONGUE.currentClamps > 0) {
+        sendMessage('%SlaveName%');
+        sendMessage('Remove all clamps from your tongue %EmoteHappy%', 5);
+        BODY_PART_TONGUE.currentClamps = 0;
+    }
+
     if (!fetchToy(gagType.name)) {
         return false;
     }

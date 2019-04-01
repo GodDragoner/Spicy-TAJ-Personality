@@ -1,4 +1,6 @@
-const DOMME_MODES = ["slutMode", "slaveMode", "cuckMode", "loverMode", "chastityMode"];
+const DOMME_MODES = ["slutMode", "slaveMode", "cuckMode", "loverMode", "chastityMode", "analWhoreMode"];
+
+//TODO: Settings
 
 //First time?
 if(!isVar("crazyDommeModeSetDate")) {
@@ -14,7 +16,7 @@ function redistributeModes() {
     setDate("crazyDommeModeSetDate", setDate("crazyDommeModeSetDate").addDay(randomInteger(4, 10)));
 
     for(let x = 0; x < DOMME_MODES.length; x++) {
-        if(randomInteger(1, 100) <= 20) {
+        if(isChance(20)) {
             if(!isVar(DOMME_MODES[x])) {
                 setVar(DOMME_MODES[x], true);
             }

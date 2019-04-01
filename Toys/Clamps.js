@@ -19,6 +19,61 @@ function getTotalAttachedClamps() {
     return amount;
 }
 
+function removeClamps(amount) {
+    sendMessage("%SlaveName%");
+
+    let firstRun = true;
+
+    while(amount > 0 && getTotalAttachedClamps() !== 0) {
+        let randomBodyPart = BODY_PARTS[randomInteger(0, BODY_PARTS.length  - 1)];
+
+        //Check whether that body part has no clamps OR whether it has an opposite part with clamps but our amount isn't enough, however make sure we don't have an infinite loop by checking whether there are an uneven amount of clamps left
+        if(randomBodyPart.currentClamps === 0 || (randomBodyPart.hasOppositeBodyPart() && randomBodyPart.getOppositeBodyPart().currentClamps > 0 && amount === 1 && getTotalAttachedClamps()%2 === 1)) {
+            continue;
+        }
+
+        let distributedClamps = randomBodyPart.currentClamps;
+
+        //Add them to this
+        if(randomBodyPart.hasOppositeBodyPart()) {
+            distributedClamps += randomBodyPart.getOppositeBodyPart().currentClamps;
+        }
+
+        let toRemove = randomInteger(1, Math.min(distributedClamps, Math.min(amount, 5)));
+
+        if(randomBodyPart.hasOppositeBodyPart() && randomBodyPart.getOppositeBodyPart().currentClamps > 0 && amount > 1) {
+            //Fix to remove if we have an opposite body part to work with
+            if(toRemove === 1) {
+                toRemove = 2;
+            }
+
+            //Make it dividable by two
+            toRemove = toRemove - toRemove%2;
+
+            //Now divide it by two
+            toRemove /= 2;
+
+            //Fix amount
+            if(toRemove > randomBodyPart.getOppositeBodyPart().currentClamps) {
+                toRemove = randomBodyPart.getOppositeBodyPart().currentClamps;
+            }
+
+            //Fix amount
+            if(toRemove > randomBodyPart.currentClamps) {
+                toRemove = randomBodyPart.currentClamps;
+            }
+
+            putClampsOff(toRemove, randomBodyPart, true, firstRun);
+            amount -= toRemove;
+        } else {
+            putClampsOff(toRemove, randomBodyPart, false, firstRun);
+            amount -= toRemove;
+        }
+
+        firstRun = false;
+    }
+}
+
 function distributeClamps(amount) {
     //const currentClamps = getTotalAttachedClamps();
 
@@ -47,7 +102,12 @@ function distributeClamps(amount) {
     let firstRun = true;
 
     while(amount > 0) {
-        let randomBodyPart = BODY_PARTS[randomInteger(0, BODY_PARTS.length)];
+        let randomBodyPart = BODY_PARTS[randomInteger(0, BODY_PARTS.length - 1)];
+
+        //No pins to penis/balls if in chastity
+        if(isInChastity() && (randomBodyPart === BODY_PART_PENIS_SHAFT || randomBodyPart === BODY_PART_PENIS_HEAD || randomBodyPart === BODY_PART_BALLS)) {
+            continue;
+        }
 
         if(randomBodyPart.currentClamps >= randomBodyPart.maxClamps) {
             //If there is no opposite or the opposite part is also filled already skip
@@ -112,5 +172,30 @@ function putClampsOn(amount, bodyPart, oppositeToo = false, firstRun = false) {
     }
 
     bodyPart.currentClamps += amount;
+    sleep(3);
+}
+
+
+function putClampsOff(amount, bodyPart, oppositeToo = false, firstRun = false) {
+    let sentenceStart = random("remove");
+    if(!firstRun) {
+        sentenceStart = random("now", "next", "go ahead and") + " " + sentenceStart;
+
+        if(isChance(50)) {
+            sentenceStart += " an " + random("additional", "extra");
+        }
+    }
+
+    //Capitalize first letter
+    sentenceStart = capitalize(sentenceStart);
+
+    if(oppositeToo) {
+        sendMessage(sentenceStart + " " + amount + pluralize(" clothespin", amount) + " from both your right and left " + bodyPart.name);
+        bodyPart.getOppositeBodyPart().currentClamps -= amount;
+    } else {
+        sendMessage(sentenceStart + " " + amount + pluralize(" clothespin", amount) + " from your " + bodyPart.sidedName);
+    }
+
+    bodyPart.currentClamps -= amount;
     sleep(3);
 }

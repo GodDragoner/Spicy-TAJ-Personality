@@ -9,9 +9,9 @@
                 break;
             } else if(answer.isLike('no')) {
                 sendMessage("Oh good, " + random("then ", "that means ") + "I can " + random("take a moment to ", "go ") + "get myself %SomethingToDrink%");
-                sendMessage("Don\'t go anywhere %PetName%, and don\'t touch that %Cock%");
+                sendMessage("Don\'t go anywhere %SlaveName%, and don\'t touch that %Cock%");
                 sendMessage("You can stare at some %Boobs% in the meantime");
-                showTaggedImage("boobs");
+                showCategoryImage("BOOBS");
                 lockImages();
                 sendMessage("I\'ll be right back!");
                 sleep(110);

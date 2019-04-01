@@ -92,6 +92,7 @@
 
                         const hitType = getWinnerIndex([flickChance, hitChance, punchChane]);
 
+                        //TODO: Tease if just untied
                         if (!hasBallsTied() && loops != 0 && isChance(10 + painLevel * 2)) {
                             sendMessage('I think we need to change this up a bit');
                             tieBalls();
@@ -186,9 +187,12 @@
             while (doneModules.size() < maxLoops) {
                 modules[randomInteger(0, modules.length - 1)].startModule();
 
+                //If this is readded make sure to check if startModule was successful, otherwise it might end without doing anything
+                /*
                 if (isChance(getEarlyPunishmentExitChance())) {
                     break;
                 }
+                */
             }
 
             sendMessage('I guess we are done with %MyBalls% %Balls% for now');
@@ -220,7 +224,7 @@ function getToiletLidTask(hitLevel, hasPortableDevice, map) {
 
     if (currentAmount > 0) {
         let answers = [
-            random('Go ahead and', 'I want you to') + random('yet', '') + ' again raise the toilet lid to ' + hitLevels[hitLevel] + ' and let it fall on %MyBalls% %Balls% ' + hitAmount + pluralize(' times', hitAmount),
+            random('Go ahead and', 'I want you to') + random('yet', '') + ' again raise the toilet lid to ' + hitLevels[hitLevel] + ' and let it fall on %MyBalls% %Balls% ' + hitAmount + pluralize(' time', hitAmount),
         ];
 
         sendMessage(answers[randomInteger(0, answers.length - 1)]);
@@ -232,7 +236,7 @@ function getToiletLidTask(hitLevel, hasPortableDevice, map) {
         }
 
         let answers = [
-            'I want you to raise the toilet lid to ' + hitLevels[hitLevel] + ' and let it fall on %MyBalls% %Balls% ' + hitAmount + pluralize(' times', hitAmount),
+            'I want you to raise the toilet lid to ' + hitLevels[hitLevel] + ' and let it fall on %MyBalls% %Balls% ' + hitAmount + pluralize(' time', hitAmount),
         ];
 
         return answers[randomInteger(0, answers.length - 1)];
@@ -252,7 +256,7 @@ function sendBallHitTask(hitLevel, hitType, loops, isBeginning, map) {
 
     if (currentAmount > 0) {
         let answers = [
-            'I want you to yet again ' + hitTypes[hitType] + ' %MyBalls% %Balls% ' + hitLevels[hitLevel] + hitAmount + pluralize(' times', hitAmount),
+            'I want you to yet again ' + hitTypes[hitType] + ' %MyBalls% %Balls% ' + hitLevels[hitLevel] + ' ' + hitAmount + pluralize(' time', hitAmount),
             random('Give', 'Go ahead and give', 'Let\'s give ') + ' %MyBalls% %Balls% another ' + hitAmount + ' ' + hitLevels[hitLevel] + ' ' + pluralize(hitTypes[hitType], hitAmount),
         ];
 
@@ -265,7 +269,7 @@ function sendBallHitTask(hitLevel, hitType, loops, isBeginning, map) {
         }
 
         let answers = [
-            'I want you to ' + hitTypes[hitType] + ' %MyBalls% %Balls% ' + hitLevels[hitLevel] + ' ' +  hitAmount + pluralize(' times', hitAmount),
+            'I want you to ' + hitTypes[hitType] + ' %MyBalls% %Balls% ' + hitLevels[hitLevel] + ' ' +  hitAmount + pluralize(' time', hitAmount),
             random('Give', 'Go ahead and give', 'Let\'s give ') + ' %MyBalls% %Balls% ' + hitAmount + ' ' + hitLevels[hitLevel] + ' ' + pluralize(hitTypes[hitType], hitAmount),
         ];
 

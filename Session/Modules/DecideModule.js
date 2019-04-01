@@ -11,7 +11,6 @@
         //TODO: Chastity version of distraction / punishment distraction
 
         if(!isInChastity()) {
-            //TODO: Ask in setup file
             let strokeFrequency = getVar(VARIABLE_STROKE_MODULE_PAUSE_FREQUENCY, 0);
 
             let minTimePassed = 0;

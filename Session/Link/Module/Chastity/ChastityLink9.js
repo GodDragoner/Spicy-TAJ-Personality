@@ -11,6 +11,6 @@
         sendMessage("Deepening your frustration", 0);
         showTeaseImage(3);
         unlockImages();
-        sendMessage("I love messing with your submissive little mind, %PetName% %Laugh%");
+        sendMessage("I love messing with your submissive little mind, %SlaveName% %Laugh%");
     }
 }

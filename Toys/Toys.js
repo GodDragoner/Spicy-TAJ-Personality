@@ -57,7 +57,10 @@ function interactWithRandomToys() {
         removeGag();
     } else if(hasBallGag()) {
         if(isAnnoyedByTalking() || isChance(15)) {
-            putInGag();
+            //TODO: Maybe tell to remove the pin in some cases
+            if(BODY_PART_TONGUE.currentClamps === 0) {
+                putInGag();
+            }
         }
     }
 
@@ -66,8 +69,8 @@ function interactWithRandomToys() {
     if(isChance(20) && getPainLimit() === LIMIT_ASKED_YES) {
         let toDistribute = getTotalAttachedClamps() > 20 || isChance(35) && getTotalAttachedClamps() > 0? 0 : randomInteger(1, 4);
 
-        if(toDistribute === 0) {
-            sendMessage('You may remove ' + randomInteger(1, Math.max(1, getTotalAttachedClamps()/2)) + ' clamps from your body');
+        if(toDistribute === 0 && getTotalAttachedClamps() > 0) {
+            removeClamps(randomInteger(1, Math.max(1, getTotalAttachedClamps()/2)));
         } else {
             distributeClamps(toDistribute);
         }

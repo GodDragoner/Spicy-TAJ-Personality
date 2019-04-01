@@ -3,7 +3,7 @@
         sendMessage("You get to cum %GeneralTime%, %SlaveName%");
         sendMessage(random("I\'m going to count you down", "Let me count you down", "I\'ll do a countdown"));
         sendMessage(random("Get ready to hit the edge when I get to zero", "I want you to hit the edge when I get to zero", "You should hit the edge when I get to zero"));
-        sendMessage("But ONLY at zero, %PetName% %Smile%");
+        sendMessage("But ONLY at zero, %SlaveName% %Smile%");
         sendMessage("And wait for my command to cum, because I might make you hold that edge a bit too");
         sendMessage("Start stroking");
         sendMessage(random("Here we go", "Let\'s do this", "Let\'s get started", "Here it comes"));

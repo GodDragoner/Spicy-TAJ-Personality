@@ -1,3 +1,5 @@
+run("Session/Link/Link.js");
+
 function endSpicySession() {
     askAboutDenialLevel();
 

@@ -1,5 +1,5 @@
 {
-    if (getVar(VARIABLE_CHASTITY_LEVEL) >= 30 || isVar('AnalExamStartDate')) {
+    if (getVar(VARIABLE_ASS_LEVEL) >= 30 || isVar('AnalExamStartDate')) {
         run('Session/End/AnalTraining/AnalExam.js');
     } else {
         //By default we want to send a new assignment

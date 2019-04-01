@@ -38,11 +38,6 @@
     positionTrainingEnd();
 }
 
-function startKneeling() {
-    //TODO: Sound and random
-    sendMessage(random('Kneel for me', 'Get down on your knees', 'Down on your knees, right now', 'I want you to kneel for me,') + ' %SlaveName%');
-    setTempVar(VARIABLE_IS_KNEELING, true);
-}
 
 function stopKneeling() {
     sendMessage('You can stand up %SlaveName%');

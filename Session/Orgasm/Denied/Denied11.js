@@ -1,7 +1,7 @@
 {
     if (tryRunOrgasmFetchId()) {
         sendMessage("I think today I\'m going to let you cum");
-        sendMessage("But wait for my command, %PetName%");
+        sendMessage("But wait for my command, %SlaveName%");
         sendMessage("I want you to " + random("enjoy ", "savour ") + "this moment");
         sendMessage(random("Just think about ", "Imagine ") + "how good it\'s going to feel when you go over the edge");
         sendMessage("When you let that orgasm course through you");

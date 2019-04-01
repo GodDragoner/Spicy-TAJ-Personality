@@ -124,6 +124,21 @@ function lockChastityCage() {
     }
 
     sendMessage("%SlaveName%");
+
+    if(BODY_PART_PENIS_HEAD.currentClamps > 0 || BODY_PART_PENIS_SHAFT.currentClamps > 0 || BODY_PART_BALLS.currentClamps > 0) {
+        sendMessage('Go ahead and remove all clamps from your penis and balls');
+        sendMessage('Tell me when you are done');
+        waitForDone();
+        sendMessage('Aren\'t I nice to you? %Grin%');
+
+        //TODO: Interaction
+
+        //Set clamps on those parts to zero
+        BODY_PART_PENIS_SHAFT.currentClamps = 0;
+        BODY_PART_PENIS_HEAD.currentClamps = 0;
+        BODY_PART_BALLS.currentClamps = 0;
+    }
+
     lockImages();
     showImage("Images/Spicy/Chastity/ChastityOn/*.{jpg,png,gif}");
     if(randomInteger(0, 2) == 2) playSound("Audio/Spicy/Chastity/ChastityOn/*.mp3");

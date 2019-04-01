@@ -103,18 +103,6 @@ function checkBlowjobExercise() {
 }
 
 
-function getTrainingEXPMultiplier(tasksInRow) {
-    if (getVar(tasksInRow) >= 15) {
-        return 4;
-    } else if (getVar(tasksInRow) >= 10) {
-        return 3;
-    } else if (getVar(tasksInRow) >= 5) {
-        return 2;
-    }
-
-    return 1;
-}
-
 function firstTimeBlowjobTraining() {
     sendMessage("This is gonna be our very first blowjob training");
 

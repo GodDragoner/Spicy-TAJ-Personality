@@ -97,7 +97,7 @@
         sendMessage("You've signed up for full time");
         sendMessage("Normally this would mean that I expect you to launch Tease-AI at least 6 times per week");
         sendMessage("But I would understand it if your life doesn't allow for that");
-        sendMessage("So #SlaveName ");
+        sendMessage("So %SlaveName% ");
         let answer = sendInput("How many times a week do you think I should expect you to use Tease-AI?");
 
         while (true) {
@@ -132,6 +132,7 @@
         sendMessage("Since this number will likely cover your cleaning duty");
         sendMessage("All chores beyond those I consider to be voluntary");
         sendMessage("Either because you want to please me or perhaps earn a bit of gold");
+
         answer = sendInput("Do you wish to change the number of chores?");
         while (true) {
             if (answer.isLike("yes")) {
@@ -247,6 +248,39 @@
         sendMessage("No matter your limit. I will break it %SlaveName%");
         sendMessage("We're gonna have a lot of fun! %Lol%");
     }
+
+    sendMessage('So...');
+    sendMessage('During our sessions you will be told to stroke quite frequently');
+    sendMessage('Right now letting you stroke as a break is up to me though');
+    sendMessage('If you want to do it differently though you can tell me on a scale of 1 to 5 how many times you want to have a stroking break during a session');
+    sendMessage('So tell me %SlaveName%');
+
+    answer = sendInput('Should it be up to me and my mood? Otherwise just type the amount of you want to choose yourself');
+
+    while (true) {
+        if(answer.isLike('you', 'mood')) {
+            sendMessage('I knew you would let me choose');
+            sendMessage('That is the only proper way %Grin%');
+            setVar(VARIABLE_STROKE_MODULE_PAUSE_FREQUENCY, 0);
+        } else if (answer.isInteger()) {
+            const result = answer.getInt();
+            if (result <= 0) {
+                sendMessage("You have to choose a number larger than 0...");
+                answer.loop();
+            } else if (result <= 5) {
+                sendMessage("So be it...");
+                setVar(VARIABLE_STROKE_MODULE_PAUSE_FREQUENCY, result);
+                break;
+            } else {
+                sendMessage('You can\'t give me a number greater than 5...');
+                answer.loop();
+            }
+        } else {
+            sendMessage("Just give me a number like 3, 10 or 70...");
+            answer.loop();
+        }
+    }
+
 
     sendMessage("Next");
     sendMessage("I think it's important that we start out with a clean history");

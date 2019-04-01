@@ -158,8 +158,7 @@ const afraidTasks = [];
         id: taskId++, exp: 29, minLevel: 1,
 
         sendInstructions: function () {
-            setVar("RandomNumber", getVar("#Random10,25", 0));
-            sendMessage("%InAddition% " + random("I want you to spend", "you should also spend" + " minutes locked up outside"));
+            sendMessage("%InAddition% " + random("I want you to spend", "you should also spend") + randomInteger(10, 25) + " minutes locked up outside");
             sendMessage("While you are outside I want you to pay special attention to other people around you %Grin%");
         },
     };
