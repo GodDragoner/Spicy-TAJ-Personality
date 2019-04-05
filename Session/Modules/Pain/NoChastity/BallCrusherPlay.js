@@ -116,10 +116,13 @@
                 sendMessage('Which means you are gonna do ' + getVar(VARIABLE_BALL_CRUSHER_TWISTS_TO_APPLY) + ' half twists');
                 sendMessage('Tell me when you are ready to continue %SlaveName%');
                 waitForDone();
+
             }
 
             //TODO: More than just "now" like Let's see etc. generalize this somewhere as a function
             sendMessage('Now...');
+
+            decideGag(true);
 
             switch (randomInteger(0, 2)) {
                 case 0:

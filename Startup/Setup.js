@@ -135,204 +135,131 @@
     lockImages();
     sendVirtualAssistantMessage("%Good%");
     sendVirtualAssistantMessage("Mistress %domName% would prefer it if you are able to handle wearing a chastity device at all times");
-    showImage("Images/Spicy/Toys/MetalChastity.jpg", 4);
+    //showImage("Images/Spicy/Toys/MetalChastity.jpg", 4);
     sendVirtualAssistantMessage("But she also understands that it takes practice to learn");
+
     sendVirtualAssistantMessage("Do you own a chastity device?", false);
-    answer = createInput();
+    if (setupCage(false)) {
+        sendVirtualAssistantMessage("Noted...");
 
-    while (true) {
-        if (answer.isLike("yes")) {
-            setVar(VARIABLE_HAS_CHASTITY, true);
-            sendVirtualAssistantMessage("Is it made of plastic or metal?", false);
-            showImage("Images/Spicy/Toys/PlasticChastity.jpg", 3);
-            answer = createInput();
+        sendVirtualAssistantMessage("Do you own a timed lock box?", false);
+        answer = createInput();
 
-            while (true) {
-                if (answer.isLike("metal")) {
-                    setVar(VARIABLE_CHASTITY_MATERIAL, 0);
-                    showImage("Images/Spicy/Toys/MetalChastity.jpg", 3);
-                    break;
-                } else if (answer.isLike("plastic")) {
-                    setVar(VARIABLE_CHASTITY_MATERIAL, 1);
-                    showImage("Images/Spicy/Toys/PlasticChastity.jpg", 3);
-                    break;
-                } else {
-                    sendVirtualAssistantMessage("Metal or plastic?");
-                    answer.loop();
-                }
-            }
+        while (true) {
+            if (answer.isLike("yes")) {
+                setVar(VARIABLE_CHASTITY_HAS_TIMED_LOCKBOX, true);
+                sendVirtualAssistantMessage("Noted...");
+                break;
+            } else if (answer.isLike("no")) {
+                sendVirtualAssistantMessage('Okay then...');
+                sendVirtualAssistantMessage('Now because you don\'t own a timed lockbox...');
+                sendVirtualAssistantMessage('Do you own something like a combination lock and some box where you can lock your keys using said lock?', false);
+                answer = createInput();
 
-            sendVirtualAssistantMessage("Noted...");
-            sendVirtualAssistantMessage("Is it a full belt or a ball trap device?", false);
-            answer = createInput();
-
-            while (true) {
-                if (answer.containsIgnoreCase("full", "belt")) {
-                    setVar(VARIABLE_CHASTITY_CAGE_TYPE, 0);
-                    sendVirtualAssistantMessage("Full belt...");
-                    break;
-                } else if (answer.containsIgnoreCase("ball", "trap")) {
-                    setVar(VARIABLE_CHASTITY_CAGE_TYPE, 1);
-                    sendVirtualAssistantMessage("Ball trap...");
-                    break;
-                } else {
-                    sendVirtualAssistantMessage("Full or ball trap?");
-                    answer.loop();
-                }
-            }
-
-            sendVirtualAssistantMessage("Are you pierced as a mean to secure the device?", false);
-            answer = createInput();
-
-            while (true) {
-                if (answer.isLike("yes")) {
-                    setVar("chastityCagePierced", true);
-                    sendVirtualAssistantMessage("This should be fun...");
-                    break;
-                } else if (answer.isLike("no")) {
-                    sendVirtualAssistantMessage("Too bad...");
-                    break;
-                } else {
-                    sendVirtualAssistantMessage(YES_OR_NO);
-                    answer.loop();
-                }
-            }
-
-            sendVirtualAssistantMessage("Do you use a metal lock or plastic numbered lock to lock it?", false);
-            answer = createInput();
-
-            while (true) {
-                if (answer.containsIgnoreCase("metal")) {
-                    setVar("chastityLockType", 0);
-                    break;
-                } else if (answer.containsIgnoreCase("plastic", "numbered")) {
-                    setVar("chastityLockType", 1);
-                    break;
-                } else {
-                    sendVirtualAssistantMessage("Metal or plastic?");
-                    answer.loop();
-                }
-            }
-
-            sendVirtualAssistantMessage("Noted...");
-            sendVirtualAssistantMessage("Do you own a timed lock box?", false);
-            answer = createInput();
-
-            while (true) {
-                if (answer.isLike("yes")) {
-                    setVar("chastityTimedLockBox", true);
-                    break;
-                } else if (answer.isLike("no")) {
-                    break;
-                } else {
-                    sendVirtualAssistantMessage(YES_OR_NO);
-                    answer.loop();
-                }
-            }
-
-            sendVirtualAssistantMessage("Noted...");
-            sendVirtualAssistantMessage("If you have it, we might consider using spikes as a punishment...");
-            sendVirtualAssistantMessage("Do you have a set of spike attachments to your belt?", false);
-            answer = createInput();
-
-            while (true) {
-                if (answer.isLike("yes")) {
-                    setVar("chastitySpikes", true);
-                    break;
-                } else if (answer.isLike("no")) {
-                    break;
-                } else {
-                    sendVirtualAssistantMessage(YES_OR_NO);
-                    answer.loop();
-                }
-            }
-
-            sendVirtualAssistantMessage("Noted...");
-            sendVirtualAssistantMessage("Ideally Mistress %domName% prefers that you are locked whenever you're not playing")
-            sendVirtualAssistantMessage("Meaning you wear it 24/7");
-            sendVirtualAssistantMessage("And that you will only be released when told so");
-            sendVirtualAssistantMessage("Are you capable of wearing it 24/7? I suggest you answer truthfully for your own sake...", false);
-            answer = createInput();
-
-            while (true) {
-                if (answer.isLike("yes")) {
-                    setVar(VARIABLE_CHASTITY_LEVEL, 30);
-                    setVar(VARIABLE_LONG_TERM_CHASTITY, true);
-                    sendVirtualAssistantMessage("This should be fun...");
-                    break;
-                } else if (answer.isLike("no")) {
-                    sendVirtualAssistantMessage("Don't be ashamed, we can always work on this");
-
-                    sendVirtualAssistantMessage("Well since you can't wear it 24/7");
-                    sendVirtualAssistantMessage("I'm curious to find out how much you can handle");
-                    sendVirtualAssistantMessage("Are you willing to work towards learning how to wear it 24/7?", false);
-                    answer = createInput();
-
-                    while (true) {
-                        if (answer.isLike("yes")) {
-                            sendVirtualAssistantMessage("%Good%");
-                            setVar(VARIABLE_CHASTITY_LEVEL, 1);
-                            setVar(VARIABLE_CHASTITY_TRAINING, true);
-
-                            sendVirtualAssistantMessage("Slave I don't care if you sleep with your cage");
-                            sendVirtualAssistantMessage("I think you should since it would constantly remind you who you belong to");
-                            sendVirtualAssistantMessage("But you won't be forced to");
-                            sendVirtualAssistantMessage("When it comes to exercise I understand that performing it while caged isn't easy");
-                            sendVirtualAssistantMessage("So I'm not gonna force this on you either");
-                            sendVirtualAssistantMessage("But again it would make me and your Mistress happy if you did");
-                            break;
-                        } else if (answer.isLike("no")) {
-                            setVar(VARIABLE_CHASTITY_TRAINING, false);
-                            sendVirtualAssistantMessage("It's alright");
-                            break;
-                        } else {
-                            sendVirtualAssistantMessage(YES_OR_NO);
-                            answer.loop();
-                        }
+                while (true) {
+                    if (answer.isLike("yes")) {
+                        setVar(VARIABLE_CHASTITY_HAS_COMBINATION_LOCK, true);
+                        break;
+                    } else if (answer.isLike("no")) {
+                        sendVirtualAssistantMessage('You might consider getting a timed lock box or a combination lock then');
+                        sendVirtualAssistantMessage('Combination locks are like 10 Euros so you should get one fairly easily');
+                        sendVirtualAssistantMessage('Just make sure you can change the combination');
+                        break;
+                    } else {
+                        sendVirtualAssistantMessage(YES_OR_NO);
+                        answer.loop();
                     }
-                    break;
-                } else {
-                    sendVirtualAssistantMessage(YES_OR_NO);
-                    answer.loop();
                 }
+                break;
+            } else {
+                sendVirtualAssistantMessage(YES_OR_NO);
+                answer.loop();
             }
-
-            sendVirtualAssistantMessage('And a final question about chastity...');
-            sendVirtualAssistantMessage('Do you consider chastity a plaything?');
-            sendVirtualAssistantMessage('A punishment? Both?');
-            sendVirtualAssistantMessage('Or something you should try to wear full time 24/7?', false);
-
-            answer = createInput();
-
-            while (true) {
-                if (answer.containsIgnoreCase("play")) {
-                    setVar(VARIABLE_CHASTITY_TOY_MODE, TOY_PLAY_MODE);
-                    break;
-                } else if (answer.containsIgnoreCase("both")) {
-                    setVar(VARIABLE_CHASTITY_TOY_MODE, TOY_BOTH_MODE);
-                    break;
-                } else if (answer.containsIgnoreCase("punishment")) {
-                    setVar(VARIABLE_CHASTITY_TOY_MODE, TOY_PUNISHMENT_MODE);
-                    break;
-                } else if (answer.containsIgnoreCase("full", "time", "24/7")) {
-                    setVar(VARIABLE_CHASTITY_TOY_MODE, TOY_BOTH_MODE + 1);
-                    break;
-                } else {
-                    sendVirtualAssistantMessage("Play, punishment, both or full time?");
-                    answer.loop();
-                }
-            }
-
-            sendVirtualAssistantMessage("Okay then!");
-            break;
-        } else if (answer.isLike("no")) {
-            setVar(VARIABLE_HAS_CHASTITY, false);
-            sendVirtualAssistantMessage("You should consider buying one for the full experience");
-            break;
-        } else {
-            sendVirtualAssistantMessage(YES_OR_NO);
-            answer.loop();
         }
+
+
+        sendVirtualAssistantMessage("Next...");
+        sendVirtualAssistantMessage('Your %DomHonorific% might consider punishing you with a really small cage');
+        sendVirtualAssistantMessage('There is no set length for "really small" however it should smaller than your normal cage');
+        sendVirtualAssistantMessage('Do you own a second small "punishment" cage?', false);
+        setupCage(true);
+
+        sendVirtualAssistantMessage("Ideally %DomHonorific% %domName% prefers that you are locked whenever you're not playing");
+        sendVirtualAssistantMessage("Meaning you wear it 24/7");
+        sendVirtualAssistantMessage("And that you will only be released when told so");
+        sendVirtualAssistantMessage("Are you capable of wearing it 24/7? I suggest you answer truthfully for your own sake...", false);
+        answer = createInput();
+
+        while (true) {
+            if (answer.isLike("yes")) {
+                setVar(VARIABLE_CHASTITY_LEVEL, 30);
+                setVar(VARIABLE_LONG_TERM_CHASTITY, true);
+                sendVirtualAssistantMessage("This should be fun...");
+                break;
+            } else if (answer.isLike("no")) {
+                sendVirtualAssistantMessage("Don't be ashamed, we can always work on this");
+
+                sendVirtualAssistantMessage("Well since you can't wear it 24/7");
+                sendVirtualAssistantMessage("I'm curious to find out how much you can handle");
+                sendVirtualAssistantMessage("Are you willing to work towards learning how to wear it 24/7?", false);
+                answer = createInput();
+
+                while (true) {
+                    if (answer.isLike("yes")) {
+                        sendVirtualAssistantMessage("%Good%");
+                        setVar(VARIABLE_CHASTITY_LEVEL, 1);
+                        setVar(VARIABLE_CHASTITY_TRAINING, true);
+
+                        sendVirtualAssistantMessage("Slave I don't care if you sleep with your cage");
+                        sendVirtualAssistantMessage("I think you should since it would constantly remind you who you belong to");
+                        sendVirtualAssistantMessage("But you won't be forced to");
+                        sendVirtualAssistantMessage("When it comes to exercise I understand that performing it while caged isn't easy");
+                        sendVirtualAssistantMessage("So I'm not gonna force this on you either");
+                        sendVirtualAssistantMessage("But again it would make me and your Mistress happy if you did");
+                        break;
+                    } else if (answer.isLike("no")) {
+                        setVar(VARIABLE_CHASTITY_TRAINING, false);
+                        sendVirtualAssistantMessage("It's alright");
+                        break;
+                    } else {
+                        sendVirtualAssistantMessage(YES_OR_NO);
+                        answer.loop();
+                    }
+                }
+                break;
+            } else {
+                sendVirtualAssistantMessage(YES_OR_NO);
+                answer.loop();
+            }
+        }
+
+        sendVirtualAssistantMessage('And a final question about chastity...');
+        sendVirtualAssistantMessage('Do you consider chastity a plaything?');
+        sendVirtualAssistantMessage('A punishment? Both?');
+        sendVirtualAssistantMessage('Or something you should try to wear full time 24/7?', false);
+
+        answer = createInput();
+
+        while (true) {
+            if (answer.containsIgnoreCase("play")) {
+                setVar(VARIABLE_CHASTITY_TOY_MODE, TOY_PLAY_MODE);
+                break;
+            } else if (answer.containsIgnoreCase("both")) {
+                setVar(VARIABLE_CHASTITY_TOY_MODE, TOY_BOTH_MODE);
+                break;
+            } else if (answer.containsIgnoreCase("punishment")) {
+                setVar(VARIABLE_CHASTITY_TOY_MODE, TOY_PUNISHMENT_MODE);
+                break;
+            } else if (answer.containsIgnoreCase("full", "time", "24/7")) {
+                setVar(VARIABLE_CHASTITY_TOY_MODE, TOY_BOTH_MODE + 1);
+                break;
+            } else {
+                sendVirtualAssistantMessage("Play, punishment, both or full time?");
+                answer.loop();
+            }
+        }
+
+        sendVirtualAssistantMessage("Okay then!");
     }
 
     sendVirtualAssistantMessage("Moving on...");
@@ -490,7 +417,7 @@
     askForToy("Butt Plugs");
     askForToyUsage("ButtPlugs", domChose);
 
-    if(hasButtplugToy()) {
+    if (hasButtplugToy()) {
         sendVirtualAssistantMessage('Okay %SlaveName%. Tell me, how many different buttplugs do you have?', false);
         answer = createInput();
 
@@ -601,24 +528,7 @@
     askForToyUsage("EStim", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
-    askForToy("Ball Gag");
-    askForToyUsage("Ball Gag", domChose);
-    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
-
-    askForToy("Spider Gag");
-    askForToyUsage("Spider Gag", domChose);
-    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
-
-    askForToy("Dildo Gag");
-    askForToyUsage("Dildo Gag", domChose);
-    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
-
-    askForToy("Inflatable Gag");
-    askForToyUsage("Inflatable Gag", domChose);
-    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
-
-    askForToy("Gag");
-    askForToyUsage("Gag", domChose);
+    setupGags(true);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
     askForToy("Girl friend");
@@ -770,110 +680,43 @@
     sendVirtualAssistantMessage("Transferring session...");
     setVar(VARIABLE_FINISHED_SETUP, true);
     run("Session/FirstSession.js");
+}
 
-    function askForToy(toyName, variableName, imageName) {
-        if (variableName === undefined) {
-            variableName = decapitalize(toyName).replace(/ /g, "");
-        }
+function setupBlackmail() {
+    sendVirtualAssistantMessage("As you should know");
+    sendVirtualAssistantMessage("A slave doesn't have \"personal\" information since a slave isn't really a person..");
+    sendVirtualAssistantMessage("As a token of complete surrender I need the phone number and name of 3 people");
+    sendVirtualAssistantMessage("Preferably girls that don't know about your fetish");
+    sendVirtualAssistantMessage("So tell me the full name of the first person", false);
+    setVar('blackmailName1', createInput().getAnswer());
+    sendVirtualAssistantMessage("Good, and now their phone number...", false);
+    setVar('blackmailPhone1', createInput().getAnswer());
+    sendVirtualAssistantMessage("Tell me the full name of the second person", false);
+    setVar('blackmailName2', createInput().getAnswer());
+    sendVirtualAssistantMessage("Good, and now their phone number...", false);
+    setVar('blackmailPhone2', createInput().getAnswer());
+    sendVirtualAssistantMessage("Tell me the full name of the third person", false);
+    setVar('blackmailName3', createInput().getAnswer());
+    sendVirtualAssistantMessage("Good, and now their phone number...", false);
+    setVar('blackmailPhone3', createInput().getAnswer());
+    sendVirtualAssistantMessage("Let's confirm");
+    sendVirtualAssistantMessage("So the first person is \"" + getVar("blackmailName1") + "\" with the corresponding phone number: " + getVar('blackmailPhone1'));
+    sendVirtualAssistantMessage("The second person is \"" + getVar("blackmailName2") + "\" with the corresponding phone number: " + getVar('blackmailPhone2'));
+    sendVirtualAssistantMessage("The third person is \"" + getVar("blackmailName3") + "\" with the corresponding phone number: " + getVar('blackmailPhone3'));
+    sendVirtualAssistantMessage("Is this information correct?", false);
+    answer = createInput();
 
-        if (imageName === undefined) {
-            imageName = variableName;
-        }
-
-        sendVirtualAssistantMessage(toyName + "?", false);
-        showPicture("Images/Spicy/Toys/" + imageName + ".jpg");
-
-        answer = createInput();
-
-        while (true) {
-            if (answer.isLike("yes")) {
-                setVar("toy" + variableName, true);
-                sendVirtualAssistantMessage("%Good%");
-                break;
-            } else if (answer.isLike("no")) {
-                sendVirtualAssistantMessage("%EmoteSad%");
-                break;
-            } else {
-                sendVirtualAssistantMessage(YES_OR_NO);
-                answer.loop();
-            }
-        }
-    }
-
-    function askForToyUsage(toyName, domChose, variableName) {
-        if (variableName === undefined) {
-            variableName = decapitalize(toyName).replace(/ /g, "");
-        }
-
-        let toyVarName = 'toy' + variableName;
-
-        //Sub disabled this toy
-        if(getVar(toyVarName, false)) {
-            return;
-        }
-
-        if (domChose) {
-            setVar("toy" + variableName + "InteractionMode", TOY_BOTH_MODE);
-            return;
-        }
-
-        sendVirtualAssistantMessage("Do you want the " + toyName + " to be used for punishments, play or both?", false)
-
-        answer = createInput();
-
-        while (true) {
-            if (answer.containsIgnoreCase("play")) {
-                setVar("toy" + variableName + "InteractionMode", TOY_PLAY_MODE);
-                break;
-            } else if (answer.containsIgnoreCase("both")) {
-                setVar("toy" + variableName + "InteractionMode", TOY_BOTH_MODE);
-                break;
-            } else if (answer.containsIgnoreCase("punishment")) {
-                setVar("toy" + variableName + "InteractionMode", TOY_PUNISHMENT_MODE);
-                break;
-            } else {
-                sendVirtualAssistantMessage("Play, punishment or both?");
-                answer.loop();
-            }
-        }
-    }
-
-    function setupBlackmail() {
-        sendVirtualAssistantMessage("As you should know");
-        sendVirtualAssistantMessage("A slave doesn't have \"personal\" information since a slave isn't really a person..");
-        sendVirtualAssistantMessage("As a token of complete surrender I need the phone number and name of 3 people");
-        sendVirtualAssistantMessage("Preferably girls that don't know about your fetish");
-        sendVirtualAssistantMessage("So tell me the full name of the first person", false);
-        setVar('blackmailName1', createInput().getAnswer());
-        sendVirtualAssistantMessage("Good, and now their phone number...", false);
-        setVar('blackmailPhone1', createInput().getAnswer());
-        sendVirtualAssistantMessage("Tell me the full name of the second person", false);
-        setVar('blackmailName2', createInput().getAnswer());
-        sendVirtualAssistantMessage("Good, and now their phone number...", false);
-        setVar('blackmailPhone2', createInput().getAnswer());
-        sendVirtualAssistantMessage("Tell me the full name of the third person", false);
-        setVar('blackmailName3', createInput().getAnswer());
-        sendVirtualAssistantMessage("Good, and now their phone number...", false);
-        setVar('blackmailPhone3', createInput().getAnswer());
-        sendVirtualAssistantMessage("Let's confirm");
-        sendVirtualAssistantMessage("So the first person is \"" + getVar("blackmailName1") + "\" with the corresponding phone number: " + getVar('blackmailPhone1'));
-        sendVirtualAssistantMessage("The second person is \"" + getVar("blackmailName2") + "\" with the corresponding phone number: " + getVar('blackmailPhone2'));
-        sendVirtualAssistantMessage("The third person is \"" + getVar("blackmailName3") + "\" with the corresponding phone number: " + getVar('blackmailPhone3'));
-        sendVirtualAssistantMessage("Is this information correct?", false);
-        answer = createInput();
-
-        while (true) {
-            if (answer.isLike("yes")) {
-                sendVirtualAssistantMessage("%Good%");
-                break;
-            } else if (answer.isLike("no")) {
-                sendVirtualAssistantMessage("Let's try again then...");
-                setupBlackmail();
-                break;
-            } else {
-                sendVirtualAssistantMessage(YES_OR_NO);
-                answer.loop();
-            }
+    while (true) {
+        if (answer.isLike("yes")) {
+            sendVirtualAssistantMessage("%Good%");
+            break;
+        } else if (answer.isLike("no")) {
+            sendVirtualAssistantMessage("Let's try again then...");
+            setupBlackmail();
+            break;
+        } else {
+            sendVirtualAssistantMessage(YES_OR_NO);
+            answer.loop();
         }
     }
 }

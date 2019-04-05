@@ -56,7 +56,7 @@ function findRandomUnusedIndex(indexMax, history, minElementsSinceLastRun = inde
     let randomIndex = null;
 
     //At least a bit of diversity
-    while(randomIndex == null || (history.isInHistory(randomIndex + '') && history.getModulesSinceHistory(randomIndex  + '') < minElementsSinceLastRun)) {
+    while(randomIndex == null || (history.isInHistory(randomIndex) && history.getModulesSinceHistory(randomIndex) < minElementsSinceLastRun)) {
         //We tried all possibilities
         if(indexesToTry.isEmpty()) {
             break;
@@ -68,7 +68,7 @@ function findRandomUnusedIndex(indexMax, history, minElementsSinceLastRun = inde
         indexesToTry.remove(randomIndex);
     }
 
-    history.addHistoryRun(randomIndex  + '');
+    history.addHistoryRun(randomIndex);
 
     return randomIndex;
 }

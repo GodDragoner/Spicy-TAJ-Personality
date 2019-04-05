@@ -6,10 +6,14 @@ const ORGASM_HISTORY = createHistory('orgasm');
 function createHistory(name) {
     const history = {name: name, historyVar: name + 'History', todaysHistoryVar: 'todays' + name  + 'History',
         isInHistory : function(moduleId) {
+            moduleId = String(moduleId).toLowerCase();
+
             return isVar(this.historyVar) && getVar(this.historyVar).contains(moduleId);
         },
 
         getModulesSinceHistory : function(moduleId) {
+            moduleId = String(moduleId).toLowerCase();
+
             if(!this.isInHistory(moduleId)) {
                 return -1;
             }
@@ -21,10 +25,14 @@ function createHistory(name) {
         },
 
         isInTodaysHistory : function(moduleId) {
+            moduleId = String(moduleId).toLowerCase();
+
             return isVar(this.todaysHistoryVar) && getVar(this.todaysHistoryVar).contains(moduleId);
         },
 
         addHistoryRun : function(moduleId) {
+            moduleId = String(moduleId).toLowerCase();
+
             setVar(this.historyVar, this.getAndAddHistoryFromVarArray(moduleId, this.historyVar));
             setTempVar(this.todaysHistoryVar, this.getAndAddHistoryFromVarArray(moduleId, this.todaysHistoryVar));
         },
@@ -36,13 +44,13 @@ function createHistory(name) {
                 history = getVar(varName);
             }
 
-            moduleId = moduleId.toLowerCase();
+            moduleId = String(moduleId).toLowerCase();
 
-            if(history.contains(moduleId)) {
-                history.remove(moduleId);
+            if(history.contains(String(moduleId))) {
+                history.remove(String(moduleId));
             }
 
-            history.add(moduleId);
+            history.add(String(moduleId));
 
             return history;
         }

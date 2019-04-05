@@ -216,7 +216,7 @@ function checkChastityExercise() {
                         if (getVar(VARIABLE_CHASTITY_SPIKES_ON, false)) {
                             sendMessage(random("If it hurts you should prevent yourself from being aroused with all those spikes in your cage ", "No wonder it hurts with all those spikes in the cage ") + "%Lol%");
                             break;
-                        } else if (getVar(VARIABLE_CHASTITY_CAGE_PIERCED, false)) {
+                        } else if (getVar(VARIABLE_CHASTITY_CAGE_IS_PIERCED, false)) {
                             sendMessage(random("If the piercing is uncomfortable ", "If the piercing hurts ") + "you should consider rearranging it or getting another cage %SlaveName%");
                             break;
                         }

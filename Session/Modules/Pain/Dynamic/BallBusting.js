@@ -42,15 +42,8 @@
                 }
             }
 
-            if (!isGaged() && hasBallGag() && isChance(25)) {
+            if (decideGag(true)) {
                 chanceLeftToys /= 2;
-
-                if (isAnnoyedByTalking()) {
-                    sendMessage('You know what %SlaveName%');
-                    sendMessage('I am not in the mood to hear your whimpering today');
-                }
-
-                putInGag();
             }
 
             if (isPlugged() && isGaged()) {

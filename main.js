@@ -63,6 +63,8 @@ if(endMillis - startMillis < waitTime) {
     sleep(waitTime - endMillis - startMillis, 'MILLISECONDS');
 }
 
+setTempVar(VARIABLE_CURRENT_SESSION_ACTIVE, false);
+
 //Real interaction starts here!
 
 if(!getVar(VARIABLE_FINISHED_SETUP, false)) run("Startup/Setup.js");
@@ -76,6 +78,7 @@ if(!getVar(VARIABLE_FINISHED_FIRST_SESSION, false)) run("Session/FirstSession.js
 if(isFullTime()) {
     run("Startup/FullTime/FullTimeCheck.js");
 }
+
 
 //run("Session/StartSession.js");
 run("Assistant/AssistantLobby.js");

@@ -1,3 +1,4 @@
+
 {
     /*run("Toys/ChastityCage.js");
     run("Toys/Buttplug.js");
@@ -29,22 +30,24 @@
     loadButtplugs();
 }
 
+
+
 function interactWithRandomToys() {
     //TODO: Could interact with buy new toys or fetish questions and better transition between different toys (additionally why not do this... etc.)
 
     //Buttplug interaction
     if (isPlugged()) {
         if (isVar(VARIABLE_LAST_PLUG_DATE) && getVar(VARIABLE_LAST_PLUG_DATE).addMinute(randomInteger(7, 10)).hasPassed()) {
-            if (currentPlug !== biggestButtplug && isChance(getVar(VARIABLE_ASS_LEVEL, 0)*3)) {
+            if (currentPlug !== biggestButtplug && isChance(getVar(VARIABLE_ASS_LEVEL, 0) * 3)) {
                 removeButtplug();
                 sendMessage(random('Let\'s widen that ass even more', 'Your ass won\'t be empty for long', 'Let\'s increase the size of your plug', 'We just removed that plug to make room for the next bigger one') + ' %Grin%');
                 putInButtplug(true);
             }
         }
-    } else if (hasButtplugToy() && isChance(getVar(VARIABLE_ASS_LEVEL, 0)*3) && getAnalLimit() === LIMIT_ASKED_YES) {
+    } else if (hasButtplugToy() && isChance(getVar(VARIABLE_ASS_LEVEL, 0) * 3) && getAnalLimit() === LIMIT_ASKED_YES) {
         let answers = ['Let\'s prepare your %Ass% for what is up to come %Grin%', 'Let\'s plug up that %Ass%', 'Let\'s not waste anymore time by leaving that %Ass% empty'];
 
-        if(getVar(VARIABLE_ASS_LEVEL) >= 30) {
+        if (getVar(VARIABLE_ASS_LEVEL) >= 30) {
             answers.push('You know that there is a very slow chance of you not being plugged during my sessions and guess what - You won\'t be lucky now... %Lol%');
         }
 
@@ -53,32 +56,30 @@ function interactWithRandomToys() {
     }
 
     //TODO: More interaction (forbid to talk etc.)
-    if(isGaged() && !isAnnoyedByTalking() && isChance(25)) {
+    if (isGaged() && !isAnnoyedByTalking() && isChance(25)) {
         removeGag();
-    } else if(hasBallGag()) {
-        if(isAnnoyedByTalking() || isChance(15)) {
-            //TODO: Maybe tell to remove the pin in some cases
-            if(BODY_PART_TONGUE.currentClamps === 0) {
-                putInGag();
-            }
-        }
+    } else {
+        decideGag();
     }
 
-    //TODO: Collar
+    //TODO: Better decision?
+    if(isChance(20)) {
+        putOnCollar();
+    }
 
-    if(isChance(20) && getPainLimit() === LIMIT_ASKED_YES) {
-        let toDistribute = getTotalAttachedClamps() > 20 || isChance(35) && getTotalAttachedClamps() > 0? 0 : randomInteger(1, 4);
+    if (isChance(20) && getPainLimit() === LIMIT_ASKED_YES) {
+        let toDistribute = getTotalAttachedClamps() > 20 || isChance(35) && getTotalAttachedClamps() > 0 ? 0 : randomInteger(1, 4);
 
-        if(toDistribute === 0 && getTotalAttachedClamps() > 0) {
-            removeClamps(randomInteger(1, Math.max(1, getTotalAttachedClamps()/2)));
+        if (toDistribute === 0 && getTotalAttachedClamps() > 0) {
+            removeClamps(randomInteger(1, Math.max(1, getTotalAttachedClamps() / 2)));
         } else {
             distributeClamps(toDistribute);
         }
     }
 
-    if(hasBallsTied() && isChance(50)) {
+    if (hasBallsTied() && isChance(50)) {
         untieBalls();
-    } else if(!hasBallsTied() && !isInChastity() && isChance(20)) {
+    } else if (!hasBallsTied() && !isInChastity() && isChance(20)) {
         tieBalls();
     }
 }
@@ -97,8 +98,13 @@ function readyInput() {
     }
 }
 
-function fetchToy(toy, imagePath) {
-    sendMessage("Go ahead and " + random("fetch", "get", "retrieve") + " your " + toy, 0);
+function fetchToy(toy, imagePath, amount = 0) {
+
+    if(amount > 0) {
+        sendMessage("Go ahead and " + random("fetch", "get", "retrieve") + ' ' + amount + ' ' + pluralize(toy, amount), 0);
+    } else {
+        sendMessage("Go ahead and " + random("fetch", "get", "retrieve") + " your " + toy, 0);
+    }
 
     if (imagePath !== undefined) {
         lockImages();
@@ -134,4 +140,182 @@ function fetchToy(toy, imagePath) {
     }
 
     return true;
+}
+
+function askForToy(toyName, variableName, imageName) {
+    if (variableName === undefined) {
+        variableName = decapitalize(toyName).replace(/ /g, "");
+    }
+
+    if (imageName === undefined) {
+        imageName = variableName;
+    }
+
+    sendVirtualAssistantMessage(toyName + "?", false);
+    showPicture("Images/Spicy/Toys/" + imageName + ".jpg");
+
+    answer = createInput();
+
+    while (true) {
+        if (answer.isLike("yes")) {
+            setVar("toy" + variableName, true);
+            sendVirtualAssistantMessage("%Good%");
+            break;
+        } else if (answer.isLike("no")) {
+            sendVirtualAssistantMessage("%EmoteSad%");
+            break;
+        } else {
+            sendVirtualAssistantMessage(YES_OR_NO);
+            answer.loop();
+        }
+    }
+}
+
+function askForToyUsage(toyName, domChose, variableName) {
+    if (variableName === undefined) {
+        variableName = decapitalize(toyName).replace(/ /g, "");
+    }
+
+    let toyVarName = 'toy' + variableName;
+
+    //Sub disabled this toy
+    if(getVar(toyVarName, false)) {
+        return;
+    }
+
+    if (domChose) {
+        setVar("toy" + variableName + "InteractionMode", TOY_BOTH_MODE);
+        return;
+    }
+
+    sendVirtualAssistantMessage("Do you want the " + toyName + " to be used for punishments, play or both?", false);
+
+    answer = createInput();
+
+    while (true) {
+        if (answer.containsIgnoreCase("play")) {
+            setVar("toy" + variableName + "InteractionMode", TOY_PLAY_MODE);
+            break;
+        } else if (answer.containsIgnoreCase("both")) {
+            setVar("toy" + variableName + "InteractionMode", TOY_BOTH_MODE);
+            break;
+        } else if (answer.containsIgnoreCase("punishment")) {
+            setVar("toy" + variableName + "InteractionMode", TOY_PUNISHMENT_MODE);
+            break;
+        } else {
+            sendVirtualAssistantMessage("Play, punishment or both?");
+            answer.loop();
+        }
+    }
+}
+
+function createToy(name) {
+    return {
+        name: name,
+
+        hasToy: function () {
+            return getVar(this.getVarName());
+        },
+
+        getVarName: function () {
+            return 'toy' + name.replace(/ /g, "");
+        },
+
+        isToyOn: function() {
+          return getVar(this.getVarName() + 'on', false);
+        },
+
+        setToyOn: function(on) {
+          setVar(this.getVarName() + 'on', on);
+        },
+
+        getImageName: function () {
+            let split = name.split(' ');
+
+            let imageName = '';
+            for(let x = 0; x < split.length; x++) {
+                if(x === 0) {
+                    imageName += decapitalize(split[x]);
+                } else {
+                    imageName += capitalize(split[x]);
+                }
+            }
+
+            return imageName;
+        },
+
+        setHasToy : function (hasToy) {
+            setVar(getVarName(), hasToy);
+        },
+
+        askForToyAndUsage : function(domChose, variableName, imageName) {
+            this.askForToy(variableName, imageName);
+            this.askForToyUsage(domChose, variableName);
+        },
+
+        askForToy : function(variableName, imageName) {
+            if (variableName === undefined) {
+                variableName = this.getVarName();
+            }
+
+            if (imageName === undefined) {
+                imageName = this.getImageName();
+            }
+
+            sendVirtualAssistantMessage(capitalize(this.name) + "?", false);
+            showPicture("Images/Spicy/Toys/" + imageName + ".jpg");
+
+            answer = createInput();
+
+            while (true) {
+                if (answer.isLike("yes")) {
+                    setVar(variableName, true);
+                    sendVirtualAssistantMessage("%Good%");
+                    break;
+                } else if (answer.isLike("no")) {
+                    sendVirtualAssistantMessage("%EmoteSad%");
+                    break;
+                } else {
+                    sendVirtualAssistantMessage(YES_OR_NO);
+                    answer.loop();
+                }
+            }
+        },
+
+        askForToyUsage : function(domChose, variableName) {
+            if (variableName === undefined) {
+                variableName = this.getVarName();
+            }
+
+            //Sub disabled this toy
+            if(getVar(variableName, false)) {
+                return;
+            }
+
+            if (domChose) {
+                setVar(variableName + "InteractionMode", TOY_BOTH_MODE);
+                return;
+            }
+
+            sendVirtualAssistantMessage("Do you want the " + this.name + " to be used for punishments, play or both?", false);
+
+            answer = createInput();
+
+            while (true) {
+                if (answer.containsIgnoreCase("play")) {
+                    setVar(variableName + "InteractionMode", TOY_PLAY_MODE);
+                    break;
+                } else if (answer.containsIgnoreCase("both")) {
+                    setVar(variableName + "InteractionMode", TOY_BOTH_MODE);
+                    break;
+                } else if (answer.containsIgnoreCase("punishment")) {
+                    setVar(variableName + "InteractionMode", TOY_PUNISHMENT_MODE);
+                    break;
+                } else {
+                    sendVirtualAssistantMessage("Play, punishment or both?");
+                    answer.loop();
+                }
+            }
+        }
+    };
 }

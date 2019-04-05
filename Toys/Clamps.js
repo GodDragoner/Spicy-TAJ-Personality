@@ -77,24 +77,8 @@ function removeClamps(amount) {
 function distributeClamps(amount) {
     //const currentClamps = getTotalAttachedClamps();
 
-    sendMessage("Go ahead and " + random("fetch", "get", "retrieve") + " " + amount + " clothespins");
-
-    const answer = sendInput("Tell me when you are ready to continue.");
-    while(true) {
-        if(answer.isLike("done", "yes", "ready")) {
-            sendMessage("%Good%");
-            break;
-        } else if(answer.isLike("no", "don't", "can't")) {
-            sendMessage("What?!");
-            sendMessage("That is unacceptable!");
-            sendMessage("You should always have your stuff around!");
-            changeMeritHigh(true);
-            sendMessage("Well then....");
-            return false;
-        } else {
-            sendMessage("Are you done yet?");
-            answer.loop();
-        }
+    if(!fetchToy('clothespin', undefined, amount)) {
+        return false;
     }
 
     sendMessage("Now...");

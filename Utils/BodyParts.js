@@ -44,6 +44,10 @@ function registerBodyPart(name, maxClamps, side = NONE) {
 
         hasOppositeBodyPart : function() {
             return this.side != NONE;
+        },
+
+        isMaxClampsReached : function () {
+            return this.currentClamps >= this.maxClamps;
         }
     };
 

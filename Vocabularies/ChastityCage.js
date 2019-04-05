@@ -16,7 +16,7 @@ function chastityCageVocabulary() {
         sizeAdjective.push("teeny", "tiny");
     }
 
-    if(getVar(VARIABLE_CHASTITY_CAGE_PIERCED, false)) {
+    if(getVar(VARIABLE_CHASTITY_CAGE_IS_PIERCED, false)) {
         descriptive.push("pierced");
     }
 
