@@ -204,12 +204,12 @@ function startDeepthroatModule() {
     sendMessage('For the time being we should really try to make your throat as sore as possible %Grin%');
     sendMessage('And what\'s better for that than doing a few deepthroats?');
     sendMessage('So get ready to get your throat filled!');
-    //TODO: Link or new rule never swallow and then only send this
+
     //TODO: Also different messages like: To make me proud etc.
 
     const bowl = isChance(50);
 
-    if (true) {
+    if (RULE_NEVER_SWALLOW_SPIT.isActive()) {
         sendMessage('And remember: Good sissies only swallow cum and no spit!');
 
         if (bowl) {

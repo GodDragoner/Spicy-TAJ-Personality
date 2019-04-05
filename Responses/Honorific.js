@@ -1,7 +1,7 @@
 addResponseRegex("yes", "no", "thanks", "thank you");
 
 function honorificResponse(message) {
-    if(!getVar(VARIABLE_CURRENT_SESSION_ACTIVE)) {
+    if(!getVar(VARIABLE_CURRENT_SESSION_ACTIVE) || !RULE_ALWAYS_HONORIFIC.isActive()) {
         return false;
     }
 
@@ -11,8 +11,6 @@ function honorificResponse(message) {
         sendMessage('%SlaveName%');
         sendMessage('You forgot your manners...');
         sendMessage('I am your %DomHonorific%');
-
-        //TODO: Rule
 
         sendMessage('And you have to ALWAYS address me like that');
         registerForgetHonorific();

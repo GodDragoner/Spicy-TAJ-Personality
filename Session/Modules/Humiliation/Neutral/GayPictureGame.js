@@ -325,9 +325,12 @@ function startGayPictureRound() {
                     sendMessage('I want you to place that dildo in front of you');
                     sendMessage('And then I want you to give it a nice blowjob');
 
-                    //TODO: Sissy check?
-                    sendMessage('Remember to not swallow unless I allow you to');
-                    sendMessage('Good sissies never swallow during a blowjob %Grin%');
+                    if(RULE_NEVER_SWALLOW_SPIT.isActive()) {
+                        sendMessage('Remember to not swallow unless I allow you to');
+
+                        //TODO: Sissy check?
+                        sendMessage('Good sissies never swallow during a blowjob %Grin%');
+                    }
 
                     sendMessage('Start by giving the cum covered tip some kisses', 3);
                     sendMessage('Show it some love %Grin%', 2);

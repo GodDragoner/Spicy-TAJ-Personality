@@ -33,9 +33,9 @@
             sendMessage(random("As you well know", "As you know", "As you should know", "Oh well", "Oh my", "Poor you"));
             lockImages();
             showPicture("Images/Spicy/Chastity/ChastityOffDenied/*.*", 5);
-            sendMessage(random("You're under strict lockdown", "You're strictly locked", "You're not gonna be released"), 5);
+            sendMessage(random("You're under strict lockdown", "You're strictly locked", "You're not gonna be released"));
             //, "You are still being punished", "You're serving a punishment" TODO: Punishment flag
-            sendMessage(random("Meaning there will be no release from that %ChastityCage%...", "Meaning you won't be released for this session", "So there won't be any release today"), 5);
+            sendMessage(random("Meaning there will be no release from that %ChastityCage%...", "Meaning you won't be released for this session", "So there won't be any release today"));
             unlockImages();
         } else {
             if (getVar(VARIABLE_LOCKED_DAYS_IN_ROW, 0) > getVar(VARIABLE_LOCKED_UP_LIMIT)) {
@@ -47,14 +47,10 @@
                 }
                 //Denied
                 else {
-                    if (getVar(VARIABLE_CHASTITY_ON)) {
-                        lockImages();
-                        sendMessage(random("I don't think you should be unlocked", "You won't be unlocked today", "There won't be any release today") + " %SlaveName%", 0);
-                        showPicture("Images/Spicy/Chastity/ChastityOffDenied/*.*", 5);
-                        sendMessage(random("I'm sorry", "Just desperation", "Only agony and crazed lust", "Only despair %Grin%", "No pleasure today"), 5);
-                        sendMessage(random("Enjoy", "Maybe it's better staying locked", "Learn to appreciate being locked away", "Just let the happiness of obeying flow through you"), 5);
-                        unlockImages();
+                    if (isInChastity()) {
+                        run('Session/Start/Chastity/OffDenied/*.js');
                     } else {
+                        //TODO: Intro files
                         lockChastityCage();
                     }
                 }
@@ -62,9 +58,7 @@
         }
     }
 
-    if (randomInteger(1, 100) <= 50) {
-        run("Session/Start/Neutral/*.js");
-    } else if (getVar(VARIABLE_CHASTITY_ON)) {
+    if (isInChastity()) {
         //run("Session/Start/Chastity/*.js");
         run("Session/Start/Neutral/*.js");
     } else {

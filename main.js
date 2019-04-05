@@ -50,6 +50,8 @@ run("Toys/Toys.js");
 
 run("Startup/PictureSelector.js");
 
+run("Rules/DynamicRules.js");
+
 //Update devotion only if the setup is complete which means the variable must exist
 if(isVar("subDevotion")) {
     run("Settings/UpdateDevotion.js");

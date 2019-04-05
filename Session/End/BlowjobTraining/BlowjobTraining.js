@@ -121,17 +121,14 @@ function firstTimeBlowjobTraining() {
     sendMessage("Each new level requires a higher amount of EXP");
     sendMessage("As your level grows the assignments become more difficult");
     sendMessage("It\'s really as simple as that");
-    sendMessage('Now there is one very important rule that you should never forget');
 
-    if(getSissyLimit() === LIMIT_NEVER_ASKED) {
-        sendMessage('And I know that you aren\'t a sissy however this still applies to you because I think it is important');
+    if(!RULE_NEVER_SWALLOW_SPIT.isActive()) {
+        sendMessage('Now there is one very important rule that you should never forget');
+        RULE_NEVER_SWALLOW_SPIT.sendIntroduction();
+    } else {
+        sendMessage('As you should know, you aren\'t allowed to swallow any spit %Grin%')
     }
 
-    sendMessage('Good sissies never swallow their spit %Grin%');
-    sendMessage('And because you want to please me and I want you to be one...');
-    sendMessage('You will follow this rule');
-
-    //TODO: Set this as a rule
-    sendMessage('I don\'t care where the spit goes but you are not allowed to collect it and just pour it away');
+    sendMessage('In this case I don\'t care where the spit goes but you are not allowed to collect it and just pour it away');
     sendMessage('If you collect it, you will pour it all over your face after you are done %Lol%');
 }

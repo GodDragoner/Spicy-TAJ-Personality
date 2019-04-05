@@ -1,6 +1,7 @@
 
 const MODULE_HISTORY = createHistory('module');
 const LINK_HISTORY = createHistory('link');
+const START_HISTORY = createHistory('start');
 const ORGASM_HISTORY = createHistory('orgasm');
 
 function createHistory(name) {
