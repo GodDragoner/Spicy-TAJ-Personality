@@ -63,11 +63,17 @@ const VARIABLE_CHASTITY_CAGE_IS_PIERCED = "chastityCageIsPierced";
 const VARIABLE_CHASTITY_HAS_TIMED_LOCKBOX = "chastityHasTimedLockBox";
 const VARIABLE_CHASTITY_HAS_COMBINATION_LOCK = "chastityHasCombinationLock";
 
+const VARIABLE_CHASTITY_KEY_LOCKED_COMBINATION = "chastityKeyLockedCombination";
+
 const VARIABLE_CHASTITY_TOY_MODE = "toyChastityInteractionMode";
 
 const VARIABLE_LOCKED_DAYS_IN_ROW = "lockedUpDaysInRow";
 
 const VARIABLE_LOCKED_UP_UNTIL = "lockedUpUntil";
+
+const VARIABLE_LAST_CHASTITY_CLEAN = "lastChastityCleanDate";
+
+const VARIABLE_WAITING_FOR_CHASTITY_KEY_RETURN = "waitingForChastityKeyReturn";
 
 //Chastity training
 const VARIABLE_CHASTITY_LEVEL = 'chastityLevel';

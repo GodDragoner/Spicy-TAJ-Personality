@@ -12,7 +12,7 @@ run("Session/Orgasm/Orgasm.js");
 
 sendSystemMessage("Launching Spicy " + getVar("personalityVersion"));
 
-registerVariable("anallimit", "Anal Limit", "Is anal a hard limit, allowed, needs to be addressed or still a matter of discussion?");
+//registerVariable("anallimit", "Anal Limit", "Is anal a hard limit, allowed, needs to be addressed or still a matter of discussion?");
 
 run("Utils/RandomUtils.js");
 run("Utils/StringUtils.js");
@@ -80,7 +80,6 @@ if(!getVar(VARIABLE_FINISHED_FIRST_SESSION, false)) run("Session/FirstSession.js
 if(isFullTime()) {
     run("Startup/FullTime/FullTimeCheck.js");
 }
-
 
 //run("Session/StartSession.js");
 run("Assistant/AssistantLobby.js");

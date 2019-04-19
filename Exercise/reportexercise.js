@@ -23,7 +23,7 @@ if( !isVar("VARIABLE_EXERCISE_TIMES"))
 	 else{
 		sendVirtualAssistantMessage("%subName%, Fitness and Honesty are both important");
 		sendVirtualAssistantMessage("Have you just completed an exercise?");
-		answer2 = createInput("Yes","No");
+		let answer2 = createInput("Yes","No");
 		while (true) 
 			{
 			if (answer2.containsIgnoreCase("yes","yeah","yep"))

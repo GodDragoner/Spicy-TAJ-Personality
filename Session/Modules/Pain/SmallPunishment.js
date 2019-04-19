@@ -231,6 +231,21 @@ function waitForDone(timeout = 100) {
     }
 }
 
+function waitForDoneVirtualAssistant(timeout = 100) {
+    const answer = createInput(timeout);
+    while (true) {
+        if (answer.isTimeout()) {
+            //TODO: Better timeout options?
+            break;
+        } else if (answer.isLike('done', 'ready', 'yes')) {
+            break;
+        } else {
+            sendVirtualAssistantMessage('Are you done?');
+            answer.loop();
+        }
+    }
+}
+
 function askBallPain() {
     const answer = sendInput(random('Are they ' + random('blue', 'sore', 'purple', 'hurting') + ' yet?'), random('Does it ', 'Do they ') + random('hurt', 'ache', 'burn') + ' yet?');
     while (true) {

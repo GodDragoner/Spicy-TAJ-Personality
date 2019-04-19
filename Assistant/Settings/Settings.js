@@ -9,6 +9,8 @@
             lobbyAnswer.clearOptions();
             run('Assistant/Settings/Toys.js');
             break;
+        } else if(answer.isLike('back', 'cancel', 'return')) {
+            break;
         } else {
             sendVirtualAssistantMessage("You have the following options %SlaveName%");
             sendVirtualAssistantMessage("- Toys");

@@ -16,3 +16,18 @@ function sendYesOrNoQuestion(question) {
         }
     }
 }
+
+function createYesOrNoQuestion() {
+    let answer = createInput();
+
+    while(true) {
+        if(answer.isLike('yes')) {
+            return true;
+        } else if(answer.isLike('no')) {
+            return false;
+        } else {
+            sendMessage(YES_OR_NO);
+            answer.loop();
+        }
+    }
+}

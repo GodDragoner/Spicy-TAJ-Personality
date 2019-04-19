@@ -142,7 +142,25 @@
     if (setupCage(false)) {
         sendVirtualAssistantMessage("Noted...");
 
-        sendVirtualAssistantMessage("Do you own a timed lock box?", false);
+        sendVirtualAssistantMessage('Do you own something like a combination lock and some box where you can lock your keys using said lock?', false);
+        answer = createInput();
+
+        while (true) {
+            if (answer.isLike("yes")) {
+                setVar(VARIABLE_CHASTITY_HAS_COMBINATION_LOCK, true);
+                break;
+            } else if (answer.isLike("no")) {
+                sendVirtualAssistantMessage('You might consider getting a combination lock then');
+                sendVirtualAssistantMessage('Combination locks are like 10 Euros so you should get one fairly easily');
+                sendVirtualAssistantMessage('Just make sure you can change the combination');
+                break;
+            } else {
+                sendVirtualAssistantMessage(YES_OR_NO);
+                answer.loop();
+            }
+        }
+
+        /*sendVirtualAssistantMessage("Do you own a timed lock box?", false);
         answer = createInput();
 
         while (true) {
@@ -175,12 +193,12 @@
                 sendVirtualAssistantMessage(YES_OR_NO);
                 answer.loop();
             }
-        }
+        }*/
 
 
         sendVirtualAssistantMessage("Next...");
         sendVirtualAssistantMessage('Your %DomHonorific% might consider punishing you with a really small cage');
-        sendVirtualAssistantMessage('There is no set length for "really small" however it should smaller than your normal cage');
+        sendVirtualAssistantMessage('There is no set length for "really small" however it should be smaller than your normal cage');
         sendVirtualAssistantMessage('Do you own a second small "punishment" cage?', false);
         setupCage(true);
 
@@ -478,8 +496,9 @@
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
     //TODO: Ask whether it can vibrate
-    askForToy("Inflatable Butt Plugs", undefined, "InflatablePlug");
-    askForToyUsage("Inflatable Butt Plugs", domChose);
+    INFLATABLE_BUTT_PLUG.askForToyAndUsage(domChose);
+    /*askForToy("Inflatable Butt Plug", undefined, "InflatablePlug");
+    askForToyUsage("Inflatable Butt Plug", domChose);*/
 
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
     askForToy("Shock Collar");

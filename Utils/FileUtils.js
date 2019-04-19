@@ -1,5 +1,6 @@
 const TeaseAI = Java.type("me.goddragon.teaseai.TeaseAI");
 const ScriptHandler = Java.type('me.goddragon.teaseai.api.scripts.ScriptHandler');
+const TAJFileUtils = Java.type('me.goddragon.teaseai.utils.FileUtils');
 const PERSONALITY_PATH = TeaseAI.application.getSession().getActivePersonality().getFolder().getAbsolutePath();
 const PATH_SEPARATOR = java.io.File.separator;
 const IMAGE_PATH = 'Images' + PATH_SEPARATOR + 'Spicy';
@@ -24,6 +25,10 @@ function tryCreateFolder(folder) {
     }
 
     return false;
+}
+
+function copyFolder(sourceFolder, destinationFolder, ignoreHidden) {
+    TAJFileUtils.copyFolder(sourceFolder, destinationFolder, ignoreHidden);
 }
 
 function getFile(path) {
