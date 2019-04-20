@@ -4,7 +4,7 @@
 
         if (createYesOrNoQuestion()) {
             sendVirtualAssistantMessage('Well then...');
-            sendVirtualAssistantMessage('So what is the reason for this?');
+            sendVirtualAssistantMessage('So what is the reason for this?', 0);
             let answer = createInput('Cleaning', 'Pain', 'Emergency', 'Other');
 
             while (true) {
@@ -20,6 +20,7 @@
                         sendVirtualAssistantMessage('Now go ahead and clean yourself and then return to me');
                         sendVirtualAssistantMessage('I will wait for you');
 
+                        setDate(VARIABLE_LAST_CHASTITY_CLEAN);
                         setVar(VARIABLE_WAITING_FOR_CHASTITY_KEY_RETURN, true);
                         waitForDoneVirtualAssistant(10000);
                         sendVirtualAssistantMessage('You\'re back!');

@@ -160,7 +160,7 @@ function askForToy(toyName, variableName, imageName) {
         if (answer.isLike("yes")) {
             setVar("toy" + variableName, true);
             sendVirtualAssistantMessage("%Good%");
-            break;
+            return true;
         } else if (answer.isLike("no")) {
             sendVirtualAssistantMessage("%EmoteSad%");
             break;
@@ -169,6 +169,8 @@ function askForToy(toyName, variableName, imageName) {
             answer.loop();
         }
     }
+
+    return false;
 }
 
 function askForToyUsage(toyName, domChose, variableName) {
@@ -249,8 +251,9 @@ function createToy(name) {
         },
 
         askForToyAndUsage : function(domChose, variableName, imageName) {
-            this.askForToy(variableName, imageName);
-            this.askForToyUsage(domChose, variableName);
+            if(this.askForToy(variableName, imageName)) {
+                this.askForToyUsage(domChose, variableName);
+            }
         },
 
         askForToy : function(variableName, imageName) {
@@ -271,7 +274,7 @@ function createToy(name) {
                 if (answer.isLike("yes")) {
                     setVar(variableName, true);
                     sendVirtualAssistantMessage("%Good%");
-                    break;
+                    return true;
                 } else if (answer.isLike("no")) {
                     sendVirtualAssistantMessage("%EmoteSad%");
                     break;
@@ -280,6 +283,8 @@ function createToy(name) {
                     answer.loop();
                 }
             }
+
+            return false;
         },
 
         askForToyUsage : function(domChose, variableName) {

@@ -429,6 +429,8 @@
 
     // askForToy("text",variable,"image name")
     // where "text" is turned into the image name and used if "image name" is not given. No .jpg required.
+
+    //TODO: Create toys as objects
     askForToy("Ball Crusher");
     askForToyUsage("BallCrusher", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
@@ -454,6 +456,7 @@
 
                     sendVirtualAssistantMessage('This should do it regarding plugs');
                     sendVirtualAssistantMessage('You can always setup new buttplugs in the settings menu');
+                    break;
                 }
             } else {
                 sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
@@ -485,6 +488,7 @@
 
                     sendVirtualAssistantMessage('This should do it regarding dildos');
                     sendVirtualAssistantMessage('You can always setup new dildos in the settings menu');
+                    break;
                 }
             } else {
                 sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
@@ -616,11 +620,11 @@
     answer = createInput();
     sendVirtualAssistantMessage("oh %subName%, those are some good ones! %Lol%");
     sendVirtualAssistantMessage("Finally we need to set up your spanking implements");
-    sendVirtualAssistantMessage("I expect you to have at least 3 %Grin%");
-    sendVirtualAssistantMessage("One of them should preferably be sort of medium implement");
+    sendVirtualAssistantMessage("I expect you to have at least 3 different ones %Grin%");
+    sendVirtualAssistantMessage("One of them should preferably be sort of painful");
     sendVirtualAssistantMessage("Not too stingy...");
     sendVirtualAssistantMessage("The second should be a hard implement");
-    sendVirtualAssistantMessage("One that definitely leaves a sting");
+    sendVirtualAssistantMessage("One that definitely leaves a mark");
     sendVirtualAssistantMessage("And the third should be a really nasty one!");
     sendVirtualAssistantMessage("One that strikes terror into your heart %Grin%");
     sendVirtualAssistantMessage("So tell me slave ");
