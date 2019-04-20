@@ -12,7 +12,7 @@ function getTrainingEXPMultiplier(tasksInRow) {
 }
 
 function startKneeling() {
-    //TODO: Sound and random
+    playSound('Audio\\Spicy\\Commands\\Kneel\\*.mp3');
     sendMessage(random('Kneel for me', 'Get down on your knees', 'Down on your knees, right now', 'I want you to kneel for me,') + ' %SlaveName%');
     setTempVar(VARIABLE_IS_KNEELING, true);
 }

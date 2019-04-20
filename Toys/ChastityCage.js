@@ -437,7 +437,7 @@ function lockAwayChastityKey() {
         let combinationFile = chastityCombinationImagesFolder.listFiles()[0];
 
         chastityCombinationImagesBackupFolder.mkdirs();
-        copyFolder(combinationFile, chastityCombinationImagesBackupFolder, false);
+        copyFolder(chastityCombinationImagesFolder, chastityCombinationImagesBackupFolder, false);
 
         combinationFile.renameTo(new java.io.File(chastityCombinationImagesFolder.getPath() + PATH_SEPARATOR + 'chastityCombination.lock'));
 

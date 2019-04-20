@@ -7,9 +7,27 @@ const VARIABLE_LINGERIE_ON = "lingerieOn";
 
 const VARIABLE_SLAVE_TYPE = "slaveType";
 
-const VARIABLE_MIN_WEEKLY_VISITS = "minWeeklyVisits";
 
+//Full time
+const VARIABLE_MIN_WEEKLY_VISITS = "minWeeklyVisits";
 const VARIABLE_MIN_WEEKLY_CHORES = "minWeeklyChores";
+
+//Home
+const VARIABLE_HOME_TYPE = 'homeType';
+
+//Chores
+const VARIABLE_CHORE_KITCHEN = 'choreKitchen';
+const VARIABLE_CHORE_BATHROOM = 'choreBathroom';
+const VARIABLE_CHORE_FINANCE = 'choreFinance';
+
+const VARIABLE_TOTAL_CHORES_DONE = "totalChoresDone";
+
+const VARIABLE_CHORE_WARNINGS = "choreWarnings";
+
+const VARIABLE_TOTAL_CHORES_DONE = "totalChoresDone";
+
+const VARIABLE_WEEKLY_CHORE_RESET_DATE = "weeklyChoreResetDate";
+const VARIABLE_WEEKLY_CHORES_DONE = "weeklyChoresDone";
 
 const VARIABLE_DENIAL_LIMIT = "denialLimit";
 const VARIABLE_DENIAL_LEVEL = "denialLevel";

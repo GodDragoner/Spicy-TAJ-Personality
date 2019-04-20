@@ -1,8 +1,15 @@
+let StopWatch = Java.type("org.apache.commons.lang.time.StopWatch");
+
 function incrementVar(varName, object, defaultValue = 0) {
     setVar(varName, getVar(varName, defaultValue) + object);
 }
 
 function sendYesOrNoQuestion(question) {
+    if(CURRENT_SENDER === SENDER_ASSISTANT) {
+        sendVirtualAssistantMessage(question, 0);
+        return createYesOrNoQuestion();
+    }
+
     let answer = sendInput(question);
 
     while(true) {
@@ -26,7 +33,7 @@ function createYesOrNoQuestion() {
         } else if(answer.isLike('no')) {
             return false;
         } else {
-            sendMessage(YES_OR_NO);
+            sendMessageBasedOnSender(YES_OR_NO);
             answer.loop();
         }
     }

@@ -2,10 +2,36 @@ const YES_OR_NO = "Yes or no?";
 const TAJ_CHAT_HANDLER = Java.type('me.goddragon.teaseai.api.chat.ChatHandler');
 const DEBUG_MODE = true;
 
+const SENDER_TAJ = 1;
+const SENDER_ASSISTANT = 0;
+
+const CURRENT_SENDER = SENDER_TAJ;
 
 function sendDebugMessage(message) {
     if(DEBUG_MODE) {
         sendVirtualAssistantMessage(message, false, true);
+    }
+}
+
+function sendMessageBasedOnSender(message, secondsToWait = false, skipImage = false) {
+    if(CURRENT_SENDER == SENDER_TAJ) {
+        if(skipImage) {
+            lockImages();
+        }
+
+        if(secondsToWait === false) {
+            sendMessage(message);
+        } else {
+            sendMessage(message, secondsToWait);
+        }
+
+        if(skipImage) {
+            unlockImages();
+        }
+    } else if(CURRENT_SENDER == SENDER_ASSISTANT) {
+        sendVirtualAssistantMessage(message, secondsToWait, skipImage);
+    } else {
+        sendVirtualAssistantMessage('Error: Sender id ' + CURRENT_SENDER + ' is unknown');
     }
 }
 
