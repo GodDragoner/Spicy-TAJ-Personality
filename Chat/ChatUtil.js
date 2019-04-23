@@ -5,7 +5,7 @@ const DEBUG_MODE = true;
 const SENDER_TAJ = 1;
 const SENDER_ASSISTANT = 0;
 
-const CURRENT_SENDER = SENDER_TAJ;
+let CURRENT_SENDER = SENDER_TAJ;
 
 function sendDebugMessage(message) {
     if(DEBUG_MODE) {
@@ -13,25 +13,33 @@ function sendDebugMessage(message) {
     }
 }
 
-function sendMessageBasedOnSender(message, secondsToWait = false, skipImage = false) {
-    if(CURRENT_SENDER == SENDER_TAJ) {
+function getCurrentSender() {
+    return CURRENT_SENDER;
+}
+
+function setCurrentSender(sender) {
+    CURRENT_SENDER = sender;
+}
+
+function sendMessageBasedOnSender(message, secondsToWait = undefined, skipImage = false) {
+    if(getCurrentSender() == SENDER_TAJ) {
         if(skipImage) {
             lockImages();
         }
 
-        if(secondsToWait === false) {
+        if(secondsToWait === undefined) {
             sendMessage(message);
-        } else {
+        } else if(secondsToWait === false) {
             sendMessage(message, secondsToWait);
         }
 
         if(skipImage) {
             unlockImages();
         }
-    } else if(CURRENT_SENDER == SENDER_ASSISTANT) {
+    } else if(getCurrentSender() == SENDER_ASSISTANT) {
         sendVirtualAssistantMessage(message, secondsToWait, skipImage);
     } else {
-        sendVirtualAssistantMessage('Error: Sender id ' + CURRENT_SENDER + ' is unknown');
+        sendVirtualAssistantMessage('Error: Sender id ' + getCurrentSender() + ' is unknown');
     }
 }
 
@@ -49,7 +57,9 @@ function sendVirtualAssistantMessage(message, wait, skipImage) {
 
     //Show image
     if(skipImage === undefined || !skipImage) {
-        showImage("Images/Spicy/Assistant/" + ASSISTANT_CURRENT_SET_ID + "/*.jpg");
+        if(!isImagesLocked()) {
+            showImage("Images/Spicy/Assistant/" + ASSISTANT_CURRENT_SET_ID + "/*.jpg");
+        }
     }
 
     if(wait === undefined || wait) {

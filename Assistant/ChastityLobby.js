@@ -5,15 +5,21 @@
         if (createYesOrNoQuestion()) {
             sendVirtualAssistantMessage('Well then...');
             sendVirtualAssistantMessage('So what is the reason for this?', 0);
+
+            //TODO: Public like swimming etc.?
             let answer = createInput('Cleaning', 'Pain', 'Emergency', 'Other');
 
             while (true) {
                 if (answer.isLike('clean')) {
                     if (isVar(VARIABLE_LAST_CHASTITY_CLEAN) && !getDate(VARIABLE_LAST_CHASTITY_CLEAN).addHour(6).hasPassed()) {
+                        lobbyAnswer.clearOptions();
+
                         sendVirtualAssistantMessage('You have already cleaned your %ChastityCage% in the last 6 hours');
                         sendVirtualAssistantMessage('Which means I am not gonna allow you to take it off');
                         sendVirtualAssistantMessage('You will have to clean yourself with your %ChastityCage% on %Grin%');
                     } else {
+                        lobbyAnswer.clearOptions();
+
                         sendVirtualAssistantMessage('Well I won\'t deny you the possibility to clean yourself %SlaveName%');
                         unlockChastityKey();
 
@@ -27,9 +33,11 @@
 
                         onChastityKeyReturn();
                     }
-
+                    lobbyAnswer.clearOptions();
                     break;
                 } else if (answer.isLike('pain')) {
+                    lobbyAnswer.clearOptions();
+
                     sendVirtualAssistantMessage('Well we want it to hurt sometimes');
                     sendVirtualAssistantMessage('I can free you but you will have to suffer the consequences');
                     sendVirtualAssistantMessage('Does it really hurt too much and do you need to free yourself?', 0);
@@ -50,6 +58,8 @@
                     }
                     break;
                 } else if (answer.isLike('emergency')) {
+                    lobbyAnswer.clearOptions();
+
                     sendVirtualAssistantMessage('Well then I am gonna trust you on this one');
                     sendVirtualAssistantMessage('Do not abuse my trust %SlaveName%!');
                     unlockChastityKey();
@@ -59,6 +69,8 @@
                     setVar(VARIABLE_WAITING_FOR_CHASTITY_KEY_RETURN, true);
                     break;
                 } else if (answer.isLike('other')) {
+                    lobbyAnswer.clearOptions();
+
                     sendVirtualAssistantMessage('I can free you but you will have to suffer the consequences');
                     sendVirtualAssistantMessage('Do you really need to free yourself?', 0);
                     if (createYesOrNoQuestion()) {

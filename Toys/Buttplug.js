@@ -9,6 +9,7 @@ let smallestButtplug = null;
 let biggestButtplug = null;
 let currentPlug = null;
 
+const BUTTPLUG_TOY = createToy('buttplugs');
 const INFLATABLE_BUTT_PLUG = createToy('inflatable butt plug');
 
 function hasButtplugToy() {

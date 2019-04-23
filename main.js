@@ -28,6 +28,9 @@ run("Stroking/Anal.js");
 run("Stroking/Blowing.js");
 run("Session/Modules/Pain/SmallPunishment.js");
 
+run("Chore/Chore.js");
+run("Chore/Room.js");
+
 run("Session/History.js");
 
 run("Session/Orgasm/CEI/CEIHandler.js");

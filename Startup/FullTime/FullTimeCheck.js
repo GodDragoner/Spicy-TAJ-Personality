@@ -56,7 +56,7 @@
                 setVar(VARIABLE_WEEKLY_SLAVE_VISITS, 0);
                 sendVirtualAssistantMessage("Let's see if you've been doing your chores like a good slave!");
 
-                if (getVar(VARIABLE_WEEKLY_CHORES_COMPLETED) < getVar(VARIABLE_MIN_WEEKLY_CHORES)) {
+                if (getVar(VARIABLE_WEEKLY_CHORES_DONE) < getVar(VARIABLE_MIN_WEEKLY_CHORES)) {
                     sendVirtualAssistantMessage("Bad boy!", "Bad girl!", "Bad slut!", "Bad dog!", "Bad slave!", "Bad sissy!");
                     sendVirtualAssistantMessage("Bad behaviour is punished!");
                     sendVirtualAssistantMessage("I just assigned you punishment points!");
@@ -68,6 +68,8 @@
                     sendVirtualAssistantMessage("Transferring gold...");
                     addGold(randomInteger(50, 200));
                 }
+
+                setVar(VARIABLE_WEEKLY_CHORES_DONE, 0);
 
                 //TODO: Study and athlete mode
             }

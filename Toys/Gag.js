@@ -63,14 +63,14 @@ function decideGag(pain = false) {
     }
 
     if(isAnnoyedByTalking()) {
-        sendMessage('You know what %SlaveName%');
+        sendMessageBasedOnSender('You know what %SlaveName%');
 
         if(pain) {
-            sendMessage('I am not in the mood to hear your whimpering %GeneralTime%');
+            sendMessageBasedOnSender('I am not in the mood to hear your whimpering %GeneralTime%');
         } else {
             //TODO: More?
-            sendMessage(random('I want you to shut your mouth', 'I want you to shut up', 'I want you to stop talking', 'I want you to be silent', 'I want some silence'));
-            sendMessage('And I just know a good way to accomplish this %Grin%');
+            sendMessageBasedOnSender(random('I want you to shut your mouth', 'I want you to shut up', 'I want you to stop talking', 'I want you to be silent', 'I want some silence'));
+            sendMessageBasedOnSender('And I just know a good way to accomplish this %Grin%');
         }
 
         selectAndPutInGag();
@@ -113,7 +113,7 @@ function selectAndPutInGag() {
     let gag = selectGag();
 
     //Right now spider gag is only picked if she wants to punish the slave but we might change that at some point
-    putInGag(gag, gag === GAG_TYPE_SPIDER_GAG);
+    return putInGag(gag, gag === GAG_TYPE_SPIDER_GAG);
 }
 
 function putInGag(gagType = GAG_TYPE_BALL_GAG, addPinToTongue = false) {
@@ -135,8 +135,8 @@ function putInGag(gagType = GAG_TYPE_BALL_GAG, addPinToTongue = false) {
             gagType = GAG_TYPE_SPIDER_GAG;
             keepPins = true;
         } else {
-            sendMessage('%SlaveName%');
-            sendMessage('Remove all clamps from your tongue %EmoteHappy%', 5);
+            sendMessageBasedOnSender('%SlaveName%');
+            sendMessageBasedOnSender('Remove all clamps from your tongue %EmoteHappy%', 5);
             BODY_PART_TONGUE.currentClamps = 0;
         }
     }
@@ -146,16 +146,16 @@ function putInGag(gagType = GAG_TYPE_BALL_GAG, addPinToTongue = false) {
     }
 
     if(keepPins) {
-        sendMessage('And no, you won\'t be allowed to take those clothespins of your tongue');
-        sendMessage('They will stay where they are %Grin%');
-        sendMessage('That is why I made you get the spider gag anyway %Lol%');
-        sendMessage('You better make it work %EmoteHappy%');
+        sendMessageBasedOnSender('And no, you won\'t be allowed to take those clothespins of your tongue');
+        sendMessageBasedOnSender('They will stay where they are %Grin%');
+        sendMessageBasedOnSender('That is why I made you get the spider gag anyway %Lol%');
+        sendMessageBasedOnSender('You better make it work %EmoteHappy%');
     } else if(addPinToTongue) {
-        sendMessage('This is gonna be good');
-        sendMessage('Your tongue clipped with that pin and your gag pulling your mouth wide open %Grin%');
+        sendMessageBasedOnSender('This is gonna be good');
+        sendMessageBasedOnSender('Your tongue clipped with that pin and your gag pulling your mouth wide open %Grin%');
     }
 
-    sendMessage('Now put it in. Tell me when you are done %SlaveName%');
+    sendMessageBasedOnSender('Now put it in. Tell me when you are done %SlaveName%');
     waitForDone();
 
     currentGagType = gagType;
@@ -164,32 +164,42 @@ function putInGag(gagType = GAG_TYPE_BALL_GAG, addPinToTongue = false) {
 }
 
 function removeGag() {
-    sendMessage("%SlaveName% go ahead and remove that gag from your mouth");
+    sendMessageBasedOnSender("%SlaveName% go ahead and remove that gag from your mouth");
     let answer = sendInput("Tell me when you are ready to continue");
     while(true) {
         if(answer.isLike("done", "yes")) {
-            sendMessage("%Good%");
+            sendMessageBasedOnSender("%Good%");
             break;
         } else {
-            sendMessage("Have you removed the gag yet?");
+            sendMessageBasedOnSender("Have you removed the gag yet?");
             answer.loop();
         }
     }
 
-    sendMessage("Put the gag aside for now");
+    sendMessageBasedOnSender("Put the gag aside for now");
     setTempVar(VARIABLE_IS_GAGED, false);
 }
 
+function isGagPlay() {
+    return getVar(VARIABLE_TOY_GAG_INTERACTION_MODE) === TOY_BOTH_MODE || getVar(VARIABLE_TOY_GAG_INTERACTION_MODE) === TOY_PLAY_MODE;
+}
+
+function isGagPunish() {
+    return getVar(VARIABLE_TOY_GAG_INTERACTION_MODE) === TOY_BOTH_MODE || getVar(VARIABLE_TOY_GAG_INTERACTION_MODE) === TOY_PUNISHMENT_MODE;
+}
+
 function setupGags(domChose) {
-    GAG_TYPE_BALL_GAG.askForToyAndUsage(domChose);
+    GAG_TYPE_BALL_GAG.askForToy();
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
-    GAG_TYPE_SPIDER_GAG.askForToyAndUsage(domChose);
+    GAG_TYPE_SPIDER_GAG.askForToy();
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
-    GAG_TYPE_DILDO_GAG.askForToyAndUsage(domChose);
+    GAG_TYPE_DILDO_GAG.askForToy();
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
-    GAG_TYPE_INFLATABLE_GAG.askForToyAndUsage(domChose);
+    GAG_TYPE_INFLATABLE_GAG.askForToy();
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
+    askForToyUsage('gag', domChose);
 }

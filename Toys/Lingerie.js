@@ -1,9 +1,12 @@
+const BASIC_LINGERIE = createToy("Basic Lingerie");
+const ADVANCED_LINGERIE = createToy("Advanced Lingerie");
+
 function hasBasicLingerie() {
-    return getVar('toyBasicLingerie');
+    return BASIC_LINGERIE.hasToy();
 }
 
 function hasAdvancedLingerie() {
-    return getVar('toyAdvancedLingerie');
+    return ADVANCED_LINGERIE.hasToy();
 }
 
 function hasLingerieOn() {

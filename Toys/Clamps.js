@@ -1,3 +1,5 @@
+const CLOTHESPINS_TOY = createToy('clothespins');
+
 function getClamps(index) {
     if(BODY_PARTS.length > index) {
         return BODY_PARTS[index].currentClamps;

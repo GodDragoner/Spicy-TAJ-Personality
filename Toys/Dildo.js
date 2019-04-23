@@ -1,4 +1,4 @@
-const dildos = [];
+const DILDOS = [];
 let currentDildo = null;
 
 let longestDildo = null;
@@ -43,8 +43,8 @@ function getAnalDildoForTask(minLength = 0, minThickness = 0) {
         minThickness = Math.max(2.5, assLevel/6);
     }
 
-    for (let y = 0; y < dildos.length; y++) {
-        let dildo = dildos[y];
+    for (let y = 0; y < DILDOS.length; y++) {
+        let dildo = DILDOS[y];
 
         if(dildo.diameter >= minThickness && dildo.length >= minLength && dildo.diameter <= minThickness + 2) {
             availableDildos.push(dildo);
@@ -52,7 +52,7 @@ function getAnalDildoForTask(minLength = 0, minThickness = 0) {
     }
 
     if(availableDildos.length === 0) {
-        return dildos[randomInteger(0, dildos.length - 1)];
+        return DILDOS[randomInteger(0, DILDOS.length - 1)];
     }
 
     return availableDildos[randomInteger(0, availableDildos.length - 1)];
@@ -89,9 +89,9 @@ function getAnalDildo(minLength = 0, minThickness = 0, forceThicker = false, for
 
     let maxDiameterIncrease = getMaxDiameterIncrease();
 
-    while(availableDildos.length === 0 && dildos.length !== 0) {
-        for (let y = 0; y < dildos.length; y++) {
-            let dildo = dildos[y];
+    while(availableDildos.length === 0 && DILDOS.length !== 0) {
+        for (let y = 0; y < DILDOS.length; y++) {
+            let dildo = DILDOS[y];
 
             if(dildo.diameter >= minThickness && dildo.length >= minLength) {
                 //Don't over extent with too big dildos too quickly
@@ -138,9 +138,9 @@ function getDildo(blowjob = false) {
 
         let availableDildos = [];
 
-        while(availableDildos.length === 0 && dildos.length !== 0) {
-            for (let y = 0; y < dildos.length; y++) {
-                let dildo = dildos[y];
+        while(availableDildos.length === 0 && DILDOS.length !== 0) {
+            for (let y = 0; y < DILDOS.length; y++) {
+                let dildo = DILDOS[y];
 
 
                 if (dildo.diameter >= minDiameter && dildo.length >= minLength && dildo.length <= maxLength && dildo.diameter <= maxDiameter) {
@@ -213,7 +213,7 @@ function loadDildos() {
                 suctionCup: suctionCup
             };
 
-            dildos.push(dildo);
+            DILDOS.push(dildo);
 
             //Find smallest dildo
             if(smallestDildo == null || smallestDildo.diameter > dildo.diameter) {
@@ -241,8 +241,8 @@ function loadDildos() {
 function saveDildos() {
     let arrayList = new java.util.ArrayList();
 
-    for (let y = 0; y < dildos.length; y++) {
-        arrayList.add(dildoToString(dildos[y]));
+    for (let y = 0; y < DILDOS.length; y++) {
+        arrayList.add(dildoToString(DILDOS[y]));
     }
 
     setVar('dildos', arrayList);
@@ -275,9 +275,9 @@ function dildoToString(dildo) {
 }
 
 function getDildoByName(name) {
-    for (let y = 0; y < dildos.length; y++) {
-        if (name.toUpperCase() === dildos[y].name.toUpperCase()) {
-            return dildos[y];
+    for (let y = 0; y < DILDOS.length; y++) {
+        if (name.toUpperCase() === DILDOS[y].name.toUpperCase()) {
+            return DILDOS[y];
         }
     }
 
@@ -454,7 +454,7 @@ function setupNewDildo() {
         cumInjection: cumInjection,
         suctionCup: suctionCup
     };
-    dildos.push(dildo);
+    DILDOS.push(dildo);
 
     saveDildos();
 

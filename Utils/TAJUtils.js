@@ -4,8 +4,12 @@ function incrementVar(varName, object, defaultValue = 0) {
     setVar(varName, getVar(varName, defaultValue) + object);
 }
 
+function isImagesLocked() {
+    return Java.type('me.goddragon.teaseai.api.media.MediaHandler').getHandler().isImagesLocked();
+}
+
 function sendYesOrNoQuestion(question) {
-    if(CURRENT_SENDER === SENDER_ASSISTANT) {
+    if(getCurrentSender() === SENDER_ASSISTANT) {
         sendVirtualAssistantMessage(question, 0);
         return createYesOrNoQuestion();
     }

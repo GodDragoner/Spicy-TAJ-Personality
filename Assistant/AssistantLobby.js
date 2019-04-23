@@ -24,7 +24,8 @@
                 startSession();
                 break;
             } else if (lobbyAnswer.isLike("chore", "clean", "dust", "wipe", "wash")) {
-                sendVirtualAssistantMessage("This is not supported yet!");
+                lobbyAnswer.clearOptions();
+                run("Chore/ChoreMenu.js");
                 break;
             } else if (lobbyAnswer.isLike("dungeon", "spanking", "spankzchoir", "selfbondage", "pain", "torture", "chamber", "punish")) {
                 lobbyAnswer.clearOptions();

@@ -24,9 +24,11 @@ const VARIABLE_TOTAL_CHORES_DONE = "totalChoresDone";
 
 const VARIABLE_CHORE_WARNINGS = "choreWarnings";
 
-const VARIABLE_TOTAL_CHORES_DONE = "totalChoresDone";
+const VARIABLE_KINKY_CHORE_CHANCE = "kinkyChoreChance";
 
-const VARIABLE_WEEKLY_CHORE_RESET_DATE = "weeklyChoreResetDate";
+//const VARIABLE_TOTAL_CHORES_DONE = "totalChoresDone";
+
+//const VARIABLE_WEEKLY_CHORE_RESET_DATE = "weeklyChoreResetDate";
 const VARIABLE_WEEKLY_CHORES_DONE = "weeklyChoresDone";
 
 const VARIABLE_DENIAL_LIMIT = "denialLimit";
@@ -128,7 +130,10 @@ const VARIABLE_BLOWJOB_TRAININGS_DONE = 'blowjobTrainingsDone';
 const VARIABLE_IS_PLUGGED = "isPlugged";
 const VARIABLE_LAST_PLUG_DATE = "lastPlugDate";
 
+const VARIABLE_TOY_GAG_INTERACTION_MODE = "toyGagInteractionMode";
 const VARIABLE_IS_GAGED = "isGaged";
+
+
 const VARIABLE_IS_BALLS_TIED = "isBallsTied";
 const VARIABLE_IS_BALL_CRUSHER_ON = "isBallCrusherOn";
 
@@ -206,7 +211,6 @@ const VARIABLE_PUNISHMENT_POINTS = "punishmentPoints";
 const VARIABLE_NEXT_CONFESSION_DAY = "nextConfessionDay";
 const VARIABLE_NEXT_PUNISHMENT_DAY = "nextPunishmentDay";
 
-const VARIABLE_WEEKLY_CHORES_COMPLETED = "weeklyChoresCompleted";
 
 const VARIABLE_FULL_TIME_TRIAL_UNTIL = "fullTimeTrialUntil";
 

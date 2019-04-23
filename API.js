@@ -27,6 +27,9 @@ function playAudio() {}
 function playSound() {}
 function stopAudio() {}
 
+function showImage(path) {}
+
+function isImagesLocked() {}
 function unlockImages() {}
 function lockImages() {}
 

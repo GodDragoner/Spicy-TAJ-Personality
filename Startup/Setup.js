@@ -434,8 +434,8 @@
     askForToy("Ball Crusher");
     askForToyUsage("BallCrusher", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
-    askForToy("Butt Plugs");
-    askForToyUsage("ButtPlugs", domChose);
+
+    BUTTPLUG_TOY.askForToyUsage(domChose);
 
     if (hasButtplugToy()) {
         sendVirtualAssistantMessage('Okay %SlaveName%. Tell me, how many different buttplugs do you have?', false);
@@ -555,11 +555,13 @@
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
     askForToy("Girl friend");
-    askForToy("Basic Lingerie", undefined, "LingerieSet");
-    askForToy("Advanced Lingerie", undefined, "LingerieSet2");
-    askForToy("Parachute");
-    askForToyUsage("Parachute", domChose);
+
+    BASIC_LINGERIE.askForToyAndUsage(domChose, undefined, "LingerieSet");
+    ADVANCED_LINGERIE.askForToyAndUsage(domChose, undefined, "LingerieSet2");
+
+    PARACHUTE_TOY.askForToyAndUsage(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
     showImage("Images/Spicy/Toys/HotSauce.jpg", 3);
     sendVirtualAssistantMessage("Hot sauce or icy hot? Toothpaste can work too for the time being.", false);
     showPicture("Images/Spicy/Toys/HotSauce.jpg");
@@ -582,18 +584,26 @@
 
     askForToyUsage("HotSauce", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
     askForToy("Vibrator");
     askForToyUsage("Vibrator", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
     askForToy("Enema Kit");
     askForToyUsage("EnemaKit", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
     askForToy("Sounds");
     askForToyUsage("Sounds", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
     askForToy("Humbler");
     askForToyUsage("Humbler", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
+    CLOTHESPINS_TOY.askForToyAndUsage(domChose);
+
+    //TODO: Difference between clothepins and nipple clamps
     askForToy("Nipple Clamps");
     askForToyUsage("NippleClamps", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));

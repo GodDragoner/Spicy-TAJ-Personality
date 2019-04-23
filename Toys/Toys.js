@@ -99,11 +99,15 @@ function readyInput() {
 }
 
 function fetchToy(toy, imagePath, amount = 0) {
+    //Sub wasn't able to fetch this before so no need to ask again
+    if(getVar('toy' + toy + 'UnableToFetch', false)) {
+        return false;
+    }
 
     if(amount > 0) {
-        sendMessage("Go ahead and " + random("fetch", "get", "retrieve") + ' ' + amount + ' ' + pluralize(toy, amount), 0);
+        sendMessageBasedOnSender('Go ahead and %Retrieve% ' + amount + ' ' + pluralize(toy, amount), 0);
     } else {
-        sendMessage("Go ahead and " + random("fetch", "get", "retrieve") + " your " + toy, 0);
+        sendMessageBasedOnSender('Go ahead and %Retrieve% your ' + toy, 0);
     }
 
     if (imagePath !== undefined) {
@@ -113,28 +117,41 @@ function fetchToy(toy, imagePath, amount = 0) {
         sleep(3);
     }
 
-    const answer = sendInput("Tell me when you are ready to continue.");
+    sendMessageBasedOnSender("Tell me when you are ready to continue.", 0);
+
+    const answer = createInput();
     while (true) {
         if (answer.isLike("done", "yes", "ready")) {
             if (imagePath !== undefined) {
                 unlockImages();
             }
 
-            sendMessage("%Good%");
+            sendMessageBasedOnSender("%Good%");
             break;
         } else if (answer.isLike("no", "don't", "can't")) {
             if (imagePath !== undefined) {
                 unlockImages();
             }
 
-            sendMessage("What?!");
-            sendMessage("That is unacceptable!");
-            sendMessage("You should always have your toys around!");
-            changeMeritHigh(true);
-            sendMessage("Well then....");
+            sendMessageBasedOnSender("What?!");
+            sendMessageBasedOnSender("That is unacceptable!");
+            sendMessageBasedOnSender("You should always have your toys around!");
+
+            //If assistant we are gonna add punishment points otherwise change mood
+            if(getCurrentSender() === SENDER_ASSISTANT) {
+                sendMessageBasedOnSender('I am assigning you some punishment points!');
+                addPunishmentPoints(100);
+            } else {
+                changeMeritHigh(true);
+            }
+
+            sendMessageBasedOnSender("Well then....");
+
+            //Store it temporarily, that sub wasn't able to fetch stuff today so we won't ask again
+            setTempVar('toy' + toy + 'UnableToFetch', true);
             return false;
         } else {
-            sendMessage("Are you done yet?");
+            sendMessageBasedOnSender("Are you done yet?");
             answer.loop();
         }
     }
@@ -256,6 +273,10 @@ function createToy(name) {
             }
         },
 
+        fetchToy : function(amount = 0) {
+            return fetchToy(name, "Images/Spicy/Toys/" + this.getImageName() + ".jpg", amount);
+        },
+
         askForToy : function(variableName, imageName) {
             if (variableName === undefined) {
                 variableName = this.getVarName();
@@ -266,23 +287,19 @@ function createToy(name) {
             }
 
             sendVirtualAssistantMessage(capitalize(this.name) + "?", false);
-            showPicture("Images/Spicy/Toys/" + imageName + ".jpg");
+            showPicture("Images/Spicy/Toys/" + imageName + ".jpg", 0);
 
-            answer = createInput();
+            setCurrentSender(SENDER_ASSISTANT);
 
-            while (true) {
-                if (answer.isLike("yes")) {
-                    setVar(variableName, true);
-                    sendVirtualAssistantMessage("%Good%");
-                    return true;
-                } else if (answer.isLike("no")) {
-                    sendVirtualAssistantMessage("%EmoteSad%");
-                    break;
-                } else {
-                    sendVirtualAssistantMessage(YES_OR_NO);
-                    answer.loop();
-                }
+            if(createYesOrNoQuestion()) {
+                setVar(variableName, true);
+                sendVirtualAssistantMessage("%Good%");
+                return true;
+            } else {
+                sendVirtualAssistantMessage("%EmoteSad%");
             }
+
+            setCurrentSender(SENDER_TAJ);
 
             return false;
         },
@@ -321,6 +338,26 @@ function createToy(name) {
                     answer.loop();
                 }
             }
+        },
+
+        isPlayAllowed: function(variableName) {
+            if (variableName === undefined) {
+                variableName = this.getVarName();
+            }
+
+            let mode = getVar(variableName + "InteractionMode");
+
+            return mode === TOY_PLAY_MODE || mode === TOY_BOTH_MODE;
+        },
+
+        isPunishmentAllowed: function(variableName) {
+            if (variableName === undefined) {
+                variableName = this.getVarName();
+            }
+
+            let mode = getVar(variableName + "InteractionMode");
+
+            return mode === TOY_PUNISHMENT_MODE || mode === TOY_BOTH_MODE;
         }
     };
 }

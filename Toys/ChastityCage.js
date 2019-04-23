@@ -263,13 +263,13 @@ function lockChastityCage() {
         return;
     }
 
-    sendMessage("%SlaveName%");
+    sendMessageBasedOnSender("%SlaveName%");
 
     if (BODY_PART_PENIS_HEAD.currentClamps > 0 || BODY_PART_PENIS_SHAFT.currentClamps > 0 || BODY_PART_BALLS.currentClamps > 0) {
-        sendMessage('Go ahead and remove all clamps from your penis and balls');
-        sendMessage('Tell me when you are done');
+        sendMessageBasedOnSender('Go ahead and remove all clamps from your penis and balls');
+        sendMessageBasedOnSender('Tell me when you are done');
         waitForDone();
-        sendMessage('Aren\'t I nice to you? %Grin%');
+        sendMessageBasedOnSender('Aren\'t I nice to you? %Grin%');
 
         //TODO: Interaction
 
@@ -286,36 +286,40 @@ function lockChastityCage() {
     selectChastityCage();
 
     if(getVar(VARIABLE_CHASTITY_CAGE_ON_TYPE) === CHASTITY_TYPE_BIG) {
-        sendMessage('Go ahead and fetch your normal chastity cage');
+        sendMessageBasedOnSender('Go ahead and fetch your normal chastity cage');
     } else {
-        sendMessage('Go ahead and fetch your small punishment chastity cage %Grin%');
+        sendMessageBasedOnSender('Go ahead and fetch your small punishment chastity cage %Grin%');
     }
 
     let alreadyAttached = false;
 
     if(getVar(VARIABLE_CHASTITY_SPIKES_ON, false)) {
-        sendMessage('I want you to attach the spikes to it %Grin%');
+        sendMessageBasedOnSender('I want you to attach the spikes to it %Grin%');
         alreadyAttached = true;
     }
 
     if(getVar(VARIABLE_CHASTITY_DILATOR_ON, false)) {
         if(!alreadyAttached) {
-            sendMessage('I want you to attach the dilator to it %Grin%');
+            sendMessageBasedOnSender('I want you to attach the dilator to it %Grin%');
         } else {
-            sendMessage('And I want you to attach the dilator to it too %Lol%');
+            sendMessageBasedOnSender('And I want you to attach the dilator to it too %Lol%');
 
             if(getVar(VARIABLE_CHASTITY_CAGE_ON_TYPE) === CHASTITY_TYPE_SMALL || !getVar(VARIABLE_HAS_CHASTITY_SMALL_PUNISHMENT_CAGE, false)) {
-                sendMessage('We are going full punishment mode %SlaveName%');
-                sendMessage('You know you don\'t deserve anything different %GeneralTime% %Lol%');
+                sendMessageBasedOnSender('We are going full punishment mode %SlaveName%');
+                sendMessageBasedOnSender('You know you don\'t deserve anything different %GeneralTime% %Lol%');
             } else {
-                sendMessage('Be happy that I am not putting you into your small punishment cage as well %Grin%');
+                sendMessageBasedOnSender('Be happy that I am not putting you into your small punishment cage as well %Grin%');
             }
         }
     }
 
-    sendMessage('And next...');
+    sendMessageBasedOnSender('Tell me when you have everything around %SlaveName%');
+    waitForDone();
+    sendMessageBasedOnSender('%Good%');
 
-    sendMessage(random("Put on your %ChastityCage%", "Put on the %ChastityCage% at once", "Hurry up and get the %ChastityCage% back on", "Be quick and get your %ChastityCage% back on", "Lock your %Cock% up"));
+    sendMessageBasedOnSender('And next...');
+
+    sendMessageBasedOnSender(random("Put on your %ChastityCage%", "Put on the %ChastityCage% at once", "Hurry up and get the %ChastityCage% back on", "Be quick and get your %ChastityCage% back on", "Lock your %Cock% up"));
 
     const chastityLevel = getVar(VARIABLE_CHASTITY_LEVEL);
     let timeout = randomInteger(60 - chastityLevel, 90 - chastityLevel);
@@ -325,6 +329,11 @@ function lockChastityCage() {
         timeout = randomInteger(50 - chastityLevel, 70 - chastityLevel);
     }
 
+    //Slower timeout for the dilator
+    if(getVar(VARIABLE_CHASTITY_DILATOR_ON, false)) {
+        timeout *= 5;
+    }
+
     const answer = sendInput(random("Let me know when you're done...", "Report to me when it's on", "Remember to tell me when it's on"), timeout);
     let loop = 0;
     while (true) {
@@ -332,68 +341,81 @@ function lockChastityCage() {
             loop++;
 
             if (loop > 1) {
-                sendMessage(random("You've taken way too long to get that %ChastityCage% on...", "You are taking way to long to get that %ChastityCage% on", "It took you too long to get that cage on..."));
+                sendMessageBasedOnSender(random("You've taken way too long to get that %ChastityCage% on...", "You are taking way to long to get that %ChastityCage% on", "It took you too long to get that cage on..."));
 
                 if (chastityLevel < 20) {
-                    sendMessage(random("But since you're in chastity training", "But due to you being in chastity training", "But because of your chastity training") + " I won't punish you...");
+                    sendMessageBasedOnSender(random("But since you're in chastity training", "But due to you being in chastity training", "But because of your chastity training") + " I won't punish you...");
                 } else {
+                    //TODO: add something to belt maybe like dilator?
                     if (isForcedLockedUp()) {
-                        sendMessage("So as a punishment I'm placing you in the %ChastityCage% for the next 24 hours...")
+                        sendMessageBasedOnSender("So as a punishment I'm placing you in the %ChastityCage% for the next 24 hours...")
                     } else {
-                        sendMessage("So as a punishment I'm increasing your locked up period by 24 hours...")
+                        sendMessageBasedOnSender("So as a punishment I'm increasing your locked up period by 24 hours...")
                     }
 
                     addLockUpTime(24);
 
                     if (getCBTLimit() == LIMIT_ASKED_YES) {
-                        sendMessage('And to get that %Cock% into its cage quickly now...');
+                        sendMessageBasedOnSender('And to get that %Cock% into its cage quickly now...');
 
-                        switch (randomInteger(0, 2)) {
-                            case 0:
-                                if (hasTigerHot() && fetchToy('icy hot')) {
-                                    sendMessage('I want you to spread some icy hot on your shaft, balls and glans %Grin%');
-                                    sendMessage('That cock doesn\'t deserve any different and because it won\'t obey it will need to suffer');
-                                    sendMessage('When you are done wait for it to be soft');
-                                    sendMessage('I don\'t care how long it takes or how much it hurts, just report back to me %Lol%');
-                                    waitForDone(100000);
-                                    sendMessage('%Good%. Now lock that %Cock% up already');
-                                    break;
-                                }
-                            case 1:
-                                sendMessage('Bring me a bowl with some water in it and...');
-                                if (fetchIceCubes(5)) {
-                                    sendMessage('Put those ice cubes into the bowl and dip your balls and cock into it until they are soft %Grin%');
-                                    sendMessage('I don\'t care how long it takes or how much it hurts, just report back to me %Lol%');
-                                    waitForDone(100000);
-                                    sendMessage('%Good%. Now lock that %Cock% up already');
-                                    break;
-                                }
-                            case 2:
-                                smallCBTPunishment();
-                                sendMessage('I hope it is soft now');
+                        let options = new java.util.ArrayList();
+                        options.add(0);
+                        options.add(1);
+                        options.add(2);
 
-                                //TODO: Interaction
-                                sendMessage('Now lock that %Cock% up already');
-                                break;
+                        let punishments = 0;
+                        while(punishments === 0) {
+                            let option = options.get(randomInteger(0, options.size()));
+
+                            options.remove(option);
+
+                            switch (option) {
+                                case 0:
+                                    if (hasTigerHot() && fetchToy('icy hot')) {
+                                        sendMessageBasedOnSender('I want you to spread some icy hot on your shaft, balls and glans %Grin%');
+                                        sendMessageBasedOnSender('That cock doesn\'t deserve any different and because it won\'t obey it will need to suffer');
+                                        sendMessageBasedOnSender('When you are done wait for it to be soft');
+                                        sendMessageBasedOnSender('I don\'t care how long it takes or how much it hurts, just report back to me %Lol%');
+                                        waitForDone(100000);
+                                        sendMessageBasedOnSender('%Good%. Now lock that %Cock% up already');
+                                        break;
+                                    }
+                                case 1:
+                                    sendMessageBasedOnSender('Bring me a bowl with some water in it and...');
+                                    if (fetchIceCubes(5)) {
+                                        sendMessageBasedOnSender('Put those ice cubes into the bowl and dip your balls and cock into it until they are soft %Grin%');
+                                        sendMessageBasedOnSender('I don\'t care how long it takes or how much it hurts, just report back to me %Lol%');
+                                        waitForDone(100000);
+                                        sendMessageBasedOnSender('%Good%. Now lock that %Cock% up already');
+                                        break;
+                                    }
+                                case 2:
+                                    smallCBTPunishment();
+                                    sendMessageBasedOnSender('I hope it is soft now');
+
+                                    //TODO: Interaction
+                                    sendMessageBasedOnSender('Now lock that %Cock% up already');
+                                    break;
+                            }
                         }
                     }
                 }
                 break;
             } else {
-                sendMessage(random("Quicker!", "Faster", "Be faster", "Hurry up!", "Be quick", "Come on!", "Be quick...", "Be faster will you?", "Be faster!"));
+                sendMessageBasedOnSender(random("Quicker!", "Faster", "Be faster", "Hurry up!", "Be quick", "Come on!", "Be quick...", "Be faster will you?", "Be faster!"));
                 changeMeritMedium(true);
                 answer.loop();
             }
         } else if (answer.isLike("done", "on", "caged", "locked", "lock", "belt", 'yes')) {
             if (loop == 1) {
-                sendMessage(random("Finally", "About time...", "Took you long enough", "Be faster next time", "Don't waste my time again..."));
+                sendMessageBasedOnSender(random("Finally", "About time...", "Took you long enough", "Be faster next time", "Don't waste my time again..."));
                 break;
             } else {
-                sendMessage("%Good%");
+                sendMessageBasedOnSender("%Good%");
                 break;
             }
         } else {
-            sendMessage('Don\'t bother me if you aren\'t done yet...');
+            sendMessageBasedOnSender('Don\'t bother me if you aren\'t done yet...');
             answer.loop();
         }
     }
@@ -481,8 +503,12 @@ function addLockUpTime(hours) {
     }
 }
 
-function isChastityPlayOnly() {
-    return getVar(VARIABLE_CHASTITY_TOY_MODE) == TOY_PLAY_MODE;
+function isChastityPunishment() {
+    return getVar(VARIABLE_CHASTITY_TOY_MODE) === TOY_PUNISHMENT_MODE || getVar(VARIABLE_CHASTITY_TOY_MODE) === TOY_BOTH_MODE;
+}
+
+function isChastityPlay() {
+    return getVar(VARIABLE_CHASTITY_TOY_MODE) === TOY_PLAY_MODE || getVar(VARIABLE_CHASTITY_TOY_MODE) === TOY_BOTH_MODE;
 }
 
 function setupCage(small) {
