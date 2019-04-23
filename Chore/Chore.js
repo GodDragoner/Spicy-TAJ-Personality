@@ -11,7 +11,6 @@ CHORES.push(ROOM_CHORE_MOP);
 CHORES.push(ROOM_CHORE_WIPE);
 CHORES.push(ROOM_CHORE_VACUUM);
 
-
 const CHORE_WATCH = new StopWatch();
 
 let tempChoreTimeMultiplier = 1;
@@ -45,12 +44,46 @@ function chooseChore() {
     biggestTimeDifferenceRoom.confirmAndStartChore(biggestTimeDifferenceChoreType);
 }
 
+function getTimeForChores() {
+    let weeklyTimeSpend = getVar(VARIABLE_WEEKLY_CHORES_TIME, 0);
+    let todo = 0;
+
+    if(isFullTime()) {
+        todo = getVar(VARIABLE_MIN_WEEKLY_CHORE_TIME, 0) - weeklyTimeSpend;
+    } else {
+        todo = 60*3 - weeklyTimeSpend;
+    }
+
+    //Min 30 minutes of chores and max 60 at this point
+    todo = Math.min(60, Math.max(30, todo));
+
+    //Now combine with mood
+    let mood = getMood();
+
+    todo *= (1 + mood/5*(ACTIVE_PERSONALITY_STRICTNESS + 1));
+
+    return Math.min(200, todo);
+}
+
+function accountTimeSpendOnChore(minutes, skipGold = false) {
+    //Min 15 minutes
+    let minute = Math.min(15, minutes);
+
+    for(let x = 0; x < Math.floor(minute/15); x++) {
+        changeMeritLow(true);
+
+        if(!skipGold) {
+            rewardGoldLow();
+        }
+    }
+}
+
 function runChoreIntroduction() {
     sendVirtualAssistantMessage('%SlaveName%');
     sendVirtualAssistantMessage('This is the first time you\'re reporting for chores');
 
     if (isFullTime()) {
-        sendVirtualAssistantMessage('Since you serve full time you are required to complete at least ' + getVar(VARIABLE_MIN_WEEKLY_CHORES) + ' chores each week');
+        sendVirtualAssistantMessage('Since you serve full time you are required to do chores for at least ' + getVar(VARIABLE_MIN_WEEKLY_CHORE_TIME) + ' minutes each week');
     } else {
         sendVirtualAssistantMessage('Since you serve as part time it isn\'t mandatory for you to complete chores');
         sendVirtualAssistantMessage('However your domme is very pleased if you do so');

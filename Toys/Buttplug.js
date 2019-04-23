@@ -12,6 +12,33 @@ let currentPlug = null;
 const BUTTPLUG_TOY = createToy('buttplugs');
 const INFLATABLE_BUTT_PLUG = createToy('inflatable butt plug');
 
+function updateSessionButtplugs() {
+    for(let x = 0; x < buttplugs.length; x++) {
+        buttplugs[x].usedInSession = false;
+        buttplugs[x].clean = true;
+    }
+}
+
+function getRandomUncleanedButtplug() {
+    for(let x = 0; x < buttplugs.length; x++) {
+        if(buttplugs[x].usedInSession && !buttplugs[x].clean) {
+            return buttplugs[x];
+        }
+    }
+
+    return null;
+}
+
+function getRandomCleanButtplug() {
+    for(let x = 0; x < buttplugs.length; x++) {
+        if(!buttplugs[x].usedInSession || buttplugs[x].clean) {
+            return buttplugs[x];
+        }
+    }
+
+    return null;
+}
+
 function hasButtplugToy() {
     return getVar("toyButtPlugs");
 }
@@ -23,7 +50,9 @@ function isPlugged() {
 function putInButtplug(forceBigger = false) {
     sendMessage("%SlaveName%");
 
-    if (!fetchButtplugToy(getAnalPlug(0, 0, forceBigger).name)) {
+    let plug = getAnalPlug(0, 0, forceBigger);
+
+    if (!fetchButtplugToy(plug.name)) {
         return false;
     }
 
@@ -114,6 +143,12 @@ function putInButtplug(forceBigger = false) {
     setTempVar("pluggedToday", true);
     setTempVar(VARIABLE_IS_PLUGGED, true);
     setDate(VARIABLE_LAST_PLUG_DATE);
+
+    //Plug was used and is no longer clean
+    plug.usedInSession = true;
+    plug.clean = false;
+
+    currentPlug = plug;
 
     return true;
 }
@@ -269,7 +304,6 @@ function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
     let plug = availablePlugs[randomInteger(0, availablePlugs.length - 1)];
 
     setTempVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, Math.max(getVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, 0), plug.diameter));
-    currentPlug = plug;
 
     return plug;
 }
@@ -359,51 +393,54 @@ function removeButtplug() {
                 answer.loop();
             }
         }
-
-        if (getASMLimit() == LIMIT_ASKED_YES) {
-            sendMessage("You already know " + random("what I am gonna make you do now", "what comes next", "what you are gonna do next", "what I want you to do next", "what is gonna happen now"));
-            sendMessage("I want you to suck that toy clean %Grin%");
-
-            //Gag
-            if (isChance(20)) {
-                sendMessage("However today we are " + random("gonna clean it differently", "handle this a bit differently", "not gonna just lick it clean"));
-                sendMessage("In a moment you'll going to put that plug all the way into your mouth");
-                sendMessage("And you are gonna keep it there %Grin%");
-
-                if (isGaged()) {
-                    removeGag();
-                }
-
-                //TODO: Perform other stuff? corner time etc.
-                sendMessage("Go ahead and put that plug into your mouth");
-                sleep(5);
-
-                sendMessage("Look at you...");
-                sendMessage("Pathetic as you are");
-                sendMessage(random("Can you taste your own ass juice? %Lol%", "Your mouth filled with a plug that has been in your ass for quite some time"));
-                sendMessage("And all of that just to " + random("please me", "make me happy", "entertain me") + " %EmoteHappy%");
-
-                setGaged(true);
-                currentGagType = GAG_TYPE_BUTTPLUG_GAG;
-            } else {
-                sendMessage(random("I want you to blow it like you would blow a dildo", "I want you to lick it from the top to the bottom"));
-                sendMessage("Our toy should be shining and spotless");
-                sendMessage("Keep going until I tell you to stop");
-
-
-                sendMessage("Look at you...");
-                sendMessage("Pathetic as you are");
-                sendMessage(random("Can you taste your own ass juice?", "Licking of your own ass juice", "Licking that plug that was in your ass not too long ago") + " %Lol%");
-                sendMessage("And all of that just to " + random("please me", "make me happy", "entertain me") + " %EmoteHappy%");
-
-                sleep(randomInteger(10, 20));
-
-                sendMessage("You can stop now %EmoteHappy%");
-                sendMessage("Put the plug aside");
-            }
-        }
     }
 
+    if (getASMLimit() == LIMIT_ASKED_YES) {
+        sendMessage("You already know " + random("what I am gonna make you do now", "what comes next", "what you are gonna do next", "what I want you to do next", "what is gonna happen now"));
+        sendMessage("I want you to suck that toy clean %Grin%");
+
+        //Gag
+        if (isChance(20)) {
+            sendMessage("However today we are " + random("gonna clean it differently", "handle this a bit differently", "not gonna just lick it clean"));
+            sendMessage("In a moment you'll going to put that plug all the way into your mouth");
+            sendMessage("And you are gonna keep it there %Grin%");
+
+            if (isGaged()) {
+                removeGag();
+            }
+
+            //TODO: Perform other stuff? corner time etc.
+            sendMessage("Go ahead and put that plug into your mouth");
+            sleep(5);
+
+            sendMessage("Look at you...");
+            sendMessage("Pathetic as you are");
+            sendMessage(random("Can you taste your own ass juice? %Lol%", "Your mouth filled with a plug that has been in your ass for quite some time"));
+            sendMessage("And all of that just to " + random("please me", "make me happy", "entertain me") + " %EmoteHappy%");
+
+            setGaged(true);
+            currentGagType = GAG_TYPE_BUTTPLUG_GAG;
+        } else {
+            sendMessage(random("I want you to blow it like you would blow a dildo", "I want you to lick it from the top to the bottom"));
+            sendMessage("Our toy should be shining and spotless");
+            sendMessage("Keep going until I tell you to stop");
+
+
+            sendMessage("Look at you...");
+            sendMessage("Pathetic as you are");
+            sendMessage(random("Can you taste your own ass juice?", "Licking of your own ass juice", "Licking that plug that was in your ass not too long ago") + " %Lol%");
+            sendMessage("And all of that just to " + random("please me", "make me happy", "entertain me") + " %EmoteHappy%");
+
+            sleep(randomInteger(10, 20));
+
+            sendMessage("You can stop now %EmoteHappy%");
+            sendMessage("Put the plug aside");
+        }
+
+        currentPlug.clean = true;
+    }
+
+    currentPlug = null;
     setTempVar(VARIABLE_IS_PLUGGED, false);
 }
 
@@ -741,8 +778,6 @@ function setupNewButtplug() {
 function fetchButtplugToy(toy) {
     return fetchToy(toy, getButtplugImagePath(toy));
 }
-
-
 
 function getButtplugImagePath(name) {
     return 'Images/Spicy/Toys/Buttplugs/' + name + '.*';

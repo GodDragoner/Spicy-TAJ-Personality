@@ -82,6 +82,25 @@ if(!getVar(VARIABLE_FINISHED_FIRST_SESSION, false)) run("Session/FirstSession.js
 
 if(isFullTime()) {
     run("Startup/FullTime/FullTimeCheck.js");
+} else {
+    //Week check only start on mondays
+    if (isVar(VARIABLE_NEXT_WEEK_CHECK) || new Date().getDay() == 1) {
+        //Only check the week if this isn't the first time
+        let doWeekCheck = false;
+        if (isVar(VARIABLE_NEXT_WEEK_CHECK)) {
+            if (getDate(VARIABLE_NEXT_WEEK_CHECK).hasPassed()) {
+                doWeekCheck = true;
+            }
+        } else {
+            setDate(VARIABLE_NEXT_WEEK_CHECK, setDate().addDay(7).setHour(0).setSecond(0).setMinute(0));
+        }
+
+        //We want to track this even outside of full time
+        if(doWeekCheck) {
+            setVar(VARIABLE_WEEKLY_CHORES_TIME, 0);
+            setVar(VARIABLE_WEEKLY_CHORES_DONE, 0);
+        }
+    }
 }
 
 //run("Session/StartSession.js");

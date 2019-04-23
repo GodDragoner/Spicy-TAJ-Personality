@@ -264,7 +264,7 @@ function createToy(name) {
         },
 
         setHasToy : function (hasToy) {
-            setVar(getVarName(), hasToy);
+            setVar(this.getVarName(), hasToy);
         },
 
         askForToyAndUsage : function(domChose, variableName, imageName) {

@@ -14,6 +14,7 @@
     }
 
     sendVirtualAssistantMessage(getWelcomeMessage(), false);
+
     let exitRequest = false;
 
     while (!exitRequest) {
@@ -26,6 +27,7 @@
             } else if (lobbyAnswer.isLike("chore", "clean", "dust", "wipe", "wash")) {
                 lobbyAnswer.clearOptions();
                 run("Chore/ChoreMenu.js");
+                sendVirtualAssistantMessage(getWelcomeMessage(), false);
                 break;
             } else if (lobbyAnswer.isLike("dungeon", "spanking", "spankzchoir", "selfbondage", "pain", "torture", "chamber", "punish")) {
                 lobbyAnswer.clearOptions();
@@ -36,6 +38,7 @@
             } else if (lobbyAnswer.isLike("setting", "adjust", "calibrate", "setup")) {
                 lobbyAnswer.clearOptions();
                 run('Assistant/Settings/Settings.js');
+                sendVirtualAssistantMessage(getWelcomeMessage(), false);
                 break;
             } else if (lobbyAnswer.isLike("shop", "buy", "purchase", "spent", "gold", "store")) {
                 sendVirtualAssistantMessage("This is not supported yet!");
@@ -57,7 +60,7 @@
             } else if (lobbyAnswer.isLike("rule", "house", "commands", "orders")) {
                 //sendVirtualAssistantMessage("This is not supported yet!");
                 run("Rules/HouseRules.js");
-                sendVirtualAssistantMessage("back to the assistant from rules");
+                sendVirtualAssistantMessage(getWelcomeMessage(), false);
                 break;
             } else if (lobbyAnswer.isLike("save", "end", "quit", "stop", "leave", "close", "finish")) {
                 sendVirtualAssistantMessage(random("Bye", "Until next time", "See you", "I'm waiting for the next time", "Don't leave me alone to long", "Good bye", "Have a nice day", "I saved your process you can close the program"));

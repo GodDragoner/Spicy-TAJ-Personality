@@ -8,5 +8,5 @@ function putOnCollar() {
     sendMessage('Now put it on. Tell me when you are done %SlaveName%');
     waitForDone();
 
-    COLLAR_TOY.setHasToy(true);
+    COLLAR_TOY.setToyOn(true);
 }

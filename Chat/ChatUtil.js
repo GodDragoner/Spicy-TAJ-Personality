@@ -22,15 +22,17 @@ function setCurrentSender(sender) {
 }
 
 function sendMessageBasedOnSender(message, secondsToWait = undefined, skipImage = false) {
-    if(getCurrentSender() == SENDER_TAJ) {
+    if(getCurrentSender() === SENDER_TAJ) {
         if(skipImage) {
             lockImages();
         }
 
         if(secondsToWait === undefined) {
             sendMessage(message);
-        } else if(secondsToWait === false) {
+        } else if(secondsToWait !== false) {
             sendMessage(message, secondsToWait);
+        } else {
+            sendMessage(message);
         }
 
         if(skipImage) {
@@ -115,4 +117,63 @@ function removeContact(id) {
     text.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.BOLD, 14));
 
     sendCustomMessage(textName, text);
+}
+
+function creatgeIntegerInput(question, min, max, notNumberMessage, outOfRangeMessage) {
+    let answer = createInput();
+
+    while(true) {
+        if(answer.isInteger()) {
+            if(min === undefined && max === undefined) {
+                return answer.getInt();
+            } else {
+                let int = answer.getInt();
+                if(int >= min && int <= max) {
+                    return int;
+                }
+
+                sendMessageBasedOnSender(outOfRangeMessage);
+                answer.loop();
+            }
+        } else {
+            sendMessageBasedOnSender(notNumberMessage);
+            answer.loop();
+        }
+    }
+}
+
+
+function sendYesOrNoQuestion(question) {
+    if(getCurrentSender() === SENDER_ASSISTANT) {
+        sendVirtualAssistantMessage(question, 0);
+        return createYesOrNoQuestion();
+    }
+
+    let answer = sendInput(question);
+
+    while(true) {
+        if(answer.isLike('yes')) {
+            return true;
+        } else if(answer.isLike('no')) {
+            return false;
+        } else {
+            sendMessage(YES_OR_NO);
+            answer.loop();
+        }
+    }
+}
+
+function createYesOrNoQuestion() {
+    let answer = createInput();
+
+    while(true) {
+        if(answer.isLike('yes')) {
+            return true;
+        } else if(answer.isLike('no')) {
+            return false;
+        } else {
+            sendMessageBasedOnSender(YES_OR_NO);
+            answer.loop();
+        }
+    }
 }

@@ -43,7 +43,7 @@
     setDate("firstStart");
     setVar(VARIABLE_PUNISHMENT_POINTS, 0);
 
-    setVar(VARIABLE_MIN_WEEKLY_CHORES, 5);
+    setVar(VARIABLE_MIN_WEEKLY_CHORE_TIME, 60*5);
 
     setVar("teaseModuleRatio", 60);
     setVar("slaveModuleRatio", 60);
@@ -613,22 +613,27 @@
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
     unlockImages();
 
-    //TODO: Check for and create the SelfHumiliation folder if needed
-    sendVirtualAssistantMessage("Next we need for you to setup a folder with pictures of YOU!");
-    sendVirtualAssistantMessage("This is very simple actually...");
-    sendVirtualAssistantMessage("Inside the Images/Spicy folder you'll find a folder named SelfHumiliation");
-    sendVirtualAssistantMessage("As your first homework you have to snap at least two humiliating pictures of yourself");
-    sendVirtualAssistantMessage("Put them inside the folder");
-    sendVirtualAssistantMessage("We're gonna have a lot of fun with this folder! %Grin%");
-    sendVirtualAssistantMessage("Inside Videos/Spicy you'll find a folder with the exact same name");
-    sendVirtualAssistantMessage("This folder needs a humiliating video of you");
-    sendVirtualAssistantMessage("It doesn't have to be longer than 10 seconds");
-    sendVirtualAssistantMessage("All I want is your face clearly on display");
-    sendVirtualAssistantMessage("While doing something you would consider to be humiliating");
-    sendVirtualAssistantMessage("Hopefully the video is never viewed by others %Lol%");
-    sendVirtualAssistantMessage("Let me know when you've completed submitting your first evidence of self humiliation");
-    answer = createInput();
-    sendVirtualAssistantMessage("oh %subName%, those are some good ones! %Lol%");
+    setupLimits();
+
+    //TODO: Include these checks in other modules too when it comes to the humiliation folder
+    if(!HUMILIATION_LIMIT.isHardLimit() || !VERBAL_HUMILIATION_LIMIT.isHardLimit()) {
+        sendVirtualAssistantMessage("Next we need for you to setup a folder with pictures of YOU!");
+        sendVirtualAssistantMessage("This is very simple actually...");
+        sendVirtualAssistantMessage("Inside the Images/Spicy folder you'll find a folder named SelfHumiliation");
+        sendVirtualAssistantMessage("As your first homework you have to snap at least two humiliating pictures of yourself");
+        sendVirtualAssistantMessage("Put them inside the folder");
+        sendVirtualAssistantMessage("We're gonna have a lot of fun with this folder! %Grin%");
+        sendVirtualAssistantMessage("Inside Videos/Spicy you'll find a folder with the exact same name");
+        sendVirtualAssistantMessage("This folder needs a humiliating video of you");
+        sendVirtualAssistantMessage("It doesn't have to be longer than 10 seconds");
+        sendVirtualAssistantMessage("All I want is your face clearly on display");
+        sendVirtualAssistantMessage("While doing something you would consider to be humiliating");
+        sendVirtualAssistantMessage("Hopefully the video is never viewed by others %Lol%");
+        sendVirtualAssistantMessage("Let me know when you've completed submitting your first evidence of self humiliation");
+        answer = createInput();
+        sendVirtualAssistantMessage("Oh %SubName%, those are some good ones! %Lol%");
+    }
+
     sendVirtualAssistantMessage("Finally we need to set up your spanking implements");
     sendVirtualAssistantMessage("I expect you to have at least 3 different ones %Grin%");
     sendVirtualAssistantMessage("One of them should preferably be sort of painful");

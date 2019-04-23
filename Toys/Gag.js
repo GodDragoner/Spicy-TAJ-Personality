@@ -1,4 +1,3 @@
-
 const GAG_TYPE_SPIDER_GAG = createToy('spider gag');
 const GAG_TYPE_BALL_GAG = createToy('ball gag');
 const GAG_TYPE_BUTTPLUG_GAG = createToy('buttplug');
@@ -26,23 +25,23 @@ function hasAnyGag() {
 function getRandomGag() {
     let gags = [];
 
-    if(GAG_TYPE_DILDO_GAG.hasToy()) {
+    if (GAG_TYPE_DILDO_GAG.hasToy()) {
         gags.push(GAG_TYPE_DILDO_GAG);
     }
 
-    if(GAG_TYPE_BALL_GAG.hasToy()) {
+    if (GAG_TYPE_BALL_GAG.hasToy()) {
         gags.push(GAG_TYPE_BALL_GAG);
     }
 
-    if(GAG_TYPE_INFLATABLE_GAG.hasToy()) {
+    if (GAG_TYPE_INFLATABLE_GAG.hasToy()) {
         gags.push(GAG_TYPE_INFLATABLE_GAG);
     }
 
-    if(GAG_TYPE_SPIDER_GAG.hasToy()) {
+    if (GAG_TYPE_SPIDER_GAG.hasToy()) {
         gags.push(GAG_TYPE_SPIDER_GAG);
     }
 
-    if(gags.length === 0) {
+    if (gags.length === 0) {
         return null;
     }
 
@@ -50,7 +49,7 @@ function getRandomGag() {
 }
 
 function wantsToGagSub() {
-    if(isGaged() || !hasAnyGag()) {
+    if (isGaged() || !hasAnyGag()) {
         return false;
     }
 
@@ -58,14 +57,14 @@ function wantsToGagSub() {
 }
 
 function decideGag(pain = false) {
-    if(isGaged() || !hasAnyGag()) {
+    if (isGaged() || !hasAnyGag()) {
         return false;
     }
 
-    if(isAnnoyedByTalking()) {
+    if (isAnnoyedByTalking()) {
         sendMessageBasedOnSender('You know what %SlaveName%');
 
-        if(pain) {
+        if (pain) {
             sendMessageBasedOnSender('I am not in the mood to hear your whimpering %GeneralTime%');
         } else {
             //TODO: More?
@@ -75,7 +74,7 @@ function decideGag(pain = false) {
 
         selectAndPutInGag();
         return true;
-    } else if(isChance(25)) {
+    } else if (isChance(25)) {
         selectAndPutInGag();
         return true;
     }
@@ -86,23 +85,25 @@ function decideGag(pain = false) {
 function selectGag() {
     let dildoGagChance = 0;
 
-    if(GAG_TYPE_DILDO_GAG.hasToy()) {
+    if (GAG_TYPE_DILDO_GAG.hasToy()) {
         dildoGagChance += 25;
 
-        if(isAnnoyedByTalking()) {
+        if (isAnnoyedByTalking()) {
             dildoGagChance += 25;
         }
     }
 
-    if(isChance(dildoGagChance)) {
+    if (isChance(dildoGagChance)) {
         return GAG_TYPE_DILDO_GAG;
-    } else if(feelsLikePunishingSlave() && GAG_TYPE_SPIDER_GAG.hasToy() || BODY_PART_TONGUE.currentClamps > 0 && isChance(15*getMood())) {
+    } else if (feelsLikePunishingSlave() && GAG_TYPE_SPIDER_GAG.hasToy() || BODY_PART_TONGUE.currentClamps > 0 && isChance(15 * getMood())) {
         return GAG_TYPE_SPIDER_GAG;
     }
 
-    //TODO: Has used buttplug laying around?
+    if (getASMLimit() === LIMIT_ASKED_YES && feelsEvil() && getRandomUncleanedButtplug() !== null) {
+        return BUTTPLUG_TOY;
+    }
 
-    if(hasBallGag()) {
+    if (hasBallGag()) {
         return GAG_TYPE_BALL_GAG;
     } else {
         return getRandomGag();
@@ -117,21 +118,22 @@ function selectAndPutInGag() {
 }
 
 function putInGag(gagType = GAG_TYPE_BALL_GAG, addPinToTongue = false) {
-    if(!gagType.hasToy()) {
+    if (!gagType.hasToy()) {
         gagType = selectGag();
     }
 
-    if(addPinToTongue && BODY_PART_TONGUE.currentClamps === 0) {
-        if(fetchToy('clothespin', undefined, 1)) {
+    if (addPinToTongue && BODY_PART_TONGUE.currentClamps === 0) {
+        if (fetchToy('clothespin', undefined, 1)) {
             putClampsOn(1, BODY_PART_TONGUE, false, true);
         }
     }
 
     let keepPins = false;
 
-    if(BODY_PART_TONGUE.currentClamps > 0 && !!addPinToTongue) {
+    //Previously had a pin on tongue but we don't want to add one so we will remove it
+    if (BODY_PART_TONGUE.currentClamps > 0 && !addPinToTongue) {
         //Keep pin on and use spider gag
-        if(GAG_TYPE_SPIDER_GAG.hasToy() && feelsLikePunishingSlave()) {
+        if (GAG_TYPE_SPIDER_GAG.hasToy() && feelsLikePunishingSlave()) {
             gagType = GAG_TYPE_SPIDER_GAG;
             keepPins = true;
         } else {
@@ -141,22 +143,53 @@ function putInGag(gagType = GAG_TYPE_BALL_GAG, addPinToTongue = false) {
         }
     }
 
-    if (!fetchToy(gagType.name)) {
-        return false;
+
+    let isASM = false;
+
+    if (gagType === BUTTPLUG_TOY) {
+        let buttplug = getRandomUncleanedButtplug();
+
+        //No ASM or no plug found?
+        if(getASMLimit() !== LIMIT_ASKED_YES || buttplug === null) {
+            buttplug = getRandomCleanButtplug();
+        } else {
+            isASM = true;
+        }
+
+        //Fall back if we haven't found a plug
+        if(buttplug === null) {
+            return putInGag();
+        }
+
+        if (!fetchButtplugToy(buttplug.name)) {
+            return false;
+        }
+
+        //After we fetched it we can set this to true because we are gonna clean it with the mouth
+        buttplug.clean = true;
+    } else {
+        if (!fetchToy(gagType.name)) {
+            return false;
+        }
     }
 
-    if(keepPins) {
+    if (keepPins) {
         sendMessageBasedOnSender('And no, you won\'t be allowed to take those clothespins of your tongue');
         sendMessageBasedOnSender('They will stay where they are %Grin%');
         sendMessageBasedOnSender('That is why I made you get the spider gag anyway %Lol%');
         sendMessageBasedOnSender('You better make it work %EmoteHappy%');
-    } else if(addPinToTongue) {
+    } else if (addPinToTongue) {
         sendMessageBasedOnSender('This is gonna be good');
         sendMessageBasedOnSender('Your tongue clipped with that pin and your gag pulling your mouth wide open %Grin%');
     }
 
+    if(isASM) {
+        sendMessageBasedOnSender('I hope you are ready to taste that ass juice of yours %Grin%');
+    }
+
     sendMessageBasedOnSender('Now put it in. Tell me when you are done %SlaveName%');
     waitForDone();
+
 
     currentGagType = gagType;
 
@@ -166,8 +199,8 @@ function putInGag(gagType = GAG_TYPE_BALL_GAG, addPinToTongue = false) {
 function removeGag() {
     sendMessageBasedOnSender("%SlaveName% go ahead and remove that gag from your mouth");
     let answer = sendInput("Tell me when you are ready to continue");
-    while(true) {
-        if(answer.isLike("done", "yes")) {
+    while (true) {
+        if (answer.isLike("done", "yes")) {
             sendMessageBasedOnSender("%Good%");
             break;
         } else {

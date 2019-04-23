@@ -1,5 +1,6 @@
 addResponseRegex("yes", "no", "thanks", "thank you");
 
+//TODO: With latest changes this won't work as expected any more (responses are ignored during answers)
 function honorificResponse(message) {
     if(!getVar(VARIABLE_CURRENT_SESSION_ACTIVE) || !RULE_ALWAYS_HONORIFIC.isActive()) {
         return false;

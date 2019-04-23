@@ -146,11 +146,17 @@ function createRoom(name, size) {
             CHORE_WATCH.stop();
 
             let secondsPassed = parseInt(CHORE_WATCH.getTime() / 1000, 10);
+            let minutesPassed = Math.round(secondsPassed/60);
 
             //Weekly chores done
             incrementVar(VARIABLE_WEEKLY_CHORES_DONE, 1);
 
             incrementVar(VARIABLE_TOTAL_CHORES_DONE, 1);
+
+            //Time in minutes spend doing chores
+            incrementVar(VARIABLE_WEEKLY_CHORES_TIME, minutesPassed);
+
+            incrementVar(VARIABLE_TOTAL_CHORES_TIME, minutesPassed);
 
             //Set last done date
 
@@ -168,13 +174,13 @@ function createRoom(name, size) {
             //Not enough data for average or okay (within bounds)
             if (!averageSet || this.isWithinTimeBounds(secondsPassed, choreType)) {
                 sendMessageBasedOnSender('%Good% %SlaveName%');
-                changeMeritMedium(false);
 
                 if (averageSet) {
                     sendMessageBasedOnSender('Allow me to reward your ' + random('splendid', 'good', 'excellent', 'lovely') + random('behaviour', 'work'));
-                    rewardGoldMedium();
+                    accountTimeSpendOnChore(minutesPassed, false);
                 } else {
                     sendMessageBasedOnSender('Good job %GeneralTime% %SlaveName%');
+                    accountTimeSpendOnChore(minutesPassed, true);
                 }
 
                 //Reset warnings

@@ -127,6 +127,9 @@ let RULE_NEVER_SWALLOW_SPIT;
         sendMessage('You will follow this rule from now on');
 
         this.setActive(true);
+
+        return true;
+
     };
 
     AVAILABLE_RULES.push(rule);

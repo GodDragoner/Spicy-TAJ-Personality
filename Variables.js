@@ -10,7 +10,7 @@ const VARIABLE_SLAVE_TYPE = "slaveType";
 
 //Full time
 const VARIABLE_MIN_WEEKLY_VISITS = "minWeeklyVisits";
-const VARIABLE_MIN_WEEKLY_CHORES = "minWeeklyChores";
+const VARIABLE_MIN_WEEKLY_CHORE_TIME = "minWeeklyChoreTime";
 
 //Home
 const VARIABLE_HOME_TYPE = 'homeType';
@@ -26,10 +26,10 @@ const VARIABLE_CHORE_WARNINGS = "choreWarnings";
 
 const VARIABLE_KINKY_CHORE_CHANCE = "kinkyChoreChance";
 
-//const VARIABLE_TOTAL_CHORES_DONE = "totalChoresDone";
+const VARIABLE_TOTAL_CHORES_TIME = "totalChoresTime";
 
-//const VARIABLE_WEEKLY_CHORE_RESET_DATE = "weeklyChoreResetDate";
 const VARIABLE_WEEKLY_CHORES_DONE = "weeklyChoresDone";
+const VARIABLE_WEEKLY_CHORES_TIME = "weeklyChoresTime";
 
 const VARIABLE_DENIAL_LIMIT = "denialLimit";
 const VARIABLE_DENIAL_LEVEL = "denialLevel";
@@ -206,6 +206,8 @@ const VARIABLE_WEEKLY_SLAVE_VISITS = "weeklySlaveVisits";
 const VARIABLE_SLAVE_LEAVE_UNTIL = "slaveLeaveUntil";
 const VARIABLE_SLAVE_VACATION_UNTIL = "slaveVacationUntil";
 
+const VARIABLE_PUNISHMENT_POINT_MULTIPLIER = "punishmentPointMultiplier";
+const VARIABLE_LAST_PUNISHMENT_POINT_CHANGE = "punishmentPointLastChange";
 const VARIABLE_PUNISHMENT_POINTS = "punishmentPoints";
 
 const VARIABLE_NEXT_CONFESSION_DAY = "nextConfessionDay";

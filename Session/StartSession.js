@@ -1,6 +1,10 @@
 {
+    setCurrentSender(SENDER_TAJ);
     setDate(VARIABLE_CURRENT_SESSION_DATE);
     setTempVar(VARIABLE_CURRENT_SESSION_ACTIVE, true);
+
+    //Toys
+    updateSessionButtplugs();
 
 //TODO: Special day test (birthday etc.)
 
@@ -58,12 +62,7 @@
         }
     }
 
-    if (isInChastity()) {
-        //run("Session/Start/Chastity/*.js");
-        run("Session/Start/Neutral/*.js");
-    } else {
-        run("Session/Start/NoChastity/*.js");
-    }
+    run("Session/Start/DecideStart.js");
 
     if (isInChastity()) {
         setVar(VARIABLE_LOCKED_DAYS_IN_ROW, getVar(VARIABLE_LOCKED_DAYS_IN_ROW) + 1);

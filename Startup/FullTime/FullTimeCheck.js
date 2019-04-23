@@ -1,5 +1,6 @@
 {
-    if (isVar(VARIABLE_LAST_ROUTINE_CHECK) && getDate(VARIABLE_LAST_ROUTINE_CHECK).hasPassed()) {
+    if (!isVar(VARIABLE_LAST_ROUTINE_CHECK) || getDate(VARIABLE_LAST_ROUTINE_CHECK).hasPassed()) {
+        setDate(VARIABLE_LAST_ROUTINE_CHECK);
         setVar(VARIABLE_WEEKLY_SLAVE_VISITS, getVar(VARIABLE_WEEKLY_SLAVE_VISITS) + 1);
 
         if (isVar(VARIABLE_SLAVE_LEAVE_UNTIL)) {
@@ -34,7 +35,7 @@
         //Week check only start on mondays
         if (isVar(VARIABLE_NEXT_WEEK_CHECK) || new Date().getDay() == 1) {
             //Only check the week if this isn't the first time
-            doWeekCheck = false;
+            let doWeekCheck = false;
             if (isVar(VARIABLE_NEXT_WEEK_CHECK)) {
                 if (getDate(VARIABLE_NEXT_WEEK_CHECK).hasPassed()) {
                     doWeekCheck = true;
@@ -56,7 +57,7 @@
                 setVar(VARIABLE_WEEKLY_SLAVE_VISITS, 0);
                 sendVirtualAssistantMessage("Let's see if you've been doing your chores like a good slave!");
 
-                if (getVar(VARIABLE_WEEKLY_CHORES_DONE) < getVar(VARIABLE_MIN_WEEKLY_CHORES)) {
+                if (getVar(VARIABLE_WEEKLY_CHORES_TIME) < getVar(VARIABLE_MIN_WEEKLY_CHORE_TIME)) {
                     sendVirtualAssistantMessage("Bad boy!", "Bad girl!", "Bad slut!", "Bad dog!", "Bad slave!", "Bad sissy!");
                     sendVirtualAssistantMessage("Bad behaviour is punished!");
                     sendVirtualAssistantMessage("I just assigned you punishment points!");
@@ -69,6 +70,7 @@
                     addGold(randomInteger(50, 200));
                 }
 
+                setVar(VARIABLE_WEEKLY_CHORES_TIME, 0);
                 setVar(VARIABLE_WEEKLY_CHORES_DONE, 0);
 
                 //TODO: Study and athlete mode

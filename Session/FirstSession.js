@@ -126,35 +126,35 @@
         }
 
         sendMessage("Perfect " + getVar(VARIABLE_MIN_WEEKLY_VISITS) + " times a week it is.");
-        sendMessage("Next I need to know how many chores per week you should complete");
-        sendMessage("Right now the number of chores is " + getVar(VARIABLE_MIN_WEEKLY_CHORES));
+        sendMessage("Next I need to know how many minutes per week you should do chores");
+        sendMessage("Right now the amount of minutes for chores is " + getVar(VARIABLE_MIN_WEEKLY_CHORE_TIME));
         sendMessage("Which I think is fair all considered");
         sendMessage("Since this number will likely cover your cleaning duty");
         sendMessage("All chores beyond those I consider to be voluntary");
         sendMessage("Either because you want to please me or perhaps earn a bit of gold");
 
-        answer = sendInput("Do you wish to change the number of chores?");
+        answer = sendInput("Do you wish to change this?");
         while (true) {
             if (answer.isLike("yes")) {
                 sendMessage("Okay then...");
-                answer = sendInput("So many chores should you at the very minimum complete each week?");
+                answer = sendInput("So many minutes should you at the very minimum do chores each week?");
 
                 while (true) {
                     if (answer.isInteger()) {
                         const result = answer.getInt();
-                        if (result <= 2) {
-                            sendMessage("Not less than three!");
+                        if (result < 60*2) {
+                            sendMessage("Not less than 120 minutes!");
                             answer.loop();
                         } else {
                             sendMessage("Excellent");
-                            setVar(VARIABLE_MIN_WEEKLY_CHORES, result);
+                            setVar(VARIABLE_MIN_WEEKLY_CHORE_TIME, result);
                             break;
                         }
                     } else {
                         sendMessage("All I asked you to do was input a simple number...");
-                        sendMessage("Like 3");
-                        sendMessage("or 6");
-                        sendMessage("or 100...");
+                        sendMessage("Like 120");
+                        sendMessage("or 150");
+                        sendMessage("or 400...");
                         answer.loop();
                     }
                 }

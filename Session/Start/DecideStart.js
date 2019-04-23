@@ -2,14 +2,10 @@
     setTempVar('findStartTries', 0);
 
     if(isInChastity()) {
-        sendDebugMessage('Running chastity start');
-
         setTempVar('minStartsSinceRun', neutralStartAmount + chastityStartAmount);
 
         run(random('Session/Start/Neutral/*.js', 'Session/Start/Chastity/*.js'));
     } else {
-        sendDebugMessage('Running non chastity start');
-
         setTempVar('minStartsSinceRun',  neutralStartAmount + nonChastityStartAmount);
 
         run(random('Session/Start/NoChastity/*.js', 'Session/Start/Neutral/*.js'))

@@ -11,13 +11,12 @@ const TOY_PUNISHMENT_MODE = 1;
 const TOY_BOTH_MODE = 2;
 const TOY_ASKED_BUY_MODE = 3;
 
-
 function setUpPersonalityVars() {
     switch(ACTIVE_PERSONALITY_ID) {
         case ENFORCING_PERSONALITY_ID:
             for(let x = 0; x < LIMITS.length; x++) {
-                if(getVar(LIMITS[x], LIMIT_NEVER_ASKED) != LIMIT_NEVER) {
-                    setVar(LIMITS[x], LIMIT_ASKED_YES);
+                if(LIMITS[x].getLimit() != LIMIT_NEVER) {
+                    LIMITS[x].setLimit(LIMIT_ASKED_YES);
                 }
             }
             break;
@@ -154,11 +153,8 @@ function changeMerit(level, negative) {
 }
 
 function addMerits(meritChange) {
-    if(getVar(VARIABLE_MERITS) + meritChange < 0) {
-        meritChange = -getVar(VARIABLE_MERITS);
-    }
-
-    setVar(VARIABLE_MERITS, getVar(VARIABLE_MERITS) + meritChange);
+    //Min 0 max 1000
+    setVar(VARIABLE_MERITS, Math.min(1000, Math.max(0, getVar(VARIABLE_MERITS) + meritChange)));
 }
 
 function isEnforcingPersonality() {
