@@ -226,7 +226,7 @@ if (newDay) {
         tempLust += 5;
     }
 
-    //TODO: Sub and dom birthday
+    //TODO: Sub and dom birthday events
 
 
     //Set the daily based values

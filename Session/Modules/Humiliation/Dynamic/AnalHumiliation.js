@@ -125,7 +125,10 @@ function startPenetratingSession(toy) {
     sendMessage("Now that your ass is properly prepared go ahead and push it completely in");
     sendMessage("Keep it in there", 5);
     sendMessage("And pull it all the way out again");
-    //TODO: Sit on dildo for some duration
+
+    if(!finger && getVar(VARIABLE_ASS_LEVEL) >= 15) {
+
+    }
 
     const durationMinutes = getAnalSessionLength();
     const date = setDate();
@@ -177,9 +180,7 @@ function appendModule(toy) {
     if (isChance(50) && !finger && !assModulesDone.contains(0)) {
         assModulesDone.add(0);
         sendMessage("Now place that " + toy + " on the ground");
-        sendMessage("You already know what's coming next don't you?");
-
-        //TODO: Ask what the sub guesses he has to do
+        sendMessage('%KnowWhatsNext%');
 
         let subGuess = 0;
         let answer = createInput(7);

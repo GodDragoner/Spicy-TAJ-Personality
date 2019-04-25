@@ -143,7 +143,7 @@ function punishSmallFlickBalls() {
     let completedInTime = false;
     while (!completedInTime) {
         sendMessage('Flick each side ' + getVar(VARIABLE_SUB_PAIN_TOLERANCE) * 2 + ' times');
-        answer = sendInput(random('Let me know when you\'re done', 'Inform me when you\'re done') + ' %SlaveName%', 60);
+        let answer = sendInput(random('Let me know when you\'re done', 'Inform me when you\'re done') + ' %SlaveName%', 60);
         while (true) {
             if (answer.isTimeout()) {
                 sendMessage(random('This is taking too long', 'You are taking way too much time', 'How is this taking so long?'));
@@ -165,6 +165,7 @@ function punishSmallFlickBalls() {
                     }
                 }
 
+                completedInTime = true;
                 break;
             } else {
                 sendMessage("Are you trying to write 'done'?");
@@ -247,7 +248,7 @@ function waitForDoneVirtualAssistant(timeout = 100) {
 }
 
 function askBallPain() {
-    const answer = sendInput(random('Are they ' + random('blue', 'sore', 'purple', 'hurting') + ' yet?'), random('Does it ', 'Do they ') + random('hurt', 'ache', 'burn') + ' yet?');
+    const answer = sendInput(random('Are they ' + random('blue', 'sore', 'purple', 'hurting') + ' yet?', random('Does it ', 'Do they ') + random('hurt', 'ache', 'burn') + ' yet?'));
     while (true) {
 
         if (answer.isLike('yes')) {

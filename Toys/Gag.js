@@ -197,6 +197,12 @@ function putInGag(gagType = GAG_TYPE_BALL_GAG, addPinToTongue = false) {
 }
 
 function removeGag() {
+    if (BODY_PART_TONGUE.currentClamps > 0) {
+        sendMessageBasedOnSender('%SlaveName%');
+        sendMessageBasedOnSender('Remove all clamps from your tongue %EmoteHappy%', 5);
+        BODY_PART_TONGUE.currentClamps = 0;
+    }
+
     sendMessageBasedOnSender("%SlaveName% go ahead and remove that gag from your mouth");
     let answer = sendInput("Tell me when you are ready to continue");
     while (true) {

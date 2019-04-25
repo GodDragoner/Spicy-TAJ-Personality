@@ -55,13 +55,6 @@ function interactWithRandomToys() {
         putInButtplug();
     }
 
-    //TODO: More interaction (forbid to talk etc.)
-    if (isGaged() && !isAnnoyedByTalking() && isChance(25)) {
-        removeGag();
-    } else {
-        decideGag();
-    }
-
     //TODO: Better decision?
     if(isChance(20)) {
         putOnCollar();
@@ -75,6 +68,14 @@ function interactWithRandomToys() {
         } else {
             distributeClamps(toDistribute);
         }
+    }
+
+    //TODO: More interaction (forbid to talk etc.)
+    //Do this after clamps because we might remove clamp from tongue after put on for spider gag
+    if (isGaged() && !isAnnoyedByTalking() && isChance(25)) {
+        removeGag();
+    } else {
+        decideGag();
     }
 
     if (hasBallsTied() && isChance(50)) {

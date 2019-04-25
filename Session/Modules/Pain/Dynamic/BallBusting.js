@@ -123,7 +123,7 @@
 
                     let hitMap = new Map();
 
-                    sendMessage('I guess you already know what\'s coming now, don\'t you? %EmoteHappy%');
+                    sendMessage('%KnowWhatsNext%');
                     sendMessage('In the bathroom I want you to put your balls onto the toilet seat and let the lid drop onto them');
                     sendMessage('Once, twice... And with an ever increasing level of height and pain %Grin%');
 

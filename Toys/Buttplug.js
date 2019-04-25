@@ -57,16 +57,35 @@ function putInButtplug(forceBigger = false) {
     }
 
     if(feelsEvil() && isChance(50) && getVar(VARIABLE_ASS_LEVEL) > 15) {
-        sendMessage('But before we are gonna stick that buttplug up your %Ass%');
-        let iceCubes = randomInteger(2, 5);
-        if(fetchIceCubes(iceCubes)) {
-            //TODO: Interaction and cooldown
-            sendMessage('You already know what is coming now don\'t you?');
-            sendMessage('I want you to push those ice cubes up your ass one by one');
-            sendMessage('Afterwards we are gonna plug your %Ass% and let them slowly melt inside you %Grin%');
-            sendMessage('Tell me when you are done...');
-            waitForDone();
-            sendMessage('How is it feeling? Cold? %Grin%');
+        if(!isVar(VARIABLE_LAST_ICE_CUBE_UP_ASS_DATE) || getDate(VARIABLE_LAST_ICE_CUBE_UP_ASS_DATE).addMinutes(10).hasPassed()) {
+            sendMessage('But before we are gonna stick that buttplug up your %Ass%');
+
+            let iceCubes = randomInteger(2, 5);
+            if(fetchIceCubes(iceCubes)) {
+                if(isVar(VARIABLE_LAST_ICE_CUBE_UP_ASS_DATE)) {
+                    sendMessage('Yet again %Grin%');
+                    sendMessage('Push them up your ass one by one %Grin%');
+                    sendMessage('And make sure they nothing sips out when you push the new ones in');
+                    sendMessage('It must be getting cold in there with all those cubes up your ass %Lol%');
+                } else {
+                    let answer = sendInput('%KnowWhatsNext%', 5);
+
+                    if(!answer.isTimeout()) {
+                        if(answer.isLike('ass', 'anal', 'butt')) {
+                            changeMeritLow(false);
+                            sendMessage('I guess you know me pretty well %Grin%');
+                        }
+                    }
+
+                    sendMessage('I want you to push those ice cubes up your ass one by one');
+                    sendMessage('Afterwards we are gonna plug your %Ass% and let them slowly melt inside you %Grin%');
+                }
+
+                sendMessage('Tell me when you are done...');
+                waitForDone();
+                sendMessage('How is it feeling? Cold? %Grin%');
+                setTempVar(VARIABLE_LAST_ICE_CUBE_UP_ASS_DATE);
+            }
         }
     }
 
@@ -395,7 +414,7 @@ function removeButtplug() {
         }
     }
 
-    if (getASMLimit() == LIMIT_ASKED_YES) {
+    if (getASMLimit() === LIMIT_ASKED_YES) {
         sendMessage("You already know " + random("what I am gonna make you do now", "what comes next", "what you are gonna do next", "what I want you to do next", "what is gonna happen now"));
         sendMessage("I want you to suck that toy clean %Grin%");
 
@@ -409,7 +428,6 @@ function removeButtplug() {
                 removeGag();
             }
 
-            //TODO: Perform other stuff? corner time etc.
             sendMessage("Go ahead and put that plug into your mouth");
             sleep(5);
 
@@ -420,6 +438,10 @@ function removeButtplug() {
 
             setGaged(true);
             currentGagType = GAG_TYPE_BUTTPLUG_GAG;
+
+            if(feelsLikePunishingSlave()) {
+                goToCorner(getCornerTime());
+            }
         } else {
             sendMessage(random("I want you to blow it like you would blow a dildo", "I want you to lick it from the top to the bottom"));
             sendMessage("Our toy should be shining and spotless");

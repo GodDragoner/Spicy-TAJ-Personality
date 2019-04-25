@@ -1,4 +1,14 @@
 
+function getSubBirthday() {
+    getDate(VARIABLE_SUB_BIRTHDAY);
+}
+
+function isSubBirthday() {
+    let date = getSubBirthday();
+
+    return date.getDay() === new Date().getDate() && date.getMonth() === new Date().getMonth();
+}
+
 function getTrainingEXPMultiplier(tasksInRow) {
     if (getVar(tasksInRow) >= 15) {
         return 4;

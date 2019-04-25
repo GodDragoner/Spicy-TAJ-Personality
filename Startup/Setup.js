@@ -134,6 +134,7 @@
     }
     lockImages();
     sendVirtualAssistantMessage("%Good%");
+
     sendVirtualAssistantMessage("Mistress %domName% would prefer it if you are able to handle wearing a chastity device at all times");
     //showImage("Images/Spicy/Toys/MetalChastity.jpg", 4);
     sendVirtualAssistantMessage("But she also understands that it takes practice to learn");

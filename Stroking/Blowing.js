@@ -380,7 +380,7 @@ function getIntoBlowjobPosition(toy, position) {
             break;
         case 2:
             sendMessage('I want you to go to the nearest couch, bed or something similar');
-            sendMessage('You already know what\'s going to happen don\'t you? %Grin%');
+            sendMessage('%KnowWhatsNext%');
             sendMessage('You will lay down on your back and then you will put your head over the corner of your bed or couch');
             sendMessage('In the end your head should be upside down');
             sendMessage('This definitely will be a different experience %Lol%');

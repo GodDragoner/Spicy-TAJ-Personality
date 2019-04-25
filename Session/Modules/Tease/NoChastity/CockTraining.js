@@ -1,4 +1,7 @@
 if (tryRunModuleFetchId()) {
+    //Reset (dunno if it might just be on true for some reason)
+    setTempVar(VARIABLE_STROKE_TRAINING_ACTIVE, false);
+
     if (isStroking()) {
         sendMessage("Stop stroking %SlaveName%", 0);
         stopStroking();
@@ -105,13 +108,13 @@ function startStrokeTraining() {
 
         showTeaseImage(randomInteger(5, 10));
 
-        if (isChance(10)) continue;
+        if (isChance(10) || (getVar(VARIABLE_STROKE_TRAINING_EDGES_DONE) !== edgesAtStart || !getVar(VARIABLE_STROKE_TRAINING_ACTIVE, false))) continue;
         showTeaseImage(randomInteger(5, 10));
 
-        if (isChance(20)) continue;
+        if (isChance(20) || (getVar(VARIABLE_STROKE_TRAINING_EDGES_DONE) !== edgesAtStart || !getVar(VARIABLE_STROKE_TRAINING_ACTIVE, false))) continue;
         showTeaseImage(randomInteger(5, 10));
 
-        if (isChance(30)) continue;
+        if (isChance(30) || (getVar(VARIABLE_STROKE_TRAINING_EDGES_DONE) !== edgesAtStart || !getVar(VARIABLE_STROKE_TRAINING_ACTIVE, false))) continue;
         showTeaseImage(randomInteger(5, 10));
     }
 

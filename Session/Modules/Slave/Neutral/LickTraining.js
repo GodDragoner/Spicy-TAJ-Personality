@@ -71,6 +71,9 @@
             sendMessage('And finally we have lick the alphabet');
         }
 
+        sendMessage('Now lets get started %Grin%');
+        sendMessage('Start the second you see the first pictures %SlaveName%');
+
         const timerLimitArray = [randomInteger(20, 40), randomInteger(30, 50), randomInteger(60, 80), randomInteger(80, 100), randomInteger(100, 120)];
         let timer = timerLimitArray[getMood()];
 

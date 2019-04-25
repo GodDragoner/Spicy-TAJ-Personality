@@ -144,6 +144,7 @@ const VARIABLE_BALL_CRUSHER_MAX_TWISTS = "ballCrusherMaxTwists";
 
 const VARIABLE_MAX_DILDO_THICKNESS_TODAY = "maxDildoThicknessToday";
 
+const VARIABLE_LAST_ICE_CUBE_UP_ASS_DATE = "lastIceCubeUpAssDate";
 
 const VARIABLE_LAST_DILDO_SWAP_DATE = "lastDildoSwapDate";
 
@@ -181,6 +182,8 @@ const VARIABLE_EDGE_STARTED_DATE = "edgeStartedDate";
 
 const VARIABLE_SOFT_COCK_LENGTH = "softCockLength";
 const VARIABLE_SECONDS_TO_GET_SOFT = "secondsToGetSoft";
+
+const VARIABLE_SUB_BIRTHDAY = "subBirthday";
 
 //Sub status
 const VARIABLE_SUB_IS_VIRGIN = 'subIsVirgin';

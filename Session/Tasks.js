@@ -36,8 +36,7 @@ function startTimePassTasks(durationMinutes, allowTeasing = true) {
 
         switch(option) {
             case 0:
-                //TODO: Times based on mood
-                goToCorner(randomInteger(60, 180));
+                goToCorner(getCornerTime());
                 break;
             case 1:
                 sendMessage(random("How about some training?", "Let's do some training", "Let's work on your fitness", "I think we should do something about your fitness right now"));
@@ -118,6 +117,13 @@ function startTimePassTasks(durationMinutes, allowTeasing = true) {
 
         iterations++;
     }
+}
+
+function getCornerTime() {
+    let mood = getMood();
+    let minSeconds = Math.max(30, (mood + 1)*10*(ACTIVE_PERSONALITY_STRICTNESS + 1));
+    let maxSeconds = Math.max(45, (mood + 1)*15*(ACTIVE_PERSONALITY_STRICTNESS + 1));
+    return randomInteger(minSeconds, maxSeconds);
 }
 
 function goToCorner(durationSeconds) {

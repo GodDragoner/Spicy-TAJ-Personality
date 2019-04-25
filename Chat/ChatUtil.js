@@ -119,7 +119,7 @@ function removeContact(id) {
     sendCustomMessage(textName, text);
 }
 
-function creatgeIntegerInput(question, min, max, notNumberMessage, outOfRangeMessage) {
+function createIntegerInput(question, min, max, notNumberMessage, outOfRangeMessage) {
     let answer = createInput();
 
     while(true) {

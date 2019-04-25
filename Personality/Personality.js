@@ -8,8 +8,10 @@ let ACTIVE_PERSONALITY_STRICTNESS = getVar("personalityStrictness", 0);
 
 const TOY_PLAY_MODE = 0;
 const TOY_PUNISHMENT_MODE = 1;
-const TOY_BOTH_MODE = 2;
+const TOY_BOTH_MODE = 2;1
 const TOY_ASKED_BUY_MODE = 3;
+
+const DOMME_BIRTHDAY = new Date(new Date().getFullYear(), 6, 30, 0, 0, 0);
 
 function setUpPersonalityVars() {
     switch(ACTIVE_PERSONALITY_ID) {

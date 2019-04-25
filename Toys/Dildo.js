@@ -29,6 +29,12 @@ function runAssIntro() {
     setVar('assIntro', true);
 }
 
+function sitOnDildo(toy) {
+    sendMessage('Now...');
+    sendMessage('Put your ' + toy + ' on the ground');
+
+    
+}
 
 function getAnalDildoForTask(minLength = 0, minThickness = 0) {
     let availableDildos = [];
@@ -283,7 +289,6 @@ function getDildoByName(name) {
 
     return null;
 }
-
 
 function setupNewDildo() {
     sendVirtualAssistantMessage('Please enter a name for your new dildo', 0);

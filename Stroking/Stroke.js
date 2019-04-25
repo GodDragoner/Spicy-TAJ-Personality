@@ -44,7 +44,7 @@ function startStrokeInterval(durationMinutes) {
     startStroking(60);
     sendStrokeTaunts(durationMinutes * 60);
 
-    //TODO: More Taunts and stroke timed based on mood etc.
+    //TODO: More Taunts
 
     stopStrokingMessage();
 }

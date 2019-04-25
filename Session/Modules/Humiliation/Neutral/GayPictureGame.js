@@ -204,7 +204,7 @@ function startGayPictureRound() {
                     cumOnDildo = fetchDildoToy(getDildo(true).name);
 
                     if (cumOnDildo) {
-                        sendMessage('You probably already know what is about to come right?');
+                        sendMessage('%KnowWhatsNext%');
                         sendMessage('You are gonna cum onto that dildo and then afterwards...');
                         sendMessage('Well...');
                         sendMessage('When we are already dealing with gay pictures we can go all out...');
