@@ -1,7 +1,7 @@
 //TODO: If has spoon nearby => use spoon sometimes or other stuff or even make the sub get the spoon
 
 function smallPunishment(cbt = true, spanking = true) {
-    //TODO: Spanking too in the future at random
+    //TODO: Anal, corner time too in the future at random
     if(isInChastity() || !cbt && spanking) {
         smallSpankingPunishment();
     } else {
@@ -13,6 +13,7 @@ function smallPunishment(cbt = true, spanking = true) {
 function smallSpankingPunishment() {
     const implement = fetchSpankingImplement();
     sendMessage('Let\'s get get started %Grin%');
+    
     //TODO: Voice commands etc.?
     sendMessage('I want you to ' + random('kneel', 'bend over a chair', 'stand') + ' for this');
     sendMessage('Now get ready to spank your ass cheeks on my command %SlaveName%!', 5);

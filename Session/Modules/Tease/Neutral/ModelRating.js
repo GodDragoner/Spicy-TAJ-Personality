@@ -61,7 +61,7 @@
                 sendMessage('I will show you one image at a time and we will see whether you can remember the exact rating you gave it %Grin%');
             }
 
-            let ballCrusher = hasBallCrusher();
+            let ballCrusher = hasBallCrusher() && (isChance(50) || feelsLikePunishingSlave()) && getCBTLimit() === LIMIT_ASKED_YES;
 
             if (ballCrusher && !isInChastity()) {
                 if (fetchToy('ball crusher')) {
@@ -81,9 +81,10 @@
 
                     //TODO: Based on reference values that were set previously or setup ball crusher thing
 
+                    applyBallCrusherPressure();
+
                     sendMessage('So this is how this will go from here on');
-                    sendMessage('Turn the screws until it applies low pressure to your balls');
-                    sendMessage('Everytime you are wrong you will turn both screws once');
+                    sendMessage('Every time you are wrong you will turn both screws once');
                     sendMessage('I really hope that you have a good memory %Lol%');
 
                     if (ACTIVE_PERSONALITY_STRICTNESS > 0) {
@@ -98,6 +99,12 @@
                     sendMessage('A warmup can never be too bad right? %Grin%');
 
                     smallPunishment(true, false);
+                }
+            } else {
+                if(isInChastity()) {
+
+                } else {
+
                 }
             }
 
@@ -187,17 +194,21 @@
                             sendMessage('Oops. Did I forget to tell you that you have to edge every time you are right? %Lol%');
                             sendMessage('My bad %Grin%');
                         }
+                    } else if(isInChastity()) {
+
+                    } else if(ballCrusher) {
+
                     }
 
                     wins++;
                 } else {
                     sendMessage(random('Wrong!', 'Not correct', 'Incorrect', 'You\'re wrong', 'You are wrong', 'That\'s incorrect') + ' %Lol%');
 
-                    //TODO: Could also punish with other stuff such as anal etc. or edge twice as often
+                    //TODO: Could also punish with other stuff such as anal, corner time etc.
 
                     if (ballCrusher) {
                         sendMessage('Aaaand twist %Grin%', 5);
-                    } else if (getPainLimit() == LIMIT_ASKED_YES) {
+                    } else if (getPainLimit() == LIMIT_ASKED_YES && !isInChastity()) {
                         //Means it is the first time the sub failed
                         if (fails == 0) {
                             //Already handles if the sub has chastity on
@@ -210,11 +221,27 @@
                             //Already handles if the sub has chastity on
                             smallPunishment(true, false);
                         }
-                    } else {
-                        //TODO: Maybe more creative consequences for non pain slaves such as corner time or other stuff
-                        sendMessage('I am gonna subtract some gold from you');
-                        addGold(-50);
-                        sendMessage('Did you really think that there are no consequences to this game?');
+                    }
+                    //Non pain slaves
+                    else if(!isInChastity()) {
+                        startEdging();
+                        sendMessage("%LetEdgeFade%");
+
+                        sendMessage('Be ready for a second one %Grin%');
+                        sendMessage('You will do twice the edges when you are wrong %EmoteHappy%');
+                        sendMessage('Here it comes...');
+
+                        startEdging();
+                        sendMessage("%LetEdgeFade%");
+                    }
+                    //In chastity
+                    else {
+                        sendMessage('That\'s +4 hours in chastity for you %Grin%');
+                        addLockUpTime(4);
+
+                        if(fails === 0) {
+                            sendMessage('Did you really think that there are no consequences to this game?');
+                        }
                     }
 
                     fails++;

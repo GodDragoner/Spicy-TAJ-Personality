@@ -118,6 +118,10 @@ function selectAndPutInGag() {
 }
 
 function putInGag(gagType = GAG_TYPE_BALL_GAG, addPinToTongue = false) {
+    if(isGaged()) {
+        removeGag();
+    }
+
     if (!gagType.hasToy()) {
         gagType = selectGag();
     }

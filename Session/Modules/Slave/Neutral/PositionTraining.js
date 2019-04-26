@@ -14,8 +14,9 @@
 
             positionWalkthrough();
         } else {
-            sendMessage("%SlaveName%")
-            if (randomInteger(1, 2) === 1) {
+            sendMessage("%SlaveName%");
+
+            if (isChance(50)) {
                 sendMessage("A quick reminder of all the positions...");
                 positionWalkthrough();
             }
@@ -37,9 +38,11 @@
                 complicatedPositionTrainingSelection(randomInteger(1, 3))
             }
         }
+
+
+        positionTrainingEnd();
     }
 
-    positionTrainingEnd();
 }
 
 function positionWalkthrough() {
@@ -579,7 +582,7 @@ function positionTest(number, name, image) {
 
 function positionTrainingEnd() {
     sendMessage(random("We're at the end of your position training", "That was it", "We're at the end", "Well that was it", "Oh my we're finally at the end %Grin%") + " %SlaveName%");
-    //playSound("Audio/Spicy/SpecialSounds/Bell.mp3");
+    playSound("Audio/Spicy/SpecialSounds/Bell.mp3");
     sendMessage(random("It was fun!", "I had a lot of fun", "I enjoyed it", "Well this was fun!", "I had a blast", "I really enjoyed this!", "Oh my was this fun"));
     changeMeritMedium(false);
     if (getVar(VARIABLE_POSITION_LEVEL) < 50) {
