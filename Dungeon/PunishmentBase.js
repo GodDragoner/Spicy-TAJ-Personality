@@ -76,7 +76,7 @@ while(true) {
     if (answer.containsIgnoreCase("how many", "point")) {
         sendDungeonMessage(random("Hmm, give me just a moment to check your records", "Give me 2 seconds %SlaveName%", "Just a moment %SubName%", "Let me just check my computer..."), 2);
 
-        const punishmentPoints = getPunishmentPoints();
+        const punishmentPoints = getVar(VARIABLE_PUNISHMENT_POINTS);
 
         sendDungeonMessage(random("It looks like", "According to my records", "It says") + " you have " + punishmentPoints + " punishment points.", 2);
 
@@ -113,7 +113,7 @@ while(true) {
 
         startPosterWaiting();
 
-        if (getPunishmentPoints() < 100) {
+        if (getVar(VARIABLE_PUNISHMENT_POINTS) < 100) {
             sendDungeonMessage("Well %SlaveName% it seems you haven't been too bad recently...", 2);
             sendDungeonMessage("So I'm afraid I have to reject you...", 2);
             break;
