@@ -28,9 +28,19 @@
                 sendMessage("You look quite pathetic plugged up as you are %Lol%");
             }
 
-            if (!plugPlay && getDate(VARIABLE_LAST_PLUG_DATE).addMinute(5).hasPassed()) {
-                removeButtplug();
-            } else {
+            let tasks = !getDate(VARIABLE_LAST_PLUG_DATE).addMinute(5).hasPassed();
+
+            if (!tasks) {
+                if(isChance(25)) {
+                    if (currentPlug !== biggestButtplug) {
+                        tasks = increasePlugSize();
+                    }
+                } else {
+                    removeButtplug();
+                }
+            }
+
+            if(tasks) {
                 sendMessage("However I want you to keep that plug inside for now...");
                 sendMessage("A bit more of a warmup can never be too bad right?");
                 sendMessage("But let's not waste the time we are waiting for your ass to stretch though");
@@ -51,7 +61,7 @@
 
                     sendMessage("Well then...");
                 } else {
-                    sendMessage("Let's spend the time that the plug is stretching your ass with something useful");
+                    sendMessage("Lets spend the time that the plug is stretching your ass with something useful");
                     startTimePassTasks(5);
                     sendMessage("I believe we waited long enough and your ass is ready for more now");
                     removeButtplug();
@@ -104,18 +114,18 @@ function runAssCrackPreparation(toy) {
     sendMessage(random("Your ass must be begging for your " + toy, "Can you feel your ass preparing for being penetrated already?"));
     sendMessage("Down...");
 
-    sendMessage("Now go ahead and slowly push the tip of your " + toy + " in");
-    sendMessage("Slowly and careful");
-    sendMessage("Now pull it out again");
-    sendMessage("And in again. This time a bit further");
-    sendMessage("Keep it there...");
-    sendMessage("And...");
-    sendMessage("Pull it out again");
-    sendMessage("One more time");
-    sendMessage("In");
-    sendMessage("Hold it");
-    sendMessage("And...");
-    sendMessage("Out %Grin%");
+    sendMessage("Now go ahead and slowly push the tip of your " + toy + " in", 2);
+    sendMessage("Slowly and careful", 2);
+    sendMessage("Now pull it out again", 2);
+    sendMessage("And in again. This time a bit further", 2);
+    sendMessage("Keep it there...", 2);
+    sendMessage("And...", 2);
+    sendMessage("Pull it out again", 2);
+    sendMessage("One more time", 2);
+    sendMessage("In", 2);
+    sendMessage("Hold it", 2);
+    sendMessage("And...", 2);
+    sendMessage("Out %Grin%", 2);
 
 }
 
@@ -126,8 +136,26 @@ function startPenetratingSession(toy) {
     sendMessage("Keep it in there", 5);
     sendMessage("And pull it all the way out again");
 
-    if(!finger && getVar(VARIABLE_ASS_LEVEL) >= 15) {
+    //sit on dildo
+    if(!finger && getVar(VARIABLE_ASS_LEVEL) >= 15 && isChance(20)) {
+        sendMessage('Now I want you to to place it in front of you... %Grin%');
+        sendMessage('%KnowWhatsNext%');
 
+        //TODO: Interact
+
+        sendMessage('I want you to sit down on it completely');
+        sendMessage('So go ahead, squat above it and slowly go down on that ' + toy);
+        sendMessage('Keep sitting on it until you hear my bell %Grin%');
+        sleep(randomInteger(30, 60));
+        playBellSound();
+
+
+        if(getASMLimit() === LIMIT_ASKED_YES && feelsEvil()) {
+            sendMessage('I want you to pick up that dildo with your mouth and bring it to me %Grin%');
+            sendMessage('Mhmmm. Tastes good doesn\'t it? %Lol%');
+        } else {
+            sendMessage('You can lift your ass up and pick up that dildo again %SlaveName%');
+        }
     }
 
     const durationMinutes = getAnalSessionLength();
@@ -512,7 +540,7 @@ function choosePosition(toy, needsTwoHands = false) {
             break;
     }
 
-    if(getDate(VARIABLE_LAST_DILDO_SWAP_DATE).addMinutes(10 - Math.ceil(getVar(VARIABLE_ASS_LEVEL)/6))) {
+    if(getDate(VARIABLE_LAST_DILDO_SWAP_DATE).addMinute(10 - Math.ceil(getVar(VARIABLE_ASS_LEVEL)/6))) {
         let newToy = getDildo(false).name;
 
         if(fetchDildoToy(newToy)) {

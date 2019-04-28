@@ -181,7 +181,7 @@ function createRule(id, punishment, minDays = -1, maxDays = -1) {
         },
 
         isActive: function () {
-            return getVar(this.getVarName() + 'active');
+            return getVar(this.getVarName() + 'active', false);
         },
 
         setActive: function (active) {

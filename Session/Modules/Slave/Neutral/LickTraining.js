@@ -64,7 +64,7 @@
             sendMessage(random('Or it might become an extremely rare event', 'Or who knows how often you\'ll be giving it %Lol%', 'Or it might happen rarely %Grin%'));
             sendMessage("And it is the best way to worship and please your %DomHonorific%");
             sendMessage("Who knows what rewards you'll get if you are a slave and pleasing slave");
-            sendMessage('A quick refreshing');
+            sendMessage('A quick refresh');
             sendMessage('Red = fast, Yellow = medium, Green = Slow');
             sendMessage('There is up, down, left and right');
             sendMessage('There is circle right and circle left');

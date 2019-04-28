@@ -37,8 +37,10 @@ function sendNewBlowjobTask() {
 
     let task = getRandomBlowjobTask(blowjobTasks);
 
-    setVar(VARIABLE_TASK_BLOWJOB_EXPERIENCE, task.exp * getTrainingEXPMultiplier(getVar(VARIABLE_BLOWJOB_TASKS_IN_ROW)));
+    setVar(VARIABLE_TASK_BLOWJOB_EXPERIENCE, task.exp * getTrainingEXPMultiplier(getVar(VARIABLE_BLOWJOB_TASKS_IN_ROW, 0)));
     setVar(VARIABLE_LAST_BLOWJOB_TASK_ID, task.id);
+
+    task.sendInstructions();
 }
 
 function checkBlowjobExercise() {
@@ -50,15 +52,15 @@ function checkBlowjobExercise() {
         incrementVar(VARIABLE_BLOWJOB_TASKS_IN_ROW, 1);
 
         //TODO: Randomize message
-        if (getVar(VARIABLE_BLOWJOB_TASKS_IN_ROW) == 15) {
+        if (getVar(VARIABLE_BLOWJOB_TASKS_IN_ROW, 0) == 15) {
             sendMessage('I am very happy %SlaveName');
             sendMessage("You have been completing your blowjob " + random("assignments ", "tasks ") + "for 15 days in a row");
             sendMessage("Thus I will multiply your blowjob by 4 from now on");
-        } else if (getVar(VARIABLE_BLOWJOB_TASKS_IN_ROW == 10)) {
+        } else if (getVar(VARIABLE_BLOWJOB_TASKS_IN_ROW, 0) == 10) {
             sendMessage('You will be pleased to hear this %SlaveName% %Grin%');
             sendMessage("You have completed your blowjob " + random("assignments ", "tasks ") + "for the last 10 days %Grin%");
             sendMessage("Because you have been acting that disciplined I will reward you with three times the blowjob exp from now on");
-        } else if (getVar(VARIABLE_BLOWJOB_TASKS_IN_ROW == 5)) {
+        } else if (getVar(VARIABLE_BLOWJOB_TASKS_IN_ROW, 0) == 5) {
             sendMessage('Looks like the training is working out for you %SlaveName%');
             sendMessage("You have been following my blowjob " + random("assignments ", "tasks ") + "for 5 days in a row now");
             sendMessage("Thus I will multiply your blowjob exp by 2 from now on");

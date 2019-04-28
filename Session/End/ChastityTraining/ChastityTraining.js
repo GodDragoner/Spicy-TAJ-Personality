@@ -63,8 +63,10 @@ function sendNewChastityExercise() {
         task = getRandomSpecialChastityTask(chastityTasks);
     }
 
-    setVar(VARIABLE_TASK_CHASTITY_EXPERIENCE, task.exp * getTrainingEXPMultiplier(getVar(VARIABLE_CHASTITY_TASKS_IN_ROW)));
+    setVar(VARIABLE_TASK_CHASTITY_EXPERIENCE, task.exp * getTrainingEXPMultiplier(getVar(VARIABLE_CHASTITY_TASKS_IN_ROW, 0)));
     setVar(VARIABLE_LAST_CHASTITY_TASK_ID, task.id);
+
+    task.sendInstructions();
 }
 
 function randomChastityAdvice() {
@@ -133,7 +135,7 @@ function sendBasicChastityTrainingTask() {
         sendMessage('It\'s okay if you can\'t sleep in it');
     }
 
-    if (!isInChastity()) {
+    if (!isInChastity() && putOnChastity) {
         lockChastityCage();
     }
 }
@@ -149,15 +151,15 @@ function checkChastityExercise() {
             incrementVar(VARIABLE_CHASTITY_TASKS_IN_ROW, 1);
 
             //TODO: Randomize message
-            if (getVar(VARIABLE_CHASTITY_TASKS_IN_ROW) == 15) {
+            if (getVar(VARIABLE_CHASTITY_TASKS_IN_ROW, 0) == 15) {
                 sendMessage('I am very happy %SlaveName');
                 sendMessage("You have been completing your chastity " + random("assignments ", "tasks ") + "for 15 days in a row");
                 sendMessage("Thus I will multiply your chastity exp by 4 from now on");
-            } else if (getVar(VARIABLE_CHASTITY_TASKS_IN_ROW == 10)) {
+            } else if (getVar(VARIABLE_CHASTITY_TASKS_IN_ROW, 0) == 10) {
                 sendMessage('You will be pleased to hear this %SlaveName% %Grin%');
                 sendMessage("You have completed your chastity " + random("assignments ", "tasks ") + "for the last 10 days %Grin%");
                 sendMessage("Because you have been acting that disciplined I will reward you with three times the chastity exp from now on");
-            } else if (getVar(VARIABLE_CHASTITY_TASKS_IN_ROW == 5)) {
+            } else if (getVar(VARIABLE_CHASTITY_TASKS_IN_ROW, 0) == 5) {
                 sendMessage('Looks like the training is working out for you %SlaveName%');
                 sendMessage("You have been following my chastity " + random("assignments ", "tasks ") + "for 5 days in a row now");
                 sendMessage("Thus I will multiply your chastity exp by 2 from now on");
@@ -249,9 +251,7 @@ function checkChastityExercise() {
 
 function firstChastityTraining() {
     sendMessage("This is your very first session of chastity training");
-    setVar(VARIABLE_CHASTITY_LEVEL, 1);
     sendMessage("We\'re going to practice and make you train your ability to wear the %ChastityCage%");
-    setVar(VARIABLE_CHASTITY_EXPERIENCE, 0);
     sendMessage("Essentially our goal is to make that %ChastityCage% feel like home");
     sendMessage("We want you at a point where you\'ll feel naked without the %ChastityCage%");
     sendMessage("It\'s rather simple how this work.");
@@ -273,4 +273,8 @@ function firstChastityTraining() {
     sendMessage("2-7 to get to ruin your orgasm");
     sendMessage("8-10 you get an actual orgasm");*/
     sendMessage("It\'s really as simple as that");
+
+    setVar(VARIABLE_CHASTITY_LEVEL, 1);
+    setVar(VARIABLE_CHASTITY_EXPERIENCE, 0);
+    setVar(VARIABLE_CHASTITY_TASKS_IN_ROW, 0);
 }

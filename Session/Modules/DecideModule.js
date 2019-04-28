@@ -1,4 +1,4 @@
-//TODO: Pain Modules: Parachute, Sounding, Electric Kit
+//TODO: Pain Modules: Sounding, Electric Kit
 //TODO: Prevent two ball pain modules in a row etc.
 
 {
@@ -113,7 +113,14 @@
         } else if (moduleIndicator < sissyModuleChance + teaseModuleChance) {
             runModuleCategory(CATEGORY_SISSY);
         } else if (moduleIndicator < sissyModuleChance + teaseModuleChance + painModuleChance) {
+            //Increase pain limit occasionally
+            let increasedPainTolerance = increasePainTolerance();
+
             runModuleCategory(CATEGORY_PAIN);
+
+            if(increasedPainTolerance) {
+                askForPainToleranceIncrease();
+            }
         } else if (moduleIndicator < sissyModuleChance + teaseModuleChance + painModuleChance + slaveModuleChance) {
             runModuleCategory(CATEGORY_SLAVE);
         } else if (moduleIndicator < sissyModuleChance + teaseModuleChance + painModuleChance + slaveModuleChance + humiliationModuleChance) {

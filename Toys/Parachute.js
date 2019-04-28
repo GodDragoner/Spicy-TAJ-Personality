@@ -5,9 +5,10 @@ const PARACHUTE_TOY = createToy('parachute');
 }*/
 
 function getWeightForParachute() {
-    let painTolerance = getPainLimit();
+    let painTolerance = getVar(VARIABLE_SUB_PAIN_TOLERANCE);
 
-    return Math.max(0.5, painTolerance*0.25);
+    //Max right now is 3kg
+    return Math.max(0.5, random(painTolerance*0.25),  (painTolerance + 1)*0.25, (painTolerance + 2)*0.25);
 }
 
 function attachWeightToParachute() {

@@ -8,9 +8,8 @@ function hasBallCrusher() {
 }
 
 function applyBallCrusherPressure() {
-    if (!isVar(VARIABLE_BALL_CRUSHER_MAX_TWISTS)) {
+    if (!isVar(VARIABLE_BALL_CRUSHER_MAX_TWISTS) || !isVar(VARIABLE_BALL_CRUSHER_TWISTS_TO_APPLY)) {
         sendMessage('Since this is the first we play with your %Balls% like this');
-
 
         sendMessage('We need to first of all determine how many twists you need to apply pressure to your balls');
         sendMessage('So what you are gonna do right now is to start twisting and count the amount of twists you need to apply pressure to your balls');

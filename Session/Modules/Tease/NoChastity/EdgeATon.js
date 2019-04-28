@@ -118,7 +118,7 @@ if(tryRunModuleFetchId()) {
 //Will dom determine the edges? Only if  this is not the first run
     if (isChance(30 * (ACTIVE_PERSONALITY_STRICTNESS + 1)) && getVar(VARIABLE_EDGE_A_TONS_DONE) !== 1) {
         sendMessage("Let's do this a bit differently today %SlaveName%");
-        sendMessage("I fell like taking some more control today");
+        sendMessage("I feel like taking some more control today");
         sendMessage("I will choose how many edges you'll do today %EmoteHappy%");
 
         if (getVar(VARIABLE_EDGE_A_TON_EDGE_RECORD) <= 0) {
@@ -169,17 +169,17 @@ function startEdgeATon(chosenByDom, edgesToDo) {
         if (ACTIVE_PERSONALITY_STRICTNESS == 0 && edgesToDo > 15) impressive = 1;
         if (ACTIVE_PERSONALITY_STRICTNESS == 1 && edgesToDo > 18) impressive = 1;
         if (ACTIVE_PERSONALITY_STRICTNESS == 2 && edgesToDo > 22) impressive = 1;
-    }
 
-    if (impressive == 2) {
-        sendMessage(random("Oh wauv!", "You're really going for it!", "This is gonna be intense %Grin%", "I hope you can handle this!", "Great lets not waste a moment!"));
-        changeMeritMedium(false);
-    } else if (impressive == 1) {
-        sendMessage(random("Well then... Lets begin", "It's time to begin", "Lets get that cock to work!", "Time to work out that cock!", "I hope you're ready for some cock workout!"));
-        changeMeritLow(false);
-    } else {
-        sendMessage(random("I'm not impressed", "You really should try to do better", "You could at least try a little harder", "You need to try harder..."));
-        changeMeritLow(true);
+        if (impressive == 2) {
+            sendMessage(random("Oh wauv!", "You're really going for it!", "This is gonna be intense %Grin%", "I hope you can handle this!", "Great lets not waste a moment!"));
+            changeMeritMedium(false);
+        } else if (impressive == 1) {
+            sendMessage(random("Well then... Lets begin", "It's time to begin", "Lets get that cock to work!", "Time to work out that cock!", "I hope you're ready for some cock workout!"));
+            changeMeritLow(false);
+        } else {
+            sendMessage(random("I'm not impressed", "You really should try to do better", "You could at least try a little harder", "You need to try harder..."));
+            changeMeritLow(true);
+        }
     }
 
     while (edgesToDo > 0) {
@@ -188,7 +188,8 @@ function startEdgeATon(chosenByDom, edgesToDo) {
         sleep(randomInteger(20));
         edgesToDo--;
 
-        if (edgesToDo > 0 && chance(7)) {
+        //TODO: Based on mood?
+        if (edgesToDo > 0 && isChance(10)) {
             sendMessage("Okay %SlaveName%");
             sendMessage("Time for you to get completely soft %Grin%");
             growDickSoft();

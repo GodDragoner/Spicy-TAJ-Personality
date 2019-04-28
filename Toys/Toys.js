@@ -39,9 +39,7 @@ function interactWithRandomToys() {
     if (isPlugged()) {
         if (isVar(VARIABLE_LAST_PLUG_DATE) && getVar(VARIABLE_LAST_PLUG_DATE).addMinute(randomInteger(7, 10)).hasPassed()) {
             if (currentPlug !== biggestButtplug && isChance(getVar(VARIABLE_ASS_LEVEL, 0) * 3)) {
-                removeButtplug();
-                sendMessage(random('Let\'s widen that ass even more', 'Your ass won\'t be empty for long', 'Let\'s increase the size of your plug', 'We just removed that plug to make room for the next bigger one') + ' %Grin%');
-                putInButtplug(true);
+                increasePlugSize();
             }
         }
     } else if (hasButtplugToy() && isChance(getVar(VARIABLE_ASS_LEVEL, 0) * 3) && getAnalLimit() === LIMIT_ASKED_YES) {
@@ -56,7 +54,7 @@ function interactWithRandomToys() {
     }
 
     //TODO: Better decision?
-    if(isChance(20)) {
+    if(!COLLAR_TOY.isToyOn() && isChance(20)) {
         putOnCollar();
     }
 

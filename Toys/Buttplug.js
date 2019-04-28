@@ -21,7 +21,7 @@ function updateSessionButtplugs() {
 
 function getRandomUncleanedButtplug() {
     for(let x = 0; x < buttplugs.length; x++) {
-        if(buttplugs[x].usedInSession && !buttplugs[x].clean) {
+        if(buttplugs[x].usedInSession && !buttplugs[x].clean && currentPlug !== buttplugs[x]) {
             return buttplugs[x];
         }
     }
@@ -31,7 +31,7 @@ function getRandomUncleanedButtplug() {
 
 function getRandomCleanButtplug() {
     for(let x = 0; x < buttplugs.length; x++) {
-        if(!buttplugs[x].usedInSession || buttplugs[x].clean) {
+        if(!buttplugs[x].usedInSession || buttplugs[x].clean ) {
             return buttplugs[x];
         }
     }
@@ -47,6 +47,12 @@ function isPlugged() {
     return getVar(VARIABLE_IS_PLUGGED, false);
 }
 
+function increasePlugSize() {
+    removeButtplug();
+    sendMessage(random('Let\'s widen that ass even more', 'Your ass won\'t be empty for long', 'Let\'s increase the size of your plug', 'We just removed that plug to make room for the next bigger one') + ' %Grin%');
+    return putInButtplug(true);
+}
+
 function putInButtplug(forceBigger = false) {
     sendMessage("%SlaveName%");
 
@@ -56,8 +62,12 @@ function putInButtplug(forceBigger = false) {
         return false;
     }
 
+    if(isPlugged()) {
+        removeButtplug();
+    }
+
     if(feelsEvil() && isChance(50) && getVar(VARIABLE_ASS_LEVEL) > 15) {
-        if(!isVar(VARIABLE_LAST_ICE_CUBE_UP_ASS_DATE) || getDate(VARIABLE_LAST_ICE_CUBE_UP_ASS_DATE).addMinutes(10).hasPassed()) {
+        if(!isVar(VARIABLE_LAST_ICE_CUBE_UP_ASS_DATE) || getDate(VARIABLE_LAST_ICE_CUBE_UP_ASS_DATE).addMinute(10).hasPassed()) {
             sendMessage('But before we are gonna stick that buttplug up your %Ass%');
 
             let iceCubes = randomInteger(2, 5);
@@ -84,7 +94,7 @@ function putInButtplug(forceBigger = false) {
                 sendMessage('Tell me when you are done...');
                 waitForDone();
                 sendMessage('How is it feeling? Cold? %Grin%');
-                setTempVar(VARIABLE_LAST_ICE_CUBE_UP_ASS_DATE);
+                setTempVar(VARIABLE_LAST_ICE_CUBE_UP_ASS_DATE, setDate());
             }
         }
     }

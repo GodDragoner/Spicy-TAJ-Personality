@@ -6,6 +6,6 @@
             sendMessage("%Good%");
         }
 
-        sendMessage("I want to make you ache for so fucking bad %Grin%");
+        sendMessage("I want to make you ache so fucking bad %Grin%");
     }
 }

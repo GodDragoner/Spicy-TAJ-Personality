@@ -50,7 +50,7 @@ function startEdging(holdSeconds, skipStop = false, endIn = EDGE_END_NORMAL) {
         stopStroking();
 
         //Show the initial message to tell the sub to stay on the edge
-        setTempVar('initialEdgeHold');
+        setTempVar('initialEdgeHold', true);
         run("Stroking/Taunt/HoldEdge/BasicHoldingTaunts.js");
 
         sendHoldEdgeTaunts(holdSeconds);

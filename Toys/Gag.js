@@ -171,6 +171,10 @@ function putInGag(gagType = GAG_TYPE_BALL_GAG, addPinToTongue = false) {
 
         //After we fetched it we can set this to true because we are gonna clean it with the mouth
         buttplug.clean = true;
+
+        //TODO: Interact
+        sendMessage('%KnowWhatsNext%');
+        sendMessage('I want you to use that plug as a gag %Grin%')
     } else {
         if (!fetchToy(gagType.name)) {
             return false;
@@ -193,7 +197,6 @@ function putInGag(gagType = GAG_TYPE_BALL_GAG, addPinToTongue = false) {
 
     sendMessageBasedOnSender('Now put it in. Tell me when you are done %SlaveName%');
     waitForDone();
-
 
     currentGagType = gagType;
 

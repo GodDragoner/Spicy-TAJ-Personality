@@ -1,4 +1,3 @@
-
 function getSubBirthday() {
     getDate(VARIABLE_SUB_BIRTHDAY);
 }
@@ -7,6 +6,36 @@ function isSubBirthday() {
     let date = getSubBirthday();
 
     return date.getDay() === new Date().getDate() && date.getMonth() === new Date().getMonth();
+}
+
+function increasePainTolerance() {
+    if(!isVar(VARIABLE_LAST_PAIN_TOLERANCE_INCREASE)) {
+        setDate(VARIABLE_LAST_PAIN_TOLERANCE_INCREASE);
+        return false;
+    }
+
+    if(getVar(VARIABLE_SUB_PAIN_TOLERANCE) < 10 && getVar(VARIABLE_LAST_PAIN_TOLERANCE_INCREASE).addDay(7).hasPassed())) {
+        incrementVar(VARIABLE_SUB_PAIN_TOLERANCE, 1);
+        setDate(VARIABLE_LAST_PAIN_TOLERANCE_INCREASE);
+        return true;
+    }
+
+    return false;
+}
+
+function askForPainToleranceIncrease() {
+    if(sendYesOrNoQuestion('Was the level of pain %GeneralTime% bearable for you %SlaveName%?')) {
+        sendMessageBasedOnSender('%Good%');
+        sendMessageBasedOnSender('Because I went in a bit rougher than usual');
+        sendMessageBasedOnSender('Know I know I can continue like this in the future %Grin%');
+    } else {
+        sendMessageBasedOnSender('%EmoteSad%');
+        sendMessageBasedOnSender('Thank you for your honesty though %SlaveName%');
+
+        if(getVar(VARIABLE_SUB_PAIN_TOLERANCE) > 1) {
+            incrementVar(VARIABLE_SUB_PAIN_TOLERANCE, -1);
+        }
+    }
 }
 
 function getTrainingEXPMultiplier(tasksInRow) {

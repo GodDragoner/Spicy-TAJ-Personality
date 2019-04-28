@@ -178,6 +178,8 @@ const VARIABLE_DEVOTION = "subDevotion";
  */
 const VARIABLE_SUB_PAIN_TOLERANCE = "subPainTolerance";
 
+const VARIABLE_LAST_PAIN_TOLERANCE_INCREASE = "lastPainToleranceIncrease";
+
 const VARIABLE_EDGE_STARTED_DATE = "edgeStartedDate";
 
 const VARIABLE_SOFT_COCK_LENGTH = "softCockLength";

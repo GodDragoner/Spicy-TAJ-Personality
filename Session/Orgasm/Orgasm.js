@@ -177,8 +177,6 @@ function getRequiredOrgasmPoints() {
 
 
 function runOrgasmCategory(category) {
-    category = category.toLowerCase();
-
     setTempVar('lastOrgasmCategory', category);
 
     let path = 'Session/Orgasm/Allowed/*.js';

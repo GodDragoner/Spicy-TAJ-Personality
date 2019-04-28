@@ -166,7 +166,7 @@ function ballCrusherGame() {
             right++;
             sendMessage(random('Correct', 'Right on!', 'Yes!', 'You got it!', 'You got it right', 'Right...', ' That is correct... %EmoteSad%'));
         } else {
-            sendMessage(random('Not really ' + typeName, 'Nope', 'Not correct...', 'Incorrect', 'Wrong', 'Not right', 'Lol nope', 'Lol no', 'No %Grin%'));
+            sendMessage(random('Not that\'s ' + typeName, 'Nope', 'Not correct...', 'Incorrect', 'Wrong', 'Not right', 'Lol nope', 'Lol no', 'No %Grin%'));
         }
     }
 
@@ -175,7 +175,7 @@ function ballCrusherGame() {
         changeMeritHigh(true);
         sendMessage('Well I\'m not sure what to say right now...');
     } else {
-        sendMessage('You made it! You\'ve guessed right 10 times');
+        sendMessage('You made it! You\'ve guessed right 15 times');
     }
 
     sendMessage('Go ahead and relieve the pressure on your balls now');

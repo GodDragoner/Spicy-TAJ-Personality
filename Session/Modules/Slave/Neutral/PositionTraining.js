@@ -363,7 +363,7 @@ function simplePositionTrainingSelection(totalPositions) {
             lockImages();
             showImage("Images/Spicy/Positions/StandOpen1.jpg");
             sendMessage("This is the Stand open position");
-            sendMessage("Imagine being ballbusted in this");
+            sendMessage("Imagine getting your %Balls% busted in this");
             sendMessage("Told that if your heels touch the ground we're starting over..");
             sendMessage("Hands behind head");
             sendMessage("Legs apart nicely");
@@ -581,8 +581,7 @@ function positionTest(number, name, image) {
 }
 
 function positionTrainingEnd() {
-    sendMessage(random("We're at the end of your position training", "That was it", "We're at the end", "Well that was it", "Oh my we're finally at the end %Grin%") + " %SlaveName%");
-    playSound("Audio/Spicy/SpecialSounds/Bell.mp3");
+    sendMessage(random("We're at the end of your position training", "That was it", "We're at the end", "Well that was it") + " %SlaveName%");
     sendMessage(random("It was fun!", "I had a lot of fun", "I enjoyed it", "Well this was fun!", "I had a blast", "I really enjoyed this!", "Oh my was this fun"));
     changeMeritMedium(false);
     if (getVar(VARIABLE_POSITION_LEVEL) < 50) {
@@ -600,6 +599,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
         "I'm gonna make things interesting",
         "This should be quite interesting"
     ));
+
     sendMessage(random("A real challenge","A bit of a challenge","A fun challenge","An exciting challenge","Definitely a challenge") + " %Lol%" );
 
     const complicatedTraining = {

@@ -150,7 +150,15 @@ function goToCorner(durationSeconds) {
         sendMessage("Now...");
     }
 
+
     sendMessage("Go to the corner");
+
+
+    let keepCount = feelsEvil();
+
+    if(keepCount) {
+        sendMessage('I want you to keep count of the seconds you spent in the corner');
+    }
 
     let faceWall = isChance(50) || holdUpMoney;
     if(faceWall) {
@@ -161,7 +169,9 @@ function goToCorner(durationSeconds) {
 
     if(isChance(50)) {
         sendMessage("I want you standing on your tip toes")
-    } else if(!faceWall) {
+    }
+    //We use this in parachute play and we can't do this properly with the parachute on
+    else if(!faceWall && !PARACHUTE_TOY.isToyOn()) {
         sendMessage("I want you to press your back against the wall, \"sit\" in the air and hold that position");
     }
 
@@ -184,10 +194,42 @@ function goToCorner(durationSeconds) {
             break;
     }
 
-    sendMessage("And now wait for my bell %Grin%");
+    sendMessage("We will start once you hear my bell %Grin%");
 
-    sleep(durationSeconds);
-    returnSlave();
+    playBellSound();
+
+    do {
+        sleep(durationSeconds);
+
+        returnSlave();
+
+
+        if(keepCount) {
+            let int = createIntegerInput('So how many seconds did you spend in the corner %SlaveName%?', undefined, undefined, 'That\'s not a valid number %SlaveName%...');
+
+            if(durationSeconds - 5 < int && durationSeconds + 5 > int) {
+                sendMessage('Almost correct!');
+                sendMessage('You did a very good job of keeping count!');
+                changeMeritMedium(false);
+                keepCount = false;
+            } else if(durationSeconds - 10 < int && durationSeconds + 10 > int) {
+                sendMessage('About right %Grin%');
+                sendMessage('You did a good job of keeping count!');
+                keepCount = false;
+                changeMeritLow(false);
+            } else if(durationSeconds - 15 < int && durationSeconds + 15 > int) {
+                sendMessage('Well I guess that\'s kinda precise enough %Lol%');
+                keepCount = false;
+            } else {
+                sendMessage('Nope. That is completely off %SlaveName%');
+                sendMessage('Which means we will try again');
+                sendMessage('Go back to the corner and try harder this time');
+                sendMessage('Time starts with my bell!');
+                playBellSound();
+            }
+        }
+    }
+    while(keepCount);
 }
 
 function returnSlave() {
