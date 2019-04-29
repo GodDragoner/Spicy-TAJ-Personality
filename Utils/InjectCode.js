@@ -1,4 +1,3 @@
 //run("Session/StartSession.js");
-setVar(VARIABLE_STROKE_TRAINING_ACTIVE, false);
-
+run('Session/End/DecideEnd.js');
 //unlockChastityCage();

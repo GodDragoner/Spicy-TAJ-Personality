@@ -4,7 +4,7 @@
             sendMessage("The time has come %SlaveName% ");
             delVar("BlowjobExamStartDate");
 
-            if(sendYesOrNoQuestion("\"Have you been doing your daily 30 minute blowjob task for the last 7 days?")) {
+            if(sendYesOrNoQuestion("Have you been doing your daily 30 minute blowjob task for the last 7 days?")) {
                 sendMessage("FANTASTIC!");
                 sendMessage("You\'ve completed your exam!");
                 changeMeritHigh(false);

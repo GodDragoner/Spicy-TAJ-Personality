@@ -4,7 +4,7 @@
             sendMessage("The time has come %SlaveName% ");
             delVar("AnalExamStartDate");
 
-            if(sendYesOrNoQuestion("\"Have you been wearing your butt plug for the last 7 days?")) {
+            if(sendYesOrNoQuestion("Have you been wearing your butt plug for the last 7 days?")) {
                 sendMessage("FANTASTIC!");
                 sendMessage("You\'ve completed your exam!");
                 changeMeritHigh(false);

@@ -14,7 +14,7 @@ function increasePainTolerance() {
         return false;
     }
 
-    if(getVar(VARIABLE_SUB_PAIN_TOLERANCE) < 10 && getVar(VARIABLE_LAST_PAIN_TOLERANCE_INCREASE).addDay(7).hasPassed())) {
+    if(getVar(VARIABLE_SUB_PAIN_TOLERANCE) < 10 && getVar(VARIABLE_LAST_PAIN_TOLERANCE_INCREASE).addDay(7).hasPassed()) {
         incrementVar(VARIABLE_SUB_PAIN_TOLERANCE, 1);
         setDate(VARIABLE_LAST_PAIN_TOLERANCE_INCREASE);
         return true;
@@ -39,11 +39,11 @@ function askForPainToleranceIncrease() {
 }
 
 function getTrainingEXPMultiplier(tasksInRow) {
-    if (getVar(tasksInRow) >= 15) {
+    if (tasksInRow >= 15) {
         return 4;
-    } else if (getVar(tasksInRow) >= 10) {
+    } else if (tasksInRow >= 10) {
         return 3;
-    } else if (getVar(tasksInRow) >= 5) {
+    } else if (tasksInRow >= 5) {
         return 2;
     }
 

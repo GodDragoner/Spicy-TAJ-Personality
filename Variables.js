@@ -125,6 +125,9 @@ const VARIABLE_LAST_BLOWJOB_TASK_ID = 'lastAssTaskId';
 const VARIABLE_BLOWJOB_TRAINING = 'blowjobTraining';
 const VARIABLE_BLOWJOB_TRAININGS_DONE = 'blowjobTrainingsDone';
 
+
+const VARIABLE_TRAINING_INTRODUCTION_DONE = 'trainingIntroductionDone';
+
 //Toys
 
 const VARIABLE_IS_PLUGGED = "isPlugged";

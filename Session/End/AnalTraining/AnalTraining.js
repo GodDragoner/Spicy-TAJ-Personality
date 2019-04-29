@@ -20,7 +20,7 @@
             sendNewAnalTask();
 
             if (isChance(25)) {
-                sendMessage("%InAddition% I want you to watch " + randomInteger(10, 30) + "minutes of porn involving anal. Preferably while completing your " + random("task ", "assignment "));
+                sendMessage("%InAddition% I want you to watch " + randomInteger(10, 30) + " minutes of porn involving anal. Preferably while completing your " + random("task ", "assignment "));
             }
 
             if (getASMLimit() == LIMIT_ASKED_YES) {
@@ -51,7 +51,7 @@ function sendNewAnalTask() {
 
 function checkAnalExercise() {
     //TODO: Inflatable butt plug etc. tasks, wear for x hours outside etc.
-    if(sendYesOrNoQuestion('"Have you completed the last assignment I gave you?"')) {
+    if(sendYesOrNoQuestion('Have you completed the last anal assignment I gave you?')) {
         sendMessage('%Good%');
         changeMeritLow(false);
 
@@ -123,16 +123,25 @@ function firstTimeAnalTraining() {
         sendMessage("Now.. ");
     }
 
-    sendMessage("It\'s rather simple how this works ");
-    sendMessage("After each session I will ask you whether you completed your latest assignment");
-    sendMessage("If you did you are rewarded with exp");
-    sendMessage("You won\'t get any bonuses other than making me happy %Grin% ");
-    sendMessage("And you want to please me, don\'t you?");
-    sendMessage("I will measure your experience using a so called ass level");
-    sendMessage("You will start at level 1, which means you are a beginner when it comes to anal play");
-    sendMessage("Level 30 means that you can take anything up your %Ass% without hesitating");
-    sendMessage("EXP makes you grow in level at a slow pace");
-    sendMessage("Each new level requires a higher amount of EXP");
-    sendMessage("As your level grows the assignments become more difficult");
-    sendMessage("It\'s really as simple as that");
+    if(!getVar(VARIABLE_TRAINING_INTRODUCTION_DONE, false)) {
+        sendMessage("It\'s rather simple how this works ");
+        sendMessage("After each session I will ask you whether you completed your latest assignment");
+        sendMessage("If you did you are rewarded with exp");
+        sendMessage("You won\'t get any bonuses other than making me happy %Grin% ");
+        sendMessage("And you want to please me, don\'t you?");
+        sendMessage("I will measure your experience using a so called ass level");
+        sendMessage("You will start at level 1, which means you are a beginner when it comes to anal play");
+        sendMessage("Level 30 means that you can take anything up your %Ass% without hesitating");
+        sendMessage("EXP makes you grow in level at a slow pace");
+        sendMessage("Each new level requires a higher amount of EXP");
+        sendMessage("As your level grows the assignments become more difficult");
+        sendMessage("It\'s really as simple as that");
+    } else {
+        sendMessage('This just works the same as the other trainings we are doing');
+        sendMessage('Just a quick reminder of the level system');
+        sendMessage("You will start at level 1, which means you are a beginner when it comes to anal play");
+        sendMessage("Level 30 means that you can take anything up your %Ass% without hesitating");
+    }
+
+    setVar(VARIABLE_TRAINING_INTRODUCTION_DONE, true);
 }

@@ -13,7 +13,7 @@
     }
 
     //Denial limit reached
-    if (getLastEjaculationDate().addDay(VARIABLE_DENIAL_LIMIT).hasPassed()) {
+    if (getLastEjaculationDate().addDay(getVar(VARIABLE_DENIAL_LIMIT)).hasPassed()) {
         run('Session/End/HardLimit.js');
     }
 

@@ -141,7 +141,7 @@ function sendBasicChastityTrainingTask() {
 }
 
 function checkChastityExercise() {
-    const answer = sendInput("Have you completed the last assignment I gave you?");
+    const answer = sendInput("Have you completed the last chastity assignment I gave you?");
     while (true) {
         if (answer.isLike('yes')) {
             sendMessage('%Good%');
@@ -254,16 +254,27 @@ function firstChastityTraining() {
     sendMessage("We\'re going to practice and make you train your ability to wear the %ChastityCage%");
     sendMessage("Essentially our goal is to make that %ChastityCage% feel like home");
     sendMessage("We want you at a point where you\'ll feel naked without the %ChastityCage%");
-    sendMessage("It\'s rather simple how this work.");
-    sendMessage("After each session");
-    sendMessage("You will be asked whether you completed your current assignment");
-    sendMessage("If you did you are rewarded with exp");
-    sendMessage("We use a so called chastity level to measure your experience with chastity");
-    sendMessage("Level 1 is having a hard time wearing the cage");
-    sendMessage("Level 30 means that you can wear the cage at all time without problems");
-    sendMessage("EXP makes you grow in level at a slow pace");
-    sendMessage("Each new level requires a higher amount of EXP");
-    sendMessage("As your level grows the assignments increase in difficulty");
+
+
+    if(!getVar(VARIABLE_TRAINING_INTRODUCTION_DONE, false)) {
+        sendMessage("It\'s rather simple how this work.");
+        sendMessage("After each session");
+        sendMessage("You will be asked whether you completed your current assignment");
+        sendMessage("If you did you are rewarded with exp");
+        sendMessage("We use a so called chastity level to measure your experience with chastity");
+        sendMessage("Level 1 is having a hard time wearing the cage");
+        sendMessage("Level 30 means that you can wear the cage at all time without problems");
+        sendMessage("EXP makes you grow in level at a slow pace");
+        sendMessage("Each new level requires a higher amount of EXP");
+        sendMessage("As your level grows the assignments increase in difficulty");
+        sendMessage("It\'s really as simple as that");
+    } else {
+        sendMessage('This just works the same as the other trainings we are doing');
+        sendMessage('Just a quick reminder of the level system');
+        sendMessage("Level 1 is having a hard time wearing the cage");
+        sendMessage("Level 30 means that you can wear the cage at all time without problems");
+    }
+
     /*sendMessage("Now!");
     sendMessage("You also earned lock up points for completing assignments");
     sendMessage("The points are spent on pleasure %Grin%");
@@ -272,9 +283,9 @@ function firstChastityTraining() {
     sendMessage("1 you lose and nothing happens");
     sendMessage("2-7 to get to ruin your orgasm");
     sendMessage("8-10 you get an actual orgasm");*/
-    sendMessage("It\'s really as simple as that");
 
     setVar(VARIABLE_CHASTITY_LEVEL, 1);
     setVar(VARIABLE_CHASTITY_EXPERIENCE, 0);
     setVar(VARIABLE_CHASTITY_TASKS_IN_ROW, 0);
+    setVar(VARIABLE_TRAINING_INTRODUCTION_DONE, true);
 }

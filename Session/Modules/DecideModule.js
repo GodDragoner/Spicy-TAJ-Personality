@@ -135,7 +135,7 @@
 }
 
 function runModuleCategory(category) {
-    setTempVar('lastModuleCategory', category);run
+    setTempVar('lastModuleCategory', category);
     const neutralPath = getModuleTypeCategoryPath(category, 'Neutral');
     const noChastityPath = getModuleTypeCategoryPath(category, 'NoChastity');
     const dynamicPath = getModuleTypeCategoryPath(category, 'Dynamic');

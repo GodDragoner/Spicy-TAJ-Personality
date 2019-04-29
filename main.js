@@ -38,6 +38,8 @@ run('Session/End/ChastityTraining/ChastitySpecialTask.js');
 
 run('Session/End/AnalTraining/AnalTrainingTasks.js');
 
+run('Session/End/BlowjobTraining/BlowjobTrainingTasks.js');
+
 
 run("Assistant/Assistant.js");
 updatePictureSet();

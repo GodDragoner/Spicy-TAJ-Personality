@@ -16,9 +16,9 @@
             break;
         } else if (answer.isLike('no')) {
             sendMessage('%Good%');
-            CMessage(random("You make me proud! ", "That makes me happy! ", "You make me very proud! "));
+            sendMessage(random("You make me proud! ", "That makes me happy! ", "You make me very proud! "));
             changeMeritHigh(false);
-            CMessage(random("This brings about the logical question ", "This begs the question "));
+            sendMessage(random("This brings about the logical question ", "This begs the question "));
             askForHardLimitIncrease();
             break;
         } else {
@@ -29,7 +29,7 @@
 }
 
 function askForHardLimitIncrease() {
-    let answer0 = sendInput(random("Would it be alright for me to increase your hard limit a little? ", 'Would you be okay with me increasing your hard limit?', "Would you be okay with increasing your hard limit? ") + "%DT%");
+    let answer0 = sendInput(random("Would it be alright for me to increase your hard limit a little? ", 'Would you be okay with me increasing your hard limit?', "Would you be okay with increasing your hard limit? "));
 
     while (true) {
         if (answer0.isLike('yes')) {

@@ -151,10 +151,12 @@ function sendBlowjobTrainingPosition() {
 
     switch (position) {
         case 0:
-            sendMessage('For this I want you to place your ' + toy + ' in front of you');
+            sendMessage('For this I want you to place your toy in front of you');
             break;
         case 1:
             sendMessage('For this I want you to get that dildo and either attach or hold it against the wall');
+
+            //TODO: Rice while kneeling?
 
             if (feelsEvil()) {
                 sendMessage('I want you to place the dildo on a height that requires you to completely sit up while kneeling to reach it %EmoteHappy%');
@@ -173,8 +175,6 @@ function sendBlowjobTrainingPosition() {
 
     return position;
 }
-
-
 
 function getRandomBlowjobTask(array) {
     const availableTasks = [];
