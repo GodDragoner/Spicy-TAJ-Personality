@@ -26,7 +26,7 @@
         }
 
         if(noReady) {
-            sendMessage("We have time %Smile%");
+            sendMessage("We have time %Grin%");
             sendMessage("Stroke that %Cock%");
             sendMessage("Make sure you get ready to cum for me");
             lockImages();

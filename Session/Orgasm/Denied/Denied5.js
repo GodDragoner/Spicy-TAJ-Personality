@@ -14,7 +14,7 @@
 
             if (isChance(50)) {
                 if (sendYesOrNoQuestion('Could you do another one?')) {
-                    sendMessage("No matter how much you ache, you can never say no to me %Smile%");
+                    sendMessage("No matter how much you ache, you can never say no to me %Grin%");
                 } else {
                     sendMessage("Unfortunately for you, it's still my decision...");
                 }
@@ -33,7 +33,7 @@
         while (true) {
             //TODO: Unified check for thank you answer with Honorific attached!
             if (answer.isLike("you", "thanks", "gracias", "merci", "grateful", "gratitude")) {
-                sendMessage("You\'re welcome %SlaveName% %Smile%");
+                sendMessage("You\'re welcome %SlaveName% %Grin%");
                 break;
             } else {
                 sendMessage('"No... try again');

@@ -3,6 +3,7 @@
     sendVirtualAssistantMessage('Options:', 0);
     sendVirtualAssistantMessage('1. Add new dildo', 0);
     sendVirtualAssistantMessage('2. Add new buttplug', 0);
+    sendVirtualAssistantMessage('3. Add new chastity cage', 0);
 
     let lobbyAnswer = createInput("Add new dildo", 'Add new buttplug');
     while (true) {
@@ -18,12 +19,19 @@
             setupNewButtplug();
             run('Assistant/Settings/Toys.js');
             break;
-        } else if(answer.isLike('back', 'cancel', 'return')) {
+        } else if (lobbyAnswer.isLike("new cage", "add cage", "add chastity", "new chastity")) {
+            lobbyAnswer.clearOptions();
+            sendVirtualAssistantMessage('Bought a new chastity cage? How exciting! %Grin%');
+            setupNewCage();
+            run('Assistant/Settings/Toys.js');
+            break;
+        }  else if(answer.isLike('back', 'cancel', 'return')) {
             break;
         } else {
             sendVirtualAssistantMessage("You have the following options %SlaveName%");
             sendVirtualAssistantMessage("- Add new dildo");
             sendVirtualAssistantMessage("- Add new buttplug");
+            sendVirtualAssistantMessage("- Add new chastity cage");
             lobbyAnswer.loop();
         }
     }

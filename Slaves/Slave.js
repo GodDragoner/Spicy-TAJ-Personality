@@ -1,3 +1,6 @@
+run("Slaves/Chastity.js");
+
+
 function getSubBirthday() {
     getDate(VARIABLE_SUB_BIRTHDAY);
 }

@@ -11,7 +11,7 @@ function isGaged() {
 }
 
 function setGaged(gaged) {
-    return setVar(VARIABLE_IS_GAGED, gaged);
+    return setTempVar(VARIABLE_IS_GAGED, gaged);
 }
 
 function hasBallGag() {
@@ -200,6 +200,8 @@ function putInGag(gagType = GAG_TYPE_BALL_GAG, addPinToTongue = false) {
 
     currentGagType = gagType;
 
+    setGaged(true);
+
     return true;
 }
 
@@ -223,7 +225,7 @@ function removeGag() {
     }
 
     sendMessageBasedOnSender("Put the gag aside for now");
-    setTempVar(VARIABLE_IS_GAGED, false);
+    setGaged(false);
 }
 
 function isGagPlay() {

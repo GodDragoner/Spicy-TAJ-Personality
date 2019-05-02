@@ -1,7 +1,6 @@
 {
 
     //TODO: Add toy usage
-
     if(tryRunModuleFetchId()) {
         if (!getVar(VARIABLE_POSITION_TRAINING_STARTED, false)) {
             setVar(VARIABLE_POSITION_LEVEL, 1);
@@ -15,6 +14,7 @@
             positionWalkthrough();
         } else {
             sendMessage("%SlaveName%");
+            sendMessage('Let\'s ' + random('do some position training', 'train your position knowledge'));
 
             if (isChance(50)) {
                 sendMessage("A quick reminder of all the positions...");
@@ -37,8 +37,16 @@
             } else {
                 complicatedPositionTrainingSelection(randomInteger(1, 3))
             }
+        } else {
+            let chance = randomInteger(0, 100);
+            if (chance < 5) {
+                complicatedPositionTrainingSelection(3);
+            } else if(chance <= 45) {
+                complicatedPositionTrainingSelection(randomInteger(1, 3));
+            } else {
+                simplePositionTrainingSelection(randomInteger(2, 4));
+            }
         }
-
 
         positionTrainingEnd();
     }
@@ -602,6 +610,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
 
     sendMessage(random("A real challenge","A bit of a challenge","A fun challenge","An exciting challenge","Definitely a challenge") + " %Lol%" );
 
+    //TODO: Fix this mess up lul
     const complicatedTraining = {
         currentTraining_b1 : function () {
             sendMessage("For this one you'll need your gag and " + randomInteger(4,8) + " pegs");
@@ -654,7 +663,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             sendMessage("Go and fetch them.");
             sendMessage("Gag yourself");
             sendMessage("The parachute goes on your %Balls%");
-            sendMessage("I want you to hang " + randomInteger(1,3) + "kg's from it %Lol%");
+            sendMessage("I want you to hang " + getWeightForParachute() + "kg's from it %Lol%");
             sendMessage("place the pegs on your nipples.");
             if (!checkPositionToys()) {
                 return false;
@@ -678,7 +687,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             sendMessage("For this one you'll need your gag and parachute");
             sendMessage("Go and fetch them.");
             sendMessage("Gag yourself");
-            sendMessage("and put on the parachute, attach " + randomInteger(1,3) + "kg's to it");
+            sendMessage("and put on the parachute, attach " + getWeightForParachute() + "kg's to it");
             if (!checkPositionToys()) {
                 return false;
             } else {
@@ -689,7 +698,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
         currentTraining_b8 : function () {
             sendMessage("For this one you'll need your parachute and " + randomInteger(4,8) + " pegs");
             sendMessage("Go and fetch them.");
-            sendMessage("put on the parachute, attach " + randomInteger(1,3) + "kg's to it");
+            sendMessage("put on the parachute, attach " + getWeightForParachute() + "kg's to it");
             sendMessage("place the pegs on your nipples.");
             if (!checkPositionToys()) {
                 return false;
@@ -1076,6 +1085,9 @@ function checkPositionToys() {
 
 function complicatedPositionTrainingTimer() {
     let personalityStrictness = getVar("personalityStrictness", 0);
+
+    let positionLevel = getVar(VARIABLE_POSITION_LEVEL);
+
     if (positionLevel <= 15) {
         switch(personalityStrictness) {
             case 0:

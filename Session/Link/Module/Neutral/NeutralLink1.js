@@ -13,7 +13,7 @@
         sendMessage("The thing is, porn probably isn\'t a good way to learn");
         sendMessage("It\'s much better to do it in person, so I guess I won\'t be able to do much for you");
         if (getVar(VARIABLE_SUB_IS_MARRIED, false) || getVar(VARIABLE_SUB_HAS_GIRLFRIEND, false)) {
-            sendMessage("Maybe " + getVar(VARIABLE_SUB_PARTNER_NAME) + " can help you out %Smile%");
+            sendMessage("Maybe " + getVar(VARIABLE_SUB_PARTNER_NAME) + " can help you out %Grin%");
         }
     }
 }

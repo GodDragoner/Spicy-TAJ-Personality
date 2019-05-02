@@ -12,7 +12,7 @@
             if (answer2.isLike("want")) {
                 sendMessage("You should have said so earlier, because I\'ve already decided that I want to let you cum %GeneralTime%");
             } else if (answer2.isLike("think")) {
-                sendMessage("Aww... poor boy... just because of that I\'m going to let you cum %GeneralTime% %Smile%");
+                sendMessage("Aww... poor boy... just because of that I\'m going to let you cum %GeneralTime% %Grin%");
             }
 
             lucky = false;

@@ -7,10 +7,8 @@
         if (getVar(VARIABLE_ASS_TRAININGS_DONE, 0) == 0) {
             firstTimeAnalTraining();
         } else if (checkAnalExercise()) {
-            if (getChastityEXPForLevel(getVar(VARIABLE_ASS_LEVEL) + 1) > getVar(VARIABLE_ASS_EXPERIENCE)) {
+            if (getChastityEXPForLevel(getVar(VARIABLE_ASS_LEVEL) + 1) <= getVar(VARIABLE_ASS_EXPERIENCE)) {
                 incrementVar(VARIABLE_ASS_LEVEL, 1);
-
-                sendMessage('Your current anal level is ' + getVar(VARIABLE_CHASTITY_LEVEL));
             }
         } else {
             completedExercise = false;
@@ -55,7 +53,7 @@ function checkAnalExercise() {
         sendMessage('%Good%');
         changeMeritLow(false);
 
-        sendMessage("Let me just update your exp...");
+        sendMessage("Let me just add the new exp...");
         incrementVar(VARIABLE_ASS_TASKS_IN_ROW, 1);
 
         //TODO: Randomize message
@@ -74,7 +72,9 @@ function checkAnalExercise() {
         }
 
         incrementVar(VARIABLE_ASS_EXPERIENCE, getVar(VARIABLE_TASK_ASS_EXPERIENCE));
-        sendMessage("I updated your exp...");
+        sendMessage("I added your exp and your current level is " + getVar(VARIABLE_ASS_LEVEL));
+        sendMessage('You will need ' + (getChastityEXPForLevel(getVar(VARIABLE_ASS_LEVEL) + 1) - getVar(VARIABLE_ASS_EXPERIENCE)) + ' more exp for the next level');
+
     } else {
         sendMessage("I expect more from you %SlaveName%");
 

@@ -14,7 +14,7 @@
                 sendMessage("The exam is something different");
                 sendMessage("I want you to celebrate it");
                 sendMessage("After this session you are allowed to orgasm however you like!");
-                sendMessage("You will be allowed to remove your %Cage% too %EmoteHappy%");
+                sendMessage("You will be allowed to remove your %ChastityCage% too %EmoteHappy%");
                 sendMessage("But...");
                 sendMessage("Whenever you are stimulating yourself you must be holding a deepthroat %Grin%");
                 sendMessage('And you will only have 10 minutes to do so');

@@ -308,12 +308,12 @@ function setupNewDildo() {
 
     //TODO: More interaction based on length and diameter etc.
 
-    sendVirtualAssistantMessage('Please make sure to add a picture of your dildo named like your dildo to your dildos folder.', false);
-    sleep(1);
+    sendVirtualAssistantMessage('Please make sure to add a picture of your dildo named like your dildo to your Toys/Dildos folder.', false);
+    sleep(2);
     sendVirtualAssistantMessage('So in this case make sure to add a picture called "' + name + '.jpg" to the dildos folder', false);
-    sleep(1);
+    sleep(2);
     sendVirtualAssistantMessage('If it already exists a picture of it should show up now', false, true);
-    showImage(getDildoImagePath(name), 3);
+    showImage(getDildoImagePath(name), 5);
 
     sendVirtualAssistantMessage('Next please tell me the length of the dildo in centimeters (measure everything that\'s insertable)', 0);
     answer = createInput();

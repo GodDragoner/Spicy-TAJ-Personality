@@ -48,7 +48,7 @@
                         sendMessage("Maybe next time...");
                     }
                 } else {
-                    sendMessage("I guess you got lucky then %Smile%");
+                    sendMessage("I guess you got lucky then %Grin%");
                 }
             }
 

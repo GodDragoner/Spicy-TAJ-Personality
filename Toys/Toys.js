@@ -1,4 +1,3 @@
-
 {
     /*run("Toys/ChastityCage.js");
     run("Toys/Buttplug.js");
@@ -28,6 +27,7 @@
 
     loadDildos();
     loadButtplugs();
+    loadChastityCages();
 }
 
 

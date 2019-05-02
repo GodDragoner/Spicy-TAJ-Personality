@@ -48,7 +48,7 @@ if (tryRunModuleFetchId()) {
 
     setVar(VARIABLE_STROKE_TRAININGS_DONE, getVar(VARIABLE_STROKE_TRAININGS_DONE, 0) + 1);
 
-    sendMessage("We are gonna start by warm you up a little... ");
+    sendMessage("We are gonna start by warming you up a little... ");
     sendMessage("Start stroking slowly");
     sendMessage("When you start to hear the pace you are gonna stroke to the beat");
 
@@ -94,7 +94,11 @@ function startStrokeTraining() {
 
         if (timeToIncreaseLevel >= 50) {
             timeToIncreaseLevel = 0;
+            setTempVar('timeToIncreaseLevel', timeToIncreaseLevel);
+
             incrementVar(VARIABLE_STROKE_TRAINING_LEVEL, 1);
+            sendDebugMessage('Increasing stoke training level to ' + getVar(VARIABLE_STROKE_TRAINING_LEVEL));
+
             level += 1;
             if (level >= 50) {
                 break;
@@ -106,15 +110,21 @@ function startStrokeTraining() {
         timeToIncreaseLevel += randomInteger(0, 10);
         setTempVar('timeToIncreaseLevel', timeToIncreaseLevel);
 
+        sendDebugMessage('New time to increase stroke training level: ' + getVar(timeToIncreaseLevel) + '/50');
+
+        if((getVar(VARIABLE_STROKE_TRAINING_EDGES_DONE) !== edgesAtStart || !getVar(VARIABLE_STROKE_TRAINING_ACTIVE, false))) return;
         showTeaseImage(randomInteger(5, 10));
 
-        if (isChance(10) || (getVar(VARIABLE_STROKE_TRAINING_EDGES_DONE) !== edgesAtStart || !getVar(VARIABLE_STROKE_TRAINING_ACTIVE, false))) continue;
+        if((getVar(VARIABLE_STROKE_TRAINING_EDGES_DONE) !== edgesAtStart || !getVar(VARIABLE_STROKE_TRAINING_ACTIVE, false))) return;
+        if (isChance(10)) continue;
         showTeaseImage(randomInteger(5, 10));
 
-        if (isChance(20) || (getVar(VARIABLE_STROKE_TRAINING_EDGES_DONE) !== edgesAtStart || !getVar(VARIABLE_STROKE_TRAINING_ACTIVE, false))) continue;
+        if((getVar(VARIABLE_STROKE_TRAINING_EDGES_DONE) !== edgesAtStart || !getVar(VARIABLE_STROKE_TRAINING_ACTIVE, false))) return;
+        if (isChance(20)) continue;
         showTeaseImage(randomInteger(5, 10));
 
-        if (isChance(30) || (getVar(VARIABLE_STROKE_TRAINING_EDGES_DONE) !== edgesAtStart || !getVar(VARIABLE_STROKE_TRAINING_ACTIVE, false))) continue;
+        if((getVar(VARIABLE_STROKE_TRAINING_EDGES_DONE) !== edgesAtStart || !getVar(VARIABLE_STROKE_TRAINING_ACTIVE, false))) return;
+        if (isChance(30)) continue;
         showTeaseImage(randomInteger(5, 10));
     }
 
@@ -145,6 +155,8 @@ function strokeTrainingEdge() {
     if (getVar(VARIABLE_STROKE_TRAINING_EDGES_DONE) >= 3) {
         sendMessage(random("%Grin%", "%Lol%", "%EmoteHappy%"));
         sendMessage(random("Couldn't handle more huh?", "I guess that was it huh", "So \"no more\" I guess..."));
+
+        sendDebugMessage('Finished stroke training with level ' + level);
 
         if (level >= 50) {
             if (ACTIVE_PERSONALITY_STRICTNESS == 0) {

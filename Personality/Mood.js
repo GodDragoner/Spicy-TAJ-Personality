@@ -21,7 +21,7 @@ function getMonthlyBadDays() {
 }
 
 function allowTeasingStroking() {
-    return !feelsLikePunishingSlave() && isChance(30);
+    return !feelsLikePunishingSlave();
 }
 
 //Just bad behaviour etc.

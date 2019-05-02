@@ -4,7 +4,7 @@
         let answer = sendInput("And you know why that is, don\'t you?");
         
         if (answer.isLike("yes")) {
-            sendMessage("No need to say it then %Smile%");
+            sendMessage("No need to say it then %Grin%");
         } else if (answer.isLike("no")) {
             sendMessage("Because you\'re a much better sub for me when you are horny and frustrated %Grin%");
         } else {

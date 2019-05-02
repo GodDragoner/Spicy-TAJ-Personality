@@ -8,11 +8,10 @@
             firstChastityTraining();
         } else {
             if (checkChastityExercise()) {
-                if (getChastityEXPForLevel(getVar(VARIABLE_CHASTITY_LEVEL) + 1) > getVar(VARIABLE_CHASTITY_EXPERIENCE)) {
+                if (getChastityEXPForLevel(getVar(VARIABLE_CHASTITY_LEVEL) + 1) <= getVar(VARIABLE_CHASTITY_EXPERIENCE)) {
                     incrementVar(VARIABLE_CHASTITY_LEVEL, 1);
                 }
 
-                sendMessage('Your current chastity level is ' + getVar(VARIABLE_CHASTITY_LEVEL));
 
 
                 //Roll
@@ -36,19 +35,23 @@
 
 function getChastityEXPForLevel(level) {
     let loopLevel = 1;
-    let exp = 0;
+    let exp = 100;
 
     while (loopLevel < level) {
-        if (loopLevel >= 20) {
-            exp += 300;
-        } else if (loopLevel >= 10) {
-            exp += 200;
+        if (loopLevel >= 25) {
+            exp += 65;
+        } else if (loopLevel >= 20) {
+            exp += 60;
+        } else if (loopLevel >= 15) {
+            exp += 55;
         } else {
-            exp += 100;
+            exp += 50;
         }
 
         loopLevel++;
     }
+
+    return exp;
 }
 
 function sendNewChastityExercise() {
@@ -147,7 +150,7 @@ function checkChastityExercise() {
             sendMessage('%Good%');
             changeMeritLow(false);
 
-            sendMessage("Let me just update your exp...");
+            sendMessage("Let me just add the new exp...");
             incrementVar(VARIABLE_CHASTITY_TASKS_IN_ROW, 1);
 
             //TODO: Randomize message
@@ -166,7 +169,9 @@ function checkChastityExercise() {
             }
 
             incrementVar(VARIABLE_CHASTITY_EXPERIENCE, getVar(VARIABLE_TASK_CHASTITY_EXPERIENCE));
-            sendMessage("I updated your exp...");
+
+            sendMessage("I added your exp and your current level is " + getVar(VARIABLE_CHASTITY_LEVEL));
+            sendMessage('You will need ' + (getChastityEXPForLevel(getVar(VARIABLE_CHASTITY_LEVEL) + 1) - getVar(VARIABLE_CHASTITY_EXPERIENCE)) + ' more exp for the next level');
 
             if (getVar(VARIABLE_AFRAID_OF_CHASTITY, false) && isAfraidTask(getVar(VARIABLE_LAST_CHASTITY_TASK_ID))) {
                 const afraidAnswer = sendInput('Tell me, are you still afraid of your cage showing in the public?');

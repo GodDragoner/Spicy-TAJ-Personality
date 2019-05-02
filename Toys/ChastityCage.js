@@ -1,69 +1,16 @@
 const SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE = 20;
 const CHASTITY_TYPE_SMALL = 1;
 const CHASTITY_TYPE_BIG = 0;
+const CHASTITY_CAGES = [];
 
+let currentChastityCage = 'undefined';
 
-const chastityCombinationImagesFolder = getImageSubFolder('Chastity' + PATH_SEPARATOR + 'ChastityCombination');
-const chastityCombinationImagesBackupFolder = getImageSubFolder('Chastity' + PATH_SEPARATOR + 'ChastityCombinationBackup');
-
-function willKeepChastityOn(end) {
-    let choice = randomInteger(1, 100);
-
-    if (end) {
-        if (getVar(VARIABLE_LONG_TERM_CHASTITY, false)) {
-            return true;
-        }
-
-        //Lower base chance of unlocking at end
-        choice = randomInteger(1, 100 - getVar(VARIABLE_CHASTITY_LEVEL, 0) * 3);
-    }
-
-    if (getVar(VARIABLE_HAPPINESS) > getVar(VARIABLE_ANGER)) {
-        choice += randomInteger(1, 25);
-    } else {
-        choice -= randomInteger(1, 25);
-    }
-
-    if (getVar(VARIABLE_LUST) > 30) {
-        choice += randomInteger(1, 25);
-    }
-
-    let choices = [30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 1, 5, 5, 10, 10, 15, 25, 30, 35, 40];
-    let index = 0;
-
-    if (getMonthlyGoodDays() <= getMonthlyBadDays()) {
-        index += 1;
-    }
-
-    if (ACTIVE_PERSONALITY_STRICTNESS == 1) {
-        choices = [35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 5, 10, 10, 15, 15, 20, 30, 35, 40, 50];
-    } else if (ACTIVE_PERSONALITY_STRICTNESS == 2) {
-        choices = [40, 45, 50, 55, 60, 70, 75, 80, 85, 90, 10, 15, 15, 20, 20, 30, 40, 50, 60, 70];
-    }
-
-    if (!isVar("chastityMode")) {
-        index += 10;
-    }
-
-    const mood = getMood();
-    if (mood == PLEASED_MOOD) {
-        index += 2;
-    } else if (mood == NEUTRAL_MOOD) {
-        index += 4;
-    } else if (mood == ANNOYED_MOOD) {
-        index += 6;
-    } else if (mood == VERY_ANNOYED_MOOD) {
-        index += 8;
-    }
-
-    const choiceToReach = choices[index];
-
-    return choiceToReach > choice;
+if(isVar(VARIABLE_ACTIVE_CHASTITY_CAGE)) {
+    currentChastityCage = getChastityCageByName(getVar(VARIABLE_ACTIVE_CHASTITY_CAGE));
 }
 
-
-function hasChastityCage() {
-    return getVar(VARIABLE_HAS_CHASTITY);
+function getActiveChastityCage() {
+    return getChastityCageByName(currentChastityCage);
 }
 
 function unlockChastityCage() {
@@ -88,7 +35,7 @@ function unlockChastityCage() {
     }
 
     const answer = sendInput(random("Let me know when you're done...", "Report to me when it's off", "Remember to tell me when it's off"), timeout);
-    loop = 0;
+    let loop = 0;
     while (true) {
         if (answer.isTimeout()) {
             loop++;
@@ -123,11 +70,109 @@ function unlockChastityCage() {
     return;
 }
 
-function isInChastity() {
-    return isVar(VARIABLE_CHASTITY_ON) && getVar(VARIABLE_CHASTITY_ON);
+function getMaxChastitySize() {
+    let mood = getMood();
+    let strictness = ACTIVE_PERSONALITY_STRICTNESS;
+
+    let maxWithoutRange= 8 - (Math.max(1, strictness) + Math.max(1, mood) + Math.min(1, mood));
+
+    return Math.max(1, Math.min(5, maxWithoutRange));
 }
 
-function getChastityCageSelection(punishmentChance) {
+function getMinChastitySize() {
+    return Math.max(1, getMaxChastitySize() - Math.max(1, ACTIVE_PERSONALITY_STRICTNESS));
+}
+
+function findAvailableClosestToSize(length) {
+    sendDebugMessage('Searching for chastity with length: ' + length);
+    //let currentCage = null;
+
+    //Negative if size < found size and positive if size > found size
+    let currentSizeDifference = null;
+
+    for (let y = 0; y < CHASTITY_CAGES.length; y++) {
+        let foundDifference = length - CHASTITY_CAGES[y].length;
+
+        if(currentSizeDifference === null) {
+            //currentCage = CHASTITY_CAGES[y];
+            currentSizeDifference = foundDifference;
+        }
+        //Check if we found the perfect fitting size
+        else if(currentSizeDifference !== 0 && foundDifference === 0) {
+            currentSizeDifference = 0;
+            //Found the perfect match
+            break;
+        }
+        //Check if we found something that is closer
+        else if(Math.abs(currentSizeDifference) > Math.abs(foundDifference)) {
+            currentSizeDifference = foundDifference;
+        }
+        //Check if we found something that's equal in value
+        else if(Math.abs(currentSizeDifference) === Math.abs(foundDifference)) {
+            //Use the bigger one
+            if(ACTIVE_PERSONALITY_STRICTNESS === 0) {
+                currentSizeDifference = Math.max(currentSizeDifference, foundDifference);
+            }
+            //Use the smaller one
+            else {
+                currentSizeDifference = Math.min(currentSizeDifference, foundDifference);
+            }
+        }
+
+        //Otherwise we don't care about that cage right now
+    }
+
+    return length - currentSizeDifference;
+}
+
+function getRandomCageWithSize(length, punishments) {
+    let cages = [];
+
+    sendDebugMessage('Searching cage with length ' + length + ' and ' + punishments + ' punishments');
+
+    for (let y = 0; y < CHASTITY_CAGES.length; y++) {
+        let currentCage = CHASTITY_CAGES[y];
+        let punishmentOptionsOfCage = 0;
+
+        if(currentCage.dialator) {
+            punishmentOptionsOfCage++;
+
+            //If we can't remove it but want no punishments this is not the right cage to go with
+            if(punishments === 0 && !currentCage.dialatorDetachable) {
+                sendDebugMessage('Skipping ' + currentCage.name + ' because dialator is not detachable');
+                continue;
+            }
+        }
+
+        if(currentCage.spikes) {
+            punishmentOptionsOfCage++;
+
+            //If we can't remove it but want no punishments this is not the right cage to go with
+            if(punishments === 0 && !currentCage.spikesDetachable) {
+                sendDebugMessage('Skipping ' + currentCage.name + ' because spikes are not detachable');
+                continue;
+            }
+        }
+
+        //Fitting size and enough punishment options
+        if(currentCage.length == length && punishmentOptionsOfCage >= punishments) {
+            cages.push(currentCage);
+            sendDebugMessage('Pushing cage ' + currentCage.name + ' to available list');
+        }
+    }
+
+    if(cages.length === 0) {
+        //Reduce amount of punishments by one. If we reach -1 it won't skip any cage anymore because of forced punishments because we only check for punishments === 0
+        // -> It will at some point find a fitting cage
+        return getRandomCageWithSize(length, punishments - 1);
+    } else {
+        return cages[randomInteger(0, cages.length)];
+    }
+}
+
+/*function getChastityCageSelection(punishmentChance) {
+    let size = randomInteger(getMinChastitySize(), getMaxChastitySize());
+
     let smallChance = punishmentChance - SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE;
 
     if(!getVar(VARIABLE_HAS_CHASTITY_SMALL_PUNISHMENT_CAGE, false)) {
@@ -165,40 +210,46 @@ function getChastityCageSelection(punishmentChance) {
         //Big only
         return 0;
     }
-}
+}*/
 
 function selectChastityCage() {
     let mood = getMood();
 
-    let punishmentChance = mood*20 + (ACTIVE_PERSONALITY_STRICTNESS*20 - (VERY_ANNOYED_MOOD - mood)*10);
+    let punishmentChance = mood*20 + (ACTIVE_PERSONALITY_STRICTNESS*20 - (VERY_ANNOYED_MOOD - mood)*10) - SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE*0.5;
     sendDebugMessage('Punishment Chastity Chance: ' + punishmentChance + ' for mood ' + mood + ' and strictness ' + ACTIVE_PERSONALITY_STRICTNESS);
 
-    let chastityCageSelection = getChastityCageSelection(punishmentChance);
+    let length = findAvailableClosestToSize(randomInteger(getMinChastitySize(), getMaxChastitySize()));
 
-    sendDebugMessage('Chastity Selection: ' + chastityCageSelection);
+    //let chastityCageSelection = getChastityCageSelection(punishmentChance);
+
+    sendDebugMessage('Found closest chastity size: ' + length);
+
+    let amountOfPunishments = 0;
+
+
+    //First punishment roll
+    if(isChance(punishmentChance)) {
+        amountOfPunishments++;
+        punishmentChance -= SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE;
+
+        //Second punishment roll
+        if(isChance(punishmentChance)) {
+            amountOfPunishments++;
+            punishmentChance -= SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE;
+        }
+    }
+
+    sendDebugMessage('Searching for cage with size ' + length + ' and punishments ' + amountOfPunishments);
+
+    let cage = getRandomCageWithSize(length, amountOfPunishments);
+
+    sendDebugMessage('Found cage ' + cage.name);
 
     let punishments = new java.util.ArrayList();
 
-    //Both possible
-    if(chastityCageSelection === 3) {
-        if(isChance(punishmentChance)) {
-            chastityCageSelection = 1;
-        } else {
-            chastityCageSelection = 0;
-        }
-
-        sendDebugMessage('Rolled chastity selection: ' + chastityCageSelection);
-    }
-
-    //0 == big cage => SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE*0 = 0 subtract
-    punishmentChance -= SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE*chastityCageSelection;
-    setVar(VARIABLE_CHASTITY_CAGE_ON_TYPE, chastityCageSelection);
-
-    let small = chastityCageSelection === CHASTITY_TYPE_SMALL;
-
-    if(small && getVar(VARIABLE_CHASTITY_SMALL_HAS_SPIKES, false) || !small && getVar(VARIABLE_CHASTITY_HAS_SPIKES, false)) {
+    if(cage.spikes) {
         //If spikes are forced we need to calculate that into the remaining chance
-        if(small && !getVar(VARIABLE_CHASTITY_SMALL_SPIKES_DETACHABLE, false) || !small && !getVar(VARIABLE_CHASTITY_SPIKES_DETACHABLE, false)) {
+        if(!cage.spikesDetachable) {
             punishmentChance -= SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE;
             setVar(VARIABLE_CHASTITY_SPIKES_ON, true);
             sendDebugMessage('Set spikes as punishment due to being forced by the cage');
@@ -210,9 +261,9 @@ function selectChastityCage() {
         }
     }
 
-    if(small && getVar(VARIABLE_CHASTITY_SMALL_HAS_DILATOR, false) || !small && getVar(VARIABLE_CHASTITY_HAS_DILATOR, false)) {
+    if(cage.dialator) {
         //If dilator is forced we need to calculate that into the remaining chance
-        if(small && !getVar(VARIABLE_CHASTITY_SMALL_DILATOR_DETACHABLE, false) || !small && !getVar(VARIABLE_CHASTITY_DILATOR_DETACHABLE, false)) {
+        if(!cage.dialatorDetachable) {
             punishmentChance -= SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE;
             setVar(VARIABLE_CHASTITY_DILATOR_ON, true);
             sendDebugMessage('Set dilator as punishment due to being forced by the cage');
@@ -256,6 +307,8 @@ function selectChastityCage() {
         //No reuse of that punishment right now
         punishments.remove(index);
     }
+
+    return cage;
 }
 
 function lockChastityCage() {
@@ -283,13 +336,9 @@ function lockChastityCage() {
     showImage("Images/Spicy/Chastity/ChastityOn/*.{jpg,png,gif}");
     if (randomInteger(0, 2) == 2) playSound("Audio/Spicy/Chastity/ChastityOn/*.mp3");
 
-    selectChastityCage();
+    let chastityCage = selectChastityCage();
 
-    if(getVar(VARIABLE_CHASTITY_CAGE_ON_TYPE) === CHASTITY_TYPE_BIG) {
-        sendMessageBasedOnSender('Go ahead and fetch your normal chastity cage');
-    } else {
-        sendMessageBasedOnSender('Go ahead and fetch your small punishment chastity cage %Grin%');
-    }
+    fetchChastityCage(chastityCage.name);
 
     let alreadyAttached = false;
 
@@ -304,18 +353,22 @@ function lockChastityCage() {
         } else {
             sendMessageBasedOnSender('And I want you to attach the dilator to it too %Lol%');
 
-            if(getVar(VARIABLE_CHASTITY_CAGE_ON_TYPE) === CHASTITY_TYPE_SMALL || !getVar(VARIABLE_HAS_CHASTITY_SMALL_PUNISHMENT_CAGE, false)) {
+            if(chastityCage.length < 3) {
                 sendMessageBasedOnSender('We are going full punishment mode %SlaveName%');
                 sendMessageBasedOnSender('You know you don\'t deserve anything different %GeneralTime% %Lol%');
             } else {
                 sendMessageBasedOnSender('Be happy that I am not putting you into your small punishment cage as well %Grin%');
             }
         }
+
+        alreadyAttached = true;
     }
 
-    sendMessageBasedOnSender('Tell me when you have everything around %SlaveName%');
-    waitForDone();
-    sendMessageBasedOnSender('%Good%');
+    if(alreadyAttached) {
+        sendMessageBasedOnSender('Tell me when you have everything around %SlaveName%');
+        waitForDone();
+        sendMessageBasedOnSender('%Good%');
+    }
 
     sendMessageBasedOnSender('And next...');
 
@@ -421,247 +474,204 @@ function lockChastityCage() {
     }
 
     setVar(VARIABLE_CHASTITY_ON, true);
+
+    currentChastityCage = chastityCage;
+    setVar(VARIABLE_ACTIVE_CHASTITY_CAGE, chastityCage.name);
 }
 
-function lockAwayChastityKey() {
-    if(getVar(VARIABLE_CHASTITY_HAS_COMBINATION_LOCK, false) && !getVar(VARIABLE_CHASTITY_KEY_LOCKED_COMBINATION, false)) {
-        sendVirtualAssistantMessage('Go ahead and fetch your combination lock and some casket you can lock with it %Grin%');
-        sendVirtualAssistantMessage('Tell me when you are ready');
-        waitForDoneVirtualAssistant();
-        sendVirtualAssistantMessage("%Good%");
 
-        sendVirtualAssistantMessage('Now go ahead and put the keys for the %ChastityCage% inside the casket');
-        sendVirtualAssistantMessage('Next you will go ahead and set a new code for your combination lock at random. You will not look at it');
-        sendVirtualAssistantMessage('Instead you will take your phone or a camera and you will take a picture of the new combination');
-        sendVirtualAssistantMessage('Don\'t you dare look at the combination in any way');
-        sendVirtualAssistantMessage('After that I want you to lock the casket with the combination lock and randomize the selected combination so you won\'t be able to unlock it anymore');
-        sendVirtualAssistantMessage('Then you will take the picture and place it inside the "Images/Spicy/Chastity/ChastityCombination" folder and make sure there is only one file inside that folder');
+function loadChastityCages() {
+    if (!isVar('chastityCages')) {
+        setVar('chastityCages', new java.util.ArrayList());
+    } else {
+        let arrayList = getVar('chastityCages');
 
-        sendVirtualAssistantMessage('Tell me when you have done all of that');
-        waitForDoneVirtualAssistant();
+        for (let x = 0; x < arrayList.size(); x++) {
+            let entry = arrayList.get(x);
+            let splitArray = entry.split(',');
 
-        chastityCombinationImagesFolder.mkdirs();
-        let filesArray = chastityCombinationImagesFolder.listFiles();
+            let name = 'undefined';
+            let length = -1;
+            let material = MATERIAL_PLASTIC;
+            let dialator = false;
+            let dialatorDetachable = false;
+            let spikes = false;
+            let spikesDetachable = false;
+            let ballTrapType = 1;
 
-        while(filesArray.length !== 1) {
-            sendVirtualAssistantMessage('Something does not seem right with the folder');
-            sendVirtualAssistantMessage('Make sure there is only that one image inside the folder and nothing else %SlaveName%');
-            sendVirtualAssistantMessage('Tell me when you\'ve checked');
-            waitForDoneVirtualAssistant();
-            sendVirtualAssistantMessage('Let\'s see again...');
+            for (let y = 0; y < splitArray.length; y++) {
+                let valueEntry = splitArray[y];
 
-            filesArray = chastityCombinationImagesFolder.listFiles();
+                if (valueEntry.indexOf('name:') !== -1) {
+                    name = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                } else if (valueEntry.indexOf('length:') !== -1) {
+                    length = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                } else if (valueEntry.indexOf('material:') !== -1) {
+                    material = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                } else if (valueEntry.indexOf('dialator:') !== -1) {
+                    dialator = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                } else if (valueEntry.indexOf('dialatorDetachable:') !== -1) {
+                    dialatorDetachable = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                } else if (valueEntry.indexOf('spikes:') !== -1) {
+                    spikes = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                } else if (valueEntry.indexOf('spikesDetachable:') !== -1) {
+                    spikesDetachable = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                } else if (valueEntry.indexOf('ballTrapType:') !== -1) {
+                    ballTrapType = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                }
+            }
+
+            let chastityCage = {
+                name: name,
+                length: length,
+                material: material,
+                dialator: dialator,
+                dialatorDetachable: dialatorDetachable,
+                spikes: spikes,
+                spikesDetachable: spikesDetachable,
+                ballTrapType: ballTrapType
+            };
+
+            CHASTITY_CAGES.push(chastityCage);
         }
-
-        sendVirtualAssistantMessage('%Good%');
-        sendVirtualAssistantMessage('Now you will delete the picture from your phone so the only person who knows the combination to your freedom is me %Grin%');
-
-        let combinationFile = chastityCombinationImagesFolder.listFiles()[0];
-
-        chastityCombinationImagesBackupFolder.mkdirs();
-        copyFolder(chastityCombinationImagesFolder, chastityCombinationImagesBackupFolder, false);
-
-        combinationFile.renameTo(new java.io.File(chastityCombinationImagesFolder.getPath() + PATH_SEPARATOR + 'chastityCombination.lock'));
-
-        setVar(VARIABLE_CHASTITY_KEY_LOCKED_COMBINATION, true);
-
-        sendVirtualAssistantMessage('You can request me to tell you the chastity combination in the main menu');
     }
 }
 
-function getChastityCombinationFile() {
-    return chastityCombinationImagesFolder.listFiles()[0];
-}
+function saveChastityCages() {
+    let arrayList = new java.util.ArrayList();
 
-function unlockChastityKey() {
-    if(getVar(VARIABLE_CHASTITY_KEY_LOCKED_COMBINATION, false)) {
-        sendMessage('%SlaveName%...');
-        sendMessage('Fetch the casket with your chastity key');
-        lockImages();
-        sendMessage('This is your combination %SlaveName%', 0);
-        showImage(getChastityCombinationFile(), 5);
-        sendMessage('Get your keys out of the box and tell me when you are ready to continue');
-        waitForDone(100000);
-        setVar(VARIABLE_CHASTITY_KEY_LOCKED_COMBINATION, false);
-        sendMessage('%Good%');
-        getChastityCombinationFile().delete();
-    } else {
-        sendMessage('Fetch your keys for your %ChastityCage% %SlaveName%');
+    for (let y = 0; y < CHASTITY_CAGES.length; y++) {
+        arrayList.add(chastityCageToString(CHASTITY_CAGES[y]));
     }
+
+    setVar('chastityCages', arrayList);
 }
 
+function chastityCageToString(cage) {
+    let string = 'name:' + cage.name + ',length:' + cage.length + ',material:' + cage.material;
 
-function isForcedLockedUp() {
-    return isVar(VARIABLE_LOCKED_UP_UNTIL) && !getDate(VARIABLE_LOCKED_UP_UNTIL).hasPassed();
-}
-
-function addLockUpTime(hours) {
-    if (!isForcedLockedUp) {
-        setDate(VARIABLE_LOCKED_UP_UNTIL, setDate().addHour(hours));
-    } else {
-        setDate(VARIABLE_LOCKED_UP_UNTIL, getDate(VARIABLE_LOCKED_UP_UNTIL).addHour(hours));
+    if (cage.dialator) {
+        string += ',dialator:' + cage.dialator;
     }
+
+    if (cage.dialatorDetachable) {
+        string += ',dialatorDetachable:' + cage.dialatorDetachable;
+    }
+
+    if (cage.spikes) {
+        string += ',spikes:' + cage.spikes;
+    }
+
+    if (cage.spikesDetachable) {
+        string += ',spikesDetachable:' + cage.spikesDetachable;
+    }
+
+    if (cage.ballTrapType) {
+        string += ',ballTrapType:' + cage.ballTrapType;
+    }
+
+    return string;
 }
 
-function isChastityPunishment() {
-    return getVar(VARIABLE_CHASTITY_TOY_MODE) === TOY_PUNISHMENT_MODE || getVar(VARIABLE_CHASTITY_TOY_MODE) === TOY_BOTH_MODE;
+
+function getChastityCageByName(name) {
+    for (let y = 0; y < CHASTITY_CAGES.length; y++) {
+        if (name.toUpperCase() === CHASTITY_CAGES[y].name.toUpperCase()) {
+            return CHASTITY_CAGES[y];
+        }
+    }
+
+    return null;
 }
 
-function isChastityPlay() {
-    return getVar(VARIABLE_CHASTITY_TOY_MODE) === TOY_PLAY_MODE || getVar(VARIABLE_CHASTITY_TOY_MODE) === TOY_BOTH_MODE;
-}
+function setupNewCage() {
+    sendVirtualAssistantMessage('Please enter a name for your new chastity cage', 0);
 
-function setupCage(small) {
     let answer = createInput();
+    let name = 'undefined';
+
+    while (true) {
+        if (getChastityCageByName(answer.getAnswer()) !== null) {
+            sendVirtualAssistantMessage('A chastity cage with a similar name already exists. Please choose a different name.', 0);
+            answer.loop();
+        } else {
+            name = answer.getAnswer();
+            break;
+        }
+    }
+
+    //TODO: More interaction based on size etc.
+
+    sendVirtualAssistantMessage('Please make sure to add a picture of your cage named like your chastity cage to your Toys/Chastity Cages folder.', false);
+    sleep(2);
+    sendVirtualAssistantMessage('So in this case make sure to add a picture called "' + name + '.jpg" to the chastity cages folder', false);
+    sleep(2);
+    sendVirtualAssistantMessage('If it already exists a picture of it should show up now', false, true);
+    showImage(getChastityImagePath(name), 5);
+
+    sendVirtualAssistantMessage('We are gonna use a scale of 1 to 5 to measure the size of the cage');
+    sendVirtualAssistantMessage('1 being the smallest and something like this (35mm length)', 0);
+    showImage('Images/Spicy/Toys/chastityCageSmall.*', 5);
+    sendVirtualAssistantMessage('5 being the biggest and something like this (140mm length)', 0);
+    showImage('Images/Spicy/Toys/chastityCageBig.*', 5);
+
+    setCurrentSender(SENDER_ASSISTANT);
+    let length = createIntegerInput('So just give me a number on a scale of 1 - 5 %SlaveName%', 1, 5, 'That\'s not a number... Give me something like 2 or 4', 'That number is not on the scale. Remember on a scale of 1 - 5 %SlaveName%');
+    setCurrentSender(SENDER_TAJ);
+
+    let material = MATERIAL_METAL;
+
+    sendVirtualAssistantMessage('Great. Now...');
+    sendVirtualAssistantMessage('Is it made out of metal, plastic or silicon?', 0);
+    answer = createInput();
+
+    while (true) {
+        if (answer.isLike("metal")) {
+            material = MATERIAL_METAL;
+            break;
+        } else if (answer.isLike("plastic")) {
+            material = MATERIAL_PLASTIC;
+            break;
+        } else if (answer.isLike("silicon")) {
+            material = MATERIAL_SILICON;
+            break;
+        } else {
+            sendVirtualAssistantMessage('Is it made out of plastic, metal or silicon?');
+            answer.loop();
+        }
+    }
+
+    sendVirtualAssistantMessage("Noted...");
+
+    let dialator = false;
+    let dialatorDetachable = dialatorDetachable;
+    sendVirtualAssistantMessage('Does it have a dialator?', 0);
+    answer = createInput();
 
     while (true) {
         if (answer.isLike("yes")) {
-            small ? setVar(VARIABLE_HAS_CHASTITY_SMALL_PUNISHMENT_CAGE, true) : setVar(VARIABLE_HAS_CHASTITY, true);
+            dialator = true;
 
-            sendVirtualAssistantMessage("Is it made of plastic or metal?", false);
-           // showImage("Images/Spicy/Toys/PlasticChastity.jpg", 3);
-            answer = createInput();
-
-            while (true) {
-                if (answer.isLike("metal")) {
-                    small ? setVar(VARIABLE_CHASTITY_SMALL_MATERIAL, 0) : setVar(VARIABLE_CHASTITY_MATERIAL, 0);
-                    //showImage("Images/Spicy/Toys/MetalChastity.jpg", 3);
-                    break;
-                } else if (answer.isLike("plastic")) {
-                    small ? setVar(VARIABLE_CHASTITY_SMALL_MATERIAL, 1) : setVar(VARIABLE_CHASTITY_MATERIAL, 1);
-                    //showImage("Images/Spicy/Toys/PlasticChastity.jpg", 3);
-                    break;
-                } else {
-                    sendVirtualAssistantMessage("Metal or plastic?");
-                    answer.loop();
-                }
-            }
-
-            sendVirtualAssistantMessage("Noted...");
-            sendVirtualAssistantMessage("Is it a full belt or a ball trap device?", false);
-            answer = createInput();
-
-            while (true) {
-                if (answer.containsIgnoreCase("full", "belt")) {
-                    small ? setVar(VARIABLE_CHASTITY_SMALL_CAGE_TYPE, 0) : setVar(VARIABLE_CHASTITY_CAGE_TYPE, 0);
-                    sendVirtualAssistantMessage("Full belt...");
-                    break;
-                } else if (answer.containsIgnoreCase("ball", "trap")) {
-                    small ? setVar(VARIABLE_CHASTITY_SMALL_CAGE_TYPE, 1) : setVar(VARIABLE_CHASTITY_CAGE_TYPE, 1);
-                    sendVirtualAssistantMessage("Ball trap...");
-                    break;
-                } else {
-                    sendVirtualAssistantMessage("Full or ball trap?");
-                    answer.loop();
-                }
-            }
-
-            sendVirtualAssistantMessage("Does it have a dilator?", false);
+            sendVirtualAssistantMessage("This will be fun...");
+            sendVirtualAssistantMessage('Is it detachable?', 0);
             answer = createInput();
 
             while (true) {
                 if (answer.isLike("yes")) {
-                    small? setVar(VARIABLE_CHASTITY_SMALL_HAS_DILATOR, true) : setVar(VARIABLE_CHASTITY_HAS_DILATOR, true);
-                    sendVirtualAssistantMessage("This will be fun...");
-                    sendVirtualAssistantMessage("Is it detachable?", false);
-                    answer = createInput();
-
-                    while (true) {
-                        if (answer.isLike("yes")) {
-                            small? setVar(VARIABLE_CHASTITY_SMALL_DILATOR_DETACHABLE, true) : setVar(VARIABLE_CHASTITY_DILATOR_DETACHABLE, true);
-                            sendVirtualAssistantMessage("Noted...");
-                            break;
-                        } else if (answer.isLike("no")) {
-                            sendVirtualAssistantMessage("I guess when %DomHonorific% %DomName% chooses it then you will always have to deal with it %Grin%");
-                            break;
-                        } else {
-                            sendVirtualAssistantMessage(YES_OR_NO);
-                            answer.loop();
-                        }
-                    }
-
+                    sendVirtualAssistantMessage("Noted...");
+                    dialatorDetachable = true;
                     break;
                 } else if (answer.isLike("no")) {
-                    sendVirtualAssistantMessage("Too bad...");
+                    sendVirtualAssistantMessage("I guess when %DomHonorific% %DomName% chooses it then you will always have to deal with it %Grin%");
                     break;
                 } else {
                     sendVirtualAssistantMessage(YES_OR_NO);
                     answer.loop();
                 }
             }
-
-            sendVirtualAssistantMessage("If you have it, we might consider using spikes as a punishment...");
-            sendVirtualAssistantMessage("Does it have spikes?", false);
-            answer = createInput();
-
-            while (true) {
-                if (answer.isLike("yes")) {
-                    small? setVar(VARIABLE_CHASTITY_SMALL_HAS_SPIKES, true) : setVar(VARIABLE_CHASTITY_HAS_SPIKES, true);
-                    sendVirtualAssistantMessage("This will be fun...");
-                    sendVirtualAssistantMessage("Are they detachable?", false);
-                    answer = createInput();
-
-                    while (true) {
-                        if (answer.isLike("yes")) {
-                            small? setVar(VARIABLE_CHASTITY_SMALL_SPIKES_DETACHABLE, true) : setVar(VARIABLE_CHASTITY_SPIKES_DETACHABLE, true);
-                            sendVirtualAssistantMessage("Noted...");
-                            break;
-                        } else if (answer.isLike("no")) {
-                            sendVirtualAssistantMessage("I guess when %DomHonorific% %DomName% chooses it then you will always have to deal with them %Grin%");
-                            break;
-                        } else {
-                            sendVirtualAssistantMessage(YES_OR_NO);
-                            answer.loop();
-                        }
-                    }
-
-                    break;
-                } else if (answer.isLike("no")) {
-                    sendVirtualAssistantMessage("Too bad...");
-                    break;
-                } else {
-                    sendVirtualAssistantMessage(YES_OR_NO);
-                    answer.loop();
-                }
-            }
-            
-            sendVirtualAssistantMessage("Are you pierced as a mean to secure the device?", false);
-            answer = createInput();
-
-            while (true) {
-                if (answer.isLike("yes")) {
-                    small? setVar(VARIABLE_CHASTITY_SMALL_CAGE_PIERCED, true) : setVar(VARIABLE_CHASTITY_CAGE_PIERCED, true);
-                    sendVirtualAssistantMessage("This should be fun...");
-                    break;
-                } else if (answer.isLike("no")) {
-                    sendVirtualAssistantMessage("Too bad...");
-                    break;
-                } else {
-                    sendVirtualAssistantMessage(YES_OR_NO);
-                    answer.loop();
-                }
-            }
-
-            /*sendVirtualAssistantMessage("Do you use a metal lock or plastic lock to lock it?", false);
-            answer = createInput();
-
-            while (true) {
-                if (answer.containsIgnoreCase("metal")) {
-                    setVar("chastityLockType", 0);
-                    break;
-                } else if (answer.containsIgnoreCase("plastic")) {
-                    setVar("chastityLockType", 1);
-                    break;
-                } else {
-                    sendVirtualAssistantMessage("Metal or plastic?");
-                    answer.loop();
-                }
-            }*/
-
-            return true;
+            break;
         } else if (answer.isLike("no")) {
-            small? setVar(VARIABLE_HAS_CHASTITY_SMALL_PUNISHMENT_CAGE, false) : setVar(VARIABLE_HAS_CHASTITY, false);
-            sendVirtualAssistantMessage("You should consider buying one for the full experience");
+            sendVirtualAssistantMessage("Too bad...");
             break;
         } else {
             sendVirtualAssistantMessage(YES_OR_NO);
@@ -669,5 +679,102 @@ function setupCage(small) {
         }
     }
 
-    return false;
+    let spikes = false;
+    let spikesDetachable = dialatorDetachable;
+    sendVirtualAssistantMessage("If you have it, we might consider using spikes as a punishment...");
+    sendVirtualAssistantMessage('Does it have spikes?', 0);
+    answer = createInput();
+
+    while (true) {
+        if (answer.isLike("yes")) {
+            spikes = true;
+
+            sendVirtualAssistantMessage("This will be fun...");
+            sendVirtualAssistantMessage('Are they detachable?', 0);
+            answer = createInput();
+
+            while (true) {
+                if (answer.isLike("yes")) {
+                    sendVirtualAssistantMessage("Noted...");
+                    spikesDetachable = true;
+                    break;
+                } else if (answer.isLike("no")) {
+                    sendVirtualAssistantMessage("I guess when %DomHonorific% %DomName% chooses it then you will always have to deal with it %Grin%");
+                    break;
+                } else {
+                    sendVirtualAssistantMessage(YES_OR_NO);
+                    answer.loop();
+                }
+            }
+            break;
+        } else if (answer.isLike("no")) {
+            sendVirtualAssistantMessage("Too bad...");
+            break;
+        } else {
+            sendVirtualAssistantMessage(YES_OR_NO);
+            answer.loop();
+        }
+    }
+
+    let ballTrapType = 0;
+    sendVirtualAssistantMessage("Last but not least is it a full belt or a ball trap device?", false);
+    answer = createInput();
+
+    while (true) {
+        if (answer.containsIgnoreCase("full", "belt")) {
+            ballTrapType = 0;
+            sendVirtualAssistantMessage("Full belt...");
+            break;
+        } else if (answer.containsIgnoreCase("ball", "trap")) {
+            ballTrapType = 1;
+            sendVirtualAssistantMessage("Ball trap...");
+            break;
+        } else {
+            sendVirtualAssistantMessage("Full or ball trap?");
+            answer.loop();
+        }
+    }
+
+    /*sendVirtualAssistantMessage("Are you pierced as a mean to secure the device?", false);
+    answer = createInput();
+
+    while (true) {
+        if (answer.isLike("yes")) {
+            small? setVar(VARIABLE_CHASTITY_SMALL_CAGE_PIERCED, true) : setVar(VARIABLE_CHASTITY_CAGE_PIERCED, true);
+            sendVirtualAssistantMessage("This should be fun...");
+            break;
+        } else if (answer.isLike("no")) {
+            sendVirtualAssistantMessage("Too bad...");
+            break;
+        } else {
+            sendVirtualAssistantMessage(YES_OR_NO);
+            answer.loop();
+        }
+    }*/
+
+    let chastityCage = {
+        name: name,
+        length: length,
+        material: material,
+        dialator: dialator,
+        dialatorDetachable: dialatorDetachable,
+        spikes: spikes,
+        spikesDetachable: spikesDetachable,
+        ballTrapType: ballTrapType
+    };
+
+    CHASTITY_CAGES.push(chastityCage);
+
+    saveChastityCages();
+
+    sendVirtualAssistantMessage('Saved your chastity cage');
+    sendVirtualAssistantMessage('Enjoy %Grin%');
+}
+
+function fetchChastityCage(toy) {
+    return fetchToy(toy, getChastityImagePath(toy));
+}
+
+function getChastityImagePath(name) {
+    return 'Images/Spicy/Toys/Chastity Cages/' + name + '.*';
 }

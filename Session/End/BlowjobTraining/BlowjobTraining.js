@@ -7,10 +7,8 @@
         if (getVar(VARIABLE_BLOWJOB_TRAININGS_DONE, 0) == 0) {
             firstTimeBlowjobTraining();
         } else if (checkBlowjobExercise()) {
-            if (getChastityEXPForLevel(getVar(VARIABLE_BLOWJOB_LEVEL) + 1) > getVar(VARIABLE_BLOWJOB_EXPERIENCE)) {
+            if (getChastityEXPForLevel(getVar(VARIABLE_BLOWJOB_LEVEL) + 1) <= getVar(VARIABLE_BLOWJOB_EXPERIENCE)) {
                 incrementVar(VARIABLE_BLOWJOB_LEVEL, 1);
-
-                sendMessage('Your current blowjob level is ' + getVar(VARIABLE_BLOWJOB_LEVEL));
             }
         } else {
             completedExercise = false;
@@ -48,7 +46,7 @@ function checkBlowjobExercise() {
         sendMessage('%Good%');
         changeMeritLow(false);
 
-        sendMessage("Let me just update your exp...");
+        sendMessage("Let me just add the new exp...");
         incrementVar(VARIABLE_BLOWJOB_TASKS_IN_ROW, 1);
 
         //TODO: Randomize message
@@ -67,7 +65,8 @@ function checkBlowjobExercise() {
         }
 
         incrementVar(VARIABLE_BLOWJOB_EXPERIENCE, getVar(VARIABLE_TASK_BLOWJOB_EXPERIENCE));
-        sendMessage("I updated your exp...");
+        sendMessage("I added your exp and your current level is " + getVar(VARIABLE_BLOWJOB_LEVEL));
+        sendMessage('You will need ' + (getChastityEXPForLevel(getVar(VARIABLE_BLOWJOB_LEVEL) + 1) - getVar(VARIABLE_BLOWJOB_EXPERIENCE)) + ' more exp for the next level');
     } else {
         sendMessage("I expect more from you %SlaveName%");
 

@@ -39,7 +39,7 @@
             waitForCumAnswer();
             sendMessage(random("You still have one more to go", "Good boy, just one more now"));
 
-            sendMessage("On to the last one %Smile%");
+            sendMessage("On to the last one %Grin%");
             sendMessage("I don\'t care if it hurts");
             sendMessage("Or if you feel like you can\'t take it");
             sendMessage("You\'re going to do it because I say so");

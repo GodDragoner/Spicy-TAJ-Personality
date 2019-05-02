@@ -120,6 +120,7 @@ function removeContact(id) {
 }
 
 function createIntegerInput(question, min, max, notNumberMessage, outOfRangeMessage) {
+    sendMessageBasedOnSender(question, 0);
     let answer = createInput();
 
     while(true) {
@@ -143,7 +144,13 @@ function createIntegerInput(question, min, max, notNumberMessage, outOfRangeMess
 }
 
 
-function sendYesOrNoQuestion(question) {
+function sendYesOrNoQuestion(question, sender = null) {
+    let previousSender = getCurrentSender();
+
+    if(sender !== null) {
+        setCurrentSender(sender);
+    }
+
     if(getCurrentSender() === SENDER_ASSISTANT) {
         sendVirtualAssistantMessage(question, 0);
         return createYesOrNoQuestion();
@@ -160,6 +167,11 @@ function sendYesOrNoQuestion(question) {
             sendMessage(YES_OR_NO);
             answer.loop();
         }
+    }
+
+    //Restore sender
+    if(sender !== null) {
+        setCurrentSender(previousSender);
     }
 }
 

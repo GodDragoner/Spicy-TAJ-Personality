@@ -20,7 +20,7 @@ sendMessage(" when you're there and ready, say 'ready;"); //#EnemaChat
 sendMessage(" Hmmm how to show you that you're my special slave....",10); //#EnemaChat @Wait(15)
 sendMessage(" oh, I know!  Fill your bag with " + random("Warm water","Warm water with Soap","Warm water","Warm water with Soap","Warm water","Warm water with Soap","cold water with soap","cold water","glycerine and water","carbonated soda","Epsom salts in warm water"), 30); //#EnemaChat
 sendMessage(" Make sure you get all the air out of the line....", 10); //#EnemaChat @Wait(10)
-sendMessage(" or don't that might make things more uncomfortable. %Smile%", 10); //#EnemaChat @Wait(10)
+sendMessage(" or don't that might make things more uncomfortable. %Grin%", 10); //#EnemaChat @Wait(10)
 sendMessage(" now get to it! %Slave%",90); //#EnemaChat @sleep(90)
 (filling)
 sendMessage(" when your enema is prepared say 'ready'"); //#EnemaChat

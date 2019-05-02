@@ -10,7 +10,7 @@ let biggestButtplug = null;
 let currentPlug = null;
 
 const BUTTPLUG_TOY = createToy('buttplugs');
-const INFLATABLE_BUTT_PLUG = createToy('inflatable butt plug');
+
 
 function updateSessionButtplugs() {
     for(let x = 0; x < buttplugs.length; x++) {
@@ -628,12 +628,12 @@ function setupNewButtplug() {
     //TODO: More interaction based on length and diameter etc.
 
 
-    sendVirtualAssistantMessage('Please make sure to add a picture of your buttplug named like your buttplug to your buttplugs folder.', false);
-    sleep(1);
+    sendVirtualAssistantMessage('Please make sure to add a picture of your buttplug named like your buttplug to your Toys/Buttplugs folder.', false);
+    sleep(2);
     sendVirtualAssistantMessage('So in this case make sure to add a picture called "' + name + '.jpg" to the buttplugss folder', false);
-    sleep(1);
+    sleep(2);
     sendVirtualAssistantMessage('If it already exists a picture of it should show up now', false, true);
-    showImage(getButtplugImagePath(name), 3);
+    showImage(getButtplugImagePath(name), 5);
 
     sendVirtualAssistantMessage('Next please tell me the length of the buttplug in centimeters (measure everything that\'s insertable)', 0);
     answer = createInput();

@@ -7,6 +7,12 @@ const VARIABLE_LINGERIE_ON = "lingerieOn";
 
 const VARIABLE_SLAVE_TYPE = "slaveType";
 
+//Materials
+const MATERIAL_SILICON = 0;
+const MATERIAL_GLASS = 1;
+const MATERIAL_METAL = 2;
+const MATERIAL_PLASTIC = 3;
+
 
 //Full time
 const VARIABLE_MIN_WEEKLY_VISITS = "minWeeklyVisits";
@@ -57,24 +63,7 @@ const VARIABLE_ORGASM_FREQUENCY = "orgasmFrequency";
 const VARIABLE_CHASTITY_TRAINING = "chastityTraining";
 
 const VARIABLE_HAS_CHASTITY = "hasChastity";
-const VARIABLE_CHASTITY_HAS_SPIKES = "chastityHasSpikes";
-const VARIABLE_CHASTITY_SPIKES_DETACHABLE = "chastitySpikesDetachable";
-const VARIABLE_CHASTITY_HAS_DILATOR = "chastityHasDilator";
-const VARIABLE_CHASTITY_DILATOR_DETACHABLE = "chastityDilatorDetachable";
-const VARIABLE_CHASTITY_MATERIAL = "chastityMaterialType";
-const VARIABLE_CHASTITY_CAGE_TYPE = "chastityCageType";
-const VARIABLE_CHASTITY_CAGE_PIERCED = "chastityCagePierced";
-
-
-const VARIABLE_HAS_CHASTITY_SMALL_PUNISHMENT_CAGE = "hasChastitySmallPunishmentCage";
-const VARIABLE_CHASTITY_SMALL_HAS_SPIKES = "chastitySmallHasSpikes";
-const VARIABLE_CHASTITY_SMALL_SPIKES_DETACHABLE = "chastitySmallSpikesDetachable";
-const VARIABLE_CHASTITY_SMALL_HAS_DILATOR = "chastitySmallHasDilator";
-const VARIABLE_CHASTITY_SMALL_DILATOR_DETACHABLE = "chastitySmallDilatorDetachable";
-const VARIABLE_CHASTITY_SMALL_MATERIAL = "chastitySmallMaterialType";
-const VARIABLE_CHASTITY_SMALL_CAGE_TYPE = "chastitySmallCageType";
-const VARIABLE_CHASTITY_SMALL_CAGE_PIERCED = "chastitySmallCagePierced";
-
+const VARIABLE_ACTIVE_CHASTITY_CAGE = "activeChastityCage";
 
 const VARIABLE_CHASTITY_SPIKES_ON = "chastitySpikesOn";
 const VARIABLE_CHASTITY_DILATOR_ON = "chastityDilatorOn";
@@ -244,11 +233,3 @@ const CATEGORY_PAIN = 'Pain';
 const CATEGORY_SLAVE = 'Slave';
 const CATEGORY_SISSY = 'Sissy';
 const CATEGORY_TEASE = 'Tease';
-
-function isMetalChastityCage() {
-    return (getVar(VARIABLE_CHASTITY_CAGE_ON_TYPE) == CHASTITY_TYPE_BIG? getVar(VARIABLE_CHASTITY_MATERIAL) : getVar(VARIABLE_CHASTITY_SMALL_MATERIAL)) == 0;
-}
-
-function isFullChastityBelt() {
-    return (getVar(VARIABLE_CHASTITY_CAGE_ON_TYPE) == CHASTITY_TYPE_BIG? getVar(VARIABLE_CHASTITY_CAGE_TYPE) : getVar(VARIABLE_CHASTITY_SMALL_CAGE_TYPE)) == 0;
-}

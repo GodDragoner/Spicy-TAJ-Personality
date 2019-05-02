@@ -249,7 +249,7 @@ while(true) {
                     punishSeverity = 3;
                     break;
                 } else if (answer.containsIgnoreCase("Extreme")) {
-                    sendDungeonMessage("%smile% A glutton for punishment...Setting it up...");
+                    sendDungeonMessage("%Grin% A glutton for punishment...Setting it up...");
                     punishSeverity = 4;
                     break;
                 } else if (answer.isTimeout()) {

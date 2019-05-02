@@ -15,9 +15,9 @@
                 sendMessage("I want you to celebrate it");
                 sendMessage("After this session you are allowed to orgasm however you like!");
                 sendMessage("But...");
-                sendMessage("If I decide to lock you up you\'ll need to find a way to make you cum inside the %Cage%");
+                sendMessage("If I decide to lock you up you\'ll need to find a way to make you cum inside the %ChastityCage%");
                 sendMessage("Use your vibrator or whatever you want to");
-                sendMessage("Just don\'t remove that %Cage%");
+                sendMessage("Just don\'t remove that %ChastityCage%");
                 sendMessage("Enjoy %Lol%");
 
                 registerOrgasm();

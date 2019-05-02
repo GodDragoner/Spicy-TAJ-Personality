@@ -43,7 +43,7 @@
     setDate("firstStart");
     setVar(VARIABLE_PUNISHMENT_POINTS, 0);
 
-    setVar(VARIABLE_MIN_WEEKLY_CHORE_TIME, 60*5);
+    setVar(VARIABLE_MIN_WEEKLY_CHORE_TIME, 60 * 5);
 
     setVar("teaseModuleRatio", 60);
     setVar("slaveModuleRatio", 60);
@@ -139,9 +139,32 @@
     //showImage("Images/Spicy/Toys/MetalChastity.jpg", 4);
     sendVirtualAssistantMessage("But she also understands that it takes practice to learn");
 
-    sendVirtualAssistantMessage("Do you own a chastity device?", false);
-    if (setupCage(false)) {
-        sendVirtualAssistantMessage("Noted...");
+    if (sendYesOrNoQuestion("Do you own a chastity device?", SENDER_ASSISTANT)) {
+        sendVirtualAssistantMessage('Okay %SlaveName%. Tell me, how many different chastity cages do you have?', false);
+        answer = createInput();
+
+        while (true) {
+            if (answer.isInteger()) {
+                const result = answer.getInt();
+                if (result <= 0) {
+                    sendVirtualAssistantMessage("You can't choose a number equal to 0 or lower");
+                    answer.loop();
+                } else {
+                    sendVirtualAssistantMessage('We are gonna setup your chastity cages now, one by one.');
+
+                    for (let x = 0; x < result; x++) {
+                        setupNewCage();
+                    }
+
+                    sendVirtualAssistantMessage('This should do it regarding chastity cages');
+                    sendVirtualAssistantMessage('You can always setup new chastity cages in the settings menu');
+                    break;
+                }
+            } else {
+                sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
+                answer.loop();
+            }
+        }
 
         sendVirtualAssistantMessage('Do you own something like a combination lock and some box where you can lock your keys using said lock?', false);
         answer = createInput();
@@ -160,48 +183,6 @@
                 answer.loop();
             }
         }
-
-        /*sendVirtualAssistantMessage("Do you own a timed lock box?", false);
-        answer = createInput();
-
-        while (true) {
-            if (answer.isLike("yes")) {
-                setVar(VARIABLE_CHASTITY_HAS_TIMED_LOCKBOX, true);
-                sendVirtualAssistantMessage("Noted...");
-                break;
-            } else if (answer.isLike("no")) {
-                sendVirtualAssistantMessage('Okay then...');
-                sendVirtualAssistantMessage('Now because you don\'t own a timed lockbox...');
-                sendVirtualAssistantMessage('Do you own something like a combination lock and some box where you can lock your keys using said lock?', false);
-                answer = createInput();
-
-                while (true) {
-                    if (answer.isLike("yes")) {
-                        setVar(VARIABLE_CHASTITY_HAS_COMBINATION_LOCK, true);
-                        break;
-                    } else if (answer.isLike("no")) {
-                        sendVirtualAssistantMessage('You might consider getting a timed lock box or a combination lock then');
-                        sendVirtualAssistantMessage('Combination locks are like 10 Euros so you should get one fairly easily');
-                        sendVirtualAssistantMessage('Just make sure you can change the combination');
-                        break;
-                    } else {
-                        sendVirtualAssistantMessage(YES_OR_NO);
-                        answer.loop();
-                    }
-                }
-                break;
-            } else {
-                sendVirtualAssistantMessage(YES_OR_NO);
-                answer.loop();
-            }
-        }*/
-
-
-        sendVirtualAssistantMessage("Next...");
-        sendVirtualAssistantMessage('Your %DomHonorific% might consider punishing you with a really small cage');
-        sendVirtualAssistantMessage('There is no set length for "really small" however it should be smaller than your normal cage');
-        sendVirtualAssistantMessage('Do you own a second small "punishment" cage?', false);
-        setupCage(true);
 
         sendVirtualAssistantMessage("Ideally %DomHonorific% %domName% prefers that you are locked whenever you're not playing");
         sendVirtualAssistantMessage("Meaning you wear it 24/7");
@@ -238,7 +219,7 @@
                         break;
                     } else if (answer.isLike("no")) {
                         setVar(VARIABLE_CHASTITY_TRAINING, false);
-                        sendVirtualAssistantMessage("It's alright");
+                        sendVirtualAssistantMessage("%EmoteSad%");
                         break;
                     } else {
                         sendVirtualAssistantMessage(YES_OR_NO);
@@ -279,7 +260,11 @@
         }
 
         sendVirtualAssistantMessage("Okay then!");
+    } else {
+        sendVirtualAssistantMessage("%EmoteSad%");
+        sendVirtualAssistantMessage('You should consider getting one for the full experience %Grin%');
     }
+
 
     sendVirtualAssistantMessage("Moving on...");
     sendVirtualAssistantMessage("I don't know whether you have any experience when it comes to ass play");
@@ -617,7 +602,7 @@
     setupLimits();
 
     //TODO: Include these checks in other modules too when it comes to the humiliation folder
-    if(!HUMILIATION_LIMIT.isHardLimit() || !VERBAL_HUMILIATION_LIMIT.isHardLimit()) {
+    if (!HUMILIATION_LIMIT.isHardLimit() || !VERBAL_HUMILIATION_LIMIT.isHardLimit()) {
         sendVirtualAssistantMessage("Next we need for you to setup a folder with pictures of YOU!");
         sendVirtualAssistantMessage("This is very simple actually...");
         sendVirtualAssistantMessage("Inside the Images/Spicy folder you'll find a folder named SelfHumiliation");

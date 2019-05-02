@@ -1,5 +1,5 @@
 function chastityCageVocabulary() {
-    const material = isMetalChastityCage()? "metal" : "plastic";
+    const material = currentChastityCage.material == MATERIAL_METAL? "metal" : currentChastityCage.material == MATERIAL_PLASTIC? "plastic" : 'silicon';
     const cock = random("cock", "dick");
 
     const adjectives = [];
@@ -26,7 +26,7 @@ function chastityCageVocabulary() {
 
     //Prison is kinda strange
     const answers = /*["prison", material + " prison"]*/ [];
-    if(isFullChastityBelt()) {
+    if(currentChastityCage.ballTrapType === 0) {
         answers.push("belt", material + " belt", "full belt", "full " + material + " belt");
     } else {
         answers.push("cage", material + " cage", "ball-trapping belt", material + " ball-trapping belt");
