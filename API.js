@@ -6,13 +6,57 @@ function setVar(varName, object) {}
 function setTempVar(varName, object) {}
 function getVar(varName) {}
 function delVar(varName) {}
-function setDate(message) {}
+function setDate(message) {
+    return {
+
+        setSecond: function(minute) {},
+        setMinute: function(minute) {},
+        setHour: function(minute) {},
+        setDay: function(minute) {},
+
+        addSecond: function(minute) {},
+        addMinute: function(minute) {},
+        addHour: function(minute) {},
+        addDay: function(minute) {},
+
+        hasPassed: function () {},
+
+        before: function () {},
+        sameDay: function () {},
+        after: function () {},
+
+        getTimeInMillis: function() {},
+    }
+}
 function getDate(varName) {}
 function isVar(varName) {}
 
 function run(filePath) {}
 
-function createInput() {}
+function createInput() {
+    return {
+        matchesRegex: function(regexes) {},
+        matchesRegexLowerCase: function(regexes) {},
+        isLike: function(regexes) {},
+
+        addOption: function(option) {},
+        clearOptions: function(minute) {},
+
+        isTimeout: function () {},
+
+        loop: function () {},
+        isInteger: function () {},
+        getInteger: function () {},
+
+        isInt: function () {},
+        getInt: function () {},
+
+        isDouble: function () {},
+        getDouble: function () {},
+
+        getAnswer: function() {},
+    }
+}
 
 function sendInput(message) {}
 

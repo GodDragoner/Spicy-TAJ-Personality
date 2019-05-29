@@ -35,22 +35,24 @@
 function interactWithRandomToys() {
     //TODO: Could interact with buy new toys or fetish questions and better transition between different toys (additionally why not do this... etc.)
 
-    //Buttplug interaction
-    if (isPlugged()) {
-        if (isVar(VARIABLE_LAST_PLUG_DATE) && getVar(VARIABLE_LAST_PLUG_DATE).addMinute(randomInteger(7, 10)).hasPassed()) {
-            if (currentPlug !== biggestButtplug && isChance(getVar(VARIABLE_ASS_LEVEL, 0) * 3)) {
-                increasePlugSize();
+
+    if(isChance(Math.max(25, getVar(VARIABLE_ASS_LEVEL, 0)) * 4) && getAnalLimit() === LIMIT_ASKED_YES) {
+        if (isPlugged()) {
+            if (isVar(VARIABLE_LAST_PLUG_DATE) && getVar(VARIABLE_LAST_PLUG_DATE).addMinute(randomInteger(7, 10)).hasPassed()) {
+                if (currentPlug !== biggestButtplug) {
+                    increasePlugSize();
+                }
             }
-        }
-    } else if (hasButtplugToy() && isChance(getVar(VARIABLE_ASS_LEVEL, 0) * 3) && getAnalLimit() === LIMIT_ASKED_YES) {
-        let answers = ['Let\'s prepare your %Ass% for what is up to come %Grin%', 'Let\'s plug up that %Ass%', 'Let\'s not waste anymore time by leaving that %Ass% empty'];
+        } else if (hasButtplugToy()) {
+            let answers = ['Let\'s prepare your %Ass% for what is up to come %Grin%', 'Let\'s plug up that %Ass%', 'Let\'s not waste anymore time by leaving that %Ass% empty'];
 
-        if (getVar(VARIABLE_ASS_LEVEL) >= 30) {
-            answers.push('You know that there is a very slow chance of you not being plugged during my sessions and guess what - You won\'t be lucky now... %Lol%');
-        }
+            if (getVar(VARIABLE_ASS_LEVEL) >= 30) {
+                answers.push('You know that there is a very slow chance of you not being plugged during my sessions and guess what - You won\'t be lucky now... %Lol%');
+            }
 
-        sendMessage(answers[randomInteger(0, answers.length - 1)]);
-        putInButtplug();
+            sendMessage(answers[randomInteger(0, answers.length - 1)]);
+            putInButtplug();
+        }
     }
 
     //TODO: Better decision?

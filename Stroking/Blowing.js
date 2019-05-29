@@ -39,7 +39,7 @@ function sendBlowingTaunts(duration) {
     run("Stroking/Taunt/Blowjob/*.js");
 
     //Start the whole thing all over again
-    sendAnalTaunts(duration);
+    sendBlowingTaunts(duration);
 }
 
 function startBlowToy(toy) {
@@ -128,8 +128,9 @@ function startBlowToy(toy) {
 
 function randomBlowjobModule(toy) {
     let position;
+    sendMessage('%SlaveName%');
+
     if (getBlowjobLevel() < 30) {
-        sendMessage('%SlaveName%');
         position = getIntoBlowjobPosition(toy, 0)
     } else {
         position = getIntoBlowjobPosition(toy, getPosition())

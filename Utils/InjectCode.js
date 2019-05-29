@@ -29,3 +29,6 @@ for(let x = 2; x <= 30; x += 4) {
 
 //sendDebugMessage('You will need ' + (getChastityEXPForLevel(10) - getVar(VARIABLE_ASS_EXPERIENCE)) + ' more exp for the next level');
 //unlockChastityCage();
+
+sendDebugMessage(isVar(VARIABLE_LAST_PLUG_DATE));
+sendDebugMessage(getVar(VARIABLE_LAST_PLUG_DATE).addMinute(randomInteger(7, 10)).hasPassed());

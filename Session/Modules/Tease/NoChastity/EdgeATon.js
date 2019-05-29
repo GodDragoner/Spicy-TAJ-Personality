@@ -188,6 +188,11 @@ function startEdgeATon(chosenByDom, edgesToDo) {
         sleep(randomInteger(20));
         edgesToDo--;
 
+        //Interact with toys every 15 edges
+        if(edgesToDo%15 == 0) {
+            interactWithRandomToys();
+        }
+
         //TODO: Based on mood?
         if (edgesToDo > 0 && isChance(10)) {
             sendMessage("Okay %SlaveName%");

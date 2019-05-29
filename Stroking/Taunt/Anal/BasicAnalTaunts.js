@@ -138,7 +138,7 @@
     ];
 
     let specialTauntAmount = 16;
-    let tauntIndex = findRandomUnusedIndex(specialTauntAmount + answer.length, createHistory('basicAnalTaunt'));
+    let tauntIndex = findRandomUnusedIndex(specialTauntAmount + answers.length, createHistory('basicAnalTaunt'));
 
     switch (tauntIndex) {
         default:

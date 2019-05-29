@@ -25,8 +25,9 @@ function applyBallCrusherPressure() {
         sendMessage('So here we go...');
 
         let stop = false;
+        lockImages();
         while (!stop) {
-            sendMessage('Twist it half a round...');
+            sendMessage('Twist it half a round...', 0);
             showTeaseImage();
             setVar(VARIABLE_BALL_CRUSHER_TWISTS_TO_APPLY, getVar(VARIABLE_BALL_CRUSHER_TWISTS_TO_APPLY, 0) + 1);
 
@@ -43,6 +44,8 @@ function applyBallCrusherPressure() {
             answer.clearOptions();
         }
 
+        unlockImages();
+
         sendMessage('Hope it is not feeling to uncomfortable yet %Lol%');
 
         sendMessage('Next we need to determine your threshold');
@@ -54,6 +57,7 @@ function applyBallCrusherPressure() {
         sendMessage('Endure the pain!');
         sendMessage('Say stop when you reach the limit!');
 
+        lockImages();
         stop = false;
         while (!stop) {
             sendMessage('Twist it...');
@@ -72,6 +76,7 @@ function applyBallCrusherPressure() {
 
             answer.clearOptions();
         }
+        unlockImages();
 
         const maxTwists = getVar(VARIABLE_BALL_CRUSHER_MAX_TWISTS);
 

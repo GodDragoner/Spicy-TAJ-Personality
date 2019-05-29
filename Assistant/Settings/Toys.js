@@ -5,7 +5,7 @@
     sendVirtualAssistantMessage('2. Add new buttplug', 0);
     sendVirtualAssistantMessage('3. Add new chastity cage', 0);
 
-    let lobbyAnswer = createInput("Add new dildo", 'Add new buttplug');
+    let lobbyAnswer = createInput("Add new dildo", 'Add new buttplug', 'Add new chastity cage', 'Return');
     while (true) {
         if (lobbyAnswer.isLike("new dildo", "add dildo")) {
             lobbyAnswer.clearOptions();
@@ -25,7 +25,8 @@
             setupNewCage();
             run('Assistant/Settings/Toys.js');
             break;
-        }  else if(answer.isLike('back', 'cancel', 'return')) {
+        }  else if(lobbyAnswer.isLike('back', 'cancel', 'return')) {
+            lobbyAnswer.clearOptions();
             break;
         } else {
             sendVirtualAssistantMessage("You have the following options %SlaveName%");

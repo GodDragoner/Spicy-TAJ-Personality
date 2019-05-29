@@ -3,10 +3,12 @@ const CHASTITY_TYPE_SMALL = 1;
 const CHASTITY_TYPE_BIG = 0;
 const CHASTITY_CAGES = [];
 
-let currentChastityCage = 'undefined';
+let currentChastityCage;
 
 if(isVar(VARIABLE_ACTIVE_CHASTITY_CAGE)) {
     currentChastityCage = getChastityCageByName(getVar(VARIABLE_ACTIVE_CHASTITY_CAGE));
+} else {
+    currentChastityCage = null;
 }
 
 function getActiveChastityCage() {
@@ -533,6 +535,10 @@ function loadChastityCages() {
             };
 
             CHASTITY_CAGES.push(chastityCage);
+
+            if(currentChastityCage === null) {
+                currentChastityCage = chastityCage;
+            }
         }
     }
 }

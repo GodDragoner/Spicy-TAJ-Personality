@@ -225,6 +225,9 @@ function strokeTrainingEdge() {
 
     setTempVar('timeToIncreaseLevel', getVar('timeToIncreaseLevel') - 15);
     sendMessage("Rest before you start again");
+
+    interactWithRandomToys();
+
     sleep(randomInteger(10, 25));
     startStrokeTraining();
 }

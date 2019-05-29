@@ -109,7 +109,7 @@ function getAnalDildo(minLength = 0, minThickness = 0, forceThicker = false, for
 
         if(availableDildos.length === 0) {
             //Seems like we don't have any dildo within our given diameter increase range so we are gonna increase our range
-            maxDiameterIncrease += 0.5;
+            maxDiameterIncrease += 0.25;
 
             //We are also decrease our min length and min thickness
             if(minLength > 0) minLength -= 0.5;

@@ -70,7 +70,7 @@ if (isVar("Punishment")) {
 }
 
 sendDungeonMessage("Yes %SlaveName%?");
-let answer = createInput();
+//let answer = createInput();
 
 while(true) {
     if (answer.containsIgnoreCase("how many", "point")) {
