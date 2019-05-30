@@ -55,10 +55,15 @@
                 sendVirtualAssistantMessage("back to the assistant from reporting exercise");
                 break;
             } else if (lobbyAnswer.isLike("work", "study")) {
-                sendVirtualAssistantMessage("This is not supported yet!");
+            	   lobbyAnswer.clearOptions();
+
+                 run("WorkMode/GNMWorkMode.js");
+
+				 //sendVirtualAssistantMessage("This is not supported yet!");
                 break;
             } else if (lobbyAnswer.isLike("rule", "house", "commands", "orders")) {
                 //sendVirtualAssistantMessage("This is not supported yet!");
+			 lobbyAnswer.clearOptions();
                 run("Rules/HouseRules.js");
                 sendVirtualAssistantMessage(getWelcomeMessage(), false);
                 break;
@@ -82,9 +87,9 @@
                 sendVirtualAssistantMessage("Enter the dungeon");
                 sendVirtualAssistantMessage("Check settings");
                 sendVirtualAssistantMessage("Enter the shop");
-                //sendVirtualAssistantMessage("Do some fitness");
+                sendVirtualAssistantMessage("Do some fitness");
                 sendVirtualAssistantMessage("Report for exercise (you can only complete an exercise every 10 hours)");
-                //sendVirtualAssistantMessage("Work/Study mode");
+                sendVirtualAssistantMessage("Work/Study mode");
                 sendVirtualAssistantMessage("Request to view the rules ");
                 sendVirtualAssistantMessage("View the pin-board");
                 sendVirtualAssistantMessage("Or save and leave the program");
