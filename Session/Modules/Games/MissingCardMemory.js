@@ -10,21 +10,29 @@ function startMissingCardMemory(gameType) {
     sendMessage('When I am done showing you the 12 cards you have 5 seconds to reply with the correct answer');
 
     const totalMode = isChance(50) && gameType === GAME_EDGE;
+    const maxLosses = 7;
 
-    //TODO: Punish mode instead of gold and edges? (Ball crusher?)
+    //Only used in ball crusher mode
+    let turnsPerLoss = -1;
+
+    //TODO: Punish mode instead of gold and edges?
     if (totalMode) {
         sendMessage('Be correct 7 times and you will earn 150 gold');
         sendMessage('Be wrong 7 times and you will have to edge 15 times %Grin%');
     } else {
-
-        switch(gameType) {
+        switch (gameType) {
             case GAME_EDGE:
                 sendMessage('If you are right you will earn 20 gold');
                 sendMessage('If you are wrong you will have to edge twice %Grin%');
                 break;
-            case INFLATABLE_BUTT_PLUG:
+            case GAME_INFLATABLE_PLUG:
                 sendMessage('If you are right you will earn 20 gold');
                 sendMessage('If you are wrong you will have to pump your plug 3 times %Grin%');
+                break;
+            case GAME_BALL_CRUSHER:
+                turnsPerLoss = Math.round((getVar(VARIABLE_BALL_CRUSHER_MAX_TWISTS) + getMood() * 1.5) / maxLosses);
+                sendMessage('If you are right you will earn 20 gold');
+                sendMessage('If you are wrong you will have to twist each screw ' + turnsPerLoss + ' half-rounds %Grin%');
                 break;
         }
     }
@@ -48,7 +56,7 @@ function startMissingCardMemory(gameType) {
 
     let wins = 0;
     let loses = 0;
-    while (wins < 7 && loses < 7) {
+    while (wins < 7 && loses < maxLosses) {
         let numberMissing = randomInteger(1, 13);
         let numberArray = [];
 
@@ -102,7 +110,7 @@ function startMissingCardMemory(gameType) {
             }
 
             if (!totalMode) {
-                switch(gameType) {
+                switch (gameType) {
                     case GAME_EDGE:
                         sendMessage('That\'s 2 more edges for you %Grin%');
 
@@ -112,10 +120,12 @@ function startMissingCardMemory(gameType) {
                         startEdging();
                         sendMessage("%LetEdgeFade%", randomInteger(5, 10));
                         break;
-                    case INFLATABLE_BUTT_PLUG:
+                    case GAME_INFLATABLE_PLUG:
                         pumpInflatablePlug(3);
                         sendMessage('Go ahead and pump your plug 3 times %Grin%', 10);
-                        //sendMessage('If you are wrong you will have to pump your plug 3 times %Grin%');
+                        break;
+                    case GAME_BALL_CRUSHER:
+                        sendMessage('Go ahead and turn each screw ' + turnsPerLoss + ' half-rounds %Grin%', 10);
                         break;
                 }
             }
@@ -148,10 +158,10 @@ function startMissingCardMemory(gameType) {
             sendMessage('Rest %SlaveName%');
         } else {
             sendMessage('Well...');
-            sendMessage('You\'ve failed 7 times');
+            sendMessage('You\'ve failed ' + maxLosses + ' times');
             sendMessage('I guess that is enough for now...');
 
-            switch(gameType) {
+            switch (gameType) {
                 case GAME_EDGE:
                     sendMessage('But because you\'ve disappointed your %DomHonorific% you will edge 3 mores time for me %Grin%');
 
@@ -167,8 +177,12 @@ function startMissingCardMemory(gameType) {
                     sendMessage('Rest %SlaveName%', 5);
                     sendMessage('You will be happy about that rest you\'ve just had very soon %Lol%');
                     break;
-                case INFLATABLE_BUTT_PLUG:
+                case GAME_INFLATABLE_PLUG:
                     sendMessage('But because you\'ve disappointed your %DomHonorific% you will not be allowed to deflate it yet %Lol%');
+                    startTimePassTasks(5, true);
+                    break;
+                case GAME_BALL_CRUSHER:
+                    sendMessage('But because you\'ve disappointed your %DomHonorific% you will not be allowed to relief the pressure just jet %Lol%');
                     startTimePassTasks(5, true);
 
                     //sendMessage('If you are wrong you will have to pump your plug 3 times %Grin%');

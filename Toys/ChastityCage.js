@@ -326,7 +326,18 @@ function lockChastityCage() {
         waitForDone();
         sendMessageBasedOnSender('Aren\'t I nice to you? %Grin%');
 
-        //TODO: Interaction
+        let answer = createInput(5);
+
+        if(answer.isTimeout()) {
+            //sendMessage('I don\'t care about your opinion though');
+        } else if(answer.isLike('yes', 'thank you')) {
+            sendMessage('You are welcome %SlaveName% %EmoteHappy%');
+            changeMeritLow(false);
+        } else if(answer.isLike('no', 'hurt', 'pain')) {
+            sendMessage('Not nice enough huh?');
+            sendMessage('Well I don\'t care about your opinion though %Lol%');
+            registerComplain();
+        }
 
         //Set clamps on those parts to zero
         BODY_PART_PENIS_SHAFT.currentClamps = 0;
@@ -401,11 +412,36 @@ function lockChastityCage() {
                 if (chastityLevel < 20) {
                     sendMessageBasedOnSender(random("But since you're in chastity training", "But due to you being in chastity training", "But because of your chastity training") + " I won't punish you...");
                 } else {
-                    //TODO: add something to belt maybe like dilator?
                     if (isForcedLockedUp()) {
                         sendMessageBasedOnSender("So as a punishment I'm placing you in the %ChastityCage% for the next 24 hours...")
                     } else {
-                        sendMessageBasedOnSender("So as a punishment I'm increasing your locked up period by 24 hours...")
+                        sendMessageBasedOnSender("So as a punishment I'm increasing your lock up period by 24 hours...")
+                    }
+
+                    changeMeritHigh(true);
+
+                    //Punish slave even more
+                    if(feelsLikePunishingSlave()) {
+                        if(chastityCage.spikes && !getVar(VARIABLE_CHASTITY_SPIKES_ON, false)) {
+                            sendMessageBasedOnSender('I want you to attach the spikes to it %Grin%');
+                            setVar(VARIABLE_CHASTITY_SPIKES_ON, true);
+                            alreadyAttached = true;
+                        } else if(chastityCage.dialator && !getVar(VARIABLE_CHASTITY_DILATOR_ON, false)) {
+                            if(!alreadyAttached) {
+                                sendMessageBasedOnSender('I want you to attach the dilator to it %Grin%');
+                            } else {
+                                sendMessageBasedOnSender('And I want you to attach the dilator to it too %Lol%');
+
+                                if(chastityCage.length < 3) {
+                                    sendMessageBasedOnSender('We are going full punishment mode %SlaveName%');
+                                    sendMessageBasedOnSender('You know you don\'t deserve anything different %GeneralTime% %Lol%');
+                                } else {
+                                    sendMessageBasedOnSender('Be happy that I am not putting you into your small punishment cage as well %Grin%');
+                                }
+                            }
+
+                            alreadyAttached = true;
+                        }
                     }
 
                     addLockUpTime(24);
@@ -446,9 +482,18 @@ function lockChastityCage() {
                                     }
                                 case 2:
                                     smallCBTPunishment();
-                                    sendMessageBasedOnSender('I hope it is soft now');
+                                    sendMessageBasedOnSender('I hope for your sake that it is soft now');
 
-                                    //TODO: Interaction
+                                    //Max 5 times
+                                    for(let x = 0; x < 5; x++) {
+                                        if(sendYesOrNoQuestion('Tell me %SlaveName%. Is it soft?')) {
+                                            break;
+                                        } else {
+                                            sendMessage(random('Which means', 'Seems like') + ' I am not done yet %Grin%');
+                                            smallCBTPunishment();
+                                        }
+                                    }
+
                                     sendMessageBasedOnSender('Now lock that %Cock% up already');
                                     break;
                             }
@@ -606,8 +651,6 @@ function setupNewCage() {
         }
     }
 
-    //TODO: More interaction based on size etc.
-
     sendVirtualAssistantMessage('Please make sure to add a picture of your cage named like your chastity cage to your Toys/Chastity Cages folder.', false);
     sleep(2);
     sendVirtualAssistantMessage('So in this case make sure to add a picture called "' + name + '.jpg" to the chastity cages folder', false);
@@ -623,6 +666,18 @@ function setupNewCage() {
 
     setCurrentSender(SENDER_ASSISTANT);
     let length = createIntegerInput('So just give me a number on a scale of 1 - 5 %SlaveName%', 1, 5, 'That\'s not a number... Give me something like 2 or 4', 'That number is not on the scale. Remember on a scale of 1 - 5 %SlaveName%');
+
+    if(length >= 4) {
+        sendMessage('That\'s quite big');
+        sendMessage('I guess %DomHonorific% %DomName% will only allow this cage if you have been behaving properly %Grin%');
+    } else if(length == 3) {
+        sendMessage('A medium sized cage is always got %Grin%');
+    } else {
+        sendMessage('A tiny cage for her %Cock%?');
+        sendMessage('%DomHonorific% %DomName% will definitely like that %Lol%');
+        sendMessage('Make sure to not disappoint here too much otherwise you might spend a long time in this cage');
+    }
+
     setCurrentSender(SENDER_TAJ);
 
     let material = MATERIAL_METAL;
@@ -664,7 +719,10 @@ function setupNewCage() {
 
             while (true) {
                 if (answer.isLike("yes")) {
-                    sendVirtualAssistantMessage("Noted...");
+                    sendVirtualAssistantMessage("This will be fun... Well for %DomHonorific% %DomName% at least");
+                    sendVirtualAssistantMessage('Not only does it keep things clean on the toilet');
+                    sendVirtualAssistantMessage('It\'s also quite uncomfortable %Grin%');
+
                     dialatorDetachable = true;
                     break;
                 } else if (answer.isLike("no")) {
@@ -695,8 +753,11 @@ function setupNewCage() {
         if (answer.isLike("yes")) {
             spikes = true;
 
-            sendVirtualAssistantMessage("This will be fun...");
-            sendVirtualAssistantMessage('Are they detachable?', 0);
+            sendVirtualAssistantMessage("Great!");
+            sendVirtualAssistantMessage('However I wouldn\'t be too cocky from now on %Grin%');
+
+
+            sendVirtualAssistantMessage('Are the spikes detachable?', 0);
             answer = createInput();
 
             while (true) {
@@ -705,7 +766,7 @@ function setupNewCage() {
                     spikesDetachable = true;
                     break;
                 } else if (answer.isLike("no")) {
-                    sendVirtualAssistantMessage("I guess when %DomHonorific% %DomName% chooses it then you will always have to deal with it %Grin%");
+                    sendVirtualAssistantMessage("I guess when %DomHonorific% %DomName% chooses it then you will always have to deal with those nasty psikes %Grin%");
                     break;
                 } else {
                     sendVirtualAssistantMessage(YES_OR_NO);
@@ -773,7 +834,7 @@ function setupNewCage() {
 
     saveChastityCages();
 
-    sendVirtualAssistantMessage('Saved your chastity cage');
+    sendVirtualAssistantMessage('Added your new chastity cage to %DomHonorific% %DomName%\'s collection');
     sendVirtualAssistantMessage('Enjoy %Grin%');
 }
 

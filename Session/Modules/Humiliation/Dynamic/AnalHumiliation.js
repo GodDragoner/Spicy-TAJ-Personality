@@ -136,7 +136,7 @@ function startPenetratingSession(toy) {
     sendMessage("Keep it in there", 5);
     sendMessage("And pull it all the way out again");
 
-    //sit on dildo
+    //Sit on dildo
     if(!finger && getVar(VARIABLE_ASS_LEVEL) >= 15 && isChance(20)) {
         sendMessage('Now I want you to to place it in front of you... %Grin%');
         sendMessage('%KnowWhatsNext%');
@@ -242,13 +242,7 @@ function appendModule(toy) {
             startBlowToy(toy);
             sendMessage("See! Much better");
             sendMessage("Now the dildo looks clean again and can go right back up your ass %Grin%");
-            //TODO: Use this more often with a dedicated method
-            sendMessage("Hopefully that was as much fun for you as for me");
-
-            if (ACTIVE_PERSONALITY_STRICTNESS > 0) {
-                sendMessage("Oh wait...");
-                sendMessage("I don't really care %Lol%");
-            }
+            sendAsMuchFun();
 
             blowjob = true;
         }
@@ -267,7 +261,12 @@ function appendModule(toy) {
                     sendMessage("Your ass will be violated again");
                     sendMessage("However this time in a special position %Grin%");
                 } else if (subGuess != 0 && subGuess == 1) {
-                    //TODO: ASM interaction if sub is against asm like: A blowjob? I thought you aren't into ASM...
+                    if(ASM_LIMIT.getLimit() != LIMIT_ASKED_YES) {
+                        sendMessage('A blowjob?!');
+
+                        ASM_LIMIT.askForLimitChange(true);
+                    }
+
                     sendMessage("No %SlaveName%. I won't make you blow that " + toy);
                     sendMessage("Silly you. It will be much better than a blowjob %Grin%");
                 }
@@ -327,7 +326,7 @@ function appendPenetratingSession(toy) {
         startAnal(30, randomInteger(120, 240));
         iterations--;
 
-        if (isChance(50) || !currentBlowjob) {
+        if (isChance(50) || !blowjob) {
             sendMessage("Let's change the position shall we? %Grin%");
             toy = choosePosition(toy, currentBlowjob);
             sendMessage("And straight back to fucking that ass of yours");
@@ -358,9 +357,8 @@ function appendPenetratingSession(toy) {
     sendMessage("Pull your " + toy + " out of your ass");
 }
 
-//TODO: Has second dildo and tell to fetch a second dildo
 function addBlowjobToFucking(toy, mountedToWall = false, inFront = false) {
-    const hasSecondDildo = true;
+    const hasSecondDildo = DILDOS.length > 1;
 
     if (hasSecondDildo) {
         if (!fetchDildoToy(getDildo(true).name)) {
@@ -384,7 +382,10 @@ function stopBlowjobFuckingInstructions() {
 function startBlowjobFuckingInstructions(toy, mountedToWall = false, inFront = false) {
     let usedBlowjobInstructions = getVar("usedBlowjobInstructions", new java.util.ArrayList());
 
-    //TODO: Switch toy?
+    if(isGaged()) {
+        removeGag();
+    }
+
     if (usedBlowjobInstructions.isEmpty()) {
         sendMessage("%SlaveName%");
         sendMessage("You are going to fuck yourself in a minute");

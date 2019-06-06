@@ -485,10 +485,8 @@
 
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
-    //TODO: Ask whether it can vibrate
     INFLATABLE_BUTT_PLUG.askForToyAndUsage(domChose);
-    /*askForToy("Inflatable Butt Plug", undefined, "InflatablePlug");
-    askForToyUsage("Inflatable Butt Plug", domChose);*/
+    INFLATABLE_BUTT_PLUG.askForVibration();
 
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
     askForToy("Shock Collar");
@@ -589,9 +587,8 @@
 
     CLOTHESPINS_TOY.askForToyAndUsage(domChose);
 
-    //TODO: Difference between clothepins and nipple clamps
-    askForToy("Nipple Clamps");
-    askForToyUsage("NippleClamps", domChose);
+    sendVirtualAssistantMessage('Okay next quite similar but not the same %Grin%');
+    NIPPLE_CLAMPS.askForToyAndUsage(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
     askForToy("Cock Ring");
@@ -601,7 +598,6 @@
 
     setupLimits();
 
-    //TODO: Include these checks in other modules too when it comes to the humiliation folder
     if (!HUMILIATION_LIMIT.isHardLimit() || !VERBAL_HUMILIATION_LIMIT.isHardLimit()) {
         sendVirtualAssistantMessage("Next we need for you to setup a folder with pictures of YOU!");
         sendVirtualAssistantMessage("This is very simple actually...");
@@ -616,7 +612,7 @@
         sendVirtualAssistantMessage("While doing something you would consider to be humiliating");
         sendVirtualAssistantMessage("Hopefully the video is never viewed by others %Lol%");
         sendVirtualAssistantMessage("Let me know when you've completed submitting your first evidence of self humiliation");
-        answer = createInput();
+        waitForDone();
         sendVirtualAssistantMessage("Oh %SubName%, those are some good ones! %Lol%");
     }
 

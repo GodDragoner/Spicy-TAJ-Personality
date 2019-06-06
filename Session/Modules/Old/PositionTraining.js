@@ -50,9 +50,9 @@ function isKneeling() {
 
 function positionWalkthrough() {
     lockImages();
-	sendMessage("Attention");
+    sendMessage("Attention");
     showPicture("Images/Spicy/Positions/Attention1.jpg", 3);
-	sendMessage("Bad bitch");
+    sendMessage("Bad bitch");
     showPicture("Images/Spicy/Positions/BadBitch2.jpg", 3);
     sendMessage("Bent over");
     showPicture("Images/Spicy/Positions/BentOver1.jpg", 3);
@@ -64,15 +64,15 @@ function positionWalkthrough() {
     showPicture("Images/Spicy/Positions/CFM1.jpg", 3);
     sendMessage("Dog");
     showPicture("Images/Spicy/Positions/Dog1.jpg", 3);
-	sendMessage("Judgment");
+    sendMessage("Judgment");
     showPicture("Images/Spicy/Positions/Judgement1.jpg", 3);
     sendMessage("Kneel");
     showPicture("Images/Spicy/Positions/Kneel1.jpg", 3);
-	sendMessage("Listen");
+    sendMessage("Listen");
     showPicture("Images/Spicy/Positions/Listen1.jpg", 3);
-	sendMessage("Punishment");
+    sendMessage("Punishment");
     showPicture("Images/Spicy/Positions/Punishment1.jpg", 3);
-	sendMessage("Slut");
+    sendMessage("Slut");
     showPicture("Images/Spicy/Positions/Slut1.jpg", 3);
     sendMessage("Spanking");
     showPicture("Images/Spicy/Positions/Spanking1.jpg", 3);
@@ -86,13 +86,13 @@ function positionWalkthrough() {
 }
 
 function simplePositionTrainingIntro() {
-    sendMessage(random("We're keeping it simple today","We're gonna do something simple","I'm gonna make you do something simple","This should be easy","This shouldn't be too hard"));
-    sendMessage(random("I'm gonna show you a position","I'll show you a position","In a moment you'll see a position","In just a second I'm showing you a position","I'm showing you a position in a little moment"));
-    sendMessage(random("I'll explain it in as much detail as needed","I'll tell you as much as possible","I'll go into a few details about it"));
-    sendMessage(random("To make sure you understand it fully","So I'm sure you won't have any excuses","So we both know you understand it completely!","This way you won't have any excuses.."));
-    sendMessage(random("When I'm done explaining","Once I've finished explaining","After I've explained it properly","Once it has been explained properly"));
-    sendMessage(random("You're going to take the position","Your gonna take the position","You will take the position"));
-    sendMessage(random("And you won't break it until you hear my bell","And you'll keep the position until the sound of my bell","And only once you hear my bell may you break it.."));
+    sendMessage(random("We're keeping it simple today", "We're gonna do something simple", "I'm gonna make you do something simple", "This should be easy", "This shouldn't be too hard"));
+    sendMessage(random("I'm gonna show you a position", "I'll show you a position", "In a moment you'll see a position", "In just a second I'm showing you a position", "I'm showing you a position in a little moment"));
+    sendMessage(random("I'll explain it in as much detail as needed", "I'll tell you as much as possible", "I'll go into a few details about it"));
+    sendMessage(random("To make sure you understand it fully", "So I'm sure you won't have any excuses", "So we both know you understand it completely!", "This way you won't have any excuses.."));
+    sendMessage(random("When I'm done explaining", "Once I've finished explaining", "After I've explained it properly", "Once it has been explained properly"));
+    sendMessage(random("You're going to take the position", "Your gonna take the position", "You will take the position"));
+    sendMessage(random("And you won't break it until you hear my bell", "And you'll keep the position until the sound of my bell", "And only once you hear my bell may you break it.."));
 
     while (true) {
         let answer = sendInput("Understood?", 10);
@@ -124,7 +124,7 @@ function simplePositionTrainingSelection(totalPositions) {
     sendMessage("Now then...")
 
     var simpleTraining = {
-        currentTraining_a1 : function () {
+        currentTraining_a1: function () {
             lockImages();
             showImage("Images/Spicy/Positions/Attention1.jpg");
             sendMessage("This is the attention position");
@@ -142,7 +142,7 @@ function simplePositionTrainingSelection(totalPositions) {
             sendMessage("Take the position");
             positionTrainingTimer();
         },
-        currentTraining_a2 : function () {
+        currentTraining_a2: function () {
             lockImages();
             showImage("Images/Spicy/Positions/BadBitch2.jpg");
             sendMessage("This is the Bad bitch position");
@@ -159,7 +159,7 @@ function simplePositionTrainingSelection(totalPositions) {
             sendMessage("Take the position.");
             positionTrainingTimer();
         },
-        currentTraining_a3 : function () {
+        currentTraining_a3: function () {
             lockImages();
             showImage("Images/Spicy/Positions/BentOver1.jpg");
             sendMessage("This is the Bent Over position");
@@ -184,7 +184,7 @@ function simplePositionTrainingSelection(totalPositions) {
             sendMessage("Take the position.");
             positionTrainingTimer();
         },
-        currentTraining_a4 : function () {
+        currentTraining_a4: function () {
             lockImages();
             showImage("Images/Spicy/Positions/BentOverOpen2.jpg");
             sendMessage("This is the Bent over open position");
@@ -201,7 +201,7 @@ function simplePositionTrainingSelection(totalPositions) {
             sendMessage("Take the position.");
             positionTrainingTimer();
         },
-        currentTraining_a5 : function () {  
+        currentTraining_a5: function () {
             lockImages();
             showImage("Images/Spicy/Positions/Box1.jpg");
             sendMessage("This is the Box position");
@@ -214,11 +214,11 @@ function simplePositionTrainingSelection(totalPositions) {
             sendMessage("Take the position.");
             positionTrainingTimer();
         },
-        currentTraining_a6 : function () {
+        currentTraining_a6: function () {
             lockImages();
             showImage("Images/Spicy/Positions/CFM1.jpg");
             sendMessage("This is the Come fuck me position");
-            
+
             showImage("Images/Spicy/Positions/CFM2.jpg");
             sendMessage("Excellent for fucking someone");
 
@@ -232,7 +232,7 @@ function simplePositionTrainingSelection(totalPositions) {
             sendMessage("Take the position.");
             positionTrainingTimer();
         },
-        currentTraining_a7 : function () {
+        currentTraining_a7: function () {
             lockImages();
             showImage("Images/Spicy/Positions/Dog1.jpg");
             sendMessage("This is the Dog position");
@@ -248,7 +248,7 @@ function simplePositionTrainingSelection(totalPositions) {
             sendMessage("Take the position.");
             positionTrainingTimer();
         },
-        currentTraining_a8 : function () {
+        currentTraining_a8: function () {
             lockImages();
             showImage("Images/Spicy/Positions/Judgement1.jpg");
             sendMessage("This is the Judgment position");
@@ -260,7 +260,7 @@ function simplePositionTrainingSelection(totalPositions) {
             sendMessage("Take the position.");
             positionTrainingTimer();
         },
-        currentTraining_a9 : function () {
+        currentTraining_a9: function () {
             lockImages();
             showImage("Images/Spicy/Positions/Kneel1.jpg");
             sendMessage("This is the Kneel position");
@@ -272,7 +272,7 @@ function simplePositionTrainingSelection(totalPositions) {
             sendMessage("Take the position.");
             positionTrainingTimer();
         },
-        currentTraining_a10 : function () {
+        currentTraining_a10: function () {
             lockImages();
             showImage("Images/Spicy/Positions/Listen1.jpg");
             sendMessage("This is the Listen position");
@@ -286,11 +286,11 @@ function simplePositionTrainingSelection(totalPositions) {
             sendMessage("Take the position.");
             positionTrainingTimer();
         },
-        currentTraining_a11 : function () {
+        currentTraining_a11: function () {
             lockImages();
             showImage("Images/Spicy/Positions/Punishment1.jpg");
             sendMessage("This is the Punishment position");
-            
+
             showImage("Images/Spicy/Positions/Punishment2.jpg");
             sendMessage("Excellent for spanking");
 
@@ -307,11 +307,11 @@ function simplePositionTrainingSelection(totalPositions) {
             sendMessage("Take the position.");
             positionTrainingTimer();
         },
-        currentTraining_a12 : function () {
+        currentTraining_a12: function () {
             lockImages();
             showImage("Images/Spicy/Positions/Slut1.jpg");
             sendMessage("This is the Slut position");
-            
+
             showImage("Images/Spicy/Positions/Slut2.jpg");
             sendMessage("This position is art %EmoteHappy%");
 
@@ -325,11 +325,11 @@ function simplePositionTrainingSelection(totalPositions) {
             sendMessage("Take the position.");
             positionTrainingTimer();
         },
-        currentTraining_a13 : function () {
+        currentTraining_a13: function () {
             lockImages();
             showImage("Images/Spicy/Positions/Spanking1.jpg");
             sendMessage("This is the Spanking position");
-            
+
             showImage("Images/Spicy/Positions/Spanking2.jpg");
             sendMessage("Absolutely fantastic for spanking");
 
@@ -343,12 +343,12 @@ function simplePositionTrainingSelection(totalPositions) {
             sendMessage("Take the position.");
             positionTrainingTimer();
         },
-        currentTraining_a14 : function () {
+        currentTraining_a14: function () {
             lockImages();
             showImage("Images/Spicy/Positions/Stand1.jpg");
             sendMessage("This is the Stand position");
             sendMessage("This shouldn't be hard to learn!");
-            
+
             showImage("Images/Spicy/Positions/Stand3.jpg");
             sendMessage("Stand on your toes");
 
@@ -360,7 +360,7 @@ function simplePositionTrainingSelection(totalPositions) {
             sendMessage("Take the position.");
             positionTrainingTimer();
         },
-        currentTraining_a15 : function () {
+        currentTraining_a15: function () {
             lockImages();
             showImage("Images/Spicy/Positions/StandOpen1.jpg");
             sendMessage("This is the Stand open position");
@@ -373,7 +373,7 @@ function simplePositionTrainingSelection(totalPositions) {
             sendMessage("Take the position.");
             positionTrainingTimer();
         },
-        currentTraining_a16 : function () {
+        currentTraining_a16: function () {
             lockImages();
             showImage("Images/Spicy/Positions/Worship1.jpg");
             sendMessage("This is the Worship position");
@@ -396,7 +396,9 @@ function simplePositionTrainingSelection(totalPositions) {
         }
 
         let currentTraining = trainingSet[randomInteger(0, trainingSet.length - 1)];
-        trainingSet = trainingSet.filter(function(e) { return e !== currentTraining });
+        trainingSet = trainingSet.filter(function (e) {
+            return e !== currentTraining
+        });
         simpleTraining['currentTraining_' + currentTraining]();
         positionsDone++;
     }
@@ -406,13 +408,13 @@ function positionTrainingTimer() {
     // let position_level = getVar(VARIABLE_POSITION_LEVEL);
     if (position_level <= 15) {
         sleep(randomInteger(120, 240));
-        returnSlave();      
+        returnSlave();
     } else if (position_level >= 30) {
         sleep(randomInteger(240, 360));
-        returnSlave();      
+        returnSlave();
     } else {
         sleep(randomInteger(180, 300));
-        returnSlave();      
+        returnSlave();
     }
 }
 
@@ -430,28 +432,62 @@ function positionTrainingTestSelection() {
     sendMessage("So lets get to it..");
 
     var positionTests = {
-        currentTest_position1 : function(){positionTest("1", "attention", "Images/Spicy/Positions/Attention1.jpg")},        
-        currentTest_position2 : function(){positionTest("2", "bad bitch", "Images/Spicy/Positions/BadBitch2.jpg")},
-        currentTest_position3 : function(){positionTest("3", "bent over", "Images/Spicy/Positions/BentOver2.jpg")},
-        currentTest_position4 : function(){positionTest("4", "bent over open", "Images/Spicy/Positions/BentOverOpen1.jpg")},
-        currentTest_position5 : function(){positionTest("5", "box", "Images/Spicy/Positions/Box1.jpg")},
-        currentTest_position6 : function(){positionTest("6", "come fuck me", "Images/Spicy/Positions/CFM1.jpg")},
-        currentTest_position7 : function(){positionTest("7", "dog", "Images/Spicy/Positions/Dog1.jpg")},
-        currentTest_position8 : function(){positionTest("8", "judgement", "Images/Spicy/Positions/Judgement1.jpg")},
-        currentTest_position9 : function(){positionTest("9", "kneel", "Images/Spicy/Positions/Kneel1.jpg")},
-        currentTest_position10 : function(){positionTest("10", "listen", "Images/Spicy/Positions/Listen1.jpg")},
-        currentTest_position11 : function(){positionTest("11", "punishment", "Images/Spicy/Positions/Punishment4.jpg")},
-        currentTest_position12 : function(){positionTest("12", "slut", "Images/Spicy/Positions/Slut2.jpg")},
-        currentTest_position13 : function(){positionTest("13", "spanking", "Images/Spicy/Positions/Spanking1.jpg")},
-        currentTest_position14 : function(){positionTest("14", "stand", "Images/Spicy/Positions/Stand1.jpg")},
-        currentTest_position15 : function(){positionTest("15", "stand open", "Images/Spicy/Positions/StandOpen1.jpg")},
-        currentTest_position16 : function(){positionTest("16", "worship", "Images/Spicy/Positions/Worship1.jpg")}
+        currentTest_position1: function () {
+            positionTest("1", "attention", "Images/Spicy/Positions/Attention1.jpg")
+        },
+        currentTest_position2: function () {
+            positionTest("2", "bad bitch", "Images/Spicy/Positions/BadBitch2.jpg")
+        },
+        currentTest_position3: function () {
+            positionTest("3", "bent over", "Images/Spicy/Positions/BentOver2.jpg")
+        },
+        currentTest_position4: function () {
+            positionTest("4", "bent over open", "Images/Spicy/Positions/BentOverOpen1.jpg")
+        },
+        currentTest_position5: function () {
+            positionTest("5", "box", "Images/Spicy/Positions/Box1.jpg")
+        },
+        currentTest_position6: function () {
+            positionTest("6", "come fuck me", "Images/Spicy/Positions/CFM1.jpg")
+        },
+        currentTest_position7: function () {
+            positionTest("7", "dog", "Images/Spicy/Positions/Dog1.jpg")
+        },
+        currentTest_position8: function () {
+            positionTest("8", "judgement", "Images/Spicy/Positions/Judgement1.jpg")
+        },
+        currentTest_position9: function () {
+            positionTest("9", "kneel", "Images/Spicy/Positions/Kneel1.jpg")
+        },
+        currentTest_position10: function () {
+            positionTest("10", "listen", "Images/Spicy/Positions/Listen1.jpg")
+        },
+        currentTest_position11: function () {
+            positionTest("11", "punishment", "Images/Spicy/Positions/Punishment4.jpg")
+        },
+        currentTest_position12: function () {
+            positionTest("12", "slut", "Images/Spicy/Positions/Slut2.jpg")
+        },
+        currentTest_position13: function () {
+            positionTest("13", "spanking", "Images/Spicy/Positions/Spanking1.jpg")
+        },
+        currentTest_position14: function () {
+            positionTest("14", "stand", "Images/Spicy/Positions/Stand1.jpg")
+        },
+        currentTest_position15: function () {
+            positionTest("15", "stand open", "Images/Spicy/Positions/StandOpen1.jpg")
+        },
+        currentTest_position16: function () {
+            positionTest("16", "worship", "Images/Spicy/Positions/Worship1.jpg")
+        }
     }
-    
+
     let testSet = ["position1", "position2", "position3", "position4", "position5", "position6", "position7", "position8", "position9", "position10", "position11", "position12", "position13", "position14", "position15", "position16"];
     while (true) {
         let currentTest = testSet[randomInteger(0, testSet.length - 1)];
-        testSet = testSet.filter(function(e) { return e !== currentTest });
+        testSet = testSet.filter(function (e) {
+            return e !== currentTest
+        });
         positionTests['currentTest_' + currentTest]();
 
         if (positionTestWrong == 3) {
@@ -464,15 +500,15 @@ function positionTrainingTestSelection() {
     }
 }
 
-function positionTestPunish(){
+function positionTestPunish() {
     sendMessage("I'm sorry %SlaveName% but that was your third wrong answer");
     sendMessage("I've awarded you punishment points..");
-    setVar(VARIABLE_PUNISHMENT_POINTS, getVar(VARIABLE_PUNISHMENT_POINTS + randomInteger(50,150)));
+    setVar(VARIABLE_PUNISHMENT_POINTS, getVar(VARIABLE_PUNISHMENT_POINTS + randomInteger(50, 150)));
     sendMessage("Next time I expect more from you!");
     setVar(VARIABLE_POSITION_LEVEL, position_level - 1);
 }
 
-function positionTestReward(){
+function positionTestReward() {
     sendMessage("Well done %SlaveName%");
     sendMessage("That was 6 right and " + positionTestWrong + " wrong!");
     if (positionTestWrong == 0) {
@@ -493,7 +529,7 @@ function positionTestReward(){
 
 function positionTest(number, name, image) {
 
-    let chance = randomInteger(0,100);
+    let chance = randomInteger(0, 100);
 
     if (chance < 25) {
         while (true) {
@@ -544,7 +580,7 @@ function positionTest(number, name, image) {
                 positionTestRight++;
                 sendMessage("%Good%");
                 break;
-            } else if (answer.containsIgnoreCase("no")){
+            } else if (answer.containsIgnoreCase("no")) {
                 positionTestWrong++;
                 sendMessage("Bad!");
                 break;
@@ -568,7 +604,7 @@ function positionTest(number, name, image) {
                 positionTestRight++;
                 sendMessage("%Good%");
                 break;
-            } else if (answer.containsIgnoreCase("no")){
+            } else if (answer.containsIgnoreCase("no")) {
                 positionTestWrong++;
                 sendMessage("Bad!");
                 break;
@@ -582,7 +618,7 @@ function positionTest(number, name, image) {
 
 function positionTrainingEnd() {
     sendMessage(random("We're at the end of your position training", "That was it", "We're at the end", "Well that was it", "Oh my we're finally at the end %Grin%") + " %SlaveName%");
-    sendMessage(random("It was fun!", "I had a lot of fun", "I enjoyed it", "Well this was fun!", "I had a blast", "I really enjoyed this!", "Oh my was this fun"));
+    sendAsMuchFun();
 
     changeMeritMedium(false);
     if (position_level < 50) {
@@ -600,11 +636,11 @@ function complicatedPositionTrainingSelection(totalPositions) {
         "I'm gonna make things interesting",
         "This should be quite interesting"
     ));
-    sendMessage(random("A real challenge","A bit of a challenge","A fun challenge","An exciting challenge","Definitely a challenge") + " %Lol%" );
+    sendMessage(random("A real challenge", "A bit of a challenge", "A fun challenge", "An exciting challenge", "Definitely a challenge") + " %Lol%");
 
     var complicatedTraining = {
-        currentTraining_b1 : function () {
-            sendMessage("For this one you'll need your gag and " + randomInteger(4,8) + " pegs");
+        currentTraining_b1: function () {
+            sendMessage("For this one you'll need your gag and " + randomInteger(4, 8) + " pegs");
             sendMessage("Go and fetch them.");
             sendMessage("Put the pegs on your nipples and the gag in your mouth.");
             if (!checkPositionToys()) {
@@ -614,19 +650,19 @@ function complicatedPositionTrainingSelection(totalPositions) {
                 return true;
             }
         },
-        currentTraining_b2 : function () {
+        currentTraining_b2: function () {
             sendMessage("For this one you'll need your gag and a buttplug");
             sendMessage("Go and fetch them.");
             sendMessage("Put them in %Grin%");
             if (!checkPositionToys()) {
                 return false;
             } else {
-                complicatedTraining['currentTraining_'  + random('c2', 'c6')]();
+                complicatedTraining['currentTraining_' + random('c2', 'c6')]();
                 return true;
             }
         },
-        currentTraining_b3 : function () {
-            sendMessage("For this one you'll need your gag a buttplug and " + randomInteger(4,8) + " pegs");
+        currentTraining_b3: function () {
+            sendMessage("For this one you'll need your gag a buttplug and " + randomInteger(4, 8) + " pegs");
             sendMessage("Go and fetch them.");
             sendMessage("Put both the plug and gag in");
             sendMessage("and finally put the pegs on your nipples.");
@@ -637,8 +673,8 @@ function complicatedPositionTrainingSelection(totalPositions) {
                 return true;
             }
         },
-        currentTraining_b4 : function () {
-            sendMessage("For this one you'll need your gag and " + randomInteger(4,8) + " pegs");
+        currentTraining_b4: function () {
+            sendMessage("For this one you'll need your gag and " + randomInteger(4, 8) + " pegs");
             sendMessage("Go and fetch them.");
             sendMessage("Gag yourself");
             sendMessage("and put the pegs on your nipples.");
@@ -649,12 +685,12 @@ function complicatedPositionTrainingSelection(totalPositions) {
                 return true;
             }
         },
-        currentTraining_b5 : function () {
-            sendMessage("For this one you'll need your gag, parachute and " + randomInteger(4,8) + " pegs");
+        currentTraining_b5: function () {
+            sendMessage("For this one you'll need your gag, parachute and " + randomInteger(4, 8) + " pegs");
             sendMessage("Go and fetch them.");
             sendMessage("Gag yourself");
             sendMessage("The parachute goes on your %Balls%");
-            sendMessage("I want you to hang " + randomInteger(1,3) + "kg's from it %Lol%");
+            sendMessage("I want you to hang " + randomInteger(1, 3) + "kg's from it %Lol%");
             sendMessage("place the pegs on your nipples.");
             if (!checkPositionToys()) {
                 return false;
@@ -663,7 +699,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
                 return true;
             }
         },
-        currentTraining_b6 : function () {
+        currentTraining_b6: function () {
             sendMessage("For this one you'll need your gag and some rice.");
             sendMessage("Go and fetch them.");
             sendMessage("Gag yourself and palce the rice where you will do the position");
@@ -674,11 +710,11 @@ function complicatedPositionTrainingSelection(totalPositions) {
                 return true;
             }
         },
-        currentTraining_b7 : function () {
+        currentTraining_b7: function () {
             sendMessage("For this one you'll need your gag and parachute");
             sendMessage("Go and fetch them.");
             sendMessage("Gag yourself");
-            sendMessage("and put on the parachute, attach " + randomInteger(1,3) + "kg's to it");
+            sendMessage("and put on the parachute, attach " + randomInteger(1, 3) + "kg's to it");
             if (!checkPositionToys()) {
                 return false;
             } else {
@@ -686,10 +722,10 @@ function complicatedPositionTrainingSelection(totalPositions) {
                 return true;
             }
         },
-        currentTraining_b8 : function () {
-            sendMessage("For this one you'll need your parachute and " + randomInteger(4,8) + " pegs");
+        currentTraining_b8: function () {
+            sendMessage("For this one you'll need your parachute and " + randomInteger(4, 8) + " pegs");
             sendMessage("Go and fetch them.");
-            sendMessage("put on the parachute, attach " + randomInteger(1,3) + "kg's to it");
+            sendMessage("put on the parachute, attach " + randomInteger(1, 3) + "kg's to it");
             sendMessage("place the pegs on your nipples.");
             if (!checkPositionToys()) {
                 return false;
@@ -698,7 +734,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
                 return true;
             }
         },
-        currentTraining_b9 : function () {
+        currentTraining_b9: function () {
             sendMessage("All you need for this is some rice.");
             sendMessage("Go and fetch it.");
             sendMessage("Place it where you will do the position.");
@@ -709,8 +745,8 @@ function complicatedPositionTrainingSelection(totalPositions) {
                 return true;
             }
         },
-        currentTraining_b10 : function () {
-            sendMessage("For this one you'll need some rice and " + randomInteger(4,8) + " pegs");
+        currentTraining_b10: function () {
+            sendMessage("For this one you'll need some rice and " + randomInteger(4, 8) + " pegs");
             sendMessage("Go and fetch them.");
             sendMessage("put the pegs on your nipples and the rice where you will do the position.");
             sendMessage("place the pegs on your nipples.");
@@ -721,11 +757,11 @@ function complicatedPositionTrainingSelection(totalPositions) {
                 return true;
             }
         },
-        currentTraining_b11 : function () {
+        currentTraining_b11: function () {
             sendMessage("For this you'll need some lingerie.");
             sendMessage("Go ahead and put on");
             lockImages();
-            if (randomInteger(1,5) == 1) {
+            if (randomInteger(1, 5) == 1) {
                 sendMessage("A pair of stockings");
                 showImage("Images/Spicy/Toys/Lingerie/Stockings/*.jpg");
                 sendMessage("This garterbelt");
@@ -743,10 +779,10 @@ function complicatedPositionTrainingSelection(totalPositions) {
                 return true;
             }
         },
-        currentTraining_b12 : function () {
+        currentTraining_b12: function () {
             complicatedTraining['currentTraining_c13']();
         },
-        currentTraining_c1 : function () {
+        currentTraining_c1: function () {
             sendMessage("With all your gear I want you to take the attention position");
             lockImages();
             showImage("Images/Spicy/Positions/Attention1.jpg");
@@ -758,7 +794,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             unlockImages();
             complicatedPositionTrainingTimer();
         },
-        currentTraining_c2 : function () {
+        currentTraining_c2: function () {
             sendMessage("%Grin%");
             sendMessage("This should prove fun to watch!");
             sendMessage("I want you in the bad bitch position");
@@ -771,7 +807,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             unlockImages();
             complicatedPositionTrainingTimer();
         },
-        currentTraining_c3 : function () {
+        currentTraining_c3: function () {
             sendMessage("%Grin%");
             sendMessage("This should prove fun to watch!");
             sendMessage("I want you in the Bent over position");
@@ -786,7 +822,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             complicatedPositionTrainingTimer();
             positionCheckBalance();
         },
-        currentTraining_c4 : function () {
+        currentTraining_c4: function () {
             sendMessage("%Grin%");
             sendMessage("This should prove fun to watch!");
             sendMessage("I want you in the Bent over open position");
@@ -801,7 +837,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             complicatedPositionTrainingTimer();
             positionCheckBalance();
         },
-        currentTraining_c5 : function () {
+        currentTraining_c5: function () {
             sendMessage("%Grin%");
             sendMessage("This should prove fun to watch!");
             sendMessage("I want you in the box position");
@@ -814,7 +850,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             unlockImages();
             complicatedPositionTrainingTimer();
         },
-        currentTraining_c6 : function () {
+        currentTraining_c6: function () {
             sendMessage("%Grin%");
             sendMessage("This should prove fun to watch!");
             sendMessage("I want you in the come fuck me position");
@@ -826,7 +862,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             unlockImages();
             complicatedPositionTrainingTimer();
         },
-        currentTraining_c7 : function () {
+        currentTraining_c7: function () {
             sendMessage("Now %SlaveName%");
             sendMessage("Find a few shoelaces or similar");
             sendMessage("I want you to tie your ankles together as well as..");
@@ -860,7 +896,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
                 }
             }
         },
-        currentTraining_c8 : function () {
+        currentTraining_c8: function () {
             sendMessage("%Grin%");
             sendMessage("This should prove fun to watch!");
             sendMessage("I want you in the Judgement position");
@@ -875,7 +911,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             complicatedPositionTrainingTimer();
             positionCheckBalance();
         },
-        currentTraining_c9 : function () {
+        currentTraining_c9: function () {
             sendMessage("%Grin%");
             sendMessage("This should prove fun to watch!");
             sendMessage("I want you in the Kneel position");
@@ -887,7 +923,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             unlockImages();
             complicatedPositionTrainingTimer();
         },
-        currentTraining_c10 : function () {
+        currentTraining_c10: function () {
             sendMessage("%Grin%");
             sendMessage("This should prove fun to watch!");
             sendMessage("I want you in the Listen position");
@@ -899,7 +935,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             unlockImages();
             complicatedPositionTrainingTimer();
         },
-        currentTraining_c11 : function () {
+        currentTraining_c11: function () {
             sendMessage("%Grin%");
             sendMessage("This should prove fun to watch!");
             sendMessage("I want you in the Punishment position");
@@ -911,7 +947,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             unlockImages();
             complicatedPositionTrainingTimer();
         },
-        currentTraining_c12 : function () {
+        currentTraining_c12: function () {
             sendMessage("%Lol%");
             sendMessage("What a sight!");
             sendMessage("This should prove fun to watch!");
@@ -948,7 +984,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             unlockImages();
             complicatedPositionTrainingTimer();
         },
-        currentTraining_c13 : function () {
+        currentTraining_c13: function () {
             sendMessage("%Grin%");
             sendMessage("This should prove fun to watch!");
             sendMessage("I want you in the Spanking position");
@@ -959,11 +995,11 @@ function complicatedPositionTrainingSelection(totalPositions) {
             sendMessage("Imagine being brutally caned!");
             //TODO: No More ((If you absolutely can't handle anymore just say 'stop'))
             sendMessage("Get into position %SlaveName%");
-            sleep(randomInteger(10,200));
+            sleep(randomInteger(10, 200));
             unlockImages();
             complicatedPositionTrainingTimer();
         },
-        currentTraining_c14 : function () {
+        currentTraining_c14: function () {
             sendMessage("%Grin%");
             sendMessage("This should prove fun to watch!");
             sendMessage("I want you in the Stand position");
@@ -977,7 +1013,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             complicatedPositionTrainingTimer();
             positionCheckBalance();
         },
-        currentTraining_c15 : function () {
+        currentTraining_c15: function () {
             sendMessage("%Grin%");
             sendMessage("This should prove fun to watch!");
             sendMessage("I want you in the Stand open position");
@@ -991,7 +1027,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             complicatedPositionTrainingTimer();
             positionCheckBalance();
         },
-        currentTraining_c16 : function () {
+        currentTraining_c16: function () {
             sendMessage("%Grin%");
             sendMessage("This should prove fun to watch!");
             sendMessage("I want you in the Worship position");
@@ -1025,7 +1061,9 @@ function complicatedPositionTrainingSelection(totalPositions) {
         }
 
         let currentTraining = trainingSet[randomInteger(0, trainingSet.length - 1)];
-        trainingSet = trainingSet.filter(function(e) { return e !== currentTraining });
+        trainingSet = trainingSet.filter(function (e) {
+            return e !== currentTraining
+        });
         if (!complicatedTraining['currentTraining_' + currentTraining]()) {
             incompleteTraining++;
         } else {
@@ -1077,7 +1115,7 @@ function checkPositionToys() {
 function complicatedPositionTrainingTimer() {
     let personalityStrictness = getVar("personalityStrictness", 0);
     if (position_level <= 15) {
-        switch(personalityStrictness) {
+        switch (personalityStrictness) {
             case 0:
                 sleep(randomInteger(200, 300));
                 returnSlave();
@@ -1092,7 +1130,7 @@ function complicatedPositionTrainingTimer() {
                 break;
         }
     } else if (position_level >= 30) {
-        switch(personalityStrictness) {
+        switch (personalityStrictness) {
             case 0:
                 sleep(randomInteger(400, 500));
                 returnSlave();
@@ -1107,7 +1145,7 @@ function complicatedPositionTrainingTimer() {
                 break;
         }
     } else {
-        switch(personalityStrictness) {
+        switch (personalityStrictness) {
             case 0:
                 sleep(randomInteger(300, 400));
                 returnSlave();

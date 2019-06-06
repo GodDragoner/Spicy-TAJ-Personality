@@ -637,9 +637,6 @@ function setupNewButtplug() {
         }
     }
 
-    //TODO: More interaction based on length and diameter etc.
-
-
     sendVirtualAssistantMessage('Please make sure to add a picture of your buttplug named like your buttplug to your Toys/Buttplugs folder.', false);
     sleep(2);
     sendVirtualAssistantMessage('So in this case make sure to add a picture called "' + name + '.jpg" to the buttplugss folder', false);
@@ -654,6 +651,21 @@ function setupNewButtplug() {
     while (true) {
         if (answer.isDouble()) {
             length = answer.getDouble();
+
+            if(length <= 8) {
+                sendVirtualAssistantMessage('I see... Nothing too long');
+                sendVirtualAssistantMessage('Buttplugs don\'t have to be long anyway');
+                sendVirtualAssistantMessage('It\'s all about that diameter %Grin%');
+            } else if(length <= 12) {
+                sendVirtualAssistantMessage('This one will definitely go quite far up your ass %Grin%');
+            } else if(length <= 16) {
+                sendVirtualAssistantMessage('That\'s quite long');
+                sendVirtualAssistantMessage('I hope you have no issues with sticking it completely up your %Ass% %Grin%');
+            } else {
+                sendVirtualAssistantMessage('That\'s almost the length of some dildos!');
+                sendVirtualAssistantMessage('This will definitely make your %DomHonorific% proud %EmoteHappy%');
+            }
+
             break;
         } else {
             sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
@@ -668,6 +680,26 @@ function setupNewButtplug() {
     while (true) {
         if (answer.isDouble()) {
             diameter = answer.getDouble();
+
+            if(diameter <= 3) {
+                sendVirtualAssistantMessage('A small one huh?');
+                sendVirtualAssistantMessage('Well we need something to start with don\'t we?');
+            } else if(diameter <= 5.5) {
+                sendVirtualAssistantMessage('Not too small but not too big');
+                sendVirtualAssistantMessage('Medium buttplugs are always good for daily usage %Grin%');
+            } else if(diameter <= 6.5) {
+                sendVirtualAssistantMessage('Wow, that is quite big');
+                sendVirtualAssistantMessage('I hope for your sake that you can fit that one');
+                sendVirtualAssistantMessage('Because %DomHonorific% %DomName% will definitely make you fit that one %Lol%');
+            } else if(diameter <= 7.5) {
+                sendVirtualAssistantMessage('This one will certainly make you gape');
+                sendVirtualAssistantMessage('And there is nothing that %DomHonorific% %DomName% loves more than making her subs gape %Lol%');
+            } else {
+                sendVirtualAssistantMessage('That\'s certainly a huge plug');
+                sendVirtualAssistantMessage('Well even if you can\'t fit it right now we will make that work');
+                sendVirtualAssistantMessage('Trust me. %DomHonorific% %DomName% has her ways %Lol%');
+            }
+
             break;
         } else {
             sendVirtualAssistantMessage("Please only enter a number such as 1 now.");

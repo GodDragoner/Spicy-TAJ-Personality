@@ -1,11 +1,11 @@
 {
 
-    if(getVar(VARIABLE_WAITING_FOR_CHASTITY_KEY_RETURN, false)) {
+    if (getVar(VARIABLE_WAITING_FOR_CHASTITY_KEY_RETURN, false)) {
         sendVirtualAssistantMessage('%SlaveName%');
         sendVirtualAssistantMessage('Last time you left I allowed you to unlock yourself and since then I haven\'t locked you back yet');
         sendVirtualAssistantMessage('Are you ready to be locked again?', 0);
 
-        if(createYesOrNoQuestion()) {
+        if (createYesOrNoQuestion()) {
             sendVirtualAssistantMessage('Great!');
             onChastityKeyReturn();
         } else {
@@ -33,7 +33,7 @@
                 lobbyAnswer.clearOptions();
                 // sendVirtualAssistantMessage("This is not supported yet!");
                 run("Dungeon/PunishmentBase.js");
-                sendVirtualAssistantMessage("back to the assistant from dungeon");
+                sendVirtualAssistantMessage(getWelcomeMessage(), false);
                 break;
             } else if (lobbyAnswer.isLike("setting", "adjust", "calibrate", "setup")) {
                 lobbyAnswer.clearOptions();
@@ -45,25 +45,21 @@
                 break;
             } else if (lobbyAnswer.isLike("fitness", "health")) {
                 lobbyAnswer.clearOptions();
-                sendVirtualAssistantMessage("about to fitness");
                 run("Exercise/ExerciseBase.js");
-                sendVirtualAssistantMessage("Nice workout!");
+                sendVirtualAssistantMessage(getWelcomeMessage(), false);
                 break;
             } else if (lobbyAnswer.isLike("report", "exercise")) {
                 lobbyAnswer.clearOptions();
                 run("Exercise/reportexercise.js");
-                sendVirtualAssistantMessage("back to the assistant from reporting exercise");
+                sendVirtualAssistantMessage(getWelcomeMessage(), false);
                 break;
             } else if (lobbyAnswer.isLike("work", "study")) {
-            	   lobbyAnswer.clearOptions();
-
-                 run("WorkMode/GNMWorkMode.js");
-
-				 //sendVirtualAssistantMessage("This is not supported yet!");
+                lobbyAnswer.clearOptions();
+                run("WorkMode/GNMWorkMode.js");
+                sendVirtualAssistantMessage(getWelcomeMessage(), false);
                 break;
             } else if (lobbyAnswer.isLike("rule", "house", "commands", "orders")) {
-                //sendVirtualAssistantMessage("This is not supported yet!");
-			 lobbyAnswer.clearOptions();
+                lobbyAnswer.clearOptions();
                 run("Rules/HouseRules.js");
                 sendVirtualAssistantMessage(getWelcomeMessage(), false);
                 break;
@@ -73,7 +69,9 @@
                 endSession();
                 break;
             } else if (lobbyAnswer.isLike("pin", "board", "notices", "news")) {
-                sendVirtualAssistantMessage("This is not supported yet!");
+                lobbyAnswer.clearOptions();
+                run("Assistant/PinBoard.js");
+                sendVirtualAssistantMessage(getWelcomeMessage(), false);
                 break;
             } else if (lobbyAnswer.isLike("chastity")) {
                 lobbyAnswer.clearOptions();

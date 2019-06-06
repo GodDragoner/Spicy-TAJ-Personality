@@ -59,6 +59,14 @@ function startKneeling() {
     setTempVar(VARIABLE_IS_KNEELING, true);
 }
 
+
+function stopKneeling() {
+    //TODO: Sound too?
+    //playSound('Audio\\Spicy\\Commands\\Kneel\\*.mp3');
+    sendMessage(random('You can stop kneeling', 'You can get up from your knees now', 'You can sit down') + ' %SlaveName%');
+    setTempVar(VARIABLE_IS_KNEELING, false);
+}
+
 function addPunishmentPoints(amount) {
     const points = getVar(VARIABLE_PUNISHMENT_POINTS);
 

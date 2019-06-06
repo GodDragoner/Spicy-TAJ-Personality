@@ -73,19 +73,23 @@ function startTimePassTasks(durationMinutes, allowTeasing = true) {
                 }
                 break;
             case 2:
-                //TODO: Humiliation limit
-                sendMessage("I want you to grab your phone or a camera");
-                sendMessage("And I want you to take some humiliating pictures of yourself right now");
-                sendMessage("I don't care what you do to make them humiliating");
-                //TODO: Has sissy outfit? And check for other stuff that the sub might be wearing right now and tell to make photos of it
-                sendMessage("But I want them to show you either naked or in that cute little sissy outfit of yours");
-                sendMessage("Go ahead and take some now and return when you hear my bell");
-                sleep(randomInteger(75, 120));
-                returnSlave();
-                sendMessage("I want you to place those pictures inside your self humiliation folder");
-                sendMessage("But you can do so after the session");
-                sendMessage("For now I want to continue messing with you %Grin%")
-                break;
+                if (!HUMILIATION_LIMIT.isHardLimit() || !VERBAL_HUMILIATION_LIMIT.isHardLimit()) {
+                    sendMessage("I want you to grab your phone or a camera");
+                    sendMessage("And I want you to take some humiliating pictures of yourself right now");
+                    sendMessage("I don't care what you do to make them humiliating");
+                    //TODO: Has sissy outfit? And check for other stuff that the sub might be wearing right now and tell to make photos of it
+                    sendMessage("But I want them to show you either naked or in that cute little sissy outfit of yours");
+                    sendMessage("Go ahead and take some now and return when you hear my bell");
+                    sleep(randomInteger(75, 120));
+                    returnSlave();
+                    sendMessage("I want you to place those pictures inside your self humiliation folder");
+                    sendMessage("But you can do so after the session");
+                    sendMessage("For now I want to continue messing with you %Grin%")
+                    break;
+                }
+
+                iterations = 0;
+                continue;
             case 3:
                 if(!isPlugged() && getAnalLimit() == LIMIT_ASKED_YES) {
                     if(putInButtplug()) {

@@ -27,7 +27,7 @@
                     ballCrusherGame();
                     break;
                 case 2:
-                    ballCrusherRubberPlay();
+                    startMissingCardMemory(GAME_BALL_CRUSHER);
                     break;
             }
 
@@ -35,6 +35,7 @@
 
             sendMessage('You can remove the ball crusher now %Grin%');
             sendMessage(random('I hope they aren\'t dead!', 'I really hope those %Balls% aren\'t dead', 'You should probably take a look at those %Balls% %Lol%'));
+            setTempVar(VARIABLE_IS_BALL_CRUSHER_ON, false);
         } else {
             sendMessage("I guess I have to think of something different to play with your balls");
 
