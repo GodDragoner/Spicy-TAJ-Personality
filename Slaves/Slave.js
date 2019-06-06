@@ -114,7 +114,7 @@ function addPunishmentPoints(amount) {
 
     setDate(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE);
 
-    setVar(VARIABLE_PUNISHMENT_POINTS, Math.max(0, points*multiplier + amount));
+    setVar(VARIABLE_PUNISHMENT_POINTS, Math.max(0, points + amount*multiplier));
 }
 
 function addGold(amount) {

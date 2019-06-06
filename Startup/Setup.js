@@ -728,7 +728,7 @@ function setupBlackmail() {
     sendVirtualAssistantMessage("The second person is \"" + getVar("blackmailName2") + "\" with the corresponding phone number: " + getVar('blackmailPhone2'));
     sendVirtualAssistantMessage("The third person is \"" + getVar("blackmailName3") + "\" with the corresponding phone number: " + getVar('blackmailPhone3'));
     sendVirtualAssistantMessage("Is this information correct?", false);
-    answer = createInput();
+    let answer = createInput();
 
     while (true) {
         if (answer.isLike("yes")) {

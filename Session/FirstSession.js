@@ -38,7 +38,7 @@
     playAudio("Audio/Spicy/Starts/Intro/intro13.mp3", true);
     sendMessage("Never forget that...", 0);
     playAudio("Audio/Spicy/Starts/Intro/intro14.mp3", true);
-    sendMessage("Well #SlaveName", 0);
+    sendMessage("Well %SlaveName%", 0);
     playAudio("Audio/Spicy/Starts/Intro/intro15.mp3", true);
     sendMessage("If you thought that you are my sole focus", 0);
     playAudio("Audio/Spicy/Starts/Intro/intro16.mp3", true);

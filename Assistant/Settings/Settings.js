@@ -4,7 +4,7 @@
     sendVirtualAssistantMessage('1. Toys', 0);
     sendVirtualAssistantMessage('2. Setup Limits', 0);
 
-    let lobbyAnswer = createInput("Toys", 'Setup Limits');
+    let lobbyAnswer = createInput("Toys", 'Setup Limits', 'Return');
     while (true) {
         if (lobbyAnswer.isLike("toy")) {
             lobbyAnswer.clearOptions();

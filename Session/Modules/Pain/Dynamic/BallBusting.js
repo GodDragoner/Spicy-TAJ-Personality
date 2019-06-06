@@ -258,7 +258,7 @@ function sendBallHitTask(hitLevel, hitType, loops, isBeginning, map) {
     } else {
         //First time we are doing this
         if (map.has(0) && (hitLevel == 2 || hitLevel == 1 && !map.has(2))) {
-            sendMessage(random('I think we can go higher than before %Grin%', 'I think we need to up that level a bit because otherwise ' + random('you might get used to it', 'I might go to easy on you') + ' %Lol%'));
+            sendMessage(random('I think we can go harder than before %Grin%', 'I think we need to up that level a bit because otherwise ' + random('you might get used to it', 'I might go to easy on you') + ' %Lol%'));
         }
 
         let answers = [
