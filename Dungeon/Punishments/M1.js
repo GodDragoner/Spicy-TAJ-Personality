@@ -36,15 +36,15 @@ switch(getVar("Punisher")) {
 	PM4=2;
 	switch(getVar("personalityStrictness")) {
 		case 1:
-		if(getVar("SubEndurance") <= 3) 
+		if(getVar("SubEndurance") <= 4) 
 		PM4=1;
 		break;
 		case 2:
-		if(getVar("SubEndurance") <= 5) 
+		if(getVar("SubEndurance") <= 6) 
 		PM4=1;
 		break;	
 		case 3:
-		if(getVar("SubEndurance") >= 6) 
+		if(getVar("SubEndurance") >= 7) 
 		PM4=3;
 		break;
 	}
@@ -66,7 +66,7 @@ switch(getVar("Punisher")) {
 	case 3 :
 	//(Contact2)
 	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%");// #DT4
-	sendMessage(random("Discipline, I just love that","You're not gonna like this %GNMGrin%","I don't think your %GNMCock% will enjoy this","This is fun!"));// #DT4
+	sendMessage(random("Discipline I just love that","You're not gonna like this %GNMGrin%","I don't think your %GNMCock% will enjoy this","This is fun!"));// #DT4
 sendMessage(random("Lets see what we can do about you %GNMGrin%","Its time to make you repent your sins","I suppose we need to correct your recent behaviour","I have something for you..")); //#DT4
 
 	if (getVar("SubEndurance")>=7) {
@@ -100,24 +100,29 @@ sendMessage("You will not enjoy this! "); //#DT4
 
 switch(PM4) {
 	case(1):
-	choices = ["I need to behave better.","My behaviour needs to improve.","I deserve this.","I brought this on myself.","I have earned this punishment."];
+	choices = ["I wake up, I serve, I serve some more, I sleep. Horny..","I love it when my cock is finaly granted attention, being bad doesn't make that happen.","I need to stop being bad because it means I won't have much playtime with HER cock.","If it would please my %DomHonorific% %DomName% I would gladly suck a Cock..","I need to realize this isn't about me, it's about making a computer program happy."];
+
+
 	sentence = choices[randomInteger(0, choices.length - 1)];
 	break;
 	
 	case(2):
-	choices = ["I deserve This, there is no doubt about it.","I am to be held accountable when I Misbehave.","%DomHonorific% %DomName% control my %GNMCock%","I am but a slave, bound to My %DomHonorific%","I serve to please and service my %DomHonorific%"];
+	choices = ["My %GNMCock% is worthlesss An I wish I could have a Sechange..","I wonderr if These erors ara intentionel? But wo realy knows?","Can my brian slitl raed tshee staentemts? Wow Amazing!","i am a servannt who fucked up annd now i mustt pay the price..","Why is this sentence backwards? ?sdrawkcab ecnetnes siht si yhW"];
+	
+	
 	sentence = choices[randomInteger(0, choices.length - 1)];
 	break;
 	
 	case(3):
-	choices = ["I deserve to be thoroughly punished, But I am a spoiled slut.","I require steep punishment, but My #DomHonorific Spoils me.","I could use a lot harsher form of discipline. But I am spoiled.","I need to repent for my sins, my crimes and remember my Place.","I am but a lowlife serving a Goddess, a Queen, unworthy and pathetic."];
+	choices = ["Time is ticking away: vjnksjn3234","Time is ticking away: ..,..,..,..","Time is ticking away: pqowqpWopqo","Time is ticking away: evalsIamLoL","Time is ticking away: xghyxghyxgh"];
+
 	sentence = choices[randomInteger(0, choices.length - 1)];
 	break;
 	
 }
 errors=0;
 correct=0;
-total_lines=randomInteger(3,5);
+total_lines=randomInteger(10,20);
 errors_allowed=randomInteger(1,3);
 
 sendMessage ("ok %SlaveName%, you're going to write the following line "+ total_lines + " times");
@@ -200,7 +205,7 @@ if (correct >= total_lines) {
 	sendMessage(random("Well done","Good job","Splendid"));
 	sendMessage("I love how literate my %Slave%'s are");
 	setVar("PunishmentComplete", true);
-	setVar("punishmentCompleted", 01);
+	setVar("punishmentCompleted", 11);
 	run("dungeon/PunishmentBaseEnd.js");
 	
 }else{
@@ -211,6 +216,6 @@ sendMessage ("Then you have a long way to go to redeem yourself.. ");
 }
 
 
-	
-//	setVar("punishmentCompleted", 01);
+	/// hoping this fixes double nurse bug
+	//setVar("punishmentCompleted", 11);
 //	run("dungeon/PunishmentBaseEnd.js");

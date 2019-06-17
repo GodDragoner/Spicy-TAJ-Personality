@@ -36,15 +36,15 @@ switch(getVar("Punisher")) {
 	PM4=2;
 	switch(getVar("personalityStrictness")) {
 		case 1:
-		if(getVar("SubEndurance") <= 3) 
+		if(getVar("SubEndurance") <= 4) 
 		PM4=1;
 		break;
 		case 2:
-		if(getVar("SubEndurance") <= 5) 
+		if(getVar("SubEndurance") <= 6) 
 		PM4=1;
 		break;	
 		case 3:
-		if(getVar("SubEndurance") >= 6) 
+		if(getVar("SubEndurance") >= 7) 
 		PM4=3;
 		break;
 	}
@@ -66,7 +66,7 @@ switch(getVar("Punisher")) {
 	case 3 :
 	//(Contact2)
 	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%");// #DT4
-	sendMessage(random("Discipline, I just love that","You're not gonna like this %GNMGrin%","I don't think your %GNMCock% will enjoy this","This is fun!"));// #DT4
+	sendMessage(random("Discipline I just love that","You're not gonna like this %GNMGrin%","I don't think your %GNMCock% will enjoy this","This is fun!"));// #DT4
 sendMessage(random("Lets see what we can do about you %GNMGrin%","Its time to make you repent your sins","I suppose we need to correct your recent behaviour","I have something for you..")); //#DT4
 
 	if (getVar("SubEndurance")>=7) {
@@ -100,25 +100,32 @@ sendMessage("You will not enjoy this! "); //#DT4
 
 switch(PM4) {
 	case(1):
-	choices = ["I need to behave better.","My behaviour needs to improve.","I deserve this.","I brought this on myself.","I have earned this punishment."];
+	choices = ["I need to be on my very best behaviour, I firmly believe that I owe it to my %DomHonorific% to try much hard.","I'm in need of constant discipline, even a short moment without and I cannot comprehend the dire consequences.","I dream of the day where I will be placed in a chastity belt, knowing that in just a moment the key will be destroyed.","I have been bad and this is my punishment, wasting time, doing nothing constructive or anything recreational.","I should try much much harder to be a proper servant. I'm blessed that %DomHonorific% %DomName% is Mercifull."];
+	
+
 	sentence = choices[randomInteger(0, choices.length - 1)];
 	break;
 	
 	case(2):
-	choices = ["I deserve This, there is no doubt about it.","I am to be held accountable when I Misbehave.","%DomHonorific% %DomName% control my %GNMCock%","I am but a slave, bound to My %DomHonorific%","I serve to please and service my %DomHonorific%"];
+	choices = ["I should couNt myself lucky, For a moment it waS considered if I should have been a harSh caninG.","I have been a bad boy, I hAve been a bad boy, I have beEn a bad boy, I have been a Bad boy.,.","I need Chastity, I crave cHastity, I dream of chAstity, I believe in chaStity, I am chastiTy.","I will neVer stop serVing, I will neVer be free, I am not equal to women nOr real men.","I wIll crY In jOY whEnEvEr mY %DomHonorific% Is fUckEd bY mY frIEnds or cOmplEtE strAngErs."];
+	
+
+	
 	sentence = choices[randomInteger(0, choices.length - 1)];
 	break;
 	
 	case(3):
-	choices = ["I deserve to be thoroughly punished, But I am a spoiled slut.","I require steep punishment, but My #DomHonorific Spoils me.","I could use a lot harsher form of discipline. But I am spoiled.","I need to repent for my sins, my crimes and remember my Place.","I am but a lowlife serving a Goddess, a Queen, unworthy and pathetic."];
+	choices = ["Tick Tock: vlesfjnjnlkjnqkjrn3425","Tick Tock: vvbakjhbk1247823jhkjsf","Tick Tock: skdfjnqkl3hr4h3rjbh34r","Tick Tock: 23lkkjbdqqoq847b defj4","Tick Tock:  23ofiu4o3nweflq3448fn"];
+	
+
 	sentence = choices[randomInteger(0, choices.length - 1)];
 	break;
 	
 }
 errors=0;
 correct=0;
-total_lines=randomInteger(3,5);
-errors_allowed=randomInteger(1,3);
+total_lines=randomInteger(15,25);
+errors_allowed=randomInteger(2,4);
 
 sendMessage ("ok %SlaveName%, you're going to write the following line "+ total_lines + " times");
 
@@ -157,8 +164,8 @@ if (errors>errors_allowed) {
 		sentence = choices[randomInteger(0, choices.length - 1)];
 		errors=0;
 correct=0;
-total_lines=randomInteger(10,15);
-errors_allowed=randomInteger(1,3);
+total_lines=randomInteger(15,25);
+errors_allowed=randomInteger(2,4);
 
 sendMessage ("ok %SlaveName%, you're going to write the following line "+ total_lines + " times");
 
@@ -200,7 +207,7 @@ if (correct >= total_lines) {
 	sendMessage(random("Well done","Good job","Splendid"));
 	sendMessage("I love how literate my %Slave%'s are");
 	setVar("PunishmentComplete", true);
-	setVar("punishmentCompleted", 01);
+	setVar("punishmentCompleted", 21);
 	run("dungeon/PunishmentBaseEnd.js");
 	
 }else{
@@ -212,5 +219,5 @@ sendMessage ("Then you have a long way to go to redeem yourself.. ");
 
 
 	
-//	setVar("punishmentCompleted", 01);
-//	run("dungeon/PunishmentBaseEnd.js");
+//	setVar("punishmentCompleted", 21);
+	//run("dungeon/PunishmentBaseEnd.js");

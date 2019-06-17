@@ -51,7 +51,7 @@ switch(getVar("Punisher")){
 	break;
 	case 2 :
 	//(Contact1)
-	sendMessage(random("Well well","Oh my","Well") + " %SlaveName" );// #DT4
+	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%" );// #DT4
 	sendMessage(random("I'm absolute sure you're gonna hate this and that makes me love it!","We need to correct your poor behaviour","You need a little discipline","Its about time we did something about your behaviour") );// #DT4
 	if(getVar("SubEndurance")>=8) {
 	PS2=3;}
@@ -125,20 +125,20 @@ switch (choice) {
 	sendMessage("Well this is gonna be rather simple.. "); //#DT4
 	sendMessage("In a moment you will go to the corner",10); 
 	sendMessage("Naked of course in case you doubted that..") //#DT4
-	sendMessage("In the corner you will "+ random("just be standing with your fingers folded behind your hear","simply be standing","kneel and fold your fingers behind your head","simply be standing and pressing a coin against the wall with your nose arms down"));// #DT4
+	sendMessage("In the corner you will "+ random("just be standing with your fingers folded behind your head","simply be standing","kneel and fold your fingers behind your head","simply be standing and pressing a coin against the wall with your nose arms down"));// #DT4
 	sendMessage("Stay there until you hear my bell, now go!"); // #DT4 
-	sleep(getVar("CornerTimeCounter"));
+	wait(getVar("CornerTimeCounter"));
 	sendMessage("Get back here.."); // 
 	playAudio("Audio/GNMSounds/SpecialSounds/Bell.mp3");
-	sleep(6);
+	wait(6);
 	//(Success)
 	sendMessage("I know this was rough %SlaveName%"); // #DT4 
 	sendMessage("But it makes me happy knowing you completed it!"); // #DT4 
 	changeMeritLow(false);
 	// @Goto(NoFee)
 	//@TempFlag(PunishmentComplete)
-	setVar("PunishmentCompleted", 3);
-	run("Dungeon\Punishment\PunishmentBaseEnd.js");
+	//setVar("PunishmentCompleted",03);
+	//run("Dungeon/PunishmentBaseEnd.js");
 	break;
 	
    case 2:
@@ -157,37 +157,37 @@ switch (choice) {
 	sendMessage("Up means standing up on your toes.. "); //#DT4
 	sendMessage("Now I'm not done %GNMGrin%"); // #DT4
 	sendMessage("I want you to count the number of commands I give in your head"); // #DT4
-	sendMessage("Every time you hear a command I want you say 'Thank You %DomHonorific%'"); //#DT4
+	sendMessage("Everytime you hear a command I want you say 'Thank You %DomHonorific%'"); //#DT4
 	sendMessage("Lastly I want you to count every time your heel strikes the floor or you loose your balance.."); // #DT4
 	sendMessage("If both heels strikes at the same time it counts as two! "); //#DT4
 	sendMessage("I never said this would be easy %GNMLol%"); // #DT4 
 	CornerCommandsGiven = 0 ;
 	sendMessage("Now go to the corner, stand on your toes and don't return before you hear the bell!"); // #DT4
 	 CornerTimeDown = true;
-	 sleep(5);
+	 wait(5);
 	//(CornerTime2)
 	playAudio("audio/GNMSounds/Punishment/Corner/OnYourToes.mp3"); 
 	//@CountVar[CornerTimeCounter2]
 	//(CornerTime1)
 	setDate("donetime").addSecond(getVar("CornerTimeCounter"));
-	sendMessage("debug1 here");
+	//sendMessage("debug1 here");
 	while( !(getDate("donetime").hasPassed()) ) {
-		sleep(randomInteger(5,25));
+		wait(randomInteger(5,25));
 		if(randomInteger(1,100) < 25 )
 			{playAudio("audio/GNMSounds/Punishment/Corner/OnYourToes.mp3"); 
 			}
-			sleep(randomInteger(5,25));
+			wait(randomInteger(5,25));
 			
 			if(CornerTimeDown){
-				playAudio("GNMSounds/Punishment/Corner/Down/*.mp3");
+				playAudio("audio/GNMSounds/Punishment/Corner/Down/*.mp3");
 				CornerCommandsGiven=CornerCommandsGiven+ 1 ;
-				sleep(1);
+				wait(1);
 				CornerTimeDown=false;
 
 			}else{
-				playAudio("GNMSounds/Punishment/Corner/Up/*.mp3");
+				playAudio("audio/GNMSounds/Punishment/Corner/Up/*.mp3");
 				CornerCommandsGiven=CornerCommandsGiven+ 1 ;
-				sleep(1);
+				wait(1);
 				CornerTimeDown=true;
 
 			}
@@ -200,30 +200,34 @@ switch (choice) {
 	playAudio("Audio/GNMSounds/SpecialSounds/Bell.mp3");
 	sendMessage("Apparently you made it.."); //#DT4
 	sendMessage("Now.."); //#DT4
-	failed2=false;
+	Failed2=false;
 	//(Lives)
-	CornerTimeFails=sendInput("Tell me what is the sum of times your heels touched the floor and you losing your balance?"); // #DT4 @InputVar[CornerTimeFails]
-	while (True){
-		if(!(CornerTimeFails.isInteger())){
+	//(Lives)
+	answer=sendInput("Tell me what is the sum of times your heels touched the floor and you losing your balance?"); // #DT4 @InputVar[CornerTimeFails]
+	while (true){
+		if(!(answer.isInteger())){
 			sendMessage("that's not a number, idiot!");
 			sendMessage("try again.");	
 			 answer.loop();}
-		 else if (CornerTimeLife<CornerTimeFails){
-		 //failed to do this correctly
-		 Failed2=true;
-		 break;
-		 }else {sendMessage("%GNMGood% ");
-		 break;
-		 }
+		 else{ CornerTimeFails=answer.getInt();
+			 if (getVar("CornerTimeLife")<CornerTimeFails){
+			 //failed to do this correctly
+			 Failed2=true;
+			 break;
+			 }else {sendMessage("%GNMGood% ");
+				 break;
+				}
+			}
 		 
 	}
-		Cornercommands=sendInput("How many commands where you given?"); // #DT4 
+		answer=sendInput("How many commands where you given?"); // #DT4 
 	while (!Failed2){
-		if(!(Cornercommands.isInteger())){
+		if(!(answer.isInteger())){
 			sendMessage("that's not a number, idiot!");
 			sendMessage("try again.");	
 			 answer.loop();}
-		 else if (Cornercommands==CornerCommandsGiven){
+		 else{Cornercommands = answer.getInt();
+			 if (Cornercommands==CornerCommandsGiven){
 		 //thats correct
 		 sendMessage("%GNMGood% that was correct.. "); //#DT4
 		 break;
@@ -233,10 +237,12 @@ switch (choice) {
 			Failed2=true;
 			break;
 		 }
-		 
+	} 
 	}
 
 	
+	//(ThankYouCheck)
+
 	//(ThankYouCheck)
 	fee=false;
 	if(!Failed2){
@@ -326,5 +332,5 @@ switch (choice) {
 		delVar("S3Recursion");
 	}
 	setVar("PunishmentComplete", true);
-	setVar("punishmentCompleted", 3);
+	setVar("punishmentCompleted", 03);
 	run("Dungeon/PunishmentBaseEnd.js");

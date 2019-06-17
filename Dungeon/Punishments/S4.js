@@ -186,8 +186,8 @@ while (RipPegs>=S4Round)  {
 	
 	//(Black)
 	sendMessage(random("Be ready!","Prepare","Prepare yourself","Get ready","Stay ready","Ready yourself"));
-	showImage("Images/SpicyPunishment/Grounding/BlackBase.*");
-	sleep(randomInteger(2,10));
+	showImage("Images/Spicy/Punishment/Grounding/BlackBase.*");
+	wait(randomInteger(2,10));
 	//(Rip)
 	//sendMessage(random("Rip it off!","Pull them off","Rip it!","Pull them off completely!","Rip them away! %GNMGrin%","Rip it off","Rip.. it.. off!","Rip it off..","Rip it off..","Rip it off..","Rip it off..")); //#DT4 @Timeout(8,Slow)
      response = sendInput(random("Rip it off!","Pull them off","Rip it!","Pull them off completely!","Rip them away! %GNMGrin%","Rip it off","Rip.. it.. off!","Rip it off..","Rip it off..","Rip it off..","Rip it off.."),8);
@@ -219,5 +219,5 @@ while (RipPegs>=S4Round)  {
  
 	sendMessage("No more rounds! "); //#DT4 
 	setVar("PunishmentComplete", true);
-	setVar("punishmentCompleted", 4);
+	setVar("punishmentCompleted", 04);
 	run("Dungeon/PunishmentBaseEnd.js");
