@@ -1,7 +1,7 @@
 //nurse pictures set in special nurse chat function below
 //CallReturn(CR\BackgroundMode\SetNursePictures.txt)
-if (isVar("SpankzChoirComplete") && isVar("SpankChoirSafeword")) {
-
+if (isVar("SpankzChoirComplete") && isVar("SpankChoirSafewordUsed")) {
+//fixme I think there's no actual way to trigger the safeword... so this is dead code
     sendNurseMessage("Well %SlaveName% since you used your safeword");
     sendNurseMessage("You now owe gold...");
     sendNurseMessage("Transferring gold owed...");
@@ -19,6 +19,7 @@ if (isVar("SpankzChoirComplete") && isVar("SpankChoirSafeword")) {
     delVar("SarahWon");
     delVar("SpankzChoirLate");
     delVar("SpankzChoirSafeword");
+	delVar("SpankzChoirComplete");
     //@End
 } else if (isVar("SpankzChoirComplete")) {
     if (isVar("SpankzChoirLate")) {
@@ -65,6 +66,7 @@ if (isVar("SpankzChoirComplete") && isVar("SpankChoirSafeword")) {
         delVar("SarahWon");
         delVar("SpankzChoirLate");
         delVar("SpankzChoirSafeword");
+		delVar("SpankzChoirComplete");
     } else {
         sendNurseMessage(random("Good job", "Well done"));
         sendNurseMessage("%DomHonorific% %DomName% is pleased with the extra gold you earned for her");
@@ -84,7 +86,7 @@ if (isVar("SpankzChoirComplete") && isVar("SpankChoirSafeword")) {
         }
 
         sendNurseMessage("Transferring your gold earned to you now ");
-        addGold(getVar('GoldOwedInTime'));
+        addGold(getVar("GoldOwedInTime"));
         sendNurseMessage("Looking at your account you have " + getGold() + " gold %EmoteHappy% ");
         delVar("GigiWon");
         delVar("AlexisWon");
@@ -96,6 +98,7 @@ if (isVar("SpankzChoirComplete") && isVar("SpankChoirSafeword")) {
         delVar("SarahWon");
         delVar("SpankzChoirLate");
         delVar("SpankzChoirSafeword");
+		delVar("SpankzChoirComplete");
     }
 }
 
@@ -106,7 +109,7 @@ if(isVar("Punisher")) {
     sendMessage("Cya %SlaveName%");
 
 
-    if (!getVar("Punisher" == 1)) {
+    if (!(getVar("Punisher") == 1)) {
         setSender(1);
     }
 
@@ -321,6 +324,7 @@ if (isVar("PunishmentFailed")) {
             delVar("M1Complete");
             setVar(VARIABLE_PUNISHMENT_POINTS, getVar(VARIABLE_PUNISHMENT_POINTS) - randomInteger(90, 140));
             sendNurseMessage(random("You made it through the line writing!", "You survived writing all those lines", "You got through the line writing!"));
+			sendNurseMessage("Normally I'd worry about you getting Carpal Tunnel, but with all that jerking off you do, I think your wrists will be fine");
             break;
         case 12:
             sendNurseMessage(random("Good boy!", "Good girl!", "Good slut", "Good slave"));
@@ -372,7 +376,25 @@ if (isVar("PunishmentFailed")) {
             sendNurseMessage(random("You made it through the line writing!", "You survived writing all those lines", "You got through the line writing!"));
             sendNurseMessage(" And then on hard, that couldn't have been too easy ");
             break;
-        case 27:
+        case 23:
+            sendNurseMessage(random("Good boy!", "Good girl!", "Good slut", "Good slave"));
+            delVar("M3Complete");
+            setVar(VARIABLE_PUNISHMENT_POINTS, getVar(VARIABLE_PUNISHMENT_POINTS) - randomInteger(110, 160));
+            sendNurseMessage(random("You really did good in the corner...", "You did well in the corner", "You stayed like you should in the corner"));
+			sendNurseMessage(random("your feet and Calves took the brunt of Mistresses torment", "I hope Mistress made you wear something extra 'interesting'...%GNMLol%"));
+            sendNurseMessage(" You should be proud of yourself! ");
+            break;
+        case 24:
+            sendNurseMessage(random("Good boy!", "Good girl!", "Good slut", "zap, zap %GNMlol%", "hey sparky!"));
+            delVar("E4Complete");
+            setVar(VARIABLE_PUNISHMENT_POINTS, getVar(VARIABLE_PUNISHMENT_POINTS) - randomInteger(150, 190));
+            sendNurseMessage(random("enough zappings like that and we'll fully neutralize those beta balls of yours", "sniff... sniff.... um, I think you're scrotum might be smoking", "now thats how you train a bitch!"));
+			sendNurseMessage(random("we can always just remove those useless %balls% of yours if it was too much", "its amazing what a little spark can do to a relationship"));
+
+            break;		
+			
+			
+		case 27:
             sendNurseMessage(" Turn around %SlaveName% and show me your ass.. ", 1, 7);
             delVar("H2Complete");
             setVar(VARIABLE_PUNISHMENT_POINTS, getVar(VARIABLE_PUNISHMENT_POINTS) - randomInteger(130, 180));
@@ -390,7 +412,7 @@ if (isVar("PunishmentFailed")) {
             sendNurseMessage(" I know how cruel these punishments can be ");
             sendNurseMessage(" Remember to put yourself first sweety <i>smiles</i> ");
             break;
-        case 23:
+        case 26:
             sendNurseMessage(" Oh my ");
             delVar("H3Complete");
             setVar(VARIABLE_PUNISHMENT_POINTS, getVar(VARIABLE_PUNISHMENT_POINTS) - randomInteger(130, 180));
