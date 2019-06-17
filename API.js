@@ -40,7 +40,7 @@ function createInput() {
         isLike: function(regexes) {},
 
         addOption: function(option) {},
-        clearOptions: function(minute) {},
+        clearOptions: function() {},
 
         isTimeout: function () {},
 

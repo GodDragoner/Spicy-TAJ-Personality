@@ -590,7 +590,7 @@ function positionTest(number, name, image) {
 
 function positionTrainingEnd() {
     sendMessage(random("We're at the end of your position training", "That was it", "We're at the end", "Well that was it") + " %SlaveName%");
-    sendMessage(random("It was fun!", "I had a lot of fun", "I enjoyed it", "Well this was fun!", "I had a blast", "I really enjoyed this!", "Oh my was this fun"));
+    sendAsMuchFun();
     changeMeritMedium(false);
     if (getVar(VARIABLE_POSITION_LEVEL) < 50) {
         incrementVar(VARIABLE_POSITION_LEVEL, 1);

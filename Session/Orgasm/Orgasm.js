@@ -59,7 +59,7 @@ function waitForCumAnswer() {
     }
 }
 
-function decideOrgasm() {
+function decideOrgasm(noDenied = false) {
     let decide = 0;
 
     let array = [
@@ -106,7 +106,7 @@ function decideOrgasm() {
         }
 
         return ORGASM_CATEGORY_ALLOWED;
-    } else if(decide >= 80) {
+    } else if(decide >= 80 || noDenied) {
         let ratioArray = [
             //First personality
             9,

@@ -49,14 +49,12 @@ function feelsLikePunishingSlave() {
 function isAnnoyedByTalking() {
     let mood = getMood();
 
-    //TODO: More stuff like complaining etc.
-
     let chance = 0;
 
     //Talking issues
     chance += getVar(VARIABLE_FORGETTING_HONORIFIC_COUNT, 0)*10*mood;
     chance += getVar(VARIABLE_UNALLOWED_TALKS, 0)*10*mood;
-
+    chance += getVar(VARIABLE_COMPLAINTS, 0)*10*mood;
 
     return isChance(Math.min(100, chance));
 }
@@ -97,6 +95,19 @@ function handleTodaysMood() {
     }
 
     //Otherwise no change
+}
+
+//TODO: Add to it hurts etc.
+function registerComplain() {
+    if(getVar(VARIABLE_COMPLAINTS, 0) > 3) {
+        changeMeritHigh(true);
+    } else if(getVar(VARIABLE_COMPLAINTS) > 1) {
+        changeMeritMedium(true);
+    } else {
+        changeMeritLow(true);
+    }
+
+    setTempVar(VARIABLE_COMPLAINTS, getVar(VARIABLE_COMPLAINTS, 0) + 1);
 }
 
 function registerUnallowedTalk() {

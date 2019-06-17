@@ -39,6 +39,7 @@ const VARIABLE_WEEKLY_CHORES_TIME = "weeklyChoresTime";
 
 const VARIABLE_DENIAL_LIMIT = "denialLimit";
 const VARIABLE_DENIAL_LEVEL = "denialLevel";
+const VARIABLE_DENIAL_HARD_LIMIT_TYPE = "denialHardLimitType";
 
 const VARIABLE_GOLD = "gold";
 
@@ -221,6 +222,7 @@ const VARIABLE_HAPPINESS = "happiness";
 const VARIABLE_LUST = "lust";
 const VARIABLE_ANGER = "anger";
 
+const VARIABLE_COMPLAINTS = 'complaints';
 const VARIABLE_UNALLOWED_TALKS = 'unallowedTalks';
 const VARIABLE_FORGETTING_HONORIFIC_COUNT = 'forgettingHonorificCount';
 

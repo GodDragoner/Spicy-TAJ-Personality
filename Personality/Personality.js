@@ -162,3 +162,14 @@ function addMerits(meritChange) {
 function isEnforcingPersonality() {
     return ENFORCING_PERSONALITY_ID === ACTIVE_PERSONALITY_ID;
 }
+
+function sendAsMuchFun() {
+    sendMessage(random("Hopefully ", 'I hope ') + random("that was as much fun for you as for me", 'you enjoyed this as much as I did', 'you enjoyed this too', 'this was fun for you too'));
+
+    if (ACTIVE_PERSONALITY_STRICTNESS > 0 && feelsLikePunishingSlave()) {
+        sendMessage("Oh wait...");
+        sendMessage("I don't really care %Lol%");
+    } else {
+        sendMessage(random('I certainly enjoyed it %Lol%', 'It was fun for me at least %Lol%', 'I certainly had a lot of fun %Grin%', 'I certainly had a blast %Grin%', 'I certainly really enjoyed this %Lol%'));
+    }
+}
