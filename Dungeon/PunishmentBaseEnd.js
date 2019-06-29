@@ -435,7 +435,7 @@ if (isVar("PunishmentFailed")) {
             sendNurseMessage(random("I know your tummy must be feeling weird right now", "I know that was humiliating"));
             sendNurseMessage(random("But keep your head cool and you'll make it", "But stay calm and you should be fine"));
             sendNurseMessage(random("you'll start feeling more normal soon", "you might want to stay near the toilet though"));
-            sendNurseMessage(random("Gurgle gurgle #Laugh", "  I wonder if I'll get to administer one of those one day"));
+            sendNurseMessage(random("Gurgle gurgle %Laugh%", "  I wonder if I'll get to administer one of those one day"));
             break;
         case 41:
             sendNurseMessage(" Oh my ");

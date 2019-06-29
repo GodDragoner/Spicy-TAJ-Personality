@@ -118,7 +118,7 @@ if(isVar("PunishmentActive") && getVar("PunishmentActive")==true){
 			 chancenum = randomInteger(1,100);
 			 }
 			sendDungeonMessage( random("Okay then","Lets proceed","lets move forward","Lets continue ")); 
-			playAudio("Audio/GNMSounds/SpecialSounds/Bell.mp3");
+			playAudio("Audio/Spicy/SpecialSounds/Bell.mp3");
 			 run("dungeon/SpankzChoir/SpankzChoirBase.js");
 			
 		
@@ -138,7 +138,7 @@ if(isVar("PunishmentActive") && getVar("PunishmentActive")==true){
 			 chancenum = randomInteger(1,100);
 			 }
 			sendDungeonMessage( random("Okay then","Lets proceed","lets move forward","Lets continue ")); 
-			playAudio("Audio/GNMSounds/SpecialSounds/Bell.mp3");
+			playAudio("Audio/Spicy/SpecialSounds/Bell.mp3");
 
 	if(getVar(VARIABLE_PUNISHMENT_POINTS) <100) {
 
