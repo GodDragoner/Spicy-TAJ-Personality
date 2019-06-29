@@ -101,7 +101,7 @@ while (working)
 		if (answer2.isTimeout())
 		
 		{// its time to interupt studying with some teasing and/or exercising
-		 playAudio("Audio/GNMSounds/SpecialSounds/Bell.mp3", true);
+		 playAudio("Audio/Spicy/SpecialSounds/Bell.mp3", true);
 		sendVirtualAssistantMessage("are you there "+random("%SlaveName%","%slave%")+ " ?", 0);
 		answer = createInput(20, "Present Mistress");
 			while (true) {
@@ -217,7 +217,7 @@ function workmodeExercise(exercise) {
 		sendVirtualAssistantMessage(" %GNMSlut% just take a 5 minutes break, look around yourself" );
 		sendVirtualAssistantMessage(" Is there something you can clean or perhaps something else to improve." );
 		sendVirtualAssistantMessage(" 5 minutes! Then you return to whatever you were doing..",300); 
-		playAudio("Audio/GNMSounds/SpecialSounds/Bell.mp3", true);	
+		playAudio("Audio/Spicy/SpecialSounds/Bell.mp3", true);	
 		sendVirtualAssistantMessage("Its time to get back to work now %SlaveName%" );
 		break;
 		case 7:
@@ -236,7 +236,7 @@ function workmodeExercise(exercise) {
 		sendVirtualAssistantMessage(" No gossip or anything similar" );
 		sendVirtualAssistantMessage(" A serious news article from a serious news publisher" );
 		sendVirtualAssistantMessage(" When you're done just return to whatever you were doing..",180); 
-			playAudio("Audio/GNMSounds/SpecialSounds/Bell.mp3", true);	
+			playAudio("Audio/Spicy/SpecialSounds/Bell.mp3", true);	
 		sendVirtualAssistantMessage("Its time to get back to work now %SlaveName%" );
 
 		
@@ -244,7 +244,7 @@ function workmodeExercise(exercise) {
 		case 10:
 		sendVirtualAssistantMessage(" %SlaveName% just close your eyes for 2 minutes" );
 		sendVirtualAssistantMessage(" Just 2 simple minutes",120);
-			playAudio("Audio/GNMSounds/SpecialSounds/Bell.mp3", true);	
+			playAudio("Audio/Spicy/SpecialSounds/Bell.mp3", true);	
 		sendVirtualAssistantMessage("Open your eyes %SlaveName%" );
 		sendVirtualAssistantMessage( random("That was it ","Done!","Stop","Just stop","Stop %GNMSlut%","Stop %SlaveName%")+" "+ random("just return to whatever you we're doing","return to your business","thank you for a little attention") );
 		
@@ -307,7 +307,7 @@ function workmodeTease(tease) {
 	sleep(10);
 	sleep(10);
 						
-	playAudio("Audio/GNMSounds/SpecialSounds/Bell.mp3", true);
+	playAudio("Audio/Spicy/SpecialSounds/Bell.mp3", true);
 	sendVirtualAssistantMessage( random("That was it ","Done!","Stop","Just stop","Stop %GNMSlut%","Stop %SlaveName%")+", " + random("just return to whatever you we're doing","return to your business","thank you for a little attention") );
 
 	
@@ -328,7 +328,7 @@ function workmodeTease(tease) {
 	sleep(10);
 	sleep(10);
 						
-	playAudio("Audio/GNMSounds/SpecialSounds/Bell.mp3", true);
+	playAudio("Audio/Spicy/SpecialSounds/Bell.mp3", true);
 	sendVirtualAssistantMessage( random("That was it ","Done!","Stop","Just stop","Stop %GNMSlut%","Stop %SlaveName%")+", "+random("just return to whatever you we're doing","return to your business","thank you for a little attention") );
 	break;	
 		
@@ -345,7 +345,7 @@ function workmodeTease(tease) {
 	sleep(10);
 	sleep(10);
 						
-	playAudio("Audio/GNMSounds/SpecialSounds/Bell.mp3", true);	
+	playAudio("Audio/Spicy/SpecialSounds/Bell.mp3", true);	
 	
 	sendVirtualAssistantMessage( random("That was it ","Done!","Stop","Just stop","Stop %GNMSlut%","Stop %SlaveName%")+", "+random("just return to whatever you we're doing","return to your business","thank you for a little attention") );
 	break;
