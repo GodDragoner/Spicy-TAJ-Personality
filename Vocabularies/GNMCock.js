@@ -6,7 +6,7 @@ function GNMCockVocabulary() {
     if (getVar("BlockSounds") == true) {
     }
     else {
-        playAudio("Audio/GNMSounds/Humiliation/SmallDick/*.mp3");
+        playAudio("Audio/Spicy/Humiliation/SmallDick/*.mp3");
     }
 
     return answers[randomInteger(0, answers.length - 1)];

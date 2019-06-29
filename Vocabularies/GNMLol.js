@@ -8,7 +8,7 @@ function GNMLolVocabulary() {
 if(getVar("BlockSounds")==true){
 
 	}else
-	{playAudio("GNMSounds/MoanLol/Laugh/*.mp3");
+	{playAudio("Spicy/MoanLol/Laugh/*.mp3");
 	}
 
 }
