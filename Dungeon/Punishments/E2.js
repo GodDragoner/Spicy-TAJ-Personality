@@ -41,7 +41,7 @@ function main()
         return;
         break;
     }
-    
+ end1();   
 }
 function a1()
 {
@@ -51,10 +51,10 @@ function a1()
 }
 function Loop1()
 {
-    let answer0 = getInput("%GNMReady% ");
+    let answer0 = sendInput("%GNMReady% ");
     while (!(answer0.isLike("yes") || answer0.isLike("no")))
     {
-        answer0 = getInput("%GNMYesOrNo% ");
+        answer0 = sendInput("%GNMYesOrNo% ");
     }
     if (answer0.isLike("yes"))
     {
@@ -67,8 +67,8 @@ function Loop1()
         Loop1();
         return;
     }
-    sendMessage(random("This is fairly simple ", "This is simple enough ", "You shouldn\'t find this too difficuilt ") );
-    sendMessage(random("I want you to hold the rubberband like","You are to hold the rubberband like this")
+    sendMessage(random("This is fairly simple ", "This is simple enough ", "You shouldn\'t find this too difficult ") );
+    sendMessage(random("I want you to hold the rubberband like","You are to hold the rubberband like this"));
 	showImage("GNMImages/Toys/Rubberband.*");
     sendMessage(random("Hold it close to the head of your %GNMCock% ", "It\'s going near the head of your %GNMCock% ") );
     setVar("TempHits", 0);
@@ -79,9 +79,8 @@ function Loop1()
     sendMessage(random("You are to strike the head of your %GNMCock% ", "I want you to release the rubberband on your cock head ") );
     sendMessage(getvar("TempHits")+" times");
     sendMessage(random("Let me know when you\'re done ", "Inform me when you\'re done ") + "%SlaveName% ");
-    --Command:CustomMode(done,Goto,End1)
-    wait(999999);
-    a2();
+    waitfordone();
+
 }
 function a2()
 {
@@ -91,10 +90,10 @@ function a2()
 }
 function Loop2()
 {
-    let answer0 = getInput("%GNMReady%  ");
+    let answer0 = sendInput("%GNMReady%  ");
     while (!(answer0.isLike("yes") || answer0.isLike("no")))
     {
-        answer0 = getInput("%GNMYesOrNo% ");
+        answer0 = sendInput("%GNMYesOrNo% ");
     }
     if (answer0.isLike("yes"))
     {
@@ -107,7 +106,7 @@ function Loop2()
         Loop2();
         return;
     }
-    sendMessage(random("This is fairly simple ", "This is simple enough ", "You shouldn\'t find this too difficuilt ") );
+    sendMessage(random("This is fairly simple ", "This is simple enough ", "You shouldn\'t find this too difficult ") );
     setVar("TempHits", getVar("TempHits", 0) + getVar("SubPain", 0));
     sendMessage(random("I want you to use that spoon and smack your %GNMBalls% ", "You are to use the spoon and smack your %GNMBalls% ") );
     setVar("TempHits", getVar("TempHits", 0) * 4);
@@ -117,9 +116,8 @@ function Loop2()
     sendMessage(random("To be precise I want you to hit your precious %GNMBalls% ", "You\'re gonna hit your %GNMBalls% ") );
     sendMessage(getVar("TempHits") +" times");
     sendMessage(random("Let me know when you\'re done ", "Inform me when you\'re done ") + "%SlaveName% ");
-    --Command:CustomMode(done,Goto,End1)
-    wait(999999);
-    a3();
+   waitfordone();
+
 }
 function a3()
 {
@@ -129,10 +127,10 @@ function a3()
 }
 function Loop3()
 {
-    let answer0 = getInput("%GNMReady% ");
+    let answer0 = sendInput("%GNMReady% ");
     while (!(answer0.isLike("yes") || answer0.isLike("no")))
     {
-        answer0 = getInput("%GNMYesOrNo% ");
+        answer0 = sendInput("%GNMYesOrNo% ");
     }
     if (answer0.isLike("yes"))
     {
@@ -145,7 +143,7 @@ function Loop3()
         Loop3();
         return;
     }
-    sendMessage(random("This is fairly simple ", "This is simple enough ", "You shouldn\'t find this too difficuilt ") );
+    sendMessage(random("This is fairly simple ", "This is simple enough ", "You shouldn\'t find this too difficult ") );
     setVar("TempHits", getVar("TempHits", 0) + getVar("SubPain", 0));
     sendMessage(random("I want you to place the book on a table ", "You should place the book on a table ") );
     setVar("TempHits", getVar("TempHits", 0) * 3);
@@ -155,9 +153,7 @@ function Loop3()
     sendMessage(random("To be precise I want you to hit your precious %GNMBalls%", "You\'re gonna hit your %GNMBalls%"));
 	sendMessage(getVar("TempHits") +" times");
     sendMessage(random("Let me know when you\'re done ", "Inform me when you\'re done ") + "%SlaveName% ");
-    --Command:CustomMode(done,Goto,End1)
-    wait(999999);
-    End1();
+    waitfordone();
 }
 function End1()
 {
@@ -167,7 +163,7 @@ function End1()
         return;
     }
     sendMessage("Now you\'ll be using your hand. ");
-    --Command:CustomMode(done,Goto,End)
+  
     switch(random("a", "b", "c"))
     {
         case "a":
@@ -183,33 +179,31 @@ function End1()
         return;
         break;
     }
-    a();
+ 
 }
 function a()
 {
-    sendMessage("Let\'s give those %GNMBalls% another");
-    --Command:ShowVar(SubPain)
-    wait(999999);
-    b();
+    sendMessage("Let\'s give those %GNMBalls% another "+getVar("SubPain")+ " smacks.");
+   waitfordone();
+    End();
 }
 function b()
 {
-    sendMessage("I want your %GNMBalls% to really hurt. Give them another hard slap, Punch your %GNMBalls%");
-    --Command:ShowVar(SubPain)
-    wait(999999);
-    c();
+    sendMessage("I want your %GNMBalls% to really hurt. Give them another hard slap, Punch your %GNMBalls% "+getVar("SubPain")+ " times.");
+    waitfordone();
+  
+    End();
 }
 function c()
 {
-    sendMessage("Take your %GNMBalls% into your one hand and snap each of them");
-    --Command:ShowVar(SubPain)
-    wait(999999);
+    sendMessage("Take your %GNMBalls% into your one hand and snap each of them "+getVar("SubPain")+ " times.");
+    waitfordone();
     End();
 }
 function End()
 {
     sendMessage("I hope this was as much fun for you as it was for me %GNMLol% ");
-    --Command:CustomMode(ModeText,Normal)
+
     wait(5);
     sendMessage("You can put the gear away for now %GNMEmoteHappy% ");
     wait(8);

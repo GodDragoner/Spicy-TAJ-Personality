@@ -57,7 +57,8 @@ function Info()
     }
     else
     {
-        sendMessage("%GNMGood% ");
+        sendMessage("well go charge it quickly and tell me when its done ");
+		waitforDone();
     }
     sendMessage("Go ahead and turn it on and wrap the collar around your %balls%");
     sleep(15);
@@ -274,7 +275,7 @@ function Holdit()
     sleep(5);
     sendMessage("This time %SlaveName% I want you to hold the button for the duration of the sound you\'re about to hear.");
     sendMessage(random("Tap","press","hold")+" the controller!" );
-	playAudio("Audio/GNMSounds/Electricity.mp3");
+	playAudio("Audio/Spicy/Electricity.mp3");
 
 	response=sendInput("",10);
 	     while(true){
@@ -318,7 +319,7 @@ function FF1()
 	sleep(3);
     sendArbMessage(textName,random("Tap","press","hold","tap twice")+" the controller bitch ",0);
 	showImage("Images/Spicy/FFriends/1/*");
-	playAudio("Audio/GNMSounds/Electricity.mp3");
+	playAudio("Audio/Spicy/Electricity.mp3");
 	response=sendInput("",10);
 	     while(true){
 		 if (response.isLike("yes")) {
@@ -366,7 +367,7 @@ function FF2()
     sendArbMessage(textName,random("Tap","press","hold","tap twice")+" the controller ",0);
 
 	  showImage("Images/Spicy/FFriends/2/*");
-	  playAudio("Audio/GNMSounds/Electricity.mp3");
+	  playAudio("Audio/Spicy/Electricity.mp3");
 	
 		response=sendInput("",10);
 	     while(true){
@@ -410,7 +411,7 @@ function FF3()
 	sleep(3) ;
    sendArbMessage(textName,random("Tap","press","hold","tap twice")+ " the controller twice cutie ",0);
 	showImage("Images/Spicy/FFriends/3/*");
-	playAudio("Audio/GNMSounds/Electricity.mp3");
+	playAudio("Audio/Spicy/Electricity.mp3");
 	response=sendInput("",10);
 	     while(true){
 		 if (response.isLike("yes")) {
@@ -449,7 +450,7 @@ function Black()
 function Rip()
 {
     sendMessage(random("Tap","press","hold","tap twice","squeeze")+" the controller ");
-    playAudio("Audio/GNMSounds/Electric Shock.mp3");
+    playAudio("Audio/Spicy/Electric Shock.mp3");
 	response=sendInput("",10);
 	     while(true){
 		 if (response.isLike("yes")) {

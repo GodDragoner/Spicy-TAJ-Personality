@@ -182,7 +182,7 @@ sendMessage (" Today you will be given "+caningNumber + " strikes %SlaveName%");
 		sendMessage("a little further %Bitch%...", randomInteger(1,2)); //#DT4
 		break;
 	}
-	playAudio("Audio/GNMSounds/Punishment/SpankingCane/Cane1.mp3"); // @Goto(CaningBase)
+	playAudio("Audio/Spicy/Punishment/SpankingCane/Cane1.mp3"); // @Goto(CaningBase)
  }
 sendMessage("Well done %SubName%"); //#DT4
 sendMessage("I'm impressed by your willpower today "); //#DT4 

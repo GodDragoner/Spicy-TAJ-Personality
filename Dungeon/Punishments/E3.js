@@ -71,7 +71,7 @@ function Count()
 	}else{
 		sendMessage( "%hit% "+ random("those","%domhonorific% %DomName%s")+" %GNMBalls%  ");
 	}
-	 playAudio("Audio/GNMSounds/Punishment/SpankingCane/Cane1.mp3", true);
+	 playAudio("Audio/Spicy/Punishment/SpankingCane/Cane1.mp3", true);
     setVar("Time", getVar("Time", 0) + 1);
     if (getVar("Time", 0) >= getVar("Times", 0))
     {
@@ -114,7 +114,7 @@ function ParachutePunishment()
         wait(randomInt(600, 1200));
 	}
         sendMessage(random("Come back here","get back")); 
-		playAudio("Audio/GNMSounds/SpecialSounds/Bell.mp3");
+		playAudio("Audio/Spicy/SpecialSounds/Bell.mp3");
 		Wait(15)
 
     End();
