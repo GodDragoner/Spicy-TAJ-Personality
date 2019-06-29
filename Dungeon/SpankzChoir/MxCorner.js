@@ -33,7 +33,7 @@
 	 //@If[CornerTimer]>=[CornertimeTimeLimit]Then(EndBell) @Chance10(EndBell) @Goto(Timer2)
 	}
 	//(EndBell)
-		 playAudio("Audio/GNMSounds/SpecialSounds/Bell.mp3", true);
+		 playAudio("Audio/Spicy/SpecialSounds/Bell.mp3", true);
 		 
 		     response = sendInput(" Are you back with me slave? ",10);
      while(true){

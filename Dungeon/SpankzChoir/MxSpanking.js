@@ -18,12 +18,12 @@ switch(spanks)
 	 setVar("SpankingCount",getVar("SpankingCount")+10 );
 	 	MXoverlapmessage(random("left","left","bottom left","top left")+" " + random("ass!","asscheek!","buttcheek!","cheek!","rear cheek","rear","sitspots!") ); 
 	 if (fastorslow==0)
-		{ playAudio("Audio/GNMSounds/Punishment/SpankingTask/10Strikes/Spank10.mp3", true);
+		{ playAudio("Audio/Spicy/Punishment/SpankingTask/10Strikes/Spank10.mp3", true);
 		 sleep(17);
 		}
 		else
 		{ MXoverlapmessage(random("Fast ones!","Quick ones!","Speedy ones!"));
-		 playAudio("Audio/GNMSounds/Punishment/SpankingTask/10Strikes/Spank10Fast.mp3", true);
+		 playAudio("Audio/Spicy/Punishment/SpankingTask/10Strikes/Spank10Fast.mp3", true);
 		sleep(9);
 		}
 		
@@ -31,12 +31,12 @@ switch(spanks)
 	 setVar("SpankingCount",getVar("SpankingCount")+10 );
 	 	MXoverlapmessage(random("right","right","bottom right","top right")+" " + random("ass!","asscheek!","buttcheek!","cheek!","rear cheek","rear","sitspots!") ); 
 	 if (fastorslow==0)
-		{ playAudio("Audio/GNMSounds/Punishment/SpankingTask/10Strikes/Spank10.mp3", true);
+		{ playAudio("Audio/Spicy/Punishment/SpankingTask/10Strikes/Spank10.mp3", true);
 		 sleep(17);
 		}
 		else
 		{ MXoverlapmessage(random("Fast ones!","Quick ones!","Speedy ones!"));
-		 playAudio("Audio/GNMSounds/Punishment/SpankingTask/10Strikes/Spank10Fast.mp3", true);
+		 playAudio("Audio/Spicy/Punishment/SpankingTask/10Strikes/Spank10Fast.mp3", true);
 		sleep(9);
 		}
 		
@@ -48,12 +48,12 @@ switch(spanks)
 	 setVar("SpankingCount",getVar("SpankingCount")+20 );
 	 	MXoverlapmessage(random("left","left","bottom left","top left")+" " + random("ass!","asscheek!","buttcheek!","cheek!","rear cheek","rear","sitspots!") ); 
 	 if (fastorslow==0)
-		{ playAudio("Audio/GNMSounds/Punishment/SpankingTask/20Strikes/Spank20.mp3", true);
+		{ playAudio("Audio/Spicy/Punishment/SpankingTask/20Strikes/Spank20.mp3", true);
 		 sleep(34);
 		}
 		else
 		{ MXoverlapmessage(random("Fast ones!","Quick ones!","Speedy ones!"));
-		 playAudio("Audio/GNMSounds/Punishment/SpankingTask/20Strikes/Spank20Fast.mp3", true);
+		 playAudio("Audio/Spicy/Punishment/SpankingTask/20Strikes/Spank20Fast.mp3", true);
 		sleep(17);
 		}
 		
@@ -61,12 +61,12 @@ switch(spanks)
 	 setVar("SpankingCount",getVar("SpankingCount")+20 );
 	 	MXoverlapmessage(random("right","right","bottom right","top right")+" " + random("ass!","asscheek!","buttcheek!","cheek!","rear cheek","rear","sitspots!") ); 
 	 if (fastorslow==0)
-		{ playAudio("Audio/GNMSounds/Punishment/SpankingTask/20Strikes/Spank20.mp3", true);
+		{ playAudio("Audio/Spicy/Punishment/SpankingTask/20Strikes/Spank20.mp3", true);
 		 sleep(34);
 		}
 		else
 		{ MXoverlapmessage(random("Fast ones!","Quick ones!","Speedy ones!"));
-		 playAudio("Audio/GNMSounds/Punishment/SpankingTask/20Strikes/Spank20Fast.mp3", true);
+		 playAudio("Audio/Spicy/Punishment/SpankingTask/20Strikes/Spank20Fast.mp3", true);
 		sleep(17);
 		}
 		
@@ -78,12 +78,12 @@ switch(spanks)
 	 setVar("SpankingCount",getVar("SpankingCount")+30 );
 	 	MXoverlapmessage(random("left","left","bottom left","top left")+" " + random("ass!","asscheek!","buttcheek!","cheek!","rear cheek","rear","sitspots!") ); 
 	 if (fastorslow==0)
-		{ playAudio("Audio/GNMSounds/Punishment/SpankingTask/30Strikes/Spank30.mp3", true);
+		{ playAudio("Audio/Spicy/Punishment/SpankingTask/30Strikes/Spank30.mp3", true);
 		 sleep(50);
 		}
 		else
 		{ MXoverlapmessage(random("Fast ones!","Quick ones!","Speedy ones!"));
-		 playAudio("Audio/GNMSounds/Punishment/SpankingTask/30Strikes/Spank30Fast.mp3", true);
+		 playAudio("Audio/Spicy/Punishment/SpankingTask/30Strikes/Spank30Fast.mp3", true);
 		sleep(25);
 		}
 		
@@ -91,12 +91,12 @@ switch(spanks)
 	 setVar("SpankingCount",getVar("SpankingCount")+30 );
 	 	MXoverlapmessage(random("right","right","bottom right","top right")+" " + random("ass!","asscheek!","buttcheek!","cheek!","rear cheek","rear","sitspots!") ); 
 	 if (fastorslow==0)
-		{ playAudio("Audio/GNMSounds/Punishment/SpankingTask/30Strikes/Spank30.mp3", true);
+		{ playAudio("Audio/Spicy/Punishment/SpankingTask/30Strikes/Spank30.mp3", true);
 		 sleep(50);
 		}
 		else
 		{ MXoverlapmessage(random("Fast ones!","Quick ones!","Speedy ones!"));
-		 playAudio("Audio/GNMSounds/Punishment/SpankingTask/30Strikes/Spank30Fast.mp3", true);
+		 playAudio("Audio/Spicy/Punishment/SpankingTask/30Strikes/Spank30Fast.mp3", true);
 		sleep(25);
 		}
 		
@@ -108,12 +108,12 @@ switch(spanks)
 	 setVar("SpankingCount",getVar("SpankingCount")+40 );
 	 	MXoverlapmessage(random("left","left","bottom left","top left")+" " + random("ass!","asscheek!","buttcheek!","cheek!","rear cheek","rear","sitspots!") ); 
 	 if (fastorslow==0)
-		{ playAudio("Audio/GNMSounds/Punishment/SpankingTask/40Strikes/Spank40.mp3", true);
+		{ playAudio("Audio/Spicy/Punishment/SpankingTask/40Strikes/Spank40.mp3", true);
 		 sleep(67);
 		}
 		else
 		{ MXoverlapmessage(random("Fast ones!","Quick ones!","Speedy ones!"));
-		 playAudio("Audio/GNMSounds/Punishment/SpankingTask/40Strikes/Spank40Fast.mp3", true);
+		 playAudio("Audio/Spicy/Punishment/SpankingTask/40Strikes/Spank40Fast.mp3", true);
 		sleep(33);
 		}
 		
@@ -121,12 +121,12 @@ switch(spanks)
 	 setVar("SpankingCount",getVar("SpankingCount")+40 );
 	 	MXoverlapmessage(random("right","right","bottom right","top right")+" " + random("ass!","asscheek!","buttcheek!","cheek!","rear cheek","rear","sitspots!") ); 
 	 if (fastorslow==0)
-		{ playAudio("Audio/GNMSounds/Punishment/SpankingTask/40Strikes/Spank40.mp3", true);
+		{ playAudio("Audio/Spicy/Punishment/SpankingTask/40Strikes/Spank40.mp3", true);
 		 sleep(67);
 		}
 		else
 		{ MXoverlapmessage(random("Fast ones!","Quick ones!","Speedy ones!"));
-		 playAudio("Audio/GNMSounds/Punishment/SpankingTask/40Strikes/Spank40Fast.mp3", true);
+		 playAudio("Audio/Spicy/Punishment/SpankingTask/40Strikes/Spank40Fast.mp3", true);
 		sleep(33);
 		}
 		
@@ -138,12 +138,12 @@ switch(spanks)
 	 setVar("SpankingCount",getVar("SpankingCount")+50 );
 	 	MXoverlapmessage(random("left","left","bottom left","top left")+" " + random("ass!","asscheek!","buttcheek!","cheek!","rear cheek","rear","sitspots!") ); 
 	 if (fastorslow==0)
-		{ playAudio("Audio/GNMSounds/Punishment/SpankingTask/50Strikes/Spank50.mp3", true);
+		{ playAudio("Audio/Spicy/Punishment/SpankingTask/50Strikes/Spank50.mp3", true);
 		 sleep(83);
 		}
 		else
 		{ MXoverlapmessage(random("Fast ones!","Quick ones!","Speedy ones!"));
-		 playAudio("Audio/GNMSounds/Punishment/SpankingTask/50Strikes/Spank50Fast.mp3", true);
+		 playAudio("Audio/Spicy/Punishment/SpankingTask/50Strikes/Spank50Fast.mp3", true);
 		sleep(40);
 		}
 		
@@ -151,12 +151,12 @@ switch(spanks)
 	 setVar("SpankingCount",getVar("SpankingCount")+50 );
 	 	MXoverlapmessage(random("right","right","bottom right","top right")+" " + random("ass!","asscheek!","buttcheek!","cheek!","rear cheek","rear","sitspots!") ); 
 	 if (fastorslow==0)
-		{ playAudio("Audio/GNMSounds/Punishment/SpankingTask/50Strikes/Spank50.mp3", true);
+		{ playAudio("Audio/Spicy/Punishment/SpankingTask/50Strikes/Spank50.mp3", true);
 		 sleep(83);
 		}
 		else
 		{ MXoverlapmessage(random("Fast ones!","Quick ones!","Speedy ones!"));
-		 playAudio("Audio/GNMSounds/Punishment/SpankingTask/50Strikes/Spank50Fast.mp3", true);
+		 playAudio("Audio/Spicy/Punishment/SpankingTask/50Strikes/Spank50Fast.mp3", true);
 		sleep(40);
 		}
 		

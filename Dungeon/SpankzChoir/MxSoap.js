@@ -29,7 +29,7 @@ switch(choice)
 	sleep(randomInteger(20,40));
 	}
 	MXmessage(random("Enough!","Come back here!","Return to me slave..","Slave get back here..","Naugthy boy come here!"));
-	 playAudio("Audio/GNMSounds/SpecialSounds/Bell.mp3", true);
+	 playAudio("Audio/Spicy/SpecialSounds/Bell.mp3", true);
 	sleep(3);
 	break;
 }
