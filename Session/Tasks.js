@@ -91,10 +91,10 @@ function startTimePassTasks(durationMinutes, allowTeasing = true) {
                 iterations = 0;
                 continue;
             case 3:
-                if(!isPlugged() && getAnalLimit() == LIMIT_ASKED_YES) {
+                if(!isPlugged() && ANAL_LIMIT.isAllowed()) {
                     if(putInButtplug()) {
                         if(isChance(50)) {
-                            //TODO: What was I planning on doing?
+                           goToCorner(getCornerTime());
                         }
                     } else {
                         iterations = 0;
@@ -118,6 +118,8 @@ function startTimePassTasks(durationMinutes, allowTeasing = true) {
 
                 break;
         }
+
+        //TODO: Limit and toy talk
 
         iterations++;
     }

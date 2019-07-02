@@ -1,6 +1,6 @@
 {
     if (tryRunOrgasmFetchId()) {
-        sendMessage("In a moment I\'m going to tell you to put your %Cock% back in your pants");
+        sendMessage("In a moment I\'m going to tell you to put your %CockAndChastity% back in your pants");
         sendMessage("But not before you\'ve edged for me one last time");
         sendMessage("Do it %SlaveName%");
         startEdging();
@@ -25,13 +25,12 @@
                 sendMessage("%LetEdgeFade%");
             }
 
-            sendMessage('Now you can put that %Cock% back in your pants');
+            sendMessage('Now you can put that %CockAndChastity% back in your pants');
         }
 
         let answer = sendInput("Say thank you, %SlaveName%");
 
         while (true) {
-            //TODO: Unified check for thank you answer with Honorific attached!
             if (answer.isLike("you", "thanks", "gracias", "merci", "grateful", "gratitude")) {
                 sendMessage("You\'re welcome %SlaveName% %Grin%");
                 break;

@@ -63,6 +63,24 @@ function interpretLegacyTaunt(message, tauntType = LEGACY_TAUNT_TYPE_STROKE) {
         message = message.replace(tag, '');
     }
 
+    tag = '@ShowBlowjobImage';
+    let showBlowjobImage = message.indexOf(tag) !== -1;
+    if (showBlowjobImage) {
+        message = message.replace(tag, '');
+    }
+
+    tag = '@ShowButtImage';
+    let showButtImage = message.indexOf(tag) !== -1;
+    if (showButtImage) {
+        message = message.replace(tag, '');
+    }
+
+    tag = '@@DecideKneeling';
+    let decideKneeling = message.indexOf(tag) !== -1;
+    if (decideKneeling) {
+        message = message.replace(tag, '');
+    }
+
     message.trim();
 
     sendMessage(message, 0);
@@ -106,6 +124,18 @@ function interpretLegacyTaunt(message, tauntType = LEGACY_TAUNT_TYPE_STROKE) {
         showCategoryImage('CAPTIONS');
     } else if(showGayImage) {
         showCategoryImage('GAY');
+    } else if(showGayImage) {
+        showCategoryImage('BLOWJOB');
+    } else if(showButtImage) {
+        showCategoryImage('BUTTS');
+    }
+
+    if(decideKneeling) {
+        if(isKneeling() && decideStopKneeling()) {
+            stopKneeling();
+        } else {
+            sendMessage('I hope your knees don\'t hurt too much yet %Grin%')
+        }
     }
 
     return message;

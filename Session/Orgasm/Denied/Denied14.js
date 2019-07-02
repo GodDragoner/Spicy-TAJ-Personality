@@ -1,8 +1,13 @@
 {
     if (tryRunOrgasmFetchId()) {
         sendMessage("That %Cock% looks like it\'s about ready to explode %Lol%");
-        tieBalls();
-        sendMessage("%StartStroking%");
+
+        if(!isInChastity()) {
+            tieBalls();
+            sendMessage("%StartStroking%");
+        } else {
+            sendMessage('Put the vibrator on the cage %Grin%');
+        }
 
         if(isChance(50)) {
             sendMessage("You don\'t have permission to cum yet, so be careful");
@@ -23,7 +28,9 @@
                 sendMessage("Are you worried that maybe I won\'t let you cum at all now?");
                 sendMessage("You can never sure what\'s going to happen next, right?");
                 sendMessage("But isn\'t that what makes this exciting? The uncertainty...");
+
                 sendMessage("%StartStroking%");
+
                 sendMessage("5");
                 sendMessage("4");
                 sendMessage("3");

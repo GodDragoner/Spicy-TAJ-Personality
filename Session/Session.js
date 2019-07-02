@@ -11,9 +11,8 @@ function endSpicySession() {
         run('Session/End/ChastityTraining/ChastityTraining.js');
     } else {
         //Lock up part
-        if (!isInChastity() && willKeepChastityOn()) {
+        if (!isInChastity() && willKeepChastityOn(true)) {
             lockChastityCage();
-            //TODO: Interactive stuff?
         }
     }
 

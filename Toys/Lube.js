@@ -1,3 +1,5 @@
+let SPIT_BOWL_FILLED = false;
+
 function lubeUpToyWithLube(toy) {
     if (isChance(50)) {
         sendMessage("Grab your lube and lube up your " + toy);
@@ -14,22 +16,52 @@ function lubeUpToyWithLube(toy) {
 function lubeUpToyWithSpit(toy, canBlowjob = true) {
     sendMessage(random("Use your spit and lube your " + toy + " up", "Use your spit as lube for your " + toy, "Go ahead and use your spit as lube for your " + toy));
 
-    if (isChance(50) && !isGaged() && canBlowjob) {
-        sendMessage(random("I want you to suck it until I tell you to stop", "Give it a nice quick blowjob until I tell you to stop", "Give it a good and nice blowjob until it is soaked in your spit"));
-        sleep(30);
-        sendMessage("You can stop now %SlaveName%");
-    } else {
-        if (isGaged()) {
-            sendMessage("This is gonna be fun with that gag in your mouth");
-            sendMessage("Watching your desperately trying to get some spit on it");
-            sendMessage("Go ahead and try to drool some spit onto your " + toy);
-            sendMessage("If you can't make it your ass will get to feel it %Grin%");
-        } else {
-            sendMessage("Come on. Soak it in your spit and make it nice and slippery", 10);
-        }
+    if(SPIT_BOWL_FILLED) {
+        sendMessage('Since you got that filled spit bowl go ahead and use the remaining spit to lube up your ' + toy);
 
         sendMessage('Tell me when you are done %EmoteHappy%');
         waitForDone();
+    } else {
+        if(feelsEvil() && isChance(10) && hasDildoToy() && getBlowjobLevel() >= 30 && canBlowjob && !isGaged()) {
+            sendMessage('You know what?');
+
+            if(fetchDildoToy(getDildo(true).name)) {
+                if(!ASM_LIMIT.isAllowed()) {
+                    sendMessage('You may clean your dildo if need be before we are getting to this');
+                }
+
+                startDeepthroatModule(true);
+                SPIT_BOWL_FILLED = true;
+                sendMessage('Great!');
+                sendMessage('Now dip your ' + toy + ' into the spit until it\'s nicely lubed up');
+
+                sendMessage('Tell me when you are done %EmoteHappy%');
+                waitForDone();
+                return;
+            } else {
+                sendMessage('Well then...');
+            }
+        }
+
+        //We return above if we were able to produce some spit so we need to else if
+
+        if (isChance(50) && !isGaged() && canBlowjob) {
+            sendMessage(random("I want you to suck it until I tell you to stop", "Give it a nice quick blowjob until I tell you to stop", "Give it a good and nice blowjob until it is soaked in your spit"));
+            sleep(30);
+            sendMessage("You can stop now %SlaveName%");
+        } else {
+            if (isGaged()) {
+                sendMessage("This is gonna be fun with that gag in your mouth");
+                sendMessage("Watching your desperately trying to get some spit on it");
+                sendMessage("Go ahead and try to drool some spit onto your " + toy);
+                sendMessage("If you can't make it your ass will get to feel it %Grin%");
+            } else {
+                sendMessage("Come on. Soak it in your spit and make it nice and slippery", 10);
+            }
+
+            sendMessage('Tell me when you are done %EmoteHappy%');
+            waitForDone();
+        }
     }
 }
 

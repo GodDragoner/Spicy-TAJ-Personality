@@ -24,8 +24,6 @@
         sendMessage('Butts = a small pause');
         sendMessage('Lezdom = add a peg to anywhere on your body');
 
-        //TODO: Fetch pegs
-
         sendMessage("Now there a few extra rules depending on how many pictures of each you\'ve landed on");
         sendMessage('7 gay images = orgasm to a picture of a dick');
         sendMessage('3 lesbian images = 4 edges in a row');
@@ -74,8 +72,7 @@ function startGayPictureRound() {
 
         setTempVar('gayPictureGameIndex', index);
 
-        //TODO: Play around with the delay
-        sleep(200, 'MILLISECONDS ');
+        sleep(300, 'MILLISECONDS');
     }
 
 
@@ -119,7 +116,7 @@ function startGayPictureRound() {
             if (newValue % 5 == 0 && newValue != 0) {
                 sendMessage("That was the fifth time you hit the butt stop", 0);
                 sendMessage("Which means this game is at an end");
-                sendMessage("Be glad you didn\'t end with denial %GNMLol%");
+                sendMessage("Be glad you didn\'t end with denial %Lol%");
                 endGayPictureGame();
                 return;
             }
@@ -183,9 +180,15 @@ function startGayPictureRound() {
 
                 if (feelsEvil()) {
                     sendMessage('But I never said that you are gonna cum now %Grin%');
-                    //TODO: Interaction yes no
-                    sendMessage('Oh wait... Did you really think I was gonna let you cum now? %Lol%');
-                    sendMessage('Poor %SlaveName%...');
+
+                    let answer = sendYesOrNoQuestionTimeout('Oh wait... Did you really think I was gonna let you cum now? %Lol%', 5);
+                    if(answer === ANSWER_YES) {
+                        sendMessage('Poor %SlaveName%...');
+                    } else if(answer === ANSWER_NO) {
+                        sendMessage('I guess it is still quite frustrating %Grin%');
+                    }
+
+
                     sendMessage('I was never intending on letting you cum now %Grin%');
                     sendMessage('I never specified when you are going to cum to a picture of a dick');
                     sendMessage('So you just gotta hang in there and wait %EmoteHappy%');
@@ -210,7 +213,7 @@ function startGayPictureRound() {
                         sendMessage('When we are already dealing with gay pictures we can go all out...');
                         sendMessage('Let\'s say it is gonna be interesting %Grin%');
 
-                        if (dildoCEI && isChance(50) || !dildoAnal) {
+                        if (dildoCEI && isChance(50) || !ASM_LIMIT.isAllowed() && dildoAnal) {
                             //Dildo CEI in this case
                             dildoAnal = false;
                         }
@@ -241,9 +244,8 @@ function startGayPictureRound() {
                 if (feelsLikePunishingSlave()) {
                     ruin = true;
 
-                    //TODO: Sound file
                     registerRuin();
-                    sendMessage('Ruin it %SlaveName%');
+                    sendMessage('%RuinForMe%');
                     sendMessage('Ye that\'s right %Grin%');
                     sendMessage('Let that cum dribble out of your %Cock%');
 
@@ -251,14 +253,22 @@ function startGayPictureRound() {
                         sendMessage('Right onto that dildo %Grin%');
                     }
 
-                    sendMessage('You don\'t deserve to experience a full orgasm and you know that, right?');
-                    //TODO: Yes or no interaction
+                    let excited = sendYesOrNoQuestionTimeout('You don\'t deserve to experience a full orgasm and you know that, right?', 5);
+
+                    if(excited === ANSWER_YES) {
+                        sendMessage('%Good%');
+                    } else if(excited === ANSWER_NO) {
+                        sendMessage('Well I definitely don\'t think so and I am making the decisions here %Lol%');
+                        changeMeritLow(true);
+                    }
+
                     sendMessage('Just because you got a bit lucky doesn\'t means that I am gonna let you enjoy a full orgasm');
                     sendMessage('Deciding about that privilege is still up to me and I don\'t think you deserve it %Lol%');
                     sendMessage('Tell me when you are done letting your pathetic cum dribble out of that %Cock%');
                     waitForDone();
                 } else {
-                    sendMessage("Cum %SlaveName%");
+                    sendMessage('%CumForMe%');
+                    registerOrgasm();
 
                     if (cumOnDildo) {
                         sendMessage(randomInteger('Right', 'Spurt your load') + ' onto that dildo %Grin%');
@@ -276,8 +286,13 @@ function startGayPictureRound() {
                     sendMessage('Try to rub your dildo in the cum without losing anything that\'s already on there', 5);
                     sendMessage('%Good%');
 
-                    //TODO: Yes or no interaction
-                    sendMessage('Are you exited for what\'s gonna happen next %SlaveName%?');
+                    let excited = sendYesOrNoQuestionTimeout('Are you exited for what\'s gonna happen next %SlaveName%?', 5);
+
+                    if(excited === ANSWER_YES) {
+                        sendMessage('Hopefully you will think the same after we are done %Lol%');
+                    } else if(excited === ANSWER_NO) {
+                        sendMessage('Well I am definitely %Grin%');
+                    }
 
                     if (dildoAnal) {
                         sendMessage('Well I want you to get on all fours');
@@ -311,158 +326,206 @@ function startGayPictureRound() {
 
                         sendMessage('Just lock at it');
                         sendMessage('Can you smell that ass juice mixed with your cum?');
-                        sendMessage('How does it look? Does it look tasty?');
 
-                        //TODO: Interaction
+                        let tastyAnswer = sendYesOrNoQuestionTimeout('How does it look? Does it look tasty?', 5);
 
-                        if (getASMLimit() == LIMIT_ASKED_YES && getCEILimit() == LIMIT_ASKED_YES) {
-                            sendMessage('Would you like to clean it with your tongue?');
+                        if(tastyAnswer === ANSWER_YES) {
+                            sendMessage('Really? %Lol%');
+
+                            if(getASMLimit() != LIMIT_ASKED_YES) {
+                                ASM_LIMIT.askForLimitChange(true);
+                            } else {
+                                if (getASMLimit() == LIMIT_ASKED_YES && getCEILimit() == LIMIT_ASKED_YES) {
+                                    let cleanAnswer = sendYesOrNoQuestionTimeout('Would you like to clean it with your tongue?', 5);
+
+                                    if(cleanAnswer === ANSWER_YES) {
+                                        sendMessage('Just what I wanted to hear %Grin%');
+                                        dildoCEI = true;
+                                    } else if(cleanAnswer === ANSWER_NO) {
+                                        if(ASM_LIMIT.isAllowed() && CEI_LIMIT.isAllowed()) {
+                                            sendMessage('Well you know that I am gonna make you lick it clean anyway %Lol%');
+                                            dildoCEI = true;
+                                        }
+                                    }
+                                }
+                            }
+                        } else if(tastyAnswer === ANSWER_NO) {
+                            if(ASM_LIMIT.isAllowed() && CEI_LIMIT.isAllowed()) {
+                                sendMessage('Well you know that I am gonna make you lick it clean anyway %Lol%');
+                                dildoCEI = true;
+                            } else {
+                                sendMessage('Pretty disgusting if you ask me %Grin%');
+                            }
+                        }
+                    }
+
+                    if(dildoCEI) {
+                        sendMessage('I want you to place that dildo in front of you');
+                        sendMessage('And then I want you to give it a nice blowjob');
+
+                        if(RULE_NEVER_SWALLOW_SPIT.isActive()) {
+                            sendMessage('Remember to not swallow unless I allow you to');
+
+                            if(SISSY_LIMIT.isAllowed()) {
+                                sendMessage('Good sissies never swallow during a blowjob %Grin%');
+                            }
                         }
 
-                        sendMessage();
-                    }
+                        sendMessage('Start by giving the cum covered tip some kisses', 3);
+                        sendMessage('Show it some love %Grin%', 2);
 
-                    sendMessage('I want you to place that dildo in front of you');
-                    sendMessage('And then I want you to give it a nice blowjob');
+                        let cleanAnswer = sendYesOrNoQuestionTimeout('How does it taste? Good doesn\'t it?', 5);
 
-                    if(RULE_NEVER_SWALLOW_SPIT.isActive()) {
-                        sendMessage('Remember to not swallow unless I allow you to');
+                        if(cleanAnswer === ANSWER_YES) {
+                            if(VERBAL_HUMILIATION_LIMIT.isAllowed()) {
+                                if(dildoAnal) {
+                                    sendMessage('After all you are a disgusting anal and cum whore %Grin%');
+                                } else {
+                                    sendMessage('After all you are a disgusting cum whore %Grin%');
+                                }
+                            } else {
+                                sendMessage('I knew you\'d like it %Grin%');
+                            }
+                        } else if(cleanAnswer === ANSWER_NO) {
+                            sendMessage('Don\'t be pathetic');
+                            sendMessage('You will suck it even if you don\'t want to %Lol%');
+                        }
 
-                        //TODO: Sissy check?
-                        sendMessage('Good sissies never swallow during a blowjob %Grin%');
-                    }
-
-                    sendMessage('Start by giving the cum covered tip some kisses', 3);
-                    sendMessage('Show it some love %Grin%', 2);
-
-                    //TODO: Interaction
-                    sendMessage('How does it taste? Good doesn\'t it?', 2);
-                    sendMessage('Now start by giving the tip a gentle blowjob');
-                    sendMessage('Don\'t go all the way down yet. Just the tip...');
-                    startStroking(45);
-                    sleep(15);
-                    sendMessage('Now start going further down the dildo');
-                    sendMessage('As far as you can go without gagging');
-                    sendMessage('And don\'t you dare swallow anything yet!');
-
-                    if (dildoAnal) {
-                        sendMessage('Keep that disgusting mixture of cum, spit and anal juice all in your mouth %Grin%');
-                    } else {
-                        sendMessage('Keep that tasty cum and spit mixture all in your mouth');
-                    }
-
-                    sendMessage('Let\'s speed things up a bit shall we?');
-                    addStrokingBPM(15);
-                    sleep(20);
-
-                    //TODO: More teasing with gay stuff
-                    if (getBlowjobLevel() > 30) {
-                        sendMessage('In a minute I want you to deepthroat that dildo real good');
+                        sendMessage('Now start by giving the tip a gentle blowjob');
+                        sendMessage('Don\'t go all the way down yet. Just the tip...');
+                        startStroking(45);
+                        sleep(15);
+                        sendMessage('Now start going further down the dildo');
+                        sendMessage('As far as you can go without gagging');
+                        sendMessage('And don\'t you dare swallow anything yet!');
 
                         if (dildoAnal) {
-                            sendMessage('Press all that cum and ass juice down your throat %Grin%');
+                            sendMessage('Keep that disgusting mixture of cum, spit and anal juice all in your mouth %Grin%');
                         } else {
-                            sendMessage('Press all that cum and spit down your throat %Grin%');
+                            sendMessage('Keep that tasty cum and spit mixture all in your mouth');
                         }
 
-                        sendMessage('Don\'t you dare back off!');
-                        stopStroking();
-                        sendMessage('Go ahead and start pushing that dildo into your throat and hold it');
-                        sendMessage('Go balls deep %SlaveName%');
-                        sendMessage('Don\'t disappoint me!', 5);
-                        sendMessage('Okay, you can go back up but don\'t take that dildo out of your mouth!', 0);
-                        playBellSound();
-                        sleep(3);
-                        sendMessage('Good %SlaveName%');
-                        sendMessage('And back to your throat');
-                        sendMessage('Go all the way down on it %SlaveName%');
-                        sendMessage('I want to see you gag and cry %Lol%', 10);
-                        sendMessage('Go back up...', 0);
-                        playBellSound();
-                        sleep(3);
-                        sendMessage('And one last time');
-                        sendMessage('Go balls deep %SlaveName%! Now!');
+                        sendMessage('Let\'s speed things up a bit shall we?');
+                        addStrokingBPM(15);
+                        sleep(20);
 
-                        //TODO: Check verbal humilation
-                        sendMessage('I want to hear you say: I am a disgusting sissy slave');
-                        sendMessage('Say it!');
-                        sendMessage('What? I can\'t hear you with that dick in your throat. Say it again. Louder!', 3);
-                        sendMessage('%Good%');
-                        sendMessage('And now I want you to say: %DomHonorific% %DomName% please violate my throat');
-                        sendMessage('Louder!', 3);
-                        sendMessage('%Good%');
+                        //TODO: More teasing with gay stuff
+                        if (getBlowjobLevel() > 30) {
+                            sendMessage('In a minute I want you to deepthroat that dildo real good');
 
-                        sendMessage('You can back off now', 0);
-                        playBellSound();
-                        sleep(3);
+                            if (dildoAnal) {
+                                sendMessage('Press all that cum and ass juice down your throat %Grin%');
+                            } else {
+                                sendMessage('Press all that cum and spit down your throat %Grin%');
+                            }
 
-                        sendMessage('That wasn\'t that hard was it?');
+                            sendMessage('Don\'t you dare back off!');
+                            stopStroking();
+                            sendMessage('Go ahead and start pushing that dildo into your throat and hold it');
+                            sendMessage('Go balls deep %SlaveName%');
+                            sendMessage('Don\'t disappoint me!', 5);
+                            sendMessage('Okay, you can go back up but don\'t take that dildo out of your mouth!', 0);
+                            playBellSound();
+                            sleep(3);
+                            sendMessage('Good %SlaveName%');
+                            sendMessage('And back to your throat');
+                            sendMessage('Go all the way down on it %SlaveName%');
+                            sendMessage('I want to see you gag and cry %Lol%', 10);
+                            sendMessage('Go back up...', 0);
+                            playBellSound();
+                            sleep(3);
+                            sendMessage('And one last time');
+                            sendMessage('Go balls deep %SlaveName%! Now!');
 
-                        if (dildoAnal) {
-                            sendMessage('Go ahead and swallow all that cum, spit and ass juice %Grin%');
+                            if(VERBAL_HUMILIATION_LIMIT.isAllowed()) {
+                                sendMessage('I want to hear you say: I am a disgusting sissy slave');
+                                sendMessage('Say it!');
+                                sendMessage('What? I can\'t hear you with that dick in your throat. Say it again. Louder!', 3);
+                                sendMessage('%Good%');
+                                sendMessage('And now I want you to say: %DomHonorific% %DomName% please violate my throat');
+                                sendMessage('Louder!', 3);
+                                sendMessage('%Good%');
+                            } else {
+                                sleep(5);
+                                sendMessage('Hold it!');
+                                sleep(5);
+                                sendMessage('Stay and keep that dick in your throat!');
+                                sleep(5);
+                            }
+
+
+                            sendMessage('You can back off now', 0);
+                            playBellSound();
+                            sleep(3);
+
+                            sendMessage('That wasn\'t that hard was it?');
+
+                            if (dildoAnal) {
+                                sendMessage('Go ahead and swallow all that cum, spit and ass juice %Grin%');
+                            } else {
+                                sendMessage('Go ahead and swallow all that cum and spit %Grin%');
+                            }
+
+                            sendMessage('Now...');
+
                         } else {
-                            sendMessage('Go ahead and swallow all that cum and spit %Grin%');
-                        }
+                            sendMessage('In a minute I want you to deepthroat that dildo');
+                            sendMessage('I know you aren\'t that experienced yet but I will go easy on you');
+                            sendMessage('You should be happy because if you were I would violate your throat much worse');
+                            sendMessage('Don\'t take that dildo out of your mouth!');
+                            stopStroking();
+                            sendMessage('If you need to you are allowed to swallow but don\'t do it unless you really need to');
+                            sendMessage('Go ahead and start slowing pushing that dildo down your throat');
+                            sendMessage('Try to go as far as you can go. Balls deep would be the best %Grin%');
 
-                        sendMessage('Now...');
+                            if (dildoAnal) {
+                                sendMessage('Press all that cum and ass juice down your throat %Grin%');
+                            } else {
+                                sendMessage('Press all that cum and spit down your throat %Grin%');
+                            }
 
-                    } else {
-                        sendMessage('In a minute I want you to deepthroat that dildo');
-                        sendMessage('I know you aren\'t that experienced yet but I will go easy on you');
-                        sendMessage('You should be happy because if you were I would violate your throat much worse');
-                        sendMessage('Don\'t take that dildo out of your mouth!');
-                        stopStroking();
-                        sendMessage('If you need to you are allowed to swallow but don\'t do it unless you really need to');
-                        sendMessage('Go ahead and start slowing pushing that dildo down your throat');
-                        sendMessage('Try to go as far as you can go. Balls deep would be the best %Grin%');
+                            sendMessage('You can go back up %SlaveName%', 0);
+                            playBellSound();
+                            sleep(3);
 
-                        if (dildoAnal) {
-                            sendMessage('Press all that cum and ass juice down your throat %Grin%');
-                        } else {
-                            sendMessage('Press all that cum and spit down your throat %Grin%');
-                        }
+                            sendMessage('That was quite impressive');
+                            sendMessage('Looks like I found another throat slut to abuse %EmoteHappy%');
 
-                        sendMessage('You can go back up %SlaveName%', 0);
-                        playBellSound();
-                        sleep(3);
+                            sendMessage('Just once more %Grin%');
+                            sendMessage('Push that dildo down your throat. As far down as it goes...');
+                            sendMessage('Keep it there', 4);
 
-                        sendMessage('That was quite impressive');
-                        sendMessage('Looks like I found another throat slut to abuse %EmoteHappy%');
+                            sendMessage('Stop %SlaveName%', 0);
+                            playBellSound();
+                            sleep(3);
 
-                        sendMessage('Just once more %Grin%');
-                        sendMessage('Push that dildo down your throat. As far down as it goes...');
-                        sendMessage('Keep it there', 4);
-
-                        sendMessage('Stop %SlaveName%', 0);
-                        playBellSound();
-                        sleep(3);
-
-                        sendMessage('%Good%');
-                        sendMessage('You did it! Now...');
-                    }
-
-                    sendMessage('If there is anything remaining on your dildo go ahead and lick it up now');
-                    sendMessage('Clean it properly %SlaveName%');
-                    sendMessage('I want that dildo to be spotless %Grin%');
-
-                    const answer = sendInput('Is there still some cum remaining on your plate or the floor?');
-
-
-                    while (true) {
-                        if (answer.isLike("yes")) {
-                            sendMessage('You know what to do');
-                            sendMessage('Lap it all up like a good %SlaveName% %Grin%');
-                            sendMessage('Tell me when you are done...');
-                            waitForDone();
                             sendMessage('%Good%');
-                            break;
-                        } else if (answer.isLike("no")) {
-                            sendMessage('Well then you did a good job of getting all that cum onto your dildo');
-                            changeMeritLow(false);
-                            break;
-                        } else {
-                            sendMessage(YES_OR_NO);
-                            answer.loop();
+                            sendMessage('You did it! Now...');
+                        }
+
+                        sendMessage('If there is anything remaining on your dildo go ahead and lick it up now');
+                        sendMessage('Clean it properly %SlaveName%');
+                        sendMessage('I want that dildo to be spotless %Grin%');
+
+                        const answer = sendInput('Is there still some cum remaining on your plate or the floor?');
+
+
+                        while (true) {
+                            if (answer.isLike("yes")) {
+                                sendMessage('You know what to do');
+                                sendMessage('Lap it all up like a good %SlaveName% %Grin%');
+                                sendMessage('Tell me when you are done...');
+                                waitForDone();
+                                sendMessage('%Good%');
+                                break;
+                            } else if (answer.isLike("no")) {
+                                sendMessage('Well then you did a good job of getting all that cum onto your dildo');
+                                changeMeritLow(false);
+                                break;
+                            } else {
+                                sendMessage(YES_OR_NO);
+                                answer.loop();
+                            }
                         }
                     }
                 } else if (getCEILimit() == LIMIT_ASKED_YES) {

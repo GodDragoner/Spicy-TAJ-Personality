@@ -24,13 +24,28 @@
             sendMessage("TEN!!!");
             sendMessage("Awww my poor %SlaveName%");
             sendMessage("I do love seeing you in pain %Grin%");
-            startStroking(80);
-            sendMessage("Just stroke through the pain now");
+
+            if(isInChastity()) {
+                sendMessage("Put the vibrator on that cage and start vibrating it %SlaveName%");
+                sendMessage("Just work your way through the pain now");
+            } else {
+                startStroking(80);
+                sendMessage("Just stroke through the pain now");
+            }
+
             sendMessage("I told you I\'d let you cum if you hurt yourself for me, so I will");
             startEdging(0, true, EDGE_END_ORGASM);
             waitForCumAnswer();
-            sendMessage("It\'s nice to have some pain mixed in with your pleasure, isn\'t it?");
-            //TODO: Answer
+
+            let answer = sendInput("It\'s nice to have some pain mixed in with your pleasure, isn\'t it?", 5);
+
+            if(answer.isTimeout()) {
+                sendMessage('For me it definitely is %Grin%');
+            } else if(answer.isLike('yes')) {
+                sendMessage('I knew that you are my little pain slut %Grin%');
+            } else if(answer.isLike('no')) {
+                sendMessage('Well at least for me %Grin%');
+            }
         }
 
 

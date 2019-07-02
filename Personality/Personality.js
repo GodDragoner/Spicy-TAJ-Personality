@@ -154,6 +154,10 @@ function changeMerit(level, negative) {
     addMerits(meritChange);
 }
 
+function isDomBirthday() {
+    return 12 === new Date().getDate() && 7 === new Date().getMonth();
+}
+
 function addMerits(meritChange) {
     //Min 0 max 1000
     setVar(VARIABLE_MERITS, Math.min(1000, Math.max(0, getVar(VARIABLE_MERITS) + meritChange)));

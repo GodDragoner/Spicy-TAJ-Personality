@@ -28,6 +28,9 @@ function setDate(message) {
         getTimeInMillis: function() {},
     }
 }
+
+function addResponseRegex(regex) {}
+function setResponseIgnoreDisabled(boolean) {}
 function getDate(varName) {}
 function isVar(varName) {}
 

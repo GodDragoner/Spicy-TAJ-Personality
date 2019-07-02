@@ -23,8 +23,13 @@
             smallCBTPunishment();
         }
 
-        sendMessage('Start stroking %Grin%', 0);
-        startStroking();
+        if(isInChastity()) {
+            sendMessage('Start stroking %Grin%', 0);
+            startStroking();
+        } else {
+            sendMessage('Put the vibrator on the cage %Grin%');
+        }
+
         sleep(3);
         sendMessage("Try to get close for me now");
         startEdging();

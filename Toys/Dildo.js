@@ -36,6 +36,33 @@ function sitOnDildo(toy) {
     
 }
 
+function updateSessionDildos() {
+    for(let x = 0; x < DILDOS.length; x++) {
+        DILDOS[x].usedInSession = false;
+        DILDOS[x].clean = true;
+    }
+}
+
+function getRandomUncleanedDildo() {
+    for(let x = 0; x < DILDOS.length; x++) {
+        if(DILDOS[x].usedInSession && !DILDOS[x].clean && currentPlug !== buttplugs[x]) {
+            return DILDOS[x];
+        }
+    }
+
+    return null;
+}
+
+function getRandomCleanDildo() {
+    for(let x = 0; x < DILDOS.length; x++) {
+        if(!DILDOS[x].usedInSession || DILDOS[x].clean ) {
+            return DILDOS[x];
+        }
+    }
+
+    return null;
+}
+
 function getAnalDildoForTask(minLength = 0, minThickness = 0) {
     let availableDildos = [];
 

@@ -3,7 +3,37 @@ function startMissingCardMemory(gameType) {
     sendMessage('I have a cool memory game for us');
     sendMessage('I will show you 12 out of 13 different cards from a deck of poker cards');
     sendMessage('For example I might show you ace(1), two(2), three(3), four(4), five(5), seven(7), eight(8), nine(9), ten(10), knight(11), queen(12) and king(13)');
-    //TODO: show example
+
+    const answerDict = {};
+    answerDict['ace'] = 1;
+    answerDict['two'] = 2;
+    answerDict['three'] = 3;
+    answerDict['four'] = 4;
+    answerDict['five'] = 5;
+    answerDict['six'] = 6;
+    answerDict['seven'] = 7;
+    answerDict['eight'] = 8;
+    answerDict['nine'] = 9;
+    answerDict['ten'] = 10;
+    answerDict['knight'] = 11;
+    answerDict['queen'] = 12;
+    answerDict['king'] = 13;
+
+    let numberMissing = 6;
+    let numberArray = [];
+
+    for (let number = 1; number < 14; number++) {
+        if (number != numberMissing) {
+            numberArray[number - 1] = number;
+        }
+    }
+
+    shuffle(numberArray);
+
+    for (let index = 0; index < numberArray.length; index++) {
+        showImage('Images/Spicy/Deck/' + numberArray[index] + '/*.jpg', 1);
+    }
+
     sendMessage('In this example the six was missing');
     sendMessage('It doesn\'t matter whether the card is club, heart, spade or diamond');
     sendMessage('Only the card value is important for now');
@@ -15,7 +45,6 @@ function startMissingCardMemory(gameType) {
     //Only used in ball crusher mode
     let turnsPerLoss = -1;
 
-    //TODO: Punish mode instead of gold and edges?
     if (totalMode) {
         sendMessage('Be correct 7 times and you will earn 150 gold');
         sendMessage('Be wrong 7 times and you will have to edge 15 times %Grin%');
@@ -39,20 +68,7 @@ function startMissingCardMemory(gameType) {
 
     sendMessage('Let\'s not waste anymore time and start %EmoteHappy%');
 
-    const answerDict = {};
-    answerDict['ace'] = 1;
-    answerDict['two'] = 2;
-    answerDict['three'] = 3;
-    answerDict['four'] = 4;
-    answerDict['five'] = 5;
-    answerDict['six'] = 6;
-    answerDict['seven'] = 7;
-    answerDict['eight'] = 8;
-    answerDict['nine'] = 9;
-    answerDict['ten'] = 10;
-    answerDict['knight'] = 11;
-    answerDict['queen'] = 12;
-    answerDict['king'] = 13;
+
 
     let wins = 0;
     let loses = 0;

@@ -12,13 +12,13 @@
             while (true) {
                 if (answer.isLike('clean')) {
                     if (isVar(VARIABLE_LAST_CHASTITY_CLEAN) && !getDate(VARIABLE_LAST_CHASTITY_CLEAN).addHour(6).hasPassed()) {
-                        lobbyAnswer.clearOptions();
+                        answer.clearOptions();
 
                         sendVirtualAssistantMessage('You have already cleaned your %ChastityCage% in the last 6 hours');
                         sendVirtualAssistantMessage('Which means I am not gonna allow you to take it off');
                         sendVirtualAssistantMessage('You will have to clean yourself with your %ChastityCage% on %Grin%');
                     } else {
-                        lobbyAnswer.clearOptions();
+                        answer.clearOptions();
 
                         sendVirtualAssistantMessage('Well I won\'t deny you the possibility to clean yourself %SlaveName%');
                         unlockChastityKey();
@@ -33,10 +33,10 @@
 
                         onChastityKeyReturn();
                     }
-                    lobbyAnswer.clearOptions();
+                    answer.clearOptions();
                     break;
                 } else if (answer.isLike('pain')) {
-                    lobbyAnswer.clearOptions();
+                    answer.clearOptions();
 
                     sendVirtualAssistantMessage('Well we want it to hurt sometimes');
                     sendVirtualAssistantMessage('I can free you but you will have to suffer the consequences');
@@ -44,8 +44,6 @@
                     if (createYesOrNoQuestion()) {
                         sendVirtualAssistantMessage('Okay then %SlaveName%');
                         unlockChastityKey();
-
-                        //TODO: Dedicated unlock method maybe allow to reapply
 
                         sendVirtualAssistantMessage('Now do whatever you want to do...');
                         setVar(VARIABLE_CHASTITY_ON, false);
@@ -58,7 +56,7 @@
                     }
                     break;
                 } else if (answer.isLike('emergency')) {
-                    lobbyAnswer.clearOptions();
+                    answer.clearOptions();
 
                     sendVirtualAssistantMessage('Well then I am gonna trust you on this one');
                     sendVirtualAssistantMessage('Do not abuse my trust %SlaveName%!');
@@ -69,15 +67,13 @@
                     setVar(VARIABLE_WAITING_FOR_CHASTITY_KEY_RETURN, true);
                     break;
                 } else if (answer.isLike('other')) {
-                    lobbyAnswer.clearOptions();
+                    answer.clearOptions();
 
                     sendVirtualAssistantMessage('I can free you but you will have to suffer the consequences');
                     sendVirtualAssistantMessage('Do you really need to free yourself?', 0);
                     if (createYesOrNoQuestion()) {
                         sendVirtualAssistantMessage('Okay then %SlaveName%');
                         unlockChastityKey();
-
-                        //TODO: Dedicated unlock method maybe allow to reapply
 
                         sendVirtualAssistantMessage('Now do whatever you want to do...');
                         setVar(VARIABLE_CHASTITY_ON, false);

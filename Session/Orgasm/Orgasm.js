@@ -41,14 +41,43 @@ function getLastEjaculationDate() {
 function waitForCumAnswer() {
     let answer = createInput();
 
+    //Ignored thank rule
+    let ignoredRule = false;
     while(true) {
         if(answer.isLike('came', 'cum', 'orgasm', 'ruin')) {
-            changeMeritLow(true);
             sendMessage('%Good%');
-            //TODO: Force only after rule has been set up like, from now on you will always thank me
-            sendMessage(random('A "thank you" would be nice %Slave%', 'How about you thank your %DomHonorific%?'));
+
+            if(RULE_ALWAYS_THANK_FOR_ORGASM.isActive()) {
+                if(!ignoredRule) {
+                    sendMessage(random('A "thank you" would be nice %Slave%', 'How about you thank your %DomHonorific%?'));
+                    sendMessage('Every single on of your orgasms is at my mercy');
+                    sendMessage('I will not tolerate you disrespecting this');
+                    addPunishmentPoints(getPPRuleIgnored());
+                    changeMeritHigh(true);
+
+                    if(CBT_LIMIT.isAllowed()) {
+                        smallCBTPunishment();
+                    }
+
+                    sendMessage('Now...');
+                    sendMessage('Let\'s try this again');
+                    sendMessage('What do you say?');
+                    ignoredRule = true;
+                } else {
+                    sendMessage('But still not what I wanted to hear!');
+                    addPunishmentPoints(getPPRuleIgnored());
+                    changeMeritHigh(true);
+                }
+            } else if(isChance(20)) {
+                RULE_ALWAYS_THANK_FOR_ORGASM.sendIntroduction();
+            }
+
             answer.loop();
         } else if(answer.isLike('thanks', 'thank you', "merci", "gracias", "grateful")) {
+            if(!ignoredRule) {
+                changeMeritLow(true);
+            }
+
             sendMessage('You\'re welcome %SlaveName% %Grin%');
             break;
         } else {
@@ -227,28 +256,33 @@ function askAboutDenialLevel() {
         setVar('denialLevelTalkInDays', randomInteger(5, 15));
     } else {
         if(getVar('denialLevelTalkInDays') <= 0) {
+
+            //Reset variable
+            setVar('denialLevelTalkInDays', randomInteger(5, 15));
+
             const chancesIncrease = [25, 25, 30, 30, 35, 35, 40, 40, 45, 45, 50, 50, 50, 50];
+            let denialLevelIndex = getVar(VARIABLE_DENIAL_LEVEL) - 1;
 
             if(getVar(VARIABLE_DENIAL_LEVEL) < 15) {
-                if(isChance(chancesIncrease[getVar(VARIABLE_DENIAL_LEVEL) - 1])) {
+                if(isChance(chancesIncrease[Math.min(denialLevelIndex, chancesIncrease.length - 1)])) {
                     incrementVar(VARIABLE_DENIAL_LEVEL, 1);
                 }
             }
 
             const talkChance = [50, 55, 55, 60, 60, 70, 70, 80, 80, 90, 25, 30, 35, 40, 50];
 
-            //TODO: Enforcing personality?
-            //Too long after orgasm the sub might decide differently so we only ask him if he came 3 or less days or ago
-            if(isChance(talkChance[getVar(VARIABLE_DENIAL_LEVEL) - 1]) && !getLastEjaculationDate().addDay(3).hasPassed()) {
+            //Too long after orgasm the sub might decide differently so we only ask him if he came 3 or less days ago
+            if(isChance(talkChance[Math.min(denialLevelIndex, talkChance.length - 1)]) && !getLastEjaculationDate().addDay(3).hasPassed()) {
                 sendMessage("%SlaveName%");
                 sendMessage(random("Once in a while I feel it\'s important to discuss denial with you ", "As you know its important to discuss your denial practice with you.. "));
                 sendMessage(random("Today is one of those days ", "And today we\'ll do just that! "));
                 sendMessage("Currently your denial level is " + getVar(VARIABLE_DENIAL_LEVEL));
                 sendMessage(random("Just to remind you ", "Let me remind you that..."));
-                sendMessage("Level 1 to 5 is for Beginners");
+                sendMessage("Level 1 to 5 is for beginners");
                 sendMessage("Level 6 to 8 is for the trained");
-                sendMessage("Level 9 to 11 is for the Advanced");
-                sendMessage("Level 12 to 15 is for the High skilled");
+                sendMessage("Level 9 to 11 is for the advanced");
+                sendMessage("Level 12 to 15 is for the high skilled");
+                sendMessage("Anything above is always to my liking but you will probably not cum in a long time");
                 sendMessage(random("I try to constantly adjust you level to be appropriate to what I think you can handle", "Often I try to adjust this little by little to keep you at your limit"));
                 sendMessage(random("But...", "But it's not that easy..."));
                 sendMessage(random("What I want to ask you is", "What I simply have to ask is"));
@@ -272,15 +306,13 @@ function askAboutDenialLevel() {
 
                                 break;
                             } else if(highOrLowAnswer.isLike('low')) {
-                                if(getVar(VARIABLE_DENIAL_LEVEL) < 15) {
-                                    sendMessage('I like your attitude %SlaveName% %Grin%');
-                                    incrementVar(VARIABLE_DENIAL_LEVEL, 1);
-                                } else {
-                                    //TODO: Allow higher stuff?
-                                    sendMessage('Your level can\'t be higher than 15 %Lol%');
+                                if(getVar(VARIABLE_DENIAL_LEVEL) >= 15) {
                                     sendMessage('I am already denying you like almost every time %SlaveName%');
+                                    sendMessage('But you still keeping going');
                                 }
 
+                                sendMessage('I like your attitude %SlaveName% %Grin%');
+                                incrementVar(VARIABLE_DENIAL_LEVEL, 1);
                                 break;
                             } else {
                                 sendMessage('Too high or low %SlaveName%?');

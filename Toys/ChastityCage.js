@@ -168,7 +168,7 @@ function getRandomCageWithSize(length, punishments) {
         // -> It will at some point find a fitting cage
         return getRandomCageWithSize(length, punishments - 1);
     } else {
-        return cages[randomInteger(0, cages.length)];
+        return cages[randomInteger(0, cages.length - 1)];
     }
 }
 
@@ -576,7 +576,11 @@ function loadChastityCages() {
                 dialatorDetachable: dialatorDetachable,
                 spikes: spikes,
                 spikesDetachable: spikesDetachable,
-                ballTrapType: ballTrapType
+                ballTrapType: ballTrapType,
+
+                isFullSizedBelt : function () {
+                    return ballTrapType === 0;
+                }
             };
 
             CHASTITY_CAGES.push(chastityCage);
@@ -827,7 +831,11 @@ function setupNewCage() {
         dialatorDetachable: dialatorDetachable,
         spikes: spikes,
         spikesDetachable: spikesDetachable,
-        ballTrapType: ballTrapType
+        ballTrapType: ballTrapType,
+
+        isFullSizedBelt : function () {
+            return ballTrapType === 0;
+        }
     };
 
     CHASTITY_CAGES.push(chastityCage);

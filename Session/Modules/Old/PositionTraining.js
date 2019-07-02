@@ -39,14 +39,6 @@
 }
 
 
-function stopKneeling() {
-    sendMessage('You can stand up %SlaveName%');
-    setTempVar(VARIABLE_IS_KNEELING, false);
-}
-
-function isKneeling() {
-    return getVar(VARIABLE_IS_KNEELING, false);
-}
 
 function positionWalkthrough() {
     lockImages();

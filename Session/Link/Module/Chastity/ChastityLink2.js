@@ -23,11 +23,11 @@
             sendMessage("Make sure they don\'t fall out");
             sendMessage("That\'s sooo cold %Lol%");
 
-            //TODO: ASk slave whether he would do it
-            if(getAnalLimit() == LIMIT_ASKED_YES) {
+            //TODO: Ask slave whether he would do it
+            if(ANAL_LIMIT.isAllowed()) {
                 sendMessage("Now take on of those cubes");
                 sendMessage("And put it in your %Ass%");
-                sendMessage("Don\'t hesitate %Name%, just do as I say");
+                sendMessage("Don\'t hesitate %SlaveName%, just do as I say");
                 sendMessage("Push it right in");
             }
 
@@ -39,9 +39,20 @@
                 sendMessage("Or until I let you %JerkOff% again %Grin%");
             }
         } else {
-            sendMessage("Too bad...");
-            //TODO: Tell slave to always have ice cubes ready
-            sendMessage("Maybe another time %EmoteSad%");
+            if(!isVar(VARIABLE_NEXT_TIME_ICE_CUBES)) {
+                sendMessage("Too bad...");
+                sendMessage("Maybe another time %EmoteSad%");
+                sendMessage('But next time you should have ice cubes around');
+                sendMessage('Otherwise there will be consequences');
+                setVar(VARIABLE_NEXT_TIME_ICE_CUBES, true);
+            } else {
+                sendMessage('%SlaveName%');
+                sendMessage('I told you last time to have ice cubes around');
+                changeMeritMedium(true);
+                addPunishmentPoints(getPPRuleIgnored());
+                sendMessage('I added punishment points for this misbehaviour');
+                sendMessage('When I tell you to make sure of something you will MAKE SURE of it next time!');
+            }
         }
     }
 }

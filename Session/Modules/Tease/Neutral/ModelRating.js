@@ -79,8 +79,6 @@
                         waitForDone();
                     }
 
-                    //TODO: Based on reference values that were set previously or setup ball crusher thing
-
                     applyBallCrusherPressure();
 
                     sendMessage('So this is how this will go from here on');

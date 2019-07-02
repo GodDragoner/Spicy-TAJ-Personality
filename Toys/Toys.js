@@ -141,10 +141,11 @@ function fetchToy(toy, imagePath, amount = 0) {
             //If assistant we are gonna add punishment points otherwise change mood
             if(getCurrentSender() === SENDER_ASSISTANT) {
                 sendMessageBasedOnSender('I am assigning you some punishment points!');
-                addPunishmentPoints(100);
             } else {
                 changeMeritHigh(true);
             }
+
+            addPunishmentPoints(100);
 
             sendMessageBasedOnSender("Well then....");
 

@@ -1,6 +1,6 @@
 addResponseRegex("yes", "no", "thanks", "thank you");
+setResponseIgnoreDisabled(true);
 
-//TODO: With latest changes this won't work as expected any more (responses are ignored during answers)
 function honorificResponse(message) {
     if(!getVar(VARIABLE_CURRENT_SESSION_ACTIVE) || !RULE_ALWAYS_HONORIFIC.isActive()) {
         return false;
@@ -16,7 +16,11 @@ function honorificResponse(message) {
         sendMessage('And you have to ALWAYS address me like that');
         registerForgetHonorific();
 
-        //TODO: Consider punishment
+        if(feelsLikePunishingSlave() && CBT_LIMIT.isAllowed()) {
+            sendMessage('You know what?');
+            sendMessage('I feel like punishing you for that right now in addition to those punishment points I just assigned you');
+            smallCBTPunishment();
+        }
 
         //False because we don't want to interrupt anything
         return false;

@@ -14,7 +14,13 @@
             sendMessage("I\'m going to let you cum and you will spurt your disgusting load onto the plate or bowl");
             sendMessage("I don\'t think I have to tell you what happens next %Lol%");
             //TODO: BPM selection based on scenario like stroking to orgasm edge
-            startStroking(60);
+
+            if(isInChastity()) {
+                sendMessage("Put the vibrator on that cage and start vibrating it %SlaveName%");
+            } else {
+                startStroking(60);
+            }
+
             sendMessage("Make sure you catch everything, don\'t spill a single drop");
 
             startEdging(0, true, EDGE_END_ORGASM);

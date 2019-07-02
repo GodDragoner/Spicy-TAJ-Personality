@@ -4,32 +4,57 @@ function stopStrokingMessage() {
         stopStroking();
     }
 
-    const answers = [
-        "Stop stroking",
-        "Hands off",
-        "That's enough, hands off",
-        "Let go and stop stroking",
-        "Imagine me backing off your %Cock%, right now. Hands off",
-        "That's enough, let go of your %Cock%",
-        "And... stop",
-        "Stop and let go of your %Cock%",
-        "You should stop now",
-        "You should let go of your %Cock% now",
-        "I want you to stop",
-        "Stop stroking for me",
-        "Take your hands off your %Cock%",
-        "Let go of your %Cock%",
-        "Stop and take your hands off your %Cock%",
-        "Quit stroking",
-        "No more stroking, hands off",
-        "No more stroking, just let go of your %Cock%",
-        "Okay, stop",
-        "Okay That's enough for now. You're going to squirt before I'm done with you."
-    ];
+    let answers;
+    if(isInChastity()) {
+        answers = [
+            "Remove the vibrator from your cage",
+            "Vibrator off",
+            "That's enough, turn the vibrator off",
+            "Remove the vibrator from your cage and turn it off",
+            "And... stop",
+            "Stop and remove the vibrator from your cage",
+            "You should stop now",
+            "You should turn off the vibrator now",
+            "I want you to stop",
+            "Remove the vibrator from the cage for me",
+            "Take that vibrator away from the cage",
+            "Stop and turn off the vibrator",
+            "No more vibration, turn the vibrator off",
+            "No more stimulation, just remove the vibrator from the cage",
+            "Okay, stop",
+            "Okay that's enough for now. You're going to squirt before I'm done with you."
+        ];
 
-    sendMessage(findRandomUnusedElement(answers, createHistory('stopStroking')), 0);
+        sendMessage(findRandomUnusedElement(answers, createHistory('stopStrokingChastity')), 0);
+    } else {
+        answers = [
+            "Stop stroking",
+            "Hands off",
+            "That's enough, hands off",
+            "Let go and stop stroking",
+            "Imagine me backing off your %Cock%, right now. Hands off",
+            "That's enough, let go of your %Cock%",
+            "And... stop",
+            "Stop and let go of your %Cock%",
+            "You should stop now",
+            "You should let go of your %Cock% now",
+            "I want you to stop",
+            "Stop stroking for me",
+            "Take your hands off your %Cock%",
+            "Let go of your %Cock%",
+            "Stop and take your hands off your %Cock%",
+            "Quit stroking",
+            "No more stroking, hands off",
+            "No more stroking, just let go of your %Cock%",
+            "Okay, stop",
+            "Okay that's enough for now. You're going to squirt before I'm done with you."
+        ];
 
-    if (isChance(80)) {
+        sendMessage(findRandomUnusedElement(answers, createHistory('stopStroking')), 0);
+    }
+
+
+    if (isChance(80) && !isInChastity()) {
         playSound("Audio/Spicy/Stroking/StopStroking/*.mp3");
     }
 }
@@ -43,8 +68,6 @@ function startStrokeInterval(durationMinutes) {
 
     startStroking(60);
     sendStrokeTaunts(durationMinutes * 60);
-
-    //TODO: More Taunts
 
     stopStrokingMessage();
 }
@@ -77,7 +100,7 @@ function sendNewStrokeInstruction() {
             sendMessage('Only use one finger for now and rub it up and down your %Cock% %Grin%');
             break;
         case 6:
-            var lubeType = getAssLubeType(getMood(), 30);
+            let lubeType = getAssLubeType(getMood(), 30);
             sendMessage('Start palming your cock head %EmoteHappy%');
 
             if (lubeType == ANY_LUBE) {
@@ -149,8 +172,6 @@ function sendStrokeTaunts(durationSeconds, nextInstruction) {
 }
 
 function stopStrokingEdgeMessage() {
-    //TODO: Different messages and sound
-
-
     stopStrokingMessage();
+    //TODO: Different messages and sound
 }

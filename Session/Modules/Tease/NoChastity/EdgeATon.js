@@ -185,15 +185,16 @@ function startEdgeATon(chosenByDom, edgesToDo) {
     while (edgesToDo > 0) {
         startEdging(getEdgeHoldSeconds(EDGE_HOLD_SHORT));
         sendMessage("%LetEdgeFade%");
-        sleep(randomInteger(20));
+        sleep(randomInteger(10, 20));
         edgesToDo--;
 
         //Interact with toys every 15 edges
-        if(edgesToDo%15 == 0) {
+        if(edgesToDo%10 == 0) {
+            sendMessage('Let\'s do a short break...');
+            sendMessage('But let\'s not waste the time');
             interactWithRandomToys();
         }
 
-        //TODO: Based on mood?
         if (edgesToDo > 0 && isChance(10)) {
             sendMessage("Okay %SlaveName%");
             sendMessage("Time for you to get completely soft %Grin%");
@@ -202,11 +203,11 @@ function startEdgeATon(chosenByDom, edgesToDo) {
     }
 
     sendMessage(random("I'm gonna make you edge one final time", "You are to edge one more!", "You're gonna edge once more", "I'm gonna make you edge one more time"));
-    sendMessage(random("You will hold it again for 10 seconds", "You're gonna hold it for another 10 seconds", "Like before you're gonna hold it for 10 seconds"));
+    sendMessage(random("You will hold it again", "You're gonna hold it", "Like before you're gonna hold it"));
     sendMessage(random("After which you are going to get completely soft!", "And then I want you get soft as fast as possible", "Then you need to get soft as fast as possible"));
     sendMessage(random("Breathe...", "Relax", "Calm yourself"));
     sleep(randomInteger(5, 15));
-    startEdging(getEdgeHoldSeconds());
+    startEdging(10);
     sendMessage("%LetEdgeFade%");
 
     if(!growDickSoft() && feelsLikePunishingSlave() && hasChastityCage()) {
@@ -225,15 +226,15 @@ function startEdgeATon(chosenByDom, edgesToDo) {
 
 function growDickSoft() {
     sendMessage(random("Use the ruler to determine to when you're there", "And use the ruler to determine when you're soft", "Use the ruler to measure when you're soft"));
-    sendMessage(random("Your cock has to be shorter than", "Your cock must be shorter than", "Your tiny dick has to be shorter than") + getVar(VARIABLE_SOFT_COCK_LENGTH) + " centimeters");
-    const answer = sendInput(random("When you're completely soft I want you to simply say 'soft'!", "Just say 'soft' when you're soft", "Just type 'soft' when you're soft"));
+    sendMessage(random("Your cock has to be shorter than ", "Your cock must be shorter than ", "Your tiny dick has to be shorter than ") + getVar(VARIABLE_SOFT_COCK_LENGTH) + " centimeters");
 
     const dateStart = new Date().getTime();
+
+    const answer = sendInput(random("When you're completely soft I want you to simply say 'soft'!", "Just say 'soft' when you're soft", "Just type 'soft' when you're soft"));
 
     while (true) {
         if (answer.isLike("soft")) {
             sendMessage("%Good%");
-            sendMessage("Lets move on shall we?");
             break;
         } else {
             sendMessage("If your dick is soft just say \"soft\"");
@@ -249,12 +250,17 @@ function growDickSoft() {
         if (getVar(VARIABLE_SECONDS_TO_GET_SOFT) > timePassed) {
             sendMessage("Which seems to be a new record!");
             setVar(VARIABLE_SECONDS_TO_GET_SOFT, timePassed);
+            sendMessage("Lets move on shall we?");
             return true;
         } else {
             sendMessage("Which isn't a new record... %EmoteSad%");
+            sendMessage("Lets move on shall we?");
             return false;
         }
+    } else {
+        setVar(VARIABLE_SECONDS_TO_GET_SOFT, timePassed);
     }
+    sendMessage("Lets move on shall we?");
 }
 
 

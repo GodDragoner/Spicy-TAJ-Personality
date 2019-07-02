@@ -8,7 +8,7 @@
             firstChastityTraining();
         } else {
             if (checkChastityExercise()) {
-                if (getChastityEXPForLevel(getVar(VARIABLE_CHASTITY_LEVEL) + 1) <= getVar(VARIABLE_CHASTITY_EXPERIENCE)) {
+                if (getTrainingEXPForLevel(getVar(VARIABLE_CHASTITY_LEVEL) + 1) <= getVar(VARIABLE_CHASTITY_EXPERIENCE)) {
                     incrementVar(VARIABLE_CHASTITY_LEVEL, 1);
                 }
 
@@ -31,27 +31,6 @@
     }
 
     setVar(VARIABLE_CHASTITY_TRAININGS_DONE, getVar(VARIABLE_CHASTITY_TRAININGS_DONE) + 1);
-}
-
-function getChastityEXPForLevel(level) {
-    let loopLevel = 1;
-    let exp = 100;
-
-    while (loopLevel < level) {
-        if (loopLevel >= 25) {
-            exp += 65;
-        } else if (loopLevel >= 20) {
-            exp += 60;
-        } else if (loopLevel >= 15) {
-            exp += 55;
-        } else {
-            exp += 50;
-        }
-
-        loopLevel++;
-    }
-
-    return exp;
 }
 
 function sendNewChastityExercise() {
@@ -153,25 +132,12 @@ function checkChastityExercise() {
             sendMessage("Let me just add the new exp...");
             incrementVar(VARIABLE_CHASTITY_TASKS_IN_ROW, 1);
 
-            //TODO: Randomize message
-            if (getVar(VARIABLE_CHASTITY_TASKS_IN_ROW, 0) == 15) {
-                sendMessage('I am very happy %SlaveName');
-                sendMessage("You have been completing your chastity " + random("assignments ", "tasks ") + "for 15 days in a row");
-                sendMessage("Thus I will multiply your chastity exp by 4 from now on");
-            } else if (getVar(VARIABLE_CHASTITY_TASKS_IN_ROW, 0) == 10) {
-                sendMessage('You will be pleased to hear this %SlaveName% %Grin%');
-                sendMessage("You have completed your chastity " + random("assignments ", "tasks ") + "for the last 10 days %Grin%");
-                sendMessage("Because you have been acting that disciplined I will reward you with three times the chastity exp from now on");
-            } else if (getVar(VARIABLE_CHASTITY_TASKS_IN_ROW, 0) == 5) {
-                sendMessage('Looks like the training is working out for you %SlaveName%');
-                sendMessage("You have been following my chastity " + random("assignments ", "tasks ") + "for 5 days in a row now");
-                sendMessage("Thus I will multiply your chastity exp by 2 from now on");
-            }
+            checkTasksInRow(getVar(VARIABLE_CHASTITY_TASKS_IN_ROW), 'chastity');
 
             incrementVar(VARIABLE_CHASTITY_EXPERIENCE, getVar(VARIABLE_TASK_CHASTITY_EXPERIENCE));
 
             sendMessage("I added your exp and your current level is " + getVar(VARIABLE_CHASTITY_LEVEL));
-            sendMessage('You will need ' + (getChastityEXPForLevel(getVar(VARIABLE_CHASTITY_LEVEL) + 1) - getVar(VARIABLE_CHASTITY_EXPERIENCE)) + ' more exp for the next level');
+            sendMessage('You will need ' + (getTrainingEXPForLevel(getVar(VARIABLE_CHASTITY_LEVEL) + 1) - getVar(VARIABLE_CHASTITY_EXPERIENCE)) + ' more exp for the next level');
 
             if (getVar(VARIABLE_AFRAID_OF_CHASTITY, false) && isAfraidTask(getVar(VARIABLE_LAST_CHASTITY_TASK_ID))) {
                 const afraidAnswer = sendInput('Tell me, are you still afraid of your cage showing in the public?');
@@ -242,7 +208,6 @@ function checkChastityExercise() {
             sendMessage("Anyhow not completing your " + random("task ", "assignment ") + "displeases me");
             sendMessage("But I guess in the end this means you just don\'t get to cum %Grin%");
             setVar(VARIABLE_CHASTITY_TASKS_IN_ROW, 0);
-            setVar(VARIABLE_CHASTITY_EXPERIENCE_MULTIPLIER, 1);
             sendMessage("Complete your task until the next session");
             return false;
         } else {

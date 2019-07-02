@@ -14,8 +14,7 @@
 
             applyBallCrusherPressure();
 
-            //TODO: More than just "now" like Let's see etc. generalize this somewhere as a function
-            sendMessage('Now...');
+            sendMessage('%Now%');
 
             decideGag(true);
 

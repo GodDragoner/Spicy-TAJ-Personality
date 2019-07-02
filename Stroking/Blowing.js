@@ -50,7 +50,6 @@ function startBlowToy(toy) {
     const caressingTip = isChance(50);
 
     if (isChance(80)) {
-
         let target = toy;
 
         if (caressingTip) {
@@ -94,7 +93,6 @@ function startBlowToy(toy) {
                 sendMessage("All the way down and up", randomInteger(10, 20));
                 sendMessage("Be passionate and imagine it being another men's cock", randomInteger(10, 20));
                 //TODO: ASM interactions
-                //sendMessage("");
             }
         }
     }
@@ -121,9 +119,6 @@ function startBlowToy(toy) {
     }
 
     startBlowing(20, randomInteger(40, 60), false);
-    //TODO: More?
-
-    //TODO: Deepthroat
 }
 
 function randomBlowjobModule(toy) {
@@ -149,7 +144,44 @@ function randomBlowjobModule(toy) {
 function startNormalBlowjobModule() {
     sendMessage('Let\'s go easy on you for now');
 
-    //TODO: Signal sounds and explanation
+    if(!isVar('blowjobSoundExplanation')) {
+        sendMessage('In a moment you are gonna hear sounds that tell you what to do');
+        sendMessage('Let me explain them to you first');
+
+        sendMessage('This is how light sucking sounds meaning you must suck the cock head', 0);
+        playSound("Audio\\Spicy\\Modules\\BJTraining\\BJLightSucks\\MediumSuck15sec.mp3", false);
+        sleep(5);
+        stopAudio();
+
+        sendMessage('When you hear something like this I want you to swirl your tongue around the cock head...', 0);
+        playSound("Audio\\Spicy\\Modules\\BJTraining\\BJTongueExercise\\*.mp3", false);
+        sleep(5);
+        stopAudio();
+
+        sendMessage('I might also ask you to put your finger in your mouth and have you trigger the gag reflex...', 0);
+        playSound("Audio\\Spicy\\Modules\\BJTraining\\BJFingerGagging\\*.mp3", false);
+        sendMessage('You will have to do that until I tell you to stop');
+        sendMessage('It\'s important you learn to control it if you\'re ever to learn deep throating...');
+        stopAudio();
+
+        sendMessage('You know this sound well, but during blowjob training it means to stroke the dildo while you blow it lightly');
+        playSound("Audio\\Spicy\\Stroking\\Metronome2\\*.mp3", false);
+        sleep(5);
+        stopAudio();
+
+        sendMessage('This is the sound for deepthroating and you will only stop holding the deepthroat when I tell you to stop!');
+        playSound("Audio\\Spicy\\Modules\\BJTraining\\BJDeepThroatLong\\DeepThroat.mp3", false);
+        sleep(5);
+        stopAudio();
+
+        sendMessage('If there is no "gagging" it is a deep suck, meaning you have to suck it balls deep! Up and down...');
+        playSound("Audio\\Spicy\\Modules\\BJTraining\\BJDeepThroat\\DeepSlow1min.mp3", false);
+        sleep(5);
+        stopAudio();
+
+        sendMessage('That was it...');
+        setVar('blowjobSoundExplanation', true);
+    }
 
     let startDate = setDate();
     startDate.addMinute(randomInteger(8, 15));
@@ -167,7 +199,7 @@ function startNormalBlowjobModule() {
                 else playSound("Audio\\Spicy\\Modules\\BJTraining\\BJLightSucksVaried\\123123_1min.mp3", true);
                 break;
             case 1:
-                sendMessage(random("Light sucks", "Stick with the beat!", "Follow the beat", "Light sucking to the beat", "Suck lightly to the beat", "Light sucking - only the cockhead..."));
+                sendMessage(random("Light sucks", "Stick to the beat!", "Follow the beat", "Light sucking to the beat", "Suck lightly to the beat", "Light sucking - only the cockhead..."));
 
                 if (isChance(50) && getBlowjobLevel() >= 15) {
                     playSound("Audio\\Spicy\\Modules\\BJTraining\\BJLightSucks\\MediumSuck1min.mp3", true);
@@ -177,7 +209,6 @@ function startNormalBlowjobModule() {
                 break;
             case 2:
                 sendMessage(random("Swirl your tongue", "Swirl that tongue around", "Swirl your tongue around that cockhead!", "Use the tongue!"));
-                //TODO: Might be too long and I renamed the folder from BJTounge to BJTongue
                 playSound("Audio\\Spicy\\Modules\\BJTraining\\BJTongueExercise\\*.mp3", true);
                 break;
             case 3:
@@ -190,6 +221,36 @@ function startNormalBlowjobModule() {
                 stopAudio();
                 break;
             case 4:
+                if(getBlowjobLevel() >= 25){
+                    if(isChance(50)) {
+                        sendMessage(random('Deep throat!', 'Deep throat that cock', 'Deep throat the dildo' , 'Get that cock into the back of your throat', 'All the way down!' , 'Suck it balls deep!', 'Suck it all the way down'));
+                        playSound("Audio\\Spicy\\Modules\\BJTraining\\BJDeepThroat\\DeepSlow1min.mp", true);
+                    } else {
+                        if(getBlowjobLevel() >= 30) {
+                            if(isChance(50)) {
+                                sendMessage(random('All the way down and back up fast!', 'Deep fast sucks!', 'Suck it deep and fast', 'Make that cock pound your throat hard and fast'));
+                                playSound("Audio\\Spicy\\Modules\\BJTraining\\BJDeepThroatFast\\FastDeep1min.mp3", true);
+                            } else {
+                                sendMessage(random('Deep throat!', 'Deep throat that cock', 'Deep throat the dildo' , 'Get that cock into the back of your throat', 'All the way down!' , 'Suck it balls deep!', 'Suck it all the way down'));
+                                playSound("Audio\\Spicy\\Modules\\BJTraining\\BJDeepThroatLong\\DeepThroat.mp3", true);
+                                sleep(randomInteger(15, 60));
+                            }
+                        } else {
+                            sendMessage(random('Deep throat!', 'Deep throat that cock', 'Deep throat the dildo' , 'Get that cock into the back of your throat', 'All the way down!' , 'Suck it balls deep!', 'Suck it all the way down'));
+                            playSound("Audio\\Spicy\\Modules\\BJTraining\\BJDeepThroatLong\\DeepThroat.mp3", true);
+                            sleep(randomInteger(5, 20));
+                        }
+                    }
+                } else {
+                    sendMessage(random('Finger to the back of your throat', 'Put your finger down your throat', 'Get that finger down your throat', 'Use your finger to trigger the gag reflex', 'Trigger the gag reflex with your finger'));
+
+                    playSound("Audio\\Spicy\\Modules\\BJTraining\\BJFingerGagging\\*.mp3", true);
+                }
+
+
+                sendMessage("You can stop gagging now %Grin%");
+                break;
+            case 5:
                 sendMessage(random("Suck fast!", "Fast sucking!", "Suck it fast", "Suck it swiftly", "Suck it fast!", "Make sure you suck it fast!"));
 
                 playSound("Audio\\Spicy\\Modules\\BJTraining\\BJFastSucking\\FastSuck1min.mp3", true);
@@ -198,17 +259,21 @@ function startNormalBlowjobModule() {
     }
 }
 
-//TODO: Use to create some lube? Warning: Think of disabling other spit usage then
-function startDeepthroatModule() {
+function startDeepthroatModule(createSpiLube = false) {
     let tasks;
 
-    sendMessage('For the time being we should really try to make your throat as sore as possible %Grin%');
+    if(!createSpiLube) {
+        sendMessage('For the time being we should really try to make your throat as sore as possible %Grin%');
+    } else {
+        sendMessage('We should create some spit for you to use as lube');
+    }
+
     sendMessage('And what\'s better for that than doing a few deepthroats?');
     sendMessage('So get ready to get your throat filled!');
 
     //TODO: Also different messages like: To make me proud etc.
 
-    const bowl = isChance(50);
+    const bowl = isChance(50) || createSpiLube;
 
     if (RULE_NEVER_SWALLOW_SPIT.isActive()) {
         sendMessage('And remember: Good sissies only swallow cum and no spit!');
@@ -311,16 +376,16 @@ function startDeepthroatModule() {
                     "Take that dildo and slap your face with it 10 times"];
                 break;
             case 9:
-                //Too few spit or already used spit in previous task
-                if (usedBlowjobInstructions.isEmpty() || usedBlowjobInstructions.get(usedBlowjobInstructions.length() - 1) == 10) {
+                //Save spit, too few spit or already used spit in previous task
+                if (createSpiLube || usedBlowjobInstructions.isEmpty() || usedBlowjobInstructions.get(usedBlowjobInstructions.length() - 1) == 10) {
                     continue;
                 }
 
                 tasks = ["Pour the whole content from your bowl all over your face %Grin%"];
                 break;
             case 10:
-                //Too few spit or already used spit in previous task
-                if (usedBlowjobInstructions.isEmpty() || usedBlowjobInstructions.get(usedBlowjobInstructions.length() - 1) == 9) {
+                //Save spit, too few spit or already used spit in previous task
+                if (createSpiLube || usedBlowjobInstructions.isEmpty() || usedBlowjobInstructions.get(usedBlowjobInstructions.length() - 1) == 9) {
                     continue;
                 }
 
@@ -339,11 +404,11 @@ function startDeepthroatModule() {
 
         if (tasksDone == 0) {
             sendMessage('Tell me when you are done!');
-        } else if (tasksDone == 1) {
+        } else if (tasksDone >= 1) {
             sendMessage('And yet again tell me when you are done');
         }
 
-        //TODO: Can't do it interaction?
+        //TODO: "Can't do" it interaction?
         waitForDone(1000);
 
         usedBlowjobInstructions.add(taskIndex);

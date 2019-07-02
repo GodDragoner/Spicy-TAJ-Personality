@@ -14,7 +14,13 @@
             sendMessage("I\'m going to make you ruin it right onto the plate or bowl");
             sendMessage("I don\'t think I have to tell you what happens next %Lol%");
             //TODO: BPM selection based on scenario like stroking to orgasm edge
-            sendMessage("%StartStroking%");
+
+            if(isInChastity()) {
+                sendMessage("Put the vibrator on that cage and start vibrating it %SlaveName%");
+            } else {
+                sendMessage("%StartStroking%");
+            }
+
             startStroking(60);
             sendMessage("Make sure you catch everything, don\'t spill a single drop");
 

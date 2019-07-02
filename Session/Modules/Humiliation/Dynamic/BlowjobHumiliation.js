@@ -30,6 +30,12 @@
                 //Punishment module
                 runModuleCategory(CATEGORY_PAIN);
             } else {
+                if(!ASM_LIMIT.isAllowed()) {
+                    sendMessage('You may clean your dildo if need be before we are getting to this');
+                    sendMessage('So tell me when you are ready to continue');
+                    waitForDone();
+                }
+
                 startBlowToy(toy);
                 randomBlowjobModule(toy);
 

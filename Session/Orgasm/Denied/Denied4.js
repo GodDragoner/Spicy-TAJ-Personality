@@ -12,7 +12,7 @@
                 sendMessage("That\'s what\'s called a self-fullfilling prophesy %Grin%");
             }
 
-            sendMessage('Put your %Cock% back in your pants, you\\\'re not cumming today');
+            sendMessage('Put your %CockAndChastity% back in your pants, you\'re not cumming today');
         } else if (answer.isLike("understand", "mean", "unclear", "clear", "specific", "explain")) {
             sendMessage("I guess the question is what \"lucky\" means in this case %Grin%");
         } else {

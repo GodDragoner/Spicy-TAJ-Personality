@@ -8,9 +8,12 @@ function ruinForMeVocabulary() {
         'You get to give yourself a ruined orgasm. Right now',
         'Ruin it %Grin%',
         'Ruin it for me!',
-        'Take your hand away and ruin that orgasm!',
         'No pleasure, ruin your orgasm for me right now!',
-        'Stroke yourself just over the edge then ruin that orgasm for me']
+        'Tip yourself just over the edge then ruin that orgasm for me'];
+
+    if(!isInChastity()) {
+        answers.push('Take your hand away and ruin that orgasm!');
+    }
 
     playSound('Audio/Spicy/Orgasm/Ruin/*.mp3');
 

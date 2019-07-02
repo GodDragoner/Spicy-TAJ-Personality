@@ -54,6 +54,11 @@ function createHistory(name) {
             history.add(String(moduleId));
 
             return history;
+        },
+
+        clearHistory : function () {
+            setVar(this.historyVar, new java.util.ArrayList());
+            setTempVar(this.todaysHistoryVar, new java.util.ArrayList());
         }
     };
 

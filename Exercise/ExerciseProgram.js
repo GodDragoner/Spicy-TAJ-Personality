@@ -1421,7 +1421,7 @@ function Continue5() {
         showImage("Images/Spicy/Exercise/Breathe/1.gif");
         sendVirtualAssistantMessage(" Break 1 minute  ");
         sleep(60);
-        sendVirtualAssistantMessage(" Have a look %GNMGrin%", 1, true);
+        sendVirtualAssistantMessage(" Have a look %Grin%", 1, true);
         showImage("Images/Spicy/Exercise/PushUps/4.gif");
         sendVirtualAssistantMessage(" Continue until you hear my bell ", 1, true);
         playAudio("Audio/GNMSounds/Stroking/Metronome/40 bpm.mp3");

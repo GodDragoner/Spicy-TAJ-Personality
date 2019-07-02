@@ -15,9 +15,19 @@
                 sendMessage("I want you to celebrate it");
                 sendMessage("After this session you are allowed to orgasm however you like!");
                 sendMessage("But...");
+                sendMessage('You will need to do so while sitting all the way down on a dildo');
+                sendMessage('I\'ll be generous and you\'ll get to choose your dildo this time');
                 sendMessage("If I decide to lock you up you\'ll need to find a way to make you cum inside the %ChastityCage%");
                 sendMessage("Use your vibrator or whatever you want to");
                 sendMessage("Just don\'t remove that %ChastityCage%");
+
+                if(isVar(VARIABLE_TRAINING_ORGASM_TODAY)) {
+                    sendMessage('I know I am already allowing you an orgasm for another training today');
+                    sendMessage('Which means you are free to schedule this orgasm on top of the other one anywhere in the next 48 hours');
+                } else {
+                    setTempVar(VARIABLE_TRAINING_ORGASM_TODAY, true);
+                }
+
                 sendMessage("Enjoy %Lol%");
 
                 registerOrgasm();

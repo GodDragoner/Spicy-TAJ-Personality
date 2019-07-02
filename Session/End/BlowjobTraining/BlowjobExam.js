@@ -19,9 +19,15 @@
                 sendMessage("Whenever you are stimulating yourself you must be holding a deepthroat %Grin%");
                 sendMessage('And you will only have 10 minutes to do so');
                 sendMessage('If you run out of time, it\'s no orgasm for you');
-                sendMessage("Enjoy %Lol%");
 
-                //TODO: Prevent exams colliding
+                if(isVar(VARIABLE_TRAINING_ORGASM_TODAY)) {
+                    sendMessage('I know I am already allowing you an orgasm for another training today');
+                    sendMessage('Which means you are free to schedule this orgasm on top of the other one anywhere in the next 48 hours');
+                } else {
+                    setTempVar(VARIABLE_TRAINING_ORGASM_TODAY, true);
+                }
+
+                sendMessage("Enjoy %Lol%");
 
                 registerOrgasm();
                 delVar("BlowjobExamStartDate");

@@ -16,8 +16,6 @@ showImage("Images/Spicy/HouseRules/HouseRule10.jpg", 10);
 //TODO: Ideas
 /**
  * Always wear a max of x clothing items (temporary)
- * Thank for ALL orgasms
- * Always address using Honorific otherwise punishment
  * Always start session naked
  * Always sleep naked
  * Always be naked at home

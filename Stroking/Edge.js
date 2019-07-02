@@ -29,7 +29,7 @@ function startEdging(holdSeconds, skipStop = false, endIn = EDGE_END_NORMAL) {
         "%SlaveName%. Its time to edge, and edge hard for me!",
         "%SlaveName%. Give me an edge, I love to see you edge!",
         "Get to the edge for me!",
-        "Get Your %Cock% on the brink or orgasm!",
+        "Get Your %Cock% on the brink of orgasm!",
         "Gently and slowly bring yourself to the edge...",
         "Edge! Now %SlaveName%!",
     ];
@@ -41,10 +41,17 @@ function startEdging(holdSeconds, skipStop = false, endIn = EDGE_END_NORMAL) {
     addEdge();
     setDate(VARIABLE_EDGE_STARTED_DATE);
     startEdge();
-    startStroking(randomInteger(150, 200));
-    sendDebugMessage('Here Stroking');
+
+    //While in chastity we don't need stroking sounds
+    if(!isInChastity()) {
+        startStroking(randomInteger(150, 200));
+    }
+
+    sendDebugMessage('Starting Edge Taunts');
+
     sendEdgeTaunts();
-    sendDebugMessage('Here Stroking2');
+
+    sendDebugMessage('Sub send edge message');
 
     if(holdSeconds !== undefined && holdSeconds !== 0) {
         stopStroking();
@@ -54,17 +61,16 @@ function startEdging(holdSeconds, skipStop = false, endIn = EDGE_END_NORMAL) {
         run("Stroking/Taunt/HoldEdge/BasicHoldingTaunts.js");
 
         sendHoldEdgeTaunts(holdSeconds);
-        sendDebugMessage('Here Stroking3');
     }
 
-    sendDebugMessage('Here Stroking4');
+    sendDebugMessage('Ending edge');
 
     if(!skipStop) {
-        sendDebugMessage('Here Stroking5');
+        sendDebugMessage('Stop edge message is not skipped');
         stopStrokingEdgeMessage();
     }
 
-    sendDebugMessage('Here Stroking6');
+    sendDebugMessage('Checking for edge orgasm');
 
     if(endIn == EDGE_END_RUIN) {
         sendMessage('%RuinForMe%');
@@ -74,15 +80,13 @@ function startEdging(holdSeconds, skipStop = false, endIn = EDGE_END_NORMAL) {
         registerOrgasm();
     }
 
-    sendDebugMessage('Here Stroking7');
+    sendDebugMessage('Ending edge internally');
 
     endEdge();
 
-    sendDebugMessage('Here Stroking8');
+    sendDebugMessage('Deleting Edge Variable');
 
     delVar(VARIABLE_EDGE_STARTED_DATE);
-
-    sendDebugMessage('Here Stroking9');
 }
 
 function sendEdgeTaunts() {

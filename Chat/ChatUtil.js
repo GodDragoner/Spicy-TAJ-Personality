@@ -5,10 +5,14 @@ const DEBUG_MODE = true;
 const SENDER_TAJ = 1;
 const SENDER_ASSISTANT = 0;
 
+const ANSWER_YES = 0;
+const ANSWER_NO = 1;
+const ANSWER_TIMEOUT = 2;
+
 let CURRENT_SENDER = SENDER_TAJ;
 
 function sendDebugMessage(message) {
-    if(DEBUG_MODE) {
+    if (DEBUG_MODE) {
         sendVirtualAssistantMessage(message, false, true);
     }
 }
@@ -22,23 +26,23 @@ function setCurrentSender(sender) {
 }
 
 function sendMessageBasedOnSender(message, secondsToWait = undefined, skipImage = false) {
-    if(getCurrentSender() === SENDER_TAJ) {
-        if(skipImage) {
+    if (getCurrentSender() === SENDER_TAJ) {
+        if (skipImage) {
             lockImages();
         }
 
-        if(secondsToWait === undefined) {
+        if (secondsToWait === undefined) {
             sendMessage(message);
-        } else if(secondsToWait !== false) {
+        } else if (secondsToWait !== false) {
             sendMessage(message, secondsToWait);
         } else {
             sendMessage(message);
         }
 
-        if(skipImage) {
+        if (skipImage) {
             unlockImages();
         }
-    } else if(getCurrentSender() == SENDER_ASSISTANT) {
+    } else if (getCurrentSender() == SENDER_ASSISTANT) {
         sendVirtualAssistantMessage(message, secondsToWait, skipImage);
     } else {
         sendVirtualAssistantMessage('Error: Sender id ' + getCurrentSender() + ' is unknown');
@@ -58,13 +62,13 @@ function sendVirtualAssistantMessage(message, wait, skipImage) {
     sendCustomMessage(textName, text);
 
     //Show image
-    if(skipImage === undefined || !skipImage) {
-        if(!isImagesLocked()) {
+    if (skipImage === undefined || !skipImage) {
+        if (!isImagesLocked()) {
             showImage("Images/Spicy/Assistant/" + ASSISTANT_CURRENT_SET_ID + "/*.jpg");
         }
     }
 
-    if(wait === undefined || wait) {
+    if (wait === undefined || wait) {
         sleep(1000 + message.length * 50, "MILLISECONDS");
     }
 }
@@ -81,7 +85,7 @@ function sendSystemMessage(message) {
 function addContact(id) {
     let contactName = "";
 
-    if(id > 2) {
+    if (id > 2) {
         contactName = '%domFriend' + (id - 2) + 'Name%';
     } else {
         contactName = '%domName%';
@@ -102,7 +106,7 @@ function addContact(id) {
 function removeContact(id) {
     let contactName = "";
 
-    if(id > 2) {
+    if (id > 2) {
         contactName = '%domFriend' + (id - 2) + 'Name%';
     } else {
         contactName = '%domName%';
@@ -123,13 +127,13 @@ function createIntegerInput(question, min, max, notNumberMessage, outOfRangeMess
     sendMessageBasedOnSender(question, 0);
     let answer = createInput();
 
-    while(true) {
-        if(answer.isInteger()) {
-            if(min === undefined && max === undefined) {
+    while (true) {
+        if (answer.isInteger()) {
+            if (min === undefined && max === undefined) {
                 return answer.getInt();
             } else {
                 let int = answer.getInt();
-                if(int >= min && int <= max) {
+                if (int >= min && int <= max) {
                     return int;
                 }
 
@@ -147,21 +151,21 @@ function createIntegerInput(question, min, max, notNumberMessage, outOfRangeMess
 function sendYesOrNoQuestion(question, sender = null) {
     let previousSender = getCurrentSender();
 
-    if(sender !== null) {
+    if (sender !== null) {
         setCurrentSender(sender);
     }
 
-    if(getCurrentSender() === SENDER_ASSISTANT) {
+    if (getCurrentSender() === SENDER_ASSISTANT) {
         sendVirtualAssistantMessage(question, 0);
         return createYesOrNoQuestion();
     }
 
     let answer = sendInput(question);
 
-    while(true) {
-        if(answer.isLike('yes')) {
+    while (true) {
+        if (answer.isLike('yes')) {
             return true;
-        } else if(answer.isLike('no')) {
+        } else if (answer.isLike('no')) {
             return false;
         } else {
             sendMessage(YES_OR_NO);
@@ -170,18 +174,36 @@ function sendYesOrNoQuestion(question, sender = null) {
     }
 
     //Restore sender
-    if(sender !== null) {
+    if (sender !== null) {
         setCurrentSender(previousSender);
+    }
+}
+
+
+function sendYesOrNoQuestionTimeout(question, timeout) {
+    let answer = sendInput(question, timeout);
+
+    while (true) {
+        if (answer.isTimeout()) {
+            return ANSWER_TIMEOUT;
+        } else if (answer.isLike('yes')) {
+            return ANSWER_YES;
+        } else if (answer.isLike('no')) {
+            return ANSWER_NO;
+        } else {
+            sendMessage(YES_OR_NO);
+            answer.loop();
+        }
     }
 }
 
 function createYesOrNoQuestion() {
     let answer = createInput();
 
-    while(true) {
-        if(answer.isLike('yes')) {
+    while (true) {
+        if (answer.isLike('yes')) {
             return true;
-        } else if(answer.isLike('no')) {
+        } else if (answer.isLike('no')) {
             return false;
         } else {
             sendMessageBasedOnSender(YES_OR_NO);

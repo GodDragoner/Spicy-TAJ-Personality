@@ -3,12 +3,15 @@
 let startMillis = new Date().getMilliseconds();
 showImage("Images/Spicy/Intro/SpicyGif*.gif");
 run("Variables.js");
+
 run("Utils/SoundUtils.js");
 run("Utils/FileUtils.js");
 run("Utils/ArrayUtils.js");
 run("Chat/ChatUtil.js");
 run("Slaves/Slaves.js");
 run("Session/Orgasm/Orgasm.js");
+
+run("Session/End/Training.js");
 
 sendSystemMessage("Launching Spicy " + getVar("personalityVersion"));
 

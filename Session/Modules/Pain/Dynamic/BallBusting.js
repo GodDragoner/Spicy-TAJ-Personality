@@ -1,6 +1,11 @@
 {
-    //Skip TODO: Ask if never asked before
-    if (getCBTLimit() != LIMIT_ASKED_YES) {
+    //Check for CBT Limit and whether the user is wearing a full sized belt
+    if (!CBT_LIMIT.isAllowed() || isInChastity() && getActiveChastityCage().isFullSizedBelt()) {
+        //Address this limit if we never asked
+        if(CBT_LIMIT.getLimit() === LIMIT_NEVER_ASKED) {
+            CBT_LIMIT.askForLimitChange(false);
+        }
+
         runModuleCategory('Pain');
     } else {
         if (tryRunModuleFetchId()) {
@@ -61,7 +66,9 @@
             let currentModuleId = 0;
             let painLevel = getVar(VARIABLE_SUB_PAIN_TOLERANCE);
 
-            //TODO: Fully closed chastity cage check
+            let untieTeased = false;
+            let untieRoundsAgo = -1;
+
             const simpleBallBustingModule = {
                 id: currentModuleId++,
                 startModule: function () {
@@ -85,11 +92,29 @@
 
                         const hitType = getWinnerIndex([flickChance, hitChance, punchChane]);
 
-                        //TODO: Tease if just untied
-                        if (!hasBallsTied() && loops != 0 && isChance(10 + painLevel * 2)) {
-                            sendMessage('I think we need to change this up a bit');
+                        //Tease about balls not being tied
+                        if(untieRoundsAgo == 1 && untieRoundsAgo <= 2 && isChance(33) && !untieTeased) {
+                            sendMessage('Be grateful for your balls not being tied up anymore');
+                            sendMessage('Because you don\'t know how long you can enjoy this luxury %Grin%');
+                            untieTeased = true;
+                        }
+
+                        //Tie balls up again
+                        if (!hasBallsTied() && loops != 0 && isChance(10 + painLevel * 2) && (untieRoundsAgo < 0 || untieRoundsAgo > 2)) {
+                            if(untieRoundsAgo < 0) {
+                                sendMessage('I think we need to change this up a bit');
+                            } else {
+                                sendMessage('Let\'s make it hurt a bit more again');
+                            }
+
                             tieBalls();
-                            sendMessage('Much better isn\'t it? %Grin%');
+
+                            if(untieRoundsAgo < 0) {
+                                sendMessage('Much better isn\'t it? %Grin%');
+                            } else {
+                                sendMessage('I hope you enjoyed that time while your balls not bound %Grin%');
+                            }
+
                         }
 
                         sendBallHitTask(hitLevel, hitType, loops, isBeginning, hitMap);
@@ -99,11 +124,18 @@
                         }
 
                         loops++;
+
+                        if(untieRoundsAgo >= 0) {
+                            untieRoundsAgo++;
+                        }
                     }
 
                     if (hasBallsTied() && isChance(50 - painLevel * 2)) {
                         sendMessage('I am gonna be generous and allow you to untie %MyBalls% balls %EmoteHappy%');
                         untieBalls();
+
+                        untieRoundsAgo = 0;
+                        untieTeased = false;
                     }
 
                     return true;

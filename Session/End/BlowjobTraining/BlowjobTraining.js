@@ -7,7 +7,7 @@
         if (getVar(VARIABLE_BLOWJOB_TRAININGS_DONE, 0) == 0) {
             firstTimeBlowjobTraining();
         } else if (checkBlowjobExercise()) {
-            if (getChastityEXPForLevel(getVar(VARIABLE_BLOWJOB_LEVEL) + 1) <= getVar(VARIABLE_BLOWJOB_EXPERIENCE)) {
+            if (getTrainingEXPForLevel(getVar(VARIABLE_BLOWJOB_LEVEL) + 1) <= getVar(VARIABLE_BLOWJOB_EXPERIENCE)) {
                 incrementVar(VARIABLE_BLOWJOB_LEVEL, 1);
             }
         } else {
@@ -49,24 +49,11 @@ function checkBlowjobExercise() {
         sendMessage("Let me just add the new exp...");
         incrementVar(VARIABLE_BLOWJOB_TASKS_IN_ROW, 1);
 
-        //TODO: Randomize message
-        if (getVar(VARIABLE_BLOWJOB_TASKS_IN_ROW, 0) == 15) {
-            sendMessage('I am very happy %SlaveName');
-            sendMessage("You have been completing your blowjob " + random("assignments ", "tasks ") + "for 15 days in a row");
-            sendMessage("Thus I will multiply your blowjob by 4 from now on");
-        } else if (getVar(VARIABLE_BLOWJOB_TASKS_IN_ROW, 0) == 10) {
-            sendMessage('You will be pleased to hear this %SlaveName% %Grin%');
-            sendMessage("You have completed your blowjob " + random("assignments ", "tasks ") + "for the last 10 days %Grin%");
-            sendMessage("Because you have been acting that disciplined I will reward you with three times the blowjob exp from now on");
-        } else if (getVar(VARIABLE_BLOWJOB_TASKS_IN_ROW, 0) == 5) {
-            sendMessage('Looks like the training is working out for you %SlaveName%');
-            sendMessage("You have been following my blowjob " + random("assignments ", "tasks ") + "for 5 days in a row now");
-            sendMessage("Thus I will multiply your blowjob exp by 2 from now on");
-        }
+        checkTasksInRow(getVar(VARIABLE_BLOWJOB_TASKS_IN_ROW), 'blowjob');
 
         incrementVar(VARIABLE_BLOWJOB_EXPERIENCE, getVar(VARIABLE_TASK_BLOWJOB_EXPERIENCE));
         sendMessage("I added your exp and your current level is " + getVar(VARIABLE_BLOWJOB_LEVEL));
-        sendMessage('You will need ' + (getChastityEXPForLevel(getVar(VARIABLE_BLOWJOB_LEVEL) + 1) - getVar(VARIABLE_BLOWJOB_EXPERIENCE)) + ' more exp for the next level');
+        sendMessage('You will need ' + (getTrainingEXPForLevel(getVar(VARIABLE_BLOWJOB_LEVEL) + 1) - getVar(VARIABLE_BLOWJOB_EXPERIENCE)) + ' more exp for the next level');
     } else {
         sendMessage("I expect more from you %SlaveName%");
 

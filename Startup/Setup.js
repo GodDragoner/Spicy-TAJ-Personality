@@ -598,7 +598,7 @@
 
     setupLimits();
 
-    if (!HUMILIATION_LIMIT.isHardLimit() || !VERBAL_HUMILIATION_LIMIT.isHardLimit()) {
+    if (HUMILIATION_LIMIT.isAllowed() || VERBAL_HUMILIATION_LIMIT.isAllowed()) {
         sendVirtualAssistantMessage("Next we need for you to setup a folder with pictures of YOU!");
         sendVirtualAssistantMessage("This is very simple actually...");
         sendVirtualAssistantMessage("Inside the Images/Spicy folder you'll find a folder named SelfHumiliation");

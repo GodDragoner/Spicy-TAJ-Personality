@@ -1,6 +1,5 @@
 run("Slaves/Chastity.js");
 
-
 function getSubBirthday() {
     getDate(VARIABLE_SUB_BIRTHDAY);
 }
@@ -41,30 +40,38 @@ function askForPainToleranceIncrease() {
     }
 }
 
-function getTrainingEXPMultiplier(tasksInRow) {
-    if (tasksInRow >= 15) {
-        return 4;
-    } else if (tasksInRow >= 10) {
-        return 3;
-    } else if (tasksInRow >= 5) {
-        return 2;
-    }
-
-    return 1;
-}
-
 function startKneeling() {
     playSound('Audio\\Spicy\\Commands\\Kneel\\*.mp3');
     sendMessage(random('Kneel for me', 'Get down on your knees', 'Down on your knees, right now', 'I want you to kneel for me,') + ' %SlaveName%');
     setTempVar(VARIABLE_IS_KNEELING, true);
+    setTempVar(VARIABLE_KNEELING_STARTED, setDate());
 }
 
+function isKneeling() {
+    return getVar(VARIABLE_IS_KNEELING, false);
+}
 
 function stopKneeling() {
     //TODO: Sound too?
     //playSound('Audio\\Spicy\\Commands\\Kneel\\*.mp3');
     sendMessage(random('You can stop kneeling', 'You can get up from your knees now', 'You can sit down') + ' %SlaveName%');
     setTempVar(VARIABLE_IS_KNEELING, false);
+}
+
+function decideStopKneeling() {
+    if(!isKneeling()) {
+
+    } else {
+        let dateStartedKneeling = getDate(VARIABLE_KNEELING_STARTED);
+
+        let minKneeling = 2*(ACTIVE_PERSONALITY_STRICTNESS + 1) + getMood();
+
+        if(dateStartedKneeling.addMinute(minKneeling).hasPassed()) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 function addPunishmentPoints(amount) {

@@ -1,5 +1,5 @@
 {
     if(tryRunLinkFetchId()) {
-        sendMessage('"I\'m still not going to let you touch that %Cock%"');
+        sendMessage('I\'m still not going to let you touch that %Cock%');
     }
 }

@@ -7,7 +7,7 @@
         if (getVar(VARIABLE_ASS_TRAININGS_DONE, 0) == 0) {
             firstTimeAnalTraining();
         } else if (checkAnalExercise()) {
-            if (getChastityEXPForLevel(getVar(VARIABLE_ASS_LEVEL) + 1) <= getVar(VARIABLE_ASS_EXPERIENCE)) {
+            if (getTrainingEXPForLevel(getVar(VARIABLE_ASS_LEVEL) + 1) <= getVar(VARIABLE_ASS_EXPERIENCE)) {
                 incrementVar(VARIABLE_ASS_LEVEL, 1);
             }
         } else {
@@ -56,24 +56,11 @@ function checkAnalExercise() {
         sendMessage("Let me just add the new exp...");
         incrementVar(VARIABLE_ASS_TASKS_IN_ROW, 1);
 
-        //TODO: Randomize message
-        if (getVar(VARIABLE_ASS_TASKS_IN_ROW, 0) == 15) {
-            sendMessage('I am very happy %SlaveName');
-            sendMessage("You have been completing your anal " + random("assignments ", "tasks ") + "for 15 days in a row");
-            sendMessage("Thus I will multiply your ass exp by 4 from now on");
-        } else if (getVar(VARIABLE_ASS_TASKS_IN_ROW, 0) == 10) {
-            sendMessage('You will be pleased to hear this %SlaveName% %Grin%');
-            sendMessage("You have completed your anal " + random("assignments ", "tasks ") + "for the last 10 days %Grin%");
-            sendMessage("Because you have been acting that disciplined I will reward you with three times the ass exp from now on");
-        } else if (getVar(VARIABLE_ASS_TASKS_IN_ROW, 0) == 5) {
-            sendMessage('Looks like the training is working out for you %SlaveName%');
-            sendMessage("You have been following my anal " + random("assignments ", "tasks ") + "for 5 days in a row now");
-            sendMessage("Thus I will multiply your ass exp by 2 from now on");
-        }
+        checkTasksInRow(getVar(VARIABLE_ASS_TASKS_IN_ROW), 'anal');
 
         incrementVar(VARIABLE_ASS_EXPERIENCE, getVar(VARIABLE_TASK_ASS_EXPERIENCE));
         sendMessage("I added your exp and your current level is " + getVar(VARIABLE_ASS_LEVEL));
-        sendMessage('You will need ' + (getChastityEXPForLevel(getVar(VARIABLE_ASS_LEVEL) + 1) - getVar(VARIABLE_ASS_EXPERIENCE)) + ' more exp for the next level');
+        sendMessage('You will need ' + (getTrainingEXPForLevel(getVar(VARIABLE_ASS_LEVEL) + 1) - getVar(VARIABLE_ASS_EXPERIENCE)) + ' more exp for the next level');
 
     } else {
         sendMessage("I expect more from you %SlaveName%");

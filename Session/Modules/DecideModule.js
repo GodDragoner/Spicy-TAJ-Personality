@@ -10,34 +10,42 @@
 
         //TODO: Chastity version of distraction / punishment distraction
 
-        if(!isInChastity()) {
-            let strokeFrequency = getVar(VARIABLE_STROKE_MODULE_PAUSE_FREQUENCY, 0);
+        let strokeFrequency = getVar(VARIABLE_STROKE_MODULE_PAUSE_FREQUENCY, 0);
 
-            let minTimePassed = 0;
+        let minTimePassed = 0;
 
-            //Dom choose
-            if(strokeFrequency == 0) {
-                const mood = getMood();
-                const strictness = ACTIVE_PERSONALITY_STRICTNESS;
+        //Dom choose
+        if(strokeFrequency == 0) {
+            const mood = getMood();
+            const strictness = ACTIVE_PERSONALITY_STRICTNESS;
 
-                minTimePassed = getVar(VARIABLE_DEVOTION)/Math.min(4, Math.max(1, 5 - strictness - mood - 1));
-            } else {
-                //Other frequency
-                getVar(VARIABLE_DEVOTION)/(strokeFrequency + 1);
-            }
+            minTimePassed = getVar(VARIABLE_DEVOTION)/Math.min(4, Math.max(1, 5 - strictness - mood - 1));
+        } else {
+            //Other frequency
+            getVar(VARIABLE_DEVOTION)/(strokeFrequency + 1);
+        }
 
-            sendDebugMessage('Min time passed: ' + minTimePassed);
+        sendDebugMessage('Min time passed: ' + minTimePassed);
 
-            //Some stroking sometimes
-            if((!isVar('lastStrokingPause') && getVar(VARIABLE_CURRENT_SESSION_DATE).addMinute(minTimePassed).hasPassed()) || getVar('lastStrokingPause').addMinute(minTimePassed).hasPassed()) {
+        //Some stroking sometimes
+        if((!isVar('lastStrokingPause') && getVar(VARIABLE_CURRENT_SESSION_DATE).addMinute(minTimePassed).hasPassed()) || getVar('lastStrokingPause').addMinute(minTimePassed).hasPassed()) {
+            if(!isInChastity()) {
                 //TODO: Duration based on mood
-
                 sendDebugMessage('Start of stroking interval');
 
                 startStrokeInterval(randomInteger(2, 3));
                 setDate('lastStrokingPause');
 
                 sendDebugMessage('End of stroking interval');
+            } else {
+                sendDebugMessage('Start of teasing interval');
+
+                for (let x = 0; x < randomInteger(12, 24); x++) {
+                    run("Stroking/Taunt/Chastity/BasicChastityTaunts.js");
+                    sleep(5);
+                }
+
+                sendDebugMessage('End of teasing interval');
             }
         }
 

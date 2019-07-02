@@ -14,12 +14,11 @@
             for(let x = 0; x < AVAILABLE_RULES.length; x++) {
                 let rule = AVAILABLE_RULES[x];
                 if(rule.isActive()) {
-                    if( rule.isPermanent()) {
+                    if(rule.isPermanent()) {
                         permanentRules.push(rule);
                     } else {
                         temporaryRules.push(rule);
                     }
-
                 }
             }
 

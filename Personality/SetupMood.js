@@ -83,7 +83,7 @@ if (newDay) {
 
     let tempHappiness = activateRandomScenario(happyScenarios, 0, "Happiness");
 
-    idOffset = happyScenarios.length;
+    let idOffset = happyScenarios.length;
 
     const lustScenarios = [
         1, //Bought new lingerie
@@ -226,8 +226,16 @@ if (newDay) {
         tempLust += 5;
     }
 
-    //TODO: Sub and dom birthday events
 
+    //Sub birthday
+    if(isSubBirthday()) {
+        tempLust += 12;
+    }
+
+    if(isDomBirthday()) {
+        tempLust += 15;
+        tempHappiness += 15;
+    }
 
     //Set the daily based values
     setVar(dayOfWeek + "Happiness", tempHappiness);

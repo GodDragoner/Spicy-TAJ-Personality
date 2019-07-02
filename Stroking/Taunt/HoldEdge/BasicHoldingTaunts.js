@@ -16,7 +16,7 @@
         "Keep that %Cock% right on the edge, don't you dare back off it!",
         "Ride it!",];
 
-    let answers;
+    let answers = generalAnswers;
 
     //Only push these if we aren't sending the initial message
     if(!isVar('initialEdgeHold')) {
@@ -38,6 +38,8 @@
               "Enjoy the maximum of stimulation a slave like you should ever have!",
           ]);
     } else {
+        let answers = generalAnswers;
+
         //Delete it after the first message
         delVar('initialEdgeHold');
     }

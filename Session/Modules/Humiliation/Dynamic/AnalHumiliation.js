@@ -3,16 +3,16 @@
 {
     if (tryRunModuleFetchId()) {
         //TODO: More limit handling
-        if(getAnalLimit() == LIMIT_NEVER) {
+        if (getAnalLimit() == LIMIT_NEVER) {
             //Try to find a different module
             tryRunModuleFetchId();
         }
 
         sendMessage("Let's see %SlaveName%");
-        sendMessage(random("I think it's time to work that ass", "I guess it's time to work on your ass", "Let's have some fun with your ass shall we?"));
+        sendMessage(random("I think it's time to work that ass", "I guess it's time to work on your ass", "Let's have some fun with your ass shall we?", "Let\'s play a fun little game... with your ass %Grin%"));
 
         //Run ass intro
-        if(!isVar('assIntro')) {
+        if (!isVar('assIntro')) {
             runAssIntro();
         }
 
@@ -31,7 +31,7 @@
             let tasks = !getDate(VARIABLE_LAST_PLUG_DATE).addMinute(5).hasPassed();
 
             if (!tasks) {
-                if(isChance(25)) {
+                if (isChance(25)) {
                     if (currentPlug !== biggestButtplug) {
                         tasks = increasePlugSize();
                     }
@@ -40,7 +40,7 @@
                 }
             }
 
-            if(tasks) {
+            if (tasks) {
                 sendMessage("However I want you to keep that plug inside for now...");
                 sendMessage("A bit more of a warmup can never be too bad right?");
                 sendMessage("But let's not waste the time we are waiting for your ass to stretch though");
@@ -69,8 +69,8 @@
             }
         }
 
-
         let toy = getAnalDildo().name;
+
         if (dildoPlay) {
             if (!fetchDildoToy(toy)) {
                 lastAlternativeFingerPlay();
@@ -89,7 +89,7 @@
         if (lubeType == ANY_LUBE) {
             lubeUpToyWithLube(toy);
         } else if (lubeType === SPIT_LUBE) {
-            lubeUpToyWithSpit(toy, false);
+            lubeUpToyWithSpit(toy, toy != 'finger');
         } else if (lubeType === TOOTHPASE_LUBE) {
             lubeUpToyWithToothpaste(toy);
         } else if (lubeType === TIGER_HOT_LUBE) {
@@ -137,7 +137,7 @@ function startPenetratingSession(toy) {
     sendMessage("And pull it all the way out again");
 
     //Sit on dildo
-    if(!finger && getVar(VARIABLE_ASS_LEVEL) >= 15 && isChance(20)) {
+    if (!finger && getVar(VARIABLE_ASS_LEVEL) >= 15 && isChance(20)) {
         sendMessage('Now I want you to to place it in front of you... %Grin%');
         sendMessage('%KnowWhatsNext%');
 
@@ -150,7 +150,7 @@ function startPenetratingSession(toy) {
         playBellSound();
 
 
-        if(getASMLimit() === LIMIT_ASKED_YES && feelsEvil()) {
+        if (getASMLimit() === LIMIT_ASKED_YES && feelsEvil()) {
             sendMessage('I want you to pick up that dildo with your mouth and bring it to me %Grin%');
             sendMessage('Mhmmm. Tastes good doesn\'t it? %Lol%');
         } else {
@@ -171,17 +171,17 @@ function startPenetratingSession(toy) {
 
 function getAnalSessionLength() {
     //Max one third of session anal
-    let maxMinutes = Math.ceil(getVar(VARIABLE_DEVOTION)/3);
+    let maxMinutes = Math.ceil(getVar(VARIABLE_DEVOTION) / 3);
 
     //TODO: Anal themed session
 
-    let min = Math.max(5, getVar(VARIABLE_ASS_LEVEL)/2);
+    let min = Math.max(5, getVar(VARIABLE_ASS_LEVEL) / 2);
     let max = Math.max(10, getVar(VARIABLE_ASS_LEVEL));
 
     let mood = getMood();
 
-    min += randomInteger(mood*ACTIVE_PERSONALITY_STRICTNESS, mood*(ACTIVE_PERSONALITY_STRICTNESS + 1));
-    max += randomInteger(mood*ACTIVE_PERSONALITY_STRICTNESS, mood*(ACTIVE_PERSONALITY_STRICTNESS + 1));
+    min += randomInteger(mood * ACTIVE_PERSONALITY_STRICTNESS, mood * (ACTIVE_PERSONALITY_STRICTNESS + 1));
+    max += randomInteger(mood * ACTIVE_PERSONALITY_STRICTNESS, mood * (ACTIVE_PERSONALITY_STRICTNESS + 1));
 
     let previousMin = min;
 
@@ -189,8 +189,8 @@ function getAnalSessionLength() {
     max = Math.max(previousMin, max);
 
     //Domme mode
-    if(isVar('analWhoreMode')) {
-        maxMinutes = Math.ceil(getVar(VARIABLE_DEVOTION)/2);
+    if (isVar('analWhoreMode')) {
+        maxMinutes = Math.ceil(getVar(VARIABLE_DEVOTION) / 2);
 
         min *= 1.5;
         max *= 1.5;
@@ -261,7 +261,7 @@ function appendModule(toy) {
                     sendMessage("Your ass will be violated again");
                     sendMessage("However this time in a special position %Grin%");
                 } else if (subGuess != 0 && subGuess == 1) {
-                    if(ASM_LIMIT.getLimit() != LIMIT_ASKED_YES) {
+                    if (ASM_LIMIT.getLimit() != LIMIT_ASKED_YES) {
                         sendMessage('A blowjob?!');
 
                         ASM_LIMIT.askForLimitChange(true);
@@ -301,7 +301,7 @@ function appendPenetratingSession(toy) {
     //TODO: Generalize append transition
     sendMessage("Now...");
 
-    let blowjob = isChance(20);
+    let blowjob = true;
     let currentBlowjob = false;
     if (blowjob) {
         blowjob = addBlowjobToFucking(toy);
@@ -345,7 +345,7 @@ function appendPenetratingSession(toy) {
             sendMessage("And back to fucking that ass %Grin%");
         }
 
-        if (isChance(50) && finger && currentFingerCount < getVar(VARIABLE_ASS_LEVEL)/6 && currentFingerCount < 5) {
+        if (isChance(50) && finger && currentFingerCount < getVar(VARIABLE_ASS_LEVEL) / 6 && currentFingerCount < 5) {
             sendMessage("I think you are ready to take more than your " + currentFingerCount++ + pluralize("finger", currentFingerCount));
             sendMessage("Go ahead and use " + currentFingerCount + pluralize("finger", currentFingerCount) + " from now on %Grin%");
             if (currentFingerCount >= 4) {
@@ -361,8 +361,14 @@ function addBlowjobToFucking(toy, mountedToWall = false, inFront = false) {
     const hasSecondDildo = DILDOS.length > 1;
 
     if (hasSecondDildo) {
-        if (!fetchDildoToy(getDildo(true).name)) {
+        if (!fetchDildoToy(toy = getDildo(true).name)) {
             return false;
+        }
+
+        if(!ASM_LIMIT.isAllowed()) {
+            sendMessage('You may clean your ' + toy + ' if need be before we are continuing');
+            sendMessage('So tell me when you are ready to continue');
+            waitForDone();
         }
 
         startBlowjobFuckingInstructions(toy, mountedToWall, inFront);
@@ -382,7 +388,7 @@ function stopBlowjobFuckingInstructions() {
 function startBlowjobFuckingInstructions(toy, mountedToWall = false, inFront = false) {
     let usedBlowjobInstructions = getVar("usedBlowjobInstructions", new java.util.ArrayList());
 
-    if(isGaged()) {
+    if (isGaged()) {
         removeGag();
     }
 
@@ -410,9 +416,9 @@ function startBlowjobFuckingInstructions(toy, mountedToWall = false, inFront = f
     let skipASM = false;
     if (isChance(50) || getBlowjobLevel() < 30) {
         //Either because we haven't been doing this already or because the last thing we did was the normal blowjob beat
-        if (isChance(20) && usedBlowjobInstructions.get(usedBlowjobInstructions.size() - 1) != 5 || usedBlowjobInstructions.get(usedBlowjobInstructions.size() - 1) == 0) {
+        if (isChance(20) && (usedBlowjobInstructions.isEmpty() || usedBlowjobInstructions.get(usedBlowjobInstructions.size() - 1) != 5 || usedBlowjobInstructions.get(usedBlowjobInstructions.size() - 1) == 0)) {
             //Means the last thing we did was blowjob to the beat
-            if (usedBlowjobInstructions.get(usedBlowjobInstructions.size() - 1) == 0) {
+            if (usedBlowjobInstructions.isEmpty() || usedBlowjobInstructions.get(usedBlowjobInstructions.size() - 1) == 0) {
                 sendMessage("You will up the speed of your blowjob");
                 sendMessage("Not only will you speed up...");
                 sendMessage("You will go as fast as possible %Grin%");
@@ -425,7 +431,7 @@ function startBlowjobFuckingInstructions(toy, mountedToWall = false, inFront = f
             //Checks if we did the blowjob beat thing already
             if (usedBlowjobInstructions.contains(0)) {
                 //Means the last thing we did was raping the mouth as fast as possible
-                if (usedBlowjobInstructions.get(usedBlowjobInstructions.size() - 1) == 5) {
+                if (usedBlowjobInstructions.isEmpty() || usedBlowjobInstructions.get(usedBlowjobInstructions.size() - 1) == 5) {
                     sendMessage("You can slow it down a bit and go back to the speed of the beat");
                 } else {
                     sendMessage("Let's go back to matching the beat with your dildo");
@@ -443,7 +449,7 @@ function startBlowjobFuckingInstructions(toy, mountedToWall = false, inFront = f
                 const random = randomInteger(0, 3);
                 switch (random) {
                     case 0:
-                        if (usedBlowjobInstructions.get(usedBlowjobInstructions.size() - 1) != 1) {
+                        if (usedBlowjobInstructions.isEmpty() || usedBlowjobInstructions.get(usedBlowjobInstructions.size() - 1) != 1) {
                             usedBlowjobInstructions.add(1);
                             sendMessage("You are gonna deepthroat that dildo the whole time");
                             sendMessage("I don't care if you need to gag %Lol%");
@@ -463,7 +469,7 @@ function startBlowjobFuckingInstructions(toy, mountedToWall = false, inFront = f
                         //Try again
                         break;
                     case 1:
-                        if (usedBlowjobInstructions.get(usedBlowjobInstructions.size() - 1) != 2) {
+                        if (usedBlowjobInstructions.isEmpty() || usedBlowjobInstructions.get(usedBlowjobInstructions.size() - 1) != 2) {
                             usedBlowjobInstructions.add(2);
                             sendMessage("You are gonna give that " + toy + " a nice blowjob and every 10 seconds you are gonna deepthroat that dildo for 5 seconds");
                             break outerLoop;
@@ -472,7 +478,7 @@ function startBlowjobFuckingInstructions(toy, mountedToWall = false, inFront = f
                         //Try again
                         break;
                     case 2:
-                        if (usedBlowjobInstructions.get(usedBlowjobInstructions.size() - 1) != 3) {
+                        if (usedBlowjobInstructions.isEmpty() || usedBlowjobInstructions.get(usedBlowjobInstructions.size() - 1) != 3) {
                             usedBlowjobInstructions.add(3);
                             sendMessage("You are gonna give that " + toy + " a nice blowjob and every 15 seconds you are gonna deepthroat that dildo for 5 seconds");
                             break outerLoop;
@@ -481,7 +487,7 @@ function startBlowjobFuckingInstructions(toy, mountedToWall = false, inFront = f
                         //Try again
                         break;
                     case 3:
-                        if (usedBlowjobInstructions.get(usedBlowjobInstructions.size() - 1) != 4) {
+                        if (usedBlowjobInstructions.isEmpty() || usedBlowjobInstructions.get(usedBlowjobInstructions.size() - 1) != 4) {
                             usedBlowjobInstructions.add(4);
                             sendMessage("You are gonna give that " + toy + " a nice blowjob and every 20 seconds you are gonna deepthroat that dildo for 10 seconds");
                             break outerLoop;
@@ -541,10 +547,10 @@ function choosePosition(toy, needsTwoHands = false) {
             break;
     }
 
-    if(getDate(VARIABLE_LAST_DILDO_SWAP_DATE).addMinute(10 - Math.ceil(getVar(VARIABLE_ASS_LEVEL)/6))) {
+    if (getDate(VARIABLE_LAST_DILDO_SWAP_DATE).addMinute(10 - Math.ceil(getVar(VARIABLE_ASS_LEVEL) / 6))) {
         let newToy = getDildo(false).name;
 
-        if(fetchDildoToy(newToy)) {
+        if (fetchDildoToy(newToy)) {
             sendMessage('I want you to use your ' + newToy + ' for now instead %Grin%');
             setDate(VARIABLE_LAST_DILDO_SWAP_DATE);
             toy = newToy;

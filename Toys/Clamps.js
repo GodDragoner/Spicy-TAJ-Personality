@@ -1,6 +1,8 @@
 const CLOTHESPINS_TOY = createToy('clothespins');
 const NIPPLE_CLAMPS = createToy('nipple clamps');
 
+const MAX_CLAMPS = 20;
+
 function getClamps(index) {
     if(BODY_PARTS.length > index) {
         return BODY_PARTS[index].currentClamps;
@@ -80,11 +82,19 @@ function removeClamps(amount) {
 function distributeClamps(amount) {
     //const currentClamps = getTotalAttachedClamps();
 
-    if(!fetchToy('clothespin', undefined, amount)) {
-        return false;
-    }
+    if(getTotalAttachedClamps() >= MAX_CLAMPS) {
+        removeClamps(amount);
 
-    sendMessage("Now...");
+        sendMessage("Now...");
+        sendMessage('We didn\'t just remove them to make you feel good');
+        sendMessage('We are gonna reattach them to new spots now %Grin%');
+    } else {
+        if(!fetchToy('clothespin', undefined, amount)) {
+            return false;
+        }
+
+        sendMessage("Now...");
+    }
 
     let firstRun = true;
 

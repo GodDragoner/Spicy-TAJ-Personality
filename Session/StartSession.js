@@ -5,6 +5,7 @@
 
     //Toys
     updateSessionButtplugs();
+    updateSessionDildos();
 
 //TODO: Special day test (birthday etc.)
 
@@ -37,7 +38,7 @@
             sendMessage(random("As you well know", "As you know", "As you should know", "Oh well", "Oh my", "Poor you"));
             lockImages();
             showPicture("Images/Spicy/Chastity/ChastityOffDenied/*.*", 5);
-            sendMessage(random("You're under strict lockdown", "You're strictly locked", "You're not gonna be released"));
+            sendMessage(random("You're under strict lock down", "You're strictly locked", "You're not gonna be released"));
             //, "You are still being punished", "You're serving a punishment" TODO: Punishment flag
             sendMessage(random("Meaning there will be no release from that %ChastityCage%...", "Meaning you won't be released for this session", "So there won't be any release today"));
             unlockImages();

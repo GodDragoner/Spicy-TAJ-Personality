@@ -5,7 +5,13 @@
         sendMessage(random("Get ready to hit the edge when I get to zero", "I want you to hit the edge when I get to zero", "You should hit the edge when I get to zero"));
         sendMessage("But ONLY at zero, %SlaveName% %Grin%");
         sendMessage("And wait for my command to cum, because I might make you hold that edge a bit too");
-        sendMessage("Start stroking");
+
+        if(isInChastity()) {
+            sendMessage("Put the vibrator on that cage and start vibrating it %SlaveName%");
+        } else {
+            sendMessage("Start stroking");
+        }
+
         sendMessage(random("Here we go", "Let\'s do this", "Let\'s get started", "Here it comes"));
         sendMessage("10");
         sendMessage("9");

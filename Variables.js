@@ -21,6 +21,11 @@ const VARIABLE_MIN_WEEKLY_CHORE_TIME = "minWeeklyChoreTime";
 //Home
 const VARIABLE_HOME_TYPE = 'homeType';
 
+//Interaction
+const VARIABLE_RESPONSE_WILL_DO_ANYTHING = 'responseWillDoAnything';
+
+const VARIABLE_NEXT_TIME_ICE_CUBES = 'nextTimeIceCubes';
+
 //Chores
 const VARIABLE_CHORE_KITCHEN = 'choreKitchen';
 const VARIABLE_CHORE_BATHROOM = 'choreBathroom';
@@ -92,9 +97,9 @@ const VARIABLE_TASK_CHASTITY_EXPERIENCE = 'taskChastityExperience';
 const VARIABLE_CHASTITY_TRAININGS_DONE = 'chastityTrainingsDone';
 const VARIABLE_AFRAID_OF_CHASTITY = 'afraidOfChastity';
 const VARIABLE_LAST_CHASTITY_TASK_ID = 'lastChastityTaskId';
-const VARIABLE_CHASTITY_EXPERIENCE_MULTIPLIER = 'chastityEXPMultiplier';
 const VARIABLE_CHASTITY_TASKS_IN_ROW = 'chastityTasksInRow';
 
+//TODO: Enforcing personality intro after chastity exam and kind intro with asking after exam/at beginning
 const VARIABLE_LONG_TERM_CHASTITY = 'chastityLongTerm';
 
 //Anal training
@@ -115,7 +120,7 @@ const VARIABLE_LAST_BLOWJOB_TASK_ID = 'lastAssTaskId';
 const VARIABLE_BLOWJOB_TRAINING = 'blowjobTraining';
 const VARIABLE_BLOWJOB_TRAININGS_DONE = 'blowjobTrainingsDone';
 
-
+const VARIABLE_TRAINING_ORGASM_TODAY = "trainingOrgasmToday";
 const VARIABLE_TRAINING_INTRODUCTION_DONE = 'trainingIntroductionDone';
 
 //Toys
@@ -131,6 +136,7 @@ const VARIABLE_IS_BALLS_TIED = "isBallsTied";
 const VARIABLE_IS_BALL_CRUSHER_ON = "isBallCrusherOn";
 
 const VARIABLE_IS_KNEELING = "isKneeling";
+const VARIABLE_KNEELING_STARTED = "kneelingStarted";
 
 const VARIABLE_BALL_CRUSHER_TWISTS_TO_APPLY = "ballCrusherTwistsToApply";
 const VARIABLE_BALL_CRUSHER_MAX_TWISTS = "ballCrusherMaxTwists";
