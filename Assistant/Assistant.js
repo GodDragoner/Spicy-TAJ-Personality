@@ -61,7 +61,8 @@ function updatePictureSet() {
         setVar("usedVirtualAssistantDresses", ",");
 
         //Add all possible dresses
-        for(let x = 0; x < 31; x++) {
+		//off by one error below fixed  (dress goes 1-31)
+        for(let x = 1; x <= 31; x++) {
             unusedDresses.push(x);
         }
     }

@@ -60,7 +60,7 @@ switch(getVar("Punisher")){
 	pm2=1;
 	break;
 	case 3 :
-	(Contact2)
+	//(Contact2)
 	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%");// #DT4
 	sendMessage(random("Discipline I just love that","You're not gonna like this #GNMGrin","I don't think your #GNMCock will enjoy this","This is fun!"));// #DT4
 
@@ -74,7 +74,7 @@ switch(getVar("Punisher")){
 
 	break;
 	case 4 :
-	(Contact3)
+	//(Contact3)
 	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%");// #DT4
 	sendMessage(random("Discipline can never be cruel enough","Discipline is all about being cruel","Discipline is about showing no mercy!","No mercy for the bad ones.."));// #DT4
 
@@ -129,7 +129,7 @@ break;
 	while(!(donetime.hasPassed())){
 //(Task)
 		 showImage("Images/Spicy/Punishment/Grounding/BlackBase.*"); 
-		 sleep(randomInteger(3,30));
+		 wait(randomInteger(3,30));
 		 answerval= randomInteger(1,9);
 		 
 		  showImage("Images/Spicy/Punishment/Grounding/Numbers/Black"+answerval+".*",1); 
@@ -176,4 +176,4 @@ break;
 
  setVar("PunishmentComplete", true);
  setVar("PunishmentCompleted", 12);
- run("Punishment/PunishmentBaseEnd.js");
+ run("Dungeon/PunishmentBaseEnd.js");

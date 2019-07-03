@@ -65,7 +65,7 @@ switch(getVar("Punisher")){
 	case 3 :
 	//(Contact2)
 	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%");// #DT4
-	sendMessage(random("Discipline I just love that","You're not gonna like this %Grin%","I don't think your %Cock% will enjoy this","This is fun!"));// #DT4
+	sendMessage(random("Discipline I just love that","You're not gonna like this %GNMGrin%","I don't think your %GNMCock% will enjoy this","This is fun!"));// #DT4
 
 	if (getVar("SubEndurance")>=7) {
 	PS2=3;}
@@ -115,7 +115,7 @@ break;
 sendMessage("So %slaveName% "); //#DT4
 sendMessage("The punishment you're about to be given "); //#DT4
 sendMessage("Might be considered a game to some "); //#DT4
-sendMessage("A mindgame %Grin% "); //#DT4
+sendMessage("A mindgame %GNMGrin% "); //#DT4
 sendMessage("I need you to fetch your ballcrusher and put it on so its ready.. ",30); //#DT4 @Wait(30)
 
 crusherNotOn=true;
@@ -168,7 +168,7 @@ while (keepGoing) {
 }
 sendMessage("You used the magic word! "); //#DT4 
 //@CustomMode(ModeText, Normal) 
-sendMessage("%Grin%");
+sendMessage("%GNMGrin%");
  if (BallCrushingCount<BallCrushing) {
 	sendMessage("Well to little surprise you failed.. "); //#DT4 
 	setVar(VARIABLE_GOLD, getVar(VARIABLE_GOLD)-25);

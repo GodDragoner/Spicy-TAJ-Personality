@@ -129,7 +129,7 @@ break;
 	while(!(donetime.hasPassed())){
 //(Task)
 		 showImage("Images/Spicy/Punishment/Grounding/BlackBase.*"); 
-		 sleep(randomInteger(3,30));
+		 wait(randomInteger(3,30));
 		 answerval= randomInteger(1,9);
 		 
 		  showImage("Images/Spicy/Punishment/Grounding/Numbers/Black"+answerval+".*",1); 
@@ -176,4 +176,4 @@ break;
 
  setVar("PunishmentComplete", true);
  setVar("PunishmentCompleted", 2);
- run("Punishment/PunishmentBaseEnd.js");
+ run("Dungeon/PunishmentBaseEnd.js");

@@ -64,7 +64,7 @@ switch(getVar("Punisher")){
 	case 3 :
 	//(Contact2)
 	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%");// #DT4
-	sendMessage(random("Discipline I just love that","You're not gonna like this %Grin%","I don't think your %Cock% will enjoy this","This is fun!"));// #DT4
+	sendMessage(random("Discipline I just love that","You're not gonna like this %GNMGrin%","I don't think your %GNMCock% will enjoy this","This is fun!"));// #DT4
 
 	if (getVar("SubEndurance")>=7) {
 	PS2=3;}
@@ -102,7 +102,7 @@ sendMessage("Not.."); //#DT4
 sendMessage("Enjoy.."); //#DT4
 sendMessage("This.."); //#DT4
 sendMessage("%SlaveName% .."); //#DT4
-sendMessage(random("Fetch","Retrieve","Bring me","Go and get","Go ahead and fetch") +" 4 large rubberbands"); //#DT4
+sendMessage(random("%Fetch%","%Fetch%","%Fetch%","%Fetch%","Retrieve","Bring me","Go and get","Go ahead and fetch") +" 4 large rubberbands"); //#DT4
 sendMessage("Get naked if you're not already"); //#DT4
 sendMessage("Put 1 rubberband around each buttcheek"); //#DT4
 sendMessage("Place the remaining around your mid thigh"); //#DT4
@@ -119,6 +119,7 @@ while (true) {
 			} 
 			else if (answer.isLike("no")) {
 				sendMessage("Okay I'm glad you know your limit.. "); //#DT4
+				run("dungeon/PunishmentBase.js");
 				break;
 			}else {
 			sendMessage("Yes or no %SlaveName%"); //#DT4
@@ -166,7 +167,7 @@ sendMessage (" Today you will be given "+caningNumber + " strikes %SlaveName%");
 
 	sendMessage(random("Left thigh..","Right thigh..","Left Cheek..","Right Cheek.."),randomInteger(1,2)); //#DT4 @Wait(#Random(1,2))
 	sendMessage("Pull back!", randomInteger(1,3)); //#DT4
-	variation = randomInteger(1,50);
+	variation = randomInteger(1,40);
 	switch(variation) {
 		case 1:
 		sendMessage("you can pull it further back than that %slaveName%", randomInteger(1,2)); //#DT4
@@ -181,7 +182,7 @@ sendMessage (" Today you will be given "+caningNumber + " strikes %SlaveName%");
 		sendMessage("a little further %Bitch%...", randomInteger(1,2)); //#DT4
 		break;
 	}
-	playAudio("Audio/GNMSounds/Punishment/SpankingCane/Cane1.mp3"); // @Goto(CaningBase)
+	playAudio("Audio/Spicy/Punishment/SpankingCane/Cane1.mp3"); // @Goto(CaningBase)
  }
 sendMessage("Well done %SubName%"); //#DT4
 sendMessage("I'm impressed by your willpower today "); //#DT4 

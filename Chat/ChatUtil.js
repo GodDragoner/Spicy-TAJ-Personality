@@ -59,17 +59,20 @@ function sendVirtualAssistantMessage(message, wait, skipImage) {
     text.setFill(javafx.scene.paint.Color.ROYALBLUE);
     text.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.MEDIUM, 13));
 
+//test below to see if tts is supported and sendmessage can be swapped for sendcustom message
     sendCustomMessage(textName, text);
 
     //Show image
-    if (skipImage === undefined || !skipImage) {
-        if (!isImagesLocked()) {
+    if(skipImage === undefined || !skipImage) {
+        if(!isImagesLocked()) {
             showImage("Images/Spicy/Assistant/" + ASSISTANT_CURRENT_SET_ID + "/*.jpg");
         }
     }
 
-    if (wait === undefined || wait) {
+    if(wait === undefined) {
         sleep(1000 + message.length * 50, "MILLISECONDS");
+    } else if(wait) {
+        sleep(wait*1000, "MILLISECONDS");
     }
 }
 
@@ -209,5 +212,30 @@ function createYesOrNoQuestion() {
             sendMessageBasedOnSender(YES_OR_NO);
             answer.loop();
         }
+    }
+}
+
+function sendArbMessage(textName, message, wait, imagePath) {
+    let sendName = new javafx.scene.text.Text(textName);
+    sendName.setFill(javafx.scene.paint.Color.ROYALBLUE);
+    sendName.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.BOLD, 14));
+
+
+    message = replaceVocab(message);
+    let text = new javafx.scene.text.Text(message);
+    text.setFill(javafx.scene.paint.Color.ROYALBLUE);
+    text.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.MEDIUM, 13));
+
+    sendCustomMessage(sendName, text);
+
+    /*Show image
+    if(ImagePath !== undefined) {
+       showImage(ImagePath);
+    }*/
+
+    if(wait === undefined) {
+        sleep(1000 + message.length * 50, "MILLISECONDS");
+    } else if(wait) {
+        sleep(wait*1000, "MILLISECONDS");
     }
 }
