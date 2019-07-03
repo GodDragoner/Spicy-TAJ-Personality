@@ -45,7 +45,7 @@ function main()
 }
 function a1()
 {
-    sendMessage("Grab my %GNMBalls% and squeeze them ");
+    sendMessage("Grab my %Balls% and squeeze them ");
     wait(10);
     sendMessage("Squeeze them " + random("as hard as you can ", "so hard that your eyes start to tear ") + "until I tell you to release your grip " + random("%SlaveName% ", "%Slut% ", "%SubName% ") );
     if(getVar("Personality1", false))
@@ -64,11 +64,11 @@ function a1()
     let answer0 = getInput("Are they " + random("blue ", "sore ", "purple ", "hurting ") + "yet?");
     while (!(answer0.isLike("yes") || answer0.isLike("no")))
     {
-        answer0 = getInput("%GNMYesOrNo% ");
+        answer0 = getInput("%YesOrNo% ");
     }
     if (answer0.isLike("yes"))
     {
-        sendMessage("%GNMMoan% ");
+        sendMessage("%Moan% ");
     }
     else if (answer0.isLike("no"))
     {
@@ -91,7 +91,7 @@ function a1()
 }
 function a2()
 {
-    sendMessage("Be ready to bust my %GNMBalls% %SlaveName% ");
+    sendMessage("Be ready to bust my %Balls% %SlaveName% ");
     setVar("TempHits", getVar("SubPain", 0) + 0);
     Loop2();
 }
@@ -110,7 +110,7 @@ function Loop2()
     }
     if (answer0.isLike("done"))
     {
-        sendMessage("%GNMGrin% ");
+        sendMessage("%Grin% ");
         Continue2();
         return;
     }
@@ -126,7 +126,7 @@ function Time()
 }
 function Continue2()
 {
-    let answer0 = getInput("Hit my %GNMBalls% another " +getVar("TempHits")+ " Times"););
+    let answer0 = getInput("Hit my %Balls% another " +getVar("TempHits")+ " Times"););
     if (answer0.isTimeout())
     {
         Time();
@@ -138,7 +138,7 @@ function Continue2()
     }
     if (answer0.isLike("done"))
     {
-        sendMessage("%GNMGood% ");
+        sendMessage("%Good% ");
     }
     End();
     return;
@@ -165,7 +165,7 @@ function Loop3()
     }
     if (answer0.isLike("done"))
     {
-        sendMessage("%GNMGrin% ");
+        sendMessage("%Grin% ");
         Continue3();
         return;
     }
@@ -184,11 +184,11 @@ function Continue3()
     let answer0 = getInput("Does it " + random("hurt ", "burn ", "ache ") + "yet?");
     while (!(answer0.isLike("yes") || answer0.isLike("no")))
     {
-        answer0 = getInput("%GNMYesOrNo% ");
+        answer0 = getInput("%YesOrNo% ");
     }
     if (answer0.isLike("yes"))
     {
-        sendMessage("%GNMGood% ");
+        sendMessage("%Good% ");
     }
     else if (answer0.isLike("no"))
     {
@@ -260,27 +260,27 @@ function End()
 }
 function a()
 {
-    sendMessage("Let\'s give thoes %GNMBalls% another");
+    sendMessage("Let\'s give thoes %Balls% another");
     --Command:ShowVar(TempHits)
     wait(400);
     b();
 }
 function b()
 {
-    sendMessage("I want your %GNMBalls% to really hurt. Give them another hard slap ");
+    sendMessage("I want your %Balls% to really hurt. Give them another hard slap ");
     wait(200);
     c();
 }
 function c()
 {
-    sendMessage("Punch your %GNMBalls%");
+    sendMessage("Punch your %Balls%");
     --Command:ShowVar(TempHits)
     wait(200);
     d();
 }
 function d()
 {
-    sendMessage("Now smack those %GNMBalls%");
+    sendMessage("Now smack those %Balls%");
     --Command:ShowVar(SubPain)
     wait(200);
     e();

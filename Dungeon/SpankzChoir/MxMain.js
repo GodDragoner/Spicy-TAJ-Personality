@@ -217,13 +217,13 @@ End=false;
 //(End)
 MXmessage(" %SlaveName% .. ");
 MXmessage(" I enjoyed our time together");
-MXmessage(" Though I'm not sure your %GNMAss% did %GNMLol%");
+MXmessage(" Though I'm not sure your %Ass% did %Lol%");
 MXmessage(" But before I leave you ");
-Guess= sendInput(" How many strokes did I give you today? %GNMGrin% ");
+Guess= sendInput(" How many strokes did I give you today? %Grin% ");
 
 
 if(Guess==getVar("TotalSpanking"))
-	{MXmessage(" Correct! %GNMEmoteHappy%");	
+	{MXmessage(" Correct! %EmoteHappy%");
 	 //#MeritChangePHigh
 	 ChangeMeritHigh(false);
 	}
@@ -236,7 +236,7 @@ if(Guess==getVar("TotalSpanking"))
 	
 	
 	MXmessage(" I'm sure it would make your %DomHonorific% happy ");
-	MXmessage(" If you took a photo of your %GNMAss% and placed it in your humiliation folder %GNMGrin%"); 
+	MXmessage(" If you took a photo of your %Ass% and placed it in your humiliation folder %Grin%");
 	setVar("SpankzChoirComplete",true) ;
 	run("Dungeon/PunishmentBaseEnd.js");
 

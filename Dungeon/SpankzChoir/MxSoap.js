@@ -6,7 +6,7 @@ switch(choice)
 	 \\Lick
 	MXmessage(random("Slave","Slave %SlaveName%","Slave","bitch","%SlaveName%,%SubName%)+ "Lick that bar of soap " + random("once","once","twice" ,"and count to 10"));
 	 sleep(10);
-	MXmessage(random("%GNMLol%","%GNMGrin%","%GNMEmoteHappy%") );
+	MXmessage(random("%Lol%","%Grin%","%EmoteHappy%") );
 	 sleep(10);
 	break;
 

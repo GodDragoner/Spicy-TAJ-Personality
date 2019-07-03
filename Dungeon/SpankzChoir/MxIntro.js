@@ -31,7 +31,7 @@ switch(getVar("MXR")){
 			MXmessage(" Hello my little toy ");
 			MXmessage(" I am Miss Allison ");
 			MXmessage(" And right now your ass is all mine! ");
-			MXmessage(" I'm known as the cruel one %GNMLol% ");
+			MXmessage(" I'm known as the cruel one %Lol% ");
 			MXmessage(" Let me prove it to you! "); 
 			doneend=true;
 			}
@@ -47,7 +47,7 @@ switch(getVar("MXR")){
 			MXmessage(" Hi boy ");
 			MXmessage(" I'm Miss Gigi ");
 			MXmessage(" Mhmm I'm excited about whats to come in a moment! ");
-			MXmessage(" You on the other hand look a bit shaky %GNMLol% ");
+			MXmessage(" You on the other hand look a bit shaky %Lol% ");
 			MXmessage(" I'm using my Hitachi later! "); 
 			doneend=true;
 		}
@@ -76,7 +76,7 @@ switch(getVar("MXR")){
 			 setVar("M5RFirst",true);
 			MXmessage(" Hi %SubName% ");
 			MXmessage(" I'm Miss Kordelia ");
-			MXmessage(" And that is all you need to know %GNMGrin% "); 
+			MXmessage(" And that is all you need to know %Grin% ");
 			doneend=true;
 		}
 	break;
@@ -107,7 +107,7 @@ switch(getVar("MXR")){
 			MXmessage(" You're cuter than in person than your profile picture! ");
 			MXmessage(" My name is Sadie ");
 			MXmessage(" Miss Sadie to you ");
-			MXmessage(" %GNMGrin% "); 
+			MXmessage(" %Grin% ");
 			doneend=true;
 		}
 	break;
@@ -122,7 +122,7 @@ switch(getVar("MXR")){
 			MXmessage(" Welcome! ");
 			MXmessage(" I'm Miss Sarah ");
 			MXmessage(" I'm famous on SpankzChoir.com ");
-			MXmessage(" And you're about to discover why! %GNMLol% "); 
+			MXmessage(" And you're about to discover why! %Lol% ");
 			doneend=true;
 		}
 	break;
@@ -144,10 +144,10 @@ if (!doneend)
 			setVar("PReason_spankzchoir_late", true);
 			addPunishmentPoints(200);
 			setVar("SpankzChoirSkipped", false);
-			MXmessage(" Oh and also a lot of punishment points %GNMGrin% "); 
+			MXmessage(" Oh and also a lot of punishment points %Grin% ");
 			//#MeritChangeNHigh
 			changeMeritHigh(true);
-			MXmessage(" Well lets start your spanking all over! %GNMGrin% ");
+			MXmessage(" Well lets start your spanking all over! %Grin% ");
 			//@End
 	 }else if (isVar("SpankzChoirLate") && getVar("SpankzChoirLate")==true) {
 		 //	(SpankzChoirLate)
@@ -155,9 +155,9 @@ if (!doneend)
 			MXmessage(" Awww late for your auction huh? ");
 			MXmessage(" Well don't worry! ");
 			MXmessage(" You still get spanked  ");
-			MXmessage(" You just don't get paid! %GNMEmoteHappy% ");
+			MXmessage(" You just don't get paid! %EmoteHappy% ");
 			MXmessage(" on the plus side... ");	
-			MXmessage(" you did earn a few punishment points. %GNMLol%");	
+			MXmessage(" you did earn a few punishment points. %Lol%");
 			addPunishmentPoints(50);
 			setVar("SpankzChoirLate", false);
 			//@End

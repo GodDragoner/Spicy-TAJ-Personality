@@ -95,7 +95,7 @@ if(isVar("PunishmentActive") && getVar("PunishmentActive")==true){
 					sendDungeonMessage( random( "lol %SubName%, you're so fucked!", "oh %SlaveName%, you're ass is gonna bleed ", "you should be ashamed, %Subname%", "how did you let it get so bad?"));
 			
 		}else if (getVar("punishmentpoints") > 500 ){
-			sendDungeonMessage( random( "this is SERIOUS %Slave%, you need to put some time in down here", "NOT GOOD, you need to put some serious time in down here", "I have a feeling we're going to be spending lots of time together %GNMGrin%", "that's so many your %DomHonorific% won't even session with you"));
+			sendDungeonMessage( random( "this is SERIOUS %Slave%, you need to put some time in down here", "NOT GOOD, you need to put some serious time in down here", "I have a feeling we're going to be spending lots of time together %Grin%", "that's so many your %DomHonorific% won't even session with you"));
 		}if (getVar("punishmentpoints") > 250 ){
 			sendDungeonMessage( random( "we have some work to do down here","I'll let the mistresses know they should plan to spend some time in the dungeon"));
 		}else{
@@ -126,7 +126,7 @@ if(isVar("PunishmentActive") && getVar("PunishmentActive")==true){
 			answer.clearOptions();
 
 	 delVar("Punishment");
-	sendDungeonMessage( random("Oh my","Oh how nice","Lovely!","Splendid!","Exciting!","Fantastic","%GNMGrin%","perfect..","Good","So you want to be punished.") ); 
+	sendDungeonMessage( random("Oh my","Oh how nice","Lovely!","Splendid!","Exciting!","Fantastic","%Grin%","perfect..","Good","So you want to be punished.") );
 	sendDungeonMessage( random("Let me just look up your file..","Checking your file","Having a look at your file..","Let me just check your file.."),2); 
 			sendDungeonMessage( "Take a seat..");
 			 showImage("Images/Spicy/Punishment/SpankzChoir/chair1.jpg");

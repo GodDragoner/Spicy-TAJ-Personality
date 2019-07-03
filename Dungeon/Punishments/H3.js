@@ -63,7 +63,7 @@ switch(getVar("Punisher")){
 	case 3 :
 	//(Contact2)
 	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%");// #DT4
-	sendMessage(random("Discipline I just love that","You're not gonna like this %GNMGrin%","I don't think your %GNMCock% will enjoy this","This is fun!"));// #DT4
+	sendMessage(random("Discipline I just love that","You're not gonna like this %Grin%","I don't think your %Cock% will enjoy this","This is fun!"));// #DT4
 
 	if (getVar("SubEndurance")>=7) {
 	PM3=3;}
@@ -145,7 +145,7 @@ switch (choice) {
 		response = sendInput("are you all done getting gussied up? "); //#DT4 
 		while(true){
 			if(response.containsIgnoreCase("yes", "yep", "yeah", "I did")){
-			sendMessage("%GNMGood%, now go to the corner %slave% and do as you've been instructed");// #DT4 
+			sendMessage("%Good%, now go to the corner %slave% and do as you've been instructed");// #DT4
 		
 			break;	} 
 			else {
@@ -185,7 +185,7 @@ switch (choice) {
 	sendMessage("You'll hear my voice saying 'up' or 'down'"); // #DT4
 	sendMessage("Down means going down in a squat still on toes"); // #DT4
 	sendMessage("Up means standing up on your toes.. "); //#DT4
-	sendMessage("Now I'm not done %GNMGrin%"); // #DT4
+	sendMessage("Now I'm not done %Grin%"); // #DT4
 	sendMessage("I want you to count the number of commands I give in your head"); // #DT4
 	sendMessage("Everytime you hear a command I want you say 'Thank You %DomHonorific%'"); //#DT4
 	sendMessage("Lastly I want you to count everytime your heel strikes the floor or you loose your balance.."); // #DT4
@@ -208,7 +208,7 @@ switch (choice) {
 		response = sendInput("are you all done getting gussied up? "); //#DT4 
 		while(true){
 			if(response.containsIgnoreCase("yes", "yep", "yeah", "I did")){
-			sendMessage("%GNMGood%, now go to the corner %slave% and do as you've been instructed");// #DT4 
+			sendMessage("%Good%, now go to the corner %slave% and do as you've been instructed");// #DT4
 		
 			break;	} 
 			else {
@@ -220,7 +220,7 @@ switch (choice) {
 			//(Silence)
 
 		}
-	sendMessage("I never said this would be easy %GNMLol%"); // #DT4 
+	sendMessage("I never said this would be easy %Lol%"); // #DT4
 	CornerCommandsGiven = 0 ;
 	sendMessage("Now go to the corner, stand on your toes and don't return before you hear the bell!"); // #DT4
 	 CornerTimeDown = true;
@@ -273,7 +273,7 @@ switch (choice) {
 			 //failed to do this correctly
 			 Failed2=true;
 			 break;
-			 }else {sendMessage("%GNMGood% ");
+			 }else {sendMessage("%Good% ");
 				 break;
 				}
 			}
@@ -288,7 +288,7 @@ switch (choice) {
 		 else{Cornercommands = answer.getInt();
 			 if (Cornercommands==CornerCommandsGiven){
 		 //thats correct
-		 sendMessage("%GNMGood% that was correct.. "); //#DT4
+		 sendMessage("%Good% that was correct.. "); //#DT4
 		 break;
 		 }else {
 		 	sendMessage("Wrong.. "); // #DT4
@@ -307,7 +307,7 @@ switch (choice) {
 		response = sendInput("Did you remember to say 'thank you %DomHonorific% ' <i>everytime</i> I gave a command? ",8); //#DT4 
 		while(true){
 			if(response.containsIgnoreCase("yes", "yep", "yeah", "I did")){
-			sendMessage("%GNMGood%");// #DT4 
+			sendMessage("%Good%");// #DT4
 			sendMessage("I know this was rough %SlaveName%"); // #DT4 
 			sendMessage("But it makes me happy knowing you completed it!"); // #DT4 
 			changeMeritLow(false);
@@ -349,12 +349,12 @@ switch (choice) {
 		}
 		
 		if(response.containsIgnoreCase("fail","fee","not again","please no","no","please don't","don't")) {
-			sendMessage("%GNMGrin%"); // #DT4 
+			sendMessage("%Grin%"); // #DT4
 			Fee=true;
 			break;
 		}
 		if(response.isTimeout()){
-			sendMessage("Well your silence has a price %GNMGrin%"); // #DT4
+			sendMessage("Well your silence has a price %Grin%"); // #DT4
 			Fee=true;
 			break;
 		}

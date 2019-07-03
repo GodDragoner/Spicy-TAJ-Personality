@@ -117,7 +117,7 @@ while (working)
 					working=false;
 					break;
 				} else
-				{sendVirtualAssistantMessage(" %GNMGood%");
+				{sendVirtualAssistantMessage(" %Good%");
 				 answer.clearOptions();
 				 choice=0;
 
@@ -185,22 +185,22 @@ function workmodeExercise(exercise) {
 
 		break;
 		case 2:
-		sendVirtualAssistantMessage(" %GNMSlut% right now you're gonna do "+random("30","40","60")+" crunches" );
+		sendVirtualAssistantMessage(" %Slut% right now you're gonna do "+random("30","40","60")+" crunches" );
 		sendVirtualAssistantMessage(" When you're done just return to whatever you were doing.." );
 
 		break;
 		case 3:
-		sendVirtualAssistantMessage(" %GNMSlut% right now you're gonna do " + random("50","60","40")+ " squats" );
+		sendVirtualAssistantMessage(" %Slut% right now you're gonna do " + random("50","60","40")+ " squats" );
 		sendVirtualAssistantMessage(" When you're done just return to whatever you were doing.." );
 
 		break;
 		case 4:
-		sendVirtualAssistantMessage(" %GNMSlut% right now you're gonna spend "+ random("3","4","5")+" minutes stretching whatever you feel like" );
+		sendVirtualAssistantMessage(" %Slut% right now you're gonna spend "+ random("3","4","5")+" minutes stretching whatever you feel like" );
 		sendVirtualAssistantMessage(" When you're done just return to whatever you were doing..." ); 
 		
 		break;
 		case 5:
-		sendVirtualAssistantMessage(" %GNMSlut% take a deep breath and hold it",7);
+		sendVirtualAssistantMessage(" %Slut% take a deep breath and hold it",7);
 		sendVirtualAssistantMessage(" Exhale",3);
 		sendVirtualAssistantMessage(" Inhale",7);
 		sendVirtualAssistantMessage(" Exhale",3);
@@ -214,21 +214,21 @@ function workmodeExercise(exercise) {
 	
 		break;
 		case 6:
-		sendVirtualAssistantMessage(" %GNMSlut% just take a 5 minutes break, look around yourself" );
+		sendVirtualAssistantMessage(" %Slut% just take a 5 minutes break, look around yourself" );
 		sendVirtualAssistantMessage(" Is there something you can clean or perhaps something else to improve." );
 		sendVirtualAssistantMessage(" 5 minutes! Then you return to whatever you were doing..",300); 
 		playAudio("Audio/Spicy/SpecialSounds/Bell.mp3", true);	
 		sendVirtualAssistantMessage("Its time to get back to work now %SlaveName%" );
 		break;
 		case 7:
-		sendVirtualAssistantMessage(" %GNMSlut% go and drink at least 500 mL of water right now!" );
+		sendVirtualAssistantMessage(" %Slut% go and drink at least 500 mL of water right now!" );
 		sendVirtualAssistantMessage(" When you're done just return to whatever you were doing.. " );
 		
 		break;
 		case 8:
 		sendVirtualAssistantMessage(" %SlaveName% stand up and shake your body" );
 		sendVirtualAssistantMessage(" shake your arms, your legs, your torso and your head",10);
-		sendVirtualAssistantMessage( random("That was it ","Done!","Stop","Just stop","Stop %GNMSlut%","Stop %SlaveName%") + random(" just return to whatever you we're doing"," return to your businuss"," thank you for a little attention") );
+		sendVirtualAssistantMessage( random("That was it ","Done!","Stop","Just stop","Stop %Slut%","Stop %SlaveName%") + random(" just return to whatever you we're doing"," return to your businuss"," thank you for a little attention") );
 		
 		break;
 		case 9:
@@ -246,7 +246,7 @@ function workmodeExercise(exercise) {
 		sendVirtualAssistantMessage(" Just 2 simple minutes",120);
 			playAudio("Audio/Spicy/SpecialSounds/Bell.mp3", true);	
 		sendVirtualAssistantMessage("Open your eyes %SlaveName%" );
-		sendVirtualAssistantMessage( random("That was it ","Done!","Stop","Just stop","Stop %GNMSlut%","Stop %SlaveName%")+" "+ random("just return to whatever you we're doing","return to your business","thank you for a little attention") );
+		sendVirtualAssistantMessage( random("That was it ","Done!","Stop","Just stop","Stop %Slut%","Stop %SlaveName%")+" "+ random("just return to whatever you we're doing","return to your business","thank you for a little attention") );
 		
 		break;
 
@@ -276,7 +276,7 @@ function workmodeTease(tease) {
 	{
 	
 	case 1:
-	sendVirtualAssistantMessage(random("Lets rattle your %Cock% a little","Lets make your %Cock% jump a little","Lets see if we can awaken the princess","Lets play a little","I have something fun for you %GNMEmoteHappy% ") );
+	sendVirtualAssistantMessage(random("Lets rattle your %Cock% a little","Lets make your %Cock% jump a little","Lets see if we can awaken the princess","Lets play a little","I have something fun for you %EmoteHappy% ") );
 	sendVirtualAssistantMessage( random("Just watch this little slide show","Just enjoy this little show","Just sit back and relax","Hang back there and watch this")+" while you fondle your %Balls%" );
 	
 	while (randomInteger(1,10) > 1)
@@ -289,7 +289,7 @@ function workmodeTease(tease) {
 	showTeaseImage(randomInteger(4,7));
 	showTeaseImage(randomInteger(4,7));
 
-	sendVirtualAssistantMessage( random("That was it ","Done!","Stop","Just stop","Stop %GNMSlut%","Stop %SlaveName%")+", "+ random("just return to whatever you we're doing","return to your business","thank you for a little attention")  );
+	sendVirtualAssistantMessage( random("That was it ","Done!","Stop","Just stop","Stop %Slut%","Stop %SlaveName%")+", "+ random("just return to whatever you we're doing","return to your business","thank you for a little attention")  );
 		
 	break;
 
@@ -308,7 +308,7 @@ function workmodeTease(tease) {
 	sleep(10);
 						
 	playAudio("Audio/Spicy/SpecialSounds/Bell.mp3", true);
-	sendVirtualAssistantMessage( random("That was it ","Done!","Stop","Just stop","Stop %GNMSlut%","Stop %SlaveName%")+", " + random("just return to whatever you we're doing","return to your business","thank you for a little attention") );
+	sendVirtualAssistantMessage( random("That was it ","Done!","Stop","Just stop","Stop %Slut%","Stop %SlaveName%")+", " + random("just return to whatever you we're doing","return to your business","thank you for a little attention") );
 
 	
 	break;
@@ -329,7 +329,7 @@ function workmodeTease(tease) {
 	sleep(10);
 						
 	playAudio("Audio/Spicy/SpecialSounds/Bell.mp3", true);
-	sendVirtualAssistantMessage( random("That was it ","Done!","Stop","Just stop","Stop %GNMSlut%","Stop %SlaveName%")+", "+random("just return to whatever you we're doing","return to your business","thank you for a little attention") );
+	sendVirtualAssistantMessage( random("That was it ","Done!","Stop","Just stop","Stop %Slut%","Stop %SlaveName%")+", "+random("just return to whatever you we're doing","return to your business","thank you for a little attention") );
 	break;	
 		
 	case 4:
@@ -347,7 +347,7 @@ function workmodeTease(tease) {
 						
 	playAudio("Audio/Spicy/SpecialSounds/Bell.mp3", true);	
 	
-	sendVirtualAssistantMessage( random("That was it ","Done!","Stop","Just stop","Stop %GNMSlut%","Stop %SlaveName%")+", "+random("just return to whatever you we're doing","return to your business","thank you for a little attention") );
+	sendVirtualAssistantMessage( random("That was it ","Done!","Stop","Just stop","Stop %Slut%","Stop %SlaveName%")+", "+random("just return to whatever you we're doing","return to your business","thank you for a little attention") );
 	break;
 	
 		
@@ -363,19 +363,19 @@ function workmodeTease(tease) {
 		sendVirtualAssistantMessage(random("Lets hope its not dead %Lol%","Tired I suppose","Maybe its finally understanding that its worthless","Maybe it knows i'm tricking it!"));
 		}
 		else if (answer.isLike("yes"))
-			{sendVirtualAssistantMessage(" %GNMGood% %Lol%");
+			{sendVirtualAssistantMessage(" %Good% %Lol%");
 			}else
-				{sendVirtualAssistantMessage(" %GNMYesOrNo%",10);
+				{sendVirtualAssistantMessage(" %YesOrNo%",10);
 				}
 		answer.clearOptions();
-		sendVirtualAssistantMessage( random("That was it ","Done!","Stop","Just stop","Stop %GNMSlut%","Stop %SlaveName%")+", "+random("just return to whatever you we're doing","return to your business","thank you for a little attention"));
+		sendVirtualAssistantMessage( random("That was it ","Done!","Stop","Just stop","Stop %Slut%","Stop %SlaveName%")+", "+random("just return to whatever you we're doing","return to your business","thank you for a little attention"));
 	}
 	
 	else {
 		sendVirtualAssistantMessage( random("Touch your cock a little","Feel your dick","Reach for your dick"),10);
 		sendVirtualAssistantMessage(" Stroke it just 10 times" );
 		sendVirtualAssistantMessage(" %Grin%" );
-		sendVirtualAssistantMessage( random("That was it ","Done!","Stop","Just stop","Stop %GNMSlut%","Stop %SlaveName%")+", "+random("just return to whatever you we're doing","return to your business","thank you for a little attention"));
+		sendVirtualAssistantMessage( random("That was it ","Done!","Stop","Just stop","Stop %Slut%","Stop %SlaveName%")+", "+random("just return to whatever you we're doing","return to your business","thank you for a little attention"));
 	}
 		
 	break;
@@ -385,7 +385,7 @@ function workmodeTease(tease) {
 	sendVirtualAssistantMessage(" I want you to encircle your balls with your finger and your thumb." );
 	sendVirtualAssistantMessage( random("Give your %Balls% a few light taps %Lol%","Hit your %Balls% hard just once","Tap hard on your %Balls% with 1 finger") );
 	sendVirtualAssistantMessage( random("Just to remind them who's in charge!","So they won't question who's in charge","So they know who's boss"),10);
-	sendVirtualAssistantMessage( random("That was it ","Done!","Stop","Just stop","Stop %GNMSlut%","Stop %SlaveName%")+" "+ random("just return to whatever you we're doing","return to your business","thank you for a little attention") );
+	sendVirtualAssistantMessage( random("That was it ","Done!","Stop","Just stop","Stop %Slut%","Stop %SlaveName%")+" "+ random("just return to whatever you we're doing","return to your business","thank you for a little attention") );
 	
 		
 	break;
@@ -395,7 +395,7 @@ function workmodeTease(tease) {
 	sendVirtualAssistantMessage( random("Lightly fondle your nipples","Twist your nipples a little","Pinch your nipples","Make circles around your nipples with your fingers"),10);
 	sendVirtualAssistantMessage( random("Make them hard for me","Make them hard"),10);
 	sendVirtualAssistantMessage(" Just lightly touch them now",10);
-	sendVirtualAssistantMessage( random("That was it ","Done!","Stop","Just stop","Stop %GNMSlut%","Stop %SlaveName%")+", "+random("just return to whatever you we're doing","return to your business","thank you for a little attention"));
+	sendVirtualAssistantMessage( random("That was it ","Done!","Stop","Just stop","Stop %Slut%","Stop %SlaveName%")+", "+random("just return to whatever you we're doing","return to your business","thank you for a little attention"));
 	
 	
 	break;
@@ -415,7 +415,7 @@ function workmodeTease(tease) {
 	
 		
 	case 9:
-	sendVirtualAssistantMessage( random("Lets rattle your %Cock% a little"," Lets make your %Cock% jump a little"," Lets see if we can awaken the imprisoned princess","Lets play a little","I have something fun for you %GNMEmoteHappy% "));
+	sendVirtualAssistantMessage( random("Lets rattle your %Cock% a little"," Lets make your %Cock% jump a little"," Lets see if we can awaken the imprisoned princess","Lets play a little","I have something fun for you %EmoteHappy% "));
 	sendVirtualAssistantMessage( random("Just watch this little slideshow while you fondle your %Balls% %Lol%","Fondle your %Balls% while you watch this magnificent girl!","Just hang back and watch this sexy slut!"));
 
 	while (randomInteger(1,100) < 90)
@@ -428,13 +428,13 @@ function workmodeTease(tease) {
 		showImage("Images/Spicy/SelfHumiliation/*.jpg",10);
 
 	sendVirtualAssistantMessage( random("%SlaveName%, You look sooo hot!","Those pictures are soo hot","I would love to share these pictures with your friends!")+" %Grin%");
-	sendVirtualAssistantMessage( random("That was it ","Done!","Stop","Just stop","Stop %GNMSlut%","Stop %SlaveName%")+", "+random("just return to whatever you we're doing","return to your business","thank you for a little attention"));
+	sendVirtualAssistantMessage( random("That was it ","Done!","Stop","Just stop","Stop %Slut%","Stop %SlaveName%")+", "+random("just return to whatever you we're doing","return to your business","thank you for a little attention"));
 	
 	break;
 	
 		
 	case 10:
-	sendVirtualAssistantMessage( random("Lets rattle your %Cock% a little","Lets make your %Cock% jump a little","Lets see if we can awaken the princess","Lets play a little","I have something fun for you %GNMEmoteHappy% "));
+	sendVirtualAssistantMessage( random("Lets rattle your %Cock% a little","Lets make your %Cock% jump a little","Lets see if we can awaken the princess","Lets play a little","I have something fun for you %EmoteHappy% "));
 	sendVirtualAssistantMessage(" Go to a porn pic website with your favorite theme whether it being chastity, femdom or something else" );
 	sendVirtualAssistantMessage(" Look at the first 10 posts and read them %Grin%" );
 	sendVirtualAssistantMessage(" After you can return to whatever you were doing",60);

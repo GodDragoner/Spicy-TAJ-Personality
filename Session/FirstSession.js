@@ -262,6 +262,7 @@
             sendMessage('I knew you would let me choose');
             sendMessage('That is the only proper way %Grin%');
             setVar(VARIABLE_STROKE_MODULE_PAUSE_FREQUENCY, 0);
+            break;
         } else if (answer.isInteger()) {
             const result = answer.getInt();
             if (result <= 0) {

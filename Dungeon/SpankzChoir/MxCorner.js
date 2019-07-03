@@ -39,7 +39,7 @@
      while(true){
 		 if (response.isLike("yes")) {
 			 
-		MXmessage("%GNMGood%");
+		MXmessage("%Good%");
 		 break;}
 		 if (response.isTimeout()){
 			 //(Slow)	 

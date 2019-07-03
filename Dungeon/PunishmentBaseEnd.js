@@ -381,11 +381,11 @@ if (isVar("PunishmentFailed")) {
             delVar("M3Complete");
             setVar(VARIABLE_PUNISHMENT_POINTS, getVar(VARIABLE_PUNISHMENT_POINTS) - randomInteger(110, 160));
             sendNurseMessage(random("You really did good in the corner...", "You did well in the corner", "You stayed like you should in the corner"));
-			sendNurseMessage(random("your feet and Calves took the brunt of Mistresses torment", "I hope Mistress made you wear something extra 'interesting'...%GNMLol%"));
+			sendNurseMessage(random("your feet and Calves took the brunt of Mistresses torment", "I hope Mistress made you wear something extra 'interesting'...%Lol%"));
             sendNurseMessage(" You should be proud of yourself! ");
             break;
         case 24:
-            sendNurseMessage(random("Good boy!", "Good girl!", "Good slut", "zap, zap %GNMlol%", "hey sparky!"));
+            sendNurseMessage(random("Good boy!", "Good girl!", "Good slut", "zap, zap %lol%", "hey sparky!"));
             delVar("E4Complete");
             setVar(VARIABLE_PUNISHMENT_POINTS, getVar(VARIABLE_PUNISHMENT_POINTS) - randomInteger(150, 190));
             sendNurseMessage(random("enough zappings like that and we'll fully neutralize those beta balls of yours", "sniff... sniff.... um, I think you're scrotum might be smoking", "now thats how you train a bitch!"));
