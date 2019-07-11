@@ -362,11 +362,13 @@
         setVar(VARIABLE_CHASTITY_ON, false);
         sendMessage("I want you to put your %Cock% away...");
         sendMessage("Enjoy");
+        sendMessage("")
     } else {
         setVar(VARIABLE_CHASTITY_ON, true);
         sendMessage("I want you to lock up your %Cock% in its %ChastityBelt% %Grin%");
         sendMessage("Enjoy slave!");
         sendMessage("See you tomorrow...");
+        sendMessage("")
     }
 
     endSession();
