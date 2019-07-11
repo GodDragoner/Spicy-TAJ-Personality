@@ -293,7 +293,7 @@
 
     let day = createIntegerInput('Tell me %SlaveName% what day of the month were you born on?', 1, 32, 'That\'s not a number. Just give me a number like 15', 'That\'s not a valid number for a day of a month.');
     let month = createIntegerInput('Now what month were you born in?', 1, 12, 'That\'s not a number. Just give me a number like 6', 'That\'s not a valid number for a month.');
-    let year = createIntegerInput('And last but not least what year were you born in?', 1, 12, 'That\'s not a number. Just give me a number like 6', 'That\'s not a valid number for a month.');
+    let year = createIntegerInput('And last but not least what year were you born in?', 1900, 2100, 'That\'s not a number. Just give me a number like 1990', 'That\'s not a valid number for a year.');
 
     let teaseDate = setDate();
     teaseDate.setYear(year);
