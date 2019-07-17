@@ -51,14 +51,14 @@ function a1()
 }
 function Loop1()
 {
-    let answer0 = sendInput("%GNMReady% ");
+    let answer0 = sendInput("%Ready% ");
     while (!(answer0.isLike("yes") || answer0.isLike("no")))
     {
-        answer0 = sendInput("%GNMYesOrNo% ");
+        answer0 = sendInput("%YesOrNo% ");
     }
     if (answer0.isLike("yes"))
     {
-        sendMessage("%GNMGood% ");
+        sendMessage("%Good% ");
     }
     else if (answer0.isLike("no"))
     {
@@ -70,13 +70,13 @@ function Loop1()
     sendMessage(random("This is fairly simple ", "This is simple enough ", "You shouldn\'t find this too difficult ") );
     sendMessage(random("I want you to hold the rubberband like","You are to hold the rubberband like this"));
 	showImage("Spicy/Toys/Rubberband.*");
-    sendMessage(random("Hold it close to the head of your %GNMCock% ", "It\'s going near the head of your %GNMCock% ") );
+    sendMessage(random("Hold it close to the head of your %Cock% ", "It\'s going near the head of your %Cock% ") );
     setVar("TempHits", 0);
     sendMessage(random("With your other hand ", "Using your other hand ") );
     setVar("TempHits", getVar("TempHits", 0) + getVar("SubPain", 0));
     sendMessage(random("Pull back one of the strings as far as you dare without breaking the rubberband ") );
     setVar("TempHits", getVar("TempHits", 0) * 2);
-    sendMessage(random("You are to strike the head of your %GNMCock% ", "I want you to release the rubberband on your cock head ") );
+    sendMessage(random("You are to strike the head of your %Cock% ", "I want you to release the rubberband on your cock head ") );
     sendMessage(getVar("TempHits")+" times");
     sendMessage(random("Let me know when you\'re done ", "Inform me when you\'re done ") + "%SlaveName% ");
     waitfordone();
@@ -90,14 +90,14 @@ function a2()
 }
 function Loop2()
 {
-    let answer0 = sendInput("%GNMReady%  ");
+    let answer0 = sendInput("%Ready%  ");
     while (!(answer0.isLike("yes") || answer0.isLike("no")))
     {
-        answer0 = sendInput("%GNMYesOrNo% ");
+        answer0 = sendInput("%YesOrNo% ");
     }
     if (answer0.isLike("yes"))
     {
-        sendMessage("%GNMGood% ");
+        sendMessage("%Good% ");
     }
     else if (answer0.isLike("no"))
     {
@@ -108,12 +108,12 @@ function Loop2()
     }
     sendMessage(random("This is fairly simple ", "This is simple enough ", "You shouldn\'t find this too difficult ") );
     setVar("TempHits", getVar("TempHits", 0) + getVar("SubPain", 0));
-    sendMessage(random("I want you to use that spoon and smack your %GNMBalls% ", "You are to use the spoon and smack your %GNMBalls% ") );
+    sendMessage(random("I want you to use that spoon and smack your %Balls% ", "You are to use the spoon and smack your %Balls% ") );
     setVar("TempHits", getVar("TempHits", 0) * 4);
     sendMessage(random("Hit them hard ", "Hit them as hard as possible ", "Make me proud and hit them hard! ") );
     setVar("TempHits", getVar("TempHits", 0) + 10);
-    sendMessage(random("They should look \'blue\' afterwards","It\'s okay if they get a little bruised, they can handle it!")+" %GNMMoan%"); 
-    sendMessage(random("To be precise I want you to hit your precious %GNMBalls% ", "You\'re gonna hit your %GNMBalls% ") );
+    sendMessage(random("They should look \'blue\' afterwards","It\'s okay if they get a little bruised, they can handle it!")+" %Moan%"); 
+    sendMessage(random("To be precise I want you to hit your precious %Balls% ", "You\'re gonna hit your %Balls% ") );
     sendMessage(getVar("TempHits") +" times");
     sendMessage(random("Let me know when you\'re done ", "Inform me when you\'re done ") + "%SlaveName% ");
    waitfordone();
@@ -127,14 +127,14 @@ function a3()
 }
 function Loop3()
 {
-    let answer0 = sendInput("%GNMReady% ");
+    let answer0 = sendInput("%Ready% ");
     while (!(answer0.isLike("yes") || answer0.isLike("no")))
     {
-        answer0 = sendInput("%GNMYesOrNo% ");
+        answer0 = sendInput("%YesOrNo% ");
     }
     if (answer0.isLike("yes"))
     {
-        sendMessage("%GNMGood% ");
+        sendMessage("%Good% ");
     }
     else if (answer0.isLike("no"))
     {
@@ -149,8 +149,8 @@ function Loop3()
     setVar("TempHits", getVar("TempHits", 0) * 3);
     sendMessage(random("It has to stand up ", "It should be standing up ") );
     setVar("TempHits", getVar("TempHits", 0) + 7);
-    sendMessage(random("Then I want you to tilt the book and aim for your %GNMBalls% ", "Then you\'re going to aim for your %GNMBalls% and tilt the book ") + "%GNMMoan%  ");
-    sendMessage(random("To be precise I want you to hit your precious %GNMBalls%", "You\'re gonna hit your %GNMBalls%"));
+    sendMessage(random("Then I want you to tilt the book and aim for your %Balls% ", "Then you\'re going to aim for your %Balls% and tilt the book ") + "%GNMMoan%  ");
+    sendMessage(random("To be precise I want you to hit your precious %Balls%", "You\'re gonna hit your %Balls%"));
 	sendMessage(getVar("TempHits") +" times");
     sendMessage(random("Let me know when you\'re done ", "Inform me when you\'re done ") + "%SlaveName% ");
     waitfordone();
@@ -189,23 +189,23 @@ function a()
 }
 function b()
 {
-    sendMessage("I want your %GNMBalls% to really hurt. Give them another hard slap, Punch your %GNMBalls% "+getVar("SubPain")+ " times.");
+    sendMessage("I want your %Balls% to really hurt. Give them another hard slap, Punch your %Balls% "+getVar("SubPain")+ " times.");
     waitfordone();
   
     End();
 }
 function c()
 {
-    sendMessage("Take your %GNMBalls% into your one hand and snap each of them "+getVar("SubPain")+ " times.");
+    sendMessage("Take your %Balls% into your one hand and snap each of them "+getVar("SubPain")+ " times.");
     waitfordone();
     End();
 }
 function End()
 {
-    sendMessage("I hope this was as much fun for you as it was for me %GNMLol% ");
+    sendMessage("I hope this was as much fun for you as it was for me %Lol% ");
 
     wait(5);
-    sendMessage("You can put the gear away for now %GNMEmoteHappy% ");
+    sendMessage("You can put the gear away for now %EmoteHappy% ");
     wait(8);
 		setVar("PunishmentComplete", true);
 	setVar("punishmentCompleted", 42);
