@@ -69,7 +69,7 @@ function Loop1()
     }
     sendMessage(random("This is fairly simple ", "This is simple enough ", "You shouldn\'t find this too difficult ") );
     sendMessage(random("I want you to hold the rubberband like","You are to hold the rubberband like this"));
-	showImage("GNMImages/Toys/Rubberband.*");
+	showImage("Spicy/Toys/Rubberband.*");
     sendMessage(random("Hold it close to the head of your %GNMCock% ", "It\'s going near the head of your %GNMCock% ") );
     setVar("TempHits", 0);
     sendMessage(random("With your other hand ", "Using your other hand ") );
@@ -77,7 +77,7 @@ function Loop1()
     sendMessage(random("Pull back one of the strings as far as you dare without breaking the rubberband ") );
     setVar("TempHits", getVar("TempHits", 0) * 2);
     sendMessage(random("You are to strike the head of your %GNMCock% ", "I want you to release the rubberband on your cock head ") );
-    sendMessage(getvar("TempHits")+" times");
+    sendMessage(getVar("TempHits")+" times");
     sendMessage(random("Let me know when you\'re done ", "Inform me when you\'re done ") + "%SlaveName% ");
     waitfordone();
 

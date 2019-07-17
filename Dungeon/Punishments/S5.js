@@ -140,7 +140,7 @@ if(answer.isLike("yes")){
 }
 sendMessage("Now tighten the top and bottom until its a tight fit "); //#DT4
 sendMessage("It shouldn't be painful at all "); //#DT4
-sendMessage("Just feel <i>tight</i>.. ",10); //#DT4 @Wait(10)
+sendMessage("Just feel <i>tight.. ",10); //#DT4 @Wait(10)
 sendMessage("Every time I tell you to 'tighten' "); //#DT4
 sendMessage("You will turn the two bottom screws 90 degrees in whatever direction tightens them.. "); //#DT4
 sendMessage("Then some time will pass and I will ask you to tighten them again. "); //#DT4
@@ -159,7 +159,7 @@ BallCrushingCount=0;
 
 keepGoing=true;
 while (keepGoing) {
-	answer=sendInput(random("Tigthen..","Tigthen it","Tighten the device..","Tigthen","Tighten..","Tigthen","Tighten...","Tigthen it..","Tigthen it...","Tigthen it %slaveName%"),randomInteger(5,16)); //#DT4
+	answer=sendInput(random("tighten..","tighten it","Tighten the device..","tighten","Tighten..","turn those screws","Tighten...","tighten it..","tighten it...","tighten it %slaveName%", "give me a little more squeeze"),randomInteger(7,16)); //#DT4
 	 BallCrushingCount=BallCrushingCount+1; 
 	 if(answer.isLike("stop")){
 		 keepGoing=false;
