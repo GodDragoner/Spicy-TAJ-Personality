@@ -37,7 +37,7 @@ function main()
     }
     sendMessage("%Fetch% wooden spoon ");
     wait(15);
-    sendMessage(random("This should be fun! ", "Well this is gonna be fun! ", "%GNMGrin% ") );
+    sendMessage(random("This should be fun! ", "Well this is gonna be fun! ", "%Grin% ") );
     setVar("Time", 1);
 	setVar("Times", randomInteger(7,19)+ randomInteger(2,6)* getVar("SubPainTolerance"));
 	/*
@@ -52,7 +52,7 @@ function main()
     --UNINTERPRETED LINE:@Variable[SubPain]>=[2] @NullResponse @SetVar[Times]=[#Random(5,10)]
     --UNINTERPRETED LINE:@Variable[SubPain]>=[1] @NullResponse @SetVar[Times]=[5]
 	*/
-    sendMessage(random("You\'re going to smack those %GNMBalls% ", "You\'ll soon be swatting those %GNMBalls% ", "In a moment you\'re going to hit those %GNMBalls% ") );
+    sendMessage(random("You\'re going to smack those %Balls% ", "You\'ll soon be swatting those %Balls% ", "In a moment you\'re going to hit those %Balls% ") );
 	//decide to hit with rythm or at Mistresses whim
 	setVar("SmackCadence", randomInteger(0,1));
 	if(getVar("SmackCadence")==1) {
@@ -69,7 +69,7 @@ function Count()
     if(getVar("SmackCadence")==1) {
 		sendMessage( getVar("Time")+" !");
 	}else{
-		sendMessage( "%hit% "+ random("those","%domhonorific% %DomName%s")+" %GNMBalls%  ");
+		sendMessage( "%hit% "+ random("those","%domhonorific% %DomName%s")+" %Balls%  ");
 	}
 	 playAudio("Audio/Spicy/Punishment/SpankingCane/Cane1.mp3", true);
     setVar("Time", getVar("Time", 0) + 1);
@@ -79,7 +79,7 @@ function Count()
         return;
     }
 	if(getVar("SmackCadence")==1) {
-	    wait(5);
+	    wait(3);
 	}else{
 		wait(randomInt(2, 8));
 	}

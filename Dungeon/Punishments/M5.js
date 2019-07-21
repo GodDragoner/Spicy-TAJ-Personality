@@ -65,7 +65,7 @@ switch(getVar("Punisher")){
 	case 3 :
 	//(Contact2)
 	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%");// #DT4
-	sendMessage(random("Discipline I just love that","You're not gonna like this %GNMGrin%","I don't think your %GNMCock% will enjoy this","This is fun!"));// #DT4
+	sendMessage(random("Discipline I just love that","You're not gonna like this %Grin%","I don't think your %Cock% will enjoy this","This is fun!"));// #DT4
 
 	if (getVar("SubEndurance")>=7) {
 	PM5=3;}
@@ -115,7 +115,7 @@ break;
 sendMessage("So %slaveName% "); //#DT4
 sendMessage("The punishment you're about to be given "); //#DT4
 sendMessage("Might be considered a game to some "); //#DT4
-sendMessage("A mindgame %GNMGrin% "); //#DT4
+sendMessage("A mindgame %Grin% "); //#DT4
 sendMessage("I need you to %fetch% ballcrusher and put it on so its ready.. ",30); //#DT4 @Wait(30)
 
 crusherNotOn=true;
@@ -123,7 +123,7 @@ while(crusherNotOn){
 answer=sendInput("Are you done? "); //#DT4
 
 if(answer.isLike("yes")){
-	sendMessage("%GNMGood% "); //#DT4 @Goto(Info2)
+	sendMessage("%Good% "); //#DT4 @Goto(Info2)
 	crusherNotOn=false;
 	} 
 	else if(answer.isLike("no")){
@@ -170,7 +170,7 @@ while (keepGoing) {
 	answer.clearOptions();
 sendMessage("You used the magic word! "); //#DT4 
 //@CustomMode(ModeText, Normal) 
-sendMessage("%GNMGrin%");
+sendMessage("%Grin%");
  if (BallCrushingCount<BallCrushing) {
 	 sendMessage("hmm and now just a little matter of suffering for 2 minutes"); wait(120);
 	sendMessage("Well to little surprise you failed.. "); //#DT4 

@@ -34,26 +34,26 @@ function Hello()
 }
 function Info()
 {
-    sendMessage("%GNMGrin% ");
+    sendMessage("%Grin% ");
     sendMessage("You will not enjoy this! ");
     sendMessage("I\'m about to make you my bitch! ");
-    sendMessage("%GNMlol% ");
+    sendMessage("%lol% ");
     sendMessage("Fetch your shock collar %SlaveName%" );
 	showImage("\GNMImages\Toys\Shock Collar.jpg");
 	sleep(10);
     let answer0 = sendInput("Got it? ");
     if (answer0.isLike("yes"))
     {
-        sendMessage("%GNMGood% ");
+        sendMessage("%Good% ");
     }
     else
     {
-        sendMessage("%GNMGood% ");
+        sendMessage("%Good% ");
     }
     let answer1 = sendInput("is it charged up slave??? ");
     if (answer1.isLike("yes"))
     {
-        sendMessage("%GNMGood% ");
+        sendMessage("%Good% ");
     }
     else
     {
@@ -64,7 +64,7 @@ function Info()
     sleep(15);
     
     sendMessage("Now in just a moment I will tell you how to adjust your zapper ");
-    sendMessage("then I\'m going to tell you to push that magical button %GNMEmoteHappy% ");
+    sendMessage("then I\'m going to tell you to push that magical button %EmoteHappy% ");
     sendMessage("Let me just check my papers.. ");
     Start();
     return;
@@ -98,7 +98,7 @@ function Start()
 function Domme()
 {
     sendMessage(random("Well well ", "Oh my ", "Well ") + "%SlaveName% ");
-    sendMessage(random("Lets see what we can do about you %GNMGrin% ", "Its time to make you repent your sins ", "I suppose we need to correct your recent behaviour ", "I have something for you.. ") );
+    sendMessage(random("Lets see what we can do about you %Grin% ", "Its time to make you repent your sins ", "I suppose we need to correct your recent behaviour ", "I have something for you.. ") );
     if(getVar("Personality1", false))
     {
         if (getVar("SubPainTolerance", 0) <= 3)
@@ -130,7 +130,7 @@ function Domme()
 function Contact1()
 {
     sendMessage(random("Well well ", "Oh my ", "Well ") + "%SlaveName% ");
-    sendMessage(random("Oh my I love handling %DomName%'s pet","I'll be happy to punish you %GNMGrin%","This is gonna be fun"));
+    sendMessage(random("Oh my I love handling %DomName%'s pet","I'll be happy to punish you %Grin%","This is gonna be fun"));
 	
 	if(getVar("SubPainTolerance")>=8) {
 	 PM4Hard();}
@@ -146,7 +146,7 @@ function Contact1()
 function Contact2()
 {
     sendMessage(random("Well well ", "Oh my ", "Well ") + "%SlaveName% ");
-    sendMessage(random("You\'re not gonna like this %GNMGrin% ", "I\'m not sure you\'ll enjoy this my bitch! ", "I don\'t think you\'ll enjoy this sparky.. ") );
+    sendMessage(random("You\'re not gonna like this %Grin% ", "I\'m not sure you\'ll enjoy this my bitch! ", "I don\'t think you\'ll enjoy this sparky.. ") );
 	
 	
 		if(getVar("SubPainTolerance")>=7) {
@@ -162,7 +162,7 @@ function Contact2()
 function Contact3()
 {
     sendMessage(random("Well well ", "Oh my ", "Well ") + "%SlaveName% ");
-    sendMessage(random("This is entirely my pleasure %GNMLol% ", "I\'m gonna love this! ", "This is gonna be fun! ") );
+    sendMessage(random("This is entirely my pleasure %Lol% ", "I\'m gonna love this! ", "This is gonna be fun! ") );
  	if(getVar("SubPainTolerance")>=6) {
 	 PM4Hard();}
 	else if (getVar("SubPainTolerance")>2){
@@ -484,7 +484,7 @@ function Slow()
 	setVar("RipPegs",getVar("RipPegs")+randomInteger(1,3));
     sendMessage("I'm expecting you to follow my commands <i>when</i> I give them");
     sendMessage("I don\'t accept delays just because something hurts a little.. or you\'re a scared pussy");
-    sendMessage("Well then I\'m just adding a few extra rounds %GNMGrin% ");
+    sendMessage("Well then I\'m just adding a few extra rounds %Grin% ");
     RipBase();
     return;
     //End();
@@ -494,7 +494,7 @@ function End()
     sendMessage("No more rounds! ");
     setTempVar("E4Complete", true);
     sendMessage("Remember to put the shock collar back on the charger ");
-    sendMessage("we never know when I\'ll want to use it again %GNMGrin% ");
+    sendMessage("we never know when I\'ll want to use it again %Grin% ");
 		setVar("PunishmentComplete", true);
 	setVar("punishmentCompleted", 24);
 	run("Dungeon/PunishmentBaseEnd.js");
