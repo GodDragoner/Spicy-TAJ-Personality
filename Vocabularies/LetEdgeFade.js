@@ -17,9 +17,9 @@ function letEdgeFadeVocabulary() {
         "%Ache% is a natural part of %SlaveName%'s life, savor it! %Lol%",
         "Feel all that wonderful %Ache% rushing through you %Lol%",
         "I know you think I'm %Mean% but I reality you love this..",
-        "I bet that edging is a pure %Pain% for you %EmoteHappy%",
+        "I bet that edging is a pure %Pain% for you %EmoteHappy&",
         "Just be glad you're edging, Imagine wearing a %ChastityCage%"
     ];
 
-    return answers[randomInteger(0, answers.length -1)];
+    return answers[randomInteger(0, answer.length -1)];
 }
