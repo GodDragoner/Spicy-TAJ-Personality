@@ -28,7 +28,7 @@ if( !isVar("VARIABLE_EXERCISE_TIMES"))
 			{
 			if (answer2.containsIgnoreCase("yes","yeah","yep"))
 				{
-				 sendVirtualAssistantMessage("%GNMGood%");
+				 sendVirtualAssistantMessage("%Good%");
 				setVar("VARIABLE_EXERCISE_TIMES",getVar("VARIABLE_EXERCISE_TIMES")+1 );
 				 //Set the exercise date to now
 				setDate("VARIABLE_JUST_EXERCISED");
