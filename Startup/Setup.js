@@ -136,7 +136,7 @@
     sendVirtualAssistantMessage("%Good%");
 
     sendVirtualAssistantMessage("Mistress %domName% would prefer it if you are able to handle wearing a chastity device at all times");
-    //showImage("Images/Spicy/Toys/MetalChastity.jpg", 4);
+  	showImage("Images/Spicy/Toys/MetalChastity.jpg",4);
     sendVirtualAssistantMessage("But she also understands that it takes practice to learn");
 
     if (sendYesOrNoQuestion("Do you own a chastity device?", SENDER_ASSISTANT)) {
@@ -485,6 +485,7 @@
 
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
+    //TODO: Ask whether it can vibrate
     INFLATABLE_BUTT_PLUG.askForToyAndUsage(domChose);
     INFLATABLE_BUTT_PLUG.askForVibration();
 
@@ -530,23 +531,33 @@
         }
     }
 
+		
+
+	
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
-    askForToy("EStim");
+	askForToy("EStim");
     askForToyUsage("EStim", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
     setupGags(true);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
-
     askForToy("Girl friend");
+	      if(getVar("toyGirlfriend")==true)  
+    		  {sendVirtualAssistantMessage("So tell me the name of your girlfriend", false);
+    			setVar("girlfriendname", createInput().getAnswer());
+    		  }
+      
+      
+      
+      
+	   BASIC_LINGERIE.askForToyAndUsage(domChose, undefined, "LingerieSet");
+     ADVANCED_LINGERIE.askForToyAndUsage(domChose, undefined, "LingerieSet2");
 
-    BASIC_LINGERIE.askForToyAndUsage(domChose, undefined, "LingerieSet");
-    ADVANCED_LINGERIE.askForToyAndUsage(domChose, undefined, "LingerieSet2");
-
-    PARACHUTE_TOY.askForToyAndUsage(domChose);
+     PARACHUTE_TOY.askForToyAndUsage(domChose);
+     showImage("Images/Spicy/Toys/LingerieSet*.jpg",3);
+  
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
-
-    showImage("Images/Spicy/Toys/HotSauce.jpg", 3);
+	showImage("Images/Spicy/Toys/HotSauce.jpg",3);
     sendVirtualAssistantMessage("Hot sauce or icy hot? Toothpaste can work too for the time being.", false);
     showPicture("Images/Spicy/Toys/HotSauce.jpg");
 
@@ -700,7 +711,66 @@
     sendVirtualAssistantMessage("Transferring session...");
     setVar(VARIABLE_FINISHED_SETUP, true);
     run("Session/FirstSession.js");
+
+//fixme bug fix?
 }
+/*    function askForToy(toyName, variableName) {
+        if (variableName === undefined) {
+            variableName = decapitalize(toyName).replace(" ", "");
+        }
+
+        sendVirtualAssistantMessage(toyName + "?", false);
+        showPicture("Images/Spicy/Toys/" + variableName + ".jpg");
+
+        answer = createInput();
+
+        while (true) {
+            if (answer.isLike("yes")) {
+                setVar("toy" + variableName, true);
+                sendVirtualAssistantMessage("%Good%");
+                break;
+            } else if (answer.isLike("no")) {
+                sendVirtualAssistantMessage("%EmoteSad%");
+                break;
+            } else {
+                sendVirtualAssistantMessage(YES_OR_NO);
+                answer.loop();
+            }
+        }
+    }
+
+    function askForToyUsage(toyName, domChose, variableName) {
+        if (variableName === undefined) {
+            variableName = decapitalize(toyName).replace(" ", "");
+        }
+
+        if (domChose) {
+            setVar("toy" + variableName + "InteractionMode", TOY_BOTH_MODE);
+            return;
+        }
+
+        sendVirtualAssistantMessage("Do you want the " + toyName + " to be used for punishments, play or both?", false)
+
+        answer = createInput();
+
+        while (true) {
+            if (answer.containsIgnoreCase("play")) {
+                setVar("toy" + variableName + "InteractionMode", TOY_PLAY_MODE);
+                break;
+            } else if (answer.containsIgnoreCase("both")) {
+                setVar("toy" + variableName + "InteractionMode", TOY_BOTH_MODE);
+                break;
+            } else if (answer.containsIgnoreCase("punishment")) {
+                setVar("toy" + variableName + "InteractionMode", TOY_PUNISHMENT_MODE);
+                break;
+            } else {
+                sendVirtualAssistantMessage("Play, punishment or both?");
+                answer.loop();
+            }
+        }
+        
+        */
+    }
 
 function setupBlackmail() {
     sendVirtualAssistantMessage("As you should know");
