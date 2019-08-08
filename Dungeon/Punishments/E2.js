@@ -30,18 +30,18 @@ function main()
     {
         case "a1":
         a1();
-        return;
+        //return;
         break;
         case "a2":
         a2();
-        return;
+        //return;
         break;
         case "a3":
         a3();
-        return;
+        //return;
         break;
     }
- end1();   
+ End1();   
 }
 function a1()
 {
@@ -69,17 +69,17 @@ function Loop1()
     }
     sendMessage(random("This is fairly simple ", "This is simple enough ", "You shouldn\'t find this too difficult ") );
     sendMessage(random("I want you to hold the rubberband like","You are to hold the rubberband like this"));
-	showImage("GNMImages/Toys/Rubberband.*");
+	showImage("Spicy/Toys/Rubberband.*");
     sendMessage(random("Hold it close to the head of your %Cock% ", "It\'s going near the head of your %Cock% ") );
     setVar("TempHits", 0);
     sendMessage(random("With your other hand ", "Using your other hand ") );
-    setVar("TempHits", getVar("TempHits", 0) + getVar("SubPain", 0));
+    setVar("TempHits", getVar("TempHits", 0) + getVar("subpaintolerance", 0));
     sendMessage(random("Pull back one of the strings as far as you dare without breaking the rubberband ") );
     setVar("TempHits", getVar("TempHits", 0) * 2);
     sendMessage(random("You are to strike the head of your %Cock% ", "I want you to release the rubberband on your cock head ") );
-    sendMessage(getvar("TempHits")+" times");
+    sendMessage(getVar("TempHits")+" times");
     sendMessage(random("Let me know when you\'re done ", "Inform me when you\'re done ") + "%SlaveName% ");
-    waitfordone();
+    waitForDone();
 
 }
 function a2()
@@ -107,16 +107,16 @@ function Loop2()
         return;
     }
     sendMessage(random("This is fairly simple ", "This is simple enough ", "You shouldn\'t find this too difficult ") );
-    setVar("TempHits", getVar("TempHits", 0) + getVar("SubPain", 0));
+    setVar("TempHits", getVar("TempHits", 0) + getVar("subpaintolerance", 0));
     sendMessage(random("I want you to use that spoon and smack your %Balls% ", "You are to use the spoon and smack your %Balls% ") );
     setVar("TempHits", getVar("TempHits", 0) * 4);
     sendMessage(random("Hit them hard ", "Hit them as hard as possible ", "Make me proud and hit them hard! ") );
     setVar("TempHits", getVar("TempHits", 0) + 10);
-    sendMessage(random("They should look \'blue\' afterwards","It\'s okay if they get a little bruised, they can handle it!")+" %Moan%");
+    sendMessage(random("They should look \'blue\' afterwards","It\'s okay if they get a little bruised, they can handle it!")+" %Moan%"); 
     sendMessage(random("To be precise I want you to hit your precious %Balls% ", "You\'re gonna hit your %Balls% ") );
     sendMessage(getVar("TempHits") +" times");
     sendMessage(random("Let me know when you\'re done ", "Inform me when you\'re done ") + "%SlaveName% ");
-   waitfordone();
+   waitForDone();
 
 }
 function a3()
@@ -144,7 +144,7 @@ function Loop3()
         return;
     }
     sendMessage(random("This is fairly simple ", "This is simple enough ", "You shouldn\'t find this too difficult ") );
-    setVar("TempHits", getVar("TempHits", 0) + getVar("SubPain", 0));
+    setVar("TempHits", getVar("TempHits", 0) + getVar("subpaintolerance", 0));
     sendMessage(random("I want you to place the book on a table ", "You should place the book on a table ") );
     setVar("TempHits", getVar("TempHits", 0) * 3);
     sendMessage(random("It has to stand up ", "It should be standing up ") );
@@ -153,7 +153,7 @@ function Loop3()
     sendMessage(random("To be precise I want you to hit your precious %Balls%", "You\'re gonna hit your %Balls%"));
 	sendMessage(getVar("TempHits") +" times");
     sendMessage(random("Let me know when you\'re done ", "Inform me when you\'re done ") + "%SlaveName% ");
-    waitfordone();
+    waitForDone();
 }
 function End1()
 {
@@ -183,21 +183,21 @@ function End1()
 }
 function a()
 {
-    sendMessage("Let\'s give those %Balls% another "+getVar("SubPain")+ " smacks.");
-   waitfordone();
+    sendMessage("Let\'s give those %Balls% another "+getVar("subpaintolerance")+ " smacks.");
+   waitForDone();
     End();
 }
 function b()
 {
-    sendMessage("I want your %Balls% to really hurt. Give them another hard slap, Punch your %Balls% "+getVar("SubPain")+ " times.");
-    waitfordone();
+    sendMessage("I want your %Balls% to really hurt. Give them another hard slap, Punch your %Balls% "+getVar("subpaintolerance")+ " times.");
+    waitForDone();
   
     End();
 }
 function c()
 {
-    sendMessage("Take your %Balls% into your one hand and snap each of them "+getVar("SubPain")+ " times.");
-    waitfordone();
+    sendMessage("Take your %Balls% into your one hand and snap each of them "+getVar("subpaintolerance")+ " times.");
+    waitForDone();
     End();
 }
 function End()
