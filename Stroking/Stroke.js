@@ -100,7 +100,7 @@ function sendNewStrokeInstruction() {
             sendMessage('Only use one finger for now and rub it up and down your %Cock% %Grin%');
             break;
         case 6:
-            let lubeType = getAssLubeType(getMood(), 30);
+             lubeType = getAssLubeType(getMood(), 30);
             sendMessage('Start palming your cock head %EmoteHappy%');
 
             if (lubeType == ANY_LUBE) {
