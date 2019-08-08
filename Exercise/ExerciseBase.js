@@ -1,7 +1,7 @@
 {
     let exercise = true;
 
-    if (isVar("HasExercised")) {
+    if (!isVar("HasExercised")) {
         setVar("HasExercised", true);
         //sendVirtualAssistantMessage("TP2");
         setVar("ExerciseTimes", 0);

@@ -230,7 +230,8 @@ while (NrExercise < TempExercises) {
 			case 10 : Continue3();
 			break;	
 			
-			case 11 : Continue4();
+			case 11 : //Continue4();
+			//routine doesn't exist
 			break;	
 			
 			case 12 : Continue5();

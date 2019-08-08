@@ -11,7 +11,7 @@ if( !isVar("VARIABLE_EXERCISE_TIMES"))
 		setDate("VARIABLE_JUST_EXERCISED", tempdate);
 		setVar("VARIABLE_EXERCISE_TIMES", 1);
 	}
-    tempdate2 = getDate("VARIABLE_JUST_EXERCISED");
+    tempdate2 = getDate("LastExercise");
 	tempdate2.addMinute(600);
 	//sendVirtualAssistantMessage(tempdate2 , "has passed?", tempdate2.hasPassed());
 	if (!(tempdate2.hasPassed()))
@@ -30,6 +30,8 @@ if( !isVar("VARIABLE_EXERCISE_TIMES"))
 				{
 				 sendVirtualAssistantMessage("%Good%");
 				setVar("VARIABLE_EXERCISE_TIMES",getVar("VARIABLE_EXERCISE_TIMES")+1 );
+				setVar("EXERCISETIMES",getVar("EXERCISETIMES")+1 );
+
 				 //Set the exercise date to now
 				setDate("VARIABLE_JUST_EXERCISED");
 				break;}
