@@ -12,8 +12,7 @@ showImage("Images/Spicy/HouseRules/HouseRule8.jpg", 10);
 showImage("Images/Spicy/HouseRules/HouseRule9.jpg", 10);
 showImage("Images/Spicy/HouseRules/HouseRule10.jpg", 10);
 
-//TODO: Permanent and temporary rules
-//TODO: Ideas
+//TODO: Permanent and temporary rule ideas
 /**
  * Always wear a max of x clothing items (temporary)
  * Always start session naked

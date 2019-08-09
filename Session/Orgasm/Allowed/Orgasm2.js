@@ -1,5 +1,5 @@
 {
-    if(tryRunOrgasmFetchId()) {
+    if (tryRunOrgasmFetchId()) {
         let isCEI = shouldCEI();
 
         //Plate
@@ -13,12 +13,12 @@
             sendMessage("Place it in front of you on the floor");
             sendMessage("I\'m going to let you cum and you will spurt your disgusting load onto the plate or bowl");
             sendMessage("I don\'t think I have to tell you what happens next %Lol%");
-            //TODO: BPM selection based on scenario like stroking to orgasm edge
 
-            if(isInChastity()) {
+            if (isInChastity()) {
                 sendMessage("Put the vibrator on that cage and start vibrating it %SlaveName%");
             } else {
                 startStroking(60);
+                sendMessage('Don\'t edge yet!');
             }
 
             sendMessage("Make sure you catch everything, don\'t spill a single drop");

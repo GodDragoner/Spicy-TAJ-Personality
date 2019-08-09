@@ -145,14 +145,12 @@ function runChoreIntroduction() {
         sendVirtualAssistantMessage('%EmoteSad%');
     }
 
-    //TODO: Ask for the size of each room
     sendVirtualAssistantMessage('In a moment I\'m gonna ask you how many rooms your %Home% has');
     //sendVirtualAssistantMessage('You can choose between 1-5 not including kitchen and bathroom');
     sendVirtualAssistantMessage('If you have more than 5 rooms and some of them are very small consider adding two of them together');
     sendVirtualAssistantMessage('I also suggest that you draw a schematic of your %Home% and add it to the folder named Home');
     sendVirtualAssistantMessage('The folder should be located inside the Spicy Images folder');
     sendVirtualAssistantMessage('You can name the image whatever you want');
-    //TODO: Show images etc.
 
     sendVirtualAssistantMessage('Just make sure that there is only 1 image inside the folder');
     sendVirtualAssistantMessage('It can look something like this', 0);
@@ -217,7 +215,7 @@ function runChoreIntroduction() {
     sendVirtualAssistantMessage('How often would you like to receive kinky chore tasks?');
     sendVirtualAssistantMessage('This might include having you clean on all fours, using some sort of toys while cleaning and so on');
     sendVirtualAssistantMessage('You\'ll never really know the limit of my imagination %Lol%');
-    sendVirtualAssistantMessage('On a scale from 1-10 where 1 is never and 10 is very often would you like to "play" while doing chores?', 0);
+    sendVirtualAssistantMessage('On a scale from 1-10 where 1 is never and 10 is very often would you like to "play" while doing chores? Or would you like me to choose?', 0);
 
     let answer = createInput();
 
@@ -232,6 +230,9 @@ function runChoreIntroduction() {
                 setVar(VARIABLE_KINKY_CHORE_CHANCE, frequency);
                 break;
             }
+        } else if(answer.isLike('you')) {
+            //Assistant choose
+            setVar(VARIABLE_KINKY_CHORE_CHANCE, 11);
         } else {
             sendVirtualAssistantMessage('Please only type a number such as 5...');
             answer.loop();
@@ -245,7 +246,14 @@ function runChoreIntroduction() {
 
 
 function sendKinkyChoreInstructions(choreType) {
-    if (isChance((getVar(VARIABLE_KINKY_CHORE_CHANCE) - 1)*10)) {
+    let kinkyChance = getVar(VARIABLE_KINKY_CHORE_CHANCE);
+
+    //Let the dom choose mode
+    if(kinkyChance == 11) {
+        kinkyChance = randomInteger(6, 10);
+    }
+
+    if (isChance((kinkyChance - 1)*10)) {
         sendMessageBasedOnSender(random('Okay...', 'Okay!', 'Hmm...', 'Hehe', '%Grin%'));
 
         let tasks = 0;

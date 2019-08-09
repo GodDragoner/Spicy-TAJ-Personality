@@ -8,7 +8,7 @@
         //Apply random toys
         interactWithRandomToys();
 
-        //TODO: Chastity version of distraction / punishment distraction
+        //TODO: punishment distraction
 
         let strokeFrequency = getVar(VARIABLE_STROKE_MODULE_PAUSE_FREQUENCY, 0);
 
@@ -30,23 +30,31 @@
         //Some stroking sometimes
         if((!isVar('lastStrokingPause') && getVar(VARIABLE_CURRENT_SESSION_DATE).addMinute(minTimePassed).hasPassed()) || getVar('lastStrokingPause').addMinute(minTimePassed).hasPassed()) {
             if(!isInChastity()) {
-                //TODO: Duration based on mood
+                let mood = getMood() + 1;
+                let strictness = ACTIVE_PERSONALITY_STRICTNESS + 1;
+                let minutesToStroke = Math.round((180 - mood*mood*strictness)/60);
+
                 sendDebugMessage('Start of stroking interval');
 
-                startStrokeInterval(randomInteger(2, 3));
-                setDate('lastStrokingPause');
+                startStrokeInterval(randomInteger(Math.max(1, minutesToStroke - 1), minutesToStroke));
 
                 sendDebugMessage('End of stroking interval');
             } else {
+                let mood = getMood() + 1;
+                let strictness = ACTIVE_PERSONALITY_STRICTNESS + 1;
+                let iterationsToTease = 26 - mood*strictness*2;
+
                 sendDebugMessage('Start of teasing interval');
 
-                for (let x = 0; x < randomInteger(12, 24); x++) {
+                for (let x = 0; x < randomInteger(Math.round(iterationsToTease/2), iterationsToTease); x++) {
                     run("Stroking/Taunt/Chastity/BasicChastityTaunts.js");
                     sleep(5);
                 }
 
                 sendDebugMessage('End of teasing interval');
             }
+
+            setDate('lastStrokingPause');
         }
 
         const moduleChance = 50;
