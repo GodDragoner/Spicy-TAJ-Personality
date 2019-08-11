@@ -8,7 +8,7 @@ if( !isVar("VARIABLE_EXERCISE_TIMES"))
 	sendVirtualAssistantMessage("for an exercise to count it should be at least 45 minutes of strenuous activity that makes you sweat. ");
 		tempdate = setDate();
 		tempdate.addDay(-2);
-		setDate("VARIABLE_JUST_EXERCISED", tempdate);
+		setDate("lastExercise", tempdate);
 		setVar("VARIABLE_EXERCISE_TIMES", 1);
 	}
     tempdate2 = getDate("LastExercise");
@@ -33,7 +33,7 @@ if( !isVar("VARIABLE_EXERCISE_TIMES"))
 				setVar("EXERCISETIMES",getVar("EXERCISETIMES")+1 );
 
 				 //Set the exercise date to now
-				setDate("VARIABLE_JUST_EXERCISED");
+				setDate("lastexercise");
 				break;}
 			else if (answer2.containsIgnoreCase("no","nope","nah","sorry","i wish")) {
 				sendVirtualAssistantMessage("%EmoteSad%");
