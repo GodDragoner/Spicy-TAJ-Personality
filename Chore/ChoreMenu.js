@@ -11,17 +11,17 @@
 		   let lobbyAnswer = createInput('Chore', 'Info', 'Return');
         if (lobbyAnswer.isLike('chore', 'yes', 'new')) {
             lobbyAnswer.clearOptions();
-				sendVirtualAssistantMessage("test1");
+				//sendVirtualAssistantMessage("test1");
 			//(assignedorpick)
 			doassigned=false;
-			sendVirtualAssistantMessage("test2");
+			//sendVirtualAssistantMessage("test2");
 			if((isVar("AssignedChores") && getVar("AssignedChores")==true) &&(getVar("doingchores")==true)){
-				sendVirtualAssistantMessage(" Do you have a chore already chosen by %DomHonorific% %DomName% or should I PICK one for you?",0); 
+				sendVirtualAssistantMessage(" Do you have a chore already chosen by %DomHonorific% "+getVar("girlfriendname") +" or should I PICK one for you?",0); 
 				showImage("Images/Spicy/GNMBackground/TrashBin.*");
-				canswer=createInput("Assigned by Mistress", "please pick one");
+				canswer=createInput("Assigned by Girlfriend", "please pick one");
 				while (true) {
 					if (canswer.isLike("assigned", "chosen")) {
-					  sendVirtualAssistantMessage(" %subname%, you're lucky to have such an attentive %DomHonorific% in %Domname%  you %Slave% ",0);
+					  sendVirtualAssistantMessage(" %subname%, you're lucky to have such an attentive %DomHonorific% in "+getVar("girlfriendname") +" you %Slave% ",0);
 						showImage("Images/Spicy/FFriends/Girlfriend/*");
 						wait(5);
 					  doassigned=true;
