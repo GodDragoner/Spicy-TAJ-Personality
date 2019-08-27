@@ -82,7 +82,7 @@
 							let date = setDate().addMinute(Math.max(1, minutesForChores - 5));
 
 							while(!date.hasPassed()) 	{
-								sendVirtualAssistantMessage('What chore to give you next...','What chore should you do...','Let\'s see if we can find a chore for you...');
+								sendVirtualAssistantMessage(random('What chore to give you next...','What chore should you do...','Let\'s see if we can find a chore for you...'));
 
 								setCurrentSender(SENDER_ASSISTANT);
 								chooseChore();
@@ -100,7 +100,7 @@
 			setVar("doingchores",true);
             break;
         } else if(lobbyAnswer.isLike('info')) {
-            //lobbyAnswer.clearOptions();
+            lobbyAnswer.clearOptions();
             sendMessageBasedOnSender('You have spend ' + getVar(VARIABLE_WEEKLY_CHORES_TIME) + ' minutes this week doing ' + getVar(VARIABLE_WEEKLY_CHORES_DONE) + ' chores');
             sendMessageBasedOnSender('In total you have spend ' + getVar(VARIABLE_TOTAL_CHORES_TIME) + ' minutes doing a total of ' + getVar(VARIABLE_TOTAL_CHORES_DONE) + ' chores');
             sendMessageBasedOnSender('Anything else I can do for you?', 0);
