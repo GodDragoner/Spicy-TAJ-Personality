@@ -3,7 +3,6 @@
 let startMillis = new Date().getMilliseconds();
 showImage("Images/Spicy/Intro/SpicyGif*.gif");
 run("Variables.js");
-
 run("Utils/SoundUtils.js");
 run("Utils/FileUtils.js");
 run("Utils/ArrayUtils.js");
@@ -14,8 +13,6 @@ run("Session/Orgasm/Orgasm.js");
 run("Session/End/Training.js");
 
 sendSystemMessage("Launching Spicy " + getVar("personalityVersion"));
-
-//registerVariable("anallimit", "Anal Limit", "Is anal a hard limit, allowed, needs to be addressed or still a matter of discussion?");
 
 run("Utils/RandomUtils.js");
 run("Utils/StringUtils.js");
@@ -111,4 +108,5 @@ if(isFullTime()) {
 }
 
 //run("Session/StartSession.js");
+
 run("Assistant/AssistantLobby.js");

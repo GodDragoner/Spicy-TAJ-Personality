@@ -17,6 +17,7 @@ const MATERIAL_PLASTIC = 3;
 //Full time
 const VARIABLE_MIN_WEEKLY_VISITS = "minWeeklyVisits";
 const VARIABLE_MIN_WEEKLY_CHORE_TIME = "minWeeklyChoreTime";
+const VARIABLE_MIN_WEEKLY_CHORES = "minWeeklyChores";
 
 //Home
 const VARIABLE_HOME_TYPE = 'homeType';
@@ -41,6 +42,9 @@ const VARIABLE_TOTAL_CHORES_TIME = "totalChoresTime";
 
 const VARIABLE_WEEKLY_CHORES_DONE = "weeklyChoresDone";
 const VARIABLE_WEEKLY_CHORES_TIME = "weeklyChoresTime";
+const VARIABLE_WEEKLY_CHORES_COMPLETED = "weeklyChoresCompleted";
+
+
 
 const VARIABLE_DENIAL_LIMIT = "denialLimit";
 const VARIABLE_DENIAL_LEVEL = "denialLevel";
@@ -97,9 +101,9 @@ const VARIABLE_TASK_CHASTITY_EXPERIENCE = 'taskChastityExperience';
 const VARIABLE_CHASTITY_TRAININGS_DONE = 'chastityTrainingsDone';
 const VARIABLE_AFRAID_OF_CHASTITY = 'afraidOfChastity';
 const VARIABLE_LAST_CHASTITY_TASK_ID = 'lastChastityTaskId';
+const VARIABLE_CHASTITY_EXPERIENCE_MULTIPLIER = 'chastityEXPMultiplier';
 const VARIABLE_CHASTITY_TASKS_IN_ROW = 'chastityTasksInRow';
 
-//TODO: Enforcing personality intro after chastity exam and kind intro with asking after exam/at beginning
 const VARIABLE_LONG_TERM_CHASTITY = 'chastityLongTerm';
 
 //Anal training

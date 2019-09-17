@@ -8,6 +8,7 @@ function ruinForMeVocabulary() {
         'You get to give yourself a ruined orgasm. Right now',
         'Ruin it %Grin%',
         'Ruin it for me!',
+        'Take your hand away and ruin that orgasm!',
         'No pleasure, ruin your orgasm for me right now!',
         'Tip yourself just over the edge then ruin that orgasm for me'];
 

@@ -145,7 +145,7 @@ switch (choice) {
 		response = sendInput("are you all done getting gussied up? "); //#DT4 
 		while(true){
 			if(response.containsIgnoreCase("yes", "yep", "yeah", "I did")){
-			sendMessage("%Good%, now go to the corner %slave% and do as you've been instructed");// #DT4
+			sendMessage("%Good%, now go to the corner %slave% and do as you've been instructed");// #DT4 
 		
 			break;	} 
 			else {
@@ -208,7 +208,7 @@ switch (choice) {
 		response = sendInput("are you all done getting gussied up? "); //#DT4 
 		while(true){
 			if(response.containsIgnoreCase("yes", "yep", "yeah", "I did")){
-			sendMessage("%Good%, now go to the corner %slave% and do as you've been instructed");// #DT4
+			sendMessage("%Good%, now go to the corner %slave% and do as you've been instructed");// #DT4 
 		
 			break;	} 
 			else {
@@ -220,7 +220,7 @@ switch (choice) {
 			//(Silence)
 
 		}
-	sendMessage("I never said this would be easy %Lol%"); // #DT4
+	sendMessage("I never said this would be easy %Lol%"); // #DT4 
 	CornerCommandsGiven = 0 ;
 	sendMessage("Now go to the corner, stand on your toes and don't return before you hear the bell!"); // #DT4
 	 CornerTimeDown = true;
@@ -307,7 +307,7 @@ switch (choice) {
 		response = sendInput("Did you remember to say 'thank you %DomHonorific% ' <i>everytime</i> I gave a command? ",8); //#DT4 
 		while(true){
 			if(response.containsIgnoreCase("yes", "yep", "yeah", "I did")){
-			sendMessage("%Good%");// #DT4
+			sendMessage("%Good%");// #DT4 
 			sendMessage("I know this was rough %SlaveName%"); // #DT4 
 			sendMessage("But it makes me happy knowing you completed it!"); // #DT4 
 			changeMeritLow(false);
@@ -349,7 +349,7 @@ switch (choice) {
 		}
 		
 		if(response.containsIgnoreCase("fail","fee","not again","please no","no","please don't","don't")) {
-			sendMessage("%Grin%"); // #DT4
+			sendMessage("%Grin%"); // #DT4 
 			Fee=true;
 			break;
 		}

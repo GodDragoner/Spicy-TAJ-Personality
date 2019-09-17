@@ -96,7 +96,7 @@ function runChoreIntroduction() {
     sendVirtualAssistantMessage('Once in a while but on a regular schedule your chores will involve updating these budgets');
     sendVirtualAssistantMessage('If you were a real slave you wouldn\'t even be allowed access to money...');
     sendVirtualAssistantMessage('You would simply be the one keeping check on all the books...');
-    sendVirtualAssistantMessage('Well do want chores involving finances?', 0);
+    sendVirtualAssistantMessage('Well do you want chores involving finances?', 0);
 
     if (createYesOrNoQuestion()) {
         sendVirtualAssistantMessage('Great. One more chore for you means it is less boring for all of us %Grin%');
@@ -105,27 +105,55 @@ function runChoreIntroduction() {
         sendVirtualAssistantMessage('Okay, I will remove this from the list then...')
     }
 
+	if (isVar("ToyGirlfriend") && getVar("ToyGirlfriend"))
+		{
+	sendVirtualAssistantMessage("  I noticed that you have a girlfriend or Wife....");
+	sendVirtualAssistantMessage("  will %girlfriendname% be assigning you chores?");
+
+	answer=createInput("Yes", "no");
+		while (true) {
+			if (answer.isLike("yes")) {
+				 sendVirtualAssistantMessage(" Wonderful");
+				 setVar("AssignedChores", true);
+				break;
+			} else if (answer.isLike("no")) {
+				sendVirtualAssistantMessage("  Too bad, I was hoping "+getVar("GirlfriendName")+ " could play a small part in your submission.");
+				setVar("AssignedChores", false)
+				break;
+			} else {
+				sendVirtualAssistantMessage(" Yes or no?");
+				answer.loop();
+			}
+		}
+	answer.clearOptions();
+
+
+	}
+
+
+
+
     sendVirtualAssistantMessage('Next...');
     sendVirtualAssistantMessage('Do you live in an apartment or house?');
 
 
-    answer = createInput();
+    let houseanswer = createInput('apartment', 'house');
 
     while (true) {
-        if (answer.isLike('apartment')) {
+        if (houseanswer.isLike('apartment')) {
             setVar(VARIABLE_HOME_TYPE, HOME_APARTMENT_TYPE);
             sendVirtualAssistantMessage('I see...');
             break;
-        } else if (answer.isLike('house')) {
+        } else if (houseanswer.isLike('house')) {
             setVar(VARIABLE_HOME_TYPE, HOME_HOUSE_TYPE);
             sendVirtualAssistantMessage('%Good%');
             break;
         } else {
             sendVirtualAssistantMessage('Apartment or house %SlaveName%?');
-            answer.loop();
+            houseanswer.loop();
         }
     }
-
+     houseanswer.clearOptions();
     sendVirtualAssistantMessage('Do you have a kitchen in your %Home% that you need to clean?', 0);
 
 

@@ -79,7 +79,7 @@ function Count()
         return;
     }
 	if(getVar("SmackCadence")==1) {
-	    wait(5);
+	    wait(3);
 	}else{
 		wait(randomInt(2, 8));
 	}

@@ -96,7 +96,7 @@ sendMessage("setting up your punishment");
 
 sendMessage(random("Due to your lack of good behaviour","Due to bad behaviour","Because of poor behaviour","Since you've been bad")); //#DT4
 if(getVar("HasChastity")) {
-	if(getVar("chastityon")) {sendMessage(random("I'm extending your chastity time","I'm leaving that  %Cage% on a little longer","I'm going to keep that %Cock% in prison a few more days"));
+	if(getVar("chastityon")) {sendMessage(random("I'm extending your chastity time","I'm leaving that  %Cage% on a little longer","I'm going to keep that %Cock% in prison a few more days")); 
 	sendMessage("And since you're caged.. "); //#DT4 @TempFlag(S6Complete)
 	sendMessage(random("I think that concludes our business..","I believe our business to be concluded","I believe we're done here..")); // #DT4 @CallReturn(CR\BackgroundMode\Punishment\PunishmentBaseEnd.txt)
 	}else

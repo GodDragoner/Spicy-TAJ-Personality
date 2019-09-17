@@ -80,7 +80,8 @@ function addPunishmentPoints(amount) {
     let multiplier = 1;
 
     //TODO: Base on amount of recent pp too?
-    if(isVar(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE)) {
+	//adding a check for a nonexistnat variable to turn off wacky punishment points (should probably be an exposed setting)
+    if(isVar(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE)&&isVar("crazy_punishment_points")) {
         multiplier = getVar(VARIABLE_PUNISHMENT_POINT_MULTIPLIER);
         let hoursSinceLastChange = Math.floor((new Date().getMilliseconds() - getDate(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE).getTimeInMillis())/(1000*60*60));
 
