@@ -36,6 +36,10 @@
                     waitForDone();
                 }
 
+                if(isGaged()) {
+                    removeGag();
+                }
+
                 startBlowToy(toy);
                 randomBlowjobModule(toy);
 

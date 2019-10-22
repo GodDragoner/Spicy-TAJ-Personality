@@ -160,7 +160,7 @@ function runChoreIntroduction() {
 
     sendVirtualAssistantMessage('So how many rooms are you responsible for cleaning in your home?', 0);
 
-    answer = createInput();
+    let answer = createInput();
 
     while (true) {
         if (answer.isInteger()) {
@@ -217,7 +217,7 @@ function runChoreIntroduction() {
     sendVirtualAssistantMessage('You\'ll never really know the limit of my imagination %Lol%');
     sendVirtualAssistantMessage('On a scale from 1-10 where 1 is never and 10 is very often would you like to "play" while doing chores? Or would you like me to choose?', 0);
 
-    let answer = createInput();
+    answer = createInput();
 
     while (true) {
         if (answer.isInteger()) {

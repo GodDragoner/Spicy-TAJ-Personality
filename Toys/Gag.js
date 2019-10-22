@@ -205,6 +205,7 @@ function putInGag(gagType = GAG_TYPE_BALL_GAG, addPinToTongue = false) {
     return true;
 }
 
+//TODO: Supply reason why to remove so teasing can be done like (Remove the gag, I want your mouth free for what's about to come next)
 function removeGag() {
     if (BODY_PART_TONGUE.currentClamps > 0) {
         sendMessageBasedOnSender('%SlaveName%');

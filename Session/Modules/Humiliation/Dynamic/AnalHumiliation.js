@@ -547,7 +547,7 @@ function choosePosition(toy, needsTwoHands = false) {
             break;
     }
 
-    if (getDate(VARIABLE_LAST_DILDO_SWAP_DATE).addMinute(10 - Math.ceil(getVar(VARIABLE_ASS_LEVEL) / 6))) {
+    if (!isVar(VARIABLE_LAST_DILDO_SWAP_DATE) || getDate(VARIABLE_LAST_DILDO_SWAP_DATE).addMinute(10 - Math.ceil(getVar(VARIABLE_ASS_LEVEL) / 6)).hasPassed()) {
         let newToy = getDildo(false).name;
 
         if (fetchDildoToy(newToy)) {
