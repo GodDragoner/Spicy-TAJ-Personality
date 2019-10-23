@@ -3,7 +3,7 @@
         sendMessage("That %Cock% looks like it\'s about ready to explode %Lol%");
 
         if(!isInChastity()) {
-            tieBalls();
+            tieBalls(true);
             sendMessage("%StartStroking%");
         } else {
             sendMessage('Put the vibrator on the cage %Grin%');

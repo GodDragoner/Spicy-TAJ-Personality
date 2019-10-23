@@ -6,6 +6,27 @@ function askAndFetchIceCubes(amount) {
     return false;
 }
 
+function askForIceCubeAnal() {
+    //CHeck if we haven't asked this before
+    if(!ANAL_LIMIT.isAllowed() && !isVar(VARIABLE_IS_ICECUBE_BYPASS_ANAL)) {
+        sendMessage('%SlaveName% I know you aren\'t into anal...');
+        sendMessage('At least not yet %Grin%');
+        if(sendYesOrNoQuestion('But would you try sticking up an ice cube up your %Ass% for me?')) {
+            sendMessage('Really?!');
+            changeMeritLow(false);
+            sendMessage('That makes my really happy!');
+            setVar(VARIABLE_IS_ICECUBE_BYPASS_ANAL, true);
+        } else {
+            sendMessage('No?');
+            sendMessage('Well I guess I can\'t do anything about it');
+            sendMessage('Limits are limits I guess %EmoteSad%');
+            setVar(VARIABLE_IS_ICECUBE_BYPASS_ANAL, false);
+        }
+    }
+
+    return getVar(VARIABLE_IS_ICECUBE_BYPASS_ANAL, false);
+}
+
 function fetchIceCubes(amount) {
     sendMessage('Fetch me ' + amount + ' ice cubes %SlaveName%');
     sendMessage('Tell me when you are done');

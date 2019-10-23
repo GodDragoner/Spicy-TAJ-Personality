@@ -52,6 +52,9 @@
 
 function startAnalExam() {
     setDate('AnalExamStartDate');
+    sendMessage("Your anal exam starts now");
+
+    //TODO: Select buttplug out of collection
     sendMessage("You are to wear your small butt plug for 7 days in a row!");
     sendMessage("Your only time when you can remove it is to clean yourself and...");
     sendMessage("Of course if I want to violate your ass in a different way %Lol%");

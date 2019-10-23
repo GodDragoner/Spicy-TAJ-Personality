@@ -1,7 +1,7 @@
 run("Slaves/Chastity.js");
 
 function getSubBirthday() {
-    getDate(VARIABLE_SUB_BIRTHDAY);
+    getDate(VARIABLE_SUB_BIRTHDAY, setDate().addDay(-1));
 }
 
 function isSubBirthday() {
@@ -52,9 +52,9 @@ function isKneeling() {
 }
 
 function stopKneeling() {
-    //TODO: Sound too?
-    //playSound('Audio\\Spicy\\Commands\\Kneel\\*.mp3');
-    sendMessage(random('You can stop kneeling', 'You can get up from your knees now', 'You can sit down') + ' %SlaveName%');
+    //TODO: SOUND
+    // playSound('Audio\\Spicy\\Commands\\Kneel\\*.mp3');
+    sendMessage(random('You can stop kneeling and sit', 'You can get up from your knees now and sit', 'You can sit down') + ' %SlaveName%');
     setTempVar(VARIABLE_IS_KNEELING, false);
 }
 

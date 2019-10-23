@@ -23,7 +23,6 @@ if (isVar(dayOfWeek + "MoodDate")) {
 if (newDay) {
     setDate(dayOfWeek + "MoodDate");
 
-
     //Reset scenarios
     setVar("activeMoodScenarios", ",");
 
@@ -238,14 +237,19 @@ if (newDay) {
     }
 
     //Set the daily based values
-    setVar(dayOfWeek + "Happiness", tempHappiness);has
+    setVar(dayOfWeek + "Happiness", tempHappiness);
     setVar(dayOfWeek + "Lust", tempLust);
     setVar(dayOfWeek + "Anger", tempAnger);
 
+    //Debug print temp mood values
+    sendDebugMessage("Temp Lust: " + tempLust);
+    sendDebugMessage("Temp Happiness: " + tempHappiness);
+    sendDebugMessage("Temp Anger: " + tempAnger);
+
     //Add the daily based values
-    setVar(VARIABLE_HAPPINESS, getVar(VARIABLE_HAPPINESS) + tempHappiness);
-    setVar(VARIABLE_LUST, getVar(VARIABLE_LUST) + tempLust);
-    setVar(VARIABLE_ANGER, getVar(VARIABLE_ANGER) + tempAnger);
+    setVar(VARIABLE_HAPPINESS, getVar(VARIABLE_HAPPINESS, 0) + tempHappiness);
+    setVar(VARIABLE_LUST, getVar(VARIABLE_LUST, 0) + tempLust);
+    setVar(VARIABLE_ANGER, getVar(VARIABLE_ANGER, 0) + tempAnger);
 }
 
 function activateRandomScenario(scenarioArray, idOffset, moodType) {

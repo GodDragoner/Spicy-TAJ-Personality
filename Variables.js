@@ -133,6 +133,8 @@ const VARIABLE_IS_GAGED = "isGaged";
 
 
 const VARIABLE_IS_BALLS_TIED = "isBallsTied";
+const VARIABLE_LAST_BALLS_TIE = "lastBallsTie";
+const VARIABLE_LAST_BALLS_UNTIE = "lastBallsUntie";
 const VARIABLE_IS_BALL_CRUSHER_ON = "isBallCrusherOn";
 
 const VARIABLE_IS_KNEELING = "isKneeling";
@@ -143,7 +145,9 @@ const VARIABLE_BALL_CRUSHER_MAX_TWISTS = "ballCrusherMaxTwists";
 
 const VARIABLE_MAX_DILDO_THICKNESS_TODAY = "maxDildoThicknessToday";
 
+//Icecube
 const VARIABLE_LAST_ICE_CUBE_UP_ASS_DATE = "lastIceCubeUpAssDate";
+const VARIABLE_IS_ICECUBE_BYPASS_ANAL = "isIceCubeBypassAnal";
 
 const VARIABLE_LAST_DILDO_SWAP_DATE = "lastDildoSwapDate";
 

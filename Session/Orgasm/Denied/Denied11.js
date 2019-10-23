@@ -90,7 +90,7 @@
             sendMessage("I don\'t think you should let him cum, %DomName%");
             sendMessage("I don\'t think he deserves that kind of pleasure");
 
-            setSender(2);
+            setSender(1);
             sendMessage('But he\'s so ready for it now... %EmoteHappy%');
 
             setSender(contactId);
@@ -98,7 +98,7 @@
             sendMessage("Get him all worked up, ready to spray that jizz all over the place, and then...");
             sendMessage("...DENIED... it\'s perfect! %Lol%");
 
-            setSender(2);
+            setSender(1);
             sendMessage("Mmm I don\'t know...");
             startEdging(getEdgeHoldSeconds());
 

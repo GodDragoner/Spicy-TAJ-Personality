@@ -5,7 +5,7 @@
             waitForCumAnswer();
         } else {
             sendMessage("Alright, I want to let you cum %GeneralTime%");
-            tieBalls();
+            tieBalls(true);
             sendMessage("The thing is, I\'m not sure you\'ve quite earned it...");
             sendMessage("I want you to go get a wooden spoon or a ruler or something similar");
             sendMessage("You can cum %GeneralTime% but you have to hurt those %Balls% for me first %Grin%");

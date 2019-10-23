@@ -1,13 +1,30 @@
 //Categories
 const MODULE_CBT = 0;
 const MODULE_ANAL = 1;
+const MODULE_BALL_TORTURE = 2;
+const MODULE_COCK_TORTURE = 3;
 
 const TRANSITION_NO = 0;
 const TRANSITION_ALWAYS = 1;
 const TRANSITION_POSSIBLE = 2;
 
 
+const PREVIOUS_MODULE_CATEGORIES = new java.util.ArrayList();
+
 const DYNAMIC_MODULES = [];
+
+
+function registerCurrentModuleCategory(category) {
+    PREVIOUS_MODULE_CATEGORIES.add(category);
+}
+
+function hasPreviousModuleHadCategory(category) {
+    return PREVIOUS_MODULE_CATEGORIES.contains(category);
+}
+
+function clearPreviousModuleHistory(category) {
+    PREVIOUS_MODULE_CATEGORIES.clear();
+}
 
 
 function registerDynamicModule(module) {

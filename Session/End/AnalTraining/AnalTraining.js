@@ -7,9 +7,7 @@
         if (getVar(VARIABLE_ASS_TRAININGS_DONE, 0) == 0) {
             firstTimeAnalTraining();
         } else if (checkAnalExercise()) {
-            if (getTrainingEXPForLevel(getVar(VARIABLE_ASS_LEVEL) + 1) <= getVar(VARIABLE_ASS_EXPERIENCE)) {
-                incrementVar(VARIABLE_ASS_LEVEL, 1);
-            }
+
         } else {
             completedExercise = false;
         }
@@ -59,6 +57,11 @@ function checkAnalExercise() {
         checkTasksInRow(getVar(VARIABLE_ASS_TASKS_IN_ROW), 'anal');
 
         incrementVar(VARIABLE_ASS_EXPERIENCE, getVar(VARIABLE_TASK_ASS_EXPERIENCE));
+
+        if (getTrainingEXPForLevel(getVar(VARIABLE_ASS_LEVEL) + 1) <= getVar(VARIABLE_ASS_EXPERIENCE)) {
+            incrementVar(VARIABLE_ASS_LEVEL, 1);
+        }
+
         sendMessage("I added your exp and your current level is " + getVar(VARIABLE_ASS_LEVEL));
         sendMessage('You will need ' + (getTrainingEXPForLevel(getVar(VARIABLE_ASS_LEVEL) + 1) - getVar(VARIABLE_ASS_EXPERIENCE)) + ' more exp for the next level');
 

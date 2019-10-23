@@ -8,11 +8,30 @@ function askForBathroom() {
     while (true) {
         if (answer.isLike("yes", "ready")) {
             sendMessage("%Good%");
-            setTempVar('bathroomNearby', true)
+            setTempVar('bathroomNearby', true);
             return true;
         } else if (answer.isLike("no", "don't", "can't")) {
             sendMessage('Well that\'s a shame...');
-            setTempVar('bathroomNearby', false)
+            setTempVar('bathroomNearby', false);
+            return false;
+        }
+    }
+}
+
+function askForFeatheredToiletLit() {
+    const answer = sendInput("Does your bathroom have a toilet lit that is not feathered?");
+    while (true) {
+        if (answer.isLike("yes")) {
+            sendMessage("%Good%");
+            return true;
+        } else if (answer.isLike("no", "don't", "can't")) {
+            sendMessage('Well that\'s a shame...');
+
+            if(sendYesOrNoQuestion('Do you have a heavy book or anything around that can replace the lit?')) {
+                sendMessage("%Good%");
+                return true;
+            }
+
             return false;
         }
     }

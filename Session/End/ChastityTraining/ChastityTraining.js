@@ -8,12 +8,7 @@
             firstChastityTraining();
         } else {
             if (checkChastityExercise()) {
-                if (getTrainingEXPForLevel(getVar(VARIABLE_CHASTITY_LEVEL) + 1) <= getVar(VARIABLE_CHASTITY_EXPERIENCE)) {
-                    incrementVar(VARIABLE_CHASTITY_LEVEL, 1);
-                }
-
-
-
+                
                 //Roll
             } else {
                 completedExercise = false;
@@ -135,6 +130,10 @@ function checkChastityExercise() {
             checkTasksInRow(getVar(VARIABLE_CHASTITY_TASKS_IN_ROW), 'chastity');
 
             incrementVar(VARIABLE_CHASTITY_EXPERIENCE, getVar(VARIABLE_TASK_CHASTITY_EXPERIENCE));
+
+            if (getTrainingEXPForLevel(getVar(VARIABLE_CHASTITY_LEVEL) + 1) <= getVar(VARIABLE_CHASTITY_EXPERIENCE)) {
+                incrementVar(VARIABLE_CHASTITY_LEVEL, 1);
+            }
 
             sendMessage("I added your exp and your current level is " + getVar(VARIABLE_CHASTITY_LEVEL));
             sendMessage('You will need ' + (getTrainingEXPForLevel(getVar(VARIABLE_CHASTITY_LEVEL) + 1) - getVar(VARIABLE_CHASTITY_EXPERIENCE)) + ' more exp for the next level');

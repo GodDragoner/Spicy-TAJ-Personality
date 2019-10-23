@@ -122,7 +122,8 @@
                     sendMessage('I want you to sit on your office chair and pull the lever so it goes down to its lowest level');
                     sendMessage('Next I want you down on the floor on your back');
                     sendMessage('Tie the parachute to the office chair');
-                    sendMessage('It should locked high enough so it puts some pull on your %Balls%');
+                    sendMessage('It should be high enough so it puts some pull on your %Balls%');
+                    sendMessage('I will give you 60 seconds to do it after I explained everything');
                     sendMessage('Next you are to pull the lever so the chair goes up');
                     sendMessage('I want you to keep your %Ass% on the ground!');
                     sendMessage('Wait until the chair won\'t go up anymore because either you are pulling it down or it has reached its max height');
@@ -134,11 +135,11 @@
                     sendMessage('Time starts in 60 seconds with my bell', 60);
                     sendMessage('Go!', 0);
                     playBellSound();
-                    sleep(randomInteger(120*ACTIVE_PERSONALITY_STRICTNESS, 300*ACTIVE_PERSONALITY_STRICTNESS));
+                    sleep(randomInteger(60*(ACTIVE_PERSONALITY_STRICTNESS + 1), 100*(ACTIVE_PERSONALITY_STRICTNESS + 1)));
                     playBellSound();
                     sendMessage('Now go ahead and drag that chair behind you %Grin%');
                     sendMessage('Report to me when you are done');
-                    waitForDone();
+                    waitForDone(300);
                 }
             }
 

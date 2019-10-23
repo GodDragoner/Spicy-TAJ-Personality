@@ -7,6 +7,24 @@ const LIMIT_ASKED_NO = 4;
 const LIMITS = [];
 
 const ANAL_LIMIT = createLimit('anal', 'analLimit');
+ANAL_LIMIT.askForLimitChange = function (subAddressed) {
+    let limit = this;
+    let ask = this.handleCurrentLimitChange(subAddressed);
+
+    if (ask) {
+        sendMessage('%SlaveName%');
+        sendMessage('I would very much love to also use your %Ass% for my amusement');
+        sendMessage('I want to own it and abuse it to my liking');
+        sendMessage('I could use it as a punishment but also as training for your future life as a sex slave of mine %Grin%');
+        sendMessage('It would please me very much if we could try this and if you even enjoy it yourself');
+        sendMessage('And you want to please me, don\'t you? %Grin%');
+        askForNewLimitValue(limit);
+    } else {
+        sendMessage('%EmoteSad%');
+        changeMeritLow(true);
+    }
+};
+
 const CEI_LIMIT = createLimit('CEI', 'ceiLimit');
 const PAIN_LIMIT = createLimit('pain', 'painLimit');
 const ASM_LIMIT = createLimit('ass to mouth', ' assToMouthLimit');
@@ -19,7 +37,7 @@ ASM_LIMIT.askForLimitChange = function (subAddressed) {
         sendMessage('I would very much love to force you to interact with toys that just came from your ass using your mouth');
         sendMessage('I think this is a great way to humiliate and punish you');
         sendMessage('And...');
-        sendMessage('It would please me very much if we could try this and if you even enjoy it yourself');
+        sendMessage('It would please me very much if we could try this and if you even enjoyed it yourself');
         sendMessage('And you want to please me, don\'t you? %Grin%');
         sendMessage('Mind this has nothing to do with you eating your shit or anything similar');
         sendMessage('That might be a topic for a different time %Grin%');
@@ -40,7 +58,7 @@ CBT_LIMIT.askForLimitChange = function (subAddressed) {
         sendMessage('%SlaveName%');
         sendMessage('I would very much love to hurt your balls and cock in different ways');
         sendMessage('Spank them, pinch them, make them suffer %Grin%');
-        sendMessage('It would please me very much if we could try this and if you even enjoy it yourself');
+        sendMessage('It would please me very much if we could try this and if you even enjoyed it yourself');
         sendMessage('And you want to please me, don\'t you? %Grin%');
         askForNewLimitValue(limit);
     } else {
@@ -61,7 +79,7 @@ VERBAL_HUMILIATION_LIMIT.askForLimitChange = function (subAddressed) {
         sendMessage('%SlaveName%');
         sendMessage('I would very much love to humiliate you verbally');
         sendMessage('Insulting you, telling you how disgusting you are, talking about your small dick, degrading you verbally in general %Grin%');
-        sendMessage('It would please me very much if we could try this and if you even enjoy it yourself');
+        sendMessage('It would please me very much if we could try this and if you even enjoyed it yourself');
         sendMessage('You want to please me, don\'t you? %Grin%');
         askForNewLimitValue(limit);
     } else {
@@ -80,7 +98,7 @@ HUMILIATION_LIMIT.askForLimitChange = function (subAddressed) {
         sendMessage('I would very much love to humiliate you in different ways');
         sendMessage('Make you do humiliating things privately');
         sendMessage('For example make you write stuff onto your body');
-        sendMessage('It would please me very much if we could try this and if you even enjoy it yourself');
+        sendMessage('It would please me very much if we could try this and if you even enjoyed it yourself');
         sendMessage('And you want to please me, don\'t you? %Grin%');
         sendMessage('Mind this has nothing to do with public humiliation');
         sendMessage('That might be a topic for a different time %Grin%');

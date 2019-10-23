@@ -94,17 +94,22 @@
 
                         //Tease about balls not being tied
                         if(untieRoundsAgo == 1 && untieRoundsAgo <= 2 && isChance(33) && !untieTeased) {
-                            sendMessage('Be grateful for your balls not being tied up anymore');
-                            sendMessage('Because you don\'t know how long you can enjoy this luxury %Grin%');
+                            if(isChance(50)) {
+                                sendMessage('Be grateful for your balls not being tied up anymore');
+                                sendMessage('Because you don\'t know how long you can enjoy this luxury %Grin%');
+                            } else {
+                                sendMessage('I think I liked those balls more when they were tied up')
+                            }
+
                             untieTeased = true;
                         }
 
                         //Tie balls up again
-                        if (!hasBallsTied() && loops != 0 && isChance(10 + painLevel * 2) && (untieRoundsAgo < 0 || untieRoundsAgo > 2)) {
+                        if (!hasBallsTied() && loops != 0 && isChance(10 + painLevel * 2) && wantsToTieBalls()) {
                             if(untieRoundsAgo < 0) {
                                 sendMessage('I think we need to change this up a bit');
                             } else {
-                                sendMessage('Let\'s make it hurt a bit more again');
+                                sendMessage(random('Let\'s make it hurt a bit more again', 'I think we should go back to tied balls %Grin%', 'I think I liked those balls more when they were tied up'));
                             }
 
                             tieBalls();
@@ -112,7 +117,7 @@
                             if(untieRoundsAgo < 0) {
                                 sendMessage('Much better isn\'t it? %Grin%');
                             } else {
-                                sendMessage('I hope you enjoyed that time while your balls not bound %Grin%');
+                                sendMessage('I hope you enjoyed that time while your balls were not bound %Grin%');
                             }
 
                         }
@@ -130,7 +135,7 @@
                         }
                     }
 
-                    if (hasBallsTied() && isChance(50 - painLevel * 2)) {
+                    if (hasBallsTied() && isChance(50 - painLevel * 2) && wantsToUntieBalls()) {
                         sendMessage('I am gonna be generous and allow you to untie %MyBalls% balls %EmoteHappy%');
                         untieBalls();
 
@@ -148,6 +153,10 @@
                 startModule: function () {
                     //Pain level too low
                     if (painLevel < 6 || !askForBathroom() || isInChastity()) {
+                        return false;
+                    }
+
+                    if(!askForFeatheredToiletLit()) {
                         return false;
                     }
 
@@ -172,7 +181,7 @@
                         sendMessage('Since you don\'t have a portable device around I will send you all instructions right now');
                         sendMessage('Afterwards you will write them down or take a picture of them');
                         sendMessage('Then you will head to the bathroom and return once you finished all of them');
-                        sendMessage('This sadly ruins the fun of teasing your throughout the punishment but it\'s still better than nothing, don\'t you think? %Grin%');
+                        sendMessage('This sadly ruins the fun of teasing you throughout the punishment but it\'s still better than nothing, don\'t you think? %Grin%');
                         sendMessage('I guess I gotta imagine how you look for now. But seeing your face afterwards is definitely worth it %Grin%');
                     }
 

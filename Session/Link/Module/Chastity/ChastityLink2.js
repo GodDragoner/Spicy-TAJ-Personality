@@ -23,9 +23,9 @@
             sendMessage("Make sure they don\'t fall out");
             sendMessage("That\'s sooo cold %Lol%");
 
-            //TODO: Ask slave whether he would do it
-            if(ANAL_LIMIT.isAllowed()) {
-                sendMessage("Now take on of those cubes");
+
+            if(ANAL_LIMIT.isAllowed() || askForIceCubeAnal()) {
+                sendMessage("Now take one of those cubes");
                 sendMessage("And put it in your %Ass%");
                 sendMessage("Don\'t hesitate %SlaveName%, just do as I say");
                 sendMessage("Push it right in");

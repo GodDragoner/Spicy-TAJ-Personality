@@ -14,7 +14,7 @@ function smallSpankingPunishment() {
     const implement = fetchSpankingImplement();
     sendMessage('Let\'s get get started %Grin%');
     
-    //TODO: Voice commands etc.?
+    //TODO: SOUND: Voice commands etc.?
     sendMessage('I want you to ' + random('kneel', 'bend over a chair', 'stand') + ' for this');
     sendMessage('Now get ready to spank your ass cheeks on my command %SlaveName%!', 5);
 
@@ -23,11 +23,11 @@ function smallSpankingPunishment() {
         sendMessage(random('I want you to count out loud!', 'I want you to count along', 'I want you to count with me'));
     }
 
-    //TODO: Sounds
     let maxLoops = getVar(VARIABLE_SUB_PAIN_TOLERANCE)*3;
 
     while(maxLoops > 0) {
         maxLoops--;
+        playSound("Audio/Spicy/Spanking/cane.mp3");
 
         if(maxLoops%2 == 0) {
             sendMessage('Left cheek!', 1);

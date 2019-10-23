@@ -781,7 +781,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             sendMessage("Do not change the position unless I tell you otherwise");
             sendMessage("Stay there until you hear my bell");
             sendMessage("I know this can get tough on the knees but make me proud!");
-            //TODO: No More ((If you absolutely can't handle anymore just say 'stop'))
+            //TOADD: No More ((If you absolutely can't handle anymore just say 'stop'))
             sendMessage("Get into position %SlaveName%");
             unlockImages();
             complicatedPositionTrainingTimer();
@@ -794,7 +794,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             showImage("Images/Spicy/Positions/BadBitch2.jpg");
             sendMessage("Head down");
             sendMessage("Stay there until you hear my bell");
-            //TODO: No More ((If you absolutely can't handle anymore just say 'stop'))
+            //TOADD: No More ((If you absolutely can't handle anymore just say 'stop'))
             sendMessage("Get into position %SlaveName%");
             unlockImages();
             complicatedPositionTrainingTimer();
@@ -808,7 +808,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             sendMessage("Head down");
             sendMessage("Stay there until you hear my bell");
             sendMessage("I want you to count every time you lose your balance");
-            //TODO: No More ((If you absolutely can't handle anymore just say 'stop'))
+            //TOADD: No More ((If you absolutely can't handle anymore just say 'stop'))
             sendMessage("Get into position %SlaveName%");
             unlockImages();
             complicatedPositionTrainingTimer();
@@ -823,7 +823,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             sendMessage("Head down");
             sendMessage("Stay there until you hear my bell");
             sendMessage("I want you to count every time you lose your balance");
-            //TODO: No More ((If you absolutely can't handle anymore just say 'stop'))
+            //TOADD: No More ((If you absolutely can't handle anymore just say 'stop'))
             sendMessage("Get into position %SlaveName%");
             unlockImages();
             complicatedPositionTrainingTimer();
@@ -837,7 +837,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             showImage("Images/Spicy/Positions/Box1.jpg");
             sendMessage("Head high and on your knees");
             sendMessage("Stay there until you hear my bell");
-            //TODO: No More ((If you absolutely can't handle anymore just say 'stop'))
+            //TOADD: No More ((If you absolutely can't handle anymore just say 'stop'))
             sendMessage("Get into position %SlaveName%");
             unlockImages();
             complicatedPositionTrainingTimer();
@@ -849,7 +849,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             lockImages();
             showImage("Images/Spicy/Positions/CFM3.jpg");
             sendMessage("Stay there until you hear my bell");
-            //TODO: No More ((If you absolutely can't handle anymore just say 'stop'))
+            //TOADD: No More ((If you absolutely can't handle anymore just say 'stop'))
             sendMessage("Get into position %SlaveName%");
             unlockImages();
             complicatedPositionTrainingTimer();
@@ -897,7 +897,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             sendMessage("Stay there until you hear my bell");
             sendMessage("Just so we're clear your heels may not touch the ground..");
             sendMessage("I want you to count every time you lose your balance or your heels touch the ground");
-            //TODO: No More ((If you absolutely can't handle anymore just say 'stop'))
+            //TOADD: No More ((If you absolutely can't handle anymore just say 'stop'))
             sendMessage("Get into position %SlaveName%");
             unlockImages();
             complicatedPositionTrainingTimer();
@@ -910,7 +910,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             lockImages();
             showImage("Images/Spicy/Positions/Kneel1.jpg");
             sendMessage("Stay there until you hear my bell");
-            //TODO: No More ((If you absolutely can't handle anymore just say 'stop'))
+            //TOADD: No More ((If you absolutely can't handle anymore just say 'stop'))
             sendMessage("Get into position %SlaveName%");
             unlockImages();
             complicatedPositionTrainingTimer();
@@ -922,7 +922,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             lockImages();
             showImage("Images/Spicy/Positions/Listen1.jpg");
             sendMessage("Stay there until you hear my bell");
-            //TODO: No More ((If you absolutely can't handle anymore just say 'stop'))
+            //TOADD: No More ((If you absolutely can't handle anymore just say 'stop'))
             sendMessage("Get into position %SlaveName%");
             unlockImages();
             complicatedPositionTrainingTimer();
@@ -934,7 +934,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             lockImages();
             showImage("Images/Spicy/Positions/Punishment4.jpg");
             sendMessage("Stay there until you hear my bell");
-            //TODO: No More ((If you absolutely can't handle anymore just say 'stop'))
+            //TOADD: No More ((If you absolutely can't handle anymore just say 'stop'))
             sendMessage("Get into position %SlaveName%");
             unlockImages();
             complicatedPositionTrainingTimer();
@@ -972,7 +972,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             showImage("Images/Spicy/Positions/Slut2.jpg");
             sendMessage("Get into position %SlaveName%");
             sendMessage("Stay there until you hear my bell");
-            //TODO: No More ((If you absolutely can't handle anymore just say 'stop'))
+            //TOADD: No More ((If you absolutely can't handle anymore just say 'stop'))
             unlockImages();
             complicatedPositionTrainingTimer();
         },
@@ -985,7 +985,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             sendMessage("Stay there until you hear my bell");
             sendMessage("I warn you that I might keep you there a little longer");
             sendMessage("Imagine being brutally caned!");
-            //TODO: No More ((If you absolutely can't handle anymore just say 'stop'))
+            //TOADD: No More ((If you absolutely can't handle anymore just say 'stop'))
             sendMessage("Get into position %SlaveName%");
             sleep(randomInteger(10, 200));
             unlockImages();
@@ -999,7 +999,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             showImage("Images/Spicy/Positions/Stand1.jpg");
             sendMessage("Stay there until you hear my bell");
             sendMessage("I want you to count every time you lose your balance");
-            //TODO: No More ((If you absolutely can't handle anymore just say 'stop'))
+            //TOADD: No More ((If you absolutely can't handle anymore just say 'stop'))
             sendMessage("Get into position %SlaveName%");
             unlockImages();
             complicatedPositionTrainingTimer();
@@ -1013,7 +1013,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             showImage("Images/Spicy/Positions/StandOpen1.jpg");
             sendMessage("Stay there until you hear my bell");
             sendMessage("I want you to count every time you lose your balance");
-            //TODO: No More ((If you absolutely can't handle anymore just say 'stop'))
+            //TOADD: No More ((If you absolutely can't handle anymore just say 'stop'))
             sendMessage("Get into position %SlaveName%");
             unlockImages();
             complicatedPositionTrainingTimer();
@@ -1026,7 +1026,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             lockImages();
             showImage("Images/Spicy/Positions/Worship1.jpg");
             sendMessage("Stay there until you hear my bell");
-            //TODO: No More ((If you absolutely can't handle anymore just say 'stop'))
+            //TOADD: No More ((If you absolutely can't handle anymore just say 'stop'))
             sendMessage("Get into position %SlaveName%");
             unlockImages();
             complicatedPositionTrainingTimer();

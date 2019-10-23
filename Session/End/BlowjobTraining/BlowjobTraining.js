@@ -7,9 +7,7 @@
         if (getVar(VARIABLE_BLOWJOB_TRAININGS_DONE, 0) == 0) {
             firstTimeBlowjobTraining();
         } else if (checkBlowjobExercise()) {
-            if (getTrainingEXPForLevel(getVar(VARIABLE_BLOWJOB_LEVEL) + 1) <= getVar(VARIABLE_BLOWJOB_EXPERIENCE)) {
-                incrementVar(VARIABLE_BLOWJOB_LEVEL, 1);
-            }
+
         } else {
             completedExercise = false;
         }
@@ -52,6 +50,11 @@ function checkBlowjobExercise() {
         checkTasksInRow(getVar(VARIABLE_BLOWJOB_TASKS_IN_ROW), 'blowjob');
 
         incrementVar(VARIABLE_BLOWJOB_EXPERIENCE, getVar(VARIABLE_TASK_BLOWJOB_EXPERIENCE));
+
+        if (getTrainingEXPForLevel(getVar(VARIABLE_BLOWJOB_LEVEL) + 1) <= getVar(VARIABLE_BLOWJOB_EXPERIENCE)) {
+            incrementVar(VARIABLE_BLOWJOB_LEVEL, 1);
+        }
+
         sendMessage("I added your exp and your current level is " + getVar(VARIABLE_BLOWJOB_LEVEL));
         sendMessage('You will need ' + (getTrainingEXPForLevel(getVar(VARIABLE_BLOWJOB_LEVEL) + 1) - getVar(VARIABLE_BLOWJOB_EXPERIENCE)) + ' more exp for the next level');
     } else {

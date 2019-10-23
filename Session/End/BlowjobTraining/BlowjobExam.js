@@ -51,6 +51,7 @@
 
 function startBlowjobExam() {
     setDate('BlowjobExamStartDate');
+    sendMessage("Your blowjob exam starts now");
     sendMessage("You are to fuck your throat for at least 30 minutes for 7 days in a row!");
     sendMessage("You will at least do one deepthroat every minute and hold it at least 20 seconds");
     sendMessage("You can feel free to mimic a deepthroat video if you want to instead but you still must do it for 30 minutes per day");
