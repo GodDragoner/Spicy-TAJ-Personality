@@ -98,6 +98,9 @@ function distributeClamps(amount) {
 
     let firstRun = true;
 
+    //Track the temporary history of body parts already served
+    let bodyPartHistory = new java.util.ArrayList();
+
     while(amount > 0) {
         let randomBodyPart = BODY_PARTS[randomInteger(0, BODY_PARTS.length - 1)];
 
@@ -106,6 +109,9 @@ function distributeClamps(amount) {
             continue;
         }
 
+        //Track whether we switched to the opposite part because then we don't need to check the other part afterwards anymore
+        let switchedToOpposite = false;
+
         if(randomBodyPart.currentClamps >= randomBodyPart.maxClamps) {
             //If there is no opposite or the opposite part is also filled already skip
             if(!randomBodyPart.hasOppositeBodyPart() || randomBodyPart.getOppositeBodyPart().currentClamps >= randomBodyPart.getOppositeBodyPart().maxClamps) {
@@ -113,14 +119,23 @@ function distributeClamps(amount) {
             } else {
                 //We can fill up the opposite body part
                 randomBodyPart = randomBodyPart.getOppositeBodyPart();
+
+                //Our current part is full so we don't need to check for the previous part later on anymore
+                switchedToOpposite = true;
             }
+        }
+
+        //We already used that body part in this history
+        if(bodyPartHistory.contains(randomBodyPart)) {
+            continue;
         }
 
         let toPutAmount = Math.max(1, Math.min(randomInteger(1, Math.min(randomBodyPart.maxClamps - randomBodyPart.currentClamps, 5)), amount));
 
         let oppositeBodyPartToFill = null;
-        //Find the other body part and check whether we can fill it
-        if(randomBodyPart.hasOppositeBodyPart() && randomBodyPart.getOppositeBodyPart().currentClamps < randomBodyPart.getOppositeBodyPart().maxClamps) {
+
+        //Find the other body part and check whether we can fill it, we don't need to try if we already switched to opposite above
+        if(!switchedToOpposite && randomBodyPart.hasOppositeBodyPart() && randomBodyPart.getOppositeBodyPart().currentClamps < randomBodyPart.getOppositeBodyPart().maxClamps) {
             oppositeBodyPartToFill = randomBodyPart.getOppositeBodyPart();
         }
 
@@ -141,6 +156,13 @@ function distributeClamps(amount) {
         }
 
         firstRun = false;
+
+        //Temp history to not repeat any body parts TODO: Remove in special cases and tease with the remaining things like: What to do with the last two...? Hmm. Well just apply them to your balls aswell
+        bodyPartHistory.add(randomBodyPart);
+
+        if(oppositeBodyPartToFill != null) {
+            bodyPartHistory.add(oppositeBodyPartToFill)
+        }
     }
 
     sendMessage(random("That should do it for now", "That should be enough for now", "This should be sufficient for now") + " %Grin%");

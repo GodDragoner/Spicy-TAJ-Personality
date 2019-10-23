@@ -109,7 +109,7 @@ function runChoreIntroduction() {
     sendVirtualAssistantMessage('Do you live in an apartment or house?');
 
 
-    answer = createInput();
+    let answer = createInput();
 
     while (true) {
         if (answer.isLike('apartment')) {
@@ -160,7 +160,7 @@ function runChoreIntroduction() {
 
     sendVirtualAssistantMessage('So how many rooms are you responsible for cleaning in your home?', 0);
 
-    let answer = createInput();
+    answer = createInput();
 
     while (true) {
         if (answer.isInteger()) {

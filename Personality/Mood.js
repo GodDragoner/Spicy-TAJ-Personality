@@ -97,6 +97,14 @@ function handleTodaysMood() {
     //Otherwise no change
 }
 
+function getHumiliationMood() {
+
+}
+
+function getHumilationTimeModifier() {
+
+}
+
 //TODO: Add to it hurts etc.
 function registerComplain() {
     if(getVar(VARIABLE_COMPLAINTS, 0) > 3) {

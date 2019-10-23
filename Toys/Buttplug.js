@@ -40,7 +40,7 @@ function getRandomCleanButtplug() {
 }
 
 function hasButtplugToy() {
-    return getVar("toyButtPlugs");
+    return BUTTPLUG_TOY.hasToy();
 }
 
 function isPlugged() {

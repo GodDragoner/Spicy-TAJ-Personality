@@ -238,7 +238,7 @@ if (newDay) {
     }
 
     //Set the daily based values
-    setVar(dayOfWeek + "Happiness", tempHappiness);
+    setVar(dayOfWeek + "Happiness", tempHappiness);has
     setVar(dayOfWeek + "Lust", tempLust);
     setVar(dayOfWeek + "Anger", tempAnger);
 

@@ -421,6 +421,7 @@
     askForToyUsage("BallCrusher", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
+    BUTTPLUG_TOY.askForToy();
     BUTTPLUG_TOY.askForToyUsage(domChose);
 
     if (hasButtplugToy()) {
