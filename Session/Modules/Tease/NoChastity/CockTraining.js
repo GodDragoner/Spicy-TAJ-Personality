@@ -1,4 +1,4 @@
-if (tryRunModuleFetchId()) {
+if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_STROKING)) {
     //Reset (dunno if it might just be on true for some reason)
     setTempVar(VARIABLE_STROKE_TRAINING_ACTIVE, false);
 
@@ -110,7 +110,7 @@ function startStrokeTraining() {
         timeToIncreaseLevel += randomInteger(0, 10);
         setTempVar('timeToIncreaseLevel', timeToIncreaseLevel);
 
-        sendDebugMessage('New time to increase stroke training level: ' + getVar(timeToIncreaseLevel) + '/50');
+        sendDebugMessage('New time to increase stroke training level: ' + getVar('timeToIncreaseLevel') + '/50');
 
         if((getVar(VARIABLE_STROKE_TRAINING_EDGES_DONE) !== edgesAtStart || !getVar(VARIABLE_STROKE_TRAINING_ACTIVE, false))) return;
         showTeaseImage(randomInteger(5, 10));

@@ -1,5 +1,5 @@
 {
-    if (tryRunModuleFetchId()) {
+    if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_UNKNOWN)) {
         sendMessage("%SlaveName%");
         sendMessage(random("There is nothing more empowering ", "I can\'t imagine anything that satifies me more ", "There is nothing that gets me more wet "));
         sendMessage("Than " + random("watching a man pleasure another man against his will ", "watching a man give a blowjob despite his will ", "watching you pleasure a man against your will ") + "%Lol%");

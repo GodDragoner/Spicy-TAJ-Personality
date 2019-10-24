@@ -67,9 +67,15 @@ function decideGag(pain = false) {
         if (pain) {
             sendMessageBasedOnSender('I am not in the mood to hear your whimpering %GeneralTime%');
         } else {
-            //TODO: More?
-            sendMessageBasedOnSender(random('I want you to shut your mouth', 'I want you to shut up', 'I want you to stop talking', 'I want you to be silent', 'I want some silence'));
-            sendMessageBasedOnSender('And I just know a good way to accomplish this %Grin%');
+            if(isChance(40)) {
+                //TODO: Interact more based on what previously happened etc.
+                sendMessage('You have been talking too much', 'You have been annoying me by not shutting up', 'You have been quite annoying today');
+                sendMessage('And...');
+            }
+
+            sendMessageBasedOnSender(random('I want you to shut your dirty little mouth', 'I want you to shut up', 'I want you to stop talking', 'I want you to be silent', 'I want some silence',
+                'I need some silence'));
+            sendMessageBasedOnSender('And I just know a good way to accomplish that %Grin%');
         }
 
         selectAndPutInGag();

@@ -3,6 +3,12 @@ const MODULE_CBT = 0;
 const MODULE_ANAL = 1;
 const MODULE_BALL_TORTURE = 2;
 const MODULE_COCK_TORTURE = 3;
+const MODULE_UNKNOWN = 4;
+const MODULE_BLOWJOB = 5;
+const MODULE_STROKING = 6;
+const MODULE_WATCH_VIDEO = 7;
+const MODULE_HUMILIATION = 8;
+
 
 const TRANSITION_NO = 0;
 const TRANSITION_ALWAYS = 1;
@@ -22,7 +28,7 @@ function hasPreviousModuleHadCategory(category) {
     return PREVIOUS_MODULE_CATEGORIES.contains(category);
 }
 
-function clearPreviousModuleHistory(category) {
+function clearPreviousModuleHistory() {
     PREVIOUS_MODULE_CATEGORIES.clear();
 }
 

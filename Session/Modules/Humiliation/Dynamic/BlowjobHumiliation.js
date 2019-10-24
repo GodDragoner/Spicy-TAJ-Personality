@@ -2,7 +2,7 @@
 
     //TODO: Follow along video?
 
-    if (tryRunModuleFetchId()) {
+    if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_BLOWJOB)) {
         sendMessage("Let's see %SlaveName%");
         sendMessage("I think your throat is not sore enough yet and we should work on that %Grin%");
 

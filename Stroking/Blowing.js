@@ -408,8 +408,9 @@ function startDeepthroatModule(createSpiLube = false) {
         const level = random(0, tasks.length);
 
         if (usedBlowjobInstructions.contains(taskIndex)) {
-            //TODO: Variation
-            sendMessage('And yet again ' + decapitalize(tasks[level]));
+            let sentenceStart = random('And yet again', 'Yet again', 'Once more', 'And once more') + ' ';
+
+            sendMessage(sentenceStart + decapitalize(tasks[level]));
         } else {
             sendMessage(tasks[level]);
         }

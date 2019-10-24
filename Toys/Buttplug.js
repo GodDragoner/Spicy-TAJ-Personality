@@ -91,7 +91,7 @@ function putInButtplug(forceBigger = false) {
                 if(isVar(VARIABLE_LAST_ICE_CUBE_UP_ASS_DATE)) {
                     sendMessage('Yet again %Grin%');
                     sendMessage('Push them up your ass one by one %Grin%');
-                    sendMessage('And make sure they nothing sips out when you push the new ones in');
+                    sendMessage('And make sure that nothing sips out when you push the new ones in');
                     sendMessage('It must be getting cold in there with all those cubes up your ass %Lol%');
                 } else {
                     let answer = sendInput('%KnowWhatsNext%', 5);
@@ -301,23 +301,22 @@ function getMaxDiameterIncrease() {
     return maxDiameterIncrease;
 }
 
-function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
-    let maxPlugThickness = getVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, 0);
 
+function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
+    //Get the max used thickness today to make sure we don't go too big too quickly
+    //In the rare case of the biggest dildo being thicker than our biggest plug we need to watch for that
+    let maxUsedPlugThickness = Math.min(biggestButtplug.diameter, getVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, 0));
+
+    //If we want to force bigger and haven't been given a min thickness then we will make it bigger than the biggest thing we used today to make sure we go up
     if(forceBigger && minThickness === 0) {
-        minThickness = maxPlugThickness + 0.1;
+        //Make sure our min thickness does not exceed the biggest plug we have-
+        minThickness = Math.min(maxUsedPlugThickness + 0.1, biggestButtplug.diameter);
     }
 
     let availablePlugs = [];
 
+    //Max diameter increase
     let maxDiameterIncrease = getMaxDiameterIncrease();
-
-    if(maxPlugThickness >= biggestButtplug.diameter) {
-        //We don't have any bigger plug
-        maxPlugThickness = biggestButtplug.diameter;
-    }
-
-    minThickness = Math.min(minThickness, biggestButtplug.diameter);
 
     //TODO: Handle min length too (smallest plug etc.)
 
@@ -325,9 +324,10 @@ function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
         for (let y = 0; y < buttplugs.length; y++) {
             let buttplug = buttplugs[y];
 
+            //Do we fulfil the min thickness and length?
             if(buttplug.diameter >= minThickness && buttplug.length >= minLength) {
                 //Don't over extent with too big plugs too quickly
-                if(buttplug.diameter >= maxPlugThickness && buttplug.diameter <= Math.max(smallestButtplug.diameter, maxPlugThickness + maxDiameterIncrease)) {
+                if(buttplug.diameter >= maxUsedPlugThickness && buttplug.diameter <= Math.max(smallestButtplug.diameter, maxUsedPlugThickness + maxDiameterIncrease)) {
                     availablePlugs.push(buttplug);
                 }
             }
@@ -338,7 +338,7 @@ function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
             maxDiameterIncrease += 0.25;
 
             if(minLength > 0) minLength -= 0.5;
-            if(minThickness > 0) minThickness -= 0.5;
+            //if(minThickness > 0) minThickness -= 0.5;
         }
     }
 

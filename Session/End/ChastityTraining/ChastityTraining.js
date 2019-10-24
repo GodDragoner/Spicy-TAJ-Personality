@@ -8,7 +8,7 @@
             firstChastityTraining();
         } else {
             if (checkChastityExercise()) {
-                
+
                 //Roll
             } else {
                 completedExercise = false;
@@ -18,7 +18,7 @@
         if (completedExercise) {
             sendNewChastityExercise();
         }
-
+Birthday
 
         if (isChance(20)) {
             randomChastityAdvice();

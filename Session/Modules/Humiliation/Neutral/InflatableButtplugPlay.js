@@ -1,7 +1,7 @@
 {
     if(getCBTLimit() != LIMIT_ASKED_YES || !INFLATABLE_BUTT_PLUG.hasToy()) {
         runModuleCategory('Pain');
-    } else if (tryRunModuleFetchId()) {
+    } else if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_ANAL)) {
         if (INFLATABLE_BUTT_PLUG.fetchToy()) {
             //TODO: More games and
             putInInflatablePlug();

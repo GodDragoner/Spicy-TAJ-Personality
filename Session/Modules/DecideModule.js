@@ -1,5 +1,4 @@
 //TODO: Pain Modules: Sounding, Electric Kit
-//TODO: Prevent two ball pain modules in a row etc.
 
 {
     //End session
@@ -122,6 +121,7 @@
         const max = teaseModuleChance + sissyModuleChance + painModuleChance + slaveModuleChance + humiliationModuleChance;
         const moduleIndicator = randomInteger(0, max);
 
+        clearPreviousModuleHistory();
         setTempVar('findModuleTries', 0);
 
         if (moduleIndicator < teaseModuleChance) {
@@ -176,13 +176,19 @@ function runModuleCategory(category) {
     run(paths[randomInteger(0, paths.length - 1)]);
 }
 
-function tryRunModuleFetchId(minModulesSinceRun = 3) {
-    return tryRunModule(getCurrentScriptName(), getVar('lastModuleCategory'), minModulesSinceRun);
+function getDefaultModulesSinceRun() {
+    return 3;
 }
 
+function tryRunModuleFetchId(minModulesSinceRun = getDefaultModulesSinceRun(), subCategories = MODULE_UNKNOWN) {
+    return tryRunModule(getCurrentScriptName(), getVar('lastModuleCategory'), minModulesSinceRun, subCategories);
+}
 
-function tryRunModule(moduleId, category, minModulesSinceRun = 3) {
+function tryRunModule(moduleId, category, minModulesSinceRun = 3, subCategories) {
     let maxTries = 10;
+
+    //Check if that module category was in the previous module so we get some variation
+    let categoryInPreviousModule = subCategories != MODULE_UNKNOWN && hasPreviousModuleHadCategory(subCategories);
 
     moduleId = moduleId.toLowerCase();
 
@@ -192,9 +198,9 @@ function tryRunModule(moduleId, category, minModulesSinceRun = 3) {
         minModulesSinceRun = 10;
     }
 
-    if (MODULE_HISTORY.isInHistory(moduleId)) {
+    if (MODULE_HISTORY.isInHistory(moduleId) || categoryInPreviousModule) {
         //Check whether not enough modules have passed since last time we ran this module
-        if (MODULE_HISTORY.getModulesSinceHistory(moduleId) < minModulesSinceRun) {
+        if (MODULE_HISTORY.getModulesSinceHistory(moduleId) < minModulesSinceRun  || categoryInPreviousModule) {
             let tries = getVar('findModuleTries');
             if (tries < maxTries / 2) {
                 //Try to run from same category
@@ -211,6 +217,8 @@ function tryRunModule(moduleId, category, minModulesSinceRun = 3) {
     }
 
     MODULE_HISTORY.addHistoryRun(moduleId);
+    registerCurrentModuleCategory(subCategories);
+
     return true;
 }
 

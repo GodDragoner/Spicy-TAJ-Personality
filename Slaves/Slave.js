@@ -1,7 +1,12 @@
 run("Slaves/Chastity.js");
 
 function getSubBirthday() {
-    getDate(VARIABLE_SUB_BIRTHDAY, setDate().addDay(-1));
+    if(!isVar(VARIABLE_SUB_BIRTHDAY)) {
+        sendDebugMessage('No sub birthday found');
+        return setDate().addDay(-1);
+    } else {
+        return getDate(VARIABLE_SUB_BIRTHDAY);
+    }
 }
 
 function isSubBirthday() {

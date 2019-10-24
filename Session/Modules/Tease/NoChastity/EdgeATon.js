@@ -1,6 +1,6 @@
 //TODO: Competitions are actually a great idea but right now hitting this module on a saturday is not gonna happen too frequently
 
-if(tryRunModuleFetchId()) {
+if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_STROKING)) {
     if (isStroking()) {
         sendMessage("Stop stroking %SlaveName%", 0);
         stopStroking();

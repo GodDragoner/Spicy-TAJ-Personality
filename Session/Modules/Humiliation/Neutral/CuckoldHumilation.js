@@ -1,5 +1,5 @@
 {
-    if (tryRunModuleFetchId()) {
+    if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_WATCH_VIDEO)) {
         sendMessage(random('I want to show you a video!', 'You\'re going to watch a video'));
         sendMessage(random('I wanna drill a message into your mind', 'I\'m gonna slowly drill a message into your soul'));
 

@@ -1,5 +1,5 @@
 {
-    if(tryRunModuleFetchId()) {
+    if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_UNKNOWN)) {
         if (getVar(VARIABLE_MODEL_RATINGS_DONE, 0) == 0) {
             sendMessage('I have a fun new game for you %SlaveName%');
             sendMessage('In a moment I\'m gonna show you 100 pictures');
@@ -51,7 +51,7 @@
             sendMessage('Remember the pictures you rated before?');
             sendMessage('Let\'s see if you can still remember the ratings');
 
-            //TODO: Unlock second mode in shop?
+            //SHOP: Unlock second mode in shop?
             const compareMode = randomInteger(0, 1) == 0;
 
             if (compareMode) {
@@ -79,6 +79,7 @@
                         waitForDone();
                     }
 
+                    registerCurrentModuleCategory(MODULE_BALL_TORTURE);
                     applyBallCrusherPressure();
 
                     sendMessage('So this is how this will go from here on');

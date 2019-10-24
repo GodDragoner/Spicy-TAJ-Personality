@@ -1,5 +1,6 @@
 
 function askForBathroom() {
+    //TODO: Think if this makes sense (sub might be at a different location sometimes)
     if(isVar('bathroomNearby')) {
         return getVar('bathroomNearby');
     }
@@ -19,7 +20,7 @@ function askForBathroom() {
 }
 
 function askForFeatheredToiletLit() {
-    const answer = sendInput("Does your bathroom have a toilet lit that is not feathered?");
+    const answer = sendInput("Does your bathroom have a toilet lid that is not feathered?");
     while (true) {
         if (answer.isLike("yes")) {
             sendMessage("%Good%");

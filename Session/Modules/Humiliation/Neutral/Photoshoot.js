@@ -3,7 +3,7 @@
         runModuleCategory('Humiliation');
     }
 
-    if (tryRunModuleFetchId()) {
+    if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_HUMILIATION)) {
         if (!hasBasicLingerie() && !hasAdvancedLingerie()) {
             sendMessage("It\'s a shame you don\'t have any lingerie %Grin%");
             sendMessage("I had an idea I think you would absolutely love!");

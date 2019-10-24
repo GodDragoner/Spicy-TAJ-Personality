@@ -2,7 +2,7 @@
     //TODO: Do stuff without parachute using strings  if no parachute
     if (getCBTLimit() != LIMIT_ASKED_YES || !PARACHUTE_TOY.hasToy() || !PARACHUTE_TOY.isPlayAllowed()) {
         runModuleCategory('Pain');
-    } else if (tryRunModuleFetchId()) {
+    } else if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_BALL_TORTURE)) {
         if(PARACHUTE_TOY.fetchToy()) {
             sendMessage('Now we\'re going to have some fun with it!');
             sendMessage('Attach it while you\'re at it %Lol%');
@@ -116,7 +116,7 @@
                     sendMessage('Begin!', 0);
                     playBellSound();
 
-                    sleep(randomInteger(120*ACTIVE_PERSONALITY_STRICTNESS, 300*ACTIVE_PERSONALITY_STRICTNESS));
+                    sleep(randomInteger(90*ACTIVE_PERSONALITY_STRICTNESS, 120*ACTIVE_PERSONALITY_STRICTNESS));
                     returnSlave();
                 } else if(module === 1) {
                     sendMessage('I want you to sit on your office chair and pull the lever so it goes down to its lowest level');

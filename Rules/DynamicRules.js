@@ -235,27 +235,6 @@ let RULE_ALWAYS_SWALLOW_CUM;
         return 'You must thank %DomHonorific% %DomName% for every single orgasm you have';
     };
 
-    rule.checkRule = function () {
-        if (this.isActive()) {
-            sendMessage('%SlaveName%');
-
-            if (!sendYesOrNoQuestion('Did you swallow any spit?')) {
-                sendMessage('%Good%');
-                sendMessage('Because as you know you aren\'t allowed to swallow any spit %Grin%');
-                return true;
-            } else {
-                sendMessage('%EmoteSad%');
-                sendMessage('You know you aren\'t allowed to swallow spit!');
-                sendMessage('And you should also know not obeying rules will result in punishment points');
-
-                addPunishmentPoints(getPPRuleIgnored());
-                changeMeritMedium(true);
-            }
-        }
-
-        return false;
-    };
-
     rule.sendIntroduction = function () {
         sendMessage('I own your orgasms %Grin%');
         sendMessage('And every single one of them is a rare gift');

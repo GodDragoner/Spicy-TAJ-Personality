@@ -70,6 +70,8 @@ CBT_LIMIT.askForLimitChange = function (subAddressed) {
 const SISSY_LIMIT = createLimit('sissyfication', 'sissyLimit');
 const CUCKOLD_LIMIT = createLimit('cuckold', 'cuckoldLimit');
 
+const FEET_LIMIT = createLimit('feet', 'feetLimit');
+
 const VERBAL_HUMILIATION_LIMIT = createLimit('verbal humiliation', 'verbalHumiliation');
 VERBAL_HUMILIATION_LIMIT.askForLimitChange = function (subAddressed) {
     let limit = this;

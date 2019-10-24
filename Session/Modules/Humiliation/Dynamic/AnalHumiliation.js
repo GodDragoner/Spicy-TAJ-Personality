@@ -1,7 +1,7 @@
 //TODO: use ice cubes, food?
 
 {
-    if (tryRunModuleFetchId()) {
+    if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_ANAL)) {
         //TODO: More limit handling
         if (getAnalLimit() == LIMIT_NEVER) {
             //Try to find a different module

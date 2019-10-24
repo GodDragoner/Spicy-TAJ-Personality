@@ -34,8 +34,6 @@
 
 function interactWithRandomToys() {
     //TODO: Could interact with buy new toys or fetish questions and better transition between different toys (additionally why not do this... etc.)
-
-
     if(isChance(Math.max(25, getVar(VARIABLE_ASS_LEVEL, 0)) * 4) && getAnalLimit() === LIMIT_ASKED_YES) {
         if (isPlugged()) {
             if (isVar(VARIABLE_LAST_PLUG_DATE) && getVar(VARIABLE_LAST_PLUG_DATE).addMinute(randomInteger(7, 10)).hasPassed()) {

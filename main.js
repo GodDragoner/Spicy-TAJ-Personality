@@ -31,6 +31,9 @@ run("Stroking/Anal.js");
 run("Stroking/Blowing.js");
 run("Session/Modules/Pain/SmallPunishment.js");
 
+//Dynamic module stuff
+run("Session/Modules/Dynamic/DynamicModuleBuilder.js");
+
 run("Chore/Chore.js");
 run("Chore/Room.js");
 
@@ -61,6 +64,7 @@ run("Startup/PictureSelector.js");
 run("Rules/DynamicRules.js");
 
 run("Session/Modules/Games/Games.js");
+
 
 //Update devotion only if the setup is complete which means the variable must exist
 if(isVar("subDevotion")) {
