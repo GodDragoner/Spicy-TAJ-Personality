@@ -6,8 +6,9 @@ function getSubBirthday() {
 
 function isSubBirthday() {
     let date = getSubBirthday();
-
-    return date.getDay() === new Date().getDate() && date.getMonth() === new Date().getMonth();
+//fixme
+   // return date.getDay() === new Date().getDate() && date.getMonth() === new Date().getMonth();
+   return false;
 }
 
 function increasePainTolerance() {
