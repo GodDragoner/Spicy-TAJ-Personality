@@ -60,8 +60,8 @@ function sendVirtualAssistantMessage(message, wait, skipImage) {
     text.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.MEDIUM, 13));
 
 //test below to see if tts is supported and sendmessage can be swapped for sendcustom message
-    sendCustomMessage(textName, text);
-
+   // sendCustomMessage(textName, text);
+    systemMessage("<c=royalblue b fs=14>[Vivienne]: <>" +message);
     //Show image
     if(skipImage === undefined || !skipImage) {
         if(!isImagesLocked()) {
