@@ -247,7 +247,7 @@ switch (choice) {
 	fee=false;
 	if(!Failed2){
 		sendMessage("Now I need you to be honest with me.."); // #DT4
-		response = getInput("Did you remember to say 'thank you %DomHonorific% ' <i>every time</i> I gave a command? ",8); //#DT4
+		response = sendInput("Did you remember to say 'thank you %DomHonorific% ' <i>every time</i> I gave a command? ",8); //#DT4
 		while(true){
 			if(response.containsIgnoreCase("yes", "yep", "yeah", "I did")){
 			sendMessage("%Good%");// #DT4
@@ -282,7 +282,7 @@ switch (choice) {
 		sendMessage("Well well I think that was a little too much.."); // #DT4
 		//(Failed2)
 		sendMessage("I'm gonna give you 2 choices since you can't seem to do this right..");// #DT4
-		response= getInput("Either you repeat the punishment or I'll count this punishment as a fail and collect a fee from you..", 20); //#DT4 
+		response= sendInput("Either you repeat the punishment or I'll count this punishment as a fail and collect a fee from you..", 20); //#DT4 
 		while(true){
 		if(response.containsIgnoreCase("repeat","punish'","punishment","yes")) {
 			sendMessage ("Again it is then.. "); //#DT4 

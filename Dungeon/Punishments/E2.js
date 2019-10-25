@@ -69,7 +69,7 @@ function Loop1()
     }
     sendMessage(random("This is fairly simple ", "This is simple enough ", "You shouldn\'t find this too difficult ") );
     sendMessage(random("I want you to hold the rubberband like","You are to hold the rubberband like this"));
-	showImage("Spicy/Toys/Rubberband.*");
+	showImage("Images/Spicy/Toys/Rubberband.*");
     sendMessage(random("Hold it close to the head of your %Cock% ", "It\'s going near the head of your %Cock% ") );
     setVar("TempHits", 0);
     sendMessage(random("With your other hand ", "Using your other hand ") );

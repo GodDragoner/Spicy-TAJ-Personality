@@ -251,7 +251,7 @@ switch (choice) {
 	fee=false;
 	if(!Failed2){
 		sendMessage("Now I need you to be honest with me.."); // #DT4
-		response = sendInput("Did you remember to say 'thank you %DomHonorific% ' <i>every time</i> I gave a command? ",8); //#DT4
+		response = sendInput("Did you remember to say 'thank you %DomHonorific% ' <i>every time</i> I gave a command? ", 12); //#DT4
 		while(true){
 			if(response.containsIgnoreCase("yes", "yep", "yeah", "I did")){
 			sendMessage("%Good%");// #DT4
