@@ -84,7 +84,7 @@ function handleTodaysMood() {
     //Update mood at the end of session (prevents cheating by restarting the session over and over)
     loadMood();
 
-    const dayOfMonth = setDate().getDay();
+     dayOfMonth = setDate().getDay();
 
     //Positive
     if(getMood() < NEUTRAL_MOOD) {
