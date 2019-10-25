@@ -1065,7 +1065,11 @@ function Gif5() {
 		showImage("Images/Spicy/Exercise/Gifs/5.gif"); 
 		 		sleep( 35+5* getVar("ExerciseLevel"));
 				stopAudio();
-
+		playAudio("Audio/Spicy/SpecialSounds/Bell.mp3");
+		
+		sendVirtualAssistantMessage(" rest for a second ",3,true);
+		
+		showImage("Images/Spicy/Exercise/Misc/*");
 		sendVirtualAssistantMessage(" Left leg!",3,true);
 		showImage("Images/Spicy/Exercise/Gifs/6.gif");
 		playAudio("Audio/Spicy/SpecialSounds/Bell.mp3");
@@ -1077,6 +1081,7 @@ function Gif5() {
 		playAudio("Audio/Spicy/SpecialSounds/Bell.mp3");		
 		 		sleep( 35+5* getVar("ExerciseLevel"));
 				stopAudio();
+				playAudio("Audio/Spicy/SpecialSounds/Bell.mp3");
 		unlockImages();
 		}
 }
@@ -1221,22 +1226,22 @@ function Leg2() {
 		sendVirtualAssistantMessage(" Switch leg and repeat for the other leg",1,true);
 		sendVirtualAssistantMessage(" Continue until you hear my bell ",1,true);
 		playAudio("Audio/Spicy/Stroking/Metronome/40 bpm.mp3");
-		sleep( 25+5* getVar("ExerciseLevel"));
+		sleep( 25+8* getVar("ExerciseLevel"));
 		stopAudio();
 		playAudio("Audio/Spicy/SpecialSounds/Bell.mp3"); 
 		sleep(20);
 		sendVirtualAssistantMessage(" Continue until you hear my bell",1,true);
 		playAudio("Audio/Spicy/Stroking/Metronome/40 bpm.mp3");
-		sleep( 25+5* getVar("ExerciseLevel"));
+		sleep( 25+8* getVar("ExerciseLevel"));
 		stopAudio();
 		playAudio("Audio/Spicy/SpecialSounds/Bell.mp3"); 
 		sleep(20);
 		sendVirtualAssistantMessage(" Continue until you hear my bell ",1,true);
 		playAudio("Audio/Spicy/Stroking/Metronome/40 bpm.mp3");
-		sleep( 25+5* getVar("ExerciseLevel"));
+		sleep( 25+8* getVar("ExerciseLevel"));
 		stopAudio();
 		playAudio("Audio/Spicy/SpecialSounds/Bell.mp3"); 
-		sleep(20);
+		sleep(10);
 			unlockImages();
 
 }
