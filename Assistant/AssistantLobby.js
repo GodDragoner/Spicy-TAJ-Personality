@@ -18,7 +18,7 @@
     let exitRequest = false;
 
     while (!exitRequest) {
-        let lobbyAnswer = createInput("Session", "Chores", "Dungeon", "Settings", "Shop", "Fitness", "Exercise", "Study", "House Rules", "Pin Board", "Chastity", "End");
+        let lobbyAnswer = createInput("Session", "Chores", "Dungeon", "Settings", "Shop", "Fitness", "Exercise", "Study", "House Rules", "Pin Board", "Chastity", "End", "video");
         while (true) {
             if (lobbyAnswer.isLike("session", "domme")) {
                 lobbyAnswer.clearOptions();
@@ -61,6 +61,11 @@
             } else if (lobbyAnswer.isLike("rule", "house", "commands", "orders")) {
                 lobbyAnswer.clearOptions();
                 run("Rules/HouseRules.js");
+                sendVirtualAssistantMessage(getWelcomeMessage(), false);
+                break;
+			 } else if (lobbyAnswer.isLike("video")) {
+                lobbyAnswer.clearOptions();
+                run("Video/vidtest.js");
                 sendVirtualAssistantMessage(getWelcomeMessage(), false);
                 break;
             } else if (lobbyAnswer.isLike("save", "end", "quit", "stop", "leave", "close", "finish")) {
