@@ -20,7 +20,7 @@
         greeting.push("Good evening");
     }
 
-    playSound("Audio/Spicy/Starts/Hello/*.mp3");
+    playSound("Audio/Spicy/Starts/StartScripts/Hello/*.mp3");
     let answer = sendInput(greeting[randomInteger(0, greeting.length - 1)] + " %SlaveName%", 20);
     if (answer.isTimeout()) {
         changeMeritHigh(true);
