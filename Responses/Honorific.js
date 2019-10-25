@@ -1,5 +1,7 @@
 addResponseRegex("yes", "no", "thanks", "thank you");
-setResponseIgnoreDisabled(true);
+
+//fixme  this call is crashing on load for some reason
+//setResponseIgnoreDisabled(true);
 
 function honorificResponse(message) {
     if(!getVar(VARIABLE_CURRENT_SESSION_ACTIVE) || !RULE_ALWAYS_HONORIFIC.isActive()) {
