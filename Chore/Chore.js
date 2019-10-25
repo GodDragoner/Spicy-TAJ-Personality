@@ -108,9 +108,9 @@ function runChoreIntroduction() {
 	if (isVar("ToyGirlfriend") && getVar("ToyGirlfriend"))
 		{
 	sendVirtualAssistantMessage("  I noticed that you have a girlfriend or Wife....");
-	sendVirtualAssistantMessage("  will %girlfriendname% be assigning you chores?");
+	sendVirtualAssistantMessage("  will "+ getVar("girlfriendname")+" be assigning you chores?");
 
-	answer=createInput("Yes", "no");
+	let answer=createInput("Yes", "no");
 		while (true) {
 			if (answer.isLike("yes")) {
 				 sendVirtualAssistantMessage(" Wonderful");
@@ -247,22 +247,22 @@ function runChoreIntroduction() {
     sendVirtualAssistantMessage('You\'ll never really know the limit of my imagination %Lol%');
     sendVirtualAssistantMessage('On a scale from 1-10 where 1 is never and 10 is very often would you like to "play" while doing chores?', 0);
 
-    let answer = createInput();
+    let roomanswer = createInput();
 
     while (true) {
-        if (answer.isInteger()) {
-            let frequency = answer.getInt();
+        if (roomanswer.isInteger()) {
+            let frequency = roomanswer.getInt();
 
             if (frequency < 1 || frequency > 10) {
                 sendVirtualAssistantMessage('Please only give me a number in the range of 1 - 10...');
-                answer.loop();
+                roomanswer.loop();
             } else {
                 setVar(VARIABLE_KINKY_CHORE_CHANCE, frequency);
                 break;
             }
         } else {
             sendVirtualAssistantMessage('Please only type a number such as 5...');
-            answer.loop();
+            roomanswer.loop();
         }
     }
 
