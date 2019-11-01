@@ -34,6 +34,9 @@ function startEdging(holdSeconds, skipStop = false, endIn = EDGE_END_NORMAL) {
         "Edge! Now %SlaveName%!",
     ];
 
+    //If we have any clamps on the cock we should move them away
+    redistributeClampsForStroking();
+
     sendMessage(answers[randomInteger(0, answers.length - 1)], 0);
 
     if(randomInteger(0, 3) == 2) playSound("Audio/Spicy/Stroking/Edge/*.mp3");
@@ -62,6 +65,11 @@ function startEdging(holdSeconds, skipStop = false, endIn = EDGE_END_NORMAL) {
 
         sendHoldEdgeTaunts(holdSeconds);
     }
+
+    if(isStroking()) {
+        stopStroking();
+    }
+
 
     sendDebugMessage('Ending edge');
 

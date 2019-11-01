@@ -62,7 +62,12 @@ function interactWithRandomToys() {
         let toDistribute = getTotalAttachedClamps() > 20 || isChance(35) && getTotalAttachedClamps() > 0 ? 0 : randomInteger(1, 4);
 
         if (toDistribute === 0 && getTotalAttachedClamps() > 0) {
-            removeClamps(randomInteger(1, Math.max(1, getTotalAttachedClamps() / 2)));
+            //If feels like punishing we will only redistribute the clamps and not remove any
+            if(feelsLikePunishingSlave()) {
+                redistributeRandomClamps();
+            } else {
+                removeClamps(randomInteger(1, Math.max(1, getTotalAttachedClamps() / 2)));
+            }
         } else {
             distributeClamps(toDistribute);
         }

@@ -3,11 +3,13 @@
     setDate(VARIABLE_CURRENT_SESSION_DATE);
     setTempVar(VARIABLE_CURRENT_SESSION_ACTIVE, true);
 
+    sendDebugMessage('Starting session with mood: ' + getMood());
+
     //Toys
     updateSessionButtplugs();
     updateSessionDildos();
 
-//TODO: Special day test (birthday etc.)
+    //TODO: Special day test (birthday etc.)
 
     const greeting = ["Hello", "Greetings", "Hey", "Hi"];
 

@@ -29,6 +29,9 @@
                 sendMessage("Put the vibrator on that cage and start vibrating it %SlaveName%");
                 sendMessage("Just work your way through the pain now");
             } else {
+                //If we have any clamps on the cock we should move them away
+                redistributeClampsForStroking();
+
                 startStroking(80);
                 sendMessage("Just stroke through the pain now");
             }

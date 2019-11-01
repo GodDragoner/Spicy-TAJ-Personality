@@ -1,6 +1,10 @@
 {
     setTempVar('findLinkTries', 0);
 
+    findLinkAndRun();
+}
+
+function findLinkAndRun() {
     if(isInChastity()) {
         sendDebugMessage('Running chastity link');
 
@@ -42,7 +46,7 @@ function tryRunLink(linkId, minLinksSinceRun) {
         if (LINK_HISTORY.getModulesSinceHistory(linkId) < minLinksSinceRun) {
             if(getVar('findLinkTries') < maxTries) {
                 //Try to find a different link
-                run("Session/Link/Module/DecideLink.js");
+                findLinkAndRun();
                 return false;
             }
         }

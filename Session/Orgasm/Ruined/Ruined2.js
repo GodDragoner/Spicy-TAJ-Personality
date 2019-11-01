@@ -18,6 +18,9 @@
             if(isInChastity()) {
                 sendMessage("Put the vibrator on that cage and start vibrating it %SlaveName%");
             } else {
+                //If we have any clamps on the cock we should move them away
+                redistributeClampsForStroking();
+
                 sendMessage("%StartStroking%");
             }
 

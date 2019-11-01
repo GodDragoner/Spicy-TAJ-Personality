@@ -60,6 +60,21 @@ function stopStrokingMessage() {
 }
 
 function startStrokeInterval(durationMinutes) {
+    if(hasClampsOnPenis() && !isInChastity()) {
+        sendMessage('I would want you to stroke now but I guess we need to make some room on that penis first %Grin%');
+
+        //If we have any clamps on the cock we should move them away
+        redistributeClampsForStroking();
+
+        if(sendYesOrNoQuestionTimeout('Much better isn\'t it?', 3)) {
+            sendMessage('Don\'t celebrate to early. I won\'t go easy on you %Grin%');
+        } else {
+            sendMessage('Looks like my pain slut would like some more pain %Lol%');
+            sendMessage('Or maybe you just don\'t want to stroke right now');
+            sendMessage('I don\'t care anyway %SlaveName%');
+        }
+    }
+
     sendMessage("%StartStroking%", 0);
 
     if (isChance(80)) {

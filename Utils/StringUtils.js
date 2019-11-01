@@ -1,3 +1,5 @@
+let SENTENCE_BUILDER_FIRST = true;
+
 function decapitalize(string) {
     return string.charAt(0).toLowerCase() + string.substr(1);
 }

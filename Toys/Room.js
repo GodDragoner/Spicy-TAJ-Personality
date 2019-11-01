@@ -21,7 +21,7 @@ function askForBathroom() {
 
 function askForFeatheredToiletLit() {
     const answer = sendInput("Does your bathroom have a toilet lid that is not feathered?");
-    while (true) {
+    while (true) {st
         if (answer.isLike("yes")) {
             sendMessage("%Good%");
             return true;

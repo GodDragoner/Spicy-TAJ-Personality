@@ -48,6 +48,9 @@ if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_STROKING)) {
 
     setVar(VARIABLE_STROKE_TRAININGS_DONE, getVar(VARIABLE_STROKE_TRAININGS_DONE, 0) + 1);
 
+    //If we have any clamps on the cock we should move them away
+    redistributeClampsForStroking();
+
     sendMessage("We are gonna start by warming you up a little... ");
     sendMessage("Start stroking slowly");
     sendMessage("When you start to hear the pace you are gonna stroke to the beat");

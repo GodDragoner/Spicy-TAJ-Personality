@@ -4,6 +4,10 @@
 
         if(!isInChastity()) {
             tieBalls(true);
+
+            //If we have any clamps on the cock we should move them away
+            redistributeClampsForStroking();
+
             sendMessage("%StartStroking%");
         } else {
             sendMessage('Put the vibrator on the cage %Grin%');

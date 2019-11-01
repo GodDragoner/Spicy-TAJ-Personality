@@ -30,25 +30,112 @@ function registerBodyPart(name, maxClamps, side = NONE) {
         sidedName = "right " + name;
     }
 
-    const bodyPart = {id: currentBodyPartId++, name: name, sidedName: sidedName, side: side, currentClamps: 0, maxClamps: maxClamps,
+    const bodyPart = {
+        id: currentBodyPartId++, name: name, sidedName: sidedName, side: side, currentClamps: 0, maxClamps: maxClamps,
 
-        getOppositeBodyPart : function() {
-        if(this.side == LEFT) {
-            return BODY_PARTS[this.id + 1];
-        } else if(this.side == RIGHT) {
-            return BODY_PARTS[this.id - 1];
-        }
+        getOppositeBodyPart: function () {
+            if (this.side == LEFT) {
+                return BODY_PARTS[this.id + 1];
+            } else if (this.side == RIGHT) {
+                return BODY_PARTS[this.id - 1];
+            }
 
-        return null;
+            return null;
         },
 
-        hasOppositeBodyPart : function() {
+        normalize: function() {
+            if(this.hasOppositeBodyPart()) {
+                return this.getLeftSide();
+            }
+
+            return this;
+        },
+
+        getLeftSide: function () {
+            if (this.side == LEFT) {
+                return this;
+            }
+
+            return this.getOppositeBodyPart();
+        },
+
+        getRightSide: function () {
+            if (this.side == RIGHT) {
+                return this;
+            }
+
+            return this.getOppositeBodyPart();
+        },
+
+        isSameIgnoreSide: function (bodyPart) {
+            return bodyPart === this || this.getOppositeBodyPart() === bodyPart;
+        },
+
+        hasOppositeBodyPart: function () {
             return this.side != NONE;
         },
 
-        isMaxClampsReached : function () {
+        subtractClamps: function (amount) {
+            this.currentClamps = Math.max(0, this.currentClamps - amount);
+        },
+
+        isMaxClampsReached: function () {
             return this.currentClamps >= this.maxClamps;
-        }
+        },
+
+        getFreeClampAmount: function () {
+            return this.maxClamps - this.currentClamps;
+        },
+
+        canAttachClamps: function () {
+            //No pins to penis/balls if in chastity
+            if (isInChastity() && (this === BODY_PART_PENIS_SHAFT || this === BODY_PART_PENIS_HEAD || this === BODY_PART_BALLS)) {
+                return false;
+            }
+
+            //Do not check for max clamps here because we might want to handle that individually
+
+            return this;
+        },
+
+        findClampAmountToAttachBothSides: function (maxAmount, preferredAmount = -1) {
+            let rightSide = this.getRightSide();
+            let leftSide = this.getLeftSide();
+
+            let amount = 0;
+            let leftAmount = leftSide.getClampAmountToAttach(maxAmount, preferredAmount);
+            let rightAmount = rightSide.getClampAmountToAttach(maxAmount, preferredAmount);
+
+            //Does left have more free spots than right? Then return right amount
+            if (leftAmount > rightSide.getFreeClampAmount()) {
+                return rightAmount;
+            }
+            //Does right have more free spots than left? Then return left amount
+            else if (rightAmount > leftSide.getFreeClampAmount()) {
+                return leftAmount;
+            }
+
+            //Return something in between
+            return randomInteger(leftAmount, rightAmount);
+        },
+
+        getClampAmountToAttach: function (maxAmount, preferredAmount = -1) {
+            let maxClampsToAttach = this.getFreeClampAmount();
+
+            //If we have been given a preferred amount we will return it if we can
+            if (preferredAmount > 0 && maxClampsToAttach >= preferredAmount) {
+                return preferredAmount;
+            }
+
+            //If we can't get in at least one more clamp then we return 0
+            if (this.isMaxClampsReached()) {
+                return 0;
+            }
+
+            let clamps = Math.max(1, Math.min(randomInteger(1, Math.min(maxClampsToAttach, 5)), maxAmount));
+
+            return clamps;
+        },
     };
 
     BODY_PARTS[bodyPart.id] = bodyPart;

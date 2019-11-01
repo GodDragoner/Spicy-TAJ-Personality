@@ -245,10 +245,10 @@ function simplePositionTrainingSelection(totalPositions) {
             sendMessage("This is the Dog position");
             sendMessage("The dog is actually excellent as a spanking position");
 
-            showImage("Images/Spicy/Positions/Box2.jpg");
+            showImage("Images/Spicy/Positions/Dog2.jpg");
             sendMessage("Notice how the legs and lower arms are pressed together");
 
-            showImage("Images/Spicy/Positions/Box3.jpg");
+            showImage("Images/Spicy/Positions/Dog3.jpg");
             sendMessage("It's not one I use a lot but it still has its merit");
             unlockImages();
 
