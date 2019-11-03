@@ -82,10 +82,14 @@ function startStrokeInterval(durationMinutes) {
         playSound("Audio/Spicy/Stroking/StartStroking/*.mp3");
     }
 
-    startStroking(60);
+    startStroking(getStrokingBPM());
     sendStrokeTaunts(durationMinutes * 60);
 
     stopStrokingMessage();
+}
+
+function getStrokingBPM(modifier = 1) {
+    return randomInteger(75 + getCruelTeasingMood(), 95 + getCruelTeasingMood())*modifier;
 }
 
 function sendNewStrokeInstruction() {
@@ -93,6 +97,7 @@ function sendNewStrokeInstruction() {
     switch (randomModule) {
         case 0:
             sendMessage('I want you to stroke the whole %Cock%!');
+            startStroking(getStrokingBPM());
             break;
         case 1:
             sendMessage('I want you to only stroke with your thumb and index finger %Grin%');
@@ -102,18 +107,25 @@ function sendNewStrokeInstruction() {
                 sendMessage('Your %Cock% is so small that this should be the only way for you to masturbate %Lol%');
             }
 
+            startStroking(getStrokingBPM());
             break;
         case 2:
             sendMessage('Only stroke the shaft for now %EmoteHappy%');
+            startStroking(getStrokingBPM());
             break;
         case 3:
             sendMessage('Go ahead and stroke only the tip');
+            startStroking(getStrokingBPM());
             break;
         case 4:
             sendMessage('Go ahead and stroke only the tip with your thumb and index finger');
+            startStroking(getStrokingBPM());
             break;
         case 5:
             sendMessage('Only use one finger for now and rub it up and down your %Cock% %Grin%');
+
+            //Teasing bpm
+            startStroking(30);
             break;
         case 6:
             //DO NOT change because let and const are unsupported in switch statements
@@ -133,6 +145,7 @@ function sendNewStrokeInstruction() {
             break;
         case 7:
             sendMessage('Go ahead and role your %Cock% between your hands. Imagine starting a fire %Grin%');
+            startStroking(getStrokingBPM(0.5));
             break;
         case 8:
             sendMessage('Try stroking with both hands');
@@ -140,18 +153,24 @@ function sendNewStrokeInstruction() {
             if (getVerbalHumilationLimit() == LIMIT_ASKED_YES) {
                 sendMessage('It\'s probably impossible with such a small %Cock% but this might be even more humiliating then %Lol%');
             }
+
+            startStroking(getStrokingBPM());
             break;
         case 9:
             sendMessage('Use one hand to pull back your foreskin and use the other hand to stroke' + random("", ". Tip only %Grin%"));
+            startStroking(getStrokingBPM(0.75));
             break;
         case 10:
             sendMessage('Instead of stroking I want you to twist your hand around that shaft for now');
+            startStroking(getStrokingBPM(0.7));
             break;
         case 11:
             sendMessage('Start twisting your hand around the tip of your cock while pulling back your foreskin with the other hand %Grin%');
+            startStroking(getStrokingBPM(0.7));
             break;
         case 12:
             sendMessage('Only stroke ' + random("up", "down") + " for now %EmoteHappy%");
+            startStroking(getStrokingBPM());
             break;
     }
 }

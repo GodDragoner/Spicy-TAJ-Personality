@@ -16,6 +16,7 @@ function isInChastity() {
 }
 
 function willKeepChastityOn(end) {
+    //Higher choice value -> chastity will probably be removed
     let choice = randomInteger(1, 100);
 
     if (end) {

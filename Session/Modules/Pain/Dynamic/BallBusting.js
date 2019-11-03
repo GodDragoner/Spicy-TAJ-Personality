@@ -90,7 +90,7 @@
                         const flickChance = hitLevel == 2 ? 0 : 40;
                         const punchChane = allowPunches && !isBeginning ? 20 : 0;
 
-                        const hitType = getWinnerIWndex([flickChance, hitChance, punchChane]);
+                        const hitType = getWinnerIndex([flickChance, hitChance, punchChane]);
 
                         //Tease about balls not being tied
                         if(untieRoundsAgo == 1 && untieRoundsAgo <= 2 && isChance(33) && !untieTeased) {

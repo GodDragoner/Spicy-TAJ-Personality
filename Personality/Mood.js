@@ -97,6 +97,19 @@ function handleTodaysMood() {
     //Otherwise no change
 }
 
+//Teasing is meant to be cruel in this case => which means Happiness would cause her to be less cruel
+function getCruelTeasingMood() {
+    let multiplier = 1;
+
+    if(ACTIVE_PERSONALITY_STRICTNESS === 1) {
+        multiplier = 1.2;
+    } if(ACTIVE_PERSONALITY_STRICTNESS === 2) {
+        multiplier = 1.5;
+    }
+
+    return (getVar(VARIABLE_ANGER) + getVar(VARIABLE_LUST, 0))*multiplier - getVar(VARIABLE_HAPPINESS, 0);
+}
+
 function getHumiliationMood() {
 
 }

@@ -34,4 +34,6 @@ for(let x = 2; x <= 30; x += 4) {
 run('Session/Modules/Humiliation/Dynamic/AnalHumiliation.js');
 appendPenetratingSession('dildo');*/
 
-run("Session/Modules/Dynamic/DynamicModuleBuilder.js");
+sendDebugMessage("Lust: " + getVar(VARIABLE_LUST));
+sendDebugMessage("Happiness: " + getVar(VARIABLE_HAPPINESS));
+sendDebugMessage("Anger: " + getVar(VARIABLE_ANGER));
