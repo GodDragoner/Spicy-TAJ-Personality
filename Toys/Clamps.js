@@ -24,6 +24,19 @@ function getTotalAttachedClamps() {
     return amount;
 }
 
+function removeAllClamps() {
+    if(getTotalAttachedClamps() > 0) {
+        sendMessage('%SlaveName% go ahead and remove all clamps from your body');
+
+        for (let x = 0; x < BODY_PARTS.length; x++) {
+            BODY_PARTS[x].currentClamps = 0;
+        }
+
+        sendMessage('Tell me when you are done...');
+        waitForDone();
+    }
+}
+
 function removeClamps(amount) {
     sendMessage("%SlaveName%");
 

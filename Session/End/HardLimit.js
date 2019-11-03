@@ -11,8 +11,23 @@
             sendMessage(random("Before we get to the point of letting you cum", "Before you get to cum"));
             askForHardLimitIncrease();
 
-            if(!isVar(VARIABLE_DENIAL_HARD_LIMIT_TYPE)) {
-                if(isEnforcingPersonality()) {
+            if (!isVar(VARIABLE_DENIAL_HARD_LIMIT_TYPE)) {
+                if (isEnforcingPersonality()) {
+                    sendMessage('Since this is the first time reaching your hard limit');
+                    sendMessage('Let me tell you something...');
+                    sendMessage('Reaching your hard limit does not mean you get to choose how to cum %Grin%');
+
+                    let answer = sendYesOrNoQuestionTimeout('You knew that didn\'t you?', 3);
+
+                    if (answer === ANSWER_YES) {
+                        sendMessage('Well then nothing to be frustrated about %Grin%');
+                    } else if (answer === ANSWER_NO) {
+                        sendMessage('Poor %SlaveName%');
+                        sendMessage('Even on the guaranteed orgasm day you can\'t choose your own fate %Lol%');
+                        sendMessage('You never really get to choose %SlaveName% do you?');
+                        sendMessage('If you ever get to choose it\'s because I am fine with all outcomes %Grin%');
+                    }
+
                     setVar(VARIABLE_DENIAL_HARD_LIMIT_TYPE, 1);
                 } else {
                     sendMessage('Since this is the first time that we crossed your hard limit we have to settle a few things');
@@ -20,13 +35,13 @@
 
                     let answer = sendInput('Would you like me to choose how you cum or would you like to enjoy your complete freedom during this?');
 
-                    while(true) {
-                        if(answer.isLike('you', 'choose')) {
+                    while (true) {
+                        if (answer.isLike('you', 'choose')) {
                             changeMeritMedium(false);
                             sendMessage('I knew it %EmoteHappy%');
                             sendMessage('You simply can\'t stop submitting to me %Grin%');
                             setVar(VARIABLE_DENIAL_HARD_LIMIT_TYPE, 1);
-                        } else if(answer.isLike('me', 'freedom')) {
+                        } else if (answer.isLike('me', 'freedom')) {
                             changeMeritMedium(true);
                             sendMessage('%EmoteSad%');
                             setVar(VARIABLE_DENIAL_HARD_LIMIT_TYPE, 0);
@@ -38,15 +53,17 @@
                 }
             }
 
-            if(getVar(VARIABLE_DENIAL_HARD_LIMIT_TYPE) == 1) {
+            if (getVar(VARIABLE_DENIAL_HARD_LIMIT_TYPE) == 1) {
                 sendMessage('Let\'s see how you get to cum today %SlaveName% %Grin%');
-                runOrgasmCategory(decideOrgasm(true));
+                //runOrgasmCategory(decideOrgasm(true));
+                setTempVar(VARIABLE_DENIAL_HARD_LIMIT_ORGASM_TODAY, true);
             } else {
                 sendMessage('Well then...');
                 sendMessage('You are allowed to cum however you want to %SlaveName%');
                 sendMessage('I am gonna wait for you to return. Just tell me when you are done');
                 waitForDone(1000000);
                 registerOrgasm();
+                setTempVar(VARIABLE_DENIAL_HARD_LIMIT_FREEDOM_TODAY, true);
             }
             break;
         } else if (answer.isLike('no')) {

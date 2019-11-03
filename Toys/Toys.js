@@ -59,14 +59,22 @@ function interactWithRandomToys() {
     }
 
     if (isChance(20) && getPainLimit() === LIMIT_ASKED_YES) {
+        sendDebugMessage('Looking into clamp distribution');
         let toDistribute = getTotalAttachedClamps() > 20 || isChance(35) && getTotalAttachedClamps() > 0 ? 0 : randomInteger(1, 4);
+        sendDebugMessage('Decided to attach ' + toDistribute + ' clamps while ' + getTotalAttachedClamps() + ' are already attached');
 
         if (toDistribute === 0 && getTotalAttachedClamps() > 0) {
             //If feels like punishing we will only redistribute the clamps and not remove any
             if(feelsLikePunishingSlave()) {
+                sendDebugMessage('Redistributing clamps...');
                 redistributeRandomClamps();
             } else {
-                removeClamps(randomInteger(1, Math.max(1, getTotalAttachedClamps() / 2)));
+                let toRemove = randomInteger(1, Math.max(1, Math.floor(getTotalAttachedClamps() / 2)));
+
+                //Make sure to detach at least 2 or all of them if less than 2 are remaining
+                toRemove = Math.min(getTotalAttachedClamps(), Math.max(2, toRemove));
+                sendDebugMessage('Removing ' + toRemove + ' clamps');
+                removeClamps(toRemove);
             }
         } else {
             distributeClamps(toDistribute);

@@ -10,3 +10,14 @@ function putOnCollar() {
 
     COLLAR_TOY.setToyOn(true);
 }
+
+function removeCollar() {
+    if (!COLLAR_TOY.hasToy() || !COLLAR_TOY.isToyOn()) {
+        return false;
+    }
+
+    sendMessage('You may remove your collar %SlaveName%');
+    waitForDone();
+
+    COLLAR_TOY.setToyOn(false);
+}

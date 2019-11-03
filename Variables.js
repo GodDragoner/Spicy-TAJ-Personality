@@ -45,6 +45,8 @@ const VARIABLE_WEEKLY_CHORES_TIME = "weeklyChoresTime";
 const VARIABLE_DENIAL_LIMIT = "denialLimit";
 const VARIABLE_DENIAL_LEVEL = "denialLevel";
 const VARIABLE_DENIAL_HARD_LIMIT_TYPE = "denialHardLimitType";
+const VARIABLE_DENIAL_HARD_LIMIT_ORGASM_TODAY = "denialHardLimitOrgasmToday";
+const VARIABLE_DENIAL_HARD_LIMIT_FREEDOM_TODAY = "denialHardLimitFreedomToday";
 
 const VARIABLE_GOLD = "gold";
 

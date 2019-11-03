@@ -71,6 +71,31 @@
             sendMessage('And finally we have lick the alphabet');
         }
 
+        if(BODY_PART_TONGUE.currentClamps > 0) {
+            sendMessage('Well you need your tongue so...');
+            putClampsOff(BODY_PART_TONGUE.currentClamps, BODY_PART_TONGUE, false, true);
+        }
+
+        if(isGaged()) {
+            if(currentGagType !== GAG_TYPE_SPIDER_GAG) {
+                sendMessage('Oh well I guess you can\'t do your work with that gag in your mouth right?');
+
+                if(GAG_TYPE_SPIDER_GAG.hasToy()) {
+                    putInGag(GAG_TYPE_SPIDER_GAG, false);
+                } else {
+                    removeGag();
+                }
+            }
+        } else if(feelsEvil() && GAG_TYPE_SPIDER_GAG.hasToy()) {
+            sendMessage('I have a great idea that will improve your training %SlaveName%');
+            putInGag(GAG_TYPE_SPIDER_GAG, false);
+        }
+
+        if(currentGagType === GAG_TYPE_SPIDER_GAG && isGaged()) {
+            sendMessage('With the spider gag you\'ll have to keep your mouth open all the time');
+            sendMessage('Like a proper pussy slave %Grin%');
+        }
+
         sendMessage('Now lets get started %Grin%');
         sendMessage('Start the second you see the first pictures %SlaveName%');
 

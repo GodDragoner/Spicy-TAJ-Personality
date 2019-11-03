@@ -95,13 +95,14 @@ let RULE_ALWAYS_SWALLOW_CUM;
                 changeMeritMedium(true);
                 sendMessage('%SlaveName%...');
 
-                if (sendYesOrNoQuestionTimeout('You know the rule don\'t you?', 5)) {
+                let answer = sendYesOrNoQuestionTimeout('You know the rule don\'t you?', 5);
+
+                if (answer === ANSWER_YES) {
                     sendMessage('So there is no reason why you shouldn\'t follow it now!');
-                } else {
+                } else if(answer === ANSWER_NO) {
                     sendMessage('No?');
                     sendMessage('Seems like I need to refresh your memory');
                     sendMessage('Whenever we meet you are to be completely naked unless I tell you otherwise');
-
                 }
 
                 addPunishmentPoints(getPPRuleIgnored());

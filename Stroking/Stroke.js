@@ -66,9 +66,10 @@ function startStrokeInterval(durationMinutes) {
         //If we have any clamps on the cock we should move them away
         redistributeClampsForStroking();
 
-        if(sendYesOrNoQuestionTimeout('Much better isn\'t it?', 3)) {
+        let answer = sendYesOrNoQuestionTimeout('Much better isn\'t it?', 3);
+        if(answer === ANSWER_YES) {
             sendMessage('Don\'t celebrate to early. I won\'t go easy on you %Grin%');
-        } else {
+        } else if(answer === ANSWER_NO) {
             sendMessage('Looks like my pain slut would like some more pain %Lol%');
             sendMessage('Or maybe you just don\'t want to stroke right now');
             sendMessage('I don\'t care anyway %SlaveName%');

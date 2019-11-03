@@ -41,7 +41,7 @@
             let date = setDate().addMinute(Math.max(1, minutesForChores - 5));
 
             while(!date.hasPassed()) {
-                sendVirtualAssistantMessage('What chore to give you next...','What chore should you do...','Let\'s see if we can find a chore for you...');
+                sendVirtualAssistantMessage(random('What chore to give you next...','What chore should you do...','Let\'s see if we can find a chore for you...'));
 
                 setCurrentSender(SENDER_ASSISTANT);
                 chooseChore();
