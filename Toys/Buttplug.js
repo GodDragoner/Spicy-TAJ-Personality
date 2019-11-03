@@ -4,6 +4,10 @@ const TIGER_HOT_LUBE = 2;
 const TOOTHPASE_LUBE = 3;
 const NO_LUBE = 4;
 
+const ACTION_BUTTPLUG_INCREASE_SIZE = 0;
+const ACTION_BUTTPLUG_PUT_FIRST = 1;
+const ACTION_BUTTPLUG_WAIT_FOR_TIME = 2;
+
 const buttplugs = [];
 let smallestButtplug = null;
 let biggestButtplug = null;
@@ -47,7 +51,36 @@ function isPlugged() {
     return getVar(VARIABLE_IS_PLUGGED, false);
 }
 
-function tryIncreasePlugSize() {
+function shouldIncreasePlugSize() {
+    let minTime = 7;
+    let maxTime = 10;
+
+    if(getVar(VARIABLE_ASS_LEVEL, 0) >= 20) {
+        minTime = 6;
+        maxTime = 8;
+    } else if(getVar(VARIABLE_ASS_LEVEL, 0) >= 30) {
+        minTime = 5;
+        maxTime = 7;
+    }
+
+    if(currentPlug !== biggestButtplug) {
+        if(isPlugged()) {
+            if (isVar(VARIABLE_LAST_PLUG_DATE) && getVar(VARIABLE_LAST_PLUG_DATE).addMinute(randomInteger(minTime, maxTime)).hasPassed()) {
+                return ACTION_BUTTPLUG_INCREASE_SIZE;
+            }
+        } else if (isVar(VARIABLE_LAST_PLUG_DATE)) {
+            if(getVar(VARIABLE_LAST_PLUG_DATE).addMinute(randomInteger(minTime, maxTime)).hasPassed()) {
+                return ACTION_BUTTPLUG_INCREASE_SIZE;
+            }
+        } else {
+            return ACTION_BUTTPLUG_PUT_FIRST;
+        }
+    }
+
+    return ACTION_BUTTPLUG_WAIT_FOR_TIME;
+}
+
+/*function tryIncreasePlugSize() {
     if(currentPlug !== biggestButtplug) {
         if(isPlugged()) {
             if (isVar(VARIABLE_LAST_PLUG_DATE) && getVar(VARIABLE_LAST_PLUG_DATE).addMinute(randomInteger(7, 10)).hasPassed()) {
@@ -61,7 +94,7 @@ function tryIncreasePlugSize() {
             putInButtplug();
         }
     }
-}
+}*/
 
 function increasePlugSize() {
     removeButtplug();
@@ -315,10 +348,14 @@ function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
 
     let availablePlugs = [];
 
+
     //Max diameter increase
     let maxDiameterIncrease = getMaxDiameterIncrease();
 
     //TODO: Handle min length too (smallest plug etc.)
+
+    //Should be smallest buttplug size or if for example ass level 30 at least 3.5 (allows progression to go faster at start of session)
+    let allowedDefaultMaxDiameter = Math.max(smallestButtplug.diameter, Math.ceil(getVar(VARIABLE_ASS_LEVEL, 0)/10) + 0.5);
 
     while(availablePlugs.length === 0 && buttplugs.length !== 0) {
         for (let y = 0; y < buttplugs.length; y++) {
@@ -327,7 +364,7 @@ function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
             //Do we fulfil the min thickness and length?
             if(buttplug.diameter >= minThickness && buttplug.length >= minLength) {
                 //Don't over extent with too big plugs too quickly
-                if(buttplug.diameter >= maxUsedPlugThickness && buttplug.diameter <= Math.max(smallestButtplug.diameter, maxUsedPlugThickness + maxDiameterIncrease)) {
+                if(buttplug.diameter >= maxUsedPlugThickness && buttplug.diameter <= Math.max(allowedDefaultMaxDiameter, maxUsedPlugThickness + maxDiameterIncrease)) {
                     availablePlugs.push(buttplug);
                 }
             }

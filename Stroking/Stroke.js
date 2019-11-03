@@ -5,6 +5,9 @@ function stopStrokingMessage() {
     }
 
     let answers;
+
+    //Block audio for cock vocabulary stuff
+    setAudioBlocked(true);
     if(isInChastity()) {
         answers = [
             "Remove the vibrator from your cage",
@@ -52,6 +55,7 @@ function stopStrokingMessage() {
 
         sendMessage(findRandomUnusedElement(answers, createHistory('stopStroking')), 0);
     }
+    setAudioBlocked(false);
 
 
     if (isChance(80) && !isInChastity()) {
@@ -76,7 +80,9 @@ function startStrokeInterval(durationMinutes) {
         }
     }
 
+    setAudioBlocked(true);
     sendMessage("%StartStroking%", 0);
+    setAudioBlocked(false);
 
     if (isChance(80)) {
         playSound("Audio/Spicy/Stroking/StartStroking/*.mp3");
@@ -93,6 +99,7 @@ function getStrokingBPM(modifier = 1) {
 }
 
 function sendNewStrokeInstruction() {
+    setAudioBlocked(true);
     const randomModule = findRandomUnusedIndex(12, createHistory('strokingInstruction'));
     switch (randomModule) {
         case 0:
@@ -173,6 +180,7 @@ function sendNewStrokeInstruction() {
             startStroking(getStrokingBPM());
             break;
     }
+    setAudioBlocked(false);
 }
 
 function sendStrokeTaunts(durationSeconds, nextInstruction) {

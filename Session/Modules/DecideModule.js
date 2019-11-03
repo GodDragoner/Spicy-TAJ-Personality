@@ -187,6 +187,7 @@ function tryRunModuleFetchId(minModulesSinceRun = getDefaultModulesSinceRun(), s
 function tryRunModule(moduleId, category, minModulesSinceRun = 3, subCategories) {
     let maxTries = 10;
 
+    //TODO: Dunno if this fully works yet
     //Check if that module category was in the previous module so we get some variation
     let categoryInPreviousModule = subCategories != MODULE_UNKNOWN && hasPreviousModuleHadCategory(subCategories);
 

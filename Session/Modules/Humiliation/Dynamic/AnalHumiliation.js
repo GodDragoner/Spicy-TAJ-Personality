@@ -301,7 +301,7 @@ function appendPenetratingSession(toy) {
     //TODO: Generalize append transition
     sendMessage("Now...");
 
-    let blowjob = true;
+    let blowjob = isChance(30);
     let currentBlowjob = false;
     if (blowjob) {
         blowjob = addBlowjobToFucking(toy);
@@ -417,6 +417,8 @@ function startBlowjobFuckingInstructions(toy, mountedToWall = false, inFront = f
     if (isChance(50) || getBlowjobLevel() < 30) {
         //Either because we haven't been doing this already or because the last thing we did was the normal blowjob beat
         if (isChance(20) && (usedBlowjobInstructions.isEmpty() || usedBlowjobInstructions.get(usedBlowjobInstructions.size() - 1) != 5 || usedBlowjobInstructions.get(usedBlowjobInstructions.size() - 1) == 0)) {
+            sendMessage('Once you continue with that ass...');
+
             //Means the last thing we did was blowjob to the beat
             if (usedBlowjobInstructions.isEmpty() || usedBlowjobInstructions.get(usedBlowjobInstructions.size() - 1) == 0) {
                 sendMessage("You will up the speed of your blowjob");
@@ -431,7 +433,7 @@ function startBlowjobFuckingInstructions(toy, mountedToWall = false, inFront = f
             //Checks if we did the blowjob beat thing already
             if (usedBlowjobInstructions.contains(0)) {
                 //Means the last thing we did was raping the mouth as fast as possible
-                if (usedBlowjobInstructions.isEmpty() || usedBlowjobInstructions.get(usedBlowjobInstructions.size() - 1) == 5) {
+                if (usedBlowjobInstructions.get(usedBlowjobInstructions.size() - 1) == 5) {
                     sendMessage("You can slow it down a bit and go back to the speed of the beat");
                 } else {
                     sendMessage("Let's go back to matching the beat with your dildo");
@@ -439,6 +441,7 @@ function startBlowjobFuckingInstructions(toy, mountedToWall = false, inFront = f
                 }
             } else {
                 usedBlowjobInstructions.add(0);
+                sendMessage('Once you continue with that ass...');
                 sendMessage("You will fuck your mouth in the same speed you are gonna fuck your ass");
                 sendMessage("Matching the beat %Grin%");
             }
@@ -630,8 +633,9 @@ function startSquatAnal(toy) {
 
         if (isChance(20)) {
             sendMessage("I have a fun idea %SlaveName%");
+            sendMessage('Let me start by explaining you my plan %Grin%');
             sendMessage("First of all I want you to to sit all the way down on that " + toy);
-            sendMessage("Now...");
+            sendMessage("After that...");
             sendMessage("I want you to stand all they way up without dropping that toy of yours");
 
             if (!noHands) {
@@ -648,6 +652,7 @@ function startSquatAnal(toy) {
             while (true) {
                 if (answer.isLike("yes", "try")) {
                     sendMessage(random("%Good%", "I already thought so %Grin%", "That was the only right answer %SlaveName%"));
+                    sendMessage('Then start by sitting on the dildo now %EmoteHappy%', 5);
                     willDoIt = true;
                     break;
                 } else if (answer.isLike("no")) {
@@ -657,6 +662,7 @@ function startSquatAnal(toy) {
                     changeMeritMedium(true);
                     if (isChance((ACTIVE_PERSONALITY_STRICTNESS + 1) * 30)) {
                         sendMessage("I want you to try it anyway");
+                        sendMessage('Start by sitting on the dildo now %SlaveName%!', 5);
                         willDoIt = true;
                     } else {
                         //TODO: Enable interaction (like: I will do it)
