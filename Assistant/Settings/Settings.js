@@ -10,11 +10,11 @@
             lobbyAnswer.clearOptions();
             run('Assistant/Settings/Toys.js');
             break;
-        } else if(answer.isLike('limit')) {
+        } else if(lobbyAnswer.isLike('limit')) {
             lobbyAnswer.clearOptions();
             setupLimits();
             break;
-        } else if(answer.isLike('back', 'cancel', 'return')) {
+        } else if(lobbyAnswer.isLike('back', 'cancel', 'return')) {
             lobbyAnswer.clearOptions();
             break;
         } else {

@@ -302,7 +302,6 @@ function setupLimits() {
     sendVirtualAssistantMessage('Here we go %EmoteHappy%');
 
     for (let x = 0; x < LIMITS.length; x++) {
-        sendVirtualAssistantMessage();
 
         setCurrentSender(SENDER_ASSISTANT);
 
