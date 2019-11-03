@@ -27,7 +27,7 @@
         sendDebugMessage('Min time passed: ' + minTimePassed);
 
         //Some stroking sometimes
-        if((!isVar('lastStrokingPause') && getVar(VARIABLE_CURRENT_SESSION_DATE).addMinute(minTimePassed).hasPassed()) || getVar('lastStrokingPause').addMinute(minTimePassed).hasPassed()) {
+        if((!isVar('lastStrokingPause') || getVar('lastStrokingPause').addMinute(minTimePassed).hasPassed())) {
             if(!isInChastity()) {
                 let mood = getMood() + 1;
                 let strictness = ACTIVE_PERSONALITY_STRICTNESS + 1;

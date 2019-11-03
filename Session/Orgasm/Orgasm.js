@@ -199,8 +199,8 @@ function distributeOrgasmPoints() {
 
 function getRequiredOrgasmPoints() {
     const denialLevel = getVar(VARIABLE_DENIAL_LEVEL);
-    const minPoints = 26.87*java.lang.Math.E^(0,2598*denialLevel);
-    const maxPoints = 68.559*java.lang.Math.E^(0,2501*denialLevel);
+    const minPoints = 26.87*java.lang.Math.E^(0.2598*denialLevel);
+    const maxPoints = 68.559*java.lang.Math.E^(0.2501*denialLevel);
     return randomInteger(minPoints, maxPoints);
 }
 

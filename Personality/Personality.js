@@ -1,6 +1,7 @@
 run("Personality/Limits.js");
 
 const ENFORCING_PERSONALITY_ID = 1;
+const KIND_PERSONALITY_ID = 2;
 
 const ACTIVE_PERSONALITY_ID = getVar("personalityType");
 
@@ -21,6 +22,8 @@ function setUpPersonalityVars() {
                     LIMITS[x].setLimit(LIMIT_ASKED_YES);
                 }
             }
+            break;
+        case KIND_PERSONALITY_ID:
             break;
         default:
             sendSystemMessage("Personality type id " + ACTIVE_PERSONALITY_ID + " does not exist.");

@@ -254,7 +254,9 @@ function setupGags(domChose) {
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
     GAG_TYPE_INFLATABLE_GAG.askForToy();
-    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
-    askForToyUsage('gag', domChose);
+    if(!domChose) {
+        sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+        askForToyUsage('gag', domChose);
+    }
 }

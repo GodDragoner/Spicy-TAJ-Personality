@@ -12,7 +12,11 @@ if(isVar(VARIABLE_ACTIVE_CHASTITY_CAGE)) {
 }
 
 function getActiveChastityCage() {
-    return getChastityCageByName(currentChastityCage);
+    if(currentChastityCage === null || currentChastityCage === undefined) {
+        return CHASTITY_CAGES[0];
+    } else {
+        return currentChastityCage;
+    }
 }
 
 function unlockChastityCage() {
@@ -672,14 +676,14 @@ function setupNewCage() {
     let length = createIntegerInput('So just give me a number on a scale of 1 - 5 %SlaveName%', 1, 5, 'That\'s not a number... Give me something like 2 or 4', 'That number is not on the scale. Remember on a scale of 1 - 5 %SlaveName%');
 
     if(length >= 4) {
-        sendMessage('That\'s quite big');
-        sendMessage('I guess %DomHonorific% %DomName% will only allow this cage if you have been behaving properly %Grin%');
+        sendVirtualAssistantMessage('That\'s quite big');
+        sendVirtualAssistantMessage('I guess %DomHonorific% %DomName% will only allow this cage if you have been behaving properly %Grin%');
     } else if(length == 3) {
-        sendMessage('A medium sized cage is always got %Grin%');
+        sendVirtualAssistantMessage('A medium sized cage is always good %Grin%');
     } else {
-        sendMessage('A tiny cage for her %Cock%?');
-        sendMessage('%DomHonorific% %DomName% will definitely like that %Lol%');
-        sendMessage('Make sure to not disappoint here too much otherwise you might spend a long time in this cage');
+        sendVirtualAssistantMessage('A tiny cage for her %Cock%?');
+        sendVirtualAssistantMessage('%DomHonorific% %DomName% will definitely like that %Lol%');
+        sendVirtualAssistantMessage('Make sure to not disappoint here too much otherwise you might spend a long time in this cage');
     }
 
     setCurrentSender(SENDER_TAJ);

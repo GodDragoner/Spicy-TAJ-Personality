@@ -3,7 +3,7 @@ function isForcedLockedUp() {
 }
 
 function addLockUpTime(hours) {
-    if (!isForcedLockedUp) {
+    if (!isForcedLockedUp()) {
         setDate(VARIABLE_LOCKED_UP_UNTIL, setDate().addHour(hours));
     } else {
         setDate(VARIABLE_LOCKED_UP_UNTIL, getDate(VARIABLE_LOCKED_UP_UNTIL).addHour(hours));

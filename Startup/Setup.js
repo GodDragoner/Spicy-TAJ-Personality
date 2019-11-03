@@ -140,6 +140,7 @@
     sendVirtualAssistantMessage("But she also understands that it takes practice to learn");
 
     if (sendYesOrNoQuestion("Do you own a chastity device?", SENDER_ASSISTANT)) {
+        setVar(VARIABLE_HAS_CHASTITY, true);
         sendVirtualAssistantMessage('Okay %SlaveName%. Tell me, how many different chastity cages do you have?', false);
         answer = createInput();
 
@@ -364,7 +365,7 @@
 
     sendVirtualAssistantMessage("One more thing! %Grin%");
     sendVirtualAssistantMessage("Inside the spicy image folder you'll find a folder named 'FFriends'");
-    showImage("Images/Spicy/Toys/3friends.jpg", 3);
+    //showImage("Images/Spicy/Toys/3friends.jpg", 3);
     sendVirtualAssistantMessage("\"Female Friends\" in case you were wondering");
     sendVirtualAssistantMessage("Inside it you'll find three folders named 1, 2 and 3");
     sendVirtualAssistantMessage("Inside the folders I want pictures of those contacts you just provided me with");
@@ -372,8 +373,8 @@
     sendVirtualAssistantMessage("Folder 2 is for " + getVar('blackmailName2'));
     sendVirtualAssistantMessage("Folder 3 is for " + getVar('blackmailName3'));
     sendVirtualAssistantMessage("Let me know when you have added pictures for " + getVar('blackmailName1') + ", " + getVar('blackmailName2') + ", and " + getVar('blackmailName3') + ".");
-    answer = createInput();
-    sendVirtualAssistantMessage("good, Should you ever think of quiting your service to the Mistress");
+    waitForDoneVirtualAssistant(999999);
+    sendVirtualAssistantMessage("Good, Should you ever think of quiting your service to the Mistress");
     sendVirtualAssistantMessage("This will make sure you don't %Lol%");
     sendVirtualAssistantMessage("Don't worry you'll be reminded to serve properly!");
     sendVirtualAssistantMessage("Or else...");
@@ -492,42 +493,46 @@
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
     askForToy("Shock Collar");
     askForToyUsage("ShockCollar", domChose);
-    sendVirtualAssistantMessage("Tell me what level of shock you consider to be quite painful", false)
-    answer = createInput();
 
-    while (true) {
-        if (answer.isDouble()) {
-            setVar("estimPainHigh", answer.getDouble());
-            break;
-        } else {
-            sendVirtualAssistantMessage("This is not a valid number. Please just type a number such as 1, or 2.5");
-            answer.loop();
+    //TODO: Improve estim setup
+    if(!isVar('toyShockCollar')) {
+        sendVirtualAssistantMessage("Tell me what level of shock you consider to be quite painful", false)
+        answer = createInput();
+
+        while (true) {
+            if (answer.isDouble()) {
+                setVar("estimPainHigh", answer.getDouble());
+                break;
+            } else {
+                sendVirtualAssistantMessage("This is not a valid number. Please just type a number such as 1, or 2.5");
+                answer.loop();
+            }
         }
-    }
 
-    sendVirtualAssistantMessage("Tell me what level of shock you consider to be somewhat painful", false)
-    answer = createInput();
+        sendVirtualAssistantMessage("Tell me what level of shock you consider to be somewhat painful", false)
+        answer = createInput();
 
-    while (true) {
-        if (answer.isDouble()) {
-            setVar("eStimPainMedium", answer.getDouble());
-            break;
-        } else {
-            sendVirtualAssistantMessage("This is not a valid number. Please just type a number such as 1, or 2.5");
-            answer.loop();
+        while (true) {
+            if (answer.isDouble()) {
+                setVar("eStimPainMedium", answer.getDouble());
+                break;
+            } else {
+                sendVirtualAssistantMessage("This is not a valid number. Please just type a number such as 1, or 2.5");
+                answer.loop();
+            }
         }
-    }
 
-    sendVirtualAssistantMessage("Tell me what level of shock you consider to be less painful and maybe even pleasant", false)
-    answer = createInput();
+        sendVirtualAssistantMessage("Tell me what level of shock you consider to be less painful and maybe even pleasant", false)
+        answer = createInput();
 
-    while (true) {
-        if (answer.isDouble()) {
-            setVar("eStimPainLow", answer.getDouble());
-            break;
-        } else {
-            sendVirtualAssistantMessage("This is not a valid number. Please just type a number such as 1, or 2.5");
-            answer.loop();
+        while (true) {
+            if (answer.isDouble()) {
+                setVar("eStimPainLow", answer.getDouble());
+                break;
+            } else {
+                sendVirtualAssistantMessage("This is not a valid number. Please just type a number such as 1, or 2.5");
+                answer.loop();
+            }
         }
     }
 
@@ -541,8 +546,8 @@
 
     askForToy("Girl friend");
 
-    BASIC_LINGERIE.askForToyAndUsage(domChose, undefined, "LingerieSet");
-    ADVANCED_LINGERIE.askForToyAndUsage(domChose, undefined, "LingerieSet2");
+    BASIC_LINGERIE.askForToyAndUsage(domChose, undefined, "basicLingerie");
+    ADVANCED_LINGERIE.askForToyAndUsage(domChose, undefined, "advancedLingerie");
 
     PARACHUTE_TOY.askForToyAndUsage(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
@@ -588,6 +593,7 @@
 
     CLOTHESPINS_TOY.askForToyAndUsage(domChose);
 
+    //TODO: Different type of nipple clamps
     sendVirtualAssistantMessage('Okay next quite similar but not the same %Grin%');
     NIPPLE_CLAMPS.askForToyAndUsage(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
@@ -597,9 +603,72 @@
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
     unlockImages();
 
+    sendVirtualAssistantMessage("We have arrived at a very important point");
+    sendVirtualAssistantMessage("You need to choose between one of 3 different personalities for your domme");
+    sendVirtualAssistantMessage("Choose with care as this choice is permanent and crucial for your experience");
+    sendVirtualAssistantMessage("Simply put personality 1 is easier to please and harder to annoy than personality 3");
+    sendVirtualAssistantMessage("You might call personality 3 strict while personality 1 is \"nicer\"");
+    sendVirtualAssistantMessage("Personality 2 is somewhere in the middle of all of this");
+    sendVirtualAssistantMessage("As a final note there are differences in how they handle situations");
+    sendVirtualAssistantMessage("Some minor some big...");
+    sendVirtualAssistantMessage("Also note that this has nothing to do with me %Lol%");
+    sendVirtualAssistantMessage("I'll be strict no matter what you choose %Grin%");
+    sendVirtualAssistantMessage("I'd recommend Personality 1");
+    sendVirtualAssistantMessage("You might consider personality 2 \"hard\"");
+    sendVirtualAssistantMessage("And personality 3 extreme");
+    sendVirtualAssistantMessage("I do NOT recommend personality 3, it is extreme...");
+    sendVirtualAssistantMessage("Which personality do you choose...");
+    sendVirtualAssistantMessage("1, 2 or 3?", false);
+    answer = createInput();
+
+    while (true) {
+        if (answer.isInteger()) {
+            const id = answer.getInt();
+            if (id > 3) {
+                sendVirtualAssistantMessage("You can't choose a number higher than 3. 1, 2 or 3?");
+                answer.loop();
+            } else {
+                setVar("personalityStrictness", id - 1);
+                ACTIVE_PERSONALITY_STRICTNESS = id - 1;
+                break;
+            }
+        } else {
+            sendVirtualAssistantMessage("1, 2 or 3?");
+            answer.loop();
+        }
+    }
+
+    /*sendVirtualAssistantMessage("Coming up is another very important decision");
+    sendVirtualAssistantMessage("You need to choose whether your domme should be nice and kind or rather enforcing");
+    sendVirtualAssistantMessage("Enforcing means she will not give you many possibilities to speak up and will expect more from you by default");
+    sendVirtualAssistantMessage("Nice and kind means she will give you some say in when it comes to a few things");
+    sendVirtualAssistantMessage("Note this does not affect the strictness of her");
+    sendVirtualAssistantMessage("The enforcing character for example expects that all non hard limits are okay at any time");
+    sendVirtualAssistantMessage("The kind character will ask you once about each limit when she feels like it and will allow you to postpone it");
+    sendVirtualAssistantMessage("Which personality do you choose...");
+    sendVirtualAssistantMessage("Kind or enforcing?", false);
+    answer = createInput();
+
+    while (true) {
+        if (answer.isLike("kind", "nice")) {
+            setVar("personalityType", KIND_PERSONALITY_ID);
+            sendVirtualAssistantMessage("Fair choice %Grin%");
+            break;
+        } else if (answer.isLike("enforcing", "brutal", "strict")) {
+            setVar("personalityType", ENFORCING_PERSONALITY_ID);
+            sendVirtualAssistantMessage("This is gonna be good %Grin%");
+            break;
+        } else {
+            sendVirtualAssistantMessage("Enforcing or nice?");
+            answer.loop();
+        }
+    }*/
+    //TODO: Integrate this more into the flow to allow the user to choose
+    setVar("personalityType", ENFORCING_PERSONALITY_ID);
+
     setupLimits();
 
-    if (HUMILIATION_LIMIT.isAllowed() || VERBAL_HUMILIATION_LIMIT.isAllowed()) {
+    if (!HUMILIATION_LIMIT.isHardLimit() || !VERBAL_HUMILIATION_LIMIT.isHardLimit()) {
         sendVirtualAssistantMessage("Next we need for you to setup a folder with pictures of YOU!");
         sendVirtualAssistantMessage("This is very simple actually...");
         sendVirtualAssistantMessage("Inside the Images/Spicy folder you'll find a folder named SelfHumiliation");
@@ -635,40 +704,6 @@
     sendVirtualAssistantMessage("What nasty implement do you have that fits the third description?", false);
     setVar('toySpankingImplement3', createInput().getAnswer());
     sendVirtualAssistantMessage("Mhmm I can't wait to use this one!");
-    sendVirtualAssistantMessage("We have arrived at a very important point");
-    sendVirtualAssistantMessage("You need to choose between one of 3 different personalities for your domme");
-    sendVirtualAssistantMessage("Choose with care as this choice is permanent and crucial for your experience");
-    sendVirtualAssistantMessage("Simply put personality 1 is easier to please and harder to annoy than personality 3");
-    sendVirtualAssistantMessage("You might call personality 3 strict while personality 1 is \"nicer\"");
-    sendVirtualAssistantMessage("Personality 2 is somewhere in the middle of all of this");
-    sendVirtualAssistantMessage("As a final note there are differences in how they handle situations");
-    sendVirtualAssistantMessage("Some minor some big...");
-    sendVirtualAssistantMessage("Also note that this has nothing to do with me %Lol%");
-    sendVirtualAssistantMessage("I'll be strict no matter what you choose %Grin%");
-    sendVirtualAssistantMessage("I'd recommend Personality 1");
-    sendVirtualAssistantMessage("You might consider personality 2 \"hard\"");
-    sendVirtualAssistantMessage("And personality 3 extreme");
-    sendVirtualAssistantMessage("I do NOT recommend personality 3, it is extreme...");
-    sendVirtualAssistantMessage("Which personality do you choose...");
-    sendVirtualAssistantMessage("1, 2 or 3?", false);
-    answer = createInput();
-
-    while (true) {
-        if (answer.isInteger()) {
-            const id = answer.getInt();
-            if (id > 3) {
-                sendVirtualAssistantMessage("You can't choose a number higher than 3. 1, 2 or 3?");
-                answer.loop();
-            } else {
-                setVar("personalityStrictness", id - 1);
-                ACTIVE_PERSONALITY_STRICTNESS = id - 1;
-                break;
-            }
-        } else {
-            sendVirtualAssistantMessage("1, 2 or 3?");
-            answer.loop();
-        }
-    }
 
     sendVirtualAssistantMessage("Now.. Your domme owns a shop");
     sendVirtualAssistantMessage("I will sell her products to you");

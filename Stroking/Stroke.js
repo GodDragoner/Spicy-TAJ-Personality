@@ -95,7 +95,7 @@ function startStrokeInterval(durationMinutes) {
 }
 
 function getStrokingBPM(modifier = 1) {
-    return randomInteger(75 + getCruelTeasingMood(), 95 + getCruelTeasingMood())*modifier;
+    return Math.floor(randomInteger(75 + getCruelTeasingMood(), 95 + getCruelTeasingMood())*modifier);
 }
 
 function sendNewStrokeInstruction() {

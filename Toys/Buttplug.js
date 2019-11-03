@@ -481,6 +481,10 @@ function removeButtplug() {
         sendMessage("You already know " + random("what I am gonna make you do now", "what comes next", "what you are gonna do next", "what I want you to do next", "what is gonna happen now"));
         sendMessage("I want you to suck that toy clean %Grin%");
 
+        if(isGaged()) {
+            removeGag();
+        }
+
         //Gag
         if (isChance(20)) {
             sendMessage("However today we are " + random("gonna clean it differently", "handle this a bit differently", "not gonna just lick it clean"));
