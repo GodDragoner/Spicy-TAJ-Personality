@@ -250,6 +250,11 @@ if (newDay) {
     setVar(VARIABLE_HAPPINESS, Math.max(0, getVar(VARIABLE_HAPPINESS, 0) + tempHappiness));
     setVar(VARIABLE_LUST,  Math.max(0, getVar(VARIABLE_LUST, 0) + tempLust));
     setVar(VARIABLE_ANGER,  Math.max(0, getVar(VARIABLE_ANGER, 0) + tempAnger));
+
+    sendDebugMessage("Lust: " + getVar(VARIABLE_LUST));
+    sendDebugMessage("Happiness: " + getVar(VARIABLE_HAPPINESS));
+    sendDebugMessage("Anger: " + getVar(VARIABLE_ANGER));
+
 }
 
 function activateRandomScenario(scenarioArray, idOffset, moodType) {
