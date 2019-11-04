@@ -9,6 +9,10 @@
         removeCollar();
     }
 
+    if(isPlugged()) {
+        removeButtplug();
+    }
+
     //TODO: Remove all other toys
 
     sendMessage('%SlaveName%, ' + random('I\'m returning you to my lovely assistant', 'You\'re going back to my sweet assistant', 'Putting you back with my assistant'));

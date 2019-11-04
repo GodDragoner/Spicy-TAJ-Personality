@@ -218,6 +218,11 @@ function putInButtplug(forceBigger = false) {
         }
     }
 
+    if(plug.vibrating && isChance(40)) {
+        sendMessage('Now activate the vibration of your plug %SlaveName% %Grin%', 5);
+        sendMessage(random('You paid for it so we better make use of that now %EmoteHappy%', 'No reason to leave that feature unused is there? %EmoteHappy%', 'Let\'s see if I can drive you crazy like this %GeneralTime%'));
+    }
+
     setTempVar("pluggedToday", true);
     setTempVar(VARIABLE_IS_PLUGGED, true);
     setDate(VARIABLE_LAST_PLUG_DATE);

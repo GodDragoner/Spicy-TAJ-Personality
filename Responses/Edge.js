@@ -5,7 +5,7 @@ function edgeResponse(message) {
         if (getVar(VARIABLE_STROKE_TRAINING_ACTIVE, false)) {
             strokeTrainingEdge();
             return true;
-        } else if (!isEdging() && !isOnEdge()) {
+        } else if (!isEdging() && !isOnEdge() && !message.toLowerCase().contains('may') && !message.toLowerCase().contains('please')) {
             //Unautherized Edge TODO: More stuff and save how many times unauthorized edging occured
             sendMessage('C\'mon %SlaveName%, you\'re only supposed to edge when I say so');
             sendMessage('For example, when I say...');
