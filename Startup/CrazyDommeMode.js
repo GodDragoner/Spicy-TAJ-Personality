@@ -18,10 +18,12 @@ function redistributeModes() {
     for(let x = 0; x < DOMME_MODES.length; x++) {
         if(isChance(20)) {
             if(!isVar(DOMME_MODES[x])) {
+                sendDebugMessage('Activating crazy domme mode: ' + DOMME_MODES[x]);
                 setVar(DOMME_MODES[x], true);
             }
         } else if(isVar(DOMME_MODES[x])) {
             deleteVar(DOMME_MODES[x]);
+            sendDebugMessage('Deactivating crazy domme mode: ' + DOMME_MODES[x]);
         }
     }
 }

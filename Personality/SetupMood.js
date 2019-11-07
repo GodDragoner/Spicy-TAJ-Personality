@@ -6,15 +6,24 @@ const todayDate = new Date();
 const dayOfWeek = DAYS_IN_WEEK[todayDate.getDay()];
 let newDay = false;
 
+//Basically every days value change lasts for one week after that it is removed
+
+//Have we had this day before?
 if (isVar(dayOfWeek + "MoodDate")) {
     const date = getVar(dayOfWeek + "MoodDate");
     //Check if we are still on the same day
     if (!(date.getDay() == todayDate.getDate() && date.getMonth() == todayDate.getMonth() && date.getYear() == todayDate.getFullYear())) {
         //Reset temp added values
+        sendDebugMessage('Before temp day of week mood:');
+        debugPrintMood();
+
         setVar(VARIABLE_HAPPINESS, Math.max(0, getVar(VARIABLE_HAPPINESS) - getVar(dayOfWeek + "Happiness")));
         setVar(VARIABLE_LUST, Math.max(0, getVar(VARIABLE_LUST) - getVar(dayOfWeek + "Lust")));
         setVar(VARIABLE_ANGER, Math.max(0, getVar(VARIABLE_ANGER) - getVar(dayOfWeek + "Anger")));
         newDay = true;
+
+        sendDebugMessage('After temp day of week mood:');
+        debugPrintMood();
     }
 } else {
     newDay = true;
@@ -252,9 +261,8 @@ if (newDay) {
     setVar(VARIABLE_ANGER,  Math.max(0, getVar(VARIABLE_ANGER, 0) + tempAnger));
 }
 
-sendDebugMessage("Lust: " + getVar(VARIABLE_LUST));
-sendDebugMessage("Happiness: " + getVar(VARIABLE_HAPPINESS));
-sendDebugMessage("Anger: " + getVar(VARIABLE_ANGER));
+sendDebugMessage('Mood after startup routine');
+debugPrintMood();
 
 function activateRandomScenario(scenarioArray, idOffset, moodType) {
     const index = randomInteger(0, scenarioArray.length);
@@ -267,6 +275,12 @@ function activateRandomScenario(scenarioArray, idOffset, moodType) {
 
     //Return the scenario value
     return scenario;
+}
+
+function debugPrintMood() {
+    sendDebugMessage("Lust: " + getVar(VARIABLE_LUST));
+    sendDebugMessage("Happiness: " + getVar(VARIABLE_HAPPINESS));
+    sendDebugMessage("Anger: " + getVar(VARIABLE_ANGER));
 }
 
 function isScenarioActive(scenarioId) {

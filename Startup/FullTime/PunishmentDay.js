@@ -13,7 +13,7 @@
 
     //Only continue if we haven't check this today
     if (!isVar(VARIABLE_NEXT_PUNISHMENT_DAY) || getDate(VARIABLE_NEXT_PUNISHMENT_DAY).hasPassed()) {
-        if (!getDate(VARIABLE_NEXT_PUNISHMENT_DAY).sameDay(setDate())) {
+        if (isVar(VARIABLE_NEXT_PUNISHMENT_DAY) && !getDate(VARIABLE_NEXT_PUNISHMENT_DAY).sameDay(setDate())) {
             sendVirtualAssistantMessage("You've been skipping punishment day %SlaveName%!");
             sendVirtualAssistantMessage("I've added a healthy dose of punishment points for that!");
             addPunishmentPoints(300);
