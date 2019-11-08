@@ -95,7 +95,7 @@
         answer1.clearOptions();
 
         while (working) {
-            //Its time to interrupt studying with some teasing and/or exercising
+            //It's time to interrupt studying with some teasing and/or exercising
             if (answer1.isTimeout()) {
                 playAudio("Audio/Spicy/SpecialSounds/Bell.mp3", true);
                 sendVirtualAssistantMessage("are you there " + random("%SlaveName%", "%slave%") + "?", 0);
@@ -146,8 +146,6 @@
                 CHORE_WATCH.stop();
                 let secondsPassed = parseInt(CHORE_WATCH.getTime() / 1000, 10);
                 let minutesPassed = Math.round(secondsPassed/60);
-
-                let working = true;
 
                 let goldEarned = Math.round(minutesPassed / 4);
                 let meritsEarned = goldEarned * 2;
