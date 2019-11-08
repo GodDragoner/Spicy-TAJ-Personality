@@ -21,6 +21,10 @@ const VARIABLE_MIN_WEEKLY_CHORE_TIME = "minWeeklyChoreTime";
 //Home
 const VARIABLE_HOME_TYPE = 'homeType';
 
+//Exercise
+const VARIABLE_EXERCISE_TIMES = 'exerciseTimes';
+const VARIABLE_EXERCISE_LAST = 'lastExercise';
+
 //Interaction
 const VARIABLE_RESPONSE_WILL_DO_ANYTHING = 'responseWillDoAnything';
 

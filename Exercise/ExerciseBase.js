@@ -1,3 +1,4 @@
+
 {
     let exercise = true;
 
@@ -86,7 +87,7 @@
                 case 3:
                     sendVirtualAssistantMessage("Which is good and earns you 100 gold");
                     addGold(100);
-                    break
+                    break;
                 case 2:
                     sendVirtualAssistantMessage("Which is okay.. but it earns you 50 gold");
                     addGold(50);

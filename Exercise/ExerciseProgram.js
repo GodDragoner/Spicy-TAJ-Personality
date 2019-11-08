@@ -1,384 +1,433 @@
-sendVirtualAssistantMessage("We're starting in a second ");
+{
+	sendVirtualAssistantMessage("We're starting in a second ");
 
-sendVirtualAssistantMessage("Get " + random("naked" ,"ready","ready","ready") + " slave!");
-NrExercise = 0;
-sendVirtualAssistantMessage("%subName%, you should get some water to drink at the break ");
-sendVirtualAssistantMessage("if you're a proper slave, you'll put it in a bowl on the floor to drink out of like a bitch ");
+	sendVirtualAssistantMessage("Get " + random("naked", "ready", "ready", "ready") + " slave!");
+	NrExercise = 0;
+	sendVirtualAssistantMessage("%subName%, you should get some water to drink at the break ");
+	sendVirtualAssistantMessage("if you're a proper slave, you'll put it in a bowl on the floor to drink out of like a bitch ");
 
-sendVirtualAssistantMessage(" I hope you're ready to get that %Ass% worked out. ");
+	sendVirtualAssistantMessage(" I hope you're ready to get that %Ass% worked out. ");
 
-TempExercises= 10 + getVar ("ExerciseLevel");
-setVar("ExerciseTimes", getVar("ExerciseTimes")+1);
+	TempExercises = 10 + getVar("ExerciseLevel");
+	setVar("ExerciseTimes", getVar("ExerciseTimes") + 1);
 
 //set all the exercise flags as false since none are complete in the beginning
-exdog1 = false; 
-exdog2a = false;
-exdog2b = false;
-explank1 = false;
-exabs3 = false;
-exabs4 = false;
-exabs5 = false;
-exabs6 = false;
-exgif1 = false;
-exgif2 = false;
-exgif3 = false;
-exabs1 = false;
-exabs2 = false;
-exgif4 = false;
-exgif5 = false;
-exgif6 = false;
-exleg1 = false;
-exleg2 = false;
-exleg3 = false;
-exleg4 = false;
-expushups1 = false;
-expushups2 = false;
-exwidepushups = false;
-exsideplank = false;
-explank1 = false;
-exsquat = false;
-exdeepsquat = false; 
-exsquathold = false;
-excontinue3 = false;
-excontinue4 = false; 
-excontinue5 = false; 
-excontinue6 = false;
+	exdog1 = false;
+	exdog2a = false;
+	exdog2b = false;
+	explank1 = false;
+	exabs3 = false;
+	exabs4 = false;
+	exabs5 = false;
+	exabs6 = false;
+	exgif1 = false;
+	exgif2 = false;
+	exgif3 = false;
+	exabs1 = false;
+	exabs2 = false;
+	exgif4 = false;
+	exgif5 = false;
+	exgif6 = false;
+	exleg1 = false;
+	exleg2 = false;
+	exleg3 = false;
+	exleg4 = false;
+	expushups1 = false;
+	expushups2 = false;
+	exwidepushups = false;
+	exsideplank = false;
+	explank1 = false;
+	exsquat = false;
+	exdeepsquat = false;
+	exsquathold = false;
+	excontinue3 = false;
+	excontinue4 = false;
+	excontinue5 = false;
+	excontinue6 = false;
 
 //this one is still buggy for some reason!!
 //Gif2();
 
 
-while (NrExercise < TempExercises) {
-	sendVirtualAssistantMessage("so far we've done " + NrExercise + " exercises");
+	while (NrExercise < TempExercises) {
+		sendVirtualAssistantMessage("so far we've done " + NrExercise + " exercises");
 
-	
-	tempmod= NrExercise % 4;
-	
-	if ((tempmod == 0) &&(NrExercise>0)){
-	sendVirtualAssistantMessage("%subName% Take a 60 second break to grab a drink of water");
-    showImage("Images/Spicy/Exercise/Drink/*", 60);
-	}else {
-	sleep(13);
-	}
 
-	showImage("Images/Spicy/Exercise/Misc/*");
-	
+		tempmod = NrExercise % 4;
 
-	switch (NrExercise){
-	case 0 : 
-		randnum=randomInteger(1,3);
-		switch (randnum) {
-			case 1 : PushUps1();
-			break;
-			
-			case 2 : WidePushUps();
-			break;
-			
-			case 3 : PushUps2();
-			break;
-		 }	
-		break;	
-		
-	
-	case 1 : 
-		randnum=randomInteger(1,3);
-		switch (randnum) {
-			case 1 : Abs1();
-			break;	
-			
-			case 2  : Abs2();
-			break;	
-			
-			case 3 : Continue3();
-			break;	
+		if ((tempmod == 0) && (NrExercise > 0)) {
+			sendVirtualAssistantMessage("%subName% Take a 60 second break to grab a drink of water");
+			showImage("Images/Spicy/Exercise/Drink/*", 60);
+		} else {
+			sleep(13);
 		}
-		break;		
-		
-	
-	case 2 : 
-		randnum = randomInteger(1,3);
-		switch (randnum) {
-			case 1 : Squat();
-			break;	
-			
-			case 2 : SquatHold();
-			break;	
-			
-			case 3 : DeepSquat();
-			break;	
-		}
-		break;		
-		
-	
-	
-	case 3 : 
-		randnum=randomInteger(1,2);
-		switch (randnum) {
-			case 1 : Gif2();
-			break;	
-			
-			case 2 : Gif4();
-			break;	
-		}
-			
-		break;		
-		
-	
-		case 4 : 
-		randnum=randomInteger(1,2);
-		switch (randnum) {
-			case 1 : Gif1();
-			break;	
-			
-			case 2 : Gif3();
-			break;	
-		}
-		break;	
-		
-		case 5 : 
-		randnum=randomInteger(1,4);
-		switch (randnum) {
-			case 1 : Leg1();
-			break;				
-			case 2 : Leg2();
-			break;	
-			case 3 : Leg3();
-			break;	
-			case 4 : Leg4();
-			break;	
-		}
-		break;	
 
-		case 6 : 
-		randnum=randomInteger(1,3);
-		switch (randnum) {
-			case 1 : Dog1();		
-			break;				
-			case 2 : Dog2a();
-			break;	
-			case 3 : Dog2b();
-			break;	
-
-		}
-		break;			
+		showImage("Images/Spicy/Exercise/Misc/*");
 
 
-		case 7 : 
-		randnum=randomInteger(1,2);
-		switch (randnum) {
-			case 1 : SidePlank();		
-			break;				
-			case 2 : Plank1();
-			break;	
-		}
-		break;			
-
-		case 8 : 
-		randnum=randomInteger(1,2);
-		switch (randnum) {
-			case 1 : Gif5();		
-			break;				
-			case 2 : Gif6();
-			break;	
-		}
-		break;			
-
-		case 9 : 
-		randnum=randomInteger(1,3);
-		switch (randnum) {
-			case 1 : Abs3();		
-			break;				
-			case 2 : Abs4();
-			break;	
-			case 3 : Abs5();
-			break;	
-
-		}
-		break;			
-
-		
-		default: 
-			randnum=randomInteger(1,30);
-		switch (randnum) {
-			case 1 : Dog1();
-			break;	
-			
-			case 2 : Dog2a();
-			break;	
-			
-			case 3 : Dog2b();
-			break;	
-			
-			case 4 : Plank1();
-			break;	
-			
-			case 5 : Abs1();
-			break;	
-			
-			case 6 : Abs2();
-			break;	
-			
-			case 7 : Abs4();
-			break;	
-			
-			case 8 : Abs5();
-			break;	
-			
-			case 9 : //Abs6();
-			break;	
-			
-			case 10 : Continue3();
-			break;	
-			
-			case 11 : Continue4();
-			break;	
-			
-			case 12 : Continue5();
-			break;	
-			
-			case 13 : Continue6();
-			break;	
-			
-			case 14 : Gif1();
-			break;	
-							
-			case 15 : Gif2();
-			break;	
-			
-			case 16 : Gif3();
-			break;	
-			
-			case 17 : Gif4();
-			break;	
-			
-			case 18 : Gif5();
-			break;	
-			
-			case 19 : Gif6();
-			break;	
-			
-			case 20 : Leg4();
-			break;	
-			
-			case 21 : Leg3();
-			break;	
-			
-			case 22 : Leg2();
-			break;	
-			
-			case 23 : Leg1();
-			break;	
-			
-			case 24 : PushUps1();
-			break;	
-			
-			case 25 : WidePushUps();
-			break;	
-			
-			case 26 : PushUps2();
-			break;	
-			
-			case 27 : SidePlank();
-			break;	
-			
-			case 28 : Squat();
-			break;	
-			
-			case 29 : SquatHold();
-			break;	
-			
-			case 30 : DeepSquat();
-			break;	
-		}
-		break;	
-		
-	}
-	
-}
-
-
-/*
-@Variable[NrExercise]<[1] showImage("Images/Spicy/Exercise/Misc/*] @Goto(PushUps1,WidePushUps,PushUps2)
-@Variable[NrExercise]<[2] showImage("Images/Spicy/Exercise/Misc/*] @Goto(Abs1,Abs2,Abs6)
-@Variable[NrExercise]<[3] showImage("Images/Spicy/Exercise/Misc/*] @Goto(Squat,SquatHold,DeepSquat)
-@Variable[NrExercise]<[4] showImage("Images/Spicy/Exercise/Misc/*] @Goto(Gif4,Gif2)
-@Variable[NrExercise]<[5] showImage("Images/Spicy/Exercise/Misc/*] @Goto(Gif1,Gif3)
-@Variable[NrExercise]<[6] showImage("Images/Spicy/Exercise/Misc/*] @Goto(Leg4,Leg3,Leg2,Leg1)
-@Variable[NrExercise]<[7] showImage("Images/Spicy/Exercise/Misc/*] @Goto(Dog1,Dog2a,Dog2b)
-@Variable[NrExercise]<[8] showImage("Images/Spicy/Exercise/Misc/*] @Goto(SidePlank,Plank1)
-@Variable[NrExercise]<[9] showImage("Images/Spicy/Exercise/Misc/*] @Goto(Gif5,Gif6)
-@Variable[NrExercise]<[10] showImage("Images/Spicy/Exercise/Misc/*] @Goto(Abs3,Abs4,Abs5)
-
-
-@Variable[NrExercise]<[TempExercises] showImage("Images/Spicy/Exercise/Misc/*] @Goto(Dog1,Dog2a,Dog2b,Plank1,Abs1,Abs2,Abs4,Abs5,Abs6,Continue3,Continue4,Continue5,Continue6,Gif1,Gif2,Gif3,Gif4,Gif5,Gif6,Leg4,Leg3,Leg2,Leg1,PushUps1,WidePushUps,PushUps2,SidePlank,Squat,SquatHold,DeepSquat)
-*/
-
-
-
-
-
-sendVirtualAssistantMessage("We're at the end");
-sendVirtualAssistantMessage("You just went through "+ NrExercise +" exercises");
-
-let answer = sendInput("How many of the " + NrExercise +" exercises do you estimate to have completed to a satisfactory level?");
-
-  while (true){
-	  if (answer.isInteger()) {
-                const result = answer.getInt();
-                if (result < 0) {
-                    sendVirtualAssistantMessage("You can't choose a number less than 0");
-                    answer.loop();
-                } else if (result > NrExercise) {
-                    sendMessage("You chose a number too big, you weren't assigned that many exercises");
-                    answer.loop();
-                } else {
-					   ExerciseDone=result;
+		switch (NrExercise) {
+			case 0 :
+				randnum = randomInteger(1, 3);
+				switch (randnum) {
+					case 1 :
+						PushUps1();
 						break;
-                }
-            } else {
-                sendMessage("Slave...");
-                sendMessage("I asked you to just give me a simple number..");
-				sendVirtualAssistantMessage("You must choose a simple number.. like");
-				sendVirtualAssistantMessage("10");
-				sendVirtualAssistantMessage("15");
-				sendVirtualAssistantMessage("17");
-				sendVirtualAssistantMessage("22"); 
-                sendVirtualAssistantMessage("Idiot!"); 
-                answer.loop();
-            }
-  }
-	  
 
-	  
-ExMasteredBar = NrExercise-2;
-ExFailedBar = ExerciseDone * 3;
-if(ExerciseDone>=ExMasteredBar){
-	//mastered this session
-	setVar("ExerciseLevelMastered", getVar("ExerciseLevelMastered")+1 );
-    sendVirtualAssistantMessage("good job, it looks like you did really well today");
-	unlockImages();
-	
-}else if(NrExercise>ExFailedBar){
-	//failed out of this session
+					case 2 :
+						WidePushUps();
+						break;
 
-	setVar("ExerciseLevelFailing", getVar("ExerciseLevelFailing")+1 );
-    sendVirtualAssistantMessage("hmmm that was a pretty pathetic effort %Slave%");
-	unlockImages();
+					case 3 :
+						PushUps2();
+						break;
+				}
+				break;
 
-}else{
-	//did ok
-	sendVirtualAssistantMessage("pretty Good effort today slave! ");
-	unlockImages();
+
+			case 1 :
+				randnum = randomInteger(1, 3);
+				switch (randnum) {
+					case 1 :
+						Abs1();
+						break;
+
+					case 2  :
+						Abs2();
+						break;
+
+					case 3 :
+						Continue3();
+						break;
+				}
+				break;
+
+
+			case 2 :
+				randnum = randomInteger(1, 3);
+				switch (randnum) {
+					case 1 :
+						Squat();
+						break;
+
+					case 2 :
+						SquatHold();
+						break;
+
+					case 3 :
+						DeepSquat();
+						break;
+				}
+				break;
+
+
+			case 3 :
+				randnum = randomInteger(1, 2);
+				switch (randnum) {
+					case 1 :
+						Gif2();
+						break;
+
+					case 2 :
+						Gif4();
+						break;
+				}
+
+				break;
+
+
+			case 4 :
+				randnum = randomInteger(1, 2);
+				switch (randnum) {
+					case 1 :
+						Gif1();
+						break;
+
+					case 2 :
+						Gif3();
+						break;
+				}
+				break;
+
+			case 5 :
+				randnum = randomInteger(1, 4);
+				switch (randnum) {
+					case 1 :
+						Leg1();
+						break;
+					case 2 :
+						Leg2();
+						break;
+					case 3 :
+						Leg3();
+						break;
+					case 4 :
+						Leg4();
+						break;
+				}
+				break;
+
+			case 6 :
+				randnum = randomInteger(1, 3);
+				switch (randnum) {
+					case 1 :
+						Dog1();
+						break;
+					case 2 :
+						Dog2a();
+						break;
+					case 3 :
+						Dog2b();
+						break;
+
+				}
+				break;
+
+
+			case 7 :
+				randnum = randomInteger(1, 2);
+				switch (randnum) {
+					case 1 :
+						SidePlank();
+						break;
+					case 2 :
+						Plank1();
+						break;
+				}
+				break;
+
+			case 8 :
+				randnum = randomInteger(1, 2);
+				switch (randnum) {
+					case 1 :
+						Gif5();
+						break;
+					case 2 :
+						Gif6();
+						break;
+				}
+				break;
+
+			case 9 :
+				randnum = randomInteger(1, 3);
+				switch (randnum) {
+					case 1 :
+						Abs3();
+						break;
+					case 2 :
+						Abs4();
+						break;
+					case 3 :
+						Abs5();
+						break;
+
+				}
+				break;
+
+
+			default:
+				randnum = randomInteger(1, 30);
+				switch (randnum) {
+					case 1 :
+						Dog1();
+						break;
+
+					case 2 :
+						Dog2a();
+						break;
+
+					case 3 :
+						Dog2b();
+						break;
+
+					case 4 :
+						Plank1();
+						break;
+
+					case 5 :
+						Abs1();
+						break;
+
+					case 6 :
+						Abs2();
+						break;
+
+					case 7 :
+						Abs4();
+						break;
+
+					case 8 :
+						Abs5();
+						break;
+
+					case 9 : //Abs6();
+						break;
+
+					case 10 :
+						Continue3();
+						break;
+
+					case 11 :
+						Continue4();
+						break;
+
+					case 12 :
+						Continue5();
+						break;
+
+					case 13 :
+						Continue6();
+						break;
+
+					case 14 :
+						Gif1();
+						break;
+
+					case 15 :
+						Gif2();
+						break;
+
+					case 16 :
+						Gif3();
+						break;
+
+					case 17 :
+						Gif4();
+						break;
+
+					case 18 :
+						Gif5();
+						break;
+
+					case 19 :
+						Gif6();
+						break;
+
+					case 20 :
+						Leg4();
+						break;
+
+					case 21 :
+						Leg3();
+						break;
+
+					case 22 :
+						Leg2();
+						break;
+
+					case 23 :
+						Leg1();
+						break;
+
+					case 24 :
+						PushUps1();
+						break;
+
+					case 25 :
+						WidePushUps();
+						break;
+
+					case 26 :
+						PushUps2();
+						break;
+
+					case 27 :
+						SidePlank();
+						break;
+
+					case 28 :
+						Squat();
+						break;
+
+					case 29 :
+						SquatHold();
+						break;
+
+					case 30 :
+						DeepSquat();
+						break;
+				}
+				break;
+
+		}
+
+	}
+
+
+	/*
+    @Variable[NrExercise]<[1] showImage("Images/Spicy/Exercise/Misc/*] @Goto(PushUps1,WidePushUps,PushUps2)
+    @Variable[NrExercise]<[2] showImage("Images/Spicy/Exercise/Misc/*] @Goto(Abs1,Abs2,Abs6)
+    @Variable[NrExercise]<[3] showImage("Images/Spicy/Exercise/Misc/*] @Goto(Squat,SquatHold,DeepSquat)
+    @Variable[NrExercise]<[4] showImage("Images/Spicy/Exercise/Misc/*] @Goto(Gif4,Gif2)
+    @Variable[NrExercise]<[5] showImage("Images/Spicy/Exercise/Misc/*] @Goto(Gif1,Gif3)
+    @Variable[NrExercise]<[6] showImage("Images/Spicy/Exercise/Misc/*] @Goto(Leg4,Leg3,Leg2,Leg1)
+    @Variable[NrExercise]<[7] showImage("Images/Spicy/Exercise/Misc/*] @Goto(Dog1,Dog2a,Dog2b)
+    @Variable[NrExercise]<[8] showImage("Images/Spicy/Exercise/Misc/*] @Goto(SidePlank,Plank1)
+    @Variable[NrExercise]<[9] showImage("Images/Spicy/Exercise/Misc/*] @Goto(Gif5,Gif6)
+    @Variable[NrExercise]<[10] showImage("Images/Spicy/Exercise/Misc/*] @Goto(Abs3,Abs4,Abs5)
+
+
+    @Variable[NrExercise]<[TempExercises] showImage("Images/Spicy/Exercise/Misc/*] @Goto(Dog1,Dog2a,Dog2b,Plank1,Abs1,Abs2,Abs4,Abs5,Abs6,Continue3,Continue4,Continue5,Continue6,Gif1,Gif2,Gif3,Gif4,Gif5,Gif6,Leg4,Leg3,Leg2,Leg1,PushUps1,WidePushUps,PushUps2,SidePlank,Squat,SquatHold,DeepSquat)
+    */
+
+
+	sendVirtualAssistantMessage("We're at the end");
+	sendVirtualAssistantMessage("You just went through " + NrExercise + " exercises");
+
+	let answer = sendInput("How many of the " + NrExercise + " exercises do you estimate to have completed to a satisfactory level?");
+
+	while (true) {
+		if (answer.isInteger()) {
+			const result = answer.getInt();
+			if (result < 0) {
+				sendVirtualAssistantMessage("You can't choose a number less than 0");
+				answer.loop();
+			} else if (result > NrExercise) {
+				sendMessage("You chose a number too big, you weren't assigned that many exercises");
+				answer.loop();
+			} else {
+				ExerciseDone = result;
+				break;
+			}
+		} else {
+			sendMessage("Slave...");
+			sendMessage("I asked you to just give me a simple number..");
+			sendVirtualAssistantMessage("You must choose a simple number.. like");
+			sendVirtualAssistantMessage("10");
+			sendVirtualAssistantMessage("15");
+			sendVirtualAssistantMessage("17");
+			sendVirtualAssistantMessage("22");
+			sendVirtualAssistantMessage("Idiot!");
+			answer.loop();
+		}
+	}
+
+
+	ExMasteredBar = NrExercise - 2;
+	ExFailedBar = ExerciseDone * 3;
+	if (ExerciseDone >= ExMasteredBar) {
+		//mastered this session
+		setVar("ExerciseLevelMastered", getVar("ExerciseLevelMastered") + 1);
+		sendVirtualAssistantMessage("good job, it looks like you did really well today");
+		unlockImages();
+
+	} else if (NrExercise > ExFailedBar) {
+		//failed out of this session
+
+		setVar("ExerciseLevelFailing", getVar("ExerciseLevelFailing") + 1);
+		sendVirtualAssistantMessage("hmmm that was a pretty pathetic effort %Slave%");
+		unlockImages();
+
+	} else {
+		//did ok
+		sendVirtualAssistantMessage("pretty Good effort today slave! ");
+		unlockImages();
+	}
+
+
+	setVar("ExerciseXP", getVar("ExerciseXP") + (ExerciseDone * 5));
+
+
 }
-	
-
-
-
-
-setVar("ExerciseXP",getVar("ExerciseXP") + (ExerciseDone * 5));
-
-
-
 
 //all of the individual exercises are functions below here.....
 

@@ -31,7 +31,6 @@
                 break;
             } else if (lobbyAnswer.isLike("dungeon", "spanking", "spankzchoir", "selfbondage", "pain", "torture", "chamber", "punish")) {
                 lobbyAnswer.clearOptions();
-                // sendVirtualAssistantMessage("This is not supported yet!");
                 run("Dungeon/PunishmentBase.js");
                 sendVirtualAssistantMessage(getWelcomeMessage(), false);
                 break;
