@@ -34,7 +34,7 @@
         }
 
         //Week check only start on mondays
-        if (isVar(VARIABLE_NEXT_WEEK_CHECK) || new Date().getDay() == 1) {
+        if (isVar(VARIABLE_NEXT_WEEK_CHECK) || new Date().getDay() == 1) {sto
             //Only check the week if this isn't the first time
             let doWeekCheck = false;
             if (isVar(VARIABLE_NEXT_WEEK_CHECK)) {
@@ -59,13 +59,13 @@
                 sendVirtualAssistantMessage("Let's see if you've been doing your chores like a good slave!");
 
                 if (getVar(VARIABLE_WEEKLY_CHORES_TIME) < getVar(VARIABLE_MIN_WEEKLY_CHORE_TIME)) {
-                    sendVirtualAssistantMessage("Bad boy!", "Bad girl!", "Bad slut!", "Bad dog!", "Bad slave!", "Bad sissy!");
+                    sendVirtualAssistantMessage("Bad %SlaveName!");
                     sendVirtualAssistantMessage("Bad behaviour is punished!");
                     sendVirtualAssistantMessage("I just assigned you punishment points!");
                     sendVirtualAssistantMessage("Do your chores!");
                     addPunishmentPoints(200);
                 } else {
-                    sendVirtualAssistantMessage("Good boy!", "You have!", "Good little slut", "Good girl", "Good sissy", "Good slave");
+                    sendVirtualAssistantMessage(random("Good boy!", "You have!", "Good little slut", "Good girl", "Good sissy", "Good slave"));
                     sendVirtualAssistantMessage("Good behaviour is rewarded!");
                     sendVirtualAssistantMessage("Transferring gold...");
                     addGold(randomInteger(50, 200));

@@ -75,7 +75,6 @@ function startEdging(holdSeconds, skipStop = false, endIn = EDGE_END_NORMAL) {
         stopStroking();
     }
 
-
     sendDebugMessage('Ending edge');
 
     if(!skipStop) {

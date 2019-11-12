@@ -63,7 +63,7 @@ function sendVirtualAssistantMessage(message, wait, skipImage) {
     sendCustomMessage(textName, text);
 
     //Show image
-    if(skipImage === undefined || !skipImage) {
+    if(skipImage === undefined || skipImage instanceof Boolean && !skipImage) {
         if(!isImagesLocked()) {
             showImage("Images/Spicy/Assistant/" + ASSISTANT_CURRENT_SET_ID + "/*.jpg");
         }
@@ -71,7 +71,7 @@ function sendVirtualAssistantMessage(message, wait, skipImage) {
 
     if(wait === undefined) {
         sleep(1000 + message.length * 50, "MILLISECONDS");
-    } else if(wait) {
+    } else if(wait instanceof Boolean && wait) {
         sleep(wait*1000, "MILLISECONDS");
     }
 }
