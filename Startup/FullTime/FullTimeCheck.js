@@ -1,5 +1,6 @@
 {
-    if (!isVar(VARIABLE_LAST_ROUTINE_CHECK) || getDate(VARIABLE_LAST_ROUTINE_CHECK).hasPassed()) {
+    //Last routine check either does not exist or it is the next day
+    if (!isVar(VARIABLE_LAST_ROUTINE_CHECK) || getDate(VARIABLE_LAST_ROUTINE_CHECK).addDay(1).setHour(0).setMinute(0).setSecond(0).hasPassed()) {
         setDate(VARIABLE_LAST_ROUTINE_CHECK);
         setVar(VARIABLE_WEEKLY_SLAVE_VISITS, getVar(VARIABLE_WEEKLY_SLAVE_VISITS, 0) + 1);
 

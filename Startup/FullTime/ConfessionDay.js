@@ -1,6 +1,6 @@
 {
     if (!isVar(VARIABLE_NEXT_CONFESSION_DAY)) {
-        sendVirtualAssistantMessage("Today it's tuesday");
+        sendVirtualAssistantMessage("Today is tuesday");
         sendVirtualAssistantMessage("Tuesdays are special");
         sendVirtualAssistantMessage("Tuesdays are confession days");
         sendVirtualAssistantMessage("Since you're full time it is required that you at least launch Tease-AI for a weekly confession on tuesdays");
@@ -9,6 +9,9 @@
         sendVirtualAssistantMessage("So choose whatever you believe to be most severe");
         sendVirtualAssistantMessage("Whether that is cumming without permission");
         sendVirtualAssistantMessage("Or some other violation of the rules");
+    } else {
+        sendVirtualAssistantMessage("Today is tuesday");
+        sendVirtualAssistantMessage("Which means it's confession day");
     }
 
 //Only continue if we haven't check this today
@@ -36,7 +39,7 @@
                 addPunishmentPoints(250);
             } else if (answer.containsIgnoreCase("stroke", "stroking", "touched", "pleasured")) {
                 sendVirtualAssistantMessage("Stroking without permission...");
-                addPunishmentPoints(150);
+                addPunishmentPoints(200);
             } else if (answer.containsIgnoreCase("lazy", "sloppy")) {
                 sendVirtualAssistantMessage("Lazy behaviour...");
                 addPunishmentPoints(150);

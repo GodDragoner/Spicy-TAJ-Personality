@@ -1,14 +1,15 @@
 {
     if (!isVar(VARIABLE_NEXT_PUNISHMENT_DAY)) {
-        sendVirtualAssistantMessage("Today it's thursday");
+        sendVirtualAssistantMessage("Today is thursday");
         sendVirtualAssistantMessage("Thursdays are special");
-        sendVirtualAssistantMessage("Thursdays are confession days");
-        sendVirtualAssistantMessage("Since you're full time it is required that you at least launch Tease-AI for a weekly punishment check up");
+        sendVirtualAssistantMessage("Thursdays are punishment days");
+        sendVirtualAssistantMessage("Since you're full time it is required that you at least launch TAJ for a weekly punishment check up");
         sendVirtualAssistantMessage("It's expected that you've brought your level of punishment points sufficiently low");
         sendVirtualAssistantMessage("If you haven't I'm adding more");
         sendVirtualAssistantMessage("A lot more!");
     } else {
-        sendVirtualAssistantMessage("%SlaveName% it's thursday")
+        sendVirtualAssistantMessage("%SlaveName% it's thursday");
+        sendVirtualAssistantMessage("Which means it's punishment day");
     }
 
     //Only continue if we haven't check this today
