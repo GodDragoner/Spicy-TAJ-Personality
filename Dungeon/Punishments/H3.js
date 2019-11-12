@@ -1,7 +1,7 @@
 
 
 
-switch(getVar("Punisher")) {
+switch(getVar(VARIABLE_PUNISHMENT_PUNISHER)) {
 
 	case 1 :
 	// @Goto(Hello)
@@ -25,7 +25,7 @@ switch(getVar("Punisher")) {
 sendMessage("Well "+ random("hello","hi")+ " %SlaveName%");// #DT4 @Goto(Start)
 
 
-switch(getVar("Punisher")){
+switch(getVar(VARIABLE_PUNISHMENT_PUNISHER)){
 	case 1 :
 	//(Domme)
 	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%");// #DT4

@@ -84,6 +84,12 @@ function addPunishmentPoints(amount) {
 
     let multiplier = 1;
 
+    //We don't want any "last change" edit nor multiplier
+    if(amount < 0) {
+        setVar(VARIABLE_PUNISHMENT_POINTS, Math.max(0, points + amount));
+        return;
+    }
+
     //TODO: Base on amount of recent pp too?
     if(isVar(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE)) {
         multiplier = getVar(VARIABLE_PUNISHMENT_POINT_MULTIPLIER);

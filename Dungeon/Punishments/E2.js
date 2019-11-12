@@ -1,6 +1,6 @@
 
 
-switch(getVar("Punisher")) {
+switch(getVar(VARIABLE_PUNISHMENT_PUNISHER)) {
 
 	case 1 :
 	// @Goto(Hello)

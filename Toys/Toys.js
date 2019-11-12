@@ -488,6 +488,8 @@ function setupToys(settings) {
     INFLATABLE_BUTT_PLUG.askForToyAndUsage(domChose);
     INFLATABLE_BUTT_PLUG.askForVibration();
 
+    COLLAR_TOY.askForToyAndUsage(domChose);
+
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
     askForToy("Shock Collar");
     askForToyUsage("ShockCollar", domChose);

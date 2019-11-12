@@ -105,15 +105,15 @@ if (isVar("SpankzChoirComplete") && isVar("SpankChoirSafewordUsed")) {
 
 //************************************************** Post Status checks **************************************************
 
-if(isVar("Punisher")) {
+if(isVar(VARIABLE_PUNISHMENT_PUNISHER)) {
     sendMessage("Cya %SlaveName%");
 
 
-    if (!(getVar("Punisher") == 1)) {
+    if (!(getVar(VARIABLE_PUNISHMENT_PUNISHER) == 1)) {
         setSender(1);
     }
 
-    delVar("Punisher");
+    delVar(VARIABLE_PUNISHMENT_PUNISHER);
 }
 
 //TODO: System message?

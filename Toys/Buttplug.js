@@ -97,7 +97,10 @@ function shouldIncreasePlugSize() {
 }*/
 
 function increasePlugSize() {
-    removeButtplug();
+    if(isPlugged()) {
+        removeButtplug();
+    }
+
     sendMessage(random('Let\'s widen that ass even more', 'Your ass won\'t be empty for long', 'Let\'s increase the size of your plug', 'We just removed that plug to make room for the next bigger one') + ' %Grin%');
     return putInButtplug(true);
 }
@@ -396,6 +399,10 @@ function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
 }
 
 function removeButtplug() {
+    if(!isPlugged()) {
+        return;
+    }
+
     if (isChance(30)) {
         sendMessage("%SlaveName%");
         sendMessage("I want you to remove that buttplug without using your hands");

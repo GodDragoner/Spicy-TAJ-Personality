@@ -224,6 +224,10 @@ const VARIABLE_PUNISHMENT_POINT_MULTIPLIER = "punishmentPointMultiplier";
 const VARIABLE_LAST_PUNISHMENT_POINT_CHANGE = "punishmentPointLastChange";
 const VARIABLE_PUNISHMENT_POINTS = "punishmentPoints";
 
+const VARIABLE_PUNISHMENT_ACTIVE = "punishmentActive";
+
+const VARIABLE_PUNISHMENT_PUNISHER = "punishmentPunisher";
+
 const VARIABLE_NEXT_CONFESSION_DAY = "nextConfessionDay";
 const VARIABLE_NEXT_PUNISHMENT_DAY = "nextPunishmentDay";
 

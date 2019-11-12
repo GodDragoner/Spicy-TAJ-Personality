@@ -3,7 +3,7 @@
 
  setVar("FailedPunishment",0);
 
-switch(getVar("Punisher")) {
+switch(getVar(VARIABLE_PUNISHMENT_PUNISHER)) {
 
 	case 1 :
 	// @Goto(Hello)
@@ -76,7 +76,7 @@ function Start()
 	
 	
 		
-	switch(getVar("Punisher")) {
+	switch(getVar(VARIABLE_PUNISHMENT_PUNISHER)) {
 
 		case 1 :
 		Domme();
