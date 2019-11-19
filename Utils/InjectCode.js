@@ -33,6 +33,16 @@ for(let x = 2; x <= 30; x += 4) {
 /*MODULE_HISTORY.clearHistory();
 run('Session/Modules/Humiliation/Dynamic/AnalHumiliation.js');
 appendPenetratingSession('dildo');*/
-function getStrokingBPM(modifier = 1) {
-    return Math.floor(randomInteger(75 + getCruelTeasingMood(), 95 + getCruelTeasingMood())*modifier);
+//Reduce punishment point multiplier each day if the change would be negative
+
+{
+    let ppMultiplier = getPunishmentPointMultiplierChange();
+    sendDebugMessage('PP Mutliplier change is ' + ppMultiplier);
+
+    if (ppMultiplier < 0) {
+        let currentMult = getVar(VARIABLE_PUNISHMENT_POINT_MULTIPLIER, 1);
+        sendDebugMessage('Reducing pp multiplier from ' + currentMult);
+        setPunishmentPointMultiplier(currentMult - ppMultiplier);
+        sendDebugMessage('To ' + getVar(VARIABLE_PUNISHMENT_POINT_MULTIPLIER, 1))
+    }
 }

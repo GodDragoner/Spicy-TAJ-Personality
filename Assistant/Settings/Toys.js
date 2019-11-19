@@ -29,6 +29,7 @@
             lobbyAnswer.clearOptions();
             break;
         } else if (lobbyAnswer.isLike('other', 'setup toys')) {
+            lobbyAnswer.clearOptions();
             setupToys(true);
             run('Assistant/Settings/Toys.js');
             break;

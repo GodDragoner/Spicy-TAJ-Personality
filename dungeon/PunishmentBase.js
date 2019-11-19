@@ -148,6 +148,7 @@
                 sendDungeonMessage("Lets see if there is any specific reasons to why you've been given punishment points this week...");
                 setVar(VARIABLE_PUNISHMENT_ACTIVE, true);
 
+                //TODO: Punishment reasons
                 if (isVar("PReason_skipping_punishment") && getVar("PReason_skipping_punishment")) {
                     sendDungeonMessage("skipping punishment day... Naughty %Slave%, are you too scared to come down here and face justice?", 2);
                 }
@@ -344,7 +345,7 @@
                         if(value*goldMultiplier > getGold()) {
                             sendDungeonMessage('You don\'t have enough gold %SlaveName%...');
                             changeMeritLow(true);
-                            break;CVo
+                            break;
                         }
 
                         sendDungeonMessage("Well everything checks out...");

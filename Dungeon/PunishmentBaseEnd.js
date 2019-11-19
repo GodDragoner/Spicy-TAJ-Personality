@@ -108,7 +108,6 @@ if (isVar("SpankzChoirComplete") && isVar("SpankChoirSafewordUsed")) {
 if(isVar(VARIABLE_PUNISHMENT_PUNISHER)) {
     sendMessage("Cya %SlaveName%");
 
-
     if (!(getVar(VARIABLE_PUNISHMENT_PUNISHER) == 1)) {
         setSender(1);
     }

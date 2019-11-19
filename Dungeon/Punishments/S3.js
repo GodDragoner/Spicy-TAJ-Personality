@@ -332,5 +332,5 @@ switch (choice) {
 		delVar("S3Recursion");
 	}
 	setVar("PunishmentComplete", true);
-	setVar("punishmentCompleted", 03);
+	setVar("punishmentCompleted", 3);
 	run("Dungeon/PunishmentBaseEnd.js");

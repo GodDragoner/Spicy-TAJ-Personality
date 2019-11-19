@@ -89,8 +89,18 @@ function registerBodyPart(name, maxClamps, side = NONE) {
 
         canAttachClamps: function () {
             //No pins to penis/balls if in chastity
-            if (isInChastity() && (this === BODY_PART_PENIS_SHAFT || this === BODY_PART_PENIS_HEAD || this === BODY_PART_BALLS)) {
+            if (isInChastity() && (this === BODY_PART_PENIS_SHAFT || this === BODY_PART_PENIS_HEAD || this === BODY_PART_BALLS && currentChastityCage.isFullSizedBelt())) {
                 return false;
+            }
+
+            //No pins to balls if parachute is on
+            if (PARACHUTE_TOY.isToyOn() && this === BODY_PART_BALLS) {
+                return false;
+            }
+
+            //No pins on nipples if nipple clamps are already attached
+            if(this === BODY_PART_NIPPLE_R || this === BODY_PART_NIPPLE_L) {
+                return !NIPPLE_CLAMPS.isToyOn();
             }
 
             //Do not check for max clamps here because we might want to handle that individually

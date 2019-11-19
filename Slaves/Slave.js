@@ -69,7 +69,7 @@ function decideStopKneeling() {
     } else {
         let dateStartedKneeling = getDate(VARIABLE_KNEELING_STARTED);
 
-        let minKneeling = 2*(ACTIVE_PERSONALITY_STRICTNESS + 1) + getMood();
+        let minKneeling = 2*(getStrictnessForCharacter() + 1) + getMood();
 
         if(dateStartedKneeling.addMinute(minKneeling).hasPassed()) {
             return true;
@@ -90,13 +90,17 @@ function addPunishmentPoints(amount) {
         return;
     }
 
+    sendDebugMessage('Going in with ' + amount + " punishment points");
+
     //TODO: Base on amount of recent pp too?
     if(isVar(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE)) {
         multiplier = getVar(VARIABLE_PUNISHMENT_POINT_MULTIPLIER);
-        let hoursSinceLastChange = Math.floor((new Date().getMilliseconds() - getDate(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE).getTimeInMillis())/(1000*60*60));
+
+        sendDebugMessage('Base multiplier is ' + multiplier);
+
 
         /*let minuteMultipliers = [2, 4, 6];
-        let minuteMultiplier = minuteMultipliers[ACTIVE_PERSONALITY_STRICTNESS];
+        let minuteMultiplier = minuteMultipliers[getStrictnessForCharacter()];
 
         //Check whether we had at least x minutes without punishment points assigned
         //480 = 8 hours
@@ -127,13 +131,9 @@ function addPunishmentPoints(amount) {
             multiplier += 0.2;
         }*/
 
-        let mood = getMood();
-        multiplier += Math.max(0.25, 0.1*(mood*ACTIVE_PERSONALITY_STRICTNESS + 10) - 0.1*hoursSinceLastChange/(Math.max(1, ACTIVE_PERSONALITY_STRICTNESS) + 1));
+        multiplier += getPunishmentPointMultiplierChange();
 
-        multiplier = Math.min(3, Math.max(0.5, multiplier));
-
-        //Update new multiplier
-        setVar(VARIABLE_PUNISHMENT_POINT_MULTIPLIER, multiplier);
+        setPunishmentPointMultiplier(multiplier);
     } else {
         setVar(VARIABLE_PUNISHMENT_POINT_MULTIPLIER, 1);
     }
@@ -141,6 +141,25 @@ function addPunishmentPoints(amount) {
     setDate(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE);
 
     setVar(VARIABLE_PUNISHMENT_POINTS, Math.max(0, points + amount*multiplier));
+}
+
+function setPunishmentPointMultiplier(multiplier) {
+    multiplier = Math.min(3, Math.max(0.5, multiplier));
+
+    sendDebugMessage('New multiplier is ' + multiplier);
+
+    //Update new multiplier
+    setVar(VARIABLE_PUNISHMENT_POINT_MULTIPLIER, multiplier);
+}
+
+function getPunishmentPointMultiplierChange() {
+    let mood = getMood();
+    let hoursSinceLastChange = Math.floor((new Date().getTime() - getDate(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE).getTimeInMillis())/(1000*60*60));
+    let maxSubtraction = -0.25;
+
+    sendDebugMessage('Hours since last change ' + hoursSinceLastChange);
+
+    return Math.max(maxSubtraction, 0.1*(mood*getStrictnessForCharacter() + 10) - 0.1*hoursSinceLastChange/(Math.max(1, getStrictnessForCharacter()) + 1));
 }
 
 function addGold(amount) {

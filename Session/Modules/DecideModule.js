@@ -16,7 +16,7 @@
         //Dom choose
         if(strokeFrequency == 0) {
             const mood = getMood();
-            const strictness = ACTIVE_PERSONALITY_STRICTNESS;
+            const strictness = getStrictnessForCharacter();
 
             minTimePassed = getVar(VARIABLE_DEVOTION)/Math.min(4, Math.max(1, 5 - strictness - mood - 1));
         } else {
@@ -30,7 +30,7 @@
         if((!isVar('lastStrokingPause') || getVar('lastStrokingPause').addMinute(minTimePassed).hasPassed())) {
             if(!isInChastity()) {
                 let mood = getMood() + 1;
-                let strictness = ACTIVE_PERSONALITY_STRICTNESS + 1;
+                let strictness = getStrictnessForCharacter() + 1;
                 let minutesToStroke = Math.round((180 - mood*mood*strictness)/60);
 
                 sendDebugMessage('Start of stroking interval');
@@ -40,7 +40,7 @@
                 sendDebugMessage('End of stroking interval');
             } else {
                 let mood = getMood() + 1;
-                let strictness = ACTIVE_PERSONALITY_STRICTNESS + 1;
+                let strictness = getStrictnessForCharacter() + 1;
                 let iterationsToTease = 26 - mood*strictness*2;
 
                 sendDebugMessage('Start of teasing interval');
@@ -80,9 +80,9 @@
         ];
 
         let index = 0;
-        if (ACTIVE_PERSONALITY_STRICTNESS == 1) {
+        if (getStrictnessForCharacter() == 1) {
             index += 5;
-        } else if (ACTIVE_PERSONALITY_STRICTNESS == 2) {
+        } else if (getStrictnessForCharacter() == 2) {
             index += 10;
         }
 

@@ -1,6 +1,6 @@
 //showImage("Images/Spicy/Grounding/BlackBase.jpg");
 
-let startMillis = new Date().getMilliseconds();
+let startMillis = new Date().getTime();
 showImage("Images/Spicy/Intro/SpicyGif*.gif");
 run("Variables.js");
 
@@ -73,10 +73,10 @@ if(isVar("subDevotion")) {
 
 if(getVar("shopUnlockAll", false)) run("Shop/UnlockAll.js");
 
-let endMillis = new Date().getMilliseconds();
+let endMillis = new Date().getTime();
 let waitTime = 3500;
 if(endMillis - startMillis < waitTime) {
-    sleep(waitTime - endMillis - startMillis, 'MILLISECONDS');
+    sleep(Math.floor(waitTime - (endMillis - startMillis)), 'MILLISECONDS');
 }
 
 setTempVar(VARIABLE_CURRENT_SESSION_ACTIVE, false);
@@ -91,28 +91,8 @@ if(!getVar(VARIABLE_FINISHED_FIRST_SESSION, false)) run("Session/FirstSession.js
 
 //TODO: Academy
 
-if(isFullTime()) {
-    run("Startup/FullTime/FullTimeCheck.js");
-} else {
-    //Week check only start on mondays
-    if (isVar(VARIABLE_NEXT_WEEK_CHECK) || new Date().getDay() == 1) {
-        //Only check the week if this isn't the first time
-        let doWeekCheck = false;
-        if (isVar(VARIABLE_NEXT_WEEK_CHECK)) {
-            if (getDate(VARIABLE_NEXT_WEEK_CHECK).hasPassed()) {
-                doWeekCheck = true;
-            }
-        } else {
-            setDate(VARIABLE_NEXT_WEEK_CHECK, setDate().addDay(7).setHour(0).setSecond(0).setMinute(0));
-        }
-
-        //We want to track this even outside of full time
-        if(doWeekCheck) {
-            setVar(VARIABLE_WEEKLY_CHORES_TIME, 0);
-            setVar(VARIABLE_WEEKLY_CHORES_DONE, 0);
-        }
-    }
-}
+//Full time specific checks are made in this file (we need it for non full time too)
+run("Startup/FullTime/FullTimeCheck.js");
 
 
 //run("Session/StartSession.js");

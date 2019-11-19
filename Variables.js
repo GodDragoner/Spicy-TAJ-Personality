@@ -132,7 +132,6 @@ const VARIABLE_TRAINING_INTRODUCTION_DONE = 'trainingIntroductionDone';
 //Toys
 
 const VARIABLE_IS_PLUGGED = "isPlugged";
-const VARIABLE_LAST_PLUG_DATE = "lastPlugDate";
 
 const VARIABLE_TOY_GAG_INTERACTION_MODE = "toyGagInteractionMode";
 const VARIABLE_IS_GAGED = "isGaged";
@@ -220,6 +219,7 @@ const VARIABLE_WEEKLY_SLAVE_VISITS = "weeklySlaveVisits";
 const VARIABLE_SLAVE_LEAVE_UNTIL = "slaveLeaveUntil";
 const VARIABLE_SLAVE_VACATION_UNTIL = "slaveVacationUntil";
 
+//Punishment
 const VARIABLE_PUNISHMENT_POINT_MULTIPLIER = "punishmentPointMultiplier";
 const VARIABLE_LAST_PUNISHMENT_POINT_CHANGE = "punishmentPointLastChange";
 const VARIABLE_PUNISHMENT_POINTS = "punishmentPoints";
@@ -228,8 +228,11 @@ const VARIABLE_PUNISHMENT_ACTIVE = "punishmentActive";
 
 const VARIABLE_PUNISHMENT_PUNISHER = "punishmentPunisher";
 
+const VARIABLE_PUNISHMENT_ENEMAS_TAKEN = "punishmentEnemasTaken";
+
 const VARIABLE_NEXT_CONFESSION_DAY = "nextConfessionDay";
 const VARIABLE_NEXT_PUNISHMENT_DAY = "nextPunishmentDay";
+
 
 
 const VARIABLE_FULL_TIME_TRIAL_UNTIL = "fullTimeTrialUntil";

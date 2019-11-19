@@ -100,7 +100,7 @@ function decideOrgasm(noDenied = false) {
         /*VPleased*/ 80, 130,  /*PLeased*/ 70, 120,  /*Neutral*/ 60, 110,  /*Annoyed*/50, 100, /*VAnnoyed*/40, 90,
     ];
 
-    const personalityOffset = ACTIVE_PERSONALITY_STRICTNESS*5*2;
+    const personalityOffset = getStrictnessForCharacter()*5*2;
     decide += randomInteger(array[personalityOffset], array[personalityOffset + 1]);
 
     let goodDays = getMonthlyGoodDays();
@@ -128,7 +128,7 @@ function decideOrgasm(noDenied = false) {
             100,
         ];
 
-        incrementVar(VARIABLE_ORGASM_RATION, -ratioArray[ACTIVE_PERSONALITY_STRICTNESS]);
+        incrementVar(VARIABLE_ORGASM_RATION, -ratioArray[getStrictnessForCharacter()]);
 
         if(getVar('slaveMode', false)) {
             incrementVar(VARIABLE_ORGASM_RATION, -45);
@@ -145,7 +145,7 @@ function decideOrgasm(noDenied = false) {
             6,
         ];
 
-        incrementVar(VARIABLE_ORGASM_RATION, ratioArray[ACTIVE_PERSONALITY_STRICTNESS]);
+        incrementVar(VARIABLE_ORGASM_RATION, ratioArray[getStrictnessForCharacter()]);
 
         if(getVar('slaveMode', false)) {
             incrementVar(VARIABLE_ORGASM_RATION, -4);
@@ -167,7 +167,7 @@ function distributeOrgasmPoints() {
         /*VPleased*/ 2, 10,  /*PLeased*/ 1, 8,  /*Neutral*/ 0, 6,  /*Annoyed*/0, 4, /*VAnnoyed*/0,1, /*Lover mode*/ 0, 14, /*Good days*/ 5, 10, /*Lust*/ 5, 25, /*Denial*/ 1, 9,
     ];
 
-    const personalityOffset = ACTIVE_PERSONALITY_STRICTNESS*9*2;
+    const personalityOffset = getStrictnessForCharacter()*9*2;
     const moodOffset = getMood()*2;
     const loverOffset = 5*2;
     const goodDaysOffset = 6*2;

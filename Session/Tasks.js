@@ -127,8 +127,8 @@ function startTimePassTasks(durationMinutes, allowTeasing = true) {
 
 function getCornerTime() {
     let mood = getMood();
-    let minSeconds = Math.max(30, (mood + 1)*10*(ACTIVE_PERSONALITY_STRICTNESS + 1));
-    let maxSeconds = Math.max(45, (mood + 1)*15*(ACTIVE_PERSONALITY_STRICTNESS + 1));
+    let minSeconds = Math.max(30, (mood + 1)*10*(getStrictnessForCharacter() + 1));
+    let maxSeconds = Math.max(45, (mood + 1)*15*(getStrictnessForCharacter() + 1));
     return randomInteger(minSeconds, maxSeconds);
 }
 
@@ -208,7 +208,6 @@ function goToCorner(durationSeconds) {
         sleep(durationSeconds);
 
         returnSlave();
-
 
         if(keepCount) {
             let int = createIntegerInput('So how many seconds did you spend in the corner %SlaveName%?', undefined, undefined, 'That\'s not a valid number %SlaveName%...');

@@ -60,7 +60,7 @@ function getTimeForChores() {
     //Now combine with mood
     let mood = getMood();
 
-    todo *= (1 + mood/5*(ACTIVE_PERSONALITY_STRICTNESS + 1));
+    todo *= (1 + mood/5*(getStrictnessForCharacter() + 1));
 
     return Math.min(200, todo);
 }

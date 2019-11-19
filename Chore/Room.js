@@ -312,7 +312,7 @@ function createRoom(name, size) {
               if(lastDate === -1) {
                   return lastDate;
               } else {
-                  return Math.ceil((new Date().getMilliseconds() - lastDate.getTimeInMillis())/1000);
+                  return Math.ceil((new Date().getTime() - lastDate.getTimeInMillis())/1000);
               }
         },
 

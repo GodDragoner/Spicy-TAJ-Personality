@@ -31,15 +31,15 @@ function feelsLikePunishingSlave() {
     let chance = 0;
 
     if (mood === VERY_PLEASED_MOOD) {
-        chance = ACTIVE_PERSONALITY_STRICTNESS * 10;
+        chance = getStrictnessForCharacter() * 10;
     } else if (mood === PLEASED_MOOD) {
-        chance = ACTIVE_PERSONALITY_STRICTNESS * 15;
+        chance = getStrictnessForCharacter() * 15;
     } else if (mood === NEUTRAL_MOOD) {
-        chance = (ACTIVE_PERSONALITY_STRICTNESS + 1) * 20;
+        chance = (getStrictnessForCharacter() + 1) * 20;
     } else if (mood === ANNOYED_MOOD) {
-        chance = (ACTIVE_PERSONALITY_STRICTNESS + 1) * 25;
+        chance = (getStrictnessForCharacter() + 1) * 25;
     } else if (mood === VERY_ANNOYED_MOOD) {
-        chance = (ACTIVE_PERSONALITY_STRICTNESS + 1) * 30;
+        chance = (getStrictnessForCharacter() + 1) * 30;
     }
 
     return getVar(VARIABLE_PUNISHMENT_POINTS) >= 250 || isChance(chance);
@@ -66,15 +66,15 @@ function feelsEvil() {
     let chance = 0;
 
     if (mood === VERY_PLEASED_MOOD) {
-        chance = ACTIVE_PERSONALITY_STRICTNESS * 10;
+        chance = getStrictnessForCharacter() * 10;
     } else if (mood === PLEASED_MOOD) {
-        chance = ACTIVE_PERSONALITY_STRICTNESS * 15;
+        chance = getStrictnessForCharacter() * 15;
     } else if (mood === NEUTRAL_MOOD) {
-        chance = (ACTIVE_PERSONALITY_STRICTNESS + 1) * 20;
+        chance = (getStrictnessForCharacter() + 1) * 20;
     } else if (mood === ANNOYED_MOOD) {
-        chance = (ACTIVE_PERSONALITY_STRICTNESS + 1) * 25;
+        chance = (getStrictnessForCharacter() + 1) * 25;
     } else if (mood === VERY_ANNOYED_MOOD) {
-        chance = (ACTIVE_PERSONALITY_STRICTNESS + 1) * 30;
+        chance = (getStrictnessForCharacter() + 1) * 30;
     }
 
     return isChance(chance);
@@ -101,9 +101,9 @@ function handleTodaysMood() {
 function getCruelTeasingMood() {
     let multiplier = 1;
 
-    if(ACTIVE_PERSONALITY_STRICTNESS === 1) {
+    if(getStrictnessForCharacter() === 1) {
         multiplier = 1.2;
-    } if(ACTIVE_PERSONALITY_STRICTNESS === 2) {
+    } if(getStrictnessForCharacter() === 2) {
         multiplier = 1.5;
     }
 

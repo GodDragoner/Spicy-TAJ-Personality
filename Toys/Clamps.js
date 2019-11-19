@@ -1,7 +1,9 @@
 const CLOTHESPINS_TOY = createToy('clothespins');
-const NIPPLE_CLAMPS = createToy('nipple clamps');
+
 
 const MAX_CLAMPS = 20;
+
+
 
 function getClamps(index) {
     if (BODY_PARTS.length > index) {
@@ -25,7 +27,7 @@ function getTotalAttachedClamps() {
 }
 
 function removeAllClamps() {
-    if(getTotalAttachedClamps() > 0) {
+    if (getTotalAttachedClamps() > 0) {
         sendMessage('%SlaveName% go ahead and remove all clamps from your body');
 
         for (let x = 0; x < BODY_PARTS.length; x++) {
@@ -117,6 +119,7 @@ function distributeClamps(amount, bodyPartHistory = new java.util.ArrayList()) {
     while (amount > 0) {
         let randomBodyPart = findRandomBodyPartForClamps();
 
+
         //Track whether we switched to the opposite part because then we don't need to check the other part afterwards anymore
         let switchedToOpposite = false;
 
@@ -135,6 +138,12 @@ function distributeClamps(amount, bodyPartHistory = new java.util.ArrayList()) {
 
         //We already used that body part in this history
         if (bodyPartHistory.contains(randomBodyPart.normalize())) {
+            continue;
+        }
+
+        //Nipple clamps instead?
+        if((randomBodyPart === BODY_PART_NIPPLE_L ||randomBodyPart === BODY_PART_NIPPLE_R) && shouldReplaceSpinsWithNippleClamps() && !isNipplesClamped())  {
+            putNippleClampsOn();
             continue;
         }
 
@@ -264,13 +273,13 @@ function hasClampsOnPenis() {
 function redistributeClampsForStroking() {
     let bodyPartHistory = new java.util.ArrayList();
 
-    if(BODY_PART_PENIS_SHAFT.currentClamps > 0) {
+    if (BODY_PART_PENIS_SHAFT.currentClamps > 0) {
         bodyPartHistory.add(BODY_PART_PENIS_SHAFT);
         bodyPartHistory.add(BODY_PART_PENIS_HEAD);
         redistributeClamps(BODY_PART_PENIS_SHAFT, BODY_PART_PENIS_SHAFT.currentClamps, false, bodyPartHistory);
     }
 
-    if(BODY_PART_PENIS_HEAD.currentClamps > 0) {
+    if (BODY_PART_PENIS_HEAD.currentClamps > 0) {
         //Clear because might have filled it before
         bodyPartHistory.clear();
         bodyPartHistory.add(BODY_PART_PENIS_SHAFT);
@@ -328,7 +337,7 @@ function redistributeClamps(bodyPart, amount, oppositeToo = false, bodyPartHisto
         }
 
         //Normalize to left side
-        if(bodyPartHistory.contains(newBodyPart.normalize())) {
+        if (bodyPartHistory.contains(newBodyPart.normalize())) {
             continue;
         }
 
@@ -428,3 +437,5 @@ function putClampsOff(amount, bodyPart, oppositeToo = false, firstRun = false) {
     bodyPart.subtractClamps(amount);
     sleep(3);
 }
+
+

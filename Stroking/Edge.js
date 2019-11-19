@@ -158,7 +158,7 @@ function sendHoldEdgeTaunts(seconds) {
 function getEdgeHoldSeconds(edgeHold = EDGE_HOLD_DOM) {
     //TODO: Edge hold seconds based on sub experience?
     let mood = 0;
-    let strictness = ACTIVE_PERSONALITY_STRICTNESS;
+    let strictness = getStrictnessForCharacter();
 
     switch (edgeHold) {
         case EDGE_HOLD_DOM:

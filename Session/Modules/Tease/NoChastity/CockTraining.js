@@ -133,7 +133,7 @@ function startStrokeTraining() {
 
     if (level >= 50) {
         sendMessage("You're at the highest level...", "You're at the very top", "You reached the highest level!");
-        if (ACTIVE_PERSONALITY_STRICTNESS == 0) {
+        if (getStrictnessForCharacter() == 0) {
             sendMessage("I'm impressed!");
         }
 
@@ -162,53 +162,53 @@ function strokeTrainingEdge() {
         sendDebugMessage('Finished stroke training with level ' + level);
 
         if (level >= 50) {
-            if (ACTIVE_PERSONALITY_STRICTNESS == 0) {
+            if (getStrictnessForCharacter() == 0) {
                 sendMessage(random("I guess I can't expect more from you when you're at level 50 %Lol%", "I suppose I shouldn't expect more since 50 is the very top %Grin%", "Bravo, you reached level 50!", "Good job, you reached level 50!", "Oh my, you reached level 50!"));
                 addMerits(35);
-            } else if (ACTIVE_PERSONALITY_STRICTNESS == 1) {
+            } else if (getStrictnessForCharacter() == 1) {
                 sendMessage(random("Level 50... Good!", "There is hope for you slave", "You did good %SlaveName", "You should feel a little proud slave"));
                 addMerits(30);
-            } else if (ACTIVE_PERSONALITY_STRICTNESS == 2) {
+            } else if (getStrictnessForCharacter() == 2) {
                 sendMessage(random("Well well I suppose that was okay", "Oh wauw you actually went higher than level 20...", "I'm surprised you even lasted for a few minutes..."));
                 addMerits(25);
             }
         } else if (level > 40) {
-            if (ACTIVE_PERSONALITY_STRICTNESS == 0) {
+            if (getStrictnessForCharacter() == 0) {
                 sendMessage(random("You are above level 40!", "Well done!", "Excellent job", "You did good %SlaveName", "Bravo %SlaveName", "That was excellent work %SlaveName", "I'm applauding you %SlaveName%"));
                 addMerits(25);
-            } else if (ACTIVE_PERSONALITY_STRICTNESS == 1) {
+            } else if (getStrictnessForCharacter() == 1) {
                 sendMessage(random("It seems you did quite alright today!", "Oh my you made it passed level 40...", "Well it seem you made it pass level 40"));
                 addMerits(20);
-            } else if (ACTIVE_PERSONALITY_STRICTNESS == 2) {
+            } else if (getStrictnessForCharacter() == 2) {
                 sendMessage(random("Not at level 50 huh...", "Oh you actually went higher than 40", "I feel like you've cheated a little..."));
                 addMerits(10);
             }
         } else if (level > 30) {
-            if (ACTIVE_PERSONALITY_STRICTNESS == 0) {
+            if (getStrictnessForCharacter() == 0) {
                 sendMessage(random("You did okay", "You effort was mediocre", "I must admit I expected a little more", "I suppose I really wasn't expecting much more from you"));
                 addMerits(10);
-            } else if (ACTIVE_PERSONALITY_STRICTNESS == 1) {
+            } else if (getStrictnessForCharacter() == 1) {
                 sendMessage(random("Above 30 is alright slave", "Well below 40 is still OK", "You could probably do better... Maybe...", "You need to work harder slave"));
                 addMerits(5);
-            } else if (ACTIVE_PERSONALITY_STRICTNESS == 2) {
+            } else if (getStrictnessForCharacter() == 2) {
                 sendMessage(random("Below level 40 huh...", "Oh wauv you do absolutely not impress...", "I was expecting more from you %SlaveName%"));
                 addMerits(-10);
             }
         } else {
             let meritMult = level <= 20? 2 : 1;
 
-            if (ACTIVE_PERSONALITY_STRICTNESS == 0) {
+            if (getStrictnessForCharacter() == 0) {
                 sendMessage(random("I did expect more...", "Below 30 is for cuckolds...", "Below 30 isn't worth anything...", "You went below 30 you lousy fuck.."));
                 addMerits(-10*meritMult);
-            } else if (ACTIVE_PERSONALITY_STRICTNESS == 1) {
+            } else if (getStrictnessForCharacter() == 1) {
                 sendMessage(random("Going below 30 makes me consider permanent chastity for you...", "Below 30 does make me think about locking you up...", "With a low score like that I feel sad for you..."));
                 addMerits(-15*meritMult);
-            } else if (ACTIVE_PERSONALITY_STRICTNESS == 2) {
+            } else if (getStrictnessForCharacter() == 2) {
                 sendMessage(random("Wow, your score is ridiculously bad!", "I guess your %Cock% is crying for its %ChastityCage% with such a low score..."));
                 addMerits(-25*meritMult);
             }
 
-            if(feelsLikePunishingSlave() && ACTIVE_PERSONALITY_STRICTNESS >= 1) {
+            if(feelsLikePunishingSlave() && getStrictnessForCharacter() >= 1) {
                 sendMessage('I guess locking up that %Cock% is the right choice now %Lol%');
                 lockChastityCage();
                 sendMessage('Feels much more adequate, right?');

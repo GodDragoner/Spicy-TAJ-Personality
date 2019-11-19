@@ -80,7 +80,10 @@ function decideGag(pain = false) {
 
         selectAndPutInGag();
         return true;
-    } else if (isChance(25)) {
+    }
+
+    //Punishment has higher chance for gags
+    else if (isChance(isOngoingPunishment()? 75: 25)) {
         selectAndPutInGag();
         return true;
     }
@@ -205,7 +208,7 @@ function putInGag(gagType = GAG_TYPE_BALL_GAG, addPinToTongue = false) {
     waitForDone();
 
     currentGagType = gagType;
-
+    currentGagType.setLastUsage();
     setGaged(true);
 
     return true;
@@ -230,6 +233,8 @@ function removeGag() {
             answer.loop();
         }
     }
+
+    currentGagType.setLastRemoval();
 
     sendMessageBasedOnSender("Put the gag aside for now");
     setGaged(false);

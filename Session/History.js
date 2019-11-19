@@ -3,6 +3,7 @@ const MODULE_HISTORY = createHistory('module');
 const LINK_HISTORY = createHistory('link');
 const START_HISTORY = createHistory('start');
 const ORGASM_HISTORY = createHistory('orgasm');
+const PUNISHMENT_HISTORY = createHistory('punishment');
 
 function createHistory(name) {
     const history = {name: name, historyVar: name + 'History', todaysHistoryVar: 'todays' + name  + 'History',

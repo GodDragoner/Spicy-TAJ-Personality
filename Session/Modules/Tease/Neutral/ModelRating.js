@@ -86,7 +86,7 @@
                     sendMessage('Every time you are wrong you will turn both screws once');
                     sendMessage('I really hope that you have a good memory %Lol%');
 
-                    if (ACTIVE_PERSONALITY_STRICTNESS > 0) {
+                    if (getStrictnessForCharacter() > 0) {
                         sendMessage('Or do I? %Grin%');
                     }
 

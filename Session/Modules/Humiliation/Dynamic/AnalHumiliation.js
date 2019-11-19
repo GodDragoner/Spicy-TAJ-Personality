@@ -28,7 +28,7 @@
                 sendMessage("You look quite pathetic plugged up as you are %Lol%");
             }
 
-            let tasks = !getDate(VARIABLE_LAST_PLUG_DATE).addMinute(5).hasPassed();
+            let tasks = !BUTTPLUG_TOY.getLastUsage().addMinute(5).hasPassed();
 
             if (!tasks) {
                 if (isChance(25)) {
@@ -180,8 +180,8 @@ function getAnalSessionLength() {
 
     let mood = getMood();
 
-    min += randomInteger(mood * ACTIVE_PERSONALITY_STRICTNESS, mood * (ACTIVE_PERSONALITY_STRICTNESS + 1));
-    max += randomInteger(mood * ACTIVE_PERSONALITY_STRICTNESS, mood * (ACTIVE_PERSONALITY_STRICTNESS + 1));
+    min += randomInteger(mood * getStrictnessForCharacter(), mood * (getStrictnessForCharacter() + 1));
+    max += randomInteger(mood * getStrictnessForCharacter(), mood * (getStrictnessForCharacter() + 1));
 
     let previousMin = min;
 
@@ -660,7 +660,7 @@ function startSquatAnal(toy) {
                     sendMessage("And you didn't answer correctly");
                     sendMessage("Well...");
                     changeMeritMedium(true);
-                    if (isChance((ACTIVE_PERSONALITY_STRICTNESS + 1) * 30)) {
+                    if (isChance((getStrictnessForCharacter() + 1) * 30)) {
                         sendMessage("I want you to try it anyway");
                         sendMessage('Start by sitting on the dildo now %SlaveName%!', 5);
                         willDoIt = true;

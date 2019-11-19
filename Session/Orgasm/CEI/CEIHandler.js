@@ -14,7 +14,7 @@ function shouldCEI() {
             return true;
         }
 
-        return isChance((getMood() + 1)*(ACTIVE_PERSONALITY_STRICTNESS + 1)*7);
+        return isChance((getMood() + 1)*(getStrictnessForCharacter() + 1)*7);
     }
 
     return false;

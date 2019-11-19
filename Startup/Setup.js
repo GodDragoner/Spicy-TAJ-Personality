@@ -416,7 +416,7 @@
                 answer.loop();
             } else {
                 setVar("personalityStrictness", id - 1);
-                ACTIVE_PERSONALITY_STRICTNESS = id - 1;
+                ACTIVE_PERSONALITY_STRICTNES = id - 1;
                 break;
             }
         } else {

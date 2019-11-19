@@ -82,7 +82,7 @@ if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_STROKING)) {
                 if (getVar(VARIABLE_GOLD) < 20) {
                     sendMessage("Oh...");
                     sendMessage("You don't have enough gold to participate in a competition %EmoteSad%");
-                    if (ACTIVE_PERSONALITY_STRICTNESS == 0) {
+                    if (getStrictnessForCharacter() == 0) {
                         sendMessage("I'm sorry %SlaveName%");
                     } else {
                         sendMessage("You should definitely work some more for that gold!");
@@ -116,7 +116,7 @@ if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_STROKING)) {
     sendMessage(random("So, Well, Hmm") + "...");
 
 //Will dom determine the edges? Only if  this is not the first run
-    if (isChance(30 * (ACTIVE_PERSONALITY_STRICTNESS + 1)) && getVar(VARIABLE_EDGE_A_TONS_DONE) !== 1) {
+    if (isChance(30 * (getStrictnessForCharacter() + 1)) && getVar(VARIABLE_EDGE_A_TONS_DONE) !== 1) {
         sendMessage("Let's do this a bit differently today %SlaveName%");
         sendMessage("I feel like taking some more control today");
         sendMessage("I will choose how many edges you'll do today %EmoteHappy%");
@@ -125,9 +125,9 @@ if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_STROKING)) {
             setVar(VARIABLE_EDGE_A_TON_EDGE_RECORD, 15);
         }
 
-        if (ACTIVE_PERSONALITY_STRICTNESS == 0) setVar(VARIABLE_EDGE_A_TON_EDGE_RECORD, getVar(VARIABLE_EDGE_A_TON_EDGE_RECORD) + 1);
-        if (ACTIVE_PERSONALITY_STRICTNESS == 1) setVar(VARIABLE_EDGE_A_TON_EDGE_RECORD, getVar(VARIABLE_EDGE_A_TON_EDGE_RECORD) + 2);
-        if (ACTIVE_PERSONALITY_STRICTNESS == 2) setVar(VARIABLE_EDGE_A_TON_EDGE_RECORD, getVar(VARIABLE_EDGE_A_TON_EDGE_RECORD) + 4);
+        if (getStrictnessForCharacter() == 0) setVar(VARIABLE_EDGE_A_TON_EDGE_RECORD, getVar(VARIABLE_EDGE_A_TON_EDGE_RECORD) + 1);
+        if (getStrictnessForCharacter() == 1) setVar(VARIABLE_EDGE_A_TON_EDGE_RECORD, getVar(VARIABLE_EDGE_A_TON_EDGE_RECORD) + 2);
+        if (getStrictnessForCharacter() == 2) setVar(VARIABLE_EDGE_A_TON_EDGE_RECORD, getVar(VARIABLE_EDGE_A_TON_EDGE_RECORD) + 4);
         sendMessage("Let's see...");
         sendMessage("You will do " + getVar(VARIABLE_EDGE_A_TON_EDGE_RECORD) + " edges for me today. This will set a new record %Grin%");
         startEdgeATon(true, getVar(VARIABLE_EDGE_A_TON_EDGE_RECORD));
@@ -162,13 +162,13 @@ function startEdgeATon(chosenByDom, edgesToDo) {
     let impressive = 0;
 
     if (!chosenByDom) {
-        if (ACTIVE_PERSONALITY_STRICTNESS == 0 && edgesToDo > 30) impressive = 2;
-        if (ACTIVE_PERSONALITY_STRICTNESS == 1 && edgesToDo > 35) impressive = 2;
-        if (ACTIVE_PERSONALITY_STRICTNESS == 2 && edgesToDo > 42) impressive = 2;
+        if (getStrictnessForCharacter() == 0 && edgesToDo > 30) impressive = 2;
+        if (getStrictnessForCharacter() == 1 && edgesToDo > 35) impressive = 2;
+        if (getStrictnessForCharacter() == 2 && edgesToDo > 42) impressive = 2;
 
-        if (ACTIVE_PERSONALITY_STRICTNESS == 0 && edgesToDo > 15) impressive = 1;
-        if (ACTIVE_PERSONALITY_STRICTNESS == 1 && edgesToDo > 18) impressive = 1;
-        if (ACTIVE_PERSONALITY_STRICTNESS == 2 && edgesToDo > 22) impressive = 1;
+        if (getStrictnessForCharacter() == 0 && edgesToDo > 15) impressive = 1;
+        if (getStrictnessForCharacter() == 1 && edgesToDo > 18) impressive = 1;
+        if (getStrictnessForCharacter() == 2 && edgesToDo > 22) impressive = 1;
 
         if (impressive == 2) {
             sendMessage(random("Oh wauv!", "You're really going for it!", "This is gonna be intense %Grin%", "I hope you can handle this!", "Great lets not waste a moment!"));

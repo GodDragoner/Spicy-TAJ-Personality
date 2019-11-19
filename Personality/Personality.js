@@ -5,7 +5,7 @@ const KIND_PERSONALITY_ID = 2;
 
 const ACTIVE_PERSONALITY_ID = getVar("personalityType");
 
-let ACTIVE_PERSONALITY_STRICTNESS = getVar("personalityStrictness", 0);
+let ACTIVE_PERSONALITY_STRICTNES = getVar("personalityStrictness", 0);
 
 const TOY_PLAY_MODE = 0;
 const TOY_PUNISHMENT_MODE = 1;
@@ -13,6 +13,32 @@ const TOY_BOTH_MODE = 2;1
 const TOY_ASKED_BUY_MODE = 3;
 
 const DOMME_BIRTHDAY = new Date(new Date().getFullYear(), 6, 30, 0, 0, 0);
+
+
+/**
+ * Returns the strictness of the current active character
+ * @param index
+ * @returns {*}
+ */
+function getStrictnessForCharacter(index = getCurrentTAJSenderID()) {
+    switch(index) {
+        //Dom
+        case 1:
+            return ACTIVE_PERSONALITY_STRICTNES;
+            //Friend 1
+        case 2:
+            return 0;
+            //Friend 2
+        case 3:
+            return 1;
+            //Friend 3
+        case 4:
+            return 2;
+        default:
+            sendDebugMessage('Unknown sender id for strictness: ' + index);
+            return 0;
+    }
+}
 
 function setUpPersonalityVars() {
     switch(ACTIVE_PERSONALITY_ID) {
@@ -53,7 +79,7 @@ function getMood() {
     const merits = getVar("Merits");
 
     let veryPleased, pleased, neutral, annoyed, veryAnnoyed;
-    switch(ACTIVE_PERSONALITY_STRICTNESS) {
+    switch(getStrictnessForCharacter()) {
         case 0:
             veryPleased = 900;
             pleased = 700;
@@ -105,7 +131,7 @@ function changeMeritHigh(negative) {
 }
 
 function changeMerit(level, negative) {
-    let index = ACTIVE_PERSONALITY_STRICTNESS*10;
+    let index = getStrictnessForCharacter()*10;
     let minChange;
     let maxChange;
     if(getMonthlyBadDays() > getMonthlyGoodDays()) {
@@ -173,7 +199,7 @@ function isEnforcingPersonality() {
 function sendAsMuchFun() {
     sendMessage(random("Hopefully ", 'I hope ') + random("that was as much fun for you as for me", 'you enjoyed this as much as I did', 'you enjoyed this too', 'this was fun for you too'));
 
-    if (ACTIVE_PERSONALITY_STRICTNESS > 0 && feelsLikePunishingSlave()) {
+    if (getStrictnessForCharacter() > 0 && feelsLikePunishingSlave()) {
         sendMessage("Oh wait...");
         sendMessage("I don't really care %Lol%");
     } else {

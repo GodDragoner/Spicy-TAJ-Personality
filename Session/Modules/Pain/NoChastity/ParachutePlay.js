@@ -42,13 +42,11 @@
 
                     sendMessage('Now hands above your head and get ready %EmoteHappy%');
 
-
                     //TODO: Based on strictness etc?
                     let durationMillis= randomInteger(90, 150)*1000;
                     let taskWatch = new StopWatch();
 
                     taskWatch.start();
-
 
                     let currentId = -1;
                     while(taskWatch.getTime() < durationMillis) {
@@ -116,7 +114,7 @@
                     sendMessage('Begin!', 0);
                     playBellSound();
 
-                    sleep(randomInteger(90*ACTIVE_PERSONALITY_STRICTNESS, 120*ACTIVE_PERSONALITY_STRICTNESS));
+                    sleep(randomInteger(90*getStrictnessForCharacter(), 120*getStrictnessForCharacter()));
                     returnSlave();
                 } else if(module === 1) {
                     sendMessage('I want you to sit on your office chair and pull the lever so it goes down to its lowest level');
@@ -135,7 +133,7 @@
                     sendMessage('Time starts in 60 seconds with my bell', 60);
                     sendMessage('Go!', 0);
                     playBellSound();
-                    sleep(randomInteger(60*(ACTIVE_PERSONALITY_STRICTNESS + 1), 100*(ACTIVE_PERSONALITY_STRICTNESS + 1)));
+                    sleep(randomInteger(60*(getStrictnessForCharacter() + 1), 100*(getStrictnessForCharacter() + 1)));
                     playBellSound();
                     sendMessage('Now go ahead and drag that chair behind you %Grin%');
                     sendMessage('Report to me when you are done');
