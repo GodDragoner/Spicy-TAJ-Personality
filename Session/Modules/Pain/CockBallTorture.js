@@ -94,6 +94,7 @@ function executeCBTPunishment(bodyParts, id) {
     return completed;
 }
 
+//TODO: Currently used for many things. Should instead be smallPunishment and then a only pain flag
 function smallCBTPunishment(balls = true, penis = true) {
     let lastInteger = -1;
     let completed = false;

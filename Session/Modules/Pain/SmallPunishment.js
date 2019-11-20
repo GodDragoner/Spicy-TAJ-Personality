@@ -3,16 +3,21 @@ run("Session/Modules/Pain/CockBallTorture.js");
 
 
 function smallPunishment(cbt = true, spanking = true) {
-    //TODO: Anal, corner time too in the future at random
-    if(isInChastity() || !cbt && spanking) {
-        smallSpankingPunishment();
-    } else {
+    //TODO: Anal, corner time, gold subtract, punishment points too in the future at random
+    if((isInChastity() || !cbt && spanking) && PAIN_LIMIT.isAllowed()) {
+        doSpankingPunishment();
+    } else if(CBT_LIMIT.isAllowed()) {
         smallCBTPunishment();
+    } else {
+        //Fallback
+        sendMessage('I am gonna only assign a few punishment points this time %SlaveName%');
+
+        addPunishmentPoints(75);
     }
 }
 
 
-function smallSpankingPunishment() {
+function doSpankingPunishment(multiplier = 1) {
     const implement = fetchSpankingImplement();
     sendMessage('Let\'s get get started %Grin%');
     
@@ -25,10 +30,12 @@ function smallSpankingPunishment() {
         sendMessage(random('I want you to count out loud!', 'I want you to count along', 'I want you to count with me'));
     }
 
-    let maxLoops = getVar(VARIABLE_SUB_PAIN_TOLERANCE)*3;
+    let maxLoops = getVar(VARIABLE_SUB_PAIN_TOLERANCE)*3*multiplier;
 
     while(maxLoops > 0) {
         maxLoops--;
+
+        //TODO: Vary sounds
         playSound("Audio/Spicy/Spanking/cane.mp3");
 
         if(maxLoops%2 == 0) {
@@ -41,7 +48,6 @@ function smallSpankingPunishment() {
     sendMessage('You can stop now %SlaveName%');
     sendMessage('Get back to your chair!');
 }
-
 
 
 function getEarlyPunishmentExitChance() {

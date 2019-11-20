@@ -90,7 +90,7 @@ function addPunishmentPoints(amount) {
         return;
     }
 
-    sendDebugMessage('Going in with ' + amount + " punishment points");
+    sendDebugMessage('Adding ' + amount + " punishment points");
 
     //TODO: Base on amount of recent pp too?
     if(isVar(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE)) {
@@ -141,6 +141,8 @@ function addPunishmentPoints(amount) {
     setDate(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE);
 
     setVar(VARIABLE_PUNISHMENT_POINTS, Math.max(0, points + amount*multiplier));
+
+    sendDebugMessage('Adding (multiplier) ' + (amount*multiplier) + " punishment points");
 }
 
 function setPunishmentPointMultiplier(multiplier) {

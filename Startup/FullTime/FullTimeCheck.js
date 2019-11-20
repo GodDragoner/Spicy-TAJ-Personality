@@ -6,13 +6,12 @@
 
         //Reduce punishment point multiplier each day if the change would be negative
         let ppMultiplier = getPunishmentPointMultiplierChange();
-        sendMessage('PP Mutliplier change is ' + ppMultiplier);
+        sendDebugMessage('PP Mutliplier change is ' + ppMultiplier);
 
         if(ppMultiplier < 0) {
             let currentMult = getVar(VARIABLE_PUNISHMENT_POINT_MULTIPLIER, 1);
             sendDebugMessage('Reducing pp multiplier from ' + currentMult);
-            setPunishmentPointMultiplier(currentMult - ppMultiplier);
-            sendDebugMessage('To ' + getVar(VARIABLE_PUNISHMENT_POINT_MULTIPLIER, 1) )
+            setPunishmentPointMultiplier(currentMult + ppMultiplier);
         }
 
         //Full time stuff
@@ -54,10 +53,9 @@
             if (isVar(VARIABLE_NEXT_WEEK_CHECK)) {
                 if (getDate(VARIABLE_NEXT_WEEK_CHECK).hasPassed()) {
                     doWeekCheck = true;
+                    setDate(VARIABLE_NEXT_WEEK_CHECK, setDate().addDay(7).setHour(0).setSecond(0).setMinute(0));
                 }
             }
-
-            setDate(VARIABLE_NEXT_WEEK_CHECK, setDate().addDay(7).setHour(0).setSecond(0).setMinute(0));
 
             if (doWeekCheck) {
                 if(isFullTime()) {

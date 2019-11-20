@@ -699,7 +699,7 @@ function startSquatAnal(toy) {
                         sendMessage("What?!");
                         sendMessage("But I never told you to stop!");
                         sendMessage("This misbehaviour deserves a proper punishment...");
-                        smallCBTPunishment();
+                        smallPunishment();
                         changeMeritMedium(true);
                         sendMessage("And now go ahead and sit all they way down on that " + toy + " again");
                         break;

@@ -51,6 +51,7 @@ run("Assistant/Assistant.js");
 updatePictureSet();
 
 run("Session/Session.js");
+run("Session/Modules/LineWriting.js");
 run("Session/End/Games/EndGames.js");
 
 run("Startup/CrazyDommeMode.js");
@@ -93,7 +94,6 @@ if(!getVar(VARIABLE_FINISHED_FIRST_SESSION, false)) run("Session/FirstSession.js
 
 //Full time specific checks are made in this file (we need it for non full time too)
 run("Startup/FullTime/FullTimeCheck.js");
-
 
 //run("Session/StartSession.js");
 run("Assistant/AssistantLobby.js");
