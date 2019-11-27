@@ -415,7 +415,8 @@ function moveClamps(amount, bodyPart, newBodyPart, oppositeToo = false, opposite
  * @param firstRun
  */
 function putClampsOff(amount, bodyPart, oppositeToo = false, firstRun = false) {
-    let sentenceStart = random("remove");
+    let sentenceStart = random("remove", "rip off", "pull off");
+
     if (!firstRun) {
         sentenceStart = random("now", "next", "go ahead and") + " " + sentenceStart;
 

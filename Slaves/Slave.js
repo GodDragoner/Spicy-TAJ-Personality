@@ -133,10 +133,11 @@ function addPunishmentPoints(amount) {
 
         multiplier += getPunishmentPointMultiplierChange();
 
-        setPunishmentPointMultiplier(multiplier);
+        multiplier = setPunishmentPointMultiplier(multiplier);
     } else {
         setVar(VARIABLE_PUNISHMENT_POINT_MULTIPLIER, 1);
     }
+
 
     setDate(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE);
 
@@ -152,6 +153,7 @@ function setPunishmentPointMultiplier(multiplier) {
 
     //Update new multiplier
     setVar(VARIABLE_PUNISHMENT_POINT_MULTIPLIER, multiplier);
+    return multiplier;
 }
 
 function getPunishmentPointMultiplierChange() {

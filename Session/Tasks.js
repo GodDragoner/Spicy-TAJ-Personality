@@ -211,8 +211,10 @@ function goToCorner(durationSeconds) {
     }
 
     //We use this in parachute play and we can't do this properly with the parachute on
-    else if(!faceWall && !PARACHUTE_TOY.isToyOn()) {
+    else if(!faceWall && !PARACHUTE_TOY.isToyOn() && !onToes) {
         sendMessage("I want you to press your back against the wall, \"sit\" in the air and hold that position");
+    } else if(isChance(50) && !onToes) {
+        sendMessage("I want you to kneel");
     }
 
     if(holdUpMoney) {

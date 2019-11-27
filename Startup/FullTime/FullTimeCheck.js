@@ -58,6 +58,8 @@
             }
 
             if (doWeekCheck) {
+                sendDebugMessage('Week has passed. Starting week check!');
+
                 if(isFullTime()) {
                     if (getVar(VARIABLE_WEEKLY_SLAVE_VISITS) < getVar(VARIABLE_MIN_WEEKLY_VISITS)) {
                         sendVirtualAssistantMessage(random("You have been skipping days", "You have been skulking", "I think you missed a few sessions") + " %SlaveName%");
