@@ -30,6 +30,7 @@ run("Stroking/Edge.js");
 run("Stroking/Anal.js");
 run("Stroking/Blowing.js");
 run("Session/Modules/Pain/SmallPunishment.js");
+run("Dungeon/Punishments/PunishmentBuilder.js");
 
 //Dynamic module stuff
 run("Session/Modules/Dynamic/DynamicModuleBuilder.js");
