@@ -17,7 +17,7 @@
         sentences.push("I need to be on my very best behaviour and I owe it to my %DomHonorific% to try much hard",
             "I'm in need of constant discipline, even a short moment without and I cannot comprehend the dire consequences",
             "I dream of the day where I will be placed in a chastity belt, knowing that in just a moment the key will be destroyed",
-            "I have been bad and this is my punishment, wasting time, doing nohing constructive or anything recreational",
+            "I have been bad and this is my punishment, wasting time, doing nothing constructive or anything recreational",
             "I should try much much harder to be a proper servant. I'm blessed that %DomHonorific% %DomName% is merciful",
             "I should count myself lucky because this could be harsh caning instead",
             "I have been a bad boy and deserve to be punished to my dommes liking",
@@ -40,7 +40,7 @@
         for (let x = 0; x < PUNISHMENT_CURRENT_LEVEL.id + 1; x++) {
             let randomSentence = sentences[randomInteger(0, sentences.length - 1)];
 
-            let times = randomInteger((PUNISHMENT_CURRENT_LEVEL.id + 1) * 5, (PUNISHMENT_CURRENT_LEVEL.id + 3) * 5);
+            let times = randomInteger((PUNISHMENT_CURRENT_LEVEL.id + 1) * 4, (PUNISHMENT_CURRENT_LEVEL.id + 3) * 4);
 
             let tries = randomInteger(2, 3);
 

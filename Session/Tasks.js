@@ -201,6 +201,13 @@ function goToCorner(durationSeconds) {
             sendMessage("I want you to count the number of commands I give in your head");
             sendMessage("Every time you hear a command I want you say 'Thank You %DomHonorific%'");
         }
+    } else if(voiceCommands) {
+        sendMessage("You'll hear my voice saying 'up' or 'down'");
+        sendMessage("Down means going down in a squat");
+        sendMessage("Up means standing up...");
+        sendMessage("Now I'm not done %Grin%");
+        sendMessage("I want you to count the number of commands I give in your head");
+        sendMessage("Every time you hear a command I want you say 'Thank You %DomHonorific%'");
     }
 
     //No count seconds if we are counting the heel touches or giving voice commands
@@ -248,6 +255,7 @@ function goToCorner(durationSeconds) {
         //Voice commands?
         if(voiceCommands) {
             let secondsPassed = 0;
+            const secondsToWait = 4;
             let up = true;
 
             while(secondsPassed < durationSeconds) {
@@ -259,9 +267,9 @@ function goToCorner(durationSeconds) {
                     up = true;
                 }
 
-                sleep(2);
+                sleep(secondsToWait);
 
-                secondsPassed += 2;
+                secondsPassed += secondsToWait;
             }
         } else {
             //Just wait it out
@@ -334,7 +342,7 @@ function goToCorner(durationSeconds) {
     if(sayThankYou) {
         sendMessage("Now I need you to be honest with me...");
 
-        let answer = sendYesOrNoQuestionTimeout("Did you remember to say 'thank you %DomHonorific%' every time I gave a command?", 10);
+        let answer = sendYesOrNoQuestionTimeout("Did you remember to say 'Thank you %DomHonorific%' every time I gave a command?", 10);
 
         switch(answer) {
             case ANSWER_YES:

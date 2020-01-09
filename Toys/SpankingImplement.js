@@ -29,7 +29,7 @@ function fetchSpankingImplement(level = -1) {
     }
 
     //We don't need to fetch 'hand'
-    if(spankingImplement.toLowerCase() === 'hand' || spankingImplement.toLowerCase() === 'palm') {
+    if(isHandPalm(spankingImplement)) {
         return spankingImplement;
     }
 
@@ -47,4 +47,8 @@ function fetchSpankingImplement(level = -1) {
     }
 
     return spankingImplement;
+}
+
+function isHandPalm(spankingImplement) {
+    return spankingImplement.toLowerCase() === 'hand' || spankingImplement.toLowerCase() === 'palm';
 }

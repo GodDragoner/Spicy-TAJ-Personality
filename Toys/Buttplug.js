@@ -68,7 +68,7 @@ function shouldIncreasePlugSize() {
             if (BUTTPLUG_TOY.getLastUsage().addMinute(randomInteger(minTime, maxTime)).hasPassed()) {
                 return ACTION_BUTTPLUG_INCREASE_SIZE;
             }
-        } else if (BUTTPLUG_TOY.getLastUsage().addMinute(randomInteger(minTime, maxTime)).hasPassed()) {
+        } else if (BUTTPLUG_TOY.wasUsedInActiveContext() && BUTTPLUG_TOY.getLastUsage().addMinute(randomInteger(minTime, maxTime)).hasPassed()) {
             return ACTION_BUTTPLUG_INCREASE_SIZE;
         } else {
             return ACTION_BUTTPLUG_PUT_FIRST;
@@ -97,9 +97,9 @@ function shouldIncreasePlugSize() {
 function increasePlugSize() {
     if (isPlugged()) {
         removeButtplug();
+        sendMessage(random('Let\'s widen that ass even more', 'Your ass won\'t be empty for long', 'Let\'s increase the size of your plug', 'We just removed that plug to make room for the next bigger one') + ' %Grin%');
     }
 
-    sendMessage(random('Let\'s widen that ass even more', 'Your ass won\'t be empty for long', 'Let\'s increase the size of your plug', 'We just removed that plug to make room for the next bigger one') + ' %Grin%');
     return putInButtplug(true);
 }
 
@@ -187,7 +187,7 @@ function putInButtplug(forceBigger = false) {
             sendMessage("Carefully start pushing that plug into your ass");
             sendMessage("Push it slowly and gently...");
 
-            if (!isVar("pluggedToday") && getVar(VARIABLE_ASS_LEVEL) < 30) {
+            if (BUTTPLUG_TOY.wasUsedInActiveContext() && getVar(VARIABLE_ASS_LEVEL) < 30) {
                 sendMessage("Until you reach the point where it starts hurting a bit");
                 sendMessage("Now hold that position", 3);
                 sendMessage("Let that plug slip out again");
@@ -224,7 +224,7 @@ function putInButtplug(forceBigger = false) {
         sendMessage(random('You paid for it so we better make use of that now %EmoteHappy%', 'No reason to leave that feature unused is there? %EmoteHappy%', 'Let\'s see if I can drive you crazy like this %GeneralTime%'));
     }
 
-    setTempVar("pluggedToday", true);
+    BUTTPLUG_TOY.setUsedInActiveContext(true);
     setTempVar(VARIABLE_IS_PLUGGED, true);
     BUTTPLUG_TOY.setLastUsage();
 

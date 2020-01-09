@@ -5,7 +5,7 @@ function introduceLineWriting(line, times, tries, first = false) {
         sendMessage('%SlaveName%, you\'re going to write the following line ' + times + ' times');
     }
 
-    sendMessage('"' + line + '"');
+    sendMessage('"' + line + '"', 0);
 
     sendMessage ("And be careful " + random("get it wrong ","fuck it up ", "screw it up ", "make a mistake ") + tries + " times and you'll fail");
     sendMessage('You get ' + tries + ' tries and have to write it ' + times + ' times');
@@ -23,13 +23,20 @@ function startLineWriting(line, times, tries) {
 
         if(answer.getAnswer() === line) {
             success = true;
-            sendMessage((times - x - 1) + ' left!');
+
+            //Do not send 0 left message
+            if((times - x - 1) > 0) {
+                sendMessage((times - x - 1) + ' left!', 0);
+            }
         } else {
             tries--;
 
+            //Do not count this as success
+            x--;
+
             if(tries > 0) {
                 sendMessage('Nope.. That\'s not correct %EmoteSad%');
-                sendMessage('You have ' + tries + ' tries left right now');
+                sendMessage('You have ' + tries + ' tries left right now', 0);
             } else {
                 success = false;
                 break;

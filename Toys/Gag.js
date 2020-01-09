@@ -137,7 +137,7 @@ function putInGag(gagType = GAG_TYPE_BALL_GAG, addPinToTongue = false) {
 
     if (addPinToTongue && BODY_PART_TONGUE.currentClamps === 0) {
         if (fetchToy('clothespin', undefined, 1)) {
-            putClampsOn(1, BODY_PART_TONGUE, false, true);
+            putClampsOnOneSide(1, BODY_PART_TONGUE);
         }
     }
 

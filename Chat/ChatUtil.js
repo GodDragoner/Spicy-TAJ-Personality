@@ -67,16 +67,16 @@ function sendVirtualAssistantMessage(message, wait, skipImage) {
     sendCustomMessage(textName, text);
 
     //Show image
-    if(skipImage === undefined || skipImage instanceof Boolean && !skipImage) {
-        if(!isImagesLocked()) {
+    if (skipImage === undefined || skipImage instanceof Boolean && !skipImage) {
+        if (!isImagesLocked()) {
             showImage("Images/Spicy/Assistant/" + ASSISTANT_CURRENT_SET_ID + "/*.jpg");
         }
     }
 
-    if(wait === undefined) {
+    if (wait === undefined) {
         sleep(1000 + message.length * 50, "MILLISECONDS");
-    } else if(wait instanceof Boolean && wait) {
-        sleep(wait*1000, "MILLISECONDS");
+    } else if (wait instanceof Boolean && wait) {
+        sleep(wait * 1000, "MILLISECONDS");
     }
 }
 
@@ -150,6 +150,34 @@ function createIntegerInput(question, min, max, notNumberMessage, outOfRangeMess
         } else {
             sendMessageBasedOnSender(notNumberMessage);
             answer.loop();
+        }
+    }
+}
+
+function sendAlreadyKnowWhatsNext(triggerwords) {
+    sendMessage("You already know " + random("what I am gonna make you do now", "what I am gonna to do you now", "what comes next", "what you are gonna do next", "what I want you to do next", "what is gonna happen now", "what we are gonna do to you now", "what we are gonna do now") + random('', ', don\'t you? %EmoteHappy%'), 0);
+
+    let answer = createInput(4);
+
+    while (true) {
+        if (answer.isTimeout()) {
+            return ANSWER_TIMEOUT;
+        } else if (answer.isLike('yes')) {
+            sendMessage('We\'ll see if you are right %Grin%');
+            return ANSWER_YES;
+        } else if (answer.isLike('no')) {
+            sendMessage('Well you are gonna know pretty soon %Lol%');
+            return ANSWER_NO;
+        } else {
+            for(let x = 0; x < arguments.length; x++) {
+                if(answer.isLike(arguments[x])) {
+                    sendMessage('You must know me pretty well %SlaveName% %EmoteHappy%');
+                    return ANSWER_YES;
+                }
+            }
+
+            sendMessage('No %SlaveName% %Grin%');
+            return ANSWER_NO;
         }
     }
 }
@@ -237,9 +265,9 @@ function sendArbMessage(textName, message, wait, imagePath) {
        showImage(ImagePath);
     }*/
 
-    if(wait === undefined) {
+    if (wait === undefined) {
         sleep(1000 + message.length * 50, "MILLISECONDS");
-    } else if(wait) {
-        sleep(wait*1000, "MILLISECONDS");
+    } else if (wait) {
+        sleep(wait * 1000, "MILLISECONDS");
     }
 }

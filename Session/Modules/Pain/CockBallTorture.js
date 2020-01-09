@@ -1,3 +1,7 @@
+//Counts how many times we were supposed to ask the slave whether it already hurts
+let acheBallCounter = 0;
+let acheCockCounter = 0;
+
 function decideCBTPunishment(bodyParts, lastInteger = -1) {
     while (true) {
         let newTask = randomInteger(0, 5);
@@ -102,11 +106,11 @@ function smallCBTPunishment(balls = true, penis = true) {
 
     let bodyParts = new java.util.ArrayList();
 
-    if(balls) {
+    if (balls) {
         bodyParts.add(BODY_PART_BALLS);
     }
 
-    if(penis) {
+    if (penis) {
         bodyParts.add(BODY_PART_PENIS_SHAFT, BODY_PART_PENIS_HEAD);
     }
 
@@ -130,6 +134,7 @@ function smallCBTPunishment(balls = true, penis = true) {
 //Personality strictness should not influence pain!
 
 function punishSmallBustBallsMultiple(maxLoops = getVar(VARIABLE_SUB_PAIN_TOLERANCE), earlyExitChance = getEarlyPunishmentExitChance()) {
+    //TODO: "Now back to your balls" etc. kind of transitions
     //TODO: Count out loud?
     while (maxLoops > 0) {
         maxLoops--;
@@ -160,7 +165,7 @@ function punishSmallBustBallsMultiple(maxLoops = getVar(VARIABLE_SUB_PAIN_TOLERA
                 waitForDone();
                 break;
             case 6:
-                sendMessage('Give me ' + getVar(VARIABLE_SUB_PAIN_TOLERANCE) * 2 + ' more slaps');
+                sendMessage('Give me ' + getVar(VARIABLE_SUB_PAIN_TOLERANCE) * 2 + ' more slaps'  + ' for those %Balls%');
                 waitForDone();
                 break;
             case 7:
@@ -168,7 +173,7 @@ function punishSmallBustBallsMultiple(maxLoops = getVar(VARIABLE_SUB_PAIN_TOLERA
                 waitForDone();
                 break;
             case 8:
-                sendMessage('I want ' + getVar(VARIABLE_SUB_PAIN_TOLERANCE) * 2 + ' more ' + random('smacks', 'slaps', 'hits'));
+                sendMessage('I want ' + getVar(VARIABLE_SUB_PAIN_TOLERANCE) * 2 + ' more ' + random('smacks', 'slaps', 'hits') + ' for those %Balls%');
                 waitForDone();
                 break;
             case 9:
@@ -191,9 +196,9 @@ function punishBookCBT(multiplier = 1) {
     }
 
     sendMessage(random("This is fairly simple", "This is gonna be quite simple", "You shouldn\'t find this too difficult"));
-    let falls = getVar(VARIABLE_SUB_PAIN_TOLERANCE)*multiplier + 7;
-    sendMessage(random("I want you to place the book on a table ", "You should place the book on a table ") );
-    sendMessage(random("It has to stand up ", "It should be standing up ") );
+    let falls = getVar(VARIABLE_SUB_PAIN_TOLERANCE) * multiplier + 7;
+    sendMessage(random("I want you to place the book on a table ", "You should place the book on a table "));
+    sendMessage(random("It has to stand up ", "It should be standing up "));
     sendMessage(random("Then I want you to tilt the book and aim for your %Balls%", "Then you\'re going to aim for your %Balls% and tilt the book") + " %Moan%");
     sendMessage(random("To be precise I want you to hit your precious %Balls%", "You\'re gonna hit your %Balls%"));
     sendMessage(falls + " times");
@@ -270,15 +275,15 @@ function punishFlickCBT(bodyPart, multiplier = 1) {
 function punishBustBalls(hand = true, multiplier = 1) {
     let implement = 'hand';
 
-    if(!hand) {
+    if (!hand) {
         implement = fetchSpankingImplement();
     }
 
-    sendMessage('Get ready to bust ' + returnYourOrMy()+ ' %Balls% %SlaveName%');
+    sendMessage('Get ready to bust ' + returnYourOrMy() + ' %Balls% %SlaveName%');
     const hits = getVar(VARIABLE_SUB_PAIN_TOLERANCE);
     let completedInTime = false;
     while (!completedInTime) {
-        sendMessage('Hit them hard ' + hits*multiplier + ' times');
+        sendMessage('Hit them hard ' + hits * multiplier + ' times');
         let answer = sendInput(random('Let me know when you\'re done', 'Inform me when you\'re done') + ' %SlaveName%', 45);
         while (true) {
             if (answer.isTimeout()) {
@@ -326,12 +331,12 @@ function punishRubberbandCBT(bodyPart, multiplier = 1) {
 
     sendMessage(random("This is fairly simple", "This is gonna be quite simple", "You shouldn\'t find this too difficult"));
 
-    let hits = VARIABLE_SUB_PAIN_TOLERANCE * multiplier;
+    let hits = getVar(VARIABLE_SUB_PAIN_TOLERANCE) * multiplier;
 
     switch (bodyPart) {
         case BODY_PART_PENIS_SHAFT:
             //more if it is not the head because the head is the most vulnerable
-            hits += VARIABLE_SUB_PAIN_TOLERANCE;
+            hits += getVar(VARIABLE_SUB_PAIN_TOLERANCE);
             sendMessage(random("Hold it close to your penis shaft", "You are gonna hold it close to your penis shaft"));
             break;
         case BODY_PART_PENIS_HEAD:
@@ -339,7 +344,7 @@ function punishRubberbandCBT(bodyPart, multiplier = 1) {
             break;
         case BODY_PART_BALLS:
             //More if it is not the head because the head is the most vulnerable
-            hits += VARIABLE_SUB_PAIN_TOLERANCE;
+            hits += getVar(VARIABLE_SUB_PAIN_TOLERANCE);
             sendMessage(random("Hold it close to your %Balls%", "You are gonna hold it close to your %Balls%"));
             break;
     }
@@ -394,6 +399,15 @@ function askForCBTPain(bodyPart) {
 }
 
 function askCockPain() {
+    acheCockCounter++;
+
+    //Skip asking until we skipped at least once and we are hitting this random chance
+    if (acheCockCounter < 2 || !isChance(acheCockCounter * 25)) {
+        return true;
+    }
+
+    acheCockCounter = 0;
+
     const answer = sendInput(random('Is it ' + random('sore', 'hurting') + ' yet?', 'Does it ' + random('hurt', 'ache', 'burn') + ' yet?'));
     while (true) {
 
@@ -411,6 +425,15 @@ function askCockPain() {
 }
 
 function askBallPain() {
+    acheBallCounter++;
+
+    //Skip asking until we skipped at least once and we are hitting this random chance
+    if (acheBallCounter < 2 || !isChance(acheBallCounter * 25)) {
+        return true;
+    }
+
+    acheBallCounter = 0;
+
     const answer = sendInput(random('Are they ' + random('blue', 'sore', 'purple', 'hurting') + ' yet?', random('Does it ', 'Do they ') + random('hurt', 'ache', 'burn') + ' yet?'));
     while (true) {
 

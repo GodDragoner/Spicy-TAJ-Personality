@@ -42,7 +42,11 @@ function feelsLikePunishingSlave() {
         chance = (getStrictnessForCharacter() + 1) * 30;
     }
 
-    return getVar(VARIABLE_PUNISHMENT_POINTS) >= 250 || isChance(chance);
+    if(getVar(VARIABLE_PUNISHMENT_POINTS) >= 250) {
+        chance += 50;
+    }
+
+    return isChance(chance);
 }
 
 //Annoyed by too many questions  etc.

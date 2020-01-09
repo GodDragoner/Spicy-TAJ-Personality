@@ -66,6 +66,7 @@ run("Rules/DynamicRules.js");
 
 run("Session/Modules/Games/Games.js");
 
+run("Dungeon/Punishments/PunishmentBuilder.js");
 
 //Update devotion only if the setup is complete which means the variable must exist
 if(isVar("subDevotion")) {

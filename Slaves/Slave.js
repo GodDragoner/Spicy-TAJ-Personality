@@ -79,6 +79,10 @@ function decideStopKneeling() {
     return false;
 }
 
+function playRandomSissyHypno() {
+    playVideo('Videos/Spicy/Modules/Sissy/Brainwash/*.mp4', true);
+}
+
 function addPunishmentPoints(amount) {
     const points = getVar(VARIABLE_PUNISHMENT_POINTS);
 
@@ -86,6 +90,7 @@ function addPunishmentPoints(amount) {
 
     //We don't want any "last change" edit nor multiplier
     if(amount < 0) {
+        sendDebugMessage('Subtracting ' + amount + ' punishment points');
         setVar(VARIABLE_PUNISHMENT_POINTS, Math.max(0, points + amount));
         return;
     }

@@ -37,7 +37,7 @@ function doRubberbandPunishment(multiplier = 1) {
         sendMessage("Again as far back as it goes"); //#DT4
         sendMessage("You may aim wherever you choose as long as you're aiming for a part of the butt cheek"); //#DT4
 
-        sendMessage('Let\'s get get started %Grin%', 3);
+        sendMessage('Let\'s get started %Grin%', 3);
 
         let strikes = randomInteger(20, 40) * multiplier;
 
@@ -82,7 +82,12 @@ function doRubberbandPunishment(multiplier = 1) {
 
 function doSpankingPunishment(multiplier = 1) {
     const implement = fetchSpankingImplement();
-    sendMessage('Let\'s get get started %Grin%');
+
+    if(isHandPalm(implement)) {
+        sendMessage('You are just gonna use your ' + implement + ' for this spanking');
+    }
+
+    sendMessage('Let\'s get started %Grin%');
 
     //TODO: SOUND: Voice commands etc.?
     sendMessage('I want you to ' + random('kneel', 'bend over a chair', 'stand') + ' for this');

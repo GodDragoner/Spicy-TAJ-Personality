@@ -13,6 +13,48 @@ if (tryRunPunishmentFetchId(MODULE_LINE_WRITING)) {
     sendMessage("And ohh...");
     sendMessage("Its gonna cost you 10 gold and the punishment prolongs");
     sendMessage("Enjoy!");
+
+    let donetime = setDate();
+    donetime.addSecond(randomInteger(3*60, 5*60));
+
+    while (!(donetime.hasPassed())) {
+        showImage("Images/Spicy/Punishment/Grounding/BlackBase.*");
+        sleep(randomInteger(3, 30));
+
+        const number = randomInteger(1, 9);
+
+        showImage("Images/Spicy/Punishment/Grounding/Numbers/Black" + number + ".*", 1);
+
+        //Here to prompt an answer or does that hint too much?
+        let answer = createInput(5);
+
+        while (true) {
+            if (answer.isTimeout()) {
+                sendMessage("Took you too long...");
+                showImage("Images/Spicy/Punishment/Grounding/BlackBase.*");
+                changeMeritLow(true);
+                addGold(-10);
+                donetime = donetime.addSecond(randomInteger(60, 180));
+                break;
+            } else {
+                if (answer.isInteger()) {
+                    if (answer.getInteger() == number) {
+                        sendMessage("Correct");
+                        showImage("Images/Spicy/Punishment/Grounding/BlackBase.*");
+                        break;
+                    }
+                }
+
+                //Either wrong integer or no integer
+                sendMessage("Wrong... You were supposed to write " + number + "...");
+                showImage("Images/Spicy/Punishment/Grounding/BlackBase.*");
+                changeMeritLow(true);
+                addGold(-10);
+                donetime = donetime.addSecond(randomInteger(60, 180));
+                break;
+            }
+        }
+    }
     /*
     case 1 :
         sendMessage("Just a minute.."); //#DT4

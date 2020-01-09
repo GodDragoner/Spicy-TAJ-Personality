@@ -34,7 +34,7 @@ function putInInflatablePlug() {
         sendMessage('And now put it in %SlaveName%');
         sendMessage('Tell me when you are done');
         waitForDone();
-        setVar(VARIABLE_IS_PLUGGED, true);
+        setTempVar(VARIABLE_IS_PLUGGED, true);
 
         return true;
     }

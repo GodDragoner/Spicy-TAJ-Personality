@@ -39,12 +39,14 @@ function interactWithRandomToys() {
     let allowPain = true;
 
     //No random pain toys if we are just doing an easy punishment
-    if(punishment && PUNISHMENT_CURRENT_LEVEL === PUNISHMENT_LEVEL_EASY && PUNISHMENT_OVERALL_LEVEL === PUNISHMENT_LEVEL_EASY) {
+    if (punishment && PUNISHMENT_CURRENT_LEVEL === PUNISHMENT_LEVEL_EASY && PUNISHMENT_OVERALL_LEVEL === PUNISHMENT_LEVEL_EASY) {
         allowPain = false;
     }
 
     //TODO: Could interact with buy new toys or fetish questions and better transition between different toys (additionally why not do this... etc.)
-    if (isChance(Math.max(25, getVar(VARIABLE_ASS_LEVEL, 0)) * 4) && getAnalLimit() === LIMIT_ASKED_YES) {
+    if ((BUTTPLUG_TOY.isPunishmentAllowed() || !punishment && BUTTPLUG_TOY.isPlayAllowed()) && getAnalLimit() === LIMIT_ASKED_YES) {
+        if (isChance(Math.max(25, getVar(VARIABLE_ASS_LEVEL, 0)) * 4)) {
+        }
         let action = shouldIncreasePlugSize();
 
         if (action === ACTION_BUTTPLUG_INCREASE_SIZE) {
@@ -63,8 +65,9 @@ function interactWithRandomToys() {
         }
     }
 
+
     //TODO: Better decision?
-    if (!COLLAR_TOY.isToyOn() && isChance(20)) {
+    if (COLLAR_TOY.hasToy() && !COLLAR_TOY.isToyOn() && isChance(20)) {
         putOnCollar();
     }
 
@@ -90,7 +93,7 @@ function interactWithRandomToys() {
             distributeClamps(toDistribute);
         }
 
-        if(NIPPLE_CLAMPS.isToyOn() && isChance(25)) {
+        if (NIPPLE_CLAMPS.isToyOn() && isChance(25)) {
             removeNippleClamps();
         }
     }
@@ -288,6 +291,14 @@ function createToy(name) {
             return 'toy' + name.replace(/ /g, "");
         },
 
+        wasUsedInActiveContext: function () {
+            return getVar(this.getVarName() + 'Used', false);
+        },
+
+        setUsedInActiveContext: function (used) {
+            return setTempVar(this.getVarName() + 'Used', used);
+        },
+
         isToyOn: function () {
             return getVar(this.getVarName() + 'on', false);
         },
@@ -328,11 +339,11 @@ function createToy(name) {
         },
 
         decideToyOn: function (asked = false) {
-            if(this.isToyOn()) {
+            if (this.isToyOn()) {
                 return false;
             }
 
-            if(!this.getLastRemoval().addMinute(DEFAULT_TOY_COOLDOWN_MINUTES).hasPassed()) {
+            if (!this.getLastRemoval().addMinute(DEFAULT_TOY_COOLDOWN_MINUTES).hasPassed()) {
                 return false;
             }
 
@@ -340,11 +351,11 @@ function createToy(name) {
         },
 
         decideToyOff: function (asked = false) {
-            if(!this.isToyOn()) {
+            if (!this.isToyOn()) {
                 return false;
             }
 
-            if(!this.getLastUsage().addMinute(DEFAULT_TOY_COOLDOWN_MINUTES).hasPassed()) {
+            if (!this.getLastUsage().addMinute(DEFAULT_TOY_COOLDOWN_MINUTES).hasPassed()) {
                 return false;
             }
 
