@@ -216,10 +216,12 @@ function putInGag(gagType = GAG_TYPE_BALL_GAG, addPinToTongue = false) {
 
 //TODO: Supply reason why to remove so teasing can be done like (Remove the gag, I want your mouth free for what's about to come next)
 function removeGag() {
+    let clampOnTongue = false;
     if (BODY_PART_TONGUE.currentClamps > 0) {
         sendMessageBasedOnSender('%SlaveName%');
         sendMessageBasedOnSender('Remove all clamps from your tongue %EmoteHappy%', 5);
         BODY_PART_TONGUE.currentClamps = 0;
+        clampOnTongue = true;
     }
 
     sendMessageBasedOnSender("%SlaveName% go ahead and remove that gag from your mouth");
@@ -238,6 +240,13 @@ function removeGag() {
 
     sendMessageBasedOnSender("Put the gag aside for now");
     setGaged(false);
+
+    //TODO: Implement but make sure to check if mouth is needed afterwards
+    /*if(feelsLikePunishingSlave()) {
+        sendAlreadyKnowWhatsNext('clamp', 'tongue');
+        putClampsOnOneSide(1, BODY_PART_TONGUE);
+        sendMessage('Did you you really think that I was gonna remove it from your tongue alongside the gag? Poor %SlaveName%');
+    }*/
 }
 
 function isGagPlay() {

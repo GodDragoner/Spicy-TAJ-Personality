@@ -35,14 +35,5 @@ run('Session/Modules/Humiliation/Dynamic/AnalHumiliation.js');
 appendPenetratingSession('dildo');*/
 //Reduce punishment point multiplier each day if the change would be negative
 
-{
-    let ppMultiplier = getPunishmentPointMultiplierChange();
-    sendDebugMessage('PP Mutliplier change is ' + ppMultiplier);
-
-    if (ppMultiplier < 0) {
-        let currentMult = getVar(VARIABLE_PUNISHMENT_POINT_MULTIPLIER, 1);
-        sendDebugMessage('Reducing pp multiplier from ' + currentMult);
-        setPunishmentPointMultiplier(currentMult - ppMultiplier);
-        sendDebugMessage('To ' + getVar(VARIABLE_PUNISHMENT_POINT_MULTIPLIER, 1))
-    }
-}
+BUTTPLUG_TOY.askForToyAndUsage(true);
+COLLAR_TOY.askForToyAndUsage(true);

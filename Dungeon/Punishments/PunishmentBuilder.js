@@ -39,6 +39,12 @@ function startPunishmentSession(overallLevel) {
             break;
     }
 
+    sleep(3);
+
+    if(!sendGreeting()) {
+        //TODO: Punish
+    }
+
     PUNISHMENT_SCORE = (overallLevel.id + 1)*3;
 
     while (PUNISHMENT_SCORE > 0) {
@@ -78,6 +84,10 @@ function startPunishmentSession(overallLevel) {
         runPunishment(PUNISHMENT_CURRENT_LEVEL);
         subtractPunishmentPointsForPunishment(PUNISHMENT_CURRENT_LEVEL);
     }
+
+    //TODO: More variety
+    sendMessage('I think that should be sufficient for now %Grin%');
+    sendMessage('You hopefully learned your lesson %SlaveName%');
 
     setSender(1);
     setVar(VARIABLE_PUNISHMENT_ACTIVE, false);

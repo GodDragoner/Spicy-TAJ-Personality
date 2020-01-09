@@ -575,6 +575,7 @@ function loadButtplugs() {
             let tail = false;
             let crystal = false;
             let material = MATERIAL_SILICON;
+            let tbase = false;
 
             for (let y = 0; y < splitArray.length; y++) {
                 let valueEntry = splitArray[y];
@@ -597,6 +598,8 @@ function loadButtplugs() {
                     crystal = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
                 } else if (valueEntry.indexOf('material:') !== -1) {
                     material = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                } else if (valueEntry.indexOf('tbase:') !== -1) {
+                    tbase = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
                 }
             }
 
@@ -609,7 +612,8 @@ function loadButtplugs() {
                 material: material,
                 hollow: hollow,
                 tail: tail,
-                crystal: crystal
+                crystal: crystal,
+                tbase: tbase
             };
             buttplugs.push(buttplug);
 
@@ -648,6 +652,10 @@ function buttplugToString(buttplug) {
 
     if (buttplug.crystal) {
         string += ',crystal:' + buttplug.crystal;
+    }
+
+    if (buttplug.tbase) {
+        string += ',tbase:' + buttplug.tbase;
     }
 
     return string;
@@ -788,8 +796,9 @@ function setupNewButtplug() {
     let tail = false;
     let crystal = false;
     let hollow = false;
+    let tbase = false;
 
-    sendVirtualAssistantMessage('Is there anything else special about it? (Textured, Tail, Hollow, Vibrating, Crystal)', 0);
+    sendVirtualAssistantMessage('Is there anything else special about it? (Textured, Tail, Hollow, Vibrating, Crystal, T-Base)', 0);
     answer = createInput();
 
     while (true) {
@@ -877,6 +886,22 @@ function setupNewButtplug() {
                 }
             }
 
+            sendVirtualAssistantMessage('Does it have a "T" based base instead of a round one?', 0);
+            answer = createInput();
+
+            while (true) {
+                if (answer.isLike("yes")) {
+                    tbase = true;
+                    sendVirtualAssistantMessage('This is great for long term wearing %Grin%');
+                    break;
+                } else if (answer.isLike("no")) {
+                    break;
+                } else {
+                    sendVirtualAssistantMessage(YES_OR_NO);
+                    answer.loop();
+                }
+            }
+
             sendVirtualAssistantMessage('Finishing setup...');
             break;
         } else if (answer.isLike("no")) {
@@ -899,7 +924,8 @@ function setupNewButtplug() {
         material: material,
         hollow: hollow,
         tail: tail,
-        crystal: crystal
+        crystal: crystal,
+        tbase: tbase
     };
 
     buttplugs.push(buttplug);

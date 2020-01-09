@@ -25,7 +25,6 @@ if (tryRunPunishmentFetchId(MODULE_LINE_WRITING)) {
 
         showImage("Images/Spicy/Punishment/Grounding/Numbers/Black" + number + ".*", 1);
 
-        //Here to prompt an answer or does that hint too much?
         let answer = createInput(5);
 
         while (true) {

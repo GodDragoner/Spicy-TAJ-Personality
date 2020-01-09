@@ -182,7 +182,7 @@ function goToCorner(durationSeconds) {
 
     let onToes = isChance(50);
 
-    let countHeelsTouch = feelsEvil();
+    let countHeelsTouch = feelsEvil() && onToes;
 
     if(onToes) {
         sendMessage("I want you standing on your tip toes");
@@ -190,7 +190,7 @@ function goToCorner(durationSeconds) {
 
         if(countHeelsTouch) {
             sendMessage("I want you to count every time your heel strikes the floor or you loose your balance...");
-            sendMessage("If both heels strikes at the same time it counts as two! ");
+            sendMessage("If both heels strikes at the same time it counts as two!");
         }
 
         if(voiceCommands) {

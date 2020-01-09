@@ -103,6 +103,11 @@ function registerBodyPart(name, maxClamps, side = NONE) {
                 return !NIPPLE_CLAMPS.isToyOn();
             }
 
+            //No tongue clip while ball gag
+            if(this === BODY_PART_TONGUE && isGaged() && currentGagType !== GAG_TYPE_SPIDER_GAG) {
+                return false;
+            }
+
             //Do not check for max clamps here because we might want to handle that individually
 
             return this;

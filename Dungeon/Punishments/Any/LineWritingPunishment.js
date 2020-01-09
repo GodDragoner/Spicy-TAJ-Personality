@@ -14,7 +14,7 @@
 
         let sentences = [];
 
-        sentences.push("I need to be on my very best behaviour and I owe it to my %DomHonorific% to try much hard",
+        sentences.push("I need to be on my very best behaviour and I owe it to my %DomHonorific% to try much harder",
             "I'm in need of constant discipline, even a short moment without and I cannot comprehend the dire consequences",
             "I dream of the day where I will be placed in a chastity belt, knowing that in just a moment the key will be destroyed",
             "I have been bad and this is my punishment, wasting time, doing nothing constructive or anything recreational",
@@ -25,8 +25,8 @@
             "I will never stop serving, I will never be free, I am not equal to women nor real men",
             "I wake up, I serve, I serve some more, I sleep. Horny...",
             "I love it when my cock is finally granted attention, being bad doesn't make that happen.",
-            "I need to stop being bad because it means I won't have much playtime with HER cock.",
-            "I need to realize this isn't about me, it's about making her happy.");
+            "I need to stop being bad because it means I won't have much playtime with HER cock",
+            "I need to realize this isn't about me, it's about making her happy");
 
 
 
@@ -54,7 +54,7 @@
                 run("Dungeon/PunishmentBase.js");
                 break;
             } else {
-                sendMessage("Oh %SlaveName% " + random("thats so true", "I agree", "you're soo right!", "for once I think you understand %Grin%"));
+                sendMessage("Oh %SlaveName% " + random("that's so true", "I agree", "you're soo right!", "for once I think you understand %Grin%"));
             }
         }
 

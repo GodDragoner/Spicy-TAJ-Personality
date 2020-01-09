@@ -8,7 +8,7 @@ function introduceLineWriting(line, times, tries, first = false) {
     sendMessage('"' + line + '"', 0);
 
     sendMessage ("And be careful " + random("get it wrong ","fuck it up ", "screw it up ", "make a mistake ") + tries + " times and you'll fail");
-    sendMessage('You get ' + tries + ' tries and have to write it ' + times + ' times');
+    //sendMessage('You get ' + tries + ' tries and have to write it ' + times + ' times');
     return startLineWriting(line, times, tries);
 }
 

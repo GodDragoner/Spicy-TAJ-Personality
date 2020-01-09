@@ -94,6 +94,8 @@
         } else {
             sendVirtualAssistantMessage('Well then you can\'t do anything different here right now');
         }
+    } else {
+        sendVirtualAssistantMessage('You aren\'t even in chastity %SlaveName%. I don\'t know what you could be looking for')
     }
 
 }

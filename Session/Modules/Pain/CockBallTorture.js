@@ -6,6 +6,7 @@ function decideCBTPunishment(bodyParts, lastInteger = -1) {
     while (true) {
         let newTask = randomInteger(0, 5);
 
+        //TODO: More history
         //Do not repeat same task twice in a row
         if (newTask === lastInteger) {
             continue;
