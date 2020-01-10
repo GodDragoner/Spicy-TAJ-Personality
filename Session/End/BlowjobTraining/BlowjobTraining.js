@@ -4,7 +4,7 @@
     } else {
         //By default we want to send a new assignment
         let completedExercise = true;
-        if (getVar(VARIABLE_BLOWJOB_TRAININGS_DONE, 0) == 0) {
+        if (getVar(VARIABLE_BLOWJOB_TRAININGS_DONE, 0) === 0) {
             firstTimeBlowjobTraining();
         } else if (checkBlowjobExercise()) {
 

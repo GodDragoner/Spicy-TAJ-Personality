@@ -6,13 +6,13 @@
 
 function findLinkAndRun() {
     if(isInChastity()) {
-        sendDebugMessage('Running chastity link');
+        sendDebugMessage('Trying to run chastity link');
 
         setTempVar('minLinksSinceRun', neutralLinkAmount + chastityLinkAmount);
 
         run(random('Session/Link/Module/Neutral/*.js', 'Session/Link/Module/Chastity/*.js'));
     } else {
-        sendDebugMessage('Running non chastity link');
+        sendDebugMessage('Trying to run non chastity link');
 
         setTempVar('minLinksSinceRun',  neutralLinkAmount + nonChastityLinkAmount);
 

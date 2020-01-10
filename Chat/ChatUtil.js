@@ -1,6 +1,8 @@
 const YES_OR_NO = "Yes or no?";
 const TAJ_CHAT_HANDLER = Java.type('me.goddragon.teaseai.api.chat.ChatHandler');
-const DEBUG_MODE = true;
+const LOGGER = Java.type('me.goddragon.teaseai.utils.TeaseLogger');
+const LOGGER_LEVEL = Java.type('java.util.logging.Level');
+const DEBUG_MODE = 0;
 
 const SENDER_TAJ = 1;
 const SENDER_ASSISTANT = 0;
@@ -12,8 +14,18 @@ const ANSWER_TIMEOUT = 2;
 let CURRENT_SENDER = SENDER_TAJ;
 
 function sendDebugMessage(message) {
-    if (DEBUG_MODE) {
-        sendVirtualAssistantMessage(message, false, true);
+    switch(DEBUG_MODE) {
+        //Chat and log mode
+        case 0:
+            sendDebugMessage(message, false, true);
+            break;
+            //Log mode only
+        case 1:
+            LOGGER.getLogger().log(LOGGER_LEVEL.INFO, message)
+            break;
+            //No debug at all
+        default:
+            break;
     }
 }
 

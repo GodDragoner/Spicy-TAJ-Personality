@@ -24,7 +24,7 @@
             getVar(VARIABLE_DEVOTION)/(strokeFrequency + 1);
         }
 
-        sendDebugMessage('Min time passed: ' + minTimePassed);
+        sendDebugMessage('Min time between stroking passed: ' + minTimePassed);
 
         //Some stroking sometimes
         if((!isVar('lastStrokingPause') || getVar('lastStrokingPause').addMinute(minTimePassed).hasPassed())) {
@@ -33,7 +33,7 @@
                 let strictness = getStrictnessForCharacter() + 1;
                 let minutesToStroke = Math.round((180 - mood*mood*strictness)/60);
 
-                sendDebugMessage('Start of stroking interval');
+                sendDebugMessage('Start of stroking interval for ' + minutesToStroke);
 
                 startStrokeInterval(randomInteger(Math.max(1, minutesToStroke - 1), minutesToStroke));
 
@@ -43,7 +43,7 @@
                 let strictness = getStrictnessForCharacter() + 1;
                 let iterationsToTease = 26 - mood*strictness*2;
 
-                sendDebugMessage('Start of teasing interval');
+                sendDebugMessage('Start of teasing interval for ' + iterationsToTease + ' iterations');
 
                 for (let x = 0; x < randomInteger(Math.round(iterationsToTease/2), iterationsToTease); x++) {
                     run("Stroking/Taunt/Chastity/BasicChastityTaunts.js");
@@ -143,7 +143,7 @@
             runModuleCategory(CATEGORY_HUMILATION);
         }
 
-        sendDebugMessage('Running link');
+        sendDebugMessage('Trying to run link');
         run("Session/Link/Module/DecideLink.js");
     }
 

@@ -55,8 +55,8 @@ function stopStrokingMessage() {
 
         sendMessage(findRandomUnusedElement(answers, createHistory('stopStroking')), 0);
     }
-    setAudioBlocked(false);
 
+    setAudioBlocked(false);
 
     if (isChance(80) && !isInChastity()) {
         playSound("Audio/Spicy/Stroking/StopStroking/*.mp3");
@@ -200,7 +200,7 @@ function sendStrokeTaunts(durationSeconds, nextInstruction) {
                 sendNewStrokeInstruction();
             }
 
-            nextInstruction = randomInteger(30, 90);
+            nextInstruction = randomInteger(50, 90);
         }
 
         iterationsToGo--;

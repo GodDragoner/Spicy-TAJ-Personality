@@ -90,7 +90,7 @@ function getMinChastitySize() {
 }
 
 function findAvailableClosestToSize(length) {
-    sendDebugMessage('Searching for chastity with length: ' + length);
+    sendDebugMessage('Searching for cage with length: ' + length);
     //let currentCage = null;
 
     //Negative if size < found size and positive if size > found size

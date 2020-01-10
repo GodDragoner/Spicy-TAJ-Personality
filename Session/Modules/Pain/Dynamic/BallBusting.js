@@ -229,7 +229,7 @@
                 */
             }
 
-            sendMessage('I guess we are done with %MyBalls% %Balls% for now');
+            sendMessage('I guess ' + random('we are', 'I am') + ' done with %MyBalls% %Balls% for now');
             sendMessage('But that doesn\'t means I won\'t touch them for today anymore %Grin%')
         }
     }

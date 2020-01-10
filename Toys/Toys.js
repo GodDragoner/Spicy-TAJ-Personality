@@ -406,7 +406,7 @@ function createToy(name) {
             }
 
             //Sub disabled this toy
-            if (getVar(variableName, false)) {
+            if (!getVar(variableName, false)) {
                 return;
             }
 

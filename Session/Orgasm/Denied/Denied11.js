@@ -114,7 +114,7 @@
             sendMessage("Aww poor %SlaveName% - you thought you were going to get to cum...");
             sendMessage("Well... maybe next time %EmoteHappy%");
         } else {
-            sendMessage("And you know what, that exactly the way I like it");
+            sendMessage("And you know what, that\'s exactly the way I like it");
             sendMessage("Yes, that means I\'ve changed my mind about letting you cum");
             sendMessage("So I\'m going to make you edge one more time, but you\'re not going to cum");
             startEdging(getEdgeHoldSeconds());

@@ -35,5 +35,9 @@ run('Session/Modules/Humiliation/Dynamic/AnalHumiliation.js');
 appendPenetratingSession('dildo');*/
 //Reduce punishment point multiplier each day if the change would be negative
 
+/*
 sendVirtualAssistantMessage(random("Launching", "Initiating", "Starting", "Establishing") + " session with Mistress");
 run("Session/StartSession.js");
+ */
+
+BUTTPLUG_TOY.askForToyUsage(true);

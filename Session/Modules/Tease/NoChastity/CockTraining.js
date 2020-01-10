@@ -15,7 +15,7 @@ if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_STROKING)) {
         }
     } else {
         sendMessage("Okay %SlaveName%");
-        if (getVar(VARIABLE_STROKE_TRAININGS_DONE, 0) != 0) {
+        if (getVar(VARIABLE_STROKE_TRAININGS_DONE, 0) > 0) {
             sendMessage("I think it's time for some stroke training again %EmoteHappy%")
         }
     }
@@ -94,8 +94,12 @@ function startStrokeTraining() {
         }
 
         timeToIncreaseLevel = getVar('timeToIncreaseLevel');
+        let increaseLevelMax = 20;
 
-        if (timeToIncreaseLevel >= 50) {
+        timeToIncreaseLevel += randomInteger(0, 10);
+        setTempVar('timeToIncreaseLevel', timeToIncreaseLevel);
+
+        if (timeToIncreaseLevel >= increaseLevelMax) {
             timeToIncreaseLevel = 0;
             setTempVar('timeToIncreaseLevel', timeToIncreaseLevel);
 
@@ -110,10 +114,7 @@ function startStrokeTraining() {
 
         playRandomStrokeTrainingBeat(level);
 
-        timeToIncreaseLevel += randomInteger(0, 10);
-        setTempVar('timeToIncreaseLevel', timeToIncreaseLevel);
-
-        sendDebugMessage('New time to increase stroke training level: ' + getVar('timeToIncreaseLevel') + '/50');
+        sendDebugMessage('New time to increase stroke training level: ' + getVar('timeToIncreaseLevel') + '/' + increaseLevelMax);
 
         if((getVar(VARIABLE_STROKE_TRAINING_EDGES_DONE) !== edgesAtStart || !getVar(VARIABLE_STROKE_TRAINING_ACTIVE, false))) return;
         showTeaseImage(randomInteger(5, 10));
