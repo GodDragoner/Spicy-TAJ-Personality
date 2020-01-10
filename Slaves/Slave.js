@@ -95,13 +95,13 @@ function addPunishmentPoints(amount) {
         return;
     }
 
-    sendDebugMessage('Adding ' + amount + " punishment points");
+    sendDebugMessage('About to add ' + amount + " punishment points");
 
     //TODO: Base on amount of recent pp too?
     if(isVar(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE)) {
         multiplier = getVar(VARIABLE_PUNISHMENT_POINT_MULTIPLIER);
 
-        sendDebugMessage('Base multiplier is ' + multiplier);
+        sendDebugMessage('Base pp multiplier is ' + multiplier);
 
 
         /*let minuteMultipliers = [2, 4, 6];
@@ -148,13 +148,13 @@ function addPunishmentPoints(amount) {
 
     setVar(VARIABLE_PUNISHMENT_POINTS, Math.max(0, points + amount*multiplier));
 
-    sendDebugMessage('Adding (multiplier) ' + (amount*multiplier) + " punishment points");
+    sendDebugMessage('Adding (with multiplier) ' + (amount*multiplier) + " punishment points");
 }
 
 function setPunishmentPointMultiplier(multiplier) {
     multiplier = Math.min(3, Math.max(0.5, multiplier));
 
-    sendDebugMessage('New multiplier is ' + multiplier);
+    sendDebugMessage('New pp multiplier is ' + multiplier);
 
     //Update new multiplier
     setVar(VARIABLE_PUNISHMENT_POINT_MULTIPLIER, multiplier);
@@ -165,10 +165,14 @@ function getPunishmentPointMultiplierChange() {
     let mood = getMood();
     let hoursSinceLastChange = Math.floor((new Date().getTime() - getDate(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE).getTimeInMillis())/(1000*60*60));
     let maxSubtraction = -0.25;
+    let baseLevel = 0.1*(mood*getStrictnessForCharacter() + 10);
+    let subtractLevel = 0.1*hoursSinceLastChange/(Math.max(1, getStrictnessForCharacter()) + 1);
 
-    sendDebugMessage('Hours since last change ' + hoursSinceLastChange);
+    sendDebugMessage('Hours since last pp multiplier change ' + hoursSinceLastChange);
+    sendDebugMessage('Base multiplier level is '  + baseLevel);
+    sendDebugMessage('Subtract multiplier level is ' + subtractLevel);
 
-    return Math.max(maxSubtraction, 0.1*(mood*getStrictnessForCharacter() + 10) - 0.1*hoursSinceLastChange/(Math.max(1, getStrictnessForCharacter()) + 1));
+    return Math.max(maxSubtraction, baseLevel - subtractLevel);
 }
 
 function addGold(amount) {

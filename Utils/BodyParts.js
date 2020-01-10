@@ -17,8 +17,10 @@ const BODY_PART_EAR_L = registerTwosidedBodyPart("ear", 3);
 const BODY_PART_EAR_R = BODY_PARTS[currentBodyPartId - 1];
 
 function registerTwosidedBodyPart(name, maxClamps) {
-    registerBodyPart(name, maxClamps, RIGHT);
-    return registerBodyPart(name, maxClamps, LEFT);
+    let rightPart = registerBodyPart(name, maxClamps, RIGHT);
+    registerBodyPart(name, maxClamps, LEFT);
+
+    return rightPart;
 }
 
 function registerBodyPart(name, maxClamps, side = NONE) {

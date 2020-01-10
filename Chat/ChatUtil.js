@@ -53,6 +53,20 @@ function sendMessageBasedOnSender(message, secondsToWait = undefined, skipImage 
     }
 }
 
+function sendDebugMessage(message) {
+    let textName = new javafx.scene.text.Text("[Debug]: ");
+    textName.setFill(javafx.scene.paint.Color.POWDERBLUE);
+    textName.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.BOLD, 14));
+
+    message = replaceVocab(message);
+    let text = new javafx.scene.text.Text(message);
+    text.setFill(javafx.scene.paint.Color.POWDERBLUE);
+    text.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.MEDIUM, 13));
+
+    //test below to see if tts is supported and sendmessage can be swapped for sendcustom message
+    sendCustomMessage(textName, text);
+}
+
 function sendVirtualAssistantMessage(message, wait, skipImage) {
     let textName = new javafx.scene.text.Text("[Vivienne]: ");
     textName.setFill(javafx.scene.paint.Color.ROYALBLUE);

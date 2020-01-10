@@ -75,7 +75,7 @@
                         sendVirtualAssistantMessage('Okay then %SlaveName%');
                         unlockChastityKey();
 
-                        sendVirtualAssistantMessage('Now do whatever you want to do...');
+                        sendVirtualAssistantMessage('Now do wPPhatever you want to do...');
                         setVar(VARIABLE_CHASTITY_ON, false);
                         sendVirtualAssistantMessage('Mind this has consequences!');
                         addPunishmentPoints(250);
