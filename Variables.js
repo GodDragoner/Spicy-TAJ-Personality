@@ -3,6 +3,9 @@ const VARIABLE_CHASTITY_ON = "chastityOn";
 const VARIABLE_CHASTITY_CAGE_ON_TYPE = "chastityCageOnType";
 
 
+const VARIABLE_SPICY_VERSION = "latestVersion";
+
+
 const VARIABLE_LINGERIE_ON = "lingerieOn";
 
 const VARIABLE_SLAVE_TYPE = "slaveType";

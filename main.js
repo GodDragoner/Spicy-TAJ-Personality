@@ -20,9 +20,12 @@ sendSystemMessage("Launching Spicy " + getVar("personalityVersion"));
 run("Utils/RandomUtils.js");
 run("Utils/StringUtils.js");
 run("Utils/BodyParts.js");
-run("Utils/GoldUtils.js")
-run("Utils/TAJUtils.js")
-run("Utils/LegacyUtils.js")
+run("Utils/GoldUtils.js");
+run("Utils/TAJUtils.js");
+run("Utils/LegacyUtils.js");
+
+run("Startup/Versioning/VersionChecker.js");
+
 run("Session/Tasks.js");
 run("Startup/UpdateVariables.js");
 run("Stroking/Stroke.js");
@@ -67,6 +70,8 @@ run("Rules/DynamicRules.js");
 run("Session/Modules/Games/Games.js");
 
 run("Dungeon/Punishments/PunishmentBuilder.js");
+
+
 
 //Update devotion only if the setup is complete which means the variable must exist
 if(isVar("subDevotion")) {

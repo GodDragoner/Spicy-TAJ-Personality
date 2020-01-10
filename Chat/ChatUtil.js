@@ -2,7 +2,7 @@ const YES_OR_NO = "Yes or no?";
 const TAJ_CHAT_HANDLER = Java.type('me.goddragon.teaseai.api.chat.ChatHandler');
 const LOGGER = Java.type('me.goddragon.teaseai.utils.TeaseLogger');
 const LOGGER_LEVEL = Java.type('java.util.logging.Level');
-const DEBUG_MODE = 0;
+const DEBUG_MODE = 1;
 
 const SENDER_TAJ = 1;
 const SENDER_ASSISTANT = 0;
@@ -17,7 +17,7 @@ function sendDebugMessage(message) {
     switch(DEBUG_MODE) {
         //Chat and log mode
         case 0:
-            sendDebugMessage(message, false, true);
+            sendDebugMessageToChat(message, false, true);
             break;
             //Log mode only
         case 1:
@@ -65,7 +65,7 @@ function sendMessageBasedOnSender(message, secondsToWait = undefined, skipImage 
     }
 }
 
-function sendDebugMessage(message) {
+function sendDebugMessageToChat(message) {
     let textName = new javafx.scene.text.Text("[Debug]: ");
     textName.setFill(javafx.scene.paint.Color.POWDERBLUE);
     textName.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.BOLD, 14));
