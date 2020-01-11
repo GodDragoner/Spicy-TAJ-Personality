@@ -167,7 +167,7 @@ function strokeTrainingEdge() {
                 sendMessage(random("I guess I can't expect more from you when you're at level 50 %Lol%", "I suppose I shouldn't expect more since 50 is the very top %Grin%", "Bravo, you reached level 50!", "Good job, you reached level 50!", "Oh my, you reached level 50!"));
                 addMerits(35);
             } else if (getStrictnessForCharacter() == 1) {
-                sendMessage(random("Level 50... Good!", "There is hope for you slave", "You did good %SlaveName", "You should feel a little proud slave"));
+                sendMessage(random("Level 50... Good!", "There is hope for you slave", "You did good %SlaveName%", "You should feel a little proud slave"));
                 addMerits(30);
             } else if (getStrictnessForCharacter() == 2) {
                 sendMessage(random("Well well I suppose that was okay", "Oh wauw you actually went higher than level 20...", "I'm surprised you even lasted for a few minutes..."));

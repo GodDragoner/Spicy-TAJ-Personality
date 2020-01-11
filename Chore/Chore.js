@@ -158,7 +158,7 @@ function runChoreIntroduction() {
 
     sendVirtualAssistantMessage('Notice how 3 rooms have the same number because they were added together...', 0, true);
 
-    sendVirtualAssistantMessage('So how many rooms are you responsible for cleaning in your home?', 0);
+    sendVirtualAssistantMessage('So how many rooms are you responsible for cleaning in your home (including kitchen and bathroom)?', 0);
 
     answer = createInput();
 
@@ -233,6 +233,8 @@ function runChoreIntroduction() {
         } else if(answer.isLike('you')) {
             //Assistant choose
             setVar(VARIABLE_KINKY_CHORE_CHANCE, 11);
+            sendVirtualAssistantMessage('This is gonna be much fun for me %Grin%');
+            break;
         } else {
             sendVirtualAssistantMessage('Please only type a number such as 5...');
             answer.loop();

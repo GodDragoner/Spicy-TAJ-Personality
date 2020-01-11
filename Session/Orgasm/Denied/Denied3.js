@@ -1,6 +1,6 @@
 {
     if (tryRunOrgasmFetchId()) {
-        sendMessage("Edge for me again %Name%");
+        sendMessage("Edge for me again %SlaveName%");
         startEdging();
         sendMessage("%LetEdgeFade%");
         sendMessage("I hope you weren\'t expecting to cum %GeneralTime%");

@@ -21,7 +21,7 @@ function getTrainingEXPForLevel(level) {
 
 function checkTasksInRow(tasks, training) {
     let happy = [
-        'I am very happy %SlaveName',
+        'I am very happy %SlaveName%',
         'You will be pleased to hear this %SlaveName% %Grin%',
         'Looks like the training is working out for you %SlaveName%',
     ];

@@ -121,7 +121,7 @@
 
 function slaveIsBack(tooLate, vacation) {
     if(tooLate) {
-        sendVirtualAssistantMessage(random("You're late!", "You're late %SlaveName","You haven't returned in due time", "I expected you sooner!"));
+        sendVirtualAssistantMessage(random("You're late!", "You're late %SlaveName%","You haven't returned in due time", "I expected you sooner!"));
         sendVirtualAssistantMessage(random("I don't allow for you to be gone longer than permitted!", "You aren't allowed to be gone without proper agreement", "You know the rules!"));
         sendVirtualAssistantMessage(random("I'm giving you punishment points", "I'm assigning you punishment points", "I have to give you punishment points"));
         addPunishmentPoints(150);
