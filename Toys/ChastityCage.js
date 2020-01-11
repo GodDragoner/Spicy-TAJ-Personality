@@ -857,3 +857,13 @@ function fetchChastityCage(toy) {
 function getChastityImagePath(name) {
     return 'Images/Spicy/Toys/Chastity Cages/' + name + '.*';
 }
+
+
+function onChastityKeyReturn() {
+    //TODO: Virtual assistant lockup same as mistress lockup
+    sendVirtualAssistantMessage('Now go ahead and lock yourself back up and tell me when you are ready to continue');
+    waitForDone();
+    lockAwayChastityKey();
+    setVar(VARIABLE_CHASTITY_ON, true);
+    setVar(VARIABLE_WAITING_FOR_CHASTITY_KEY_RETURN, false);
+}
