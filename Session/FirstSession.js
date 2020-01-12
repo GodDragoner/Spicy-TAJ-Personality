@@ -46,7 +46,7 @@
     sendMessage("Others have signed up through Tease-AI");
     sendMessage("Both men and women...");
 
-    lockImages();
+    /*lockImages();
     sendMessage("This is " + SLAVE_F1_NAME, 0);
     showPicture("Images/Spicy/Slaves/F1 Alice Brookes/1/1.jpg", 5)
     unlockImages();
@@ -90,7 +90,7 @@
     sendMessage("I had him walk through the city dressed in fine lingerie");
     sendMessage("%Lol%");
 
-    sendMessage("He didn't handle it well...");
+    sendMessage("He didn't handle it well...");*/
     sendMessage("Well you will get plenty of time to get to know them later");
 
     if (isFullTime()) {
