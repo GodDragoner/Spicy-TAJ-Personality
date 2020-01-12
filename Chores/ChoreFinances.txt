@@ -1,0 +1,267 @@
+@NullResponse @CheckFlag(FirstFinance) @SetFlag(FirstFinance)
+@SystemMessage #VANC #VANP Well #SlaveName
+@SystemMessage #VANC #VANP This is the first time we're doing your finances
+@SystemMessage #VANC #VANP Since its the first time I need to open Microsoft Excel spreadsheet
+@SystemMessage #VANC #VANP If you don't have that you can always use Google sheets which is free..
+@SystemMessage #VANC #VANP Follow these instructions carefully if this is your first time setting up a spreadsheet
+@SystemMessage #VANC #VANP If you've tried it before then there might be some things you're already familiar with
+@SystemMessage #VANC #VANP Look at this picture 
+@ShowImage[\GNMImages\Finance\Budget.*]
+@SystemMessage #VANC #VANP This is how I want your budget to look like
+ @ShowImage[\GNMImages\Finance\Budget.*]
+@SystemMessage #VANC #VANP So the top row is Year: Months: Space: Total:
+ @ShowImage[\GNMImages\Finance\Budget.*]
+@SystemMessage #VANC #VANP The first Column is Year: Average Income: Fixed Expenses: Etc. 
+@ShowImage[\GNMImages\Finance\Budget.*]
+@SystemMessage #VANC #VANP Giving you a few minutes..
+ @ShowImage[\GNMImages\Finance\Budget.*] 
+ @Wait(120)
+@SystemMessage #VANC #VANP Are you done? - only answer yes if you're done.. 
+@ShowImage[\GNMImages\Finance\Budget.*]
+[yes]@SystemMessage #VANC #VANP Good
+@DifferentAnswer @SystemMessage #VANC #VANP "yes" if you're ready..
+@SystemMessage #VANC #VANP Now pay attention..
+@SystemMessage #VANC #VANP In the field B18 I want you to write this:
+ @ShowImage[\GNMImages\Finance\5.*]
+@SystemMessage #VANC #VANP Copy this for C18, D18, E18 all the way to O18.
+ @ShowImage[\GNMImages\Finance\5.*] @Wait(30)
+@SystemMessage #VANC #VANP Are you done? - only answer yes if you're done..
+[yes]@SystemMessage #VANC #VANP Good
+@DifferentAnswer @SystemMessage #VANC #VANP "yes" if you're ready..
+@SystemMessage #VANC #VANP In the field O2 I want you to write this:
+ @ShowImage[\GNMImages\Finance\1.*]
+@SystemMessage #VANC #VANP Copy this for O3, O4, O5 all the way to O17. 
+@ShowImage[\GNMImages\Finance\1.*] @Wait(30)
+@SystemMessage #VANC #VANP Are you done? - only answer yes if you're done..
+[yes]@SystemMessage #VANC #VANP Good
+@DifferentAnswer @SystemMessage #VANC #VANP "yes" if you're ready..
+@SystemMessage #VANC #VANP In the field B7 I want you to write this: 
+@ShowImage[\GNMImages\Finance\2.*]
+@SystemMessage #VANC #VANP Copy this for C7, D7 all the way to O7 
+@ShowImage[\GNMImages\Finance\2.*] 
+@Wait(30)
+@SystemMessage #VANC #VANP Are you done? - only answer yes if you're done..
+[yes]@SystemMessage #VANC #VANP Good
+@DifferentAnswer @SystemMessage #VANC #VANP "yes" if you're ready..
+@SystemMessage #VANC #VANP In the field B11 I want you to write this:
+ @ShowImage[\GNMImages\Finance\3.*]
+@SystemMessage #VANC #VANP Copy this for C11, D11 all the way to O11 
+@ShowImage[\GNMImages\Finance\3.*] 
+@Wait(30)
+@SystemMessage #VANC #VANP Are you done? - only answer yes if you're done..
+[yes]@SystemMessage #VANC #VANP Good
+@DifferentAnswer @SystemMessage #VANC #VANP "yes" if you're ready..
+@SystemMessage #VANC #VANP In the field B15 I want you to write this: 
+@ShowImage[\GNMImages\Finance\4.*]
+@SystemMessage #VANC #VANP Copy this for C15, D15 all the way to O15 
+@ShowImage[\GNMImages\Finance\4.*] 
+@Wait(30)
+@SystemMessage #VANC #VANP Are you done? - only answer yes if you're done..
+[yes]@SystemMessage #VANC #VANP Good
+@DifferentAnswer @SystemMessage #VANC #VANP "yes" if you're ready..
+@SystemMessage #VANC #VANP Notice the field in the bottom left! 
+@ShowImage[\GNMImages\Finance\Budget.*]
+@SystemMessage #VANC #VANP Every time you update your budget I want you to update the date as well..
+@SystemMessage #VANC #VANP You can do that right now..
+ @Wait(15)
+@SystemMessage #VANC #VANP Now let me explain how this works..
+@SystemMessage #VANC #VANP So average income:
+@SystemMessage #VANC #VANP Average income is ALL the money you earn each month, wether it comes from your job / jobs
+ @SetVar[FinanceOffence]=[0]
+@SystemMessage #VANC #VANP The source doesn't matter. Made some money you enter it into this field..
+@SystemMessage #VANC #VANP Fixed expenses are ALL your fixed expenses: Phone bill, electric bill, rent any fixed expenses
+@SystemMessage #VANC #VANP I know some values might be over several months like the electric bill is in some countries paid every third month
+@SystemMessage #VANC #VANP If this is the case then divide it by the months over which it's paid  
+@SystemMessage #VANC #VANP So if your electric bill is paid over 3 months, divide it by 3 and place it in the correct months..
+@SystemMessage #VANC #VANP Food Budget!
+@SystemMessage #VANC #VANP Now this is an interesting one
+@SystemMessage #VANC #VANP I want you to think about how much you averagely spent on food each month..
+@SystemMessage #VANC #VANP This includes food, drink, sweets. Every coin you spend on something going in your mouth
+@SystemMessage #VANC #VANP But we're not quite done with your food budget
+@SystemMessage #VANC #VANP One thing is what you're currently spending on food each month
+@SystemMessage #VANC #VANP Another thing is what you SHOULD be spending
+@SystemMessage #VANC #VANP So I want you to think about how much you NEED to spend..
+@SystemMessage #VANC #VANP Next up is household budget
+@SystemMessage #VANC #VANP This going towards items used for cleaning, repairs and generally maintaining your #Home
+@SystemMessage #VANC #VANP Allowance we'll talk about later on.
+@SystemMessage #VANC #VANP And finally we have extra expenses. 
+@SystemMessage #VANC #VANP Unforseen expenses that fits into neither mentioned categories
+@SystemMessage #VANC #VANP Now..
+@SystemMessage #VANC #VANP Right now I need you to figure out your:
+@SystemMessage #VANC #VANP Average income, fixed expenses, food budget and household Budget
+@SystemMessage #VANC #VANP Write 'done' when you're done.. @CustomMode(done, Goto, Done) 
+@NullResponse @Wait(99999)
+(Done)
+@SystemMessage #VANC #VANP Excellent @CustomMode(Modetext, Normal)
+@SystemMessage #VANC #VANP I'm gonna ask you for a few numbers
+@SystemMessage #VANC #VANP They might take a moment to find
+@SystemMessage #VANC #VANP Take your time
+@SystemMessage #VANC #VANP DO NOT INPUT ANY TEXT OR SPACES
+@SystemMessage #VANC #VANP What is your average income? 
+@InputVar[AverageIncome]
+@SystemMessage #VANC #VANP What is your fixed expenses? 
+@InputVar[FixedExpenses]
+@SystemMessage #VANC #VANP What should your food budget be?
+ @InputVar[FoodBudget]
+@SystemMessage #VANC #VANP How much do you need for your household budget? 
+@InputVar[HouseholdBudget]
+@SystemMessage #VANC #VANP Next we need to figure out a reasonable allowance
+@SystemMessage #VANC #VANP Money you can spend however you like 
+@Wait(5)
+@SystemMessage #VANC #VANP Just imagine being a slave
+@SystemMessage #VANC #VANP No such thing as allowance or spending money without asking permission
+@SystemMessage #VANC #VANP Total
+@SystemMessage #VANC #VANP Financial control
+@SystemMessage #VANC #VANP Some might call that freedom
+@SystemMessage #VANC #VANP But you probably know better #GNMLol
+@SystemMessage #VANC #VANP Oh well..
+@SystemMessage #VANC #VANP Your allowance
+@SystemMessage #VANC #VANP I'm gonna leave this up to you 
+@SystemMessage #VANC #VANP Well not 100% though
+@SystemMessage #VANC #VANP Now tell me again with a number.. 
+@SetVar[AllowanceTotal]=[0]
+@SystemMessage #VANC #VANP What would you say a reasonable monthly allowance is if your behaviour within the last month has been good? @InputVar[AllowanceGood]
+@SystemMessage #VANC #VANP What would you say a reasonable monthly allowance is if your behaviour within the last month has been bad? @InputVar[AllowanceBad]
+@SystemMessage #VANC #VANP ow imagine that your behaviour neither was good or bad but more neutral, what would the number be then? @InputVar[AllowanceNeutral]
+@NullResponse @SetVar[AllowanceTotal]=[AllowanceNeutral]
+@SystemMessage #VANC #VANP Give me just a moment to write all of this down... 
+@ChangeVar[AllowanceGood]=[AllowanceGood]/[31]
+@NullResponse @ChangeVar[AllowanceBad]=[AllowanceBad]/[30]
+@NullResponse @ChangeVar[AllowanceNeutral]=[AllowanceNeutral]/[30]
+@SystemMessage #VANC #VANP Hmm
+@SystemMessage #VANC #VANP Now based on the values you just gave me
+@SystemMessage #VANC #VANP It will be me telling you your monthly allowance
+@Month(1) @SystemMessage #VANC #VANP This January your allowance is 
+@ShowVar[AllowanceTotal] 
+@SetVar[CurrentMonth]=[1]
+@Month(2) @SystemMessage #VANC #VANP This February your allowance is
+ @ShowVar[AllowanceTotal] 
+ @SetVar[CurrentMonth]=[2]
+@Month(3) @SystemMessage #VANC #VANP This March your allowance is 
+
+@ShowVar[AllowanceTotal] 
+@SetVar[CurrentMonth]=[3]
+@Month(4) @SystemMessage #VANC #VANP This April your allowance is 
+@ShowVar[AllowanceTotal] 
+@SetVar[CurrentMonth]=[4]
+@Month(5) @SystemMessage #VANC #VANP This May your allowance is 
+@ShowVar[AllowanceTotal] 
+@SetVar[CurrentMonth]=[5]
+@Month(6) @SystemMessage #VANC #VANP This June your allowance is 
+@ShowVar[AllowanceTotal] 
+@SetVar[CurrentMonth]=[6]
+@Month(7) @SystemMessage #VANC #VANP This July your allowance is 
+
+@ShowVar[AllowanceTotal] 
+@SetVar[CurrentMonth]=[7]
+@Month(8) @SystemMessage #VANC #VANP This August your allowance is 
+@ShowVar[AllowanceTotal] 
+@SetVar[CurrentMonth]=[8]
+@Month(9) @SystemMessage #VANC #VANP This September your allowance is 
+@ShowVar[AllowanceTotal] 
+@SetVar[CurrentMonth]=[9]
+@Month(10) @SystemMessage #VANC #VANP This October your allowance is 
+@ShowVar[AllowanceTotal] 
+@SetVar[CurrentMonth]=[10]
+@Month(11) @SystemMessage #VANC #VANP This November your allowance is 
+@ShowVar[AllowanceTotal] 
+@SetVar[CurrentMonth]=[11]
+@Month(12) @SystemMessage #VANC #VANP This December your allowance is 
+@ShowVar[AllowanceTotal] 
+@SetVar[CurrentMonth]=[12]
+@SystemMessage #VANC #VANP Whenever the month changes you can check your monthly allowance simply by asking
+@SystemMessage #VANC #VANP Now once in a while I'll have you make entries into your budget
+@SystemMessage #VANC #VANP But you should strive towards always keeping it up to date #GNMEmoteHappy
+ @SetDate(Finances, 0 Days)
+@End
+(FirstFinance)
+@SystemMessage #VANC #VANP Its time to do your finances #SubName
+@SystemMessage #VANC #VANP Open up the spreadsheet and your backaccount
+@SystemMessage #VANC #VANP Do your checks and then return here
+@SystemMessage #VANC #VANP Tell me 'done' when you're done. @CustomMode(done, Goto, Done2)
+@NullResponse @Wait(9999999)
+(Done2)
+@SystemMessage #VANC #VANP #GNMGood
+@SystemMessage #VANC #VANP @RT(Are there any new red numbers I should know about?,Were there any new negativt numbers?,So was there some new red numbers?)
+[yes]@SystemMessage #VANC #VANP Oh.. @Goto(RedNumbers)
+[no]@SystemMessage #VANC #VANP #GNMGood, @RT(glad to hear you're not overspending,wonderfull you're not wasting my money,Perfect! You're not wasting my money) @Goto(GreenNumbers)
+@DifferentAnswer @SystemMessage #VANC #VANP Yes or no?
+(GreenNumbers)
+@SystemMessage #VANC #VANP I'm sure this will please #DomHonorific #DomName #MeritChangePMedium
+@SystemMessage #VANC #VANP It sure pleases me #GNMEmoteHappy
+@End
+(RedNumbers)
+@SystemMessage #VANC #VANP Where did the red number appear?
+@SystemMessage #VANC #VANP Food spendings, household spendings, allowance spendings or extra expenses?
+[food]@SystemMessage #VANC #VANP @NullResponse @Goto(Food)
+[household]@SystemMessage #VANC #VANP @NullResponse @Goto(Household)
+[allowance]@SystemMessage #VANC #VANP @NullResponse @Goto(Allowance)
+[extra]@SystemMessage #VANC #VANP @NullResponse @Goto(Extra)
+@DifferentAnswer @SystemMessage #VANC #VANP food, household, allowance or extra?
+(Food)
+@SystemMessage #VANC #VANP I need you to be honest with me..
+@SystemMessage #VANC #VANP Was it absolutely necessary that you spent more than you had to?
+[yes]@SystemMessage #VANC #VANP @RT(Hmm,Well..,...) @Goto(Forgive)
+[no]@SystemMessage #VANC #VANP You know how this makes me feel.. @Goto(Bad)
+@DifferentAnswer @SystemMessage #VANC #VANP Yes or no?
+(Household)
+@SystemMessage #VANC #VANP I need you to be honest with me..
+@SystemMessage #VANC #VANP Was it absolutely necessary that you spent more than you had to?
+[yes]@SystemMessage #VANC #VANP @RT(Hmm,Well..,...) @Goto(Forgive)
+[no]@SystemMessage #VANC #VANP You know how this makes me feel.. @Goto(Bad)
+@DifferentAnswer @SystemMessage #VANC #VANP Yes or no?
+(Allowance)
+@SystemMessage #VANC #VANP I need you to be honest with me..
+@SystemMessage #VANC #VANP Was it absolutely necessary that you spent more than you had to?
+[yes]@SystemMessage #VANC #VANP @RT(Hmm,Well..,...) @Goto(Forgive)
+[no]@SystemMessage #VANC #VANP You know how this makes me feel.. @Goto(Bad)
+@DifferentAnswer @SystemMessage #VANC #VANP Yes or no?
+(Extra)
+@SystemMessage #VANC #VANP I need you to be honest with me..
+@SystemMessage #VANC #VANP Was it absolutely necessary that you spent money on those extra expenses?
+[yes]@SystemMessage #VANC #VANP @RT(Hmm,Well..,...)
+[no]@SystemMessage #VANC #VANP You know how this makes me feel.. @Goto(Bad)
+@DifferentAnswer @SystemMessage #VANC #VANP Yes or no?
+@SystemMessage #VANC #VANP Okay then..
+@End
+(Forgive)
+@SystemMessage #VANC #VANP @RT(I forgive you then,Well I guess I'm gonna forgive you,I suppose I should forgive you..)
+@SystemMessage #VANC #VANP @RT(don't do this too often..,Try to stay within the budgets..)
+@End
+(Bad)
+@SystemMessage #VANC #VANP #DomHonorific #DomName won't be happy when I tell her... #MeritChangeNLow @SetFlag(FinanceBad) @ChangeVar[FinanceOffence]=[FinanceOffence]=[1]
+@NullResponse @If[FinanceOffence]>=[15]Then(Bad15)
+@NullResponse @If[FinanceOffence]>=[10]Then(Bad10)
+@NullResponse @If[FinanceOffence]>=[5]Then(Bad5)
+@NullResponse @If[FinanceOffence]>=[2]Then(Bad2)
+@NullResponse @If[FinanceOffence]=[1]Then(Bad1) @Goto(Bad1)
+(Bad1)
+@SystemMessage #VANC #VANP But since this is your first offence I'm letting you off easy..
+@End
+(Bad2)
+@SystemMessage #VANC #VANP #SubName..
+@SystemMessage #VANC #VANP This has to be punished
+ @ChangeVar[GNMPPoints]=[GNMPPoints]+[30]
+@SystemMessage #VANC #VANP I assigned you punishment points
+@End
+(Bad5)
+@SystemMessage #VANC #VANP #SlaveName..
+@SystemMessage #VANC #VANP I expected more from you.. #MeritChangeNLow
+@SystemMessage #VANC #VANP I'll have to punish you.. 
+@ChangeVar[GNMPPoints]=[GNMPPoints]+[60]
+@SystemMessage #VANC #VANP I assigned you punishment points
+@End
+(Bad10)
+@SystemMessage #VANC #VANP #SlaveName..
+@SystemMessage #VANC #VANP You need to take better care of #DomName's money.. #MeritChangeNMedium
+@SystemMessage #VANC #VANP I'll have to punish you.. 
+@ChangeVar[GNMPPoints]=[GNMPPoints]+[100]
+@SystemMessage #VANC #VANP I assigned you punishment points
+@End
+(Bad15)
+@SystemMessage #VANC #VANP #SlaveName..
+@SystemMessage #VANC #VANP You need to take better care of #DomName's money.. #MeritChangeNHigh
+@SystemMessage #VANC #VANP I'll have to punish you.. 
+@ChangeVar[GNMPPoints]=[GNMPPoints]+[150]
+@SystemMessage #VANC #VANP I assigned you punishment points
+@End

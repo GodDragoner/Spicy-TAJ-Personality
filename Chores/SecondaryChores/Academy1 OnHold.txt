@@ -1,0 +1,20 @@
+@SystemMessage #GNMVA Slut
+@SystemMessage #GNMVA @RT(I think you should spend some time studying a little bit,I believe its time for to be productive..) @Goto(1,2,3)
+(1)
+@SystemMessage #GNMVA @RT(Go ahead and spend some time,Start) reading in your cleaning manual 1 @Goto(Bell)
+(2)
+@SystemMessage #GNMVA @RT(Go ahead and spend some time,Start) reading in your cleaning manual 2 @Goto(Bell)
+(3)
+@SystemMessage #GNMVA @RT(Go ahead and spend some time,Spend some time) reading up on your washing symbols! @Goto(Bell)
+(Bell)
+@SystemMessage #GNMVA @RT(Read until you hear my bell,Keep reading until you hear my bell!) @Goto(a,b,c)
+(a)
+@NullResponse @Wait(300) @Goto(Ring)
+(b)
+@NullResponse @Wait(420) @Goto(Ring)
+(c)
+@NullResponse @Wait(540) @Goto(Ring)
+(Ring)
+@SystemMessage #GNMVA @RT(Get back to me,Come back to me,Stop reading,Return to me) @PlayAudio[\GNMSounds\SpecialSounds\Bell.mp3]
+@SystemMessage #GNMVA Moving on @DeleteFlag(Chorec1) @ChangeVar[GNMChores]=[GNMChores]-[1]
+@NullResponse @MiniScript(GNMBackgroundChoresDo)

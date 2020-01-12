@@ -1,0 +1,213 @@
+@Flag(KitchenFloorWash) @Variable[#DateDifference(KitchenWash, Days)]>=[30] @NullResponse @Goto(KitchenWash)
+@Variable[#DateDifference(KitchenWipe, Days)]>=[14] @NullResponse @Goto(KitchenWipe)
+@Variable[#DateDifference(KitchenVacuum, Days)]>=[7] @NullResponse @Goto(KitchenVacuum)
+(KitchenWash)
+@NullResponse @TempFlag(KitchenWashFloorTemp)
+@SystemMessage #VANC #VANP Kitchen! @ShowImage[\GNMImages\Home\*.jpg]
+@SystemMessage #VANC #VANP @RT(It's time to mop the floors!,Time for you to mop the floors,Lets have you do some floor mopping!,Time to mop mop mop #GNMGrin,Work work work all day - mop all night #GNMLol) 
+@SystemMessage #VANC #VANP But @RT(first,before that,before we get to that,just before)
+@SystemMessage #VANC #VANP @RT(They need to be vacuumed,You have to vacuum them first,You gotta go ahead and vacuum them..) 
+@SystemMessage #VANC #VANP @RT(Fetch,Find and get,Retrieve) your vacuum cleaner, and whatever you need to mop the floors. @Wait(10) @Goto(Loop)
+(KitchenWipe)
+@NullResponse @TempFlag(KitchenWipeTemp)
+@SystemMessage #VANC #VANP Kitchen! @ShowImage[\GNMImages\Home\*.jpg]
+@SystemMessage #VANC #VANP @RT(It's time to wipe the surfaces!,Time for you to wipe the surfaces,Lets have you do some wiping!,Time to wipe wipe wipe #GNMGrin,Work work work all day - wipe all night #GNMLol)
+@SystemMessage #VANC #VANP But @RT(first,before that,before we get to that,just before)
+@SystemMessage #VANC #VANP @RT(You need to be vacuum the floor and other surfaces,You have to vacuum the floor and surfaces first,You gotta go ahead and vacuum the floor then the surfaces..) 
+@SystemMessage #VANC #VANP @RT(Fetch,Find and get,Retrieve) your vacuum cleaner, and whatever you need to wipe and properly clean the surfaces. @Wait(10) @Goto(Loop)
+(KitchenVacuum)
+@NullResponse @TempFlag(KitchenVacuumFloorTemp)
+@SystemMessage #VANC #VANP Kitchen! @ShowImage[\GNMImages\Home\*.jpg]
+@SystemMessage #VANC #VANP @RT(It's time to vacuum!,Time for you to vacuum the floor,Lets have you do some vacuuming!,Time to clean clean clean #GNMGrin,Work work work all day - clean all night #GNMLol)
+@SystemMessage #VANC #VANP @RT(You need to be vacuum the floor,You have to vacuum the floor,You gotta go ahead and vacuum the floor) 
+@SystemMessage #VANC #VANP @RT(Fetch,Find and get,Retrieve) your vacuum cleaner @Wait(10) @Goto(Loop)
+(Loop)
+@SystemMessage #VANC #VANP #GNMReady
+[yes]@SystemMessage #VANC #VANP #GNMGood
+[no]@SystemMessage #VANC #VANP Hurry.. @Wait(10) @Goto(Loop)
+@DifferentAnswer @SystemMessage #VANC #VANP #GNMYesOrNo
+@NullResponse @CallReturn(CR\BackgroundMode\Chores\KinkyCleaning.txt)
+@SystemMessage #VANC #VANP Okay then 
+@SystemMessage #VANC #VANP You can go ahead and start with the cleaning.. 
+@SystemMessage #VANC #VANP Report when you're done cleaning @CustomMode(#Done, Goto, Done)
+(StartTimer)
+@NullResponse @SetVar[CleaningTimeTemp]=[0]
+@NullResponse @CountVar[CleaningTimeTemp]
+@NullResponse @CheckFlag(BellGame1)
+@NullResponse @CheckFlag(BellGame2) @Goto(Timer)
+(BellGame1)
+@NullResponse @Wait(#Random(20,120)) @Goto(Corner)
+(Corner)
+@SystemMessage #VANC #VANP Go to the corner #SlaveName @PlayAudio[\GNMSounds\SpecialSounds\Bell.mp3] @CountVar[CleaningTimeTemp, Stop] @Wait(#Random(20,60))
+@SystemMessage #VANC #VANP Return to work #SlaveName @PlayAudio[\GNMSounds\SpecialSounds\Bell.mp3] @CountVar[CleaningTimeTemp] @Goto(BellGame1)
+(BellGame2)
+@NullResponse @Wait(#Random(20,120)) @Goto(Sentence)
+(Sentence)
+@NullResponse @PlayAudio[\GNMSounds\SpecialSounds\Bell.mp3] @CountVar[CleaningTimeTemp, Stop]
+(Type)
+@SystemMessage #VANC #VANP @RT(I have to clean properly,I'm a cleaning slut,I have to clean with a smile,Cleaning makes me happy,You can never clean enough,I wish I could clean all day,I really love cleaning)
+[i have to clean properly]@SystemMessage #VANC #VANP Get back to cleaning
+[i'm a cleaning slut]@SystemMessage #VANC #VANP Get back to cleaning
+[i have to clean with a smile]@SystemMessage #VANC #VANP Get back to cleaning 
+[cleaning makes me happy]@SystemMessage #VANC #VANP Get back to cleaning
+[you can never clean enough]@SystemMessage #VANC #VANP Get back to cleaning
+[i wish i could clean all day]@SystemMessage #VANC #VANP Get back to cleaning 
+[i really love cleaning]@SystemMessage #VANC #VANP Get back to cleaning
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong.. Try again.. @Goto(Type)
+@SystemMessage #VANC #VANP Return to work @CountVar[CleaningTimeTemp] @Goto(BellGame2)
+(Timer)
+@NullResponse @Wait(99999)
+(Done)
+@NullResponse @CustomMode(#Done,Normal) @CountVar[CleaningTimeTemp, Stop]
+@SystemMessage #VANC #VANP So you're done.. 
+@NullResponse @RapidCodeOn @CheckFlag(KitchenAverageSet)
+@NullResponse @CheckFlag(Kitchen5AverageSet)
+@NullResponse @CheckFlag(Kitchen4AverageSet)
+@NullResponse @CheckFlag(Kitchen3AverageSet)
+@NullResponse @CheckFlag(Kitchen2AverageSet)
+@NullResponse @Goto(Kitchen1AverageSet)
+(Kitchen1AverageSet)
+@NullResponse @SetVar[Kitchen1Average]=[0] @SetFlag(Kitchen2AverageSet)
+@NullResponse @ChangeVar[Kitchen1Average]=[Kitchen1Average]+[CleaningTimeTemp] @Goto(Satisfied)
+(Kitchen2AverageSet)
+@NullResponse @SetVar[Kitchen2Average]=[0] @SetFlag(Kitchen3AverageSet)
+@NullResponse @ChangeVar[Kitchen2Average]=[Kitchen2Average]+[CleaningTimeTemp] @Goto(Satisfied)
+(Kitchen3AverageSet)
+@NullResponse @SetVar[Kitchen3Average]=[0] @SetFlag(Kitchen4AverageSet)
+@NullResponse @ChangeVar[Kitchen3Average]=[Kitchen3Average]+[CleaningTimeTemp] @Goto(Satisfied)
+(Kitchen4AverageSet)
+@NullResponse @SetVar[Kitchen4Average]=[0] @SetFlag(Kitchen5AverageSet)
+@NullResponse @ChangeVar[Kitchen4Average]=[Kitchen4Average]+[CleaningTimeTemp] @Goto(Satisfied)
+(Kitchen5AverageSet)
+@NullResponse @SetVar[Kitchen5Average]=[0] @SetFlag(KitchenAverageSet)
+@NullResponse @ChangeVar[Kitchen5Average]=[Kitchen5Average]+[CleaningTimeTemp]
+@NullResponse @SetVar[KitchenAverage]=[0]
+@NullResponse @ChangeVar[KitchenAverage]=[KitchenAverage]+[Kitchen1Average]
+@NullResponse @ChangeVar[KitchenAverage]=[KitchenAverage]+[Kitchen2Average]
+@NullResponse @ChangeVar[KitchenAverage]=[KitchenAverage]+[Kitchen3Average]
+@NullResponse @ChangeVar[KitchenAverage]=[KitchenAverage]+[Kitchen4Average]
+@NullResponse @ChangeVar[KitchenAverage]=[KitchenAverage]+[Kitchen5Average]
+@NullResponse @ChangeVar[KitchenAverage]=[KitchenAverage]/[5]
+@NullResponse @SetVar[KitchenSlow]=[0]
+@NullResponse @ChangeVar[KitchenSlow]=[KitchenSlow]+[KitchenAverage]
+@NullResponse @ChangeVar[KitchenSlow]=[KitchenSlow]*[2]
+@NullResponse @SetVar[KitchenFast]=[0]
+@NullResponse @ChangeVar[KitchenFast]=[KitchenFast]+[KitchenAverage]
+@NullResponse @ChangeVar[KitchenFast]=[KitchenFast]/[2]
+@NullResponse @SetVar[KitchenScopeLow]=[0]
+@NullResponse @ChangeVar[KitchenScopeLow]=[KitchenScopeLow]+[KitchenAverage]
+@NullResponse @ChangeVar[KitchenScopeLow]=[KitchenScopeLow]/[4]
+@NullResponse @ChangeVar[KitchenScopeLow]=[KitchenScopeLow]*[3]
+@NullResponse @SetVar[KitchenScopeHigh]=[0]
+@NullResponse @ChangeVar[KitchenScopeHigh]=[KitchenScopeHigh]+[KitchenAverage]
+@NullResponse @ChangeVar[KitchenScopeHigh]=[KitchenScopeHigh]/[4]
+@NullResponse @ChangeVar[KitchenScopeHigh]=[KitchenScopeHigh]*[5]
+@NullResponse @SetVar[KitchenWipeTime]=[0]
+@NullResponse @ChangeVar[KitchenWipeTime]=[KitchenWipeTime]+[KitchenAverage]
+@NullResponse @ChangeVar[KitchenWipeTime]=[KitchenWipeTime]/[4]
+@NullResponse @ChangeVar[KitchenWipeTime]=[KitchenWipeTime]*[5]
+@NullResponse @SetVar[KitchenWipeSlow]=[0]
+@NullResponse @ChangeVar[KitchenWipeSlow]=[KitchenWipeSlow]+[KitchenWipeTime]
+@NullResponse @ChangeVar[KitchenWipeSlow]=[KitchenWipeSlow]*[2]
+@NullResponse @SetVar[KitchenWipeFast]=[0]
+@NullResponse @ChangeVar[KitchenWipeFast]=[KitchenWipeFast]+[KitchenWipeTime]
+@NullResponse @ChangeVar[KitchenWipeFast]=[KitchenWipeFast]/[2]
+@NullResponse @SetVar[KitchenWipeScopeLow]=[0]
+@NullResponse @ChangeVar[KitchenWipeScopeLow]=[KitchenWipeScopeLow]+[KitchenWipeTime]
+@NullResponse @ChangeVar[KitchenWipeScopeLow]=[KitchenWipeScopeLow]/[4]
+@NullResponse @ChangeVar[KitchenWipeScopeLow]=[KitchenWipeScopeLow]*[3]
+@NullResponse @SetVar[KitchenWipeScopeHigh]=[0]
+@NullResponse @ChangeVar[KitchenWipeScopeHigh]=[KitchenWipeScopeHigh]+[KitchenWipeTime]
+@NullResponse @ChangeVar[KitchenWipeScopeHigh]=[KitchenWipeScopeHigh]/[4]
+@NullResponse @ChangeVar[KitchenWipeScopeHigh]=[KitchenWipeScopeHigh]*[5]
+@NullResponse @SetVar[KitchenWashTime]=[0]
+@NullResponse @ChangeVar[KitchenWashTime]=[KitchenWashTime]+[KitchenAverage]
+@NullResponse @ChangeVar[KitchenWashTime]=[KitchenWashTime]/[4]
+@NullResponse @ChangeVar[KitchenWipeTime]=[KitchenWipeTime]*[5]
+@NullResponse @SetVar[KitchenWashSlow]=[0]
+@NullResponse @ChangeVar[KitchenWashSlow]=[KitchenWashSlow]+[KitchenWashTime]
+@NullResponse @ChangeVar[KitchenWashSlow]=[KitchenWashSlow]*[2]
+@NullResponse @SetVar[KitchenWashFast]=[0]
+@NullResponse @ChangeVar[KitchenWashFast]=[KitchenWashFast]+[KitchenWashTime]
+@NullResponse @ChangeVar[KitchenWashFast]=[KitchenWashFast]/[2]
+@NullResponse @SetVar[KitchenWashScopeLow]=[0]
+@NullResponse @ChangeVar[KitchenWashScopeLow]=[KitchenWashScopeLow]+[KitchenWashTime]
+@NullResponse @ChangeVar[KitchenWashScopeLow]=[KitchenWashScopeLow]/[4]
+@NullResponse @ChangeVar[KitchenWashScopeLow]=[KitchenWashScopeLow]*[3]
+@NullResponse @SetVar[KitchenWashScopeHigh]=[0]
+@NullResponse @ChangeVar[KitchenWashScopeHigh]=[KitchenWashScopeHigh]+[KitchenWashTime]
+@NullResponse @ChangeVar[KitchenWashScopeHigh]=[KitchenWashScopeHigh]/[4]
+@NullResponse @ChangeVar[KitchenWashScopeHigh]=[KitchenWashScopeHigh]*[5]
+(KitchenAverageSet)
+@Flag(KitchenVacuumFloorTemp) @NullResponse @Goto(Vacuum)
+@Flag(KitchenWipeTemp) @NullResponse @Goto(Wipe)
+@Flag(KitchenWashFloorTemp) @NullResponse @Goto(Wash)
+@NullResponse @Goto(Vacuum)
+(Vacuum)
+@NullResponse @If[CleaningTimeTemp]>=[KitchenScopeLow]AND[CleaningTimeTemp]<=[KitchenScopeHigh]Then(EndPerfect)
+@NullResponse @If[CleaningTimeTemp]<=[KitchenFast]Then(EndFast)
+@NullResponse @If[CleaningTimeTemp]>=[KitchenSlow]Then(EndSlow)
+@NullResponse @If[CleaningTimeTemp]<=[KitchenScopeLow]Then(EndSlower)
+@NullResponse @If[CleaningTimeTemp]>=[KitchenScopeHigh]Then(EndFaster)
+(Wipe)
+@NullResponse @If[CleaningTimeTemp]>=[KitchenWipeScopeLow]AND[CleaningTimeTemp]<=[KitchenWipeScopeHigh]Then(EndPerfect)
+@NullResponse @If[CleaningTimeTemp]<=[KitchenWipeFast]Then(EndFast)
+@NullResponse @If[CleaningTimeTemp]>=[KitchenWipeSlow]Then(EndSlow)
+@NullResponse @If[CleaningTimeTemp]<=[KitchenWipeScopeLow]Then(EndSlower)
+@NullResponse @If[CleaningTimeTemp]>=[KitchenWipeScopeHigh]Then(EndFaster)
+(Wash)
+@NullResponse @If[CleaningTimeTemp]>=[KitchenWashScopeLow]AND[CleaningTimeTemp]<=[KitchenWashScopeHigh]Then(EndPerfect)
+@NullResponse @If[CleaningTimeTemp]<=[KitchenWashFast]Then(EndFast)
+@NullResponse @If[CleaningTimeTemp]>=[KitchenWashSlow]Then(EndSlow)
+@NullResponse @If[CleaningTimeTemp]<=[KitchenWashScopeLow]Then(EndSlower)
+@NullResponse @If[CleaningTimeTemp]>=[KitchenWashScopeHigh]Then(EndFaster)
+(Satisfied)
+@SystemMessage #VANC #VANP Good job today #SlaveName @Goto(FlagTest)
+(EndFast)
+@SystemMessage #VANC #VANP @RT(Too fast!,That was waay too fast #SlaveName !,Impossible!,You can't possible be this fast!)
+@SystemMessage #VANC #VANP @RT(That can't go unpunished,I have to punish you for this,I'm gonna have to punish you..) 
+@SystemMessage #VANC #VANP I have assigned you punishment points @ChangeVar[GNMPPoints]=[GNMPPoints]+[200] @Goto(FlagTest)
+(EndSlow)
+@SystemMessage #VANC #VANP @RT(You're late!,You're late #SlaveName,You're late slut..,Late are we?,You know you're late right?)
+@SystemMessage #VANC #VANP @RT(I don't tolerate late!,You know I don't tolerate it when you're late,There is zero tolerance for being late and lazy!) 
+@SystemMessage #VANC #VANP I have assigned you punishment points @ChangeVar[GNMPPoints]=[GNMPPoints]+[200] @Goto(FlagTest)
+(EndSlower)
+@SystemMessage #VANC #VANP You've been slower than usual.. @CheckFlag(CleaningWarning)
+@SystemMessage #VANC #VANP Anything I should know?
+[lazy,laziness]@SystemMessage #VANC #VANP @RT(Inexcusable!,You know that laziness can't be tolerated!)
+[tired,need rest,sleep]@SystemMessage #VANC #VANP @RT(Inexcusable,I don't care if you're tired!)
+[toys,you made me,you told me]@SystemMessage #VANC #VANP @RT(Excuses! Really!?,Wauv you're gonna blame me..)
+[thorough,better cleaning]@SystemMessage #VANC #VANP I see but you should always be thorough!
+[dirty,dirtier,dusty]@SystemMessage #VANC #VANP Your #Home should always be tidy!
+@AcceptAnswer @SystemMessage #VANC #VANP I'm giving you a warning #SlaveName @SetFlag(CleaningWarning) @Goto(FlagTest)
+@SystemMessage #VANC #VANP @RT(I'm gonna have to punish you slave,I'm sorry but this can't go unpunished)
+@SystemMessage #VANC #VANP I have assigned you punishment points @ChangeVar[GNMPPoints]=[GNMPPoints]+[100] @Goto(FlagTest)
+(CleaningWarning)
+@SystemMessage #VANC #VANP I gave you a warning last time! @DeleteFlag(CleaningWarning)
+@SystemMessage #VANC #VANP So this time I'm punishing you! 
+@SystemMessage #VANC #VANP I have assigned you punishment points @ChangeVar[GNMPPoints]=[GNMPPoints]+[100] @Goto(FlagTest)
+(EndFaster)
+@SystemMessage #VANC #VANP You've been faster than usual.. @CheckFlag(CleaningWarning)
+@SystemMessage #VANC #VANP Anything I should know?
+@SystemMessage #VANC #VANP You can't haste thoroughness!
+@SystemMessage #VANC #VANP I expect that you're always thorough when cleaning
+@SystemMessage #VANC #VANP @RT(I'm gonna have to punish you slave,I'm sorry but this can't go unpunished)
+@SystemMessage #VANC #VANP I have assigned you punishment points @ChangeVar[GNMPPoints]=[GNMPPoints]+[100] @Goto(FlagTest)
+(EndPerfect)
+@SystemMessage #VANC #VANP #GNMGood #SlaveName #MeritChangePMedium
+@SystemMessage #VANC #VANP Allow me to reward your @RT(splendid,good,excellent,lovely) @RT(behaviour,work) #GNMGrin @ChangeVar[GNMGold]=[GNMGold]+[#GoldMedium] @Goto(FlagTest)
+(FlagTest)
+@NullResponse @CheckFlag(KitchenWashFloorTemp)
+@NullResponse @CheckFlag(KitchenVacuumFloorTemp)
+@NullResponse @CheckFlag(KitchenWipeTemp) @Goto(KitchenVacuumFloorTemp)
+(KitchenVacuumFloorTemp)
+@NullResponse @ChangeVar[ChoreComplete]=[ChoreComplete]+[1] @SetDate(KitchenVacuum, 0 days)
+@End
+(KitchenWashFloorTemp)
+@NullResponse @ChangeVar[ChoreComplete]=[ChoreComplete]+[1] @SetDate(KitchenVacuum, 0 days)
+@NullResponse @SetDate(KitchenWash, 0 days)
+@End
+(KitchenWipeTemp)
+@NullResponse @ChangeVar[ChoreComplete]=[ChoreComplete]+[1] @SetDate(KitchenVacuum, 0 days)
+@NullResponse @SetDate(KitchenWipe, 0 days)
+@End

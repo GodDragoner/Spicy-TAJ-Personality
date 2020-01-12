@@ -1,0 +1,15 @@
+@NullResponse @CheckFlag(Choreb7First) @SetFlag(Choreb7First)
+@SystemMessage #GNMVA #PetName I want you to go online
+@SystemMessage #GNMVA Find a sexshop and find an item you would like to buy
+@SystemMessage #GNMVA Add the item to a list, and save that list
+@SystemMessage #GNMVA Let me know when you're 'done' @CustomMode(done, Goto, Done)
+@NullResponse @Wait(999999)
+(Choreb7First)
+@SystemMessage #GNMVA #PetName I want you to go online
+@SystemMessage #GNMVA Find a sexshop and find an item you would like to buy
+@SystemMessage #GNMVA Add the item to your list of items, and save it
+@SystemMessage #GNMVA Let me know when you're done @CustomMode(done, Goto, Done)
+@NullResponse @Wait(999999)
+(Done)
+@SystemMessage #GNMVA #GNMGood @CustomMode(ModeText, Normal) @DeleteFlag(Choreb7) @ChangeVar[GNMChores]=[GNMChores]-[1]
+@NullResponse @MiniScript(GNMBackgroundChoresDo)

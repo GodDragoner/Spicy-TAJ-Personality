@@ -1,0 +1,150 @@
+@NullResponse @RapidCodeOn @CheckFlag(ChoreAlt1a)
+@NullResponse @CheckFlag(ChoreAlt1b)
+@NullResponse @CheckFlag(ChoreAlt1c)
+@NullResponse @CheckFlag(ChoreAlt1d)
+@NullResponse @CheckFlag(ChoreAlt1e)
+@NullResponse @CheckFlag(ChoreAlt1f)
+(Choose)
+@NullResponse @Goto(a,b,c,d,e,f)
+(ChoreAlt1a)
+@SystemMessage #VANC #VANP Well it seems you failed to manage the last chore I gave you...
+@SystemMessage #VANC #VANP But trust me..
+@SystemMessage #VANC #VANP You're not getting out of this chore before you complete it! @Goto(aContinued)
+(ChoreAlt1b)
+@SystemMessage #VANC #VANP Well it seems you failed to manage the last chore I gave you...
+@SystemMessage #VANC #VANP But trust me..
+@SystemMessage #VANC #VANP You're not getting out of this chore before you complete it! @Goto(bContinued)
+(ChoreAlt1c)
+@SystemMessage #VANC #VANP Well it seems you failed to manage the last chore I gave you...
+@SystemMessage #VANC #VANP But trust me..
+@SystemMessage #VANC #VANP You're not getting out of this chore before you complete it! @Goto(cContinued)
+(ChoreAlt1d)
+@SystemMessage #VANC #VANP Well it seems you failed to manage the last chore I gave you...
+@SystemMessage #VANC #VANP But trust me..
+@SystemMessage #VANC #VANP You're not getting out of this chore before you complete it! @Goto(dContinued)
+(ChoreAlt1e)
+@SystemMessage #VANC #VANP Well it seems you failed to manage the last chore I gave you...
+@SystemMessage #VANC #VANP But trust me..
+@SystemMessage #VANC #VANP You're not getting out of this chore before you complete it! @Goto(eContinued)
+(ChoreAlt1f)
+@SystemMessage #VANC #VANP Well it seems you failed to manage the last chore I gave you...
+@SystemMessage #VANC #VANP But trust me..
+@SystemMessage #VANC #VANP You're not getting out of this chore before you complete it! @Goto(fContinued)
+(aContinued)
+(a) 
+@SystemMessage #VANC #VANP @RT(Time to do something important,Let's have you do something important) @SetFlag(ChoreAlt1a)
+@SystemMessage #VANC #VANP @RT(I want you to spend,You must spend) 20 minutes searching and storing new porn, sexy images etc. @SetFlag(ChoreActive)
+@SystemMessage #VANC #VANP @RT(Update #DomName's sweet arsenal of teasing weapons to use against you,Give #DomName new weapons to use against you)
+@SystemMessage #VANC #VANP Starting the timer now, you'll hear a bell when I want you back
+@SystemMessage #VANC #VANP Enjoy! 
+@NullResponse @Wait(1200)
+@SystemMessage #VANC #VANP @RT(Get back here,Time to get back) @PlayAudio[\GNMSounds\SpecialSounds\Bell.mp3]
+@SystemMessage #VANC #VANP @RT(Let's move on..,Moving on,Let's continue) @DeleteFlag(ChoreAlt1a) #MeritChangePLow
+@SystemMessage Let me reward that #GNMGrin #GoldMedium
+@NullResponse @Goto(End)
+(bContinued)
+(b)
+@SystemMessage #VANC #VANP @RT(Right now I want you to go to Milovana.com,Go to Milovana.com) @SetFlag(ChoreAlt1b)
+@SystemMessage #VANC #VANP @RT(Find a tease and just read it,Find a good tease and just read it) @SetFlag(ChoreActive)
+@SystemMessage #VANC #VANP Don't follow any instructions, just read through it.. @Wait(300)
+@SystemMessage #VANC #VANP Ready to continue?
+[yes]@SystemMessage #VANC #VANP #GNMGood
+[no]@SystemMessage #VANC #VANP A few minutes more then.. @Wait(120)
+@DifferentAnswer @SystemMessage #VANC #VANP Yes or no slave?
+@SystemMessage #VANC #VANP Hope you found a good one #GNMEmoteHappy @DeleteFlag(ChoreAlt1b) #MeritChangePLow
+@SystemMessage #VANC #VANP Let me reward that #GNMGrin #GoldMedium
+@NullResponse @Goto(End)
+(cContinued)
+(c)
+@SystemMessage #VANC #VANP @RT(Time to be creative,Let's do something fun!) @SetFlag(ChoreAlt1c)
+@SystemMessage #VANC #VANP @RT(I want you to plan,You're gonna plan,You need to plan) a selfbondage scenario! #GNMEmoteHappy @SetFlag(ChoreActive)
+@SystemMessage #VANC #VANP Take the time you need, but spend at least 5 minutes, when you're done save it or share it on Milovana forum @Wait(300)
+@SystemMessage #VANC #VANP Are you ready to continue?
+[yes]@SystemMessage #VANC #VANP #GNMGood
+[no]@SystemMessage #VANC #VANP 2 more minutes then! @Wait(120)
+@DifferentAnswer @SystemMessage #VANC #VANP Yes or no slave?
+@SystemMessage #VANC #VANP Let me reward that #GNMGrin #GoldMedium @DeleteFlag(ChoreAlt1c)
+@NullResponse #MeritChangePLow 
+@NullResponse @Goto(End)
+(dContinued)
+(d)
+@SystemMessage #VANC #VANP @RT(Let's test your memory,Time for a memory test!,Let's see how sharp that brain of yours is..) @SetFlag(ChoreAlt1d)
+@SystemMessage #VANC #VANP @RT(I expect you to know the house rules by heart,#DomHonorific expects you to know the house rules by heart!) @SetFlag(ChoreActive)
+@SystemMessage #VANC #VANP @RT(Word by word,Letter by letter) @Goto(d1,d2,d3,d4,d5,d6,d7,d8)
+(d1)
+@SystemMessage #VANC #VANP Write and tell me whats rule nr. 1?
+[i must always remember to ask permission.]@SystemMessage #VANC #VANP #GNMGood #MeritChangePLow @Goto(Endd)
+@AcceptAnswer @SystemMessage #VANC #VANP @RT(Wrong.,Incorrect..,Disappointing..) #MeritChangeNLow @Goto(Endd)
+(d2)
+@SystemMessage #VANC #VANP Write and tell me whats rule nr. 2?
+[i must always be respectful and humble.]@SystemMessage #VANC #VANP #GNMGood #MeritChangePLow @Goto(Endd)
+@AcceptAnswer @SystemMessage #VANC #VANP @RT(Wrong.,Incorrect..,Disappointing..) #MeritChangeNLow @Goto(Endd)
+(d3)
+@SystemMessage #VANC #VANP Write and tell me whats rule nr. 3?
+[i must always say "thank you" no mater what I am given.]@SystemMessage #VANC #VANP #GNMGood #MeritChangePLow @Goto(Endd)
+@AcceptAnswer @SystemMessage #VANC #VANP @RT(Wrong.,Incorrect..,Disappointing..) #MeritChangeNLow @Goto(Endd)
+(d4)
+@SystemMessage #VANC #VANP Write and tell me whats rule nr. 4?
+[i must always swallow.]@SystemMessage #VANC #VANP #GNMGood #MeritChangePLow @Goto(Endd)
+@AcceptAnswer @SystemMessage #VANC #VANP @RT(Wrong.,Incorrect..,Disappointing..) #MeritChangeNLow @Goto(Endd)
+(d5)
+@SystemMessage #VANC #VANP Write and tell me whats rule nr. 5?
+[i must always tell the truth.]@SystemMessage #VANC #VANP #GNMGood #MeritChangePLow @Goto(Endd)
+@AcceptAnswer @SystemMessage #VANC #VANP @RT(Wrong.,Incorrect..,Disappointing..) #MeritChangeNLow @Goto(Endd)
+(d6)
+@SystemMessage #VANC #VANP Write and tell me whats rule nr. 6?
+[i must always confess any transgressions.]@SystemMessage #VANC #VANP #GNMGood #MeritChangePLow @Goto(Endd)
+@AcceptAnswer @SystemMessage #VANC #VANP @RT(Wrong.,Incorrect..,Disappointing..) #MeritChangeNLow @Goto(Endd)
+(d7)
+@SystemMessage #VANC #VANP Write and tell me whats rule nr. 7?
+[i must always accept punishment no matter its form.]@SystemMessage #VANC #VANP #GNMGood #MeritChangePLow @Goto(Endd)
+@AcceptAnswer @SystemMessage #VANC #VANP @RT(Wrong.,Incorrect..,Disappointing..) #MeritChangeNLow @Goto(Endd)
+(d8)
+@SystemMessage #VANC #VANP Write and tell me whats rule nr. 8?
+[i must always serve to the best of my ability.]@SystemMessage #VANC #VANP #GNMGood #MeritChangePLow @Goto(Endd)
+@AcceptAnswer @SystemMessage #VANC #VANP @RT(Wrong.,Incorrect..,Disappointing..) #MeritChangeNLow @Goto(Endd)
+(Endd)
+@NullResponse @DeleteFlag(ChoreAlt1d)
+@NullResponse @Goto(End)
+(eContinued)
+(e)
+@SystemMessage #VANC #VANP @RT(Open your browser,Launch your browser) @SetFlag(ChoreAlt1e)
+@SystemMessage #VANC #VANP @RT(Find a good story,Look for a good story) @SetFlag(ChoreActive)
+@SystemMessage #VANC #VANP @RT(It should be about chastity,It should be about a good spanking,It should be about cuckolding)
+@SystemMessage #VANC #VANP When you're done reading return to me @Wait(300)
+@SystemMessage #VANC #VANP Are you done reading?
+[yes]@SystemMessage #VANC #VANP #GNMGood #MeritChangePLow
+[no]@SystemMessage #VANC #VANP Why have you returned to me then?? #GNMEmoteSad, read it through next time! #MeritChangeNLow
+@DifferentAnswer @SystemMessage #VANC #VANP Yes or no chastity slut?
+@NullResponse @DeleteFlag(ChoreAlt1e)
+@NullResponse @Goto(End)
+(f)
+@SystemMessage #VANC #VANP @RT(Let's work on your creative skills,Time to get creative!) 
+@SystemMessage #VANC #VANP @RT(You are to write a short story,You're gonna write a shory story)
+@SystemMessage #VANC #VANP When you're done your gonna post it on a thread in milovana.com
+@SystemMessage #VANC #VANP well you don't "have to do it"
+@SystemMessage #VANC #VANP I'm actually gonna let you choose if you accept this assignment
+@SystemMessage #VANC #VANP But accepting it will earn you 50 gold!
+@SystemMessage #VANC #VANP So do you accept this job to write a short story?
+[yes]@SystemMessage #VANC #VANP #GNMGood @SetFlag(ChoreAlt1f)
+[no]@SystemMessage #VANC #VANP Well thats alright @Goto(End)
+@DifferentAnswer @SystemMessage #VANC #VANP Yes or no slut?
+@SystemMessage #VANC #VANP Well simply return to your chores when you're done @Interrupt(GNMBackgroundBase)
+(fContinued)
+@SystemMessage #VANC #VANP You're back!
+@SystemMessage #VANC #VANP I hope you remember the last time when I told you to write a short story and post it..
+@SystemMessage #VANC #VANP "Told you" might be a bit much..
+@SystemMessage #VANC #VANP I asked and you accepted..
+@SystemMessage #VANC #VANP Well did you complete my assignment?
+[yes]@SystemMessage #VANC #VANP #GNMGood! @ChangeVar[GNMGold]=[GNMGold]+[50] @DeleteFlag(ChoreAlt1f)
+[no]@SystemMessage #VANC #VANP Well don't return here before you do! @Interrupt(GNMBackgroundBase)
+@DifferentAnswer @SystemMessage #VANC #VANP Yes or no?
+@SystemMessage #VANC #VANP I transfered the gold to you @DeleteFlag(ChoreActive)
+@SystemMessage #VANC #VANP Good job #SlaveName! #MeritChangePLow @Goto(End)
+(QuickEnd)
+@SystemMessage #VANC #VANP Just wanted to do a checkup 
+@End
+(End)
+@NullResponse @ChangeVar[ChoresComplete]=[ChoresComplete]+[1]
+@NullResponse @DeleteFlag(ChoreActive)
+@End

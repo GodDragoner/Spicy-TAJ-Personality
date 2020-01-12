@@ -174,6 +174,8 @@ if(isVar("PunishmentActive") && getVar("PunishmentActive")==true){
 	if(isVar("BadMouth") && getVar("BadMouth")) { sendDungeonMessage( random("Filthy mouth","Talking back","Bad mouthing","Undesired talking","Failed to request permission to talk","Talking out of terms.."),2);}
 
 	if(isVar("Preason_BadFullTime") && getVar("Preason_BadFullTime")) { sendDungeonMessage( random("Failed to fulfill full time duties","Laziness","Failure to meet demands for proper slavery"),2);} 
+	
+		if(isVar("Preason_Flirting") && getVar("Preason_Flirting")) { sendDungeonMessage( random("Flirting with some Whore","making a fool of yourself flirting with some woman clearly out of your league","Disrispecting %domhonorific% %DomName% by paying inappropriate attention to another girl"),2);} 
 
 	sendDungeonMessage( random("Poor attitude","Poor performance","Lack of performance","Failed to perform properly","Poor results"),2); 
 
@@ -252,8 +254,31 @@ if(isVar("PunishmentActive") && getVar("PunishmentActive")==true){
 			break;
 			case 2:
 			//fixme impliment punishment 6
-			   punishmentchoice = randomInteger(1,5);
-			   run("dungeon/Punishments/M"+punishmentchoice+".js");		
+			   punishmentchoice = randomInteger(6,6);
+			  
+
+			   switch ( punishmentchoice ) {
+
+			  case 1:
+			   run("dungeon/Punishments/M1.js");
+			   break;
+				case 2:
+			   run("dungeon/Punishments/M2.js"); 
+			   break;
+				case 3:
+			   run("dungeon/Punishments/M3.js");
+			   break;
+			  case 4:
+			   run("dungeon/Punishments/M4.js");
+			   break;
+				case 5:
+			   run("dungeon/Punishments/M5.js"); 
+			   break;
+				case 6:
+			   run("dungeon/Punishments/M8.js");
+			   break;
+			   }
+			   //run("dungeon/Punishments/M"+punishmentchoice+".js");		
 			break;
 			case 3:
 			   punishmentchoice = randomInteger(1,3);
@@ -268,7 +293,6 @@ if(isVar("PunishmentActive") && getVar("PunishmentActive")==true){
 			   run("dungeon/Punishments/H7.js");
 			   break;
 			
-		
 			   }
 			
 			break;

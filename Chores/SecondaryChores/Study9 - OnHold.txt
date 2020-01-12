@@ -1,0 +1,10 @@
+@SystemMessage #GNMVA @RT(For this fun and exciting chore you're gonna go look for..,This chore is all about exploring..)
+@SystemMessage #GNMVA New cooking recipes!
+@SystemMessage #GNMVA @RT(You can never have enough of those, One day when you're gonna serve I need to have a large reportoire)
+@SystemMessage #GNMVA Go on! @Wait(240)
+@SystemMessage #GNMVA Are you ready to continue?
+[yes]@SystemMessage #GNMVA #GNMGood
+[no]@SystemMessage #GNMVA Two more minutes then! #GNMEmoteHappy @Wait(120)
+@DifferentAnswer @SystemMessage #GNMVA Yes or no slut?
+@NullResponse @DeleteFlag(Chorec13) @ChangeVar[GNMChores]=[GNMChores]-[1]
+@NullResponse @MiniScript(GNMBackgroundChoresDo)

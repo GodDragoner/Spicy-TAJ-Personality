@@ -17,6 +17,10 @@ function sendDebugMessage(message) {
     }
 }
 
+function getCurrentTAJSenderID() {
+    return TAJ_CHAT_HANDLER.getHandler().getSelectedSender().getId();
+}
+
 function getCurrentSender() {
     return CURRENT_SENDER;
 }

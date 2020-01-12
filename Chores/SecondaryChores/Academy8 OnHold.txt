@@ -1,0 +1,12 @@
+@SystemMessage #GNMVA @RT(Lets see how you feel about this one,Lets try someone creative)
+@SystemMessage #GNMVA @RT(Imagine you actually managed to find a girl,Imagine you actually have a chance with a girl)
+@SystemMessage #GNMVA @RT(How would you romance her?,What would be a really romantic day?)
+@SystemMessage #GNMVA @RT(Spend,Use) #Random(5, 10) minutes writing a @RT(moment,hour,moment)
+@SystemMessage #GNMVA When you're done store the file somewhere..
+@SystemMessage #GNMVA Begin! @Wait(300)
+@SystemMessage #GNMVA Are you ready to continue?
+[yes]@SystemMessage #GNMVA #GNMGood
+[no]@SystemMessage #GNMVA You have a few more minutes then.. @Wait(120)
+@DifferentAnswer @SystemMessage #GNMVA Yes or no slave?
+@SystemMessage #GNMVA @RT(Hope you wrote something good,Hope you wrote something really romantic!) @DeleteFlag(Chorec3) @ChangeVar[GNMChores]=[GNMChores]-[1]
+@NullResponse @MiniScript(GNMBackgroundChoresDo)

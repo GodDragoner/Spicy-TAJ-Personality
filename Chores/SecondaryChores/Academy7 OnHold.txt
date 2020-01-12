@@ -1,0 +1,8 @@
+@SystemMessage #GNMVA @RT(A slave should know his knots,Even a slave should know his knots)
+@SystemMessage #GNMVA Spend 10 minutes studying your knots from Slave Guide On Knots
+@SystemMessage #GNMVA Wait for my bell.. @Wait(600)
+@SystemMessage #GNMVA Get back here @PlayAudio[\GNMSounds\SpecialSounds\Bell.mp3]
+@SystemMessage #GNMVA @RT(Remember that you can at any moment be tested,Remember that at any point you can be asked something)
+@SystemMessage #GNMVA @RT(You better know the answer when that happens!,You better know the answer is these situations!)
+@NullResponse @DeleteFlag(Chorec4) @ChangeVar[GNMChores]=[GNMChores]-[1]
+@NullResponse @MiniScript(GNMBackgroundChoresDo)

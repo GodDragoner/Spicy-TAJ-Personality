@@ -1,0 +1,311 @@
+@NullResponse @RapidCodeOn @CheckFlag(ChoreFuna)
+@NullResponse @CheckFlag(ChoreFunb)
+@NullResponse @CheckFlag(ChoreFunc)
+@NullResponse @CheckFlag(ChoreFune)
+@NullResponse @CheckFlag(ChoreFunf)
+@NullResponse @CheckFlag(ChoreFunh)
+(Choose)
+@NullResponse @Goto(a,b,c,d,e,f,g,h,i,j)
+(ChoreFuna)
+@SystemMessage #VANC #VANP Well it seems you failed to manage the last chore I gave you...
+@SystemMessage #VANC #VANP But trust me..
+@SystemMessage #VANC #VANP You're not getting out of this chore before you complete it! @Goto(aContinued)
+(ChoreFunb)
+@SystemMessage #VANC #VANP Well it seems you failed to manage the last chore I gave you...
+@SystemMessage #VANC #VANP But trust me..
+@SystemMessage #VANC #VANP You're not getting out of this chore before you complete it! @Goto(bContinued)
+(ChoreFunc)
+@SystemMessage #VANC #VANP Well it seems you failed to manage the last chore I gave you...
+@SystemMessage #VANC #VANP But trust me..
+@SystemMessage #VANC #VANP You're not getting out of this chore before you complete it! @Goto(cContinued)
+(ChoreFune)
+@SystemMessage #VANC #VANP Well it seems you failed to manage the last chore I gave you...
+@SystemMessage #VANC #VANP But trust me..
+@SystemMessage #VANC #VANP You're not getting out of this chore before you complete it! @Goto(eContinued)
+(ChoreFunf)
+@SystemMessage #VANC #VANP Well it seems you failed to manage the last chore I gave you...
+@SystemMessage #VANC #VANP But trust me..
+@SystemMessage #VANC #VANP You're not getting out of this chore before you complete it! @Goto(fContinued)
+(ChoreFunh)
+@SystemMessage #VANC #VANP Well it seems you failed to manage the last chore I gave you...
+@SystemMessage #VANC #VANP But trust me..
+@SystemMessage #VANC #VANP You're not getting out of this chore before you complete it! @Goto(hContinued)
+(a)
+(aContinued)
+@NullResponse @NotFlag(ElectroPlay) @Goto(Choose)
+@SystemMessage #VANC #VANP Go fetch your stimulator and 2 eletrodes @SetFlag(ChoreFuna) @Wait(30)
+@SystemMessage #VANC #VANP @SetFlag(ChoreActive) Got it?
+[yes]@SystemMessage #VANC #VANP #GNMGood
+[no]@SystemMessage #VANC #VANP Be quick! @Wait(30)
+@DifferentAnswer @SystemMessage #VANC #VANP Yes or no electroslut?
+@SystemMessage #VANC #VANP Place an electrode on your left and right ball
+@SystemMessage #VANC #VANP Find a pattern and a level that suits you
+@SystemMessage #VANC #VANP Try to impress me a little @Wait(30)
+@SystemMessage #VANC #VANP Just enjoy it until I tell you to stop @Wait(#Random(100,300))
+@SystemMessage #VANC #VANP You may stop and put your toy away slave.. #MeritChangePMedium @DeleteFlag(ChoreFuna) @Wait(30)
+@NullResponse  @Goto(End)
+(bContinued)
+(b)
+@NullResponse @NotFlag(VibratorPlay) @Goto(Choose)
+@SystemMessage #VANC #VANP I'm gonna put up a video @SetFlag(ChoreFunb)
+@Flag(ChastityIsOn) @SystemMessage #VANC #VANP While that video plays you're gonna keep your vibrator on your cage
+@NotFlag(ChastityIsOn) @SystemMessage #VANC #VANP While that video plays you're gonna keep your vibrator on your Cock
+@SystemMessage #VANC #VANP Just keep it on a low setting @SetFlag(ChoreActive) @Wait(30)
+@SystemMessage #VANC #VANP We don't want any accidents
+@SystemMessage #VANC #VANP So lay back, buzz on and enjoy
+@NullResponse @PlayVideo
+@SystemMessage #VANC #VANP This was fun!
+@SystemMessage #VANC #VANP Hope your #GNMCock feels the same way #GNMLol
+@SystemMessage #VANC #VANP You may stop and put your toy away slave.. #MeritChangePMedium @DeleteFlag(ChoreFunb) @Wait(30)
+@NullResponse  @Goto(End)
+(cContinued)
+(c)
+@NullResponse @NotFlag(DildoPlay) @Goto(Choose)
+@SystemMessage #VANC #VANP @RT(I wanna give you a choice,I wanna present you with a choice) @SetFlag(ChoreFunc)
+@SystemMessage #VANC #VANP You can either enjoy a dildo or you can just sit on your hands @SetFlag(ChoreActive)
+@SystemMessage #VANC #VANP So which one is it?
+[dildo]@SystemMessage #VANC #VANP The dildo it is! @Goto(Dildoc)
+[hands]@SystemMessage #VANC #VANP Not in the mood to play? @Goto(NoToyc)
+@DifferentAnswer @SystemMessage #VANC #VANP Dildo or hands slave?
+(Dildoc)
+@SystemMessage #VANC #VANP Fetch your dildo and a lube #SlaveName @Wait(15)
+@SystemMessage #VANC #VANP #GNMReady
+[yes]@SystemMessage #VANC #VANP #GNMGood
+@AcceptAnswer @SystemMessage #VANC #VANP Hurry up! @Wait(15)
+@SystemMessage #VANC #VANP Now #SlaveName lube up that sweet dildo @Wait(10)
+@SystemMessage #VANC #VANP I'm gonna start the video now..
+@SystemMessage #VANC #VANP If you're able to bring yourself to an ejaculation
+@SystemMessage #VANC #VANP You have #DomName's permission
+@SystemMessage #VANC #VANP Enjoy
+@NullResponse @PlayVideo
+@SystemMessage #VANC #VANP So tell me #SlaveName, did you cum by any chance? 
+[yes]@SystemMessage #VANC #VANP Seems like your lucky day @Goto(DildoOrgasm)
+[no]@SystemMessage #VANC #VANP Didn't think so anyway @Goto(NoDildoOrgasm)
+@DifferentAnswer @SystemMessage #VANC #VANP Yes or no slave?
+(DildoOrgasm)
+@SystemMessage #VANC #VANP #DomName turned you into a well trained sissy #GDRegisterOrgasm @Goto(DoneDildo)
+(NoDildoOrgasm)
+@SystemMessage #VANC #VANP But you might need to learn to cum like this
+@SystemMessage #VANC #VANP This might be the only way for you to cum in the future
+(DoneDildo)
+@NullResponse @Goto(Donec)
+(NoToyc)
+@SystemMessage #VANC #VANP I have a video you can enjoy while sitting on your hands..
+@SystemMessage #VANC #VANP Let the torture begin!
+@NullResponse @PlayVideo
+(Donec)
+@SystemMessage #VANC #VANP This was fun to watch #GNMLol #MeritChangePMedium @DeleteFlag(ChoreFunc)
+@NullResponse  @Goto(End)
+(d)
+@SystemMessage #VANC #VANP @RT(This one is a really fast one,This one should be quick)
+@SystemMessage #VANC #VANP Go to Milovana's Spicy forum thread and post a link or a name of a hot model!
+@SystemMessage #VANC #VANP You have 4 minutes!
+@SystemMessage #VANC #VANP Then I'm moving on.. #MeritChangePLow @Wait(240) @Goto(End)
+(e)
+(eContinued)
+@NullResponse @NotFlag(ElectroPlay) @Goto(Choose)
+@SystemMessage #VANC #VANP Fetch your electro toy along with the penis stimulators @SetFlag(ChoreFune) @Wait(10)
+@SystemMessage #VANC #VANP #GNMReady @SetFlag(ChoreActive)
+[yes]@SystemMessage #VANC #VANP #GNMGood
+@AcceptAnswer @SystemMessage #VANC #VANP Hurry up! @Wait(15)
+@SystemMessage #VANC #VANP Apply the stimulators whereever you want and put the toy on a nice setting @Wait(15)
+@SystemMessage #VANC #VANP Now just lay back and enjoy the stimulations while watching this
+@NullResponse @PlayVideo
+@SystemMessage #VANC #VANP Mhmm that looked hot @DeleteFlag(ChoreFune)
+@SystemMessage #VANC #VANP This was interesting #GNMGrin #MeritChangePMedium  @Goto(End)
+(fContinued)
+(f)
+@SystemMessage #VANC #VANP This one should be fun! @SetFlag(ChoreFunf)
+@SystemMessage #VANC #VANP I want you to find and watch a porno @SetFlag(ChoreActive)
+@SystemMessage #VANC #VANP And only watch, no stroking no nothing!
+@SystemMessage #VANC #VANP Not just any porno by the way
+@SystemMessage #VANC #VANP It has to include a hmm.. @Goto(f1,f2,f3,f4,f5)
+(f1)
+@SystemMessage #VANC #VANP Large dildo! @Goto(Donef)
+(f2)
+@SystemMessage #VANC #VANP A cane! @Goto(Donef)
+(f3)
+@SystemMessage #VANC #VANP A sexmachine! @Goto(Donef)
+(f4)
+@SystemMessage #VANC #VANP A chastity device @Goto(Donef)
+(f5)
+@SystemMessage #VANC #VANP Some sort electric toy #GNMGrin @Goto(Donef)
+(Donef)
+@SystemMessage #VANC #VANP Tell me 'done' when you're done.. @CustomMode(done, Goto, Done2f)
+@NullResponse @Wait(99999)
+(Done2f)
+@SystemMessage #VANC #VANP #GNMGood #MeritChangePMedium @CustomMode(ModeText, Normal) @DeleteFlag(ChoreFunf)
+@NullResponse  @Goto(End)
+(g)
+@SystemMessage #VANC #VANP I'm gonna give you 10 minutes to check up on your models
+@SystemMessage #VANC #VANP I expect that you have extensive knowledge about porn and lingerie models
+@SystemMessage #VANC #VANP I expect this because they are the weapon I use to make you horny!
+@SystemMessage #VANC #VANP So begin studying, your 10 minutes have started... @Wait(600)
+@NullResponse @PlayAudio[\GNMSounds\SpecialSounds\Bell.mp3]
+@SystemMessage #VANC #VANP Let's see how well you know your models @Goto(g1,g2,g3,g4,g5,g6,g7,g8,g9,g10,g11,g12)
+(g1)
+@SystemMessage #VANC #VANP  Who is this?
+ @ShowImage[\GNMImages\Chores\Chore7a\AdrianaLima.*]
+[adriana lima]@SystemMessage #VANC #VANP Correct! #MeritChangePLow @Goto(Right)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong.. #MeritChangeNLow @Goto(Wrong)
+(g2)
+@SystemMessage #VANC #VANP  Who is this?
+ @ShowImage[\GNMImages\Chores\Chore7a\AidenStarr.*]
+[aiden starr]@SystemMessage #VANC #VANP Correct! #MeritChangePLow @Goto(Right)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong.. #MeritChangeNLow @Goto(Wrong)
+(g3)
+@SystemMessage #VANC #VANP  Who is this? 
+@ShowImage[\GNMImages\Chores\Chore7a\AlessandraAmbrosio.*]
+[alessandra ambrosio]@SystemMessage #VANC #VANP Correct! #MeritChangePLow @Goto(Right)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong.. #MeritChangeNLow @Goto(Wrong)
+(g4)
+@SystemMessage #VANC #VANP  Who is this? 
+@ShowImage[\GNMImages\Chores\Chore7a\AmandaNicole.*]
+[amanda nicole]@SystemMessage #VANC #VANP Correct! #MeritChangePLow @Goto(Right)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong.. #MeritChangeNLow @Goto(Wrong)
+(g5)
+@SystemMessage #VANC #VANP  Who is this? 
+@ShowImage[\GNMImages\Chores\Chore7a\CandiceSwanepoel.*]
+[candice swanepoel]@SystemMessage #VANC #VANP Correct! #MeritChangePLow @Goto(Right)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong.. #MeritChangeNLow @Goto(Wrong)
+(g6)
+@SystemMessage #VANC #VANP  Who is this? 
+@ShowImage[\GNMImages\Chores\Chore7a\ChanelPreston.*]
+[chanel preston]@SystemMessage #VANC #VANP Correct! #MeritChangePLow @Goto(Right)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong.. #MeritChangeNLow @Goto(Wrong)
+(g7)
+@SystemMessage #VANC #VANP  Who is this? 
+@ShowImage[\GNMImages\Chores\Chore7a\DaisyMarie.*]
+[daisy marie]@SystemMessage #VANC #VANP Correct! #MeritChangePLow @Goto(Right)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong.. #MeritChangeNLow @Goto(Wrong)
+(g8)
+@SystemMessage #VANC #VANP  Who is this? 
+@ShowImage[\GNMImages\Chores\Chore7a\ElsaHosk.*]
+[elsa hosk]@SystemMessage #VANC #VANP Correct! #MeritChangePLow @Goto(Right)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong.. #MeritChangeNLow @Goto(Wrong)
+(g9)
+@SystemMessage #VANC #VANP  Who is this? 
+@ShowImage[\GNMImages\Chores\Chore7a\IsisLove.*]
+[isis love]@SystemMessage #VANC #VANP Correct! #MeritChangePLow @Goto(Right)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong.. #MeritChangeNLow @Goto(Wrong)
+(g10)
+@SystemMessage #VANC #VANP  Who is this? 
+@ShowImage[\GNMImages\Chores\Chore7a\ItaliaR.*]
+[italia r]@SystemMessage #VANC #VANP Correct! #MeritChangePLow @Goto(Right)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong.. #MeritChangeNLow @Goto(Wrong)
+(g11)
+@SystemMessage #VANC #VANP  Who is this? 
+@ShowImage[\GNMImages\Chores\Chore7a\LoreleiLee.*]
+[lorelei lee]@SystemMessage #VANC #VANP Correct! #MeritChangePLow @Goto(Right)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong.. #MeritChangeNLow @Goto(Wrong)
+(g12)
+@SystemMessage #VANC #VANP  Who is this? 
+@ShowImage[\GNMImages\Chores\Chore7a\MaitresseMadelineMarlowe.*]
+[maitresse madeline marlowe]@SystemMessage #VANC #VANP Correct! #MeritChangePLow @Goto(Right)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong.. #MeritChangeNLow @Goto(Wrong)
+(Right)
+@NullResponse @Goto(End)
+(Wrong)
+@NullResponse @Goto(End)
+(hContinued)
+(j)
+(i)
+(h)
+@SystemMessage #VANC #VANP This is going to be a fun little challenge @SetFlag(ChoreFunh)
+@SystemMessage #VANC #VANP I'm going to show you a video @SetFlag(ChoreActive)
+@SystemMessage #VANC #VANP Afterwards i'm gonna ask you a question about that video!
+@SystemMessage #VANC #VANP Get it right and I reward you
+@SystemMessage #VANC #VANP Get it wrong and well..
+@SystemMessage #VANC #VANP I expect you to get it wrong.. 
+@SystemMessage #VANC #VANP Pay attention! @Goto(H2,I2,J2)
+(H2)
+@SystemMessage #VANC #VANP @RT(Enjoy,Have fun,Relax and enjoy) 
+@PlayVideo[\GNM_Videos\BackgroundMode\Chores\Choreb8\A.mp4]
+@SystemMessage #VANC #VANP @RT(That was hot,Mhmm I'm feeling tingly,Soo sexy) @Goto(H2a,H2b,H2c,H2d,H2e,H2f)
+(H2a)
+@SystemMessage #VANC #VANP How many times did you see a cock go back and forth?
+[601]@SystemMessage #VANC #VANP @SystemMessage #VANC #VANP Correct! @Goto(Right)
+@AcceptAnswer @SystemMessage #VANC #VANP @SystemMessage #VANC #VANP Wrong! @Goto(Wrong)
+(H2b)
+@SystemMessage #VANC #VANP How many times did you hear the word "please"?
+[44]@SystemMessage #VANC #VANP Correct! @Goto(RightH)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong! @Goto(WrongH)
+(H2c)
+@SystemMessage #VANC #VANP How many times did you hear the words "yes Sir"?
+[7]@SystemMessage #VANC #VANP Correct! @Goto(RightH)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong! @Goto(WrongH)
+(H2d)
+@SystemMessage #VANC #VANP How many times did you hear the words "I serve the house"?
+[16]@SystemMessage #VANC #VANP Correct! @Goto(RightH)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong! @Goto(WrongH)
+(H2e)
+@SystemMessage #VANC #VANP How many times did you hear the words "thank you"?
+[6]@SystemMessage #VANC #VANP Correct! @Goto(RightH)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong! @Goto(WrongH)
+(H2f)
+@SystemMessage #VANC #VANP How many times did you hear the word "slave"?
+[9]@SystemMessage #VANC #VANP Correct! @Goto(RightH)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong! @Goto(WrongH)
+(I2)
+@SystemMessage #VANC #VANP @RT(Enjoy,Have fun,Relax and enjoy) 
+@PlayVideo[\GNM_Videos\BackgroundMode\Chores\Choreb8\C.mp4]
+@SystemMessage #VANC #VANP @RT(That was hot,Mhmm I'm feeling tingly,Soo sexy) @Goto(I2a,I2b,I2c,I2d,I2e)
+(I2a)
+@SystemMessage #VANC #VANP How many times are a quick shock administered?
+[27]@SystemMessage #VANC #VANP Correct! @Goto(RightH)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong! @Goto(WrongH)
+(I2b)
+@SystemMessage #VANC #VANP How many seconds does the last scene last?
+[47]@SystemMessage #VANC #VANP Correct! @Goto(RightH)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong! @Goto(WrongH)
+(I2c)
+@SystemMessage #VANC #VANP How many times does the strap on moves back and forth?
+[105]@SystemMessage #VANC #VANP Correct! @Goto(RightH)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong! @Goto(WrongH)
+(I2d)
+@SystemMessage #VANC #VANP How many seconds is the vibrator applied to her pussy?
+[28]@SystemMessage #VANC #VANP Correct! @Goto(RightH)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong! @Goto(WrongH)
+(I2e)
+@SystemMessage #VANC #VANP How many buttplugs did you count in the video?
+[14]@SystemMessage #VANC #VANP Correct! @Goto(RightH)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong! @Goto(WrongH)
+(J2)
+@SystemMessage #VANC #VANP @RT(Enjoy,Have fun,Relax and enjoy) 
+@PlayVideo[\GNM_Videos\BackgroundMode\Chores\Choreb8\B.mp4]
+@SystemMessage #VANC #VANP @RT(That was hot,Mhmm I'm feeling tingly,Soo sexy) @Goto(B1,B2,B3,B4,B5,B6)
+(B1)
+@SystemMessage #VANC #VANP How many times did the slut get whipped?
+[40]@SystemMessage #VANC #VANP Correct! @Goto(RightH)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong! @Goto(WrongH)
+(B2)
+@SystemMessage #VANC #VANP How many seconds has passed before the scene shift?
+[174]@SystemMessage #VANC #VANP Correct! @Goto(RightH)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong! @Goto(WrongH)
+(B3)
+@SystemMessage #VANC #VANP How many times did you hear the words "slut" & "whore"?
+[20]@SystemMessage #VANC #VANP Correct! @Goto(RightH)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong! @Goto(WrongH)
+(B4)
+@SystemMessage #VANC #VANP How many times does she suck the cock in the first scene?
+[38]@SystemMessage #VANC #VANP Correct! @Goto(RightH)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong! @Goto(WrongH)
+(B5)
+@SystemMessage #VANC #VANP How many times do you see the cock gag go up and down?
+[179]@SystemMessage #VANC #VANP Correct! @Goto(RightH)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong! @Goto(WrongH)
+(B6)
+@SystemMessage #VANC #VANP How many times is the slut pussy whipped?
+[12]@SystemMessage #VANC #VANP Correct! @Goto(RightH)
+@AcceptAnswer @SystemMessage #VANC #VANP Wrong! @Goto(WrongH)
+(WrongH)
+@SystemMessage #VANC #VANP Well I did kinda expect you to fail so there will be no punishment @DeleteFlag(ChoreFunh) 
+@SystemMessage #VANC #VANP I suppose its punishment enough knowing my reward would have been generous!  @Goto(End)
+(RightH)
+@SystemMessage #VANC #VANP Against all odds you got it right! #MeritChangePMedium
+@SystemMessage #VANC #VANP Thats 400 gold worth! @ChangeVar[GNMGold]=[GNMGold]+[400]
+@SystemMessage #VANC #VANP You now have @ShowVar[GNMGold] gold! @DeleteFlag(ChoreFunh) @Goto(End)
+(End)
+@NullResponse @ChangeVar[ChoresComplete]=[ChoresComplete]+[1]
+@NullResponse @DeleteFlag(ChoreActive)
+@End

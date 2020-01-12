@@ -1,0 +1,18 @@
+@SystemMessage #GNMVA @RT(Slave,#PetName,Slut)
+@SystemMessage #GNMVA @RT(I want you to spend,Right now you're gonna spend,I need you to spend) @Goto(10,15,20)
+(10)
+@SystemMessage #GNMVA 10 minutes @RT(studying lingerie,learning all you can about lingerie,read up on lingerie)
+@SystemMessage #GNMVA @RT(See the supplied textbooks,Check out the supplied textbooks) @Wait(600)
+@NullResponse @Goto(Bell)
+(15)
+@SystemMessage #GNMVA 15 minutes @RT(studying lingerie,learning all you can about lingerie,read up on lingerie)
+@SystemMessage #GNMVA @RT(See the supplied textbooks,Check out the supplied textbooks) @Wait(900)
+@NullResponse @Goto(Bell)
+(20)
+@SystemMessage #GNMVA 20 minutes @RT(studying lingerie,learning all you can about lingerie,read up on lingerie)
+@SystemMessage #GNMVA @RT(See the supplied textbooks,Check out the supplied textbooks) @Wait(1200)
+@NullResponse @Goto(Bell)
+(Bell)
+@SystemMessage #GNMVA Get back here @PlayAudio[\GNMSounds\SpecialSounds\Bell.mp3]
+@NullResponse @DeleteFlag(Chorec6) @ChangeVar[GNMChores]=[GNMChores]-[1]
+@NullResponse @MiniScript(GNMBackgroundChoresDo)

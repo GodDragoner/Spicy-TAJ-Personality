@@ -11,10 +11,16 @@ if (isVar(dayOfWeek + "MoodDate")) {
     //Check if we are still on the same day
     if (!(date.getDay() == todayDate.getDate() && date.getMonth() == todayDate.getMonth() && date.getYear() == todayDate.getFullYear())) {
         //Reset temp added values
-        setVar(VARIABLE_HAPPINESS, getVar(VARIABLE_HAPPINESS) - getVar(dayOfWeek + "Happiness"));
-        setVar(VARIABLE_LUST, getVar(VARIABLE_LUST) - getVar(dayOfWeek + "Lust"));
-        setVar(VARIABLE_ANGER, getVar(VARIABLE_ANGER) - getVar(dayOfWeek + "Anger"));
+        sendDebugMessage('Before temp day of week mood:');
+        debugPrintMood();
+
+        setVar(VARIABLE_HAPPINESS, Math.max(0, getVar(VARIABLE_HAPPINESS) - getVar(dayOfWeek + "Happiness")));
+        setVar(VARIABLE_LUST, Math.max(0, getVar(VARIABLE_LUST) - getVar(dayOfWeek + "Lust")));
+        setVar(VARIABLE_ANGER, Math.max(0, getVar(VARIABLE_ANGER) - getVar(dayOfWeek + "Anger")));
         newDay = true;
+
+        sendDebugMessage('After temp day of week mood:');
+        debugPrintMood();
     }
 } else {
     newDay = true;
@@ -22,7 +28,6 @@ if (isVar(dayOfWeek + "MoodDate")) {
 
 if (newDay) {
     setDate(dayOfWeek + "MoodDate");
-
 
     //Reset scenarios
     setVar("activeMoodScenarios", ",");
@@ -242,11 +247,19 @@ if (newDay) {
     setVar(dayOfWeek + "Lust", tempLust);
     setVar(dayOfWeek + "Anger", tempAnger);
 
+    //Debug print temp mood values
+    sendDebugMessage("Temp Lust: " + tempLust);
+    sendDebugMessage("Temp Happiness: " + tempHappiness);
+    sendDebugMessage("Temp Anger: " + tempAnger);
+
     //Add the daily based values
-    setVar(VARIABLE_HAPPINESS, getVar(VARIABLE_HAPPINESS) + tempHappiness);
-    setVar(VARIABLE_LUST, getVar(VARIABLE_LUST) + tempLust);
-    setVar(VARIABLE_ANGER, getVar(VARIABLE_ANGER) + tempAnger);
+    setVar(VARIABLE_HAPPINESS, Math.max(0, getVar(VARIABLE_HAPPINESS, 0) + tempHappiness));
+    setVar(VARIABLE_LUST,  Math.max(0, getVar(VARIABLE_LUST, 0) + tempLust));
+    setVar(VARIABLE_ANGER,  Math.max(0, getVar(VARIABLE_ANGER, 0) + tempAnger));
 }
+
+sendDebugMessage('Mood after startup routine');
+debugPrintMood();
 
 function activateRandomScenario(scenarioArray, idOffset, moodType) {
     const index = randomInteger(0, scenarioArray.length);
@@ -259,6 +272,12 @@ function activateRandomScenario(scenarioArray, idOffset, moodType) {
 
     //Return the scenario value
     return scenario;
+}
+
+function debugPrintMood() {
+    sendDebugMessage("Lust: " + getVar(VARIABLE_LUST));
+    sendDebugMessage("Happiness: " + getVar(VARIABLE_HAPPINESS));
+    sendDebugMessage("Anger: " + getVar(VARIABLE_ANGER));
 }
 
 function isScenarioActive(scenarioId) {

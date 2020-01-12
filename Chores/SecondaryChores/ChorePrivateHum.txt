@@ -1,0 +1,262 @@
+@NullResponse @RapidCodeOn @CheckFlag(ChorePrivHuma)
+@NullResponse @CheckFlag(ChorePrivHumb)
+@NullResponse @CheckFlag(ChorePrivHumc)
+@NullResponse @CheckFlag(ChorePrivHumd)
+@NullResponse @CheckFlag(ChorePrivHume)
+@NullResponse @CheckFlag(ChorePrivHumf)
+(Choose)
+@NullResponse @Goto(a,b,c,d,e,f)
+(ChorePrivHuma)
+@SystemMessage #VANC #VANP Well it seems you failed to manage the last chore I gave you...
+@SystemMessage #VANC #VANP But trust me..
+@SystemMessage #VANC #VANP You're not getting out of this chore before you complete it! @Goto(aContinued)
+(ChorePrivHumb)
+@SystemMessage #VANC #VANP Well it seems you failed to manage the last chore I gave you...
+@SystemMessage #VANC #VANP But trust me..
+@SystemMessage #VANC #VANP You're not getting out of this chore before you complete it! @Goto(bContinued)
+(ChorePrivHumc)
+@SystemMessage #VANC #VANP Well it seems you failed to manage the last chore I gave you...
+@SystemMessage #VANC #VANP But trust me..
+@SystemMessage #VANC #VANP You're not getting out of this chore before you complete it! @Goto(cContinued)
+(ChorePrivHumd)
+@SystemMessage #VANC #VANP Well it seems you failed to manage the last chore I gave you...
+@SystemMessage #VANC #VANP But trust me..
+@SystemMessage #VANC #VANP You're not getting out of this chore before you complete it! @Goto(dContinued)
+(ChorePrivHume)
+@SystemMessage #VANC #VANP Well it seems you failed to manage the last chore I gave you...
+@SystemMessage #VANC #VANP But trust me..
+@SystemMessage #VANC #VANP You're not getting out of this chore before you complete it! @Goto(eContinued)
+(ChorePrivHumf)
+@SystemMessage #VANC #VANP Well it seems you failed to manage the last chore I gave you...
+@SystemMessage #VANC #VANP But trust me..
+@SystemMessage #VANC #VANP You're not getting out of this chore before you complete it! @Goto(fContinued)
+(a)
+@NotFlag(GNMToyLingerieAdvanced) @NullResponse @Goto(Choose)
+@SystemMessage #VANC #VANP @RT(Let's make a deal,Let's see if you'll agree to this deal)
+@SystemMessage #VANC #VANP Do you promise to wear a pair of stockings for a full day, within the next week for 300 gold?
+[yes]@SystemMessage #VANC #VANP #GNMGood @Goto(Deala)
+[no]@SystemMessage #VANC #VANP I see @Goto(NoDeala)
+@DifferentAnswer @SystemMessage #VANC #VANP Yes or no slave?
+(NoDeala)
+@SystemMessage #VANC #VANP Oh well..
+@NullResponse @Interrupt(GNMBackgroundBase)
+(Deala)
+@SystemMessage #VANC #VANP Excellent!
+ @SetFlag(ChorePrivHuma)
+ @SetFlag(ChoreActive)
+@SystemMessage #VANC #VANP Return to chores when you've completed it!
+@NullResponse @Interrupt(GNMBackgroundBase)
+(aContinued)
+@SystemMessage #VANC #VANP Have you completed the stockings challenge?
+[yes]#GNMGood @DeleteFlag(ChorePrivHuma)
+[no]@SystemMessage #VANC #VANPThen I don't know what you're doing here.. @Goto(a2)
+@DifferentAnswer @SystemMessage #VANC #VANP Yes or no?
+@SystemMessage #VANC #VANP 300 gold has been sent as promised.. @DeleteFlag(ChoreActive) @ChangeVar[GNMGold]=[GNMGold]+[300]
+@NullResponse #MeritChangePMedium 
+(a2)
+@NullResponse @Interrupt(GNMBackgroundBase)
+(b)
+@NotFlag(GNMToyLingerieBasic) @NullResponse @Goto(Choose)
+@SystemMessage #VANC #VANP @RT(Let's make a deal,Let's see if you'll agree to this deal)
+@SystemMessage #VANC #VANP Do you promise go shopping while wearing a bra for 100 gold?
+@SystemMessage #VANC #VANP You may conceal it..
+[yes]@SystemMessage #VANC #VANP #GNMGood @Goto(Dealb)
+[no]@SystemMessage #VANC #VANP I see @Goto(NoDealb)
+@DifferentAnswer @SystemMessage #VANC #VANP Yes or no slave?
+(NoDealb)
+@SystemMessage #VANC #VANP Oh well..
+@NullResponse @Interrupt(GNMBackgroundBase)
+(Dealb)
+@SystemMessage #VANC #VANP Excellent! 
+@SetFlag(ChorePrivHumb)
+@SetFlag(ChoreActive)
+@SystemMessage #VANC #VANP Return when you've completed it!
+@NullResponse @Interrupt(GNMBackgroundBase)
+(bContinued)
+@SystemMessage #VANC #VANP Have you completed the bra shopping challenge?
+[yes]#GNMGood @DeleteFlag(ChorePrivHumb)
+[no]@SystemMessage #VANC #VANP Then I don't know what you're doing here.. @Goto(b2)
+@DifferentAnswer @SystemMessage #VANC #VANP Yes or no?
+@SystemMessage #VANC #VANP 100 gold has been sent as promised.. 
+@DeleteFlag(ChoreActive) 
+@ChangeVar[GNMGold]=[GNMGold]+[100]
+@NullResponse #MeritChangePMedium
+(b2)
+@NullResponse @Interrupt(GNMBackgroundBase)
+(c)
+@NotFlag(GNMToyLingerieBasic) @NullResponse @Goto(Choose)
+@SystemMessage #VANC #VANP @RT(Let's make a deal,Let's see if you'll agree to this deal)
+@SystemMessage #VANC #VANP Do you promise to sleep in nothing but a set of panties tonight for 100 gold?
+[yes]@SystemMessage #VANC #VANP #GNMGood @Goto(Dealc)
+[no]@SystemMessage #VANC #VANP I see @Goto(NoDealc)
+@DifferentAnswer @SystemMessage #VANC #VANP Yes or no slave?
+(NoDealc)
+@SystemMessage #VANC #VANP Oh well..
+@NullResponse @Interrupt(GNMBackgroundBase)
+(Dealc)
+@SystemMessage #VANC #VANP Excellent! 
+@SetFlag(ChorePrivHumc) 
+@SystemMessage #VANC #VANP Return when you've completed it!
+@SetFlag(ChoreActive)
+@NullResponse @Interrupt(GNMBackgroundBase)
+(cContinued)
+@SystemMessage #VANC #VANP Have you completed the sleeping panties challenge?
+[yes]#GNMGood @DeleteFlag(ChorePrivHumc)
+[no]@SystemMessage #VANC #VANP Then I don't know what you're doing here.. @Goto(c2)
+@DifferentAnswer @SystemMessage #VANC #VANP Yes or no?
+@SystemMessage #VANC #VANP 100 gold has been sent as promised..
+ @DeleteFlag(ChoreActive) 
+ @ChangeVar[GNMGold]=[GNMGold]+[100]
+@NullResponse #MeritChangePMedium
+(c2)
+@NullResponse @Interrupt(GNMBackgroundBase)
+(dContinued)
+(d)
+@NotFlag(GNMToyLingerie) @NullResponse @Goto(Choose)
+@SystemMessage #VANC #VANP @RT(Let's sex you up slave!,Time to spice you up!) 
+@SetFlag(ChorePrivHumd)
+@NullResponse @SetFlag(ChoreActive) 
+@CheckFlag(GNMToyLingerieAdvanced)
+@NullResponse @CheckFlag(GNMToyLingerieBasic)
+(GNMToyLingerieAdvanced)
+@NullResponse @Goto(Lingerie1,Lingerie2,Lingerie3,Lingerie4)
+(GNMToyLingerieBasic)
+@NullResponse @Goto(Lingerie4)
+(Lingerie1)
+@SystemMessage #VANC #VANP @RT(I want you wearing,I want you to put on,I command that you put on your,Do as told and put on your) panties, bra, garterbelt and stockings.
+@SystemMessage #VANC #VANP @RT(Now pay attention to the which one,Look carefully about which one,Let me show you which one..)
+@NullResponse @ShowImage[\GNMImages\Toys\Lingerie\Panties\*.jpg] 
+@Wait(5)
+@NullResponse @ShowImage[\GNMImages\Toys\Lingerie\Bra\*.jpg]
+ @Wait(5)
+@NullResponse @ShowImage[\GNMImages\Toys\Lingerie\GarterBelt\*.jpg]
+ @Wait(5)
+@NullResponse @ShowImage[\GNMImages\Toys\Lingerie\Stockings\*.jpg] 
+@Wait(5)
+@SystemMessage #VANC #VANP @RT(I'm gonna give you 5 minutes to put it all on,You only have 5 minutes to put it on!,Start dressing - you have 5 minutes,Hurry up i'm only giving you 5 minutes to dress up!)
+@SystemMessage #VANC #VANP Tell me done when you've put it on @CustomMode(done, Goto, LingerieOn)
+@NullResponse @Wait(60)
+@NullResponse @Wait(180)
+@SystemMessage #VANC #VANP 1 minute remaining! @Wait(50)
+@NullResponse @CustomMode(ModeText, Normal) @Goto(Punishment)
+(Lingerie2)
+@SystemMessage #VANC #VANP @RT(I want you wearing,I want you to put on,I command that you put on your,Do as told and put on your) garterbelt and stockings
+@SystemMessage #VANC #VANP @RT(Now pay attention to the which one,Look carefully about which one,Let me show you which one..)
+@SystemMessage #VANC #VANP @NullResponse
+ @ShowImage[\GNMImages\Toys\Lingerie\GarterBelt\*.jpg] 
+ @Wait(5)
+@SystemMessage #VANC #VANP 
+@NullResponse @ShowImage[\GNMImages\Toys\Lingerie\Stockings\*.jpg] 
+@Wait(5)
+@SystemMessage #VANC #VANP @RT(I'm gonna give you 90 seconds to put it all on,You only have 90 seconds to put it on!,Start dressing - you have 90 seconds,Hurry up i'm only giving you 90 seconds to dress up!)
+@SystemMessage #VANC #VANP Tell me done when you've put it on @CustomMode(done, Goto, LingerieOn)
+@NullResponse @Wait(90)
+@NullResponse @CustomMode(ModeText, Normal) @Goto(Punishment)
+(Lingerie3)
+@SystemMessage #VANC #VANP @RT(I want you wearing,I want you to put on,I command that you put on your,Do as told and put on your) bra, garterbelt and stockings.
+@SystemMessage #VANC #VANP @RT(Now pay attention to the which one,Look carefully about which one,Let me show you which one..)
+@NullResponse @ShowImage[\GNMImages\Toys\Lingerie\Bra\*.jpg]
+ @Wait(5)
+ 
+@NullResponse @ShowImage[\GNMImages\Toys\Lingerie\GarterBelt\*.jpg]
+ @Wait(5)
+@NullResponse @ShowImage[\GNMImages\Toys\Lingerie\Stockings\*.jpg]
+ @Wait(5)
+@SystemMessage #VANC #VANP @RT(I'm gonna give you 4 minutes to put it all on,You only have 4 minutes to put it on!,Start dressing - you have 4 minutes,Hurry up i'm only giving you 4 minutes to dress up!)
+@SystemMessage #VANC #VANP Tell me done when you've put it on @CustomMode(done, Goto, LingerieOn)
+@NullResponse @Wait(60)
+@NullResponse @Wait(120)
+@SystemMessage #VANC #VANP 1 minute remaining! @Wait(50)
+@NullResponse @CustomMode(ModeText, Normal) @Goto(Punishment)
+(Lingerie4)
+@SystemMessage #VANC #VANP @RT(I want you wearing,I want you to put on,I command that you put on your,Do as told and put on your) panties and bra
+@SystemMessage #VANC #VANP @RT(Now pay attention to the which one,Look carefully about which one,Let me show you which one..)
+@NullResponse @ShowImage[\GNMImages\Toys\Lingerie\Panties\*.jpg]
+ @Wait(5)
+@NullResponse @ShowImage[\GNMImages\Toys\Lingerie\Bra\*.jpg] 
+@Wait(5)
+@SystemMessage #VANC #VANP @RT(I'm gonna give you 1 minute to put it all on,You only have 1 minute to put it on!,Start dressing - you have 1 minute,Hurry up i'm only giving you 1 minute to dress up!)
+@SystemMessage #VANC #VANP Tell me done when you've put it on @CustomMode(done, Goto, LingerieOn)
+@NullResponse 
+@Wait(60)
+@NullResponse @CustomMode(ModeText, Normal) @Goto(Punishment)
+(Punishment)
+@SystemMessage #VANC #VANP Come back here 
+@PlayAudio[/GNMSounds/SpecialSounds/bell.mp3]
+@SystemMessage #VANC #VANP You didn't make it.. #GNMEmoteSad
+@SystemMessage #VANC #VANP So I've given you punishment points.. 
+@ChangeVar[GNMPPoints]=[GNMPPoints]+[50]
+@SystemMessage #VANC #VANP Let's try again! @Goto(Lingerie1,Lingerie2,Lingerie3,Lingerie4)
+(LingerieOn)
+@SystemMessage #VANC #VANP Good! @CustomMode(ModeText, Normal) @Goto(Start)
+(Start)
+@SystemMessage #VANC #VANP @RT(Now my little slave,Now my #GNMSlut)
+@SystemMessage #VANC #VANP You have 10 minutes to take 10 @RT(beautiful,sexy) pictures of yourself
+@SystemMessage #VANC #VANP Try different poses, pose on the floor, on the bed, standing in the doorway etc.
+@SystemMessage #VANC #VANP You look soo sexy! @ShowImage[\GNMImages\SelfHumiliation\*.jpg]
+@SystemMessage #VANC #VANP @RT(Be sexy!,Be hot!,Be creative!)
+@SystemMessage #VANC #VANP 10 minutes starting now! 
+@NullResponse @Wait(620)
+@SystemMessage #VANC #VANP Later today you are to add those pictures to your self humiliation folder.. 
+@SystemMessage #VANC #VANP We'll have fun with these later on.. 
+@DeleteFlag(ChorePrivHumd)
+@SystemMessage #VANC #VANP Let me reward that #GNMGrin #GoldMedium #MeritChangePMedium @Goto(End)
+(eContinued)
+(e)
+@SystemMessage #VANC #VANP #SlaveName 
+@SetFlag(ChorePrivHume)
+@SystemMessage #VANC #VANP @RT(This should be fun,This will be a good laugh) 
+@SetFlag(ChoreActive)
+@SystemMessage #VANC #VANP You're going to film yourself while getting spanked!
+@SystemMessage #VANC #VANP Now I want you to place a rubberband around your right and left thigh
+@SystemMessage #VANC #VANP Keep them moving all the way up to around each of your ass cheeks
+@SystemMessage #VANC #VANP I want you to spank each of your ass cheeks #Random(20, 40) times
+@SystemMessage #VANC #VANP While you do it
+@SystemMessage #VANC #VANP I want you to film yourself
+@SystemMessage #VANC #VANP When you're done you're gonna put that movie inside your selfhumiliation folder found inside videos
+@SystemMessage #VANC #VANP Go ahead girl! Tell me when you're "done" @CustomMode(done, Goto, Donee)
+@NullResponse @Wait(99999)
+(Donee)
+@SystemMessage #VANC #VANP I bet you had fun! #GNMGrin @CustomMode(ModeText, Normal) 
+@DeleteFlag(ChorePrivHume)
+@SystemMessage #VANC #VANP Let me reward that #GNMGrin #GoldMedium #MeritChangePMedium
+@NullResponse @Goto(End)
+(fContinued)
+(f)
+@SystemMessage #VANC #VANP I love the images of youself #GNMGrin 
+@ShowImage[\GNMImages\SelfHumiliation\*.jpg]
+ @SetFlag(ChorePrivHumf)
+@SystemMessage #VANC #VANP Let's add to the number of pictures in there! 
+@SetFlag(ChoreActive)
+@SystemMessage #VANC #VANP Write #DomHonorific #DomName @Goto(f1,f2)
+(f1)
+@SystemMessage #VANC #VANP On your #GNMCock with a permanent marker.. @Goto(Donef)
+(f2)
+@SystemMessage #VANC #VANP Across your #GNMAss with a permanent marker.. @Goto(Donef)
+(Donef)
+@SystemMessage #VANC #VANP When you're done I want you to snap a picture and add it to your selfhumiliation folder #GNMGrin 
+@Wait(120)
+@SystemMessage #VANC #VANP Done?
+[yes]@SystemMessage #VANC #VANP #GNMGood #MeritChangePMedium
+[no]@SystemMessage #VANC #VANP Hurry! @Wait(60)
+@DifferentAnswer @SystemMessage #VANC #VANP yes or no slut?
+@SystemMessage #VANC #VANP One can never have enough pictures @Goto(f3,f4,f5)
+(f3)
+@SystemMessage #VANC #VANP One day I might send them to your friend @ShowVar[BlackmailName1]
+@SystemMessage #VANC #VANP I still have the email.. @ShowVar[BlackmailPhone1]
+@SystemMessage #VANC #VANP So you better stay on your best behaviour! @Goto(Endf)
+(f4)
+@SystemMessage #VANC #VANP One day I might send them to your friend @ShowVar[BlackmailName2]
+@SystemMessage #VANC #VANP I still have the email.. @ShowVar[BlackmailPhone2]
+@SystemMessage #VANC #VANP So you better stay on your best behaviour! @Goto(Endf)
+(f5)
+@SystemMessage #VANC #VANP One day I might send them to your friend @ShowVar[BlackmailName3]
+@SystemMessage #VANC #VANP I still have the email.. @ShowVar[BlackmailPhone3]
+@SystemMessage #VANC #VANP So you better stay on your best behaviour! @Goto(Endf)
+(Endf)
+@NullResponse @DeleteFlag(ChorePrivHumf)
+@NullResponse @Goto(End)
+(End)
+@NullResponse @ChangeVar[ChoresComplete]=[ChoresComplete]+[1]
+@NullResponse @DeleteFlag(ChoreActive)
+@End

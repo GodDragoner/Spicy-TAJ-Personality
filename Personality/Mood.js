@@ -31,15 +31,15 @@ function feelsLikePunishingSlave() {
     let chance = 0;
 
     if (mood === VERY_PLEASED_MOOD) {
-        chance = ACTIVE_PERSONALITY_STRICTNESS * 10;
+        chance = getStrictnessForCharacter() * 10;
     } else if (mood === PLEASED_MOOD) {
-        chance = ACTIVE_PERSONALITY_STRICTNESS * 15;
+        chance = getStrictnessForCharacter() * 15;
     } else if (mood === NEUTRAL_MOOD) {
-        chance = (ACTIVE_PERSONALITY_STRICTNESS + 1) * 20;
+        chance = (getStrictnessForCharacter() + 1) * 20;
     } else if (mood === ANNOYED_MOOD) {
-        chance = (ACTIVE_PERSONALITY_STRICTNESS + 1) * 25;
+        chance = (getStrictnessForCharacter() + 1) * 25;
     } else if (mood === VERY_ANNOYED_MOOD) {
-        chance = (ACTIVE_PERSONALITY_STRICTNESS + 1) * 30;
+        chance = (getStrictnessForCharacter() + 1) * 30;
     }
 
     return getVar(VARIABLE_PUNISHMENT_POINTS) >= 250 || isChance(chance);
@@ -66,15 +66,15 @@ function feelsEvil() {
     let chance = 0;
 
     if (mood === VERY_PLEASED_MOOD) {
-        chance = ACTIVE_PERSONALITY_STRICTNESS * 10;
+        chance = getStrictnessForCharacter() * 10;
     } else if (mood === PLEASED_MOOD) {
-        chance = ACTIVE_PERSONALITY_STRICTNESS * 15;
+        chance = getStrictnessForCharacter() * 15;
     } else if (mood === NEUTRAL_MOOD) {
-        chance = (ACTIVE_PERSONALITY_STRICTNESS + 1) * 20;
+        chance = (getStrictnessForCharacter() + 1) * 20;
     } else if (mood === ANNOYED_MOOD) {
-        chance = (ACTIVE_PERSONALITY_STRICTNESS + 1) * 25;
+        chance = (getStrictnessForCharacter() + 1) * 25;
     } else if (mood === VERY_ANNOYED_MOOD) {
-        chance = (ACTIVE_PERSONALITY_STRICTNESS + 1) * 30;
+        chance = (getStrictnessForCharacter() + 1) * 30;
     }
 
     return isChance(chance);
@@ -84,7 +84,7 @@ function handleTodaysMood() {
     //Update mood at the end of session (prevents cheating by restarting the session over and over)
     loadMood();
 
-     dayOfMonth = setDate().getDay();
+    const dayOfMonth = setDate().getDay();
 
     //Positive
     if(getMood() < NEUTRAL_MOOD) {
@@ -95,6 +95,27 @@ function handleTodaysMood() {
     }
 
     //Otherwise no change
+}
+
+//Teasing is meant to be cruel in this case => which means Happiness would cause her to be less cruel
+function getCruelTeasingMood() {
+    let multiplier = 1;
+
+    if(getStrictnessForCharacter() === 1) {
+        multiplier = 1.2;
+    } if(getStrictnessForCharacter() === 2) {
+        multiplier = 1.5;
+    }
+
+    return (getVar(VARIABLE_ANGER) + getVar(VARIABLE_LUST, 0))*multiplier - getVar(VARIABLE_HAPPINESS, 0);
+}
+
+function getHumiliationMood() {
+
+}
+
+function getHumilationTimeModifier() {
+
 }
 
 //TODO: Add to it hurts etc.

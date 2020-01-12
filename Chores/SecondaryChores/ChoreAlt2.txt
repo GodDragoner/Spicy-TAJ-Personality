@@ -1,0 +1,296 @@
+@NullResponse @RapidCodeOn @CheckFlag(ChoreAlt2a)
+@NullResponse @CheckFlag(ChoreAlt2b)
+@NullResponse @CheckFlag(ChoreAlt2c)
+@NullResponse @CheckFlag(ChoreAlt2d)
+@NullResponse @CheckFlag(ChoreAlt2f)
+@NullResponse @CheckFlag(ChoreAlt2g)
+@NullResponse @CheckFlag(ChoreAlt2h)
+@NullResponse @CheckFlag(ChoreAlt2i) 
+(Choose)
+@NullResponse @Goto(a,b,c,d,e,f,g,h,i)
+(ChoreAlt2a)
+@SystemMessage #VANC #VANP Well it seems you failed to manage the last chore I gave you...
+@SystemMessage #VANC #VANP But trust me..
+@SystemMessage #VANC #VANP You're not getting out of this chore before you complete it! @Goto(aContinued)
+(ChoreAlt2b)
+@SystemMessage #VANC #VANP Well it seems you failed to manage the last chore I gave you...
+@SystemMessage #VANC #VANP But trust me..
+@SystemMessage #VANC #VANP You're not getting out of this chore before you complete it! @Goto(bContinued)
+(ChoreAlt2c)
+@SystemMessage #VANC #VANP Well it seems you failed to manage the last chore I gave you...
+@SystemMessage #VANC #VANP But trust me..
+@SystemMessage #VANC #VANP You're not getting out of this chore before you complete it! @Goto(cContinued)
+(ChoreAlt2d)
+@SystemMessage #VANC #VANP Well it seems you failed to manage the last chore I gave you...
+@SystemMessage #VANC #VANP But trust me..
+@SystemMessage #VANC #VANP You're not getting out of this chore before you complete it! @Goto(dContinued)
+(ChoreAlt2f)
+@SystemMessage #VANC #VANP Well it seems you failed to manage the last chore I gave you...
+@SystemMessage #VANC #VANP But trust me..
+@SystemMessage #VANC #VANP You're not getting out of this chore before you complete it! @Goto(fContinued)
+(ChoreAlt2g)
+@SystemMessage #VANC #VANP Well it seems you failed to manage the last chore I gave you...
+@SystemMessage #VANC #VANP But trust me..
+@SystemMessage #VANC #VANP You're not getting out of this chore before you complete it! @Goto(gContinued)
+(ChoreAlt2h)
+@SystemMessage #VANC #VANP Well it seems you failed to manage the last chore I gave you...
+@SystemMessage #VANC #VANP But trust me..
+@SystemMessage #VANC #VANP You're not getting out of this chore before you complete it! @Goto(hContinued)
+(ChoreAlt2i)
+@SystemMessage #VANC #VANP Well it seems you failed to manage the last chore I gave you...
+@SystemMessage #VANC #VANP But trust me..
+@SystemMessage #VANC #VANP You're not getting out of this chore before you complete it! @Goto(iContinued)
+(a)
+@NotFlag(PrivateHumActive) @NullResponse @Goto(Choose)
+@NullResponse @SetFlag(ChoreAlt2a)
+@SystemMessage #VANC #VANP @RT(Time for some laughs!,Let's make me laugh!) @SetFlag(ChoreActive)
+(aContinued)
+@SystemMessage #VANC #VANP @RT(Get naked and on all fours,Hurry up and be naked then get down on all fours)
+@SystemMessage #VANC #VANP I want you to walk on all fours to the kitchen, get a bowl and fill it water
+@SystemMessage #VANC #VANP Drink from the bowl and then crawl back #GNMLol @CustomMode(done, Goto, Donea)
+@SystemMessage #VANC #VANP Let me know when you're 'done' @Wait(99999)
+(Donea)
+@SystemMessage #VANC #VANP #GNMGood @DeleteFlag(ChoreAlt2a)  @CustomMode(ModeText, Normal)
+@SystemMessage #VANC #VANP Let me reward that #GNMGrin #GoldLow #MeritChangePLow @Goto(End)
+(b)
+@SystemMessage #VANC #VANP #SlaveName @SetFlag(ChoreAlt2b)
+(bContinued)
+@SystemMessage #VANC #VANP @RT(Head over to the corner,Go to the corner) @Goto(b1,b2,b3,b4,b5,b6)
+(b1)
+@SystemMessage #VANC And take the bad bitch position @ShowImage[\GNMImages\Positions\BadBitch2.jpg] @Wait(10) @Goto(Bellb)
+(b2)
+@SystemMessage #VANC And take the bent over position @ShowImage[\GNMImages\Positions\BentOver3.jpg] @Wait(10) @Goto(Bellb)
+(b3)
+@SystemMessage #VANC And take the box position @ShowImage[\GNMImages\Positions\Box1.jpg] @Wait(10) @Goto(Bellb)
+(b4)
+@SystemMessage #VANC And take the Attention position @ShowImage[\GNMImages\Positions\Attention1.jpg] @Wait(10) @Goto(Bellb)
+(b5)
+@SystemMessage #VANC And take the stand position @ShowImage[\GNMImages\Positions\Stand2.jpg] @Wait(10) @Goto(Bellb)
+(b6)
+@SystemMessage #VANC And take the stand open position @ShowImage[\GNMImages\Positions\StandOpen1.jpg] @Wait(10) @Goto(Bellb)
+(Bellb)
+@SystemMessage #VANC #VANP Wait for the bell @Wait(#Random(200,500))
+@SystemMessage #VANC #VANP Get back here.. @PlayAudio[\GNMSounds\SpecialSounds\Bell.mp3]
+@SystemMessage #VANC #VANP Position and corner training in one package @DeleteFlag(ChoreAlt2b) #MeritChangePLow
+@SystemMessage #VANC #VANP Let me reward that #GNMGrin #GoldMedium @Goto(End)
+(cContinued)
+(c)
+@SystemMessage #VANC #VANP @RT(Let's practice one of your positions,Let's have you do one of the positions) @SetFlag(ChoreAlt2c)
+@SystemMessage #VANC #VANP I'm gonna show you a position and I want you to take and hold it until you hear my bell @SetFlag(ChoreActive) @Goto(c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16)
+(c1)
+@SystemMessage #VANC Remember position 1 is called the Bad Bitch @LockImages @ShowImage[\GNMImages\Positions\BadBitch2.jpg] @Goto(cTimer)
+(c2)
+@SystemMessage #VANC Remember position 2 is called the Bent Over @LockImages @ShowImage[\GNMImages\Positions\BentOver1.jpg] @Goto(cTimer)
+(c3)
+@SystemMessage #VANC Remember position 3 is called the Bent Over Open @LockImages @ShowImage[\GNMImages\Positions\BentOverOpen2.jpg] @Goto(cTimer)
+(c4)
+@SystemMessage #VANC Remember position 4 is called the Box @LockImages @ShowImage[\GNMImages\Positions\Box1.jpg] @Goto(cTimer)
+(c5)
+@SystemMessage #VANC Remember position 5 is called the Come Fuck Me @LockImages @ShowImage[\GNMImages\Positions\CFM1.jpg] @Goto(cTimer)
+(c6)
+@SystemMessage #VANC Remember position 6 is called the Dog @LockImages @ShowImage[\GNMImages\Positions\Dog1.jpg] @Goto(cTimer)
+(c7)
+@SystemMessage #VANC Remember position 7 is called the Attention @LockImages @ShowImage[\GNMImages\Positions\Attention1.jpg] @Goto(cTimer)
+(c8)
+@SystemMessage #VANC Remember position 8 is called Listen @LockImages @ShowImage[\GNMImages\Positions\Listen1.jpg] @Goto(cTimer)
+(c9)
+@SystemMessage #VANC Remember position 9 is called the Kneel @LockImages @ShowImage[\GNMImages\Positions\Kneel1.jpg] @Goto(cTimer)
+(c10)
+@SystemMessage #VANC Remember position 10 is called the Punishment @LockImages @ShowImage[\GNMImages\Positions\Punishment1.jpg] @Goto(cTimer)
+(c11)
+@SystemMessage #VANC Remember position 11 is called the Slut @LockImages @ShowImage[\GNMImages\Positions\Slut1.jpg] @Goto(cTimer)
+(c12)
+@SystemMessage #VANC Remember position 12 is called the Spanking @LockImages @ShowImage[\GNMImages\Positions\Spanking1.jpg] @Goto(cTimer)
+(c13)
+@SystemMessage #VANC Remember position 13 is called Judgement @LockImages @ShowImage[\GNMImages\Positions\Judgement1.jpg] @Goto(cTimer)
+(c14)
+@SystemMessage #VANC Remember position 14 is called the Stand @LockImages @ShowImage[\GNMImages\Positions\Stand1.jpg] @Goto(cTimer)
+(c15)
+@SystemMessage #VANC Remember position 15 is called the Stand Open @LockImages @ShowImage[\GNMImages\Positions\StandOpen1.jpg] @Goto(cTimer)
+(c16)
+@SystemMessage #VANC Remember position 16 is called the Worship @LockImages @ShowImage[\GNMImages\Positions\Worship1.jpg] @Goto(cTimer)
+(cTimer)
+@NullResponse @Wait(#Random(200,400)) @DeleteFlag(ChoreAlt2c) @UnlockImages
+@SystemMessage #VANC #VANP Good boy #MeritChangePLow @PlayAudio[\GNMSounds\SpecialSounds\Bell.mp3]
+@SystemMessage #VANC #VANP Let me reward that #GNMGrin #GoldMedium @Goto(End)
+(dContinued)
+(d)
+@NotFlag(PrivateHumActive) @NullResponse @Goto(Choose)
+@NullResponse @SetFlag(ChoreAlt2d)
+@SystemMessage #VANC #VANP @RT(This is gonna be a blast,This should be fun to watch) @SetFlag(ChoreActive)
+@SystemMessage #VANC #VANP Find a porn that DOESN'T turn you on! 
+@SystemMessage #VANC #VANP I want you to watch #Random(2,5) minutes of it!
+@SystemMessage #VANC #VANP When you're done, just tell me @CustomMode(done, Goto, Doned)
+@NullResponse @Wait(999999)
+(Doned)
+@SystemMessage #VANC #VANP #GNMGood @DeleteFlag(ChoreAlt2d) @CustomMode(ModeText, Normal) #MeritChangePMedium
+@SystemMessage #VANC #VANP Let me reward that #GNMGrin #GoldLow @Goto(End)
+(e)
+@Flag(ChoreAlt2eNoGood) @NullResponse @Goto(Choose)
+@Flag(GNMToyLingerieAdvanced) @NullResponse @CheckFlag(PublicHumActive) 
+@NullResponse @Goto(Choose)
+(PublicHumActive)
+@NullResponse @CheckFlag(ChoreAlt2eGood)
+@SystemMessage #VANC #VANP Do you have a window that would put you on a semi public display?
+[yes]@SystemMessage #VANC #VANP Excellent! @SetFlag(ChoreAlt2eGood)
+[no]@SystemMessage #VANC #VANP Well then what I had in mind won't work.. @SetFlag(ChoreAlt2eNoGood)
+@DifferentAnswer @SystemMessage #VANC #VANP Yes or no?
+(ChoreAlt2eGood)
+@SystemMessage #VANC #VANP Let's see if we can come to terms! @Goto(e1,e2,e3,e4,e5,e6)
+(e1)
+@SystemMessage #VANC #VANP Would you be willing to stand naked in front of your public window for 100 gold?
+[yes]@SystemMessage #VANC #VANP Excellent! @Goto(MirrorNaked100)
+[no]@SystemMessage #VANC #VANP Hmm.. @Chance75(e2) @Goto(NoDeal)
+@DifferentAnswer @SystemMessage #VANC #VANP Yes or no slave?
+(e2)
+@SystemMessage #VANC #VANP Would you be willing to stand naked in front of your public window for 150 gold?
+[yes]@SystemMessage #VANC #VANP Excellent! @Goto(MirrorNaked150)
+[no]@SystemMessage #VANC #VANP Hmm.. @Chance75(e3) @Goto(NoDeal)
+@DifferentAnswer @SystemMessage #VANC #VANP Yes or no slave?
+(e3)
+@SystemMessage #VANC #VANP Would you be willing to stand naked in front of your public window for 200 gold?
+[yes]@SystemMessage #VANC #VANP Excellent! @Goto(MirrorNaked200)
+[no]@SystemMessage #VANC #VANP Hmm.. @Goto(NoDeal)
+@DifferentAnswer @SystemMessage #VANC #VANP Yes or no slave?
+(e4)
+@SystemMessage #VANC #VANP Would you be willing to stand in full lingerie in front of your public window for 100 gold?
+[yes]@SystemMessage #VANC #VANP Excellent! @Goto(MirrorLingerie100)
+[no]@SystemMessage #VANC #VANP Hmm.. @Chance50(e5) @Goto(NoDeal)
+@DifferentAnswer @SystemMessage #VANC #VANP Yes or no slave?
+(e5)
+@SystemMessage #VANC #VANP Would you be willing to stand in full lingerie in front of your public window for 150 gold?
+[yes]@SystemMessage #VANC #VANP Excellent! @Goto(MirrorLingerie150)
+[no]@SystemMessage #VANC #VANP Hmm.. @Chance50(e6) @Goto(NoDeal)
+@DifferentAnswer @SystemMessage #VANC #VANP Yes or no slave?
+(e6)
+@SystemMessage #VANC #VANP Would you be willing to stand in full lingerie in front of your public window for 200 gold?
+[yes]@SystemMessage #VANC #VANP Excellent! @Goto(MirrorLingerie200)
+[no]@SystemMessage #VANC #VANP Hmm.. @Goto(NoDeal)
+@DifferentAnswer @SystemMessage #VANC #VANP Yes or no slave?
+(MirrorNaked100)
+@SystemMessage #VANC #VANP Get naked slave! @Wait(60) @ChangeVar[GNMGold]=[GNMGold]+[100]
+@SystemMessage #VANC #VANP Get in front of your window and stand there for 5 minutes, wait for my bell.. @Wait(300)
+@NullResponse @Goto(End1)
+(MirrorNaked150)
+@SystemMessage #VANC #VANP Get naked slave! @Wait(60) @ChangeVar[GNMGold]=[GNMGold]+[150]
+@SystemMessage #VANC #VANP Get in front of your window and stand there for 5 minutes, wait for my bell.. @Wait(300)
+@NullResponse @Goto(End1)
+(MirrorNaked200)
+@SystemMessage #VANC #VANP Get naked slave! @Wait(60) @ChangeVar[GNMGold]=[GNMGold]+[200]
+@SystemMessage #VANC #VANP Get in front of your window and stand there for 5 minutes, wait for my bell.. @Wait(300)
+@NullResponse @Goto(End1)
+(MirrorLingerie100)
+@SystemMessage #VANC #VANP Put on a full set of lingerie #SlaveName, you have 5 minutes @Wait(300) @ChangeVar[GNMGold]=[GNMGold]+[100]
+@SystemMessage #VANC #VANP Get in front of your window and stand there for 5 minutes, wait for my bell.. @Wait(300)
+@NullResponse @Goto(End2)
+(MirrorLingerie150)
+@SystemMessage #VANC #VANP Put on a full set of lingerie #SlaveName, you have 5 minutes @Wait(300) @ChangeVar[GNMGold]=[GNMGold]+[150]
+@SystemMessage #VANC #VANP Get in front of your window and stand there for 5 minutes, wait for my bell.. @Wait(300)
+@NullResponse @Goto(End2)
+(MirrorLingerie200)
+@SystemMessage #VANC #VANP Put on a full set of lingerie #SlaveName, you have 5 minutes @Wait(300) @ChangeVar[GNMGold]=[GNMGold]+[200]
+@SystemMessage #VANC #VANP Get in front of your window and stand there for 5 minutes, wait for my bell.. @Wait(300)
+@NullResponse @Goto(End2)
+(End1)
+@SystemMessage #VANC #VANP Get back here #MeritChangePLow @PlayAudio[\GNMSounds\SpecialSounds\Bell.mp3] @Goto(Donee)
+(End2)
+@SystemMessage #VANC #VANP Get back here @PlayAudio[\GNMSounds\SpecialSounds\Bell.mp3] 
+@SystemMessage #VANC #VANP Remove your lingerie #MeritChangePMedium @Wait(60)
+@NullResponse @Goto(Donee)
+(NoDeal)
+@SystemMessage #VANC #VANP Too bad you won't make a deal with me.. 
+@End
+(Donee)
+@NullResponse @Goto(End)
+(fContinued)
+(f)
+@NullResponse @SetFlag(ChoreAlt2f)
+@SystemMessage #VANC #VANP @RT(You're gonna spend some time on the floor,Let's make you spend some time on the floor) @SetFlag(ChoreActive)
+@SystemMessage #VANC In just a moment you'll be in the worship position @ShowImage[\GNMImages\Positions\Worship1.jpg]
+@SystemMessage #VANC While in the worship position I want you to repeat the follow sentence over and over.. @ShowImage[\GNMImages\Positions\Worship1.jpg] @Goto(f1,f2,f3)
+(f1)
+@SystemMessage #VANC "I edge in the honor of the Goddess" @ShowImage[\GNMImages\Positions\Worship1.jpg] @Goto(Timef)
+(f2)
+@SystemMessage #VANC "My cock and pleasure is the property of the Goddess" @ShowImage[\GNMImages\Positions\Worship1.jpg] @Goto(Timef)
+(f3)
+@SystemMessage #VANC "My pleasure is a reward given to me by the Goddess" @ShowImage[\GNMImages\Positions\Worship1.jpg] @Goto(Timef)
+(Timef)
+@SystemMessage #VANC @RT(Repeat your mantra until you hear the bell,You will repeat the mantra until you hear the bell) @ShowImage[\GNMImages\Positions\Worship1.jpg]
+@SystemMessage #VANC Get into the worship position and begin.. @ShowImage[\GNMImages\Positions\Worship1.jpg]
+@NullResponse @ShowImage[\GNMImages\Positions\Worship1.jpg] @Wait(2#Random(200,400))
+(Bellc)
+@SystemMessage #VANC #VANP Get back up #SlaveName @PlayAudio[\GNMSounds\SpecialSounds\Bell.mp3]
+(Donec)
+@SystemMessage #VANC #VANP @RT(Moving on,Let's continue).. @DeleteFlag(ChoreAlt2f) #MeritChangePLow
+@SystemMessage #VANC #VANP Let me reward that #GNMGrin #GoldLow @Goto(End)
+(gContinued)
+(g)
+@NullResponse @SetFlag(ChoreAlt2g)
+@SystemMessage #VANC #VANP @RT(You're gonna spend some time on the floor,Let's make you spend some time on the floor) @SetFlag(ChoreActive)
+@SystemMessage #VANC In just a moment you'll be in the worship position @ShowImage[\GNMImages\Positions\Worship1.jpg]
+@SystemMessage #VANC While in the worship position I want you to repeat the follow sentence over and over.. @ShowImage[\GNMImages\Positions\Worship1.jpg] @Goto(g1,g2,g3)
+(g1)
+@SystemMessage #VANC "My cock exists to be denied any pleasure in honor of the Divinity" @ShowImage[\GNMImages\Positions\Worship1.jpg] @Goto(Timeg)
+(g2)
+@SystemMessage #VANC "My cock is encased in steel to honor the Divinity" @ShowImage[\GNMImages\Positions\Worship1.jpg] @Goto(Timeg)
+(g3)
+@SystemMessage #VANC "I exist to suffer denial and to honor the Divinity" @ShowImage[\GNMImages\Positions\Worship1.jpg] @Goto(Timeg)
+(Timeg)
+@SystemMessage #VANC @RT(Repeat your mantra until you hear the bell,You will repeat the mantra until you hear the bell) @ShowImage[\GNMImages\Positions\Worship1.jpg]
+@SystemMessage #VANC Get into the worship position and begin.. @ShowImage[\GNMImages\Positions\Worship1.jpg]
+@NullResponse @ShowImage[\GNMImages\Positions\Worship1.jpg] @Wait(2#Random(200,400))
+(Bellg)
+@SystemMessage #VANC #VANP Get back up #SlaveName @PlayAudio[\GNMSounds\SpecialSounds\Bell.mp3]
+(Doneg)
+@SystemMessage #VANC #VANP @RT(Moving on,Let's continue).. @DeleteFlag(ChoreAlt2g) #MeritChangePLow
+@SystemMessage #VANC #VANP Let me reward that #GNMGrin #GoldMedium @Goto(End)
+(hContinued)
+(h)
+@NullResponse @SetFlag(ChoreAlt2h)
+@SystemMessage #VANC #VANP @RT(You're gonna spend some time on the floor,Let's make you spend some time on the floor) @SetFlag(ChoreActive)
+@SystemMessage #VANC In just a moment you'll be in the worship position @ShowImage[\GNMImages\Positions\Worship1.jpg]
+@SystemMessage #VANC While in the worship position I want you to repeat the follow sentence over and over.. @ShowImage[\GNMImages\Positions\Worship1.jpg] @Goto(h1,h2,h3)
+(h1)
+@SystemMessage #VANC "I serve the mistress of pain, I worship the Devil" @ShowImage[\GNMImages\Positions\Worship1.jpg] @Goto(Timeh)
+(h2)
+@SystemMessage #VANC "My body is the focus of the Devil, I live to suffer in her name" @ShowImage[\GNMImages\Positions\Worship1.jpg] @Goto(Timeh)
+(h3)
+@SystemMessage #VANC "I faithfully worship the Devil and offer her my body" @ShowImage[\GNMImages\Positions\Worship1.jpg] @Goto(Timeh)
+(Timeh)
+@SystemMessage #VANC @RT(Repeat your mantra until you hear the bell,You will repeat the mantra until you hear the bell) @ShowImage[\GNMImages\Positions\Worship1.jpg]
+@SystemMessage #VANC Get into the worship position and begin.. @ShowImage[\GNMImages\Positions\Worship1.jpg]
+@NullResponse @ShowImage[\GNMImages\Positions\Worship1.jpg] @Wait(#Random(200,400))
+(Bellh)
+@SystemMessage #VANC #VANP Get back up #SlaveName @PlayAudio[\GNMSounds\SpecialSounds\Bell.mp3]
+(Done6)
+@SystemMessage #VANC #VANP @RT(Moving on,Let's continue).. @DeleteFlag(ChoreAlt2h) #MeritChangePLow
+@SystemMessage #VANC #VANP Let me reward that #GNMGrin #GoldMedium @Goto(End)
+(iContinued)
+(i)
+@NullResponse @SetFlag(ChoreAlt2i)
+@SystemMessage #VANC #VANP @RT(You're gonna spend some time on the floor,Let's make you spend some time on the floor) @SetFlag(ChoreActive)
+@SystemMessage #VANC In just a moment you'll be in the worship position @ShowImage[\GNMImages\Positions\Worship1.jpg]
+@SystemMessage #VANC While in the worship position I want you to repeat the follow sentence over and over.. @ShowImage[\GNMImages\Positions\Worship1.jpg] @Goto(i1,i2,i3)
+(i1)
+@SystemMessage #VANC "I am but the tool of #DomHonorific #DomName" @ShowImage[\GNMImages\Positions\Worship1.jpg] @Goto(iTime)
+(i2)
+@SystemMessage #VANC "I am an unworthy chastity belted slave" @ShowImage[\GNMImages\Positions\Worship1.jpg] @Goto(iTime)
+(i3)
+@SystemMessage #VANC "I serve to please my #DomHonorific" @ShowImage[\GNMImages\Positions\Worship1.jpg] @Goto(iTime)
+(iTime)
+@SystemMessage #VANC @RT(Repeat your mantra until you hear the bell,You will repeat the mantra until you hear the bell) @ShowImage[\GNMImages\Positions\Worship1.jpg]
+@SystemMessage #VANC Get into the worship position and begin.. @ShowImage[\GNMImages\Positions\Worship1.jpg]
+(i4)
+@NullResponse @ShowImage[\GNMImages\Positions\Worship1.jpg] @Wait(#Random(240,360))
+(Belli)
+@SystemMessage #VANC #VANP Get back up #SlaveName @PlayAudio[\GNMSounds\SpecialSounds\Bell.mp3]
+(Donei)
+@SystemMessage #VANC #VANP @RT(Moving on,Let's continue).. @DeleteFlag(ChoreAlt2i) #MeritChangePLow
+@SystemMessage #VANC #VANP Let me reward that #GNMGrin #GoldMedium @Goto(End)
+
+
+
+(End)
+@NullResponse @ChangeVar[ChoresComplete]=[ChoresComplete]+[1]
+@NullResponse @DeleteFlag(ChoreActive)
+@End

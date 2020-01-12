@@ -1,0 +1,15 @@
+@SystemMessage #GNMVA @RT(I have a good task for you,I have an interesting task for you,I think you'll enjoy this)
+@SystemMessage #GNMVA @RT(I want you to go online,I want you to open your browser)
+@SystemMessage #GNMVA @RT(Start a search about butt plugs,Go ahead and google butt plugs)
+@SystemMessage #GNMVA I want you to learn all you can, history, which one are popular etc..
+@SystemMessage #GNMVA I will sound the bell when I want you to come back @Goto(1,2,3)
+(1)
+@NullResponse @Wait(300) @Goto(Done)
+(2)
+@NullResponse @Wait(420) @Goto(Done)
+(3)
+@NullResponse @Wait(540) @Goto(Done)
+(Done)
+@SystemMessage #GNMVA Come back.. @PlayAudio[\GNMSounds\SpecialSounds\Bell.mp3] 
+@NullResponse @DeleteFlag(Choreb3) @ChangeVar[GNMChores]=[GNMChores]-[1]
+@NullResponse @MiniScript(GNMBackgroundChoresDo)
