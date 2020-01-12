@@ -23,11 +23,12 @@ function getWinnerIndex(array) {
     for(let index = 0; index < array.length; index++) {
         currentChance += array[index];
 
-        if(randomInt < currentChance) {
+        if(randomInt <= currentChance) {
             return index;
         }
     }
 
+    sendDebugMessage('No winner in array found!');
     return -1;
 }
 
