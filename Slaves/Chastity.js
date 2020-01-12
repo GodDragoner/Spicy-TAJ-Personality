@@ -3,7 +3,7 @@ function isForcedLockedUp() {
 }
 
 function addLockUpTime(hours) {
-    if (!isForcedLockedUp) {
+    if (!isForcedLockedUp()) {
         setDate(VARIABLE_LOCKED_UP_UNTIL, setDate().addHour(hours));
     } else {
         setDate(VARIABLE_LOCKED_UP_UNTIL, getDate(VARIABLE_LOCKED_UP_UNTIL).addHour(hours));
@@ -16,6 +16,7 @@ function isInChastity() {
 }
 
 function willKeepChastityOn(end) {
+    //Higher choice value -> chastity will probably be removed
     let choice = randomInteger(1, 100);
 
     if (end) {
@@ -44,9 +45,9 @@ function willKeepChastityOn(end) {
         index += 1;
     }
 
-    if (ACTIVE_PERSONALITY_STRICTNESS == 1) {
+    if (getStrictnessForCharacter() == 1) {
         choices = [35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 5, 10, 10, 15, 15, 20, 30, 35, 40, 50];
-    } else if (ACTIVE_PERSONALITY_STRICTNESS == 2) {
+    } else if (getStrictnessForCharacter() == 2) {
         choices = [40, 45, 50, 55, 60, 70, 75, 80, 85, 90, 10, 15, 15, 20, 20, 30, 40, 50, 60, 70];
     }
 

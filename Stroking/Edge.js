@@ -34,7 +34,12 @@ function startEdging(holdSeconds, skipStop = false, endIn = EDGE_END_NORMAL) {
         "Edge! Now %SlaveName%!",
     ];
 
+    //If we have any clamps on the cock we should move them away
+    redistributeClampsForStroking();
+
+    setAudioBlocked(true);
     sendMessage(answers[randomInteger(0, answers.length - 1)], 0);
+    setAudioBlocked(false);
 
     if(randomInteger(0, 3) == 2) playSound("Audio/Spicy/Stroking/Edge/*.mp3");
 
@@ -58,25 +63,39 @@ function startEdging(holdSeconds, skipStop = false, endIn = EDGE_END_NORMAL) {
 
         //Show the initial message to tell the sub to stay on the edge
         setTempVar('initialEdgeHold', true);
+
+        setAudioBlocked(true);
         run("Stroking/Taunt/HoldEdge/BasicHoldingTaunts.js");
+        setAudioBlocked(false);
 
         sendHoldEdgeTaunts(holdSeconds);
+    }
+
+    if(isStroking()) {
+        stopStroking();
     }
 
     sendDebugMessage('Ending edge');
 
     if(!skipStop) {
         sendDebugMessage('Stop edge message is not skipped');
+
+        setAudioBlocked(true);
         stopStrokingEdgeMessage();
+        setAudioBlocked(false);
     }
 
     sendDebugMessage('Checking for edge orgasm');
 
     if(endIn == EDGE_END_RUIN) {
+        setAudioBlocked(true);
         sendMessage('%RuinForMe%');
+        setAudioBlocked(false);
         registerRuin();
     } else if(endIn == EDGE_END_ORGASM) {
+        setAudioBlocked(true);
         sendMessage('%CumForMe%');
+        setAudioBlocked(false);
         registerOrgasm();
     }
 
@@ -139,7 +158,7 @@ function sendHoldEdgeTaunts(seconds) {
 function getEdgeHoldSeconds(edgeHold = EDGE_HOLD_DOM) {
     //TODO: Edge hold seconds based on sub experience?
     let mood = 0;
-    let strictness = ACTIVE_PERSONALITY_STRICTNESS;
+    let strictness = getStrictnessForCharacter();
 
     switch (edgeHold) {
         case EDGE_HOLD_DOM:

@@ -1,6 +1,6 @@
 {
     if (!isVar(VARIABLE_NEXT_CONFESSION_DAY)) {
-        sendVirtualAssistantMessage("Today it's tuesday");
+        sendVirtualAssistantMessage("Today is tuesday");
         sendVirtualAssistantMessage("Tuesdays are special");
         sendVirtualAssistantMessage("Tuesdays are confession days");
         sendVirtualAssistantMessage("Since you're full time it is required that you at least launch Tease-AI for a weekly confession on tuesdays");
@@ -9,7 +9,9 @@
         sendVirtualAssistantMessage("So choose whatever you believe to be most severe");
         sendVirtualAssistantMessage("Whether that is cumming without permission");
         sendVirtualAssistantMessage("Or some other violation of the rules");
-		//setDate(VARIABLE_NEXT_CONFESSION_DAY, setDate().addDay(7).setHour(0).setMinute(0).setSecond(0));
+    } else {
+        sendVirtualAssistantMessage("Today is tuesday");
+        sendVirtualAssistantMessage("Which means it's confession day");
     }
 
 //Only continue if we haven't check this today
@@ -37,12 +39,23 @@
 
             if (answer.containsIgnoreCase("came, orgasm, cum, cumming")) {
                 sendVirtualAssistantMessage("Cumming without permission...");
+                sendVirtualAssistantMessage("Slave, that is the most serious transgression");
+				sendVirtualAssistantMessage(random("you should keep in mind that testicles are a privlege, not a right", "I'll bet there's a chastity cage in your future", "I hope you at least did the respectful thing and ate it off the floor"));
+
+				
                 addPunishmentPoints(400);
 				setVar("Preason_BadCum",true);
             } else if (answer.containsIgnoreCase("ruin", "ruined")) {
                 sendVirtualAssistantMessage("Ruining without permission...");
                 addPunishmentPoints(250);
 				setVar("Preason_BadCum",true);
+			} else if (answer.containsIgnoreCase("flirting", "flirt", "crush")) {
+                sendVirtualAssistantMessage("Flirting with another woman!...");
+               sendVirtualAssistantMessage(random("how incredibly disrespectful of %Domhonorific% %Domname%", "perhaps a chastity cage would be a good reminder of who owns you and your dick","perhaps Mistress should share some of those humiliation pictures with your new crush"));
+				
+                addPunishmentPoints(250);
+				setVar("Preason_Flirting",true);
+ 
             } else if (answer.containsIgnoreCase("stroke", "stroking", "touched", "pleasured")) {
                 sendVirtualAssistantMessage("Stroking without permission...");
                 addPunishmentPoints(150);

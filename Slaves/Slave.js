@@ -1,14 +1,18 @@
 run("Slaves/Chastity.js");
 
 function getSubBirthday() {
-    getDate(VARIABLE_SUB_BIRTHDAY);
+    if(!isVar(VARIABLE_SUB_BIRTHDAY)) {
+        sendDebugMessage('No sub birthday found');
+        return setDate().addDay(-1);
+    } else {
+        return getDate(VARIABLE_SUB_BIRTHDAY);
+    }
 }
 
 function isSubBirthday() {
     let date = getSubBirthday();
-//fixme
-   // return date.getDay() === new Date().getDate() && date.getMonth() === new Date().getMonth();
-   return false;
+
+    return date.getDay() === new Date().getDate() && date.getMonth() === new Date().getMonth();
 }
 
 function increasePainTolerance() {
@@ -53,9 +57,9 @@ function isKneeling() {
 }
 
 function stopKneeling() {
-    //TODO: Sound too?
-    //playSound('Audio\\Spicy\\Commands\\Kneel\\*.mp3');
-    sendMessage(random('You can stop kneeling', 'You can get up from your knees now', 'You can sit down') + ' %SlaveName%');
+    //TODO: SOUND
+    // playSound('Audio\\Spicy\\Commands\\Kneel\\*.mp3');
+    sendMessage(random('You can stop kneeling and sit', 'You can get up from your knees now and sit', 'You can sit down') + ' %SlaveName%');
     setTempVar(VARIABLE_IS_KNEELING, false);
 }
 
@@ -65,7 +69,7 @@ function decideStopKneeling() {
     } else {
         let dateStartedKneeling = getDate(VARIABLE_KNEELING_STARTED);
 
-        let minKneeling = 2*(ACTIVE_PERSONALITY_STRICTNESS + 1) + getMood();
+        let minKneeling = 2*(getStrictnessForCharacter() + 1) + getMood();
 
         if(dateStartedKneeling.addMinute(minKneeling).hasPassed()) {
             return true;
@@ -80,11 +84,19 @@ function addPunishmentPoints(amount) {
 
     let multiplier = 1;
 
+    //We don't want any "last change" edit nor multiplier
+    if(amount < 0) {
+        setVar(VARIABLE_PUNISHMENT_POINTS, Math.max(0, points + amount));
+        return;
+    }
+
+    sendDebugMessage('Adding ' + amount + " punishment points");
+
     //TODO: Base on amount of recent pp too?
-	//adding a check for a nonexistnat variable to turn off wacky punishment points (should probably be an exposed setting)
-    if(isVar(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE)&&isVar("crazy_punishment_points")) {
+    if(isVar(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE)) {
         multiplier = getVar(VARIABLE_PUNISHMENT_POINT_MULTIPLIER);
-        let hoursSinceLastChange = Math.floor((new Date().getMilliseconds() - getDate(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE).getTimeInMillis())/(1000*60*60));
+
+        sendDebugMessage('Base multiplier is ' + multiplier);
 
         /*let minuteMultipliers = [2, 4, 6];
         let minuteMultiplier = minuteMultipliers[ACTIVE_PERSONALITY_STRICTNESS];
@@ -118,13 +130,9 @@ function addPunishmentPoints(amount) {
             multiplier += 0.2;
         }*/
 
-        let mood = getMood();
-        multiplier += Math.max(0.25, 0.1*(mood*ACTIVE_PERSONALITY_STRICTNESS + 10) - 0.1*hoursSinceLastChange/(Math.max(1, ACTIVE_PERSONALITY_STRICTNESS) + 1));
+        multiplier += getPunishmentPointMultiplierChange();
 
-        multiplier = Math.min(3, Math.max(0.5, multiplier));
-
-        //Update new multiplier
-        setVar(VARIABLE_PUNISHMENT_POINT_MULTIPLIER, multiplier);
+        multiplier = setPunishmentPointMultiplier(multiplier);
     } else {
         setVar(VARIABLE_PUNISHMENT_POINT_MULTIPLIER, 1);
     }
@@ -132,6 +140,28 @@ function addPunishmentPoints(amount) {
     setDate(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE);
 
     setVar(VARIABLE_PUNISHMENT_POINTS, Math.max(0, points + amount*multiplier));
+
+    sendDebugMessage('Adding (multiplier) ' + (amount*multiplier) + " punishment points");
+}
+
+function setPunishmentPointMultiplier(multiplier) {
+    multiplier = Math.min(3, Math.max(0.5, multiplier));
+
+    sendDebugMessage('New multiplier is ' + multiplier);
+
+    //Update new multiplier
+    setVar(VARIABLE_PUNISHMENT_POINT_MULTIPLIER, multiplier);
+    return multiplier;
+}
+
+function getPunishmentPointMultiplierChange() {
+    let mood = getMood();
+    let hoursSinceLastChange = Math.floor((new Date().getTime() - getDate(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE).getTimeInMillis())/(1000*60*60));
+    let maxSubtraction = -0.25;
+
+    sendDebugMessage('Hours since last change ' + hoursSinceLastChange);
+
+    return Math.max(maxSubtraction, 0.1*(mood*getStrictnessForCharacter() + 10) - 0.1*hoursSinceLastChange/(Math.max(1, getStrictnessForCharacter()) + 1));
 }
 
 function addGold(amount) {

@@ -12,7 +12,11 @@ if(isVar(VARIABLE_ACTIVE_CHASTITY_CAGE)) {
 }
 
 function getActiveChastityCage() {
-    return getChastityCageByName(currentChastityCage);
+    if(currentChastityCage === null || currentChastityCage === undefined) {
+        return CHASTITY_CAGES[0];
+    } else {
+        return currentChastityCage;
+    }
 }
 
 function unlockChastityCage() {
@@ -30,9 +34,9 @@ function unlockChastityCage() {
     sendMessage(random("Remove your %ChastityCage%", "Get your %ChastityCage% off", "Remove the %ChastityCage% at once", "Hurry up and remove the %ChastityCage%", "Be quick and get your %ChastityCage% off"));
 
     let timeout = randomInteger(20, 50);
-    if (ACTIVE_PERSONALITY_STRICTNESS == 1) {
+    if (getStrictnessForCharacter() == 1) {
         timeout = randomInteger(15, 40);
-    } else if (ACTIVE_PERSONALITY_STRICTNESS == 2) {
+    } else if (getStrictnessForCharacter() == 2) {
         timeout = randomInteger(10, 30);
     }
 
@@ -74,7 +78,7 @@ function unlockChastityCage() {
 
 function getMaxChastitySize() {
     let mood = getMood();
-    let strictness = ACTIVE_PERSONALITY_STRICTNESS;
+    let strictness = getStrictnessForCharacter();
 
     let maxWithoutRange= 8 - (Math.max(1, strictness) + Math.max(1, mood) + Math.min(1, mood));
 
@@ -82,7 +86,7 @@ function getMaxChastitySize() {
 }
 
 function getMinChastitySize() {
-    return Math.max(1, getMaxChastitySize() - Math.max(1, ACTIVE_PERSONALITY_STRICTNESS));
+    return Math.max(1, getMaxChastitySize() - Math.max(1, getStrictnessForCharacter()));
 }
 
 function findAvailableClosestToSize(length) {
@@ -112,7 +116,7 @@ function findAvailableClosestToSize(length) {
         //Check if we found something that's equal in value
         else if(Math.abs(currentSizeDifference) === Math.abs(foundDifference)) {
             //Use the bigger one
-            if(ACTIVE_PERSONALITY_STRICTNESS === 0) {
+            if(getStrictnessForCharacter() === 0) {
                 currentSizeDifference = Math.max(currentSizeDifference, foundDifference);
             }
             //Use the smaller one
@@ -217,8 +221,8 @@ function getRandomCageWithSize(length, punishments) {
 function selectChastityCage() {
     let mood = getMood();
 
-    let punishmentChance = mood*20 + (ACTIVE_PERSONALITY_STRICTNESS*20 - (VERY_ANNOYED_MOOD - mood)*10) - SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE*0.5;
-    sendDebugMessage('Punishment Chastity Chance: ' + punishmentChance + ' for mood ' + mood + ' and strictness ' + ACTIVE_PERSONALITY_STRICTNESS);
+    let punishmentChance = mood*20 + (getStrictnessForCharacter()*20 - (VERY_ANNOYED_MOOD - mood)*10) - SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE*0.5;
+    sendDebugMessage('Punishment Chastity Chance: ' + punishmentChance + ' for mood ' + mood + ' and strictness ' + getStrictnessForCharacter());
 
     let length = findAvailableClosestToSize(randomInteger(getMinChastitySize(), getMaxChastitySize()));
 
@@ -389,9 +393,9 @@ function lockChastityCage() {
 
     const chastityLevel = getVar(VARIABLE_CHASTITY_LEVEL);
     let timeout = randomInteger(60 - chastityLevel, 90 - chastityLevel);
-    if (ACTIVE_PERSONALITY_STRICTNESS == 1) {
+    if (getStrictnessForCharacter() == 1) {
         timeout = randomInteger(55 - chastityLevel, 80 - chastityLevel);
-    } else if (ACTIVE_PERSONALITY_STRICTNESS == 2) {
+    } else if (getStrictnessForCharacter() == 2) {
         timeout = randomInteger(50 - chastityLevel, 70 - chastityLevel);
     }
 
@@ -672,14 +676,14 @@ function setupNewCage() {
     let length = createIntegerInput('So just give me a number on a scale of 1 - 5 %SlaveName%', 1, 5, 'That\'s not a number... Give me something like 2 or 4', 'That number is not on the scale. Remember on a scale of 1 - 5 %SlaveName%');
 
     if(length >= 4) {
-        sendMessage('That\'s quite big');
-        sendMessage('I guess %DomHonorific% %DomName% will only allow this cage if you have been behaving properly %Grin%');
+        sendVirtualAssistantMessage('That\'s quite big');
+        sendVirtualAssistantMessage('I guess %DomHonorific% %DomName% will only allow this cage if you have been behaving properly %Grin%');
     } else if(length == 3) {
-        sendMessage('A medium sized cage is always got %Grin%');
+        sendVirtualAssistantMessage('A medium sized cage is always good %Grin%');
     } else {
-        sendMessage('A tiny cage for her %Cock%?');
-        sendMessage('%DomHonorific% %DomName% will definitely like that %Lol%');
-        sendMessage('Make sure to not disappoint here too much otherwise you might spend a long time in this cage');
+        sendVirtualAssistantMessage('A tiny cage for her %Cock%?');
+        sendVirtualAssistantMessage('%DomHonorific% %DomName% will definitely like that %Lol%');
+        sendVirtualAssistantMessage('Make sure to not disappoint here too much otherwise you might spend a long time in this cage');
     }
 
     setCurrentSender(SENDER_TAJ);

@@ -8,7 +8,7 @@ function getWeightForParachute() {
     let painTolerance = getVar(VARIABLE_SUB_PAIN_TOLERANCE);
 
     //Max right now is 3kg
-    return Math.max(0.5, random(painTolerance*0.25),  (painTolerance + 1)*0.25, (painTolerance + 2)*0.25);
+    return Math.max(0.5, random(painTolerance*0.25,  (painTolerance + 1)*0.25, (painTolerance + 2)*0.25));
 }
 
 function attachWeightToParachute() {

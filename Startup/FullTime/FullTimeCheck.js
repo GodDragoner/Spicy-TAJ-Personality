@@ -72,7 +72,7 @@
                 sendVirtualAssistantMessage("Let's see if you've been doing your chores like a good slave!");
 
                 if (getVar(VARIABLE_WEEKLY_CHORES_TIME) < getVar(VARIABLE_MIN_WEEKLY_CHORE_TIME)) {
-                    sendVirtualAssistantMessage("Bad boy!", "Bad girl!", "Bad slut!", "Bad dog!", "Bad slave!", "Bad sissy!");
+                    sendVirtualAssistantMessage(random("Bad boy!", "Bad girl!", "Bad slut!", "Bad dog!", "Bad slave!", "Bad sissy!"));
                     sendVirtualAssistantMessage("Bad behaviour is punished!");
                     sendVirtualAssistantMessage("I just assigned you punishment points!");
                     sendVirtualAssistantMessage("Do your chores!");

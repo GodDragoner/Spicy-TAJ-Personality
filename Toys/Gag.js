@@ -67,14 +67,24 @@ function decideGag(pain = false) {
         if (pain) {
             sendMessageBasedOnSender('I am not in the mood to hear your whimpering %GeneralTime%');
         } else {
-            //TODO: More?
-            sendMessageBasedOnSender(random('I want you to shut your mouth', 'I want you to shut up', 'I want you to stop talking', 'I want you to be silent', 'I want some silence'));
-            sendMessageBasedOnSender('And I just know a good way to accomplish this %Grin%');
+            if(isChance(40)) {
+                //TODO: Interact more based on what previously happened etc.
+                sendMessage('You have been talking too much', 'You have been annoying me by not shutting up', 'You have been quite annoying today');
+                sendMessage('And...');
+            }
+
+            sendMessageBasedOnSender(random('I want you to shut your dirty little mouth', 'I want you to shut up', 'I want you to stop talking', 'I want you to be silent', 'I want some silence',
+                'I need some silence'));
+            sendMessageBasedOnSender('And I just know a good way to accomplish that %Grin%');
         }
 
         selectAndPutInGag();
         return true;
-    } else if (isChance(25)) {
+    }
+
+    //Punishment has higher chance for gags
+	//fixme removed some isongoingpunishment dependancies
+    else if (isChance(50)) {
         selectAndPutInGag();
         return true;
     }
@@ -199,12 +209,13 @@ function putInGag(gagType = GAG_TYPE_BALL_GAG, addPinToTongue = false) {
     waitForDone();
 
     currentGagType = gagType;
-
+    currentGagType.setLastUsage();
     setGaged(true);
 
     return true;
 }
 
+//TODO: Supply reason why to remove so teasing can be done like (Remove the gag, I want your mouth free for what's about to come next)
 function removeGag() {
     if (BODY_PART_TONGUE.currentClamps > 0) {
         sendMessageBasedOnSender('%SlaveName%');
@@ -223,6 +234,8 @@ function removeGag() {
             answer.loop();
         }
     }
+
+    currentGagType.setLastRemoval();
 
     sendMessageBasedOnSender("Put the gag aside for now");
     setGaged(false);
@@ -247,7 +260,9 @@ function setupGags(domChose) {
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
     GAG_TYPE_INFLATABLE_GAG.askForToy();
-    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
-    askForToyUsage('gag', domChose);
+    if(!domChose) {
+        sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+        askForToyUsage('gag', domChose);
+    }
 }
