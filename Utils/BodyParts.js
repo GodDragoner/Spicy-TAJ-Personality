@@ -17,10 +17,10 @@ const BODY_PART_EAR_L = registerTwosidedBodyPart("ear", 3);
 const BODY_PART_EAR_R = BODY_PARTS[currentBodyPartId - 1];
 
 function registerTwosidedBodyPart(name, maxClamps) {
-    let rightPart = registerBodyPart(name, maxClamps, RIGHT);
-    registerBodyPart(name, maxClamps, LEFT);
+    let leftPart = registerBodyPart(name, maxClamps, LEFT);
+    registerBodyPart(name, maxClamps, RIGHT);
 
-    return rightPart;
+    return leftPart;
 }
 
 function registerBodyPart(name, maxClamps, side = NONE) {
@@ -35,6 +35,18 @@ function registerBodyPart(name, maxClamps, side = NONE) {
     const bodyPart = {
         id: currentBodyPartId++, name: name, sidedName: sidedName, side: side, currentClamps: 0, maxClamps: maxClamps,
 
+        printDebug: function () {
+            sendDebugMessage(this.sidedName + ': ' + this.id);
+            sendDebugMessage('Has Opposite: ' + this.hasOppositeBodyPart());
+            sendDebugMessage('Side:' + this.side);
+
+            if(this.hasOppositeBodyPart()) {
+                sendDebugMessage('Opposite:' + this.getOppositeBodyPart().sidedName);
+            }
+
+            sendDebugMessage('Max: ' + this.isMaxClampsReached());
+        },
+
         getOppositeBodyPart: function () {
             if (this.side == LEFT) {
                 return BODY_PARTS[this.id + 1];
@@ -45,8 +57,8 @@ function registerBodyPart(name, maxClamps, side = NONE) {
             return null;
         },
 
-        normalize: function() {
-            if(this.hasOppositeBodyPart()) {
+        normalize: function () {
+            if (this.hasOppositeBodyPart()) {
                 return this.getLeftSide();
             }
 
@@ -101,12 +113,12 @@ function registerBodyPart(name, maxClamps, side = NONE) {
             }
 
             //No pins on nipples if nipple clamps are already attached
-            if(this === BODY_PART_NIPPLE_R || this === BODY_PART_NIPPLE_L) {
+            if (this === BODY_PART_NIPPLE_R || this === BODY_PART_NIPPLE_L) {
                 return !NIPPLE_CLAMPS.isToyOn();
             }
 
             //No tongue clip while ball gag
-            if(this === BODY_PART_TONGUE && isGaged() && currentGagType !== GAG_TYPE_SPIDER_GAG) {
+            if (this === BODY_PART_TONGUE && isGaged() && currentGagType !== GAG_TYPE_SPIDER_GAG) {
                 return false;
             }
 

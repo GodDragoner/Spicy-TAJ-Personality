@@ -38,6 +38,21 @@ appendPenetratingSession('dildo');*/
 /*
 sendVirtualAssistantMessage(random("Launching", "Initiating", "Starting", "Establishing") + " session with Mistress");
 run("Session/StartSession.js");
+
+
+incrementVar(VARIABLE_BLOWJOB_EXPERIENCE, getTrainingEXPForLevel(20));
+incrementVar(VARIABLE_ASS_EXPERIENCE, getTrainingEXPForLevel(20));
+while(getTrainingEXPForLevel(getVar(VARIABLE_ASS_LEVEL) + 1) <= getVar(VARIABLE_ASS_EXPERIENCE)) {
+    incrementVar(VARIABLE_ASS_LEVEL, 1);
+}
+
+while(getTrainingEXPForLevel(getVar(VARIABLE_BLOWJOB_LEVEL) + 1) <= getVar(VARIABLE_BLOWJOB_EXPERIENCE)) {
+    incrementVar(VARIABLE_BLOWJOB_LEVEL, 1);
+}
+
+sendDebugMessage(getVar(VARIABLE_BLOWJOB_LEVEL));
+
+setVar(VARIABLE_CHASTITY_ON, true);
  */
 
-BUTTPLUG_TOY.askForToyUsage(true);
+

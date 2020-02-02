@@ -196,7 +196,7 @@ function putInButtplug(forceBigger = false) {
                 sendMessage("Gently push that plug into your ass");
                 sendMessage("Push it a bit further this time");
                 sendMessage("Hold the position again", 3);
-                sendMessage("Aaaaand...");
+                sendMessage("Aaaaand..."); //TODO: Skip after if plug is small
                 sendMessage("Let that plug slip out again");
                 sendMessage("Now...");
                 sendMessage("This time it is gonna go all the way in %Grin%");
@@ -491,6 +491,7 @@ function removeButtplug() {
         sendMessage("You already know " + random("what I am gonna make you do now", "what comes next", "what you are gonna do next", "what I want you to do next", "what is gonna happen now"));
         sendMessage("I want you to suck that toy clean %Grin%");
 
+        //TODO: Chance to stay gagged, check for spider gag
         if (isGaged()) {
             removeGag();
         }

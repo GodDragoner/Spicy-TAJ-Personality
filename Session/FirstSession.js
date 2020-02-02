@@ -345,7 +345,7 @@
             setVar(VARIABLE_ORGASM_FREQUENCY, ORGASM_FREQUENCY_RARE);
             break;
         } else if (answer.containsIgnoreCase("you", "your choice", "extremely rare")) {
-            sendMessage("That's what I wanted to here %SlaveName%");
+            sendMessage("That's what I wanted to hear %SlaveName%");
             setVar(VARIABLE_ORGASM_FREQUENCY, ORGASM_FREQUENCY_DOM);
             break;
         } else {

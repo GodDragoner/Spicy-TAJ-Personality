@@ -147,7 +147,7 @@ function startGayPictureRound() {
             if (newValue % 7 == 0 && newValue != 0) {
                 sendMessage("Oh my oh my!");
 
-                addLockUpTime(48)
+                addLockUpTime(48);
 
                 if (hasChastityCage()) {
                     sendMessage('That\'s 2 days in chastity for you %EmoteSad%');

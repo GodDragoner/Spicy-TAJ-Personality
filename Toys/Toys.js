@@ -68,7 +68,7 @@ function interactWithRandomToys() {
     }
 
 
-    //TODO: Better decision?
+    //TODO: Better decision? And check for rule collar always on
     if (COLLAR_TOY.hasToy() && !COLLAR_TOY.isToyOn() && isChance(20)) {
         putOnCollar();
     }
@@ -558,7 +558,11 @@ function setupToys(settings) {
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
     INFLATABLE_BUTT_PLUG.askForToyAndUsage(domChose);
-    INFLATABLE_BUTT_PLUG.askForVibration();
+
+    //Only if the sub has the toy we should ask this
+    if(INFLATABLE_BUTT_PLUG.hasToy()) {
+        INFLATABLE_BUTT_PLUG.askForVibration();
+    }
 
     COLLAR_TOY.askForToyAndUsage(domChose);
 

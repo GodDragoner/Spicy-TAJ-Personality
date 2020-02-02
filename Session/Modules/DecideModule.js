@@ -152,6 +152,18 @@
 
 function runModuleCategory(category) {
     setTempVar('lastModuleCategory', category);
+
+    //Infinite loop?
+    if(getVar('findModuleTries', 0) > 20) {
+        if(category !== CATEGORY_TEASE) {
+            sendDebugMessage('Stuck in module ' + category + ' loop . Trying tease now');
+            category = CATEGORY_TEASE;
+        } else {
+            sendDebugMessage('Stuck in module ' + category + ' loop . Trying slave now');
+            category = CATEGORY_SLAVE;
+        }
+    }
+
     const neutralPath = getModuleTypeCategoryPath(category, 'Neutral');
     const noChastityPath = getModuleTypeCategoryPath(category, 'NoChastity');
     const dynamicPath = getModuleTypeCategoryPath(category, 'Dynamic');
@@ -170,7 +182,7 @@ function runModuleCategory(category) {
         paths.push(dynamicPath + PATH_SEPARATOR + "*.js");
     }
 
-    //Keep track of how many times we tried to find a module in a category since last decide Moudle call
+    //Keep track of how many times we tried to find a module in a category since last decide Module call
     setTempVar('findModuleTries', getVar('findModuleTries', 0) + 1);
 
     run(paths[randomInteger(0, paths.length - 1)]);

@@ -4,7 +4,6 @@ const CLOTHESPINS_TOY = createToy('clothespins');
 const MAX_CLAMPS = 20;
 
 
-
 function getClamps(index) {
     if (BODY_PARTS.length > index) {
         return BODY_PARTS[index].currentClamps;
@@ -142,7 +141,7 @@ function distributeClamps(amount, bodyPartHistory = new java.util.ArrayList()) {
         }
 
         //Nipple clamps instead?
-        if((randomBodyPart === BODY_PART_NIPPLE_L ||randomBodyPart === BODY_PART_NIPPLE_R) && shouldReplaceSpinsWithNippleClamps() && !isNipplesClamped())  {
+        if ((randomBodyPart === BODY_PART_NIPPLE_L || randomBodyPart === BODY_PART_NIPPLE_R) && shouldReplaceSpinsWithNippleClamps() && !isNipplesClamped()) {
             putNippleClampsOn();
             continue;
         }
