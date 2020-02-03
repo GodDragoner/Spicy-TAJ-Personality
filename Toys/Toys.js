@@ -295,7 +295,7 @@ function createToy(name) {
         name: name,
 
         hasToy: function () {
-            return getVar(this.getVarName());
+            return getVar(this.getVarName(), false);
         },
 
         setLastUsage: function () {

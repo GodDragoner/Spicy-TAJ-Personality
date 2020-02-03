@@ -7,11 +7,11 @@ function hasPortableDevice() {
     while (true) {
         if (answer.isLike("yes", "ready")) {
             sendMessage("%Good%");
-            setTempVar('portableDevice', true)
+            setTempVar('portableDevice', true);
             return true;
         } else if (answer.isLike("no", "don't", "can't")) {
             sendMessage('Well that\'s a shame...');
-            setTempVar('portableDevice', false)
+            setTempVar('portableDevice', false);
             return false;
         }
     }
