@@ -105,14 +105,14 @@
                         }
 
                         //Tie balls up again
-                        if (!hasBallsTied() && loops != 0 && isChance(10 + painLevel * 2) && wantsToTieBalls()) {
+                        if (!hasBallsTied() && loops != 0 && isChance(10 + painLevel * 2) && wantsToTieBalls() && !isInChastity()) {
                             if(untieRoundsAgo < 0) {
                                 sendMessage('I think we need to change this up a bit');
                             } else {
                                 sendMessage(random('Let\'s make it hurt a bit more again', 'I think we should go back to tied balls %Grin%', 'I think I liked those balls more when they were tied up'));
                             }
 
-                            tieBalls();
+                            tieBalls(true);
 
                             if(untieRoundsAgo < 0) {
                                 sendMessage('Much better isn\'t it? %Grin%');

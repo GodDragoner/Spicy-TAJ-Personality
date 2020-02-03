@@ -11,18 +11,20 @@ if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_STROKING)) {
             sendMessage("So...");
         } else {
             sendMessage("Because...");
-            sendMessage("It's time for your stroke training %EmoteHappy%")
+            sendMessage("It's time for your stroke endurance training %EmoteHappy%")
         }
     } else {
         sendMessage("Okay %SlaveName%");
+
         if (getVar(VARIABLE_STROKE_TRAININGS_DONE, 0) > 0) {
-            sendMessage("I think it's time for some stroke training again %EmoteHappy%")
+            sendMessage(random('I think it\'s yet again time for some stroke endurance training %Grin%', "I think it's time for some stroke endurance training again %EmoteHappy%"));
+            sendMessage('Remember to tell me when you are on the edge after the initial warmup round');
         }
     }
 
-    if (setTempVar(VARIABLE_STROKE_TRAININGS_DONE, 0) == 0) {
+    if (getVar(VARIABLE_STROKE_TRAININGS_DONE, 0) == 0) {
         sendMessage("Right now I want to try something new");
-        sendMessage("I call it \"stroke training\"");
+        sendMessage("I call it \"stroke endurance training\"");
         sendMessage("Cock'xercise you might call it %Lol%");
         sendMessage("Well!");
         sendMessage("It's rather simple");
@@ -114,7 +116,7 @@ function startStrokeTraining() {
 
         playRandomStrokeTrainingBeat(level);
 
-        sendDebugMessage('New time to increase stroke training level: ' + getVar('timeToIncreaseLevel') + '/' + increaseLevelMax);
+        sendDebugMessage('New time to increase stroke endurance training level: ' + getVar('timeToIncreaseLevel') + '/' + increaseLevelMax);
 
         if((getVar(VARIABLE_STROKE_TRAINING_EDGES_DONE) !== edgesAtStart || !getVar(VARIABLE_STROKE_TRAINING_ACTIVE, false))) return;
         showTeaseImage(randomInteger(5, 10));
@@ -160,7 +162,7 @@ function strokeTrainingEdge() {
         sendMessage(random("%Grin%", "%Lol%", "%EmoteHappy%"));
         sendMessage(random("Couldn't handle more huh?", "I guess that was it huh", "So \"no more\" I guess..."));
 
-        sendDebugMessage('Finished stroke training with level ' + level);
+        sendDebugMessage('Finished stroke endurance training with level ' + level);
 
         if (level >= 50) {
             if (getStrictnessForCharacter() == 0) {
@@ -231,6 +233,8 @@ function strokeTrainingEdge() {
     sendMessage("Rest before you start again");
 
     interactWithRandomToys();
+
+    sendMessage('Be ready for it to start again very soon %Grin%');
 
     sleep(randomInteger(10, 25));
     startStrokeTraining();

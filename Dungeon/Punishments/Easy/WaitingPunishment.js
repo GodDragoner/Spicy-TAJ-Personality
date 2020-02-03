@@ -11,11 +11,12 @@ if (tryRunPunishmentFetchId(MODULE_LINE_WRITING)) {
     sendMessage("Every once in a while a few numbers will appear and you will have exactly 5 seconds to write back the number colored red ");//#DT4
     sendMessage("If not I promise you your %DomHonorific% won't be happy...");
     sendMessage("And ohh...");
-    sendMessage("Its gonna cost you 10 gold and the punishment prolongs");
+    sendMessage("It's gonna cost you 10 gold and the punishment prolongs");
     sendMessage("Enjoy!");
 
     let donetime = setDate();
     donetime.addSecond(randomInteger(3*60, 5*60));
+    lockImages();
 
     while (!(donetime.hasPassed())) {
         showImage("Images/Spicy/Punishment/Grounding/BlackBase.*");
@@ -54,6 +55,8 @@ if (tryRunPunishmentFetchId(MODULE_LINE_WRITING)) {
             }
         }
     }
+
+    unlockImages();
     /*
     case 1 :
         sendMessage("Just a minute.."); //#DT4

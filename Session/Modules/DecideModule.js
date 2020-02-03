@@ -2,7 +2,7 @@
 
 {
     //End session
-    while (!getDate(VARIABLE_CURRENT_SESSION_DATE).clone().addMinute(getVar(VARIABLE_DEVOTION)).hasPassed()) {
+    while (!getDate(VARIABLE_CURRENT_SESSION_DATE).clone().addMinute(getVar(VARIABLE_DEVOTION) + getVar(VARIABLE_PROLONGED_SESSION_TIME, 0)).hasPassed()) {
 
         //Apply random toys
         interactWithRandomToys();
@@ -42,10 +42,11 @@
                 let mood = getMood() + 1;
                 let strictness = getStrictnessForCharacter() + 1;
                 let iterationsToTease = 26 - mood*strictness*2;
+                let actualLoop = randomInteger(Math.round(iterationsToTease/2), iterationsToTease);
 
                 sendDebugMessage('Start of teasing interval for ' + iterationsToTease + ' iterations');
 
-                for (let x = 0; x < randomInteger(Math.round(iterationsToTease/2), iterationsToTease); x++) {
+                for (let x = 0; x < actualLoop; x++) {
                     run("Stroking/Taunt/Chastity/BasicChastityTaunts.js");
                     sleep(5);
                 }
@@ -145,6 +146,24 @@
 
         sendDebugMessage('Trying to run link');
         run("Session/Link/Module/DecideLink.js");
+    }
+
+    //Maybe prolong session if we haven't already
+    if(wouldLikeToProlongSession() && !isVar(VARIABLE_PROLONGED_SESSION_TIME)) {
+        //QUALITY: More diverse chat
+        sendMessage('Looks like our time is up %SlaveName% %EmoteSad%');
+        sendMessage('I am feeling like still playing for a bit though %Grin%');
+        if(sendYesOrNoQuestion('Would you be up for a longer session today?')) {
+            sendMessage('%Good%');
+            changeMeritLow(false);
+            //Add another 10 to 20 minutes
+            setTempVar(VARIABLE_PROLONGED_SESSION_TIME, randomInteger(10, 20));
+            run("Session/Modules/DecideModule.js");
+        } else {
+            sendMessage('I can understand that you might have something to attend to');
+            changeMeritMedium(true);
+            sendMessage('It\'s okay for me');
+        }
     }
 
     run('Session/End/DecideEnd.js')

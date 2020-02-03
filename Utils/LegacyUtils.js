@@ -95,7 +95,7 @@ function interpretLegacyTaunt(message, tauntType = LEGACY_TAUNT_TYPE_STROKE) {
         if(tauntType == LEGACY_TAUNT_TYPE_ORAL) {
             maxBPM = 120;
         } else if(tauntType == LEGACY_TAUNT_TYPE_ANAL) {
-            maxBPM = 180;
+            maxBPM = MAX_ANAL_BPM;
         }
 
         addStrokingBPM(maxBPM - getStrokingBPM());
@@ -109,7 +109,6 @@ function interpretLegacyTaunt(message, tauntType = LEGACY_TAUNT_TYPE_STROKE) {
         }
 
         addStrokingBPM(minBPM - getStrokingBPM());
-
     }
 
     if (showBoobsImage) {

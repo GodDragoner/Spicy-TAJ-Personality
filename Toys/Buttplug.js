@@ -15,7 +15,6 @@ let currentPlug = null;
 
 const BUTTPLUG_TOY = createToy('buttplugs');
 
-
 function updateSessionButtplugs() {
     for (let x = 0; x < buttplugs.length; x++) {
         buttplugs[x].usedInSession = false;
@@ -23,6 +22,7 @@ function updateSessionButtplugs() {
     }
 }
 
+//TODO: With ASM enabled this will only work very rarely because most of the time we have cleaned the plug afterwards
 function getRandomUncleanedButtplug() {
     for (let x = 0; x < buttplugs.length; x++) {
         if (buttplugs[x].usedInSession && !buttplugs[x].clean && currentPlug !== buttplugs[x]) {
@@ -77,6 +77,15 @@ function shouldIncreasePlugSize() {
 
     return ACTION_BUTTPLUG_WAIT_FOR_TIME;
 }
+
+function isUnexperiencedDiamater(diameter) {
+    return diameter >= 2.8;
+}
+
+function isVeryUnexperiencedDiamater(diameter) {
+    return diameter >= 3.5;
+}
+
 
 /*function tryIncreasePlugSize() {
     if(currentPlug !== biggestButtplug) {
@@ -187,7 +196,7 @@ function putInButtplug(forceBigger = false) {
             sendMessage("Carefully start pushing that plug into your ass");
             sendMessage("Push it slowly and gently...");
 
-            if (BUTTPLUG_TOY.wasUsedInActiveContext() && getVar(VARIABLE_ASS_LEVEL) < 30) {
+            if (isUnexperiencedDiamater(plug.diameter) && getVar(VARIABLE_ASS_LEVEL) < 30 || isVeryUnexperiencedDiamater(plug.diameter)) {
                 sendMessage("Until you reach the point where it starts hurting a bit");
                 sendMessage("Now hold that position", 3);
                 sendMessage("Let that plug slip out again");
@@ -196,11 +205,15 @@ function putInButtplug(forceBigger = false) {
                 sendMessage("Gently push that plug into your ass");
                 sendMessage("Push it a bit further this time");
                 sendMessage("Hold the position again", 3);
-                sendMessage("Aaaaand..."); //TODO: Skip after if plug is small
-                sendMessage("Let that plug slip out again");
-                sendMessage("Now...");
-                sendMessage("This time it is gonna go all the way in %Grin%");
-                sendMessage("Starting pushing it in");
+                sendMessage("Aaaaand...");
+
+                if(isVeryUnexperiencedDiamater(plug.diameter)) {
+                    sendMessage("Let that plug slip out again");
+                    sendMessage("Now...");
+                    sendMessage("This time it is gonna go all the way in %Grin%");
+                    sendMessage("Starting pushing it in");
+                }
+
                 sendMessage("Get it all the way in there");
             } else {
                 sendMessage("Push it all the way in...");
@@ -239,8 +252,11 @@ function putInButtplug(forceBigger = false) {
 
 function getAssLubeType(mood, level = getVar(VARIABLE_ASS_LEVEL)) {
     if (level < 30) {
+        sendDebugMessage('Any lube allowed because user hasn\'t reached ass level 30 yet');
         return ANY_LUBE;
     }
+
+    sendDebugMessage('Deciding lube used for mood ' + mood);
 
     const lubeTypes = [];
 
@@ -309,6 +325,8 @@ function getAssLubeType(mood, level = getVar(VARIABLE_ASS_LEVEL)) {
     }
 
     if (lubeTypes.length === 0) return ANY_LUBE;
+
+
     return lubeTypes[randomInteger(0, lubeTypes.length - 1)];
 }
 
@@ -396,7 +414,7 @@ function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
     return plug;
 }
 
-function removeButtplug() {
+function removeButtplug(end = false) {
     if (!isPlugged()) {
         return;
     }
@@ -411,7 +429,12 @@ function removeButtplug() {
             sendMessage("Do it as fast as possible! %Grin%");
         }
 
-        sendMessage("I know it might " + random("be painful", "hurt", "be unpleasant"));
+        if(isVeryUnexperiencedDiamater(currentPlug.diameter)) {
+            sendMessage("I know it might " + random("be painful", "hurt", "be unpleasant"));
+        } else {
+            sendMessage("I know it might " + random("be difficult", "be complicated", "be unpleasant"));
+        }
+
         continueHurtResponse();
 
         let answer = sendInput("Tell me when you are done %SlaveName%");
@@ -468,7 +491,7 @@ function removeButtplug() {
         } else {
             sendMessage("Pull it out");
 
-            if (getStrictnessForCharacter() == 0 || isChance(100 - getStrictnessForCharacter() * 30)) {
+            if (getStrictnessForCharacter() === 0 || isChance(100 - getStrictnessForCharacter() * 30)) {
                 sendMessage("Slowly...");
             } else {
                 sendMessage("Do it as fast as possible! %Grin%");
@@ -488,57 +511,17 @@ function removeButtplug() {
     }
 
     if (getASMLimit() === LIMIT_ASKED_YES) {
-        sendMessage("You already know " + random("what I am gonna make you do now", "what comes next", "what you are gonna do next", "what I want you to do next", "what is gonna happen now"));
-        sendMessage("I want you to suck that toy clean %Grin%");
+        let choice = randomInteger(ASM_CLEAN_TYPE_GAG, ASM_CLEAN_TYPE_LICK);
 
-        //TODO: Chance to stay gagged, check for spider gag
-        if (isGaged()) {
-            removeGag();
+        //No buttplug gag at the end because it's useless
+        if(end) {
+            choice = randomInteger(ASM_CLEAN_TYPE_BLOW, ASM_CLEAN_TYPE_LICK);
         }
 
-        //Gag
-        if (isChance(20)) {
-            sendMessage("However today we are " + random("gonna clean it differently", "handle this a bit differently", "not gonna just lick it clean"));
-            sendMessage("In a moment you'll going to put that plug all the way into your mouth");
-            sendMessage("And you are gonna keep it there %Grin%");
-
-            if (isGaged()) {
-                removeGag();
-            }
-
-            sendMessage("Go ahead and put that plug into your mouth");
-            sleep(5);
-
-            sendMessage("Look at you...");
-            sendMessage("Pathetic as you are");
-            sendMessage(random("Can you taste your own ass juice? %Lol%", "Your mouth filled with a plug that has been in your ass for quite some time"));
-            sendMessage("And all of that just to " + random("please me", "make me happy", "entertain me") + " %EmoteHappy%");
-
-            setGaged(true);
-            currentGagType = GAG_TYPE_BUTTPLUG_GAG;
-            currentGagType.setLastUsage();
-
-            if (feelsLikePunishingSlave()) {
-                goToCorner(getCornerTime());
-            }
-        } else {
-            sendMessage(random("I want you to blow it like you would blow a dildo", "I want you to lick it from the top to the bottom"));
-            sendMessage("Our toy should be shining and spotless");
-            sendMessage("Keep going until I tell you to stop");
-
-
-            sendMessage("Look at you...");
-            sendMessage("Pathetic as you are");
-            sendMessage(random("Can you taste your own ass juice?", "Licking of your own ass juice", "Licking that plug that was in your ass not too long ago") + " %Lol%");
-            sendMessage("And all of that just to " + random("please me", "make me happy", "entertain me") + " %EmoteHappy%");
-
-            sleep(randomInteger(10, 20));
-
-            sendMessage("You can stop now %EmoteHappy%");
-            sendMessage("Put the plug aside");
+        if(doButtplugASMClean(choice)) {
+            //Plug was cleaned
+            currentPlug.clean = true;
         }
-
-        currentPlug.clean = true;
     }
 
     currentPlug = null;

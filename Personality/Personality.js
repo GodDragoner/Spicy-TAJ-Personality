@@ -45,6 +45,7 @@ function setUpPersonalityVars() {
         case ENFORCING_PERSONALITY_ID:
             for(let x = 0; x < LIMITS.length; x++) {
                 if(LIMITS[x].getLimit() != LIMIT_NEVER) {
+                    //Limits are by default enabled if not previously disabled
                     LIMITS[x].setLimit(LIMIT_ASKED_YES);
                 }
             }

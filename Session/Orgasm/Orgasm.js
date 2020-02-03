@@ -118,6 +118,10 @@ function decideOrgasm(noDenied = false) {
         decide += getVar(VARIABLE_LUST);
     }
 
+    sendDebugMessage('Orgasm decided threshold of ' + decide + ' rolled');
+
+    //TODO: Ruined mode?
+    //The smaller orgasm ratio the more ruined orgasms
     if(decide >= 100 && getVar(VARIABLE_ORGASM_RATION) >= randomInteger(1, 100)) {
         let ratioArray = [
             //First personality
@@ -153,6 +157,7 @@ function decideOrgasm(noDenied = false) {
 
         return ORGASM_CATEGORY_RUINED;
     } else {
+        sendDebugMessage('Decided to deny sub');
         return ORGASM_CATEGORY_DENIED;
     }
 }
@@ -192,9 +197,56 @@ function distributeOrgasmPoints() {
         totalToAdd += randomInteger(points[personalityOffset + denialOffset], points[personalityOffset + denialOffset + 1]);
     }
 
-    //TODO: Orgasm  frequency
+    let map = [];
+
+    switch(getVar(VARIABLE_ORGASM_FREQUENCY)) {
+        case ORGASM_FREQUENCY_VERY_RARE:
+            //Personality 1
+            map.push(1, 5);
+            //Personality 2
+            map.push(0, 5);
+            //Personality 3
+            map.push(0, 3);
+            break;
+        case ORGASM_FREQUENCY_RARE:
+            //Personality 1
+            map.push(2, 8);
+            //Personality 2
+            map.push(1, 7);
+            //Personality 3
+            map.push(0, 6);
+            break;
+        case ORGASM_FREQUENCY_SEMI_RARE:
+            //Personality 1
+            map.push(3, 11);
+            //Personality 2
+            map.push(2, 10);
+            //Personality 3
+            map.push(1, 8);
+            break;
+        case ORGASM_FREQUENCY_SOMEWHAT_RARE:
+            //Personality 1
+            map.push(5, 15);
+            //Personality 2
+            map.push(4, 13);
+            //Personality 3
+            map.push(2, 10);
+            break;
+        case ORGASM_FREQUENCY_DOM:
+            //Personality 1
+            map.push(0, 15);
+            //Personality 2
+            map.push(0, 12);
+            //Personality 3
+            map.push(0, 9);
+            break;
+    }
+
+    totalToAdd += randomInteger(map[getStrictnessForCharacter()*2], map[getStrictnessForCharacter()*2 + 1]);
 
     incrementVar(VARIABLE_ORGASM_POINTS, totalToAdd);
+
+    sendDebugMessage('Added ' + totalToAdd + 'orgasm points');
 }
 
 function getRequiredOrgasmPoints() {

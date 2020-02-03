@@ -11,7 +11,8 @@
         if (tryRunPunishmentFetchId(MODULE_SPANKING)) {
             //TODO: More interaction
             sendMessage('Get ready to be spanked %SlaveName%');
-            doSpankingPunishment( PUNISHMENT_CURRENT_LEVEL.id + 1);
+
+            doSpankingPunishment(PUNISHMENT_CURRENT_LEVEL.id + 1);
 
             setPunishmentTransitionHandler({
                 handleTransition: function (nextCategory, nextLevel) {

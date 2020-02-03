@@ -21,7 +21,7 @@
         'Slow down %SlaveName% @StrokeSlower',
         'Slow down your thrusts for me @StrokeSlower',
         'Go a little slower now @StrokeSlower',
-        'Go as slow as you can @StrokeSlowest',
+        'Go as slow as you can and savour it @StrokeSlowest',
         'Go really slow now, until you can\'t go any slower @StrokeSlowest',
         'Speed up now %SlaveName% @StrokeFaster',
         'Speed up your thrusts a little bit @StrokeFaster',
@@ -131,7 +131,7 @@
         'Faster @StrokeFaster',
         'Faster %SlaveName% @StrokeFaster',
         'Speed up a little @StrokeFaster',
-        'Give me slow, thrusts @StrokeSlowest',
+        'Give me slow thrusts @StrokeSlowest',
         'I want you to fuck yourself as slow as possible @StrokeSlowest',
         'Slow those thrusts all the way down %SlaveName%, make it slow and soft @StrokeSlowest',
         'Now slow way down @StrokeSlowest',
@@ -142,7 +142,7 @@
 
     switch (tauntIndex) {
         default:
-            interpretLegacyTaunt(answers[tauntIndex - specialTauntAmount], LEGACY_TAUNT_TYPE_ANAL);
+            interpretLegacyTaunt(answers[Math.min(answers.length - 1, Math.max(0, tauntIndex - specialTauntAmount))], LEGACY_TAUNT_TYPE_ANAL);
             break;
         case 0:
             if(currentDildo.diameter >= 4) {

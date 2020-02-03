@@ -6,6 +6,15 @@ const LIMIT_ASKED_NO = 4;
 
 const LIMITS = [];
 
+let pathLength = getPersonalityPath().length;
+let files = new java.io.File(getPersonalityPath() + PATH_SEPARATOR + 'Personality' + PATH_SEPARATOR + 'Limit').listFiles();
+
+for (let index = 0; index < files.length; index++) {
+    let path = files[index].getPath();
+    run(path.substring(path.indexOf(getPersonalityPath()) + pathLength + 1, path.length));
+}
+
+
 const ANAL_LIMIT = createLimit('anal', 'analLimit');
 ANAL_LIMIT.askForLimitChange = function (subAddressed) {
     let limit = this;

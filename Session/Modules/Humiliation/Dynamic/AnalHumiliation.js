@@ -161,6 +161,8 @@ function startPenetratingSession(toy) {
     const durationMinutes = getAnalSessionLength();
     const date = setDate();
 
+    sendDebugMessage('Going for ' + durationMinutes + ' minutes of anal session');
+
     while (!date.clone().addMinute(durationMinutes).hasPassed() && appendModule(toy)) {
     }
 
@@ -323,33 +325,36 @@ function appendPenetratingSession(toy) {
     //TODO: Numbers based on experience
     let iterations = randomInteger(2, 4);
     while (iterations > 0) {
-        startAnal(30, randomInteger(120, 240));
+        startAnal(getInitialBPM(), randomInteger(120, 240));
         iterations--;
 
-        if (isChance(50) || !blowjob) {
-            sendMessage("Let's change the position shall we? %Grin%");
-            toy = choosePosition(toy, currentBlowjob);
-            sendMessage("And straight back to fucking that ass of yours");
+        //No new instructions if this loop is about to end
+        if(iterations > 0) {
+            if (isChance(50) || !blowjob) {
+                sendMessage("Let's change the position shall we? %Grin%");
+                toy = choosePosition(toy, currentBlowjob);
+                sendMessage("And straight back to fucking that ass of yours");
 
-            if (currentBlowjob) {
-                sendMessage("And don't forget to keep that mouth " + random("busy", "occupied", "used", "filled") + " too %Lol%");
-            }
-        } else {
-            if (isChance(50) && currentBlowjob) {
-                stopBlowjobFuckingInstructions();
-                currentBlowjob = false;
+                if (currentBlowjob) {
+                    sendMessage("And don't forget to keep that mouth " + random("busy", "occupied", "used", "filled") + " too %Lol%");
+                }
             } else {
-                startBlowjobFuckingInstructions(toy);
+                if (isChance(50) && currentBlowjob) {
+                    stopBlowjobFuckingInstructions();
+                    currentBlowjob = false;
+                } else {
+                    startBlowjobFuckingInstructions(toy);
+                }
+
+                sendMessage("And back to fucking that ass %Grin%");
             }
 
-            sendMessage("And back to fucking that ass %Grin%");
-        }
-
-        if (isChance(50) && finger && currentFingerCount < getVar(VARIABLE_ASS_LEVEL) / 6 && currentFingerCount < 5) {
-            sendMessage("I think you are ready to take more than your " + currentFingerCount++ + pluralize("finger", currentFingerCount));
-            sendMessage("Go ahead and use " + currentFingerCount + pluralize("finger", currentFingerCount) + " from now on %Grin%");
-            if (currentFingerCount >= 4) {
-                sendMessage("Better spread that asshole for me");
+            if (isChance(50) && finger && currentFingerCount < getVar(VARIABLE_ASS_LEVEL) / 6 && currentFingerCount < 5) {
+                sendMessage("I think you are ready to take more than your " + currentFingerCount++ + pluralize("finger", currentFingerCount));
+                sendMessage("Go ahead and use " + currentFingerCount + pluralize("finger", currentFingerCount) + " from now on %Grin%");
+                if (currentFingerCount >= 4) {
+                    sendMessage("Better spread that asshole for me");
+                }
             }
         }
     }
@@ -628,8 +633,7 @@ function startSquatAnal(toy) {
     sendMessage("I want you to match the upcoming beat of course");
     sendMessage("Better be " + random("ready", "prepared") + " %Grin%");
     for (let iterations = 0; iterations < 20; iterations++) {
-        //TODO: Numbers based on anal experience
-        startAnal(30, randomInteger(50, 75));
+        startAnal(Math.max(80, getInitialBPM()), randomInteger(50, 75));
 
         if (isChance(20)) {
             sendMessage("I have a fun idea %SlaveName%");

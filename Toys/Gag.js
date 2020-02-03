@@ -249,6 +249,32 @@ function removeGag() {
     }*/
 }
 
+function sendConsideredRemovingGag() {
+    sendMessage(random('I was considering removing that gag from your mouth', 'I was thinking about removing that gag from your mouth') + ' and letting you speak' + random('for now', ''));
+    sendMessage(random('However...', 'But...'));
+
+    switch(randomInteger(0, 3)) {
+        case 0:
+            sendMessage('I don\'t think you earned that right yet');
+            break;
+        case 1:
+            sendMessage('I am just not in the mood of hearing any sound from you right now');
+            break;
+        case 2:
+            //QUALITY: Generalise
+            if(sendYesOrNoQuestion(random('You haven\'t earned that right yet, have you?', 'You haven\'t been good enough, have you?', 'You haven\'t pleased me enough, have you?'))) {
+                sendMessage('I don\'t think you have');
+                sendMessage('And now shut up %SlaveName% or you\'ll regret it');
+            } else {
+                sendMessage('Indeed, you really haven\'t %Lol%');
+            }
+            break;
+        case 3:
+            sendMessage('You shouldn\'t speak now anyway');
+            break;
+    }
+}
+
 function isGagPlay() {
     return getVar(VARIABLE_TOY_GAG_INTERACTION_MODE) === TOY_BOTH_MODE || getVar(VARIABLE_TOY_GAG_INTERACTION_MODE) === TOY_PLAY_MODE;
 }

@@ -43,7 +43,7 @@ const analTasks = [];
 
             sendMessage("I want you to wear your " + getButtplugSize() + " butt plug for " + getButtplugTaskDurationHours() + " hours today");
             sendMessage("But while wearing the plug");
-            sendMessage("I want you to go a for a " + walkDuration + " minute walk");
+            sendMessage("I want you to go for a " + walkDuration + " minute walk");
             sendMessage(random("I want you to learn to move around with it ", "It will be good for your health as well ", "You should thank me for encouraging you to do a little exercise "));
         },
 

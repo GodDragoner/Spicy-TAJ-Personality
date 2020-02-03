@@ -19,6 +19,8 @@ function willKeepChastityOn(end) {
     //Higher choice value -> chastity will probably be removed
     let choice = randomInteger(1, 100);
 
+    sendDebugMessage('Rolled initial chance of ' + choice + ' to be unlocked');
+
     if (end) {
         if (getVar(VARIABLE_LONG_TERM_CHASTITY, false)) {
             return true;
@@ -29,16 +31,19 @@ function willKeepChastityOn(end) {
     }
 
     if (getVar(VARIABLE_HAPPINESS) > getVar(VARIABLE_ANGER)) {
+        sendDebugMessage('Happiness is higher than anger so increasing unlock chance');
         choice += randomInteger(1, 25);
     } else {
+        sendDebugMessage('Anger is higher than happiness so decreasing unlock chance');
         choice -= randomInteger(1, 25);
     }
 
     if (getVar(VARIABLE_LUST) > 30) {
+        sendDebugMessage('Lust is bigger than 30, so increasing unlock chance');
         choice += randomInteger(1, 25);
     }
 
-    let choices = [30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 1, 5, 5, 10, 10, 15, 25, 30, 35, 40];
+    let choices = [30, 35, 40, 45, 50, 55, 60, 65, 70, 75, /*Non chastity mode*/ 1, 5, 5, 10, 10, 15, 25, 30, 35, 40];
     let index = 0;
 
     if (getMonthlyGoodDays() <= getMonthlyBadDays()) {
@@ -46,9 +51,9 @@ function willKeepChastityOn(end) {
     }
 
     if (getStrictnessForCharacter() == 1) {
-        choices = [35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 5, 10, 10, 15, 15, 20, 30, 35, 40, 50];
+        choices = [35, 40, 45, 50, 55, 60, 65, 70, 75, 80, /*Non chastity mode*/ 5, 10, 10, 15, 15, 20, 30, 35, 40, 50];
     } else if (getStrictnessForCharacter() == 2) {
-        choices = [40, 45, 50, 55, 60, 70, 75, 80, 85, 90, 10, 15, 15, 20, 20, 30, 40, 50, 60, 70];
+        choices = [40, 45, 50, 55, 60, 70, 75, 80, 85, 90, /*Non chastity mode*/ 10, 15, 15, 20, 20, 30, 40, 50, 60, 70];
     }
 
     if (!isVar("chastityMode")) {
@@ -67,6 +72,8 @@ function willKeepChastityOn(end) {
     }
 
     const choiceToReach = choices[index];
+
+    sendDebugMessage('Must reach ' + choiceToReach + ' to unlock. Current choice is ' + choice + ' and mood is ' + mood);
 
     return choiceToReach > choice;
 }

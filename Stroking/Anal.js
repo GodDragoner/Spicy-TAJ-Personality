@@ -1,3 +1,6 @@
+let initialBPMIncrease = 0;
+const MAX_ANAL_BPM = 180;
+
 /**
  * Start anal penetration
  * @param bpm The bpm you want to start with
@@ -6,8 +9,19 @@
 function startAnal(bpm, duration) {
     startStroking(bpm);
     sendAnalTaunts(duration*1000);
+    //QUALITY: Sounds
     sendMessage(random("Stop", "You can stop now"), 0);
     stopStroking();
+
+    //Sub might be in a position where he can't see the next so he needs to look up
+    playBellSound();
+    wait(10);
+}
+
+function getInitialBPM() {
+    let result = Math.max(30, Math.ceil(getVar(VARIABLE_ASS_LEVEL)*2.5) + initialBPMIncrease);
+    initialBPMIncrease += randomInteger(5, Math.max(5, Math.floor(getVar(VARIABLE_ASS_LEVEL)/2)));
+    return Math.max(result, MAX_ANAL_BPM);
 }
 
 function sendAnalTaunts(duration) {

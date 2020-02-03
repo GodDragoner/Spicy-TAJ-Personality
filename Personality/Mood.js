@@ -49,6 +49,31 @@ function feelsLikePunishingSlave() {
     return isChance(chance);
 }
 
+function wouldLikeToProlongSession() {
+    let mood = getMood();
+
+    if(mood > 1) {
+        sendDebugMessage('No prolonged session because mood neutral or worse');
+        return false;
+    } else {
+        let chance = (3 - mood)*10;
+        let daysPassed = 7;
+
+        if(isVar(VARIABLE_LAST_PROLONGED_SESSION)) {
+            let last = getVar(VARIABLE_LAST_PROLONGED_SESSION).getTimeInMillis();
+            let current = setDate().getTimeInMillis();
+
+            daysPassed = Math.ceil((current - last)/(1000*60*60*24));
+            sendDebugMessage('Last prolonged session was ' + daysPassed + ' days ago');
+        }
+
+        chance += daysPassed*7;
+        sendDebugMessage('Checking for prolonged session with chance ' + chance);
+
+        return isChance(chance);
+    }
+}
+
 //Annoyed by too many questions  etc.
 function isAnnoyedByTalking() {
     let mood = getMood();
@@ -60,7 +85,17 @@ function isAnnoyedByTalking() {
     chance += getVar(VARIABLE_UNALLOWED_TALKS, 0)*10*mood;
     chance += getVar(VARIABLE_COMPLAINTS, 0)*10*mood;
 
-    return isChance(Math.min(100, chance));
+    //General mood
+    if(chance > 0) {
+        //Mood already applied
+        chance += mood*5;
+    } else {
+        //Mood had no effect yet
+        chance += mood*10;
+    }
+
+    sendDebugMessage('Annoyed by talking chance: ' + chance);
+    return isChance(chance);
 }
 
 //Meant in a playful but evil kind of way (not really pain or anything)

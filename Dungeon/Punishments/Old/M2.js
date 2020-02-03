@@ -119,7 +119,7 @@ break;
 	sendMessage("Every once in a while a few numbers will appear and you will have exactly 5 seconds to write back the number colored red ");//#DT4
 	sendMessage("If not I promise you your %DomHonorific% won't be happy.. ");//#DT4
 	sendMessage("And ohh.. ");//#DT4
-	sendMessage("Its gonna cost you 10 gold and the punishment prolonges"); //#DT4
+	sendMessage("It's gonna cost you 10 gold and the punishment prolonges"); //#DT4
 	sendMessage("Enjoy!"); //#DT4 
 //	 @SetVar[Timer]=[0]
 	// @CountVar[Timer]

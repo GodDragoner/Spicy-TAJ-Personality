@@ -77,7 +77,7 @@
 
     while (true) {
         sendDungeonMessage("Yes %SlaveName%?", 0);
-        let answer = createInput("Points?", "SpankzChoir", "Report for punishment", "pay fine", "return");
+        let answer = createInput("Report for punishment", "SpankzChoir", "Pay fine", "Points?", "Return");
 
         if (answer.containsIgnoreCase("how many", "point", "punishment point")) {
             answer.clearOptions();

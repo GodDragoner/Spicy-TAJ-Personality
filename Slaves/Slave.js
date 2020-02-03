@@ -34,7 +34,7 @@ function askForPainToleranceIncrease() {
     if(sendYesOrNoQuestion('Was the level of pain %GeneralTime% bearable for you %SlaveName%?')) {
         sendMessageBasedOnSender('%Good%');
         sendMessageBasedOnSender('Because I went in a bit rougher than usual');
-        sendMessageBasedOnSender('Know I know I can continue like this in the future %Grin%');
+        sendMessageBasedOnSender('Now I know I can continue like this in the future %Grin%');
     } else {
         sendMessageBasedOnSender('%EmoteSad%');
         sendMessageBasedOnSender('Thank you for your honesty though %SlaveName%');

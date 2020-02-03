@@ -22,6 +22,8 @@ function startPunishmentSession(overallLevel) {
     setVar(VARIABLE_PUNISHMENT_ACTIVE, true);
     PUNISHMENT_OVERALL_LEVEL = overallLevel;
 
+    sendDebugMessage('Starting punishment with level ' + overallLevel);
+
     switch(getVar(VARIABLE_PUNISHMENT_PUNISHER)) {
         case 1 :
             break;
@@ -79,6 +81,8 @@ function startPunishmentSession(overallLevel) {
 
         PUNISHMENT_CURRENT_LEVEL = level;
 
+        sendDebugMessage('Next punishment level ' + PUNISHMENT_CURRENT_LEVEL);
+
         interactWithRandomToys();
 
         runPunishment(PUNISHMENT_CURRENT_LEVEL);
@@ -87,6 +91,9 @@ function startPunishmentSession(overallLevel) {
 
     //TODO: More variety
     sendMessage('I think that should be sufficient for now %Grin%');
+
+    removeAllToys();
+
     sendMessage('You hopefully learned your lesson %SlaveName%');
 
     setSender(1);

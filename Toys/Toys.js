@@ -47,23 +47,24 @@ function interactWithRandomToys() {
 
     //TODO: Could interact with buy new toys or fetish questions and better transition between different toys (additionally why not do this... etc.)
     if ((BUTTPLUG_TOY.isPunishmentAllowed() || !punishment && BUTTPLUG_TOY.isPlayAllowed()) && getAnalLimit() === LIMIT_ASKED_YES) {
-        if (isChance(Math.max(25, getVar(VARIABLE_ASS_LEVEL, 0)) * 4)) {
-        }
-        let action = shouldIncreasePlugSize();
+        //Starting chance for plug or already plugged anyway
+        if (isChance(Math.max(15, getVar(VARIABLE_ASS_LEVEL, 0)) * 4) || isPlugged()) {
+            let action = shouldIncreasePlugSize();
 
-        if (action === ACTION_BUTTPLUG_INCREASE_SIZE) {
-            increasePlugSize();
-        } else if (action === ACTION_BUTTPLUG_PUT_FIRST && hasButtplugToy()) {
-            let answers = ['Let\'s prepare your %Ass% for what is up to come %Grin%', 'Let\'s plug up that %Ass%', 'Let\'s not waste anymore time by leaving that %Ass% empty'];
+            if (action === ACTION_BUTTPLUG_INCREASE_SIZE) {
+                increasePlugSize();
+            } else if (action === ACTION_BUTTPLUG_PUT_FIRST && hasButtplugToy()) {
+                let answers = ['Let\'s prepare your %Ass% for what is up to come %Grin%', 'Let\'s plug up that %Ass%', 'Let\'s not waste anymore time by leaving that %Ass% empty'];
 
-            if (getVar(VARIABLE_ASS_LEVEL) >= 30) {
-                answers.push('You know that there is a very slow chance of you not being plugged and guess what - You won\'t be lucky now... %Lol%');
+                if (getVar(VARIABLE_ASS_LEVEL) >= 30) {
+                    answers.push('You know that there is a very slow chance of you not being plugged and guess what - You won\'t be lucky now... %Lol%');
+                }
+
+                sendMessage(answers[randomInteger(0, answers.length - 1)]);
+                putInButtplug();
+            } else if (action === ACTION_BUTTPLUG_WAIT_FOR_TIME) {
+
             }
-
-            sendMessage(answers[randomInteger(0, answers.length - 1)]);
-            putInButtplug();
-        } else if (action === ACTION_BUTTPLUG_WAIT_FOR_TIME) {
-
         }
     }
 
@@ -113,6 +114,30 @@ function interactWithRandomToys() {
     } else if (!hasBallsTied() && !isInChastity() && isChance(20) && allowPain) {
         tieBalls();
     }
+}
+
+/**
+ * Gets the time in minutes that should pass before we swap out a toy
+ * @returns {number}
+ */
+function getMinPlayTimeBeforeToySwap() {
+    return 7;
+}
+
+function removeAllToys() {
+    removeAllClamps();
+
+    removeGag();
+
+    if (isPlugged()) {
+        removeButtplug();
+    }
+
+    if (COLLAR_TOY.isToyOn()) {
+        removeCollar();
+    }
+
+    //TODO: Remove all other toys
 }
 
 function readyInput() {
@@ -560,7 +585,7 @@ function setupToys(settings) {
     INFLATABLE_BUTT_PLUG.askForToyAndUsage(domChose);
 
     //Only if the sub has the toy we should ask this
-    if(INFLATABLE_BUTT_PLUG.hasToy()) {
+    if (INFLATABLE_BUTT_PLUG.hasToy()) {
         INFLATABLE_BUTT_PLUG.askForVibration();
     }
 

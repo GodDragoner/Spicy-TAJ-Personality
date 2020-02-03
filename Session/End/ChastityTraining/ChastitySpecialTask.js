@@ -28,7 +28,7 @@ const afraidTasks = [];
                 walkDuration = randomInteger(10, 15);
             }
 
-            sendMessage("I want you to go a for a " + walkDuration + " minute walk");
+            sendMessage("I want you to go for a " + walkDuration + " minute walk");
             sendMessage(random("I want you to learn to move around with it", "It will be good for your health as well", "You should thank me for encouraging you to do a little exercise"));
 
             if (getVar(VARIABLE_AFRAID_OF_CHASTITY, false)) {
@@ -172,8 +172,7 @@ const afraidTasks = [];
             sendMessage("I want you to look at yourself and think about how it would be if %RandomBlackmailName% saw you like this %Lol%");
 
             if(isChance(50)) {
-                sendMessage("%Grin%");
-                sendMessage("This should be funny...");
+                sendMessage("And.... %Grin%");
                 sendMessage("While standing in front of the mirror I want you to take a picture of yourself and transfer the image to your self humiliation folder");
             }
         },

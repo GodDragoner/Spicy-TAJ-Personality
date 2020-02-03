@@ -1,19 +1,5 @@
 {
-    removeAllClamps();
-
-    if (isPlugged()) {
-        removeButtplug();
-    }
-
-    if (COLLAR_TOY.isToyOn()) {
-        removeCollar();
-    }
-
-    if(isPlugged()) {
-        removeButtplug();
-    }
-
-    //TODO: Remove all other toys
+    removeAllToys();
 
     sendMessage('%SlaveName%, ' + random('I\'m returning you to my lovely assistant', 'You\'re going back to my sweet assistant', 'Putting you back with my assistant'));
     sendMessage(random('Hope I see you tomorrow!', 'Come back tomorrow', 'You should come back again tomorrow') + " %EmoteHappy%");

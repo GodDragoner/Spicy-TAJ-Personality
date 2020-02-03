@@ -180,6 +180,35 @@ function createIntegerInput(question, min, max, notNumberMessage, outOfRangeMess
     }
 }
 
+function sendGoodForMe() {
+    let finalSentence = [
+        'I am all that matters anyway',
+        'Pleasing me is most important anyway',
+        'You aren\'t of any importance anyway',
+        'But I don\'t think your opinion matters here',
+        'But you don\'t get a say anyway',
+        'You have no say in it anyway',
+        'I am all that matters anyway',
+        'I should be all that matters anyway',
+        'I should be all that matters to you anyway'
+    ];
+
+    sendMessage('%Good%');
+    if(isChance(50)) {
+        sendMessage(random('Well at least good for me', 'Good for me at least', 'Maybe not that good for you but it makes me happy', 'Maybe not that good for you but for me at least', 'Not that good for you but for me at least')
+            + ' ' + random('%Grin%', '%Lol%'));
+
+        finalSentence.push('And that\'s all that counts', 'And that\'s all that matters');
+    } else {
+        sendMessage(random('Probably not so good for you though', 'Maybe not that good for you', 'Could be not that good for you though', 'Could be bad for you though',
+            'On the other hand it might be bad for you though') + ' %Lol%');
+
+        finalSentence.push('There is nothing better than something being good for me and bad for you', 'Nothing better than it being good for me and bad for you', 'It being good for me and being bad for you is the deal anyway isn\'t it?');
+    }
+
+    sendMessage(finalSentence[randomInteger(0, finalSentence.length - 1)] + '  %EmoteHappy%');
+}
+
 function sendAlreadyKnowWhatsNext(triggerwords) {
     sendMessage("You already know " + random("what I am gonna make you do now", "what I am gonna to do you now", "what comes next", "what you are gonna do next", "what I want you to do next", "what is gonna happen now", "what we are gonna do to you now", "what we are gonna do now") + random('', ', don\'t you? %EmoteHappy%'), 0);
 

@@ -4,7 +4,7 @@
     sendVirtualAssistantMessage('1. Toys', 0);
     sendVirtualAssistantMessage('2. Setup Limits', 0);
 
-    let lobbyAnswer = createInput("Toys", 'Setup Limits', 'Return');
+    let lobbyAnswer = createInput("Toys", 'Session length', 'Setup Limits', 'Return');
     while (true) {
         if (lobbyAnswer.isLike("toy")) {
             lobbyAnswer.clearOptions();
@@ -14,12 +14,17 @@
             lobbyAnswer.clearOptions();
             setupLimits();
             break;
+        } else if(lobbyAnswer.isLike('session length')) {
+            lobbyAnswer.clearOptions();
+            run('Assistant/Settings/Devotion.js');
+            break;
         } else if(lobbyAnswer.isLike('back', 'cancel', 'return')) {
             lobbyAnswer.clearOptions();
             break;
         } else {
             sendVirtualAssistantMessage("You have the following options %SlaveName%");
             sendVirtualAssistantMessage("- Toys");
+            sendVirtualAssistantMessage("- Session length");
             sendVirtualAssistantMessage("- Setup Limits");
             lobbyAnswer.loop();
         }

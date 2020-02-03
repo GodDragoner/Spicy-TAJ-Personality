@@ -30,7 +30,7 @@
         'It\'s so much fun to tease you when there\'s nothing you can do about it %Giggles%',
         'You were born to be a submissive, %SlaveName%',
         'Obeying my commands give you purpose as well as pleasure',
-        'You have no idea how much I @RT(enjoy,love) seeing you suffer for me',
+        'You have no idea how much I ' + random('enjoy', 'love') + ' seeing you suffer for me',
         'When I see a pair of %Boobs% like that, I just want to grab them %EmoteHappy% @ShowBoobsImage',
         'I\'m gonna make you regret every single picture you have on that hard drive %Grin% @ShowLocalImage',
         'Oooh, I can see why you saved this one %Lol% @ShowLocalImage',
@@ -77,7 +77,6 @@
         'After being locked for as long as I want, you\'ll be rewarded a ruined orgasm, %SlaveName%!',
         'I don\'t want to unlock you',
         'I told you I own your cock and this will serve as a reminder for the time being!',
-        '@DecideKneeling',
     ];
 
     //Just casual images no text
@@ -132,7 +131,7 @@
             'I can\'t imagine ever letting anyone take away my ability to masturbate %Lol%',
             'If it was the other way around, I would never let you deny me access to my pussy',
             'I love how submissive a guy gets the moment that lock snaps shut',
-            'I think male chastity is probably actually the greatest thing before or since sliced bread',)
+            'I think male chastity is probably actually the greatest thing before or since sliced bread');
     } else {
         answer.push('I hope you %Cock% isn\'t getting limp',
             'You, all the time now: "at some point she will let me stroke again, right???" %Lol%',
@@ -143,7 +142,7 @@
             'You can put your hands behind your back if you have trouble keeping them off your %Cock%',
             'You can sit on your hands if you want %Giggles%',
             'You must be soooo anxious to start %JerkingOff% again',
-            'Try keep keep it hard, flex those little cock muscles, %SlaveName%',)
+            'Try keep keep it hard, flex those little cock muscles, %SlaveName%');
     }
 
     let answer = findRandomUnusedElement(answers, createHistory('basicChastityTaunt'));

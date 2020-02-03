@@ -63,6 +63,8 @@ const VARIABLE_LOCKED_UP_LIMIT = "lockedUpLimit";
 
 const VARIABLE_ORGASM_POINTS = "orgasmPoints";
 const VARIABLE_REQUIRED_ORGASM_POINTS = "requiredOrgasmPoints";
+
+//Start chance is 50
 const VARIABLE_ORGASM_RATION = "orgasmRatio";
 
 
@@ -240,9 +242,14 @@ const VARIABLE_NEXT_PUNISHMENT_DAY = "nextPunishmentDay";
 
 const VARIABLE_FULL_TIME_TRIAL_UNTIL = "fullTimeTrialUntil";
 
+//Session
 const VARIABLE_LAST_TEASE_SESSION = "lastTeaseSession";
 const VARIABLE_CURRENT_SESSION_DATE = "currentSessionDate";
 const VARIABLE_CURRENT_SESSION_ACTIVE = "currentSessionActive";
+
+const VARIABLE_LAST_PROLONGED_SESSION = "lastProlongedSession";
+
+const VARIABLE_PROLONGED_SESSION_TIME = "prolongedSessionTime";
 
 const VARIABLE_HAPPINESS = "happiness";
 const VARIABLE_LUST = "lust";

@@ -22,57 +22,59 @@
                     sendMessage("Because just a moment later I will tell you to rip them off %EmoteHappy% "); //#DT4
                     sendMessage("Neither do you want to attach them too loosely because you will have to flick them once or twice "); //#DT4
                     sendMessage("If they fall off due to a flick you will have to repeat this punishment in full and pay a small fee..."); //#DT4
-                    sendMessage("Let me just check my papers..."); //#DT4 @Goto(Start)
                     sendMessage("Remember to say tell me that you are done right after you've pulled them off..."); //#DT4 
+
 
                     for (let x = 0; x <= (PUNISHMENT_CURRENT_LEVEL.id + 1) * 3; x++) {
                         if (x > 0) {
                             sendMessage('%Now%');
                         }
 
+                        //TODO: History
                         //TODO: Fix grammar ("attach on"?!)
                         switch (randomInteger(0, 13)) {
                             case 0:
-                                sendMessage(random("Attach", "Place", "Put") + " the pegs on to some sensitive skin below your feet", 5); //#DT4
-                                break;
                             case 1:
                             case 2:
                             case 3:
                             case 4:
                             case 5:
                                 //(Nipples)
-                                sendMessage(random("Attach", "Place", "Put") + " a peg on each of your nipples", 5); //#DT4
+                                sendMessage(random("Attach", "Place", "Put") + " a peg on each of your nipples"); //#DT4
                                 break;
                             case 6:
                             case 7:
                             case 8:
                                 //(Balls)
-                                sendMessage(random("Attach", "Place", "Put") + " the pegs to your %Balls%", 5); //#DT4 @Wait(5)
+                                sendMessage(random("Attach", "Place", "Put") + " the pegs to your %Balls%"); //#DT4 @Wait(5)
                                 break;
                             case 9:
                             case 10:
                                 //(Cock)
                                 if (isInChastity()) {
-                                    sendMessage(random("Attach", "Place", "Put") + " the pegs on to your " + random("%Balls%", "nipples"), 5); //#DT4 @Wait(5)
+                                    sendMessage(random("Attach", "Place", "Put") + " the pegs on to your " + random("%Balls%", "nipples")); //#DT4 @Wait(5)
                                 } else {
-                                    sendMessage(random("Attach", "Place", "Put") + " the pegs to some lose skin from your %Cock%", 5); //#DT4 @Wait(5)
+                                    sendMessage(random("Attach", "Place", "Put") + " the pegs to some lose skin from your %Cock%"); //#DT4 @Wait(5)
                                 }
                                 break;
                             case 11:
                                 //(Thigh)
-                                sendMessage(random("Attach", "Place", "Put") + " a peg on each of your inner thighs, the closer to your groin the better..", 5); //#DT4 @Wait(5)
+                                sendMessage(random("Attach", "Place", "Put") + " a peg on each of your inner thighs, the closer to your groin the better.."); //#DT4 @Wait(5)
                                 break;
                             case 12:
                                 //(Nose)
-                                sendMessage(random("Attach", "Place", "Put") + " the pegs on your nose %Grin%", 5); //#DT4 @Wait(5)
+                                sendMessage(random("Attach", "Place", "Put") + " the pegs on your nose %Grin%"); //#DT4 @Wait(5)
                                 break;
                             case 13:
                                 //(Eyebrows)
-                                sendMessage(random("Attach", "Place", "Put") + " a peg on each of your eyebrows", 5); //#DT4 @Wait(5)
+                                sendMessage(random("Attach", "Place", "Put") + " a peg on each of your eyebrows"); //#DT4 @Wait(5)
                                 break;
                         }
 
-                        sendMessage(random("Flick them twice", "Flick them just once", "Flick them " + randomInteger(2, 3) + " times", "Flick them"), 5); //#DT4
+                        //Will skip once the sub says something
+                        wait(10);
+
+                        sendMessage(random("Flick them twice", "Flick them just once", "Flick them " + randomInteger(2, 3) + " times", "Flick them"), 10); //#DT4
 
                         if (sendYesOrNoQuestion('Are they still attached?')) {
                             sendMessage('%Good%');
@@ -83,11 +85,17 @@
                             continue;
                         }
 
+
+                        //First run
+                        if(x === 0) {
+                            sendMessage('Next you are gonna rip them off on my command %Grin%');
+                        }
+
                         sendMessage(random("Be ready!", "Prepare", "Prepare yourself", "Get ready", "Stay ready", "Ready yourself"));
                         showImage("Images/Spicy/Punishment/Grounding/BlackBase.*");
                         sleep(randomInteger(2, 10));
 
-                        let response = sendInput(random("Rip it off!", "Pull them off", "Rip it!", "Pull them off completely!", "Rip them away! %Grin%", "Rip it off", "Rip.. it.. off!", "Rip it off..", "Rip it off..", "Rip it off..", "Rip it off.."), 8);
+                        let response = sendInput(random("Rip them off!", "Pull them off", "Rip them!", "Pull them off completely!", "Rip them away! %Grin%", "Rip them off", "Rip.. them.. off!", "Rip them off.."), 8);
                         while (true) {
                             if (response.isTimeout()) {
                                 //(Slow)
@@ -110,17 +118,17 @@
                     }
                     break;
                 case 1:
+
                     //TODO: Think of a different solution
-                    if (!fetchToy('clothespin', undefined, 10)) {
+                    if(!sendYesOrNoQuestion('Do you have 10 clothespins and a string or piece of rope available right now %SlaveName%?')) {
                         runPunishment(PUNISHMENT_CURRENT_LEVEL);
                         break;
                     }
 
-                    //TODO: Think of a different solution
-                    if (!fetchToy('string', undefined, 1)) {
-                        runPunishment(PUNISHMENT_CURRENT_LEVEL);
-                        break;
-                    }
+                    sendGoodForMe();
+                    sendMessage('Go ahead and fetch them %SlaveName%');
+
+                    waitForDone();
 
                     sendAlreadyKnowWhatsNext('rip', 'attach', 'rope');
 

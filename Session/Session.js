@@ -45,6 +45,8 @@ function endSpicySession() {
 
     setTempVar(VARIABLE_CURRENT_SESSION_ACTIVE, false);
 
+    incrementVar(VARIABLE_SESSION_COUNTER, 1);
+
     //Back to the lobby
     run("Assistant/AssistantLobby.js");
 }

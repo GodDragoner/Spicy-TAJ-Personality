@@ -20,7 +20,7 @@
             }
 
             if (getASMLimit() == LIMIT_ASKED_YES) {
-                sendMessage(random("Remember ", "Don\'t forget ", "Keep in mind ") + "to properly lick your toys clean after using them %Lol% %SlaveName%");
+                sendMessage(random("Remember ", "Don\'t forget ", "Keep in mind ") + "to properly lick your toys clean after using them %Lol%");
             }
 
             if (hasEnemaKit()) {

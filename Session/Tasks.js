@@ -129,10 +129,14 @@ function getCornerTime() {
     let mood = getMood();
     let minSeconds = Math.max(30, (mood + 1)*10*(getStrictnessForCharacter() + 1));
     let maxSeconds = Math.max(45, (mood + 1)*15*(getStrictnessForCharacter() + 1));
-    return randomInteger(minSeconds, maxSeconds);
+    let random = randomInteger(minSeconds, maxSeconds);
+    sendDebugMessage('Calculated ' + random + ' corner time seconds based on mood ' + mood + ' and strictness ' + getStrictnessForCharacter());
+    return random;
 }
 
 function goToCorner(durationSeconds) {
+    sendDebugMessage('Going to corner for ' + durationSeconds);
+
     let cornersDone = getVar("cornersDone", new java.util.ArrayList());
     setTempVar("cornersDone", cornersDone);
 

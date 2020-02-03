@@ -10,6 +10,8 @@ run("Utils/ArrayUtils.js");
 run("Chat/ChatUtil.js");
 run("Slaves/Slaves.js");
 run("Session/Orgasm/Orgasm.js");
+run("Session/Orgasm/OrgasmSpecial.js");
+
 
 run("Session/End/Training.js");
 

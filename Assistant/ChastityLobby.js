@@ -1,13 +1,12 @@
 {
-    if(isInChastity()) {
+    if (isInChastity()) {
         sendVirtualAssistantMessage('So I guess you want me to unlock you?', 0);
 
         if (createYesOrNoQuestion()) {
             sendVirtualAssistantMessage('Well then...');
             sendVirtualAssistantMessage('So what is the reason for this?', 0);
 
-            //TODO: Public like swimming etc.?
-            let answer = createInput('Cleaning', 'Pain', 'Emergency', 'Other');
+            let answer = createInput('Cleaning', 'Pain', 'Emergency', 'Public', 'Sport', 'Other');
 
             while (true) {
                 if (answer.isLike('clean')) {
@@ -75,7 +74,7 @@
                         sendVirtualAssistantMessage('Okay then %SlaveName%');
                         unlockChastityKey();
 
-                        sendVirtualAssistantMessage('Now do wPPhatever you want to do...');
+                        sendVirtualAssistantMessage('Now do whatever you want to do...');
                         setVar(VARIABLE_CHASTITY_ON, false);
                         sendVirtualAssistantMessage('Mind this has consequences!');
                         addPunishmentPoints(250);
@@ -86,6 +85,45 @@
                     }
 
                     break;
+                } else if (answer.isLike('sport')) {
+                    answer.clearOptions();
+
+                    sendVirtualAssistantMessage('%DomHonorific% %DomName% is fine with you taking it off for sports');
+                    sendVirtualAssistantMessage('So I will fulfil this wish of yours');
+                    sendVirtualAssistantMessage('But don\'t you dare cheat or lie to me');
+
+                    unlockChastityKey();
+
+                    sendVirtualAssistantMessage('Now have fun with your sport activity and make sure to come back to me afterwards');
+                    setVar(VARIABLE_CHASTITY_ON, false);
+                    setVar(VARIABLE_WAITING_FOR_CHASTITY_KEY_RETURN, true);
+                } else if (answer.isLike('public')) {
+                    answer.clearOptions();
+
+                    if (sendYesOrNoQuestion('Are you afraid of it showing in public %SlaveName%?', SENDER_ASSISTANT)) {
+                        sendVirtualAssistantMessage('Well you shouldn\'t be');
+
+                        sendVirtualAssistantMessage('I can free you but this will not go unpunished');
+                        sendVirtualAssistantMessage('Do you really want this?', 0);
+
+                        //QUALITY: Delve deeper into this issue
+                        if (createYesOrNoQuestion()) {
+                            setVar(VARIABLE_AFRAID_OF_CHASTITY, true);
+                            sendVirtualAssistantMessage('Okay then %SlaveName%');
+                            unlockChastityKey();
+
+                            sendVirtualAssistantMessage('Now do whatever you want to do...');
+                            setVar(VARIABLE_CHASTITY_ON, false);
+                            sendVirtualAssistantMessage('Mind this has consequences!');
+                            addPunishmentPoints(250);
+                            setVar(VARIABLE_WAITING_FOR_CHASTITY_KEY_RETURN, true);
+                        } else {
+                            sendVirtualAssistantMessage('%Good%');
+                            sendVirtualAssistantMessage('You wouldn\'t want to suffer the consequences anyway %Grin%');
+                        }
+                    } else {
+                        sendVirtualAssistantMessage('Well then don\'t bother me %EmoteRandom%');
+                    }
                 } else {
                     sendVirtualAssistantMessage('Cleaning, pain, emergency or other?');
                     answer.loop();

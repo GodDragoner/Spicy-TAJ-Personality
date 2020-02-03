@@ -55,4 +55,5 @@ sendDebugMessage(getVar(VARIABLE_BLOWJOB_LEVEL));
 setVar(VARIABLE_CHASTITY_ON, true);
  */
 
+lockChastityCage();
 
