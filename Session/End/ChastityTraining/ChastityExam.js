@@ -25,7 +25,6 @@
                 delVar("ChastityExamStartDate");
                 setVar(VARIABLE_CHASTITY_TRAINING, false);
                 setVar(VARIABLE_CHASTITY_ON, true);
-                setVar(VARIABLE_LONG_TERM_CHASTITY, true);
             } else {
                 sendMessage("Awww that's too bad %EmoteSad%");
                 sendMessage("That disappoints me %SlaveName%");
@@ -56,6 +55,6 @@ function startChastityExam() {
     setDate('ChastityExamStartDate');
     sendMessage("Your chastity exam starts now");
     sendMessage("You are to remain locked for 7 consecutive days!");
-    sendMessage("Your only release time is if you are permitted in sessions!");
+    sendMessage("Your only release time is when you are permitted during sessions!");
     sendMessage("Good luck %SlaveName%");
 }

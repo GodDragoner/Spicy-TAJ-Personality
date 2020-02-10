@@ -111,7 +111,7 @@ function interactWithRandomToys() {
 
     if (hasBallsTied() && isChance(50)) {
         untieBalls();
-    } else if (!hasBallsTied() && !isInChastity() && isChance(20) && allowPain) {
+    } else if (!hasBallsTied() && !isInChastity() && isChance(20) && allowPain && !BODY_PART_BALLS.isUsed()) {
         tieBalls();
     }
 }
@@ -483,13 +483,7 @@ function createToy(name) {
     };
 }
 
-function setupToys(settings) {
-    sendVirtualAssistantMessage("Let's do a quick setup of your toys");
-    sendVirtualAssistantMessage("I'll show you some images of different stuff");
-    sendVirtualAssistantMessage("You will respond with yes if you have it");
-    sendVirtualAssistantMessage("You can also say yes if you have something similar that will work fine");
-    sendVirtualAssistantMessage("Respond with no if you have nothing similar");
-    sendVirtualAssistantMessage("Oh and one more thing...");
+function askForDomChoose() {
     sendVirtualAssistantMessage("Your Mistress prefers to use the toys whenever she wants to and for whatever reason");
     sendVirtualAssistantMessage("However she can understand if you only want them to be used for playing or punishment");
     sendVirtualAssistantMessage("Do you want to leave it to your Mistress or chose yourself?", false);
@@ -509,6 +503,19 @@ function setupToys(settings) {
             answer.loop();
         }
     }
+
+    return domChose;
+}
+
+function setupToys(settings) {
+    sendVirtualAssistantMessage("Let's do a quick setup of your toys");
+    sendVirtualAssistantMessage("I'll show you some images of different stuff");
+    sendVirtualAssistantMessage("You will respond with yes if you have it");
+    sendVirtualAssistantMessage("You can also say yes if you have something similar that will work fine");
+    sendVirtualAssistantMessage("Respond with no if you have nothing similar");
+    sendVirtualAssistantMessage("Oh and one more thing...");
+
+    let domChose = askForDomChoose();
 
     //Ask for this in settings too
     BUTTPLUG_TOY.askForToyAndUsage(domChose);
@@ -596,7 +603,11 @@ function setupToys(settings) {
     askForToyUsage("ShockCollar", domChose);
 
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
-    askForToy("EStim");
+
+    sendVirtualAssistantMessage('Now let\'s talk about e-stim devices');
+    setupEStimToy(domChose);
+
+    /*askForToy("EStim");
     askForToyUsage("EStim", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
@@ -640,7 +651,7 @@ function setupToys(settings) {
                 answer.loop();
             }
         }
-    }
+    }*/
 
     setupGags(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));

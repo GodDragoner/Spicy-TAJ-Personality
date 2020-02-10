@@ -47,15 +47,21 @@ function sendEatInstructions(ceiDestination = CEI_UNDEFINED) {
     while(true) {
         if(answer.isLike('yes')) {
             if(VERBAL_HUMILIATION_LIMIT.isAllowed()) {
+                //QUALITY: More sentences
                 sendMessage(random("You\'re such a filthy little cum whore", "That\'s disgusting %SlaveName% %Lol%"));
             } else {
                 sendMessage("%Good%");
             }
+
+            if(!RULE_ALWAYS_SWALLOW_CUM.isActive() && shouldIntroduceNewRule(RULE_ALWAYS_SWALLOW_CUM)) {
+                RULE_ALWAYS_SWALLOW_CUM.sendIntroduction();
+            }
+
             break;
         } else if(answer.isLike('no')) {
             sendMessage(random("Yuck %Lol%", "Then hurry the fuck up, I want to wrap this up"));
             answer.loop();
-        } else if(answer.isLike("didn't", "can't", "couldn't", "possible", "impossible")) {
+        } else if(answer.isLike("didn't", "can't", "couldn't", "possible", "impossible", 'won\'t')) {
             if(RULE_ALWAYS_SWALLOW_CUM.isActive()) {
                 sendMessage('%SlaveName%');
                 addPunishmentPoints(getPPRuleIgnored());

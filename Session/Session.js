@@ -10,9 +10,18 @@ function endSpicySession() {
         trainings++;
         run('Session/End/ChastityTraining/ChastityTraining.js');
     } else {
-        //Lock up part
-        if (!isInChastity() && willKeepChastityOn(true)) {
-            lockChastityCage();
+        if(getVar(VARIABLE_PARTNER_IS_KEYHOLDER, false)) {
+            //QUALITY: More sentences
+            sendMessage('Since your partner is your keyholder I will leave the decision regarding chastity to her');
+        } else {
+            //Lock up part
+            if (!isInChastity() && willKeepChastityOn(true)) {
+                lockChastityCage();
+
+                if(shouldIntroduceNewRule(RULE_DOMME_KEYHOLDER)) {
+                    RULE_DOMME_KEYHOLDER.sendIntroduction();
+                }
+            }
         }
     }
 

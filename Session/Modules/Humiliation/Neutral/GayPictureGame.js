@@ -8,15 +8,8 @@
         sendMessage(random("We\'re gonna have to do it a bit differently ", "This is gonna be done a bit differently "));
         sendMessage("%Lol%");
         sendMessage("I\'m gonna slide through images fast");
-        //if(getVar("HumiliationUpdate3", false))
-        //{
-        sendMessage("I\'m gonna draw from your gay images, Lesbian, Boobs, Butts and Lezdom images");
-        //}
-        /*if(!getVar("HumiliationUpdate3", false))
-        {
-            sendMessage("I\'m gonna draw from your gay images, Butts and Lezdom images");
 
-        }*/
+        sendMessage("I\'m gonna draw from your gay images, Lesbian, Boobs, Butts and Lezdom images");
 
         sendMessage('Gay image = edge');
         sendMessage('Lesbian = 100 super slow strokes');

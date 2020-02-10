@@ -14,6 +14,7 @@ for (let index = 0; index < files.length; index++) {
     run(path.substring(path.indexOf(getPersonalityPath()) + pathLength + 1, path.length));
 }
 
+//TODO: Proper limit introductions, make enforcing not set everything default but ask too but be more strict if told no
 
 const ANAL_LIMIT = createLimit('anal', 'analLimit');
 ANAL_LIMIT.askForLimitChange = function (subAddressed) {
@@ -57,6 +58,7 @@ ASM_LIMIT.askForLimitChange = function (subAddressed) {
         changeMeritLow(true);
     }
 };
+
 const PEE_LIMIT = createLimit('pee', 'peeLimit');
 const CBT_LIMIT = createLimit('cock ball torture', 'cbtLimit');
 CBT_LIMIT.askForLimitChange = function (subAddressed) {
@@ -153,7 +155,7 @@ function createLimit(name, variable) {
 
             if (limitValue == LIMIT_ASKED_YES) {
 
-            } else if (limitValue == LIMIT_NEVER_ASKED) {
+            } else if (limitValue == LIMIT_NEVER_ASKED && subAddressed) {
                 sendMessage('This is getting interesting...');
                 ask = true;
             } else if (limitValue == LIMIT_ASKED_MAYBE) {
@@ -164,8 +166,8 @@ function createLimit(name, variable) {
                     delVar(VARIABLE_RESPONSE_WILL_DO_ANYTHING);
                     ask = true;
                 }
-            } else {
-                sendMessage('I thought you aren\'t into ' + name + '?');
+            } else if(subAddressed && limitValue == LIMIT_ASKED_NO) {
+                sendMessage('I thought you aren\'t into ' + this.name + '?');
                 ask = sendYesOrNoQuestion('Did you change your mind about that?');
             }
 

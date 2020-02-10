@@ -1,18 +1,25 @@
 const AVAILABLE_RULES = [];
 
-let RULE_ALWAYS_WEAR_COLLAR_SESSIONS;
+let RULE_ALWAYS_WEAR_COLLAR;
+
 let RULE_ALWAYS_NAKED_SESSIONS;
+
 let RULE_ALWAYS_HONORIFIC;
+
 let RULE_NEVER_SWALLOW_SPIT;
+
 let RULE_ALWAYS_THANK_FOR_ORGASM;
+
 let RULE_ALWAYS_SWALLOW_CUM;
+
+let RULE_DOMME_KEYHOLDER;
 
 {
     let ruleId = 0;
 
-    let rule = RULE_ALWAYS_WEAR_COLLAR_SESSIONS = createRule(ruleId++, false);
+    let rule = RULE_ALWAYS_WEAR_COLLAR = createRule(ruleId++, false);
     rule.getRulePrint = function () {
-        return 'Whenever you are in a session you must wear your collar';
+        return 'Whenever you are not in public you must wear your collar';
     };
 
     rule.checkRule = function () {
@@ -21,13 +28,14 @@ let RULE_ALWAYS_SWALLOW_CUM;
 
             if (sendYesOrNoQuestion('Are you wearing your collar?')) {
                 sendMessage('%Good%');
-                sendMessage('Because you must wear your collar during our sessions!');
-
+                sendMessage('Because you must wear your collar whenever you are alone!');
                 return true;
             } else {
                 sendMessage('%EmoteSad%');
-                sendMessage('You know you have to during our sessions');
+                sendMessage('You know you have to whenever you are alone');
                 sendMessage('And not obeying rules will result in punishment points');
+
+                //QUALITY: Ask to put on
 
                 addPunishmentPoints(getPPRuleIgnored());
                 changeMeritMedium(true);
@@ -41,6 +49,53 @@ let RULE_ALWAYS_SWALLOW_CUM;
         return COLLAR_TOY.hasToy() && !this.isActive();
     };
 
+    rule.sendIntroduction = function () {
+        sendMessage('You know %SlaveName%...');
+        sendMessage('I really like you collared');
+        sendMessage('And I think it is a great sign of your submission to me and my ownership of you %Grin%');
+
+        if(!COLLAR_TOY.isToyOn()) {
+            if(!putOnCollar()) {
+                sendMessage('...');
+                sendMessage('Let\'s deal with this a different time');
+                return;
+            }
+
+            sendMessage('Much better isn\'t it?');
+        }
+
+        sendMessage('I just like the symbolic feeling this gives me');
+        sendMessage('%Moan%');
+        sendMessage('I have been playing with this thought for a longer time now...');
+
+        if(isEnforcingPersonality()) {
+            sendMessage('And I want you to wear it whenever you can');
+            sendMessage('So definitely during our sessions and additionally whenever you are home alone');
+            sendMessage('You should always feel owned by me and this will remember you of that');
+            sendMessage('So make sure to wear it whenever possible from now on %SlaveName%');
+        } else {
+            sendMessage('And I think you should wear it whenever you can');
+            sendMessage('So definitely during our sessions and additionally whenever you are home alone');
+            sendMessage('You should always feel owned by me and this will remember you of that');
+
+            if(!sendYesOrNoQuestion('Would you do that for me %SlaveName%')) {
+                changeMeritMedium(true);
+                sendMessage('%EmoteSad%');
+                sendMessage('I hope you will reconsider this %SlaveName%');
+                return;
+            }
+
+            sendMessage('%Good%');
+            sendMessage('You don\'t know how happy that makes me %EmoteHappy%');
+            sendMessage('Knowing that you will always be remembered of me by that collar around your neck %Grin%');
+            changeMeritMedium(false);
+        }
+
+
+        this.setActive(true);
+        return true;
+    };
+
     AVAILABLE_RULES.push(rule);
 
 
@@ -49,6 +104,56 @@ let RULE_ALWAYS_SWALLOW_CUM;
     rule = RULE_ALWAYS_HONORIFIC = createRule(ruleId++, false);
     rule.getRulePrint = function () {
         return 'When you talk to your %DomHonorific% you must always address her as %DomHonorific%';
+    };
+
+    rule.sendIntroduction = function () {
+        sendMessage('You know %SlaveName%...');
+        sendMessage('I want to take the next small step with you towards being my and only MY slave %Grin%');
+        sendMessage('So I think you should address me properly');
+        sendMessage('From now on I will always be your %DomHonorific%');
+        sendMessage('And you will treat me with respect and address me as such');
+        sendMessage('So you will address me as your %DomHonorific% in all questions, begging or any answer to my questions');
+
+        let honorific = replaceVocab('%DomHonorific%');
+        let answer = sendInput('Is that understood?');
+
+        while(true) {
+            if(answer.isLike('Yes')) {
+                if(answer.toLowerCase().indexOf(honorific.toLowerCase()) === -1) {
+                    sendMessage('Sigh...');
+                    sendMessage('What did I just tell you?');
+                    sendMessage('You will address me PROPERLY %SlaveName% using %DomHonorific%');
+                    registerForgetHonorific();
+                    sendMessage('Is this understood %SlaveName%?');
+                    answer.loop();
+                } else {
+                    sendMessage('%Good% %EmoteHappy%');
+                    break;
+                }
+            } else if(answer.isLike('no')) {
+                if(answer.toLowerCase().indexOf(honorific.toLowerCase()) === -1) {
+                    sendMessage('Sigh...');
+                    sendMessage('You really didn\'t understand did you?');
+                    changeMeritMedium(true);
+                } else {
+                    sendMessage('Is it that hard to understand?');
+                    sendMessage('I mean you already did it properly this time');
+                }
+
+                sendMessage('You will always address me as your %DomHonorific% from now on');
+                sendMessage('So if you would answer "Yes" normally you will answer with "Yes %DomHonorific%" from now one. Same goes for "please", questions and basically everything else');
+                sendMessage('Is this understood %SlaveName%?');
+                answer.loop();
+            } else {
+                sendMessage('%YesOrNo%');
+                answer.loop();
+            }
+        }
+
+        sendMessage('Now that that\'s settled let\'s get back to where we\'ve been %Grin%');
+
+        this.setActive(true);
+        return true;
     };
 
     AVAILABLE_RULES.push(rule);
@@ -130,7 +235,7 @@ let RULE_ALWAYS_SWALLOW_CUM;
                         sendMessage("Just to get you in the mood %EmoteHappy%", 0);
                         showCategoryImage("HARDCORE", 5);
 
-                        if (getVar(VARIABLE_CHASTITY_ON)) {
+                        if (isInChastity()) {
                             sendMessage("Even though you can't get hard inside that %ChastityCage% %Grin%", 0);
                         } else {
                             sendMessage("To make sure your %Cock% gets hard", 0);
@@ -141,7 +246,7 @@ let RULE_ALWAYS_SWALLOW_CUM;
                         sendMessage("To get your blood pumping", 0);
                         showCategoryImage("HARDCORE", 5);
 
-                        if (getVar(VARIABLE_CHASTITY_ON)) {
+                        if (isInChastity()) {
                             sendMessage("Is it getting tight in that little cage of yours? %Grin%");
                         }
 
@@ -207,6 +312,7 @@ let RULE_ALWAYS_SWALLOW_CUM;
     };
 
     rule.sendIntroduction = function () {
+        sendMessage('Now there is one very important rule that you should never forget');
         sendMessage('Good sissies never swallow their spit %Grin%');
 
         if (getSissyLimit() === LIMIT_NEVER) {
@@ -296,6 +402,35 @@ let RULE_ALWAYS_SWALLOW_CUM;
 
     AVAILABLE_RULES.push(rule);
 
+    //Domme keyholder
+    rule = RULE_DOMME_KEYHOLDER = createRule(ruleId++, false);
+
+    rule.getRulePrint = function () {
+        return '%DomHonorific% %DomName% is your keyholder and decides everything regarding chastity';
+    };
+
+    rule.canBeActivated = function () {
+        //No cage, partner is keyholder, chastity level below 30 or training is still active
+        if(!hasChastityCage() || getVar(VARIABLE_PARTNER_IS_KEYHOLDER, false) || getVar(VARIABLE_CHASTITY_LEVEL, 0) < 30 || getVar(VARIABLE_CHASTITY_TRAINING, false)) {
+            return false;
+        }
+
+        return !isVar(VARIABLE_ASKED_FOR_KEYHOLDER) || getVar(VARIABLE_ASKED_FOR_KEYHOLDER).addDay(7).hasPassed();
+    };
+
+    rule.sendIntroduction = function () {
+        if(!startLongTermChastityIntro()) {
+            //Somehow didn't work (no, or partner keyholder)
+            return false;
+        }
+
+        this.setActive(true);
+        return true;
+
+    };
+
+    AVAILABLE_RULES.push(rule);
+
     //Update all existing rules
     for (let index = 0; index < AVAILABLE_RULES.length; index++) {
         //TODO: Notify rule ended?
@@ -314,7 +449,7 @@ function checkRandomRule() {
 
         switch (randomInteger(0, maxOption)) {
             case 0:
-                rule = RULE_ALWAYS_WEAR_COLLAR_SESSIONS;
+                rule = RULE_ALWAYS_WEAR_COLLAR;
                 break;
             case 1:
                 rule = RULE_ALWAYS_NAKED_SESSIONS;
@@ -345,6 +480,26 @@ function getRandomNewRule(permanent = true) {
     return null;
 }
 
+function shouldIntroduceNewRule(rule) {
+    //No rules within the first 2 sessions. Get to know slave first
+    if(!rule.canBeActivated() || getVar(VARIABLE_SESSION_COUNTER, 0) < 3) {
+        sendDebugMessage('Rule ' + rule + ' cannot be activated or too few sessions');
+        return false;
+    }
+
+    //After 12 hours this is 1 and before 0 so no two new rules in the same session
+    let daysPassed = 10;
+
+    if(isVar(VARIABLE_LAST_RULE_PASSED)) {
+        daysPassed = millisToTimeUnit(getMillisSinecDate(getVar(VARIABLE_LAST_RULE_PASSED), TIME_UNIT_DAYS, 0));
+    }
+
+
+    sendDebugMessage('Calculating rule passed chance with last rule passed ' + daysPassed + ' days ago');
+    setDate(VARIABLE_LAST_RULE_PASSED);
+
+    return isChance(daysPassed*10);
+}
 
 function createRule(id, punishment, minDays = -1, maxDays = -1) {
     let rule = {

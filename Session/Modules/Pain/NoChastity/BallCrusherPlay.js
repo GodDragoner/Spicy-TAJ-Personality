@@ -11,7 +11,6 @@
 
             setTempVar(VARIABLE_IS_BALL_CRUSHER_ON, true);
 
-
             applyBallCrusherPressure();
 
             sendMessage('%Now%');

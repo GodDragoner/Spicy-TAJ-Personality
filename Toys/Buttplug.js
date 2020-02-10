@@ -22,6 +22,7 @@ function updateSessionButtplugs() {
     }
 }
 
+
 //TODO: With ASM enabled this will only work very rarely because most of the time we have cleaned the plug afterwards
 function getRandomUncleanedButtplug() {
     for (let x = 0; x < buttplugs.length; x++) {
@@ -43,8 +44,20 @@ function getRandomCleanButtplug() {
     return null;
 }
 
+function getButtplugClosestBelow(diameter) {
+    let currentPlug = null;
+    for (let x = 0; x < buttplugs.length; x++) {
+        //We must be <= the given diameter and bigger than the current diameter
+        if (buttplugs[x].diameter <= diameter && (currentPlug === null || buttplugs[x].diameter > currentPlug.diameter)) {
+            currentPlug = buttplugs[x];
+        }
+    }
+
+    return currentPlug;
+}
+
 function hasButtplugToy() {
-    return BUTTPLUG_TOY.hasToy();
+    return buttplugs.length > 0;
 }
 
 function isPlugged() {
@@ -85,7 +98,6 @@ function isUnexperiencedDiamater(diameter) {
 function isVeryUnexperiencedDiamater(diameter) {
     return diameter >= 3.5;
 }
-
 
 /*function tryIncreasePlugSize() {
     if(currentPlug !== biggestButtplug) {
@@ -250,96 +262,16 @@ function putInButtplug(forceBigger = false) {
     return true;
 }
 
-function getAssLubeType(mood, level = getVar(VARIABLE_ASS_LEVEL)) {
-    if (level < 30) {
-        sendDebugMessage('Any lube allowed because user hasn\'t reached ass level 30 yet');
-        return ANY_LUBE;
-    }
-
-    sendDebugMessage('Deciding lube used for mood ' + mood);
-
-    const lubeTypes = [];
-
-    if (mood === VERY_PLEASED_MOOD) {
-        if (isChance(getStrictnessForCharacter() * 10)) {
-            lubeTypes.push(SPIT_LUBE);
-        } else {
-            lubeTypes.push(ANY_LUBE);
-        }
-    } else if (mood === PLEASED_MOOD) {
-        if (isChance(getStrictnessForCharacter() * 20)) {
-            lubeTypes.push(SPIT_LUBE);
-        } else {
-            lubeTypes.push(ANY_LUBE);
-        }
-    } else if (mood === NEUTRAL_MOOD) {
-        if (isChance(getStrictnessForCharacter() * 25)) {
-            if (getStrictnessForCharacter() > 0) {
-                if (hasToothpaste()) {
-                    lubeTypes.push(TOOTHPASE_LUBE);
-                }
-
-                lubeTypes.push(NO_LUBE);
-            } else {
-                lubeTypes.push(SPIT_LUBE);
-            }
-        } else {
-            lubeTypes.push(ANY_LUBE);
-        }
-    } else if (mood === ANNOYED_MOOD) {
-        if (isChance((getStrictnessForCharacter() + 1) * 20)) {
-            if (getStrictnessForCharacter() > 0) {
-                lubeTypes.push(NO_LUBE);
-
-                if (hasTigerHot()) {
-                    lubeTypes.push(TIGER_HOT_LUBE);
-                }
-            }
-
-            if (hasToothpaste()) {
-                lubeTypes.push(TOOTHPASE_LUBE);
-            }
-
-            lubeTypes.push(SPIT_LUBE);
-        } else {
-            lubeTypes.push(ANY_LUBE);
-        }
-    } else if (mood === VERY_ANNOYED_MOOD) {
-        if (isChance((getStrictnessForCharacter() + 1) * 25)) {
-            if (getStrictnessForCharacter() > 0) {
-                if (hasTigerHot()) {
-                    lubeTypes.push(TIGER_HOT_LUBE);
-                }
-            }
-
-            lubeTypes.push(NO_LUBE);
-
-            if (hasToothpaste()) {
-                lubeTypes.push(TOOTHPASE_LUBE);
-            }
-
-            lubeTypes.push(SPIT_LUBE);
-        } else {
-            lubeTypes.push(ANY_LUBE);
-        }
-    }
-
-    if (lubeTypes.length === 0) return ANY_LUBE;
-
-
-    return lubeTypes[randomInteger(0, lubeTypes.length - 1)];
+function getButtplugForTask() {
+    return getButtplugClosestBelow(getMaxStartingDiameter());
 }
 
-function getButtplugSize() {
+function getMaxStartingDiameter() {
+    let diameter = smallestButtplug.diameter;
+
     let assLevel = getVar(VARIABLE_ASS_LEVEL);
 
-    if (assLevel < 15) {
-        return "small";
-    } else if (assLevel < 30) {
-        return random("small", "medium");
-    } else {
-        return random("medium", "big");
-    }
+    return Math.max(diameter, assLevel/7.5);
 }
 
 function getMaxDiameterIncrease() {

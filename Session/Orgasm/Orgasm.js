@@ -68,7 +68,7 @@ function waitForCumAnswer() {
                     addPunishmentPoints(getPPRuleIgnored());
                     changeMeritHigh(true);
                 }
-            } else if(isChance(20)) {
+            } else if(shouldIntroduceNewRule(RULE_ALWAYS_THANK_FOR_ORGASM)) {
                 RULE_ALWAYS_THANK_FOR_ORGASM.sendIntroduction();
             }
 

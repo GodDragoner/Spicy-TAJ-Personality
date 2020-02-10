@@ -68,7 +68,6 @@ function showCategoryImage() {}
 function showTeaseImage() {}
 
 function sleep() {}
-function sleep() {}
 
 function playAudio() {}
 function playSound() {}

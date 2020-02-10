@@ -2,13 +2,21 @@ addResponseRegex("yes", "no", "thanks", "thank you");
 setResponseIgnoreDisabled(true);
 
 function honorificResponse(message) {
-    if(!getVar(VARIABLE_CURRENT_SESSION_ACTIVE) || !RULE_ALWAYS_HONORIFIC.isActive()) {
+    if(!getVar(VARIABLE_CURRENT_SESSION_ACTIVE)) {
         return false;
     }
 
     let honorific = replaceVocab('%DomHonorific%');
 
     if(message.toLowerCase().indexOf(honorific.toLowerCase()) === -1) {
+        if(!RULE_ALWAYS_HONORIFIC.isActive()) {
+            if(shouldIntroduceNewRule(RULE_ALWAYS_HONORIFIC)) {
+                RULE_ALWAYS_HONORIFIC.sendIntroduction();
+            }
+
+            return false;
+        }
+
         sendMessage('%SlaveName%');
         sendMessage('You forgot your manners...');
         sendMessage('I am your %DomHonorific%');

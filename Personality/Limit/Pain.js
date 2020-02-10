@@ -1,0 +1,3 @@
+const PAIN_LEVEL_LOW = 0;
+const PAIN_LEVEL_MEDIUM = 1;
+const PAIN_LEVEL_HIGH = 2;

@@ -57,7 +57,7 @@ function isKneeling() {
 }
 
 function stopKneeling() {
-    //TODO: SOUND
+    //QUALITY: SOUND
     // playSound('Audio\\Spicy\\Commands\\Kneel\\*.mp3');
     sendMessage(random('You can stop kneeling and sit', 'You can get up from your knees now and sit', 'You can sit down') + ' %SlaveName%');
     setTempVar(VARIABLE_IS_KNEELING, false);
@@ -97,7 +97,6 @@ function addPunishmentPoints(amount) {
 
     sendDebugMessage('About to add ' + amount + " punishment points");
 
-    //TODO: Base on amount of recent pp too?
     if(isVar(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE)) {
         multiplier = getVar(VARIABLE_PUNISHMENT_POINT_MULTIPLIER);
 
@@ -163,7 +162,7 @@ function setPunishmentPointMultiplier(multiplier) {
 
 function getPunishmentPointMultiplierChange() {
     let mood = getMood();
-    let hoursSinceLastChange = Math.floor((new Date().getTime() - getDate(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE).getTimeInMillis())/(1000*60*60));
+    let hoursSinceLastChange = millisToTimeUnit(getMillisSinecDate(getVar(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE)), TIME_UNIT_HOURS, 0);
     let maxSubtraction = -0.25;
     let baseLevel = 0.1*(mood*getStrictnessForCharacter() + 10);
     let subtractLevel = 0.1*hoursSinceLastChange/(Math.max(1, getStrictnessForCharacter()) + 1);

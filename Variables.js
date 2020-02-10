@@ -113,6 +113,12 @@ const VARIABLE_CHASTITY_TASKS_IN_ROW = 'chastityTasksInRow';
 //TODO: Enforcing personality intro after chastity exam and kind intro with asking after exam/at beginning
 const VARIABLE_LONG_TERM_CHASTITY = 'chastityLongTerm';
 
+const VARIABLE_ASKED_FOR_KEYHOLDER = 'askedForKeyholder';
+
+const VARIABLE_PARTNER_IS_KEYHOLDER = 'partnerIsKeyholder';
+
+const VARIABLE_KEYHOLDER_FANTASIZE = 'keyholderFantasize';
+
 //Anal training
 const VARIABLE_ASS_LEVEL = "assLevel";
 const VARIABLE_ASS_TASKS_IN_ROW = "assTasksInRow";
@@ -151,6 +157,8 @@ const VARIABLE_IS_KNEELING = "isKneeling";
 const VARIABLE_KNEELING_STARTED = "kneelingStarted";
 
 const VARIABLE_BALL_CRUSHER_TWISTS_TO_APPLY = "ballCrusherTwistsToApply";
+
+//Max twists till pain limit reached. 1 per half round
 const VARIABLE_BALL_CRUSHER_MAX_TWISTS = "ballCrusherMaxTwists";
 
 const VARIABLE_MAX_DILDO_THICKNESS_TODAY = "maxDildoThicknessToday";
@@ -160,6 +168,11 @@ const VARIABLE_LAST_ICE_CUBE_UP_ASS_DATE = "lastIceCubeUpAssDate";
 const VARIABLE_IS_ICECUBE_BYPASS_ANAL = "isIceCubeBypassAnal";
 
 const VARIABLE_LAST_DILDO_SWAP_DATE = "lastDildoSwapDate";
+
+
+//E-Stim
+const VARIABLE_E_STIM_MODES = 'eStimModes';
+
 
 //Modules
 const VARIABLE_POSITION_TRAINING_STARTED = "positionTrainingStarted";
@@ -180,6 +193,9 @@ const VARIABLE_EDGE_A_TON_EDGE_RECORD = "edgeATonEdgeRecord";
 
 const VARIABLE_STROKE_MODULE_PAUSE_FREQUENCY = 'strokeModulePauseFrequency';
 
+
+//Rules
+const VARIABLE_LAST_RULE_PASSED = 'lastRulePassed';
 
 
 //Sub

@@ -8,7 +8,12 @@ function putOnCollar() {
     sendMessage('Now put it on. Tell me when you are done %SlaveName%');
     waitForDone();
 
+    if(shouldIntroduceNewRule(RULE_ALWAYS_WEAR_COLLAR)) {
+        RULE_ALWAYS_WEAR_COLLAR.sendIntroduction();
+    }
+
     COLLAR_TOY.setToyOn(true);
+    return true;
 }
 
 function removeCollar() {
@@ -20,4 +25,5 @@ function removeCollar() {
     waitForDone();
 
     COLLAR_TOY.setToyOn(false);
+    return true;
 }

@@ -194,7 +194,7 @@
         while (true) {
             if (answer.isLike("yes")) {
                 setVar(VARIABLE_CHASTITY_LEVEL, 30);
-                setVar(VARIABLE_LONG_TERM_CHASTITY, true);
+                RULE_DOMME_KEYHOLDER.setActive(true);
                 sendVirtualAssistantMessage("This should be fun...");
                 break;
             } else if (answer.isLike("no")) {

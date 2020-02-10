@@ -72,7 +72,7 @@ function startBlowToy(toy) {
 
                 let answers = ["Keep going", "Keep it up %SlaveName%", "Lick it... Gentle and slowly", "Come on %SlaveName%. Show some passion!"];
 
-                if(getCuckoldLimit() == LIMIT_ASKED_YES) {
+                if (getCuckoldLimit() == LIMIT_ASKED_YES) {
                     answers.push("Lick it like it was my lover's cock");
                 }
 
@@ -144,7 +144,7 @@ function randomBlowjobModule(toy) {
 function startNormalBlowjobModule() {
     sendMessage('Let\'s go easy on you for now');
 
-    if(!isVar('blowjobSoundExplanation')) {
+    if (!isVar('blowjobSoundExplanation')) {
         sendMessage('In a moment you are gonna hear sounds that tell you what to do');
         sendMessage('Let me explain them to you first');
 
@@ -187,7 +187,7 @@ function startNormalBlowjobModule() {
     startDate.addMinute(randomInteger(8, 15));
 
     while (!startDate.hasPassed()) {
-        if(isChance(25)) {
+        if (isChance(25)) {
             playSound("Audio\\Spicy\\Modules\\BJTraining\\GeneralEncourage\\*.mp3", true);
         }
 
@@ -221,33 +221,33 @@ function startNormalBlowjobModule() {
                 stopAudio();
                 break;
             case 4:
-                if(getBlowjobLevel() >= 25){
-                    if(isChance(50)) {
-                        sendMessage(random('Deep throat!', 'Deep throat that cock', 'Deep throat the dildo' , 'Get that cock into the back of your throat', 'All the way down!' , 'Suck it balls deep!', 'Suck it all the way down'), 0);
+                if (getBlowjobLevel() >= 25) {
+                    if (isChance(50)) {
+                        sendMessage(random('Deep throat!', 'Deep throat that cock', 'Deep throat the dildo', 'Get that cock into the back of your throat', 'All the way down!', 'Suck it balls deep!', 'Suck it all the way down'), 0);
 
                         //Teasing with words
-                        if(isChance(50)) {
+                        if (isChance(50)) {
                             playSound("Audio\\Spicy\\Blowjob\\Deepthroat\\*.mp3", true);
                         }
 
                         playSound("Audio\\Spicy\\Modules\\BJTraining\\BJDeepThroat\\DeepSlow1min.mp3", true);
                     } else {
-                        if(getBlowjobLevel() >= 30) {
+                        if (getBlowjobLevel() >= 30) {
                             //Teasing with words
-                            if(isChance(50)) {
+                            if (isChance(50)) {
                                 playSound("Audio\\Spicy\\Blowjob\\Deepthroat\\*.mp3", true);
                             }
 
-                            if(isChance(50)) {
+                            if (isChance(50)) {
                                 sendMessage(random('All the way down and back up fast!', 'Deep fast sucks!', 'Suck it deep and fast', 'Make that cock pound your throat hard and fast'), 0);
                                 playSound("Audio\\Spicy\\Modules\\BJTraining\\BJDeepThroatFast\\FastDeep1min.mp3", true);
                             } else {
-                                sendMessage(random('Deep throat!', 'Deep throat that cock', 'Deep throat the dildo' , 'Get that cock into the back of your throat', 'All the way down!' , 'Suck it balls deep!', 'Suck it all the way down'));
+                                sendMessage(random('Deep throat!', 'Deep throat that cock', 'Deep throat the dildo', 'Get that cock into the back of your throat', 'All the way down!', 'Suck it balls deep!', 'Suck it all the way down'));
                                 playSound("Audio\\Spicy\\Modules\\BJTraining\\BJDeepThroatLong\\DeepThroat.mp3", true);
                                 sleep(randomInteger(15, 60));
                             }
                         } else {
-                            sendMessage(random('Deep throat!', 'Deep throat that cock', 'Deep throat the dildo' , 'Get that cock into the back of your throat', 'All the way down!' , 'Suck it balls deep!', 'Suck it all the way down'));
+                            sendMessage(random('Deep throat!', 'Deep throat that cock', 'Deep throat the dildo', 'Get that cock into the back of your throat', 'All the way down!', 'Suck it balls deep!', 'Suck it all the way down'));
                             playSound("Audio\\Spicy\\Modules\\BJTraining\\BJDeepThroatLong\\DeepThroat.mp3", true);
                             sleep(randomInteger(5, 20));
                         }
@@ -274,7 +274,7 @@ function startNormalBlowjobModule() {
 function startDeepthroatModule(createSpiLube = false) {
     let tasks;
 
-    if(!createSpiLube) {
+    if (!createSpiLube) {
         sendMessage('For the time being we should really try to make your throat as sore as possible %Grin%');
     } else {
         sendMessage('We should create some spit for you to use as lube');
@@ -295,6 +295,8 @@ function startDeepthroatModule(createSpiLube = false) {
         } else {
             sendMessage('Try to keep all that spit in your mouth and anything that leaves your mouth should be slowly dripping onto your body %Grin%');
         }
+    } else if (shouldIntroduceNewRule(RULE_NEVER_SWALLOW_SPIT)) {
+        RULE_NEVER_SWALLOW_SPIT.sendIntroduction();
     }
 
     let tasksDone = 0;

@@ -1,36 +1,43 @@
 {
-    if (getVar(VARIABLE_ASS_LEVEL) >= 30 || isVar('AnalExamStartDate')) {
-        run('Session/End/AnalTraining/AnalExam.js');
+
+    if(!hasButtplugToy() || !hasDildoToy()) {
+        sendMessage('%SlaveName%');
+        //QUALITY: Buy x support with merits, asking again etc.
+        sendMessage('We can\'t do this training without at least one dildo and one buttplug');
+        sendMessage('So make sure to get some and set them up in the settings');
     } else {
-        //By default we want to send a new assignment
-        let completedExercise = true;
-        if (getVar(VARIABLE_ASS_TRAININGS_DONE, 0) == 0) {
-            firstTimeAnalTraining();
-        } else if (checkAnalExercise()) {
-
+        if (getVar(VARIABLE_ASS_LEVEL) >= 30 || isVar('AnalExamStartDate')) {
+            run('Session/End/AnalTraining/AnalExam.js');
         } else {
-            completedExercise = false;
+            //By default we want to send a new assignment
+            let completedExercise = true;
+            if (getVar(VARIABLE_ASS_TRAININGS_DONE, 0) == 0) {
+                firstTimeAnalTraining();
+            } else if (checkAnalExercise()) {
+
+            } else {
+                completedExercise = false;
+            }
+
+            if (completedExercise) {
+                sendNewAnalTask();
+
+                if (isChance(25)) {
+                    sendMessage("%InAddition% I want you to watch " + randomInteger(10, 30) + " minutes of porn involving anal. Preferably while completing your " + random("task ", "assignment "));
+                }
+
+                if (getASMLimit() == LIMIT_ASKED_YES) {
+                    sendMessage(random("Remember ", "Don\'t forget ", "Keep in mind ") + "to properly lick your toys clean after using them %Lol%");
+                }
+
+                if (hasEnemaKit()) {
+                    sendMessage(random("Don\'t forget ", "And also do ", "Remember ", "In addition do ", "Also do ") + "your enema %Grin%");
+                }
+            }
         }
 
-        if (completedExercise) {
-            sendNewAnalTask();
-
-            if (isChance(25)) {
-                sendMessage("%InAddition% I want you to watch " + randomInteger(10, 30) + " minutes of porn involving anal. Preferably while completing your " + random("task ", "assignment "));
-            }
-
-            if (getASMLimit() == LIMIT_ASKED_YES) {
-                sendMessage(random("Remember ", "Don\'t forget ", "Keep in mind ") + "to properly lick your toys clean after using them %Lol%");
-            }
-
-            if (hasEnemaKit()) {
-                sendMessage(random("Don\'t forget ", "And also do ", "Remember ", "In addition do ", "Also do ") + "your enema %Grin%");
-            }
-        }
+        incrementVar(VARIABLE_ASS_TRAININGS_DONE, 1);
     }
-
-
-    incrementVar(VARIABLE_ASS_TRAININGS_DONE, 1);
 }
 
 function sendNewAnalTask() {

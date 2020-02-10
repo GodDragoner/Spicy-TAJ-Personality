@@ -79,5 +79,16 @@ function isChance(percentage) {
 }
 
 function random() {
+    //One element
+    if(arguments.length === 1) {
+        if(Array.isArray(arguments[0])) {
+            if(arguments[0].length === 0) {
+                return null;
+            }
+
+            return arguments[0][randomInteger(0, arguments[0].length - 1)];
+        }
+    }
+
     return arguments[randomInteger(0, arguments.length - 1)];
 }

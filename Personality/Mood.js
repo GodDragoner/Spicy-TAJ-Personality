@@ -60,10 +60,7 @@ function wouldLikeToProlongSession() {
         let daysPassed = 7;
 
         if(isVar(VARIABLE_LAST_PROLONGED_SESSION)) {
-            let last = getVar(VARIABLE_LAST_PROLONGED_SESSION).getTimeInMillis();
-            let current = setDate().getTimeInMillis();
-
-            daysPassed = Math.ceil((current - last)/(1000*60*60*24));
+            daysPassed = millisToTimeUnit(getMillisSinecDate(VARIABLE_LAST_PROLONGED_SESSION), TIME_UNIT_DAYS, 0);
             sendDebugMessage('Last prolonged session was ' + daysPassed + ' days ago');
         }
 
@@ -191,6 +188,6 @@ function registerForgetHonorific() {
         changeMeritLow(true);
     }
 
-
+    addPunishmentPoints(getPPRuleIgnored());
     setTempVar(VARIABLE_FORGETTING_HONORIFIC_COUNT, getVar(VARIABLE_FORGETTING_HONORIFIC_COUNT, 0) + 1);
 }

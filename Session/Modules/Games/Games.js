@@ -6,6 +6,7 @@ const GAME_BALL_CRUSHER = 4;
 const GAME_INFLATABLE_PLUG = 5;
 const GAME_GOLD = 6;
 const GAME_EDGE = 7;
+const GAME_E_STIM = 4;
 
 {
     let pathLength = getPersonalityPath().length;
@@ -17,5 +18,13 @@ const GAME_EDGE = 7;
             let path = file.getPath();
             run(path.substring(path.indexOf(getPersonalityPath()) + pathLength + 1, path.length));
         }
+    }
+}
+
+function playSlideshow(durationSeconds, intervalSeconds, category) {
+    let date = setDate();
+    while (!date.addSecond(durationSeconds).hasPassed()) {
+        showTeaseImage();
+        sleep(intervalSeconds);
     }
 }

@@ -12,7 +12,6 @@ run("Slaves/Slaves.js");
 run("Session/Orgasm/Orgasm.js");
 run("Session/Orgasm/OrgasmSpecial.js");
 
-
 run("Session/End/Training.js");
 
 sendSystemMessage("Launching Spicy " + getVar("personalityVersion"));
@@ -24,9 +23,8 @@ run("Utils/StringUtils.js");
 run("Utils/BodyParts.js");
 run("Utils/GoldUtils.js");
 run("Utils/TAJUtils.js");
+run("Utils/TimeUtils.js");
 run("Utils/LegacyUtils.js");
-
-run("Startup/Versioning/VersionChecker.js");
 
 run("Session/Tasks.js");
 run("Startup/UpdateVariables.js");
@@ -73,6 +71,10 @@ run("Session/Modules/Games/Games.js");
 
 run("Dungeon/Punishments/PunishmentBuilder.js");
 
+run("Startup/Versioning/VersionChecker.js");
+
+afterLoadBodyParts();
+
 //Update devotion only if the setup is complete which means the variable must exist
 if(isVar(VARIABLE_DEVOTION)) {
     run("Settings/UpdateDevotion.js");
@@ -93,7 +95,6 @@ setTempVar(VARIABLE_CURRENT_SESSION_ACTIVE, false);
 if(!getVar(VARIABLE_FINISHED_SETUP, false)) run("Startup/Setup.js");
 
 if(!getVar(VARIABLE_FINISHED_FIRST_SESSION, false)) run("Session/FirstSession.js");
-
 
 
 //TODO: Academy

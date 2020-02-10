@@ -7,7 +7,7 @@ let shortestDildo = null;
 let smallestDildo = null;
 
 function hasDildoToy() {
-    return getVar("toyDildo", false);
+    return DILDOS.length > 0;
 }
 
 function getDildoToyMode() {

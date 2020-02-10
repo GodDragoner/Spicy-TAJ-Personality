@@ -1,31 +1,38 @@
 {
-    if (getVar(VARIABLE_BLOWJOB_LEVEL) >= 30 || isVar('BlowjobExamStartDate')) {
-        run('Session/End/BlowjobTraining/BlowjobExam.js');
+    if(!hasDildoToy()) {
+        sendMessage('%SlaveName%');
+        //QUALITY: Buy x support with merits, asking again etc.
+        sendMessage('We can\'t do this training without at least one dildo');
+        sendMessage('So make sure to get one and set it up in the settings');
     } else {
-        //By default we want to send a new assignment
-        let completedExercise = true;
-        if (getVar(VARIABLE_BLOWJOB_TRAININGS_DONE, 0) === 0) {
-            firstTimeBlowjobTraining();
-        } else if (checkBlowjobExercise()) {
-
+        if (getVar(VARIABLE_BLOWJOB_LEVEL) >= 30 || isVar('BlowjobExamStartDate')) {
+            run('Session/End/BlowjobTraining/BlowjobExam.js');
         } else {
-            completedExercise = false;
-        }
+            //By default we want to send a new assignment
+            let completedExercise = true;
+            if (getVar(VARIABLE_BLOWJOB_TRAININGS_DONE, 0) === 0) {
+                firstTimeBlowjobTraining();
+            } else if (checkBlowjobExercise()) {
 
-        if (completedExercise) {
-            sendNewBlowjobTask();
+            } else {
+                completedExercise = false;
+            }
 
-            if (isChance(25)) {
-                sendMessage("%InAddition% I want you to watch " + randomInteger(10, 30) + "minutes of porn involving blowjobs and deepthroats. Preferably while completing your " + random("task ", "assignment "));
+            if (completedExercise) {
+                sendNewBlowjobTask();
 
-                if(getSissyLimit() == LIMIT_ASKED_YES) {
-                    sendMessage('Of course I would prefer porn of sissy mouths getting raped if you can find some %Grin%');
+                if (isChance(25)) {
+                    sendMessage("%InAddition% I want you to watch " + randomInteger(10, 30) + "minutes of porn involving blowjobs and deepthroats. Preferably while completing your " + random("task ", "assignment "));
+
+                    if(getSissyLimit() == LIMIT_ASKED_YES) {
+                        sendMessage('Of course I would prefer porn of sissy mouths getting raped if you can find some %Grin%');
+                    }
                 }
             }
         }
-    }
 
-    incrementVar(VARIABLE_BLOWJOB_TRAININGS_DONE, 1);
+        incrementVar(VARIABLE_BLOWJOB_TRAININGS_DONE, 1);
+    }
 }
 
 function sendNewBlowjobTask() {
@@ -119,9 +126,7 @@ function firstTimeBlowjobTraining() {
         sendMessage("Level 30 means that you can take anything down your throat without hesitating");
     }
 
-
     if(!RULE_NEVER_SWALLOW_SPIT.isActive()) {
-        sendMessage('Now there is one very important rule that you should never forget');
         RULE_NEVER_SWALLOW_SPIT.sendIntroduction();
     } else {
         sendMessage('As you should know, you aren\'t allowed to swallow any spit %Grin%')

@@ -54,12 +54,11 @@ function startAnalExam() {
     setDate('AnalExamStartDate');
     sendMessage("Your anal exam starts now");
 
-    //TODO: Select buttplug out of collection
-    sendMessage("You are to wear your small butt plug for 7 days in a row!");
-    sendMessage("Your only time when you can remove it is to clean yourself and...");
+    sendMessage('You are to wear your ' + getButtplugForTask().name + ' for 7 days in a row!');
+    sendMessage("Your only time when you can remove it is to clean yourself or need to take a shit and...");
     sendMessage("Of course if I want to violate your ass in a different way %Lol%");
 
-    if(getASMLimit() ==LIMIT_ASKED_YES) {
+    if(getASMLimit() === LIMIT_ASKED_YES) {
         sendMessage(random("Remember ", "Don\'t forget ", "Keep in mind ") + "to properly lick your toys clean each day %SlaveName% %Lol% ");
     }
 }

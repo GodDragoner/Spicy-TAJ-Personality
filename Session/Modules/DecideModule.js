@@ -1,4 +1,4 @@
-//TODO: Pain Modules: Sounding, Electric Kit
+//TODO: Pain Modules: Sounding
 
 {
     //End session
@@ -115,7 +115,8 @@
         //Not used atm.
         let sissyModuleChance = 0;
 
-        let painModuleChance = moduleChance;
+        //No pain modules if pain is hard limit
+        let painModuleChance = PAIN_LIMIT.isHardLimit()? moduleChance : 0;
         let slaveModuleChance = moduleChance;
         let humiliationModuleChance = moduleChance;
 

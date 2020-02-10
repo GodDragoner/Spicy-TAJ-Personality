@@ -1,8 +1,5 @@
 function startMissingCardMemory(gameType) {
     sendMessage('%SlaveName%');
-    sendMessage('I have a cool memory game for us');
-    sendMessage('I will show you 12 out of 13 different cards from a deck of poker cards');
-    sendMessage('For example I might show you ace(1), two(2), three(3), four(4), five(5), seven(7), eight(8), nine(9), ten(10), knight(11), queen(12) and king(13)');
 
     const answerDict = {};
     answerDict['ace'] = 1;
@@ -19,30 +16,45 @@ function startMissingCardMemory(gameType) {
     answerDict['queen'] = 12;
     answerDict['king'] = 13;
 
-    let numberMissing = 6;
-    let numberArray = [];
+    if(!getVar('memoryGameIntro', false)) {
+        sendMessage('I have a cool memory game for us');
+        sendMessage('I will show you 12 out of 13 different cards from a deck of poker cards');
+        sendMessage('For example I might show you ace(1), two(2), three(3), four(4), five(5), seven(7), eight(8), nine(9), ten(10), knight(11), queen(12) and king(13)');
 
-    for (let number = 1; number < 14; number++) {
-        if (number != numberMissing) {
-            numberArray[number - 1] = number;
+        let numberMissing = 6;
+        let numberArray = [];
+
+        for (let number = 1; number < 14; number++) {
+            if (number != numberMissing) {
+                numberArray[number - 1] = number;
+            }
         }
+
+        shuffle(numberArray);
+
+        for (let index = 0; index < numberArray.length; index++) {
+            showImage('Images/Spicy/Deck/' + numberArray[index] + '/*.jpg', 1);
+        }
+
+        sendMessage('In this example the six was missing');
+        sendMessage('It doesn\'t matter whether the card is club, heart, spade or diamond');
+        sendMessage('Only the card value is important for now');
+        sendMessage('When I am done showing you the 12 cards you have 5 seconds to reply with the correct answer');
+
+        setVar('memoryGameIntro', true);
+    } else {
+        sendMessage('I think it\'s time to train your memory again');
+        sendMessage('Just so you remember');
+        sendMessage('I will show you 12 cards out of 13 and you will have to tell me which one was missing');
     }
 
-    shuffle(numberArray);
-
-    for (let index = 0; index < numberArray.length; index++) {
-        showImage('Images/Spicy/Deck/' + numberArray[index] + '/*.jpg', 1);
-    }
-
-    sendMessage('In this example the six was missing');
-    sendMessage('It doesn\'t matter whether the card is club, heart, spade or diamond');
-    sendMessage('Only the card value is important for now');
-    sendMessage('When I am done showing you the 12 cards you have 5 seconds to reply with the correct answer');
 
     const totalMode = isChance(50) && gameType === GAME_EDGE;
     const maxLosses = 7;
 
-    //Only used in ball crusher mode
+    let goldEarnedPerWin = 20;
+
+    //Only used in ball crusher mode and e-stim
     let turnsPerLoss = -1;
 
     if (totalMode) {
@@ -51,24 +63,40 @@ function startMissingCardMemory(gameType) {
     } else {
         switch (gameType) {
             case GAME_EDGE:
-                sendMessage('If you are right you will earn 20 gold');
+                sendMessage('If you are right you will earn ' + goldEarnedPerWin + ' gold');
                 sendMessage('If you are wrong you will have to edge twice %Grin%');
                 break;
             case GAME_INFLATABLE_PLUG:
-                sendMessage('If you are right you will earn 20 gold');
+                sendMessage('If you are right you will earn ' + goldEarnedPerWin + ' gold');
                 sendMessage('If you are wrong you will have to pump your plug 3 times %Grin%');
                 break;
             case GAME_BALL_CRUSHER:
                 turnsPerLoss = Math.round((getVar(VARIABLE_BALL_CRUSHER_MAX_TWISTS) + getMood() * 1.5) / maxLosses);
-                sendMessage('If you are right you will earn 20 gold');
+                sendMessage('If you are right you will earn ' + goldEarnedPerWin + ' gold');
                 sendMessage('If you are wrong you will have to twist each screw ' + turnsPerLoss + ' half-rounds %Grin%');
+                break;
+            case GAME_E_STIM:
+                //Handled in if statement because we can't define let in switch
                 break;
         }
     }
 
+    if(gameType === GAME_E_STIM) {
+        //Get low level mode and with a big difference between low level and high level
+        let mode = getRandomPainEStimMode(PAIN_LEVEL_LOW, maxLosses);
+
+        turnsPerLoss = Math.round((getVar(mode.getPainLevel(PAIN_LEVEL_HIGH)) + getMood() * 1.5) / maxLosses);
+
+        sendMessage('If you are right you will earn ' + goldEarnedPerWin + ' gold');
+        sendMessage('If you are wrong you will have to increase the level of your e-stim device by ' + turnsPerLoss + ' %Grin%');
+
+        mode.enableMode();
+        mode.enableLevel(mode.getPainLevel(PAIN_LEVEL_LOW));
+        sendMessage('Tell me when you are done %Grin%');
+        waitForDone();
+    }
+
     sendMessage('Let\'s not waste anymore time and start %EmoteHappy%');
-
-
 
     let wins = 0;
     let loses = 0;
@@ -77,7 +105,7 @@ function startMissingCardMemory(gameType) {
         let numberArray = [];
 
         for (let number = 1; number < 14; number++) {
-            if (number != numberMissing) {
+            if (number !== numberMissing) {
                 numberArray[number - 1] = number;
             }
         }
@@ -96,10 +124,10 @@ function startMissingCardMemory(gameType) {
                 sendMessage('Too slow %Grin%');
                 break;
             } else if (answer.isInteger()) {
-                rightAnswer = answer.getInt() == numberMissing;
+                rightAnswer = answer.getInt() === numberMissing;
                 break;
             } else if (answer.getAnswer().toLowerCase() in answerDict) {
-                rightAnswer = answerDict[answer.getAnswer().toLowerCase()] == numberMissing;
+                rightAnswer = answerDict[answer.getAnswer().toLowerCase()] === numberMissing;
                 break;
             } else {
                 sendMessage('Which card was missing?');
@@ -114,8 +142,8 @@ function startMissingCardMemory(gameType) {
             sendMessage(random('Correct!', 'Right on', 'Right on!', 'You\'re right', 'You are right!', 'That\'s correct', 'That\'s right') + ' %Grin%');
 
             if (!totalMode) {
-                sendMessage('That\'s 20 gold for you %EmoteHappy%');
-                addGold(20);
+                sendMessage('That\'s ' + goldEarnedPerWin + ' gold for you %EmoteHappy%');
+                addGold(goldEarnedPerWin);
             }
         } else {
             loses++;
@@ -142,6 +170,9 @@ function startMissingCardMemory(gameType) {
                         break;
                     case GAME_BALL_CRUSHER:
                         sendMessage('Go ahead and turn each screw ' + turnsPerLoss + ' half-rounds %Grin%', 10);
+                        break;
+                    case GAME_E_STIM:
+                        sendMessage('Go ahead and increase the level by ' + turnsPerLoss + ' %Grin%', 10);
                         break;
                 }
             }
@@ -194,17 +225,19 @@ function startMissingCardMemory(gameType) {
                     sendMessage('You will be happy about that rest you\'ve just had very soon %Lol%');
                     break;
                 case GAME_INFLATABLE_PLUG:
+                    //QUALITY: Diversity
                     sendMessage('But because you\'ve disappointed your %DomHonorific% you will not be allowed to deflate it yet %Lol%');
                     startTimePassTasks(5, true);
                     break;
                 case GAME_BALL_CRUSHER:
                     sendMessage('But because you\'ve disappointed your %DomHonorific% you will not be allowed to relief the pressure just jet %Lol%');
                     startTimePassTasks(5, true);
-
-                    //sendMessage('If you are wrong you will have to pump your plug 3 times %Grin%');
+                    break;
+                case E_STIM_TOY:
+                    sendMessage('But because you\'ve disappointed your %DomHonorific% you will not be allowed to turn it down just jet %Lol%');
+                    startTimePassTasks(5, true);
                     break;
             }
-
         }
     }
 }
