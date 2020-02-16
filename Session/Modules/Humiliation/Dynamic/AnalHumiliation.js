@@ -6,100 +6,107 @@
         if (getAnalLimit() == LIMIT_NEVER) {
             //Try to find a different module
             tryRunModuleFetchId();
-        }
-
-        sendMessage("Let's see %SlaveName%");
-        sendMessage(random("I think it's time to work that ass", "I guess it's time to work on your ass", "Let's have some fun with your ass shall we?", "Let\'s play a fun little game... with your ass %Grin%"));
-
-        //Run ass intro
-        if (!isVar('assIntro')) {
-            runAssIntro();
-        }
-
-        let plugPlay = hasButtplugToy() && isChance(50) && getVar(VARIABLE_ASS_LEVEL) >= 5;
-        let dildoPlay = hasDildoToy() && getVar(VARIABLE_ASS_LEVEL) >= 5;
-
-        if (isPlugged()) {
-            if (isChance(50)) {
-                sendMessage("Plugging you beforehand was a great idea");
-                sendMessage("Because...");
-                sendMessage("Now we can start with the bigger stuff right away %Grin%");
+        } else {
+            if(!isVar(VARIABLE_ENEMA_INTRO) && hasEnemaKit() && isVar('assIntro')) {
+                //QUALITY: Based on whether contact 1 appeared yet etc.
+                runEnemaIntro();
+                sendMessage('Now that that\'s settled');
             } else {
-                sendMessage("You look quite pathetic plugged up as you are %Lol%");
+                sendMessage("Let's see %SlaveName%");
             }
 
-            let tasks = !BUTTPLUG_TOY.getLastUsage().addMinute(5).hasPassed();
+            sendMessage(random("I think it's time to work that ass", "I guess it's time to work on your ass", "Let's have some fun with your ass shall we?", "Let\'s play a fun little game... with your ass %Grin%"));
 
-            if (!tasks) {
-                if (isChance(25)) {
-                    if (currentPlug !== biggestButtplug) {
-                        tasks = increasePlugSize();
+            //Run ass intro
+            if (!isVar('assIntro')) {
+                runAssIntro();
+            }
+
+            let plugPlay = hasButtplugToy() && isChance(50) && getVar(VARIABLE_ASS_LEVEL) >= 5;
+            let dildoPlay = hasDildoToy() && getVar(VARIABLE_ASS_LEVEL) >= 5;
+
+            if (isPlugged()) {
+                if (isChance(50)) {
+                    sendMessage("Plugging you beforehand was a great idea");
+                    sendMessage("Because...");
+                    sendMessage("Now we can start with the bigger stuff right away %Grin%");
+                } else {
+                    sendMessage("You look quite pathetic plugged up as you are %Lol%");
+                }
+
+                let tasks = !BUTTPLUG_TOY.getLastUsage().addMinute(5).hasPassed();
+
+                if (!tasks) {
+                    if (isChance(25)) {
+                        if (currentPlug !== biggestButtplug) {
+                            tasks = increasePlugSize();
+                        }
+                    } else {
+                        removeButtplug();
                     }
-                } else {
-                    removeButtplug();
                 }
-            }
 
-            if (tasks) {
-                sendMessage("However I want you to keep that plug inside for now...");
-                sendMessage("A bit more of a warmup can never be too bad right?");
-                sendMessage("But let's not waste the time we are waiting for your ass to stretch though");
-                startTimePassTasks(5);
-                sendMessage("I think we waited long enough. Let's get back to your ass");
-                removeButtplug();
-            }
-        } else {
-            let missingPlug = false;
-            if (plugPlay) {
-                sendMessage("Let's start by stretching that ass of yours");
-                if (!putInButtplug()) {
-                    missingPlug = true;
-
-                    changeMeritHigh(true);
-                    sendMessage("That's really bad %SlaveName%");
-                    sendMessage("You must always have your toys around or tell me preemptively that you are not able to bring your toys to a session");
-
-                    sendMessage("Well then...");
-                } else {
-                    sendMessage("Lets spend the time that the plug is stretching your ass with something useful");
+                if (tasks) {
+                    sendMessage("However I want you to keep that plug inside for now...");
+                    sendMessage("A bit more of a warmup can never be too bad right?");
+                    sendMessage("But let's not waste the time we are waiting for your ass to stretch though");
                     startTimePassTasks(5);
-                    sendMessage("I believe we waited long enough and your ass is ready for more now");
+                    sendMessage("I think we waited long enough. Let's get back to your ass");
                     removeButtplug();
                 }
-            }
-        }
-
-        let toy = getAnalDildo().name;
-
-        if (dildoPlay) {
-            if (!fetchDildoToy(toy)) {
-                lastAlternativeFingerPlay();
-                toy = "finger";
-                dildoPlay = false;
             } else {
-                setDate(VARIABLE_LAST_DILDO_SWAP_DATE);
-                sendMessage("Okay let's get started then");
+                let missingPlug = false;
+                if (plugPlay) {
+                    sendMessage("Let's start by stretching that ass of yours");
+                    if (!putInButtplug()) {
+                        missingPlug = true;
+
+                        changeMeritHigh(true);
+                        sendMessage("That's really bad %SlaveName%");
+                        sendMessage("You must always have your toys around or tell me preemptively that you are not able to bring your toys to a session");
+
+                        sendMessage("Well then...");
+                    } else {
+                        sendMessage("Lets spend the time that the plug is stretching your ass with something useful");
+                        startTimePassTasks(5);
+                        sendMessage("I believe we waited long enough and your ass is ready for more now");
+                        removeButtplug();
+                    }
+                }
             }
-        } else {
-            toy = "finger";
+
+            let toy = getAnalDildo().name;
+
+            if (dildoPlay) {
+                if (!fetchDildoToy(toy)) {
+                    lastAlternativeFingerPlay();
+                    toy = "finger";
+                    dildoPlay = false;
+                } else {
+                    setDate(VARIABLE_LAST_DILDO_SWAP_DATE);
+                    sendMessage("Okay let's get started then");
+                }
+            } else {
+                toy = "finger";
+            }
+
+            const lubeType = getAssLubeType(getMood());
+
+            if (lubeType == ANY_LUBE) {
+                lubeUpToyWithLube(toy);
+            } else if (lubeType === SPIT_LUBE) {
+                lubeUpToyWithSpit(toy, toy != 'finger');
+            } else if (lubeType === TOOTHPASE_LUBE) {
+                lubeUpToyWithToothpaste(toy);
+            } else if (lubeType === TIGER_HOT_LUBE) {
+                lubeUpToyWithTigerHot(toy);
+            } else {
+                sendMessage("Today I don't you to use any lube %Grin%");
+            }
+
+            runAssCrackPreparation(toy);
+            startPenetratingSession(toy);
         }
-
-        const lubeType = getAssLubeType(getMood());
-
-        if (lubeType == ANY_LUBE) {
-            lubeUpToyWithLube(toy);
-        } else if (lubeType === SPIT_LUBE) {
-            lubeUpToyWithSpit(toy, toy != 'finger');
-        } else if (lubeType === TOOTHPASE_LUBE) {
-            lubeUpToyWithToothpaste(toy);
-        } else if (lubeType === TIGER_HOT_LUBE) {
-            lubeUpToyWithTigerHot(toy);
-        } else {
-            sendMessage("Today I don't you to use any lube %Grin%");
-        }
-
-        runAssCrackPreparation(toy);
-        startPenetratingSession(toy);
     }
 }
 

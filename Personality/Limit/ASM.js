@@ -1,3 +1,24 @@
+const ASM_LIMIT = createLimit('ass to mouth', ' assToMouthLimit');
+ASM_LIMIT.askForLimitChange = function (subAddressed) {
+    let limit = this;
+    let ask = this.handleCurrentLimitChange(subAddressed);
+
+    if (ask) {
+        sendMessage('%SlaveName%');
+        sendMessage('I would very much love to force you to interact with toys that just came from your ass using your mouth');
+        sendMessage('I think this is a great way to humiliate and punish you');
+        sendMessage('And...');
+        sendMessage('It would please me very much if we could try this and if you even enjoyed it yourself');
+        sendMessage('And you want to please me, don\'t you? %Grin%');
+        sendMessage('Mind this has nothing to do with you eating your shit or anything similar');
+        sendMessage('That might be a topic for a different time %Grin%');
+        sendMessage('For now I am just asking you to take toys that were up your ass into your mouth');
+        askForNewLimitValue(limit);
+    } else {
+        sendMessage('%EmoteSad%');
+        changeMeritLow(true);
+    }
+};
 
 let ASM_CLEAN_TYPE_GAG = 0;
 let ASM_CLEAN_TYPE_BLOW = 1;

@@ -6,6 +6,11 @@ const LIMIT_ASKED_NO = 4;
 
 const LIMITS = [];
 
+const LIMIT_CHANGE_SUB_ADRESSED = 0;
+const LIMIT_CHANGE_SUB_CHANGED_MIND = 1;
+const LIMIT_CHANGE_ALREADY_YES = 2;
+const LIMIT_CHANGE_WILL_DO_ANYTHING = 3;
+
 let pathLength = getPersonalityPath().length;
 let files = new java.io.File(getPersonalityPath() + PATH_SEPARATOR + 'Personality' + PATH_SEPARATOR + 'Limit').listFiles();
 
@@ -37,28 +42,6 @@ ANAL_LIMIT.askForLimitChange = function (subAddressed) {
 
 const CEI_LIMIT = createLimit('CEI', 'ceiLimit');
 const PAIN_LIMIT = createLimit('pain', 'painLimit');
-const ASM_LIMIT = createLimit('ass to mouth', ' assToMouthLimit');
-ASM_LIMIT.askForLimitChange = function (subAddressed) {
-    let limit = this;
-    let ask = this.handleCurrentLimitChange(subAddressed);
-
-    if (ask) {
-        sendMessage('%SlaveName%');
-        sendMessage('I would very much love to force you to interact with toys that just came from your ass using your mouth');
-        sendMessage('I think this is a great way to humiliate and punish you');
-        sendMessage('And...');
-        sendMessage('It would please me very much if we could try this and if you even enjoyed it yourself');
-        sendMessage('And you want to please me, don\'t you? %Grin%');
-        sendMessage('Mind this has nothing to do with you eating your shit or anything similar');
-        sendMessage('That might be a topic for a different time %Grin%');
-        sendMessage('For now I am just asking you to take toys that were up your ass into your mouth');
-        askForNewLimitValue(limit);
-    } else {
-        sendMessage('%EmoteSad%');
-        changeMeritLow(true);
-    }
-};
-
 const PEE_LIMIT = createLimit('pee', 'peeLimit');
 const CBT_LIMIT = createLimit('cock ball torture', 'cbtLimit');
 CBT_LIMIT.askForLimitChange = function (subAddressed) {
@@ -162,13 +145,18 @@ function createLimit(name, variable) {
                 //TODO: Add some teasing stuff individually / design modules that want to get the sub to cross his limits
                 //This needs to be handled individually to seduce in the current situation
 
-                if(isVar(VARIABLE_RESPONSE_WILL_DO_ANYTHING)) {
+                if(isVar(VARIABLE_RESPONSE_WILL_DO_ANYTHING) && subAddressed) {
                     delVar(VARIABLE_RESPONSE_WILL_DO_ANYTHING);
-                    ask = true;
+                    return LIMIT_CHANGE_WILL_DO_ANYTHING;
                 }
             } else if(subAddressed && limitValue == LIMIT_ASKED_NO) {
                 sendMessage('I thought you aren\'t into ' + this.name + '?');
-                ask = sendYesOrNoQuestion('Did you change your mind about that?');
+
+                if(sendYesOrNoQuestion('Did you change your mind about that?')) {
+                    return LIMIT_CHANGE_SUB_CHANGED_MIND;
+                } else {
+
+                }
             }
 
             return ask;

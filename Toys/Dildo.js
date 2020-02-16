@@ -21,10 +21,6 @@ function runAssIntro() {
     sendMessage("And heck...");
     sendMessage("You might even learn to love it!");
 
-    if(hasEnemaKit()) {
-        runEnemaIntro();
-    }
-
     sendMessage("Now...");
     setVar('assIntro', true);
 }

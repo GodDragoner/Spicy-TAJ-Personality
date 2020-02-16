@@ -79,6 +79,33 @@ function sendDebugMessageToChat(message) {
     sendCustomMessage(textName, text);
 }
 
+function sendPinnoteMessage(message, wait, skipImage) {
+    let textName = new javafx.scene.text.Text(replaceVocab("[%DomHonorific% %DomName%]: "));
+    textName.setFill(javafx.scene.paint.Color.INDIANRED);
+    textName.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.BOLD, 14));
+
+    message = replaceVocab(message);
+    let text = new javafx.scene.text.Text(message);
+    text.setFill(javafx.scene.paint.Color.GRAY);
+    text.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.LIGHT, 13));
+
+//test below to see if tts is supported and sendmessage can be swapped for sendcustom message
+    sendCustomMessage(textName, text);
+
+    //Show image
+    if (skipImage === undefined || skipImage instanceof Boolean && !skipImage) {
+        if (!isImagesLocked()) {
+            showImage("Images/Spicy/Assistant/" + ASSISTANT_CURRENT_SET_ID + "/*.jpg");
+        }
+    }
+
+    if (wait === undefined) {
+        sleep(1000 + message.length * 50, "MILLISECONDS");
+    } else if (wait instanceof Boolean && wait) {
+        sleep(wait * 1000, "MILLISECONDS");
+    }
+}
+
 function sendVirtualAssistantMessage(message, wait, skipImage) {
     let textName = new javafx.scene.text.Text("[Vivienne]: ");
     textName.setFill(javafx.scene.paint.Color.ROYALBLUE);
@@ -200,6 +227,7 @@ function sendGoodForMe() {
 
         finalSentence.push('And that\'s all that counts', 'And that\'s all that matters');
     } else {
+        sendMessage('Only good for me to be precise %Grin%');
         sendMessage(random('Probably not so good for you though', 'Maybe not that good for you', 'Could be not that good for you though', 'Could be bad for you though',
             'On the other hand it might be bad for you though') + ' %Lol%');
 

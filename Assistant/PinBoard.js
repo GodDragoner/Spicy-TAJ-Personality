@@ -1,9 +1,15 @@
 {
     sendVirtualAssistantMessage('Pin Board Menu:', 0);
-    sendVirtualAssistantMessage('Options:', 0);
     sendVirtualAssistantMessage('1. List rules', 0);
+    let lobbyAnswer;
 
-    let lobbyAnswer = createInput('List rules', 'Return');
+    if(isVar(VARIABLE_ENEMA_INTRO)) {
+        sendVirtualAssistantMessage('2. Enema', 0);
+        lobbyAnswer = createInput('List rules', 'Enema', 'Return');
+    } else {
+        lobbyAnswer = createInput('List rules', 'Return');
+    }
+
     while (true) {
         if (lobbyAnswer.isLike('rules')) {
             lobbyAnswer.clearOptions();
@@ -41,15 +47,35 @@
             } else {
                 sendVirtualAssistantMessage('There are no active temporary rules right now %SlaveName%');
             }
-            break;
+
+            run("Assistant/PinBoard.js");
         } else if(lobbyAnswer.isLike('back', 'cancel', 'return')) {
             lobbyAnswer.clearOptions();
             break;
+        } else if(lobbyAnswer.isLike('enema')) {
+            if(!isVar(VARIABLE_ENEMA_INTRO)) {
+                lobbyAnswer.loop();
+            } else {
+                let lines = getTodaysEnema();
+
+                sendVirtualAssistantMessage('I am gonna read %DomHonorific%\'s note to you:');
+
+                for(let x = 0; x < lines.size(); x++) {
+                    sendPinnoteMessage(lines.get(x));
+                }
+
+                sendVirtualAssistantMessage('That\'s all %SlaveName%');
+            }
+
+            run("Assistant/PinBoard.js");
         } else {
             sendVirtualAssistantMessage("You have the following options %SlaveName%");
-            sendVirtualAssistantMessage("- Add new dildo");
-            sendVirtualAssistantMessage("- Add new buttplug");
-            sendVirtualAssistantMessage("- Add new chastity cage");
+            sendVirtualAssistantMessage("- Rules");
+
+            if(isVar(VARIABLE_ENEMA_INTRO)) {
+                sendVirtualAssistantMessage("- Enema");
+            }
+
             lobbyAnswer.loop();
         }
     }

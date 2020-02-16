@@ -85,13 +85,20 @@ function startMissingCardMemory(gameType) {
         //Get low level mode and with a big difference between low level and high level
         let mode = getRandomPainEStimMode(PAIN_LEVEL_LOW, maxLosses);
 
+        let level = mode.getPainLevel(PAIN_LEVEL_LOW);
+
+        //If there is like no room for improvement we should go as low as needed
+        if(mode.getPainLevel(PAIN_LEVEL_HIGH) - level < Math.ceil(maxLosses/2)) {
+            level = Math.max(0, mode.getPainLevel(PAIN_LEVEL_HIGH) - Math.ceil(maxLosses/2));
+        }
+
         turnsPerLoss = Math.round((getVar(mode.getPainLevel(PAIN_LEVEL_HIGH)) + getMood() * 1.5) / maxLosses);
 
         sendMessage('If you are right you will earn ' + goldEarnedPerWin + ' gold');
         sendMessage('If you are wrong you will have to increase the level of your e-stim device by ' + turnsPerLoss + ' %Grin%');
 
         mode.enableMode();
-        mode.enableLevel(mode.getPainLevel(PAIN_LEVEL_LOW));
+        mode.enableLevel(level);
         sendMessage('Tell me when you are done %Grin%');
         waitForDone();
     }

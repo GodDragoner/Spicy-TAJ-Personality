@@ -142,11 +142,11 @@ function getButtplugTaskDurationHours() {
 
     switch(enemaLevel) {
         case 5:
-            return 8;
+            return 10;
         case 4:
-            return 6;
+            return 8;
         case 3:
-            return 5;
+            return 6;
         case 2:
             return 4;
         case 1:

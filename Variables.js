@@ -173,6 +173,10 @@ const VARIABLE_LAST_DILDO_SWAP_DATE = "lastDildoSwapDate";
 //E-Stim
 const VARIABLE_E_STIM_MODES = 'eStimModes';
 
+//Enema
+const VARIABLE_ENEMA_INTRO = "enemaIntro";
+const VARIABLE_ENEMA_TASK_TODAY = "enemaTaskToday";
+const VARIABLE_ENEMA_TASK_SET = "enemaTaskSet";
 
 //Modules
 const VARIABLE_POSITION_TRAINING_STARTED = "positionTrainingStarted";

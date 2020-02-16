@@ -30,7 +30,7 @@
                     sendMessage(random("Remember ", "Don\'t forget ", "Keep in mind ") + "to properly lick your toys clean after using them %Lol%");
                 }
 
-                if (hasEnemaKit()) {
+                if (hasEnemaKit() && isVar(VARIABLE_ENEMA_INTRO)) {
                     sendMessage(random("Don\'t forget ", "And also do ", "Remember ", "In addition do ", "Also do ") + "your enema %Grin%");
                 }
             }
