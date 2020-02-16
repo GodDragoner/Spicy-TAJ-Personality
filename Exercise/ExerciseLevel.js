@@ -26,8 +26,7 @@ else {
         setVar("ExerciseLevelMastered", 0);
         setVar("ExerciseLevelFailed", 0);
 
-        addPunishmentPoints(100);
-        setVar("BadExerciseEffort", true);
+        addPunishmentPoints(100, PUNISHMENT_REASON.BAD_EXERCISE_EFFORT);
 
         sendVirtualAssistantMessage("%SlaveName%, we need to talk about something...");
         sendVirtualAssistantMessage("%DomHonorific% %DomName% and I have noticed you're not able to keep up with the workouts you're assigned.");

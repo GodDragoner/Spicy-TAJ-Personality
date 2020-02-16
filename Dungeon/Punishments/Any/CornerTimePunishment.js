@@ -1,6 +1,6 @@
 {
     //No punishments with higher than medium should be line writing
-    if (PUNISHMENT_CURRENT_LEVEL.id > PUNISHMENT_LEVEL_MEDIUM.id) {
+    if (PUNISHMENT_CURRENT_LEVEL.id > PUNISHMENT_LEVEL.MEDIUM.id) {
         runPunishment();
     } else if (tryRunPunishmentFetchId(MODULE_CORNER_TIME)) {
         goToCorner(getCornerTime()*(PUNISHMENT_CURRENT_LEVEL.id + 1));

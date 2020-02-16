@@ -194,7 +194,7 @@ function createRoom(name, size) {
                 sendMessageBasedOnSender('There is no way you could\'ve done this chore thoroughly in this time');
                 sendMessageBasedOnSender('%HaveToPunish%');
                 sendMessageBasedOnSender('I\'ve assigned you punishment points for going too easy on this task');
-                addPunishmentPoints(200);
+                addPunishmentPoints(200, PUNISHMENT_REASOn);
             }
             //Too slow
             else if (secondsPassed >= this.getSlowCleanTime(choreType)) {

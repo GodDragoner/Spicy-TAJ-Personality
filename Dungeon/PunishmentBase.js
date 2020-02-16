@@ -150,59 +150,77 @@
                 sendDungeonMessage("Lets see if there is any specific reasons to why you've been given punishment points this week...");
                 setVar(VARIABLE_PUNISHMENT_ACTIVE, true);
 
-                //TODO: Punishment reasons
-                if (isVar("PReason_skipping_punishment") && getVar("PReason_skipping_punishment")) {
-                    sendDungeonMessage("skipping punishment day... Naughty %Slave%, are you too scared to come down here and face justice?", 2);
+                let reasons = getVar(VARIABLE_PUNISHMENT_REASONS, new java.util.ArrayList());
+
+                if(!reasons.isEmpty()) {
+                    //TODO: Punishment reasons
+                    if (reasons.contains(PUNISHMENT_REASON.SKIPPING_PUNISHMENT_DAY)) {
+                        sendDungeonMessage("Skipping punishment day... Naughty %Slave%, are you too scared to come down here and face justice?", 2);
+                    }
+
+                    if (reasons.contains(PUNISHMENT_REASON.SKIPPING_CONFESSION_DAY)) {
+                        sendDungeonMessage("Skipping confession day... Naughty %Slave%", 2);
+                    }
+
+                    if (reasons.contains(PUNISHMENT_REASON.SKIPPING_SPANKZCHOIR_LATE)) {
+                        sendDungeonMessage("Not delivering your %ass% to the mistress that bought it via spankzchoir in time", 2);
+                    }
+
+                    if (reasons.contains(PUNISHMENT_REASON.TOO_MANY_POINTS)) {
+                        sendDungeonMessage(random("Failure to complete punishments on time", "Not putting sufficient effort to reduce punishment points", "not submitting to required punishments", "Not suffering %DomHonorific% %DomName%'s proscribed punishments"), 2);
+                    }
+
+                    /*if (isVar("Preason_not_worshiping") && getVar("Preason_not_worshiping")) {
+                        sendDungeonMessage(random("Failure to respect %mistress%", "being Disrespectful towards %DomHonorific% %DomName%", "Not appropriately worshiping your Goddess %DomName%"), 2);
+                    }*/
+
+                    if (reasons.contains(PUNISHMENT_REASON.TOO_LAZY)) {
+                        sendDungeonMessage(random("Being too lazy", "Lazy behaviour", "Laziness...", "Careless behaviour", "Carelessness"), 2);
+                    }
+
+                    if (reasons.contains(PUNISHMENT_REASON.RULE_IGNORED)) {
+                        sendDungeonMessage(random("Breaking a rule", "Ignoring one of %DomHonorific% %DomName%'s rules", "Forgetting a rule"), 2);
+                    }
+
+                    if (reasons.contains(PUNISHMENT_REASON.TOO_SLOW)) {
+                        sendDungeonMessage(random("being too slow to respond to %DomHonorific% %DomName%'s commands ", "Not jumping to complete %DomHonorific% %DomName%'s commands", "disappointing %DomHonorific% %DomName% by not responding to commands in a timely way"), 2);
+                    }
+
+                    if (reasons.contains(PUNISHMENT_REASON.BAD_EXERCISE_EFFORT)) {
+                        sendDungeonMessage(random("Failure to complete your exercises properly", "Not putting sufficient effort while exercising", "Being lazy while working out", "Not meeting %DomHonorific% %DomName%'s exercise standard"), 2);
+                    }
+
+                    if (reasons.contains(PUNISHMENT_REASON.MISSED_CHORES)) {
+                        sendDungeonMessage(random("Failure to complete chores in a timely manner", "Unfinished chores", "Failure to do chores", "Poor attitudes regarding chores", "Failed to complete chores.."), 2);
+                    }
+
+                    if (reasons.contains(PUNISHMENT_REASON.NO_PERM_CUM)) {
+                        sendDungeonMessage(random("Unauthorized ejaculation", "Cumming without permission"), 2);
+                    }
+
+                    if (reasons.contains(PUNISHMENT_REASON.NO_PERM_EDGE)) {
+                        sendDungeonMessage(random("Unauthorized edging", 'Edging without permission', "Edging against %DomHonorific% %DomName%'s wishes", "Being unable to resist edging your %cock%"), 2);
+                    }
+
+                    if (reasons.contains(PUNISHMENT_REASON.TALKING)) {
+                        sendDungeonMessage(random("Filthy mouth", "Talking back", "Bad mouthing", "Undesired talking", "Failed to request permission to talk", "Talking out of terms.."), 2);
+                    }
+
+                    if (reasons.contains(PUNISHMENT_REASON.POOR_BEHAVIOUR)) {
+                        sendDungeonMessage(random("Not living up to %DomHonorific% %DomName%'s standards", "Not living up to %DomHonorific% %DomName%'s expectations"), 2);
+                    }
+
+                    if (reasons.contains(PUNISHMENT_REASON.BREAKING_CHASTITY)) {
+                        sendDungeonMessage(random("Removing chastity without explicit permission"), 2);
+                    }
+
+                    if (isVar("Preason_BadFullTime") && getVar("Preason_BadFullTime")) {
+                        sendDungeonMessage(random("Failed to fulfill full time duties", "Laziness", "Failure to meet demands for proper slavery"), 2);
+                    }
+                } else {
+                    sendDungeonMessage(random("Poor attitude", "Poor performance", "Lack of performance", "Failed to perform properly", "Poor results"), 2);
                 }
 
-                if (isVar("PReason_skipping_confession") && getVar("PReason_skipping_confession")) {
-                    sendDungeonMessage("skipping confession day... Naughty %Slave%", 2);
-                }
-                if (isVar("PReason_spankzchoir_late") && getVar("PReason_spankzchoir_late")) {
-                    sendDungeonMessage("Not delivering your %ass% to the mistress that bought it via spankzchoir in time", 2);
-                }
-
-                if (isVar("PReason_too_many_points") && getVar("PReason_too_many_points")) {
-                    sendDungeonMessage(random("Failure to complete punishments on time", "Not putting sufficient effort to reduce punishment points", "not submitting to required punishments", "Not suffering %DomHonorific% %DomName%'s proscribed punishments"), 2);
-                }
-
-                if (isVar("Preason_not_degrading") && getVar("Preason_not_degrading")) {
-                    sendDungeonMessage(random("Failure to follow %DomHonorific% %DomName%'s instructions", "Not following instructions", "not submitting to required degradation", "Not suffering %DomHonorific% %DomName%'s proscribed humiliation"), 2);
-                }
-
-                if (isVar("Preason_not_worshiping") && getVar("Preason_not_worshiping")) {
-                    sendDungeonMessage(random("Failure to respect %mistress%", "being Disrespectful towards %DomHonorific% %DomName%", "not appropriately worshiping your Goddess %DomName%"), 2);
-                }
-
-                if (isVar("Preason_too_slow") && getVar("Preason_too_slow")) {
-                    sendDungeonMessage(random("being too slow to respond to %DomHonorific% %DomName%'s commands ", "Not jumping to complete %DomHonorific% %DomName%'s commands", "disappointing %DomHonorific% %DomName% by not responding to commands in a timely way"), 2);
-                }
-
-                if (isVar("BadExerciseEffort") && getVar("BadExerciseEffort")) {
-                    sendDungeonMessage(random("Failure to complete your exercises properly", "Not putting sufficient effort while exercising", "Being lazy while working out", "Not meeting %DomHonorific% %DomName%'s exercise standard"), 2);
-                }
-
-                if (isVar("Preason_BadChores") && getVar("Preason_BadChores")) {
-                    sendDungeonMessage(random("Failure to complete chores in a timely manner", "Unfinished chores", "Failure to do chores", "Poor attitudes regarding chores", "Failed to complete chores.."), 2);
-                }
-
-                if (isVar("Preason_BadCum") && getVar("Preason_BadCum")) {
-                    sendDungeonMessage(random("Unauthorized ejaculation", "Cumming without permission"), 2);
-                }
-
-                if (isVar("Preason_BadEdging") && getVar("Preason_BadEdging")) {
-                    sendDungeonMessage(random("Unauthorized edging", "Edging against %DomHonorific% %DomName%'s wishes", "being unable to resist Edging your %cock%"), 2);
-                }
-
-                if (isVar("BadMouth") && getVar("BadMouth")) {
-                    sendDungeonMessage(random("Filthy mouth", "Talking back", "Bad mouthing", "Undesired talking", "Failed to request permission to talk", "Talking out of terms.."), 2);
-                }
-
-                if (isVar("Preason_BadFullTime") && getVar("Preason_BadFullTime")) {
-                    sendDungeonMessage(random("Failed to fulfill full time duties", "Laziness", "Failure to meet demands for proper slavery"), 2);
-                }
-
-                sendDungeonMessage(random("Poor attitude", "Poor performance", "Lack of performance", "Failed to perform properly", "Poor results"), 2);
 
                 sendDungeonMessage(random("Oh my it's good you came", "Lets correct this immediately", "Time to improve your behavior"), 3);
                 sendDungeonMessage("First lets see who will be handling your punishment..", 3);
@@ -247,32 +265,32 @@
 
                 let answer2 = createInput(20, "Soft", "Medium", "Hard", "Extreme");
 
-                let punishSeverity = PUNISHMENT_LEVEL_EASY;
+                let punishSeverity = PUNISHMENT_LEVEL.EASY;
 
                 if (answer2.containsIgnoreCase("soft")) {
                     sendDungeonMessage("Setting it up...");
-                    punishSeverity = PUNISHMENT_LEVEL_EASY;
+                    punishSeverity = PUNISHMENT_LEVEL.EASY;
                 } else if (answer2.containsIgnoreCase("medium")) {
                     sendDungeonMessage("Setting it up...");
-                    punishSeverity = PUNISHMENT_LEVEL_MEDIUM;
+                    punishSeverity = PUNISHMENT_LEVEL.MEDIUM;
                 } else if (answer2.containsIgnoreCase("hard")) {
                     sendDungeonMessage("Setting it up... Hope you can handle this");
-                    punishSeverity = PUNISHMENT_LEVEL_HARD;
+                    punishSeverity = PUNISHMENT_LEVEL.HARD;
                 } else if (answer2.containsIgnoreCase("Extreme")) {
                     sendDungeonMessage("%grin% a glutton for punishment... Setting it up...");
-                    punishSeverity = PUNISHMENT_LEVEL_EXTREME;
+                    punishSeverity = PUNISHMENT_LEVEL.EXTREME;
                 } else if (answer2.isTimeout()) {
                     sendDungeonMessage("Stunned in fear huh?");
 
                     if (getVar(VARIABLE_PUNISHMENT_POINTS) >= (400 - randomInteger(1, 100))) {
                         sendDungeonMessage("I'm going to strap you down for a hard one...");
-                        punishSeverity = PUNISHMENT_LEVEL_HARD;
+                        punishSeverity = PUNISHMENT_LEVEL.HARD;
                     } else if (getVar(VARIABLE_PUNISHMENT_POINTS) >= (250 - randomInteger(1, 100))) {
                         sendDungeonMessage("I guess we'll go for a medium one then");
-                        punishSeverity = PUNISHMENT_LEVEL_MEDIUM;
+                        punishSeverity = PUNISHMENT_LEVEL.MEDIUM;
                     } else {
                         sendDungeonMessage("I'll take it easy on you this time");
-                        punishSeverity = PUNISHMENT_LEVEL_EASY;
+                        punishSeverity = PUNISHMENT_LEVEL.EASY;
                     }
 
                 } else {
@@ -283,50 +301,6 @@
                 answer2.clearOptions();
 
                 startPunishmentSession(punishSeverity);
-
-
-                /*switch (punishSeverity) {
-                    case 1:
-                        run("dungeon/Punishments/S" + randomInteger(1, 6) + ".js");
-                        break;
-                    case 2:
-                        //fixme impliment punishment 6
-                        run("dungeon/Punishments/M" + randomInteger(1, 5) + ".js");
-                        break;
-                    case 3:
-                        switch (randomInteger(1, 3)) {
-                            case 1:
-                                run("dungeon/Punishments/H1.js");
-                                break;
-                            case 2:
-                                run("dungeon/Punishments/H3.js");
-                                break;
-                            case 3:
-                                run("dungeon/Punishments/H7.js");
-                                break;
-                        }
-                        break;
-                    case 4:
-                        //fixme impliment other extreeme punishments
-                        //1-5
-                        punishmentchoice = randomInteger(2, 5);
-                        if ((punishmentchoice == 5) && (getVar("toyenemakit") == true)) {
-                            run("dungeon/Punishments/B1.js");
-                        } else {
-                            //fixme un stick this
-                            //1-4
-                            punishmentchoice = randomInteger(2, 4);
-                            if ((punishmentchoice == 4) && (getVar("toyshockcollar") == true)) {
-                                run("dungeon/Punishments/E" + punishmentchoice + ".js");
-                            }
-                            //1-3
-                            else {
-                                punishmentchoice = randomInteger(2, 3);
-                                run("dungeon/Punishments/E" + punishmentchoice + ".js");
-                            }
-                        }
-                        break;
-                }*/
             }
         } else if (answer.containsIgnoreCase("pay", "fine", "gold")) {
             answer.clearOptions();

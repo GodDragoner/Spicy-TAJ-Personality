@@ -1,6 +1,26 @@
 //TODO: If has spoon nearby => use spoon sometimes or other stuff or even make the sub get the spoon
 run("Session/Modules/Pain/CockBallTorture.js");
 
+const PUNISHMENT_REASON = {
+    SKIPPING_PUNISHMENT_DAY: 0,
+    SKIPPING_CONFESSION_DAY: 1,
+    SKIPPING_SPANKZCHOIR_LATE: 2,
+    TOO_MANY_POINTS: 3,
+    TOO_SLOW: 4,
+    TOO_LAZY: 5,
+    NO_PERM_RUINED: 6,
+    NO_PERM_CUM: 7,
+    NO_PERM_FAP: 8,
+    NO_PERM_EDGE: 9,
+    RULE_IGNORED: 10,
+    BRAT: 11,
+    TALKING: 12,
+    MISSED_CHORES: 13,
+    BAD_EXERCISE_EFFORT: 14,
+    POOR_BEHAVIOUR: 15,
+    BREAKING_CHASTITY: 16,
+};
+
 function smallPunishment(cbt = true, spanking = true) {
     //TODO: Anal, corner time, gold subtract, punishment points too in the future at random
     if ((isInChastity() || !cbt && spanking) && PAIN_LIMIT.isAllowed()) {
@@ -77,13 +97,12 @@ function doRubberbandPunishment(multiplier = 1) {
     }
 
 
-
 }
 
 function doSpankingPunishment(multiplier = 1) {
     const implement = fetchSpankingImplement();
 
-    if(isHandPalm(implement)) {
+    if (isHandPalm(implement)) {
         sendMessage('You are just gonna use your ' + implement + ' for this spanking');
     }
 
@@ -98,7 +117,7 @@ function doSpankingPunishment(multiplier = 1) {
         sendMessage(random('I want you to count out loud!', 'I want you to count along', 'I want you to count with me'));
     }
 
-    let maxLoops = Math.max(10, Math.min(100, getVar(VARIABLE_SUB_PAIN_TOLERANCE)*multiplier*3));
+    let maxLoops = Math.max(10, Math.min(100, getVar(VARIABLE_SUB_PAIN_TOLERANCE) * multiplier * 3));
 
     while (maxLoops > 0) {
         maxLoops--;

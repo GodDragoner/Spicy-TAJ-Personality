@@ -258,6 +258,7 @@ const VARIABLE_PUNISHMENT_ENEMAS_TAKEN = "punishmentEnemasTaken";
 const VARIABLE_NEXT_CONFESSION_DAY = "nextConfessionDay";
 const VARIABLE_NEXT_PUNISHMENT_DAY = "nextPunishmentDay";
 
+const VARIABLE_PUNISHMENT_REASONS = "punishmentReasons";
 
 
 const VARIABLE_FULL_TIME_TRIAL_UNTIL = "fullTimeTrialUntil";

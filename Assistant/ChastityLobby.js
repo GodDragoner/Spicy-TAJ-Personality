@@ -47,7 +47,7 @@
                         sendVirtualAssistantMessage('Now do whatever you want to do...');
                         setVar(VARIABLE_CHASTITY_ON, false);
                         sendVirtualAssistantMessage('Mind this has consequences!');
-                        addPunishmentPoints(250);
+                        addPunishmentPoints(250, PUNISHMENT_REASON.BREAKING_CHASTITY);
                         setVar(VARIABLE_WAITING_FOR_CHASTITY_KEY_RETURN, true);
                     } else {
                         sendVirtualAssistantMessage('%Good%');
@@ -77,7 +77,7 @@
                         sendVirtualAssistantMessage('Now do whatever you want to do...');
                         setVar(VARIABLE_CHASTITY_ON, false);
                         sendVirtualAssistantMessage('Mind this has consequences!');
-                        addPunishmentPoints(250);
+                        addPunishmentPoints(250, PUNISHMENT_REASON.BREAKING_CHASTITY);
                         setVar(VARIABLE_WAITING_FOR_CHASTITY_KEY_RETURN, true);
                     } else {
                         sendVirtualAssistantMessage('%Good%');
@@ -115,7 +115,7 @@
                             sendVirtualAssistantMessage('Now do whatever you want to do...');
                             setVar(VARIABLE_CHASTITY_ON, false);
                             sendVirtualAssistantMessage('Mind this has consequences!');
-                            addPunishmentPoints(250);
+                            addPunishmentPoints(250, PUNISHMENT_REASON.BREAKING_CHASTITY);
                             setVar(VARIABLE_WAITING_FOR_CHASTITY_KEY_RETURN, true);
                         } else {
                             sendVirtualAssistantMessage('%Good%');

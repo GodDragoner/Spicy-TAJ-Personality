@@ -83,7 +83,7 @@ function playRandomSissyHypno() {
     playVideo('Videos/Spicy/Modules/Sissy/Brainwash/*.mp4', true);
 }
 
-function addPunishmentPoints(amount) {
+function addPunishmentPoints(amount, reason = -1) {
     const points = getVar(VARIABLE_PUNISHMENT_POINTS);
 
     let multiplier = 1;
@@ -92,6 +92,12 @@ function addPunishmentPoints(amount) {
     if(amount < 0) {
         sendDebugMessage('Subtracting ' + amount + ' punishment points');
         setVar(VARIABLE_PUNISHMENT_POINTS, Math.max(0, points + amount));
+
+        if(getVar(VARIABLE_PUNISHMENT_POINTS) < 100) {
+            //Clear reasons array because we are now below
+            setVar(VARIABLE_PUNISHMENT_REASONS, new java.util.ArrayList());
+        }
+
         return;
     }
 
@@ -148,6 +154,15 @@ function addPunishmentPoints(amount) {
     setVar(VARIABLE_PUNISHMENT_POINTS, Math.max(0, points + amount*multiplier));
 
     sendDebugMessage('Adding (with multiplier) ' + (amount*multiplier) + " punishment points");
+    sendDebugMessage('Reason was ' + reason);
+
+    //-1 is unknown reason
+    if(reason >= 0) {
+        let reasonArray = getVar(VARIABLE_PUNISHMENT_REASONS, new java.util.ArrayList());
+        reasonArray.add(reason);
+
+        setVar(VARIABLE_PUNISHMENT_REASONS, reasonArray);
+    }
 }
 
 function setPunishmentPointMultiplier(multiplier) {

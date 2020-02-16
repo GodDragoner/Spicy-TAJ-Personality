@@ -41,7 +41,7 @@ function interactWithRandomToys() {
     let allowPain = true;
 
     //No random pain toys if we are just doing an easy punishment
-    if (punishment && PUNISHMENT_CURRENT_LEVEL === PUNISHMENT_LEVEL_EASY && PUNISHMENT_OVERALL_LEVEL === PUNISHMENT_LEVEL_EASY) {
+    if (punishment && PUNISHMENT_CURRENT_LEVEL === PUNISHMENT_LEVEL.EASY && PUNISHMENT_OVERALL_LEVEL === PUNISHMENT_LEVEL.EASY) {
         allowPain = false;
     }
 
