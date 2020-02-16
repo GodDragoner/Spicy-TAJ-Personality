@@ -5,7 +5,7 @@
     sendMessage(random('Hope I see you tomorrow!', 'Come back tomorrow', 'You should come back again tomorrow') + " %EmoteHappy%");
 
     //Virtual assistant takes care of that and not if partner is keyholder
-    if (isInChastity() && !getVar(VARIABLE_PARTNER_IS_KEYHOLDER, false)) {
+    if (isInChastity() && !getVar(VARIABLE.PARTNER_IS_KEYHOLDER, false)) {
         lockAwayChastityKey();
     }
 }

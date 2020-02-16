@@ -1,6 +1,6 @@
 {
     sendMessage(random("%SlaveName%"));
-    sendMessage(random("We\'ve crossed your hard limit of", "It seems we\'re at your hard limit of") + ' ' + getVar(VARIABLE_DENIAL_LIMIT) + ' days');
+    sendMessage(random("We\'ve crossed your hard limit of", "It seems we\'re at your hard limit of") + ' ' + getVar(VARIABLE.DENIAL_LIMIT) + ' days');
     sendMessage(random("I do respect your limits ", "Despite what you might think, I do care about your limits...", "I fully respect your limits") + "");
     sendMessage(random("Now ", "Meaning... ", "Well ") + "");
     const answer = sendInput("Do you absolutely need to cum?");
@@ -11,7 +11,7 @@
             sendMessage(random("Before we get to the point of letting you cum", "Before you get to cum"));
             askForHardLimitIncrease();
 
-            if (!isVar(VARIABLE_DENIAL_HARD_LIMIT_TYPE)) {
+            if (!isVar(VARIABLE.DENIAL_HARD_LIMIT_TYPE)) {
                 if (isEnforcingPersonality()) {
                     sendMessage('Since this is the first time reaching your hard limit');
                     sendMessage('Let me tell you something...');
@@ -28,7 +28,7 @@
                         sendMessage('If you ever get to choose it\'s because I am fine with all outcomes %Grin%');
                     }
 
-                    setVar(VARIABLE_DENIAL_HARD_LIMIT_TYPE, 1);
+                    setVar(VARIABLE.DENIAL_HARD_LIMIT_TYPE, 1);
                 } else {
                     sendMessage('Since this is the first time that we crossed your hard limit we have to settle a few things');
                     sendMessage('First of all I would prefer I can choose how you cum however I must accept the fact that you might want to choose yourself');
@@ -40,11 +40,11 @@
                             changeMeritMedium(false);
                             sendMessage('I knew it %EmoteHappy%');
                             sendMessage('You simply can\'t stop submitting to me %Grin%');
-                            setVar(VARIABLE_DENIAL_HARD_LIMIT_TYPE, 1);
+                            setVar(VARIABLE.DENIAL_HARD_LIMIT_TYPE, 1);
                         } else if (answer.isLike('me', 'freedom')) {
                             changeMeritMedium(true);
                             sendMessage('%EmoteSad%');
-                            setVar(VARIABLE_DENIAL_HARD_LIMIT_TYPE, 0);
+                            setVar(VARIABLE.DENIAL_HARD_LIMIT_TYPE, 0);
                         } else {
                             sendMessage('Would you like me or you to choose?');
                             answer.loop();
@@ -53,17 +53,17 @@
                 }
             }
 
-            if (getVar(VARIABLE_DENIAL_HARD_LIMIT_TYPE) == 1) {
+            if (getVar(VARIABLE.DENIAL_HARD_LIMIT_TYPE) == 1) {
                 sendMessage('Let\'s see how you get to cum today %SlaveName% %Grin%');
                 //runOrgasmCategory(decideOrgasm(true));
-                setTempVar(VARIABLE_DENIAL_HARD_LIMIT_ORGASM_TODAY, true);
+                setTempVar(VARIABLE.DENIAL_HARD_LIMIT_ORGASM_TODAY, true);
             } else {
                 sendMessage('Well then...');
                 sendMessage('You are allowed to cum however you want to %SlaveName%');
                 sendMessage('I am gonna wait for you to return. Just tell me when you are done');
                 waitForDone(1000000);
                 registerOrgasm();
-                setTempVar(VARIABLE_DENIAL_HARD_LIMIT_FREEDOM_TODAY, true);
+                setTempVar(VARIABLE.DENIAL_HARD_LIMIT_FREEDOM_TODAY, true);
             }
             break;
         } else if (answer.isLike('no')) {
@@ -99,9 +99,9 @@ function askForHardLimitIncrease() {
 }
 
 function increaseHardLimit() {
-    sendMessage(random("So currently your hard limit is", "At this moment your hard limit is") + ' ' + getVar(VARIABLE_DENIAL_LIMIT) + ' days');
+    sendMessage(random("So currently your hard limit is", "At this moment your hard limit is") + ' ' + getVar(VARIABLE.DENIAL_LIMIT) + ' days');
     sendMessage(random("I promise I\'m only changing it a little ", "I\'m only increasing it a teeny tiny bit"));
-    setVar(VARIABLE_DENIAL_LIMIT, getVar(VARIABLE_DENIAL_LIMIT) + randomInteger(1, 2));
+    setVar(VARIABLE.DENIAL_LIMIT, getVar(VARIABLE.DENIAL_LIMIT) + randomInteger(1, 2));
     sendMessage("I\'m so proud of you!");
     changeMeritMedium(false);
 }

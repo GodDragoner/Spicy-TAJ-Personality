@@ -1,5 +1,5 @@
 {
-    if (!isVar(VARIABLE_NEXT_CONFESSION_DAY)) {
+    if (!isVar(VARIABLE.NEXT_CONFESSION_DAY)) {
         sendVirtualAssistantMessage("Today is tuesday");
         sendVirtualAssistantMessage("Tuesdays are special");
         sendVirtualAssistantMessage("Tuesdays are confession days");
@@ -15,8 +15,8 @@
     }
 
 //Only continue if we haven't check this today
-    if (!isVar(VARIABLE_NEXT_CONFESSION_DAY) || getDate(VARIABLE_NEXT_CONFESSION_DAY).hasPassed()) {
-        if (isVar(VARIABLE_NEXT_CONFESSION_DAY) && !getDate(VARIABLE_NEXT_CONFESSION_DAY).sameDay(setDate())) {
+    if (!isVar(VARIABLE.NEXT_CONFESSION_DAY) || getDate(VARIABLE.NEXT_CONFESSION_DAY).hasPassed()) {
+        if (isVar(VARIABLE.NEXT_CONFESSION_DAY) && !getDate(VARIABLE.NEXT_CONFESSION_DAY).sameDay(setDate())) {
             sendVirtualAssistantMessage("You've been skipping confession day %SlaveName%!");
             sendVirtualAssistantMessage("I've added a healthy dose of punishment points for that!");
             addPunishmentPoints(300);
@@ -24,7 +24,7 @@
         }
 
         //Set the date to the next tuesday
-        setDate(VARIABLE_NEXT_CONFESSION_DAY, setDate(VARIABLE_NEXT_CONFESSION_DAY).addDay(7).setHour(0).setMinute(0).setSecond(0));
+        setDate(VARIABLE.NEXT_CONFESSION_DAY, setDate(VARIABLE.NEXT_CONFESSION_DAY).addDay(7).setHour(0).setMinute(0).setSecond(0));
 
         sendVirtualAssistantMessage("Now slave tell me...");
         sendVirtualAssistantMessage("Confess!", false);

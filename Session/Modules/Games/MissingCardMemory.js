@@ -71,7 +71,7 @@ function startMissingCardMemory(gameType) {
                 sendMessage('If you are wrong you will have to pump your plug 3 times %Grin%');
                 break;
             case GAME_BALL_CRUSHER:
-                turnsPerLoss = Math.round((getVar(VARIABLE_BALL_CRUSHER_MAX_TWISTS) + getMood() * 1.5) / maxLosses);
+                turnsPerLoss = Math.round((getVar(VARIABLE.BALL_CRUSHER_MAX_TWISTS) + getMood() * 1.5) / maxLosses);
                 sendMessage('If you are right you will earn ' + goldEarnedPerWin + ' gold');
                 sendMessage('If you are wrong you will have to twist each screw ' + turnsPerLoss + ' half-rounds %Grin%');
                 break;

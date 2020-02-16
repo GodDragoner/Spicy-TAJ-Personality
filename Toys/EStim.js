@@ -120,7 +120,7 @@ function attachEStimToBodyPart(bodyPart) {
 }
 
 function canEStimInChastity() {
-    return !isInChastity() || currentChastityCage.material === MATERIAL_METAL && !currentChastityCage.isFullSizedBelt();
+    return !isInChastity() || currentChastityCage.material === MATERIAL.METAL && !currentChastityCage.isFullSizedBelt();
 }
 
 function getRandomPainEStimMode(possibleLevel = PAIN_LEVEL_LOW, minDifferenceToHighPain = 0) {
@@ -247,7 +247,7 @@ function setupEStimToy(domChose) {
 
 
 
-    setVar(VARIABLE_E_STIM_MODES, modes);
+    setVar(VARIABLE.E_STIM_MODES, modes);
     sendVirtualAssistantMessage('Great! %EmoteHappy%');
 
     let maxLevel = createIntegerInput('What is the max level you can put this device on?', 1, 1000, 'Please give me just a number like 1 or 5', 'Please only give me a number between 1 and 1000');

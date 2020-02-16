@@ -29,28 +29,28 @@
     sendSystemMessage("This might take a few minutes..");
     sleep(2);
 
-    setVar(VARIABLE_SUB_PAIN_TOLERANCE, 3);
+    setVar(VARIABLE.SUB_PAIN_TOLERANCE, 3);
     //setVar("subPain", 3);
     setVar("subEndurance", 3);
     setVar("subStrictness", 3);
-    setVar(VARIABLE_DEVOTION, 45);
+    setVar(VARIABLE.DEVOTION, 45);
 
     run("Settings/UpdateDevotion.js");
 
-    setVar(VARIABLE_ORGASM_RATION, 50);
+    setVar(VARIABLE.ORGASM_RATION, 50);
     setVar("lockUpPoints", 0);
-    setVar(VARIABLE_MERITS, 500);
+    setVar(VARIABLE.MERITS, 500);
     setDate("firstStart");
-    setVar(VARIABLE_PUNISHMENT_POINTS, 0);
+    setVar(VARIABLE.PUNISHMENT_POINTS, 0);
 
-    setVar(VARIABLE_MIN_WEEKLY_CHORE_TIME, 60 * 5);
+    setVar(VARIABLE.MIN_WEEKLY_CHORE_TIME, 60 * 5);
 
     setVar("teaseModuleRatio", 60);
     setVar("slaveModuleRatio", 60);
     setVar("sissyModuleRatio", 60);
     setVar("painModuleRation", 60);
 
-    setVar(VARIABLE_ACTIVE_END_GAME_ID, END_GAME_STANDARD_ID);
+    setVar(VARIABLE.ACTIVE_END_GAME_ID, END_GAME_STANDARD_ID);
 
     setupSlaveCompetitorStats("Female1", 8, 3, 2, 1, 1, 2, 1, 0);
     setupSlaveCompetitorStats("Female2", 6, 6, 5, 5, 2, 1, 3, 0);
@@ -122,10 +122,10 @@
 
     while (true) {
         if (answer.isLike("part time", "parttime", "part")) {
-            setVar(VARIABLE_SLAVE_TYPE, 0);
+            setVar(VARIABLE.SLAVE_TYPE, 0);
             break;
         } else if (answer.isLike("full time", "fulltime", "full")) {
-            setVar(VARIABLE_SLAVE_TYPE, 1);
+            setVar(VARIABLE.SLAVE_TYPE, 1);
             break;
         } else {
             sendVirtualAssistantMessage("Full time or part time slave?");
@@ -140,7 +140,7 @@
     sendVirtualAssistantMessage("But she also understands that it takes practice to learn");
 
     if (sendYesOrNoQuestion("Do you own a chastity device?", SENDER_ASSISTANT)) {
-        setVar(VARIABLE_HAS_CHASTITY, true);
+        setVar(VARIABLE.HAS_CHASTITY, true);
         sendVirtualAssistantMessage('Okay %SlaveName%. Tell me, how many different chastity cages do you have?', false);
         answer = createInput();
 
@@ -172,7 +172,7 @@
 
         while (true) {
             if (answer.isLike("yes")) {
-                setVar(VARIABLE_CHASTITY_HAS_COMBINATION_LOCK, true);
+                setVar(VARIABLE.CHASTITY_HAS_COMBINATION_LOCK, true);
                 break;
             } else if (answer.isLike("no")) {
                 sendVirtualAssistantMessage('You might consider getting a combination lock then');
@@ -193,7 +193,7 @@
 
         while (true) {
             if (answer.isLike("yes")) {
-                setVar(VARIABLE_CHASTITY_LEVEL, 30);
+                setVar(VARIABLE.CHASTITY_LEVEL, 30);
                 RULE_DOMME_KEYHOLDER.setActive(true);
                 sendVirtualAssistantMessage("This should be fun...");
                 break;
@@ -208,8 +208,8 @@
                 while (true) {
                     if (answer.isLike("yes")) {
                         sendVirtualAssistantMessage("%Good%");
-                        setVar(VARIABLE_CHASTITY_LEVEL, 1);
-                        setVar(VARIABLE_CHASTITY_TRAINING, true);
+                        setVar(VARIABLE.CHASTITY_LEVEL, 1);
+                        setVar(VARIABLE.CHASTITY_TRAINING, true);
 
                         sendVirtualAssistantMessage("Slave I don't care if you sleep with your cage");
                         sendVirtualAssistantMessage("I think you should since it would constantly remind you who you belong to");
@@ -219,7 +219,7 @@
                         sendVirtualAssistantMessage("But again it would make me and your Mistress happy if you did");
                         break;
                     } else if (answer.isLike("no")) {
-                        setVar(VARIABLE_CHASTITY_TRAINING, false);
+                        setVar(VARIABLE.CHASTITY_TRAINING, false);
                         sendVirtualAssistantMessage("%EmoteSad%");
                         break;
                     } else {
@@ -243,16 +243,16 @@
 
         while (true) {
             if (answer.containsIgnoreCase("play")) {
-                setVar(VARIABLE_CHASTITY_TOY_MODE, TOY_PLAY_MODE);
+                setVar(VARIABLE.CHASTITY_TOY_MODE, TOY_PLAY_MODE);
                 break;
             } else if (answer.containsIgnoreCase("both")) {
-                setVar(VARIABLE_CHASTITY_TOY_MODE, TOY_BOTH_MODE);
+                setVar(VARIABLE.CHASTITY_TOY_MODE, TOY_BOTH_MODE);
                 break;
             } else if (answer.containsIgnoreCase("punishment")) {
-                setVar(VARIABLE_CHASTITY_TOY_MODE, TOY_PUNISHMENT_MODE);
+                setVar(VARIABLE.CHASTITY_TOY_MODE, TOY_PUNISHMENT_MODE);
                 break;
             } else if (answer.containsIgnoreCase("full", "time", "24/7")) {
-                setVar(VARIABLE_CHASTITY_TOY_MODE, TOY_BOTH_MODE + 1);
+                setVar(VARIABLE.CHASTITY_TOY_MODE, TOY_BOTH_MODE + 1);
                 break;
             } else {
                 sendVirtualAssistantMessage("Play, punishment, both or full time?");
@@ -281,12 +281,12 @@
 
     while (true) {
         if (answer.isLike("yes")) {
-            setVar(VARIABLE_ASS_LEVEL, 30);
+            setVar(VARIABLE.ASS_LEVEL, 30);
             sendVirtualAssistantMessage("I hope you are ready for that then...");
             break;
         } else if (answer.isLike("no")) {
-            setVar(VARIABLE_ASS_LEVEL, 1);
-            setVar(VARIABLE_ASS_TRAINING, true);
+            setVar(VARIABLE.ASS_LEVEL, 1);
+            setVar(VARIABLE.ASS_TRAINING, true);
             sendVirtualAssistantMessage("I guess that means %DomHonorific% %domName% will work on this with you");
             break;
         } else {
@@ -306,12 +306,12 @@
 
     while (true) {
         if (answer.isLike("yes")) {
-            setVar(VARIABLE_BLOWJOB_LEVEL, 30);
+            setVar(VARIABLE.BLOWJOB_LEVEL, 30);
             sendVirtualAssistantMessage("I hope you are ready for what's about to come then...");
             break;
         } else if (answer.isLike("no")) {
-            setVar(VARIABLE_BLOWJOB_LEVEL, 1);
-            setVar(VARIABLE_BLOWJOB_TRAINING, true);
+            setVar(VARIABLE.BLOWJOB_LEVEL, 1);
+            setVar(VARIABLE.BLOWJOB_TRAINING, true);
             sendVirtualAssistantMessage("I guess that means %DomHonorific% %domName% will work on this with you");
             break;
         } else {
@@ -350,7 +350,7 @@
                 sendVirtualAssistantMessage("You can't choose a number higher than 15");
                 answer.loop();
             } else {
-                setVar(VARIABLE_DENIAL_LEVEL, result);
+                setVar(VARIABLE.DENIAL_LEVEL, result);
                 break;
             }
         } else {
@@ -521,7 +521,7 @@
     sendVirtualAssistantMessage("Mistress %domName% just texted me");
     sendVirtualAssistantMessage("She wants to meet you...");
     sendVirtualAssistantMessage("Transferring session...");
-    setVar(VARIABLE_FINISHED_SETUP, true);
+    setVar(VARIABLE.FINISHED_SETUP, true);
     run("Session/FirstSession.js");
 }
 

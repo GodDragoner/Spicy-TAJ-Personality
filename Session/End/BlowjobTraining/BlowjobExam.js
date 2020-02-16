@@ -20,18 +20,18 @@
                 sendMessage('And you will only have 10 minutes to do so');
                 sendMessage('If you run out of time, it\'s no orgasm for you');
 
-                if(isVar(VARIABLE_TRAINING_ORGASM_TODAY)) {
+                if(isVar(VARIABLE.TRAINING_ORGASM_TODAY)) {
                     sendMessage('I know I am already allowing you an orgasm for another training today');
                     sendMessage('Which means you are free to schedule this orgasm on top of the other one anywhere in the next 48 hours');
                 } else {
-                    setTempVar(VARIABLE_TRAINING_ORGASM_TODAY, true);
+                    setTempVar(VARIABLE.TRAINING_ORGASM_TODAY, true);
                 }
 
                 sendMessage("Enjoy %Lol%");
 
                 registerOrgasm();
                 delVar("BlowjobExamStartDate");
-                setVar(VARIABLE_BLOWJOB_TRAINING, false);
+                setVar(VARIABLE.BLOWJOB_TRAINING, false);
             } else {
                 sendMessage("Awww that's too bad %EmoteSad%");
                 sendMessage("That disappoints me %SlaveName%");

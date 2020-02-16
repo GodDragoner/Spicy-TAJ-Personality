@@ -1,6 +1,6 @@
 {
-    if (!isVar(VARIABLE_PUNISHMENT_ACTIVE)) {
-        setVar(VARIABLE_PUNISHMENT_ACTIVE, false);
+    if (!isVar(VARIABLE.PUNISHMENT_ACTIVE)) {
+        setVar(VARIABLE.PUNISHMENT_ACTIVE, false);
 
         sendDungeonMessage(random("Hello", "Welcome", "Hi", "Greetings", "Good to see you") + ' %SlaveName%');
         sendDungeonMessage("I go by 'Miss A'");
@@ -27,8 +27,8 @@
         sendDungeonMessage("Now...");
     }
 
-    if (getVar(VARIABLE_PUNISHMENT_ACTIVE, false)) {
-        setVar(VARIABLE_PUNISHMENT_ACTIVE, false);
+    if (getVar(VARIABLE.PUNISHMENT_ACTIVE, false)) {
+        setVar(VARIABLE.PUNISHMENT_ACTIVE, false);
 
         sendDungeonMessage("It seems you didn't complete your last punishment...", 0);
         sendDungeonMessage("Was this due to a bug or because you couldn't handle it? ", 0, false);
@@ -76,14 +76,14 @@
     }
 
     while (true) {
-        sendDungeonMessage("Yes %SlaveName%?", 0);
+        sendDungeonMessage("Yes %SlaveName%?", 0, false);
         let answer = createInput("Report for punishment", "SpankzChoir", "Pay fine", "Points?", "Return");
 
         if (answer.containsIgnoreCase("how many", "point", "punishment point")) {
             answer.clearOptions();
 
             sendDungeonMessage(random("Hmm, give me just a moment to check your records", "2 seconds %SlaveName%", "Just a moment %SubName%", "Let me just check my computer..."), 2);
-            sendDungeonMessage(random("It looks like", "According to my records", "It says") + " you have " + getVar(VARIABLE_PUNISHMENT_POINTS) + " punishment points.", 2);
+            sendDungeonMessage(random("It looks like", "According to my records", "It says") + " you have " + getVar(VARIABLE.PUNISHMENT_POINTS) + " punishment points.", 2);
 
             if (isChance(15)) {
                 addPunishmentPoints(randomInteger(25, 75));
@@ -91,14 +91,14 @@
                 sendDungeonMessage(random("You're welcome %SubName%", "%SlaveName%, you're welcome", "Aren't you lucky I'm watching out for you?"), 2);
             }
 
-            if (getVar(VARIABLE_PUNISHMENT_POINTS) > 750) {
+            if (getVar(VARIABLE.PUNISHMENT_POINTS) > 750) {
                 sendDungeonMessage(random("Lol %SubName%, you're so fucked!", "Oh %SlaveName%, you're ass is gonna bleed ", "You should be ashamed, %Subname%", "How did you let it get so bad?"));
 
-            } else if (getVar(VARIABLE_PUNISHMENT_POINTS) > 500) {
+            } else if (getVar(VARIABLE.PUNISHMENT_POINTS) > 500) {
                 sendDungeonMessage(random("This is SERIOUS %Slave%, you need to put some time in down here", "NOT GOOD, you need to put some serious time in down here", "I have a feeling we're going to be spending lots of time together %Grin%", "That's so many your %DomHonorific% won't even hold a session with you"));
             }
 
-            if (getVar(VARIABLE_PUNISHMENT_POINTS) > 250) {
+            if (getVar(VARIABLE.PUNISHMENT_POINTS) > 250) {
                 sendDungeonMessage(random("We have some work to do down here", "I'll let the mistresses know they should plan to spend some time in the dungeon"));
             } else {
                 sendDungeonMessage(random("That's not too bad", "Only a little punishment will be needed"));
@@ -143,14 +143,14 @@
             sendDungeonMessage(random("Okay then", "Lets proceed", "Lets move forward", "Lets continue"));
             playAudio("Audio/Spicy/SpecialSounds/Bell.mp3");
 
-            if (getVar(VARIABLE_PUNISHMENT_POINTS) < 100) {
+            if (getVar(VARIABLE.PUNISHMENT_POINTS) < 100) {
                 sendDungeonMessage("Well %SubName% it seems you haven't been too bad recently...", 2);
                 sendDungeonMessage("So I'm afraid I have to reject you...", 2);
             } else {
                 sendDungeonMessage("Lets see if there is any specific reasons to why you've been given punishment points this week...");
-                setVar(VARIABLE_PUNISHMENT_ACTIVE, true);
+                setVar(VARIABLE.PUNISHMENT_ACTIVE, true);
 
-                let reasons = getVar(VARIABLE_PUNISHMENT_REASONS, new java.util.ArrayList());
+                let reasons = getVar(VARIABLE.PUNISHMENT_REASONS, new java.util.ArrayList());
 
                 if(!reasons.isEmpty()) {
                     //TODO: Punishment reasons
@@ -226,18 +226,18 @@
                 sendDungeonMessage("First lets see who will be handling your punishment..", 3);
 
                 /*if (isVar("Glitter1Bought")) {
-                    setVar(VARIABLE_PUNISHMENT_PUNISHER, randomInteger(1, 2));
+                    setVar(VARIABLE.PUNISHMENT_PUNISHER, randomInteger(1, 2));
                 }
                 if (isVar("Glitter2Bought")) {
-                    setVar(VARIABLE_PUNISHMENT_PUNISHER, randomInteger(1, 3));
+                    setVar(VARIABLE.PUNISHMENT_PUNISHER, randomInteger(1, 3));
                 }
                 if (isVar("Glitter3Bought")) {
-                    setVar(VARIABLE_PUNISHMENT_PUNISHER, randomInteger(1, 4));
+                    setVar(VARIABLE.PUNISHMENT_PUNISHER, randomInteger(1, 4));
                 }*/
 
-                setVar(VARIABLE_PUNISHMENT_PUNISHER, randomInteger(1, 4));
+                setVar(VARIABLE.PUNISHMENT_PUNISHER, randomInteger(1, 4));
 
-                switch (getVar(VARIABLE_PUNISHMENT_PUNISHER)) {
+                switch (getVar(VARIABLE.PUNISHMENT_PUNISHER)) {
                     case 1:
                         sendDungeonMessage("Well it will be your %DomHonorific% handling your punishment...", 3);
                         break;
@@ -255,9 +255,9 @@
 
                 sendDungeonMessage("You can request a soft, medium, hard, or extreme punishment");
 
-                if (getVar(VARIABLE_PUNISHMENT_POINTS) >= 350) {
+                if (getVar(VARIABLE.PUNISHMENT_POINTS) >= 350) {
                     sendDungeonMessage("I do recommend a hard one but its your choice");
-                } else if (getVar(VARIABLE_PUNISHMENT_POINTS) >= 200) {
+                } else if (getVar(VARIABLE.PUNISHMENT_POINTS) >= 200) {
                     sendDungeonMessage("I do recommend a medium one but its your choice");
                 } else {
                     sendDungeonMessage("I recommend a soft punishment");
@@ -282,10 +282,10 @@
                 } else if (answer2.isTimeout()) {
                     sendDungeonMessage("Stunned in fear huh?");
 
-                    if (getVar(VARIABLE_PUNISHMENT_POINTS) >= (400 - randomInteger(1, 100))) {
+                    if (getVar(VARIABLE.PUNISHMENT_POINTS) >= (400 - randomInteger(1, 100))) {
                         sendDungeonMessage("I'm going to strap you down for a hard one...");
                         punishSeverity = PUNISHMENT_LEVEL.HARD;
-                    } else if (getVar(VARIABLE_PUNISHMENT_POINTS) >= (250 - randomInteger(1, 100))) {
+                    } else if (getVar(VARIABLE.PUNISHMENT_POINTS) >= (250 - randomInteger(1, 100))) {
                         sendDungeonMessage("I guess we'll go for a medium one then");
                         punishSeverity = PUNISHMENT_LEVEL.MEDIUM;
                     } else {
@@ -317,8 +317,8 @@
                     let value = answer.getInt();
 
                     if (value > 0) {
-                        if (value > getVar(VARIABLE_PUNISHMENT_POINTS)) {
-                            value = getVar(VARIABLE_PUNISHMENT_POINTS);
+                        if (value > getVar(VARIABLE.PUNISHMENT_POINTS)) {
+                            value = getVar(VARIABLE.PUNISHMENT_POINTS);
                         }
 
                         if (value * goldMultiplier > getGold()) {
@@ -463,8 +463,8 @@ function handleFailedPunishment() {
             sendNurseMessage(random("If not then remember...", "But if not remember", "Well if not remember..."));
             sendNurseMessage("That settings let you change a lot of different things *smiles*");
 
-            if (getVar(VARIABLE_SUB_PAIN_TOLERANCE) > 1) {
-                incrementVar(VARIABLE_SUB_PAIN_TOLERANCE, -1);
+            if (getVar(VARIABLE.SUB_PAIN_TOLERANCE) > 1) {
+                incrementVar(VARIABLE.SUB_PAIN_TOLERANCE, -1);
             }
 
             sendNurseMessage("I just lowered your values a little");

@@ -1,6 +1,6 @@
 {
     if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_UNKNOWN)) {
-        if (getVar(VARIABLE_LICK_TRAININGS_DONE, 0) == 0) {
+        if (getVar(VARIABLE.LICK_TRAININGS_DONE, 0) == 0) {
             sendMessage('%SlaveName%');
             sendMessage("I want to try something new today...");
             sendMessage('As you should know pleasing me is everything you are supposed to think about');
@@ -183,6 +183,6 @@
         sendMessage('Stop!');
         sendMessage('I hope your tongue isn\'t too sore %Grin%');
         sendMessage('Practice makes perfect, remember that');
-        incrementVar(VARIABLE_LICK_TRAININGS_DONE, 1);
+        incrementVar(VARIABLE.LICK_TRAININGS_DONE, 1);
     }
 }

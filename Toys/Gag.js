@@ -7,11 +7,11 @@ const GAG_TYPE_DILDO_GAG = createToy('dildo gag');
 let currentGagType = GAG_TYPE_BALL_GAG;
 
 function isGaged() {
-    return getVar(VARIABLE_IS_GAGED, false);
+    return getVar(VARIABLE.IS_GAGED, false);
 }
 
 function setGaged(gaged) {
-    return setTempVar(VARIABLE_IS_GAGED, gaged);
+    return setTempVar(VARIABLE.IS_GAGED, gaged);
 }
 
 function hasBallGag() {
@@ -276,11 +276,11 @@ function sendConsideredRemovingGag() {
 }
 
 function isGagPlay() {
-    return getVar(VARIABLE_TOY_GAG_INTERACTION_MODE) === TOY_BOTH_MODE || getVar(VARIABLE_TOY_GAG_INTERACTION_MODE) === TOY_PLAY_MODE;
+    return getVar(VARIABLE.TOY_GAG_INTERACTION_MODE) === TOY_BOTH_MODE || getVar(VARIABLE.TOY_GAG_INTERACTION_MODE) === TOY_PLAY_MODE;
 }
 
 function isGagPunish() {
-    return getVar(VARIABLE_TOY_GAG_INTERACTION_MODE) === TOY_BOTH_MODE || getVar(VARIABLE_TOY_GAG_INTERACTION_MODE) === TOY_PUNISHMENT_MODE;
+    return getVar(VARIABLE.TOY_GAG_INTERACTION_MODE) === TOY_BOTH_MODE || getVar(VARIABLE.TOY_GAG_INTERACTION_MODE) === TOY_PUNISHMENT_MODE;
 }
 
 function setupGags(domChose) {

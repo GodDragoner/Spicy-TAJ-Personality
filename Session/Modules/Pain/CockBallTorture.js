@@ -134,7 +134,7 @@ function smallCBTPunishment(balls = true, penis = true) {
 
 //Personality strictness should not influence pain!
 
-function punishSmallBustBallsMultiple(maxLoops = getVar(VARIABLE_SUB_PAIN_TOLERANCE), earlyExitChance = getEarlyPunishmentExitChance()) {
+function punishSmallBustBallsMultiple(maxLoops = getVar(VARIABLE.SUB_PAIN_TOLERANCE), earlyExitChance = getEarlyPunishmentExitChance()) {
     //TODO: "Now back to your balls" etc. kind of transitions
     //TODO: Count out loud?
     while (maxLoops > 0) {
@@ -142,7 +142,7 @@ function punishSmallBustBallsMultiple(maxLoops = getVar(VARIABLE_SUB_PAIN_TOLERA
 
         switch (randomInteger(0, 9)) {
             case 0:
-                sendMessage('Let\'s give those %Balls% another ' + getVar(VARIABLE_SUB_PAIN_TOLERANCE) * 2 + ' smacks %EmoteHappy%');
+                sendMessage('Let\'s give those %Balls% another ' + getVar(VARIABLE.SUB_PAIN_TOLERANCE) * 2 + ' smacks %EmoteHappy%');
                 waitForDone();
                 break;
             case 1:
@@ -150,36 +150,36 @@ function punishSmallBustBallsMultiple(maxLoops = getVar(VARIABLE_SUB_PAIN_TOLERA
                 waitForDone();
                 break;
             case 2:
-                sendMessage('Punch your %Balls% ' + getVar(VARIABLE_SUB_PAIN_TOLERANCE) * 2 + ' times for me');
+                sendMessage('Punch your %Balls% ' + getVar(VARIABLE.SUB_PAIN_TOLERANCE) * 2 + ' times for me');
                 waitForDone();
                 break;
             case 3:
-                sendMessage('Now smack those %Balls% ' + getVar(VARIABLE_SUB_PAIN_TOLERANCE) + ' times as hard as you can');
+                sendMessage('Now smack those %Balls% ' + getVar(VARIABLE.SUB_PAIN_TOLERANCE) + ' times as hard as you can');
                 waitForDone();
                 break;
             case 4:
-                sendMessage('Now flick each testicle ' + getVar(VARIABLE_SUB_PAIN_TOLERANCE) * +' times');
+                sendMessage('Now flick each testicle ' + getVar(VARIABLE.SUB_PAIN_TOLERANCE) * +' times');
                 waitForDone();
                 break;
             case 5:
-                sendMessage('Now ' + getVar(VARIABLE_SUB_PAIN_TOLERANCE) * 2 + ' more smacks to each ball');
+                sendMessage('Now ' + getVar(VARIABLE.SUB_PAIN_TOLERANCE) * 2 + ' more smacks to each ball');
                 waitForDone();
                 break;
             case 6:
-                sendMessage('Give me ' + getVar(VARIABLE_SUB_PAIN_TOLERANCE) * 2 + ' more slaps'  + ' for those %Balls%');
+                sendMessage('Give me ' + getVar(VARIABLE.SUB_PAIN_TOLERANCE) * 2 + ' more slaps'  + ' for those %Balls%');
                 waitForDone();
                 break;
             case 7:
-                sendMessage(getVar(VARIABLE_SUB_PAIN_TOLERANCE) * 2 + ' more ' + random('smacks', 'slaps', 'hits'));
+                sendMessage(getVar(VARIABLE.SUB_PAIN_TOLERANCE) * 2 + ' more ' + random('smacks', 'slaps', 'hits'));
                 waitForDone();
                 break;
             case 8:
-                sendMessage('I want ' + getVar(VARIABLE_SUB_PAIN_TOLERANCE) * 2 + ' more ' + random('smacks', 'slaps', 'hits') + ' for those %Balls%');
+                sendMessage('I want ' + getVar(VARIABLE.SUB_PAIN_TOLERANCE) * 2 + ' more ' + random('smacks', 'slaps', 'hits') + ' for those %Balls%');
                 waitForDone();
                 break;
             case 9:
                 //TODO: Punches with fist and slaps with open hand
-                sendMessage('I want you to add ' + getVar(VARIABLE_SUB_PAIN_TOLERANCE) * 2 + ' more ' + random('smacks', 'slaps', 'hits') + ' to each ball');
+                sendMessage('I want you to add ' + getVar(VARIABLE.SUB_PAIN_TOLERANCE) * 2 + ' more ' + random('smacks', 'slaps', 'hits') + ' to each ball');
                 waitForDone();
                 break;
         }
@@ -197,7 +197,7 @@ function punishBookCBT(multiplier = 1) {
     }
 
     sendMessage(random("This is fairly simple", "This is gonna be quite simple", "You shouldn\'t find this too difficult"));
-    let falls = getVar(VARIABLE_SUB_PAIN_TOLERANCE) * multiplier + 7;
+    let falls = getVar(VARIABLE.SUB_PAIN_TOLERANCE) * multiplier + 7;
     sendMessage(random("I want you to place the book on a table ", "You should place the book on a table "));
     sendMessage(random("It has to stand up ", "It should be standing up "));
     sendMessage(random("Then I want you to tilt the book and aim for your %Balls%", "Then you\'re going to aim for your %Balls% and tilt the book") + " %Moan%");
@@ -235,13 +235,13 @@ function punishFlickCBT(bodyPart, multiplier = 1) {
     while (!completedInTime) {
         switch (bodyPart) {
             case BODY_PART_PENIS_SHAFT:
-                sendMessage('Flick it ' + getVar(VARIABLE_SUB_PAIN_TOLERANCE) * 2 * multiplier + ' times');
+                sendMessage('Flick it ' + getVar(VARIABLE.SUB_PAIN_TOLERANCE) * 2 * multiplier + ' times');
                 break;
             case BODY_PART_PENIS_HEAD:
-                sendMessage('Flick it ' + getVar(VARIABLE_SUB_PAIN_TOLERANCE) * multiplier + ' times');
+                sendMessage('Flick it ' + getVar(VARIABLE.SUB_PAIN_TOLERANCE) * multiplier + ' times');
                 break;
             case BODY_PART_BALLS:
-                sendMessage('Flick each side ' + getVar(VARIABLE_SUB_PAIN_TOLERANCE) * 2 * multiplier + ' times');
+                sendMessage('Flick each side ' + getVar(VARIABLE.SUB_PAIN_TOLERANCE) * 2 * multiplier + ' times');
                 break;
         }
 
@@ -281,7 +281,7 @@ function punishBustBalls(hand = true, multiplier = 1) {
     }
 
     sendMessage('Get ready to bust ' + returnYourOrMy() + ' %Balls% %SlaveName%');
-    const hits = getVar(VARIABLE_SUB_PAIN_TOLERANCE);
+    const hits = getVar(VARIABLE.SUB_PAIN_TOLERANCE);
     let completedInTime = false;
     while (!completedInTime) {
         sendMessage('Hit them hard ' + hits * multiplier + ' times');
@@ -332,12 +332,12 @@ function punishRubberbandCBT(bodyPart, multiplier = 1) {
 
     sendMessage(random("This is fairly simple", "This is gonna be quite simple", "You shouldn\'t find this too difficult"));
 
-    let hits = getVar(VARIABLE_SUB_PAIN_TOLERANCE) * multiplier;
+    let hits = getVar(VARIABLE.SUB_PAIN_TOLERANCE) * multiplier;
 
     switch (bodyPart) {
         case BODY_PART_PENIS_SHAFT:
             //more if it is not the head because the head is the most vulnerable
-            hits += getVar(VARIABLE_SUB_PAIN_TOLERANCE);
+            hits += getVar(VARIABLE.SUB_PAIN_TOLERANCE);
             sendMessage(random("Hold it close to your penis shaft", "You are gonna hold it close to your penis shaft"));
             break;
         case BODY_PART_PENIS_HEAD:
@@ -345,7 +345,7 @@ function punishRubberbandCBT(bodyPart, multiplier = 1) {
             break;
         case BODY_PART_BALLS:
             //More if it is not the head because the head is the most vulnerable
-            hits += getVar(VARIABLE_SUB_PAIN_TOLERANCE);
+            hits += getVar(VARIABLE.SUB_PAIN_TOLERANCE);
             sendMessage(random("Hold it close to your %Balls%", "You are gonna hold it close to your %Balls%"));
             break;
     }
@@ -379,7 +379,7 @@ function punishRubberbandCBT(bodyPart, multiplier = 1) {
 
 function punishSqueezeBalls(duration = 10) {
     sendMessage('Grab my %Balls% and squeeze them', duration);
-    sendMessage('Squeeze them ' + random('as hard as you can', 'so hard that your eyes start to tear') + ' until I tell you to release your grip %SlaveName%', 3 * getVar(VARIABLE_SUB_PAIN_TOLERANCE));
+    sendMessage('Squeeze them ' + random('as hard as you can', 'so hard that your eyes start to tear') + ' until I tell you to release your grip %SlaveName%', 3 * getVar(VARIABLE.SUB_PAIN_TOLERANCE));
     sendMessage('You can stop squeezing my %Balls% now %SlaveName%');
 
     if (askBallPain()) {

@@ -1,6 +1,6 @@
 {
     if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_UNKNOWN)) {
-        if (getVar(VARIABLE_MODEL_RATINGS_DONE, 0) == 0) {
+        if (getVar(VARIABLE.MODEL_RATINGS_DONE, 0) == 0) {
             sendMessage('I have a fun new game for you %SlaveName%');
             sendMessage('In a moment I\'m gonna show you 100 pictures');
             sendMessage('You will rate each picture from 1 to 10');
@@ -29,7 +29,7 @@
                             answer.loop();
                         } else {
                             modelRatings.add(result);
-                            setVar(VARIABLE_MODEL_RATINGS, modelRatings);
+                            setVar(VARIABLE.MODEL_RATINGS, modelRatings);
                             break;
                         }
                     } else {
@@ -69,12 +69,12 @@
                         untieBalls();
                         sendMessage('So now that those balls are untied...');
                         sendMessage('Put that ball crusher on %Grin%');
-                        setVar(VARIABLE_IS_BALL_CRUSHER_ON, true);
+                        setVar(VARIABLE.IS_BALL_CRUSHER_ON, true);
                         sendMessage('Tell me when you are done');
                         waitForDone();
                     } else {
                         sendMessage('Now put that ball crusher on %Grin%');
-                        setVar(VARIABLE_IS_BALL_CRUSHER_ON, true);
+                        setVar(VARIABLE.IS_BALL_CRUSHER_ON, true);
                         sendMessage('Tell me when you are done');
                         waitForDone();
                     }
@@ -123,7 +123,7 @@
                         randomIndex2 = randomInteger(0, 99);
                     }
 
-                    const modelRatings = getVar(VARIABLE_MODEL_RATINGS);
+                    const modelRatings = getVar(VARIABLE.MODEL_RATINGS);
                     const firstPictureScore = modelRatings.get(randomIndex);
                     const secondPictureScore = modelRatings.get(randomIndex2);
 
@@ -157,7 +157,7 @@
                     }
                 } else {
                     const randomIndex = randomInteger(0, 99);
-                    const modelRatings = getVar(VARIABLE_MODEL_RATINGS);
+                    const modelRatings = getVar(VARIABLE.MODEL_RATINGS);
                     const firstPictureScore = modelRatings[randomIndex];
                     lockImages();
                     showImage('Images/Spicy//Games/ModelGame/' + (randomIndex + 1) + '.*', 3);
@@ -249,7 +249,7 @@
 
             if (ballCrusher) {
                 sendMessage('You may remove the ball crusher now %SlaveName%');
-                setVar(VARIABLE_IS_BALL_CRUSHER_ON, true);
+                setVar(VARIABLE.IS_BALL_CRUSHER_ON, true);
                 sendMessage('Feels good, doesn\'t it?');
             }
 
@@ -258,6 +258,6 @@
             sendMessage('I guess it was if you have a good memory %Lol%');
         }
 
-        setVar(VARIABLE_MODEL_RATINGS_DONE, getVar(VARIABLE_MODEL_RATINGS_DONE) + 1);
+        setVar(VARIABLE.MODEL_RATINGS_DONE, getVar(VARIABLE.MODEL_RATINGS_DONE) + 1);
     }
 }

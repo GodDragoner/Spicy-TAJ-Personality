@@ -8,12 +8,12 @@
         sendMessage(random('So there won\'t be any funny business today!', 'So there is absolutely no chance of you cumming!'));
     } else {
         //Denial limit reached
-        if (getLastEjaculationDate().addDay(getVar(VARIABLE_DENIAL_LIMIT)).hasPassed()) {
+        if (getLastEjaculationDate().addDay(getVar(VARIABLE.DENIAL_LIMIT)).hasPassed()) {
             run('Session/End/HardLimit.js');
         }
 
         //If we haven't given the sub the freedom to choose how he cums we can run our endgame
-        if(!isVar(VARIABLE_DENIAL_HARD_LIMIT_FREEDOM_TODAY)) {
+        if(!isVar(VARIABLE.DENIAL_HARD_LIMIT_FREEDOM_TODAY)) {
             runEndGame();
         }
     }

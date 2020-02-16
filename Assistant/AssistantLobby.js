@@ -1,6 +1,6 @@
 {
 
-    if (getVar(VARIABLE_WAITING_FOR_CHASTITY_KEY_RETURN, false)) {
+    if (getVar(VARIABLE.WAITING_FOR_CHASTITY_KEY_RETURN, false)) {
         sendVirtualAssistantMessage('%SlaveName%');
         sendVirtualAssistantMessage('Last time you left I allowed you to unlock yourself and since then I haven\'t locked you back yet');
         sendVirtualAssistantMessage('Are you ready to be locked again?', 0);
@@ -99,8 +99,8 @@
 }
 
 function startSession() {
-    if (getDate(VARIABLE_LAST_TEASE_SESSION).clone().addHour(16).hasPassed()) {
-        if (getVar(VARIABLE_PUNISHMENT_POINTS) > 400) {
+    if (getDate(VARIABLE.LAST_TEASE_SESSION).clone().addHour(16).hasPassed()) {
+        if (getVar(VARIABLE.PUNISHMENT_POINTS) > 400) {
             sendVirtualAssistantMessage("Session denied %SlaveName%");
             sendVirtualAssistantMessage("You have too many punishment points");
             sendVirtualAssistantMessage("Report for punishment");
@@ -111,7 +111,7 @@ function startSession() {
             sendVirtualAssistantMessage("Session denied %SlaveName%");
             sendVirtualAssistantMessage("Due to recent poor behaviour");
 
-            if (getVar(VARIABLE_PUNISHMENT_POINTS) >= 200) {
+            if (getVar(VARIABLE.PUNISHMENT_POINTS) >= 200) {
                 sendVirtualAssistantMessage("You should either report for chores or punishment");
             } else {
                 sendVirtualAssistantMessage("I recommend reporting for chores");
@@ -125,7 +125,7 @@ function startSession() {
         return;
     } else {
         sendVirtualAssistantMessage("%SlaveName% you had a session recently");
-        if (getDate(VARIABLE_LAST_TEASE_SESSION).clone().addHour(14).hasPassed()) {
+        if (getDate(VARIABLE.LAST_TEASE_SESSION).clone().addHour(14).hasPassed()) {
             sendVirtualAssistantMessage("You will be eligible for a session again soon");
         }
     }
@@ -172,7 +172,7 @@ function getWelcomeMessage() {
         "Tell me what you want.",
         "Hey, You have gold. Take a look in the shop what you can buy."
     ];
-    answers.push("Hey, You have " + getVar(VARIABLE_GOLD, 0) + " gold. Take a look in the shop what you can buy.");
+    answers.push("Hey, You have " + getVar(VARIABLE.GOLD, 0) + " gold. Take a look in the shop what you can buy.");
 
     return answers[randomInteger(0, answers.length - 1)];
 }

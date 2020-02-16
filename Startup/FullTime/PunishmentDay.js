@@ -1,5 +1,5 @@
 {
-    if (!isVar(VARIABLE_NEXT_PUNISHMENT_DAY)) {
+    if (!isVar(VARIABLE.NEXT_PUNISHMENT_DAY)) {
         sendVirtualAssistantMessage("Today is thursday");
         sendVirtualAssistantMessage("Thursdays are special");
         sendVirtualAssistantMessage("Thursdays are punishment days");
@@ -13,8 +13,8 @@
     }
 
     //Only continue if we haven't check this today
-    if (!isVar(VARIABLE_NEXT_PUNISHMENT_DAY) || getDate(VARIABLE_NEXT_PUNISHMENT_DAY).hasPassed()) {
-        if (isVar(VARIABLE_NEXT_PUNISHMENT_DAY) && !getDate(VARIABLE_NEXT_PUNISHMENT_DAY).sameDay(setDate())) {
+    if (!isVar(VARIABLE.NEXT_PUNISHMENT_DAY) || getDate(VARIABLE.NEXT_PUNISHMENT_DAY).hasPassed()) {
+        if (isVar(VARIABLE.NEXT_PUNISHMENT_DAY) && !getDate(VARIABLE.NEXT_PUNISHMENT_DAY).sameDay(setDate())) {
             sendVirtualAssistantMessage("You've been skipping punishment day %SlaveName%!");
             sendVirtualAssistantMessage("I've added a healthy dose of punishment points for that!");
             addPunishmentPoints(300);
@@ -22,11 +22,11 @@
         }
 
         //Set the date to the next thursday
-        setDate(VARIABLE_NEXT_PUNISHMENT_DAY, setDate(VARIABLE_NEXT_PUNISHMENT_DAY).addDay(7).setHour(0).setMinute(0).setSecond(0));
+        setDate(VARIABLE.NEXT_PUNISHMENT_DAY, setDate(VARIABLE.NEXT_PUNISHMENT_DAY).addDay(7).setHour(0).setMinute(0).setSecond(0));
 
-        sendVirtualAssistantMessage("You have " + getVar(VARIABLE_PUNISHMENT_POINTS) + " punishment points");
+        sendVirtualAssistantMessage("You have " + getVar(VARIABLE.PUNISHMENT_POINTS) + " punishment points");
 
-        if (getVar(VARIABLE_PUNISHMENT_POINTS) >= 100) {
+        if (getVar(VARIABLE.PUNISHMENT_POINTS) >= 100) {
             sendVirtualAssistantMessage("Which isn't good enough!");
             sendVirtualAssistantMessage("So I'm adding more!");
             sendVirtualAssistantMessage("Make sure you report for punishment!");

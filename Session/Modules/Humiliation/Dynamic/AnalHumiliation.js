@@ -7,7 +7,7 @@
             //Try to find a different module
             tryRunModuleFetchId();
         } else {
-            if(!isVar(VARIABLE_ENEMA_INTRO) && hasEnemaKit() && isVar('assIntro')) {
+            if(!isVar(VARIABLE.ENEMA_INTRO) && hasEnemaKit() && isVar('assIntro')) {
                 //QUALITY: Based on whether contact 1 appeared yet etc.
                 runEnemaIntro();
                 sendMessage('Now that that\'s settled');
@@ -22,8 +22,8 @@
                 runAssIntro();
             }
 
-            let plugPlay = hasButtplugToy() && isChance(50) && getVar(VARIABLE_ASS_LEVEL) >= 5;
-            let dildoPlay = hasDildoToy() && getVar(VARIABLE_ASS_LEVEL) >= 5;
+            let plugPlay = hasButtplugToy() && isChance(50) && getVar(VARIABLE.ASS_LEVEL) >= 5;
+            let dildoPlay = hasDildoToy() && getVar(VARIABLE.ASS_LEVEL) >= 5;
 
             if (isPlugged()) {
                 if (isChance(50)) {
@@ -83,7 +83,7 @@
                     toy = "finger";
                     dildoPlay = false;
                 } else {
-                    setDate(VARIABLE_LAST_DILDO_SWAP_DATE);
+                    setDate(VARIABLE.LAST_DILDO_SWAP_DATE);
                     sendMessage("Okay let's get started then");
                 }
             } else {
@@ -144,7 +144,7 @@ function startPenetratingSession(toy) {
     sendMessage("And pull it all the way out again");
 
     //Sit on dildo
-    if (!finger && getVar(VARIABLE_ASS_LEVEL) >= 15 && isChance(20)) {
+    if (!finger && getVar(VARIABLE.ASS_LEVEL) >= 15 && isChance(20)) {
         sendMessage('Now I want you to to place it in front of you... %Grin%');
         sendMessage('%KnowWhatsNext%');
 
@@ -180,12 +180,12 @@ function startPenetratingSession(toy) {
 
 function getAnalSessionLength() {
     //Max one third of session anal
-    let maxMinutes = Math.ceil(getVar(VARIABLE_DEVOTION) / 3);
+    let maxMinutes = Math.ceil(getVar(VARIABLE.DEVOTION) / 3);
 
     //TODO: Anal themed session
 
-    let min = Math.max(5, getVar(VARIABLE_ASS_LEVEL) / 2);
-    let max = Math.max(10, getVar(VARIABLE_ASS_LEVEL));
+    let min = Math.max(5, getVar(VARIABLE.ASS_LEVEL) / 2);
+    let max = Math.max(10, getVar(VARIABLE.ASS_LEVEL));
 
     let mood = getMood();
 
@@ -199,7 +199,7 @@ function getAnalSessionLength() {
 
     //Domme mode
     if (isVar('analWhoreMode')) {
-        maxMinutes = Math.ceil(getVar(VARIABLE_DEVOTION) / 2);
+        maxMinutes = Math.ceil(getVar(VARIABLE.DEVOTION) / 2);
 
         min *= 1.5;
         max *= 1.5;
@@ -356,7 +356,7 @@ function appendPenetratingSession(toy) {
                 sendMessage("And back to fucking that ass %Grin%");
             }
 
-            if (isChance(50) && finger && currentFingerCount < getVar(VARIABLE_ASS_LEVEL) / 6 && currentFingerCount < 5) {
+            if (isChance(50) && finger && currentFingerCount < getVar(VARIABLE.ASS_LEVEL) / 6 && currentFingerCount < 5) {
                 sendMessage("I think you are ready to take more than your " + currentFingerCount++ + pluralize("finger", currentFingerCount));
                 sendMessage("Go ahead and use " + currentFingerCount + pluralize("finger", currentFingerCount) + " from now on %Grin%");
                 if (currentFingerCount >= 4) {
@@ -562,12 +562,12 @@ function choosePosition(toy, needsTwoHands = false) {
             break;
     }
 
-    if (!isVar(VARIABLE_LAST_DILDO_SWAP_DATE) || getDate(VARIABLE_LAST_DILDO_SWAP_DATE).addMinute(10 - Math.ceil(getVar(VARIABLE_ASS_LEVEL) / 6)).hasPassed()) {
+    if (!isVar(VARIABLE.LAST_DILDO_SWAP_DATE) || getDate(VARIABLE.LAST_DILDO_SWAP_DATE).addMinute(10 - Math.ceil(getVar(VARIABLE.ASS_LEVEL) / 6)).hasPassed()) {
         let newToy = getDildo(false).name;
 
         if (fetchDildoToy(newToy)) {
             sendMessage('I want you to use your ' + newToy + ' for now instead %Grin%');
-            setDate(VARIABLE_LAST_DILDO_SWAP_DATE);
+            setDate(VARIABLE.LAST_DILDO_SWAP_DATE);
             toy = newToy;
         } else {
             sendMessage('Let\'s continue with your ' + toy + ' then %EmoteSad%');
@@ -627,7 +627,7 @@ function startSquatAnal(toy) {
         //TODO: Could need something like this more often
         if (isChance(40)) {
             //Only send this when the sub is not in chastity
-            if (!getVar(VARIABLE_CHASTITY_ON, false)) {
+            if (!getVar(VARIABLE.CHASTITY_ON, false)) {
                 sendMessage("But no touching that %Cock%");
             } else {
                 sendMessage("Luckily I don't have to worry about your cock");

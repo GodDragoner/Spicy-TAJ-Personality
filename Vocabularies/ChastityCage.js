@@ -1,5 +1,5 @@
 function chastityCageVocabulary() {
-    const material = getActiveChastityCage().material == MATERIAL_METAL? "metal" : getActiveChastityCage().material == MATERIAL_PLASTIC? "plastic" : 'silicon';
+    const material = getActiveChastityCage().material == MATERIAL.METAL? "metal" : getActiveChastityCage().material == MATERIAL.PLASTIC? "plastic" : 'silicon';
     const cock = random("cock", "dick");
 
     const adjectives = [];
@@ -16,11 +16,11 @@ function chastityCageVocabulary() {
         sizeAdjective.push("teeny", "tiny");
     }
 
-    if(getVar(VARIABLE_CHASTITY_CAGE_IS_PIERCED, false)) {
+    if(getVar(VARIABLE.CHASTITY_CAGE_IS_PIERCED, false)) {
         descriptive.push("pierced");
     }
 
-    if(getVar(VARIABLE_CHASTITY_SPIKES_ON, false)) {
+    if(getVar(VARIABLE.CHASTITY_SPIKES_ON, false)) {
         descriptive.push("spiky", "spike encased", "spiked");
     }
 

@@ -17,9 +17,9 @@ if (isVar(dayOfWeek + "MoodDate")) {
         sendDebugMessage('Before temp day of week mood:');
         debugPrintMood();
 
-        setVar(VARIABLE_HAPPINESS, Math.max(0, getVar(VARIABLE_HAPPINESS) - getVar(dayOfWeek + "Happiness")));
-        setVar(VARIABLE_LUST, Math.max(0, getVar(VARIABLE_LUST) - getVar(dayOfWeek + "Lust")));
-        setVar(VARIABLE_ANGER, Math.max(0, getVar(VARIABLE_ANGER) - getVar(dayOfWeek + "Anger")));
+        setVar(VARIABLE.HAPPINESS, Math.max(0, getVar(VARIABLE.HAPPINESS) - getVar(dayOfWeek + "Happiness")));
+        setVar(VARIABLE.LUST, Math.max(0, getVar(VARIABLE.LUST) - getVar(dayOfWeek + "Lust")));
+        setVar(VARIABLE.ANGER, Math.max(0, getVar(VARIABLE.ANGER) - getVar(dayOfWeek + "Anger")));
         newDay = true;
 
         sendDebugMessage('After temp day of week mood:');
@@ -256,9 +256,9 @@ if (newDay) {
     sendDebugMessage("Temp Anger: " + tempAnger);
 
     //Add the daily based values
-    setVar(VARIABLE_HAPPINESS, Math.max(0, getVar(VARIABLE_HAPPINESS, 0) + tempHappiness));
-    setVar(VARIABLE_LUST,  Math.max(0, getVar(VARIABLE_LUST, 0) + tempLust));
-    setVar(VARIABLE_ANGER,  Math.max(0, getVar(VARIABLE_ANGER, 0) + tempAnger));
+    setVar(VARIABLE.HAPPINESS, Math.max(0, getVar(VARIABLE.HAPPINESS, 0) + tempHappiness));
+    setVar(VARIABLE.LUST,  Math.max(0, getVar(VARIABLE.LUST, 0) + tempLust));
+    setVar(VARIABLE.ANGER,  Math.max(0, getVar(VARIABLE.ANGER, 0) + tempAnger));
 }
 
 sendDebugMessage('Mood after startup routine');
@@ -278,9 +278,9 @@ function activateRandomScenario(scenarioArray, idOffset, moodType) {
 }
 
 function debugPrintMood() {
-    sendDebugMessage("Lust: " + getVar(VARIABLE_LUST));
-    sendDebugMessage("Happiness: " + getVar(VARIABLE_HAPPINESS));
-    sendDebugMessage("Anger: " + getVar(VARIABLE_ANGER));
+    sendDebugMessage("Lust: " + getVar(VARIABLE.LUST));
+    sendDebugMessage("Happiness: " + getVar(VARIABLE.HAPPINESS));
+    sendDebugMessage("Anger: " + getVar(VARIABLE.ANGER));
 }
 
 function isScenarioActive(scenarioId) {

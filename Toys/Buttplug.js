@@ -61,17 +61,17 @@ function hasButtplugToy() {
 }
 
 function isPlugged() {
-    return getVar(VARIABLE_IS_PLUGGED, false);
+    return getVar(VARIABLE.IS_PLUGGED, false);
 }
 
 function shouldIncreasePlugSize() {
     let minTime = 7;
     let maxTime = 10;
 
-    if (getVar(VARIABLE_ASS_LEVEL, 0) >= 20) {
+    if (getVar(VARIABLE.ASS_LEVEL, 0) >= 20) {
         minTime = 6;
         maxTime = 8;
-    } else if (getVar(VARIABLE_ASS_LEVEL, 0) >= 30) {
+    } else if (getVar(VARIABLE.ASS_LEVEL, 0) >= 30) {
         minTime = 5;
         maxTime = 7;
     }
@@ -102,11 +102,11 @@ function isVeryUnexperiencedDiamater(diameter) {
 /*function tryIncreasePlugSize() {
     if(currentPlug !== biggestButtplug) {
         if(isPlugged()) {
-            if (isVar(VARIABLE_LAST_PLUG_DATE) && getVar(VARIABLE_LAST_PLUG_DATE).addMinute(randomInteger(7, 10)).hasPassed()) {
+            if (isVar(VARIABLE.LAST_PLUG_DATE) && getVar(VARIABLE.LAST_PLUG_DATE).addMinute(randomInteger(7, 10)).hasPassed()) {
                 increasePlugSize();
             }
-        } else if (isVar(VARIABLE_LAST_PLUG_DATE)) {
-            if(getVar(VARIABLE_LAST_PLUG_DATE).addMinute(randomInteger(7, 10)).hasPassed()) {
+        } else if (isVar(VARIABLE.LAST_PLUG_DATE)) {
+            if(getVar(VARIABLE.LAST_PLUG_DATE).addMinute(randomInteger(7, 10)).hasPassed()) {
                 putInButtplug();
             }
         } else {
@@ -137,13 +137,13 @@ function putInButtplug(forceBigger = false) {
         removeButtplug();
     }
 
-    if (feelsEvil() && isChance(50) && getVar(VARIABLE_ASS_LEVEL) > 15) {
-        if (!isVar(VARIABLE_LAST_ICE_CUBE_UP_ASS_DATE) || getDate(VARIABLE_LAST_ICE_CUBE_UP_ASS_DATE).addMinute(10).hasPassed()) {
+    if (feelsEvil() && isChance(50) && getVar(VARIABLE.ASS_LEVEL) > 15) {
+        if (!isVar(VARIABLE.LAST_ICE_CUBE_UP_ASS_DATE) || getDate(VARIABLE.LAST_ICE_CUBE_UP_ASS_DATE).addMinute(10).hasPassed()) {
             sendMessage('But before we are gonna stick that buttplug up your %Ass%');
 
             let iceCubes = randomInteger(2, 5);
             if (fetchIceCubes(iceCubes)) {
-                if (isVar(VARIABLE_LAST_ICE_CUBE_UP_ASS_DATE)) {
+                if (isVar(VARIABLE.LAST_ICE_CUBE_UP_ASS_DATE)) {
                     sendMessage('Yet again %Grin%');
                     sendMessage('Push them up your ass one by one %Grin%');
                     sendMessage('And make sure that nothing sips out when you push the new ones in');
@@ -165,7 +165,7 @@ function putInButtplug(forceBigger = false) {
                 sendMessage('Tell me when you are done...');
                 waitForDone();
                 sendMessage('How is it feeling? Cold? %Grin%');
-                setTempVar(VARIABLE_LAST_ICE_CUBE_UP_ASS_DATE, setDate());
+                setTempVar(VARIABLE.LAST_ICE_CUBE_UP_ASS_DATE, setDate());
             }
         }
     }
@@ -186,11 +186,11 @@ function putInButtplug(forceBigger = false) {
 
     sendMessage("Now %SlaveName%");
 
-    if (isChance(getStrictnessForCharacter() * 10) && getVar(VARIABLE_ASS_LEVEL) >= 30) {
+    if (isChance(getStrictnessForCharacter() * 10) && getVar(VARIABLE.ASS_LEVEL) >= 30) {
         sendMessage("Push it in quickly");
         sendMessage("I don't care whether it hurts");
     } else {
-        if (isChance(50) && getVar(VARIABLE_ASS_LEVEL) >= 30) {
+        if (isChance(50) && getVar(VARIABLE.ASS_LEVEL) >= 30) {
             sendMessage("Put that plug on the ground");
             sendMessage("You already know " + random("what I am gonna make you do now", "what comes next", "what you are gonna do next", "what I want you to do next", "what is gonna happen now"));
             sendMessage("I want you to slowly sit down on that plug and push it all the way up your ass");
@@ -208,7 +208,7 @@ function putInButtplug(forceBigger = false) {
             sendMessage("Carefully start pushing that plug into your ass");
             sendMessage("Push it slowly and gently...");
 
-            if (isUnexperiencedDiamater(plug.diameter) && getVar(VARIABLE_ASS_LEVEL) < 30 || isVeryUnexperiencedDiamater(plug.diameter)) {
+            if (isUnexperiencedDiamater(plug.diameter) && getVar(VARIABLE.ASS_LEVEL) < 30 || isVeryUnexperiencedDiamater(plug.diameter)) {
                 sendMessage("Until you reach the point where it starts hurting a bit");
                 sendMessage("Now hold that position", 3);
                 sendMessage("Let that plug slip out again");
@@ -250,7 +250,7 @@ function putInButtplug(forceBigger = false) {
     }
 
     BUTTPLUG_TOY.setUsedInActiveContext(true);
-    setTempVar(VARIABLE_IS_PLUGGED, true);
+    setTempVar(VARIABLE.IS_PLUGGED, true);
     BUTTPLUG_TOY.setLastUsage();
 
     //Plug was used and is no longer clean
@@ -269,7 +269,7 @@ function getButtplugForTask() {
 function getMaxStartingDiameter() {
     let diameter = smallestButtplug.diameter;
 
-    let assLevel = getVar(VARIABLE_ASS_LEVEL);
+    let assLevel = getVar(VARIABLE.ASS_LEVEL);
 
     return Math.max(diameter, assLevel/7.5);
 }
@@ -277,7 +277,7 @@ function getMaxStartingDiameter() {
 function getMaxDiameterIncrease() {
     let maxDiameterIncrease = 1;
 
-    let assLevel = getVar(VARIABLE_ASS_LEVEL);
+    let assLevel = getVar(VARIABLE.ASS_LEVEL);
 
     if (assLevel >= 30) {
         maxDiameterIncrease = 0.75;
@@ -294,7 +294,7 @@ function getMaxDiameterIncrease() {
 function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
     //Get the max used thickness today to make sure we don't go too big too quickly
     //In the rare case of the biggest dildo being thicker than our biggest plug we need to watch for that
-    let maxUsedPlugThickness = Math.min(biggestButtplug.diameter, getVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, 0));
+    let maxUsedPlugThickness = Math.min(biggestButtplug.diameter, getVar(VARIABLE.MAX_DILDO_THICKNESS_TODAY, 0));
 
     //If we want to force bigger and haven't been given a min thickness then we will make it bigger than the biggest thing we used today to make sure we go up
     if (forceBigger && minThickness === 0) {
@@ -311,7 +311,7 @@ function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
     //TODO: Handle min length too (smallest plug etc.)
 
     //Should be smallest buttplug size or if for example ass level 30 at least 3.5 (allows progression to go faster at start of session)
-    let allowedDefaultMaxDiameter = Math.max(smallestButtplug.diameter, Math.ceil(getVar(VARIABLE_ASS_LEVEL, 0) / 10) + 0.5);
+    let allowedDefaultMaxDiameter = Math.max(smallestButtplug.diameter, Math.ceil(getVar(VARIABLE.ASS_LEVEL, 0) / 10) + 0.5);
 
     while (availablePlugs.length === 0 && buttplugs.length !== 0) {
         for (let y = 0; y < buttplugs.length; y++) {
@@ -341,7 +341,7 @@ function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
 
     let plug = availablePlugs[randomInteger(0, availablePlugs.length - 1)];
 
-    setTempVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, Math.max(getVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, 0), plug.diameter));
+    setTempVar(VARIABLE.MAX_DILDO_THICKNESS_TODAY, Math.max(getVar(VARIABLE.MAX_DILDO_THICKNESS_TODAY, 0), plug.diameter));
 
     return plug;
 }
@@ -457,7 +457,7 @@ function removeButtplug(end = false) {
     }
 
     currentPlug = null;
-    setTempVar(VARIABLE_IS_PLUGGED, false);
+    setTempVar(VARIABLE.IS_PLUGGED, false);
 }
 
 function endLastPlugPull() {
@@ -490,7 +490,7 @@ function loadButtplugs() {
             let hollow = false;
             let tail = false;
             let crystal = false;
-            let material = MATERIAL_SILICON;
+            let material = MATERIAL.SILICON;
             let tbase = false;
 
             for (let y = 0; y < splitArray.length; y++) {
@@ -683,7 +683,7 @@ function setupNewButtplug() {
         }
     }
 
-    let material = MATERIAL_SILICON;
+    let material = MATERIAL.SILICON;
 
     sendVirtualAssistantMessage('Great. Now...');
     sendVirtualAssistantMessage('Is it made out of metal, glass or silicon?', 0);
@@ -691,13 +691,13 @@ function setupNewButtplug() {
 
     while (true) {
         if (answer.isLike("metal")) {
-            material = MATERIAL_METAL;
+            material = MATERIAL.METAL;
             break;
         } else if (answer.isLike("glass")) {
-            material = MATERIAL_GLASS;
+            material = MATERIAL.GLASS;
             break;
         } else if (answer.isLike("silicon")) {
-            material = MATERIAL_SILICON;
+            material = MATERIAL.SILICON;
             break;
         } else {
             sendVirtualAssistantMessage('Is it made out of glass, metal or silicon?');

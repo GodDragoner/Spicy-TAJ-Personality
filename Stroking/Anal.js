@@ -19,8 +19,8 @@ function startAnal(bpm, duration) {
 }
 
 function getInitialBPM() {
-    let result = Math.max(30, Math.ceil(getVar(VARIABLE_ASS_LEVEL)*2.5) + initialBPMIncrease);
-    initialBPMIncrease += randomInteger(5, Math.max(5, Math.floor(getVar(VARIABLE_ASS_LEVEL)/2)));
+    let result = Math.max(30, Math.ceil(getVar(VARIABLE.ASS_LEVEL)*2.5) + initialBPMIncrease);
+    initialBPMIncrease += randomInteger(5, Math.max(5, Math.floor(getVar(VARIABLE.ASS_LEVEL)/2)));
     return Math.max(result, MAX_ANAL_BPM);
 }
 

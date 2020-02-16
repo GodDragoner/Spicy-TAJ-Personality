@@ -2,14 +2,14 @@
 
 {
     //End session
-    while (!getDate(VARIABLE_CURRENT_SESSION_DATE).clone().addMinute(getVar(VARIABLE_DEVOTION) + getVar(VARIABLE_PROLONGED_SESSION_TIME, 0)).hasPassed()) {
+    while (!getDate(VARIABLE.CURRENT_SESSION_DATE).clone().addMinute(getVar(VARIABLE.DEVOTION) + getVar(VARIABLE.PROLONGED_SESSION_TIME, 0)).hasPassed()) {
 
         //Apply random toys
         interactWithRandomToys();
 
         //TODO: punishment distraction
 
-        let strokeFrequency = getVar(VARIABLE_STROKE_MODULE_PAUSE_FREQUENCY, 0);
+        let strokeFrequency = getVar(VARIABLE.STROKE_MODULE_PAUSE_FREQUENCY, 0);
 
         let minTimePassed = 0;
 
@@ -18,10 +18,10 @@
             const mood = getMood();
             const strictness = getStrictnessForCharacter();
 
-            minTimePassed = getVar(VARIABLE_DEVOTION)/Math.min(4, Math.max(1, 5 - strictness - mood - 1));
+            minTimePassed = getVar(VARIABLE.DEVOTION)/Math.min(4, Math.max(1, 5 - strictness - mood - 1));
         } else {
             //Other frequency
-            getVar(VARIABLE_DEVOTION)/(strokeFrequency + 1);
+            getVar(VARIABLE.DEVOTION)/(strokeFrequency + 1);
         }
 
         sendDebugMessage('Min time between stroking passed: ' + minTimePassed);
@@ -100,11 +100,11 @@
         //Now apply the changes
         teaseModuleChance += teaseModuleAdditions[index];
 
-        if (getVar(VARIABLE_PUNISHMENT_POINTS) >= 250) {
+        if (getVar(VARIABLE.PUNISHMENT_POINTS) >= 250) {
             teaseModuleChance -= 10;
         }
 
-        if (getVar(VARIABLE_ANGER) > 25) {
+        if (getVar(VARIABLE.ANGER) > 25) {
             teaseModuleChance -= 10;
         }
 
@@ -150,7 +150,7 @@
     }
 
     //Maybe prolong session if we haven't already
-    if(wouldLikeToProlongSession() && !isVar(VARIABLE_PROLONGED_SESSION_TIME)) {
+    if(wouldLikeToProlongSession() && !isVar(VARIABLE.PROLONGED_SESSION_TIME)) {
         //QUALITY: More diverse chat
         sendMessage('Looks like our time is up %SlaveName% %EmoteSad%');
         sendMessage('I am feeling like still playing for a bit though %Grin%');
@@ -158,7 +158,7 @@
             sendMessage('%Good%');
             changeMeritLow(false);
             //Add another 10 to 20 minutes
-            setTempVar(VARIABLE_PROLONGED_SESSION_TIME, randomInteger(10, 20));
+            setTempVar(VARIABLE.PROLONGED_SESSION_TIME, randomInteger(10, 20));
             run("Session/Modules/DecideModule.js");
         } else {
             sendMessage('I can understand that you might have something to attend to');

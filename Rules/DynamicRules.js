@@ -411,11 +411,11 @@ let RULE_DOMME_KEYHOLDER;
 
     rule.canBeActivated = function () {
         //No cage, partner is keyholder, chastity level below 30 or training is still active
-        if(!hasChastityCage() || getVar(VARIABLE_PARTNER_IS_KEYHOLDER, false) || getVar(VARIABLE_CHASTITY_LEVEL, 0) < 30 || getVar(VARIABLE_CHASTITY_TRAINING, false)) {
+        if(!hasChastityCage() || getVar(VARIABLE.PARTNER_IS_KEYHOLDER, false) || getVar(VARIABLE.CHASTITY_LEVEL, 0) < 30 || getVar(VARIABLE.CHASTITY_TRAINING, false)) {
             return false;
         }
 
-        return !isVar(VARIABLE_ASKED_FOR_KEYHOLDER) || getVar(VARIABLE_ASKED_FOR_KEYHOLDER).addDay(7).hasPassed();
+        return !isVar(VARIABLE.ASKED_FOR_KEYHOLDER) || getVar(VARIABLE.ASKED_FOR_KEYHOLDER).addDay(7).hasPassed();
     };
 
     rule.sendIntroduction = function () {
@@ -482,7 +482,7 @@ function getRandomNewRule(permanent = true) {
 
 function shouldIntroduceNewRule(rule) {
     //No rules within the first 2 sessions. Get to know slave first
-    if(!rule.canBeActivated() || getVar(VARIABLE_SESSION_COUNTER, 0) < 3) {
+    if(!rule.canBeActivated() || getVar(VARIABLE.SESSION_COUNTER, 0) < 3) {
         sendDebugMessage('Rule ' + rule + ' cannot be activated or too few sessions');
         return false;
     }
@@ -490,13 +490,13 @@ function shouldIntroduceNewRule(rule) {
     //After 12 hours this is 1 and before 0 so no two new rules in the same session
     let daysPassed = 10;
 
-    if(isVar(VARIABLE_LAST_RULE_PASSED)) {
-        daysPassed = millisToTimeUnit(getMillisSinecDate(getVar(VARIABLE_LAST_RULE_PASSED), TIME_UNIT_DAYS, 0));
+    if(isVar(VARIABLE.LAST_RULE_PASSED)) {
+        daysPassed = millisToTimeUnit(getMillisSinecDate(getVar(VARIABLE.LAST_RULE_PASSED), TIME_UNIT_DAYS, 0));
     }
 
 
     sendDebugMessage('Calculating rule passed chance with last rule passed ' + daysPassed + ' days ago');
-    setDate(VARIABLE_LAST_RULE_PASSED);
+    setDate(VARIABLE.LAST_RULE_PASSED);
 
     return isChance(daysPassed*10);
 }

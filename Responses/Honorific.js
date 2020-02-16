@@ -2,7 +2,7 @@ addResponseRegex("yes", "no", "thanks", "thank you");
 setResponseIgnoreDisabled(true);
 
 function honorificResponse(message) {
-    if(!getVar(VARIABLE_CURRENT_SESSION_ACTIVE)) {
+    if(!getVar(VARIABLE.CURRENT_SESSION_ACTIVE)) {
         return false;
     }
 

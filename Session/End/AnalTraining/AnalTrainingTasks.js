@@ -11,7 +11,7 @@ const analTasks = [];
         },
 
         isApplicable: function () {
-            return getVar(VARIABLE_ASS_LEVEL) >= this.minLevel;
+            return getVar(VARIABLE.ASS_LEVEL) >= this.minLevel;
         },
     };
     analTasks.push(analTask);
@@ -24,7 +24,7 @@ const analTasks = [];
         },
 
         isApplicable: function () {
-            return getVar(VARIABLE_ASS_LEVEL) >= this.minLevel;
+            return getVar(VARIABLE.ASS_LEVEL) >= this.minLevel;
         },
     };
     analTasks.push(analTask);
@@ -35,9 +35,9 @@ const analTasks = [];
         sendInstructions: function () {
             let walkDuration = randomInteger(5, 10);
 
-            if (getVar(VARIABLE_ASS_LEVEL) >= 20) {
+            if (getVar(VARIABLE.ASS_LEVEL) >= 20) {
                 walkDuration = randomInteger(15, 20);
-            } else if (getVar(VARIABLE_ASS_LEVEL) >= 10) {
+            } else if (getVar(VARIABLE.ASS_LEVEL) >= 10) {
                 walkDuration = randomInteger(10, 15);
             }
 
@@ -48,7 +48,7 @@ const analTasks = [];
         },
 
         isApplicable: function () {
-            return getVar(VARIABLE_ASS_LEVEL) >= this.minLevel;
+            return getVar(VARIABLE.ASS_LEVEL) >= this.minLevel;
         },
     };
     analTasks.push(analTask);
@@ -61,7 +61,7 @@ const analTasks = [];
         },
 
         isApplicable: function () {
-            return getVar(VARIABLE_ASS_LEVEL) >= this.minLevel;
+            return getVar(VARIABLE.ASS_LEVEL) >= this.minLevel;
         },
     };
     analTasks.push(analTask);
@@ -74,7 +74,7 @@ const analTasks = [];
         },
 
         isApplicable: function () {
-            return getVar(VARIABLE_ASS_LEVEL) >= this.minLevel;
+            return getVar(VARIABLE.ASS_LEVEL) >= this.minLevel;
         },
     };
     analTasks.push(analTask);
@@ -87,7 +87,7 @@ const analTasks = [];
         },
 
         isApplicable: function () {
-            return getVar(VARIABLE_ASS_LEVEL) >= this.minLevel;
+            return getVar(VARIABLE.ASS_LEVEL) >= this.minLevel;
         },
     };
     analTasks.push(analTask);
@@ -114,7 +114,7 @@ const analTasks = [];
         },
 
         isApplicable: function () {
-            return getVar(VARIABLE_ASS_LEVEL) >= this.minLevel && hasVibrator();
+            return getVar(VARIABLE.ASS_LEVEL) >= this.minLevel && hasVibrator();
         },
     };
     analTasks.push(analTask);
@@ -133,7 +133,7 @@ function getRandomAnalTask(array) {
 }
 
 function getDildoTaskDurationMinutes() {
-    return randomInteger(getVar(VARIABLE_ASS_LEVEL), getVar(VARIABLE_ASS_LEVEL) + 5);
+    return randomInteger(getVar(VARIABLE.ASS_LEVEL), getVar(VARIABLE.ASS_LEVEL) + 5);
 }
 
 

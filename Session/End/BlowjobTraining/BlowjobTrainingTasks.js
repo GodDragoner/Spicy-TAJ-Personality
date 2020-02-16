@@ -13,7 +13,7 @@ const blowjobTasks = [];
         },
 
         isApplicable: function () {
-            return getVar(VARIABLE_BLOWJOB_LEVEL) >= this.minLevel;
+            return getVar(VARIABLE.BLOWJOB_LEVEL) >= this.minLevel;
         },
     };
     blowjobTasks.push(blowjobTask);
@@ -28,7 +28,7 @@ const blowjobTasks = [];
         },
 
         isApplicable: function () {
-            return getVar(VARIABLE_BLOWJOB_LEVEL) >= this.minLevel;
+            return getVar(VARIABLE.BLOWJOB_LEVEL) >= this.minLevel;
         },
     };
     blowjobTasks.push(blowjobTask);
@@ -38,13 +38,13 @@ const blowjobTasks = [];
 
         sendInstructions: function () {
             sendMessage("I want you to blow your " + getDildo(true).name + " for " + getBlowjobTaskDurationMinutes() + " minutes today");
-            sendMessage('However I want you to give it at least ' + randomInteger(getVar(VARIABLE_BLOWJOB_LEVEL), getVar(VARIABLE_BLOWJOB_LEVEL) + 5) + ' deepthroats during the blowjob');
+            sendMessage('However I want you to give it at least ' + randomInteger(getVar(VARIABLE.BLOWJOB_LEVEL), getVar(VARIABLE.BLOWJOB_LEVEL) + 5) + ' deepthroats during the blowjob');
 
             sendBlowjobTrainingPosition();
         },
 
         isApplicable: function () {
-            return getVar(VARIABLE_BLOWJOB_LEVEL) >= this.minLevel;
+            return getVar(VARIABLE.BLOWJOB_LEVEL) >= this.minLevel;
         },
     };
     blowjobTasks.push(blowjobTask);
@@ -54,14 +54,14 @@ const blowjobTasks = [];
 
         sendInstructions: function () {
             sendMessage("I want you to blow your " + getDildo(true).name + " for " + getBlowjobTaskDurationMinutes() + " minutes today");
-            sendMessage('However I want you to give it a deepthroat every ' + randomInteger(60 - getVar(VARIABLE_BLOWJOB_LEVEL), 50 - getVar(VARIABLE_BLOWJOB_LEVEL)) + ' seconds during the blowjob');
+            sendMessage('However I want you to give it a deepthroat every ' + randomInteger(60 - getVar(VARIABLE.BLOWJOB_LEVEL), 50 - getVar(VARIABLE.BLOWJOB_LEVEL)) + ' seconds during the blowjob');
             sendMessage('I want you to hold that deepthroat for ' + getBlowjobTaskDeepthroatHoldDuration() + ' seconds');
 
             sendBlowjobTrainingPosition();
         },
 
         isApplicable: function () {
-            return getVar(VARIABLE_BLOWJOB_LEVEL) >= this.minLevel;
+            return getVar(VARIABLE.BLOWJOB_LEVEL) >= this.minLevel;
         },
     };
     blowjobTasks.push(blowjobTask);
@@ -71,7 +71,7 @@ const blowjobTasks = [];
 
         sendInstructions: function () {
             sendMessage("I want you to blow your " + getDildo(true).name + " for " + getBlowjobTaskDurationMinutes() + " minutes today");
-            sendMessage('However I want you to give it a deepthroat every ' + randomInteger(60 - getVar(VARIABLE_BLOWJOB_LEVEL), 50 - getVar(VARIABLE_BLOWJOB_LEVEL)) + ' seconds during the blowjob');
+            sendMessage('However I want you to give it a deepthroat every ' + randomInteger(60 - getVar(VARIABLE.BLOWJOB_LEVEL), 50 - getVar(VARIABLE.BLOWJOB_LEVEL)) + ' seconds during the blowjob');
             sendMessage('I want you to hold that deepthroat for ' + getBlowjobTaskDeepthroatHoldDuration() + ' seconds');
             sendBlowjobTrainingPosition();
 
@@ -79,7 +79,7 @@ const blowjobTasks = [];
         },
 
         isApplicable: function () {
-            return getVar(VARIABLE_BLOWJOB_LEVEL) >= this.minLevel;
+            return getVar(VARIABLE.BLOWJOB_LEVEL) >= this.minLevel;
         },
     };
     blowjobTasks.push(blowjobTask);
@@ -99,7 +99,7 @@ const blowjobTasks = [];
         },
 
         isApplicable: function () {
-            return getVar(VARIABLE_BLOWJOB_LEVEL) >= this.minLevel;
+            return getVar(VARIABLE.BLOWJOB_LEVEL) >= this.minLevel;
         },
     };
     blowjobTasks.push(blowjobTask);
@@ -109,7 +109,7 @@ const blowjobTasks = [];
 
         sendInstructions: function () {
             sendMessage("I want you to blow your " + getDildo(true).name + " for " + getBlowjobTaskDurationMinutes() + " minutes today");
-            sendMessage('However I want you to give it a deepthroat every ' + randomInteger(60 - getVar(VARIABLE_BLOWJOB_LEVEL), 50 - getVar(VARIABLE_BLOWJOB_LEVEL)) + ' seconds during the blowjob');
+            sendMessage('However I want you to give it a deepthroat every ' + randomInteger(60 - getVar(VARIABLE.BLOWJOB_LEVEL), 50 - getVar(VARIABLE.BLOWJOB_LEVEL)) + ' seconds during the blowjob');
             sendMessage('I want you to hold that deepthroat for ' + getBlowjobTaskDeepthroatHoldDuration() + ' seconds');
             sendMessage('During that deepthroat I want you to rotate the dildo in your throat by 360 degrees ' + randomInteger(3, 5) + ' times');
 
@@ -117,7 +117,7 @@ const blowjobTasks = [];
         },
 
         isApplicable: function () {
-            return getVar(VARIABLE_BLOWJOB_LEVEL) >= this.minLevel;
+            return getVar(VARIABLE.BLOWJOB_LEVEL) >= this.minLevel;
         },
     };
     blowjobTasks.push(blowjobTask);
@@ -128,7 +128,7 @@ const blowjobTasks = [];
 
         sendInstructions: function () {
             sendMessage("I want you to blow your " + getDildo(true).name + " for " + getBlowjobTaskDurationMinutes() + " minutes today");
-            sendMessage('However I want you to give it ' + randomInteger(5, 10) + ' deepthroats every ' + randomInteger(60 - getVar(VARIABLE_BLOWJOB_LEVEL), 50 - getVar(VARIABLE_BLOWJOB_LEVEL)) + ' seconds during the blowjob');
+            sendMessage('However I want you to give it ' + randomInteger(5, 10) + ' deepthroats every ' + randomInteger(60 - getVar(VARIABLE.BLOWJOB_LEVEL), 50 - getVar(VARIABLE.BLOWJOB_LEVEL)) + ' seconds during the blowjob');
             sendMessage('I want you to hold the last deepthroat of each cycle for ' + getBlowjobTaskDeepthroatHoldDuration() + ' seconds');
             sendMessage('During that last deepthroat I want you to rotate the dildo in your throat by 360 degrees ' + randomInteger(3, 5) + ' times');
 
@@ -136,7 +136,7 @@ const blowjobTasks = [];
         },
 
         isApplicable: function () {
-            return getVar(VARIABLE_BLOWJOB_LEVEL) >= this.minLevel;
+            return getVar(VARIABLE.BLOWJOB_LEVEL) >= this.minLevel;
         },
     };
     blowjobTasks.push(blowjobTask);
@@ -145,7 +145,7 @@ const blowjobTasks = [];
 function sendBlowjobTrainingPosition() {
     let position = 0;
 
-    if(getVar(VARIABLE_BLOWJOB_LEVEL) > 10) {
+    if(getVar(VARIABLE.BLOWJOB_LEVEL) > 10) {
         position = randomInteger(0, 2);
     }
 
@@ -189,9 +189,9 @@ function getRandomBlowjobTask(array) {
 }
 
 function getBlowjobTaskDeepthroatHoldDuration() {
-    return randomInteger(Math.max(2, getVar(VARIABLE_BLOWJOB_LEVEL)/2), Math.max(2, Math.ceil(getVar(VARIABLE_BLOWJOB_LEVEL)/1.5)));
+    return randomInteger(Math.max(2, getVar(VARIABLE.BLOWJOB_LEVEL)/2), Math.max(2, Math.ceil(getVar(VARIABLE.BLOWJOB_LEVEL)/1.5)));
 }
 
 function getBlowjobTaskDurationMinutes() {
-    return randomInteger(getVar(VARIABLE_BLOWJOB_LEVEL), getVar(VARIABLE_BLOWJOB_LEVEL) + 5);
+    return randomInteger(getVar(VARIABLE.BLOWJOB_LEVEL), getVar(VARIABLE.BLOWJOB_LEVEL) + 5);
 }

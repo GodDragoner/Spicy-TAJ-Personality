@@ -45,11 +45,11 @@ function chooseChore() {
 }
 
 function getTimeForChores() {
-    let weeklyTimeSpend = getVar(VARIABLE_WEEKLY_CHORES_TIME, 0);
+    let weeklyTimeSpend = getVar(VARIABLE.WEEKLY_CHORES_TIME, 0);
     let todo = 0;
 
     if(isFullTime()) {
-        todo = getVar(VARIABLE_MIN_WEEKLY_CHORE_TIME, 0) - weeklyTimeSpend;
+        todo = getVar(VARIABLE.MIN_WEEKLY_CHORE_TIME, 0) - weeklyTimeSpend;
     } else {
         todo = 60*3 - weeklyTimeSpend;
     }
@@ -83,7 +83,7 @@ function runChoreIntroduction() {
     sendVirtualAssistantMessage('This is the first time you\'re reporting for chores');
 
     if (isFullTime()) {
-        sendVirtualAssistantMessage('Since you serve full time you are required to do chores for at least ' + getVar(VARIABLE_MIN_WEEKLY_CHORE_TIME) + ' minutes each week');
+        sendVirtualAssistantMessage('Since you serve full time you are required to do chores for at least ' + getVar(VARIABLE.MIN_WEEKLY_CHORE_TIME) + ' minutes each week');
     } else {
         sendVirtualAssistantMessage('Since you serve as part time it isn\'t mandatory for you to complete chores');
         sendVirtualAssistantMessage('However your domme is very pleased if you do so');
@@ -100,7 +100,7 @@ function runChoreIntroduction() {
 
     if (createYesOrNoQuestion()) {
         sendVirtualAssistantMessage('Great. One more chore for you means it is less boring for all of us %Grin%');
-        setVar(VARIABLE_CHORE_FINANCE, true);
+        setVar(VARIABLE.CHORE_FINANCE, true);
     } else {
         sendVirtualAssistantMessage('Okay, I will remove this from the list then...')
     }
@@ -113,11 +113,11 @@ function runChoreIntroduction() {
 
     while (true) {
         if (answer.isLike('apartment')) {
-            setVar(VARIABLE_HOME_TYPE, HOME_APARTMENT_TYPE);
+            setVar(VARIABLE.HOME_TYPE, HOME_APARTMENT_TYPE);
             sendVirtualAssistantMessage('I see...');
             break;
         } else if (answer.isLike('house')) {
-            setVar(VARIABLE_HOME_TYPE, HOME_HOUSE_TYPE);
+            setVar(VARIABLE.HOME_TYPE, HOME_HOUSE_TYPE);
             sendVirtualAssistantMessage('%Good%');
             break;
         } else {
@@ -131,7 +131,7 @@ function runChoreIntroduction() {
 
     if (createYesOrNoQuestion()) {
         sendVirtualAssistantMessage('Keeping the kitchen clean is very important so you are gonna do it a lot %Grin%');
-        setVar(VARIABLE_CHORE_KITCHEN, true);
+        setVar(VARIABLE.CHORE_KITCHEN, true);
     } else {
         sendVirtualAssistantMessage('%EmoteSad%');
     }
@@ -140,7 +140,7 @@ function runChoreIntroduction() {
 
     if (createYesOrNoQuestion()) {
         sendVirtualAssistantMessage('A bathroom always has to be clean, doesn\'t it? %EmoteHappy%');
-        setVar(VARIABLE_CHORE_BATHROOM, true);
+        setVar(VARIABLE.CHORE_BATHROOM, true);
     } else {
         sendVirtualAssistantMessage('%EmoteSad%');
     }
@@ -227,12 +227,12 @@ function runChoreIntroduction() {
                 sendVirtualAssistantMessage('Please only give me a number in the range of 1 - 10...');
                 answer.loop();
             } else {
-                setVar(VARIABLE_KINKY_CHORE_CHANCE, frequency);
+                setVar(VARIABLE.KINKY_CHORE_CHANCE, frequency);
                 break;
             }
         } else if(answer.isLike('you')) {
             //Assistant choose
-            setVar(VARIABLE_KINKY_CHORE_CHANCE, 11);
+            setVar(VARIABLE.KINKY_CHORE_CHANCE, 11);
             sendVirtualAssistantMessage('This is gonna be much fun for me %Grin%');
             break;
         } else {
@@ -243,12 +243,12 @@ function runChoreIntroduction() {
 
     sendVirtualAssistantMessage('I think I know everything I need to know for now');
     sendVirtualAssistantMessage('We can get started %Grin%');
-    setVar(VARIABLE_TOTAL_CHORES_DONE, 0);
+    setVar(VARIABLE.TOTAL_CHORES_DONE, 0);
 }
 
 
 function sendKinkyChoreInstructions(choreType) {
-    let kinkyChance = getVar(VARIABLE_KINKY_CHORE_CHANCE);
+    let kinkyChance = getVar(VARIABLE.KINKY_CHORE_CHANCE);
 
     //Let the dom choose mode
     if(kinkyChance == 11) {

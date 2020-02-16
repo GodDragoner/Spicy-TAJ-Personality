@@ -149,14 +149,14 @@ function createRoom(name, size) {
             let minutesPassed = Math.round(secondsPassed/60);
 
             //Weekly chores done
-            incrementVar(VARIABLE_WEEKLY_CHORES_DONE, 1);
+            incrementVar(VARIABLE.WEEKLY_CHORES_DONE, 1);
 
-            incrementVar(VARIABLE_TOTAL_CHORES_DONE, 1);
+            incrementVar(VARIABLE.TOTAL_CHORES_DONE, 1);
 
             //Time in minutes spend doing chores
-            incrementVar(VARIABLE_WEEKLY_CHORES_TIME, minutesPassed);
+            incrementVar(VARIABLE.WEEKLY_CHORES_TIME, minutesPassed);
 
-            incrementVar(VARIABLE_TOTAL_CHORES_TIME, minutesPassed);
+            incrementVar(VARIABLE.TOTAL_CHORES_TIME, minutesPassed);
 
             //Set last done date
 
@@ -184,8 +184,8 @@ function createRoom(name, size) {
                 }
 
                 //Reset warnings
-                if (isVar(VARIABLE_CHORE_WARNINGS)) {
-                    setVar(VARIABLE_CHORE_WARNINGS, 0);
+                if (isVar(VARIABLE.CHORE_WARNINGS)) {
+                    setVar(VARIABLE.CHORE_WARNINGS, 0);
                 }
             }
             //Too fast
@@ -212,7 +212,7 @@ function createRoom(name, size) {
                 sendMessageBasedOnSender('I expect that you\'re always thorough when cleaning');
 
                 if (!this.askForAdjustTime(choreType, secondsPassed)) {
-                    if (getVar(VARIABLE_CHORE_WARNINGS, 0) > 0) {
+                    if (getVar(VARIABLE.CHORE_WARNINGS, 0) > 0) {
                         sendMessageBasedOnSender('I gave you a warning last time!');
                         sendMessageBasedOnSender('%HaveToPunish%');
                         sendMessageBasedOnSender('I have assigned you punishment points');
@@ -220,7 +220,7 @@ function createRoom(name, size) {
                     } else {
                         sendMessageBasedOnSender('I\'m giving you a warning this time %SlaveName%');
                         sendMessageBasedOnSender('Don\'t disappoint me again!');
-                        incrementVar(VARIABLE_CHORE_WARNINGS, 1);
+                        incrementVar(VARIABLE.CHORE_WARNINGS, 1);
                     }
                 }
 
@@ -256,8 +256,8 @@ function createRoom(name, size) {
 
                 //Onl
                 if (!adjustTime) {
-                    if (getVar(VARIABLE_CHORE_WARNINGS, 0) > 0 || punish) {
-                        if (getVar(VARIABLE_CHORE_WARNINGS, 0) > 0) {
+                    if (getVar(VARIABLE.CHORE_WARNINGS, 0) > 0 || punish) {
+                        if (getVar(VARIABLE.CHORE_WARNINGS, 0) > 0) {
                             sendMessageBasedOnSender('I gave you a warning last time!');
                         }
 
@@ -267,7 +267,7 @@ function createRoom(name, size) {
                     } else {
                         sendMessageBasedOnSender('I\'m giving you a warning this time %SlaveName%');
                         sendMessageBasedOnSender('Don\'t disappoint me again!');
-                        incrementVar(VARIABLE_CHORE_WARNINGS, 1);
+                        incrementVar(VARIABLE.CHORE_WARNINGS, 1);
                     }
                 }
             }

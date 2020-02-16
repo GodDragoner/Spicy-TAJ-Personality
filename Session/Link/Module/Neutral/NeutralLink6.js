@@ -1,7 +1,7 @@
 {
     if (tryRunLinkFetchId()) {
         //TODO: Never kneel setting?
-        if(!getVar(VARIABLE_IS_KNEELING, false)) {
+        if(!getVar(VARIABLE.IS_KNEELING, false)) {
             startKneeling();
         }
 

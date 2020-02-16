@@ -1,5 +1,5 @@
 {
-    if(!isVar(VARIABLE_TOTAL_CHORES_DONE)) {
+    if(!isVar(VARIABLE.TOTAL_CHORES_DONE)) {
         runChoreIntroduction();
     }
 
@@ -53,8 +53,8 @@
             break;
         } else if(lobbyAnswer.isLike('info')) {
             //lobbyAnswer.clearOptions();
-            sendVirtualAssistantMessage('You have spend ' + getVar(VARIABLE_WEEKLY_CHORES_TIME) + ' minutes this week doing ' + getVar(VARIABLE_WEEKLY_CHORES_DONE) + ' chores');
-            sendVirtualAssistantMessage('In total you have spend ' + getVar(VARIABLE_TOTAL_CHORES_TIME) + ' minutes doing a total of ' + getVar(VARIABLE_TOTAL_CHORES_DONE) + ' chores');
+            sendVirtualAssistantMessage('You have spend ' + getVar(VARIABLE.WEEKLY_CHORES_TIME) + ' minutes this week doing ' + getVar(VARIABLE.WEEKLY_CHORES_DONE) + ' chores');
+            sendVirtualAssistantMessage('In total you have spend ' + getVar(VARIABLE.TOTAL_CHORES_TIME) + ' minutes doing a total of ' + getVar(VARIABLE.TOTAL_CHORES_DONE) + ' chores');
             sendVirtualAssistantMessage('Anything else I can do for you?', 0);
             lobbyAnswer.loop();
         } else {

@@ -117,7 +117,7 @@ function doSpankingPunishment(multiplier = 1) {
         sendMessage(random('I want you to count out loud!', 'I want you to count along', 'I want you to count with me'));
     }
 
-    let maxLoops = Math.max(10, Math.min(100, getVar(VARIABLE_SUB_PAIN_TOLERANCE) * multiplier * 3));
+    let maxLoops = Math.max(10, Math.min(100, getVar(VARIABLE.SUB_PAIN_TOLERANCE) * multiplier * 3));
 
     while (maxLoops > 0) {
         maxLoops--;
@@ -138,7 +138,7 @@ function doSpankingPunishment(multiplier = 1) {
 
 
 function getEarlyPunishmentExitChance() {
-    let earlyExitChance = 60 - getVar(VARIABLE_SUB_PAIN_TOLERANCE) * 2 - (feelsLikePunishingSlave() ? 30 : 0);
+    let earlyExitChance = 60 - getVar(VARIABLE.SUB_PAIN_TOLERANCE) * 2 - (feelsLikePunishingSlave() ? 30 : 0);
     return earlyExitChance;
 }
 

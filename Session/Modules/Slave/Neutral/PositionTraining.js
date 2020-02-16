@@ -2,9 +2,9 @@
 
     //TOADD: Add toy usage
     if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_UNKNOWN)) {
-        if (!getVar(VARIABLE_POSITION_TRAINING_STARTED, false)) {
-            setVar(VARIABLE_POSITION_LEVEL, 1);
-            setVar(VARIABLE_POSITION_TRAINING_STARTED, true);
+        if (!getVar(VARIABLE.POSITION_TRAINING_STARTED, false)) {
+            setVar(VARIABLE.POSITION_LEVEL, 1);
+            setVar(VARIABLE.POSITION_TRAINING_STARTED, true);
 
             sendMessage("Now %SlaveName%");
             sendMessage("I consider it rather important that you know your positions by heart.");
@@ -22,7 +22,7 @@
             }
         }
 
-        const positionLevel = getVar(VARIABLE_POSITION_LEVEL, 1);
+        const positionLevel = getVar(VARIABLE.POSITION_LEVEL, 1);
 
         if (positionLevel <= 15) {
             simplePositionTrainingSelection(randomInteger(1, 3));
@@ -410,7 +410,7 @@ function simplePositionTrainingSelection(totalPositions) {
 }
 
 function positionTrainingTimer() {
-    let positionLevel = getVar(VARIABLE_POSITION_LEVEL);
+    let positionLevel = getVar(VARIABLE.POSITION_LEVEL);
 
     if (positionLevel <= 15) {
         sleep(randomInteger(120, 240));
@@ -477,7 +477,7 @@ function positionTestPunish(){
     sendMessage("I've awarded you punishment points..");
     addPunishmentPoints(randomInteger(50,150), PUNISHMENT_REASON.POOR_BEHAVIOUR);
     sendMessage("Next time I expect more from you!");
-    setVar(VARIABLE_POSITION_LEVEL, positionLevel - 1);
+    setVar(VARIABLE.POSITION_LEVEL, positionLevel - 1);
 }
 
 function positionTestReward(){
@@ -493,7 +493,7 @@ function positionTestReward(){
         sendMessage("Since you had 2 mistakes afterall I'm not giving you too much gold");
         rewardGoldLow();
     }
-    setVar(VARIABLE_POSITION_LEVEL, positionLevel + 1);
+    setVar(VARIABLE.POSITION_LEVEL, positionLevel + 1);
     sendMessage("I've transferred the gold");
     sendMessage("And you now have " + getGold() + " gold");
     sendMessage("Brave %EmoteHappy%");
@@ -592,8 +592,8 @@ function positionTrainingEnd() {
     sendMessage(random("We're at the end of your position training", "That was it", "We're at the end", "Well that was it") + " %SlaveName%");
     sendAsMuchFun();
     changeMeritMedium(false);
-    if (getVar(VARIABLE_POSITION_LEVEL) < 50) {
-        incrementVar(VARIABLE_POSITION_LEVEL, 1);
+    if (getVar(VARIABLE.POSITION_LEVEL) < 50) {
+        incrementVar(VARIABLE.POSITION_LEVEL, 1);
     }
 }
 
@@ -1058,7 +1058,7 @@ function positionCheckBalance() {
         } else {
             sendMessage("That many!");
             sendMessage("Not good enough %SlaveName%");
-            setVar(VARIABLE_POSITION_LEVEL, positionLevel - 1);
+            setVar(VARIABLE.POSITION_LEVEL, positionLevel - 1);
             sendMessage("I'm disappointed..");
             changeMeritMedium(true);
             return;
@@ -1086,7 +1086,7 @@ function checkPositionToys() {
 function complicatedPositionTrainingTimer() {
     let personalityStrictness = getVar("personalityStrictness", 0);
 
-    let positionLevel = getVar(VARIABLE_POSITION_LEVEL);
+    let positionLevel = getVar(VARIABLE.POSITION_LEVEL);
 
     if (positionLevel <= 15) {
         switch(personalityStrictness) {

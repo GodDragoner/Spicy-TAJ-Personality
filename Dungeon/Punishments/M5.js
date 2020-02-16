@@ -1,6 +1,6 @@
 
 
-switch(getVar(VARIABLE_PUNISHMENT_PUNISHER)) {
+switch(getVar(VARIABLE.PUNISHMENT_PUNISHER)) {
 
 	case 1 :
 	// @Goto(Hello)
@@ -27,7 +27,7 @@ switch(getVar(VARIABLE_PUNISHMENT_PUNISHER)) {
 sendMessage("Well "+ random("hello","hi")+ " %SlaveName%");// #DT4 @Goto(Start)
 
 
-switch(getVar(VARIABLE_PUNISHMENT_PUNISHER)){
+switch(getVar(VARIABLE.PUNISHMENT_PUNISHER)){
 	case 1 :
 	//(Domme)
 	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%");// #DT4
@@ -172,7 +172,7 @@ sendMessage("%Grin%");
  if (BallCrushingCount<BallCrushing) {
 	 sendMessage("hmm and now just a little matter of suffering for 2 minutes"); wait(120);
 	sendMessage("Well to little surprise you failed.. "); //#DT4 
-	setVar(VARIABLE_GOLD, getVar(VARIABLE_GOLD)-25);
+	setVar(VARIABLE.GOLD, getVar(VARIABLE.GOLD)-25);
 	//@TempFlag(PunishmentComplete) 
 	//@TempFlag(PunishmentFailed)
 	setVar("PunishmentFailed", true);

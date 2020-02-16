@@ -10,7 +10,7 @@
 
             while (true) {
                 if (answer.isLike('clean')) {
-                    if (isVar(VARIABLE_LAST_CHASTITY_CLEAN) && !getDate(VARIABLE_LAST_CHASTITY_CLEAN).addHour(6).hasPassed()) {
+                    if (isVar(VARIABLE.LAST_CHASTITY_CLEAN) && !getDate(VARIABLE.LAST_CHASTITY_CLEAN).addHour(6).hasPassed()) {
                         answer.clearOptions();
 
                         sendVirtualAssistantMessage('You have already cleaned your %ChastityCage% in the last 6 hours');
@@ -25,8 +25,8 @@
                         sendVirtualAssistantMessage('Now go ahead and clean yourself and then return to me');
                         sendVirtualAssistantMessage('I will wait for you');
 
-                        setDate(VARIABLE_LAST_CHASTITY_CLEAN);
-                        setVar(VARIABLE_WAITING_FOR_CHASTITY_KEY_RETURN, true);
+                        setDate(VARIABLE.LAST_CHASTITY_CLEAN);
+                        setVar(VARIABLE.WAITING_FOR_CHASTITY_KEY_RETURN, true);
                         waitForDoneVirtualAssistant(10000);
                         sendVirtualAssistantMessage('You\'re back!');
 
@@ -45,10 +45,10 @@
                         unlockChastityKey();
 
                         sendVirtualAssistantMessage('Now do whatever you want to do...');
-                        setVar(VARIABLE_CHASTITY_ON, false);
+                        setVar(VARIABLE.CHASTITY_ON, false);
                         sendVirtualAssistantMessage('Mind this has consequences!');
                         addPunishmentPoints(250, PUNISHMENT_REASON.BREAKING_CHASTITY);
-                        setVar(VARIABLE_WAITING_FOR_CHASTITY_KEY_RETURN, true);
+                        setVar(VARIABLE.WAITING_FOR_CHASTITY_KEY_RETURN, true);
                     } else {
                         sendVirtualAssistantMessage('%Good%');
                         sendVirtualAssistantMessage('You wouldn\'t want to suffer the consequences anyway %Grin%');
@@ -62,8 +62,8 @@
                     unlockChastityKey();
 
                     sendVirtualAssistantMessage('Now do whatever you want to do...');
-                    setVar(VARIABLE_CHASTITY_ON, false);
-                    setVar(VARIABLE_WAITING_FOR_CHASTITY_KEY_RETURN, true);
+                    setVar(VARIABLE.CHASTITY_ON, false);
+                    setVar(VARIABLE.WAITING_FOR_CHASTITY_KEY_RETURN, true);
                     break;
                 } else if (answer.isLike('other')) {
                     answer.clearOptions();
@@ -75,10 +75,10 @@
                         unlockChastityKey();
 
                         sendVirtualAssistantMessage('Now do whatever you want to do...');
-                        setVar(VARIABLE_CHASTITY_ON, false);
+                        setVar(VARIABLE.CHASTITY_ON, false);
                         sendVirtualAssistantMessage('Mind this has consequences!');
                         addPunishmentPoints(250, PUNISHMENT_REASON.BREAKING_CHASTITY);
-                        setVar(VARIABLE_WAITING_FOR_CHASTITY_KEY_RETURN, true);
+                        setVar(VARIABLE.WAITING_FOR_CHASTITY_KEY_RETURN, true);
                     } else {
                         sendVirtualAssistantMessage('%Good%');
                         sendVirtualAssistantMessage('You wouldn\'t want to suffer the consequences anyway %Grin%');
@@ -95,8 +95,8 @@
                     unlockChastityKey();
 
                     sendVirtualAssistantMessage('Now have fun with your sport activity and make sure to come back to me afterwards');
-                    setVar(VARIABLE_CHASTITY_ON, false);
-                    setVar(VARIABLE_WAITING_FOR_CHASTITY_KEY_RETURN, true);
+                    setVar(VARIABLE.CHASTITY_ON, false);
+                    setVar(VARIABLE.WAITING_FOR_CHASTITY_KEY_RETURN, true);
                 } else if (answer.isLike('public')) {
                     answer.clearOptions();
 
@@ -108,15 +108,15 @@
 
                         //QUALITY: Delve deeper into this issue
                         if (createYesOrNoQuestion()) {
-                            setVar(VARIABLE_AFRAID_OF_CHASTITY, true);
+                            setVar(VARIABLE.AFRAID_OF_CHASTITY, true);
                             sendVirtualAssistantMessage('Okay then %SlaveName%');
                             unlockChastityKey();
 
                             sendVirtualAssistantMessage('Now do whatever you want to do...');
-                            setVar(VARIABLE_CHASTITY_ON, false);
+                            setVar(VARIABLE.CHASTITY_ON, false);
                             sendVirtualAssistantMessage('Mind this has consequences!');
                             addPunishmentPoints(250, PUNISHMENT_REASON.BREAKING_CHASTITY);
-                            setVar(VARIABLE_WAITING_FOR_CHASTITY_KEY_RETURN, true);
+                            setVar(VARIABLE.WAITING_FOR_CHASTITY_KEY_RETURN, true);
                         } else {
                             sendVirtualAssistantMessage('%Good%');
                             sendVirtualAssistantMessage('You wouldn\'t want to suffer the consequences anyway %Grin%');

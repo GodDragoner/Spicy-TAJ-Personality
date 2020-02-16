@@ -1,7 +1,7 @@
 
 
 
-switch(getVar(VARIABLE_PUNISHMENT_PUNISHER)) {
+switch(getVar(VARIABLE.PUNISHMENT_PUNISHER)) {
 
 	case 1 :
 	// @Goto(Hello)
@@ -25,7 +25,7 @@ switch(getVar(VARIABLE_PUNISHMENT_PUNISHER)) {
 sendMessage("Well "+ random("hello","hi")+ " %SlaveName%");// #DT4 @Goto(Start)
 
 
-switch(getVar(VARIABLE_PUNISHMENT_PUNISHER)){
+switch(getVar(VARIABLE.PUNISHMENT_PUNISHER)){
 	case 1 :
 	//(Domme)
 	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%");// #DT4
@@ -317,15 +317,15 @@ switch (choice) {
 		switch(getVar("personalityStrictness")) {
 			case 1:
 			sendMessage("I've taken a small fee from you"); // #DT4
-			setVar(VARIABLE_GOLD, getVar(VARIABLE_GOLD)-15);
+			setVar(VARIABLE.GOLD, getVar(VARIABLE.GOLD)-15);
 			break;
 			case 2:
 			sendMessage("I've taken a small fee from you"); // #DT4
-			setVar(VARIABLE_GOLD, getVar(VARIABLE_GOLD)-25);
+			setVar(VARIABLE.GOLD, getVar(VARIABLE.GOLD)-25);
 			break;
 			case 3:
 			sendMessage("I've taken a fee from you"); // #DT4
-			setVar(VARIABLE_GOLD, getVar(VARIABLE_GOLD)-40);
+			setVar(VARIABLE.GOLD, getVar(VARIABLE.GOLD)-40);
 			break;
 
 		}

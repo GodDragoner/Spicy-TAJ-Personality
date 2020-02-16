@@ -1,7 +1,7 @@
 {
-    if (getVar(VARIABLE_POSITION_TRAINING_STARTED, false) == false) {
-        setVar(VARIABLE_POSITION_LEVEL, 1);
-        setVar(VARIABLE_POSITION_TRAINING_STARTED, "positionTrainingStarted");
+    if (getVar(VARIABLE.POSITION_TRAINING_STARTED, false) == false) {
+        setVar(VARIABLE.POSITION_LEVEL, 1);
+        setVar(VARIABLE.POSITION_TRAINING_STARTED, "positionTrainingStarted");
 
         sendMessage("Now %SlaveName%");
         sendMessage("I consider it rather important that you know your positions by heart.");
@@ -18,7 +18,7 @@
         }
     }
 
-    let position_level = getVar(VARIABLE_POSITION_LEVEL, 1);
+    let position_level = getVar(VARIABLE.POSITION_LEVEL, 1);
 
     if (position_level <= 15) {
         simplePositionTrainingSelection(1);
@@ -397,7 +397,7 @@ function simplePositionTrainingSelection(totalPositions) {
 }
 
 function positionTrainingTimer() {
-    // let position_level = getVar(VARIABLE_POSITION_LEVEL);
+    // let position_level = getVar(VARIABLE.POSITION_LEVEL);
     if (position_level <= 15) {
         sleep(randomInteger(120, 240));
         returnSlave();
@@ -495,9 +495,9 @@ function positionTrainingTestSelection() {
 function positionTestPunish() {
     sendMessage("I'm sorry %SlaveName% but that was your third wrong answer");
     sendMessage("I've awarded you punishment points..");
-    setVar(VARIABLE_PUNISHMENT_POINTS, getVar(VARIABLE_PUNISHMENT_POINTS + randomInteger(50, 150)));
+    setVar(VARIABLE.PUNISHMENT_POINTS, getVar(VARIABLE.PUNISHMENT_POINTS + randomInteger(50, 150)));
     sendMessage("Next time I expect more from you!");
-    setVar(VARIABLE_POSITION_LEVEL, position_level - 1);
+    setVar(VARIABLE.POSITION_LEVEL, position_level - 1);
 }
 
 function positionTestReward() {
@@ -513,7 +513,7 @@ function positionTestReward() {
         sendMessage("Since you had 2 mistakes afterall I'm not giving you too much gold");
         rewardGoldLow();
     }
-    setVar(VARIABLE_POSITION_LEVEL, position_level + 1);
+    setVar(VARIABLE.POSITION_LEVEL, position_level + 1);
     sendMessage("I've transferred the gold");
     sendMessage("And you now have " + getGold() + " gold");
     sendMessage("Brave %EmoteHappy%");
@@ -614,7 +614,7 @@ function positionTrainingEnd() {
 
     changeMeritMedium(false);
     if (position_level < 50) {
-        setVar(VARIABLE_POSITION_LEVEL, position_level + 1);
+        setVar(VARIABLE.POSITION_LEVEL, position_level + 1);
     }
 }
 
@@ -1079,7 +1079,7 @@ function positionCheckBalance() {
         } else {
             sendMessage("That many!");
             sendMessage("Not good enough %SlaveName%");
-            setVar(VARIABLE_POSITION_LEVEL = position_level - 1);
+            setVar(VARIABLE.POSITION_LEVEL = position_level - 1);
             sendMessage("I'm disappointed..");
             changeMeritMedium(true);
             return;

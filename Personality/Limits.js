@@ -145,8 +145,8 @@ function createLimit(name, variable) {
                 //TODO: Add some teasing stuff individually / design modules that want to get the sub to cross his limits
                 //This needs to be handled individually to seduce in the current situation
 
-                if(isVar(VARIABLE_RESPONSE_WILL_DO_ANYTHING) && subAddressed) {
-                    delVar(VARIABLE_RESPONSE_WILL_DO_ANYTHING);
+                if(isVar(VARIABLE.RESPONSE_WILL_DO_ANYTHING) && subAddressed) {
+                    delVar(VARIABLE.RESPONSE_WILL_DO_ANYTHING);
                     return LIMIT_CHANGE_WILL_DO_ANYTHING;
                 }
             } else if(subAddressed && limitValue == LIMIT_ASKED_NO) {

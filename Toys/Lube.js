@@ -14,7 +14,7 @@ function lubeUpToyWithLube(toy) {
 }
 
 
-function getAssLubeType(mood, level = getVar(VARIABLE_ASS_LEVEL)) {
+function getAssLubeType(mood, level = getVar(VARIABLE.ASS_LEVEL)) {
     if (level < 30) {
         sendDebugMessage('Any lube allowed because user hasn\'t reached ass level 30 yet');
         return ANY_LUBE;

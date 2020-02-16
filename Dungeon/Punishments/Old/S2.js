@@ -1,6 +1,6 @@
 setVar("GroundingCounter",0);
 
-switch(getVar(VARIABLE_PUNISHMENT_PUNISHER)) {
+switch(getVar(VARIABLE.PUNISHMENT_PUNISHER)) {
 
 	case 1 :
 	// @Goto(Hello)
@@ -24,7 +24,7 @@ switch(getVar(VARIABLE_PUNISHMENT_PUNISHER)) {
 sendMessage("Well "+ random("hello","hi") +" %SlaveName%");// #DT4 @Goto(Start)
 
 
-switch(getVar(VARIABLE_PUNISHMENT_PUNISHER)){
+switch(getVar(VARIABLE.PUNISHMENT_PUNISHER)){
 	case 1 :
 	//(Domme)
 	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%");// #DT4
@@ -141,7 +141,7 @@ break;
 			sendMessage("Time out.." );
 			showImage("Images/Spicy/Punishment/Grounding/BlackBase.*");
 			changeMeritLow(true);
-			setVar(VARIABLE_GOLD,getVar(VARIABLE_GOLD)-10); 
+			setVar(VARIABLE.GOLD,getVar(VARIABLE.GOLD)-10); 
 			//@TempFlag(PunishmentComplete)
 			donetime=donetime.addSecond(randomInteger(60,180));
 			break;
@@ -155,7 +155,7 @@ break;
 					else{ sendMessage("Wrong.. You were supposed to write "+answerval+".. ");
 						showImage("Images/Spicy/Punishment/Grounding/BlackBase.*");
 						changeMeritLow(true);
-						setVar(VARIABLE_GOLD,getVar(VARIABLE_GOLD)-10); 
+						setVar(VARIABLE.GOLD,getVar(VARIABLE.GOLD)-10); 
 						//@TempFlag(PunishmentComplete)
 						donetime=donetime.addSecond(randomInteger(60,180));
 						break;
@@ -164,7 +164,7 @@ break;
 					sendMessage("Wrong.. You were supposed to write "+answerval+".. that wasn't even a number %SlaveName% ");
 						showImage("Images/Spicy/Punishment/Grounding/BlackBase.*");
 						changeMeritLow(true);
-						setVar(VARIABLE_GOLD,getVar(VARIABLE_GOLD)-10); 
+						setVar(VARIABLE.GOLD,getVar(VARIABLE.GOLD)-10); 
 						//@TempFlag(PunishmentComplete)
 						donetime=donetime.addSecond(randomInteger(60,180));
 						break;

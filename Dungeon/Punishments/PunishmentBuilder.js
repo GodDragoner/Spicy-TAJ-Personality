@@ -17,16 +17,16 @@ const PUNISHMENT_LEVEL = {
 };
 
 function isOngoingPunishment() {
-    return getVar(VARIABLE_PUNISHMENT_ACTIVE, false);
+    return getVar(VARIABLE.PUNISHMENT_ACTIVE, false);
 }
 
 function startPunishmentSession(overallLevel) {
-    setVar(VARIABLE_PUNISHMENT_ACTIVE, true);
+    setVar(VARIABLE.PUNISHMENT_ACTIVE, true);
     PUNISHMENT_OVERALL_LEVEL = overallLevel;
 
     sendDebugMessage('Starting punishment with level ' + overallLevel);
 
-    switch(getVar(VARIABLE_PUNISHMENT_PUNISHER)) {
+    switch(getVar(VARIABLE.PUNISHMENT_PUNISHER)) {
         case 1 :
             break;
         case 2 :
@@ -99,7 +99,7 @@ function startPunishmentSession(overallLevel) {
     sendMessage('You hopefully learned your lesson %SlaveName%');
 
     setSender(1);
-    setVar(VARIABLE_PUNISHMENT_ACTIVE, false);
+    setVar(VARIABLE.PUNISHMENT_ACTIVE, false);
 }
 
 function subtractPunishmentPointsForPunishment(PUNISHMENT_LEVEL) {

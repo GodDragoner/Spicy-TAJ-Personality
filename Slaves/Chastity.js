@@ -1,18 +1,18 @@
 function isForcedLockedUp() {
-    return isVar(VARIABLE_LOCKED_UP_UNTIL) && !getDate(VARIABLE_LOCKED_UP_UNTIL).hasPassed();
+    return isVar(VARIABLE.LOCKED_UP_UNTIL) && !getDate(VARIABLE.LOCKED_UP_UNTIL).hasPassed();
 }
 
 function addLockUpTime(hours) {
     if (!isForcedLockedUp()) {
-        setDate(VARIABLE_LOCKED_UP_UNTIL, setDate().addHour(hours));
+        setDate(VARIABLE.LOCKED_UP_UNTIL, setDate().addHour(hours));
     } else {
-        setDate(VARIABLE_LOCKED_UP_UNTIL, getDate(VARIABLE_LOCKED_UP_UNTIL).addHour(hours));
+        setDate(VARIABLE.LOCKED_UP_UNTIL, getDate(VARIABLE.LOCKED_UP_UNTIL).addHour(hours));
     }
 }
 
 
 function isInChastity() {
-    return getVar(VARIABLE_CHASTITY_ON, false);
+    return getVar(VARIABLE.CHASTITY_ON, false);
 }
 
 
@@ -32,10 +32,10 @@ function willKeepChastityOn(end) {
         }
 
         //Lower base chance of unlocking at end
-        choice = randomInteger(1, 100 - getVar(VARIABLE_CHASTITY_LEVEL, 0) * 3);
+        choice = randomInteger(1, 100 - getVar(VARIABLE.CHASTITY_LEVEL, 0) * 3);
     }
 
-    if (getVar(VARIABLE_HAPPINESS) > getVar(VARIABLE_ANGER)) {
+    if (getVar(VARIABLE.HAPPINESS) > getVar(VARIABLE.ANGER)) {
         sendDebugMessage('Happiness is higher than anger so increasing unlock chance');
         choice += randomInteger(1, 25);
     } else {
@@ -43,7 +43,7 @@ function willKeepChastityOn(end) {
         choice -= randomInteger(1, 25);
     }
 
-    if (getVar(VARIABLE_LUST) > 30) {
+    if (getVar(VARIABLE.LUST) > 30) {
         sendDebugMessage('Lust is bigger than 30, so increasing unlock chance');
         choice += randomInteger(1, 25);
     }
@@ -84,25 +84,25 @@ function willKeepChastityOn(end) {
 }
 
 function isChastityPunishment() {
-    return getVar(VARIABLE_CHASTITY_TOY_MODE) === TOY_PUNISHMENT_MODE || getVar(VARIABLE_CHASTITY_TOY_MODE) === TOY_BOTH_MODE;
+    return getVar(VARIABLE.CHASTITY_TOY_MODE) === TOY_PUNISHMENT_MODE || getVar(VARIABLE.CHASTITY_TOY_MODE) === TOY_BOTH_MODE;
 }
 
 function isChastityPlay() {
-    return getVar(VARIABLE_CHASTITY_TOY_MODE) === TOY_PLAY_MODE || getVar(VARIABLE_CHASTITY_TOY_MODE) === TOY_BOTH_MODE;
+    return getVar(VARIABLE.CHASTITY_TOY_MODE) === TOY_PLAY_MODE || getVar(VARIABLE.CHASTITY_TOY_MODE) === TOY_BOTH_MODE;
 }
 
 function hasChastityCage() {
-    return getVar(VARIABLE_HAS_CHASTITY);
+    return getVar(VARIABLE.HAS_CHASTITY);
 }
 
 function startLongTermChastityIntro() {
-    if (!RULE_DOMME_KEYHOLDER.isActive() && hasChastityCage() && !getVar(VARIABLE_PARTNER_IS_KEYHOLDER, false)) {
+    if (!RULE_DOMME_KEYHOLDER.isActive() && hasChastityCage() && !getVar(VARIABLE.PARTNER_IS_KEYHOLDER, false)) {
         sendMessage('So %SlaveName%');
 
-        if (isVar(VARIABLE_ASKED_FOR_KEYHOLDER)) {
+        if (isVar(VARIABLE.ASKED_FOR_KEYHOLDER)) {
             sendMessage('I asked you before and I still want to own your %Cock% completely');
 
-            if(getVar(VARIABLE_KEYHOLDER_FANTASIZE, false)) {
+            if(getVar(VARIABLE.KEYHOLDER_FANTASIZE, false)) {
                 sendMessage('And since you have fantasized about a keyholder before...')
             } else {
                 sendMessage('So...');
@@ -132,7 +132,7 @@ function startLongTermChastityIntro() {
 
             sendMessage('I was wondering...');
 
-            if (getVar(VARIABLE_SUB_IS_MARRIED, false) || getVar(VARIABLE_SUB_HAS_GIRLFRIEND, false)) {
+            if (getVar(VARIABLE.SUB_IS_MARRIED, false) || getVar(VARIABLE.SUB_HAS_GIRLFRIEND, false)) {
                 if (askForPartnerKeyholder()) {
                     return false;
                 } else {
@@ -143,7 +143,7 @@ function startLongTermChastityIntro() {
 
         //Set it today
         //Can be used to track how long she has been keyholder for or how long since she asked last time
-        setDate(VARIABLE_ASKED_FOR_KEYHOLDER);
+        setDate(VARIABLE.ASKED_FOR_KEYHOLDER);
 
         if (sendYesOrNoQuestion('Would you give me control over the key?')) {
             sendMessage('You should know what you\'re getting into here');
@@ -202,7 +202,7 @@ function startLongTermChastityIntro() {
 
         if (sendYesOrNoQuestion('Do you ever fantasize about someone holding the key?')) {
             sendMessage('Wouldn\'t that just be awesome? %EmoteHappy%');
-            setVar(VARIABLE_KEYHOLDER_FANTASIZE, true);
+            setVar(VARIABLE.KEYHOLDER_FANTASIZE, true);
         } else {
             sendMessage('Maybe that\'s just a little too scary %EmoteFlustered%');
         }
@@ -217,17 +217,17 @@ function startLongTermChastityIntro() {
 }
 
 function askForPartnerKeyholder() {
-    if (sendYesOrNoQuestion('Does ' + getVar(VARIABLE_SUB_PARTNER_NAME) + ' hold the key? I mean, does she decide when it comes off?')) {
+    if (sendYesOrNoQuestion('Does ' + getVar(VARIABLE.SUB_PARTNER_NAME) + ' hold the key? I mean, does she decide when it comes off?')) {
         sendMessage('Wow %Lol%');
 
-        sendMessage('I think it\'s awesome that ' + getVar(VARIABLE_SUB_PARTNER_NAME) + ' is your keyholder');
+        sendMessage('I think it\'s awesome that ' + getVar(VARIABLE.SUB_PARTNER_NAME) + ' is your keyholder');
         sendMessage('Kind of sad I\'m not, sure %EmoteSad%');
         sendMessage('But in the end, what matters it that that %Cock% is safely locked up');
         sendMessage('And under control of a woman');
         sendMessage('As all cocks should, really...');
         sendMessage('There are too many unlocked cocks out there #Laugh');
 
-        if (sendYesOrNoQuestion('I\'m sure ' + getVar(VARIABLE_SUB_PARTNER_NAME) + ' would agree, right?')) {
+        if (sendYesOrNoQuestion('I\'m sure ' + getVar(VARIABLE.SUB_PARTNER_NAME) + ' would agree, right?')) {
             sendMessage('I thought so %Grin%')
         } else {
             sendMessage('Well, I suppose yours is the only one that matters to her');
@@ -239,7 +239,7 @@ function askForPartnerKeyholder() {
         sendMessage('It\'s a great feeling to have that kind of control, %SlaveName%');
         sendMessage('Not that I\'d expect you to understand...');
         sendMessage('You\'d rather give up control than have it');
-        setVar(VARIABLE_PARTNER_IS_KEYHOLDER, true);
+        setVar(VARIABLE.PARTNER_IS_KEYHOLDER, true);
 
         if (sendYesOrNoQuestion('She\'s okay with me telling you to take it off or put it on?')) {
             sendMessage('That would be kind of a problem otherwise');
@@ -247,7 +247,7 @@ function askForPartnerKeyholder() {
             sendMessage('Oh... well, I\'m sure you have a way of working around that...');
         }
 
-        sendMessage('I wouldn\'t want to come between you and ' + getVar(VARIABLE_SUB_PARTNER_NAME) + ' though');
+        sendMessage('I wouldn\'t want to come between you and ' + getVar(VARIABLE.SUB_PARTNER_NAME) + ' though');
         sendMessage('So I won\'t tell you to wear it after our sessions');
         sendMessage('That\'s up to her %EmoteHappy%');
         return true;

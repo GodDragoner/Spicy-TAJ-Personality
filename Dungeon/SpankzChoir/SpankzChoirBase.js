@@ -115,7 +115,7 @@ if (getDate("SpankzChoirSubscription")==true) {
 				{
 					sendDungeonMessage(" Since you tried to skip a session I'm transfering 20 gold to Sarah"); 
 				}			
-				setVar(VARIABLE_GOLD,getVar(VARIABLE_GOLD)-20);
+				setVar(VARIABLE.GOLD,getVar(VARIABLE.GOLD)-20);
 				sendDungeonMessage(" Also I'm awarding you some extra spanking "); 
 				setVar("AuctionStrokes", getVar("AuctionStrokes")+100);
 				sendDungeonMessage(" Enjoy.. ");

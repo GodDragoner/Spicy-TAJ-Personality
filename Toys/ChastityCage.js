@@ -5,8 +5,8 @@ const CHASTITY_CAGES = [];
 
 let currentChastityCage;
 
-if(isVar(VARIABLE_ACTIVE_CHASTITY_CAGE)) {
-    currentChastityCage = getChastityCageByName(getVar(VARIABLE_ACTIVE_CHASTITY_CAGE));
+if(isVar(VARIABLE.ACTIVE_CHASTITY_CAGE)) {
+    currentChastityCage = getChastityCageByName(getVar(VARIABLE.ACTIVE_CHASTITY_CAGE));
 } else {
     currentChastityCage = null;
 }
@@ -20,7 +20,7 @@ function getActiveChastityCage() {
 }
 
 function unlockChastityCage() {
-    if (!getVar(VARIABLE_HAS_CHASTITY) || !getVar(VARIABLE_CHASTITY_ON)) {
+    if (!getVar(VARIABLE.HAS_CHASTITY) || !getVar(VARIABLE.CHASTITY_ON)) {
         return;
     }
 
@@ -71,7 +71,7 @@ function unlockChastityCage() {
         }
     }
 
-    setVar(VARIABLE_CHASTITY_ON, false);
+    setVar(VARIABLE.CHASTITY_ON, false);
     unlockImages();
     return;
 }
@@ -181,25 +181,25 @@ function getRandomCageWithSize(length, punishments) {
 
     let smallChance = punishmentChance - SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE;
 
-    if(!getVar(VARIABLE_HAS_CHASTITY_SMALL_PUNISHMENT_CAGE, false)) {
+    if(!getVar(VARIABLE.HAS_CHASTITY_SMALL_PUNISHMENT_CAGE, false)) {
         return 0;
     }
 
-    if(getVar(VARIABLE_CHASTITY_SMALL_HAS_DILATOR, false)) {
+    if(getVar(VARIABLE.CHASTITY_SMALL_HAS_DILATOR, false)) {
         smallChance -= SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE;
     }
 
-    if(getVar(VARIABLE_CHASTITY_SMALL_HAS_SPIKES, false)) {
+    if(getVar(VARIABLE.CHASTITY_SMALL_HAS_SPIKES, false)) {
         smallChance -= SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE;
     }
 
     let bigChance = punishmentChance;
 
-    if(getVar(VARIABLE_CHASTITY_HAS_DILATOR, false)) {
+    if(getVar(VARIABLE.CHASTITY_HAS_DILATOR, false)) {
         bigChance -= SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE;
     }
 
-    if(getVar(VARIABLE_CHASTITY_HAS_SPIKES, false)) {
+    if(getVar(VARIABLE.CHASTITY_HAS_SPIKES, false)) {
         bigChance -= SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE;
     }
 
@@ -257,7 +257,7 @@ function selectChastityCage() {
         //If spikes are forced we need to calculate that into the remaining chance
         if(!cage.spikesDetachable) {
             punishmentChance -= SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE;
-            setVar(VARIABLE_CHASTITY_SPIKES_ON, true);
+            setVar(VARIABLE.CHASTITY_SPIKES_ON, true);
             sendDebugMessage('Set spikes as punishment due to being forced by the cage');
         } else {
             //Spikes aren't forced so we should roll for it
@@ -271,7 +271,7 @@ function selectChastityCage() {
         //If dilator is forced we need to calculate that into the remaining chance
         if(!cage.dialatorDetachable) {
             punishmentChance -= SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE;
-            setVar(VARIABLE_CHASTITY_DILATOR_ON, true);
+            setVar(VARIABLE.CHASTITY_DILATOR_ON, true);
             sendDebugMessage('Set dilator as punishment due to being forced by the cage');
         } else {
             //Dilator isn't forced so we should roll for it
@@ -289,22 +289,22 @@ function selectChastityCage() {
             case 0:
                 if(isChance(punishmentChance)) {
                     punishmentChance -= SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE;
-                    setVar(VARIABLE_CHASTITY_SPIKES_ON, true);
+                    setVar(VARIABLE.CHASTITY_SPIKES_ON, true);
                     sendDebugMessage('Selected spikes as punishment');
                     sendDebugMessage('Remaining chance: ' + punishmentChance);
                 } else {
-                    setVar(VARIABLE_CHASTITY_SPIKES_ON, false);
+                    setVar(VARIABLE.CHASTITY_SPIKES_ON, false);
                 }
 
                 break;
             case 1:
                 if(isChance(punishmentChance)) {
                     punishmentChance -= SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE;
-                    setVar(VARIABLE_CHASTITY_DILATOR_ON, true);
+                    setVar(VARIABLE.CHASTITY_DILATOR_ON, true);
                     sendDebugMessage('Selected dilator as punishment');
                     sendDebugMessage('Remaining chance: ' + punishmentChance);
                 } else {
-                    setVar(VARIABLE_CHASTITY_DILATOR_ON, false);
+                    setVar(VARIABLE.CHASTITY_DILATOR_ON, false);
                 }
                 break;
 
@@ -318,7 +318,7 @@ function selectChastityCage() {
 }
 
 function lockChastityCage() {
-    if (!getVar(VARIABLE_HAS_CHASTITY) || getVar(VARIABLE_CHASTITY_ON)) {
+    if (!getVar(VARIABLE.HAS_CHASTITY) || getVar(VARIABLE.CHASTITY_ON)) {
         return;
     }
 
@@ -359,12 +359,12 @@ function lockChastityCage() {
 
     let alreadyAttached = false;
 
-    if(getVar(VARIABLE_CHASTITY_SPIKES_ON, false)) {
+    if(getVar(VARIABLE.CHASTITY_SPIKES_ON, false)) {
         sendMessageBasedOnSender('I want you to attach the spikes to it %Grin%');
         alreadyAttached = true;
     }
 
-    if(getVar(VARIABLE_CHASTITY_DILATOR_ON, false)) {
+    if(getVar(VARIABLE.CHASTITY_DILATOR_ON, false)) {
         if(!alreadyAttached) {
             sendMessageBasedOnSender('I want you to attach the dilator to it %Grin%');
         } else {
@@ -391,7 +391,7 @@ function lockChastityCage() {
 
     sendMessageBasedOnSender(random("Put on your %ChastityCage%", "Put on the %ChastityCage% at once", "Hurry up and get the %ChastityCage% back on", "Be quick and get your %ChastityCage% back on", "Lock your %Cock% up"));
 
-    const chastityLevel = getVar(VARIABLE_CHASTITY_LEVEL);
+    const chastityLevel = getVar(VARIABLE.CHASTITY_LEVEL);
     let timeout = randomInteger(60 - chastityLevel, 90 - chastityLevel);
     if (getStrictnessForCharacter() == 1) {
         timeout = randomInteger(55 - chastityLevel, 80 - chastityLevel);
@@ -400,7 +400,7 @@ function lockChastityCage() {
     }
 
     //Slower timeout for the dilator
-    if(getVar(VARIABLE_CHASTITY_DILATOR_ON, false)) {
+    if(getVar(VARIABLE.CHASTITY_DILATOR_ON, false)) {
         timeout *= 5;
     }
 
@@ -426,11 +426,11 @@ function lockChastityCage() {
 
                     //Punish slave even more
                     if(feelsLikePunishingSlave()) {
-                        if(chastityCage.spikes && !getVar(VARIABLE_CHASTITY_SPIKES_ON, false)) {
+                        if(chastityCage.spikes && !getVar(VARIABLE.CHASTITY_SPIKES_ON, false)) {
                             sendMessageBasedOnSender('I want you to attach the spikes to it %Grin%');
-                            setVar(VARIABLE_CHASTITY_SPIKES_ON, true);
+                            setVar(VARIABLE.CHASTITY_SPIKES_ON, true);
                             alreadyAttached = true;
-                        } else if(chastityCage.dialator && !getVar(VARIABLE_CHASTITY_DILATOR_ON, false)) {
+                        } else if(chastityCage.dialator && !getVar(VARIABLE.CHASTITY_DILATOR_ON, false)) {
                             if(!alreadyAttached) {
                                 sendMessageBasedOnSender('I want you to attach the dilator to it %Grin%');
                             } else {
@@ -524,10 +524,10 @@ function lockChastityCage() {
         }
     }
 
-    setVar(VARIABLE_CHASTITY_ON, true);
+    setVar(VARIABLE.CHASTITY_ON, true);
 
     currentChastityCage = chastityCage;
-    setVar(VARIABLE_ACTIVE_CHASTITY_CAGE, chastityCage.name);
+    setVar(VARIABLE.ACTIVE_CHASTITY_CAGE, chastityCage.name);
 }
 
 
@@ -543,7 +543,7 @@ function loadChastityCages() {
 
             let name = 'undefined';
             let length = -1;
-            let material = MATERIAL_PLASTIC;
+            let material = MATERIAL.PLASTIC;
             let dialator = false;
             let dialatorDetachable = false;
             let spikes = false;
@@ -688,7 +688,7 @@ function setupNewCage() {
 
     setCurrentSender(SENDER_TAJ);
 
-    let material = MATERIAL_METAL;
+    let material = MATERIAL.METAL;
 
     sendVirtualAssistantMessage('Great. Now...');
     sendVirtualAssistantMessage('Is it made out of metal, plastic or silicon?', 0);
@@ -696,13 +696,13 @@ function setupNewCage() {
 
     while (true) {
         if (answer.isLike("metal")) {
-            material = MATERIAL_METAL;
+            material = MATERIAL.METAL;
             break;
         } else if (answer.isLike("plastic")) {
-            material = MATERIAL_PLASTIC;
+            material = MATERIAL.PLASTIC;
             break;
         } else if (answer.isLike("silicon")) {
-            material = MATERIAL_SILICON;
+            material = MATERIAL.SILICON;
             break;
         } else {
             sendVirtualAssistantMessage('Is it made out of plastic, metal or silicon?');
@@ -815,7 +815,7 @@ function setupNewCage() {
 
     while (true) {
         if (answer.isLike("yes")) {
-            small? setVar(VARIABLE_CHASTITY_SMALL_CAGE_PIERCED, true) : setVar(VARIABLE_CHASTITY_CAGE_PIERCED, true);
+            small? setVar(VARIABLE.CHASTITY_SMALL_CAGE_PIERCED, true) : setVar(VARIABLE.CHASTITY_CAGE_PIERCED, true);
             sendVirtualAssistantMessage("This should be fun...");
             break;
         } else if (answer.isLike("no")) {
@@ -864,6 +864,6 @@ function onChastityKeyReturn() {
     sendVirtualAssistantMessage('Now go ahead and lock yourself back up and tell me when you are ready to continue');
     waitForDone();
     lockAwayChastityKey();
-    setVar(VARIABLE_CHASTITY_ON, true);
-    setVar(VARIABLE_WAITING_FOR_CHASTITY_KEY_RETURN, false);
+    setVar(VARIABLE.CHASTITY_ON, true);
+    setVar(VARIABLE.WAITING_FOR_CHASTITY_KEY_RETURN, false);
 }

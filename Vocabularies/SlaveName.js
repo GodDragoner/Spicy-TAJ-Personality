@@ -126,12 +126,12 @@ function slaveNameVocabulary() {
         "filthy girl"
     ];
 
-    if(getVar(VARIABLE_CHASTITY_ON, false)) {
+    if(getVar(VARIABLE.CHASTITY_ON, false)) {
         answers.push("secured cuckie", "chained up boy", "secured slave", "locked slave", "locked cum consumer", "locked cream boy", "secured idiot");
         answers.push("locked up slut", "locked up girl", "caged slut", "secured slut", "caged girl", "secured girl");
     }
 
-    if(getVar(VARIABLE_LINGERIE_ON, false)) {
+    if(getVar(VARIABLE.LINGERIE_ON, false)) {
         answers.push("dressed up slut", "dressed up girl", "lingerie covered slut", "lingerie covered girl");
     }
 

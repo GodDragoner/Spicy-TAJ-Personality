@@ -1,15 +1,15 @@
 //TODO: Enema tasks (idea: Enema -> plug it for x duration, do sports, go for a walk etc.)
 
 function getEnemaLevel() {
-    if(getVar(VARIABLE_ASS_LEVEL) >= 25) {
+    if(getVar(VARIABLE.ASS_LEVEL) >= 25) {
         return 5;
-    } else if(getVar(VARIABLE_ASS_LEVEL) >= 20) {
+    } else if(getVar(VARIABLE.ASS_LEVEL) >= 20) {
         return 4;
-    } else if(getVar(VARIABLE_ASS_LEVEL) >= 15) {
+    } else if(getVar(VARIABLE.ASS_LEVEL) >= 15) {
         return 3;
-    } else if(getVar(VARIABLE_ASS_LEVEL) >= 10) {
+    } else if(getVar(VARIABLE.ASS_LEVEL) >= 10) {
         return 2;
-    } else if(getVar(VARIABLE_ASS_LEVEL) >= 5) {
+    } else if(getVar(VARIABLE.ASS_LEVEL) >= 5) {
         return 1;
     } else {
         return 0;
@@ -21,8 +21,8 @@ function hasEnemaKit() {
 }
 
 function getTodaysEnema() {
-    if(isVar(VARIABLE_ENEMA_TASK_SET) && getDate(VARIABLE_ENEMA_TASK_SET).sameDay(setDate())) {
-        return getVar(VARIABLE_ENEMA_TASK_TODAY);
+    if(isVar(VARIABLE.ENEMA_TASK_SET) && getDate(VARIABLE.ENEMA_TASK_SET).sameDay(setDate())) {
+        return getVar(VARIABLE.ENEMA_TASK_TODAY);
     }
 
     let lines = new java.util.ArrayList();
@@ -33,7 +33,7 @@ function getTodaysEnema() {
 
     //Hold
     if(isChance(50)) {
-        holdDuration = randomInteger(1 + Math.floor(getVar(VARIABLE_ASS_LEVEL)/5), getVar(VARIABLE_ASS_LEVEL));
+        holdDuration = randomInteger(1 + Math.floor(getVar(VARIABLE.ASS_LEVEL)/5), getVar(VARIABLE.ASS_LEVEL));
     }
 
     let noCleanup = false;
@@ -85,8 +85,8 @@ function getTodaysEnema() {
 
     lines.add(random('Enjoy', 'Have fun') + ' %Grin%');
 
-    setVar(VARIABLE_ENEMA_TASK_TODAY, lines);
-    setDate(VARIABLE_ENEMA_TASK_SET);
+    setVar(VARIABLE.ENEMA_TASK_TODAY, lines);
+    setDate(VARIABLE.ENEMA_TASK_SET);
     return lines;
 }
 
@@ -110,7 +110,7 @@ function getEnemaLitreAmount() {
 }
 
 function runEnemaIntro() {
-    setVar(VARIABLE_ENEMA_INTRO, true);
+    setVar(VARIABLE.ENEMA_INTRO, true);
 
     sendMessage('I\'ve been thinking %SlaveName%');
     sendMessage('We can\'t have your ass dirty like this all the time');

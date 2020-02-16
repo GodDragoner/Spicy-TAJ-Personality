@@ -9,7 +9,7 @@
             sendMessage('Tell me when you are done %SlaveName%');
             waitForDone();
 
-            setTempVar(VARIABLE_IS_BALL_CRUSHER_ON, true);
+            setTempVar(VARIABLE.IS_BALL_CRUSHER_ON, true);
 
             applyBallCrusherPressure();
 
@@ -33,7 +33,7 @@
 
             sendMessage('You can remove the ball crusher now %Grin%');
             sendMessage(random('I hope they aren\'t dead!', 'I really hope those %Balls% aren\'t dead', 'You should probably take a look at those %Balls% %Lol%'));
-            setTempVar(VARIABLE_IS_BALL_CRUSHER_ON, false);
+            setTempVar(VARIABLE.IS_BALL_CRUSHER_ON, false);
         } else {
             sendMessage("I guess I have to think of something different to play with your balls");
 
@@ -74,19 +74,19 @@ function ballCrusherSlideshow() {
 
     sendMessage(random('You look like someone under pressure', 'You seem pressurized!', '*Feeling a bit of tension?') + "%Lol%");
 
-    if (twists > getVar(VARIABLE_BALL_CRUSHER_MAX_TWISTS)) {
+    if (twists > getVar(VARIABLE.BALL_CRUSHER_MAX_TWISTS)) {
         sendMessage('We have a new record!');
         sendMessage('Meaning you\'ve earned 100 gold!');
         sendMessage('I\'m impressed by your effort!');
         addGold(100);
-        setVar(VARIABLE_BALL_CRUSHER_MAX_TWISTS, twists);
-    } else if (twists == getVar(VARIABLE_BALL_CRUSHER_MAX_TWISTS)) {
+        setVar(VARIABLE.BALL_CRUSHER_MAX_TWISTS, twists);
+    } else if (twists == getVar(VARIABLE.BALL_CRUSHER_MAX_TWISTS)) {
         sendMessage('You matched your old record! %Grin%');
         sendMessage('I guess that is a fine performance!');
     } else {
         sendMessage('Well you did not even reach your record...');
 
-        if (getVar(VARIABLE_BALL_CRUSHER_MAX_TWISTS) - twists > 4) {
+        if (getVar(VARIABLE.BALL_CRUSHER_MAX_TWISTS) - twists > 4) {
             sendMessage('In fact you weren\'t even close!');
             changeMeritHigh(true);
             sendMessage('I need you to try much harder!');
@@ -199,7 +199,7 @@ function ballCrusherRubberPlay() {
     sendMessage('I will continue until we reach your highscore...');
 
     let currentTwists = 0;
-    while (currentTwists < getVar(VARIABLE_BALL_CRUSHER_MAX_TWISTS)) {
+    while (currentTwists < getVar(VARIABLE.BALL_CRUSHER_MAX_TWISTS)) {
         showTeaseImage(random(9, 15));
         currentTwists += 2;
     }
@@ -210,7 +210,7 @@ function ballCrusherRubberPlay() {
     sendMessage('Aim for the center of your %Balls%');
     sendMessage('And release %Grin%');
 
-    const subPain = Math.max(1, getVar(VARIABLE_SUB_PAIN_TOLERANCE));
+    const subPain = Math.max(1, getVar(VARIABLE.SUB_PAIN_TOLERANCE));
     const min = Math.max(3, Math.min(subPain));
     const max = Math.max(3, subPain * 2);
 

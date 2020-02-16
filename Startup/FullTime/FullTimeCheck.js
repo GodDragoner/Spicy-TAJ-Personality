@@ -1,37 +1,37 @@
 {
     //Last routine check either does not exist or it is the next day
-    if (!isVar(VARIABLE_LAST_ROUTINE_CHECK) || getDate(VARIABLE_LAST_ROUTINE_CHECK).addDay(1).setHour(0).setMinute(0).setSecond(0).hasPassed()) {
-        setDate(VARIABLE_LAST_ROUTINE_CHECK);
-        setVar(VARIABLE_WEEKLY_SLAVE_VISITS, getVar(VARIABLE_WEEKLY_SLAVE_VISITS, 0) + 1);
+    if (!isVar(VARIABLE.LAST_ROUTINE_CHECK) || getDate(VARIABLE.LAST_ROUTINE_CHECK).addDay(1).setHour(0).setMinute(0).setSecond(0).hasPassed()) {
+        setDate(VARIABLE.LAST_ROUTINE_CHECK);
+        setVar(VARIABLE.WEEKLY_SLAVE_VISITS, getVar(VARIABLE.WEEKLY_SLAVE_VISITS, 0) + 1);
 
         //Reduce punishment point multiplier each day if the change would be negative
         let ppMultiplier = getPunishmentPointMultiplierChange();
         sendDebugMessage('PP Mutliplier change is ' + ppMultiplier);
 
         if(ppMultiplier < 0) {
-            let currentMult = getVar(VARIABLE_PUNISHMENT_POINT_MULTIPLIER, 1);
+            let currentMult = getVar(VARIABLE.PUNISHMENT_POINT_MULTIPLIER, 1);
             sendDebugMessage('Reducing pp multiplier from ' + currentMult);
             setPunishmentPointMultiplier(currentMult + ppMultiplier);
         }
 
         //Full time stuff
         if(isFullTime()) {
-            if (isVar(VARIABLE_SLAVE_LEAVE_UNTIL)) {
-                if (getDate(VARIABLE_SLAVE_LEAVE_UNTIL).hasPassed()) {
+            if (isVar(VARIABLE.SLAVE_LEAVE_UNTIL)) {
+                if (getDate(VARIABLE.SLAVE_LEAVE_UNTIL).hasPassed()) {
                     slaveIsBack(true, false);
                 } else {
                     slaveIsBack(false, false);
                 }
 
-                delVar(VARIABLE_SLAVE_LEAVE_UNTIL);
-            } else if (isVar(VARIABLE_SLAVE_VACATION_UNTIL)) {
-                if (getDate(VARIABLE_SLAVE_VACATION_UNTIL).hasPassed()) {
+                delVar(VARIABLE.SLAVE_LEAVE_UNTIL);
+            } else if (isVar(VARIABLE.SLAVE_VACATION_UNTIL)) {
+                if (getDate(VARIABLE.SLAVE_VACATION_UNTIL).hasPassed()) {
                     slaveIsBack(true, true);
                 } else {
                     slaveIsBack(false, true);
                 }
 
-                delVar(VARIABLE_SLAVE_VACATION_UNTIL);
+                delVar(VARIABLE.SLAVE_VACATION_UNTIL);
             }
 
             const date = new Date();
@@ -47,13 +47,13 @@
         }
 
         //Week check only start on mondays
-        if (isVar(VARIABLE_NEXT_WEEK_CHECK) || new Date().getDay() == 1) {
+        if (isVar(VARIABLE.NEXT_WEEK_CHECK) || new Date().getDay() == 1) {
             //Only check the week if this isn't the first time
             let doWeekCheck = false;
-            if (isVar(VARIABLE_NEXT_WEEK_CHECK)) {
-                if (getDate(VARIABLE_NEXT_WEEK_CHECK).hasPassed()) {
+            if (isVar(VARIABLE.NEXT_WEEK_CHECK)) {
+                if (getDate(VARIABLE.NEXT_WEEK_CHECK).hasPassed()) {
                     doWeekCheck = true;
-                    setDate(VARIABLE_NEXT_WEEK_CHECK, setDate().addDay(7).setHour(0).setSecond(0).setMinute(0));
+                    setDate(VARIABLE.NEXT_WEEK_CHECK, setDate().addDay(7).setHour(0).setSecond(0).setMinute(0));
                 }
             }
 
@@ -61,7 +61,7 @@
                 sendDebugMessage('Week has passed. Starting week check!');
 
                 if(isFullTime()) {
-                    if (getVar(VARIABLE_WEEKLY_SLAVE_VISITS) < getVar(VARIABLE_MIN_WEEKLY_VISITS)) {
+                    if (getVar(VARIABLE.WEEKLY_SLAVE_VISITS) < getVar(VARIABLE.MIN_WEEKLY_VISITS)) {
                         sendVirtualAssistantMessage(random("You have been skipping days", "You have been skulking", "I think you missed a few sessions") + " %SlaveName%");
                         sendVirtualAssistantMessage(random("I don't accept that!", "Which is not accepted", "Which isn't tolerated"));
                         sendVirtualAssistantMessage(random("You are the property of", "You belong to", "You are owned by") + " Mistress %domName%");
@@ -70,10 +70,10 @@
                         addPunishmentPoints(200);
                     }
 
-                    setVar(VARIABLE_WEEKLY_SLAVE_VISITS, 0);
+                    setVar(VARIABLE.WEEKLY_SLAVE_VISITS, 0);
                     sendVirtualAssistantMessage("Let's see if you've been doing your chores like a good slave!");
 
-                    if (getVar(VARIABLE_WEEKLY_CHORES_TIME, 0) < getVar(VARIABLE_MIN_WEEKLY_CHORE_TIME)) {
+                    if (getVar(VARIABLE.WEEKLY_CHORES_TIME, 0) < getVar(VARIABLE.MIN_WEEKLY_CHORE_TIME)) {
                         sendVirtualAssistantMessage("Bad %SlaveName%!");
                         sendVirtualAssistantMessage("Bad behaviour is punished!");
                         sendVirtualAssistantMessage("I just assigned you punishment points!");
@@ -87,14 +87,14 @@
                     }
                 }
 
-                setVar(VARIABLE_WEEKLY_CHORES_TIME, 0);
-                setVar(VARIABLE_WEEKLY_CHORES_DONE, 0);
+                setVar(VARIABLE.WEEKLY_CHORES_TIME, 0);
+                setVar(VARIABLE.WEEKLY_CHORES_DONE, 0);
                 //TODO: Study and athlete mode
             }
         }
 
-        if (isVar(VARIABLE_FULL_TIME_TRIAL_UNTIL) && getDate(VARIABLE_FULL_TIME_TRIAL_UNTIL).hasPassed()) {
-            delVar(VARIABLE_FULL_TIME_TRIAL_UNTIL);
+        if (isVar(VARIABLE.FULL_TIME_TRIAL_UNTIL) && getDate(VARIABLE.FULL_TIME_TRIAL_UNTIL).hasPassed()) {
+            delVar(VARIABLE.FULL_TIME_TRIAL_UNTIL);
             sendVirtualAssistantMessage("Slave");
             sendVirtualAssistantMessage("Your trial period has expired");
             sendVirtualAssistantMessage("Meaning you now have a choice");

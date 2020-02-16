@@ -6,7 +6,7 @@
     sendDungeonMessage("Miss Sarah is ready to clean you out.. "); //#ReceptionChat
 
     //TODO: Do Miss Sarah chat like?
-    if (!isVar(VARIABLE_PUNISHMENT_ENEMAS_TAKEN)) {
+    if (!isVar(VARIABLE.PUNISHMENT_ENEMAS_TAKEN)) {
         sendMessage("This is your first time getting an enema with me"); //#EnemaChat
         sendMessage("You may have had enema's in the past..."); //#EnemaChat
         sendMessage("You should understand I intend this to be a PUNISHMENT enema"); //#EnemaChat
@@ -15,7 +15,7 @@
         sendMessage("I just want to reassure you that this is how it always is %Laugh%"); //#EnemaChat
     }
 
-    setVar(VARIABLE_PUNISHMENT_ENEMAS_TAKEN, getVar(VARIABLE_PUNISHMENT_ENEMAS_TAKEN, 0) + 1);
+    setVar(VARIABLE.PUNISHMENT_ENEMAS_TAKEN, getVar(VARIABLE.PUNISHMENT_ENEMAS_TAKEN, 0) + 1);
 
     sendMessage("Ok slave, its time for your enema"); //#EnemaChat
     sendMessage("Go to the bathroom, set up your enema bag and equipment", 30); //#EnemaChat @Wait(60)

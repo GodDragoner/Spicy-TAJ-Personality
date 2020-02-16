@@ -76,7 +76,7 @@ run("Startup/Versioning/VersionChecker.js");
 afterLoadBodyParts();
 
 //Update devotion only if the setup is complete which means the variable must exist
-if(isVar(VARIABLE_DEVOTION)) {
+if(isVar(VARIABLE.DEVOTION)) {
     run("Settings/UpdateDevotion.js");
 }
 
@@ -88,13 +88,13 @@ if(endMillis - startMillis < waitTime) {
     sleep(Math.floor(waitTime - (endMillis - startMillis)), 'MILLISECONDS');
 }
 
-setTempVar(VARIABLE_CURRENT_SESSION_ACTIVE, false);
+setTempVar(VARIABLE.CURRENT_SESSION_ACTIVE, false);
 
 //Real interaction starts here!
 
-if(!getVar(VARIABLE_FINISHED_SETUP, false)) run("Startup/Setup.js");
+if(!getVar(VARIABLE.FINISHED_SETUP, false)) run("Startup/Setup.js");
 
-if(!getVar(VARIABLE_FINISHED_FIRST_SESSION, false)) run("Session/FirstSession.js");
+if(!getVar(VARIABLE.FINISHED_FIRST_SESSION, false)) run("Session/FirstSession.js");
 
 
 //TODO: Academy

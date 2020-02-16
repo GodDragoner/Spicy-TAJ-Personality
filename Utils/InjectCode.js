@@ -21,13 +21,13 @@
     return exp;
 }
 
-//sendMessage("I added your exp and your current level is " + getVar(VARIABLE_ASS_LEVEL));
+//sendMessage("I added your exp and your current level is " + getVar(VARIABLE.ASS_LEVEL));
 
 for(let x = 2; x <= 30; x += 4) {
     sendDebugMessage('Level ' + x + ': ' + getChastityEXPForLevel(x));
 }*/
 
-//sendDebugMessage('You will need ' + (getChastityEXPForLevel(10) - getVar(VARIABLE_ASS_EXPERIENCE)) + ' more exp for the next level');
+//sendDebugMessage('You will need ' + (getChastityEXPForLevel(10) - getVar(VARIABLE.ASS_EXPERIENCE)) + ' more exp for the next level');
 //unlockChastityCage();
 
 /*MODULE_HISTORY.clearHistory();
@@ -40,19 +40,19 @@ sendVirtualAssistantMessage(random("Launching", "Initiating", "Starting", "Estab
 run("Session/StartSession.js");
 
 
-incrementVar(VARIABLE_BLOWJOB_EXPERIENCE, getTrainingEXPForLevel(20));
-incrementVar(VARIABLE_ASS_EXPERIENCE, getTrainingEXPForLevel(20));
-while(getTrainingEXPForLevel(getVar(VARIABLE_ASS_LEVEL) + 1) <= getVar(VARIABLE_ASS_EXPERIENCE)) {
-    incrementVar(VARIABLE_ASS_LEVEL, 1);
+incrementVar(VARIABLE.BLOWJOB_EXPERIENCE, getTrainingEXPForLevel(20));
+incrementVar(VARIABLE.ASS_EXPERIENCE, getTrainingEXPForLevel(20));
+while(getTrainingEXPForLevel(getVar(VARIABLE.ASS_LEVEL) + 1) <= getVar(VARIABLE.ASS_EXPERIENCE)) {
+    incrementVar(VARIABLE.ASS_LEVEL, 1);
 }
 
-while(getTrainingEXPForLevel(getVar(VARIABLE_BLOWJOB_LEVEL) + 1) <= getVar(VARIABLE_BLOWJOB_EXPERIENCE)) {
-    incrementVar(VARIABLE_BLOWJOB_LEVEL, 1);
+while(getTrainingEXPForLevel(getVar(VARIABLE.BLOWJOB_LEVEL) + 1) <= getVar(VARIABLE.BLOWJOB_EXPERIENCE)) {
+    incrementVar(VARIABLE.BLOWJOB_LEVEL, 1);
 }
 
-sendDebugMessage(getVar(VARIABLE_BLOWJOB_LEVEL));
+sendDebugMessage(getVar(VARIABLE.BLOWJOB_LEVEL));
 
-setVar(VARIABLE_CHASTITY_ON, true);
+setVar(VARIABLE.CHASTITY_ON, true);
  */
 
 

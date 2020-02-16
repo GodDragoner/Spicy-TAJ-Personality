@@ -44,7 +44,7 @@ function startEdging(holdSeconds, skipStop = false, endIn = EDGE_END_NORMAL) {
     if(randomInteger(0, 3) == 2) playSound("Audio/Spicy/Stroking/Edge/*.mp3");
 
     addEdge();
-    setDate(VARIABLE_EDGE_STARTED_DATE);
+    setDate(VARIABLE.EDGE_STARTED_DATE);
     startEdge();
 
     //While in chastity we don't need stroking sounds
@@ -105,7 +105,7 @@ function startEdging(holdSeconds, skipStop = false, endIn = EDGE_END_NORMAL) {
 
     sendDebugMessage('Deleting Edge Variable');
 
-    delVar(VARIABLE_EDGE_STARTED_DATE);
+    delVar(VARIABLE.EDGE_STARTED_DATE);
 }
 
 function sendEdgeTaunts() {
@@ -179,6 +179,6 @@ function getEdgeHoldSeconds(edgeHold = EDGE_HOLD_DOM) {
 }
 
 function addEdge() {
-    setVar(VARIABLE_EDGE_COUNTER, getVar(VARIABLE_EDGE_COUNTER, 0) + 1);
-    setTempVar(VARIABLE_EDGE_TODAY_COUNTER, getVar(VARIABLE_EDGE_TODAY_COUNTER, 0) + 1);
+    setVar(VARIABLE.EDGE_COUNTER, getVar(VARIABLE.EDGE_COUNTER, 0) + 1);
+    setTempVar(VARIABLE.EDGE_TODAY_COUNTER, getVar(VARIABLE.EDGE_TODAY_COUNTER, 0) + 1);
 }

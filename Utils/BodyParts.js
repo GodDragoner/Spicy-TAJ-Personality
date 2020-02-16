@@ -16,7 +16,7 @@ BODY_PART_NIPPLE_R.isUsed = BODY_PART_NIPPLE_L.isUsed;
 
 const BODY_PART_BALLS = registerBodyPart("balls", 20);
 BODY_PART_BALLS.isUsed = function(toy) {
-    return isFullSizedChastityOn() || getVar(VARIABLE_IS_BALL_CRUSHER_ON, false) || E_STIM_TOY.isToyOn() || PARACHUTE_TOY.isToyOn();
+    return isFullSizedChastityOn() || getVar(VARIABLE.IS_BALL_CRUSHER_ON, false) || E_STIM_TOY.isToyOn() || PARACHUTE_TOY.isToyOn();
 };
 
 const BODY_PART_THIGH_L = registerTwosidedBodyPart("thigh", 5);

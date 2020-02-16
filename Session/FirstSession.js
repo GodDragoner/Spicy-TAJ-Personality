@@ -1,7 +1,7 @@
 {
     sendMessage("Hello %subName%");
     sendMessage("That was the last time I used your real name");
-    setDate(VARIABLE_LAST_TEASE_SESSION);
+    setDate(VARIABLE.LAST_TEASE_SESSION);
     sendMessage("From now on I will use whatever pet name I see fit");
     sendMessage("Wether that is cum lover, cocksucker or slave");
     sendMessage("Because you are a slave");
@@ -110,7 +110,7 @@
                     sendMessage("You chose a number too big, you can't visit me more than 7 times a week");
                     answer.loop();
                 } else {
-                    setVar(VARIABLE_MIN_WEEKLY_VISITS, result);
+                    setVar(VARIABLE.MIN_WEEKLY_VISITS, result);
                     break;
                 }
             } else {
@@ -125,9 +125,9 @@
             }
         }
 
-        sendMessage("Perfect " + getVar(VARIABLE_MIN_WEEKLY_VISITS) + " times a week it is.");
+        sendMessage("Perfect " + getVar(VARIABLE.MIN_WEEKLY_VISITS) + " times a week it is.");
         sendMessage("Next I need to know how many minutes per week you should do chores");
-        sendMessage("Right now the amount of minutes for chores is " + getVar(VARIABLE_MIN_WEEKLY_CHORE_TIME));
+        sendMessage("Right now the amount of minutes for chores is " + getVar(VARIABLE.MIN_WEEKLY_CHORE_TIME));
         sendMessage("Which I think is fair all considered");
         sendMessage("Since this number will likely cover your cleaning duty");
         sendMessage("All chores beyond those I consider to be voluntary");
@@ -147,7 +147,7 @@
                             answer.loop();
                         } else {
                             sendMessage("Excellent");
-                            setVar(VARIABLE_MIN_WEEKLY_CHORE_TIME, result);
+                            setVar(VARIABLE.MIN_WEEKLY_CHORE_TIME, result);
                             break;
                         }
                     } else {
@@ -197,15 +197,15 @@
                 answer.loop();
             } else if (result <= 5) {
                 sendMessage("So we have a beginner when it comes to denial %Grin%");
-                setVar(VARIABLE_DENIAL_LIMIT, result);
+                setVar(VARIABLE.DENIAL_LIMIT, result);
                 break;
             } else if (result <= 14) {
                 sendMessage("Not a complete beginner... Good! %Grin%");
-                setVar(VARIABLE_DENIAL_LIMIT, result);
+                setVar(VARIABLE.DENIAL_LIMIT, result);
                 break;
             } else {
                 sendMessage("Wow... This sounds promising %Grin%");
-                setVar(VARIABLE_DENIAL_LIMIT, result);
+                setVar(VARIABLE.DENIAL_LIMIT, result);
                 break;
             }
         } else {
@@ -214,7 +214,7 @@
         }
     }
 
-    if (getVar(VARIABLE_HAS_CHASTITY)) {
+    if (getVar(VARIABLE.HAS_CHASTITY)) {
         sendMessage("There is another thing I love");
         sendMessage("And that is locking your %Cock% up");
         sendMessage("Knowing that you have a %ChastityCage% I need to know the maximum amount of days I can lock you up in a row");
@@ -228,15 +228,15 @@
                     answer.loop();
                 } else if (result <= 5) {
                     sendMessage("Looks like we have a chastity beginner. Don't worry we can work on that  %Grin%");
-                    setVar(VARIABLE_LOCKED_UP_LIMIT, result);
+                    setVar(VARIABLE.LOCKED_UP_LIMIT, result);
                     break;
                 } else if (result <= 14) {
                     sendMessage("At least you are somewhat trained... Good! %Grin%");
-                    setVar(VARIABLE_LOCKED_UP_LIMIT, result);
+                    setVar(VARIABLE.LOCKED_UP_LIMIT, result);
                     break;
                 } else {
                     sendMessage("Maybe I found a new chastity slut in you! %Grin%");
-                    setVar(VARIABLE_LOCKED_UP_LIMIT, result);
+                    setVar(VARIABLE.LOCKED_UP_LIMIT, result);
                     break;
                 }
             } else {
@@ -261,7 +261,7 @@
         if(answer.isLike('you', 'mood')) {
             sendMessage('I knew you would let me choose');
             sendMessage('That is the only proper way %Grin%');
-            setVar(VARIABLE_STROKE_MODULE_PAUSE_FREQUENCY, 0);
+            setVar(VARIABLE.STROKE_MODULE_PAUSE_FREQUENCY, 0);
             break;
         } else if (answer.isInteger()) {
             const result = answer.getInt();
@@ -270,7 +270,7 @@
                 answer.loop();
             } else if (result <= 5) {
                 sendMessage("So be it...");
-                setVar(VARIABLE_STROKE_MODULE_PAUSE_FREQUENCY, result);
+                setVar(VARIABLE.STROKE_MODULE_PAUSE_FREQUENCY, result);
                 break;
             } else {
                 sendMessage('You can\'t give me a number greater than 5...');
@@ -300,14 +300,14 @@
     teaseDate.setMonth(month);
     teaseDate.setDay(day);
 
-    setDate(VARIABLE_SUB_BIRTHDAY, teaseDate);
+    setDate(VARIABLE.SUB_BIRTHDAY, teaseDate);
 
     sendMessage("I think it's important that we start out with a clean history");
     sendMessage("I don't know when you cleaned your pipes the last time");
     sendMessage("So yes");
     sendMessage("You are gonna orgasm today", 5);
 
-    setVar(VARIABLE_ORGASM_POINTS, 0);
+    setVar(VARIABLE.ORGASM_POINTS, 0);
     registerOrgasm();
 
     sendMessage("But...");
@@ -330,23 +330,23 @@
     while (true) {
         if (answer.containsIgnoreCase("very rare")) {
             sendMessage("Sounds fine to me");
-            setVar(VARIABLE_ORGASM_FREQUENCY, ORGASM_FREQUENCY_VERY_RARE);
+            setVar(VARIABLE.ORGASM_FREQUENCY, ORGASM_FREQUENCY_VERY_RARE);
             break;
         } else if (answer.containsIgnoreCase("semi rare")) {
             sendMessage("%EmoteSad%");
-            setVar(VARIABLE_ORGASM_FREQUENCY, ORGASM_FREQUENCY_SEMI_RARE);
+            setVar(VARIABLE.ORGASM_FREQUENCY, ORGASM_FREQUENCY_SEMI_RARE);
             break;
         } else if (answer.containsIgnoreCase("somewhat rare")) {
             sendMessage("%EmoteSad%");
-            setVar(VARIABLE_ORGASM_FREQUENCY, ORGASM_FREQUENCY_SOMEWHAT_RARE);
+            setVar(VARIABLE.ORGASM_FREQUENCY, ORGASM_FREQUENCY_SOMEWHAT_RARE);
             break;
         } else if (answer.containsIgnoreCase("rare")) {
             sendMessage("At least something...");
-            setVar(VARIABLE_ORGASM_FREQUENCY, ORGASM_FREQUENCY_RARE);
+            setVar(VARIABLE.ORGASM_FREQUENCY, ORGASM_FREQUENCY_RARE);
             break;
         } else if (answer.containsIgnoreCase("you", "your choice", "extremely rare")) {
             sendMessage("That's what I wanted to hear %SlaveName%");
-            setVar(VARIABLE_ORGASM_FREQUENCY, ORGASM_FREQUENCY_DOM);
+            setVar(VARIABLE.ORGASM_FREQUENCY, ORGASM_FREQUENCY_DOM);
             break;
         } else {
             sendMessage("Very rare, rare, semi rare, somewhat rare or up to me?");
@@ -355,15 +355,15 @@
     }
 
     sendMessage("Now you can go ahead and jerk off...");
-    setVar(VARIABLE_FINISHED_FIRST_SESSION, true);
+    setVar(VARIABLE.FINISHED_FIRST_SESSION, true);
 
     sendMessage("When you're done with that...");
-    if (getVar(VARIABLE_CHASTITY_TRAINING, false) || !getVar(VARIABLE_HAS_CHASTITY)) {
-        setVar(VARIABLE_CHASTITY_ON, false);
+    if (getVar(VARIABLE.CHASTITY_TRAINING, false) || !getVar(VARIABLE.HAS_CHASTITY)) {
+        setVar(VARIABLE.CHASTITY_ON, false);
         sendMessage("I want you to put your %Cock% away...");
         sendMessage("Enjoy", 10);
     } else {
-        setVar(VARIABLE_CHASTITY_ON, true);
+        setVar(VARIABLE.CHASTITY_ON, true);
         sendMessage("I want you to lock up your %Cock% in its %ChastityBelt% %Grin%");
         sendMessage("Enjoy slave!");
         sendMessage("See you tomorrow...", 10);

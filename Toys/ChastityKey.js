@@ -2,7 +2,7 @@ const chastityCombinationImagesFolder = getImageSubFolder('Chastity' + PATH_SEPA
 const chastityCombinationImagesBackupFolder = getImageSubFolder('Chastity' + PATH_SEPARATOR + 'ChastityCombinationBackup');
 
 function lockAwayChastityKey() {
-    if(getVar(VARIABLE_CHASTITY_HAS_COMBINATION_LOCK, false) && !getVar(VARIABLE_CHASTITY_KEY_LOCKED_COMBINATION, false)) {
+    if(getVar(VARIABLE.CHASTITY_HAS_COMBINATION_LOCK, false) && !getVar(VARIABLE.CHASTITY_KEY_LOCKED_COMBINATION, false)) {
         sendVirtualAssistantMessage('Go ahead and fetch your combination lock and some casket you can lock with it %Grin%');
         sendVirtualAssistantMessage('Tell me when you are ready');
         waitForDoneVirtualAssistant();
@@ -41,7 +41,7 @@ function lockAwayChastityKey() {
 
         combinationFile.renameTo(new java.io.File(chastityCombinationImagesFolder.getPath() + PATH_SEPARATOR + 'chastityCombination.lock'));
 
-        setVar(VARIABLE_CHASTITY_KEY_LOCKED_COMBINATION, true);
+        setVar(VARIABLE.CHASTITY_KEY_LOCKED_COMBINATION, true);
 
         sendVirtualAssistantMessage('You can request me to tell you the chastity combination in the main menu');
     }
@@ -52,7 +52,7 @@ function getChastityCombinationFile() {
 }
 
 function unlockChastityKey() {
-    if(getVar(VARIABLE_CHASTITY_KEY_LOCKED_COMBINATION, false)) {
+    if(getVar(VARIABLE.CHASTITY_KEY_LOCKED_COMBINATION, false)) {
         sendMessage('%SlaveName%...');
         sendMessage('Fetch the casket with your chastity key');
         lockImages();
@@ -60,7 +60,7 @@ function unlockChastityKey() {
         showImage(getChastityCombinationFile(), 5);
         sendMessage('Get your keys out of the box and tell me when you are ready to continue');
         waitForDone(100000);
-        setVar(VARIABLE_CHASTITY_KEY_LOCKED_COMBINATION, false);
+        setVar(VARIABLE.CHASTITY_KEY_LOCKED_COMBINATION, false);
         sendMessage('%Good%');
         getChastityCombinationFile().delete();
     } else {

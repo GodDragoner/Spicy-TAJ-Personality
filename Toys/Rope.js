@@ -1,10 +1,10 @@
 function hasBallsTied() {
-    return isVar(VARIABLE_IS_BALLS_TIED) && getVar(VARIABLE_IS_BALLS_TIED);
+    return isVar(VARIABLE.IS_BALLS_TIED) && getVar(VARIABLE.IS_BALLS_TIED);
 }
 
 function wantsToTieBalls() {
     //Prevent tieing balls over and over again
-    if(isVar(VARIABLE_LAST_BALLS_UNTIE) && !getDate(VARIABLE_LAST_BALLS_UNTIE).addMinute(5).hasPassed()) {
+    if(isVar(VARIABLE.LAST_BALLS_UNTIE) && !getDate(VARIABLE.LAST_BALLS_UNTIE).addMinute(5).hasPassed()) {
         return false;
     }
 
@@ -13,7 +13,7 @@ function wantsToTieBalls() {
 
 function wantsToUntieBalls() {
     //Prevent untieing balls over and over again
-    if(isVar(VARIABLE_LAST_BALLS_TIE) && !getDate(VARIABLE_LAST_BALLS_TIE).addMinute(5).hasPassed()) {
+    if(isVar(VARIABLE.LAST_BALLS_TIE) && !getDate(VARIABLE.LAST_BALLS_TIE).addMinute(5).hasPassed()) {
         return false;
     }
 
@@ -26,8 +26,8 @@ function tieBalls(force = false) {
     }
 
     if(!hasBallsTied() && !isInChastity() && fetchToy("shoelace")) {
-        setTempVar(VARIABLE_IS_BALLS_TIED, true);
-        setTempVar(VARIABLE_LAST_BALLS_TIE, setDate());
+        setTempVar(VARIABLE.IS_BALLS_TIED, true);
+        setTempVar(VARIABLE.LAST_BALLS_TIE, setDate());
 
         //TODO: Show tutorials etc. and tell the sub what exactly to do
         sendMessage("Now take that rope and tie up your balls");
@@ -65,7 +65,7 @@ function untieBalls(force = false) {
     while(true) {
         if (answer.isLike('done', 'yes', 'ready')) {
             sendMessage('%Good%');
-            setTempVar(VARIABLE_LAST_BALLS_UNTIE, setDate());
+            setTempVar(VARIABLE.LAST_BALLS_UNTIE, setDate());
             break;
         } else {
             sendMessage('Have you untied your balls yet %SlaveName%?');
@@ -73,5 +73,5 @@ function untieBalls(force = false) {
         }
     }
     
-    setTempVar(VARIABLE_IS_BALLS_TIED, false);
+    setTempVar(VARIABLE.IS_BALLS_TIED, false);
 }

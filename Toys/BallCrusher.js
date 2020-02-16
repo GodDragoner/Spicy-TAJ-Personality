@@ -1,6 +1,6 @@
 
 function hasBullCrusherOn() {
-    return getVar(VARIABLE_IS_BALL_CRUSHER_ON, false);
+    return getVar(VARIABLE.IS_BALL_CRUSHER_ON, false);
 }
 
 function hasBallCrusher() {
@@ -8,7 +8,7 @@ function hasBallCrusher() {
 }
 
 function applyBallCrusherPressure() {
-    if (!isVar(VARIABLE_BALL_CRUSHER_MAX_TWISTS) || !isVar(VARIABLE_BALL_CRUSHER_TWISTS_TO_APPLY)) {
+    if (!isVar(VARIABLE.BALL_CRUSHER_MAX_TWISTS) || !isVar(VARIABLE.BALL_CRUSHER_TWISTS_TO_APPLY)) {
         sendMessage('Since this is the first we play with your %Balls% like this');
 
         sendMessage('We need to first of all determine how many twists you need to apply pressure to your balls');
@@ -29,7 +29,7 @@ function applyBallCrusherPressure() {
         while (!stop) {
             sendMessage('Twist it half a round...', 0);
             showTeaseImage();
-            setVar(VARIABLE_BALL_CRUSHER_TWISTS_TO_APPLY, getVar(VARIABLE_BALL_CRUSHER_TWISTS_TO_APPLY, 0) + 1);
+            setVar(VARIABLE.BALL_CRUSHER_TWISTS_TO_APPLY, getVar(VARIABLE.BALL_CRUSHER_TWISTS_TO_APPLY, 0) + 1);
 
             const answer = createInput(15, 'stop');
             while (true) {
@@ -62,7 +62,7 @@ function applyBallCrusherPressure() {
         while (!stop) {
             sendMessage('Twist it...');
             showTeaseImage();
-            setVar(VARIABLE_BALL_CRUSHER_MAX_TWISTS, getVar(VARIABLE_BALL_CRUSHER_MAX_TWISTS, 0) + 2);
+            setVar(VARIABLE.BALL_CRUSHER_MAX_TWISTS, getVar(VARIABLE.BALL_CRUSHER_MAX_TWISTS, 0) + 2);
 
             const answer = createInput(15, 'stop');
             while (true) {
@@ -78,7 +78,7 @@ function applyBallCrusherPressure() {
         }
         unlockImages();
 
-        const maxTwists = getVar(VARIABLE_BALL_CRUSHER_MAX_TWISTS);
+        const maxTwists = getVar(VARIABLE.BALL_CRUSHER_MAX_TWISTS);
 
         if (maxTwists > 40) {
             sendMessage('You did extremely well! %Grin%');
@@ -111,7 +111,7 @@ function applyBallCrusherPressure() {
     } else {
         sendMessage('Now...');
         sendMessage('I need you to tighten the screws so that it applies pressure to your %Balls%');
-        sendMessage('Which means you are gonna do ' + getVar(VARIABLE_BALL_CRUSHER_TWISTS_TO_APPLY) + ' half twists');
+        sendMessage('Which means you are gonna do ' + getVar(VARIABLE.BALL_CRUSHER_TWISTS_TO_APPLY) + ' half twists');
         sendMessage('Tell me when you are ready to continue %SlaveName%');
         waitForDone();
     }

@@ -39,12 +39,12 @@
                 sendMessage("Or until I let you %JerkOff% again %Grin%");
             }
         } else {
-            if(!isVar(VARIABLE_NEXT_TIME_ICE_CUBES)) {
+            if(!isVar(VARIABLE.NEXT_TIME_ICE_CUBES)) {
                 sendMessage("Too bad...");
                 sendMessage("Maybe another time %EmoteSad%");
                 sendMessage('But next time you should have ice cubes around');
                 sendMessage('Otherwise there will be consequences');
-                setVar(VARIABLE_NEXT_TIME_ICE_CUBES, true);
+                setVar(VARIABLE.NEXT_TIME_ICE_CUBES, true);
             } else {
                 sendMessage('%SlaveName%');
                 sendMessage('I told you last time to have ice cubes around');

@@ -1,8 +1,8 @@
 addResponseRegex("on the edge", "edge([ ]|$)");
 
 function edgeResponse(message) {
-    if(getVar(VARIABLE_CURRENT_SESSION_ACTIVE, false)) {
-        if (getVar(VARIABLE_STROKE_TRAINING_ACTIVE, false)) {
+    if(getVar(VARIABLE.CURRENT_SESSION_ACTIVE, false)) {
+        if (getVar(VARIABLE.STROKE_TRAINING_ACTIVE, false)) {
             strokeTrainingEdge();
             return true;
         } else if (!isEdging() && !isOnEdge() && !message.toLowerCase().contains('may') && !message.toLowerCase().contains('please')) {

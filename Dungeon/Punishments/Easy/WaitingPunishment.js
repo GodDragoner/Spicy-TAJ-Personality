@@ -93,7 +93,7 @@ if (tryRunPunishmentFetchId(MODULE_LINE_WRITING)) {
                 sendMessage("Time out.." );
                 showImage("Images/Spicy/Punishment/Grounding/BlackBase.*");
                 changeMeritLow(true);
-                setVar(VARIABLE_GOLD,getVar(VARIABLE_GOLD)-10);
+                setVar(VARIABLE.GOLD,getVar(VARIABLE.GOLD)-10);
                 //@TempFlag(PunishmentComplete)
                 donetime=donetime.addSecond(randomInteger(60,180));
                 break;
@@ -107,7 +107,7 @@ if (tryRunPunishmentFetchId(MODULE_LINE_WRITING)) {
                     else{ sendMessage("Wrong.. You were supposed to write "+answerval+".. ");
                         showImage("Images/Spicy/Punishment/Grounding/BlackBase.*");
                         changeMeritLow(true);
-                        setVar(VARIABLE_GOLD,getVar(VARIABLE_GOLD)-10);
+                        setVar(VARIABLE.GOLD,getVar(VARIABLE.GOLD)-10);
                         //@TempFlag(PunishmentComplete)
                         donetime=donetime.addSecond(randomInteger(60,180));
                         break;
@@ -116,7 +116,7 @@ if (tryRunPunishmentFetchId(MODULE_LINE_WRITING)) {
                     sendMessage("Wrong.. You were supposed to write "+answerval+".. that wasn't even a number %SlaveName% ");
                     showImage("Images/Spicy/Punishment/Grounding/BlackBase.*");
                     changeMeritLow(true);
-                    setVar(VARIABLE_GOLD,getVar(VARIABLE_GOLD)-10);
+                    setVar(VARIABLE.GOLD,getVar(VARIABLE.GOLD)-10);
                     //@TempFlag(PunishmentComplete)
                     donetime=donetime.addSecond(randomInteger(60,180));
                     break;

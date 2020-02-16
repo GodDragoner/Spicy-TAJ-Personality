@@ -10,7 +10,7 @@ function hasAdvancedLingerie() {
 }
 
 function hasLingerieOn() {
-    return getVar(VARIABLE_LINGERIE_ON, false);
+    return getVar(VARIABLE.LINGERIE_ON, false);
 }
 
 function putOnLingerie() {
@@ -65,7 +65,7 @@ function putOnLingerie() {
     sendMessage('Tell me when you are done %SlaveName%');
     waitForDone();
 
-    setVar(VARIABLE_LINGERIE_ON, true);
+    setVar(VARIABLE.LINGERIE_ON, true);
 
     return true;
 }

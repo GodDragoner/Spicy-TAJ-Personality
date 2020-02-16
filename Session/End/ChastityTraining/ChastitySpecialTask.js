@@ -22,16 +22,16 @@ const afraidTasks = [];
 
             let walkDuration = randomInteger(5, 10);
 
-            if (getVar(VARIABLE_CHASTITY_LEVEL) >= 20) {
+            if (getVar(VARIABLE.CHASTITY_LEVEL) >= 20) {
                 walkDuration = randomInteger(15, 20);
-            } else if (getVar(VARIABLE_CHASTITY_LEVEL) >= 10) {
+            } else if (getVar(VARIABLE.CHASTITY_LEVEL) >= 10) {
                 walkDuration = randomInteger(10, 15);
             }
 
             sendMessage("I want you to go for a " + walkDuration + " minute walk");
             sendMessage(random("I want you to learn to move around with it", "It will be good for your health as well", "You should thank me for encouraging you to do a little exercise"));
 
-            if (getVar(VARIABLE_AFRAID_OF_CHASTITY, false)) {
+            if (getVar(VARIABLE.AFRAID_OF_CHASTITY, false)) {
                 sendMessage("And because you are afraid of it showing in public this should be pretty " + random("intense ", "interesting ", "challenging "));
             }
         },
@@ -209,7 +209,7 @@ function isAfraidTask(taskId) {
 }
 
 function getRandomSpecialChastityTask(array) {
-    const level = getVar(VARIABLE_CHASTITY_LEVEL);
+    const level = getVar(VARIABLE.CHASTITY_LEVEL);
 
     const availableTasks = [];
 

@@ -9,33 +9,33 @@ const ORGASM_CATEGORY_RUINED = 1;
 const ORGASM_CATEGORY_DENIED = 2;
 
 function registerOrgasm() {
-    setDate(VARIABLE_LAST_ORGASM);
-    setVar(VARIABLE_ORGASM_COUNTER, getVar(VARIABLE_ORGASM_COUNTER, 0) + 1);
+    setDate(VARIABLE.LAST_ORGASM);
+    setVar(VARIABLE.ORGASM_COUNTER, getVar(VARIABLE.ORGASM_COUNTER, 0) + 1);
     registerEjaculation();
 }
 
 function registerRuin() {
-    setDate(VARIABLE_LAST_RUINED_ORGASM);
-    setVar(VARIABLE_RUIN_COUNTER, getVar(VARIABLE_RUIN_COUNTER, 0) + 1);
+    setDate(VARIABLE.LAST_RUINED_ORGASM);
+    setVar(VARIABLE.RUIN_COUNTER, getVar(VARIABLE.RUIN_COUNTER, 0) + 1);
     registerEjaculation();
 }
 
 function registerEjaculation() {
-    setVar(VARIABLE_ORGASM_POINTS, 0);
-    setVar(VARIABLE_REQUIRED_ORGASM_POINTS, getRequiredOrgasmPoints());
+    setVar(VARIABLE.ORGASM_POINTS, 0);
+    setVar(VARIABLE.REQUIRED_ORGASM_POINTS, getRequiredOrgasmPoints());
 }
 
 function getLastEjaculationDate() {
-    if(!isVar(VARIABLE_LAST_RUINED_ORGASM) && !isVar(VARIABLE_LAST_ORGASM)) {
+    if(!isVar(VARIABLE.LAST_RUINED_ORGASM) && !isVar(VARIABLE.LAST_ORGASM)) {
         //Just some really old date if the sub hasn't cum yet for some reason (although the date should be set in the startup file)
         return setDate().addYear(-10);
     }
 
-    if(!isVar(VARIABLE_LAST_RUINED_ORGASM) || getDate(VARIABLE_LAST_RUINED_ORGASM).after(getDate(VARIABLE_LAST_ORGASM))) {
-        return getDate(VARIABLE_LAST_ORGASM);
+    if(!isVar(VARIABLE.LAST_RUINED_ORGASM) || getDate(VARIABLE.LAST_RUINED_ORGASM).after(getDate(VARIABLE.LAST_ORGASM))) {
+        return getDate(VARIABLE.LAST_ORGASM);
     }
 
-    return getDate(VARIABLE_LAST_RUINED_ORGASM);
+    return getDate(VARIABLE.LAST_RUINED_ORGASM);
 }
 
 function waitForCumAnswer() {
@@ -110,19 +110,19 @@ function decideOrgasm(noDenied = false) {
         decide -= 31 - goodDays;
     }
 
-    if(getVar(VARIABLE_HAPPINESS) < getVar(VARIABLE_ANGER)) {
-        decide -= getVar(VARIABLE_ANGER);
+    if(getVar(VARIABLE.HAPPINESS) < getVar(VARIABLE.ANGER)) {
+        decide -= getVar(VARIABLE.ANGER);
     }
 
-    if(getVar(VARIABLE_LUST) > 27) {
-        decide += getVar(VARIABLE_LUST);
+    if(getVar(VARIABLE.LUST) > 27) {
+        decide += getVar(VARIABLE.LUST);
     }
 
     sendDebugMessage('Orgasm decided threshold of ' + decide + ' rolled');
 
     //TODO: Ruined mode?
     //The smaller orgasm ratio the more ruined orgasms
-    if(decide >= 100 && getVar(VARIABLE_ORGASM_RATION) >= randomInteger(1, 100)) {
+    if(decide >= 100 && getVar(VARIABLE.ORGASM_RATION) >= randomInteger(1, 100)) {
         let ratioArray = [
             //First personality
             25,
@@ -132,10 +132,10 @@ function decideOrgasm(noDenied = false) {
             100,
         ];
 
-        incrementVar(VARIABLE_ORGASM_RATION, -ratioArray[getStrictnessForCharacter()]);
+        incrementVar(VARIABLE.ORGASM_RATION, -ratioArray[getStrictnessForCharacter()]);
 
         if(getVar('slaveMode', false)) {
-            incrementVar(VARIABLE_ORGASM_RATION, -45);
+            incrementVar(VARIABLE.ORGASM_RATION, -45);
         }
 
         return ORGASM_CATEGORY_ALLOWED;
@@ -149,10 +149,10 @@ function decideOrgasm(noDenied = false) {
             6,
         ];
 
-        incrementVar(VARIABLE_ORGASM_RATION, ratioArray[getStrictnessForCharacter()]);
+        incrementVar(VARIABLE.ORGASM_RATION, ratioArray[getStrictnessForCharacter()]);
 
         if(getVar('slaveMode', false)) {
-            incrementVar(VARIABLE_ORGASM_RATION, -4);
+            incrementVar(VARIABLE.ORGASM_RATION, -4);
         }
 
         return ORGASM_CATEGORY_RUINED;
@@ -189,17 +189,17 @@ function distributeOrgasmPoints() {
         totalToAdd += randomInteger(points[personalityOffset + goodDaysOffset], points[personalityOffset + goodDaysOffset + 1]);
     }
 
-    if(getVar(VARIABLE_LUST) > 28) {
+    if(getVar(VARIABLE.LUST) > 28) {
         totalToAdd += randomInteger(points[personalityOffset + lustOffset], points[personalityOffset + lustOffset + 1]);
     }
 
-    if(getLastEjaculationDate().addDay(getVar(VARIABLE_DENIAL_LEVEL)).hasPassed()) {
+    if(getLastEjaculationDate().addDay(getVar(VARIABLE.DENIAL_LEVEL)).hasPassed()) {
         totalToAdd += randomInteger(points[personalityOffset + denialOffset], points[personalityOffset + denialOffset + 1]);
     }
 
     let map = [];
 
-    switch(getVar(VARIABLE_ORGASM_FREQUENCY)) {
+    switch(getVar(VARIABLE.ORGASM_FREQUENCY)) {
         case ORGASM_FREQUENCY_VERY_RARE:
             //Personality 1
             map.push(1, 5);
@@ -244,13 +244,13 @@ function distributeOrgasmPoints() {
 
     totalToAdd += randomInteger(map[getStrictnessForCharacter()*2], map[getStrictnessForCharacter()*2 + 1]);
 
-    incrementVar(VARIABLE_ORGASM_POINTS, totalToAdd);
+    incrementVar(VARIABLE.ORGASM_POINTS, totalToAdd);
 
     sendDebugMessage('Added ' + totalToAdd + 'orgasm points');
 }
 
 function getRequiredOrgasmPoints() {
-    const denialLevel = getVar(VARIABLE_DENIAL_LEVEL);
+    const denialLevel = getVar(VARIABLE.DENIAL_LEVEL);
     const minPoints = 26.87*java.lang.Math.E^(0.2598*denialLevel);
     const maxPoints = 68.559*java.lang.Math.E^(0.2501*denialLevel);
     return randomInteger(minPoints, maxPoints);
@@ -313,11 +313,11 @@ function askAboutDenialLevel() {
             setVar('denialLevelTalkInDays', randomInteger(5, 15));
 
             const chancesIncrease = [25, 25, 30, 30, 35, 35, 40, 40, 45, 45, 50, 50, 50, 50];
-            let denialLevelIndex = getVar(VARIABLE_DENIAL_LEVEL) - 1;
+            let denialLevelIndex = getVar(VARIABLE.DENIAL_LEVEL) - 1;
 
-            if(getVar(VARIABLE_DENIAL_LEVEL) < 15) {
+            if(getVar(VARIABLE.DENIAL_LEVEL) < 15) {
                 if(isChance(chancesIncrease[Math.min(denialLevelIndex, chancesIncrease.length - 1)])) {
-                    incrementVar(VARIABLE_DENIAL_LEVEL, 1);
+                    incrementVar(VARIABLE.DENIAL_LEVEL, 1);
                 }
             }
 
@@ -328,7 +328,7 @@ function askAboutDenialLevel() {
                 sendMessage("%SlaveName%");
                 sendMessage(random("Once in a while I feel it\'s important to discuss denial with you ", "As you know its important to discuss your denial practice with you.. "));
                 sendMessage(random("Today is one of those days ", "And today we\'ll do just that! "));
-                sendMessage("Currently your denial level is " + getVar(VARIABLE_DENIAL_LEVEL));
+                sendMessage("Currently your denial level is " + getVar(VARIABLE.DENIAL_LEVEL));
                 sendMessage(random("Just to remind you ", "Let me remind you that..."));
                 sendMessage("Level 1 to 5 is for beginners");
                 sendMessage("Level 6 to 8 is for the trained");
@@ -348,9 +348,9 @@ function askAboutDenialLevel() {
                         const highOrLowAnswer = sendInput(random("Are you set at a too low or too high level? ", "Is your current level too high or too low "));
                         while(true) {
                             if(highOrLowAnswer.isLike('high')) {
-                                if(getVar(VARIABLE_DENIAL_LEVEL) > 1) {
+                                if(getVar(VARIABLE.DENIAL_LEVEL) > 1) {
                                     sendMessage('Well then, I will try to work on that then %Grin%');
-                                    incrementVar(VARIABLE_DENIAL_LEVEL, -1);
+                                    incrementVar(VARIABLE.DENIAL_LEVEL, -1);
                                 } else {
                                     sendMessage('Your level can\'t be lower than 1 %Lol%');
                                     sendMessage('You gotta at least deal with a very small amount of denial %SlaveName%');
@@ -358,13 +358,13 @@ function askAboutDenialLevel() {
 
                                 break;
                             } else if(highOrLowAnswer.isLike('low')) {
-                                if(getVar(VARIABLE_DENIAL_LEVEL) >= 15) {
+                                if(getVar(VARIABLE.DENIAL_LEVEL) >= 15) {
                                     sendMessage('I am already denying you like almost every time %SlaveName%');
                                     sendMessage('But you still keeping going');
                                 }
 
                                 sendMessage('I like your attitude %SlaveName% %Grin%');
-                                incrementVar(VARIABLE_DENIAL_LEVEL, 1);
+                                incrementVar(VARIABLE.DENIAL_LEVEL, 1);
                                 break;
                             } else {
                                 sendMessage('Too high or low %SlaveName%?');

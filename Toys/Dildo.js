@@ -62,7 +62,7 @@ function getRandomCleanDildo() {
 function getAnalDildoForTask(minLength = 0, minThickness = 0) {
     let availableDildos = [];
 
-    let assLevel = getVar(VARIABLE_ASS_LEVEL);
+    let assLevel = getVar(VARIABLE.ASS_LEVEL);
 
     if(minLength === 0) {
         minLength = Math.max(10, assLevel/2);
@@ -97,7 +97,7 @@ function getAnalDildoForTask(minLength = 0, minThickness = 0) {
  * @returns A random dildo that fits the parameters
  */
 function getAnalDildo(minLength = 0, minThickness = 0, forceThicker = false, forceLonger = false, smallerFactor = 0) {
-    let maxDildoThickness = getVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, 0) - smallerFactor;
+    let maxDildoThickness = getVar(VARIABLE.MAX_DILDO_THICKNESS_TODAY, 0) - smallerFactor;
 
     if(maxDildoThickness >= thickestDildo.diameter) {
         //We don't have any thicker dildo
@@ -147,7 +147,7 @@ function getAnalDildo(minLength = 0, minThickness = 0, forceThicker = false, for
     let dildo = availableDildos[randomInteger(0, availableDildos.length - 1)];
 
     //TODO: Can't do this here. Can only do it if getting it was confirmed (fetch toy)
-    setTempVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, Math.max(getVar(VARIABLE_MAX_DILDO_THICKNESS_TODAY, 0), dildo.diameter));
+    setTempVar(VARIABLE.MAX_DILDO_THICKNESS_TODAY, Math.max(getVar(VARIABLE.MAX_DILDO_THICKNESS_TODAY, 0), dildo.diameter));
     currentDildo = dildo;
     return dildo;
 }

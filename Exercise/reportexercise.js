@@ -1,19 +1,19 @@
 {
     sendVirtualAssistantMessage("Reporting exercise...");
 
-    let times = getVar(VARIABLE_EXERCISE_TIMES);
+    let times = getVar(VARIABLE.EXERCISE_TIMES);
 
-    if (!isVar(VARIABLE_EXERCISE_TIMES)) {// this is the first time user is reporting exercise
+    if (!isVar(VARIABLE.EXERCISE_TIMES)) {// this is the first time user is reporting exercise
         sendVirtualAssistantMessage("%SlaveName%, this is the first time you're reporting exercise activity");
         sendVirtualAssistantMessage("%domName%, would prefer you to follow our integrated fitness program, but understands that might not be practical");
         sendVirtualAssistantMessage("%domName% graciously provides you this opportunity to report exercise completed outside of TAJ");
         sendVirtualAssistantMessage("For an exercise to count it should be at least 45 minutes of strenuous activity that makes you sweat.");
 
         let lastExercise = setDate().addDay(-2);
-        setDate(VARIABLE_EXERCISE_LAST, lastExercise);
+        setDate(VARIABLE.EXERCISE_LAST, lastExercise);
     }
 
-    if (isVar(VARIABLE_EXERCISE_LAST) && !getDate(VARIABLE_EXERCISE_LAST).addMinute(300).hasPassed()) {
+    if (isVar(VARIABLE.EXERCISE_LAST) && !getDate(VARIABLE.EXERCISE_LAST).addMinute(300).hasPassed()) {
         sendVirtualAssistantMessage("You just reported that you completed an exercise..");
         sendVirtualAssistantMessage("I'm not stupid slave...");
         changeMeritHigh(true);
@@ -26,10 +26,10 @@
             if (answer2.containsIgnoreCase("yes", "yeah", "yep")) {
                 sendVirtualAssistantMessage("%Good%");
 
-                setVar(VARIABLE_EXERCISE_TIMES, getVar(VARIABLE_EXERCISE_TIMES, 0) + 1);
+                setVar(VARIABLE.EXERCISE_TIMES, getVar(VARIABLE.EXERCISE_TIMES, 0) + 1);
 
                 //Set the exercise date to now
-                setDate(VARIABLE_EXERCISE_LAST);
+                setDate(VARIABLE.EXERCISE_LAST);
                 changeMeritMedium(true);
 
                 addGold(50);

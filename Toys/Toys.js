@@ -48,7 +48,7 @@ function interactWithRandomToys() {
     //TODO: Could interact with buy new toys or fetish questions and better transition between different toys (additionally why not do this... etc.)
     if ((BUTTPLUG_TOY.isPunishmentAllowed() || !punishment && BUTTPLUG_TOY.isPlayAllowed()) && getAnalLimit() === LIMIT_ASKED_YES) {
         //Starting chance for plug or already plugged anyway
-        if (isChance(Math.max(15, getVar(VARIABLE_ASS_LEVEL, 0)) * 4) || isPlugged()) {
+        if (isChance(Math.max(15, getVar(VARIABLE.ASS_LEVEL, 0)) * 4) || isPlugged()) {
             let action = shouldIncreasePlugSize();
 
             if (action === ACTION_BUTTPLUG_INCREASE_SIZE) {
@@ -56,7 +56,7 @@ function interactWithRandomToys() {
             } else if (action === ACTION_BUTTPLUG_PUT_FIRST && hasButtplugToy()) {
                 let answers = ['Let\'s prepare your %Ass% for what is up to come %Grin%', 'Let\'s plug up that %Ass%', 'Let\'s not waste anymore time by leaving that %Ass% empty'];
 
-                if (getVar(VARIABLE_ASS_LEVEL) >= 30) {
+                if (getVar(VARIABLE.ASS_LEVEL) >= 30) {
                     answers.push('You know that there is a very slow chance of you not being plugged and guess what - You won\'t be lucky now... %Lol%');
                 }
 

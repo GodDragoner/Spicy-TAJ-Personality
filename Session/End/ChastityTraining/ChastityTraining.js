@@ -1,10 +1,10 @@
 {
-    if (getVar(VARIABLE_CHASTITY_LEVEL) >= 30 || isVar('ChastityExamStartDate')) {
+    if (getVar(VARIABLE.CHASTITY_LEVEL) >= 30 || isVar('ChastityExamStartDate')) {
         run('Session/End/ChastityTraining/ChastityExam.js');
     } else {
         //By default we want to send a new assignment
         let completedExercise = true;
-        if (getVar(VARIABLE_CHASTITY_TRAININGS_DONE, 0) == 0) {
+        if (getVar(VARIABLE.CHASTITY_TRAININGS_DONE, 0) == 0) {
             firstChastityTraining();
         } else {
             if (checkChastityExercise()) {
@@ -24,7 +24,7 @@
         }
     }
 
-    setVar(VARIABLE_CHASTITY_TRAININGS_DONE, getVar(VARIABLE_CHASTITY_TRAININGS_DONE) + 1);
+    setVar(VARIABLE.CHASTITY_TRAININGS_DONE, getVar(VARIABLE.CHASTITY_TRAININGS_DONE) + 1);
 }
 
 function sendNewChastityExercise() {
@@ -33,14 +33,14 @@ function sendNewChastityExercise() {
 
     let task = null;
 
-    if (getVar(VARIABLE_AFRAID_OF_CHASTITY, false) && isChance(20)) {
+    if (getVar(VARIABLE.AFRAID_OF_CHASTITY, false) && isChance(20)) {
         task = getRandomSpecialChastityTask(afraidTasks);
     } else {
         task = getRandomSpecialChastityTask(chastityTasks);
     }
 
-    setVar(VARIABLE_TASK_CHASTITY_EXPERIENCE, task.exp * getTrainingEXPMultiplier(getVar(VARIABLE_CHASTITY_TASKS_IN_ROW, 0)));
-    setVar(VARIABLE_LAST_CHASTITY_TASK_ID, task.id);
+    setVar(VARIABLE.TASK_CHASTITY_EXPERIENCE, task.exp * getTrainingEXPMultiplier(getVar(VARIABLE.CHASTITY_TASKS_IN_ROW, 0)));
+    setVar(VARIABLE.LAST_CHASTITY_TASK_ID, task.id);
 
     task.sendInstructions();
 }
@@ -76,7 +76,7 @@ function randomChastityAdvice() {
 }
 
 function sendBasicChastityTrainingTask() {
-    let chastityLevel = getVar(VARIABLE_CHASTITY_LEVEL);
+    let chastityLevel = getVar(VARIABLE.CHASTITY_LEVEL);
 
     let min = Math.ceil(chastityLevel / 2.9);
     let randomHourAmount = randomInteger(min, min + 3);
@@ -124,20 +124,20 @@ function checkChastityExercise() {
             changeMeritLow(false);
 
             sendMessage("Let me just add the new exp...");
-            incrementVar(VARIABLE_CHASTITY_TASKS_IN_ROW, 1);
+            incrementVar(VARIABLE.CHASTITY_TASKS_IN_ROW, 1);
 
-            checkTasksInRow(getVar(VARIABLE_CHASTITY_TASKS_IN_ROW), 'chastity');
+            checkTasksInRow(getVar(VARIABLE.CHASTITY_TASKS_IN_ROW), 'chastity');
 
-            incrementVar(VARIABLE_CHASTITY_EXPERIENCE, getVar(VARIABLE_TASK_CHASTITY_EXPERIENCE));
+            incrementVar(VARIABLE.CHASTITY_EXPERIENCE, getVar(VARIABLE.TASK_CHASTITY_EXPERIENCE));
 
-            if (getTrainingEXPForLevel(getVar(VARIABLE_CHASTITY_LEVEL) + 1) <= getVar(VARIABLE_CHASTITY_EXPERIENCE)) {
-                incrementVar(VARIABLE_CHASTITY_LEVEL, 1);
+            if (getTrainingEXPForLevel(getVar(VARIABLE.CHASTITY_LEVEL) + 1) <= getVar(VARIABLE.CHASTITY_EXPERIENCE)) {
+                incrementVar(VARIABLE.CHASTITY_LEVEL, 1);
             }
 
-            sendMessage("I added your exp and your current level is " + getVar(VARIABLE_CHASTITY_LEVEL));
-            sendMessage('You will need ' + (getTrainingEXPForLevel(getVar(VARIABLE_CHASTITY_LEVEL) + 1) - getVar(VARIABLE_CHASTITY_EXPERIENCE)) + ' more exp for the next level');
+            sendMessage("I added your exp and your current level is " + getVar(VARIABLE.CHASTITY_LEVEL));
+            sendMessage('You will need ' + (getTrainingEXPForLevel(getVar(VARIABLE.CHASTITY_LEVEL) + 1) - getVar(VARIABLE.CHASTITY_EXPERIENCE)) + ' more exp for the next level');
 
-            if (getVar(VARIABLE_AFRAID_OF_CHASTITY, false) && isAfraidTask(getVar(VARIABLE_LAST_CHASTITY_TASK_ID))) {
+            if (getVar(VARIABLE.AFRAID_OF_CHASTITY, false) && isAfraidTask(getVar(VARIABLE.LAST_CHASTITY_TASK_ID))) {
                 const afraidAnswer = sendInput('Tell me, are you still afraid of your cage showing in the public?');
 
                 while (true) {
@@ -147,7 +147,7 @@ function checkChastityExercise() {
                     } else if (afraidAnswer.isLike('no')) {
                         sendMessage("%Good% " + random("I am happy that you have overcome your fear ", "Looks like my training was successful ", "This means we can focus on working on wearing it 24/7 "));
                         changeMeritLow(false);
-                        setVar(VARIABLE_AFRAID_OF_CHASTITY, false);
+                        setVar(VARIABLE.AFRAID_OF_CHASTITY, false);
                         break;
                     } else {
                         sendMessage(YES_OR_NO);
@@ -175,7 +175,7 @@ function checkChastityExercise() {
                     changeMeritLow(true);
 
                     sendMessage(random("You must not be afraid of it showing in public ", "You will have to deal with that ") + "%SlaveName% %Lol%");
-                    setVar(VARIABLE_AFRAID_OF_CHASTITY, true);
+                    setVar(VARIABLE.AFRAID_OF_CHASTITY, true);
                     sendMessage("As a proper slave of mine you don\'t care about other people");
                     sendMessage("Because " + random("your solely purpose is to please me ", "your only interest should be to please me ", "you should only be interested in following my commands "));
                     return;
@@ -184,10 +184,10 @@ function checkChastityExercise() {
                     changeMeritMedium(true);
 
                     if (isChance(50)) {
-                        if (getVar(VARIABLE_CHASTITY_SPIKES_ON, false)) {
+                        if (getVar(VARIABLE.CHASTITY_SPIKES_ON, false)) {
                             sendMessage(random("If it hurts you should prevent yourself from being aroused with all those spikes in your cage ", "No wonder it hurts with all those spikes in the cage ") + "%Lol%");
                             break;
-                        } else if (getVar(VARIABLE_CHASTITY_CAGE_IS_PIERCED, false)) {
+                        } else if (getVar(VARIABLE.CHASTITY_CAGE_IS_PIERCED, false)) {
                             sendMessage(random("If the piercing is uncomfortable ", "If the piercing hurts ") + "you should consider rearranging it or getting another cage %SlaveName%");
                             break;
                         }
@@ -205,7 +205,7 @@ function checkChastityExercise() {
 
             sendMessage("Anyhow not completing your " + random("task ", "assignment ") + "displeases me");
             sendMessage("But I guess in the end this means you just don\'t get to cum %Grin%");
-            setVar(VARIABLE_CHASTITY_TASKS_IN_ROW, 0);
+            setVar(VARIABLE.CHASTITY_TASKS_IN_ROW, 0);
             sendMessage("Complete your task until the next session");
             return false;
         } else {
@@ -224,7 +224,7 @@ function firstChastityTraining() {
     sendMessage("We want you at a point where you\'ll feel naked without the %ChastityCage%");
 
 
-    if(!getVar(VARIABLE_TRAINING_INTRODUCTION_DONE, false)) {
+    if(!getVar(VARIABLE.TRAINING_INTRODUCTION_DONE, false)) {
         sendMessage("It\'s rather simple how this work.");
         sendMessage("After each session");
         sendMessage("You will be asked whether you completed your current assignment");
@@ -252,8 +252,8 @@ function firstChastityTraining() {
     sendMessage("2-7 to get to ruin your orgasm");
     sendMessage("8-10 you get an actual orgasm");*/
 
-    setVar(VARIABLE_CHASTITY_LEVEL, 1);
-    setVar(VARIABLE_CHASTITY_EXPERIENCE, 0);
-    setVar(VARIABLE_CHASTITY_TASKS_IN_ROW, 0);
-    setVar(VARIABLE_TRAINING_INTRODUCTION_DONE, true);
+    setVar(VARIABLE.CHASTITY_LEVEL, 1);
+    setVar(VARIABLE.CHASTITY_EXPERIENCE, 0);
+    setVar(VARIABLE.CHASTITY_TASKS_IN_ROW, 0);
+    setVar(VARIABLE.TRAINING_INTRODUCTION_DONE, true);
 }

@@ -6,12 +6,12 @@
         sendMessage('We can\'t do this training without at least one dildo and one buttplug');
         sendMessage('So make sure to get some and set them up in the settings');
     } else {
-        if (getVar(VARIABLE_ASS_LEVEL) >= 30 || isVar('AnalExamStartDate')) {
+        if (getVar(VARIABLE.ASS_LEVEL) >= 30 || isVar('AnalExamStartDate')) {
             run('Session/End/AnalTraining/AnalExam.js');
         } else {
             //By default we want to send a new assignment
             let completedExercise = true;
-            if (getVar(VARIABLE_ASS_TRAININGS_DONE, 0) == 0) {
+            if (getVar(VARIABLE.ASS_TRAININGS_DONE, 0) == 0) {
                 firstTimeAnalTraining();
             } else if (checkAnalExercise()) {
 
@@ -30,13 +30,13 @@
                     sendMessage(random("Remember ", "Don\'t forget ", "Keep in mind ") + "to properly lick your toys clean after using them %Lol%");
                 }
 
-                if (hasEnemaKit() && isVar(VARIABLE_ENEMA_INTRO)) {
+                if (hasEnemaKit() && isVar(VARIABLE.ENEMA_INTRO)) {
                     sendMessage(random("Don\'t forget ", "And also do ", "Remember ", "In addition do ", "Also do ") + "your enema %Grin%");
                 }
             }
         }
 
-        incrementVar(VARIABLE_ASS_TRAININGS_DONE, 1);
+        incrementVar(VARIABLE.ASS_TRAININGS_DONE, 1);
     }
 }
 
@@ -45,8 +45,8 @@ function sendNewAnalTask() {
 
     let task = getRandomAnalTask(analTasks);
 
-    setVar(VARIABLE_TASK_ASS_EXPERIENCE, task.exp * getTrainingEXPMultiplier(getVar(VARIABLE_ASS_TASKS_IN_ROW, 0)));
-    setVar(VARIABLE_LAST_ASS_TASK_ID, task.id);
+    setVar(VARIABLE.TASK_ASS_EXPERIENCE, task.exp * getTrainingEXPMultiplier(getVar(VARIABLE.ASS_TASKS_IN_ROW, 0)));
+    setVar(VARIABLE.LAST_ASS_TASK_ID, task.id);
 
     task.sendInstructions();
 }
@@ -59,18 +59,18 @@ function checkAnalExercise() {
         changeMeritLow(false);
 
         sendMessage("Let me just add the new exp...");
-        incrementVar(VARIABLE_ASS_TASKS_IN_ROW, 1);
+        incrementVar(VARIABLE.ASS_TASKS_IN_ROW, 1);
 
-        checkTasksInRow(getVar(VARIABLE_ASS_TASKS_IN_ROW), 'anal');
+        checkTasksInRow(getVar(VARIABLE.ASS_TASKS_IN_ROW), 'anal');
 
-        incrementVar(VARIABLE_ASS_EXPERIENCE, getVar(VARIABLE_TASK_ASS_EXPERIENCE));
+        incrementVar(VARIABLE.ASS_EXPERIENCE, getVar(VARIABLE.TASK_ASS_EXPERIENCE));
 
-        if (getTrainingEXPForLevel(getVar(VARIABLE_ASS_LEVEL) + 1) <= getVar(VARIABLE_ASS_EXPERIENCE)) {
-            incrementVar(VARIABLE_ASS_LEVEL, 1);
+        if (getTrainingEXPForLevel(getVar(VARIABLE.ASS_LEVEL) + 1) <= getVar(VARIABLE.ASS_EXPERIENCE)) {
+            incrementVar(VARIABLE.ASS_LEVEL, 1);
         }
 
-        sendMessage("I added your exp and your current level is " + getVar(VARIABLE_ASS_LEVEL));
-        sendMessage('You will need ' + (getTrainingEXPForLevel(getVar(VARIABLE_ASS_LEVEL) + 1) - getVar(VARIABLE_ASS_EXPERIENCE)) + ' more exp for the next level');
+        sendMessage("I added your exp and your current level is " + getVar(VARIABLE.ASS_LEVEL));
+        sendMessage('You will need ' + (getTrainingEXPForLevel(getVar(VARIABLE.ASS_LEVEL) + 1) - getVar(VARIABLE.ASS_EXPERIENCE)) + ' more exp for the next level');
 
     } else {
         sendMessage("I expect more from you %SlaveName%");
@@ -102,7 +102,7 @@ function checkAnalExercise() {
 
         sendMessage("Anyhow not completing your " + random("task ", "assignment ") + "displeases me");
         sendMessage("But I guess in the end this means you just don\'t get to cum %Grin%");
-        setVar(VARIABLE_ASS_TASKS_IN_ROW, 0);
+        setVar(VARIABLE.ASS_TASKS_IN_ROW, 0);
         sendMessage("Complete your task until the next session");
         return false;
     }
@@ -120,7 +120,7 @@ function firstTimeAnalTraining() {
         sendMessage("Now.. ");
     }
 
-    if(!getVar(VARIABLE_TRAINING_INTRODUCTION_DONE, false)) {
+    if(!getVar(VARIABLE.TRAINING_INTRODUCTION_DONE, false)) {
         sendMessage("It\'s rather simple how this works ");
         sendMessage("After each session I will ask you whether you completed your latest assignment");
         sendMessage("If you did you are rewarded with exp");
@@ -140,5 +140,5 @@ function firstTimeAnalTraining() {
         sendMessage("Level 30 means that you can take anything up your %Ass% without hesitating");
     }
 
-    setVar(VARIABLE_TRAINING_INTRODUCTION_DONE, true);
+    setVar(VARIABLE.TRAINING_INTRODUCTION_DONE, true);
 }

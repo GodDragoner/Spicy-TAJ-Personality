@@ -3,7 +3,7 @@
     sendVirtualAssistantMessage('1. List rules', 0);
     let lobbyAnswer;
 
-    if(isVar(VARIABLE_ENEMA_INTRO)) {
+    if(isVar(VARIABLE.ENEMA_INTRO)) {
         sendVirtualAssistantMessage('2. Enema', 0);
         lobbyAnswer = createInput('List rules', 'Enema', 'Return');
     } else {
@@ -53,7 +53,7 @@
             lobbyAnswer.clearOptions();
             break;
         } else if(lobbyAnswer.isLike('enema')) {
-            if(!isVar(VARIABLE_ENEMA_INTRO)) {
+            if(!isVar(VARIABLE.ENEMA_INTRO)) {
                 lobbyAnswer.loop();
             } else {
                 let lines = getTodaysEnema();
@@ -72,7 +72,7 @@
             sendVirtualAssistantMessage("You have the following options %SlaveName%");
             sendVirtualAssistantMessage("- Rules");
 
-            if(isVar(VARIABLE_ENEMA_INTRO)) {
+            if(isVar(VARIABLE.ENEMA_INTRO)) {
                 sendVirtualAssistantMessage("- Enema");
             }
 

@@ -6,7 +6,7 @@ if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_STROKING)) {
         stopStroking();
         sendMessage("Trust me. You'll need the pause and it won't last too long anyway %Grin%");
 
-        if (getVar(VARIABLE_EDGE_A_TONS_DONE, 0) == 0) {
+        if (getVar(VARIABLE.EDGE_A_TONS_DONE, 0) == 0) {
             sendMessage("So...");
         } else {
             sendMessage("Because...");
@@ -15,7 +15,7 @@ if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_STROKING)) {
         sendMessage("Okay %SlaveName%");
     }
 
-    if (getVar(VARIABLE_EDGE_A_TONS_DONE, 0) == 0) {
+    if (getVar(VARIABLE.EDGE_A_TONS_DONE, 0) == 0) {
         sendMessage("This is gonna be your first edge a ton");
         sendMessage("It's actually a great way to show my control over your %Cock%");
         sendMessage("Basically it consists of you edging over and over...");
@@ -52,7 +52,7 @@ if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_STROKING)) {
                     sendMessage("My lover's cock is 13cm when soft and he's a grower");
                     sendMessage("And oh my... It sure does grow %Grin%");
                     sendMessage("I bet your friend " + getVar("blackmailName1") + " wouldn't be impressed by your size either %Lol%")
-                    setVar(VARIABLE_SOFT_COCK_LENGTH, result);
+                    setVar(VARIABLE.SOFT_COCK_LENGTH, result);
                     break;
                 }
             } else {
@@ -75,11 +75,11 @@ if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_STROKING)) {
 
         //Saturday TODO: Implement competition
         if (date.getDay() == 6 && false) {
-            if (getVar(VARIABLE_EDGE_A_TONS_DONE) > 15) {
+            if (getVar(VARIABLE.EDGE_A_TONS_DONE) > 15) {
                 sendMessage("And I have another good news...");
                 sendMessage("Today is saturday!");
 
-                if (getVar(VARIABLE_GOLD) < 20) {
+                if (getVar(VARIABLE.GOLD) < 20) {
                     sendMessage("Oh...");
                     sendMessage("You don't have enough gold to participate in a competition %EmoteSad%");
                     if (getStrictnessForCharacter() == 0) {
@@ -111,26 +111,26 @@ if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_STROKING)) {
         }
     }
 
-    setVar(VARIABLE_EDGE_A_TONS_DONE, getVar(VARIABLE_EDGE_A_TONS_DONE, 0) + 1);
+    setVar(VARIABLE.EDGE_A_TONS_DONE, getVar(VARIABLE.EDGE_A_TONS_DONE, 0) + 1);
 
     sendMessage(random("So, Well, Hmm") + "...");
 
 //Will dom determine the edges? Only if  this is not the first run
-    if (isChance(30 * (getStrictnessForCharacter() + 1)) && getVar(VARIABLE_EDGE_A_TONS_DONE) !== 1) {
+    if (isChance(30 * (getStrictnessForCharacter() + 1)) && getVar(VARIABLE.EDGE_A_TONS_DONE) !== 1) {
         sendMessage("Let's do this a bit differently today %SlaveName%");
         sendMessage("I feel like taking some more control today");
         sendMessage("I will choose how many edges you'll do today %EmoteHappy%");
 
-        if (getVar(VARIABLE_EDGE_A_TON_EDGE_RECORD) <= 0) {
-            setVar(VARIABLE_EDGE_A_TON_EDGE_RECORD, 15);
+        if (getVar(VARIABLE.EDGE_A_TON_EDGE_RECORD) <= 0) {
+            setVar(VARIABLE.EDGE_A_TON_EDGE_RECORD, 15);
         }
 
-        if (getStrictnessForCharacter() == 0) setVar(VARIABLE_EDGE_A_TON_EDGE_RECORD, getVar(VARIABLE_EDGE_A_TON_EDGE_RECORD) + 1);
-        if (getStrictnessForCharacter() == 1) setVar(VARIABLE_EDGE_A_TON_EDGE_RECORD, getVar(VARIABLE_EDGE_A_TON_EDGE_RECORD) + 2);
-        if (getStrictnessForCharacter() == 2) setVar(VARIABLE_EDGE_A_TON_EDGE_RECORD, getVar(VARIABLE_EDGE_A_TON_EDGE_RECORD) + 4);
+        if (getStrictnessForCharacter() == 0) setVar(VARIABLE.EDGE_A_TON_EDGE_RECORD, getVar(VARIABLE.EDGE_A_TON_EDGE_RECORD) + 1);
+        if (getStrictnessForCharacter() == 1) setVar(VARIABLE.EDGE_A_TON_EDGE_RECORD, getVar(VARIABLE.EDGE_A_TON_EDGE_RECORD) + 2);
+        if (getStrictnessForCharacter() == 2) setVar(VARIABLE.EDGE_A_TON_EDGE_RECORD, getVar(VARIABLE.EDGE_A_TON_EDGE_RECORD) + 4);
         sendMessage("Let's see...");
-        sendMessage("You will do " + getVar(VARIABLE_EDGE_A_TON_EDGE_RECORD) + " edges for me today. This will set a new record %Grin%");
-        startEdgeATon(true, getVar(VARIABLE_EDGE_A_TON_EDGE_RECORD));
+        sendMessage("You will do " + getVar(VARIABLE.EDGE_A_TON_EDGE_RECORD) + " edges for me today. This will set a new record %Grin%");
+        startEdgeATon(true, getVar(VARIABLE.EDGE_A_TON_EDGE_RECORD));
     } else {
         const answer = sendInput(random("How many edges do you wish to do for today's training?", "How many edges do you wish to do today?", "How many edges can you handle today?"));
 
@@ -141,10 +141,10 @@ if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_STROKING)) {
                     sendMessage("You can't choose a number lower than 1...");
                     answer.loop();
                 } else {
-                    if (result > getVar(VARIABLE_EDGE_A_TON_EDGE_RECORD)) {
+                    if (result > getVar(VARIABLE.EDGE_A_TON_EDGE_RECORD)) {
                         sendMessage("A new record! %Grin%");
                         changeMeritMedium(false);
-                        setVar(VARIABLE_EDGE_A_TON_EDGE_RECORD, result);
+                        setVar(VARIABLE.EDGE_A_TON_EDGE_RECORD, result);
                     }
 
                     startEdgeATon(false, result);
@@ -226,7 +226,7 @@ function startEdgeATon(chosenByDom, edgesToDo) {
 
 function growDickSoft() {
     sendMessage(random("Use the ruler to determine to when you're there", "And use the ruler to determine when you're soft", "Use the ruler to measure when you're soft"));
-    sendMessage(random("Your cock has to be shorter than ", "Your cock must be shorter than ", "Your tiny dick has to be shorter than ") + getVar(VARIABLE_SOFT_COCK_LENGTH) + " centimeters");
+    sendMessage(random("Your cock has to be shorter than ", "Your cock must be shorter than ", "Your tiny dick has to be shorter than ") + getVar(VARIABLE.SOFT_COCK_LENGTH) + " centimeters");
 
     const dateStart = new Date().getTime();
 
@@ -246,10 +246,10 @@ function growDickSoft() {
     const timePassed = (new Date().getTime() - dateStart) / 1000;
     sendMessage(random("Well %SlaveName%", "Hmm %SlaveName%", "%Grin%"));
     sendMessage("It took you " + timePassed + " seconds to get soft %Lol%");
-    if (isVar(VARIABLE_SECONDS_TO_GET_SOFT)) {
-        if (getVar(VARIABLE_SECONDS_TO_GET_SOFT) > timePassed) {
+    if (isVar(VARIABLE.SECONDS_TO_GET_SOFT)) {
+        if (getVar(VARIABLE.SECONDS_TO_GET_SOFT) > timePassed) {
             sendMessage("Which seems to be a new record!");
-            setVar(VARIABLE_SECONDS_TO_GET_SOFT, timePassed);
+            setVar(VARIABLE.SECONDS_TO_GET_SOFT, timePassed);
             sendMessage("Lets move on shall we?");
             return true;
         } else {
@@ -258,7 +258,7 @@ function growDickSoft() {
             return false;
         }
     } else {
-        setVar(VARIABLE_SECONDS_TO_GET_SOFT, timePassed);
+        setVar(VARIABLE.SECONDS_TO_GET_SOFT, timePassed);
     }
     sendMessage("Lets move on shall we?");
 }

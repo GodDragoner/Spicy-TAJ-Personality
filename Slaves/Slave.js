@@ -1,11 +1,11 @@
 run("Slaves/Chastity.js");
 
 function getSubBirthday() {
-    if(!isVar(VARIABLE_SUB_BIRTHDAY)) {
+    if(!isVar(VARIABLE.SUB_BIRTHDAY)) {
         sendDebugMessage('No sub birthday found');
         return setDate().addDay(-1);
     } else {
-        return getDate(VARIABLE_SUB_BIRTHDAY);
+        return getDate(VARIABLE.SUB_BIRTHDAY);
     }
 }
 
@@ -16,14 +16,14 @@ function isSubBirthday() {
 }
 
 function increasePainTolerance() {
-    if(!isVar(VARIABLE_LAST_PAIN_TOLERANCE_INCREASE)) {
-        setDate(VARIABLE_LAST_PAIN_TOLERANCE_INCREASE);
+    if(!isVar(VARIABLE.LAST_PAIN_TOLERANCE_INCREASE)) {
+        setDate(VARIABLE.LAST_PAIN_TOLERANCE_INCREASE);
         return false;
     }
 
-    if(getVar(VARIABLE_SUB_PAIN_TOLERANCE) < 10 && getVar(VARIABLE_LAST_PAIN_TOLERANCE_INCREASE).addDay(7).hasPassed()) {
-        incrementVar(VARIABLE_SUB_PAIN_TOLERANCE, 1);
-        setDate(VARIABLE_LAST_PAIN_TOLERANCE_INCREASE);
+    if(getVar(VARIABLE.SUB_PAIN_TOLERANCE) < 10 && getVar(VARIABLE.LAST_PAIN_TOLERANCE_INCREASE).addDay(7).hasPassed()) {
+        incrementVar(VARIABLE.SUB_PAIN_TOLERANCE, 1);
+        setDate(VARIABLE.LAST_PAIN_TOLERANCE_INCREASE);
         return true;
     }
 
@@ -39,8 +39,8 @@ function askForPainToleranceIncrease() {
         sendMessageBasedOnSender('%EmoteSad%');
         sendMessageBasedOnSender('Thank you for your honesty though %SlaveName%');
 
-        if(getVar(VARIABLE_SUB_PAIN_TOLERANCE) > 1) {
-            incrementVar(VARIABLE_SUB_PAIN_TOLERANCE, -1);
+        if(getVar(VARIABLE.SUB_PAIN_TOLERANCE) > 1) {
+            incrementVar(VARIABLE.SUB_PAIN_TOLERANCE, -1);
         }
     }
 }
@@ -48,26 +48,26 @@ function askForPainToleranceIncrease() {
 function startKneeling() {
     playSound('Audio\\Spicy\\Commands\\Kneel\\*.mp3');
     sendMessage(random('Kneel for me', 'Get down on your knees', 'Down on your knees, right now', 'I want you to kneel for me,') + ' %SlaveName%');
-    setTempVar(VARIABLE_IS_KNEELING, true);
-    setTempVar(VARIABLE_KNEELING_STARTED, setDate());
+    setTempVar(VARIABLE.IS_KNEELING, true);
+    setTempVar(VARIABLE.KNEELING_STARTED, setDate());
 }
 
 function isKneeling() {
-    return getVar(VARIABLE_IS_KNEELING, false);
+    return getVar(VARIABLE.IS_KNEELING, false);
 }
 
 function stopKneeling() {
     //QUALITY: SOUND
     // playSound('Audio\\Spicy\\Commands\\Kneel\\*.mp3');
     sendMessage(random('You can stop kneeling and sit', 'You can get up from your knees now and sit', 'You can sit down') + ' %SlaveName%');
-    setTempVar(VARIABLE_IS_KNEELING, false);
+    setTempVar(VARIABLE.IS_KNEELING, false);
 }
 
 function decideStopKneeling() {
     if(!isKneeling()) {
 
     } else {
-        let dateStartedKneeling = getDate(VARIABLE_KNEELING_STARTED);
+        let dateStartedKneeling = getDate(VARIABLE.KNEELING_STARTED);
 
         let minKneeling = 2*(getStrictnessForCharacter() + 1) + getMood();
 
@@ -84,18 +84,18 @@ function playRandomSissyHypno() {
 }
 
 function addPunishmentPoints(amount, reason = -1) {
-    const points = getVar(VARIABLE_PUNISHMENT_POINTS);
+    const points = getVar(VARIABLE.PUNISHMENT_POINTS);
 
     let multiplier = 1;
 
     //We don't want any "last change" edit nor multiplier
     if(amount < 0) {
         sendDebugMessage('Subtracting ' + amount + ' punishment points');
-        setVar(VARIABLE_PUNISHMENT_POINTS, Math.max(0, points + amount));
+        setVar(VARIABLE.PUNISHMENT_POINTS, Math.max(0, points + amount));
 
-        if(getVar(VARIABLE_PUNISHMENT_POINTS) < 100) {
+        if(getVar(VARIABLE.PUNISHMENT_POINTS) < 100) {
             //Clear reasons array because we are now below
-            setVar(VARIABLE_PUNISHMENT_REASONS, new java.util.ArrayList());
+            setVar(VARIABLE.PUNISHMENT_REASONS, new java.util.ArrayList());
         }
 
         return;
@@ -103,8 +103,8 @@ function addPunishmentPoints(amount, reason = -1) {
 
     sendDebugMessage('About to add ' + amount + " punishment points");
 
-    if(isVar(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE)) {
-        multiplier = getVar(VARIABLE_PUNISHMENT_POINT_MULTIPLIER);
+    if(isVar(VARIABLE.LAST_PUNISHMENT_POINT_CHANGE)) {
+        multiplier = getVar(VARIABLE.PUNISHMENT_POINT_MULTIPLIER);
 
         sendDebugMessage('Base pp multiplier is ' + multiplier);
 
@@ -114,28 +114,28 @@ function addPunishmentPoints(amount, reason = -1) {
 
         //Check whether we had at least x minutes without punishment points assigned
         //480 = 8 hours
-        if(getDate(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE).addMinute(480*minuteMultiplier).hasPassed()) {
+        if(getDate(VARIABLE.LAST_PUNISHMENT_POINT_CHANGE).addMinute(480*minuteMultiplier).hasPassed()) {
             multiplier -= 0.2;
         }
         //360 = 6 hours
-        else if(getDate(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE).addMinute(360*minuteMultiplier).hasPassed()) {
+        else if(getDate(VARIABLE.LAST_PUNISHMENT_POINT_CHANGE).addMinute(360*minuteMultiplier).hasPassed()) {
             multiplier -= 0.1;
         }
         //180 = 3 hours
-        else if(getDate(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE).addMinute(180*minuteMultiplier).hasPassed()) {
+        else if(getDate(VARIABLE.LAST_PUNISHMENT_POINT_CHANGE).addMinute(180*minuteMultiplier).hasPassed()) {
             multiplier -= 0.05;
         }
         //Neutral case
         //120 = 2 hours
-        else if(getDate(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE).addMinute(120*minuteMultiplier).hasPassed()) {
+        else if(getDate(VARIABLE.LAST_PUNISHMENT_POINT_CHANGE).addMinute(120*minuteMultiplier).hasPassed()) {
             multiplier += 0;
         }
         //30 = 0.5 hours
-        else if(getDate(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE).addMinute(30*minuteMultiplier).hasPassed()) {
+        else if(getDate(VARIABLE.LAST_PUNISHMENT_POINT_CHANGE).addMinute(30*minuteMultiplier).hasPassed()) {
             multiplier += 0.1;
         }
         //20 = 0.33 hours
-        else if(getDate(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE).addMinute(20*minuteMultiplier).hasPassed()) {
+        else if(getDate(VARIABLE.LAST_PUNISHMENT_POINT_CHANGE).addMinute(20*minuteMultiplier).hasPassed()) {
             multiplier += 0.15;
         } else {
             multiplier += 0.2;
@@ -145,23 +145,23 @@ function addPunishmentPoints(amount, reason = -1) {
 
         multiplier = setPunishmentPointMultiplier(multiplier);
     } else {
-        setVar(VARIABLE_PUNISHMENT_POINT_MULTIPLIER, 1);
+        setVar(VARIABLE.PUNISHMENT_POINT_MULTIPLIER, 1);
     }
 
 
-    setDate(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE);
+    setDate(VARIABLE.LAST_PUNISHMENT_POINT_CHANGE);
 
-    setVar(VARIABLE_PUNISHMENT_POINTS, Math.max(0, points + amount*multiplier));
+    setVar(VARIABLE.PUNISHMENT_POINTS, Math.max(0, points + amount*multiplier));
 
     sendDebugMessage('Adding (with multiplier) ' + (amount*multiplier) + " punishment points");
     sendDebugMessage('Reason was ' + reason);
 
     //-1 is unknown reason
     if(reason >= 0) {
-        let reasonArray = getVar(VARIABLE_PUNISHMENT_REASONS, new java.util.ArrayList());
+        let reasonArray = getVar(VARIABLE.PUNISHMENT_REASONS, new java.util.ArrayList());
         reasonArray.add(reason);
 
-        setVar(VARIABLE_PUNISHMENT_REASONS, reasonArray);
+        setVar(VARIABLE.PUNISHMENT_REASONS, reasonArray);
     }
 }
 
@@ -171,13 +171,13 @@ function setPunishmentPointMultiplier(multiplier) {
     sendDebugMessage('New pp multiplier is ' + multiplier);
 
     //Update new multiplier
-    setVar(VARIABLE_PUNISHMENT_POINT_MULTIPLIER, multiplier);
+    setVar(VARIABLE.PUNISHMENT_POINT_MULTIPLIER, multiplier);
     return multiplier;
 }
 
 function getPunishmentPointMultiplierChange() {
     let mood = getMood();
-    let hoursSinceLastChange = millisToTimeUnit(getMillisSinecDate(getVar(VARIABLE_LAST_PUNISHMENT_POINT_CHANGE)), TIME_UNIT_HOURS, 0);
+    let hoursSinceLastChange = millisToTimeUnit(getMillisSinecDate(getVar(VARIABLE.LAST_PUNISHMENT_POINT_CHANGE)), TIME_UNIT_HOURS, 0);
     let maxSubtraction = -0.25;
     let baseLevel = 0.1*(mood*getStrictnessForCharacter() + 10);
     let subtractLevel = 0.1*hoursSinceLastChange/(Math.max(1, getStrictnessForCharacter()) + 1);
@@ -193,20 +193,20 @@ function addGold(amount) {
     const gold = getGold();
 
     if(gold + amount > 0) {
-        setVar(VARIABLE_GOLD, gold + amount);
+        setVar(VARIABLE.GOLD, gold + amount);
     } else {
-        setVar(VARIABLE_GOLD, 0);
+        setVar(VARIABLE.GOLD, 0);
     }
 }
 
 function setFullTime() {
-    return setVar(VARIABLE_SLAVE_TYPE, 1);
+    return setVar(VARIABLE.SLAVE_TYPE, 1);
 }
 
 function setPartTime() {
-    return setVar(VARIABLE_SLAVE_TYPE, 0);
+    return setVar(VARIABLE.SLAVE_TYPE, 0);
 }
 
 function isFullTime() {
-    return getVar(VARIABLE_SLAVE_TYPE) == 1;
+    return getVar(VARIABLE.SLAVE_TYPE) == 1;
 }

@@ -1,6 +1,6 @@
 {
     sendVirtualAssistantMessage('Your devotion determines how long your session will go %SlaveName%');
-    sendVirtualAssistantMessage('Right now a session will last about ' + getVar(VARIABLE_DEVOTION) + ' minutes');
+    sendVirtualAssistantMessage('Right now a session will last about ' + getVar(VARIABLE.DEVOTION) + ' minutes');
     sendVirtualAssistantMessage('Mind if %DomHonorific% %DomName% feels like it she will end the session early!');
 
     if(sendYesOrNoQuestion('Do you want to change this?', SENDER_ASSISTANT)) {
@@ -19,7 +19,7 @@
                     sendVirtualAssistantMessage('You can\'t go higher than 120 minutes');
                     answer.loop();
                 } else {
-                    setVar(VARIABLE_DEVOTION, length);
+                    setVar(VARIABLE.DEVOTION, length);
                     sendVirtualAssistantMessage('I have notified your %DomHonorific% of your new time limit');
                     sendVirtualAssistantMessage('I am returning you to the settings menu now');
                     break;

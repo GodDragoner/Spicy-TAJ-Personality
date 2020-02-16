@@ -5,12 +5,12 @@
         sendMessage('We can\'t do this training without at least one dildo');
         sendMessage('So make sure to get one and set it up in the settings');
     } else {
-        if (getVar(VARIABLE_BLOWJOB_LEVEL) >= 30 || isVar('BlowjobExamStartDate')) {
+        if (getVar(VARIABLE.BLOWJOB_LEVEL) >= 30 || isVar('BlowjobExamStartDate')) {
             run('Session/End/BlowjobTraining/BlowjobExam.js');
         } else {
             //By default we want to send a new assignment
             let completedExercise = true;
-            if (getVar(VARIABLE_BLOWJOB_TRAININGS_DONE, 0) === 0) {
+            if (getVar(VARIABLE.BLOWJOB_TRAININGS_DONE, 0) === 0) {
                 firstTimeBlowjobTraining();
             } else if (checkBlowjobExercise()) {
 
@@ -31,7 +31,7 @@
             }
         }
 
-        incrementVar(VARIABLE_BLOWJOB_TRAININGS_DONE, 1);
+        incrementVar(VARIABLE.BLOWJOB_TRAININGS_DONE, 1);
     }
 }
 
@@ -40,8 +40,8 @@ function sendNewBlowjobTask() {
 
     let task = getRandomBlowjobTask(blowjobTasks);
 
-    setVar(VARIABLE_TASK_BLOWJOB_EXPERIENCE, task.exp * getTrainingEXPMultiplier(getVar(VARIABLE_BLOWJOB_TASKS_IN_ROW, 0)));
-    setVar(VARIABLE_LAST_BLOWJOB_TASK_ID, task.id);
+    setVar(VARIABLE.TASK_BLOWJOB_EXPERIENCE, task.exp * getTrainingEXPMultiplier(getVar(VARIABLE.BLOWJOB_TASKS_IN_ROW, 0)));
+    setVar(VARIABLE.LAST_BLOWJOB_TASK_ID, task.id);
 
     task.sendInstructions();
 }
@@ -52,18 +52,18 @@ function checkBlowjobExercise() {
         changeMeritLow(false);
 
         sendMessage("Let me just add the new exp...");
-        incrementVar(VARIABLE_BLOWJOB_TASKS_IN_ROW, 1);
+        incrementVar(VARIABLE.BLOWJOB_TASKS_IN_ROW, 1);
 
-        checkTasksInRow(getVar(VARIABLE_BLOWJOB_TASKS_IN_ROW), 'blowjob');
+        checkTasksInRow(getVar(VARIABLE.BLOWJOB_TASKS_IN_ROW), 'blowjob');
 
-        incrementVar(VARIABLE_BLOWJOB_EXPERIENCE, getVar(VARIABLE_TASK_BLOWJOB_EXPERIENCE));
+        incrementVar(VARIABLE.BLOWJOB_EXPERIENCE, getVar(VARIABLE.TASK_BLOWJOB_EXPERIENCE));
 
-        if (getTrainingEXPForLevel(getVar(VARIABLE_BLOWJOB_LEVEL) + 1) <= getVar(VARIABLE_BLOWJOB_EXPERIENCE)) {
-            incrementVar(VARIABLE_BLOWJOB_LEVEL, 1);
+        if (getTrainingEXPForLevel(getVar(VARIABLE.BLOWJOB_LEVEL) + 1) <= getVar(VARIABLE.BLOWJOB_EXPERIENCE)) {
+            incrementVar(VARIABLE.BLOWJOB_LEVEL, 1);
         }
 
-        sendMessage("I added your exp and your current level is " + getVar(VARIABLE_BLOWJOB_LEVEL));
-        sendMessage('You will need ' + (getTrainingEXPForLevel(getVar(VARIABLE_BLOWJOB_LEVEL) + 1) - getVar(VARIABLE_BLOWJOB_EXPERIENCE)) + ' more exp for the next level');
+        sendMessage("I added your exp and your current level is " + getVar(VARIABLE.BLOWJOB_LEVEL));
+        sendMessage('You will need ' + (getTrainingEXPForLevel(getVar(VARIABLE.BLOWJOB_LEVEL) + 1) - getVar(VARIABLE.BLOWJOB_EXPERIENCE)) + ' more exp for the next level');
     } else {
         sendMessage("I expect more from you %SlaveName%");
 
@@ -92,7 +92,7 @@ function checkBlowjobExercise() {
 
         sendMessage("Anyhow not completing your " + random("task ", "assignment ") + "displeases me");
         sendMessage("But I guess in the end this means you just don\'t get to cum %Grin%");
-        setVar(VARIABLE_BLOWJOB_TASKS_IN_ROW, 0);
+        setVar(VARIABLE.BLOWJOB_TASKS_IN_ROW, 0);
         sendMessage("Complete your task until the next session");
         return false;
     }
@@ -106,7 +106,7 @@ function firstTimeBlowjobTraining() {
 
     sendMessage("Now...");
 
-    if(!getVar(VARIABLE_TRAINING_INTRODUCTION_DONE, false)) {
+    if(!getVar(VARIABLE.TRAINING_INTRODUCTION_DONE, false)) {
         sendMessage("It\'s rather simple how this works ");
         sendMessage("After each session I will ask you whether you completed your latest assignment");
         sendMessage("If you did you are rewarded with exp");
@@ -134,5 +134,5 @@ function firstTimeBlowjobTraining() {
 
     sendMessage('In this case I don\'t care where the spit goes but you are not allowed to collect it and just pour it away');
     sendMessage('If you collect it, you will pour it all over your face after you are done %Lol%');
-    setVar(VARIABLE_TRAINING_INTRODUCTION_DONE, true);
+    setVar(VARIABLE.TRAINING_INTRODUCTION_DONE, true);
 }

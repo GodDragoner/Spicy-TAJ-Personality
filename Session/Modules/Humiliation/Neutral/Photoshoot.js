@@ -92,7 +92,7 @@
             }
         }
 
-        if (getVar(VARIABLE_LUST) > 20) {
+        if (getVar(VARIABLE.LUST) > 20) {
             if (isChance(50)) {
                 sendMessage("I want to show you a video!");
                 sendMessage("Enjoy!");

@@ -190,7 +190,7 @@ function isDomBirthday() {
 
 function addMerits(meritChange) {
     //Min 0 max 1000
-    setVar(VARIABLE_MERITS, Math.min(1000, Math.max(0, getVar(VARIABLE_MERITS) + meritChange)));
+    setVar(VARIABLE.MERITS, Math.min(1000, Math.max(0, getVar(VARIABLE.MERITS) + meritChange)));
 }
 
 function isEnforcingPersonality() {
