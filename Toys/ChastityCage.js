@@ -50,7 +50,7 @@ function unlockChastityCage() {
                 sendMessage(random("You've taken way too long to get that %ChastityCage% off...", "You are taking way to long to get that %ChastityCage% off", "It took you too long to get that cage off..."));
                 sendMessage(random("I don't like when you make me wait", "I don't like to wait", "I don't like waiting"));
                 sendMessage(random("I'm giving you punishment points", "I've assigned you some punishment points", "I've increased your number of punishment points"));
-                addPunishmentPoints(100);
+                addPunishmentPoints(100, PUNISHMENT_REASON.TOO_SLOW);
                 break;
             } else {
                 sendMessage(random("Quicker!", "Faster", "Be faster", "Hurry up!", "Be quick", "Come on!", "Be quick...", "Be faster will you?", "Be faster!"));
@@ -80,13 +80,19 @@ function getMaxChastitySize() {
     let mood = getMood();
     let strictness = getStrictnessForCharacter();
 
-    let maxWithoutRange= 8 - (Math.max(1, strictness) + Math.max(1, mood) + Math.min(1, mood));
+    let maxWithoutRange = 8 - (Math.max(1, strictness) + Math.max(1, mood) + Math.min(1, mood));
 
     return Math.max(1, Math.min(5, maxWithoutRange));
 }
 
 function getMinChastitySize() {
-    return Math.max(1, getMaxChastitySize() - Math.max(1, getStrictnessForCharacter()));
+    if(getStrictnessForCharacter() === 2) {
+        return Math.max(1, getMaxChastitySize() - 2);
+    } else if(getStrictnessForCharacter() === 1) {
+        return Math.max(1, getMaxChastitySize() - randomInteger(1, 2));
+    } else {
+        return Math.max(1, getMaxChastitySize() - 1);
+    }
 }
 
 function findAvailableClosestToSize(length) {
@@ -160,6 +166,12 @@ function getRandomCageWithSize(length, punishments) {
             }
         }
 
+        //Punishment of smaller cage (check if we can find a smaller cage)
+        if(punishments > 0 && length > 1 && getRandomCageWithSize(length - 1, punishments - 1).length == length - 1) {
+            punishmentOptionsOfCage++;
+            sendDebugMessage('Pushed a cage because it has smaller cage as punishment option');
+        }
+
         //Fitting size and enough punishment options
         if(currentCage.length == length && punishmentOptionsOfCage >= punishments) {
             cages.push(currentCage);
@@ -228,10 +240,9 @@ function selectChastityCage() {
 
     //let chastityCageSelection = getChastityCageSelection(punishmentChance);
 
-    sendDebugMessage('Found closest chastity size: ' + length);
+    sendDebugMessage('Found closest chastity size: ' + length + " and n");
 
     let amountOfPunishments = 0;
-
 
     //First punishment roll
     if(isChance(punishmentChance)) {
@@ -253,10 +264,27 @@ function selectChastityCage() {
 
     let punishments = new java.util.ArrayList();
 
+    //Smaller cage punishment
+    if(cage.length > 1 && amountOfPunishments > 0) {
+        let smallerCage = getRandomCageWithSize(cage.length - 1, amountOfPunishments - 1);
+        if (smallerCage === cage.length - 1) {
+            sendDebugMessage('Found fitting smaller cage. Rolling for chance to replace one punishment');
+            if (isChance(50)) {
+                cage = smallerCage;
+                amountOfPunishments--;
+                sendDebugMessage('Selected smaller cage as punishment');
+                sendDebugMessage('Remaining punishments: ' + amountOfPunishments);
+            }
+        }
+    }
+
+    setVar(VARIABLE.CHASTITY_DILATOR_ON, false);
+    setVar(VARIABLE.CHASTITY_SPIKES_ON, false);
+
     if(cage.spikes) {
         //If spikes are forced we need to calculate that into the remaining chance
         if(!cage.spikesDetachable) {
-            punishmentChance -= SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE;
+            amountOfPunishments--;
             setVar(VARIABLE.CHASTITY_SPIKES_ON, true);
             sendDebugMessage('Set spikes as punishment due to being forced by the cage');
         } else {
@@ -270,7 +298,7 @@ function selectChastityCage() {
     if(cage.dialator) {
         //If dilator is forced we need to calculate that into the remaining chance
         if(!cage.dialatorDetachable) {
-            punishmentChance -= SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE;
+            amountOfPunishments--;
             setVar(VARIABLE.CHASTITY_DILATOR_ON, true);
             sendDebugMessage('Set dilator as punishment due to being forced by the cage');
         } else {
@@ -282,33 +310,24 @@ function selectChastityCage() {
     }
 
     //Randomize punishment rolling order
-    while(!punishments.isEmpty()) {
+    while(!punishments.isEmpty() && amountOfPunishments > 0) {
         sendDebugMessage('Rolling possible punishments for chance ' + punishmentChance);
         let index = randomInteger(0, punishments.size() - 1);
         switch(punishments.get(index)) {
             case 0:
-                if(isChance(punishmentChance)) {
-                    punishmentChance -= SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE;
-                    setVar(VARIABLE.CHASTITY_SPIKES_ON, true);
-                    sendDebugMessage('Selected spikes as punishment');
-                    sendDebugMessage('Remaining chance: ' + punishmentChance);
-                } else {
-                    setVar(VARIABLE.CHASTITY_SPIKES_ON, false);
-                }
-
+                setVar(VARIABLE.CHASTITY_SPIKES_ON, true);
+                sendDebugMessage('Selected spikes as punishment');
+                sendDebugMessage('Remaining punishments: ' + amountOfPunishments);
                 break;
             case 1:
-                if(isChance(punishmentChance)) {
-                    punishmentChance -= SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE;
-                    setVar(VARIABLE.CHASTITY_DILATOR_ON, true);
-                    sendDebugMessage('Selected dilator as punishment');
-                    sendDebugMessage('Remaining chance: ' + punishmentChance);
-                } else {
-                    setVar(VARIABLE.CHASTITY_DILATOR_ON, false);
-                }
+                setVar(VARIABLE.CHASTITY_DILATOR_ON, true);
+                sendDebugMessage('Selected dilator as punishment');
+                sendDebugMessage('Remaining punishments: ' + amountOfPunishments);
                 break;
-
         }
+
+        //We will definitely apply a punishment so we can reduce this
+        amountOfPunishments--;
 
         //No reuse of that punishment right now
         punishments.remove(index);
@@ -389,6 +408,8 @@ function lockChastityCage() {
 
     sendMessageBasedOnSender('And next...');
 
+    currentChastityCage = chastityCage;
+
     sendMessageBasedOnSender(random("Put on your %ChastityCage%", "Put on the %ChastityCage% at once", "Hurry up and get the %ChastityCage% back on", "Be quick and get your %ChastityCage% back on", "Lock your %Cock% up"));
 
     const chastityLevel = getVar(VARIABLE.CHASTITY_LEVEL);
@@ -416,7 +437,7 @@ function lockChastityCage() {
                 if (chastityLevel < 20) {
                     sendMessageBasedOnSender(random("But since you're in chastity training", "But due to you being in chastity training", "But because of your chastity training") + " I won't punish you...");
                 } else {
-                    if (isForcedLockedUp()) {
+                    if (!isForcedLockedUp()) {
                         sendMessageBasedOnSender("So as a punishment I'm placing you in the %ChastityCage% for the next 24 hours...")
                     } else {
                         sendMessageBasedOnSender("So as a punishment I'm increasing your lock up period by 24 hours...")
@@ -460,7 +481,7 @@ function lockChastityCage() {
 
                         let punishments = 0;
                         while(punishments === 0) {
-                            let option = options.get(randomInteger(0, options.size()));
+                            let option = options.get(randomInteger(0, options.size() - 1));
 
                             options.remove(option);
 
@@ -473,6 +494,7 @@ function lockChastityCage() {
                                         sendMessageBasedOnSender('I don\'t care how long it takes or how much it hurts, just report back to me %Lol%');
                                         waitForDone(100000);
                                         sendMessageBasedOnSender('%Good%. Now lock that %Cock% up already');
+                                        punishments++;
                                         break;
                                     }
                                 case 1:
@@ -482,6 +504,7 @@ function lockChastityCage() {
                                         sendMessageBasedOnSender('I don\'t care how long it takes or how much it hurts, just report back to me %Lol%');
                                         waitForDone(100000);
                                         sendMessageBasedOnSender('%Good%. Now lock that %Cock% up already');
+                                        punishments++;
                                         break;
                                     }
                                 case 2:
@@ -499,6 +522,7 @@ function lockChastityCage() {
                                     }
 
                                     sendMessageBasedOnSender('Now lock that %Cock% up already');
+                                    punishments++;
                                     break;
                             }
                         }
@@ -526,7 +550,6 @@ function lockChastityCage() {
 
     setVar(VARIABLE.CHASTITY_ON, true);
 
-    currentChastityCage = chastityCage;
     setVar(VARIABLE.ACTIVE_CHASTITY_CAGE, chastityCage.name);
 }
 

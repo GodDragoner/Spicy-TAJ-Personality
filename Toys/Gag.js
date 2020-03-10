@@ -102,9 +102,12 @@ function selectGag() {
         }
     }
 
+    //TODO: Check for clothespin in mouth and chance = 100/skip dildo gag if pin was just added (5 minute cooldown)
+    let spiderGagChance = 15 * getMood();
+
     if (isChance(dildoGagChance)) {
         return GAG_TYPE_DILDO_GAG;
-    } else if (feelsLikePunishingSlave() && GAG_TYPE_SPIDER_GAG.hasToy() || BODY_PART_TONGUE.currentClamps > 0 && isChance(15 * getMood())) {
+    } else if (GAG_TYPE_SPIDER_GAG.hasToy() && (feelsLikePunishingSlave() || BODY_PART_TONGUE.currentClamps > 0 && isChance(spiderGagChance))) {
         return GAG_TYPE_SPIDER_GAG;
     }
 

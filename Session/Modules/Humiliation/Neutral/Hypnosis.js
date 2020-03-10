@@ -1,5 +1,5 @@
 {
-    if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_WATCH_VIDEO)) {
+    if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.WATCH_VIDEO)) {
         sendMessage(random('Time for a bit of brainwash!', 'It\'s time for some brainwashing'))
 
         if (!isInChastity() && allowTeasingStroking()) {

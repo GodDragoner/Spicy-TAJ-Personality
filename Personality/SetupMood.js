@@ -259,6 +259,15 @@ if (newDay) {
     setVar(VARIABLE.HAPPINESS, Math.max(0, getVar(VARIABLE.HAPPINESS, 0) + tempHappiness));
     setVar(VARIABLE.LUST,  Math.max(0, getVar(VARIABLE.LUST, 0) + tempLust));
     setVar(VARIABLE.ANGER,  Math.max(0, getVar(VARIABLE.ANGER, 0) + tempAnger));
+
+    //Change merits based on punishment points at that day
+    if(getVar(VARIABLE.PUNISHMENT_POINTS) >= getPunishmentPointsBadThreshold()) {
+        sendDebugMessage('Changed merit because punishment points are above threshold');
+        changeMeritMedium(true);
+    } else if(getVar(VARIABLE.PUNISHMENT_POINTS) <= getPunishmentPointsGoodThreshold()) {
+        sendDebugMessage('Changed merit because punishment points are below threshold');
+        changeMeritLow(false);
+    }
 }
 
 sendDebugMessage('Mood after startup routine');

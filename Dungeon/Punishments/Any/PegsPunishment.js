@@ -1,14 +1,9 @@
 {
     //Check for CBT Limit and whether the user is wearing a full sized belt
     if (!PAIN_LIMIT.isAllowed()) {
-        /*//Address this limit if we never asked TODO: (do we want this here?)
-        if(CBT_LIMIT.getLimit() === LIMIT_NEVER_ASKED) {
-            CBT_LIMIT.askForLimitChange(false);
-        }*/
-
         runPunishment(PUNISHMENT_CURRENT_LEVEL);
     } else {
-        if (tryRunPunishmentFetchId(MODULE_PEG)) {
+        if (tryRunPunishmentFetchId(MODULE.PEG)) {
             switch (randomInteger(0, 1)) {
                 case 0:
                     //TODO: Think of a different solution

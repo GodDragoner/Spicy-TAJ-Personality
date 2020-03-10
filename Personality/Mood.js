@@ -188,6 +188,6 @@ function registerForgetHonorific() {
         changeMeritLow(true);
     }
 
-    addPunishmentPoints(getPPRuleIgnored());
+    addPPRuleIgnored();
     setTempVar(VARIABLE.FORGETTING_HONORIFIC_COUNT, getVar(VARIABLE.FORGETTING_HONORIFIC_COUNT, 0) + 1);
 }

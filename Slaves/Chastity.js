@@ -27,6 +27,7 @@ function willKeepChastityOn(end) {
     sendDebugMessage('Rolled initial chance of ' + choice + ' to be unlocked');
 
     if (end) {
+        //TODO: Differentiate long term and keyholder
         if (RULE_DOMME_KEYHOLDER.isActive()) {
             return true;
         }

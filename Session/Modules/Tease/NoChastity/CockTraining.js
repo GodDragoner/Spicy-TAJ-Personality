@@ -1,4 +1,4 @@
-if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_STROKING)) {
+if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.STROKING)) {
     //Reset (dunno if it might just be on true for some reason)
     setTempVar(VARIABLE.STROKE_TRAINING_ACTIVE, false);
 

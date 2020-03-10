@@ -19,6 +19,8 @@ const PUNISHMENT_REASON = {
     BAD_EXERCISE_EFFORT: 14,
     POOR_BEHAVIOUR: 15,
     BREAKING_CHASTITY: 16,
+    CHEATING: 17,
+    SKIPPING_FULLTIME: 19,
 };
 
 function smallPunishment(cbt = true, spanking = true) {

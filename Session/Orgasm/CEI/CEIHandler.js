@@ -64,7 +64,7 @@ function sendEatInstructions(ceiDestination = CEI_UNDEFINED) {
         } else if(answer.isLike("didn't", "can't", "couldn't", "possible", "impossible", 'won\'t')) {
             if(RULE_ALWAYS_SWALLOW_CUM.isActive()) {
                 sendMessage('%SlaveName%');
-                addPunishmentPoints(getPPRuleIgnored());
+                addPPRuleIgnored();
                 sendMessage('You know you have to follow my rules');
                 sendMessage('And you know that there is not even a single drop leaving that %Cock% without going to your mouth');
                 sendMessage('Do not disobey me again in the future and especially do not ever break my rules!');

@@ -1,7 +1,7 @@
 {
 
     //TOADD: Add toy usage
-    if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_UNKNOWN)) {
+    if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.UNKNOWN)) {
         if (!getVar(VARIABLE.POSITION_TRAINING_STARTED, false)) {
             setVar(VARIABLE.POSITION_LEVEL, 1);
             setVar(VARIABLE.POSITION_TRAINING_STARTED, true);
@@ -105,8 +105,7 @@ function simplePositionTrainingIntro() {
             changeMeritMedium(true);
             sendMessage("Not being answered is a sign of disrespect");
             sendMessage("I don't like being disrespected");
-            //TOADD: Add punishment reason
-            addPunishmentPoints(25);
+            addPunishmentPoints(25, PUNISHMENT_REASON.BRAT);
             return;
         } else if (answer.containsIgnoreCase("yes")) {
             changeMeritLow(false);
@@ -115,7 +114,7 @@ function simplePositionTrainingIntro() {
         } else if (answer.containsIgnoreCase("no")) {
             changeMeritMedium(true);
             sendMessage("Don't take me for a fool");
-            addPunishmentPoints(25);
+            addPunishmentPoints(25, PUNISHMENT_REASON.BRAT);
             return;
         } else {
             changeMeritLow(true);

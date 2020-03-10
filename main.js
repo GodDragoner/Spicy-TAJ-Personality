@@ -21,6 +21,7 @@ sendSystemMessage("Launching Spicy " + getVar("personalityVersion"));
 run("Utils/RandomUtils.js");
 run("Utils/StringUtils.js");
 run("Utils/BodyParts.js");
+run("Utils/BodyPosition.js");
 run("Utils/GoldUtils.js");
 run("Utils/TAJUtils.js");
 run("Utils/TimeUtils.js");

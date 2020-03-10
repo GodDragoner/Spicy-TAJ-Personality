@@ -49,7 +49,7 @@
                 sendMessage('%SlaveName%');
                 sendMessage('I told you last time to have ice cubes around');
                 changeMeritMedium(true);
-                addPunishmentPoints(getPPRuleIgnored());
+                addPPRuleIgnored();
                 sendMessage('I added punishment points for this misbehaviour');
                 sendMessage('When I tell you to make sure of something you will MAKE SURE of it next time!');
             }

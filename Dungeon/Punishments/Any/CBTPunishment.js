@@ -1,14 +1,10 @@
 {
     //Check for CBT Limit and whether the user is wearing a full sized belt
     if (!CBT_LIMIT.isAllowed() || isInChastity() && getActiveChastityCage().isFullSizedBelt()) {
-        /*//Address this limit if we never asked TODO: (do we want this here?)
-        if(CBT_LIMIT.getLimit() === LIMIT_NEVER_ASKED) {
-            CBT_LIMIT.askForLimitChange(false);
-        }*/
 
         runPunishment(PUNISHMENT_CURRENT_LEVEL);
     } else {
-        if (tryRunPunishmentFetchId(MODULE_CBT)) {
+        if (tryRunPunishmentFetchId(MODULE.CBT)) {
             //TODO: Prettify transitions etc!
             for(let x = 0; x <= PUNISHMENT_CURRENT_LEVEL.id; x++) {
                 smallCBTPunishment(true, !isInChastity());

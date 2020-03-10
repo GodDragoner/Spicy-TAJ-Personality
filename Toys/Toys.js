@@ -33,18 +33,7 @@ const DEFAULT_TOY_COOLDOWN_MINUTES = 5;
 }
 
 
-//TODO: Track already fetched toys to not ask again and instead go like grab x
-
-function interactWithRandomToys() {
-    const punishment = isOngoingPunishment();
-
-    let allowPain = true;
-
-    //No random pain toys if we are just doing an easy punishment
-    if (punishment && PUNISHMENT_CURRENT_LEVEL === PUNISHMENT_LEVEL.EASY && PUNISHMENT_OVERALL_LEVEL === PUNISHMENT_LEVEL.EASY) {
-        allowPain = false;
-    }
-
+function interactWithButtplug(punishment) {
     //TODO: Could interact with buy new toys or fetish questions and better transition between different toys (additionally why not do this... etc.)
     if ((BUTTPLUG_TOY.isPunishmentAllowed() || !punishment && BUTTPLUG_TOY.isPlayAllowed()) && getAnalLimit() === LIMIT_ASKED_YES) {
         //Starting chance for plug or already plugged anyway
@@ -67,7 +56,20 @@ function interactWithRandomToys() {
             }
         }
     }
+}
 
+//TODO: Track already fetched toys to not ask again and instead go like grab x
+function interactWithRandomToys() {
+    const punishment = isOngoingPunishment();
+
+    let allowPain = true;
+
+    //No random pain toys if we are just doing an easy punishment
+    if (punishment && PUNISHMENT_CURRENT_LEVEL === PUNISHMENT_LEVEL.EASY && PUNISHMENT_OVERALL_LEVEL === PUNISHMENT_LEVEL.EASY) {
+        allowPain = false;
+    }
+
+    interactWithButtplug(punishment);
 
     //TODO: Better decision? And check for rule collar always on
     if (COLLAR_TOY.hasToy() && !COLLAR_TOY.isToyOn() && isChance(20)) {
@@ -96,7 +98,7 @@ function interactWithRandomToys() {
             distributeClamps(toDistribute);
         }
 
-        if (NIPPLE_CLAMPS.isToyOn() && isChance(25)) {
+        if (NIPPLE_CLAMPS.decideToyOff() && isChance(25)) {
             removeNippleClamps();
         }
     }
@@ -137,7 +139,10 @@ function removeAllToys() {
         removeCollar();
     }
 
-    //TODO: Remove all other toys
+    //QUALITY: Specify
+    sendMessage('Remove anything else attached to your body %SlaveName%');
+    sendMessage('Tell me when you are done');
+    waitForDone();
 }
 
 function readyInput() {
@@ -200,7 +205,7 @@ function fetchToy(toy, imagePath, amount = 0) {
                 changeMeritHigh(true);
             }
 
-            addPunishmentPoints(100);
+            addPunishmentPoints(100, PUNISHMENT_REASON.POOR_BEHAVIOUR);
 
             sendMessageBasedOnSender("Well then....");
 
@@ -468,7 +473,7 @@ function createToy(name) {
 
             let mode = getVar(variableName + "InteractionMode");
 
-            return mode === TOY_PLAY_MODE || mode === TOY_BOTH_MODE;
+            return mode === undefined || mode === null || mode === TOY_PLAY_MODE || mode === TOY_BOTH_MODE;
         },
 
         isPunishmentAllowed: function (variableName) {
@@ -478,7 +483,7 @@ function createToy(name) {
 
             let mode = getVar(variableName + "InteractionMode");
 
-            return mode === TOY_PUNISHMENT_MODE || mode === TOY_BOTH_MODE;
+            return mode === undefined || mode === null || mode === TOY_PUNISHMENT_MODE || mode === TOY_BOTH_MODE;
         }
     };
 }

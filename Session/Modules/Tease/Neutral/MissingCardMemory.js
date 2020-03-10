@@ -1,6 +1,6 @@
 {
 
-    if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_STROKING)) {
+    if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.STROKING)) {
         startMissingCardMemory(GAME_EDGE);
     }
 }

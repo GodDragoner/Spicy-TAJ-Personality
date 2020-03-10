@@ -1,14 +1,9 @@
 {
     //Check for CBT Limit and whether the user is in chastity
     if (!CBT_LIMIT.isAllowed() || isInChastity() || !PARACHUTE_TOY.hasToy() || !PARACHUTE_TOY.isPunishmentAllowed()) {
-        /*//Address this limit if we never asked TODO: (do we want this here?)
-        if(CBT_LIMIT.getLimit() === LIMIT_NEVER_ASKED) {
-            CBT_LIMIT.askForLimitChange(false);
-        }*/
-
         runPunishment(PUNISHMENT_CURRENT_LEVEL);
     } else {
-        if (tryRunPunishmentFetchId(MODULE_BALL_TORTURE)) {
+        if (tryRunPunishmentFetchId(MODULE.BALL_TORTURE)) {
             if(PARACHUTE_TOY.fetchToy()) {
                 sendMessage('Now...');
                 sendMessage('Attach it while you\'re at it %Lol%');

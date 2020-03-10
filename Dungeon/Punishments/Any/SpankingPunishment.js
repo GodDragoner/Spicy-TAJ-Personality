@@ -8,7 +8,7 @@
 
         runPunishment(PUNISHMENT_CURRENT_LEVEL);
     } else {
-        if (tryRunPunishmentFetchId(MODULE_SPANKING)) {
+        if (tryRunPunishmentFetchId(MODULE.SPANKING)) {
             //TODO: More interaction
             sendMessage('Get ready to be spanked %SlaveName%');
 

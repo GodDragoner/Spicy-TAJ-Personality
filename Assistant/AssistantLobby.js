@@ -100,7 +100,7 @@
 
 function startSession() {
     if (getDate(VARIABLE.LAST_TEASE_SESSION).clone().addHour(16).hasPassed()) {
-        if (getVar(VARIABLE.PUNISHMENT_POINTS) > 400) {
+        if (getVar(VARIABLE.PUNISHMENT_POINTS) > getPunishmentPointsBadThreshold()) {
             sendVirtualAssistantMessage("Session denied %SlaveName%");
             sendVirtualAssistantMessage("You have too many punishment points");
             sendVirtualAssistantMessage("Report for punishment");

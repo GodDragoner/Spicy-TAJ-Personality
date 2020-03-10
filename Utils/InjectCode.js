@@ -55,4 +55,7 @@ sendDebugMessage(getVar(VARIABLE.BLOWJOB_LEVEL));
 setVar(VARIABLE.CHASTITY_ON, true);
  */
 
+createBondageInstructions(3);
 
+/*setVar(VARIABLE.CHASTITY_ON, false);
+lockChastityCage();*/

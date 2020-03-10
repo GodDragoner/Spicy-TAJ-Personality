@@ -108,10 +108,7 @@
                     sendVirtualAssistantMessage("You've failed to report within proper timeframe");
                     sendVirtualAssistantMessage("You've lost all earned gold and merits");
 
-                    //TODO: PP Reason
-                    //setVar("Preason_too_slow", true);
-
-                    addPunishmentPoints(100);
+                    addPunishmentPoints(100, PUNISHMENT_REASON.CHEATING);
 
                     sendVirtualAssistantMessage("And you are awarded 100 punishment points for cheating ");
                     changeMeritLow(true);

@@ -1,5 +1,5 @@
 {
-    if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_UNKNOWN)) {
+    if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.UNKNOWN)) {
         if (getVar(VARIABLE.LICK_TRAININGS_DONE, 0) == 0) {
             sendMessage('%SlaveName%');
             sendMessage("I want to try something new today...");

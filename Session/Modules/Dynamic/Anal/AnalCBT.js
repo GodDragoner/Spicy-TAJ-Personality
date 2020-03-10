@@ -1,5 +1,5 @@
 registerDynamicModule( {transition: TRANSITION_POSSIBLE, repeatPerSession: 0, frequency: 100,
-    moduleCategory: MODULE_ANAL, transitionTo: MODULE_CBT,
+    moduleCategory: MODULE.ANAL, transitionTo: MODULE.CBT,
 
     getTotalChance : function() {
         let chance = this.getChance();

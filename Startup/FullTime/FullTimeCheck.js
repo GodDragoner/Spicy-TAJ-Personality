@@ -67,7 +67,7 @@
                         sendVirtualAssistantMessage(random("You are the property of", "You belong to", "You are owned by") + " Mistress %domName%");
                         sendVirtualAssistantMessage(random("And are thus expected to serve!", "So you have to serve", "So she demands that you serve her"));
                         sendVirtualAssistantMessage(random("I'm giving you punishment points", "I'm assigning you punishment point", "I have to give you punishment points"));
-                        addPunishmentPoints(200);
+                        addPunishmentPoints(200, PUNISHMENT_REASON.SKIPPING_FULLTIME);
                     }
 
                     setVar(VARIABLE.WEEKLY_SLAVE_VISITS, 0);
@@ -78,7 +78,7 @@
                         sendVirtualAssistantMessage("Bad behaviour is punished!");
                         sendVirtualAssistantMessage("I just assigned you punishment points!");
                         sendVirtualAssistantMessage("Do your chores!");
-                        addPunishmentPoints(200);
+                        addPunishmentPoints(200, PUNISHMENT_REASON.MISSED_CHORES);
                     } else {
                         sendVirtualAssistantMessage(random("Good boy!", "You have!", "Good little slut", "Good girl", "Good sissy", "Good slave"));
                         sendVirtualAssistantMessage("Good behaviour is rewarded!");

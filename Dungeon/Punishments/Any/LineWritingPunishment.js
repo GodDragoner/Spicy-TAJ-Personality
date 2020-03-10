@@ -2,7 +2,7 @@
     //No punishments with higher than medium should be line writing
     if (PUNISHMENT_CURRENT_LEVEL.id > PUNISHMENT_LEVEL.MEDIUM.id) {
         runPunishment(PUNISHMENT_CURRENT_LEVEL);
-    } else if (tryRunPunishmentFetchId(MODULE_LINE_WRITING)) {
+    } else if (tryRunPunishmentFetchId(MODULE.LINE_WRITING)) {
         sendMessage('%SlaveName%');
 
         //First punishment

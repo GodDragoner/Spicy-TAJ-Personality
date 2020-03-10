@@ -19,7 +19,7 @@
         if (isVar(VARIABLE.NEXT_CONFESSION_DAY) && !getDate(VARIABLE.NEXT_CONFESSION_DAY).sameDay(setDate())) {
             sendVirtualAssistantMessage("You've been skipping confession day %SlaveName%!");
             sendVirtualAssistantMessage("I've added a healthy dose of punishment points for that!");
-            addPunishmentPoints(300);
+            addPunishmentPoints(300, PUNISHMENT_REASON.SKIPPING_CONFESSION_DAY);
             sendVirtualAssistantMessage("You are expected to report on tuesdays!");
         }
 
@@ -33,16 +33,16 @@
 
             if (answer.containsIgnoreCase("came, orgasm, cum, cumming")) {
                 sendVirtualAssistantMessage("Cumming without permission...");
-                addPunishmentPoints(400);
+                addPunishmentPoints(400, PUNISHMENT_REASON.NO_PERM_CUM);
             } else if (answer.containsIgnoreCase("ruin", "ruined")) {
                 sendVirtualAssistantMessage("Ruining without permission...");
-                addPunishmentPoints(250);
+                addPunishmentPoints(250, PUNISHMENT_REASON.NO_PERM_RUINED);
             } else if (answer.containsIgnoreCase("stroke", "stroking", "touched", "pleasured")) {
                 sendVirtualAssistantMessage("Stroking without permission...");
-                addPunishmentPoints(200);
+                addPunishmentPoints(200, PUNISHMENT_REASON.NO_PERM_FAP);
             } else if (answer.containsIgnoreCase("lazy", "sloppy")) {
                 sendVirtualAssistantMessage("Lazy behaviour...");
-                addPunishmentPoints(150);
+                addPunishmentPoints(150, PUNISHMENT_REASON.TOO_LAZY);
             } else if (answer.containsIgnoreCase("unhealthy")) {
                 sendVirtualAssistantMessage("Eating unhealthy...");
                 addPunishmentPoints(150);

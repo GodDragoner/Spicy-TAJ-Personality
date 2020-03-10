@@ -194,15 +194,15 @@ function createRoom(name, size) {
                 sendMessageBasedOnSender('There is no way you could\'ve done this chore thoroughly in this time');
                 sendMessageBasedOnSender('%HaveToPunish%');
                 sendMessageBasedOnSender('I\'ve assigned you punishment points for going too easy on this task');
-                addPunishmentPoints(200, PUNISHMENT_REASOn);
+                addPunishmentPoints(200, PUNISHMENT_REASON.TOO_LAZY);
             }
             //Too slow
             else if (secondsPassed >= this.getSlowCleanTime(choreType)) {
                 sendMessageBasedOnSender(random('Too slow!', 'That was waaay too slow %SlaveName%!!', 'You\'re late!', 'You\'re late %SlaveName%', 'You\'re late slut...', 'Late are we?', 'You know you\'re late right?'));
-                sendMessageBasedOnSender('There is no way you could\'ve done this chore thoroughly in this time');
+                sendMessageBasedOnSender('There is no way you could\'ve taken this long');
                 sendMessageBasedOnSender(random('I don\'t tolerate late!', 'You know I don\'t tolerate it when you\'re late', 'There is zero tolerance for being late and lazy!'));
                 sendMessageBasedOnSender('I\'ve assigned you punishment points for laziness');
-                addPunishmentPoints(200);
+                addPunishmentPoints(200, PUNISHMENT_REASON.TOO_LAZY);
             }
             //Faster
             else if (secondsPassed <= this.getCleanTimeBoundMin(choreType)) {
@@ -216,7 +216,7 @@ function createRoom(name, size) {
                         sendMessageBasedOnSender('I gave you a warning last time!');
                         sendMessageBasedOnSender('%HaveToPunish%');
                         sendMessageBasedOnSender('I have assigned you punishment points');
-                        addPunishmentPoints(100);
+                        addPunishmentPoints(100), PUNISHMENT_REASON.TOO_LAZY;
                     } else {
                         sendMessageBasedOnSender('I\'m giving you a warning this time %SlaveName%');
                         sendMessageBasedOnSender('Don\'t disappoint me again!');
@@ -263,7 +263,7 @@ function createRoom(name, size) {
 
                         sendMessageBasedOnSender('%HaveToPunish%');
                         sendMessageBasedOnSender('I have assigned you punishment points');
-                        addPunishmentPoints(100);
+                        addPunishmentPoints(100, PUNISHMENT_REASON.TOO_LAZY);
                     } else {
                         sendMessageBasedOnSender('I\'m giving you a warning this time %SlaveName%');
                         sendMessageBasedOnSender('Don\'t disappoint me again!');

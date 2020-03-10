@@ -1,5 +1,5 @@
 {
-    if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_UNKNOWN)) {
+    if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.UNKNOWN)) {
         if (getVar(VARIABLE.MODEL_RATINGS_DONE, 0) == 0) {
             sendMessage('I have a fun new game for you %SlaveName%');
             sendMessage('In a moment I\'m gonna show you 100 pictures');
@@ -79,7 +79,7 @@
                         waitForDone();
                     }
 
-                    registerCurrentModuleCategory(MODULE_BALL_TORTURE);
+                    registerCurrentModuleCategory(MODULE.BALL_TORTURE);
                     applyBallCrusherPressure();
 
                     sendMessage('So this is how this will go from here on');

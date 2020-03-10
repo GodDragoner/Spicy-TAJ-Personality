@@ -1,4 +1,4 @@
-if (tryRunPunishmentFetchId(MODULE_LINE_WRITING)) {
+if (tryRunPunishmentFetchId(MODULE.LINE_WRITING)) {
     sendMessage('%SlaveName%');
 
     //First punishment

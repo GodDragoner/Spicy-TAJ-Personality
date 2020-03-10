@@ -104,16 +104,19 @@ function getMood() {
             break;
     }
 
+    sendDebugMessage('Calculating mood for ' + merits + ' and strictness ' + getStrictnessForCharacter());
+
     if(merits >= veryPleased) {
         return VERY_PLEASED_MOOD;
-    } else if(merits >= PLEASED_MOOD) {
+    } else if(merits >= pleased) {
         return PLEASED_MOOD;
-    } else if(merits >= NEUTRAL_MOOD) {
-        return NEUTRAL_MOOD;
-    } else if(merits >= ANNOYED_MOOD) {
-        return ANNOYED_MOOD;
-    } else if(merits >= VERY_ANNOYED_MOOD) {
+    } else if(merits <= veryAnnoyed) {
         return VERY_ANNOYED_MOOD;
+    } else if(merits <= annoyed) {
+        return ANNOYED_MOOD;
+    }  else {
+        //Default neutral
+        return NEUTRAL_MOOD;
     }
 }
 
@@ -135,7 +138,9 @@ function changeMerit(level, negative) {
     let index = getStrictnessForCharacter()*10;
     let minChange;
     let maxChange;
+
     if(getMonthlyBadDays() > getMonthlyGoodDays()) {
+        sendDebugMessage('Merit change: Monthly bad days > good days');
         index += 5;
     }
     const mood = getMood();
@@ -155,7 +160,7 @@ function changeMerit(level, negative) {
             minChange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 11, 12, 13, 14, 15, 12, 14, 16, 18, 20];
             maxChange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 20, 6, 7, 8, 9, 20, 21, 22, 23, 24, 25, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
         } else {
-            minChange = [20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1,];
+            minChange = [20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
             maxChange = [30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 25, 24, 23, 22, 21, 20, 9, 8, 7, 6, 20, 8, 6, 4, 2, 5, 4, 3, 2, 1];
         }
     } else if(level == 1) {
@@ -177,9 +182,12 @@ function changeMerit(level, negative) {
     }
 
     let meritChange = randomInteger(minChange[index], maxChange[index]);
+
     if(negative) {
         meritChange *= -1;
     }
+
+    sendDebugMessage('Changing merits (level ' + level + ') by ' + meritChange);
 
     addMerits(meritChange);
 }

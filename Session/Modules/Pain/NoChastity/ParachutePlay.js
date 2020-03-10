@@ -2,7 +2,7 @@
     //TODO: Do stuff without parachute using strings  if no parachute
     if (getCBTLimit() != LIMIT_ASKED_YES || !PARACHUTE_TOY.hasToy() || !PARACHUTE_TOY.isPlayAllowed()) {
         runModuleCategory('Pain');
-    } else if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_BALL_TORTURE)) {
+    } else if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.BALL_TORTURE)) {
         if(PARACHUTE_TOY.fetchToy()) {
             sendMessage('Now we\'re going to have some fun with it!');
             sendMessage('Attach it while you\'re at it %Lol%');

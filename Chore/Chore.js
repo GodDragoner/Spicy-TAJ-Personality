@@ -290,9 +290,6 @@ function sendKinkyChoreInstructions(choreType) {
                         sendMessageBasedOnSender('Step carefully %Lol%');
                     } else {
                         sendMessageBasedOnSender('I want you to put ' + amount / 2 + pluralize('peg', amount / 2) + ' on each nipple');
-
-                        //TODO: Weight more often/define amount etc.
-                        sendMessageBasedOnSender('If you can add a little weight to them');
                     }
 
                     sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
@@ -319,10 +316,10 @@ function sendKinkyChoreInstructions(choreType) {
                 //TODO: Set toy on and off
                 if (PARACHUTE_TOY.hasToy() && PARACHUTE_TOY.isPlayAllowed()) {
                     if (PARACHUTE_TOY.fetchToy()) {
+                        PARACHUTE_TOY.setToyOn(on);
                         sendMessageBasedOnSender('I want you to attach your parachute on to your %Balls%');
 
-                        //TODO: Specify weight based on experience
-                        sendMessageBasedOnSender('Add some weight to it. At least 500g %Grin%');
+                        sendMessageBasedOnSender('Add some weight to it. At least ' + getWeightForParachute()/2 + 'kg %Grin%');
 
                         sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
                         waitForDone(1000);
@@ -449,7 +446,13 @@ function sendKinkyChoreInstructions(choreType) {
                     tasks++;
                 }
             } else if (id === 11) {
-                //TODO: New scenario. Use this somewhere else. YOu can't clean like this
+                if(NIPPLE_CLAMPS.decideToyOn()) {
+                    if(putNippleClampsOn()) {
+                        tasks++;
+                    }
+                }
+
+                //TODO: New scenario. Use this somewhere else. You can't clean like this
                 /*sendMessageBasedOnSender('While cleaning today I want you to stay on all fours');
                 sendMessageBasedOnSender('And...');
                 sendMessageBasedOnSender('To complicated it further I want you to tie your balls to your big toes %Grin%');

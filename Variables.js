@@ -112,7 +112,6 @@ const VARIABLE = {
     LAST_CHASTITY_TASK_ID: 'lastChastityTaskId',
     CHASTITY_TASKS_IN_ROW: 'chastityTasksInRow',
 
-    //TODO: Enforcing personality intro after chastity exam and kind intro with asking after exam/at beginning
     LONG_TERM_CHASTITY: 'chastityLongTerm',
 
     ASKED_FOR_KEYHOLDER: 'askedForKeyholder',

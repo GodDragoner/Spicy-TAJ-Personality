@@ -1,7 +1,7 @@
 {
     if(getCBTLimit() != LIMIT_ASKED_YES || !hasBallCrusher()) {
         runModuleCategory('Pain');
-    } else if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_BALL_TORTURE)) {
+    } else if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.BALL_TORTURE)) {
         sendMessage("%SlaveName%... " + random("I want to have a bit of fun with your %Balls%", "Lets play a bit with those %Balls%"));
 
         if (fetchToy("ball crusher")) {
@@ -180,7 +180,7 @@ function ballCrusherGame() {
     sendMessage('Go ahead and relieve the pressure on your balls now');
 }
 
-//TODO: Rubber doesn't hurt at all
+//Doesn't hurt at all so we are not gonna use it right now. Think of something different
 function ballCrusherRubberPlay() {
     sendMessage('This is going to hurt...');
 

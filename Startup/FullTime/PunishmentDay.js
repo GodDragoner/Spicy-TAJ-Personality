@@ -17,7 +17,7 @@
         if (isVar(VARIABLE.NEXT_PUNISHMENT_DAY) && !getDate(VARIABLE.NEXT_PUNISHMENT_DAY).sameDay(setDate())) {
             sendVirtualAssistantMessage("You've been skipping punishment day %SlaveName%!");
             sendVirtualAssistantMessage("I've added a healthy dose of punishment points for that!");
-            addPunishmentPoints(300);
+            addPunishmentPoints(300, PUNISHMENT_REASON.SKIPPING_PUNISHMENT_DAY);
             sendVirtualAssistantMessage("You are expected to report on tuesdays!");
         }
 
@@ -26,11 +26,11 @@
 
         sendVirtualAssistantMessage("You have " + getVar(VARIABLE.PUNISHMENT_POINTS) + " punishment points");
 
-        if (getVar(VARIABLE.PUNISHMENT_POINTS) >= 100) {
+        if (getVar(VARIABLE.PUNISHMENT_POINTS) >= getPunishmentPointsGoodThreshold()) {
             sendVirtualAssistantMessage("Which isn't good enough!");
             sendVirtualAssistantMessage("So I'm adding more!");
             sendVirtualAssistantMessage("Make sure you report for punishment!");
-            addPunishmentPoints(250);
+            addPunishmentPoints(250, PUNISHMENT_REASON.TOO_MANY_POINTS);
         }
     }
 }

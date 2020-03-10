@@ -8,7 +8,7 @@
 
         runModuleCategory('Pain');
     } else {
-        if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_BALL_TORTURE)) {
+        if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.BALL_TORTURE)) {
             sendMessage('Let\'s give my balls some attention %Grin%');
             sendMessage('I think they are having way too much fun');
             sendMessage('But don\'t worry I will take care of that');

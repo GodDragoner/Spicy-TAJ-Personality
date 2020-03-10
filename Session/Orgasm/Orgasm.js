@@ -52,7 +52,7 @@ function waitForCumAnswer() {
                     sendMessage(random('A "thank you" would be nice %Slave%', 'How about you thank your %DomHonorific%?'));
                     sendMessage('Every single on of your orgasms is at my mercy');
                     sendMessage('I will not tolerate you disrespecting this');
-                    addPunishmentPoints(getPPRuleIgnored());
+                    addPunishmentPoints(getPPRuleIgnored(), PUNISHMENT_REASON.RULE_IGNORED);
                     changeMeritHigh(true);
 
                     if(CBT_LIMIT.isAllowed()) {
@@ -65,7 +65,7 @@ function waitForCumAnswer() {
                     ignoredRule = true;
                 } else {
                     sendMessage('But still not what I wanted to hear!');
-                    addPunishmentPoints(getPPRuleIgnored());
+                    addPPRuleIgnored();
                     changeMeritHigh(true);
                 }
             } else if(shouldIntroduceNewRule(RULE_ALWAYS_THANK_FOR_ORGASM)) {

@@ -4,7 +4,7 @@
     //No CBT, no E Stim or no available body part found
     if (getCBTLimit() != LIMIT_ASKED_YES || !E_STIM_TOY.hasToy() || bodyPart === null) {
         runModuleCategory('Pain');
-    } else if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE_E_STIM)) {
+    } else if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.E_STIM)) {
         sendMessage('I think now\'s a great time for some e-stim don\'t you think? %Grin%');
 
         if (E_STIM_TOY.fetchToy()) {

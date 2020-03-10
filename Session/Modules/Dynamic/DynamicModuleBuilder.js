@@ -1,20 +1,25 @@
 //Categories
-const MODULE_CBT = 0;
-const MODULE_ANAL = 1;
-const MODULE_BALL_TORTURE = 2;
-const MODULE_COCK_TORTURE = 3;
-const MODULE_UNKNOWN = 4;
-const MODULE_BLOWJOB = 5;
-const MODULE_STROKING = 6;
-const MODULE_WATCH_VIDEO = 7;
-const MODULE_HUMILIATION = 8;
-const MODULE_TASKS = 9;
-const MODULE_CORNER_TIME = 10;
-const MODULE_LINE_WRITING = 11;
-const MODULE_ENEMA = 12;
-const MODULE_SPANKING = 13;
-const MODULE_E_STIM = 14;
-const MODULE_PEG = 0;
+
+const MODULE = {
+    CBT: 0,
+    ANAL: 1,
+    BALL_TORTURE: 2,
+    COCK_TORTURE: 3,
+    UNKNOWN: 4,
+    BLOWJOB: 5,
+    STROKING: 6,
+    WATCH_VIDEO: 7,
+    HUMILIATION: 8,
+    TASKS: 9,
+    CORNER_TIME: 10,
+    LINE_WRITING: 11,
+    ENEMA: 12,
+    SPANKING: 13,
+    E_STIM: 14,
+    PEG: 15,
+    BONDAGE: 16,
+};
+
 
 const TRANSITION_NO = 0;
 const TRANSITION_ALWAYS = 1;
@@ -41,11 +46,11 @@ function clearPreviousModuleHistory() {
 
 function registerDynamicModule(module) {
     module.moduleId = getCurrentScriptName().toLowerCase();
-    module.getChance = function() {
+    module.getChance = function () {
         let chance = this.frequency;
 
         if (MODULE_HISTORY.isInTodaysHistory(this.moduleId)) {
-            chance *= this.repeatPerSession/10;
+            chance *= this.repeatPerSession / 10;
         }
 
         let minModulesSinceRun = 3;
@@ -74,7 +79,7 @@ function registerDynamicModule(module) {
     };
 
 
-    module.preRun = function() {
+    module.preRun = function () {
         MODULE_HISTORY.addHistoryRun(this.moduleId);
         this.run();
     };

@@ -83,6 +83,14 @@ function playRandomSissyHypno() {
     playVideo('Videos/Spicy/Modules/Sissy/Brainwash/*.mp4', true);
 }
 
+function getPunishmentPointsGoodThreshold() {
+    return 175 - (getStrictnessForCharacter()*50);
+}
+
+function getPunishmentPointsBadThreshold() {
+    return 400 - (getStrictnessForCharacter()*50);
+}
+
 function addPunishmentPoints(amount, reason = -1) {
     const points = getVar(VARIABLE.PUNISHMENT_POINTS);
 

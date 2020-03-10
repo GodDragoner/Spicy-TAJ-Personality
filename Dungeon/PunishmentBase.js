@@ -153,9 +153,24 @@
                 let reasons = getVar(VARIABLE.PUNISHMENT_REASONS, new java.util.ArrayList());
 
                 if(!reasons.isEmpty()) {
-                    //TODO: Punishment reasons
                     if (reasons.contains(PUNISHMENT_REASON.SKIPPING_PUNISHMENT_DAY)) {
                         sendDungeonMessage("Skipping punishment day... Naughty %Slave%, are you too scared to come down here and face justice?", 2);
+                    }
+
+                    if (reasons.contains(PUNISHMENT_REASON.NO_PERM_FAP)) {
+                        sendDungeonMessage("Stroking without explicit permission", 2);
+                    }
+
+                    if (reasons.contains(PUNISHMENT_REASON.SKIPPING_FULLTIME)) {
+                        sendDungeonMessage("Skipping your weekly visits", 2);
+                    }
+
+                    if (reasons.contains(PUNISHMENT_REASON.NO_PERM_RUINED)) {
+                        sendDungeonMessage("Ruining without permission", 2);
+                    }
+
+                    if (reasons.contains(PUNISHMENT_REASON.CHEATING)) {
+                        sendDungeonMessage("Cheating and trying to trick %DomHonorific% %DomName%...", 2);
                     }
 
                     if (reasons.contains(PUNISHMENT_REASON.SKIPPING_CONFESSION_DAY)) {

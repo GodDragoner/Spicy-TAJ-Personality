@@ -37,7 +37,7 @@ let RULE_DOMME_KEYHOLDER;
 
                 //QUALITY: Ask to put on
 
-                addPunishmentPoints(getPPRuleIgnored());
+                addPPRuleIgnored();
                 changeMeritMedium(true);
             }
         }
@@ -210,7 +210,7 @@ let RULE_DOMME_KEYHOLDER;
                     sendMessage('Whenever we meet you are to be completely naked unless I tell you otherwise');
                 }
 
-                addPunishmentPoints(getPPRuleIgnored());
+                addPPRuleIgnored();
 
                 sendMessage('Go ahead and strip naked');
                 sendMessage('Don\'t you dare report back to me before you are completely naked');
@@ -303,7 +303,7 @@ let RULE_DOMME_KEYHOLDER;
                 sendMessage('You know you aren\'t allowed to swallow spit!');
                 sendMessage('And you should also know not obeying rules will result in punishment points');
 
-                addPunishmentPoints(getPPRuleIgnored());
+                addPPRuleIgnored();
                 changeMeritMedium(true);
             }
         }
@@ -377,7 +377,7 @@ let RULE_DOMME_KEYHOLDER;
                 sendMessage('You know you aren\'t allowed to swallow spit!');
                 sendMessage('And you should also know not obeying rules will result in punishment points');
 
-                addPunishmentPoints(getPPRuleIgnored());
+                addPPRuleIgnored();
                 changeMeritMedium(true);
             }
         }
@@ -463,9 +463,12 @@ function checkRandomRule() {
     }
 }
 
-
 function getPPRuleIgnored() {
     return 150;
+}
+
+function addPPRuleIgnored() {
+    addPunishmentPoints(getPPRuleIgnored(), PUNISHMENT_REASON.RULE_IGNORED);
 }
 
 function getRandomNewRule(permanent = true) {

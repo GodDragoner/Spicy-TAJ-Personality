@@ -212,7 +212,7 @@ function getDefaultModulesSinceRun() {
     return 3;
 }
 
-function tryRunModuleFetchId(minModulesSinceRun = getDefaultModulesSinceRun(), subCategories = MODULE_UNKNOWN) {
+function tryRunModuleFetchId(minModulesSinceRun = getDefaultModulesSinceRun(), subCategories = MODULE.UNKNOWN) {
     return tryRunModule(getCurrentScriptName(), getVar('lastModuleCategory'), minModulesSinceRun, subCategories);
 }
 
@@ -221,7 +221,7 @@ function tryRunModule(moduleId, category, minModulesSinceRun = 3, subCategories)
 
     //TODO: Dunno if this fully works yet
     //Check if that module category was in the previous module so we get some variation
-    let categoryInPreviousModule = subCategories != MODULE_UNKNOWN && hasPreviousModuleHadCategory(subCategories);
+    let categoryInPreviousModule = subCategories != MODULE.UNKNOWN && hasPreviousModuleHadCategory(subCategories);
 
     moduleId = moduleId.toLowerCase();
 
