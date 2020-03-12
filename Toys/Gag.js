@@ -1,6 +1,6 @@
 const GAG_TYPE_SPIDER_GAG = createToy('spider gag');
 const GAG_TYPE_BALL_GAG = createToy('ball gag');
-const GAG_TYPE_BUTTPLUG_GAG = createToy('buttplug');
+const GAG_TYPE_BUTTPLUG_GAG = createToy('buttplug gag');
 const GAG_TYPE_INFLATABLE_GAG = createToy('inflatable gag');
 const GAG_TYPE_DILDO_GAG = createToy('dildo gag');
 
@@ -69,7 +69,7 @@ function decideGag(pain = false) {
         } else {
             if(isChance(40)) {
                 //TODO: Interact more based on what previously happened etc.
-                sendMessage('You have been talking too much', 'You have been annoying me by not shutting up', 'You have been quite annoying today');
+                sendMessage(random('You have been talking too much', 'You have been annoying me by not shutting up', 'You have been quite annoying today'));
                 sendMessage('And...');
             }
 
@@ -93,6 +93,9 @@ function decideGag(pain = false) {
 
 function selectGag() {
     let dildoGagChance = 0;
+    let spiderGagChance = 0;
+    let ballGagChance = 0;
+    let buttplugGagChance = 0;
 
     if (GAG_TYPE_DILDO_GAG.hasToy()) {
         dildoGagChance += 25;
@@ -103,22 +106,31 @@ function selectGag() {
     }
 
     //TODO: Check for clothespin in mouth and chance = 100/skip dildo gag if pin was just added (5 minute cooldown)
-    let spiderGagChance = 15 * getMood();
-
-    if (isChance(dildoGagChance)) {
-        return GAG_TYPE_DILDO_GAG;
-    } else if (GAG_TYPE_SPIDER_GAG.hasToy() && (feelsLikePunishingSlave() || BODY_PART_TONGUE.currentClamps > 0 && isChance(spiderGagChance))) {
-        return GAG_TYPE_SPIDER_GAG;
+    if(GAG_TYPE_SPIDER_GAG.hasToy() && (feelsLikePunishingSlave() || BODY_PART_TONGUE.currentClamps > 0)) {
+        spiderGagChance += 50;
     }
 
     if (getASMLimit() === LIMIT_ASKED_YES && feelsEvil() && getRandomUncleanedButtplug() !== null) {
-        return BUTTPLUG_TOY;
+        buttplugGagChance += 50;
     }
 
     if (hasBallGag()) {
-        return GAG_TYPE_BALL_GAG;
-    } else {
-        return getRandomGag();
+        ballGagChance += 25;
+    }
+
+    let index = getWinnerIndex([dildoGagChance, spiderGagChance, ballGagChance, buttplugGagChance, 15 /*Random gag*/]);
+
+    switch(index) {
+        case 0:
+            return GAG_TYPE_DILDO_GAG;
+        case 1:
+            return GAG_TYPE_SPIDER_GAG;
+        case 2:
+            return GAG_TYPE_BALL_GAG;
+        case 3:
+            return GAG_TYPE_BUTTPLUG_GAG;
+        default:
+            return getRandomGag();
     }
 }
 
@@ -162,7 +174,7 @@ function putInGag(gagType = GAG_TYPE_BALL_GAG, addPinToTongue = false) {
 
     let isASM = false;
 
-    if (gagType === BUTTPLUG_TOY) {
+    if (gagType === GAG_TYPE_BUTTPLUG_GAG) {
         let buttplug = getRandomUncleanedButtplug();
 
         //No ASM or no plug found?
@@ -184,8 +196,7 @@ function putInGag(gagType = GAG_TYPE_BALL_GAG, addPinToTongue = false) {
         //After we fetched it we can set this to true because we are gonna clean it with the mouth
         buttplug.clean = true;
 
-        //TODO: Interact
-        sendMessage('%KnowWhatsNext%');
+        sendAlreadyKnowWhatsNext('gag', 'mouth');
         sendMessage('I want you to use that plug as a gag %Grin%')
     } else {
         if (!fetchToy(gagType.name)) {

@@ -158,7 +158,7 @@ function punishSmallBustBallsMultiple(maxLoops = getVar(VARIABLE.SUB_PAIN_TOLERA
                 waitForDone();
                 break;
             case 4:
-                sendMessage('Now flick each testicle ' + getVar(VARIABLE.SUB_PAIN_TOLERANCE) * +' times');
+                sendMessage('Now flick each testicle ' + getVar(VARIABLE.SUB_PAIN_TOLERANCE) + ' times');
                 waitForDone();
                 break;
             case 5:
@@ -252,7 +252,7 @@ function punishFlickCBT(bodyPart, multiplier = 1) {
                 changeMeritLow(true);
                 sendMessage(random('I guess we have to try this again', 'Let\'s try this again shall we?'));
                 break;
-            } else if (answer.isLike('done', 'yes')) {
+            } else if (answer.isLike('done', 'ready', 'yes')) {
                 sendMessage('%Grin%');
 
                 completedInTime = true;
@@ -298,7 +298,7 @@ function punishBustBalls(hand = true, multiplier = 1) {
                 sendMessage('Hit my %Balls% another ' + hits + ' times %SlaveName%');
                 answer = createInput(45);
                 while (true) {
-                    if (answer.isLike('done', 'yes')) {
+                    if (answer.isLike('done', 'ready', 'yes')) {
                         sendMessage('%Good%');
                         completedInTime = true;
                         break;

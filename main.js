@@ -97,6 +97,7 @@ if(!getVar(VARIABLE.FINISHED_SETUP, false)) run("Startup/Setup.js");
 
 if(!getVar(VARIABLE.FINISHED_FIRST_SESSION, false)) run("Session/FirstSession.js");
 
+setSender(1);
 
 //TODO: Academy
 

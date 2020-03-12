@@ -6,7 +6,9 @@ function startTimePassTasks(durationMinutes, allowTeasing = true) {
 
     let iterations = 0;
     const date = setDate();
-    while(!date.clone().addMinute(durationMinutes).hasPassed()) {
+    date.addMinute(durationMinutes);
+
+    while(!date.hasPassed()) {
 
         //Only send this when we are about to give another task to the sup
         if(iterations > 0) {
@@ -125,13 +127,13 @@ function startTimePassTasks(durationMinutes, allowTeasing = true) {
     }
 }
 
-function getCornerTime() {
+function getCornerTime(multiplier = 1) {
     let mood = getMood();
-    let minSeconds = Math.max(30, (mood + 1)*10*(getStrictnessForCharacter() + 1));
-    let maxSeconds = Math.max(45, (mood + 1)*15*(getStrictnessForCharacter() + 1));
+    let minSeconds = Math.max(45, (mood + 1)*10*(getStrictnessForCharacter() + 1));
+    let maxSeconds = Math.max(75, (mood + 1)*15*(getStrictnessForCharacter() + 1));
     let random = randomInteger(minSeconds, maxSeconds);
     sendDebugMessage('Calculated ' + random + ' corner time seconds based on mood ' + mood + ' and strictness ' + getStrictnessForCharacter());
-    return random;
+    return random*multiplier;
 }
 
 function goToCorner(durationSeconds) {

@@ -53,7 +53,7 @@
 
                     let mode = getRandomPainEStimMode(painLevel);
                     let level = mode.getPainLevel(painLevel);
-                    let time = getCornerTime();
+                    let time = getCornerTime(PAIN_LEVEL_HIGH - painLevel + 1);
 
                     let askForIncrease = level < E_STIM_TOY.getMaxLevel() && painLevel === PAIN_LEVEL_HIGH && isChance(20);
 

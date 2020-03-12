@@ -37,7 +37,10 @@ function interactWithButtplug(punishment) {
     //TODO: Could interact with buy new toys or fetish questions and better transition between different toys (additionally why not do this... etc.)
     if ((BUTTPLUG_TOY.isPunishmentAllowed() || !punishment && BUTTPLUG_TOY.isPlayAllowed()) && getAnalLimit() === LIMIT_ASKED_YES) {
         //Starting chance for plug or already plugged anyway
-        if (isChance(Math.max(15, getVar(VARIABLE.ASS_LEVEL, 0)) * 4) || isPlugged()) {
+        let chance = Math.max(15, getVar(VARIABLE.ASS_LEVEL, 0)) * 4;
+        sendDebugMessage('Rolling for ' + chance + " to insert plug with random toy interaction");
+
+        if (isChance(chance) || isPlugged()) {
             let action = shouldIncreasePlugSize();
 
             if (action === ACTION_BUTTPLUG_INCREASE_SIZE) {
@@ -130,6 +133,8 @@ function removeAllToys() {
     removeAllClamps();
 
     removeGag();
+
+    removeNippleClamps();
 
     if (isPlugged()) {
         removeButtplug();
@@ -704,8 +709,7 @@ function setupToys(settings) {
     askForToyUsage("Sounds", domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
-    askForToy("Humbler");
-    askForToyUsage("Humbler", domChose);
+    HUMBLER_TOY.askForToyAndUsage(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
     CLOTHESPINS_TOY.askForToyAndUsage(domChose);

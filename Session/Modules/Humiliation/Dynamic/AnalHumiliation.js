@@ -325,6 +325,7 @@ function appendPenetratingSession(toy) {
     sendMessage("Put the tip of your " + toy + " on your asshole");
     sendMessage("Be ready");
     sendMessage("Because you are going to push it in and out to the beat %Grin%");
+
     //TODO: Speed based on progress in the session
     sendMessage("We'll start slow and work our way up there");
     sendMessage("Here we go", 0);

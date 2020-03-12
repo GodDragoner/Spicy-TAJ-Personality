@@ -23,7 +23,8 @@ const GAME_E_STIM = 4;
 
 function playSlideshow(durationSeconds, intervalSeconds, category) {
     let date = setDate();
-    while (!date.addSecond(durationSeconds).hasPassed()) {
+    date.addSecond(durationSeconds);
+    while (!date.hasPassed()) {
         showTeaseImage();
         sleep(intervalSeconds);
     }

@@ -144,6 +144,22 @@ function getEarlyPunishmentExitChance() {
     return earlyExitChance;
 }
 
+function waitForBack(timeout = 100) {
+    const answer = createInput(timeout);
+    while (true) {
+        if (answer.isTimeout()) {
+            //TODO: Better timeout options?
+            break;
+        } else if (answer.isLike('back', 'here', 'return')) {
+            break;
+        } else {
+            sendMessage(random('Are you back?', 'If you aren\'t back yet don\'t bother me.'));
+            answer.loop();
+        }
+    }
+}
+
+
 function waitForDone(timeout = 100) {
     const answer = createInput(timeout);
     while (true) {
@@ -153,7 +169,7 @@ function waitForDone(timeout = 100) {
         } else if (answer.isLike('done', 'ready', 'yes')) {
             break;
         } else {
-            sendMessage('Are you done?');
+            sendMessage(random('Are you done?', 'If you aren\'t done yet don\'t bother me.'));
             answer.loop();
         }
     }

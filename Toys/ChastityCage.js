@@ -5,14 +5,14 @@ const CHASTITY_CAGES = [];
 
 let currentChastityCage;
 
-if(isVar(VARIABLE.ACTIVE_CHASTITY_CAGE)) {
+if (isVar(VARIABLE.ACTIVE_CHASTITY_CAGE)) {
     currentChastityCage = getChastityCageByName(getVar(VARIABLE.ACTIVE_CHASTITY_CAGE));
 } else {
     currentChastityCage = null;
 }
 
 function getActiveChastityCage() {
-    if(currentChastityCage === null || currentChastityCage === undefined) {
+    if (currentChastityCage === null || currentChastityCage === undefined) {
         return CHASTITY_CAGES[0];
     } else {
         return currentChastityCage;
@@ -86,9 +86,9 @@ function getMaxChastitySize() {
 }
 
 function getMinChastitySize() {
-    if(getStrictnessForCharacter() === 2) {
+    if (getStrictnessForCharacter() === 2) {
         return Math.max(1, getMaxChastitySize() - 2);
-    } else if(getStrictnessForCharacter() === 1) {
+    } else if (getStrictnessForCharacter() === 1) {
         return Math.max(1, getMaxChastitySize() - randomInteger(1, 2));
     } else {
         return Math.max(1, getMaxChastitySize() - 1);
@@ -105,24 +105,24 @@ function findAvailableClosestToSize(length) {
     for (let y = 0; y < CHASTITY_CAGES.length; y++) {
         let foundDifference = length - CHASTITY_CAGES[y].length;
 
-        if(currentSizeDifference === null) {
+        if (currentSizeDifference === null) {
             //currentCage = CHASTITY_CAGES[y];
             currentSizeDifference = foundDifference;
         }
         //Check if we found the perfect fitting size
-        else if(currentSizeDifference !== 0 && foundDifference === 0) {
+        else if (currentSizeDifference !== 0 && foundDifference === 0) {
             currentSizeDifference = 0;
             //Found the perfect match
             break;
         }
         //Check if we found something that is closer
-        else if(Math.abs(currentSizeDifference) > Math.abs(foundDifference)) {
+        else if (Math.abs(currentSizeDifference) > Math.abs(foundDifference)) {
             currentSizeDifference = foundDifference;
         }
         //Check if we found something that's equal in value
-        else if(Math.abs(currentSizeDifference) === Math.abs(foundDifference)) {
+        else if (Math.abs(currentSizeDifference) === Math.abs(foundDifference)) {
             //Use the bigger one
-            if(getStrictnessForCharacter() === 0) {
+            if (getStrictnessForCharacter() === 0) {
                 currentSizeDifference = Math.max(currentSizeDifference, foundDifference);
             }
             //Use the smaller one
@@ -146,40 +146,44 @@ function getRandomCageWithSize(length, punishments) {
         let currentCage = CHASTITY_CAGES[y];
         let punishmentOptionsOfCage = 0;
 
-        if(currentCage.dialator) {
+        if (currentCage.dialator) {
             punishmentOptionsOfCage++;
 
             //If we can't remove it but want no punishments this is not the right cage to go with
-            if(punishments === 0 && !currentCage.dialatorDetachable) {
+            if (punishments === 0 && !currentCage.dialatorDetachable) {
                 sendDebugMessage('Skipping ' + currentCage.name + ' because dialator is not detachable');
                 continue;
             }
         }
 
-        if(currentCage.spikes) {
+        if (currentCage.spikes) {
             punishmentOptionsOfCage++;
 
             //If we can't remove it but want no punishments this is not the right cage to go with
-            if(punishments === 0 && !currentCage.spikesDetachable) {
+            if (punishments === 0 && !currentCage.spikesDetachable) {
                 sendDebugMessage('Skipping ' + currentCage.name + ' because spikes are not detachable');
                 continue;
             }
         }
 
+        //Don't need to search for a smaller cage because we won't be able to fulfill the request anyway
+        if(punishmentOptionsOfCage < punishments - 1) {
+            continue;
+        }
+
         //Punishment of smaller cage (check if we can find a smaller cage)
-        if(punishments > 0 && length > 1 && getRandomCageWithSize(length - 1, punishments - 1).length == length - 1) {
+        if (punishments > 0 && length > 1 && getRandomCageWithSize(length - 1, punishments - 1).length === length - 1) {
             punishmentOptionsOfCage++;
-            sendDebugMessage('Pushed a cage because it has smaller cage as punishment option');
         }
 
         //Fitting size and enough punishment options
-        if(currentCage.length == length && punishmentOptionsOfCage >= punishments) {
+        if (currentCage.length == length && punishmentOptionsOfCage >= punishments) {
             cages.push(currentCage);
             sendDebugMessage('Pushing cage ' + currentCage.name + ' to available list');
         }
     }
 
-    if(cages.length === 0) {
+    if (cages.length === 0) {
         //Reduce amount of punishments by one. If we reach -1 it won't skip any cage anymore because of forced punishments because we only check for punishments === 0
         // -> It will at some point find a fitting cage
         return getRandomCageWithSize(length, punishments - 1);
@@ -233,7 +237,7 @@ function getRandomCageWithSize(length, punishments) {
 function selectChastityCage() {
     let mood = getMood();
 
-    let punishmentChance = mood*20 + (getStrictnessForCharacter()*20 - (VERY_ANNOYED_MOOD - mood)*10) - SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE*0.5;
+    let punishmentChance = mood * 20 + (getStrictnessForCharacter() * 20 - (VERY_ANNOYED_MOOD - mood) * 10) - SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE * 0.5;
     sendDebugMessage('Punishment Chastity Chance: ' + punishmentChance + ' for mood ' + mood + ' and strictness ' + getStrictnessForCharacter());
 
     let length = findAvailableClosestToSize(randomInteger(getMinChastitySize(), getMaxChastitySize()));
@@ -245,12 +249,12 @@ function selectChastityCage() {
     let amountOfPunishments = 0;
 
     //First punishment roll
-    if(isChance(punishmentChance)) {
+    if (isChance(punishmentChance)) {
         amountOfPunishments++;
         punishmentChance -= SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE;
 
         //Second punishment roll
-        if(isChance(punishmentChance)) {
+        if (isChance(punishmentChance)) {
             amountOfPunishments++;
             punishmentChance -= SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE;
         }
@@ -260,30 +264,40 @@ function selectChastityCage() {
 
     let cage = getRandomCageWithSize(length, amountOfPunishments);
 
-    sendDebugMessage('Found cage ' + cage.name);
+    sendDebugMessage('Found cage ' + cage.name + " with length " + cage.length);
 
     let punishments = new java.util.ArrayList();
 
-    //Smaller cage punishment
-    if(cage.length > 1 && amountOfPunishments > 0) {
-        let smallerCage = getRandomCageWithSize(cage.length - 1, amountOfPunishments - 1);
-        if (smallerCage === cage.length - 1) {
-            sendDebugMessage('Found fitting smaller cage. Rolling for chance to replace one punishment');
-            if (isChance(50)) {
-                cage = smallerCage;
-                amountOfPunishments--;
-                sendDebugMessage('Selected smaller cage as punishment');
-                sendDebugMessage('Remaining punishments: ' + amountOfPunishments);
+    //Smaller cage punishment, we need to go smaller until we find no other alternative
+    do {
+        if (cage.length > 1 && amountOfPunishments > 0) {
+            let smallerCage = getRandomCageWithSize(cage.length - 1, amountOfPunishments - 1);
+            sendDebugMessage("Looking for smaller cage as punishment and got " + smallerCage.name + " with length " + smallerCage.length);
+            if (smallerCage.length == cage.length - 1) {
+                sendDebugMessage('Found fitting smaller cage. Rolling for chance to replace one punishment');
+
+                //Either not feeling like punishing then go smaller or not enough punishment options
+                if (!feelsLikePunishingSlave() || cage.getPunishmentOptions() < amountOfPunishments) {
+                    cage = smallerCage;
+                    amountOfPunishments--;
+                    sendDebugMessage('Selected smaller cage as punishment');
+                    sendDebugMessage('Remaining punishments: ' + amountOfPunishments);
+                }
+            } else {
+                break;
             }
+        } else {
+            break;
         }
-    }
+    } while (cage.getPunishmentOptions() < amountOfPunishments);
+
 
     setVar(VARIABLE.CHASTITY_DILATOR_ON, false);
     setVar(VARIABLE.CHASTITY_SPIKES_ON, false);
 
-    if(cage.spikes) {
+    if (cage.spikes) {
         //If spikes are forced we need to calculate that into the remaining chance
-        if(!cage.spikesDetachable) {
+        if (!cage.spikesDetachable) {
             amountOfPunishments--;
             setVar(VARIABLE.CHASTITY_SPIKES_ON, true);
             sendDebugMessage('Set spikes as punishment due to being forced by the cage');
@@ -295,9 +309,9 @@ function selectChastityCage() {
         }
     }
 
-    if(cage.dialator) {
+    if (cage.dialator) {
         //If dilator is forced we need to calculate that into the remaining chance
-        if(!cage.dialatorDetachable) {
+        if (!cage.dialatorDetachable) {
             amountOfPunishments--;
             setVar(VARIABLE.CHASTITY_DILATOR_ON, true);
             sendDebugMessage('Set dilator as punishment due to being forced by the cage');
@@ -310,24 +324,23 @@ function selectChastityCage() {
     }
 
     //Randomize punishment rolling order
-    while(!punishments.isEmpty() && amountOfPunishments > 0) {
-        sendDebugMessage('Rolling possible punishments for chance ' + punishmentChance);
+    while (!punishments.isEmpty() && amountOfPunishments > 0) {
         let index = randomInteger(0, punishments.size() - 1);
-        switch(punishments.get(index)) {
+        switch (punishments.get(index)) {
             case 0:
                 setVar(VARIABLE.CHASTITY_SPIKES_ON, true);
                 sendDebugMessage('Selected spikes as punishment');
-                sendDebugMessage('Remaining punishments: ' + amountOfPunishments);
                 break;
             case 1:
                 setVar(VARIABLE.CHASTITY_DILATOR_ON, true);
                 sendDebugMessage('Selected dilator as punishment');
-                sendDebugMessage('Remaining punishments: ' + amountOfPunishments);
                 break;
         }
 
         //We will definitely apply a punishment so we can reduce this
         amountOfPunishments--;
+
+        sendDebugMessage('Remaining punishments: ' + amountOfPunishments);
 
         //No reuse of that punishment right now
         punishments.remove(index);
@@ -336,7 +349,7 @@ function selectChastityCage() {
     return cage;
 }
 
-function lockChastityCage() {
+function lockChastityCage(chastityCage = undefined) {
     if (!getVar(VARIABLE.HAS_CHASTITY) || getVar(VARIABLE.CHASTITY_ON)) {
         return;
     }
@@ -351,12 +364,12 @@ function lockChastityCage() {
 
         let answer = createInput(5);
 
-        if(answer.isTimeout()) {
+        if (answer.isTimeout()) {
             //sendMessage('I don\'t care about your opinion though');
-        } else if(answer.isLike('yes', 'thank you')) {
+        } else if (answer.isLike('yes', 'thank you')) {
             sendMessage('You are welcome %SlaveName% %EmoteHappy%');
             changeMeritLow(false);
-        } else if(answer.isLike('no', 'hurt', 'pain')) {
+        } else if (answer.isLike('no', 'hurt', 'pain')) {
             sendMessage('Not nice enough huh?');
             sendMessage('Well I don\'t care about your opinion though %Lol%');
             registerComplain();
@@ -372,24 +385,26 @@ function lockChastityCage() {
     showImage("Images/Spicy/Chastity/ChastityOn/*.{jpg,png,gif}");
     if (randomInteger(0, 2) == 2) playSound("Audio/Spicy/Chastity/ChastityOn/*.mp3");
 
-    let chastityCage = selectChastityCage();
+    if(chastityCage === null || chastityCage === undefined) {
+        chastityCage = selectChastityCage();
+    }
 
     fetchChastityCage(chastityCage.name);
 
     let alreadyAttached = false;
 
-    if(getVar(VARIABLE.CHASTITY_SPIKES_ON, false)) {
+    if (getVar(VARIABLE.CHASTITY_SPIKES_ON, false)) {
         sendMessageBasedOnSender('I want you to attach the spikes to it %Grin%');
         alreadyAttached = true;
     }
 
-    if(getVar(VARIABLE.CHASTITY_DILATOR_ON, false)) {
-        if(!alreadyAttached) {
+    if (getVar(VARIABLE.CHASTITY_DILATOR_ON, false)) {
+        if (!alreadyAttached) {
             sendMessageBasedOnSender('I want you to attach the dilator to it %Grin%');
         } else {
             sendMessageBasedOnSender('And I want you to attach the dilator to it too %Lol%');
 
-            if(chastityCage.length < 3) {
+            if (chastityCage.length < 3) {
                 sendMessageBasedOnSender('We are going full punishment mode %SlaveName%');
                 sendMessageBasedOnSender('You know you don\'t deserve anything different %GeneralTime% %Lol%');
             } else {
@@ -400,7 +415,7 @@ function lockChastityCage() {
         alreadyAttached = true;
     }
 
-    if(alreadyAttached) {
+    if (alreadyAttached) {
         sendMessageBasedOnSender('Tell me when you have everything around %SlaveName%');
         waitForDone();
         sendMessageBasedOnSender('%Good%');
@@ -421,7 +436,7 @@ function lockChastityCage() {
     }
 
     //Slower timeout for the dilator
-    if(getVar(VARIABLE.CHASTITY_DILATOR_ON, false)) {
+    if (getVar(VARIABLE.CHASTITY_DILATOR_ON, false)) {
         timeout *= 5;
     }
 
@@ -446,18 +461,18 @@ function lockChastityCage() {
                     changeMeritHigh(true);
 
                     //Punish slave even more
-                    if(feelsLikePunishingSlave()) {
-                        if(chastityCage.spikes && !getVar(VARIABLE.CHASTITY_SPIKES_ON, false)) {
+                    if (feelsLikePunishingSlave()) {
+                        if (chastityCage.spikes && !getVar(VARIABLE.CHASTITY_SPIKES_ON, false)) {
                             sendMessageBasedOnSender('I want you to attach the spikes to it %Grin%');
                             setVar(VARIABLE.CHASTITY_SPIKES_ON, true);
                             alreadyAttached = true;
-                        } else if(chastityCage.dialator && !getVar(VARIABLE.CHASTITY_DILATOR_ON, false)) {
-                            if(!alreadyAttached) {
+                        } else if (chastityCage.dialator && !getVar(VARIABLE.CHASTITY_DILATOR_ON, false)) {
+                            if (!alreadyAttached) {
                                 sendMessageBasedOnSender('I want you to attach the dilator to it %Grin%');
                             } else {
                                 sendMessageBasedOnSender('And I want you to attach the dilator to it too %Lol%');
 
-                                if(chastityCage.length < 3) {
+                                if (chastityCage.length < 3) {
                                     sendMessageBasedOnSender('We are going full punishment mode %SlaveName%');
                                     sendMessageBasedOnSender('You know you don\'t deserve anything different %GeneralTime% %Lol%');
                                 } else {
@@ -480,7 +495,7 @@ function lockChastityCage() {
                         options.add(2);
 
                         let punishments = 0;
-                        while(punishments === 0) {
+                        while (punishments === 0) {
                             let option = options.get(randomInteger(0, options.size() - 1));
 
                             options.remove(option);
@@ -499,7 +514,7 @@ function lockChastityCage() {
                                     }
                                 case 1:
                                     sendMessageBasedOnSender('Bring me a bowl with some water in it and...');
-                                    if (fetchIceCubes(5)) {
+                                    if (askAndFetchIceCubes(5)) {
                                         sendMessageBasedOnSender('Put those ice cubes into the bowl and dip your balls and cock into it until they are soft %Grin%');
                                         sendMessageBasedOnSender('I don\'t care how long it takes or how much it hurts, just report back to me %Lol%');
                                         waitForDone(100000);
@@ -512,8 +527,8 @@ function lockChastityCage() {
                                     sendMessageBasedOnSender('I hope for your sake that it is soft now');
 
                                     //Max 5 times
-                                    for(let x = 0; x < 5; x++) {
-                                        if(sendYesOrNoQuestion('Tell me %SlaveName%. Is it soft?')) {
+                                    for (let x = 0; x < 5; x++) {
+                                        if (sendYesOrNoQuestion('Tell me %SlaveName%. Is it soft?')) {
                                             break;
                                         } else {
                                             sendMessage(random('Which means', 'Seems like') + ' I am not done yet %Grin%');
@@ -604,19 +619,37 @@ function loadChastityCages() {
                 spikes: spikes,
                 spikesDetachable: spikesDetachable,
                 ballTrapType: ballTrapType,
-
-                isFullSizedBelt : function () {
-                    return ballTrapType === 0;
-                }
             };
 
-            CHASTITY_CAGES.push(chastityCage);
+            CHASTITY_CAGES.push(createCage(chastityCage));
 
-            if(currentChastityCage === null) {
+            if (currentChastityCage === null) {
                 currentChastityCage = chastityCage;
             }
         }
     }
+}
+
+function createCage(cage) {
+    cage.isFullSizedBelt = function () {
+        return this.ballTrapType === 0;
+    };
+
+    cage.getPunishmentOptions = function () {
+        let amount = 0;
+        if (this.spikes) {
+            amount++;
+        }
+
+        if (this.dialator) {
+            amount++;
+        }
+
+        return amount;
+    };
+
+
+    return cage;
 }
 
 function saveChastityCages() {
@@ -698,10 +731,10 @@ function setupNewCage() {
     setCurrentSender(SENDER_ASSISTANT);
     let length = createIntegerInput('So just give me a number on a scale of 1 - 5 %SlaveName%', 1, 5, 'That\'s not a number... Give me something like 2 or 4', 'That number is not on the scale. Remember on a scale of 1 - 5 %SlaveName%');
 
-    if(length >= 4) {
+    if (length >= 4) {
         sendVirtualAssistantMessage('That\'s quite big');
         sendVirtualAssistantMessage('I guess %DomHonorific% %DomName% will only allow this cage if you have been behaving properly %Grin%');
-    } else if(length == 3) {
+    } else if (length == 3) {
         sendVirtualAssistantMessage('A medium sized cage is always good %Grin%');
     } else {
         sendVirtualAssistantMessage('A tiny cage for her %Cock%?');
@@ -859,13 +892,9 @@ function setupNewCage() {
         spikes: spikes,
         spikesDetachable: spikesDetachable,
         ballTrapType: ballTrapType,
-
-        isFullSizedBelt : function () {
-            return ballTrapType === 0;
-        }
     };
 
-    CHASTITY_CAGES.push(chastityCage);
+    CHASTITY_CAGES.push(createCage(chastityCage));
 
     saveChastityCages();
 

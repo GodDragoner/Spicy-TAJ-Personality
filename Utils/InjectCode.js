@@ -55,7 +55,12 @@ sendDebugMessage(getVar(VARIABLE.BLOWJOB_LEVEL));
 setVar(VARIABLE.CHASTITY_ON, true);
  */
 
-createBondageInstructions(3);
 
-/*setVar(VARIABLE.CHASTITY_ON, false);
-lockChastityCage();*/
+//createBondageInstructions(3);
+
+//setVar(VARIABLE.CHASTITY_ON, false);
+//lockChastityCage();
+
+let time = getCornerTime(PUNISHMENT_CURRENT_LEVEL.id + 1);
+sendDebugMessage('Resulting in ' + time);
+playSlideshow(time, 15, 'TEASE');

@@ -1,9 +1,9 @@
 {
     //No punishments with higher than medium should be line writing
     if (PUNISHMENT_CURRENT_LEVEL.id > PUNISHMENT_LEVEL.MEDIUM.id) {
-        runPunishment();
+        runPunishment(PUNISHMENT_CURRENT_LEVEL);
     } else if (tryRunPunishmentFetchId(MODULE.CORNER_TIME)) {
-        goToCorner(getCornerTime()*(PUNISHMENT_CURRENT_LEVEL.id + 1));
+        goToCorner(getCornerTime(PUNISHMENT_CURRENT_LEVEL.id + 1));
 
         setPunishmentTransitionHandler({
             handleTransition: function (nextCategory, nextLevel) {

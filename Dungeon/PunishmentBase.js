@@ -150,6 +150,7 @@
                 sendDungeonMessage("Lets see if there is any specific reasons to why you've been given punishment points this week...");
                 setVar(VARIABLE.PUNISHMENT_ACTIVE, true);
 
+                //FIXME: Doesn't work?
                 let reasons = getVar(VARIABLE.PUNISHMENT_REASONS, new java.util.ArrayList());
 
                 if(!reasons.isEmpty()) {

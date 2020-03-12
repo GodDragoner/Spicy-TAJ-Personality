@@ -31,9 +31,8 @@
                 PARACHUTE_TOY.setToyOn(false);
             } else {
                 sendMessage("I guess I have to think of something different to play with your balls");
+                runPunishment(PUNISHMENT_CURRENT_LEVEL);
             }
-
-
         }
     }
 }

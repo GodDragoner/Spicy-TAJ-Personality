@@ -7,6 +7,10 @@ E_STIM_TOY.getMaxLevel = function() {
     getVar(this.getVarName() + 'maxLevel', -1);
 };
 
+E_STIM_TOY.hasToy = function() {
+    return getVar(this.getVarName(), false) && E_STIM_MODES.length > 0;
+};
+
 const E_STIM_PLUG_TOY = createToy("e stim plug");
 const E_STIM_STRAPS = createToy("e stim straps");
 const E_STIM_PADS = createToy("e stim pads");
@@ -16,9 +20,11 @@ let E_STIM_MODES = [];
 let CURRENT_E_STIM_BODY_PARTS = [];
 
 //Load all existing modes
-for (let x = 0; x < E_STIM_MODES.length; x++) {
+for (let x = 0; x < getVar(VARIABLE.E_STIM_MODES, 0); x++) {
     createEStimMode();
 }
+
+sendDebugMessage('Loaded ' + E_STIM_MODES.length + ' e stim modes');
 
 function getRandomBodyPartForEStim() {
     let bodyPartList = [];
@@ -124,6 +130,8 @@ function canEStimInChastity() {
 }
 
 function getRandomPainEStimMode(possibleLevel = PAIN_LEVEL_LOW, minDifferenceToHighPain = 0) {
+    sendDebugMessage('Searching for estim pain mode with level ' + possibleLevel + ' and min difference to high ' + minDifferenceToHighPain + ' in ' + E_STIM_MODES.length + ' available modes');
+
     let modesAvailable = [];
 
     while(modesAvailable.length === 0) {
@@ -131,6 +139,7 @@ function getRandomPainEStimMode(possibleLevel = PAIN_LEVEL_LOW, minDifferenceToH
             let mode = E_STIM_MODES[x];
             let painLevel = mode.getPainLevel(possibleLevel);
             let highLevel = mode.getPainLevel(PAIN_LEVEL_HIGH);
+            sendDebugMessage('Found e-stim mode ' + mode.id + ' with device level ' + painLevel + ' and highest level ' + highLevel);
 
             //Check if the required level is available for that mode and make sure that we have at least a difference up to x
             if(mode.getPainLevel(possibleLevel) > -1 && (highLevel - painLevel) >= minDifferenceToHighPain) {
@@ -145,7 +154,6 @@ function getRandomPainEStimMode(possibleLevel = PAIN_LEVEL_LOW, minDifferenceToH
             break;
         }
     }
-
 
     return random(modesAvailable);
 }

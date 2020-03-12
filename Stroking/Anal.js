@@ -1,5 +1,7 @@
 let initialBPMIncrease = 0;
-const MAX_ANAL_BPM = 180;
+
+//TODO: Based on body position (like riding can't be that fast)
+const MAX_ANAL_BPM = 160;
 
 /**
  * Start anal penetration
@@ -8,6 +10,8 @@ const MAX_ANAL_BPM = 180;
  */
 function startAnal(bpm, duration) {
     startStroking(bpm);
+
+    //TODO: BPM increase can't be too quick for beginners
     sendAnalTaunts(duration*1000);
     //QUALITY: Sounds
     sendMessage(random("Stop", "You can stop now"), 0);
@@ -19,9 +23,11 @@ function startAnal(bpm, duration) {
 }
 
 function getInitialBPM() {
+    //Min 30 bpm
     let result = Math.max(30, Math.ceil(getVar(VARIABLE.ASS_LEVEL)*2.5) + initialBPMIncrease);
+    //Min 5 max with ass level 30 is 15
     initialBPMIncrease += randomInteger(5, Math.max(5, Math.floor(getVar(VARIABLE.ASS_LEVEL)/2)));
-    return Math.max(result, MAX_ANAL_BPM);
+    return Math.min(result, MAX_ANAL_BPM);
 }
 
 function sendAnalTaunts(duration) {

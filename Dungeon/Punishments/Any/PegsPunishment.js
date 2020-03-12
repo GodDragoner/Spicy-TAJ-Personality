@@ -17,8 +17,7 @@
                     sendMessage("Because just a moment later I will tell you to rip them off %EmoteHappy% "); //#DT4
                     sendMessage("Neither do you want to attach them too loosely because you will have to flick them once or twice "); //#DT4
                     sendMessage("If they fall off due to a flick you will have to repeat this punishment in full and pay a small fee..."); //#DT4
-                    sendMessage("Remember to say tell me that you are done right after you've pulled them off..."); //#DT4 
-
+                    sendMessage("Remember to say tell me that you are done right after you've pulled them off..."); //#DT4
 
                     for (let x = 0; x <= (PUNISHMENT_CURRENT_LEVEL.id + 1) * 3; x++) {
                         if (x > 0) {

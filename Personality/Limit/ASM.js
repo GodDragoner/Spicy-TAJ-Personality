@@ -35,14 +35,14 @@ function doButtplugASMClean(cleanType, toy = 'plug') {
 
     if(isGaged()) {
         //If already spider gag we are lucky
-        if(currentGagType === GAG_TYPE_SPIDER_GAG) {
+        if(currentGagType === GAG_TYPE_SPIDER_GAG && !BODY_PART_TONGUE.isUsed()) {
             sendMessage('Since your mouth is already spread wide open we can get right to it %Grin%');
         } else {
             sendMessage('But your mouth is already filled %EmoteSad%');
             sendMessage('%Thinking%');
 
             //Choose spider gag if we can swap current gag
-            if(GAG_TYPE_SPIDER_GAG.hasToy() && currentGagType.getLastUsage().addMinute(getMinPlayTimeBeforeToySwap()).hasPassed() && isChance(50)) {
+            if(currentGagType !== GAG_TYPE_SPIDER_GAG && GAG_TYPE_SPIDER_GAG.hasToy() && currentGagType.getLastUsage().addMinute(getMinPlayTimeBeforeToySwap()).hasPassed() && isChance(50)) {
                 cleanType = ASM_CLEAN_TYPE_LICK;
 
                 if(isAnnoyedByTalking()) {
@@ -86,7 +86,7 @@ function doButtplugASMClean(cleanType, toy = 'plug') {
         }
     }
 
-    if(isChance(30) && (!isGaged() || currentGagType === GAG_TYPE_SPIDER_GAG)) {
+    if(isChance(30) && (!isGaged() || !BODY_PART_TONGUE.isUsed())) {
         sendMessage('Stick your tongue out %SlaveName%', 5);
         sendMessage('Look at the ' + toy + ' covered in your ass juice');
 

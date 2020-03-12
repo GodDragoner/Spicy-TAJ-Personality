@@ -65,15 +65,15 @@ function isPlugged() {
 }
 
 function shouldIncreasePlugSize() {
-    let minTime = 7;
-    let maxTime = 10;
+    let minTime = Math.ceil(getVar(VARIABLE.DEVOTION)/5);
+    let maxTime = Math.ceil(getVar(VARIABLE.DEVOTION)/3);
 
     if (getVar(VARIABLE.ASS_LEVEL, 0) >= 20) {
-        minTime = 6;
-        maxTime = 8;
+        minTime = Math.ceil(getVar(VARIABLE.DEVOTION)/6);
+        maxTime = Math.ceil(getVar(VARIABLE.DEVOTION)/5);
     } else if (getVar(VARIABLE.ASS_LEVEL, 0) >= 30) {
-        minTime = 5;
-        maxTime = 7;
+        minTime = Math.ceil(getVar(VARIABLE.DEVOTION)/7);
+        maxTime = Math.ceil(getVar(VARIABLE.DEVOTION)/6);
     }
 
     if (currentPlug !== biggestButtplug) {
@@ -142,7 +142,7 @@ function putInButtplug(forceBigger = false) {
             sendMessage('But before we are gonna stick that buttplug up your %Ass%');
 
             let iceCubes = randomInteger(2, 5);
-            if (fetchIceCubes(iceCubes)) {
+            if (askAndFetchIceCubes(iceCubes)) {
                 if (isVar(VARIABLE.LAST_ICE_CUBE_UP_ASS_DATE)) {
                     sendMessage('Yet again %Grin%');
                     sendMessage('Push them up your ass one by one %Grin%');

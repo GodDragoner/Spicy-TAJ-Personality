@@ -29,19 +29,32 @@ function tieBalls(force = false) {
         setTempVar(VARIABLE.IS_BALLS_TIED, true);
         setTempVar(VARIABLE.LAST_BALLS_TIE, setDate());
 
+
+        let removedClampsFromBalls = false;
+        if(BODY_PART_BALLS.currentClamps > 0) {
+            putClampsOff(BODY_PART_BALLS.currentClamps, BODY_PART_BALLS, false, true);
+            removedClampsFromBalls = true;
+        }
+
         //TODO: Show tutorials etc. and tell the sub what exactly to do
         sendMessage("Now take that rope and tie up your balls");
         sendMessage("Do it real nice and tight");
         sendMessage('But don\'t cut the blood flow');
-        const answer = sendInput("Tell me when you are ready to continue");
+        sendMessage("Tell me when you are ready to continue");
+        waitForDone();
 
-        while (true) {
-            if (answer.isLike("done", "yes", "ready")) {
-                sendMessage("%Good%");
-                break;
-            } else {
-                sendMessage("If you aren't done yet don't bother me.");
-                answer.loop();
+        //TODO: Check if clamps were just applied to balls so then definitely put them back on after otherwise chance to not
+        if(removedClampsFromBalls) {
+            sendAlreadyKnowWhatsNext('clamps', 'clothespins', 'clothespin');
+            sendMessage('Now put the clamps back on your %balls% %Grin%');
+
+            let answer = sendYesOrNoQuestionTimeout('You didn\'t really think that you would be allowed to remove them permanently did you? %Lol%', 5);
+
+            if(answer === ANSWER_YES) {
+                sendMessage('Poor %SlaveName%');
+                sendMessage('Seems like you don\'t know me well enough yet %Grin%');
+            } else if(answer === ANSWER_NO) {
+                sendMessage('%EmoteHappy%');
             }
         }
     } else {
@@ -59,9 +72,9 @@ function untieBalls(force = false) {
 
     sendMessage('Untie your balls %SlaveName%');
     sendMessage('Tell me when you are done...');
-    
+
     const answer = createInput();
-    
+
     while(true) {
         if (answer.isLike('done', 'yes', 'ready')) {
             sendMessage('%Good%');
@@ -72,6 +85,6 @@ function untieBalls(force = false) {
             answer.loop();
         }
     }
-    
+
     setTempVar(VARIABLE.IS_BALLS_TIED, false);
 }

@@ -24,7 +24,7 @@ const BODY_PART_THIGH_R = BODY_PARTS[currentBodyPartId - 1];
 
 const BODY_PART_TONGUE = registerBodyPart("tongue", 4);
 BODY_PART_TONGUE.isUsed = function(toy) {
-    return isGaged() && currentGagType !== GAG_TYPE_SPIDER_GAG;
+    return isGaged() && currentGagType !== GAG_TYPE_SPIDER_GAG && this.currentClamps === 0;
 };
 
 const BODY_PART_PENIS_HEAD = registerBodyPart("penis head", 3);

@@ -121,7 +121,7 @@ function createBondageInstructions(level) {
         general.sendInstructions();
     }
 
-    if(currentBodyPosition === BODY_POSITION.ON_STOMACH && isNipplesClamped()) {
+    if (currentBodyPosition === BODY_POSITION.ON_STOMACH && isNipplesClamped()) {
         //We are on the stomach and should free the nipples
         removeAnythingOnNipples();
     }
@@ -138,10 +138,10 @@ function createBondageInstructions(level) {
         } else {
             maxToys--;
 
-            if(keepInCounter === 0) {
-                sendMessage('You will keep that gag in %Grin%');
+            if (keepInCounter === 0) {
+                sendMessage('You will keep that gag in ' + random('for this', '') + ' %SlaveName%');
             } else {
-                sendMessage('You will also keep that gag in %Grin%');
+                sendMessage('You will also keep that gag in ' + random('for this', '') + ' %SlaveName%');
             }
 
             keepInCounter++;
@@ -150,6 +150,7 @@ function createBondageInstructions(level) {
         toys.add(0);
     }
 
+
     if (isPlugged()) {
         if (maxToys <= 0) {
             removeButtplug();
@@ -157,7 +158,7 @@ function createBondageInstructions(level) {
             interactWithButtplug(true);
             maxToys--;
 
-            if(keepInCounter === 0) {
+            if (keepInCounter === 0) {
                 sendMessage('You will stay plugged ' + random('for this', '') + ' %SlaveName%');
             } else {
                 sendMessage('You will also stay plugged ' + random('for this', '') + ' %SlaveName%');
@@ -175,7 +176,7 @@ function createBondageInstructions(level) {
         } else {
             maxToys--;
 
-            if(keepInCounter === 0) {
+            if (keepInCounter === 0) {
                 sendMessage('You will keep those clamps on your nipples ' + random('for this', '') + ' %SlaveName%');
             } else {
                 sendMessage('You will also keep those clamps on your nipples ' + random('for this', '') + ' %SlaveName%');
@@ -183,7 +184,7 @@ function createBondageInstructions(level) {
 
             keepInCounter++;
         }
-    } else if(currentBodyPosition !== BODY_POSITION.ON_STOMACH) {
+    } else if (currentBodyPosition !== BODY_POSITION.ON_STOMACH) {
         toys.add(2);
     }
 
@@ -194,7 +195,7 @@ function createBondageInstructions(level) {
             maxToys--;
             keepInCounter++;
 
-            if(keepInCounter === 0) {
+            if (keepInCounter === 0) {
                 sendMessage('You will keep those clamps ' + random('on', 'attached to') + ' your body ' + random('for this', '') + ' %SlaveName%');
             } else {
                 sendMessage('You will also keep those clamps ' + random('on', 'attached to') + ' your body ' + random('for this', '') + ' %SlaveName%');
@@ -202,6 +203,24 @@ function createBondageInstructions(level) {
         }
     } else {
         toys.add(3);
+    }
+
+    if (HUMBLER_TOY.isToyOn()) {
+        if (maxToys <= 0) {
+            removeHumbler();
+        } else {
+            maxToys--;
+
+            if (keepInCounter === 0) {
+                sendMessage('You will keep that humbler on ' + random('for this', '') + ' %SlaveName%');
+            } else {
+                sendMessage('You will also keep that humbler on ' + random('for this', '') + ' %SlaveName%');
+            }
+
+            keepInCounter++;
+        }
+    } else if (HUMBLER_TOY.hasToy() && HUMBLER_TOY.isPunishmentAllowed()) {
+        toys.add(4);
     }
 
     while (maxToys > 0 && toys.size() > 0) {
@@ -230,7 +249,13 @@ function createBondageInstructions(level) {
                 break;
             //Clamps
             case 3:
-                distributeClamps(randomInteger((level + 1)*2, (level + 1)*3));
+                distributeClamps(randomInteger((level + 1) * 2, (level + 1) * 3));
+                break;
+            //Humbler
+            case 4:
+                if (!putOnHumbler()) {
+                    maxToys++;
+                }
                 break;
         }
 

@@ -1,5 +1,5 @@
 function askAndFetchIceCubes(amount) {
-    if(askForIceCubes(amount) == amount) {
+    if(askForIceCubes(amount) === amount) {
         return fetchIceCubes(amount);
     }
 

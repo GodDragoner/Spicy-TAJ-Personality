@@ -46,6 +46,8 @@ function feelsLikePunishingSlave() {
         chance += 50;
     }
 
+
+    sendDebugMessage('Feel like punishing chance: ' + chance);
     return isChance(chance);
 }
 
