@@ -1,4 +1,7 @@
 const COLLAR_TOY = createToy('collar');
+COLLAR_TOY.removeToy = function () {
+    removeCollar();
+};
 
 function putOnCollar() {
     if (!COLLAR_TOY.hasToy() || COLLAR_TOY.isToyOn() || !fetchToy(COLLAR_TOY.name)) {

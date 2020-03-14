@@ -79,7 +79,7 @@
                 break;
             } else {
                 sendVirtualAssistantMessage("You have the following options %SlaveName%");
-                sendVirtualAssistantMessage("Request a session with your Mistress");
+                sendVirtualAssistantMessage("Request a session with your %DomHonorific%");
                 sendVirtualAssistantMessage("Request a chore");
                 sendVirtualAssistantMessage("Enter the dungeon");
                 sendVirtualAssistantMessage("Check settings");
@@ -120,7 +120,7 @@ function startSession() {
             return;
         }
 
-        sendVirtualAssistantMessage(random("Launching", "Initiating", "Starting", "Establishing") + " session with Mistress");
+        sendVirtualAssistantMessage(random("Launching", "Initiating", "Starting", "Establishing") + " session with %DomHonorific%");
         run("Session/StartSession.js");
         return;
     } else {

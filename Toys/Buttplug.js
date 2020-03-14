@@ -14,6 +14,9 @@ let biggestButtplug = null;
 let currentPlug = null;
 
 const BUTTPLUG_TOY = createToy('buttplugs');
+BUTTPLUG_TOY.removeToy = function () {
+    removeButtplug();
+};
 
 function updateSessionButtplugs() {
     for (let x = 0; x < buttplugs.length; x++) {
@@ -792,7 +795,7 @@ function setupNewButtplug() {
             while (true) {
                 if (answer.isLike("yes")) {
                     crystal = true;
-                    sendVirtualAssistantMessage('Your Mistress will love this little sissy plug of yours %Grin%');
+                    sendVirtualAssistantMessage('Your %DomHonorific% will love this little sissy plug of yours %Grin%');
                     break;
                 } else if (answer.isLike("no")) {
                     break;

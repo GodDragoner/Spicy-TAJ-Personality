@@ -85,20 +85,20 @@
     sendVirtualAssistantMessage("Welcome %SubName%");
     sleep(.1);
     sendVirtualAssistantMessage("My name is Vivienne");
-    sendVirtualAssistantMessage("I am Mistress %domName%\'s virtual assistant");
-    sendVirtualAssistantMessage("You are here because you sent a request to become the property of Mistress %domName%");
+    sendVirtualAssistantMessage("I am %DomHonorific% %domName%\'s virtual assistant");
+    sendVirtualAssistantMessage("You are here because you sent a request to become the property of %DomHonorific% %domName%");
     sendVirtualAssistantMessage("As you probably read before sending the application there is a 6 month trial period");
     sendVirtualAssistantMessage("The trial period is designed to see if you\'re fit to serve...");
     sendVirtualAssistantMessage("Many men and women around the world claim that they want to be slaves");
     sendVirtualAssistantMessage("Most of these people don\'t truly understand what it means to serve");
     sendVirtualAssistantMessage("Tease-AI was designed to simulate the realities of being a slave");
-    sendVirtualAssistantMessage("Through this program you will meet your perhaps future Mistress");
+    sendVirtualAssistantMessage("Through this program you will meet your perhaps future %DomHonorific%");
     sendVirtualAssistantMessage("You will be played with, tested and trained");
     sendVirtualAssistantMessage("You will also meet other applicants both female and male");
-    sendVirtualAssistantMessage("And you will meet the Mistress\'s friends");
+    sendVirtualAssistantMessage("And you will meet the %DomHonorific%\'s friends");
     sendVirtualAssistantMessage("At the end of the trial there will be a quite extensive report on you");
     sendVirtualAssistantMessage("As well as a final exam");
-    sendVirtualAssistantMessage("Pass both and you will be accepted as the property of Mistress %domName%");
+    sendVirtualAssistantMessage("Pass both and you will be accepted as the property of %DomHonorific% %domName%");
     sendVirtualAssistantMessage("Now there are 2 types of slaves");
     sendVirtualAssistantMessage("Those who serve full time and some who serve part time");
     sendVirtualAssistantMessage("In case you forgot");
@@ -135,7 +135,7 @@
     lockImages();
     sendVirtualAssistantMessage("%Good%");
 
-    sendVirtualAssistantMessage("Mistress %domName% would prefer it if you are able to handle wearing a chastity device at all times");
+    sendVirtualAssistantMessage("%DomHonorific% %domName% would prefer it if you are able to handle wearing a chastity device at all times");
     //showImage("Images/Spicy/Toys/MetalChastity.jpg", 4);
     sendVirtualAssistantMessage("But she also understands that it takes practice to learn");
 
@@ -216,7 +216,7 @@
                         sendVirtualAssistantMessage("But you won't be forced to");
                         sendVirtualAssistantMessage("When it comes to exercise I understand that performing it while caged isn't easy");
                         sendVirtualAssistantMessage("So I'm not gonna force this on you either");
-                        sendVirtualAssistantMessage("But again it would make me and your Mistress happy if you did");
+                        sendVirtualAssistantMessage("But again it would make me and your %DomHonorific% happy if you did");
                         break;
                     } else if (answer.isLike("no")) {
                         setVar(VARIABLE.CHASTITY_TRAINING, false);
@@ -274,7 +274,7 @@
     sendVirtualAssistantMessage("Are you experienced and capable of wearing butt plugs on a daily basis...");
     sendVirtualAssistantMessage("And fucking yourself with a huge dildo?");
     showImage("Images/Spicy/Toys/Dildo.jpg", 3);
-    sendVirtualAssistantMessage("Maybe even taking a huge cock from Mistress %domName%\'s lover?");
+    sendVirtualAssistantMessage("Maybe even taking a huge cock from %DomHonorific% %domName%\'s lover?");
     sendVirtualAssistantMessage("You should answer this truthfully for your own good...", false);
 
     answer = createInput();
@@ -299,7 +299,7 @@
     sendVirtualAssistantMessage("I don't know whether you have any experience when it comes to blowjobs either");
     sendVirtualAssistantMessage("Meaning fucking your throat and caressing cocks with your mouth");
     sendVirtualAssistantMessage("Are you experienced and capable of holding deepthroats?");
-    sendVirtualAssistantMessage("Maybe even taking a huge cock from Mistress %domName%\'s lover down your throat?");
+    sendVirtualAssistantMessage("Maybe even taking a huge cock from %DomHonorific% %domName%\'s lover down your throat?");
     sendVirtualAssistantMessage("You should answer this truthfully for your own good...", false);
 
     answer = createInput();
@@ -322,7 +322,7 @@
 
     sendVirtualAssistantMessage("Let's see...");
     sendVirtualAssistantMessage("Well I don't know how well you handle denial");
-    sendVirtualAssistantMessage("And neither does your Mistress");
+    sendVirtualAssistantMessage("And neither does your %DomHonorific%");
     sendVirtualAssistantMessage("So I need you to tell me on a scale...");
     sendVirtualAssistantMessage("How well you handle denial");
     sendVirtualAssistantMessage("Your ability to handle denial is defined by your denial level");
@@ -335,7 +335,7 @@
     sendVirtualAssistantMessage("Which is good since we basically want you horny...");
     sendVirtualAssistantMessage("A horny sub is an obedient sub");
     sendVirtualAssistantMessage("Now I recommend choosing your level with care!");
-    sendVirtualAssistantMessage("Once in a while your Mistress will talk about this topic with you");
+    sendVirtualAssistantMessage("Once in a while your %DomHonorific% will talk about this topic with you");
     sendVirtualAssistantMessage("So what you choose now isn't final");
     sendVirtualAssistantMessage("At what level do you think you belong?", false);
     answer = createInput();
@@ -374,7 +374,7 @@
     sendVirtualAssistantMessage("Folder 3 is for " + getVar('blackmailName3'));
     sendVirtualAssistantMessage("Let me know when you have added pictures for " + getVar('blackmailName1') + ", " + getVar('blackmailName2') + ", and " + getVar('blackmailName3') + ".");
     waitForDoneVirtualAssistant(999999);
-    sendVirtualAssistantMessage("Good, Should you ever think of quiting your service to the Mistress");
+    sendVirtualAssistantMessage("Good, Should you ever think of quiting your service to the %DomHonorific%");
     sendVirtualAssistantMessage("This will make sure you don't %Lol%");
     sendVirtualAssistantMessage("Don't worry you'll be reminded to serve properly!");
     sendVirtualAssistantMessage("Or else...");
@@ -383,7 +383,7 @@
     sendVirtualAssistantMessage("As a final check I need to know what toys you have");
     sendVirtualAssistantMessage("Keep in mind that you are expected to have basic items such as pegs, rope and other common household items");
     sendVirtualAssistantMessage("Of course I recommend that you have all the different toys for the full experience");
-    sendVirtualAssistantMessage("But your Mistress understands if you can't afford all of them...");
+    sendVirtualAssistantMessage("But your %DomHonorific% understands if you can't afford all of them...");
     sendVirtualAssistantMessage("However she will try to make you buy all of them at the end of the day");
     sendVirtualAssistantMessage("In case you acquire something new");
     sendVirtualAssistantMessage("You can always go to settings and I'll help you to register your new toy");
@@ -518,7 +518,7 @@
     }
 
     sendVirtualAssistantMessage("Well...");
-    sendVirtualAssistantMessage("Mistress %domName% just texted me");
+    sendVirtualAssistantMessage("%DomHonorific% %domName% just texted me");
     sendVirtualAssistantMessage("She wants to meet you...");
     sendVirtualAssistantMessage("Transferring session...");
     setVar(VARIABLE.FINISHED_SETUP, true);

@@ -105,7 +105,7 @@
                                 sendMessage('%Good%');
                                 break;
                             }  else {
-                                sendMessage("I only wanna hear a firm 'Yes Mistress'..."); //#DT4
+                                sendMessage("I only wanna hear a firm 'Yes %DomHonorific%'..."); //#DT4
                                 break;
                             }
                         }
@@ -164,7 +164,7 @@
                                 sendMessage('%Good%');
                                 break;
                             }  else {
-                                sendMessage("I only wanna hear a firm 'Yes Mistress'..."); //#DT4
+                                sendMessage("I only wanna hear a firm 'Yes %DomHonorific%'..."); //#DT4
                                 break;
                             }
                         }

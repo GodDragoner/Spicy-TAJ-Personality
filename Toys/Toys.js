@@ -340,6 +340,10 @@ function createToy(name) {
             return getVar(this.getVarName() + 'on', false);
         },
 
+        removeToy: function () {
+            this.setToyOn(false);
+        },
+
         setToyOn: function (on) {
             setVar(this.getVarName() + 'on', on);
 
@@ -494,14 +498,14 @@ function createToy(name) {
 }
 
 function askForDomChoose() {
-    sendVirtualAssistantMessage("Your Mistress prefers to use the toys whenever she wants to and for whatever reason");
+    sendVirtualAssistantMessage("Your %DomHonorific% prefers to use the toys whenever she wants to and for whatever reason");
     sendVirtualAssistantMessage("However she can understand if you only want them to be used for playing or punishment");
-    sendVirtualAssistantMessage("Do you want to leave it to your Mistress or chose yourself?", false);
+    sendVirtualAssistantMessage("Do you want to leave it to your %DomHonorific% or chose yourself?", false);
     let answer = createInput();
 
     let domChose = false;
     while (true) {
-        if (answer.isLike("dom", "domme", "mistress", "her", "him")) {
+        if (answer.isLike("dom", "domme", replaceVocab('%DomHonorific%'), "her", "him")) {
             sendVirtualAssistantMessage("You're quite a willing slave %Grin%");
             domChose = true;
             break;
@@ -509,7 +513,7 @@ function askForDomChoose() {
             sendVirtualAssistantMessage("%EmoteSad%");
             break;
         } else {
-            sendVirtualAssistantMessage("Do you want to leave it to your Mistress or chose yourself?");
+            sendVirtualAssistantMessage("Do you want to leave it to your %DomHonorific% or chose yourself?");
             answer.loop();
         }
     }

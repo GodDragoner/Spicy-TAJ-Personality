@@ -1,8 +1,27 @@
 const GAG_TYPE_SPIDER_GAG = createToy('spider gag');
+GAG_TYPE_SPIDER_GAG.removeToy = function () {
+    removeGag();
+};
+
 const GAG_TYPE_BALL_GAG = createToy('ball gag');
+GAG_TYPE_BALL_GAG.removeToy = function () {
+    removeGag();
+};
+
 const GAG_TYPE_BUTTPLUG_GAG = createToy('buttplug gag');
+GAG_TYPE_BUTTPLUG_GAG.removeToy = function () {
+    removeGag();
+};
+
 const GAG_TYPE_INFLATABLE_GAG = createToy('inflatable gag');
+GAG_TYPE_INFLATABLE_GAG.removeToy = function () {
+    removeGag();
+};
+
 const GAG_TYPE_DILDO_GAG = createToy('dildo gag');
+GAG_TYPE_DILDO_GAG.removeToy = function () {
+    removeGag();
+};
 
 let currentGagType = GAG_TYPE_BALL_GAG;
 

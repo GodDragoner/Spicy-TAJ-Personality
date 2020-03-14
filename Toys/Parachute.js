@@ -1,4 +1,8 @@
 const PARACHUTE_TOY = createToy('parachute');
+NIPPLE_CLAMPS.removeToy = function () {
+    sendMessage('You can remove the parachute now %SlaveName% %EmoteHappy%');
+    this.setToyOn(false);
+};
 
 /*function attachParachute() {
 

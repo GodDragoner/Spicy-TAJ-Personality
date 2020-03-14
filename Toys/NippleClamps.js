@@ -11,6 +11,10 @@ NIPPLE_CLAMPS.decideToyOn = function (asked = false) {
     return true;
 };
 
+NIPPLE_CLAMPS.removeToy = function () {
+    removeNippleClamps();
+};
+
 
 function isNipplesClamped() {
     //No current nipple clamps attached

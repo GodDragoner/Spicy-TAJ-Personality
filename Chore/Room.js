@@ -128,7 +128,14 @@ function createRoom(name, size) {
             sendMessageBasedOnSender('Tell me when you are ready to go.', 0);
             waitForDone(1000);
 
-            sendKinkyChoreInstructions(choreType);
+            let toysAttached = sendKinkyChoreInstructions(choreType);
+
+            for(let x = 0; x < toysAttached.length; x++) {
+                toy = toysAttached[x];
+
+                //Will trigger scripts based on the toy
+                toy.removeToy();
+            }
 
             sendMessageBasedOnSender('Okay then...');
             sendMessageBasedOnSender('You can go ahead and start with your chore...');
@@ -145,6 +152,7 @@ function createRoom(name, size) {
         endChore: function (choreType) {
             CHORE_WATCH.stop();
 
+            //Works even if IDE talks about it not being a string
             let secondsPassed = parseInt(CHORE_WATCH.getTime() / 1000, 10);
             let minutesPassed = Math.round(secondsPassed/60);
 

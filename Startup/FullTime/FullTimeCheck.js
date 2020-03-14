@@ -64,7 +64,7 @@
                     if (getVar(VARIABLE.WEEKLY_SLAVE_VISITS) < getVar(VARIABLE.MIN_WEEKLY_VISITS)) {
                         sendVirtualAssistantMessage(random("You have been skipping days", "You have been skulking", "I think you missed a few sessions") + " %SlaveName%");
                         sendVirtualAssistantMessage(random("I don't accept that!", "Which is not accepted", "Which isn't tolerated"));
-                        sendVirtualAssistantMessage(random("You are the property of", "You belong to", "You are owned by") + " Mistress %domName%");
+                        sendVirtualAssistantMessage(random("You are the property of", "You belong to", "You are owned by") + " %DomHonorific% %domName%");
                         sendVirtualAssistantMessage(random("And are thus expected to serve!", "So you have to serve", "So she demands that you serve her"));
                         sendVirtualAssistantMessage(random("I'm giving you punishment points", "I'm assigning you punishment point", "I have to give you punishment points"));
                         addPunishmentPoints(200, PUNISHMENT_REASON.SKIPPING_FULLTIME);

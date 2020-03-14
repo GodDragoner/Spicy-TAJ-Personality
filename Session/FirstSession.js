@@ -171,8 +171,8 @@
     }
 
     sendMessage("%SlaveName%");
-    sendMessage("I consider myself to be a fair Mistress");
-    sendMessage("But for me to be a fair Mistress");
+    sendMessage("I consider myself to be a fair %DomHonorific%");
+    sendMessage("But for me to be a fair %DomHonorific%");
     sendMessage("I require honesty from you");
     sendMessage("And you need to be honest with yourself");
     sendMessage("I've met many men who in a horny moment thought they could handle everything");

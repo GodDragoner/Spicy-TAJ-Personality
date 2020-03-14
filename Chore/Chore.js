@@ -248,6 +248,9 @@ function runChoreIntroduction() {
 
 
 function sendKinkyChoreInstructions(choreType) {
+    //Track all attached toys to remove them later on again
+    let attachedToys = [];
+
     let kinkyChance = getVar(VARIABLE.KINKY_CHORE_CHANCE);
 
     //Let the dom choose mode
@@ -313,10 +316,9 @@ function sendKinkyChoreInstructions(choreType) {
                     tasks++;
                 }
             } else if (id === 2) {
-                //TODO: Set toy on and off
                 if (PARACHUTE_TOY.hasToy() && PARACHUTE_TOY.isPlayAllowed()) {
                     if (PARACHUTE_TOY.fetchToy()) {
-                        PARACHUTE_TOY.setToyOn(on);
+                        PARACHUTE_TOY.setToyOn(true);
                         sendMessageBasedOnSender('I want you to attach your parachute on to your %Balls%');
 
                         sendMessageBasedOnSender('Add some weight to it. At least ' + getWeightForParachute()/2 + 'kg %Grin%');
@@ -330,15 +332,22 @@ function sendKinkyChoreInstructions(choreType) {
                         sendMessageBasedOnSender('I\'ve added a little extra time for you to clean due to your predicament %Grin%');
                         tempChoreTimeMultiplier += 0.2;
                         tasks++;
+
+                        attachedToys.push(PARACHUTE_TOY);
                     }
                 }
             } else if (id === 3) {
                 if (COLLAR_TOY.hasToy() && COLLAR_TOY.isPlayAllowed() && COLLAR_TOY.fetchToy()) {
-                    //TODO: Setup rope and handcuffs
+
                     sendMessageBasedOnSender('If you have it I want you to handcuff yourself, if not be "creative"...');
 
-                    sendMessageBasedOnSender('Then I want you to put on your collar');
-                    sendMessageBasedOnSender('Tie a robe from the handcuffs to the collar');
+                    if(!COLLAR_TOY.isToyOn()) {
+                        COLLAR_TOY.setToyOn(true);
+                        attachedToys.push(COLLAR_TOY);
+                        sendMessageBasedOnSender('Then I want you to put on your collar');
+                    }
+
+                    sendMessageBasedOnSender('Tie a robe from the handcuffs to your collar');
                     sendMessageBasedOnSender('It shouldn\'t be more than 30-40 cm\'s long');
 
                     sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
@@ -370,6 +379,9 @@ function sendKinkyChoreInstructions(choreType) {
                 }
             } else if (id === 5) {
                 if (hasBasicLingerie() && BASIC_LINGERIE.isPlayAllowed()) {
+                    BASIC_LINGERIE.setToyOn(true);
+                    attachedToys.push(BASIC_LINGERIE);
+
                     sendMessageBasedOnSender('Lets dress you up a little');
                     sendMessageBasedOnSender('I want you in these panties', 0);
                     showImage('Images/Spicy/Toys/Lingerie/Panties/*.jpg', 5);
@@ -385,6 +397,9 @@ function sendKinkyChoreInstructions(choreType) {
                 }
             } else if (id === 6) {
                 if (hasAdvancedLingerie() && ADVANCED_LINGERIE.isPlayAllowed()) {
+                    ADVANCED_LINGERIE.setToyOn(true);
+                    attachedToys.push(ADVANCED_LINGERIE);
+
                     sendMessageBasedOnSender('Lets dress you up a little');
                     sendMessageBasedOnSender('I want you in these panties', 0);
                     showImage('Images/Spicy/Toys/Lingerie/Panties/*.jpg', 5);
@@ -408,11 +423,15 @@ function sendKinkyChoreInstructions(choreType) {
                 if (hasAnyGag() && !isGaged() && isGagPlay() && selectAndPutInGag()) {
                     tasks++;
 
+                    attachedToys.push(currentGagType);
+
                     sendMessageBasedOnSender('Remember to remove it after you\'re done cleaning %Grin%');
                 }
             } else if (id === 8) {
                 if (hasButtplugToy() && BUTTPLUG_TOY.isPlayAllowed() && putInButtplug()) {
                     tasks++;
+
+                    attachedToys.push(BUTTPLUG_TOY);
 
                     sendMessageBasedOnSender('Remember to remove it after you\'re done cleaning %Grin%');
                 }
@@ -449,6 +468,8 @@ function sendKinkyChoreInstructions(choreType) {
                 if(NIPPLE_CLAMPS.decideToyOn()) {
                     if(putNippleClampsOn()) {
                         tasks++;
+
+                        attachedToys.push(NIPPLE_CLAMPS);
                     }
                 }
 
@@ -469,7 +490,15 @@ function sendKinkyChoreInstructions(choreType) {
                 if (COLLAR_TOY.hasToy() && COLLAR_TOY.isPlayAllowed() && COLLAR_TOY.fetchToy()) {
                     sendMessageBasedOnSender('This is gonna be a little complicated %Lol%');
                     sendMessageBasedOnSender('But it should prove fun to watch!');
-                    sendMessageBasedOnSender('I want you wearing your collar with a leash attached');
+
+                    if(!COLLAR_TOY.isToyOn()) {
+                        COLLAR_TOY.setToyOn(true);
+                        attachedToys.push(COLLAR_TOY);
+                        sendMessageBasedOnSender('I want you to put on your collar');
+                    } else {
+                        sendMessageBasedOnSender('I want you to attach a leash to your collar');
+                    }
+
                     sendMessageBasedOnSender('The leash shouldn\'t be any longer than 2m');
                     sendMessageBasedOnSender('During your cleaning today I want you to tie that leash to different objects');
                     sendMessageBasedOnSender('Could be a door handle, a table leg or something similar');
@@ -509,7 +538,15 @@ function sendKinkyChoreInstructions(choreType) {
                 if (COLLAR_TOY.hasToy() && COLLAR_TOY.isPlayAllowed() && COLLAR_TOY.fetchToy()) {
                     sendMessageBasedOnSender('This is gonna get a little complicated %Lol%');
                     sendMessageBasedOnSender('But it should prove fun to watch!');
-                    sendMessageBasedOnSender('I want you wearing your collar with a leash attached');
+
+                    if(!COLLAR_TOY.isToyOn()) {
+                        COLLAR_TOY.setToyOn(true);
+                        attachedToys.push(COLLAR_TOY);
+                        sendMessageBasedOnSender('I want you to put on your collar');
+                    } else {
+                        sendMessageBasedOnSender('I want you to attach a leash to your collar');
+                    }
+
                     sendMessageBasedOnSender('During the cleaning today I want you to tie that leash to a cup filled with sugar');
                     sendMessageBasedOnSender('You aren\'t allowed to move the cup around with your hands');
                     sendMessageBasedOnSender('Use your lower arms or something else %Grin%');
