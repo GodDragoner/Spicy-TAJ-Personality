@@ -146,10 +146,8 @@ function startPenetratingSession(toy) {
     //Sit on dildo
     if (!finger && getVar(VARIABLE.ASS_LEVEL) >= 15 && isChance(20)) {
         sendMessage('Now I want you to to place it in front of you... %Grin%');
-        sendMessage('%KnowWhatsNext%');
-
-        //TODO: Interact
-
+        sendAlreadyKnowWhatsNext('sit', 'squat');
+     
         sendMessage('I want you to sit down on it completely');
         sendMessage('So go ahead, squat above it and slowly go down on that ' + toy);
         sendMessage('Keep sitting on it until you hear my bell %Grin%');

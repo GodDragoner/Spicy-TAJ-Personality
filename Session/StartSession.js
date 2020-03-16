@@ -12,7 +12,7 @@
     //TODO: Special day test (birthday etc.)
 
     if (!sendGreeting()) {
-        //TODO: Punish
+
     }
 
     if (isVar(VARIABLE.LOCKED_UP_UNTIL) && !getDate(VARIABLE.LOCKED_UP_UNTIL).hasPassed()) {

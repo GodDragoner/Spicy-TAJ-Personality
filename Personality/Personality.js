@@ -223,7 +223,9 @@ function sendGreeting() {
 
     let answer = createInput(15);
     if (answer.isTimeout()) {
+        //QUALITY: Save for future and if it happens again more severe punishment
         changeMeritHigh(true);
+        addPunishmentPoints(100, PUNISHMENT_REASON.POOR_BEHAVIOUR);
         sendMessage(random("Not feeling like greeting your domme today", "Seems like you are not in the mood to greet me", "Being impolite today", "Being rude today") + " %SlaveName%?");
         sendMessage("I won't tolerate " + random("impolite", "rude", "disrespectful", "ignorant") + " behaviour!");
         return false;

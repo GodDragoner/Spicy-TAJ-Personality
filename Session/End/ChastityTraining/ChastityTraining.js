@@ -89,12 +89,12 @@ function sendBasicChastityTrainingTask() {
     if (chastityLevel < 15) {
         //More kind instructions
         if (chastityLevel < 3) {
-            randomInstruction == random('You should try to wear the,You should really try to wear the');
+            randomInstruction = random('You should try to wear the','You should really try to wear the');
         }
 
         sendMessage(randomInstruction + ' for at least ' + randomHourAmount + " hours");
     } else {
-        //TODO: More tasks to make it less boring
+        //QUALITY: More tasks to make it less boring
         if (chastityLevel >= 28) {
             sendMessage(randomInstruction + ' until next session');
             putOnChastity = true;

@@ -1,7 +1,6 @@
 let initialBPMIncrease = 0;
 
-//TODO: Based on body position (like riding can't be that fast)
-const MAX_ANAL_BPM = 160;
+const MAX_ANAL_BPM = 200;
 
 /**
  * Start anal penetration
@@ -11,7 +10,6 @@ const MAX_ANAL_BPM = 160;
 function startAnal(bpm, duration) {
     startStroking(bpm);
 
-    //TODO: BPM increase can't be too quick for beginners
     sendAnalTaunts(duration*1000);
     //QUALITY: Sounds
     sendMessage(random("Stop", "You can stop now"), 0);
@@ -27,7 +25,25 @@ function getInitialBPM() {
     let result = Math.max(30, Math.ceil(getVar(VARIABLE.ASS_LEVEL)*2.5) + initialBPMIncrease);
     //Min 5 max with ass level 30 is 15
     initialBPMIncrease += randomInteger(5, Math.max(5, Math.floor(getVar(VARIABLE.ASS_LEVEL)/2)));
-    return Math.min(result, MAX_ANAL_BPM);
+    return Math.min(result, getMaxAnalBPM());
+}
+
+function getMaxAnalBPM() {
+    let assLevel = getVar(VARIABLE.ASS_LEVEL, 1);
+    //Never more than the const max bpm
+    return Math.min(MAX_ANAL_BPM, Math.max(100, assLevel*60));
+}
+
+function addAnalBPM(bpm) {
+    //TODO: Account body position like riding etc. into max bpm
+    let currentBPM = getStrokingBPM();
+
+    if(currentBPM + bpm > getMaxAnalBPM()) {
+        //We can go higher by 2 but not more anymore
+        bpm = Math.max(2, getMaxAnalBPM() - currentBPM);
+    }
+
+    addStrokingBPM(bpm);
 }
 
 function sendAnalTaunts(duration) {
@@ -49,7 +65,6 @@ function sendAnalTaunts(duration) {
         sleep(millisecondsToWait, "MILLISECONDS");
     }
 
-    //TODO: Only speed or slow if certain limits aren't reached yet
     run("Stroking/Taunt/Anal/*.js");
 
     //Start the whole thing all over again

@@ -53,6 +53,8 @@
             lobbyAnswer.clearOptions();
             break;
         } else if(lobbyAnswer.isLike('enema')) {
+            lobbyAnswer.clearOptions();
+            
             if(!isVar(VARIABLE.ENEMA_INTRO)) {
                 lobbyAnswer.loop();
             } else {

@@ -115,7 +115,7 @@ if(isVar(VARIABLE.PUNISHMENT_PUNISHER)) {
     delVar(VARIABLE.PUNISHMENT_PUNISHER);
 }
 
-//TODO: System message?
+
 //(Status)
 sendMessage(random("You're going to the nurses office", "You are now heading for the nurse's office", "Walking to the nurse"));
 

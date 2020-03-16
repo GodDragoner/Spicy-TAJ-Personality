@@ -17,7 +17,7 @@ function pluralize(string, amount = 2) {
 }
 
 function returnYourOrMy() {
-    return random('your', 'my');
+    return '%MyYour%';
 }
 
 function pluralizeArticle(article, amount = 2) {

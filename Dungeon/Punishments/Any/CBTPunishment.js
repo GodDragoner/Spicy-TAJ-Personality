@@ -4,10 +4,8 @@
         runPunishment(PUNISHMENT_CURRENT_LEVEL);
     } else {
         if (tryRunPunishmentFetchId(MODULE.CBT)) {
-            //TODO: Prettify transitions etc!
-            for(let x = 0; x <= PUNISHMENT_CURRENT_LEVEL.id; x++) {
-                smallCBTPunishment(true, !isInChastity());
-            }
+            //QUALITY: More real interconnected CBT punishment
+            smallCBTPunishment(true, !isInChastity(), (PUNISHMENT_CURRENT_LEVEL.id + 1)*2);
 
             setPunishmentTransitionHandler({
                 handleTransition: function (nextCategory, nextLevel) {

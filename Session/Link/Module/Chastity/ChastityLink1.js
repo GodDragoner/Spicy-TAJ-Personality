@@ -1,10 +1,10 @@
 {
     if(tryRunLinkFetchId()) {
-        if(isChance(50)) {
-            //TODO: Check if not full chastity cage (balls unreachable) and whether CBT module was before if so, add interaction
+        if(isChance(50) && !BODY_PART_BALLS.isUsed()) {
+            //QUALITY: Check whether CBT module was before if so, add interaction
             smallCBTPunishment(true, false);
             sendMessage('%Grin%');
-            sendMessage("I love hurting your %Balls% when your %Cock% is locked up");
+            sendMessage("I love hurting %myyour% %Balls% when %myyour% %Cock% is locked up");
         } else {
             sendMessage("I suppose not stroking is a form of masturbation too");
             sendMessage("You can still watch hot pictures", 0);

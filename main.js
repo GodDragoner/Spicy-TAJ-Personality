@@ -18,6 +18,7 @@ sendSystemMessage("Launching Spicy " + getVar("personalityVersion"));
 
 //registerVariable("anallimit", "Anal Limit", "Is anal a hard limit, allowed, needs to be addressed or still a matter of discussion?");
 
+
 run("Utils/RandomUtils.js");
 run("Utils/StringUtils.js");
 run("Utils/BodyParts.js");
@@ -26,6 +27,8 @@ run("Utils/GoldUtils.js");
 run("Utils/TAJUtils.js");
 run("Utils/TimeUtils.js");
 run("Utils/LegacyUtils.js");
+
+run("Session/History.js");
 
 run("Session/Tasks.js");
 run("Startup/UpdateVariables.js");
@@ -41,7 +44,6 @@ run("Session/Modules/Dynamic/DynamicModuleBuilder.js");
 run("Chore/Chore.js");
 run("Chore/Room.js");
 
-run("Session/History.js");
 
 run("Session/Orgasm/CEI/CEIHandler.js");
 run('Session/End/ChastityTraining/ChastitySpecialTask.js');

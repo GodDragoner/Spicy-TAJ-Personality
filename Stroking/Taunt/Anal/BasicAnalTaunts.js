@@ -162,31 +162,31 @@
         case 3:
             sendMessage("Shouldn't we get a bit faster?");
             sendMessage(random("Well, I think so", "I don't care what you think anyway. Speed it up!"), 0);
-            addStrokingBPM(10);
+            addAnalBPM(10);
             break;
         case 4:
             sendMessage("Come on. Speed up!", 0);
-            addStrokingBPM(10);
+            addAnalBPM(10);
             break;
         case 5:
             sendMessage("I think we can slow it down a bit", 0);
-            addStrokingBPM(-10);
+            addAnalBPM(-10);
             break;
         case 6:
             sendMessage("Slow down %SlaveName%", 0);
-            addStrokingBPM(-10);
+            addAnalBPM(-10);
             break;
         case 7:
             sendMessage("Faster %SlaveName%", 0);
-            addStrokingBPM(10);
+            addAnalBPM(10);
             break;
         case 8:
             sendMessage("Let's see if you can take it faster", 0);
-            addStrokingBPM(10);
+            addAnalBPM(10);
             break;
         case 9:
             sendMessage("I know you like it fast but " + random("you'll have to take it slower for now", "but I " + random("like", "want") + " it slower for now"), 0);
-            addStrokingBPM(-10);
+            addAnalBPM(-10);
             break;
         case 10:
             sendMessage("Mmmm fuck yes. I love it when you fuck yourself");
@@ -196,18 +196,18 @@
             sendMessage("I can't help it %Grin%");
             if (isChance(50)) {
                 sendMessage("Go faster!", 0);
-                addStrokingBPM(10);
+                addAnalBPM(10);
             } else {
                 sendMessage("Slow a bit down", 0);
-                addStrokingBPM(-10);
+                addAnalBPM(-10);
             }
             break;
         case 12:
             sendMessage("Faster!", 0);
-            addStrokingBPM(10);
+            addAnalBPM(10);
             sleep(3);
             sendMessage("Slow down!", 0);
-            addStrokingBPM(-10);
+            addAnalBPM(-10);
             sendMessage("%Lol%");
             sendMessage("It's so much fun " + random("playing with you", "telling you what to do", "to order you around") + " %SlaveName%");
             break;

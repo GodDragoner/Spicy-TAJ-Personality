@@ -56,3 +56,39 @@ function createHistory(name) {
 
     return history;
 }
+
+function createTempIntegerHistory(min, max) {
+    const history = {minId: min, maxId: max, historyList: new java.util.ArrayList(),
+        isInHistory : function(id) {
+            return this.historyList.contains(id);
+        },
+
+        getEntriesSince : function(id) {
+            if(!this.isInHistory(id)) {
+                return -1;
+            }
+
+            return this.historyList.size() - this.historyList.lastIndexOf(id);
+        },
+
+        addHistoryRun : function(id) {
+            this.historyList.add(id);
+        },
+
+        getRandomAvailableId : function(minLastUsage = 2) {
+            let number = randomInteger(min, max);
+
+            while(this.isInHistory(number) && this.getEntriesSince(number) < minLastUsage) {
+                number = randomInteger(min, max);
+            }
+
+            return number;
+        },
+
+        clearHistory : function () {
+            this.historyList.clear();
+        }
+    };
+
+    return history;
+}

@@ -18,6 +18,12 @@ let RULE_DOMME_KEYHOLDER;
     let ruleId = 0;
 
     let rule = RULE_ALWAYS_WEAR_COLLAR = createRule(ruleId++, false);
+
+    //Toy collar is always on
+    if(RULE_ALWAYS_WEAR_COLLAR.isActive()) {
+        COLLAR_TOY.setToyOn(true);
+    }
+
     rule.getRulePrint = function () {
         return 'Whenever you are not in public you must wear your collar';
     };
@@ -39,11 +45,16 @@ let RULE_DOMME_KEYHOLDER;
 
                 addPPRuleIgnored();
                 changeMeritMedium(true);
+
+                sendMessage('Go ahead and put it on NOW %SlaveName%', 5);
+                sendMessage('I am waiting...');
+                waitForDone();
             }
         }
 
         return false;
     };
+
 
     rule.canBeActivated = function () {
         return COLLAR_TOY.hasToy() && !this.isActive();
@@ -100,7 +111,6 @@ let RULE_DOMME_KEYHOLDER;
 
 
     //Honorific rule
-
     rule = RULE_ALWAYS_HONORIFIC = createRule(ruleId++, false);
     rule.getRulePrint = function () {
         return 'When you talk to your %DomHonorific% you must always address her as %DomHonorific%';
@@ -484,6 +494,10 @@ function getRandomNewRule(permanent = true) {
 }
 
 function shouldIntroduceNewRule(rule) {
+    if(isOngoingPunishment()) {
+        return false;
+    }
+
     //No rules within the first 2 sessions. Get to know slave first
     if(!rule.canBeActivated() || getVar(VARIABLE.SESSION_COUNTER, 0) < 3) {
         sendDebugMessage('Rule ' + rule + ' cannot be activated or too few sessions');
@@ -514,6 +528,21 @@ function createRule(id, punishment, minDays = -1, maxDays = -1) {
 
         isActive: function () {
             return getVar(this.getVarName() + 'active', false);
+        },
+
+        shouldCheckRule: function () {
+            let minDayDifference = 3;
+            if(isVar(this.getVarName() + 'lastCheck') && !getDate(this.getVarName() + 'lastCheck').clone().addDay(minDayDifference).hasPassed()) {
+                return false;
+            }
+
+            let result = new Date().getDay()%(id%(minDayDifference + 1)) === 0;
+
+            if(result) {
+                setDate(this.getVarName() + 'lastCheck');
+            }
+
+            return result;
         },
 
         setActive: function (active) {

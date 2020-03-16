@@ -61,10 +61,10 @@
         run("Exercise/ExerciseLevel.js");
 
         if (isVar("LastExercise")&&getDate("LastExercise").after(setDate().addHour(-20))) {
-			//TODO: Format date
+			//QUALITY: Format date
             sendVirtualAssistantMessage("You last exercised at" + getDate("LastExercise"));
             sendVirtualAssistantMessage("Which is too recent");
-            sendVirtualAssistantMessage("You need to wait at least 20 hours..");
+            sendVirtualAssistantMessage("You need to wait at least 20 hours...");
             exercise = false;
         }
 

@@ -75,6 +75,22 @@ function wantsToGagSub() {
     return isAnnoyedByTalking() || isChance(20);
 }
 
+function wantsToRemoveGag() {
+    if(!isGaged()) {
+        return false;
+    }
+
+    if(isAnnoyedByTalking()) {
+        return false;
+    }
+
+    if(!currentGagType.decideToyOff()) {
+        return false;
+    }
+
+    return isChance(25);
+}
+
 function decideGag(pain = false) {
     if (isGaged() || !hasAnyGag()) {
         return false;

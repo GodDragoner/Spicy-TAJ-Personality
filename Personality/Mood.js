@@ -25,6 +25,30 @@ function allowTeasingStroking() {
 }
 
 //Just bad behaviour etc.
+function feelsLikeShowingPower() {
+    const mood = getMood();
+
+    let chance = 0;
+
+    if (mood === VERY_PLEASED_MOOD) {
+        chance = getStrictnessForCharacter() * 5;
+    } else if (mood === PLEASED_MOOD) {
+        chance = getStrictnessForCharacter() * 10;
+    } else if (mood === NEUTRAL_MOOD) {
+        chance = (getStrictnessForCharacter() + 1) * 20;
+    } else if (mood === ANNOYED_MOOD) {
+        chance = (getStrictnessForCharacter() + 1) * 30;
+    } else if (mood === VERY_ANNOYED_MOOD) {
+        chance = (getStrictnessForCharacter() + 1) * 40;
+    }
+
+    chance += getVar(VARIABLE.ANGER);
+
+    sendDebugMessage('Feel like showing power: ' + chance);
+    return isChance(chance);
+}
+
+//Just bad behaviour etc.
 function feelsLikePunishingSlave() {
     const mood = getMood();
 
@@ -42,10 +66,11 @@ function feelsLikePunishingSlave() {
         chance = (getStrictnessForCharacter() + 1) * 30;
     }
 
+    chance += getVar(VARIABLE.ANGER);
+
     if(getVar(VARIABLE.PUNISHMENT_POINTS) >= 250) {
         chance += 50;
     }
-
 
     sendDebugMessage('Feel like punishing chance: ' + chance);
     return isChance(chance);

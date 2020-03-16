@@ -19,51 +19,54 @@
                     sendMessage("If they fall off due to a flick you will have to repeat this punishment in full and pay a small fee..."); //#DT4
                     sendMessage("Remember to say tell me that you are done right after you've pulled them off..."); //#DT4
 
+                    let pegHistory = createTempIntegerHistory(1, 6);
+
                     for (let x = 0; x <= (PUNISHMENT_CURRENT_LEVEL.id + 1) * 3; x++) {
                         if (x > 0) {
                             sendMessage('%Now%');
                         }
 
-                        //TODO: History
-                        //TODO: Fix grammar ("attach on"?!)
-                        switch (randomInteger(0, 13)) {
-                            case 0:
+                        let attachSentence = random("Attach", "Place", "Put");
+                        let onSentence = 'on';
+
+                        if(attachSentence == 'Attach') {
+                            onSentence = 'to';
+                        }
+
+                        let result = pegHistory.getRandomAvailableId();
+
+                        switch (result) {
                             case 1:
-                            case 2:
-                            case 3:
-                            case 4:
-                            case 5:
                                 //(Nipples)
-                                sendMessage(random("Attach", "Place", "Put") + " a peg on each of your nipples"); //#DT4
+                                sendMessage(attachSentence + " a peg " + onSentence + " each of %myyour% nipples"); //#DT4
                                 break;
-                            case 6:
-                            case 7:
-                            case 8:
+                            case 2:
                                 //(Balls)
-                                sendMessage(random("Attach", "Place", "Put") + " the pegs to your %Balls%"); //#DT4 @Wait(5)
+                                sendMessage(attachSentence+ " the pegs " + onSentence + " %myyour% %Balls%"); //#DT4 @Wait(5)
                                 break;
-                            case 9:
-                            case 10:
+                            case 3:
                                 //(Cock)
                                 if (isInChastity()) {
-                                    sendMessage(random("Attach", "Place", "Put") + " the pegs on to your " + random("%Balls%", "nipples")); //#DT4 @Wait(5)
+                                    sendMessage(attachSentence + " the pegs " + onSentence + " %myyour% " + random("%Balls%", "nipples")); //#DT4 @Wait(5)
                                 } else {
-                                    sendMessage(random("Attach", "Place", "Put") + " the pegs to some lose skin from your %Cock%"); //#DT4 @Wait(5)
+                                    sendMessage(attachSentence + " the pegs " + onSentence + " some lose skin from %myyour% %Cock%"); //#DT4 @Wait(5)
                                 }
                                 break;
-                            case 11:
+                            case 4:
                                 //(Thigh)
-                                sendMessage(random("Attach", "Place", "Put") + " a peg on each of your inner thighs, the closer to your groin the better.."); //#DT4 @Wait(5)
+                                sendMessage(attachSentence + " a peg " + onSentence + " each of your inner thighs, the closer to your groin the better.."); //#DT4 @Wait(5)
                                 break;
-                            case 12:
+                            case 5:
                                 //(Nose)
-                                sendMessage(random("Attach", "Place", "Put") + " the pegs on your nose %Grin%"); //#DT4 @Wait(5)
+                                sendMessage(attachSentence + " the pegs " + onSentence + " your nose %Grin%"); //#DT4 @Wait(5)
                                 break;
-                            case 13:
+                            case 6:
                                 //(Eyebrows)
-                                sendMessage(random("Attach", "Place", "Put") + " a peg on each of your eyebrows"); //#DT4 @Wait(5)
+                                sendMessage(attachSentence+ " a peg " + onSentence + " each of your eyebrows"); //#DT4 @Wait(5)
                                 break;
                         }
+
+                        pegHistory.addHistoryRun(result);
 
                         //Will skip once the sub says something
                         wait(10);

@@ -53,7 +53,6 @@ function startPunishmentSession(overallLevel) {
     sleep(3);
 
     if(!sendGreeting()) {
-        //TODO: Punish
     }
 
     let relockChastity = false;

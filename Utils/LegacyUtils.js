@@ -95,7 +95,7 @@ function interpretLegacyTaunt(message, tauntType = LEGACY_TAUNT_TYPE_STROKE) {
         if(tauntType == LEGACY_TAUNT_TYPE_ORAL) {
             maxBPM = 120;
         } else if(tauntType == LEGACY_TAUNT_TYPE_ANAL) {
-            maxBPM = MAX_ANAL_BPM;
+            maxBPM = getMaxAnalBPM();
         }
 
         addStrokingBPM(maxBPM - getStrokingBPM());

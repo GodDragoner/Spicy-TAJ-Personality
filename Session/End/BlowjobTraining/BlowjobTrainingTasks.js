@@ -156,14 +156,16 @@ function sendBlowjobTrainingPosition() {
         case 1:
             sendMessage('For this I want you to get that dildo and either attach or hold it against the wall');
 
-            //TODO: Rice while kneeling?
-
             if (feelsEvil()) {
                 sendMessage('I want you to place the dildo on a height that requires you to completely sit up while kneeling to reach it %EmoteHappy%');
             } else {
                 sendMessage('You can place the dildo on a comfortable height');
             }
 
+            if(feelsLikePunishingSlave()) {
+                sendMessage('And because you have been a bad %slavename%');
+                sendMessage('You will kneel on rise for this');
+            }
             break;
         case 2:
             sendMessage('For this I want you to go to the nearest couch, bed or something similar');

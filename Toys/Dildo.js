@@ -152,6 +152,29 @@ function getAnalDildo(minLength = 0, minThickness = 0, forceThicker = false, for
     return dildo;
 }
 
+function fetchBlowjobDildo() {
+    let toy = null;
+    if(!hasDildoToy()) {
+        if(sendYesOrNoQuestion('Since you own no dildo. Do you have anything else around that is dildo shaped?')) {
+            sendMessage('Then you are gonna use that instead!');
+            toy = sendInput('Tell me %SlaveName%. What do you have at hand that can be used instead of a dildo?').getAnswer();
+        } else {
+            sendMessage('That\'s a shame');
+            //TODO: convince to buy
+
+            return null;
+        }
+    }
+    else {
+        toy = getDildo(true).name;
+    }
+
+    if(fetchDildoToy(toy)) {
+        return toy;
+    } else {
+        return null;
+    }
+}
 
 function getDildo(blowjob = false) {
     if (!blowjob) {

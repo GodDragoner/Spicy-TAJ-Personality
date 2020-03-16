@@ -271,38 +271,39 @@ function startNormalBlowjobModule() {
     }
 }
 
-function startDeepthroatModule(createSpiLube = false) {
-    let tasks;
+function decideDeepthroatBowl() {
+    const bowl = isChance(50);
 
-    if (!createSpiLube) {
-        sendMessage('For the time being we should really try to make your throat as sore as possible %Grin%');
-    } else {
-        sendMessage('We should create some spit for you to use as lube');
-    }
+    let introduceNewRule = shouldIntroduceNewRule(RULE_NEVER_SWALLOW_SPIT);
 
-    sendMessage('And what\'s better for that than doing a few deepthroats?');
-    sendMessage('So get ready to get your throat filled!');
-
-    //TODO: Also different messages like: To make me proud etc.
-
-    const bowl = isChance(50) || createSpiLube;
-
-    if (RULE_NEVER_SWALLOW_SPIT.isActive()) {
+    if (RULE_NEVER_SWALLOW_SPIT.isActive() || !introduceNewRule) {
         sendMessage('And remember: Good sissies only swallow cum and no spit!');
 
         if (bowl) {
             sendMessage('Which is why you should get a bowl to catch all that nasty spit!');
+            sendMessage('Tell me when you fetched your bowl %SlaveName%');
+            waitForDone();
         } else {
             sendMessage('Try to keep all that spit in your mouth and anything that leaves your mouth should be slowly dripping onto your body %Grin%');
         }
-    } else if (shouldIntroduceNewRule(RULE_NEVER_SWALLOW_SPIT)) {
+    } else if (introduceNewRule) {
         RULE_NEVER_SWALLOW_SPIT.sendIntroduction();
+        sendMessage('Try to keep all that spit in your mouth and anything that leaves your mouth should be slowly dripping onto your body %Grin%');
     }
 
+    return bowl;
+}
+
+function startDeepthroatTasks(tasksToDo = 10, createSpiLube = false, bowl = false) {
     let tasksDone = 0;
     let usedBlowjobInstructions = new java.util.ArrayList();
 
-    while (tasksDone < 10) {
+    //How many rounds have passed without interacting with the bowl
+    let bowlCounter = 0;
+
+    sendDebugMessage('Starting deepthroat with ' + tasksToDo + ' tasks');
+
+    while (tasksDone < tasksToDo) {
         let taskIndex = randomInteger(0, 10);
 
         //Try to find a new different task
@@ -311,7 +312,13 @@ function startDeepthroatModule(createSpiLube = false) {
             continue;
         }
 
-        switch (randomInteger(0, 7)) {
+        if(bowl) {
+            bowlCounter++;
+        }
+
+        let tasks = [];
+
+        switch (taskIndex) {
             case 0:
                 tasks = ["Swallow it until you get tears in eyes",
                     "Slowly swallow it down your throat once",
@@ -325,8 +332,8 @@ function startDeepthroatModule(createSpiLube = false) {
                     "Push it down your throat and rotate it 360°",
                     "Push it in as fast as you can and leave it there for 10 seconds",
                     "Push it in as fast as you can and rotate it 360° two times",
-                    "Push it into you throat and out as fast you can 3 times, repeat it 3 times",
-                    "Push it into you throat, rotate it 360° two times and pull it out as fast you can 3 times, repeat it 3 times"];
+                    "Push it down your throat and out as fast you can 3 times, repeat it 3 times",
+                    "Push it down your throat, rotate it 360° two times and pull it out as fast you can 3 times, repeat it 3 times"];
                 break;
             case 2:
                 tasks = ["You have to hold it in your throat for 8 seconds}",
@@ -353,7 +360,7 @@ function startDeepthroatModule(createSpiLube = false) {
                     "Fuck your throat with your dildo 10 times, then hold it in for 20 seconds. Do this 5 times in a row"];
                 break;
             case 5:
-                tasks = ["Push the dildo as deep as you can and out of the mouth fast 30 time",
+                tasks = ["Push the dildo as deep as you can and out of the mouth fast 30 times",
                     "Push the dildo as deep as you can and out of the mouth fast 60 times",
                     "Push the dildo as deep as you can and out of the mouth fast 90 times",
                     "Push the dildo as deep as you can and out of the mouth fast 120 times.",
@@ -370,11 +377,11 @@ function startDeepthroatModule(createSpiLube = false) {
                 break;
             case 7:
                 tasks = ["Push dildo as far as you can, leave it there for 3 seconds",
-                    "Push dildo as far as you can, leave it there for 6 seconds",
-                    "Push dildo as far as you can, leave it there for 9 seconds",
-                    "Push dildo as far as you can, leave it there for 12 seconds",
-                    "Push dildo as far as you can, leave it there for 15 seconds",
-                    "Push dildo as far as you can, leave it there for 18 seconds"];
+                    "Push the dildo as far as you can, leave it there for 6 seconds",
+                    "Push the dildo as far as you can, leave it there for 9 seconds",
+                    "Push the dildo as far as you can, leave it there for 12 seconds",
+                    "Push the dildo as far as you can, leave it there for 15 seconds",
+                    "Push the dildo as far as you can, leave it there for 18 seconds"];
                 break;
             case 8:
                 //Too few spit
@@ -391,33 +398,35 @@ function startDeepthroatModule(createSpiLube = false) {
                 break;
             case 9:
                 //Save spit, too few spit or already used spit in previous task
-                if (createSpiLube || usedBlowjobInstructions.isEmpty() || usedBlowjobInstructions.get(usedBlowjobInstructions.length() - 1) == 10) {
+                if (createSpiLube || !bowl || bowlCounter < 3) {
                     continue;
                 }
 
+                bowlCounter = 0;
                 tasks = ["Pour the whole content from your bowl all over your face %Grin%"];
                 break;
             case 10:
                 //Save spit, too few spit or already used spit in previous task
-                if (createSpiLube || usedBlowjobInstructions.isEmpty() || usedBlowjobInstructions.get(usedBlowjobInstructions.length() - 1) == 9) {
+                if (createSpiLube || !bowl || bowlCounter < 3) {
                     continue;
                 }
 
+                bowlCounter = 0;
                 tasks = ["I want you to snort half of the spit in your bowl through your left nostril and the other half through your right one. This is gonna be gross %Lol%"];
                 break;
         }
 
-        const level = random(0, tasks.length);
+        const level = random(0, tasks.length - 1);
 
         if (usedBlowjobInstructions.contains(taskIndex)) {
             let sentenceStart = random('And yet again', 'Yet again', 'Once more', 'And once more') + ' ';
 
             sendMessage(sentenceStart + decapitalize(tasks[level]));
         } else {
-            sendMessage(tasks[level]);
+            sendMessage('' + tasks[level]);
         }
 
-        if (tasksDone == 0) {
+        if (tasksDone === 0) {
             sendMessage('Tell me when you are done!');
         } else if (tasksDone >= 1) {
             sendMessage('And yet again tell me when you are done');
@@ -429,6 +438,33 @@ function startDeepthroatModule(createSpiLube = false) {
         usedBlowjobInstructions.add(taskIndex);
         tasksDone++;
     }
+
+    if(bowlCounter >= 3 && bowl) {
+        sendMessage('Pour the whole content from your bowl all over your face %Grin%');
+    }
+}
+
+function startDeepthroatModule(createSpitLube = false) {
+    let tasks;
+
+    if (!createSpitLube) {
+        sendMessage('For the time being we should really try to make your throat as sore as possible %Grin%');
+    } else {
+        sendMessage('We should create some spit for you to use as lube');
+    }
+
+    sendMessage('And what\'s better for that than doing a few deepthroats?');
+    sendMessage('So get ready to get your throat filled!');
+
+    //TODO: Also different messages like: To make me proud etc.
+
+    let bowl = false;
+
+    if(!createSpitLube) {
+        bowl = decideDeepthroatBowl();
+    }
+
+    startDeepthroatTasks(10, createSpitLube, bowl);
 }
 
 function getPosition() {

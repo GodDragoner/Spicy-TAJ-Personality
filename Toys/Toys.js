@@ -34,7 +34,6 @@ const DEFAULT_TOY_COOLDOWN_MINUTES = 5;
 
 
 function interactWithButtplug(punishment) {
-    //TODO: Could interact with buy new toys or fetish questions and better transition between different toys (additionally why not do this... etc.)
     if ((BUTTPLUG_TOY.isPunishmentAllowed() || !punishment && BUTTPLUG_TOY.isPlayAllowed()) && getAnalLimit() === LIMIT_ASKED_YES) {
         //Starting chance for plug or already plugged anyway
         let chance = Math.max(15, getVar(VARIABLE.ASS_LEVEL, 0)) * 4;
@@ -61,7 +60,8 @@ function interactWithButtplug(punishment) {
     }
 }
 
-//TODO: Track already fetched toys to not ask again and instead go like grab x
+//QUALITY: Track already fetched toys to not ask again and instead go like grab x
+//QUALITY: Could interact with buy new toys or fetish questions and better transition between different toys (additionally why not do this... etc.)
 function interactWithRandomToys() {
     const punishment = isOngoingPunishment();
 
@@ -74,9 +74,10 @@ function interactWithRandomToys() {
 
     interactWithButtplug(punishment);
 
-    //TODO: Better decision? And check for rule collar always on
-    if (COLLAR_TOY.hasToy() && !COLLAR_TOY.isToyOn() && isChance(20)) {
+    if (COLLAR_TOY.hasToy() && COLLAR_TOY.decideToyOn() && feelsLikeShowingPower()) {
         putOnCollar();
+    } else if(RULE_ALWAYS_WEAR_COLLAR.isActive() && RULE_ALWAYS_WEAR_COLLAR.shouldCheckRule()) {
+        RULE_ALWAYS_WEAR_COLLAR.checkRule();
     }
 
     if (isChance(20) && getPainLimit() === LIMIT_ASKED_YES && allowPain) {
@@ -108,7 +109,7 @@ function interactWithRandomToys() {
 
     //TODO: More interaction (forbid to talk etc.)
     //Do this after clamps because we might remove clamp from tongue after put on for spider gag
-    if (isGaged() && !isAnnoyedByTalking() && isChance(25)) {
+    if (wantsToRemoveGag()) {
         removeGag();
     } else {
         decideGag();
@@ -167,6 +168,12 @@ function readyInput() {
 function fetchToy(toy, imagePath, amount = 0) {
     //Sub wasn't able to fetch this before so no need to ask again
     if (getVar('toy' + toy + 'UnableToFetch', false)) {
+        if (amount > 0) {
+            sendMessageBasedOnSender('Sadly you weren\'t able to get ' + amount + ' ' + pluralize(toy, amount) + ' before %generaltime% %emotesad%');
+        } else {
+            sendMessageBasedOnSender('Sadly you weren\'t able to get your ' + toy + ' before %generaltime% %emotesad%');
+        }
+
         return false;
     }
 
@@ -313,7 +320,7 @@ function createToy(name) {
         },
 
         getLastUsage: function () {
-            return getVar(this.getVarName() + 'LastUsage', setDate().addDay(-30));
+            return getVar(this.getVarName() + 'LastUsage', setDate().addDay(-30)).clone();
         },
 
         setLastRemoval: function () {
@@ -621,52 +628,6 @@ function setupToys(settings) {
     sendVirtualAssistantMessage('Now let\'s talk about e-stim devices');
     setupEStimToy(domChose);
 
-    /*askForToy("EStim");
-    askForToyUsage("EStim", domChose);
-    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
-
-//TODO: Improve estim setup
-    if (isVar('toyEStim')) {
-        sendVirtualAssistantMessage("Tell me what level of shock you consider to be quite painful", false)
-        answer = createInput();
-
-        while (true) {
-            if (answer.isDouble()) {
-                setVar("estimPainHigh", answer.getDouble());
-                break;
-            } else {
-                sendVirtualAssistantMessage("This is not a valid number. Please just type a number such as 1, or 2.5");
-                answer.loop();
-            }
-        }
-
-        sendVirtualAssistantMessage("Tell me what level of shock you consider to be somewhat painful", false)
-        answer = createInput();
-
-        while (true) {
-            if (answer.isDouble()) {
-                setVar("eStimPainMedium", answer.getDouble());
-                break;
-            } else {
-                sendVirtualAssistantMessage("This is not a valid number. Please just type a number such as 1, or 2.5");
-                answer.loop();
-            }
-        }
-
-        sendVirtualAssistantMessage("Tell me what level of shock you consider to be less painful and maybe even pleasant", false)
-        answer = createInput();
-
-        while (true) {
-            if (answer.isDouble()) {
-                setVar("eStimPainLow", answer.getDouble());
-                break;
-            } else {
-                sendVirtualAssistantMessage("This is not a valid number. Please just type a number such as 1, or 2.5");
-                answer.loop();
-            }
-        }
-    }*/
-
     setupGags(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
@@ -718,7 +679,7 @@ function setupToys(settings) {
 
     CLOTHESPINS_TOY.askForToyAndUsage(domChose);
 
-//TODO: Different type of nipple clamps
+    //TODO: Different type of nipple clamps
     sendVirtualAssistantMessage('Okay next quite similar but not the same %Grin%');
     NIPPLE_CLAMPS.askForToyAndUsage(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));

@@ -18,6 +18,7 @@ const MODULE = {
     E_STIM: 14,
     PEG: 15,
     BONDAGE: 16,
+    DEEPTHROAT: 17,
 };
 
 
