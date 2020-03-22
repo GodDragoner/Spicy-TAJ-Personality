@@ -96,6 +96,14 @@ function hasChastityCage() {
     return getVar(VARIABLE.HAS_CHASTITY);
 }
 
+/**
+ * Get whether the slave has declined chastity training (which basically is chastity level below 30 and training disabled)
+ * @returns {*|boolean} Whether slave has declined chastity training
+ */
+function hasDeclinedChastityTraining() {
+    return hasChastityCage() && getVar(VARIABLE.CHASTITY_LEVEL, 0) < 30 && getVar(VARIABLE.CHASTITY_TRAINING, false);
+}
+
 function startLongTermChastityIntro() {
     if (!RULE_DOMME_KEYHOLDER.isActive() && hasChastityCage() && !getVar(VARIABLE.PARTNER_IS_KEYHOLDER, false)) {
         sendMessage('So %SlaveName%');

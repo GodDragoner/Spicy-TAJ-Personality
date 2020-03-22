@@ -1,6 +1,6 @@
 {
-    //TODO: Do stuff without parachute using strings  if no parachute
-    if (getCBTLimit() != LIMIT_ASKED_YES || !PARACHUTE_TOY.hasToy() || !PARACHUTE_TOY.isPlayAllowed()) {
+    //TODO: Do stuff without parachute using strings if no parachute
+    if (getCBTLimit() != LIMIT_ASKED_YES || PARACHUTE_TOY.hasToy() && !PARACHUTE_TOY.isPlayAllowed()) {
         runModuleCategory('Pain');
     } else if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.BALL_TORTURE)) {
         if(PARACHUTE_TOY.fetchToy()) {
@@ -19,7 +19,8 @@
 
                 let module = randomInteger(0, 2);
 
-                //TODO: Count squats and jumping jacks
+                let count = feelsEvil();
+
                 if(module === 0) {
                     goToCorner(getCornerTime()*randomInteger(2, 3));
                 } else if(module === 1) {
@@ -38,17 +39,23 @@
                         sendMessage('Don\'t even dare to let the weight touch the ground when you squat down!');
                     }
 
-                    sendMessage('Which means you should the length of your rope or whatever you are using accordingly', 10);
+                    sendMessage('Which means you should choose the length of your rope or whatever you are using accordingly', 10);
+
+                    if(count) {
+                        //QUALITY: Change to down, up and toes at random
+                        sendMessage('Additionally I want you to count out loud every single DOWN squat you do');
+                        sendMessage('You better not miss a single command %SlaveName%');
+                    }
 
                     sendMessage('Now hands above your head and get ready %EmoteHappy%');
 
-                    //TODO: Based on strictness etc?
-                    let durationMillis= randomInteger(90, 150)*1000;
+                    let durationMillis= getCornerTime(2)*1000;
                     let taskWatch = new StopWatch();
 
                     taskWatch.start();
 
                     let currentId = -1;
+                    let downCommands = 0;
                     while(taskWatch.getTime() < durationMillis) {
                         let newId = randomInteger(0, 2);
 
@@ -63,6 +70,7 @@
                             playSound('Audio/Spicy/Commands/Up/*.mp3');
                         } else if(currentId === 1) {
                             playSound('Audio/Spicy/Commands/Down/*.mp3');
+                            downCommands++;
                         } else if(currentId === 2) {
                             playSound('Audio/Spicy/Commands/OnYourToes.mp3');
                         }
@@ -70,24 +78,68 @@
 
                     taskWatch.stop();
                     returnSlave();
+
+                    if(count) {
+                        sendMessage('Tell me %SlaveName%');
+                        let answer = createIntegerInput('How often did I tell you to squat down?', undefined, undefined, 'That\'s not a number...');
+
+                        if(answer === downCommands) {
+                            sendMessage('Correct! Good job %SlaveName%');
+                            changeMeritMedium(false);
+                            rewardGoldLow();
+                        } else if(Math.abs(answer - downCommands) <= 1) {
+                            sendMessage('Almost correct. I am not gonna punish you for that %SlaveName%');
+                        } else {
+                            sendMessage('Nope. That\'s incorrect...');
+                            changeMeritMedium(false);
+                            addPunishmentPoints(100, PUNISHMENT_REASON.POOR_BEHAVIOUR);
+                        }
+                    }
                 } else if(module === 2) {
                     sendMessage('I think it\'s time for some exercise! %Lol%');
                     sendMessage('You\'re going to do jumping jacks for me...');
                     sendMessage('I will give you a metronome and you are gonna do jumping jacks until it stops %Grin%');
+
+                    if(count) {
+                        sendMessage('Additionally I want you to count out loud every single jumping jack you do');
+                        sendMessage('You better not miss a single jump %SlaveName%');
+                    }
+
                     sendMessage('Get ready we will start once you hear the beat!');
 
-                    startStroking(30);
+                    let bpm = 30;
+                    startStroking(bpm);
 
-                    //TODO: Based on strictness etc?
-                    sleep(randomInteger(60, 140));
+                    let timeInSeconds = getCornerTime();
+
+                    sleep(timeInSeconds);
                     returnSlave();
+
+                    let resultingJacks = Math.round(getCornerTime()/(60/bpm));
+
+                    if(count) {
+                        sendMessage('Tell me %SlaveName%');
+                        let answer = createIntegerInput('How often did you perform a jumping jack?', undefined, undefined, 'That\'s not a number...');
+
+                        if(answer === resultingJacks) {
+                            sendMessage('Correct! Good job %SlaveName%');
+                            changeMeritMedium(false);
+                            rewardGoldLow();
+                        } else if(Math.abs(answer - resultingJacks) <= 2) {
+                            sendMessage('Almost correct. I am not gonna punish you for that %SlaveName%');
+                        } else {
+                            sendMessage('Nope. That\'s incorrect...');
+                            changeMeritMedium(false);
+                            addPunishmentPoints(100, PUNISHMENT_REASON.POOR_BEHAVIOUR);
+                        }
+                    }
                 }
 
             } else {
                 let module = randomInteger(0, 1);
 
                 if(module === 1) {
-                    //TODO: Save for later
+                    //QUALITY: Save for later
                     if(sendYesOrNoQuestion('Do you own an office chair where you can change the height?')) {
                         sendMessage('Great! %EmoteHappy%');
                     } else {
@@ -114,7 +166,7 @@
                     sendMessage('Begin!', 0);
                     playBellSound();
 
-                    sleep(randomInteger(90*getStrictnessForCharacter(), 120*getStrictnessForCharacter()));
+                    sleep(getCornerTime(2));
                     returnSlave();
                 } else if(module === 1) {
                     sendMessage('I want you to sit on your office chair and pull the lever so it goes down to its lowest level');
@@ -133,7 +185,7 @@
                     sendMessage('Time starts in 60 seconds with my bell', 60);
                     sendMessage('Go!', 0);
                     playBellSound();
-                    sleep(randomInteger(60*(getStrictnessForCharacter() + 1), 100*(getStrictnessForCharacter() + 1)));
+                    sleep(getCornerTime(2));
                     playBellSound();
                     sendMessage('Now go ahead and drag that chair behind you %Grin%');
                     sendMessage('Report to me when you are done');
@@ -141,11 +193,11 @@
                 }
             }
 
-            //TODO: Ask if balls hurt, interact
+            //QUALITY: Ask if balls hurt, interact
             sendMessage('You can remove the parachute now %SlaveName% %EmoteHappy%');
             sendMessage('I hope your balls aren\'t falling of yet %Lol%');
 
-            //TODO: That was fun message
+            sendAsMuchFun();
 
             PARACHUTE_TOY.setToyOn(false);
         } else {

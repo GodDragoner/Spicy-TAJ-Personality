@@ -134,7 +134,7 @@ function createBondageInstructions(level) {
 
     if (isGaged()) {
         if (maxToys <= 0) {
-            removeGag();
+            removeGag(false);
         } else {
             maxToys--;
 

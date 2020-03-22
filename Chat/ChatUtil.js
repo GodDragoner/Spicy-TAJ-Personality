@@ -183,6 +183,30 @@ function removeContact(id) {
     sendCustomMessage(textName, text);
 }
 
+function createDoubleInput(question, min, max, notNumberMessage, outOfRangeMessage) {
+    sendMessageBasedOnSender(question, 0);
+    let answer = createInput();
+
+    while (true) {
+        if (answer.isDouble()) {
+            if (min === undefined && max === undefined) {
+                return answer.getDouble();
+            } else {
+                let double = answer.getDouble();
+                if ((min == undefined || double >= min) && (max == undefined || double <= max)) {
+                    return double;
+                }
+
+                sendMessageBasedOnSender(outOfRangeMessage);
+                answer.loop();
+            }
+        } else {
+            sendMessageBasedOnSender(notNumberMessage);
+            answer.loop();
+        }
+    }
+}
+
 function createIntegerInput(question, min, max, notNumberMessage, outOfRangeMessage) {
     sendMessageBasedOnSender(question, 0);
     let answer = createInput();
@@ -193,7 +217,7 @@ function createIntegerInput(question, min, max, notNumberMessage, outOfRangeMess
                 return answer.getInt();
             } else {
                 let int = answer.getInt();
-                if (int >= min && int <= max) {
+                if ((min == undefined || int >= min) && (max == undefined || int <= max)) {
                     return int;
                 }
 
@@ -354,3 +378,90 @@ function sendArbMessage(textName, message, wait, imagePath) {
         sleep(wait * 1000, "MILLISECONDS");
     }
 }
+
+/*creating a function to invoke special characters/imagesets
+by calling below with a different person number, you get a different sender prefix and image displayed automatically
+0 no image
+1 receptionchat (punishment)
+2 ReceptionbusyPC (punishment)
+3 Receptionbusyphone (punishment)
+4 dirty
+*/
+
+function sendDungeonMessage(message, person = 0, wait) {
+    let textName = new javafx.scene.text.Text("[Miss A]: ");
+    textName.setFill(javafx.scene.paint.Color.RED);
+    textName.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.BOLD, 14));
+
+    message = replaceVocab(message);
+    let text = new javafx.scene.text.Text(message);
+    text.setFill(javafx.scene.paint.Color.RED);
+    text.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.MEDIUM, 13));
+
+    sendCustomMessage(textName, text);
+
+    let setId = Math.min(5, (ASSISTANT_CURRENT_SET_ID % 5 + 1));
+
+    //Show image
+    switch (person) {
+        case 0:
+            showImage("Images/Spicy/Punishment/Reception/Chat/" + setId + "/*.jpg");
+            break;
+        case 1:
+            showImage("Images/Spicy/Punishment/Reception/Chat/" + setId + "/*.jpg");
+            break;
+        case 2:
+            showImage("Images/Spicy/Punishment/Reception/BusyPC/" + setId + "/*.jpg");
+            break;
+        case 3:
+            showImage("Images/Spicy/Punishment/Reception/BusyPhone/" + setId + "/*.jpg");
+            break;
+        case 4:
+            showImage("Images/Spicy/Punishment/Reception/Dirty/" + setId + "/*.jpg");
+            break;
+        default:
+            showImage("Images/Spicy/Punishment/Reception/Chat/" + setId + "/*.jpg");
+            break;
+    }
+
+
+    if (wait === undefined || wait) {
+        sleep(.5 + message.length * .03);
+    }
+}
+
+function sendNurseMessage(message, picset, wait, skipImage) {
+    let textName = new javafx.scene.text.Text("[Nurse]: ");
+    textName.setFill(javafx.scene.paint.Color.PINK);
+    textName.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.BOLD, 14));
+
+    message = replaceVocab(message);
+    let text = new javafx.scene.text.Text(message);
+    text.setFill(javafx.scene.paint.Color.PINK);
+    text.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.MEDIUM, 13));
+
+    sendCustomMessage(textName, text);
+
+    //Show image
+    if (skipImage === undefined || !skipImage) {
+        switch (picset) {
+            case 1 :
+                showImage("Images/Spicy/Punishment/Nurses/" + (ASSISTANT_CURRENT_SET_ID % 10 + 1) + "/*.jpg");
+                break;
+            case 2 :
+                showImage("Images/Spicy/Punishment/Reception/BusyPC/" + (ASSISTANT_CURRENT_SET_ID % 5 + 1) + "/*.jpg");
+                break;
+            case 3 :
+                showImage("Images/Spicy/Punishment/Reception/BusyPhone/" + (ASSISTANT_CURRENT_SET_ID % 5 + 1) + "/*.jpg");
+                break;
+            default:
+                showImage("Images/Spicy/Punishment/Nurses/" + (ASSISTANT_CURRENT_SET_ID % 10 + 1) + "/*.jpg");
+                break;
+        }
+    }
+
+    if (wait === undefined || wait) {
+        sleep(1000 + message.length * 50, "MILLISECONDS");
+    }
+}
+

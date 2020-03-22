@@ -115,7 +115,6 @@
                     }
                     break;
                 case 1:
-
                     //TODO: Think of a different solution
                     if(!sendYesOrNoQuestion('Do you have 10 clothespins and a string or piece of rope available right now %SlaveName%?')) {
                         runPunishment(PUNISHMENT_CURRENT_LEVEL);

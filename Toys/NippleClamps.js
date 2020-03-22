@@ -72,9 +72,14 @@ function removeNippleClamps() {
     }
 
     sendMessage('%SlaveName% go ahead and remove those nipple clamps and put them aside', 5);
-    sendMessage('Much better isn\'t it? %Grin%');
 
-    //TODO: Interaction
+    let answer = sendYesOrNoQuestionTimeout('Much better isn\'t it? %Grin%', 3);
+
+    if(answer === ANSWER_YES) {
+        sendMessage('Don\'t celebrate to early though %Grin%');
+    } else if(answer === ANSWER_NO) {
+        sendMessage('Looks like my pain slut would like some more pain %Lol%');
+    }
 
     NIPPLE_CLAMPS.setToyOn(false);
 }

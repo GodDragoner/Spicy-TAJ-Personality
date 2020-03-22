@@ -3,5 +3,5 @@ function domHonorificVocabulary() {
     const answers = ["Mistress", "Princess", "Goddess", "Maitrese" ,"Miss"];
 
     //return answers[randomInteger(0, answers.length - 1)];
-    return "Mistress";
+    return getVar(VARIABLE.DOMME_HONORIFIC, "Mistress");
 }

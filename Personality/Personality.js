@@ -1,11 +1,11 @@
 run("Personality/Limits.js");
 
+const KIND_PERSONALITY_ID = 0;
 const ENFORCING_PERSONALITY_ID = 1;
-const KIND_PERSONALITY_ID = 2;
 
-const ACTIVE_PERSONALITY_ID = getVar("personalityType");
+const ACTIVE_PERSONALITY_ID = getVar(VARIABLE.DOMME_PERSONALITY_TYPE);
 
-let ACTIVE_PERSONALITY_STRICTNES = getVar("personalityStrictness", 0);
+let ACTIVE_PERSONALITY_STRICTNES = getVar(VARIABLE.DOMME_STRICTNESS, 0);
 
 const TOY_PLAY_MODE = 0;
 const TOY_PUNISHMENT_MODE = 1;
@@ -41,7 +41,7 @@ function getStrictnessForCharacter(index = getCurrentTAJSenderID()) {
 }
 
 function setUpPersonalityVars() {
-    switch(ACTIVE_PERSONALITY_ID) {
+    /*switch(ACTIVE_PERSONALITY_ID) {
         case ENFORCING_PERSONALITY_ID:
             for(let x = 0; x < LIMITS.length; x++) {
                 if(LIMITS[x].getLimit() !== LIMIT_NEVER) {
@@ -55,7 +55,11 @@ function setUpPersonalityVars() {
         default:
             sendSystemMessage("Personality type id " + ACTIVE_PERSONALITY_ID + " does not exist.");
             break;
-    }
+    }*/
+}
+
+function getRandomHonorific() {
+    return random(["Mistress", "Princess", "Goddess", /*"Maitrese"*/ "Queen", /*"Miss"*/]);
 }
 
 //We should do this only at session start unlike spicy because otherwise you can just restart the program x times to increase your mood

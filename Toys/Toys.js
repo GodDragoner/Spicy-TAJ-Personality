@@ -110,7 +110,7 @@ function interactWithRandomToys() {
     //TODO: More interaction (forbid to talk etc.)
     //Do this after clamps because we might remove clamp from tongue after put on for spider gag
     if (wantsToRemoveGag()) {
-        removeGag();
+        removeGag(false);
     } else {
         decideGag();
     }

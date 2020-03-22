@@ -30,6 +30,11 @@ const VARIABLE = {
     EXERCISE_TIMES: 'exerciseTimes',
     EXERCISE_LAST: 'lastExercise',
 
+    //Domme
+    DOMME_HONORIFIC: 'dommeHonorific',
+    DOMME_PERSONALITY_TYPE: 'personalityType',
+    DOMME_STRICTNESS: 'personalityStrictness',
+
     //Interaction
     RESPONSE_WILL_DO_ANYTHING: 'responseWillDoAnything',
 
@@ -219,6 +224,12 @@ const VARIABLE = {
     SECONDS_TO_GET_SOFT: "secondsToGetSoft",
 
     SUB_BIRTHDAY: "subBirthday",
+    SUB_HAIR_COLOR: 'subHairColor',
+    SUB_EYE_COLOR: 'subEyeColor',
+    SUB_COCK_LENGTH: 'subCockLength',
+    SUB_SOFT_COCK_LENGTH: 'subSoftCockLength',
+    SUB_HEIGHT: 'subHeight',
+    SUB_WEIGHT: 'subWeight',
 
     //Sub status
     SUB_IS_VIRGIN: 'subIsVirgin',
@@ -260,6 +271,10 @@ const VARIABLE = {
 
     PUNISHMENT_REASONS: "punishmentReasons",
 
+    PUNISHMENT_TASK_POINTS: "punishmentTaskPoints",
+
+
+    PUNISHMENTS_DONE: "punishmentsDone",
 
     FULL_TIME_TRIAL_UNTIL: "fullTimeTrialUntil",
 

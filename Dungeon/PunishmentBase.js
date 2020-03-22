@@ -24,6 +24,17 @@
         sendDungeonMessage("Also...");
         sendDungeonMessage("You are required to have an active account to use SpankzChoir.com");
         sendDungeonMessage("An account lasts 14 days and can be paid for in the shop");
+        sendDungeonMessage('On fridays you have the chance to get some tasks from one of the Dommes to redeem a chosen amount of punishment points');
+        sendDungeonMessage('Should you get punishment points while you have redeeming tasks active those punishment points will be doubled and added to your balance');
+        sendDungeonMessage('You will not be able to report for another punishment while you have these tasks unfinished');
+        sendDungeonMessage('So make sure to better get them done quickly');
+        sendDungeonMessage('These tasks will involve solely deepthroating and anal play');
+        sendDungeonMessage('So be ready to do A LOT if you have a lot punishment points');
+        sendDungeonMessage('For this you can specify how many punishment points you want to redeem');
+        sendDungeonMessage('However it need to be at least ' + MIN_PUNISHMENT_POINTS_FOR_TASK + ' points');
+        sendDungeonMessage('So it\'s pretty much only useful if you have a lot of points to redeem');
+        sendDungeonMessage('It\'s basically training and redemption for you all in one');
+        sendDungeonMessage('Great isn\'t it?');
         sendDungeonMessage("Now...");
     }
 
@@ -65,306 +76,437 @@
         }
     }
 
-////@Goto(SecondTimePunishment)
-//(PunishmentBaseIntro)
-// @CheckFlag(SecondTimePunishment)
-// @CheckFlag(PunishmentActive)
-// @CheckFlag(Punishment) @info(set in Interrupt\GNMBackgroundBase.txt)
-//(SecondTimePunishment)
-    if (isVar("Punishment")) {
-        delVar("Punishment");
-    }
+    if (isActivePunishmentTasks()) {
+        sendDungeonMessage('You still have unredeemed tasks %SlaveName%');
+        setupPunisherConnection();
 
-    while (true) {
-        sendDungeonMessage("Yes %SlaveName%?", 0, false);
-        let answer = createInput("Report for punishment", "SpankzChoir", "Pay fine", "Points?", "Return");
+        sendMessage('Hello %SlaveName%');
 
-        if (answer.containsIgnoreCase("how many", "point", "punishment point")) {
-            answer.clearOptions();
+        if (sendYesOrNoQuestion('I hope you finished the tasks as instructed?')) {
+            sendMessage('I expect nothing less from you %SlaveName%');
+            addPunishmentPoints(-getVar(VARIABLE.PUNISHMENT_TASK_POINTS));
+            sendMessage('I removed ' + getVar(VARIABLE.PUNISHMENT_TASK_POINTS) + ' from your punishment point balance');
+            resetPunishmentTasks();
+            sendMessage('I got other things to do now...');
 
-            sendDungeonMessage(random("Hmm, give me just a moment to check your records", "2 seconds %SlaveName%", "Just a moment %SubName%", "Let me just check my computer..."), 2);
-            sendDungeonMessage(random("It looks like", "According to my records", "It says") + " you have " + getVar(VARIABLE.PUNISHMENT_POINTS) + " punishment points.", 2);
+        } else {
+            sendMessage('What do you mean no? Why are you bothering me then?', 0);
+            let answer = createInput('forgot', 'give up');
 
-            if (isChance(15)) {
-                addPunishmentPoints(randomInteger(25, 75));
-                sendDungeonMessage(random("Hey, while I have this file open let me add a few more", "Well that's what you did have before I made a little addition", "That seems low, let me add some"), 2, 5);
-                sendDungeonMessage(random("You're welcome %SubName%", "%SlaveName%, you're welcome", "Aren't you lucky I'm watching out for you?"), 2);
-            }
-
-            if (getVar(VARIABLE.PUNISHMENT_POINTS) > 750) {
-                sendDungeonMessage(random("Lol %SubName%, you're so fucked!", "Oh %SlaveName%, you're ass is gonna bleed ", "You should be ashamed, %Subname%", "How did you let it get so bad?"));
-
-            } else if (getVar(VARIABLE.PUNISHMENT_POINTS) > 500) {
-                sendDungeonMessage(random("This is SERIOUS %Slave%, you need to put some time in down here", "NOT GOOD, you need to put some serious time in down here", "I have a feeling we're going to be spending lots of time together %Grin%", "That's so many your %DomHonorific% won't even hold a session with you"));
-            }
-
-            if (getVar(VARIABLE.PUNISHMENT_POINTS) > 250) {
-                sendDungeonMessage(random("We have some work to do down here", "I'll let the mistresses know they should plan to spend some time in the dungeon"));
-            } else {
-                sendDungeonMessage(random("That's not too bad", "Only a little punishment will be needed"));
-            }
-
-        } else if (answer.containsIgnoreCase("spankzchoir", "spankz", "choir", "SpankzChoir.com", "sell")) {
-            answer.clearOptions();
-
-            sendDungeonMessage(random("Well my favorite activity!", "Sounds nice!", "Well well...", "Uhh oh my oh my..."));
-
-            //(SpankzChoir)
-            sendDungeonMessage(random("Give me just a moment", "2 seconds %SlaveName%", "Just a moment %SubName%", "Let me just check my computer.."), 2);
-            sendDungeonMessage("Take a seat and enjoy the posters on the wall..");
-            showImage("Images/Spicy/Punishment/SpankzChoir/chair1.jpg");
-
-
-            showImage("Images/Spicy/Punishment/Posters/*.*", randomInteger(2, 6));
-
-            for (let x = 0; x < randomInteger(1, 5); x++) {
-                showImage("Images/Spicy/Punishment/Posters/*.*", randomInteger(2, 6));
-            }
-
-            sendDungeonMessage(random("Okay then", "Lets proceed", "lets move forward", "Lets continue"));
-            playAudio("Audio/Spicy/SpecialSounds/Bell.mp3");
-            run("Dungeon/SpankzChoir/SpankzChoirBase.js");
-        } else if (answer.containsIgnoreCase("report", "reporting", "punish", "punished", "punishment")) {
-            answer.clearOptions();
-
-            delVar("Punishment");
-            sendDungeonMessage(random("Oh my", "Oh how nice", "Lovely!", "Splendid!", "Exciting!", "Fantastic", "%Grin%", "Perfect..", "Good", "So you want to be punished."));
-            sendDungeonMessage(random("Let me just look up your file...", "Checking your file", "Having a look at your file...", "Let me just check your file..."), 2);
-            sendDungeonMessage("Take a seat...");
-
-            showImage("Images/Spicy/Punishment/SpankzChoir/chair1.jpg", 3);
-
-            showImage("Images/Spicy/Punishment/Posters/*.*", randomInteger(2, 6));
-
-            for (let x = 0; x < randomInteger(1, 5); x++) {
-                showImage("Images/Spicy/Punishment/Posters/*.*", randomInteger(2, 6));
-            }
-
-            sendDungeonMessage(random("Okay then", "Lets proceed", "Lets move forward", "Lets continue"));
-            playAudio("Audio/Spicy/SpecialSounds/Bell.mp3");
-
-            if (getVar(VARIABLE.PUNISHMENT_POINTS) < 100) {
-                sendDungeonMessage("Well %SubName% it seems you haven't been too bad recently...", 2);
-                sendDungeonMessage("So I'm afraid I have to reject you...", 2);
-            } else {
-                sendDungeonMessage("Lets see if there is any specific reasons to why you've been given punishment points this week...");
-                setVar(VARIABLE.PUNISHMENT_ACTIVE, true);
-
-                let reasons = getVar(VARIABLE.PUNISHMENT_REASONS, new java.util.ArrayList());
-
-                if(!reasons.isEmpty()) {
-                    if (reasons.contains(PUNISHMENT_REASON.SKIPPING_PUNISHMENT_DAY)) {
-                        sendDungeonMessage("Skipping punishment day... Naughty %Slave%, are you too scared to come down here and face justice?", 2);
-                    }
-
-                    if (reasons.contains(PUNISHMENT_REASON.NO_PERM_FAP)) {
-                        sendDungeonMessage("Stroking without explicit permission", 2);
-                    }
-
-                    if (reasons.contains(PUNISHMENT_REASON.SKIPPING_FULLTIME)) {
-                        sendDungeonMessage("Skipping your weekly visits", 2);
-                    }
-
-                    if (reasons.contains(PUNISHMENT_REASON.NO_PERM_RUINED)) {
-                        sendDungeonMessage("Ruining without permission", 2);
-                    }
-
-                    if (reasons.contains(PUNISHMENT_REASON.CHEATING)) {
-                        sendDungeonMessage("Cheating and trying to trick %DomHonorific% %DomName%...", 2);
-                    }
-
-                    if (reasons.contains(PUNISHMENT_REASON.SKIPPING_CONFESSION_DAY)) {
-                        sendDungeonMessage("Skipping confession day... Naughty %Slave%", 2);
-                    }
-
-                    if (reasons.contains(PUNISHMENT_REASON.SKIPPING_SPANKZCHOIR_LATE)) {
-                        sendDungeonMessage("Not delivering your %ass% to the mistress that bought it via spankzchoir in time", 2);
-                    }
-
-                    if (reasons.contains(PUNISHMENT_REASON.TOO_MANY_POINTS)) {
-                        sendDungeonMessage(random("Failure to complete punishments on time", "Not putting sufficient effort to reduce punishment points", "not submitting to required punishments", "Not suffering %DomHonorific% %DomName%'s proscribed punishments"), 2);
-                    }
-
-                    /*if (isVar("Preason_not_worshiping") && getVar("Preason_not_worshiping")) {
-                        sendDungeonMessage(random("Failure to respect %mistress%", "being Disrespectful towards %DomHonorific% %DomName%", "Not appropriately worshiping your Goddess %DomName%"), 2);
-                    }*/
-
-                    if (reasons.contains(PUNISHMENT_REASON.TOO_LAZY)) {
-                        sendDungeonMessage(random("Being too lazy", "Lazy behaviour", "Laziness...", "Careless behaviour", "Carelessness"), 2);
-                    }
-
-                    if (reasons.contains(PUNISHMENT_REASON.RULE_IGNORED)) {
-                        sendDungeonMessage(random("Breaking a rule", "Ignoring one of %DomHonorific% %DomName%'s rules", "Forgetting a rule"), 2);
-                    }
-
-                    if (reasons.contains(PUNISHMENT_REASON.TOO_SLOW)) {
-                        sendDungeonMessage(random("being too slow to respond to %DomHonorific% %DomName%'s commands ", "Not jumping to complete %DomHonorific% %DomName%'s commands", "disappointing %DomHonorific% %DomName% by not responding to commands in a timely way"), 2);
-                    }
-
-                    if (reasons.contains(PUNISHMENT_REASON.BAD_EXERCISE_EFFORT)) {
-                        sendDungeonMessage(random("Failure to complete your exercises properly", "Not putting sufficient effort while exercising", "Being lazy while working out", "Not meeting %DomHonorific% %DomName%'s exercise standard"), 2);
-                    }
-
-                    if (reasons.contains(PUNISHMENT_REASON.MISSED_CHORES)) {
-                        sendDungeonMessage(random("Failure to complete chores in a timely manner", "Unfinished chores", "Failure to do chores", "Poor attitudes regarding chores", "Failed to complete chores.."), 2);
-                    }
-
-                    if (reasons.contains(PUNISHMENT_REASON.NO_PERM_CUM)) {
-                        sendDungeonMessage(random("Unauthorized ejaculation", "Cumming without permission"), 2);
-                    }
-
-                    if (reasons.contains(PUNISHMENT_REASON.NO_PERM_EDGE)) {
-                        sendDungeonMessage(random("Unauthorized edging", 'Edging without permission', "Edging against %DomHonorific% %DomName%'s wishes", "Being unable to resist edging your %cock%"), 2);
-                    }
-
-                    if (reasons.contains(PUNISHMENT_REASON.TALKING)) {
-                        sendDungeonMessage(random("Filthy mouth", "Talking back", "Bad mouthing", "Undesired talking", "Failed to request permission to talk", "Talking out of terms.."), 2);
-                    }
-
-                    if (reasons.contains(PUNISHMENT_REASON.POOR_BEHAVIOUR)) {
-                        sendDungeonMessage(random("Not living up to %DomHonorific% %DomName%'s standards", "Not living up to %DomHonorific% %DomName%'s expectations"), 2);
-                    }
-
-                    if (reasons.contains(PUNISHMENT_REASON.BREAKING_CHASTITY)) {
-                        sendDungeonMessage(random("Removing chastity without explicit permission"), 2);
-                    }
-
-                    if (isVar("Preason_BadFullTime") && getVar("Preason_BadFullTime")) {
-                        sendDungeonMessage(random("Failed to fulfill full time duties", "Laziness", "Failure to meet demands for proper slavery"), 2);
-                    }
-                } else {
-                    sendDungeonMessage(random("Poor attitude", "Poor performance", "Lack of performance", "Failed to perform properly", "Poor results"), 2);
-                }
-
-
-                sendDungeonMessage(random("Oh my it's good you came", "Lets correct this immediately", "Time to improve your behavior"), 3);
-                sendDungeonMessage("First lets see who will be handling your punishment..", 3);
-
-                /*if (isVar("Glitter1Bought")) {
-                    setVar(VARIABLE.PUNISHMENT_PUNISHER, randomInteger(1, 2));
-                }
-                if (isVar("Glitter2Bought")) {
-                    setVar(VARIABLE.PUNISHMENT_PUNISHER, randomInteger(1, 3));
-                }
-                if (isVar("Glitter3Bought")) {
-                    setVar(VARIABLE.PUNISHMENT_PUNISHER, randomInteger(1, 4));
-                }*/
-
-                setVar(VARIABLE.PUNISHMENT_PUNISHER, randomInteger(1, 4));
-
-                switch (getVar(VARIABLE.PUNISHMENT_PUNISHER)) {
-                    case 1:
-                        sendDungeonMessage("Well it will be your %DomHonorific% handling your punishment...", 3);
-                        break;
-                    case 2:
-                        sendDungeonMessage("Well it will be %DomHonorific% %domFriend1Name% handling your punishment...", 3);
-                        break;
-                    case 3:
-                        sendDungeonMessage("Well it will be %DomHonorific% %domFriend2Name% handling your punishment...", 3);
-                        break;
-                    case 4:
-                        sendDungeonMessage("Well it will be %DomHonorific% %domFriend3Name% handling your punishment...", 3);
-                        break;
-                }
-
-
-                sendDungeonMessage("You can request a soft, medium, hard, or extreme punishment");
-
-                if (getVar(VARIABLE.PUNISHMENT_POINTS) >= 350) {
-                    sendDungeonMessage("I do recommend a hard one but its your choice");
-                } else if (getVar(VARIABLE.PUNISHMENT_POINTS) >= 200) {
-                    sendDungeonMessage("I do recommend a medium one but its your choice");
-                } else {
-                    sendDungeonMessage("I recommend a soft punishment");
-                }
-
-                let answer2 = createInput(20, "Soft", "Medium", "Hard", "Extreme");
-
-                let punishSeverity = PUNISHMENT_LEVEL.EASY;
-
-                if (answer2.containsIgnoreCase("soft")) {
-                    sendDungeonMessage("Setting it up...");
-                    punishSeverity = PUNISHMENT_LEVEL.EASY;
-                } else if (answer2.containsIgnoreCase("medium")) {
-                    sendDungeonMessage("Setting it up...");
-                    punishSeverity = PUNISHMENT_LEVEL.MEDIUM;
-                } else if (answer2.containsIgnoreCase("hard")) {
-                    sendDungeonMessage("Setting it up... Hope you can handle this");
-                    punishSeverity = PUNISHMENT_LEVEL.HARD;
-                } else if (answer2.containsIgnoreCase("Extreme")) {
-                    sendDungeonMessage("%grin% a glutton for punishment... Setting it up...");
-                    punishSeverity = PUNISHMENT_LEVEL.EXTREME;
-                } else if (answer2.isTimeout()) {
-                    sendDungeonMessage("Stunned in fear huh?");
-
-                    if (getVar(VARIABLE.PUNISHMENT_POINTS) >= (400 - randomInteger(1, 100))) {
-                        sendDungeonMessage("I'm going to strap you down for a hard one...");
-                        punishSeverity = PUNISHMENT_LEVEL.HARD;
-                    } else if (getVar(VARIABLE.PUNISHMENT_POINTS) >= (250 - randomInteger(1, 100))) {
-                        sendDungeonMessage("I guess we'll go for a medium one then");
-                        punishSeverity = PUNISHMENT_LEVEL.MEDIUM;
-                    } else {
-                        sendDungeonMessage("I'll take it easy on you this time");
-                        punishSeverity = PUNISHMENT_LEVEL.EASY;
-                    }
-
-                } else {
-                    sendDungeonMessage("%Slave%, are you illiterate? Soft, medium, hard, or extreme?");
-                    answer2.loop();
-                }
-
-                answer2.clearOptions();
-
-                startPunishmentSession(punishSeverity);
-            }
-        } else if (answer.containsIgnoreCase("pay", "fine", "gold")) {
-            answer.clearOptions();
-            sendDungeonMessage(random("Here to reduce your sentence huh...", "Well you want to pay your fines", "You wish to pay for your sins..."));
-
-            let goldMultiplier = 1;
-            //@Goto(Fines)
-            sendDungeonMessage('It\'s ' + (goldMultiplier * 1) + ' per punishment point');
-
-            sendDungeonMessage("How many punishment points do you wish to pay for?");
-            let answer = createInput();
             while (true) {
-                if (answer.isInteger()) {
-                    let value = answer.getInt();
-
-                    if (value > 0) {
-                        if (value > getVar(VARIABLE.PUNISHMENT_POINTS)) {
-                            value = getVar(VARIABLE.PUNISHMENT_POINTS);
-                        }
-
-                        if (value * goldMultiplier > getGold()) {
-                            sendDungeonMessage('You don\'t have enough gold %SlaveName%...');
-                            changeMeritLow(true);
-                            break;
-                        }
-
-                        sendDungeonMessage("Well everything checks out...");
-                        addGold(-value * goldMultiplier);
-                        addPunishmentPoints(-value);
-                        sendDungeonMessage(value + " points removed from your total amount of punishment points")
-                    } else {
-                        sendDungeonMessage('Please give me a number greater than 0 %SlaveName%...');
-                        changeMeritLow(true);
-                        answer.loop();
-                    }
-                } else if (answer.isLike('no', 'abort', 'break', 'exit', 'quit')) {
+                if (answer.isLike('forgot', 'tell again', 'repeat')) {
+                    sendMessage('Sigh...');
+                    sendMessage('Here we go...');
+                    sendPunishmentTaskInstructions();
+                    sendMessage('That\'s it. Don\'t bother me again unless you are done!');
                     break;
+                } else if(answer.isLike('give up', 'can\'t do', 'too much')) {
+                    switch(getStrictnessForCharacter()) {
+                        case 0:
+                            sendMessage('Really...?');
+                            sendMessage('You want to give up that easily?');
+                            sendMessage('You disappoint me %SlaveName%');
+                            sendMessage('As penalty I will add 25% of the to redeem points to your balance');
+                            addPunishmentPoints(Math.floor(getVar(VARIABLE.PUNISHMENT_TASK_POINTS)*0.25), PUNISHMENT_REASON.POOR_BEHAVIOUR);
+                            sendMessage('Don\'t disappoint me ever again and don\'t bite off more than you can chew!');
+                            break;
+                        case 1:
+                            sendMessage('I expect more from you then giving up that easily %SlaveName%');
+                            sendMessage('You are supposed to follow all orders no matter how difficult');
+                            sendMessage('Not mentioning you chose this yourself');
+                            sendMessage('As penalty I will add 50% of the to redeem points to your balance');
+                            addPunishmentPoints(Math.floor(getVar(VARIABLE.PUNISHMENT_TASK_POINTS)*0.60), PUNISHMENT_REASON.POOR_BEHAVIOUR);
+                            sendMessage('Don\'t disappoint me ever again and don\'t bite off more than you can chew!');
+                            break;
+                        case 2:
+                            sendMessage('WHAT?!');
+                            sendMessage('You are fucking pathetic %SlaveName%');
+                            sendMessage('You can\'t even handle the most simple tasks. This is...');
+                            sendMessage('DISAPPOINTING!');
+                            sendMessage('As penalty I will add 75% of the to redeem points to your balance');
+                            addPunishmentPoints(Math.floor(getVar(VARIABLE.PUNISHMENT_TASK_POINTS)*0.75), PUNISHMENT_REASON.POOR_BEHAVIOUR);
+                            sendMessage('Don\'t disappoint me ever again and don\'t bite off more than you can chew!');
+                            break;
+                    }
+
+                    resetPunishmentTasks();
                 } else {
-                    sendDungeonMessage('Please just give a single number %SlaveName%...');
-                    changeMeritLow(true);
+                    sendMessage('Do you need a reminder of your tasks or do you want to give up?');
                     answer.loop();
                 }
             }
-            break;
-        } else if (answer.containsIgnoreCase("return", "exit", "back")) {
-            break;
-        } else {
-            sendDungeonMessage("Spankz choir, punishment, pay fine or return?");
-            answer.loop();
+        }
+
+        //Reset current sender to dom
+        setCurrentSender(1);
+    } else {
+
+        if (isVar("Punishment")) {
+            delVar("Punishment");
+        }
+
+        while (true) {
+            sendDungeonMessage("Yes %SlaveName%?", 0, false);
+            let answer = createInput("Report for punishment", "SpankzChoir", "Pay fine", "Points?", "Return");
+
+            if (answer.containsIgnoreCase("how many", "point", "punishment point")) {
+                answer.clearOptions();
+
+                sendDungeonMessage(random("Hmm, give me just a moment to check your records", "2 seconds %SlaveName%", "Just a moment %SubName%", "Let me just check my computer..."), 2);
+                sendDungeonMessage(random("It looks like", "According to my records", "It says") + " you have " + getVar(VARIABLE.PUNISHMENT_POINTS) + " punishment points.", 2);
+
+                if (isChance(15)) {
+                    addPunishmentPoints(randomInteger(25, 75));
+                    sendDungeonMessage(random("Hey, while I have this file open let me add a few more", "Well that's what you did have before I made a little addition", "That seems low, let me add some"), 2, 5);
+                    sendDungeonMessage(random("You're welcome %SubName%", "%SlaveName%, you're welcome", "Aren't you lucky I'm watching out for you?"), 2);
+                }
+
+                if (getVar(VARIABLE.PUNISHMENT_POINTS) > 750) {
+                    sendDungeonMessage(random("Lol %SubName%, you're so fucked!", "Oh %SlaveName%, you're ass is gonna bleed ", "You should be ashamed, %Subname%", "How did you let it get so bad?"));
+
+                } else if (getVar(VARIABLE.PUNISHMENT_POINTS) > 500) {
+                    sendDungeonMessage(random("This is SERIOUS %Slave%, you need to put some time in down here", "NOT GOOD, you need to put some serious time in down here", "I have a feeling we're going to be spending lots of time together %Grin%", "That's so many your %DomHonorific% won't even hold a session with you"));
+                }
+
+                if (getVar(VARIABLE.PUNISHMENT_POINTS) > 250) {
+                    sendDungeonMessage(random("We have some work to do down here", "I'll let the mistresses know they should plan to spend some time in the dungeon"));
+                } else {
+                    sendDungeonMessage(random("That's not too bad", "Only a little punishment will be needed"));
+                }
+
+            } else if (answer.containsIgnoreCase("spankzchoir", "spankz", "choir", "SpankzChoir.com", "sell")) {
+                answer.clearOptions();
+
+                sendDungeonMessage(random("Well my favorite activity!", "Sounds nice!", "Well well...", "Uhh oh my oh my..."));
+
+                //(SpankzChoir)
+                sendDungeonMessage(random("Give me just a moment", "2 seconds %SlaveName%", "Just a moment %SubName%", "Let me just check my computer.."), 2);
+                sendDungeonMessage("Take a seat and enjoy the posters on the wall..");
+                showImage("Images/Spicy/Punishment/SpankzChoir/chair1.jpg");
+
+
+                showImage("Images/Spicy/Punishment/Posters/*.*", randomInteger(2, 6));
+
+                for (let x = 0; x < randomInteger(1, 5); x++) {
+                    showImage("Images/Spicy/Punishment/Posters/*.*", randomInteger(2, 6));
+                }
+
+                sendDungeonMessage(random("Okay then", "Lets proceed", "lets move forward", "Lets continue"));
+                playAudio("Audio/Spicy/SpecialSounds/Bell.mp3");
+                run("Dungeon/SpankzChoir/SpankzChoirBase.js");
+            } else if (answer.containsIgnoreCase("report", "reporting", "punish", "punished", "punishment")) {
+                answer.clearOptions();
+
+                delVar("Punishment");
+                sendDungeonMessage(random("Oh my", "Oh how nice", "Lovely!", "Splendid!", "Exciting!", "Fantastic", "%Grin%", "Perfect..", "Good", "So you want to be punished."));
+                sendDungeonMessage(random("Let me just look up your file...", "Checking your file", "Having a look at your file...", "Let me just check your file..."), 2);
+                sendDungeonMessage("Take a seat...");
+
+                showImage("Images/Spicy/Punishment/SpankzChoir/chair1.jpg", 3);
+
+                showImage("Images/Spicy/Punishment/Posters/*.*", randomInteger(2, 6));
+
+                for (let x = 0; x < randomInteger(1, 5); x++) {
+                    showImage("Images/Spicy/Punishment/Posters/*.*", randomInteger(2, 6));
+                }
+
+                sendDungeonMessage(random("Okay then", "Lets proceed", "Lets move forward", "Lets continue"));
+                playAudio("Audio/Spicy/SpecialSounds/Bell.mp3");
+
+                if (getVar(VARIABLE.PUNISHMENT_POINTS) < 100) {
+                    sendDungeonMessage("Well %SubName% it seems you haven't been too bad recently...", 2);
+                    sendDungeonMessage("So I'm afraid I have to reject you...", 2);
+                } else {
+                    sendDungeonMessage("Lets see if there is any specific reasons to why you've been given punishment points this week...");
+
+                    let reasons = getVar(VARIABLE.PUNISHMENT_REASONS, new java.util.ArrayList());
+
+                    if (!reasons.isEmpty()) {
+                        if (reasons.contains(PUNISHMENT_REASON.SKIPPING_PUNISHMENT_DAY)) {
+                            sendDungeonMessage("Skipping punishment day... Naughty %Slave%, are you too scared to come down here and face justice?", 2);
+                        }
+
+                        if (reasons.contains(PUNISHMENT_REASON.NO_PERM_FAP)) {
+                            sendDungeonMessage("Stroking without explicit permission", 2);
+                        }
+
+                        if (reasons.contains(PUNISHMENT_REASON.SKIPPING_FULLTIME)) {
+                            sendDungeonMessage("Skipping your weekly visits", 2);
+                        }
+
+                        if (reasons.contains(PUNISHMENT_REASON.NO_PERM_RUINED)) {
+                            sendDungeonMessage("Ruining without permission", 2);
+                        }
+
+                        if (reasons.contains(PUNISHMENT_REASON.CHEATING)) {
+                            sendDungeonMessage("Cheating and trying to trick %DomHonorific% %DomName%...", 2);
+                        }
+
+                        if (reasons.contains(PUNISHMENT_REASON.SKIPPING_CONFESSION_DAY)) {
+                            sendDungeonMessage("Skipping confession day... Naughty %Slave%", 2);
+                        }
+
+                        if (reasons.contains(PUNISHMENT_REASON.SKIPPING_SPANKZCHOIR_LATE)) {
+                            sendDungeonMessage("Not delivering your %ass% to the mistress that bought it via spankzchoir in time", 2);
+                        }
+
+                        if (reasons.contains(PUNISHMENT_REASON.TOO_MANY_POINTS)) {
+                            sendDungeonMessage(random("Failure to complete punishments on time", "Not putting sufficient effort to reduce punishment points", "not submitting to required punishments", "Not suffering %DomHonorific% %DomName%'s proscribed punishments"), 2);
+                        }
+
+                        /*if (isVar("Preason_not_worshiping") && getVar("Preason_not_worshiping")) {
+                            sendDungeonMessage(random("Failure to respect %mistress%", "being Disrespectful towards %DomHonorific% %DomName%", "Not appropriately worshiping your Goddess %DomName%"), 2);
+                        }*/
+
+                        if (reasons.contains(PUNISHMENT_REASON.TOO_LAZY)) {
+                            sendDungeonMessage(random("Being too lazy", "Lazy behaviour", "Laziness...", "Careless behaviour", "Carelessness"), 2);
+                        }
+
+                        if (reasons.contains(PUNISHMENT_REASON.RULE_IGNORED)) {
+                            sendDungeonMessage(random("Breaking a rule", "Ignoring one of %DomHonorific% %DomName%'s rules", "Forgetting a rule"), 2);
+                        }
+
+                        if (reasons.contains(PUNISHMENT_REASON.TOO_SLOW)) {
+                            sendDungeonMessage(random("being too slow to respond to %DomHonorific% %DomName%'s commands ", "Not jumping to complete %DomHonorific% %DomName%'s commands", "disappointing %DomHonorific% %DomName% by not responding to commands in a timely way"), 2);
+                        }
+
+                        if (reasons.contains(PUNISHMENT_REASON.BAD_EXERCISE_EFFORT)) {
+                            sendDungeonMessage(random("Failure to complete your exercises properly", "Not putting sufficient effort while exercising", "Being lazy while working out", "Not meeting %DomHonorific% %DomName%'s exercise standard"), 2);
+                        }
+
+                        if (reasons.contains(PUNISHMENT_REASON.MISSED_CHORES)) {
+                            sendDungeonMessage(random("Failure to complete chores in a timely manner", "Unfinished chores", "Failure to do chores", "Poor attitudes regarding chores", "Failed to complete chores.."), 2);
+                        }
+
+                        if (reasons.contains(PUNISHMENT_REASON.NO_PERM_CUM)) {
+                            sendDungeonMessage(random("Unauthorized ejaculation", "Cumming without permission"), 2);
+                        }
+
+                        if (reasons.contains(PUNISHMENT_REASON.NO_PERM_EDGE)) {
+                            sendDungeonMessage(random("Unauthorized edging", 'Edging without permission', "Edging against %DomHonorific% %DomName%'s wishes", "Being unable to resist edging your %cock%"), 2);
+                        }
+
+                        if (reasons.contains(PUNISHMENT_REASON.TALKING)) {
+                            sendDungeonMessage(random("Filthy mouth", "Talking back", "Bad mouthing", "Undesired talking", "Failed to request permission to talk", "Talking out of terms.."), 2);
+                        }
+
+                        if (reasons.contains(PUNISHMENT_REASON.POOR_BEHAVIOUR)) {
+                            sendDungeonMessage(random("Not living up to %DomHonorific% %DomName%'s standards", "Not living up to %DomHonorific% %DomName%'s expectations"), 2);
+                        }
+
+                        if (reasons.contains(PUNISHMENT_REASON.BREAKING_CHASTITY)) {
+                            sendDungeonMessage(random("Removing chastity without explicit permission"), 2);
+                        }
+
+                        if (isVar("Preason_BadFullTime") && getVar("Preason_BadFullTime")) {
+                            sendDungeonMessage(random("Failed to fulfill full time duties", "Laziness", "Failure to meet demands for proper slavery"), 2);
+                        }
+                    } else {
+                        sendDungeonMessage(random("Poor attitude", "Poor performance", "Lack of performance", "Failed to perform properly", "Poor results"), 2);
+                    }
+
+                    sendDungeonMessage(random("Oh my it's good you came", "Lets correct this immediately", "Time to improve your behavior"), 3);
+                    sendDungeonMessage("First lets see who will be handling your punishment..", 3);
+
+                    /*if (isVar("Glitter1Bought")) {
+                        setVar(VARIABLE.PUNISHMENT_PUNISHER, randomInteger(1, 2));
+                    }
+                    if (isVar("Glitter2Bought")) {
+                        setVar(VARIABLE.PUNISHMENT_PUNISHER, randomInteger(1, 3));
+                    }
+                    if (isVar("Glitter3Bought")) {
+                        setVar(VARIABLE.PUNISHMENT_PUNISHER, randomInteger(1, 4));
+                    }*/
+
+                    if (!isVar(VARIABLE.PUNISHMENT_PUNISHER)) {
+                        setVar(VARIABLE.PUNISHMENT_PUNISHER, randomInteger(1, 4));
+                    }
+
+                    switch (getVar(VARIABLE.PUNISHMENT_PUNISHER)) {
+                        case 1:
+                            sendDungeonMessage("Well it will be your %DomHonorific% handling your punishment...", 3);
+                            break;
+                        case 2:
+                            sendDungeonMessage("Well it will be %DomHonorific% %domFriend1Name% handling your punishment...", 3);
+                            break;
+                        case 3:
+                            sendDungeonMessage("Well it will be %DomHonorific% %domFriend2Name% handling your punishment...", 3);
+                            break;
+                        case 4:
+                            sendDungeonMessage("Well it will be %DomHonorific% %domFriend3Name% handling your punishment...", 3);
+                            break;
+                    }
+
+                    sendDungeonMessage("You can request a soft, medium, hard, or extreme punishment");
+
+                    if (getVar(VARIABLE.PUNISHMENT_POINTS) >= 350) {
+                        sendDungeonMessage("I do recommend a hard one but its your choice");
+                    } else if (getVar(VARIABLE.PUNISHMENT_POINTS) >= 200) {
+                        sendDungeonMessage("I do recommend a medium one but its your choice");
+                    } else {
+                        sendDungeonMessage("I recommend a soft punishment");
+                    }
+
+                    let answer2 = createInput(20, "Soft", "Medium", "Hard", "Extreme");
+
+                    let punishSeverity = PUNISHMENT_LEVEL.EASY;
+
+                    while (true) {
+                        if (answer2.containsIgnoreCase("soft")) {
+                            sendDungeonMessage("Setting it up...");
+                            punishSeverity = PUNISHMENT_LEVEL.EASY;
+                            break;
+                        } else if (answer2.containsIgnoreCase("medium")) {
+                            sendDungeonMessage("Setting it up...");
+                            punishSeverity = PUNISHMENT_LEVEL.MEDIUM;
+                            break;
+                        } else if (answer2.containsIgnoreCase("hard")) {
+                            sendDungeonMessage("Setting it up... Hope you can handle this");
+                            punishSeverity = PUNISHMENT_LEVEL.HARD;
+                            break;
+                        } else if (answer2.containsIgnoreCase("Extreme")) {
+                            sendDungeonMessage("%grin% a glutton for punishment... Setting it up...");
+                            punishSeverity = PUNISHMENT_LEVEL.EXTREME;
+                            break;
+                        } else if (answer2.isTimeout()) {
+                            sendDungeonMessage("Stunned in fear huh?");
+
+                            if (getVar(VARIABLE.PUNISHMENT_POINTS) >= (400 - randomInteger(1, 100))) {
+                                sendDungeonMessage("I'm going to strap you down for a hard one...");
+                                punishSeverity = PUNISHMENT_LEVEL.HARD;
+                            } else if (getVar(VARIABLE.PUNISHMENT_POINTS) >= (250 - randomInteger(1, 100))) {
+                                sendDungeonMessage("I guess we'll go for a medium one then");
+                                punishSeverity = PUNISHMENT_LEVEL.MEDIUM;
+                            } else {
+                                sendDungeonMessage("I'll take it easy on you this time");
+                                punishSeverity = PUNISHMENT_LEVEL.EASY;
+                            }
+
+                            break;
+                        } else {
+                            sendDungeonMessage("%SlaveName%, are you illiterate? Soft, medium, hard, or extreme?");
+                            answer2.loop();
+                        }
+                    }
+
+                    answer2.clearOptions();
+
+                    //Introduction
+                    if (!isVar(VARIABLE.PUNISHMENTS_DONE) && new Date().getDay() === 5) {
+                        setVar(VARIABLE.PUNISHMENTS_DONE, 0);
+                    }
+
+                    let mode = 0;
+
+                    if(new Date().getDay() === 6) {
+                        sendDungeonMessage('It\'s friday %SlaveNam% %EmoteHappy%');
+                        if (getVar(VARIABLE.PUNISHMENT_POINTS) >= MIN_PUNISHMENT_POINTS_FOR_TASK) {
+                            sendDungeonMessage('So what will it be today? Redeeming Tasks or a session?', 0, false);
+                            answer2 = createInput("Session", 'Tasks');
+                            while (true) {
+                                if (answer2.containsIgnoreCase("session", 'punishment')) {
+                                    mode = 0;
+                                    break;
+                                } else if (answer2.containsIgnoreCase("tasks", 'redeem')) {
+                                    mode = 1;
+                                    break;
+                                } else {
+                                    sendDungeonMessage("%SlaveName%, are you illiterate? A punishment session or tasks?");
+                                    answer2.loop();
+                                }
+                            }
+
+                            answer2.clearOptions();
+                        } else {
+                            sendDungeonMessage('Since you have less than ' + MIN_PUNISHMENT_POINTS_FOR_TASK + ' punishment points you can only go for a punishment session though')
+                        }
+                    }
+
+                    if (mode === 0) {
+                        setVar(VARIABLE.PUNISHMENT_ACTIVE, true);
+                        startPunishmentSession(punishSeverity);
+                    } else if (mode === 1) {
+                        sendDungeonMessage('Right now you have ' + getVar(VARIABLE.PUNISHMENT_POINTS) + ' punishment points');
+                        sendDungeonMessage('How many points would you like to redeem %SlaveName%?', 0, false);
+                        answer2 = createInput();
+
+                        let points = 0;
+
+                        while (true) {
+                            if (answer2.isInt()) {
+                                points = answer2.getInteger();
+
+                                points = Math.min(points, getVar(VARIABLE.PUNISHMENT_POINTS));
+
+                                if (points < MIN_PUNISHMENT_POINTS_FOR_TASK) {
+                                    sendDungeonMessage('You need to redeem at least ' + MIN_PUNISHMENT_POINTS_FOR_TASK + ' points %SlaveName%');
+                                    answer.loop();
+                                } else {
+                                    sendDungeonMessage('Fine...');
+                                    sendDungeonMessage(points + ' punishment points it will be');
+                                    break;
+                                }
+                            } else {
+                                sendDungeonMessage("That\'s not a valid number like 100, 250 etc...");
+                                answer2.loop();
+                            }
+                        }
+
+                        handlePunishmentTaskCreation(points, punishSeverity);
+
+                        //Break because we want to kick the user to the main menu
+                        break;
+                    }
+                }
+            } else if (answer.containsIgnoreCase("pay", "fine", "gold")) {
+                answer.clearOptions();
+                sendDungeonMessage(random("Here to reduce your sentence huh...", "Well you want to pay your fines", "You wish to pay for your sins..."));
+
+                let goldMultiplier = 1;
+                //@Goto(Fines)
+                sendDungeonMessage('It\'s ' + (goldMultiplier * 1) + ' per punishment point');
+
+                sendDungeonMessage("How many punishment points do you wish to pay for?");
+                let answer = createInput();
+                while (true) {
+                    if (answer.isInteger()) {
+                        let value = answer.getInt();
+
+                        if (value > 0) {
+                            if (value > getVar(VARIABLE.PUNISHMENT_POINTS)) {
+                                value = getVar(VARIABLE.PUNISHMENT_POINTS);
+                            }
+
+                            if (value * goldMultiplier > getGold()) {
+                                sendDungeonMessage('You don\'t have enough gold %SlaveName%...');
+                                changeMeritLow(true);
+                                break;
+                            }
+
+                            sendDungeonMessage("Well everything checks out...");
+                            addGold(-value * goldMultiplier);
+                            addPunishmentPoints(-value);
+                            sendDungeonMessage(value + " points removed from your total amount of punishment points")
+                        } else {
+                            sendDungeonMessage('Please give me a number greater than 0 %SlaveName%...');
+                            changeMeritLow(true);
+                            answer.loop();
+                        }
+                    } else if (answer.isLike('no', 'abort', 'break', 'exit', 'quit')) {
+                        break;
+                    } else {
+                        sendDungeonMessage('Please just give a single number %SlaveName%...');
+                        changeMeritLow(true);
+                        answer.loop();
+                    }
+                }
+                break;
+            } else if (answer.containsIgnoreCase("return", "exit", "back")) {
+                break;
+            } else {
+                sendDungeonMessage("Spankz choir, punishment, pay fine or return?");
+                answer.loop();
+            }
         }
     }
 }
@@ -499,90 +641,4 @@ function handleFailedPunishment() {
     }
 }
 
-
-/*creating a function to invoke special characters/imagesets
-by calling below with a different person number, you get a different sender prefix and image displayed automatically
-0 no image
-1 receptionchat (punishment)
-2 ReceptionbusyPC (punishment)
-3 Receptionbusyphone (punishment)
-4 dirty
-*/
-
-function sendDungeonMessage(message, person = 0, wait) {
-    let textName = new javafx.scene.text.Text("[Miss A]: ");
-    textName.setFill(javafx.scene.paint.Color.RED);
-    textName.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.BOLD, 14));
-
-    message = replaceVocab(message);
-    let text = new javafx.scene.text.Text(message);
-    text.setFill(javafx.scene.paint.Color.RED);
-    text.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.MEDIUM, 13));
-
-    sendCustomMessage(textName, text);
-
-    let setId = Math.min(5, (ASSISTANT_CURRENT_SET_ID % 5 + 1));
-
-    //Show image
-    switch (person) {
-        case 0:
-            showImage("Images/Spicy/Punishment/Reception/Chat/" + setId + "/*.jpg");
-            break;
-        case 1:
-            showImage("Images/Spicy/Punishment/Reception/Chat/" + setId + "/*.jpg");
-            break;
-        case 2:
-            showImage("Images/Spicy/Punishment/Reception/BusyPC/" + setId + "/*.jpg");
-            break;
-        case 3:
-            showImage("Images/Spicy/Punishment/Reception/BusyPhone/" + setId + "/*.jpg");
-            break;
-        case 4:
-            showImage("Images/Spicy/Punishment/Reception/Dirty/" + setId + "/*.jpg");
-            break;
-        default:
-            showImage("Images/Spicy/Punishment/Reception/Chat/" + setId + "/*.jpg");
-            break;
-    }
-
-
-    if (wait === undefined || wait) {
-        sleep(.5 + message.length * .03);
-    }
-}
-
-function sendNurseMessage(message, picset, wait, skipImage) {
-    let textName = new javafx.scene.text.Text("[Nurse]: ");
-    textName.setFill(javafx.scene.paint.Color.PINK);
-    textName.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.BOLD, 14));
-
-    message = replaceVocab(message);
-    let text = new javafx.scene.text.Text(message);
-    text.setFill(javafx.scene.paint.Color.PINK);
-    text.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.MEDIUM, 13));
-
-    sendCustomMessage(textName, text);
-
-    //Show image
-    if (skipImage === undefined || !skipImage) {
-        switch (picset) {
-            case 1 :
-                showImage("Images/Spicy/Punishment/Nurses/" + (ASSISTANT_CURRENT_SET_ID % 10 + 1) + "/*.jpg");
-                break;
-            case 2 :
-                showImage("Images/Spicy/Punishment/Reception/BusyPC/" + (ASSISTANT_CURRENT_SET_ID % 5 + 1) + "/*.jpg");
-                break;
-            case 3 :
-                showImage("Images/Spicy/Punishment/Reception/BusyPhone/" + (ASSISTANT_CURRENT_SET_ID % 5 + 1) + "/*.jpg");
-                break;
-            default:
-                showImage("Images/Spicy/Punishment/Nurses/" + (ASSISTANT_CURRENT_SET_ID % 10 + 1) + "/*.jpg");
-                break;
-        }
-    }
-
-    if (wait === undefined || wait) {
-        sleep(1000 + message.length * 50, "MILLISECONDS");
-    }
-}
 

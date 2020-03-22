@@ -172,7 +172,8 @@ function distributeClamps(amount, bodyPartHistory = new java.util.ArrayList()) {
             amount -= toPutAmount;
         }
 
-        //Temp history to not repeat any body parts TODO: Remove in special cases and tease with the remaining things like: What to do with the last two...? Hmm. Well just apply them to your balls as well
+        //Temp history to not repeat any body parts
+        //QUALITY: Remove in special cases and tease with the remaining things like: What to do with the last two...? Hmm. Well just apply them to your balls as well
         bodyPartHistory.add(randomBodyPart.normalize());
     }
 

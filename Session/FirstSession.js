@@ -1,16 +1,16 @@
 {
-    sendMessage("Hello %subName%");
+    sendMessage("Hello %SubName%");
     sendMessage("That was the last time I used your real name");
     setDate(VARIABLE.LAST_TEASE_SESSION);
     sendMessage("From now on I will use whatever pet name I see fit");
-    sendMessage("Wether that is cum lover, cocksucker or slave");
+    sendMessage("Whether that is slut, pet or slave");
     sendMessage("Because you are a slave");
-    sendMessage("My slut, cuck, plaything, chastity boy");
+    sendMessage("My slut, bitch, plaything, chastity boy");
     sendMessage("And a lot of other lovable terms %Grin%");
     sendMessage("The point is you're mine!");
     sendMessage("Let that sink in for a moment...", 10);
     sendMessage("Now what is more important for you to understand is that the thing residing in your pants");
-    sendMessage("Is not yours anymore", 0);
+    sendMessage("Is not gonne be yours anymore", 0);
     playAudio("Audio/Spicy/Starts/Intro/intro1.mp3", true);
     sendMessage("It's mine!", 0);
     playAudio("Audio/Spicy/Starts/Intro/intro2.mp3", true);
@@ -43,8 +43,10 @@
     sendMessage("If you thought that you are my sole focus", 0);
     playAudio("Audio/Spicy/Starts/Intro/intro16.mp3", true);
     sendMessage("You are once again dearly mistaken");
-    sendMessage("Others have signed up through Tease-AI");
-    sendMessage("Both men and women...");
+    sendMessage("I should be YOUR sole focus instead");
+    sendMessage("So if you want me to focus on you you better start worshipping me the way you should");
+
+    sendMessage('Now we got a few things to clarify and talk about before we can start this agreement of ours');
 
     /*lockImages();
     sendMessage("This is " + SLAVE_F1_NAME, 0);
@@ -91,7 +93,165 @@
     sendMessage("%Lol%");
 
     sendMessage("He didn't handle it well...");*/
-    sendMessage("Well you will get plenty of time to get to know them later");
+
+    if(hasChastityCage()) {
+        sendMessage('Once I am your full time keyholder I would want you to ideally be locked whenever I haven\'t give you the explicit permission to unlock %MyYour% cock');
+        sendMessage("Meaning you wear a chastity cage 24/7");
+        sendMessage("And that you will only be released when allowed so by me");
+        sendMessage("Are you capable of wearing it 24/7? I suggest you answer truthfully for your own sake...", false);
+
+        let answer = createInput();
+
+        while (true) {
+            if (answer.isLike("yes")) {
+                setVar(VARIABLE.CHASTITY_LEVEL, 30);
+                sendMessage("This should be fun...");
+                break;
+            } else if (answer.isLike("no")) {
+                sendMessage("Don't be ashamed, we can always work on this");
+
+                sendMessage("Well since you can't wear it 24/7 yet");
+                sendMessage("I'm curious to find out how much you can handle");
+                sendMessage("Are you willing to work towards learning how to wear it 24/7?", false);
+                answer = createInput();
+
+                while (true) {
+                    if (answer.isLike("yes")) {
+                        sendMessage("%Good%");
+                        setVar(VARIABLE.CHASTITY_LEVEL, 1);
+                        setVar(VARIABLE.CHASTITY_TRAINING, true);
+
+                        sendMessage("Slave I don't care if you sleep with your cage");
+                        sendMessage("I think you should since it would constantly remind you who you belong to");
+                        sendMessage("But you won't be forced to");
+                        sendMessage("When it comes to exercise I understand that performing it while caged isn't easy");
+                        sendMessage("So I'm not gonna force this on you either");
+                        sendMessage("But again it would please me if you did");
+                        break;
+                    } else if (answer.isLike("no")) {
+                        setVar(VARIABLE.CHASTITY_TRAINING, false);
+                        sendMessage("%EmoteSad%");
+
+                        if(isEnforcingPersonality()) {
+                            sendMessage('This is the first time you said no to me');
+                            sendMessage('And I think my profile description was pretty damn clear about this');
+                            sendMessage('So don\'t you expect me to accept it this easily');
+                            sendMessage('You\'ll see how this will turn out %Grin%');
+                            changeMeritMedium(true);
+                        }
+                        break;
+                    } else {
+                        sendMessage(YES_OR_NO);
+                        answer.loop();
+                    }
+                }
+                break;
+            } else {
+                sendMessage(YES_OR_NO);
+                answer.loop();
+            }
+        }
+
+        sendMessage("Moving on...");
+    }
+
+    //Hard limit check because allowed will not be true here yet because we didn't get the chance to address it yet
+    if(!ANAL_LIMIT.isHardLimit()) {
+        sendMessage("I don't know whether you have any experience when it comes to ass play");
+        sendMessage("Meaning fucking yourself or wearing butt plugs");
+        showImage("Images/Spicy/Toys/ButtPlugs.jpg", 3);
+        sendMessage("Are you experienced and capable of wearing butt plugs on a daily basis...");
+        sendMessage("And fucking yourself with a huge dildo?");
+        showImage("Images/Spicy/Toys/Dildo.jpg", 3);
+
+        if(!CUCKOLD_LIMIT.isHardLimit()) {
+            sendMessage("Maybe even taking a huge cock from a lover of mine?");
+        }
+
+        sendMessage("You should answer this truthfully for your own good...", false);
+
+        answer = createInput();
+
+        while (true) {
+            if (answer.isLike("yes")) {
+                setVar(VARIABLE.ASS_LEVEL, 30);
+                sendMessage("I hope you are ready for what I have planned for you then...");
+                break;
+            } else if (answer.isLike("no")) {
+                setVar(VARIABLE.ASS_LEVEL, 1);
+                setVar(VARIABLE.ASS_TRAINING, true);
+                sendMessage("I guess that means we will work on this %Grin%");
+                break;
+            } else {
+                sendMessage(YES_OR_NO);
+                answer.loop();
+            }
+        }
+    }
+
+    sendVirtualAssistantMessage("Now...");
+    sendVirtualAssistantMessage("I don't know whether you have any experience when it comes to blowjobs either");
+    sendVirtualAssistantMessage("Meaning fucking your throat and caressing cocks with your mouth");
+    sendVirtualAssistantMessage("Are you experienced and capable of holding deepthroats?");
+    sendVirtualAssistantMessage("Maybe even taking a huge cock from %DomHonorific% %domName%\'s lover down your throat?");
+    sendVirtualAssistantMessage("You should answer this truthfully for your own good...", false);
+
+    answer = createInput();
+
+    while (true) {
+        if (answer.isLike("yes")) {
+            setVar(VARIABLE.BLOWJOB_LEVEL, 30);
+            sendVirtualAssistantMessage("I hope you are ready for what's about to come then...");
+            break;
+        } else if (answer.isLike("no")) {
+            setVar(VARIABLE.BLOWJOB_LEVEL, 1);
+            setVar(VARIABLE.BLOWJOB_TRAINING, true);
+            sendVirtualAssistantMessage("I guess that means %DomHonorific% %domName% will work on this with you");
+            break;
+        } else {
+            sendVirtualAssistantMessage(YES_OR_NO);
+            answer.loop();
+        }
+    }
+
+    sendVirtualAssistantMessage("Let's see...");
+    sendVirtualAssistantMessage("Well I don't know how well you handle denial");
+    sendVirtualAssistantMessage("And neither does your %DomHonorific%");
+    sendVirtualAssistantMessage("So I need you to tell me on a scale...");
+    sendVirtualAssistantMessage("How well you handle denial");
+    sendVirtualAssistantMessage("Your ability to handle denial is defined by your denial level");
+    sendVirtualAssistantMessage("Your denial level ranges from 1 to 15");
+    sendVirtualAssistantMessage("Level 1 to 5 is for beginners");
+    sendVirtualAssistantMessage("Level 6 to 8 is for the trained");
+    sendVirtualAssistantMessage("Level 9 to 11 is for the advanced");
+    sendVirtualAssistantMessage("Level 12 to 15 is for the high skilled");
+    sendVirtualAssistantMessage("The higher your level is the less messy ejaculations you will receive");
+    sendVirtualAssistantMessage("Which is good since we basically want you horny...");
+    sendVirtualAssistantMessage("A horny sub is an obedient sub");
+    sendVirtualAssistantMessage("Now I recommend choosing your level with care!");
+    sendVirtualAssistantMessage("Once in a while your %DomHonorific% will talk about this topic with you");
+    sendVirtualAssistantMessage("So what you choose now isn't final");
+    sendVirtualAssistantMessage("At what level do you think you belong?", false);
+    answer = createInput();
+
+    while (true) {
+        if (answer.isInteger()) {
+            const result = answer.getInt();
+            if (result <= 0) {
+                sendVirtualAssistantMessage("You can't choose a number equal to 0 or lower");
+                answer.loop();
+            } else if (result > 15) {
+                sendVirtualAssistantMessage("You can't choose a number higher than 15");
+                answer.loop();
+            } else {
+                setVar(VARIABLE.DENIAL_LEVEL, result);
+                break;
+            }
+        } else {
+            sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
+            answer.loop();
+        }
+    }
 
     if (isFullTime()) {
         sendMessage("You've signed up for full time");
@@ -143,10 +303,10 @@
                     if (answer.isInteger()) {
                         const result = answer.getInt();
                         if (result < 60*2) {
-                            sendMessage("Not less than 120 minutes!");
+                            sendMessage("Nothing less than 120 minutes %SlaveName%!");
                             answer.loop();
                         } else {
-                            sendMessage("Excellent");
+                            sendMessage("%Good%");
                             setVar(VARIABLE.MIN_WEEKLY_CHORE_TIME, result);
                             break;
                         }
@@ -187,7 +347,7 @@
     sendMessage("Especially of your orgasms");
     sendMessage("But I also know that not everyone handles denial too well");
     sendMessage("So I need to know your hard limit for denial in days");
-    let answer = sendInput("If you don't have one you can just write 99999");
+    answer = sendInput("If you don't have one you can just write 99999");
 
     while (true) {
         if (answer.isInteger()) {
@@ -291,16 +451,7 @@
     sendMessage('For example your birthday');
     sendMessage();
 
-    let day = createIntegerInput('Tell me %SlaveName% what day of the month were you born on?', 1, 32, 'That\'s not a number. Just give me a number like 15', 'That\'s not a valid number for a day of a month.');
-    let month = createIntegerInput('Now what month were you born in?', 1, 12, 'That\'s not a number. Just give me a number like 6', 'That\'s not a valid number for a month.');
-    let year = createIntegerInput('And last but not least what year were you born in?', 1900, 2100, 'That\'s not a number. Just give me a number like 6', 'That\'s not a valid number for a year.');
 
-    let teaseDate = setDate();
-    teaseDate.setYear(year);
-    teaseDate.setMonth(month);
-    teaseDate.setDay(day);
-
-    setDate(VARIABLE.SUB_BIRTHDAY, teaseDate);
 
     sendMessage("I think it's important that we start out with a clean history");
     sendMessage("I don't know when you cleaned your pipes the last time");

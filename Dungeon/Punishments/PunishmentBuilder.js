@@ -7,7 +7,6 @@ let PUNISHMENTS_DONE = 0;
 //Used to decide what punishment we need to do and when to stop
 let PUNISHMENT_SCORE = 0;
 
-
 let PUNISHMENT_MULTIPLIER_CURRENT = 1;
 
 const PUNISHMENT_LEVEL = {
@@ -17,7 +16,6 @@ const PUNISHMENT_LEVEL = {
      EXTREME:  {name: 'extreme', id: 3}
 };
 
-
 let PUNISHMENT_CURRENT_LEVEL = PUNISHMENT_LEVEL.EASY;
 let PUNISHMENT_OVERALL_LEVEL = PUNISHMENT_LEVEL.EASY;
 
@@ -25,12 +23,7 @@ function isOngoingPunishment() {
     return getVar(VARIABLE.PUNISHMENT_ACTIVE, false);
 }
 
-function startPunishmentSession(overallLevel) {
-    setVar(VARIABLE.PUNISHMENT_ACTIVE, true);
-    PUNISHMENT_OVERALL_LEVEL = overallLevel;
-
-    sendDebugMessage('Starting punishment with level ' + overallLevel.id);
-
+function setupPunisherConnection() {
     switch(getVar(VARIABLE.PUNISHMENT_PUNISHER)) {
         case 1 :
             sendDungeonMessage("Contacting %DomHonorific% %DomName% ..",1);
@@ -49,6 +42,15 @@ function startPunishmentSession(overallLevel) {
             setSender(4);
             break;
     }
+}
+
+
+function startPunishmentSession(overallLevel) {
+    setVar(VARIABLE.PUNISHMENT_ACTIVE, true);
+    PUNISHMENT_OVERALL_LEVEL = overallLevel;
+
+    sendDebugMessage('Starting punishment with level ' + overallLevel.id);
+    setupPunisherConnection();
 
     sleep(3);
 
@@ -58,9 +60,13 @@ function startPunishmentSession(overallLevel) {
     let relockChastity = false;
 
     if(isInChastity() && isChance(overallLevel.id*20) && (!isVar(VARIABLE.LOCKED_UP_UNTIL) || getDate(VARIABLE.LOCKED_UP_UNTIL).hasPassed())) {
-        sendMessage('I think I want your cock exposed for this %Grin%');
-        unlockChastityCage();
-        relockChastity = true;
+        if(getCurrentTAJSenderID() === 1) {
+            sendMessage('I think I want your cock exposed for this %Grin%');
+            unlockChastityCage();
+            relockChastity = true;
+        } else {
+            sendMessage('I would\'ve loved to remove that chastity device for better access but I think this should be a privilege of %DomHonorific% %DomName% %Grin%');
+        }
     }
 
     PUNISHMENT_SCORE = (overallLevel.id + 1)*4;
@@ -98,15 +104,16 @@ function startPunishmentSession(overallLevel) {
         PUNISHMENT_MULTIPLIER_CURRENT = 1;
     }
 
-    //TODO: More variety
-    sendMessage('I think that should be sufficient for now %Grin%');
+    sendMessage(random('We\'re at the end mark of today\'s punishment session', 'I think I punished you enough for today %SlaveName%', 'I think this will suffice as a punishment',
+        'I think you\'ve suffered enough at my hand today' ,'We\'re at the end of our punishment session', 'I have things to do so this will be enough as a punishment for today %SlaveName%',
+        'This is the end of our punishment session', 'I think this should be enough for this punishment session'));
 
     removeAllToys();
 
-    sendMessage('You hopefully learned your lesson %SlaveName%');
+    sendMessage(random('You hopefully learned your lesson %SlaveName%', 'I hope you won\'t misbehave again', 'I hope you will behave from now on', 'Hopefully this is the last time I need to punish you %SlaveName%'));
 
     if(relockChastity) {
-        sendMessage('I don\'t need your %cock% to be exposed any longer so...');
+        sendMessage('I don\'t need your %cock% to be exposed to me any longer so...');
         sendAlreadyKnowWhatsNext('chastity', 'lock', 'cage');
         lockChastityCage();
         lockAwayChastityKey();
@@ -114,6 +121,8 @@ function startPunishmentSession(overallLevel) {
 
     setSender(1);
     setVar(VARIABLE.PUNISHMENT_ACTIVE, false);
+    incrementVar(PUNISHMENTS_DONE, 1, 0);
+    delVar(VARIABLE.PUNISHMENT_PUNISHER);
 }
 
 function chooseNextPunishment(overallLevel) {

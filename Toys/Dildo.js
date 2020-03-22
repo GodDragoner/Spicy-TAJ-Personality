@@ -81,6 +81,10 @@ function getAnalDildoForTask(minLength = 0, minThickness = 0) {
     }
 
     if(availableDildos.length === 0) {
+        if(minThickness > 0 && minLength > 0) {
+            return getAnalDildoForTask(--minLength, --minThickness);
+        }
+
         return DILDOS[randomInteger(0, DILDOS.length - 1)];
     }
 
@@ -194,6 +198,10 @@ function getDildo(blowjob = false) {
             for (let y = 0; y < DILDOS.length; y++) {
                 let dildo = DILDOS[y];
 
+                //Ignore dildos non silicone
+                if(dildo.glass) {
+                    continue;
+                }
 
                 if (dildo.diameter >= minDiameter && dildo.length >= minLength && dildo.length <= maxLength && dildo.diameter <= maxDiameter) {
                     availableDildos.push(dildo);
@@ -205,7 +213,7 @@ function getDildo(blowjob = false) {
         }
 
         if(availableDildos.length === 0) {
-            return null;
+            return getDildo(false);
         }
 
         return availableDildos[randomInteger(0, availableDildos.length - 1)];

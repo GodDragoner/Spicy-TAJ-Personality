@@ -258,26 +258,51 @@ function talkAboutRandomLimit(ignoreAskedNo = false) {
 }
 
 function askForNewLimitValue(limit) {
-    sendMessage('I would even be happy if you told me "maybe" %Grin%');
-    sendMessage('That way I know I can try to get you into it');
-    let answer = sendInput('So what do you say?', 'Yes', 'No', 'Maybe');
+    let answer;
+
+    if(isEnforcingPersonality()) {
+        sendMessage('You know I don\'t like being told no');
+        sendMessage('And since you wan\'t to please me and definitely do NOT want to displease me %Grin%');
+        answer = sendInput('So what\'s it gonna be?', 'Yes', 'No', 'Maybe');
+    } else {
+        sendMessage('I would even be happy if you told me "maybe" %Grin%');
+        sendMessage('That way I know I can try to get you into it');
+        answer = sendInput('So what do you say?', 'Yes', 'No', 'Maybe');
+    }
 
     while (true) {
         if (answer.isLike('yes')) {
             answer.clearOptions();
-            sendMessage('Great! %EmoteHappy%');
+            sendMessage('%Good%! %EmoteHappy%');
+
+            if(isEnforcingPersonality()) {
+                sendMessage(random('I knew you\'d pick the only right thing', 'The only thing I really wanted to hear', 'I expected nothing less', 'Exactly what I wanted to hear') + ' %Grin%');
+            }
+
             changeMeritHigh(true);
             limit.setLimit(LIMIT_ASKED_YES);
             break;
         } else if (answer.isLike('no')) {
             answer.clearOptions();
+
+            if(isEnforcingPersonality()) {
+                sendMessage(random('Well do not expect me to be happy with this answer %SlaveName%', 'Do not expect me to go easy on you %SlaveName%', 'Do not expect me to accept this lightly', 'Do not think you can do this without consequences %SlaveName%'));
+                changeMeritLow(true);
+            }
+
             sendMessage('%EmoteSad%');
             changeMeritLow(true);
             limit.setLimit(LIMIT_ASKED_NO);
             break;
         } else if (answer.isLike('maybe')) {
             answer.clearOptions();
-            sendMessage('That\'s a start at least %Grin%');
+            sendMessage(random('That\'s a start at least', 'That\'s something I guess', 'That counts for something', 'A good start', 'I can work with that') + ' %EmoteHappy%');
+
+            if(isEnforcingPersonality()) {
+                sendMessage(random('As you should know I will definitely find my way to make you WANT it', 'I will find my way to make you crave it', 'I will guide you there', 'I will get you there') + ' %Grin%');
+                sendMessage(random('No matter if I have to be kind or cruel to achieve this', 'And I won\'t shy away from being cruel either', 'No matter if it takes kindness or cruelty to get you there') + ' %Lol%');
+            }
+
             changeMeritLow(false);
             limit.setLimit(LIMIT_ASKED_MAYBE);
             break;
@@ -289,10 +314,10 @@ function askForNewLimitValue(limit) {
 }
 
 function setupLimits() {
-    sendVirtualAssistantMessage('%SlaveName%');
+    sendVirtualAssistantMessage('%SubName%');
     sendVirtualAssistantMessage('I am gonna ask you about your hard limits now');
     sendVirtualAssistantMessage('You will tell me whether it is a hard limit of yours or not');
-    sendVirtualAssistantMessage('Hard limit means that %DomHonorific% %DomName% will never even try something including this limit');
+    sendVirtualAssistantMessage('Hard limit means that your Domme will never even try something including this limit');
     sendVirtualAssistantMessage('Thus your hard limits should only contain stuff that you never want to try');
 
     sendVirtualAssistantMessage('If you aren\'t sure about what exactly the limit is about just google it or don\'t add it to your hard limit list for now');

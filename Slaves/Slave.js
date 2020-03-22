@@ -9,6 +9,21 @@ function getSubBirthday() {
     }
 }
 
+function getSubBirthday() {
+    if(!isVar(VARIABLE.SUB_BIRTHDAY)) {
+        sendDebugMessage('No sub birthday found');
+        return setDate().addDay(-1);
+    } else {
+        return getDate(VARIABLE.SUB_BIRTHDAY);
+    }
+}
+
+function getSubAge() {
+    let ageDifMs = Date.now() - getSubBirthday.getTimeInMillis();
+    let ageDate = new Date(ageDifMs); // miliseconds from epoch
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+}
+
 function isSubBirthday() {
     let date = getSubBirthday();
 

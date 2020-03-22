@@ -18,7 +18,7 @@
     let exitRequest = false;
 
     while (!exitRequest) {
-        let lobbyAnswer = createInput("Session", "Chores", "Dungeon", "Settings", "Shop", "Fitness", "Exercise", "Study", "House Rules", "Pin Board", "Chastity", "End");
+        let lobbyAnswer = createInput("Session", "Chores", "Dungeon", "Settings", "Shop", "Fitness", "Exercise", "Study", "House Rules", "Pin Board", "Chastity", "injectcodedebug", "End");
         while (true) {
             if (lobbyAnswer.isLike("session", "domme")) {
                 lobbyAnswer.clearOptions();
