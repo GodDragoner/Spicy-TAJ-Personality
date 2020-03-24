@@ -10,6 +10,8 @@ const LIMIT_CHANGE_SUB_ADRESSED = 0;
 const LIMIT_CHANGE_SUB_CHANGED_MIND = 1;
 const LIMIT_CHANGE_ALREADY_YES = 2;
 const LIMIT_CHANGE_WILL_DO_ANYTHING = 3;
+const LIMIT_CHANGE_SUB_ADRESSED_NO = 4;
+const LIMIT_CHANGE_NO = 5;
 
 let pathLength = getPersonalityPath().length;
 let files = new java.io.File(getPersonalityPath() + PATH_SEPARATOR + 'Personality' + PATH_SEPARATOR + 'Limit').listFiles();
@@ -34,6 +36,40 @@ ANAL_LIMIT.askForLimitChange = function (subAddressed) {
         sendMessage('It would please me very much if we could try this and if you even enjoy it yourself');
         sendMessage('And you want to please me, don\'t you? %Grin%');
         askForNewLimitValue(limit);
+
+        if(this.isAllowed()) {
+            sendMessage('Now that we have that sorted out there is still something I need to know');
+            sendMessage("I don't know whether you have any experience when it comes to ass play");
+            sendMessage("Meaning fucking yourself or wearing butt plugs");
+            showImage("Images/Spicy/Toys/ButtPlugs.jpg", 3);
+            sendMessage("Are you experienced and capable of wearing butt plugs on a daily basis...");
+            sendMessage("And fucking yourself with a huge dildo?");
+            showImage("Images/Spicy/Toys/Dildo.jpg", 3);
+
+            if(!CUCKOLD_LIMIT.isHardLimit()) {
+                sendMessage("Maybe even taking a huge cock from a lover of mine?");
+            }
+
+            sendMessage("You should answer this truthfully for your own good %SlaveName%", false);
+
+            let answer = createInput();
+
+            while (true) {
+                if (answer.isLike("yes")) {
+                    setVar(VARIABLE.ASS_LEVEL, 30);
+                    sendMessage("I hope you are ready for what I have planned for you then...");
+                    break;
+                } else if (answer.isLike("no")) {
+                    setVar(VARIABLE.ASS_LEVEL, 1);
+                    setVar(VARIABLE.ASS_TRAINING, true);
+                    sendMessage("I guess that means we will work on this from now on %Grin%");
+                    break;
+                } else {
+                    sendMessage(YES_OR_NO);
+                    answer.loop();
+                }
+            }
+        }
     } else {
         sendMessage('%EmoteSad%');
         changeMeritLow(true);
@@ -41,8 +77,63 @@ ANAL_LIMIT.askForLimitChange = function (subAddressed) {
 };
 
 const CEI_LIMIT = createLimit('CEI', 'ceiLimit');
+CEI_LIMIT.askForLimitChange = function (subAddressed) {
+    let limit = this;
+    let ask = this.handleCurrentLimitChange(subAddressed);
+
+    if (ask) {
+        sendMessage('%SlaveName%');
+        sendMessage('I really want to humiliate you and make you my bitch');
+        sendMessage('So I would really enjoy making you play with your own pee %Grin%');
+        sendMessage('Licking it, slurping it and peeing yourself and who knows what else I am gonna come up with %Grin%');
+        sendMessage('I would be very pleased if you were to tell me that we can try this %EmoteHappy%');
+        sendMessage('And you want to be a good little slave for me, don\'t you? %Grin%');
+        askForNewLimitValue(limit);
+    } else {
+        sendMessage('%EmoteSad%');
+        changeMeritLow(true);
+    }
+};
+
 const PAIN_LIMIT = createLimit('pain', 'painLimit');
+PAIN_LIMIT.askForLimitChange = function (subAddressed) {
+    let limit = this;
+    let ask = this.handleCurrentLimitChange(subAddressed);
+
+    if (ask) {
+        sendMessage('%SlaveName%');
+        sendMessage('I think pain should be part of any BDSM relationship');
+        sendMessage('At least as a mean of punishment for bad little slaves %Grin%');
+        sendMessage('Hurting your nipples, spanking your ass and making you whimper would really bring this whole thing to a new level %Grin%');
+        sendMessage('Making you my and only my pain slut ready for abuse if I feel like it or you have been misbehaving');
+        sendMessage('I would be very happy if you were to tell me that we can try this %EmoteHappy%');
+        sendMessage('And you want to please your %DomHonorific%, don\'t you? %Grin%');
+        askForNewLimitValue(limit);
+    } else {
+        sendMessage('%EmoteSad%');
+        changeMeritLow(true);
+    }
+};
+
 const PEE_LIMIT = createLimit('pee', 'peeLimit');
+PEE_LIMIT.askForLimitChange = function (subAddressed) {
+    let limit = this;
+    let ask = this.handleCurrentLimitChange(subAddressed);
+
+    if (ask) {
+        sendMessage('%SlaveName%');
+        sendMessage('I really want to humiliate you and make you my bitch');
+        sendMessage('So I would really enjoy making you play with your own pee %Grin%');
+        sendMessage('Licking it, slurping it and peeing yourself and who knows what else I am gonna come up with %Grin%');
+        sendMessage('I would be very pleased if you were to tell me that we can try this %EmoteHappy%');
+        sendMessage('And you want to be a good little slave for me, don\'t you? %Grin%');
+        askForNewLimitValue(limit);
+    } else {
+        sendMessage('%EmoteSad%');
+        changeMeritLow(true);
+    }
+};
+
 const CBT_LIMIT = createLimit('cock ball torture', 'cbtLimit');
 CBT_LIMIT.askForLimitChange = function (subAddressed) {
     let limit = this;
@@ -136,16 +227,18 @@ function createLimit(name, variable) {
             let ask = false;
             let limitValue = this.getLimit();
 
-            if (limitValue == LIMIT_ASKED_YES) {
 
+
+            if (limitValue == LIMIT_ASKED_YES) {
+                return LIMIT_CHANGE_ALREADY_YES;
             } else if (limitValue == LIMIT_NEVER_ASKED && subAddressed) {
                 sendMessage('This is getting interesting...');
-                ask = true;
-            } else if (limitValue == LIMIT_ASKED_MAYBE) {
+                return LIMIT_CHANGE_SUB_ADRESSED;
+            } else if (limitValue === LIMIT_ASKED_MAYBE || limitValue === LIMIT_ASKED_MAYBE) {
                 //TODO: Add some teasing stuff individually / design modules that want to get the sub to cross his limits
-                //This needs to be handled individually to seduce in the current situation
 
-                if(isVar(VARIABLE.RESPONSE_WILL_DO_ANYTHING) && subAddressed) {
+                //This needs to be handled individually to seduce in the current situation
+                if(isVar(VARIABLE.RESPONSE_WILL_DO_ANYTHING)) {
                     delVar(VARIABLE.RESPONSE_WILL_DO_ANYTHING);
                     return LIMIT_CHANGE_WILL_DO_ANYTHING;
                 }
@@ -155,11 +248,12 @@ function createLimit(name, variable) {
                 if(sendYesOrNoQuestion('Did you change your mind about that?')) {
                     return LIMIT_CHANGE_SUB_CHANGED_MIND;
                 } else {
-
+                    sendMessage('Well then don\'t bother me with stuff like this...');
+                    return LIMIT_CHANGE_SUB_ADRESSED_NO;
                 }
             }
 
-            return ask;
+            return LIMIT_CHANGE_NO;
         },
     };
 
@@ -258,17 +352,15 @@ function talkAboutRandomLimit(ignoreAskedNo = false) {
 }
 
 function askForNewLimitValue(limit) {
-    let answer;
-
     if(isEnforcingPersonality()) {
-        sendMessage('You know I don\'t like being told no');
-        sendMessage('And since you wan\'t to please me and definitely do NOT want to displease me %Grin%');
-        answer = sendInput('So what\'s it gonna be?', 'Yes', 'No', 'Maybe');
+        sendMessage(random('You know I don\'t like being told no', 'As you should know I don\'t like being turned down', 'You know I do not take a "no" lightly', 'You know that I really don\'t like hearing "no"'));
+        sendMessage(random('And since you wan\'t to please me and definitely do NOT want to displease me %Grin%', 'Thus I guess there is only one right answer to this', 'Which means there is practically only one way for you to answer this'));
     } else {
-        sendMessage('I would even be happy if you told me "maybe" %Grin%');
-        sendMessage('That way I know I can try to get you into it');
-        answer = sendInput('So what do you say?', 'Yes', 'No', 'Maybe');
+        sendMessage(random('I would even be happy if you told me "maybe"', 'A maybe would also make me happy', '"Maybe" would also make me happy for now') + '  %Grin%');
+        sendMessage(random('That way I know I can try to get you into it', 'At least that would allow me to try to get you into it', 'It would allow me to try to get you into it') + ' %EmoteHappy%');
     }
+
+    let answer = sendInput(random('So would you be up for it?', 'So would you be fine with trying it?', 'Would it be fine for you to try it out?', 'Would you allow me to add this to our relationship?'), 'Yes', 'No', 'Maybe');
 
     while (true) {
         if (answer.isLike('yes')) {
@@ -326,7 +418,6 @@ function setupLimits() {
     sendVirtualAssistantMessage('Here we go %EmoteHappy%');
 
     for (let x = 0; x < LIMITS.length; x++) {
-
         setCurrentSender(SENDER_ASSISTANT);
 
         if (sendYesOrNoQuestion('Is ' + LIMITS[x].name + ' a hard limit of yours?')) {
@@ -334,7 +425,11 @@ function setupLimits() {
             LIMITS[x].setLimit(LIMIT_NEVER);
         } else {
             sendVirtualAssistantMessage('%Good%');
-            LIMITS[x].setLimit(LIMIT_NEVER_ASKED);
+
+            //We don't want to reset it if we have already a different value in here
+            if(LIMITS[x].getLimit() === LIMIT_NEVER_ASKED) {
+                LIMITS[x].setLimit(LIMIT_NEVER_ASKED);
+            }
         }
 
         setCurrentSender(SENDER_TAJ);

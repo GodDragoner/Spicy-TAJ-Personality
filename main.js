@@ -96,7 +96,6 @@ if(endMillis - startMillis < waitTime) {
 setTempVar(VARIABLE.CURRENT_SESSION_ACTIVE, false);
 
 //Real interaction starts here!
-
 if(!getVar(VARIABLE.FINISHED_SETUP, false)) run("Startup/Setup.js");
 
 if(!getVar(VARIABLE.FINISHED_FIRST_SESSION, false)) run("Session/FirstSession.js");

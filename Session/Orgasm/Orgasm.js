@@ -199,6 +199,30 @@ function distributeOrgasmPoints() {
 
     let map = [];
 
+    let orgasmFrequency = getVar(VARIABLE.ORGASM_FREQUENCY);
+
+    //Based on mood if frequency dom is selected
+    if(orgasmFrequency === ORGASM_FREQUENCY_DOM) {
+        let mood = getMood();
+
+        switch(mood) {
+            case VERY_PLEASED_MOOD:
+                orgasmFrequency = ORGASM_FREQUENCY_SEMI_RARE;
+                break;
+            case PLEASED_MOOD:
+                orgasmFrequency = ORGASM_FREQUENCY_SEMI_RARE;
+                break;
+            case NEUTRAL_MOOD:
+                orgasmFrequency = ORGASM_FREQUENCY_RARE;
+                break;
+            case ANNOYED_MOOD:
+                //Fallthrough
+            case VERY_ANNOYED_MOOD:
+                orgasmFrequency = ORGASM_FREQUENCY_VERY_RARE;
+                break;
+        }
+    }
+
     switch(getVar(VARIABLE.ORGASM_FREQUENCY)) {
         case ORGASM_FREQUENCY_VERY_RARE:
             //Personality 1
@@ -232,14 +256,14 @@ function distributeOrgasmPoints() {
             //Personality 3
             map.push(2, 10);
             break;
-        case ORGASM_FREQUENCY_DOM:
+        /*case ORGASM_FREQUENCY_DOM:
             //Personality 1
             map.push(0, 15);
             //Personality 2
             map.push(0, 12);
             //Personality 3
             map.push(0, 9);
-            break;
+            break;*/
     }
 
     totalToAdd += randomInteger(map[getStrictnessForCharacter()*2], map[getStrictnessForCharacter()*2 + 1]);

@@ -1,6 +1,6 @@
 {
     //TODO: Do stuff without parachute using strings if no parachute
-    if (getCBTLimit() != LIMIT_ASKED_YES || PARACHUTE_TOY.hasToy() && !PARACHUTE_TOY.isPlayAllowed()) {
+    if (getCBTLimit() != LIMIT_ASKED_YES || !PARACHUTE_TOY.hasToy() || !PARACHUTE_TOY.isPlayAllowed()) {
         runModuleCategory('Pain');
     } else if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.BALL_TORTURE)) {
         if(PARACHUTE_TOY.fetchToy()) {

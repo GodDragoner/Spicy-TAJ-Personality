@@ -116,6 +116,7 @@ const VARIABLE = {
     AFRAID_OF_CHASTITY: 'afraidOfChastity',
     LAST_CHASTITY_TASK_ID: 'lastChastityTaskId',
     CHASTITY_TASKS_IN_ROW: 'chastityTasksInRow',
+    //CHASTITY_TRAINING_DECLINED: 'chastityTrainingDeclined',
 
     LONG_TERM_CHASTITY: 'chastityLongTerm',
 

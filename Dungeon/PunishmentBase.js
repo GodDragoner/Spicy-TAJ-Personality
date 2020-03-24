@@ -100,14 +100,14 @@
                     sendPunishmentTaskInstructions();
                     sendMessage('That\'s it. Don\'t bother me again unless you are done!');
                     break;
-                } else if(answer.isLike('give up', 'can\'t do', 'too much')) {
-                    switch(getStrictnessForCharacter()) {
+                } else if (answer.isLike('give up', 'can\'t do', 'too much')) {
+                    switch (getStrictnessForCharacter()) {
                         case 0:
                             sendMessage('Really...?');
                             sendMessage('You want to give up that easily?');
                             sendMessage('You disappoint me %SlaveName%');
                             sendMessage('As penalty I will add 25% of the to redeem points to your balance');
-                            addPunishmentPoints(Math.floor(getVar(VARIABLE.PUNISHMENT_TASK_POINTS)*0.25), PUNISHMENT_REASON.POOR_BEHAVIOUR);
+                            addPunishmentPoints(Math.floor(getVar(VARIABLE.PUNISHMENT_TASK_POINTS) * 0.25), PUNISHMENT_REASON.POOR_BEHAVIOUR);
                             sendMessage('Don\'t disappoint me ever again and don\'t bite off more than you can chew!');
                             break;
                         case 1:
@@ -115,7 +115,7 @@
                             sendMessage('You are supposed to follow all orders no matter how difficult');
                             sendMessage('Not mentioning you chose this yourself');
                             sendMessage('As penalty I will add 50% of the to redeem points to your balance');
-                            addPunishmentPoints(Math.floor(getVar(VARIABLE.PUNISHMENT_TASK_POINTS)*0.60), PUNISHMENT_REASON.POOR_BEHAVIOUR);
+                            addPunishmentPoints(Math.floor(getVar(VARIABLE.PUNISHMENT_TASK_POINTS) * 0.60), PUNISHMENT_REASON.POOR_BEHAVIOUR);
                             sendMessage('Don\'t disappoint me ever again and don\'t bite off more than you can chew!');
                             break;
                         case 2:
@@ -124,7 +124,7 @@
                             sendMessage('You can\'t even handle the most simple tasks. This is...');
                             sendMessage('DISAPPOINTING!');
                             sendMessage('As penalty I will add 75% of the to redeem points to your balance');
-                            addPunishmentPoints(Math.floor(getVar(VARIABLE.PUNISHMENT_TASK_POINTS)*0.75), PUNISHMENT_REASON.POOR_BEHAVIOUR);
+                            addPunishmentPoints(Math.floor(getVar(VARIABLE.PUNISHMENT_TASK_POINTS) * 0.75), PUNISHMENT_REASON.POOR_BEHAVIOUR);
                             sendMessage('Don\'t disappoint me ever again and don\'t bite off more than you can chew!');
                             break;
                     }
@@ -398,27 +398,31 @@
 
                     let mode = 0;
 
-                    if(new Date().getDay() === 6) {
+                    if (new Date().getDay() === 6) {
                         sendDungeonMessage('It\'s friday %SlaveNam% %EmoteHappy%');
-                        if (getVar(VARIABLE.PUNISHMENT_POINTS) >= MIN_PUNISHMENT_POINTS_FOR_TASK) {
-                            sendDungeonMessage('So what will it be today? Redeeming Tasks or a session?', 0, false);
-                            answer2 = createInput("Session", 'Tasks');
-                            while (true) {
-                                if (answer2.containsIgnoreCase("session", 'punishment')) {
-                                    mode = 0;
-                                    break;
-                                } else if (answer2.containsIgnoreCase("tasks", 'redeem')) {
-                                    mode = 1;
-                                    break;
-                                } else {
-                                    sendDungeonMessage("%SlaveName%, are you illiterate? A punishment session or tasks?");
-                                    answer2.loop();
+                        if (canRequestsPunishmentTasks()) {
+                            if (getVar(VARIABLE.PUNISHMENT_POINTS) >= MIN_PUNISHMENT_POINTS_FOR_TASK) {
+                                sendDungeonMessage('So what will it be today? Redeeming Tasks or a session?', 0, false);
+                                answer2 = createInput("Session", 'Tasks');
+                                while (true) {
+                                    if (answer2.containsIgnoreCase("session", 'punishment')) {
+                                        mode = 0;
+                                        break;
+                                    } else if (answer2.containsIgnoreCase("tasks", 'redeem')) {
+                                        mode = 1;
+                                        break;
+                                    } else {
+                                        sendDungeonMessage("%SlaveName%, are you illiterate? A punishment session or tasks?");
+                                        answer2.loop();
+                                    }
                                 }
-                            }
 
-                            answer2.clearOptions();
+                                answer2.clearOptions();
+                            } else {
+                                sendDungeonMessage('Since you have less than ' + MIN_PUNISHMENT_POINTS_FOR_TASK + ' punishment points you can only go for a punishment session though')
+                            }
                         } else {
-                            sendDungeonMessage('Since you have less than ' + MIN_PUNISHMENT_POINTS_FOR_TASK + ' punishment points you can only go for a punishment session though')
+                            sendDungeonMessage('Sadly your %DomHonorific% has told me that you aren\'t ready for redeeming tasks yet so you won\'t have that option today %SlaveName%')
                         }
                     }
 

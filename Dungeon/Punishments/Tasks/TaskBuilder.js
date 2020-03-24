@@ -33,6 +33,10 @@ function canRequestsPunishmentTasks() {
     return DEEPTHROAT_TASK.canUse() || ANAL_TASK.canUse();
 }
 
+function canRequestTask() {
+    return getVar(VARIABLE.BLOWJOB_LEVEL) >= 30 || getVar(VARIABLE.ASS_LEVEL) >= 30;
+}
+
 function buildPunishmentTask(points, level) {
     PUNISHMENT_CURRENT_LEVEL = level;
 
@@ -43,11 +47,11 @@ function buildPunishmentTask(points, level) {
 
     sendDebugMessage('Starting punishment tasks modifiers ' + modifiers);
 
-    if (getVar(VARIABLE.BLOWJOB_LEVEL) >= 30 || true) {
+    if (getVar(VARIABLE.BLOWJOB_LEVEL) >= 30) {
         punishmentTasks.push(DEEPTHROAT_TASK);
     }
 
-    if (getVar(VARIABLE.ASS_LEVEL) >= 30 || true) {
+    if (getVar(VARIABLE.ASS_LEVEL) >= 30) {
         punishmentTasks.push(ANAL_TASK);
     }
 

@@ -547,7 +547,7 @@ function setupToys(settings) {
     //Skip buttplug and dildos if we are in the settings
     if (!settings && hasButtplugToy()) {
         sendVirtualAssistantMessage('Okay %SlaveName%. Tell me, how many different buttplugs do you have?', false);
-        answer = createInput();
+        let answer = createInput();
 
         while (true) {
             if (answer.isInteger()) {

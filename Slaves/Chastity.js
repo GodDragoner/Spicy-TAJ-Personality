@@ -101,7 +101,7 @@ function hasChastityCage() {
  * @returns {*|boolean} Whether slave has declined chastity training
  */
 function hasDeclinedChastityTraining() {
-    return hasChastityCage() && getVar(VARIABLE.CHASTITY_LEVEL, 0) < 30 && getVar(VARIABLE.CHASTITY_TRAINING, false);
+    return hasChastityCage() && getVar(VARIABLE.CHASTITY_TRAINING_DECLINED, 0) >= 1;
 }
 
 function startLongTermChastityIntro() {
@@ -163,6 +163,7 @@ function startLongTermChastityIntro() {
             sendMessage('But how you handle that is up to you');
             sendMessage('If you want to take it off because you want to %JerkOff%...');
             sendMessage('You\'ll have to come to me or my assistant and ask');
+
             if (sendYesOrNoQuestion('So, do you still want to make me keyholder?')) {
                 sendMessage('You won\'t regret it, %SlaveName%');
 
@@ -182,6 +183,8 @@ function startLongTermChastityIntro() {
                 sendMessage('Dangling between my %Boobs%');
                 sendMessage('%Moan%');
                 sendMessage('This thing we have just got interesting, %SlaveName% %EmoteHappy%');
+
+                askForChastityTraining();
                 return true;
             } else {
                 sendMessage('Hmmm, that\'s too bad, %SlaveName%');
@@ -222,6 +225,68 @@ function startLongTermChastityIntro() {
         sendMessage('But for now...');
         sendMessage('I can still keep you in chastity during our sessions %EmoteHappy%');
         return false;
+    }
+}
+
+function askForChastityTraining() {
+    sendMessage('Now that I am your full time keyholder I would want you to ideally be locked whenever I haven\'t give you the explicit permission to unlock %MyYour% cock');
+    sendMessage("Meaning you wear a chastity cage 24/7 and that you will only be released when allowed so by me");
+    sendMessage("Are you capable of wearing it 24/7 right now? I suggest you answer truthfully for your own sake...", false);
+
+    let answer = createInput();
+
+    while (true) {
+        if (answer.isLike("yes")) {
+            setVar(VARIABLE.CHASTITY_LEVEL, 30);
+            setVar(VARIABLE.CHASTITY_TRAINING, false);
+            sendMessage('Impressive. This will be fun %Grin%');
+            break;
+        } else if (answer.isLike("no")) {
+            sendMessage("Don't be ashamed, we can always work on this");
+
+            sendMessage("This means we wil be working on this together %Grin%");
+            setVar(VARIABLE.CHASTITY_LEVEL, 1);
+            setVar(VARIABLE.CHASTITY_TRAINING, true);
+
+            sendMessage("Slave I don't care if you sleep with your cage");
+            sendMessage("I think you should since it would constantly remind you who you belong to");
+            sendMessage("But you won't be forced to");
+            sendMessage("When it comes to exercise I understand that performing it while caged isn't easy");
+            sendMessage("So I'm not gonna force this on you either");
+            sendMessage("But again it would please me if you did");
+
+            /*sendMessage("Well since you can't wear it 24/7 yet");
+            sendMessage("I'm curious to find out how much you can handle");
+            sendMessage("Are you willing to work towards learning how to wear it 24/7?", false);
+            answer = createInput();
+
+            while (true) {
+                if (answer.isLike("yes")) {
+
+                    break;
+                } else if (answer.isLike("no")) {
+                    setVar(VARIABLE.CHASTITY_TRAINING, false);
+                    incrementVar(VARIABLE.CHASTITY_TRAINING_DECLINED, 1, 0);
+                    sendMessage("%EmoteSad%");
+
+                    if(isEnforcingPersonality()) {
+                        sendMessage('This is the first time you said no to me');
+                        sendMessage('And I think my profile description was pretty damn clear about this');
+                        sendMessage('So don\'t you expect me to accept it this easily');
+                        sendMessage('You\'ll see how this will turn out %Grin%');
+                        changeMeritMedium(true);
+                    }
+                    break;
+                } else {
+                    sendMessage(YES_OR_NO);
+                    answer.loop();
+                }
+            }*/
+            break;
+        } else {
+            sendMessage(YES_OR_NO);
+            answer.loop();
+        }
     }
 }
 
