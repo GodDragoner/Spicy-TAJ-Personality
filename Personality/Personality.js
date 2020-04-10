@@ -62,14 +62,14 @@ function getRandomHonorific() {
     return random(["Mistress", "Princess", "Goddess", /*"Maitrese"*/ "Queen", /*"Miss"*/]);
 }
 
-//We should do this only at session start unlike spicy because otherwise you can just restart the program x times to increase your mood
+//We should do this only at session end unlike spicy because otherwise you can just restart the program x times to increase your mood
 function loadMood() {
     const mood = getMood();
 
     if(mood === VERY_ANNOYED_MOOD) {
-        setVar("Merits", getVar("Merits") + 30);
-    } else if(mood == VERY_PLEASED_MOOD) {
-        setVar("Merits", getVar("Merits") - 30);
+        changeMeritMedium(false);
+    } else if(mood === VERY_PLEASED_MOOD) {
+        changeMeritMedium(true);
     }
 }
 
@@ -88,23 +88,23 @@ function getMood() {
         case 0:
             veryPleased = 900;
             pleased = 700;
-            neutral = 650;
-            annoyed = 250;
-            veryAnnoyed = 0;
+            neutral = 500;
+            annoyed = 200;
+            veryAnnoyed = 125;
             break;
         case 1:
             veryPleased = 950;
             pleased = 750;
-            neutral = 700;
-            annoyed = 250;
-            veryAnnoyed = 50;
+            neutral = 550;
+            annoyed = 300;
+            veryAnnoyed = 200;
             break;
         case 2:
             veryPleased = 1000;
             pleased = 800;
-            neutral = 750;
-            annoyed = 300;
-            veryAnnoyed = 50;
+            neutral = 600;
+            annoyed = 400;
+            veryAnnoyed = 300;
             break;
     }
 

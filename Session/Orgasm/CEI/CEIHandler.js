@@ -9,12 +9,23 @@ function isAlwaysCEI() {
 }
 
 function shouldCEI() {
-    if(getCEILimit() == LIMIT_ASKED_YES) {
+    if(CEI_LIMIT.isAllowed()) {
         if(isAlwaysCEI()) {
             return true;
         }
 
         return isChance((getMood() + 1)*(getStrictnessForCharacter() + 1)*7);
+    } else if(CEI_LIMIT.getLimit() === LIMIT_ASKED_MAYBE || (CEI_LIMIT.getLimit() === LIMIT_ASKED_NO && isEnforcingPersonality())) {
+        //QUALITY: VARIETY
+        sendMessage('You know %SlaveName%...');
+        sendMessage('I would really want to make you eat your cum right now...');
+
+        CEI_LIMIT.askForLimitChange(LIMIT_ADDRESS.DOMME);
+
+        //Change?
+        if(CEI_LIMIT.isAllowed()) {
+            return true;
+        }
     }
 
     return false;

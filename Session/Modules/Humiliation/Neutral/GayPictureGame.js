@@ -326,7 +326,7 @@ function startGayPictureRound() {
                             sendMessage('Really? %Lol%');
 
                             if(getASMLimit() != LIMIT_ASKED_YES) {
-                                ASM_LIMIT.askForLimitChange(true);
+                                ASM_LIMIT.askForLimitChange(LIMIT_ADDRESS.SUB);
                             } else {
                                 if (getASMLimit() == LIMIT_ASKED_YES && getCEILimit() == LIMIT_ASKED_YES) {
                                     let cleanAnswer = sendYesOrNoQuestionTimeout('Would you like to clean it with your tongue?', 5);

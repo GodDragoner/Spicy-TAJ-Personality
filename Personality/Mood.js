@@ -108,6 +108,7 @@ function isAnnoyedByTalking() {
     chance += getVar(VARIABLE.FORGETTING_HONORIFIC_COUNT, 0)*10*mood;
     chance += getVar(VARIABLE.UNALLOWED_TALKS, 0)*10*mood;
     chance += getVar(VARIABLE.COMPLAINTS, 0)*10*mood;
+    chance += getVar(VARIABLE.COMPLAINTS, 0)*10*mood;
 
     //General mood
     if(chance > 0) {
@@ -192,6 +193,18 @@ function registerComplain() {
     }
 
     setTempVar(VARIABLE.COMPLAINTS, getVar(VARIABLE.COMPLAINTS, 0) + 1);
+}
+
+function registerRepeatingText() {
+    if(getVar(VARIABLE.REPEATING_TEXT, 0) > 3) {
+        changeMeritHigh(true);
+    } else if(getVar(VARIABLE.REPEATING_TEXT) > 1) {
+        changeMeritMedium(true);
+    } else {
+        changeMeritLow(true);
+    }
+
+    setTempVar(VARIABLE.REPEATING_TEXT, getVar(VARIABLE.REPEATING_TEXT, 0) + 1);
 }
 
 function registerUnallowedTalk() {

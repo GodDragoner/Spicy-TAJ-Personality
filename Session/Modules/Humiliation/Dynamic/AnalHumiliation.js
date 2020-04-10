@@ -268,10 +268,10 @@ function appendModule(toy) {
                     sendMessage("Your ass will be violated again");
                     sendMessage("However this time in a special position %Grin%");
                 } else if (subGuess != 0 && subGuess == 1) {
-                    if (ASM_LIMIT.getLimit() != LIMIT_ASKED_YES) {
+                    if (ASM_LIMIT.getLimit() !== LIMIT_ASKED_YES) {
                         sendMessage('A blowjob?!');
 
-                        ASM_LIMIT.askForLimitChange(true);
+                        ASM_LIMIT.askForLimitChange(LIMIT_ADDRESS.SUB);
                     }
 
                     sendMessage("No %SlaveName%. I won't make you blow that " + toy);

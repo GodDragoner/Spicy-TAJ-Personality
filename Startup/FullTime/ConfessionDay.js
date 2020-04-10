@@ -31,7 +31,7 @@
         while (true) {
             let answer = createInput();
 
-            if (answer.containsIgnoreCase("came, orgasm, cum, cumming")) {
+            if (answer.containsIgnoreCase("came", "orgasm", "cum", "cumming")) {
                 sendVirtualAssistantMessage("Cumming without permission...");
                 addPunishmentPoints(400, PUNISHMENT_REASON.NO_PERM_CUM);
             } else if (answer.containsIgnoreCase("ruin", "ruined")) {

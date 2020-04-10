@@ -1,0 +1,7 @@
+%SlaveName% %Grin%
+%SlaveName% %Giggles%
+%SlaveName% %EmoteHappy%
+%SlaveName%
+%Grin%
+%Giggles%
+%EmoteHappy%

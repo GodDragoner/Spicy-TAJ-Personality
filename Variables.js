@@ -37,6 +37,7 @@ const VARIABLE = {
 
     //Interaction
     RESPONSE_WILL_DO_ANYTHING: 'responseWillDoAnything',
+    RESPONSE_WILL_DO_ANYTHING_COUNT: 'responseWillDoAnythingCount',
 
     NEXT_TIME_ICE_CUBES: 'nextTimeIceCubes',
 
@@ -292,9 +293,12 @@ const VARIABLE = {
     LUST: "lust",
     ANGER: "anger",
 
+    REPEATING_TEXT: 'repeatingText',
     COMPLAINTS: 'complaints',
     UNALLOWED_TALKS: 'unallowedTalks',
     FORGETTING_HONORIFIC_COUNT: 'forgettingHonorificCount',
+
+    DOMME_AFK: 'dommeAfk',
 
     //End
     ACTIVE_END_GAME_ID: 'activeEndGameId',

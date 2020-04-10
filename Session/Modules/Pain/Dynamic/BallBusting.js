@@ -3,7 +3,7 @@
     if (!CBT_LIMIT.isAllowed() || isInChastity() && getActiveChastityCage().isFullSizedBelt()) {
         //Address this limit if we never asked
         if(CBT_LIMIT.getLimit() === LIMIT_NEVER_ASKED) {
-            CBT_LIMIT.askForLimitChange(false);
+            CBT_LIMIT.askForLimitChange(LIMIT_ADDRESS.DOMME);
         }
 
         runModuleCategory('Pain');
