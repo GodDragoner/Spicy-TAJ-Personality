@@ -54,7 +54,7 @@ function willDoAnythingResponse(message) {
                 'Just edging for me is quite enough for now, %SlaveName%',
                 'Just edge for me now',
                 'But all I want from you right now is to get to the edge',
-                'Anything? I\'ll be happy if you edge for me right now',);
+                'Anything? I\'ll be happy if you edge for me right now');
         }
 
         //TODO: Holding edge

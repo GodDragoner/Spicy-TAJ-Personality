@@ -149,8 +149,7 @@ CBT_LIMIT.sendDoingAnythingIntroduction = function (type) {
 
 const SISSY_LIMIT = createLimit('sissyfication', 'sissyLimit');
 SISSY_LIMIT.sendIntroduction = function (type) {
-    sendMessage('I want to humiliate you in many ways');
-    sendMessage('One of them would be to train you to become a good little sissy for me %Grin%');
+    sendMessage('I want to train you to become a good little sissy for me %Grin%');
     sendMessage('Locking that little clit of yours up, training your cock sucking and anal skills...');
     sendMessage('And also making you cum from anal only');
     sendMessage('Not to forget about your makeup, clothing and other accessories %Lol%');
@@ -168,7 +167,7 @@ SISSY_LIMIT.sendDoingAnythingIntroduction = function (type) {
 
 const CUCKOLD_LIMIT = createLimit('cuckold', 'cuckoldLimit');
 CUCKOLD_LIMIT.sendIntroduction = function (type) {
-    sendMessage('I want to humiliate you in all the ways');
+    sendMessage('I want to humiliate you in all ways possible');
     sendMessage('And cuckolding is one of them %Grin%');
     sendMessage('Making you watch me fuck other men while you are locked up and desperate');
     sendMessage('And making you lick me clean afterwards %Grin%');
@@ -198,7 +197,7 @@ FEET_LIMIT.sendIntroduction = function (type) {
 
 FEET_LIMIT.sendDoingAnythingIntroduction = function (type) {
     sendMessage('Anything does also mean worshiping my feet');
-    sendMessage('Licking them clean after a long workout and also worshipping my boots');
+    sendMessage('Licking them clean after a long workout or worshipping my boots');
 };
 
 const VERBAL_HUMILIATION_LIMIT = createLimit('verbal humiliation', 'verbalHumiliation');
@@ -628,7 +627,7 @@ function setupLimits() {
             sendVirtualAssistantMessage('%Good%');
 
             //We don't want to reset it if we have already a different value in here
-            if (LIMITS[x].getLimit() === LIMIT_NEVER_ASKED) {
+            if (LIMITS[x].getLimit() === LIMIT_NEVER) {
                 LIMITS[x].setLimit(LIMIT_NEVER_ASKED);
             }
         }

@@ -80,7 +80,11 @@ function getMaxChastitySize() {
     let mood = getMood();
     let strictness = getStrictnessForCharacter();
 
-    let maxWithoutRange = 8 - (Math.max(1, strictness) + Math.max(1, mood) + Math.min(1, mood));
+    //Smaller size if we feel like punishing
+    let subtract = feelsLikePunishingSlave()? 1 : 0;
+
+    let maxWithoutRange = 8 - (Math.max(1, strictness) + Math.max(1, mood) + Math.min(1, mood) + subtract);
+    sendDebugMessage('Max chastity cage size: ' + maxWithoutRange);
 
     return Math.max(1, Math.min(5, maxWithoutRange));
 }

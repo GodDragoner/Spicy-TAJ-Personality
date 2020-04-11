@@ -31,6 +31,6 @@ function getRandomMediaCategory() {
         'CAPTIONS',
         'GENERAL',
         'BOOBS',
-        'BUTTS',
-    )
+        'BUTTS'
+    );
 }

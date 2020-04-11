@@ -240,6 +240,10 @@ const VARIABLE = {
 
     SUB_PARTNER_NAME: 'subPartnerName',
 
+    SUB_PARTNER_CUCKOLD: 'subPartnerCuckold',
+
+    SUB_LEG_MAN: 'subLegMan',
+
     //Stats
     SESSION_COUNTER: "sessionCounter",
     ORGASM_COUNTER: "orgasmCounter",
