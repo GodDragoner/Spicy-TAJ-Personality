@@ -58,5 +58,5 @@ setVar(VARIABLE.CHASTITY_ON, true);
 
 //createBondageInstructions(3);
 
-setVar(VARIABLE.CHASTITY_ON, false);
-lockChastityCage();
+setVar(VARIABLE.DOMME_HONORIFIC, 'Goddess');
+

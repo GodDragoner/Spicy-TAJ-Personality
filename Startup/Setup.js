@@ -1,5 +1,5 @@
 {
-    showImage("Images/Spicy/Intro/Loading.jpg");
+    /*showImage("Images/Spicy/Intro/Loading.jpg");
     sendVirtualAssistantMessage("Welcome to SPICY %SubName%");
     sendVirtualAssistantMessage('Spicy is an online BDSM dating and communication platform');
     sendVirtualAssistantMessage('Which means we provide a way for Dommes to meet and get to know potential subs');
@@ -8,7 +8,7 @@
     sendVirtualAssistantMessage('Don\'t worry though you will get to interact with me afterwards a lot too');
     sendVirtualAssistantMessage('I will be your contact person whenever your Domme is not around or too busy to deal with you');
     sendVirtualAssistantMessage('This initial setup is very important and will take roughly 1 - 1.5 hours');
-    sendVirtualAssistantMessage("Do you have about 1 - 1.5 hours?");
+    sendVirtualAssistantMessage("Do you have about 1 - 1.5 hours?", false);
     let answer = createInput();
 
     while (true) {
@@ -107,7 +107,7 @@
     }
 
     sendVirtualAssistantMessage('Now I need to know your current relationship status %SubName%');
-    sendVirtualAssistantMessage('So tell me: Are you married, do you have a girlfriend or are you single?');
+    sendVirtualAssistantMessage('So tell me: Are you married, do you have a girlfriend or are you single?', false);
 
     answer = createInput('Single', 'Girlfriend', 'Single');
 
@@ -142,17 +142,17 @@
 
     sendVirtualAssistantMessage('Next are a few things about your visual appearance');
 
-    sendVirtualAssistantMessage('What hair color do you have?');
+    sendVirtualAssistantMessage('What hair color do you have?', false);
     setVar(VARIABLE.SUB_HAIR_COLOR, createInput().getAnswer());
 
-    sendVirtualAssistantMessage('What eye color do you have?');
+    sendVirtualAssistantMessage('What eye color do you have?', false);
     setVar(VARIABLE.SUB_EYE_COLOR, createInput().getAnswer());
 
     setCurrentSender(SENDER_ASSISTANT);
-    setVar(VARIABLE.SUB_HEIGHT, createIntegerInput('How tall are you? (cm)', 0, 300, 'That\'s not a number. Just give me a number like 180', 'That\'s not a realistic height in cm').getAnswer());
-    setVar(VARIABLE.SUB_WEIGHT, createDoubleInput('How much do you weigh? (kg, decimal place allowed)', 0, 600, 'That\'s not a number. Just give me a number like 78.7', 'That\'s not a realistic weight in kg').getAnswer());
+    setVar(VARIABLE.SUB_HEIGHT, createIntegerInput('How tall are you? (cm)', 0, 300, 'That\'s not a number. Just give me a number like 180', 'That\'s not a realistic height in cm'));
+    setVar(VARIABLE.SUB_WEIGHT, createDoubleInput('How much do you weigh? (kg, decimal place allowed)', 0, 600, 'That\'s not a number. Just give me a number like 78.7', 'That\'s not a realistic weight in kg'));
     sendVirtualAssistantMessage('Now we are getting to some more sensitive information %Grin%');
-    setVar(VARIABLE.SUB_COCK_LENGTH, createDoubleInput('How long is your cock erect? (cm, decimal place allowed)', 0, 40, 'That\'s not a number. Just give me a number like 19.7', 'That\'s not a realistic cock length in cm').getAnswer());
+    setVar(VARIABLE.SUB_COCK_LENGTH, createDoubleInput('How long is your cock erect? (cm, decimal place allowed)', 0, 40, 'That\'s not a number. Just give me a number like 19.7', 'That\'s not a realistic cock length in cm'));
 
     if(getVar(VARIABLE.SUB_COCK_LENGTH) > 20) {
         sendVirtualAssistantMessage('That is quite a respectable length %SubName%');
@@ -168,7 +168,7 @@
         sendVirtualAssistantMessage('Pretty pathetic if you ask me. You should call it clit instead %Lol%');
     }
 
-    setVar(VARIABLE.SUB_SOFT_COCK_LENGTH, createDoubleInput('How long is your cock soft? (cm, decimal place allowed)', 0, 20, 'That\'s not a number. Just give me a number like 5.6', 'That\'s not a realistic soft cock length in cm').getAnswer());
+    setVar(VARIABLE.SUB_SOFT_COCK_LENGTH, createDoubleInput('How long is your cock soft? (cm, decimal place allowed)', 0, 20, 'That\'s not a number. Just give me a number like 5.6', 'That\'s not a realistic soft cock length in cm'));
 
     if(getVar(VARIABLE.SUB_COCK_LENGTH) - getVar(VARIABLE.SOFT_COCK_LENGTH) > 10) {
         sendVirtualAssistantMessage('Seems like you are a real grower %SubName%');
@@ -250,7 +250,7 @@
     sendVirtualAssistantMessage('Last but not least there are very strict and demanding Dommes');
     sendVirtualAssistantMessage("Note that this has nothing to do with me %Lol%");
     sendVirtualAssistantMessage("I'll be strict no matter what you choose %Grin%");
-    sendVirtualAssistantMessage("I would personally not go with a very strict Domme but maybe you are in need of heavy disciple");
+    sendVirtualAssistantMessage("I would personally not go with a very strict Domme but maybe you are in need of heavy discipline");
     sendVirtualAssistantMessage('It\'s for you to choose so what\'s it gonna be?');
     answer = createInput('Kind', 'Fairly strict', 'Very strict');
 
@@ -281,11 +281,11 @@
     sendVirtualAssistantMessage('Now there is another thing you need to choose before we can look for a Domme');
     sendVirtualAssistantMessage('We have Dommes that want a full time sub and Dommes that are looking for something part time');
     sendVirtualAssistantMessage("Full time means that you are expected to visit often as well as complete chores and basically spend your life mostly under the strict control of your Domme");
-    sendVirtualAssistantMessage('This doesn\'t mean that you are in a 24/7 relationship but there will be duties you have to report to and full time Dommes will usually punish you if you keep the waiting')
+    sendVirtualAssistantMessage('This doesn\'t mean that you are in a 24/7 relationship but there will be duties you have to report to and full time Dommes will usually punish you if you keep them waiting')
     sendVirtualAssistantMessage("Part time means that you and your Domme are only looking for a fun session and apart from that there are no responsibilities forced upon you");
 
     sendVirtualAssistantMessage("So are you looking for something full time or something part time?", false);
-    answer = createInput('full time');
+    answer = createInput('full time', 'part time');
 
     while (true) {
         if (answer.isLike("part time", "parttime", "part")) {
@@ -306,13 +306,14 @@
     }
 
     sendVirtualAssistantMessage('Now that you\'ve made your selection I am gonna start a search for a fitting Domme');
-    sendVirtualAssistantMessage('Give me a second %SubName%...', 7);
+    sendVirtualAssistantMessage('Give me a second %SubName%...', false);
+    sleep(7);
 
     sendVirtualAssistantMessage('Good news %SubName% %Grin%');
     sendVirtualAssistantMessage('I found 2 fitting Dommes for you');
     sendVirtualAssistantMessage('So you are gonna have to choose');
     sendVirtualAssistantMessage('I am gonna present you with both profiles and then you get to choose');
-    sendVirtualAssistantMessage('I am not gonna tell you there name yet');
+    sendVirtualAssistantMessage('I am not gonna tell you their name yet');
     sendVirtualAssistantMessage('So here we go:');
 
     let kindDommeHonorific = getRandomHonorific();
@@ -347,11 +348,13 @@
         if (answer.isLike("first", kindDommeHonorific)) {
             answer.clearOptions();
             setVar(VARIABLE.DOMME_PERSONALITY_TYPE, KIND_PERSONALITY_ID);
+            setVar(VARIABLE.DOMME_HONORIFIC, kindDommeHonorific);
             sendVirtualAssistantMessage('Good choice. She looks cruel but fair %Grin%');
             break;
         } else if (answer.isLike("second", enforcingDommeHonorific)) {
             answer.clearOptions();
             setVar(VARIABLE.DOMME_PERSONALITY_TYPE, ENFORCING_PERSONALITY_ID);
+            setVar(VARIABLE.DOMME_HONORIFIC, enforcingDommeHonorific);
             sendVirtualAssistantMessage('Would\'ve gone with her too. She seems so confident and powerful %EmoteHappy%');
             break;
         } else {
@@ -365,7 +368,13 @@
     sendVirtualAssistantMessage('You will always be our slave, slut and pet from now on');
     sendVirtualAssistantMessage('You better get used to it %Grin%');
 
-    sendVirtualAssistantMessage('Now while we are waiting for a possible response let\'s deal with your toy collection');
+    sendVirtualAssistantMessage('One more thing I have to mention is our currency system');
+    sendVirtualAssistantMessage('We have a currency called gold that can be used for various things');
+    sendVirtualAssistantMessage('Each Domme gets to decide what you can use the gold for');
+    sendVirtualAssistantMessage('She also decides when and how she sees a gold reward fit for you');
+    sendVirtualAssistantMessage('So just try to behave properly and you might be rewarded %Grin%');
+
+    sendVirtualAssistantMessage('Now while we are waiting for a possible response from your new potential Domme let\'s deal with your toy collection');
 
     /*sendVirtualAssistantMessage("My name is Vivienne");
     sendVirtualAssistantMessage("I am %DomHonorific% %domName%\'s virtual assistant");
@@ -423,7 +432,7 @@
     //showImage("Images/Spicy/Toys/MetalChastity.jpg", 4);
     sendVirtualAssistantMessage("But she also understands that it takes practice to learn");*/
 
-    if (sendYesOrNoQuestion("Do you own a chastity device?", SENDER_ASSISTANT)) {
+    /*if (sendYesOrNoQuestion("Do you own a chastity device?", SENDER_ASSISTANT)) {
         setVar(VARIABLE.HAS_CHASTITY, true);
         sendVirtualAssistantMessage('Okay %SlaveName%. Tell me, how many different chastity cages do you have?', false);
         answer = createInput();
@@ -499,9 +508,9 @@
     } else {
         sendVirtualAssistantMessage("%EmoteSad%");
         sendVirtualAssistantMessage('You should consider getting one for the full experience %Grin%');
-    }
+    }*/
 
-    sendVirtualAssistantMessage("As a final check I need to know what toys you have");
+    sendVirtualAssistantMessage("Now regarding all other toys you have");
     sendVirtualAssistantMessage("Keep in mind that you are expected to have basic items such as pegs, rope and other common household items");
     sendVirtualAssistantMessage("Of course I recommend that you have all the different toys for the full experience");
     sendVirtualAssistantMessage("But the Dommes understand if you can't afford all of them right now...");
@@ -546,6 +555,7 @@
     sendVirtualAssistantMessage("And the third should be a really nasty one!");
     sendVirtualAssistantMessage("One that strikes terror into your heart %Grin%");
     sendVirtualAssistantMessage("So tell me slave ");
+    //QUALITY: More
     sendVirtualAssistantMessage("What implement do you have that fits the first description?", false);
     setVar('toySpankingImplement1', createInput().getAnswer());
     sendVirtualAssistantMessage("That's a good one...");

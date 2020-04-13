@@ -35,5 +35,5 @@ function slaveNameVocabulary() {
         adjectives.push("dressed up", "dressed up");
     }
 
-    return random(adjectives) + ' ' + random(answers);
+    return (random(adjectives) + ' ' + random(answers)).trim();
 }

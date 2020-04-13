@@ -109,12 +109,12 @@ function sendPinnoteMessage(message, wait, skipImage) {
 function sendVirtualAssistantMessage(message, wait, skipImage) {
     let textName = new javafx.scene.text.Text("[Vivienne]: ");
     textName.setFill(javafx.scene.paint.Color.ROYALBLUE);
-    textName.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.BOLD, 14));
+    textName.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.BOLD, TeaseAI.application.CHAT_TEXT_SIZE.getDouble() + 1));
 
     message = replaceVocab(message);
     let text = new javafx.scene.text.Text(message);
     text.setFill(javafx.scene.paint.Color.ROYALBLUE);
-    text.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.MEDIUM, 13));
+    text.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.MEDIUM, TeaseAI.application.CHAT_TEXT_SIZE.getDouble()));
 
 //test below to see if tts is supported and sendmessage can be swapped for sendcustom message
     sendCustomMessage(textName, text);
@@ -136,7 +136,7 @@ function sendVirtualAssistantMessage(message, wait, skipImage) {
 function sendSystemMessage(message) {
     let text = new javafx.scene.text.Text(message);
     text.setFill(javafx.scene.paint.Color.RED);
-    text.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.BOLD, 13));
+    text.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.BOLD, TeaseAI.application.CHAT_TEXT_SIZE.getDouble()));
 
     sendCustomMessage(text);
 }

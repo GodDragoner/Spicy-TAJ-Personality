@@ -2,7 +2,8 @@
     sendVirtualAssistantMessage('Settings Menu:', 0);
     sendVirtualAssistantMessage('Options:', 0);
     sendVirtualAssistantMessage('1. Toys', 0);
-    sendVirtualAssistantMessage('2. Setup Limits', 0);
+    sendVirtualAssistantMessage('2. Session length', 0);
+    sendVirtualAssistantMessage('3. Setup Limits', 0);
 
     let lobbyAnswer = createInput("Toys", 'Session length', 'Setup Limits', 'Return');
     while (true) {

@@ -231,6 +231,7 @@ function setupEStimToy(domChose) {
 
     E_STIM_TOY.askForToyAndUsage(domChose);
 
+    //TODO: Said yes but skipped?
     //Does not own toy
     if(!E_STIM_TOY.hasToy()) {
         return;
@@ -252,8 +253,6 @@ function setupEStimToy(domChose) {
     setCurrentSender(SENDER_ASSISTANT);
 
     let modes = createIntegerInput('How many different modes does this device have?', 1, 1000, 'Please give me just a number like 1 or 5', 'Please only give me a number between 1 and 1000');
-
-
 
     setVar(VARIABLE.E_STIM_MODES, modes);
     sendVirtualAssistantMessage('Great! %EmoteHappy%');

@@ -19,7 +19,7 @@ function getSubBirthday() {
 }
 
 function getSubAge() {
-    let ageDifMs = Date.now() - getSubBirthday.getTimeInMillis();
+    let ageDifMs = Date.now() - getSubBirthday().getTimeInMillis();
     let ageDate = new Date(ageDifMs); // miliseconds from epoch
     return Math.abs(ageDate.getUTCFullYear() - 1970);
 }
@@ -200,7 +200,7 @@ function setPunishmentPointMultiplier(multiplier) {
 
 function getPunishmentPointMultiplierChange() {
     let mood = getMood();
-    let hoursSinceLastChange = millisToTimeUnit(getMillisSinecDate(getVar(VARIABLE.LAST_PUNISHMENT_POINT_CHANGE)), TIME_UNIT_HOURS, 0);
+    let hoursSinceLastChange = millisToTimeUnit(getMillisSinecDate(getVar(VARIABLE.LAST_PUNISHMENT_POINT_CHANGE, setDate().addDay(-100))), TIME_UNIT_HOURS, 0);
     let maxSubtraction = -0.25;
     let baseLevel = 0.1*(mood*getStrictnessForCharacter() + 10);
     let subtractLevel = 0.1*hoursSinceLastChange/(Math.max(1, getStrictnessForCharacter()) + 1);

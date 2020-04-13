@@ -48,52 +48,6 @@
 
     sendMessage('Now we got a few things to clarify and talk about before we can start this agreement of ours');
 
-    /*lockImages();
-    sendMessage("This is " + SLAVE_F1_NAME, 0);
-    showPicture("Images/Spicy/Slaves/F1 Alice Brookes/1/1.jpg", 5)
-    unlockImages();
-    sendMessage("Oh my can she handle the vibrator *Smiles*");
-
-    lockImages();
-    sendMessage("This is " + SLAVE_F2_NAME, 0);
-    showPicture("Images/Spicy/Slaves/F2 Brook Amelia Wright/1/1.jpg", 5)
-    unlockImages();
-    sendMessage("She's nice and well behaved");
-    sendMessage("Be like her");
-
-    lockImages();
-    sendMessage("This is " + SLAVE_F3_NAME, 0);
-    showPicture("Images/Spicy/Slaves/F3 Rosie Danvers/1/1.jpg", 5)
-    unlockImages();
-    sendMessage("Oh my gosh");
-    sendMessage("I have done many nasty things to her and she just takes it all %Grin%");
-
-    lockImages();
-    sendMessage("This is " + SLAVE_M1_NAME, 0);
-    showPicture("Images/Spicy/Slaves/M1 Will Havoc/1.jpg", 5)
-    unlockImages();
-    sendMessage("He is a fine student");
-    sendMessage("Smart, intelligent and he knows his place");
-    sendMessage("Learn from his example");
-
-    lockImages();
-    sendMessage("This is " + SLAVE_M2_NAME, 0);
-    showPicture("Images/Spicy/Slaves/M2 Marcelo/1.jpg", 5)
-    unlockImages();
-    sendMessage("A little disobedient");
-    sendMessage("But a long period in chastity fixed that issue %Grin%");
-
-    lockImages();
-    sendMessage("This is " + SLAVE_M3_NAME, 0);
-    showPicture("Images/Spicy/Slaves/M3 Lance Hart/1.jpg", 5)
-    unlockImages();
-    sendMessage("A baad baad slave");
-    sendMessage("As a punishment");
-    sendMessage("I had him walk through the city dressed in fine lingerie");
-    sendMessage("%Lol%");
-
-    sendMessage("He didn't handle it well...");*/
-
     sendMessage("I don't know whether you have any experience when it comes to blowjobs");
     sendMessage("Meaning fucking your throat and caressing cocks with your mouth");
     sendMessage("Are you experienced and capable of holding deepthroats?");
@@ -137,8 +91,7 @@
     sendMessage("Now I still recommend choosing your level with care %SlaveName%");
     sendMessage("Once in a while I will talk about this topic with you");
     sendMessage("So what you choose now isn't final and will be very likely to increase %Grin%");
-    sendMessage("At what level do you think you belong?", false);
-    answer = createInput();
+    answer = sendInput("At what level do you think you belong?");
 
     while (true) {
         if (answer.isInteger()) {
@@ -278,7 +231,7 @@
     if (getVar(VARIABLE.HAS_CHASTITY)) {
         sendMessage("There is another thing I love");
         sendMessage("And that is locking your %Cock% up");
-        sendMessage("Knowing that you have a %ChastityCage% I need to know the maximum amount of days I can lock you up in a row");
+        sendMessage("Knowing that you have a chastiy cage I need to know the maximum amount of days I can lock you up in a row");
         answer = sendInput("If you don't have a maximum you can just type 99999");
 
         while (true) {
@@ -354,7 +307,7 @@
     setVar(VARIABLE.ORGASM_POINTS, 0);
     registerOrgasm();
 
-    sendMessage("You've haven't earned my attention for that");
+    sendMessage("You haven't earned my attention for that");
     sendMessage("So I'm gonna end our communication in a moment");
     sendMessage("When I do that");
     sendMessage("I want you to find some porn or whatever");
