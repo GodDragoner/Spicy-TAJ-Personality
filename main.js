@@ -81,6 +81,8 @@ run('Dungeon/Punishments/Tasks/TaskBuilder.js');
 
 afterLoadBodyParts();
 
+sleep(10);
+
 //Update devotion only if the setup is complete which means the variable must exist
 if(isVar(VARIABLE.DEVOTION)) {
     run("Settings/UpdateDevotion.js");

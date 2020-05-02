@@ -1,4 +1,4 @@
-const ASM_LIMIT = createLimit('ass to mouth', ' assToMouthLimit');
+const ASM_LIMIT = createLimit('ass to mouth', 'assToMouthLimit');
 ASM_LIMIT.sendIntroduction = function (type) {
     sendMessage('I would very much love to force you to interact with toys that just came from your ass using your mouth');
     sendMessage('I think this is a great way to humiliate and punish you');

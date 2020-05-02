@@ -1,0 +1,1 @@
+const BALL_STRETCHER_TOY = createToy('ball stretcher');

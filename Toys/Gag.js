@@ -102,7 +102,8 @@ function decideGag(pain = false) {
         if (pain) {
             sendMessageBasedOnSender('I am not in the mood to hear your whimpering %GeneralTime%');
         } else {
-            if(isChance(40)) {
+            //Don't send this right at the start of the session
+            if(isChance(40) && hasSessionTimePassed(Math.round(getVar(VARIABLE.DEVOTION)/4))) {
                 //TODO: Interact more based on what previously happened etc.
                 sendMessage(random('You have been talking too much', 'You have been annoying me by not shutting up', 'You have been quite annoying today'));
                 sendMessage('And...');

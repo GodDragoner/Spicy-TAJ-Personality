@@ -1,6 +1,10 @@
 run("Session/Link/Link.js");
 run("Session/Start/Start.js");
 
+function hasSessionTimePassed(timeMinutes) {
+    return getDate(VARIABLE.CURRENT_SESSION_DATE).clone().addMinute(timeMinutes).hasPassed();
+}
+
 function endSpicySession() {
     askAboutDenialLevel();
 

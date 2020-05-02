@@ -130,7 +130,7 @@ const afraidTasks = [];
             sendMessage("But!");
             sendMessage("%Grin%");
 
-            if(!hasVibrator()) {
+            if(!hasMagicWand()) {
                 sendMessage("In that period I want you to stroke the cage while watching porn for " + randomInteger(5, 20) + " minutes %EmoteHappy%");
                 sendMessage('Yes, you heard me correctly. Stroke the cage as if you could feel anything through the cage. Well maybe you can %Grin%');
             } else {

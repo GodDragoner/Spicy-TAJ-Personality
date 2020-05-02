@@ -508,7 +508,7 @@ function askForDomChoose() {
     sendVirtualAssistantMessage("The Dommes prefer to use the toys whenever they want to and for whatever reason");
     sendVirtualAssistantMessage("However they can understand if you only want them to be used for playing or punishment");
     sendVirtualAssistantMessage("Do you want to leave it to your %DomHonorific% or chose yourself?", false);
-    let answer = createInput();
+    let answer = createInput("Her", "Me");
 
     let domChose = false;
     while (true) {
@@ -608,8 +608,7 @@ function setupToys(settings) {
     }
 
 //TODO: Create toys as objects
-    askForToy("Ball Crusher");
-    askForToyUsage("BallCrusher", domChose);
+    BALL_CRUSHER_TOY.hasToy();
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
     INFLATABLE_BUTT_PLUG.askForToyAndUsage(domChose);
@@ -621,13 +620,16 @@ function setupToys(settings) {
 
     COLLAR_TOY.askForToyAndUsage(domChose);
 
-    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+    /*sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
     askForToy("Shock Collar");
-    askForToyUsage("ShockCollar", domChose);
+    askForToyUsage("ShockCollar", domChose);*/
 
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
-    setupEStimToy(domChose);
+    //In settings this is a separate thing
+    if(!settings) {
+        setupEStimToy(domChose);
+    }
 
     setupGags(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
@@ -638,52 +640,46 @@ function setupToys(settings) {
     PARACHUTE_TOY.askForToyAndUsage(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
-    sendVirtualAssistantMessage("Hot sauce or icy hot? Toothpaste can work too for the time being.", false);
-    showPicture("Images/Spicy/Toys/HotSauce.jpg");
-
-    answer = createInput();
-    const variableName = "hotSauce";
-    while (true) {
-        if (answer.isLike("yes")) {
-            setVar("toy" + variableName, true);
-            sendVirtualAssistantMessage("%Good%");
-            break;
-        } else if (answer.isLike("no")) {
-            sendVirtualAssistantMessage("%EmoteSad%");
-            break;
-        } else {
-            sendVirtualAssistantMessage(YES_OR_NO);
-            answer.loop();
-        }
-    }
-
-    askForToyUsage("HotSauce", domChose);
+    ANAL_BEADS_TOY.askForToyAndUsage(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
-    askForToy("Vibrator");
-    askForToyUsage("Vibrator", domChose);
+    PROSTATE_VIBRATOR_TOY.askForToyAndUsage(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
-    askForToy("Enema Kit");
-    askForToyUsage("EnemaKit", domChose);
+    BULLET_VIBRATOR_TOY.askForToyAndUsage(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
-    askForToy("Sounds");
-    askForToyUsage("Sounds", domChose);
+    MAGIC_WAND_TOY.askForToyAndUsage(domChose);
+    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
+    ICY_HOT_TOY.askForToyAndUsage(domChose);
+
+    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
+    ENEMA_TOY.askForToyAndUsage(domChose);
+    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
+    SOUND_TOY.askForToyAndUsage(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
     HUMBLER_TOY.askForToyAndUsage(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
+    BALL_STRETCHER_TOY.askForToyAndUsage(domChose);
+    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
     CLOTHESPINS_TOY.askForToyAndUsage(domChose);
 
-    //TODO: Different type of nipple clamps
     sendVirtualAssistantMessage('Okay next quite similar but not the same %Grin%');
-    NIPPLE_CLAMPS.askForToyAndUsage(domChose);
-    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
-    askForToy("Cock Ring");
+    NIPPLE_CLAMPS.askForToyAndUsage(domChose);
+
+    sendVirtualAssistantMessage('Okay now something yet again fairly similar but definitely more painful if used correctly %Grin%');
+
+    CLOVER_CLAMPS.askForToyAndUsage(domChose);
+
+    /*askForToy("Cock Ring");
     askForToyUsage("CockRing", domChose);
-    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));*/
     unlockImages();
 }

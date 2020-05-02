@@ -1,5 +1,5 @@
+const MAGIC_WAND_TOY = createToy('magic wand');
 
-
-function hasVibrator() {
-    return getVar('toyVibrator', false);
+function hasMagicWand() {
+    return MAGIC_WAND_TOY.hasToy();
 }

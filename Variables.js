@@ -8,6 +8,7 @@ const MATERIAL = {
 
 const VARIABLE = {
     CHASTITY_ON: "chastityOn",
+    CHASTITY_REMOVE_LATER: "chastityRemoveLater",
 
     CHASTITY_CAGE_ON_TYPE: "chastityCageOnType",
 
@@ -199,8 +200,15 @@ const VARIABLE = {
     MODEL_RATINGS: "modelRatings",
     MODEL_RATINGS_DONE: "modelRatingsDone",
 
+    //Edge a ton
     EDGE_A_TONS_DONE: "edgeATonsDone",
     EDGE_A_TON_EDGE_RECORD: "edgeATonEdgeRecord",
+
+    //Endurance Strokes
+    ENDURANCE_STROKES_ACTIVE: "enduranceStrokesActive",
+    ENDURANCE_STROKES_ATTEMPTS: "enduranceStrokesAttempts",
+    ENDURANCE_STROKES_DONE: "enduranceStrokesDone",
+    //EDGE_A_TON_EDGE_RECORD: "edgeATonEdgeRecord",
 
     STROKE_MODULE_PAUSE_FREQUENCY: 'strokeModulePauseFrequency',
 
@@ -221,6 +229,8 @@ const VARIABLE = {
     LAST_PAIN_TOLERANCE_INCREASE: "lastPainToleranceIncrease",
 
     EDGE_STARTED_DATE: "edgeStartedDate",
+    EDGE_WITHOUT_PERMISSION: "edgeWithoutPermission",
+
 
     SOFT_COCK_LENGTH: "softCockLength",
     SECONDS_TO_GET_SOFT: "secondsToGetSoft",

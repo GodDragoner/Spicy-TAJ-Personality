@@ -95,7 +95,7 @@ function startStrokeInterval(durationMinutes) {
 }
 
 function getStrokingBPM(modifier = 1) {
-    return Math.floor(randomInteger(75 + getCruelTeasingMood(), 95 + getCruelTeasingMood())*modifier);
+    return Math.floor(randomInteger(75 + getCruelTeasingMood(), 95 + getCruelTeasingMood())*modifier) | 0;
 }
 
 function sendNewStrokeInstruction() {
@@ -185,7 +185,7 @@ function sendNewStrokeInstruction() {
 
 function sendStrokeTaunts(durationSeconds, nextInstruction) {
     //Select a random amount of iterations and we will wait based on that random amount before sending a taunt message
-    let iterationsToGo = randomInteger(10, 30);
+    let iterationsToGo = randomInteger(20, 40);
 
     //Start our loop and continue until iterationsToGo are equal or less than zero
     while (iterationsToGo > 0) {
@@ -200,7 +200,7 @@ function sendStrokeTaunts(durationSeconds, nextInstruction) {
                 sendNewStrokeInstruction();
             }
 
-            nextInstruction = randomInteger(50, 90);
+            nextInstruction = randomInteger(60, 90);
         }
 
         iterationsToGo--;

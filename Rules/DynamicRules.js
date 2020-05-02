@@ -500,7 +500,7 @@ function shouldIntroduceNewRule(rule) {
 
     //No rules within the first 2 sessions. Get to know slave first
     if(!rule.canBeActivated() || getVar(VARIABLE.SESSION_COUNTER, 0) < 3) {
-        sendDebugMessage('Rule ' + rule + ' cannot be activated or too few sessions');
+        sendDebugMessage('Rule ' + rule.getVarName() + ' cannot be activated or too few sessions');
         return false;
     }
 

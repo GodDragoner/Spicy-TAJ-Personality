@@ -1,0 +1,1 @@
+const BULLET_VIBRATOR_TOY = createToy('bullet vibrator');

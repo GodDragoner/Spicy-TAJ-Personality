@@ -1,10 +1,12 @@
 
+const BALL_CRUSHER_TOY = createToy('ball crusher');
+
 function hasBullCrusherOn() {
     return getVar(VARIABLE.IS_BALL_CRUSHER_ON, false);
 }
 
 function hasBallCrusher() {
-    return getVar("toyBallCrusher", false);
+    return BALL_CRUSHER_TOY.hasToy();
 }
 
 function applyBallCrusherPressure() {

@@ -71,10 +71,6 @@ function startEdging(holdSeconds, skipStop = false, endIn = EDGE_END_NORMAL) {
         sendHoldEdgeTaunts(holdSeconds);
     }
 
-    if(isStroking()) {
-        stopStroking();
-    }
-
     sendDebugMessage('Ending edge');
 
     if(!skipStop) {
@@ -89,14 +85,18 @@ function startEdging(holdSeconds, skipStop = false, endIn = EDGE_END_NORMAL) {
 
     if(endIn == EDGE_END_RUIN) {
         setAudioBlocked(true);
-        sendMessage('%RuinForMe%');
+        sendMessage('%RuinForMe%', 0);
         setAudioBlocked(false);
         registerRuin();
     } else if(endIn == EDGE_END_ORGASM) {
         setAudioBlocked(true);
-        sendMessage('%CumForMe%');
+        sendMessage('%CumForMe%', 0);
         setAudioBlocked(false);
         registerOrgasm();
+    }
+
+    if(isStroking()) {
+        stopStroking();
     }
 
     sendDebugMessage('Ending edge internally');

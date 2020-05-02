@@ -61,6 +61,9 @@ function createInput() {
     }
 }
 
+function isStroking() {}
+
+
 function sendInput(message) {}
 
 function showCategoryImage() {}

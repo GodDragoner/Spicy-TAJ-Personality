@@ -5,6 +5,10 @@ function edgeResponse(message) {
         if (getVar(VARIABLE.STROKE_TRAINING_ACTIVE, false)) {
             strokeTrainingEdge();
             return true;
+        } else if (getVar(VARIABLE.ENDURANCE_STROKES_ACTIVE, false)) {
+            //Increment var
+            setTempVar(VARIABLE.ENDURANCE_STROKES_ATTEMPTS, getVar(VARIABLE.ENDURANCE_STROKES_ATTEMPTS) + 1);
+            return true;
         } else if (!isEdging() && !isOnEdge() && !message.toLowerCase().contains('may') && !message.toLowerCase().contains('please')) {
             //Unautherized Edge TODO: More stuff and save how many times unauthorized edging occured
             sendMessage('C\'mon %SlaveName%, you\'re only supposed to edge when I say so');

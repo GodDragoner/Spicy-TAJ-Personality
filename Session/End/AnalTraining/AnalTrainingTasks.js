@@ -114,7 +114,7 @@ const analTasks = [];
         },
 
         isApplicable: function () {
-            return getVar(VARIABLE.ASS_LEVEL) >= this.minLevel && hasVibrator();
+            return getVar(VARIABLE.ASS_LEVEL) >= this.minLevel && hasMagicWand();
         },
     };
     analTasks.push(analTask);

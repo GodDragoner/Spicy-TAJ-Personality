@@ -55,7 +55,6 @@
             unlockImages();
 
             sendMessage('There is nothing more to it');
-            sendMessage('So lets start! %Grin%');
         } else {
             //TODO: Implement to lick shoes or similar
             sendMessage('It\'s time to train your ability ' + random('to lick pussy', 'to please women orally', 'to worship women with your tongue') + ' %SlaveName%');

@@ -403,7 +403,7 @@ function createLimit(name, variable) {
 }
 
 function getLimit(limit) {
-    return getVar(limit.variable);
+    return getVar(limit);
 }
 
 function getAnalLimit() {

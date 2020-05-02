@@ -107,7 +107,7 @@ function startSession() {
             return;
         }
 
-        if (getMood() == VERY_ANNOYED_MOOD) {
+        if (getMood() === VERY_ANNOYED_MOOD) {
             sendVirtualAssistantMessage("Session denied %SlaveName%");
             sendVirtualAssistantMessage("Due to recent poor behaviour");
 

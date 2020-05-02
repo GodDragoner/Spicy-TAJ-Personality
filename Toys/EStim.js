@@ -11,6 +11,10 @@ E_STIM_TOY.hasToy = function() {
     return getVar(this.getVarName(), false) && E_STIM_MODES.length > 0;
 };
 
+E_STIM_TOY.hasToyBasic = function() {
+    return getVar(this.getVarName(), false);
+};
+
 const E_STIM_PLUG_TOY = createToy("e stim plug");
 const E_STIM_STRAPS = createToy("e stim straps");
 const E_STIM_PADS = createToy("e stim pads");
@@ -231,9 +235,8 @@ function setupEStimToy(domChose) {
 
     E_STIM_TOY.askForToyAndUsage(domChose);
 
-    //TODO: Said yes but skipped?
     //Does not own toy
-    if(!E_STIM_TOY.hasToy()) {
+    if(!E_STIM_TOY.hasToyBasic()) {
         return;
     }
 

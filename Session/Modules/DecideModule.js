@@ -1,8 +1,10 @@
 //TODO: Pain Modules: Sounding
 
 {
+    let moduleCounter = 0;
+
     //End session
-    while (!getDate(VARIABLE.CURRENT_SESSION_DATE).clone().addMinute(getVar(VARIABLE.DEVOTION) + getVar(VARIABLE.PROLONGED_SESSION_TIME, 0)).hasPassed()) {
+    while (!hasSessionTimePassed(getVar(VARIABLE.DEVOTION) + getVar(VARIABLE.PROLONGED_SESSION_TIME, 0))) {
 
         //Apply random toys
         interactWithRandomToys();
@@ -120,6 +122,14 @@
         let slaveModuleChance = moduleChance;
         let humiliationModuleChance = moduleChance;
 
+        if(!HUMILIATION_LIMIT.isAllowed()) {
+            humiliationModuleChance = 0;
+        }
+
+        if(!PAIN_LIMIT.isAllowed()) {
+            painModuleChance = 0;
+        }
+
         const max = teaseModuleChance + sissyModuleChance + painModuleChance + slaveModuleChance + humiliationModuleChance;
         const moduleIndicator = randomInteger(0, max);
 
@@ -147,6 +157,17 @@
 
         sendDebugMessage('Trying to run link');
         run("Session/Link/Module/DecideLink.js");
+
+        moduleCounter++;
+
+        //Unlock later chastity
+        if(isInChastity() && getVar(VARIABLE.CHASTITY_REMOVE_LATER, false)) {
+            //Has too much time passed or have we spend enough modules?
+            if(isInChastity(moduleChance*40) || hasSessionTimePassed(Math.round(getVar(VARIABLE.DEVOTION)/1.5))) {
+                unlockChastityCage();
+                delVar(VARIABLE.CHASTITY_REMOVE_LATER);
+            }
+        }
     }
 
     //Maybe prolong session if we haven't already

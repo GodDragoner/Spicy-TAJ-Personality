@@ -31,8 +31,18 @@
         } else {
             //Unlock
             if (!willKeepChastityOn()) {
-                sendDebugMessage('Decided to unlock chastity');
-                unlockChastityStart();
+                sendDebugMessage('Decided to unlock chastity today');
+
+                if(isChance(50)) {
+                    sendDebugMessage('But not now (later)');
+                    setTempVar(VARIABLE.CHASTITY_REMOVE_LATER, true);
+
+                    if (isInChastity()) {
+                        run('Session/Start/Chastity/OffDenied/*.js');
+                    }
+                } else {
+                    unlockChastityStart();
+                }
             }
             //Denied
             else {
@@ -50,7 +60,7 @@
 
     run("Session/Start/DecideStart.js");
 
-    if (isInChastity()) {
+    if (isInChastity() && !getVar(VARIABLE.CHASTITY_REMOVE_LATER, false)) {
         sendDebugMessage('Stayed in chastity so incrementing locked in a row');
         incrementVar(VARIABLE.LOCKED_DAYS_IN_ROW, 1, 0);
     } else if (getVar(VARIABLE.LOCKED_DAYS_IN_ROW, 0) > 0) {

@@ -1,5 +1,7 @@
 //TODO: Enema tasks (idea: Enema -> plug it for x duration, do sports, go for a walk etc.)
 
+const ENEMA_TOY = createToy('enema kit');
+
 function getEnemaLevel() {
     if(getVar(VARIABLE.ASS_LEVEL) >= 25) {
         return 5;
@@ -17,7 +19,7 @@ function getEnemaLevel() {
 }
 
 function hasEnemaKit() {
-    return getVar('toyEnemaKit', false);
+    return ENEMA_TOY.hasToy();
 }
 
 function getTodaysEnema() {

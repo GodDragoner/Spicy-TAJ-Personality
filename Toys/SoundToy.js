@@ -1,0 +1,1 @@
+const SOUND_TOY = createToy('sounds');

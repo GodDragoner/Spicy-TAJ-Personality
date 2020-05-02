@@ -1,0 +1,1 @@
+const PROSTATE_VIBRATOR_TOY = createToy('prostate vibrator');

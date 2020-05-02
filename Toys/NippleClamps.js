@@ -15,10 +15,26 @@ NIPPLE_CLAMPS.removeToy = function () {
     removeNippleClamps();
 };
 
+const CLOVER_CLAMPS = createToy('clover clamps');
+CLOVER_CLAMPS.decideToyOn = function (asked = false) {
+    if(isNipplesClamped()) {
+        return false;
+    }
+
+    if(!this.getLastRemoval().addMinute(DEFAULT_TOY_COOLDOWN_MINUTES).hasPassed()) {
+        return false;
+    }
+
+    return true;
+};
+
+CLOVER_CLAMPS.removeToy = function () {
+    removeNippleClamps();
+};
 
 function isNipplesClamped() {
     //No current nipple clamps attached
-    if (!NIPPLE_CLAMPS.isToyOn() && BODY_PART_NIPPLE_L.currentClamps === 0 && BODY_PART_NIPPLE_R.currentClamps === 0) {
+    if (!NIPPLE_CLAMPS.isToyOn() && BODY_PART_NIPPLE_L.currentClamps === 0 && BODY_PART_NIPPLE_R.currentClamps === 0 && !CLOVER_CLAMPS.isToyOn()) {
         return false;
     }
 
@@ -46,13 +62,17 @@ function clampNipples() {
 }
 
 function removeAnythingOnNipples() {
-    if(NIPPLE_CLAMPS.isToyOn()) {
+    if(NIPPLE_CLAMPS.isToyOn() || CLOVER_CLAMPS.isToyOn()) {
         sendMessage('%SlaveName% go ahead and remove those nipple clamps and put them aside', 5);
-        sendMessage('Much better isn\'t it? %Grin%');
+        if(sendYesOrNoQuestion('Much better isn\'t it? %Grin%')) {
+            sendMessage(random('You\'re welcome', 'Well then thank your %DomHonorific% %Grin%', 'No problem %SlaveName%'));
+        } else {
+            sendMessage('Really? I would put them back but I got other plans %Grin%');
+        }
 
-        //TODO: Interaction
 
         NIPPLE_CLAMPS.setToyOn(false);
+        CLOVER_CLAMPS.setToyOn(false);
         return true;
     } else if(isNipplesClamped()) {
         //Means there is at least a clothespin on one of the nipples
@@ -67,7 +87,7 @@ function removeAnythingOnNipples() {
 }
 
 function removeNippleClamps() {
-    if(!NIPPLE_CLAMPS.isToyOn()) {
+    if(!NIPPLE_CLAMPS.isToyOn() && !CLOVER_CLAMPS.isToyOn()) {
         return false;
     }
 
@@ -82,6 +102,7 @@ function removeNippleClamps() {
     }
 
     NIPPLE_CLAMPS.setToyOn(false);
+    CLOVER_CLAMPS.setToyOn(false);
 }
 
 

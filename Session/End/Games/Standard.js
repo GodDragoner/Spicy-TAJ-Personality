@@ -3,12 +3,12 @@
 
     //If the user has no vibrator and reached his hard limit we will have to free him
     //TODO: Sometimes maybe tease and ask to buy vibrator and delay hard limit for one day
-    if (!hasVibrator() && isVar(VARIABLE.DENIAL_HARD_LIMIT_ORGASM_TODAY)) {
+    if (!hasMagicWand() && isVar(VARIABLE.DENIAL_HARD_LIMIT_ORGASM_TODAY)) {
         unlockChastityCage();
     }
 
     if (isInChastity()) {
-        if (!hasVibrator()) {
+        if (!hasMagicWand()) {
             sendMessage('Well too bad that you are in chastity isn\'t it? %Grin%');
             sendMessage('Not only won\'t you be able to enjoy an orgasm properly in that cage');
             sendMessage('You also don\'t even own a vibrator so you can\'t even get one');
