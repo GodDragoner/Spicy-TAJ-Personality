@@ -3,7 +3,7 @@
         sendMessage("Just thinking about the things you're about to do for me");
         sendMessage("Makes my pussy tingle a little bit %EmoteHappy%");
 
-        let answer = sendInput("Is your %Cock% hard already?")
+        let answer = sendInput("Is %MyYour% %Cock% hard already?")
 
         while (true) {
             if (answer.isLike("yes", "hard")) {
@@ -20,7 +20,7 @@
                 sendMessage("Wouldn't you love some of this", 0);
                 showCategoryImage("BLOWJOB", 3);
                 unlockImages();
-                sendMessage("Those lips wrapped around your %Cock%");
+                sendMessage("Those lips wrapped around %MyYour% %Cock%");
                 break;
             } else {
                 sendMessage(YES_OR_NO);
@@ -28,6 +28,6 @@
             }
         }
 
-        sendMessage("I want your %Cock% hard and erect all the time, %SlaveName%");
+        sendMessage("I want %MyYour% %Cock% hard and erect all the time, %SlaveName%");
     }
 }

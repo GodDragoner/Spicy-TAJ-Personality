@@ -38,7 +38,7 @@
             sendMessage('I would tell you to open your mouth and stick out your tongue');
             sendMessage('Holding the back of your head in my hands as my friend thrusts his big hard cock into your mouth');
             sendMessage('I would make you deepthroat him until you gag on it');
-            sendMessage('And you start to gag, I will tell my friend to push it deeper into your throat');
+            sendMessage('And when you start to gag, I will tell my friend to push it deeper into your throat');
             sendMessage('Tears will start to well in you eyes, %SlaveName%');
             sendMessage('It won\'t stop until your face is wet with tears and cum');
             sendMessage('And we will make you swallow every last drop of his hot sticky load');

@@ -36,7 +36,7 @@ if (!CBT_LIMIT.isAllowed()) {
             sendMessage('%MyYour% %Balls% and cock to be precise');
             sendMessage('And we\'ll keep going like that until you get through all my strokes without edging');
             sendMessage('So you\'re either going to build your endurance up for me');
-            sendMessage('Or I\'m going to fuck up your %Cock% until it\'s too broken to edge');
+            sendMessage('Or I\'m going to fuck up %MyYour% %Cock% until it\'s too broken to edge');
             sendMessage('Either way, I know <i>I\'ll</i> have fun <img=Images/Spicy/Emotes/heart.gif></img>');
 
         } else {
@@ -63,6 +63,8 @@ if (!CBT_LIMIT.isAllowed()) {
         let enduranceStrokeSpeed = 30;
 
         setTempVar(VARIABLE.ENDURANCE_STROKES_ACTIVE, true);
+
+        readyForStroking();
 
         sendMessage(random('Start stroking for me', 'Start stroking nice and slow for me', 'Start stroking that %Cock% for me', 'Start stroking yourself', 'Start stroking yourself for me',
             'Start stroking that %Cock% nice and slow', 'Start stroking yourself slowly') + ' %SlaveName% %Wicked%', 0);

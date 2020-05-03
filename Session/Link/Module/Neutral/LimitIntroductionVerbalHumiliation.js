@@ -8,7 +8,7 @@
             }
 
             sendMessage('I want to make sure you\'re fully aware of your place in this world');
-            sendMessage('Kneeling in from of a Goddess with your %Cock% in your hand');
+            sendMessage('Kneeling in from of a Goddess with %MyYour% %Cock% in your hand');
             sendMessage("This is where you belong, it's what you are");
             sendMessage('And let me tell you why that is, %SlaveName%');
             sendMessage("I think you already know this, but you are completely useless sexually");

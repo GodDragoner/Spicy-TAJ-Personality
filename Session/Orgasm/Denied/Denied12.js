@@ -8,7 +8,7 @@
             sendMessage("You\'ve been stroking and edging so much for me");
         }
 
-        sendMessage("Building up so much cum in your %Balls%");
+        sendMessage("Building up so much cum in %MyYour% %Balls%");
         sendMessage("So now here we are, at the end of the session");
         sendMessage("And you know what, you seem just about ready to have an orgasm now");
         sendMessage("I mean look at you, all hot and bothered %Lol%");

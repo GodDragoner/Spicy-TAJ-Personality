@@ -63,7 +63,7 @@ switch(getVar(VARIABLE.PUNISHMENT_PUNISHER)){
 	case 3 :
 	//(Contact2)
 	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%");// #DT4
-	sendMessage(random("Discipline I just love that","You're not gonna like this %Grin%","I don't think your %Cock% will enjoy this","This is fun!"));// #DT4
+	sendMessage(random("Discipline I just love that","You're not gonna like this %Grin%","I don't think %MyYour% %Cock% will enjoy this","This is fun!"));// #DT4
 
 	if (getVar("SubEndurance")>=7) {
 	PM3=3;}
@@ -138,7 +138,7 @@ switch (choice) {
 			sendMessage("go get your parachute, and start putting it on", 12);
 			sendMessage("once it's on, attach " + random("1","1.5","2") +" Kg's of weight to it" );
 			}
-			else {		sendMessage("go tie a rope around your %Balls%, and leave a loose end about 30 cm long.", 12);
+			else {		sendMessage("go tie a rope around %MyYour% %Balls%, and leave a loose end about 30 cm long.", 12);
 			sendMessage("once their nice and tied up, attach " + random("1","1.5","2") +" Kg's of weight to the rope");
 			}
 	   }
@@ -201,7 +201,7 @@ switch (choice) {
 			sendMessage("go get your parachute, and start putting it on", 12);
 			sendMessage("once it's on, attach " + random("1","1.5","2") +" Kg's of weight to it") ;
 			}
-			else {		sendMessage("go tie a rope around your %Balls%, and leave a loose end about 30 cm long.", 12);
+			else {		sendMessage("go tie a rope around %MyYour% %Balls%, and leave a loose end about 30 cm long.", 12);
 			sendMessage("once their nice and tied up, attach " + random("1","1.5","2") +" Kg's of weight to the rope") ;
 			}
 	   }

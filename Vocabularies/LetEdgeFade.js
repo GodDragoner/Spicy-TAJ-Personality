@@ -9,14 +9,14 @@ function letEdgeFadeVocabulary() {
         "Try not to think about how close you just were %EmoteOther%",
         "Let your body ache for the orgasm you could have had %EmoteHappy%",
         "Let your body become consumed with the %Ache%",
-        "Embrace the ache filling your %Cock% right now",
+        "Embrace the ache filling %MyYour% %Cock% right now",
         "Don't think about how %Good% that almost felt",
         "Don't think about how close you just came to exploding %Lol%",
         "Just let the %Ache% flow through you and drive you crazy",
-        "Let all that %Ache% flow from that %Cock% to your %Balls%",
+        "Let all that %Ache% flow from that %Cock% to %MyYour% %Balls%",
         "%Ache% is a natural part of %SlaveName%'s life, savor it! %Lol%",
         "Feel all that wonderful %Ache% rushing through you %Lol%",
-        "I know you think I'm %Mean% but I reality you love this..",
+        "I know you think I'm %Mean% but in reality you love this..",
         "I bet that edging is a pure %Pain% for you %EmoteHappy%",
         "Just be glad you're edging, Imagine wearing a %ChastityCage%"
     ];

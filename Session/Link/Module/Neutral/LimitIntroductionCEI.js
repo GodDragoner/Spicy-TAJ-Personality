@@ -134,7 +134,7 @@
                     sendMessage('Which is something we might have to change and work towards %Grin%');
                 }
 
-                if (sendYesOrNoQuestion('"Have you ever tasted your own cum?"')) {
+                if (sendYesOrNoQuestion('"Have you ever tasted your own cum?')) {
                     sendMessage("Eww %Lol%");
                 } else {
                     sendMessage("So you really don\'t know what you\'re talking about");

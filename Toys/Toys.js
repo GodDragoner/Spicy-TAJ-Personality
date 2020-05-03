@@ -174,6 +174,8 @@ function fetchToy(toy, imagePath, amount = 0) {
             sendMessageBasedOnSender('Sadly you weren\'t able to get your ' + toy + ' before %generaltime% %emotesad%');
         }
 
+        sendMessageBasedOnSender('So I am not gonna ask you again because I guess it does not change a thing');
+
         return false;
     }
 
@@ -637,6 +639,44 @@ function setupToys(settings) {
     BASIC_LINGERIE.askForToyAndUsage(domChose, undefined, "basicLingerie");
     ADVANCED_LINGERIE.askForToyAndUsage(domChose, undefined, "advancedLingerie");
 
+    HIGH_HEEL_TOY.askForToyAndUsage(domChose, undefined);
+
+    //Skip high heels if in settings
+    if (!settings) {
+        if(HIGH_HEEL_TOY.hasToy()) {
+            sendVirtualAssistantMessage('Okay %SlaveName%. Tell me, how many different high heels do you have?', false);
+            let answer = createInput();
+
+            while (true) {
+                if (answer.isInteger()) {
+                    const result = answer.getInt();
+                    if (result <= 0) {
+                        sendVirtualAssistantMessage("You can't choose a number equal to 0 or lower");
+                        answer.loop();
+                    } else {
+                        sendVirtualAssistantMessage('We are gonna setup your high heels now, one by one.');
+
+                        for (let x = 0; x < result; x++) {
+                            setupNewHighHeel();
+                        }
+
+                        sendVirtualAssistantMessage('This should do it regarding high heels');
+                        sendVirtualAssistantMessage('You can always setup new high heels in the settings menu');
+                        break;
+                    }
+                } else {
+                    sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
+                    answer.loop();
+                }
+            }
+        }
+
+        sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+    }
+
+    HIGH_HEEL_LOCK.askForToyAndUsage(domChose);
+    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
     PARACHUTE_TOY.askForToyAndUsage(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
@@ -660,6 +700,9 @@ function setupToys(settings) {
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
     SOUND_TOY.askForToyAndUsage(domChose);
+    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
+    URETHRAL_STRETCHER_TOY.askForToyAndUsage(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
     HUMBLER_TOY.askForToyAndUsage(domChose);

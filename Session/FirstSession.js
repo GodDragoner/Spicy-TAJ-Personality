@@ -60,6 +60,7 @@
 
     answer = createInput();
 
+    //TODO: Bind this to sissy stuff etc.
     while (true) {
         if (answer.isLike("yes")) {
             setVar(VARIABLE.BLOWJOB_LEVEL, 30);
@@ -230,37 +231,8 @@
 
     if (getVar(VARIABLE.HAS_CHASTITY)) {
         sendMessage("There is another thing I love");
-        sendMessage("And that is locking your %Cock% up");
-        sendMessage("Knowing that you have a chastiy cage I need to know the maximum amount of days I can lock you up in a row");
-        answer = sendInput("If you don't have a maximum you can just type 99999");
-
-        while (true) {
-            if (answer.isInteger()) {
-                const result = answer.getInt();
-                if (result <= 0) {
-                    sendMessage("You have to choose a number larger than 0...");
-                    answer.loop();
-                } else if (result <= 5) {
-                    sendMessage("Looks like we have a chastity beginner. Don't worry we can work on that  %Grin%");
-                    setVar(VARIABLE.LOCKED_UP_LIMIT, result);
-                    break;
-                } else if (result <= 14) {
-                    sendMessage("At least you are somewhat trained... Good! %Grin%");
-                    setVar(VARIABLE.LOCKED_UP_LIMIT, result);
-                    break;
-                } else {
-                    sendMessage("Maybe I found a new chastity slut in you! %Grin%");
-                    setVar(VARIABLE.LOCKED_UP_LIMIT, result);
-                    break;
-                }
-            } else {
-                sendMessage("Just give me a number like 3, 10 or 70...");
-                answer.loop();
-            }
-        }
-
-        sendMessage("No matter your limit. I will break it %SlaveName%");
-        sendMessage("We're gonna have a lot of fun! %Lol%");
+        sendMessage("And that is locking %MyYour% %Cock% up");
+        askForMaxLockupTime();
     }
 
     sendMessage('So...');

@@ -152,7 +152,7 @@
         sendMessage("lets give you a little time to absorb that water... ", randomInteger(10, 20)); //#EnemaChat
         sendMessage(random("get your butt as high in the air as you can", "ass up   face down   bitch", "get your face on the ground where it belongs")); //#EnemaChat
         sendMessage("I want it to get ALL the way in you %EmoteHappy% ", randomInteger(20, 30)); //#EnemaChat
-        sendMessage("Maybe you should be squeezing  your %Balls% while you're "+ random("holding that water in", "squeezing your sphinter tight", "not bearing the full pressure of the bottle", "not accepting Mistress's gift"), 5); //#EnemaChat
+        sendMessage("Maybe you should be squeezing  %MyYour% %Balls% while you're "+ random("holding that water in", "squeezing your sphinter tight", "not bearing the full pressure of the bottle", "not accepting Mistress's gift"), 5); //#EnemaChat
         sendMessage("That wasn't a request.... it was an order %Slave% ", randomInteger(30, 45)); //#EnemaChat
         sendMessage("ok, I think thats enough"); //#EnemaChat
         sendMessage("its time to get back to your real punishment "); //@CustomMode(full, Goto, Full)"); //#EnemaChat

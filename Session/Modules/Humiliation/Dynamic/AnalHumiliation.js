@@ -331,7 +331,7 @@ function appendPenetratingSession(toy) {
     //TODO: Numbers based on experience
     let iterations = randomInteger(2, 4);
     while (iterations > 0) {
-        startAnal(getInitialBPM(), randomInteger(120, 240));
+        startAnal(getInitialAnalBPM(), randomInteger(120, 240));
         iterations--;
 
         //No new instructions if this loop is about to end
@@ -639,7 +639,7 @@ function startSquatAnal(toy) {
     sendMessage("I want you to match the upcoming beat of course");
     sendMessage("Better be " + random("ready", "prepared") + " %Grin%");
     for (let iterations = 0; iterations < 20; iterations++) {
-        startAnal(Math.max(80, getInitialBPM()), randomInteger(50, 75));
+        startAnal(Math.max(80, getInitialAnalBPM()), randomInteger(50, 75));
 
         if (isChance(20)) {
             sendMessage("I have a fun idea %SlaveName%");

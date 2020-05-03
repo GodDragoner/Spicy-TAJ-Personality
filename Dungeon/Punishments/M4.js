@@ -66,7 +66,7 @@ switch(getVar(VARIABLE.PUNISHMENT_PUNISHER)) {
 	case 3 :
 	//(Contact2)
 	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%");// #DT4
-	sendMessage(random("Discipline I just love that","You're not gonna like this %Grin%","I don't think your %Cock% will enjoy this","This is fun!"));// #DT4
+	sendMessage(random("Discipline I just love that","You're not gonna like this %Grin%","I don't think %MyYour% %Cock% will enjoy this","This is fun!"));// #DT4
 sendMessage(random("Lets see what we can do about you %Grin%","Its time to make you repent your sins","I suppose we need to correct your recent behaviour","I have something for you..")); //#DT4
 
 	if (getVar("SubEndurance")>=7) {
@@ -153,7 +153,7 @@ while (RipPegs>=S4Round)  {
 	case 8:
 	
 	//(Balls)
-	sendMessage(random("Attach","Place","Put")+" the pegs to your %Balls% ",5); //#DT4 @Wait(5)
+	sendMessage(random("Attach","Place","Put")+" the pegs to %MyYour% %Balls% ",5); //#DT4 @Wait(5)
 	sendMessage(random("Flick them once or twice","Flick them just once","Flick them a few times","Flick them") ,5); //#DT4 @Wait(5) @Goto(Black)
 	break;
 	case 9:
@@ -163,7 +163,7 @@ while (RipPegs>=S4Round)  {
 	if(getVar("chastityon")) {
 		sendMessage(random("Attach","Place","Put")+" the pegs on to your "+random("%Balls%","nipples"),5); //#DT4 @Wait(5)
 	} else {
-	sendMessage(random("Attach","Place","Put")+" the pegs to some lose skin from your %Cock% ",5); //#DT4 @Wait(5)
+	sendMessage(random("Attach","Place","Put")+" the pegs to some lose skin from %MyYour% %Cock% ",5); //#DT4 @Wait(5)
 	}
 	sendMessage(random("Flick them once or twice","Flick them just once","Flick them a few times","Flick them"),5); //#DT4 @Wait(5) @Goto(Black)
 	break;

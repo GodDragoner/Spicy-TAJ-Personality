@@ -61,7 +61,7 @@
                 sendMessage("No it wasn\'t a trick question");
                 smallCBTPunishment();
                 sendMessage("Let that settle in for a second %SlaveName%");
-                sendMessage("Lightly touch the skin of your %Cock% with your fingertips");
+                sendMessage("Lightly touch the skin of %MyYour% %Cock% with your fingertips");
                 sendMessage("Feel how it\'s aching to be stroked again");
                 sendMessage("I know it\'s ready for more");
                 break;

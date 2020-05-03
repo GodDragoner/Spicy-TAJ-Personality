@@ -40,6 +40,8 @@ const VARIABLE = {
     RESPONSE_WILL_DO_ANYTHING: 'responseWillDoAnything',
     RESPONSE_WILL_DO_ANYTHING_COUNT: 'responseWillDoAnythingCount',
 
+    RESPONSE_WANTS_KEYHOLDER: 'responseWantsKeyholder',
+
     NEXT_TIME_ICE_CUBES: 'nextTimeIceCubes',
 
     //Chores
@@ -232,7 +234,6 @@ const VARIABLE = {
     EDGE_WITHOUT_PERMISSION: "edgeWithoutPermission",
 
 
-    SOFT_COCK_LENGTH: "softCockLength",
     SECONDS_TO_GET_SOFT: "secondsToGetSoft",
 
     SUB_BIRTHDAY: "subBirthday",

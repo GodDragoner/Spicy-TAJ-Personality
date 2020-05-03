@@ -1,9 +1,9 @@
 {
     if(tryRunLinkFetchId()) {
         if (hasChastityCage()) {
-            sendMessage("I think your %Cock% might be overheating in its cage");
+            sendMessage("I think %MyYour% %Cock% might be overheating in its cage");
         } else {
-            if(sendYesOrNoQuestion("How is your %Cock% doing, is it hard?")) {
+            if(sendYesOrNoQuestion("How is %MyYour% %Cock% doing, is it hard?")) {
                 sendMessage("Hmm we should do something about that...");
             } else {
                 sendMessage("Too much denial will do that to it...");
@@ -18,7 +18,7 @@
                 sendMessage("You should put them on now");
             }
 
-            sendMessage("Put those ice cubes in your underwear, so that your %Balls% rest on them");
+            sendMessage("Put those ice cubes in your underwear, so that %MyYour% %Balls% rest on them");
             sendMessage("Do it %SlaveName%!");
             sendMessage("Make sure they don\'t fall out");
             sendMessage("That\'s sooo cold %Lol%");

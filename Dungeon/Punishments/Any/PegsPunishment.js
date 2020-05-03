@@ -6,7 +6,6 @@
         if (tryRunPunishmentFetchId(MODULE.PEG)) {
             switch (randomInteger(0, 1)) {
                 case 0:
-                    //TODO: Think of a different solution
                     if (!fetchToy('clothespin', undefined, 2)) {
                         runPunishment(PUNISHMENT_CURRENT_LEVEL);
                         break;
@@ -115,7 +114,6 @@
                     }
                     break;
                 case 1:
-                    //TODO: Think of a different solution
                     if(!sendYesOrNoQuestion('Do you have 10 clothespins and a string or piece of rope available right now %SlaveName%?')) {
                         runPunishment(PUNISHMENT_CURRENT_LEVEL);
                         break;

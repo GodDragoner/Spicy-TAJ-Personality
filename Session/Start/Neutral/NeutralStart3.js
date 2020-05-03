@@ -5,11 +5,11 @@
 
             if (!answer.isTimeout()) {
                 if (answer.isLike('why', 'how come', 'really')) {
-                    sendMessage('Because I\'ve been thinking about your %Cock%');
+                    sendMessage('Because I\'ve been thinking about %MyYour% %Cock%');
                     sendMessage('And how much I want it to suffer %Grin%');
                 } else if (answer.isLike('too', 'as well', 'also')) {
                     sendMessage('Aww that\'s so sweet');
-                    sendMessage("But I get the feeling your %Cock% isn\'t as glad to see me as you are");
+                    sendMessage("But I get the feeling %MyYour% %Cock% isn\'t as glad to see me as you are");
                     sendMessage('Especially considering what I\'m about to do to it %Grin%');
                 } else if (answer.isLike('thank', 'gracias', 'merci', 'nice', 'sweet', 'kind', 'means')) {
                     sendMessage('You\'re welcome %SlaveName%');

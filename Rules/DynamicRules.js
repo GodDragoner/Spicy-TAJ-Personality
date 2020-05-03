@@ -248,7 +248,7 @@ let RULE_DOMME_KEYHOLDER;
                         if (isInChastity()) {
                             sendMessage("Even though you can't get hard inside that %ChastityCage% %Grin%", 0);
                         } else {
-                            sendMessage("To make sure your %Cock% gets hard", 0);
+                            sendMessage("To make sure %MyYour% %Cock% gets hard", 0);
                         }
 
                         showCategoryImage("BLOWJOB", 5);
@@ -269,7 +269,7 @@ let RULE_DOMME_KEYHOLDER;
                         sendMessage("Every flaw and every quality");
                         sendMessage("I would point out the good...");
                         sendMessage("And scold you for the bad %lol%");
-                        sendMessage("Not just your %Cock% is mine %SlaveName%");
+                        sendMessage("Not just %MyYour% %Cock% is mine %SlaveName%");
                         sendMessage("Your whole body belongs to me");
                         sendMessage("Don't forget that");
                         return true;
@@ -326,15 +326,17 @@ let RULE_DOMME_KEYHOLDER;
         sendMessage('Good sissies never swallow their spit %Grin%');
 
         if (getSissyLimit() === LIMIT_NEVER) {
-            sendMessage('Well you aren\'t a sissy but this rule applies to good slaves too')
+            sendMessage('Well you aren\'t a sissy but this rule applies to good slaves too');
+            sendMessage('And because you want to please');
         } else {
             if (getSissyLimit() === LIMIT_NEVER_ASKED || getSissyLimit() === LIMIT_ASKED_MAYBE) {
                 sendMessage('Well you aren\'t a sissy yet but we will get there %Grin%');
                 sendMessage('My little sissy bitch %Lol%');
             }
+
+            sendMessage('And because you want to please me and I want you to be one...');
         }
 
-        sendMessage('And because you want to please me and I want you to be one...');
         sendMessage('You will follow this rule from now on');
 
         this.setActive(true);

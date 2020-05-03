@@ -19,7 +19,7 @@ function getActiveChastityCage() {
     }
 }
 
-function unlockChastityCage() {
+function unlockChastityCage(fakeOpening = false) {
     if (!getVar(VARIABLE.HAS_CHASTITY) || !getVar(VARIABLE.CHASTITY_ON)) {
         return;
     }
@@ -27,6 +27,66 @@ function unlockChastityCage() {
     unlockChastityKey();
 
     sendMessage("%SlaveName%");
+
+    if(fakeOpening || feelsEvil()) {
+        sendMessage(random('In a moment', 'In a second', 'In a few moments', 'In a few seconds') + ' I am gonna ' + random('allow you to', '') + ' unlock %MyYour% poor little cock');
+        sendMessage(random('But', 'However') + random(' today I really want you to savour the moment', ' it will be a bit different today', ' today will be different',
+            ' we are gonna take it slow today', ' I want you to savour the moment'));
+        sendMessage(random('You will not completely %MyYour% cock unless I specifically stated it', 'You will not rush it and do as I say', 'You will not unlock it without my explicit permission',
+            'You will obey me and not unlock it without my explicit permission'));
+
+        sendMessage('%Now%');
+        sendMessage('Put the key into the lock of the cage %Grin%');
+        sleep(randomInteger(5, 10));
+        sendMessage(random('Feel %MyYour% %Cock% aching to be free', 'Feel %MyYour% %Cock% throbbing and waiting to be finally free', 'Think about how the freedom will feel'));
+        sleep(randomInteger(5, 10));
+        sendMessage('%Moan%');
+        sleep(randomInteger(5, 10));
+
+        let chanceToAbort = 20;
+
+        sendMessage('And...');
+
+        if(fakeOpening && isChance(chanceToAbort)) {
+            sendMessage('Pull the key out again %Lol%');
+            return;
+        }
+
+        chanceToAbort += 20;
+
+        sendMessage(random('Twist the key in the lock', 'Twist the key', 'Open the lock by twisting the key'));
+        sleep(randomInteger(5, 10));
+
+        if(sendYesOrNoQuestion(random('So close to freedom', 'So excited', 'So thrilled') + ' aren\'t you?')) {
+            sendMessage('Mhmmm yes your are %Grin%');
+        } else {
+            sendMessage('No? I wonder why you feel that way %Lol%');
+        }
+
+        sleep(randomInteger(5, 10));
+        sendMessage('%Now%');
+        if(fakeOpening && isChance(chanceToAbort)) {
+            sendMessage('Lock the lock right up again %Lol%');
+            return;
+        }
+
+        chanceToAbort = 100;
+
+        sendMessage('Remove the lock but keep holding the cage in place');
+        sendMessage(random('The cage stays on until I give you the permission to remove it completely', 'Wait for my command', 'Do not remove it completely yet', 'Keep it in place') + ' %SlaveNameSmiley%');
+        sleep(randomInteger(5, 10));
+
+        sendMessage(random('So close!', 'Only a few more moments till freedom', 'Just a few more moments till freedom', 'Hard to ignore that %Cock% crying out for freedom isn\'t it?') + ' %Lol%');
+        sleep(randomInteger(5, 10));
+
+        if(fakeOpening) {
+            sendMessage('Put the lock back on and lock everything back up %SlaveName% %Lol%');
+
+            return;
+        }
+
+        //Now the normal thing as always
+    }
 
     lockImages();
     showImage("Images/Spicy/Chastity/ChastityOff/*.{jpg,png,gif}");
@@ -81,7 +141,7 @@ function getMaxChastitySize() {
     let strictness = getStrictnessForCharacter();
 
     //Smaller size if we feel like punishing
-    let subtract = feelsLikePunishingSlave()? 1 : 0;
+    let subtract = feelsLikePunishingSlave() ? 1 : 0;
 
     let maxWithoutRange = 8 - (Math.max(1, strictness) + Math.max(1, mood) + Math.min(1, mood) + subtract);
     sendDebugMessage('Max chastity cage size: ' + maxWithoutRange);
@@ -171,7 +231,7 @@ function getRandomCageWithSize(length, punishments) {
         }
 
         //Don't need to search for a smaller cage because we won't be able to fulfill the request anyway
-        if(punishmentOptionsOfCage < punishments - 1) {
+        if (punishmentOptionsOfCage < punishments - 1) {
             continue;
         }
 
@@ -389,7 +449,7 @@ function lockChastityCage(chastityCage = undefined) {
     showImage("Images/Spicy/Chastity/ChastityOn/*.{jpg,png,gif}");
     if (randomInteger(0, 2) == 2) playSound("Audio/Spicy/Chastity/ChastityOn/*.mp3");
 
-    if(chastityCage === null || chastityCage === undefined) {
+    if (chastityCage === null || chastityCage === undefined) {
         chastityCage = selectChastityCage();
     }
 
@@ -429,7 +489,7 @@ function lockChastityCage(chastityCage = undefined) {
 
     currentChastityCage = chastityCage;
 
-    sendMessageBasedOnSender(random("Put on your %ChastityCage%", "Put on the %ChastityCage% at once", "Hurry up and get the %ChastityCage% back on", "Be quick and get your %ChastityCage% back on", "Lock your %Cock% up"));
+    sendMessageBasedOnSender(random("Put on your %ChastityCage%", "Put on the %ChastityCage% at once", "Hurry up and get the %ChastityCage% back on", "Be quick and get your %ChastityCage% back on", "Lock %MyYour% %Cock% up"));
 
     const chastityLevel = getVar(VARIABLE.CHASTITY_LEVEL);
     let timeout = randomInteger(60 - chastityLevel, 90 - chastityLevel);
@@ -581,117 +641,24 @@ function loadChastityCages() {
 
         for (let x = 0; x < arrayList.size(); x++) {
             let entry = arrayList.get(x);
-            let splitArray = entry.split(',');
-
-            let name = 'undefined';
-            let length = -1;
-            let material = MATERIAL.PLASTIC;
-            let dialator = false;
-            let dialatorDetachable = false;
-            let spikes = false;
-            let spikesDetachable = false;
-            let ballTrapType = 1;
-
-            for (let y = 0; y < splitArray.length; y++) {
-                let valueEntry = splitArray[y];
-
-                if (valueEntry.indexOf('name:') !== -1) {
-                    name = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('length:') !== -1) {
-                    length = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('material:') !== -1) {
-                    material = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('dialator:') !== -1) {
-                    dialator = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('dialatorDetachable:') !== -1) {
-                    dialatorDetachable = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('spikes:') !== -1) {
-                    spikes = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('spikesDetachable:') !== -1) {
-                    spikesDetachable = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('ballTrapType:') !== -1) {
-                    ballTrapType = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                }
-            }
-
-            let chastityCage = {
-                name: name,
-                length: length,
-                material: material,
-                dialator: dialator,
-                dialatorDetachable: dialatorDetachable,
-                spikes: spikes,
-                spikesDetachable: spikesDetachable,
-                ballTrapType: ballTrapType,
-            };
-
-            CHASTITY_CAGES.push(createCage(chastityCage));
+            CHASTITY_CAGES.push(createChastityCage().fromString(entry));
 
             if (currentChastityCage === null) {
-                currentChastityCage = chastityCage;
+                currentChastityCage = CHASTITY_CAGES[0];
             }
         }
     }
-}
-
-function createCage(cage) {
-    cage.isFullSizedBelt = function () {
-        return this.ballTrapType === 0;
-    };
-
-    cage.getPunishmentOptions = function () {
-        let amount = 0;
-        if (this.spikes) {
-            amount++;
-        }
-
-        if (this.dialator) {
-            amount++;
-        }
-
-        return amount;
-    };
-
-
-    return cage;
 }
 
 function saveChastityCages() {
     let arrayList = new java.util.ArrayList();
 
     for (let y = 0; y < CHASTITY_CAGES.length; y++) {
-        arrayList.add(chastityCageToString(CHASTITY_CAGES[y]));
+        arrayList.add(CHASTITY_CAGES[y].toString());
     }
 
     setVar('chastityCages', arrayList);
 }
-
-function chastityCageToString(cage) {
-    let string = 'name:' + cage.name + ',length:' + cage.length + ',material:' + cage.material;
-
-    if (cage.dialator) {
-        string += ',dialator:' + cage.dialator;
-    }
-
-    if (cage.dialatorDetachable) {
-        string += ',dialatorDetachable:' + cage.dialatorDetachable;
-    }
-
-    if (cage.spikes) {
-        string += ',spikes:' + cage.spikes;
-    }
-
-    if (cage.spikesDetachable) {
-        string += ',spikesDetachable:' + cage.spikesDetachable;
-    }
-
-    if (cage.ballTrapType) {
-        string += ',ballTrapType:' + cage.ballTrapType;
-    }
-
-    return string;
-}
-
 
 function getChastityCageByName(name) {
     for (let y = 0; y < CHASTITY_CAGES.length; y++) {
@@ -773,7 +740,7 @@ function setupNewCage() {
     sendVirtualAssistantMessage("Noted...");
 
     let dialator = false;
-    let dialatorDetachable = dialatorDetachable;
+    let dialatorDetachable = false;
     sendVirtualAssistantMessage('Does it have a dialator?', 0);
     answer = createInput();
 
@@ -812,7 +779,9 @@ function setupNewCage() {
     }
 
     let spikes = false;
-    let spikesDetachable = dialatorDetachable;
+    let spikesDetachable = false;
+    let spikesOverall = false;
+
     sendVirtualAssistantMessage("If you have it, we might consider using spikes as a punishment...");
     sendVirtualAssistantMessage('Does it have spikes?', 0);
     answer = createInput();
@@ -841,9 +810,50 @@ function setupNewCage() {
                     answer.loop();
                 }
             }
+
+
+            sendVirtualAssistantMessage('Are they spikes attached to an anti off ring/at the base only or everywhere in the cage?', 0);
+            answer = createInput();
+
+            while (true) {
+                if (answer.isLike("everywhere")) {
+                    sendVirtualAssistantMessage("You will regret buying this %Grin%");
+                    sendVirtualAssistantMessage('I would suggest behaving properly otherwise you might be fucked or more like your cock will be');
+                    spikesOverall = true;
+                    break;
+                } else if (answer.isLike("anti", "base")) {
+                    sendVirtualAssistantMessage("%EmoteSad%");
+                    sendVirtualAssistantMessage('Still it will be more than enough for you to suffer %Grin%');
+                    break;
+                } else {
+                    sendVirtualAssistantMessage(YES_OR_NO);
+                    answer.loop();
+                }
+            }
+
             break;
         } else if (answer.isLike("no")) {
             sendVirtualAssistantMessage("Too bad...");
+            break;
+        } else {
+            sendVirtualAssistantMessage(YES_OR_NO);
+            answer.loop();
+        }
+    }
+
+    let penisAccessible = false;
+
+    sendVirtualAssistantMessage('Is it open at the front and allows access to your penis like on this photo?', 0);
+    showImage('Images/Toys/openSpikeChastity.*');
+    answer = createInput();
+
+    while (true) {
+        if (answer.isLike("yes")) {
+            penisAccessible = true;
+            sendVirtualAssistantMessage("You will not like what %DomHonorific% %DomName% is planning with that %Grin%");
+            break;
+        } else if (answer.isLike("no")) {
+            sendVirtualAssistantMessage("Completely encased is better in my opinion anyway %Grin%");
             break;
         } else {
             sendVirtualAssistantMessage(YES_OR_NO);
@@ -870,6 +880,8 @@ function setupNewCage() {
         }
     }
 
+
+
     /*sendVirtualAssistantMessage("Are you pierced as a mean to secure the device?", false);
     answer = createInput();
 
@@ -887,7 +899,16 @@ function setupNewCage() {
         }
     }*/
 
-    let chastityCage = {
+    CHASTITY_CAGES.push(createChastityCage(name, length, material, dialator, dialatorDetachable, spikes, spikesDetachable, spikesOverall, penisAccessible, ballTrapType));
+
+    saveChastityCages();
+
+    sendVirtualAssistantMessage('Added your new chastity cage to %DomHonorific% %DomName%\'s collection');
+    sendVirtualAssistantMessage('Enjoy %Grin%');
+}
+
+function createChastityCage(name, length, material, dialator, dialatorDetachable, spikes, spikesDetachable, spikesOverall, penisAccessible, ballTrapType) {
+    return {
         name: name,
         length: length,
         material: material,
@@ -895,15 +916,99 @@ function setupNewCage() {
         dialatorDetachable: dialatorDetachable,
         spikes: spikes,
         spikesDetachable: spikesDetachable,
+        spikesOverall: spikesOverall,
+        penisAccessible: penisAccessible,
         ballTrapType: ballTrapType,
-    };
 
-    CHASTITY_CAGES.push(createCage(chastityCage));
+        getImagePath: function () {
+            return 'Images/Spicy/Toys/Chastity Cages/' + this.name + '.*';
+        },
 
-    saveChastityCages();
+        fetchChastityCage: function () {
+            fetchToy(this.name, this.getImagePath());
+        },
 
-    sendVirtualAssistantMessage('Added your new chastity cage to %DomHonorific% %DomName%\'s collection');
-    sendVirtualAssistantMessage('Enjoy %Grin%');
+        toString: function () {
+            let string = 'name:' + this.name + ',length:' + this.length + ',material:' + this.material;
+
+            if (this.dialator) {
+                string += ',dialator:' + this.dialator;
+            }
+
+            if (this.dialatorDetachable) {
+                string += ',dialatorDetachable:' + this.dialatorDetachable;
+            }
+
+            if (this.spikes) {
+                string += ',spikes:' + this.spikes;
+            }
+
+            if (this.spikesDetachable) {
+                string += ',spikesDetachable:' + this.spikesDetachable;
+            }
+
+            if (this.spikesOverall) {
+                string += ',spikesOverall:' + this.spikesOverall;
+            }
+
+            if (this.penisAccessible) {
+                string += ',penisAccessible:' + this.penisAccessible;
+            }
+
+            if (this.ballTrapType) {
+                string += ',ballTrapType:' + this.ballTrapType;
+            }
+
+            return string;
+        },
+
+        isFullSizedBelt: function () {
+            return this.ballTrapType === 0;
+        },
+
+        getPunishmentOptions: function () {
+            let amount = 0;
+            if (this.spikes) {
+                amount++;
+            }
+
+            if (this.dialator) {
+                amount++;
+            }
+
+            return amount;
+        },
+
+        fromString: function (string) {
+            let splitArray = string.split(',');
+
+            for (let y = 0; y < splitArray.length; y++) {
+                let valueEntry = splitArray[y];
+
+                if (valueEntry.indexOf('name:') !== -1) {
+                    this.name = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                } else if (valueEntry.indexOf('length:') !== -1) {
+                    this.length = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                } else if (valueEntry.indexOf('material:') !== -1) {
+                    this.material = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                } else if (valueEntry.indexOf('dialator:') !== -1) {
+                    this.dialator = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                } else if (valueEntry.indexOf('dialatorDetachable:') !== -1) {
+                    this.dialatorDetachable = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                } else if (valueEntry.indexOf('spikes:') !== -1) {
+                    this.spikes = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                } else if (valueEntry.indexOf('spikesDetachable:') !== -1) {
+                    this.spikesDetachable = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                } else if (valueEntry.indexOf('spikesOverall:') !== -1) {
+                    this.spikesOverall = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                } else if (valueEntry.indexOf('penisAccessible:') !== -1) {
+                    this.penisAccessible = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                } else if (valueEntry.indexOf('ballTrapType:') !== -1) {
+                    this.ballTrapType = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
+                }
+            }
+        }
+    }
 }
 
 function fetchChastityCage(toy) {
@@ -913,7 +1018,6 @@ function fetchChastityCage(toy) {
 function getChastityImagePath(name) {
     return 'Images/Spicy/Toys/Chastity Cages/' + name + '.*';
 }
-
 
 function onChastityKeyReturn() {
     //TODO: Virtual assistant lockup same as mistress lockup

@@ -11,7 +11,7 @@ function hasBallCrusher() {
 
 function applyBallCrusherPressure() {
     if (!isVar(VARIABLE.BALL_CRUSHER_MAX_TWISTS) || !isVar(VARIABLE.BALL_CRUSHER_TWISTS_TO_APPLY)) {
-        sendMessage('Since this is the first we play with your %Balls% like this');
+        sendMessage('Since this is the first we play with %MyYour% %Balls% like this');
 
         sendMessage('We need to first of all determine how many twists you need to apply pressure to your balls');
         sendMessage('So what you are gonna do right now is to start twisting and count the amount of twists you need to apply pressure to your balls');
@@ -106,13 +106,13 @@ function applyBallCrusherPressure() {
 
         sendMessage('Well now that we have that part sorted out...');
         sendMessage('Oh.... I forgot about my %Balls% right? %Lol%');
-        sendMessage('You may relieve the pressure on your %Balls% %Grin%');
+        sendMessage('You may relieve the pressure on %MyYour% %Balls% %Grin%');
         sendMessage('BUT make sure that tension is still applied');
         sendMessage('It just shouldn\'t be painful %EmoteHappy%');
         sendMessage('I hope you enjoy that relief because it will only be short-lived %Grin%');
     } else {
         sendMessage('Now...');
-        sendMessage('I need you to tighten the screws so that it applies pressure to your %Balls%');
+        sendMessage('I need you to tighten the screws so that it applies pressure to %MyYour% %Balls%');
         sendMessage('Which means you are gonna do ' + getVar(VARIABLE.BALL_CRUSHER_TWISTS_TO_APPLY) + ' half twists');
         sendMessage('Tell me when you are ready to continue %SlaveName%');
         waitForDone();

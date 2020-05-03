@@ -319,7 +319,7 @@ function sendKinkyChoreInstructions(choreType) {
                 if (PARACHUTE_TOY.hasToy() && PARACHUTE_TOY.isPlayAllowed()) {
                     if (PARACHUTE_TOY.fetchToy()) {
                         PARACHUTE_TOY.setToyOn(true);
-                        sendMessageBasedOnSender('I want you to attach your parachute on to your %Balls%');
+                        sendMessageBasedOnSender('I want you to attach your parachute on to %MyYour% %Balls%');
 
                         sendMessageBasedOnSender('Add some weight to it. At least ' + getWeightForParachute()/2 + 'kg %Grin%');
 

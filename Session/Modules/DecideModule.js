@@ -23,8 +23,10 @@
             minTimePassed = getVar(VARIABLE.DEVOTION)/Math.min(4, Math.max(1, 5 - strictness - mood - 1));
         } else {
             //Other frequency
-            getVar(VARIABLE.DEVOTION)/(strokeFrequency + 1);
+            minTimePassed = getVar(VARIABLE.DEVOTION)/(strokeFrequency + 1);
         }
+
+        //testModules();
 
         sendDebugMessage('Min time between stroking passed: ' + minTimePassed);
 
@@ -274,6 +276,11 @@ function tryRunModule(moduleId, category, minModulesSinceRun = 3, subCategories)
     registerCurrentModuleCategory(subCategories);
 
     return true;
+}
+
+function testModules() {
+    sendDebugMessage('Testing given modules');
+    run("Session/Modules/Tease/NoChastity/EnduranceStrokes.js");
 }
 
 function getModuleTypeCategoryPath(category, type) {

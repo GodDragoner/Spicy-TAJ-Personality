@@ -88,7 +88,7 @@
         'I\'m going to ' + random('fuck you up so bad', 'drive you crazy') + ' %Lol%',
         'I\'m going to drive you completely insane %EmoteOther%',
         'I want you so fucking desperate %SlaveName%',
-        'I want your %Cock% to leak drops of desperation',
+        'I want %MyYour% %Cock% to leak drops of desperation',
         'You are going to give me whatever I want, %SlaveName%',
         'Just imagine what my fingers would be doing to you right now %Grin%',
         'I\'m loving every second of this %EmoteOther%',

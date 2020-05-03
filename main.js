@@ -10,6 +10,7 @@ run("Utils/ArrayUtils.js");
 run("Chat/ChatUtil.js");
 run("Slaves/Slaves.js");
 run("Session/Orgasm/Orgasm.js");
+run("Session/Interaction.js");
 run("Session/Orgasm/OrgasmSpecial.js");
 
 run("Session/End/Training.js");
@@ -80,8 +81,6 @@ run("Startup/Versioning/VersionChecker.js");
 run('Dungeon/Punishments/Tasks/TaskBuilder.js');
 
 afterLoadBodyParts();
-
-sleep(10);
 
 //Update devotion only if the setup is complete which means the variable must exist
 if(isVar(VARIABLE.DEVOTION)) {

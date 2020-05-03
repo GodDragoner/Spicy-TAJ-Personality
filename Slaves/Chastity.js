@@ -20,6 +20,39 @@ function isFullSizedChastityOn() {
     return isInChastity() && currentChastityCage.isFullSizedBelt();
 }
 
+function askForMaxLockupTime() {
+    sendMessage("Knowing that you have a chastiy cage I need to know the maximum amount of days I can lock you up in a row");
+    let answer = sendInput("If you don't have a maximum you can just type 99999");
+
+    while (true) {
+        if (answer.isInteger()) {
+            const result = answer.getInt();
+            if (result <= 0) {
+                sendMessage("You have to choose a number larger than 0...");
+                answer.loop();
+            } else if (result <= 5) {
+                sendMessage("Looks like we have a chastity beginner. Don't worry we can work on that  %Grin%");
+                setVar(VARIABLE.LOCKED_UP_LIMIT, result);
+                break;
+            } else if (result <= 14) {
+                sendMessage("At least you are somewhat trained... Good! %Grin%");
+                setVar(VARIABLE.LOCKED_UP_LIMIT, result);
+                break;
+            } else {
+                sendMessage("Maybe I found a new chastity slut in you! %Grin%");
+                setVar(VARIABLE.LOCKED_UP_LIMIT, result);
+                break;
+            }
+        } else {
+            sendMessage("Just give me a number like 3, 10 or 70...");
+            answer.loop();
+        }
+    }
+
+    sendMessage("No matter your limit. I will break it %SlaveName%");
+    sendMessage("We're gonna have a lot of fun! %Lol%");
+}
+
 function willKeepChastityOn(end) {
     //Higher choice value -> chastity will probably be removed
     let choice = randomInteger(1, 100);
@@ -105,13 +138,40 @@ function hasDeclinedChastityTraining() {
 }
 
 function startLongTermChastityIntro() {
-    if (!RULE_DOMME_KEYHOLDER.isActive() && hasChastityCage() && !getVar(VARIABLE.PARTNER_IS_KEYHOLDER, false)) {
+    let justChangedPartnerKeyholder = false;
+    //Partner is currently keyholder but asked for it
+    if (isVar(VARIABLE.ASKED_FOR_KEYHOLDER) && getVar(VARIABLE.PARTNER_IS_KEYHOLDER, false)) {
         sendMessage('So %SlaveName%');
+        sendMessage('It looks like you want me to be your keyholder %EmoteHappy%');
+        sendMessage('Hold the key to %MyYour% cock\'s freedom');
+        sendMessage('But last time we talked about this you told me ' + getVar(VARIABLE.SUB_PARTNER_NAME) + ' is your keyholder...');
+
+        if (sendYesOrNoQuestion('Is ' + getVar(VARIABLE.SUB_PARTNER_NAME) + ' still your keyholder?')) {
+            sendMessage('Well then don\'t bother me with it');
+            changeMeritLow(true);
+            sendMessage('I won\'t interfere with ' + getVar(VARIABLE.SUB_PARTNER_NAME) + ' decisions and I trust she will make you suffer like I would or even worse %Grin%');
+            return;
+        }
+        //No
+        sendMessage('Oh really?');
+
+        sendMessage('Well then %EmoteHappy%');
+        setVar(VARIABLE.SUB_PARTNER_NAME, false);
+        setVar(VARIABLE.ASKED_FOR_KEYHOLDER, false);
+        justChangedPartnerKeyholder = true;
+    }
+
+    if (!RULE_DOMME_KEYHOLDER.isActive() && hasChastityCage() && !getVar(VARIABLE.PARTNER_IS_KEYHOLDER, false)) {
+        if(!justChangedPartnerKeyholder) {
+            sendMessage('So %SlaveName%');
+        }
 
         if (isVar(VARIABLE.ASKED_FOR_KEYHOLDER)) {
-            sendMessage('I asked you before and I still want to own your %Cock% completely');
+            sendMessage('I asked you before and I still want to own %MyYour% %Cock% completely');
 
-            if(getVar(VARIABLE.KEYHOLDER_FANTASIZE, false)) {
+            if (getVar(VARIABLE.RESPONSE_WANTS_KEYHOLDER, false)) {
+                sendMessage('And since you\'ve addressed it %Grin%');
+            } else if (getVar(VARIABLE.KEYHOLDER_FANTASIZE, false)) {
                 sendMessage('And since you have fantasized about a keyholder before...')
             } else {
                 sendMessage('So...');
@@ -123,7 +183,7 @@ function startLongTermChastityIntro() {
             } else {
                 sendMessage('%EmoteSad%');
 
-                if(isEnforcingPersonality()) {
+                if (isEnforcingPersonality()) {
                     sendMessage('This will definitely not end up your way %SlaveName%');
                     sendMessage('Mark my words!');
                     sendMessage('I will make you break even if it takes weeks');
@@ -137,15 +197,29 @@ function startLongTermChastityIntro() {
                 return false;
             }
         } else {
-            sendMessage('About that chastity cage you\'re wearing');
+            if (getVar(VARIABLE.RESPONSE_WANTS_KEYHOLDER, false)) {
+                sendMessage('It looks like you want me to be your keyholder %EmoteHappy%');
+                sendMessage('Hold the key to %MyYour% cock\'s freedom');
+                sendMessage('I was planning to ask you this anyway but you beat me to it %Lol%');
+                sendMessage('So since you\'ve addressed it...');
+            } else {
+                if (isInChastity()) {
+                    sendMessage('About that chastity cage you\'re wearing');
+                } else {
+                    sendMessage('About that chastity cage you\'re owning');
+                }
+            }
 
             sendMessage('I was wondering...');
 
-            if (getVar(VARIABLE.SUB_IS_MARRIED, false) || getVar(VARIABLE.SUB_HAS_GIRLFRIEND, false)) {
-                if (askForPartnerKeyholder()) {
-                    return false;
-                } else {
-                    sendMessage('Oh, well someone should %Grin%');
+            //If we just changed partner keyholder we don't need to ask again
+            if(!justChangedPartnerKeyholder) {
+                if (getVar(VARIABLE.SUB_IS_MARRIED, false) || getVar(VARIABLE.SUB_HAS_GIRLFRIEND, false)) {
+                    if (askForPartnerKeyholder()) {
+                        return false;
+                    } else {
+                        sendMessage('Oh, well someone should %Grin%');
+                    }
                 }
             }
         }
@@ -170,7 +244,7 @@ function startLongTermChastityIntro() {
                 changeMeritHigh(false);
                 sendMessage('Well, maybe you will, but I certainly won\'t');
 
-                if(isEnforcingPersonality()) {
+                if (isEnforcingPersonality()) {
                     sendMessage('What\'s sure though is...');
                     sendMessage('You would\'ve regret it if you\'ve said no %Lol%');
                 }
@@ -190,11 +264,11 @@ function startLongTermChastityIntro() {
                 sendMessage('Hmmm, that\'s too bad, %SlaveName%');
             }
         } else {
-            if(isEnforcingPersonality()) {
+            if (isEnforcingPersonality()) {
                 sendMessage('You know...');
                 sendMessage('I really don\'t like being told no');
                 sendMessage('I can\'t really force you to anything but I have my means and ways to get pretty close to forcing you %Grin%');
-                sendMessage('So don\'t think I will give up until I am your keyholder and own your %Cock% completely!');
+                sendMessage('So don\'t think I will give up until I am your keyholder and own %MyYour% %Cock% completely!');
                 changeMeritMedium(true);
 
                 smallPunishment();
@@ -221,7 +295,7 @@ function startLongTermChastityIntro() {
 
         sendMessage('I like to think that you\'ll change your mind');
         sendMessage('And that you\'ll give me the key');
-        sendMessage('So that I will completely own your %Cock% %SlaveName%');
+        sendMessage('So that I will completely own %MyYour% %Cock% %SlaveName%');
         sendMessage('But for now...');
         sendMessage('I can still keep you in chastity during our sessions %EmoteHappy%');
         return false;

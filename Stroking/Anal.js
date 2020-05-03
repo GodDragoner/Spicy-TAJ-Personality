@@ -20,7 +20,7 @@ function startAnal(bpm, duration) {
     wait(10);
 }
 
-function getInitialBPM() {
+function getInitialAnalBPM() {
     //Min 30 bpm
     let result = Math.max(30, Math.ceil(getVar(VARIABLE.ASS_LEVEL)*2.5) + initialBPMIncrease);
     //Min 5 max with ass level 30 is 15

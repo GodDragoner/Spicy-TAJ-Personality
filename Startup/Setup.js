@@ -170,9 +170,9 @@
 
     setVar(VARIABLE.SUB_SOFT_COCK_LENGTH, createDoubleInput('How long is your cock soft? (cm, decimal place allowed)', 0, 20, 'That\'s not a number. Just give me a number like 5.6', 'That\'s not a realistic soft cock length in cm'));
 
-    if(getVar(VARIABLE.SUB_COCK_LENGTH) - getVar(VARIABLE.SOFT_COCK_LENGTH) > 10) {
+    if(getVar(VARIABLE.SUB_COCK_LENGTH) - getVar(VARIABLE.SUB_SOFT_COCK_LENGTH) > 10) {
         sendVirtualAssistantMessage('Seems like you are a real grower %SubName%');
-    } else if(getVar(VARIABLE.SUB_COCK_LENGTH) - getVar(VARIABLE.SOFT_COCK_LENGTH) < 5) {
+    } else if(getVar(VARIABLE.SUB_COCK_LENGTH) - getVar(VARIABLE.SUB_SOFT_COCK_LENGTH) < 5) {
         sendVirtualAssistantMessage('Flesh penis huh?');
 
         if(getVar(VARIABLE.SUB_COCK_LENGTH) > 17) {
@@ -432,16 +432,16 @@
         answer = createInput();
 
         while (true) {
-            if (answer.containsIgnoreCase("play")) {
+            if (answer.isLike("play")) {
                 setVar(VARIABLE.CHASTITY_TOY_MODE, TOY_PLAY_MODE);
                 break;
-            } else if (answer.containsIgnoreCase("both")) {
+            } else if (answer.isLike("both")) {
                 setVar(VARIABLE.CHASTITY_TOY_MODE, TOY_BOTH_MODE);
                 break;
-            } else if (answer.containsIgnoreCase("punishment")) {
+            } else if (answer.isLike("punishment")) {
                 setVar(VARIABLE.CHASTITY_TOY_MODE, TOY_PUNISHMENT_MODE);
                 break;
-            } else if (answer.containsIgnoreCase("full", "time", "24/7")) {
+            } else if (answer.isLike("full", "time", "24/7")) {
                 setVar(VARIABLE.CHASTITY_TOY_MODE, TOY_BOTH_MODE + 1);
                 break;
             } else {

@@ -1,5 +1,11 @@
 function watchVideoForDuration(durationSeconds) {
     const player = Java.type('me.goddragon.teaseai.api.media.MediaHandler').getHandler().getCurrentVideoPlayer();
+
+    if(player == null) {
+        return;
+    }
+
+
     //We need to wait for the player to ready up and start playing before continuing
     while (!player.getStatus().equals(javafx.scene.media.MediaPlayer.Status.PLAYING)) {
         wait(100, 'MILLISECONDS');

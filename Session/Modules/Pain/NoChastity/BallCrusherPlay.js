@@ -2,7 +2,7 @@
     if(getCBTLimit() != LIMIT_ASKED_YES || !hasBallCrusher()) {
         runModuleCategory('Pain');
     } else if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.BALL_TORTURE)) {
-        sendMessage("%SlaveName%... " + random("I want to have a bit of fun with your %Balls%", "Lets play a bit with those %Balls%"));
+        sendMessage("%SlaveName%... " + random("I want to have a bit of fun with %MyYour% %Balls%", "Lets play a bit with those %Balls%"));
 
         if (fetchToy("ball crusher")) {
             sendMessage('Go ahead and attach it...');
@@ -207,7 +207,7 @@ function ballCrusherRubberPlay() {
     sendMessage('Good!');
     sendMessage('Stand up %SlaveName%');
     sendMessage('In a moment you will pull that rubberband back as far as you can');
-    sendMessage('Aim for the center of your %Balls%');
+    sendMessage('Aim for the center of %MyYour% %Balls%');
     sendMessage('And release %Grin%');
 
     const subPain = Math.max(1, getVar(VARIABLE.SUB_PAIN_TOLERANCE));

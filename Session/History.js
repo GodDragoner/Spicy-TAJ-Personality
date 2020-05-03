@@ -40,7 +40,8 @@ function createHistory(name) {
             }
 
             if(history.contains(moduleId)) {
-                history.remove(moduleId);
+                //index of because if moduleId is an integer we would try to remove the index instead of the object
+                history.remove(history.indexOf(moduleId));
             }
 
             history.add(moduleId);

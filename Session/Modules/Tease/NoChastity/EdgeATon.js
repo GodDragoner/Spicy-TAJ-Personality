@@ -17,12 +17,12 @@ if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.STROKING)) {
 
     if (getVar(VARIABLE.EDGE_A_TONS_DONE, 0) == 0) {
         sendMessage("This is gonna be your first edge a ton");
-        sendMessage("It's actually a great way to show my control over your %Cock%");
+        sendMessage("It's actually a great way to show my control over %MyYour% %Cock%");
         sendMessage("Basically it consists of you edging over and over...");
         sendMessage("Again and again %Grin%");
-        sendMessage("This is usually done alone");
+        /*sendMessage("This is usually done alone");
         sendMessage("However you might also face competitors from time to time");
-        sendMessage("Slaves will compete with each other");
+        sendMessage("Slaves will compete with each other");*/
         sendMessage("And the rules are rather simple");
         sendMessage("You are to edge");
         sendMessage("Hold it for 10 seconds");
@@ -30,51 +30,19 @@ if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.STROKING)) {
         sendMessage("Edge again");
         sendMessage("Then at random intervals you will be told to go completely soft");
         sendMessage("Once you're completely soft you are to get back on the edge");
-        sendMessage("Before we begin I need to know your soft cock length in centimeters");
-        sendMessage("And it must be rounded UP to nearest value");
-        sendMessage("If your soft penis is 6,4cm long I want you to tell me it's 7 centimeters long");
-        sendMessage("So %SlaveName%");
-        const answer = sendInput("What is your soft cock length?");
 
-        while (true) {
-            if (answer.isInteger()) {
-                const result = answer.getInt();
-                if (result <= 0) {
-                    sendMessage("I know your cock is small but it can't I also know it exists %Lol%");
-                    answer.loop();
-                } else {
-                    if (result > 7) {
-                        sendMessage("Well that seems almost decent ");
-                    } else {
-                        sendMessage("Wow that\'s small! For your sake I hope you're a \"grower\"");
-                    }
-
-                    sendMessage("My lover's cock is 13cm when soft and he's a grower");
-                    sendMessage("And oh my... It sure does grow %Grin%");
-                    sendMessage("I bet your friend " + getVar("blackmailName1") + " wouldn't be impressed by your size either %Lol%")
-                    setVar(VARIABLE.SOFT_COCK_LENGTH, result);
-                    break;
-                }
-            } else {
-                sendMessage("You need to input a number...");
-                sendMessage("You can't write 4 centimeters or 'four'");
-                sendMessage("A simple number such as 3, 10 or 12 will do");
-                answer.loop();
-            }
-        }
-
-        sendMessage("Every saturday you can enter an edging competition");
+        /*sendMessage("Every saturday you can enter an edging competition");
         sendMessage("The entry fee is 20 gold and you might win 200 gold");
-        sendMessage("But before I'll let you enter the competition you need to complete at least 15 training sessions with me %Grin%");
+        sendMessage("But before I'll let you enter the competition you need to complete at least 15 training sessions with me %Grin%");*/
     } else {
         sendMessage("Now we will play another game %EmoteHappy%");
         sendMessage("You will probably remember it...");
-        sendMessage("It's called edge a ton %Grin%")
+        sendMessage("It's called edge a ton %Grin%");
 
         const date = new Date();
 
         //Saturday TODO: Implement competition
-        if (date.getDay() == 6 && false) {
+        /*if (date.getDay() == 6 && false) {
             if (getVar(VARIABLE.EDGE_A_TONS_DONE) > 15) {
                 sendMessage("And I have another good news...");
                 sendMessage("Today is saturday!");
@@ -89,7 +57,7 @@ if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.STROKING)) {
                         changeMeritLow(true);
                     }
 
-                    sendMessage("Well then...")
+                    sendMessage("Well then...");
                     sendMessage("Seems like today we're just having a regular session");
                 } else {
                     const answer = sendInput("Do you wish to enter the edging competition?");
@@ -108,7 +76,7 @@ if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.STROKING)) {
                     }
                 }
             }
-        }
+        }*/
     }
 
     setVar(VARIABLE.EDGE_A_TONS_DONE, getVar(VARIABLE.EDGE_A_TONS_DONE, 0) + 1);
@@ -185,17 +153,19 @@ function startEdgeATon(chosenByDom, edgesToDo) {
     while (edgesToDo > 0) {
         startEdging(getEdgeHoldSeconds(EDGE_HOLD_SHORT));
         sendMessage("%LetEdgeFade%");
-        sleep(randomInteger(10, 20));
+        sleep(20);
         edgesToDo--;
 
-        //Interact with toys every 15 edges
+        //Interact with toys every 10 edges
         if(edgesToDo%10 == 0) {
             sendMessage('Let\'s do a short break...');
             sendMessage('But let\'s not waste the time');
             interactWithRandomToys();
+            //Just so we don't instantly jump to edging
+            sleep(5);
         }
 
-        if (edgesToDo > 0 && isChance(10)) {
+        if (edgesToDo > 0 && isChance(7)) {
             sendMessage("Okay %SlaveName%");
             sendMessage("Time for you to get completely soft %Grin%");
             growDickSoft();
@@ -226,7 +196,7 @@ function startEdgeATon(chosenByDom, edgesToDo) {
 
 function growDickSoft() {
     sendMessage(random("Use the ruler to determine to when you're there", "And use the ruler to determine when you're soft", "Use the ruler to measure when you're soft"));
-    sendMessage(random("Your cock has to be shorter than ", "Your cock must be shorter than ", "Your tiny dick has to be shorter than ") + getVar(VARIABLE.SOFT_COCK_LENGTH) + " centimeters");
+    sendMessage(random("Your cock has to be shorter than ", "Your cock must be shorter than ", "Your tiny dick has to be shorter than ") + getVar(VARIABLE.SUB_SOFT_COCK_LENGTH) + " centimeters");
 
     const dateStart = new Date().getTime();
 

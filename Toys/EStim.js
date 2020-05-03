@@ -69,7 +69,7 @@ function attachEStimToBodyPart(bodyPart) {
 
             toysAttached.push(E_STIM_STRAPS);
 
-            sendMessage('I want you to attach one to the base of your %Cock%');
+            sendMessage('I want you to attach one to the base of %MyYour% %Cock%');
             sendMessage('And one right around your cock head %Grin%');
 
             sendMessage('Tell me when you are done');
@@ -281,7 +281,7 @@ function setupEStimToy(domChose) {
         waitForDoneVirtualAssistant();
     }
 
-    sendVirtualAssistantMessage('For best measurement somehow attach something of it to your %Cock%');
+    sendVirtualAssistantMessage('For best measurement somehow attach something of it to %MyYour% %Cock%');
 
     for (let x = 0; x < modes; x++) {
         let mode = createEStimMode();

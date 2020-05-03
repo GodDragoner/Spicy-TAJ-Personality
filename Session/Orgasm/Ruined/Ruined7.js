@@ -51,7 +51,7 @@
                 sendEatInstructions();
             }
 
-            sendMessage("Sometimes your %Balls% need a good draining, %SlaveName%");
+            sendMessage("Sometimes %MyYour% %Balls% need a good draining, %SlaveName%");
             sendMessage("Even if it wasn\'t much fun for you...");
             sendMessage("Just remember that you made me very happy %Emotehappy%");
         } else {

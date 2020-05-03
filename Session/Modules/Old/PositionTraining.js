@@ -287,7 +287,7 @@ function simplePositionTrainingSelection(totalPositions) {
             sendMessage("Excellent for spanking");
 
             showImage("Images/Spicy/Positions/Punishment3.jpg");
-            sendMessage("Tied the right way and your %Balls% become very vulnerable");
+            sendMessage("Tied the right way and %MyYour% %Balls% become very vulnerable");
 
             showImage("Images/Spicy/Positions/Punishment4.jpg");
             sendMessage("It's better than it looks %Grin%");
@@ -681,7 +681,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             sendMessage("For this one you'll need your gag, parachute and " + randomInteger(4, 8) + " pegs");
             sendMessage("Go and fetch them.");
             sendMessage("Gag yourself");
-            sendMessage("The parachute goes on your %Balls%");
+            sendMessage("The parachute goes on %MyYour% %Balls%");
             sendMessage("I want you to hang " + randomInteger(1, 3) + "kg's from it %Lol%");
             sendMessage("place the pegs on your nipples.");
             if (!checkPositionToys()) {

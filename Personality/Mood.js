@@ -141,6 +141,8 @@ function feelsEvil() {
         chance = (getStrictnessForCharacter() + 1) * 30;
     }
 
+    sendDebugMessage('Feels evil chance ' + chance);
+
     return isChance(chance);
 }
 

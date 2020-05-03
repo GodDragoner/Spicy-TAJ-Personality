@@ -5,7 +5,7 @@
             sendMessage("That\'s my favourite colour! %EmoteHappy%");
 
             sendMessage(random("However ", "But ", "Although ") + "...");
-            sendMessage("Purple is always better when it comes to your %Balls% %Grin%");
+            sendMessage("Purple is always better when it comes to %MyYour% %Balls% %Grin%");
             startEdging();
             sendMessage("%LetEdgeFade%");
             sendMessage("No orgasm for you %GeneralTime% %SlaveName%");

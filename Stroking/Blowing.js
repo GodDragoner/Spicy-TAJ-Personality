@@ -88,10 +88,22 @@ function startBlowToy(toy) {
             //Increase chance if we didn't just play with the tip
             if (isChance(50) && caressingTip || !caressingTip && isChance(80)) {
                 sendMessage("So now...");
-                //TODO: Duration based on mood
-                sendMessage("Start licking up and down the whole " + toy, randomInteger(10, 20));
-                sendMessage("All the way down and up", randomInteger(10, 20));
-                sendMessage("Be passionate and imagine it being another men's cock", randomInteger(10, 20));
+
+                //if it's a bad mood we will rush over the teasing part
+                let minPerStep = 25 - (getMood() * 5);
+
+                sendMessage("Start licking up and down the whole " + toy, randomInteger(minPerStep, minPerStep + 10));
+                sendMessage("All the way down and up", randomInteger(minPerStep, minPerStep + 10));
+                sendMessage("Be passionate and imagine it being another men's cock", randomInteger(minPerStep, minPerStep + 10));
+
+                if(isChance(20)) {
+                    sendMessage(random('Remember that teasing and slowly starting is always important to get things nice and hard', 'Starting off slowly is the best way to get things nice and hard'));
+
+                    if(SISSY_LIMIT.isAllowed()) {
+                        sendMessage('You might need that knowledge at some point my little sissy girl %Wicked%');
+                    }
+                }
+
                 //TODO: ASM interactions
             }
         }
@@ -312,7 +324,7 @@ function startDeepthroatTasks(tasksToDo = 10, createSpiLube = false, bowl = fals
             continue;
         }
 
-        if(bowl) {
+        if (bowl) {
             bowlCounter++;
         }
 
@@ -439,7 +451,7 @@ function startDeepthroatTasks(tasksToDo = 10, createSpiLube = false, bowl = fals
         tasksDone++;
     }
 
-    if(bowlCounter >= 3 && bowl) {
+    if (bowlCounter >= 3 && bowl) {
         sendMessage('Pour the whole content from your bowl all over your face %Grin%');
     }
 }
@@ -460,7 +472,7 @@ function startDeepthroatModule(createSpitLube = false) {
 
     let bowl = false;
 
-    if(!createSpitLube) {
+    if (!createSpitLube) {
         bowl = decideDeepthroatBowl();
     }
 

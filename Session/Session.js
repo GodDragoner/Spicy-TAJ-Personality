@@ -22,6 +22,11 @@ function endSpicySession() {
             if (!isInChastity() && willKeepChastityOn(true)) {
                 lockChastityCage();
 
+                //This needs to be checked here again because if the sub just acquired a cage there is no such thing set in the first session
+                if(!isVar(VARIABLE.LOCKED_UP_LIMIT)) {
+                    askForMaxLockupTime();
+                }
+
                 if(shouldIntroduceNewRule(RULE_DOMME_KEYHOLDER)) {
                     RULE_DOMME_KEYHOLDER.sendIntroduction();
                 }

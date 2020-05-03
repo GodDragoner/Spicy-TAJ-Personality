@@ -255,8 +255,8 @@ function workmodeExercise(exercise) {
 function workmodeTease(tease) {
     switch (tease) {
         case 1:
-            sendVirtualAssistantMessage(random("Lets rattle your %Cock% a little", "Lets make your %Cock% jump a little", "Lets see if we can awaken the princess", "Lets play a little", "I have something fun for you %EmoteHappy% "));
-            sendVirtualAssistantMessage(random("Just watch this little slide show", "Just enjoy this little show", "Just sit back and relax", "Hang back there and watch this") + "while you fondle your %Balls%");
+            sendVirtualAssistantMessage(random("Lets rattle %MyYour% %Cock% a little", "Lets make %MyYour% %Cock% jump a little", "Lets see if we can awaken the princess", "Lets play a little", "I have something fun for you %EmoteHappy% "));
+            sendVirtualAssistantMessage(random("Just watch this little slide show", "Just enjoy this little show", "Just sit back and relax", "Hang back there and watch this") + "while you fondle %MyYour% %Balls%");
 
             while (randomInteger(1, 10) > 1) {
                 showTeaseImage(randomInteger(4, 7));
@@ -304,7 +304,7 @@ function workmodeTease(tease) {
             break;
         case 5:
             if (isInChastity()) {
-                sendVirtualAssistantMessage(random("Caress your %Cock% a little", "Touch your cage a little", "Get a good feel of the cage", "Touch yourself", "Feel yourself up"));
+                sendVirtualAssistantMessage(random("Caress %MyYour% %Cock% a little", "Touch your cage a little", "Get a good feel of the cage", "Touch yourself", "Feel yourself up"));
                 sendVirtualAssistantMessage(random("Lets see if you can make it hard in that cage...", "Lets see if we can the tiny girl fight for freedom", "Lets see if you can make the sad tiny penis desperate for freedom"), 15);
                 sendVirtualAssistantMessage(random("Is it hard yet", "Is it hard", "Is it as hard as a caged cock can be") + "?");
 
@@ -329,7 +329,7 @@ function workmodeTease(tease) {
             break;
         case 6:
             sendVirtualAssistantMessage("I want you to encircle your balls with your finger and your thumb.");
-            sendVirtualAssistantMessage(random("Give your %Balls% a few light taps %Lol%", "Hit your %Balls% hard just once", "Tap hard on your %Balls% with 1 finger"));
+            sendVirtualAssistantMessage(random("Give %MyYour% %Balls% a few light taps %Lol%", "Hit %MyYour% %Balls% hard just once", "Tap hard on %MyYour% %Balls% with 1 finger"));
             sendVirtualAssistantMessage(random("Just to remind them who's in charge!", "So they won't question who's in charge", "So they know who's boss"), 10);
             sendVirtualAssistantMessage(random("That was it ", "Done!", "Stop", "Just stop", "Stop %Slut%", "Stop %SlaveName%") + "" + random("just return to whatever you we're doing", "return to your business", "thank you for a little attention"));
             break;
@@ -351,8 +351,8 @@ function workmodeTease(tease) {
             sendVirtualAssistantMessage("Count to " + random("10", "15", "20") + "and then return to whatever you were doing %Lol%", 30);
             break;
         case 9:
-            sendVirtualAssistantMessage(random("Lets rattle your %Cock% a little", "Lets make your %Cock% jump a little", "Lets see if we can awaken the imprisoned princess", "Lets play a little", "I have something fun for you %EmoteHappy% "));
-            sendVirtualAssistantMessage(random("Just watch this little slideshow while you fondle your %Balls% %Lol%", "Fondle your %Balls% while you watch this magnificent girl!", "Just hang back and watch this sexy slut!"));
+            sendVirtualAssistantMessage(random("Lets rattle %MyYour% %Cock% a little", "Lets make %MyYour% %Cock% jump a little", "Lets see if we can awaken the imprisoned princess", "Lets play a little", "I have something fun for you %EmoteHappy% "));
+            sendVirtualAssistantMessage(random("Just watch this little slideshow while you fondle %MyYour% %Balls% %Lol%", "Fondle %MyYour% %Balls% while you watch this magnificent girl!", "Just hang back and watch this sexy slut!"));
 
             for(let x = 0; x < randomInteger(5, 13); x++) {
                 showImage("Images/Spicy/SelfHumiliation/*.jpg", 10);
@@ -363,7 +363,7 @@ function workmodeTease(tease) {
             sendVirtualAssistantMessage(random("That was it ", "Done!", "Stop", "Just stop", "Stop %Slut%", "Stop %SlaveName%") + ", " + random("just return to whatever you we're doing", "return to your business", "thank you for a little attention"));
             break;
         case 10:
-            sendVirtualAssistantMessage(random("Lets rattle your %Cock% a little", "Lets make your %Cock% jump a little", "Lets see if we can awaken the princess", "Lets play a little", "I have something fun for you %EmoteHappy% "));
+            sendVirtualAssistantMessage(random("Lets rattle %MyYour% %Cock% a little", "Lets make %MyYour% %Cock% jump a little", "Lets see if we can awaken the princess", "Lets play a little", "I have something fun for you %EmoteHappy% "));
             sendVirtualAssistantMessage("Go to a porn pic website with your favorite theme whether it being chastity, femdom or something else");
             sendVirtualAssistantMessage("Look at the first 10 posts and read them %Grin%");
             sendVirtualAssistantMessage("After you can return to whatever you were doing", 60);

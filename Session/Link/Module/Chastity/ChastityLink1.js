@@ -13,9 +13,9 @@
             showCategoryImage('HARDCORE', 3);
 
             if (hasChastityCage()) {
-                sendMessage("You can feel your %Cock% growing harder");
+                sendMessage("You can feel %MyYour% %Cock% growing harder");
             } else {
-                sendMessage("You can feel your %Cock% straining against the confines of its cage");
+                sendMessage("You can feel %MyYour% %Cock% straining against the confines of its cage");
             }
 
             sendMessage("It may not be as much fun as %JerkingOff%");

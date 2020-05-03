@@ -9,11 +9,11 @@
         sendMessage("You want to badly to jerk it, don\'t you...");
         sendMessage("Sorry %SlaveName%, but that\'s not going to happen right now");
 
-        if(sendYesOrNoQuestion('Would you like me to hurt your %Balls% instead?')) {
+        if(sendYesOrNoQuestion('Would you like me to hurt %MyYour% %Balls% instead?')) {
             sendMessage("Just to keep your mind focused on something else for e few minutes");
             //TODO: Check for full size cage unreachable balls?
             smallCBTPunishment(true, false);
-            sendMessage("Aww now your %Balls% are hurting too...");
+            sendMessage("Aww now %MyYour% %Balls% are hurting too...");
         } else {
             sendMessage("Alright %Grin%");
         }

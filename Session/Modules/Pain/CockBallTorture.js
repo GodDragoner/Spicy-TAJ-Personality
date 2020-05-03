@@ -212,8 +212,8 @@ function punishBookCBT(multiplier = 1) {
     let falls = getVar(VARIABLE.SUB_PAIN_TOLERANCE) * multiplier + 7;
     sendMessage(random("I want you to place the book on a table ", "You should place the book on a table "));
     sendMessage(random("It has to stand up ", "It should be standing up "));
-    sendMessage(random("Then I want you to tilt the book and aim for your %Balls%", "Then you\'re going to aim for your %Balls% and tilt the book") + " %Moan%");
-    sendMessage(random("To be precise I want you to hit your precious %Balls%", "You\'re gonna hit your %Balls%"));
+    sendMessage(random("Then I want you to tilt the book and aim for %MyYour% %Balls%", "Then you\'re going to aim for %MyYour% %Balls% and tilt the book") + " %Moan%");
+    sendMessage(random("To be precise I want you to hit your precious %Balls%", "You\'re gonna hit %MyYour% %Balls%"));
     sendMessage(falls + " times");
 
     sendMessage(random("Let me know when you\'re done", "Inform me when you\'re done") + " %SlaveName%");

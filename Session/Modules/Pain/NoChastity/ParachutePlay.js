@@ -172,7 +172,7 @@
                     sendMessage('I want you to sit on your office chair and pull the lever so it goes down to its lowest level');
                     sendMessage('Next I want you down on the floor on your back');
                     sendMessage('Tie the parachute to the office chair');
-                    sendMessage('It should be high enough so it puts some pull on your %Balls%');
+                    sendMessage('It should be high enough so it puts some pull on %MyYour% %Balls%');
                     sendMessage('I will give you 60 seconds to do it after I explained everything');
                     sendMessage('Next you are to pull the lever so the chair goes up');
                     sendMessage('I want you to keep your %Ass% on the ground!');

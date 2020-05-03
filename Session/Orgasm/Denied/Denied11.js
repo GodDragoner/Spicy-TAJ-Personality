@@ -18,7 +18,7 @@
             sendMessage("I want you to make " + random("it so ", "sure ") + "that once I " + random("tell you ", "give you the command ") + "to edge, you\'ll edge " + random("right away", "quickly", "without delay"));
         }
 
-        sendMessage("All that " + random("sperm ", "cum ", "jizz ") + "in your %Balls% is just screaming to get out %Giggles%");
+        sendMessage("All that " + random("sperm ", "cum ", "jizz ") + "in %MyYour% %Balls% is just screaming to get out %Giggles%");
         sendMessage("It\'s going to feel " + random("so fucking good ", "so damn good ", "incredible ") + "when you " + random("finally climax", "explode", "blow that hot load"));
 
         if(isInChastity()) {
@@ -26,14 +26,14 @@
             sendMessage('Or will that cage make it too frustrating to enjoy?');
             sendMessage('This will count as a normal orgasm anyway');
             sendMessage('So better make sure to enjoy it for your sake %Lol%');
-            sendMessage("Feel how sensitive your %Cock% is");
+            sendMessage("Feel how sensitive %MyYour% %Cock% is");
         } else {
-            sendMessage("Feel how hard and sensitive your %Cock% is");
+            sendMessage("Feel how hard and sensitive %MyYour% %Cock% is");
         }
 
         let noReady = false;
         if(sendYesOrNoQuestion("Are you " + random("getting close ", "ready yet ") + "%SlaveName%?")) {
-            if(sendYesOrNoQuestion('Are you ready to blow your hot load?"')) {
+            if(sendYesOrNoQuestion('Are you ready to blow your hot load?')) {
                 sendMessage("I bet you are %Grin%");
             } else {
                 noReady = true;
@@ -78,7 +78,7 @@
             unlockImages();
         }
 
-        sendMessage("I bet the " + random("ache ", "tension ") + "in your %Cock% and %Balls% is " + random("almost too much now", "getting unbearable"));
+        sendMessage("I bet the " + random("ache ", "tension ") + "in %MyYour% %Cock% and %Balls% is " + random("almost too much now", "getting unbearable"));
 
         //Glitter
         if(isChance(50)) {

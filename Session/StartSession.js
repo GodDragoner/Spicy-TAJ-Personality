@@ -23,9 +23,9 @@
         //, "You are still being punished", "You're serving a punishment" TODO: Punishment flag
         sendMessage(random("Meaning there will be no release from that %ChastityCage%...", "Meaning you won't be released for this session", "So there won't be any release today"));
         unlockImages();
-    } else {
+    } else if(isInChastity()) {
         //Force unlock
-        if (getVar(VARIABLE.LOCKED_DAYS_IN_ROW, 0) > getVar(VARIABLE.LOCKED_UP_LIMIT)) {
+        if (getVar(VARIABLE.LOCKED_DAYS_IN_ROW, 0) > getVar(VARIABLE.LOCKED_UP_LIMIT, 3)) {
             sendDebugMessage('Forced to unlock because locked in a row is higher than locked up limit');
             unlockChastityStart();
         } else {
@@ -48,7 +48,19 @@
             else {
                 sendDebugMessage('Decided to NOT unlock chastity');
                 if (isInChastity()) {
-                    run('Session/Start/Chastity/OffDenied/*.js');
+                    if(feelsEvil()) {
+                        sendDebugMessage('Faking unlock chastity');
+                        unlockChastityCage(true);
+                        sendMessage('I was just playing with you %Wicked%');
+                        sendMessage(random('No way for me to unlock that %Cock% right now', 'I will not unlock that %Cock% right now', 'The cage stays on'));
+                        sendMessage(random('And you\'ll have to deal with that', 'You were so close and yet so far %Lol%', 'So close and yet so far %Lol%',
+                            'You weren\'t going to be unlocked in any world right now', 'And there was no way to change that'));
+
+                        sendMessage('Tell me when you are ready to continue');
+                        waitForDone();
+                    } else {
+                        run('Session/Start/Chastity/OffDenied/*.js');
+                    }
                 } else {
                     //TODO: Intro files
                     lockChastityCage();

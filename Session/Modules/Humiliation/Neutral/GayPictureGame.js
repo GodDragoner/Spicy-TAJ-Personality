@@ -240,7 +240,7 @@ function startGayPictureRound() {
                     registerRuin();
                     sendMessage('%RuinForMe%');
                     sendMessage('Ye that\'s right %Grin%');
-                    sendMessage('Let that cum dribble out of your %Cock%');
+                    sendMessage('Let that cum dribble out of %MyYour% %Cock%');
 
                     if (cumOnDildo) {
                         sendMessage('Right onto that dildo %Grin%');

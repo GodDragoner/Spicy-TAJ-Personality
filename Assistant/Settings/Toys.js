@@ -1,11 +1,7 @@
 {
     sendVirtualAssistantMessage('Toy Settings Menu:', 0);
-    sendVirtualAssistantMessage('Options:', 0);
-    sendVirtualAssistantMessage('1. Add new dildo', 0);
-    sendVirtualAssistantMessage('2. Add new buttplug', 0);
-    sendVirtualAssistantMessage('3. Add new chastity cage', 0);
 
-    let lobbyAnswer = createInput("Add new dildo", 'Add new buttplug', 'Add new chastity cage', 'E-Stim', 'Setup Other Toys', 'Return');
+    let lobbyAnswer = createInput("Add new dildo", 'Add new buttplug', 'Add new chastity cage', 'Add new high heel', 'E-Stim', 'Setup Other Toys', 'Return');
     while (true) {
         if (lobbyAnswer.isLike("new dildo", "add dildo")) {
             lobbyAnswer.clearOptions();
@@ -23,6 +19,12 @@
             lobbyAnswer.clearOptions();
             sendVirtualAssistantMessage('Bought a new chastity cage? How exciting! %Grin%');
             setupNewCage();
+            run('Assistant/Settings/Toys.js');
+            break;
+        } else if (lobbyAnswer.isLike("new high", "add high", "add heel", "new heel")) {
+            lobbyAnswer.clearOptions();
+            sendVirtualAssistantMessage('Bought a new high heel? How exciting! %Grin%');
+            setupNewHighHeel();
             run('Assistant/Settings/Toys.js');
             break;
         } else if (lobbyAnswer.isLike('back', 'cancel', 'return')) {
@@ -43,6 +45,8 @@
             sendVirtualAssistantMessage("- Add new dildo");
             sendVirtualAssistantMessage("- Add new buttplug");
             sendVirtualAssistantMessage("- Add new chastity cage");
+            sendVirtualAssistantMessage("- Add new high heel");
+            sendVirtualAssistantMessage("- E-Stim");
             sendVirtualAssistantMessage("- Setup other toys");
             lobbyAnswer.loop();
         }

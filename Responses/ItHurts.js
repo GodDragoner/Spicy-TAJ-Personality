@@ -1,5 +1,5 @@
 function itHurtsResponse(message) {
-    sendMessage("Oh... " + random("Does it hurt you?", "Are you in pain?") + " %EmoteSad%")
+    sendMessage("Oh... " + random("Does it hurt you?", "Are you in pain?") + " %EmoteSad%");
     sendMessage("%SlaveName%...");
     sendMessage("I know it hurts");
 

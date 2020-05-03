@@ -4,7 +4,7 @@
             startKneeling();
         }
 
-        sendMessage("I\'m trying to imagine how full your %Balls% are right now");
+        sendMessage("I\'m trying to imagine how full %MyYour% %Balls% are right now");
 
         if(getLastEjaculationDate().add(10).hasPassed()) {
             sendMessage('They must be pretty full given how long it\'s been since we\'ve emptied them');

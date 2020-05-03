@@ -4,7 +4,7 @@
             findLinkAndRun();
         } else {
             if(ANAL_LIMIT.getLimit() === LIMIT_NEVER_ASKED) {
-                sendMessage("We pay a lot of attention to your %Cock% don\'t we");
+                sendMessage("We pay a lot of attention to %MyYour% %Cock% don\'t we");
                 sendMessage("But there are other things we can do to deepen the ache in %MyYour% %Balls%");
                 sendMessage("Other... parts of your body to explore");
 
@@ -96,7 +96,7 @@
                 }
 
                 /*sendMessage("I could take away your orgasms, never let you cum ever again...");
-                sendMessage("In any case, I can still make your %Cock% and %Balls% %Ache%");
+                sendMessage("In any case, I can still make %MyYour% %Cock% and %Balls% %Ache%");
                 sendMessage("And that\'ll do for now %Smile%");*/
             }
         }

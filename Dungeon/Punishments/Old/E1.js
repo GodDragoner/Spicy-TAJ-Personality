@@ -267,13 +267,13 @@ function a()
 }
 function b()
 {
-    sendMessage("I want your %Balls% to really hurt. Give them another hard slap ");
+    sendMessage("I want %MyYour% %Balls% to really hurt. Give them another hard slap ");
     wait(200);
     c();
 }
 function c()
 {
-    sendMessage("Punch your %Balls%");
+    sendMessage("Punch %MyYour% %Balls%");
     --Command:ShowVar(TempHits)
     wait(200);
     d();
