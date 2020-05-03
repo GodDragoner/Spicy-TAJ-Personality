@@ -23,31 +23,31 @@
         //, "You are still being punished", "You're serving a punishment" TODO: Punishment flag
         sendMessage(random("Meaning there will be no release from that %ChastityCage%...", "Meaning you won't be released for this session", "So there won't be any release today"));
         unlockImages();
-    } else if(isInChastity()) {
+    } else {
         //Force unlock
-        if (getVar(VARIABLE.LOCKED_DAYS_IN_ROW, 0) > getVar(VARIABLE.LOCKED_UP_LIMIT, 3)) {
+        if (getVar(VARIABLE.LOCKED_DAYS_IN_ROW, 0) > getVar(VARIABLE.LOCKED_UP_LIMIT, 3) && isInChastity()) {
             sendDebugMessage('Forced to unlock because locked in a row is higher than locked up limit');
             unlockChastityStart();
         } else {
             //Unlock
             if (!willKeepChastityOn()) {
-                sendDebugMessage('Decided to unlock chastity today');
+                if(isInChastity()) {
+                    sendDebugMessage('Decided to unlock chastity today');
 
-                if(isChance(50)) {
-                    sendDebugMessage('But not now (later)');
-                    setTempVar(VARIABLE.CHASTITY_REMOVE_LATER, true);
+                    if(isChance(50)) {
+                        sendDebugMessage('But not now (later)');
+                        setTempVar(VARIABLE.CHASTITY_REMOVE_LATER, true);
 
-                    if (isInChastity()) {
                         run('Session/Start/Chastity/OffDenied/*.js');
+                    } else {
+                        unlockChastityStart();
                     }
-                } else {
-                    unlockChastityStart();
                 }
             }
             //Denied
             else {
-                sendDebugMessage('Decided to NOT unlock chastity');
                 if (isInChastity()) {
+                    sendDebugMessage('Decided to NOT unlock chastity');
                     if(feelsEvil()) {
                         sendDebugMessage('Faking unlock chastity');
                         unlockChastityCage(true);
@@ -62,6 +62,7 @@
                         run('Session/Start/Chastity/OffDenied/*.js');
                     }
                 } else {
+                    sendDebugMessage('Decided to lock chastity at start');
                     //TODO: Intro files
                     lockChastityCage();
                 }
