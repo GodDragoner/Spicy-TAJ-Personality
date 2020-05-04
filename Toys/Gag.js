@@ -233,7 +233,7 @@ function putInGag(gagType = GAG_TYPE_BALL_GAG, addPinToTongue = false) {
         buttplug.clean = true;
 
         sendAlreadyKnowWhatsNext('gag', 'mouth');
-        sendMessage('I want you to use that plug as a gag %Grin%')
+        sendMessageBasedOnSender('I want you to use that plug as a gag %Grin%')
     } else {
         if (!fetchToy(gagType.name)) {
             return false;

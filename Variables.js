@@ -190,6 +190,10 @@ const VARIABLE = {
     ENEMA_TASK_TODAY: "enemaTaskToday",
     ENEMA_TASK_SET: "enemaTaskSet",
 
+    //Slave Task
+    SLAVE_TASK_TODAY: "slaveTaskToday",
+    SLAVE_TASK_SET: "slaveTaskSet",
+
     //Modules
     POSITION_TRAINING_STARTED: "positionTrainingStarted",
     POSITION_LEVEL: "positionLevel",

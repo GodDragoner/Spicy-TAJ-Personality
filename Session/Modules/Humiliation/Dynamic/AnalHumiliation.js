@@ -527,39 +527,7 @@ function announceSwitchDildos() {
 }
 
 function choosePosition(toy, needsTwoHands = false) {
-    let history = createHistory('analPosition');
-    let position = findRandomUnusedIndex(5, history);
-
-    switch (position) {
-        case 0:
-            sendMessage("I want you to sit back in your chair");
-            sendMessage("And put your legs on the desk in front of you %Grin%");
-            break;
-        case 1:
-            if (!needsTwoHands) {
-                sendMessage("I want you on all fours %Grin%");
-                break;
-            }
-        //Fallthrough if we need both hands
-        case 2:
-            sendMessage("I want you to lay down on your back");
-            sendMessage("Put your legs in the air and spread them apart %Grin%");
-            break;
-        case 3:
-            sendMessage("I want you to lay down on your " + random("right", "left") + " side");
-            sendMessage("Spread your legs by sticking one leg into the air %Grin%");
-            break;
-        case 4:
-            sendMessage("I want you to you to lay down on your stomach");
-            if (isChance(50)) {
-                sendMessage("And I want you to spread your legs apart %Grin%");
-            }
-            break;
-        case 5:
-            sendMessage("I want you to lay down on your back");
-            sendMessage("And to bend your legs so that your feet touch the ground %Grin%");
-            break;
-    }
+    chooseAnalPosition(needsTwoHands);
 
     if (!isVar(VARIABLE.LAST_DILDO_SWAP_DATE) || getDate(VARIABLE.LAST_DILDO_SWAP_DATE).addMinute(10 - Math.ceil(getVar(VARIABLE.ASS_LEVEL) / 6)).hasPassed()) {
         let newToy = getDildo(false).name;

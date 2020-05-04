@@ -58,6 +58,8 @@ setVar(VARIABLE.CHASTITY_ON, true);
 
 //createBondageInstructions(3);
 
-setVar(VARIABLE.CHASTITY_ON, false);
+/*setVar(VARIABLE.CHASTITY_ON, false);
 lockChastityCage();
+*/
 
+sendDebugMessage(getButtplugForTask().name);

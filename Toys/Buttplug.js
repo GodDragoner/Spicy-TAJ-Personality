@@ -32,6 +32,24 @@ function updateSessionButtplugs() {
     }
 }
 
+function hasButtplugWithBaseStyle(baseStyle) {
+    return getButtplugWithBaseStyle(baseStyle) !== null;
+}
+
+function getButtplugWithBaseStyle(baseStyle) {
+    let relevantPlugs = [];
+    for (let x = 0; x < buttplugs.length; x++) {
+        if (buttplugs[x].baseStyle === baseStyle) {
+            relevantPlugs.push(buttplugs[x]);
+        }
+    }
+
+    if(relevantPlugs.length === 0) {
+        return null;
+    }
+
+    return random(relevantPlugs);
+}
 
 //TODO: With ASM enabled this will only work very rarely because most of the time we have cleaned the plug afterwards
 function getRandomUncleanedButtplug() {
@@ -135,9 +153,12 @@ function increasePlugSize() {
 }
 
 function putInButtplug(forceBigger = false) {
-    sendMessage("%SlaveName%");
-
     let plug = getAnalPlug(0, 0, forceBigger);
+    return putinChosenButtplug(plug);
+}
+
+function putinChosenButtplug(plug) {
+    sendMessage("%SlaveName%");
 
     if (!plug.fetchButtplug()) {
         return false;

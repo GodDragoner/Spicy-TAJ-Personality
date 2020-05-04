@@ -630,8 +630,12 @@ function setupToys(settings) {
     setupGags(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
-    BASIC_LINGERIE.askForToyAndUsage(domChose, undefined, "basicLingerie");
-    ADVANCED_LINGERIE.askForToyAndUsage(domChose, undefined, "advancedLingerie");
+    PANTY_TOY.askForToyAndUsage(domChose, undefined, "basicLingerie");
+    BRA_TOY.askForToyAndUsage(domChose, undefined, "basicLingerie");
+
+    GARTER_BELT_TOY.askForToyAndUsage(domChose, undefined, "advancedLingerie");
+    STOCKINGS_TOY.askForToyAndUsage(domChose, undefined, "advancedLingerie");
+
 
     HIGH_HEEL_TOY.askForToyAndUsage(domChose, undefined);
 

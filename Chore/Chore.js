@@ -378,46 +378,89 @@ function sendKinkyChoreInstructions(choreType) {
                     tasks++;
                 }
             } else if (id === 5) {
-                if (hasBasicLingerie() && BASIC_LINGERIE.isPlayAllowed()) {
-                    BASIC_LINGERIE.setToyOn(true);
-                    attachedToys.push(BASIC_LINGERIE);
+                if (BUTTPLUG_TOY.isPlayAllowed()) {
+                    let possibilities = [];
 
-                    sendMessageBasedOnSender('Lets dress you up a little');
-                    sendMessageBasedOnSender('I want you in these panties', 0);
-                    showImage('Images/Spicy/Toys/Lingerie/Panties/*.jpg', 5);
-                    sendMessageBasedOnSender('And wearing this bra', 0);
-                    showImage('Images/Spicy/Toys/Lingerie/Bra/*.jpg', 5);
+                    if(hasButtplugWithBaseStyle(BUTTPLUG_BASE_STYLE.PIG_TAIL)) {
+                        possibilities.push(getButtplugWithBaseStyle(BUTTPLUG_BASE_STYLE.PIG_TAIL));
+                    } else if(hasButtplugWithBaseStyle(BUTTPLUG_BASE_STYLE.FLUFFY_TAIL)) {
+                        possibilities.push(getButtplugWithBaseStyle(BUTTPLUG_BASE_STYLE.FLUFFY_TAIL));
+                    }
 
-                    sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
-                    waitForDone(1000);
-                    sendMessageBasedOnSender('%Good%');
+                    if(possibilities.length !== 0) {
+                        let buttplug = random(possibilities);
 
-                    sendMessageBasedOnSender('You can undress once you are done %Grin%');
-                    tasks++;
+                        if(buttplug.baseStyle === BUTTPLUG_BASE_STYLE.PIG_TAIL) {
+                            sendMessageBasedOnSender('Let\'s turn you into a cute little pig %SlaveName%');
+                        } else {
+                            sendMessageBasedOnSender('Let\'s turn you into a cute little animal %SlaveName%');
+                        }
+
+
+                        if(buttplug.fetchButtplug()) {
+                            toysAttached.push(BUTTPLUG_TOY);
+                            sendMessageBasedOnSender('Now put it in and tell me when you are done');
+                            waitForDone();
+
+                            if(hasAnyGag()) {
+                                if (buttplug.baseStyle === BUTTPLUG_BASE_STYLE.PIG_TAIL) {
+                                    sendMessageBasedOnSender('Pigs don\'t talk do they?');
+                                    selectAndPutInGag();
+                                } else {
+                                    sendMessageBasedOnSender('Pets don\'t talk do they?');
+                                    selectAndPutInGag();
+                                }
+
+                                attachedToys.push(currentGagType);
+                            }
+
+                            if(NOSE_HOOK.hasToy() && NOSE_HOOK.isPlayAllowed() && NOSE_HOOK.fetchToy()) {
+                                sendMessageBasedOnSender('Put on the nose hook and tell me when you are done');
+                                waitForDone();
+                                toysAttached.push(NOSE_HOOK);
+                            }
+
+                            if(COLLAR_TOY.hasToy() && COLLAR_TOY.isPlayAllowed() && putOnCollar()) {
+                                toysAttached.push(COLLAR_TOY);
+                            }
+
+                            if(buttplug.baseStyle === BUTTPLUG_BASE_STYLE.PIG_TAIL) {
+                                sendMessageBasedOnSender('Now you are a proper pig %SlaveName%');
+                            } else {
+                                sendMessageBasedOnSender('Now that\'s a proper pet %Grin%');
+                            }
+
+                            if (choreType === ROOM_CHORE_MOP) {
+                                sendMessageBasedOnSender('While cleaning the floor today I want you to stay on all fours');
+                                sendMessageBasedOnSender('You are ONLY allowed to stand up if you need to reach something high...');
+                            } else {
+                                sendMessageBasedOnSender('Whenever possible you are to stay down on all fours during your chore');
+                            }
+
+                            sendMessageBasedOnSender('I\'ve added extra time since this must slow you down...');
+
+                            tempChoreTimeMultiplier += 0.5;
+
+                            tasks++;
+                        }
+                    }
                 }
             } else if (id === 6) {
-                if (hasAdvancedLingerie() && ADVANCED_LINGERIE.isPlayAllowed()) {
-                    ADVANCED_LINGERIE.setToyOn(true);
-                    attachedToys.push(ADVANCED_LINGERIE);
+                if (PROSTATE_VIBRATOR_TOY.hasToy() && PROSTATE_VIBRATOR_TOY.isPlayAllowed()) {
+                    if(PROSTATE_VIBRATOR_TOY.fetchToy()) {
+                        sendMessageBasedOnSender('Now lube it up and put it in');
+                        sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
+                        waitForDone(1000);
+                        sendMessageBasedOnSender('%Good%');
 
-                    sendMessageBasedOnSender('Lets dress you up a little');
-                    sendMessageBasedOnSender('I want you in these panties', 0);
-                    showImage('Images/Spicy/Toys/Lingerie/Panties/*.jpg', 5);
-                    sendMessageBasedOnSender('And wearing this bra', 0);
-                    showImage('Images/Spicy/Toys/Lingerie/Bra/*.jpg', 5);
+                        sendMessageBasedOnSender('Put it on a setting of your choice that\'s gonna tease you a lot %Grin%');
+                        sendMessageBasedOnSender('I want you naked while doing the chore so you can drip pre cum all over the floor');
+                        sendMessageBasedOnSender('Don\'t you dare cum!');
+                        sendMessageBasedOnSender('If you get close to cumming stop and continue once you are ready');
 
-                    sendMessageBasedOnSender('Furthermore put on this', 0);
-                    showImage('Images/Spicy/Toys/Lingerie/GarterBelt/*.jpg', 5);
-                    sendMessageBasedOnSender('And finally this too', 0);
-                    showImage('Images/Spicy/Toys/Lingerie/Stockings/*.jpg', 5);
-
-
-                    sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
-                    waitForDone(1000);
-                    sendMessageBasedOnSender('%Good%');
-
-                    sendMessageBasedOnSender('You can undress once you are done %Grin%');
-                    tasks++;
+                        toysAttached.push(PROSTATE_VIBRATOR_TOY);
+                        tasks++;
+                    }
                 }
             } else if (id === 7) {
                 if (hasAnyGag() && !isGaged() && isGagPlay() && selectAndPutInGag()) {
@@ -465,27 +508,66 @@ function sendKinkyChoreInstructions(choreType) {
                     tasks++;
                 }
             } else if (id === 11) {
-                if(NIPPLE_CLAMPS.decideToyOn()) {
-                    if(putNippleClampsOn()) {
-                        tasks++;
+                let taskCreated = false;
+                if(HIGH_HEEL_TOY.hasToy()) {
+                    let highHeel = getRandomHighHeel();
+                    if(highHeel.fetchHighHeel()) {
+                        let lock = false;
+                        if(HIGH_HEEL_LOCK.hasToy()) {
+                            if(HIGH_HEEL_LOCK.fetchToy()) {
+                                lock = true;
+                            }
+                        }
 
-                        attachedToys.push(NIPPLE_CLAMPS);
+                        if(lock) {
+                            sendMessageBasedOnSender('Now put on the high heels and attach the lock to them');
+                        } else {
+                            sendMessageBasedOnSender('Now put on the high heels and tell me when you are ready');
+                        }
+
+                        HIGH_HEEL_LOCK.setToyOn(true);
+                        HIGH_HEEL_TOY.setToyOn(true);
+                        sendMessageBasedOnSender('Tell me when you are done');
+                        waitForDone();
+
+                        attachedToys.push(HIGH_HEEL_TOY);
+                        attachedToys.push(HIGH_HEEL_LOCK);
+
+                        taskCreated = true;
+                        tasks++;
                     }
                 }
 
-                //TODO: New scenario. Use this somewhere else. You can't clean like this
-                /*sendMessageBasedOnSender('While cleaning today I want you to stay on all fours');
-                sendMessageBasedOnSender('And...');
-                sendMessageBasedOnSender('To complicated it further I want you to tie your balls to your big toes %Grin%');
-                sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
-                waitForDone(1000);
-                sendMessageBasedOnSender('%Good%');
+                if (hasSomeLingerie() && isLingeriePlayAllowed()) {
+                    sendMessageBasedOnSender('Lets dress you up a little');
 
-                sendMessageBasedOnSender('I\'ve added extra time since this must slow you down...');
-                tempChoreTimeMultiplier += 0.3;
+                    let lingerieAttached = putOnLingerie();
 
-                sendMessageBasedOnSender('Remember to remove them and untie the string after you\'re done cleaning %Grin%');
-                tasks++;*/
+                    if(lingerieAttached.length > 0) {
+                        sendMessageBasedOnSender('%Good%');
+
+                        for(let x = 0; x < lingerieAttached.length; x++) {
+                            attachedToys.push(lingerieAttached[x]);
+                        }
+
+                        sendMessageBasedOnSender('You can undress once you are done %Grin%');
+
+                        //High heels might have failed
+                        if(!taskCreated) {
+                            taskCreated = true;
+                            tasks++;
+                        }
+                    }
+                }
+
+                if(taskCreated) {
+                    if (NIPPLE_CLAMPS.decideToyOn() && feelsLikePunishingSlave()) {
+                        if (putNippleClampsOn()) {
+                            attachedToys.push(NIPPLE_CLAMPS);
+                        }
+                    }
+                }
+
             } else if (id === 12) {
                 if (COLLAR_TOY.hasToy() && COLLAR_TOY.isPlayAllowed() && COLLAR_TOY.fetchToy()) {
                     sendMessageBasedOnSender('This is gonna be a little complicated %Lol%');

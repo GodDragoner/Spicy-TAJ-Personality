@@ -85,7 +85,7 @@ const TOY_TASK_MODIFIER = [
         id: 6,
 
         canEnable: function() {
-            return BASIC_LINGERIE.hasToy() && BASIC_LINGERIE.isPunishmentAllowed();
+            return BRA_TOY.hasToy() && PANTY_TOY.hasToy() && BRA_TOY.isPunishmentAllowed();
         },
 
         sendInstructions: function (level) {

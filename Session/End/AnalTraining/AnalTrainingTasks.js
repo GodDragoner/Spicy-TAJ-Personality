@@ -21,6 +21,17 @@ const analTasks = [];
 
         sendInstructions: function () {
             sendMessage("I want you to fuck yourself using your " + getAnalDildoForTask().name + " for " + getDildoTaskDurationMinutes() + " minutes today");
+
+            if(getVar(VARIABLE.ASS_LEVEL) >= 10) {
+                sendMessage('For that...');
+                chooseAnalPosition(false);
+
+                if(getVar(VARIABLE.ASS_LEVEL) >= 20 && isChance(getVar(VARIABLE.ASS_LEVEL)*2)) {
+                    sendMessage('For that you will stay above 90 BPM. If you fail you must go for double the total time');
+                }
+            } else {
+                sendMessage('Use whatever position you prefer');
+            }
         },
 
         isApplicable: function () {
@@ -58,6 +69,23 @@ const analTasks = [];
 
         sendInstructions: function () {
             sendMessage("I want you to stick your " + getAnalDildoForTask(10, 2) + " dildo up your %Ass% and keep it in there for " + random(10, 30) + " minutes");
+        },
+
+        isApplicable: function () {
+            return getVar(VARIABLE.ASS_LEVEL) >= this.minLevel;
+        },
+    };
+    analTasks.push(analTask);
+
+    analTask = {
+        id: taskId++, exp: 40, minLevel: 10,
+
+        sendInstructions: function () {
+            sendMessage("I want you to ride your " + getAnalDildoForTask().name + " for " + getDildoTaskDurationMinutes() + " minutes today");
+
+            if(getVar(VARIABLE.ASS_LEVEL) >= 20 && isChance(getVar(VARIABLE.ASS_LEVEL)*2)) {
+                sendMessage('For that you will stay above 60 BPM. If you fail you must go for double the total time');
+            }
         },
 
         isApplicable: function () {
@@ -118,6 +146,22 @@ const analTasks = [];
         },
     };
     analTasks.push(analTask);
+
+    analTask = {
+        id: taskId++, exp: 55, minLevel: 25,
+
+        sendInstructions: function () {
+            sendMessage('I want you to crawl through all rooms you have');
+            sendMessage('Preferably I would like you to use a different toy/dildo in each room but you are of course allowed to reuse them if you run out');
+            sendMessage('Now what I want you to do once you reach a room is I want you to fuck yourself in it for at least 10 minutes per room');
+            sendMessage('You should use a new position in each room. No need to reuse a position %Grin%');
+        },
+
+        isApplicable: function () {
+            return getVar(VARIABLE.ASS_LEVEL) >= this.minLevel && hasMagicWand();
+        },
+    };
+    analTasks.push(analTask);
 }
 
 function getRandomAnalTask(array) {
@@ -135,6 +179,42 @@ function getRandomAnalTask(array) {
 function getDildoTaskDurationMinutes() {
     let min = Math.max(5, getVar(VARIABLE.ASS_LEVEL));
     return randomInteger(min, min + 5);
+}
+
+function chooseAnalPosition(needsTwoHands = false) {
+    let history = createHistory('analPosition');
+    let position = findRandomUnusedIndex(5, history);
+
+    switch (position) {
+        case 0:
+            sendMessage("I want you to sit back in your chair");
+            sendMessage("And put your legs on the desk in front of you %Grin%");
+            break;
+        case 1:
+            if (!needsTwoHands) {
+                sendMessage("I want you on all fours %Grin%");
+                break;
+            }
+        //Fallthrough if we need both hands
+        case 2:
+            sendMessage("I want you to lay down on your back");
+            sendMessage("Put your legs in the air and spread them apart %Grin%");
+            break;
+        case 3:
+            sendMessage("I want you to lay down on your " + random("right", "left") + " side");
+            sendMessage("Spread your legs by sticking one leg into the air %Grin%");
+            break;
+        case 4:
+            sendMessage("I want you to you to lay down on your stomach");
+            if (isChance(50)) {
+                sendMessage("And I want you to spread your legs apart %Grin%");
+            }
+            break;
+        case 5:
+            sendMessage("I want you to lay down on your back");
+            sendMessage("And to bend your legs so that your feet touch the ground %Grin%");
+            break;
+    }
 }
 
 

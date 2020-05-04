@@ -1,3 +1,9 @@
+const PANTY_TOY = createToy('Panty');
+const BRA_TOY = createToy('Bra');
+
+const STOCKINGS_TOY = createToy('Stockings');
+const GARTER_BELT_TOY = createToy('Garter Belt');
+
 const BASIC_LINGERIE = createToy("Basic Lingerie");
 const ADVANCED_LINGERIE = createToy("Advanced Lingerie");
 
@@ -13,59 +19,99 @@ function hasLingerieOn() {
     return getVar(VARIABLE.LINGERIE_ON, false);
 }
 
+function isLingeriePlayAllowed() {
+    return PANTY_TOY.isPlayAllowed() || BRA_TOY.isPlayAllowed() || GARTER_BELT_TOY.isPlayAllowed() || STOCKINGS_TOY.isPlayAllowed();
+}
+
+function hasSomeLingerie() {
+    return hasPanties() || hasBra() || hasGarterBelt() || hasStockings();
+}
+
+function hasPanties() {
+    let pantiesFolder = getImageSubFolder('Lingerie' + PATH_SEPARATOR + 'Panties');
+    return pantiesFolder.listFiles().length > 0 && PANTY_TOY.hasToy();
+}
+
+function hasBra() {
+    let braFolder = getImageSubFolder('Lingerie' + PATH_SEPARATOR + 'Bras');
+    return braFolder.listFiles().length > 0 && BRA_TOY.hasToy();
+}
+
+function hasGarterBelt() {
+    let garterBeltFolder = getImageSubFolder('Lingerie' + PATH_SEPARATOR + 'GarterBelt');
+    return garterBeltFolder.listFiles().length > 0 && GARTER_BELT_TOY.hasToy();
+}
+
+function hasStockings() {
+    let stockingFolder = getImageSubFolder('Lingerie' + PATH_SEPARATOR + 'Stockings');
+    return stockingFolder.listFiles().length > 0 && STOCKINGS_TOY.hasToy();
+}
+
 function putOnLingerie() {
+    let attachedToys = [];
+
     //Skip if lingerie already on
     if(hasLingerieOn()) {
-        return true;
+        return attachedToys;
     } else if(!hasBasicLingerie() && !hasAdvancedLingerie()) {
-        return false;
+        return attachedToys;
     }
 
-    sendMessage("%SlaveName%");
-    sendMessage(random("I want you to wear", "Go ahead and put on", "I need you to put on", "Go ahead and put on", "I need you to put on"));
+    sendMessageBasedOnSender("%SlaveName%");
+    sendMessageBasedOnSender(random("I want you to wear", "Go ahead and put on", "I need you to put on", "Go ahead and put on", "I need you to put on"));
+
+    let accessories = [];
+
+    if(hasPanties() && isChance(80)) {
+        accessories.push(0);
+    }
+
+    if(hasBra() && isChance(80)) {
+        accessories.push(1);
+    }
+
+    if(hasGarterBelt() && isChance(50)) {
+        accessories.push(2);
+    }
+
+    if(hasStockings() && isChance(50)) {
+        accessories.push(3);
+    }
 
     //TODO: Store what lingerie is on right now
-    switch(randomInteger(0, hasAdvancedLingerie()? 4 : 1)) {
-        case 0:
-            sendMessage('These panties', 0);
-            showImage('Images/Spicy/Lingerie/Panties/*.jpg', 5);
-            break;
-        case 1:
-            sendMessage('These panties', 0);
-            showImage('Images/Spicy/Lingerie/Panties/*.jpg', 5);
-            sendMessage('And this bra', 0);
-            showImage('Images/Spicy/Lingerie/Bras/*.jpg', 5);
-            break;
-        case 2:
-            sendMessage('This garter belt', 0);
-            showImage('Images/Spicy/Lingerie/GarterBelt/*.jpg', 5);
-            sendMessage('And these stockings', 0);
-            showImage('Images/Spicy/Lingerie/Stockings/*.jpg', 5);
-            break;
-        case 3:
-            sendMessage('This garter belt', 0);
-            showImage('Images/Spicy/Lingerie/GarterBelt/*.jpg', 5);
-            sendMessage('These panties', 0);
-            showImage('Images/Spicy/Lingerie/Panties/*.jpg', 5);
-            sendMessage('And these stockings', 0);
-            showImage('Images/Spicy/Lingerie/Stockings/*.jpg', 5);
-            break;
-        case 4:
-            sendMessage('This garter belt', 0);
-            showImage('Images/Spicy/Lingerie/GarterBelt/*.jpg', 5);
-            sendMessage('These panties', 0);
-            showImage('Images/Spicy/Lingerie/Panties/*.jpg', 5);
-            sendMessage('This bra', 0);
-            showImage('Images/Spicy/Lingerie/Bras/*.jpg', 5);
-            sendMessage('And these stockings', 0);
-            showImage('Images/Spicy/Lingerie/Stockings/*.jpg', 5);
-            break;
+
+    if(accessories.indexOf(0) !== -1) {
+        sendMessageBasedOnSender('These panties', 0);
+        showImage('Images/Spicy/Lingerie/Panties/*.jpg', 5);
+        PANTY_TOY.setToyOn(true);
+        attachedToys.push(PANTY_TOY);
     }
 
-    sendMessage('Tell me when you are done %SlaveName%');
+    if(accessories.indexOf(1) !== -1) {
+        sendMessageBasedOnSender('This bra', 0);
+        showImage('Images/Spicy/Lingerie/Bras/*.jpg', 5);
+        BRA_TOY.setToyOn(true);
+        attachedToys.push(BRA_TOY);
+    }
+
+    if(accessories.indexOf(2) !== -1) {
+        sendMessageBasedOnSender('This garter belt', 0);
+        showImage('Images/Spicy/Lingerie/GarterBelt/*.jpg', 5);
+        GARTER_BELT_TOY.setToyOn(true);
+        attachedToys.push(GARTER_BELT_TOY);
+    }
+
+    if(accessories.indexOf(3) !== -1) {
+        sendMessageBasedOnSender('These stockings', 0);
+        showImage('Images/Spicy/Lingerie/Stockings/*.jpg', 5);
+        STOCKINGS_TOY.setToyOn(true);
+        attachedToys.push(STOCKINGS_TOY);
+    }
+
+    sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
     waitForDone();
 
     setVar(VARIABLE.LINGERIE_ON, true);
 
-    return true;
+    return attachedToys;
 }

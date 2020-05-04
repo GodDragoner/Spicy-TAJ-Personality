@@ -43,6 +43,11 @@
 
     setVar(VARIABLE.MIN_WEEKLY_CHORE_TIME, 60 * 5);
 
+    //Default levels for training
+    setVar(VARIABLE.BLOWJOB_LEVEL, 1);
+    setVar(VARIABLE.ASS_LEVEL, 1);
+    setVar(VARIABLE.CHASTITY_LEVEL, 1);
+
     setVar("teaseModuleRatio", 60);
     setVar("slaveModuleRatio", 60);
     setVar("sissyModuleRatio", 60);

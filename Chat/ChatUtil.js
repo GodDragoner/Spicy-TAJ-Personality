@@ -262,7 +262,7 @@ function sendGoodForMe() {
 }
 
 function sendAlreadyKnowWhatsNext(triggerwords) {
-    sendMessage("You already know " + random("what I am gonna make you do now", "what I am gonna to do you now", "what comes next", "what you are gonna do next", "what I want you to do next", "what is gonna happen now", "what we are gonna do to you now", "what we are gonna do now") + random('', ', don\'t you? %EmoteHappy%'), 0);
+    sendMessageBasedOnSender("You already know " + random("what I am gonna make you do now", "what I am gonna to do you now", "what comes next", "what you are gonna do next", "what I want you to do next", "what is gonna happen now", "what we are gonna do to you now", "what we are gonna do now") + random('', ', don\'t you? %EmoteHappy%'), 0);
 
     let answer = createInput(4);
 
@@ -270,10 +270,10 @@ function sendAlreadyKnowWhatsNext(triggerwords) {
         if (answer.isTimeout()) {
             return ANSWER_TIMEOUT;
         } else if (answer.isLike('yes')) {
-            sendMessage('We\'ll see if you are right %Grin%');
+            sendMessageBasedOnSender('We\'ll see if you are right %Grin%');
             return ANSWER_YES;
         } else if (answer.isLike('no')) {
-            sendMessage('Well you are gonna know pretty soon %Lol%');
+            sendMessageBasedOnSender('Well you are gonna know pretty soon %Lol%');
             return ANSWER_NO;
         } else {
             for(let x = 0; x < arguments.length; x++) {
@@ -283,7 +283,7 @@ function sendAlreadyKnowWhatsNext(triggerwords) {
                 }
             }
 
-            sendMessage('No %SlaveName% %Grin%');
+            sendMessageBasedOnSender('No %SlaveName% %Grin%');
             return ANSWER_NO;
         }
     }

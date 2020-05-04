@@ -6,6 +6,10 @@ const highHeels = [];
 
 loadHighHeels();
 
+function getRandomHighHeel() {
+    return random(highHeels);
+}
+
 function getHighHeelByName(name) {
     for (let y = 0; y < highHeels.length; y++) {
         if (name.toUpperCase() === highHeels[y].name.toUpperCase()) {
