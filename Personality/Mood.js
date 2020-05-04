@@ -184,7 +184,6 @@ function getHumilationTimeModifier() {
 
 }
 
-//TODO: Add to it hurts etc.
 function registerComplain() {
     if(getVar(VARIABLE.COMPLAINTS, 0) > 3) {
         changeMeritHigh(true);

@@ -195,5 +195,6 @@ function getBlowjobTaskDeepthroatHoldDuration() {
 }
 
 function getBlowjobTaskDurationMinutes() {
-    return randomInteger(getVar(VARIABLE.BLOWJOB_LEVEL), getVar(VARIABLE.BLOWJOB_LEVEL) + 5);
+    let min = Math.max(5, getVar(VARIABLE.BLOWJOB_LEVEL));
+    return randomInteger(min, min + 5);
 }

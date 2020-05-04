@@ -61,7 +61,11 @@
                 sendMessage('I will show you one image at a time and we will see whether you can remember the exact rating you gave it %Grin%');
             }
 
-            let ballCrusher = hasBallCrusher() && (isChance(50) || feelsLikePunishingSlave()) && getCBTLimit() === LIMIT_ASKED_YES;
+            //CBT allowed in general?
+            let goForCBT = (isChance(50) || feelsLikePunishingSlave()) && getCBTLimit().isAllowed() && !isInChastity();
+            let ballCrusher = isChance(50) && hasBallCrusher() && BALL_CRUSHER_TOY.isPlayAllowed();
+            //Means either no ball crusher of 50% chance failed so we'll go with simple cbt
+            let cbt = !ballCrusher && goForCBT;
 
             if (ballCrusher && !isInChastity()) {
                 if (fetchToy('ball crusher')) {
@@ -89,9 +93,9 @@
                     if (getStrictnessForCharacter() > 0) {
                         sendMessage('Or do I? %Grin%');
                     }
-
                 } else {
                     ballCrusher = false;
+                    cbt = true;
                     sendMessage('I guess we have to stick to the good old basic methods then');
                     sendMessage('And because you are unable to fetch your toys and didn\'t tell me preemptively');
                     sendMessage('We will directly start with some pain');
@@ -114,7 +118,10 @@
                 if (round > 0 && isChance(20)) {
                     sendMessage(random('Lets do another', 'One more', 'Lets try another one', 'Lets do it once again!'));
                 }
+
                 let right = false;
+
+                let imageToShow = -1;
 
                 if (compareMode) {
                     const randomIndex = randomInteger(0, 99);
@@ -130,6 +137,8 @@
                     showImage('Images/Spicy//Games/ModelGame/' + (randomIndex + 1) + '.*', 3);
                     showImage('Images/Spicy//Games/ModelGame/' + (randomIndex2 + 1) + '.*', 3);
 
+
+
                     const answer = sendInput(random('Which image do you think was rated higher by you?', 'So what was the higher rated image?', 'Which of the images was the higher rated one?'));
                     while (true) {
                         if (answer.isLike('one', '1', 'first')) {
@@ -137,12 +146,14 @@
                                 right = true;
                             }
 
+                            imageToShow = randomIndex + 1;
                             break;
                         } else if (answer.isLike('two', '2', 'second')) {
                             if (firstPictureScore < secondPictureScore) {
                                 right = true;
                             }
 
+                            imageToShow = randomIndex + 2;
                             break;
                         } else if (answer.isLike('same', 'similar')) {
                             if (firstPictureScore == secondPictureScore) {
@@ -161,6 +172,7 @@
                     const firstPictureScore = modelRatings[randomIndex];
                     lockImages();
                     showImage('Images/Spicy//Games/ModelGame/' + (randomIndex + 1) + '.*', 3);
+                    imageToShow = randomIndex + 1;
 
                     const answer = sendInput('So try to tell me the rating you gave this picture %SlaveName%?', 'What rating did you give this picture?');
                     while (true) {
@@ -183,33 +195,46 @@
                 if (right) {
                     sendMessage(random('Correct!', 'Right on', 'Right on!', 'You\'re right', 'You are right!', 'That\'s correct', 'That\'s right') + ' %Grin%');
 
-                    //TODO: Think of alternative if chastity is on and maybe while wearing the ball crusher
-                    if (!isInChastity() && !ballCrusher) {
-
+                    if (!isInChastity() && !ballCrusher || cbt) {
+                        lockImages();
+                        showImage('Images/Spicy//Games/ModelGame/' + imageToShow + '.*');
                         startEdging();
                         sendMessage("%LetEdgeFade%");
+                        unlockImages();
 
                         if (wins == 0) {
                             sendMessage('Oops. Did I forget to tell you that you have to edge every time you are right? %Lol%');
                             sendMessage('My bad %Grin%');
                         }
                     } else if(isInChastity()) {
+                        if (wins == 0) {
+                            sendMessage('Since you are in chastity and I can\'t give you a treat of some sort I am just gonna reward you with gold');
+                        } else {
+                            sendMessage('Some gold for you yet again %EmoteHappy%');
+                        }
 
+                        rewardGoldLow();
                     } else if(ballCrusher) {
+                        if (wins == 0) {
+                            sendMessage('I don\'t want you to twist the screws backwards so I am just gonna reward you with some gold instead');
+                        } else {
+                            sendMessage('Some gold for you yet again %EmoteHappy%');
+                        }
 
+                        rewardGoldLow();
                     }
 
                     wins++;
                 } else {
                     sendMessage(random('Wrong!', 'Not correct', 'Incorrect', 'You\'re wrong', 'You are wrong', 'That\'s incorrect') + ' %Lol%');
 
-                    //TODO: Could also punish with other stuff such as anal, corner time etc.
+                    //QUALITY: Could also punish with other stuff such as anal, corner time etc.
 
                     if (ballCrusher) {
                         sendMessage('Aaaand twist %Grin%', 5);
-                    } else if (getPainLimit() == LIMIT_ASKED_YES && !isInChastity()) {
+                    } else if (cbt) {
                         //Means it is the first time the sub failed
-                        if (fails == 0) {
+                        if (fails === 0) {
                             //Already handles if the sub has chastity on
                             smallPunishment(true, false);
 
@@ -227,7 +252,9 @@
                         sendMessage("%LetEdgeFade%");
 
                         sendMessage('Be ready for a second one %Grin%');
-                        sendMessage('You will do twice the edges when you are wrong %EmoteHappy%');
+                        if(fails === 0) {
+                            sendMessage('You will do twice the edges when you are wrong %EmoteHappy%');
+                        }
                         sendMessage('Here it comes...');
 
                         startEdging();
@@ -235,8 +262,9 @@
                     }
                     //In chastity
                     else {
-                        sendMessage('That\'s +4 hours in chastity for you %Grin%');
-                        addLockUpTime(4);
+                        let hoursChastity = 6;
+                        sendMessage('That\'s +' + hoursChastity + ' hours in chastity for you %Grin%');
+                        addLockUpTime(hoursChastity);
 
                         if(fails === 0) {
                             sendMessage('Did you really think that there are no consequences to this game?');

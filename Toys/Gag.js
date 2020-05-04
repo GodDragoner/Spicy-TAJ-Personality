@@ -225,7 +225,7 @@ function putInGag(gagType = GAG_TYPE_BALL_GAG, addPinToTongue = false) {
             return putInGag();
         }
 
-        if (!fetchButtplugToy(buttplug.name)) {
+        if (!buttplug.fetchButtplug()) {
             return false;
         }
 

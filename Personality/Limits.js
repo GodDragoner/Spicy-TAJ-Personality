@@ -368,8 +368,6 @@ function createLimit(name, variable) {
 
                 return LIMIT_CHANGE_SUB_ADDRESSED;
             } else if (limitValue === LIMIT_ASKED_MAYBE) {
-                //TODO: Add some teasing stuff individually / design modules that want to get the sub to cross his limits
-
                 //This needs to be handled individually to seduce in the current situation
                 if (isVar(VARIABLE.RESPONSE_WILL_DO_ANYTHING)) {
                     delVar(VARIABLE.RESPONSE_WILL_DO_ANYTHING);

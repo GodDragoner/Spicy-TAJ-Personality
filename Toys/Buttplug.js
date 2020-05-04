@@ -8,6 +8,13 @@ const ACTION_BUTTPLUG_INCREASE_SIZE = 0;
 const ACTION_BUTTPLUG_PUT_FIRST = 1;
 const ACTION_BUTTPLUG_WAIT_FOR_TIME = 2;
 
+const BUTTPLUG_BASE_STYLE = {
+    CRYSTAL: 0,
+    FLUFFY_TAIL: 1,
+    PIG_TAIL: 2,
+    PLAIN: 3,
+};
+
 const buttplugs = [];
 let smallestButtplug = null;
 let biggestButtplug = null;
@@ -68,15 +75,15 @@ function isPlugged() {
 }
 
 function shouldIncreasePlugSize() {
-    let minTime = Math.ceil(getVar(VARIABLE.DEVOTION)/5);
-    let maxTime = Math.ceil(getVar(VARIABLE.DEVOTION)/3);
+    let minTime = Math.ceil(getVar(VARIABLE.DEVOTION) / 5);
+    let maxTime = Math.ceil(getVar(VARIABLE.DEVOTION) / 3);
 
     if (getVar(VARIABLE.ASS_LEVEL, 0) >= 20) {
-        minTime = Math.ceil(getVar(VARIABLE.DEVOTION)/6);
-        maxTime = Math.ceil(getVar(VARIABLE.DEVOTION)/5);
+        minTime = Math.ceil(getVar(VARIABLE.DEVOTION) / 6);
+        maxTime = Math.ceil(getVar(VARIABLE.DEVOTION) / 5);
     } else if (getVar(VARIABLE.ASS_LEVEL, 0) >= 30) {
-        minTime = Math.ceil(getVar(VARIABLE.DEVOTION)/7);
-        maxTime = Math.ceil(getVar(VARIABLE.DEVOTION)/6);
+        minTime = Math.ceil(getVar(VARIABLE.DEVOTION) / 7);
+        maxTime = Math.ceil(getVar(VARIABLE.DEVOTION) / 6);
     }
 
     if (currentPlug !== biggestButtplug) {
@@ -132,7 +139,7 @@ function putInButtplug(forceBigger = false) {
 
     let plug = getAnalPlug(0, 0, forceBigger);
 
-    if (!fetchButtplugToy(plug.name)) {
+    if (!plug.fetchButtplug()) {
         return false;
     }
 
@@ -222,7 +229,7 @@ function putInButtplug(forceBigger = false) {
                 sendMessage("Hold the position again", 3);
                 sendMessage("Aaaaand...");
 
-                if(isVeryUnexperiencedDiamater(plug.diameter)) {
+                if (isVeryUnexperiencedDiamater(plug.diameter)) {
                     sendMessage("Let that plug slip out again");
                     sendMessage("Now...");
                     sendMessage("This time it is gonna go all the way in %Grin%");
@@ -274,7 +281,7 @@ function getMaxStartingDiameter() {
 
     let assLevel = getVar(VARIABLE.ASS_LEVEL);
 
-    return Math.max(diameter, assLevel/7.5);
+    return Math.max(diameter, assLevel / 7.5);
 }
 
 function getMaxDiameterIncrease() {
@@ -364,7 +371,7 @@ function removeButtplug(end = false) {
             sendMessage("Do it as fast as possible! %Grin%");
         }
 
-        if(isVeryUnexperiencedDiamater(currentPlug.diameter)) {
+        if (isVeryUnexperiencedDiamater(currentPlug.diameter)) {
             sendMessage("I know it might " + random("be painful", "hurt", "be unpleasant"));
         } else {
             sendMessage("I know it might " + random("be difficult", "be complicated", "be unpleasant"));
@@ -449,11 +456,11 @@ function removeButtplug(end = false) {
         let choice = randomInteger(ASM_CLEAN_TYPE_GAG, ASM_CLEAN_TYPE_LICK);
 
         //No buttplug gag at the end because it's useless
-        if(end) {
+        if (end) {
             choice = randomInteger(ASM_CLEAN_TYPE_BLOW, ASM_CLEAN_TYPE_LICK);
         }
 
-        if(doButtplugASMClean(choice)) {
+        if (doButtplugASMClean(choice)) {
             //Plug was cleaned
             currentPlug.clean = true;
         }
@@ -483,57 +490,7 @@ function loadButtplugs() {
 
         for (let x = 0; x < arrayList.size(); x++) {
             let entry = arrayList.get(x);
-            let splitArray = entry.split(',');
-
-            let name = 'undefined';
-            let diameter = -1;
-            let length = -1;
-            let vibrating = false;
-            let textured = false;
-            let hollow = false;
-            let tail = false;
-            let crystal = false;
-            let material = MATERIAL.SILICON;
-            let tbase = false;
-
-            for (let y = 0; y < splitArray.length; y++) {
-                let valueEntry = splitArray[y];
-
-                if (valueEntry.indexOf('name:') !== -1) {
-                    name = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('diameter:') !== -1) {
-                    diameter = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('length:') !== -1) {
-                    length = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('vibrating:') !== -1) {
-                    vibrating = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('textured:') !== -1) {
-                    textured = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('hollow:') !== -1) {
-                    hollow = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('tail:') !== -1) {
-                    tail = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('crystal:') !== -1) {
-                    crystal = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('material:') !== -1) {
-                    material = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('tbase:') !== -1) {
-                    tbase = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                }
-            }
-
-            let buttplug = {
-                name: name,
-                diameter: diameter,
-                length: length,
-                vibrating: vibrating,
-                textured: textured,
-                material: material,
-                hollow: hollow,
-                tail: tail,
-                crystal: crystal,
-                tbase: tbase
-            };
+            let buttplug = createButtplug().fromString(entry);
             buttplugs.push(buttplug);
 
             //Find smallest plug
@@ -549,42 +506,11 @@ function loadButtplugs() {
     }
 }
 
-
-function buttplugToString(buttplug) {
-    let string = 'name:' + buttplug.name + ',length:' + buttplug.length + ',diameter:' + buttplug.diameter + ',material:' + buttplug.material;
-
-    if (buttplug.vibrating) {
-        string += ',vibrating:' + buttplug.vibrating;
-    }
-
-    if (buttplug.textured) {
-        string += ',textured:' + buttplug.textured;
-    }
-
-    if (buttplug.hollow) {
-        string += ',hollow:' + buttplug.hollow;
-    }
-
-    if (buttplug.tail) {
-        string += ',tail:' + buttplug.tail;
-    }
-
-    if (buttplug.crystal) {
-        string += ',crystal:' + buttplug.crystal;
-    }
-
-    if (buttplug.tbase) {
-        string += ',tbase:' + buttplug.tbase;
-    }
-
-    return string;
-}
-
 function saveButtplugs() {
     let arrayList = new java.util.ArrayList();
 
     for (let y = 0; y < buttplugs.length; y++) {
-        arrayList.add(buttplugToString(buttplugs[y]));
+        arrayList.add(buttplugs[y].toString());
     }
 
     setVar('buttplugs', arrayList);
@@ -710,14 +636,39 @@ function setupNewButtplug() {
 
     answer.clearOptions();
 
+    let baseStyle = BUTTPLUG_BASE_STYLE.PLAIN;
+
+
+    sendVirtualAssistantMessage('%Now%');
+    sendVirtualAssistantMessage('Is the base of the plug plain, a crystal, a fluffy tail or a pig tail?', 0);
+    answer = createInput('Plain', 'Crystal', 'Fluffy Tail', 'Pig Tail');
+
+    while (true) {
+        if (answer.isLike("Plain")) {
+            break;
+        } else if (answer.isLike("crystal")) {
+            baseStyle = BUTTPLUG_BASE_STYLE.CRYSTAL;
+            break;
+        } else if (answer.isLike("fluffy")) {
+            baseStyle = BUTTPLUG_BASE_STYLE.FLUFFY_TAIL;
+            break;
+        } else if (answer.isLike("pig")) {
+            baseStyle = BUTTPLUG_BASE_STYLE.PIG_TAIL;
+            break;
+        }  else {
+            sendVirtualAssistantMessage('Is the base of the plug plain, a crystal, a fluffy tail or a pig tail?');
+            answer.loop();
+        }
+    }
+
+    answer.clearOptions();
+
     let textured = false;
     let vibrating = false;
-    let tail = false;
-    let crystal = false;
     let hollow = false;
     let tbase = false;
 
-    sendVirtualAssistantMessage('Is there anything else special about it? (Textured, Tail, Hollow, Vibrating, Crystal, T-Base)', 0);
+    sendVirtualAssistantMessage('Is there anything else special about it? (Textured, Hollow, Vibrating, T-Base)', 0);
     answer = createInput();
 
     while (true) {
@@ -773,38 +724,6 @@ function setupNewButtplug() {
                 }
             }
 
-            sendVirtualAssistantMessage('Does it have a tail attached to it?', 0);
-            answer = createInput();
-
-            while (true) {
-                if (answer.isLike("yes")) {
-                    tail = true;
-                    sendVirtualAssistantMessage('I like buttplugs with tails %Grin%');
-                    break;
-                } else if (answer.isLike("no")) {
-                    break;
-                } else {
-                    sendVirtualAssistantMessage(YES_OR_NO);
-                    answer.loop();
-                }
-            }
-
-            sendVirtualAssistantMessage('Does it have a crystal at then end?', 0);
-            answer = createInput();
-
-            while (true) {
-                if (answer.isLike("yes")) {
-                    crystal = true;
-                    sendVirtualAssistantMessage('Your %DomHonorific% will love this little sissy plug of yours %Grin%');
-                    break;
-                } else if (answer.isLike("no")) {
-                    break;
-                } else {
-                    sendVirtualAssistantMessage(YES_OR_NO);
-                    answer.loop();
-                }
-            }
-
             sendVirtualAssistantMessage('Does it have a "T" based base instead of a round one?', 0);
             answer = createInput();
 
@@ -834,20 +753,7 @@ function setupNewButtplug() {
         }
     }
 
-    let buttplug = {
-        name: name,
-        diameter: diameter,
-        length: length,
-        vibrating: vibrating,
-        textured: textured,
-        material: material,
-        hollow: hollow,
-        tail: tail,
-        crystal: crystal,
-        tbase: tbase
-    };
-
-    buttplugs.push(buttplug);
+    buttplugs.push(createButtplug(name, diameter, length, vibrating, textured, material, hollow, baseStyle, tbase));
 
     saveButtplugs();
 
@@ -855,8 +761,34 @@ function setupNewButtplug() {
     sendVirtualAssistantMessage('Enjoy %Grin%');
 }
 
-function fetchButtplugToy(toy) {
-    return fetchToy(toy, getButtplugImagePath(toy));
+function createButtplug(name, diameter, length, vibrating, textured, material, hollow, baseStyle, tbase) {
+    return {
+        name: name,
+        diameter: diameter,
+        length: length,
+        vibrating: vibrating,
+        textured: textured,
+        material: material,
+        hollow: hollow,
+        baseStyle: baseStyle,
+        tbase: tbase,
+
+        getImagePath: function () {
+            return 'Images/Spicy/Toys/Buttplugs/' + this.name + '.*';
+        },
+
+        fetchButtplug: function () {
+            return fetchToy(this.name, this.getImagePath());
+        },
+
+        toString: function () {
+            return serializeObject(this);
+        },
+
+        fromString: function (string) {
+            return deserializeObject(this, string);
+        },
+    }
 }
 
 function getButtplugImagePath(name) {

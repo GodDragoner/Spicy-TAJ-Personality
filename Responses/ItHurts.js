@@ -7,8 +7,20 @@ function itHurtsResponse(message) {
 }
 
 function continueHurtResponse() {
-    let answer = randomInteger(0, 1);
-    switch(answer) {
+    let answer = randomInteger(0, 3);
+    let newValue = incrementTempVar(VARIABLE.RESPONSE_IT_HURTS_COUNT, 1);
+
+    registerComplain();
+
+    if (newValue > 2) {
+        sendMessage('And you have told me already before');
+        sendMessage('I don\'t want to hear you whining!');
+        sendMessage('Take it like the bitch you are');
+        registerRepeatingText();
+        return false;
+    }
+
+    switch (answer) {
         case 0:
             sendMessage("But the thing is...");
             sendMessage("I don't freaking care %Lol%");
@@ -26,7 +38,7 @@ function continueHurtResponse() {
             break;
     }
 
-    if(isChance(50)) {
+    if (isChance(50)) {
         sendMessage(random("So", "Which means") + " we'll keep going %Grin%");
     }
 

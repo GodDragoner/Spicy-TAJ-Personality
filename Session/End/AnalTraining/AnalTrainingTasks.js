@@ -108,7 +108,7 @@ const analTasks = [];
             sendMessage("If you feel like you will cum turn of the vibrator and turn it back on after you came down");
             sendMessage("If you still cum by any chance report it to me next session");
 
-            if(getCEILimit() == LIMIT_ASKED_YES) {
+            if(getCEILimit() === LIMIT_ASKED_YES) {
                 sendMessage("Make sure to lick up your ruined mess afterwards %Grin%");
             }
         },
@@ -133,7 +133,8 @@ function getRandomAnalTask(array) {
 }
 
 function getDildoTaskDurationMinutes() {
-    return randomInteger(getVar(VARIABLE.ASS_LEVEL), getVar(VARIABLE.ASS_LEVEL) + 5);
+    let min = Math.max(5, getVar(VARIABLE.ASS_LEVEL));
+    return randomInteger(min, min + 5);
 }
 
 

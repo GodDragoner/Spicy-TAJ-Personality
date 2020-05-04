@@ -543,8 +543,7 @@ function setupToys(settings) {
     //Ask for this in settings too
     BUTTPLUG_TOY.askForToyAndUsage(domChose);
 
-    let dildo = askForToy("Dildo");
-    askForToyUsage("Dildo", domChose);
+    DILDO_TOY.askForToyAndUsage(domChose);
 
     //Skip buttplug and dildos if we are in the settings
     if (!settings) {
@@ -578,7 +577,7 @@ function setupToys(settings) {
 
         sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
-        if (dildo) {
+        if (DILDO_TOY.hasToy()) {
             sendVirtualAssistantMessage('Okay %SlaveName%. Tell me, how many different dildos do you have?', false);
             let answer = createInput();
 
@@ -609,7 +608,6 @@ function setupToys(settings) {
         sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
     }
 
-//TODO: Create toys as objects
     BALL_CRUSHER_TOY.hasToy();
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
@@ -621,10 +619,6 @@ function setupToys(settings) {
     }
 
     COLLAR_TOY.askForToyAndUsage(domChose);
-
-    /*sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
-    askForToy("Shock Collar");
-    askForToyUsage("ShockCollar", domChose);*/
 
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
@@ -697,6 +691,9 @@ function setupToys(settings) {
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
     ENEMA_TOY.askForToyAndUsage(domChose);
+    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
+    NOSE_HOOK.askForToyAndUsage(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
     SOUND_TOY.askForToyAndUsage(domChose);

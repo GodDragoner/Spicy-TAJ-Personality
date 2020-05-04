@@ -1,4 +1,7 @@
 const DILDOS = [];
+
+const DILDO_TOY = createToy('dildo');
+
 let currentDildo = null;
 
 let longestDildo = null;
@@ -199,7 +202,7 @@ function getDildo(blowjob = false) {
                 let dildo = DILDOS[y];
 
                 //Ignore dildos non silicone
-                if(dildo.glass) {
+                if(dildo.material === MATERIAL.SILICON) {
                     continue;
                 }
 
@@ -229,49 +232,8 @@ function loadDildos() {
 
         for (let x = 0; x < arrayList.size(); x++) {
             let entry = arrayList.get(x);
-            let splitArray = entry.split(',');
 
-            let name = 'undefined';
-            let diameter = -1;
-            let length = -1;
-            let doubleSided = false;
-            let textured = false;
-            let glass = false;
-            let cumInjection = false;
-            let suctionCup = false;
-
-            for (let y = 0; y < splitArray.length; y++) {
-                let valueEntry = splitArray[y];
-
-                if (valueEntry.indexOf('name:') !== -1) {
-                    name = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('diameter:')  !== -1) {
-                    diameter = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('length:') !== -1) {
-                    length = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('doubleSided:') !== -1) {
-                    doubleSided = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('textured:') !== -1) {
-                    textured = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('glass:') !== -1) {
-                    glass = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('cumInjection:') !== -1) {
-                    cumInjection = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('suctionCup:') !== -1) {
-                    suctionCup = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                }
-            }
-
-            let dildo = {
-                name: name,
-                diameter: diameter,
-                length: length,
-                doubleSided: doubleSided,
-                textured: textured,
-                glass: glass,
-                cumInjection: cumInjection,
-                suctionCup: suctionCup
-            };
+            let dildo = createDildo().fromString(entry);
 
             DILDOS.push(dildo);
 
@@ -302,36 +264,10 @@ function saveDildos() {
     let arrayList = new java.util.ArrayList();
 
     for (let y = 0; y < DILDOS.length; y++) {
-        arrayList.add(dildoToString(DILDOS[y]));
+        arrayList.add(DILDOS[y].toString());
     }
 
     setVar('dildos', arrayList);
-}
-
-function dildoToString(dildo) {
-    let string = 'name:' + dildo.name + ',length:' + dildo.length + ',diameter:' + dildo.diameter;
-
-    if (dildo.doubleSided) {
-        string += ',doubleSided:' + dildo.doubleSided;
-    }
-
-    if (dildo.textured) {
-        string += ',textured:' + dildo.textured;
-    }
-
-    if (dildo.cumInjection) {
-        string += ',cumInjection:' + dildo.cumInjection;
-    }
-
-    if (dildo.suctionCup) {
-        string += ',suctionCup:' + dildo.suctionCup;
-    }
-
-    if (dildo.glass) {
-        string += ',glass:' + dildo.glass;
-    }
-
-    return string;
 }
 
 function getDildoByName(name) {
@@ -376,6 +312,18 @@ function setupNewDildo() {
     while (true) {
         if (answer.isDouble()) {
             length = answer.getDouble();
+
+            if(length < 10) {
+                sendVirtualAssistantMessage('That\'s quite short however maybe the diameter will tare your ass apart %Lol%');
+                sendVirtualAssistantMessage('No matter what it sure does make a good addition to your collection');
+            } else if(length < 16) {
+                sendVirtualAssistantMessage('Not too short. I think it\'s good enough to milk you dry %EmoteHappy%');
+            } else if(length < 22) {
+                sendVirtualAssistantMessage('I like long dildos. Imagine how it feels like taking that monster balls deep %Grin%');
+            } else {
+                sendVirtualAssistantMessage('That\'s really long. I hope for your own sake that you can take that all the way in %Wicked%');
+            }
+
             break;
         } else {
             sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
@@ -390,6 +338,21 @@ function setupNewDildo() {
     while (true) {
         if (answer.isDouble()) {
             diameter = answer.getDouble();
+
+            if(diameter < 3) {
+                sendVirtualAssistantMessage('That\'s really thing. But we all need something to warm up with don\'t we?');
+            } else if(diameter < 4) {
+                sendVirtualAssistantMessage('Something to start warming up with. I like those %Grin%');
+            } else if(diameter < 5) {
+                sendVirtualAssistantMessage('The perfect toy to rape your ass with on a regular basis');
+            } else if(diameter < 6) {
+                sendVirtualAssistantMessage('That thing will make you regret that you bought it once it is brutally raping that asshole');
+            } else if(diameter < 7) {
+                sendVirtualAssistantMessage('I hope that you are able to get this all the way in for your own good %Lol%');
+            } else {
+                sendVirtualAssistantMessage('I hope you are not gonna regret buying this %Lol%');
+            }
+
             break;
         } else {
             sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
@@ -397,34 +360,40 @@ function setupNewDildo() {
         }
     }
 
+    let material = MATERIAL.SILICON;
+
+    sendVirtualAssistantMessage('Great. Now...');
+    sendVirtualAssistantMessage('Is it made out of metal, glass or silicon?', 0);
+    answer = createInput('metal', 'glass', 'silicon');
+
+    while (true) {
+        if (answer.isLike("metal")) {
+            material = MATERIAL.METAL;
+            break;
+        } else if (answer.isLike("glass")) {
+            material = MATERIAL.GLASS;
+            break;
+        } else if (answer.isLike("silicon")) {
+            material = MATERIAL.SILICON;
+            break;
+        } else {
+            sendVirtualAssistantMessage('Is it made out of glass, metal or silicon?');
+            answer.loop();
+        }
+    }
+
     let doubleSided = false;
     let textured = false;
-    let glass = false;
     let cumInjection = false;
     let suctionCup = false;
 
-    sendVirtualAssistantMessage('Is there anything else special about it? (Glass, Textured, Cum Injection, Double Sided, Suction Cup)', 0);
+    sendVirtualAssistantMessage('Is there anything else special about it? (Textured, Cum Injection, Double Sided, Suction Cup)', 0);
     answer = createInput();
 
     while (true) {
         if (answer.isLike("yes")) {
             sendVirtualAssistantMessage("%Good%");
             sendVirtualAssistantMessage('Then we are continuing...');
-
-            sendVirtualAssistantMessage('Is it made out of glass?', 0);
-            answer = createInput();
-
-            while (true) {
-                if (answer.isLike("yes")) {
-                    glass = true;
-                    break;
-                } else if (answer.isLike("no")) {
-                    break;
-                } else {
-                    sendVirtualAssistantMessage(YES_OR_NO);
-                    answer.loop();
-                }
-            }
 
             sendVirtualAssistantMessage('Is it double sided?', 0);
             answer = createInput();
@@ -503,23 +472,43 @@ function setupNewDildo() {
         }
     }
 
-    let dildo = {
-        name: name,
-        diameter: diameter,
-        length: length,
-        doubleSided: doubleSided,
-        textured: textured,
-        glass: glass,
-        cumInjection: cumInjection,
-        suctionCup: suctionCup
-    };
-    DILDOS.push(dildo);
+    DILDOS.push(createDildo(name, diameter, length, doubleSided, textured, material, cumInjection, suctionCup));
 
     saveDildos();
 
     sendVirtualAssistantMessage('Saved your new toy');
     sendVirtualAssistantMessage('Enjoy %Grin%');
 }
+
+function createDildo(name, diameter, length, doubleSided, textured, material, cumInjection, suctionCup) {
+    return {
+        name: name,
+        diameter: diameter,
+        length: length,
+        doubleSided: doubleSided,
+        textured: textured,
+        material: material,
+        cumInjection: cumInjection,
+        suctionCup: suctionCup,
+
+        getImagePath: function () {
+            return 'Images/Spicy/Toys/Dildos/' + this.name + '.*';
+        },
+
+        fetchDildo: function () {
+            return fetchToy(this.name, this.getImagePath());
+        },
+
+        toString: function () {
+            return serializeObject(this);
+        },
+
+        fromString: function (string) {
+            return deserializeObject(this, string);
+        },
+    }
+}
+
 
 function fetchDildoToy(toy) {
     return fetchToy(toy, getDildoImagePath(toy));

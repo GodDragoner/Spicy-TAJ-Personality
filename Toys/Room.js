@@ -1,10 +1,5 @@
 
 function askForBathroom() {
-    //TODO: Think if this makes sense (sub might be at a different location sometimes)
-    if(isVar('bathroomNearby')) {
-        return getVar('bathroomNearby');
-    }
-
     const answer = sendInput("%SlaveName%. Is there a private bathroom nearby?");
     while (true) {
         if (answer.isLike("yes", "ready")) {
@@ -21,7 +16,7 @@ function askForBathroom() {
 
 function askForFeatheredToiletLit() {
     const answer = sendInput("Does your bathroom have a toilet lid that is not feathered?");
-    while (true) {st
+    while (true) {
         if (answer.isLike("yes")) {
             sendGoodForMe();
             return true;

@@ -11,7 +11,7 @@ function keyholderResponse(message) {
 
             registerRepeatingText();
         } else {
-            sendMessage('Now there\'s an interesting thought... let\'s discuss that later');
+            sendMessage('Now that\'s an interesting thought... Let\'s discuss that later');
             setTempVar(VARIABLE.RESPONSE_WANTS_KEYHOLDER, true);
         }
     }

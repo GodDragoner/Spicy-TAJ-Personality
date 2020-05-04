@@ -76,7 +76,7 @@ function setupNewHighHeel() {
     sendVirtualAssistantMessage('Now please tell me the color of the shoe', 0);
     let color = createInput().getAnswer();
 
-    let heel = createHighHeel(name, height,  color);
+    let heel = createHighHeel(name, height, color);
 
     sendVirtualAssistantMessage('Please make sure to add a picture of your high heel named like your high heel to your Toys/High Heels folder.', false);
     sleep(2);
@@ -109,31 +109,20 @@ function createHighHeel(name, height, color) {
         height: height,
         color: color,
 
-        getImagePath: function() {
+        getImagePath: function () {
             return 'Images/Spicy/Toys/High Heels/' + this.name + '.*';
         },
 
-        fetchHighHeel: function() {
-            fetchToy(this.color + ' ' + this.name, this.getImagePath());
+        fetchHighHeel: function () {
+            return fetchToy(this.color + ' ' + this.name, this.getImagePath());
         },
 
-        toString: function() {
-            return 'name:' + this.name + ',height:' + this.height + ',color:' + this.color;
+        toString: function () {
+            return serializeObject(this);
         },
 
-        fromString: function(string) {
-            let splitArray = string.split(',');
-            for (let y = 0; y < splitArray.length; y++) {
-                let valueEntry = splitArray[y];
-
-                if (valueEntry.indexOf('name:') !== -1) {
-                    this.name = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('height:') !== -1) {
-                    this.height = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('color:') !== -1) {
-                    this.color = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                }
-            }
-        }
+        fromString: function (string) {
+            return deserializeObject(this, string);
+        },
     }
 }

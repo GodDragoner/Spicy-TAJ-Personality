@@ -57,8 +57,10 @@ function startMissingCardMemory(gameType) {
     //Only used in ball crusher mode and e-stim
     let turnsPerLoss = -1;
 
+    let goldReward = 300;
+
     if (totalMode) {
-        sendMessage('Be correct 7 times and you will earn 150 gold');
+        sendMessage('Be correct 7 times and you will earn ' + goldReward + ' gold');
         sendMessage('Be wrong 7 times and you will have to edge 15 times %Grin%');
     } else {
         switch (gameType) {
@@ -193,8 +195,8 @@ function startMissingCardMemory(gameType) {
     if (totalMode) {
         if (wins == 7) {
             sendMessage('Wow, you really did it!');
-            sendMessage('You won 7 times and thus you deserve your well earned 150 gold');
-            addGold(150);
+            sendMessage('You won 7 times and thus you deserve your well earned ' + goldReward + ' gold');
+            addGold(goldReward);
         } else {
             sendMessage('%Lol%');
             sendMessage('You failed %SlaveName%');

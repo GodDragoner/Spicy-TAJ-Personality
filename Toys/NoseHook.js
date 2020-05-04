@@ -1,0 +1,1 @@
+const NOSE_HOOK = createToy('nose hook');

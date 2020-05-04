@@ -453,7 +453,7 @@ function lockChastityCage(chastityCage = undefined) {
         chastityCage = selectChastityCage();
     }
 
-    fetchChastityCage(chastityCage.name);
+    chastityCage.fetchChastityCage();
 
     let alreadyAttached = false;
 
@@ -925,41 +925,15 @@ function createChastityCage(name, length, material, dialator, dialatorDetachable
         },
 
         fetchChastityCage: function () {
-            fetchToy(this.name, this.getImagePath());
+            return fetchToy(this.name, this.getImagePath());
         },
 
         toString: function () {
-            let string = 'name:' + this.name + ',length:' + this.length + ',material:' + this.material;
+            return serializeObject(this);
+        },
 
-            if (this.dialator) {
-                string += ',dialator:' + this.dialator;
-            }
-
-            if (this.dialatorDetachable) {
-                string += ',dialatorDetachable:' + this.dialatorDetachable;
-            }
-
-            if (this.spikes) {
-                string += ',spikes:' + this.spikes;
-            }
-
-            if (this.spikesDetachable) {
-                string += ',spikesDetachable:' + this.spikesDetachable;
-            }
-
-            if (this.spikesOverall) {
-                string += ',spikesOverall:' + this.spikesOverall;
-            }
-
-            if (this.penisAccessible) {
-                string += ',penisAccessible:' + this.penisAccessible;
-            }
-
-            if (this.ballTrapType) {
-                string += ',ballTrapType:' + this.ballTrapType;
-            }
-
-            return string;
+        fromString: function (string) {
+            return deserializeObject(this, string);
         },
 
         isFullSizedBelt: function () {
@@ -978,36 +952,6 @@ function createChastityCage(name, length, material, dialator, dialatorDetachable
 
             return amount;
         },
-
-        fromString: function (string) {
-            let splitArray = string.split(',');
-
-            for (let y = 0; y < splitArray.length; y++) {
-                let valueEntry = splitArray[y];
-
-                if (valueEntry.indexOf('name:') !== -1) {
-                    this.name = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('length:') !== -1) {
-                    this.length = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('material:') !== -1) {
-                    this.material = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('dialator:') !== -1) {
-                    this.dialator = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('dialatorDetachable:') !== -1) {
-                    this.dialatorDetachable = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('spikes:') !== -1) {
-                    this.spikes = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('spikesDetachable:') !== -1) {
-                    this.spikesDetachable = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('spikesOverall:') !== -1) {
-                    this.spikesOverall = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('penisAccessible:') !== -1) {
-                    this.penisAccessible = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('ballTrapType:') !== -1) {
-                    this.ballTrapType = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                }
-            }
-        }
     }
 }
 

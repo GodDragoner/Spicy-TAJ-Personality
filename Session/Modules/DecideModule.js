@@ -5,6 +5,7 @@
 
     //End session
     while (!hasSessionTimePassed(getVar(VARIABLE.DEVOTION) + getVar(VARIABLE.PROLONGED_SESSION_TIME, 0))) {
+        checkInteraction();
 
         //Apply random toys
         interactWithRandomToys();

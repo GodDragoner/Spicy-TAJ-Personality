@@ -305,7 +305,7 @@ function startLongTermChastityIntro() {
 function askForChastityTraining() {
     sendMessage('Now that I am your full time keyholder I would want you to ideally be locked whenever I haven\'t give you the explicit permission to unlock %MyYour% cock');
     sendMessage("Meaning you wear a chastity cage 24/7 and that you will only be released when allowed so by me");
-    sendMessage("Are you capable of wearing it 24/7 right now? I suggest you answer truthfully for your own sake...", false);
+    sendMessage("Are you capable of wearing it 24/7 right now? I suggest you answer truthfully for your own sake...", 0);
 
     let answer = createInput();
 
