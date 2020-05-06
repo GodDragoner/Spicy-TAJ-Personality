@@ -53,7 +53,7 @@
                 }
             }
 
-            if (getVar(VARIABLE.DENIAL_HARD_LIMIT_TYPE) == 1) {
+            if (getVar(VARIABLE.DENIAL_HARD_LIMIT_TYPE) === 1) {
                 sendMessage('Let\'s see how you get to cum today %SlaveName% %Grin%');
                 //runOrgasmCategory(decideOrgasm(true));
                 setTempVar(VARIABLE.DENIAL_HARD_LIMIT_ORGASM_TODAY, true);

@@ -3,7 +3,7 @@
         runModuleCategory('Pain');
     } else if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.ANAL)) {
         if (INFLATABLE_BUTT_PLUG.fetchToy()) {
-            //TODO: More games and
+            //QUALITY: More games and
             putInInflatablePlug();
             startMissingCardMemory(GAME_INFLATABLE_PLUG);
             sendMessage('You can deflate the plug now and put it away %Grin%');

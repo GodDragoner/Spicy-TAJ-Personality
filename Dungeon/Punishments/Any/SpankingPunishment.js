@@ -1,5 +1,5 @@
 {
-    //Check for CBT Limit and whether the user is wearing a full sized belt
+    //Check for PAin Limit
     if (!PAIN_LIMIT.isAllowed()) {
         runPunishment(PUNISHMENT_CURRENT_LEVEL);
     } else {

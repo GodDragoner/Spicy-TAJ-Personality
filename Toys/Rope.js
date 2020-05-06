@@ -29,9 +29,10 @@ function tieBalls(force = false) {
         setTempVar(VARIABLE.IS_BALLS_TIED, true);
         setTempVar(VARIABLE.LAST_BALLS_TIE, setDate());
 
-
+        let clampBallInteractionDate = BODY_PART_BALLS.getLastClampInteraction();
         let removedClampsFromBalls = false;
-        if(BODY_PART_BALLS.currentClamps > 0) {
+        let clampsRemovedFromBalls = BODY_PART_BALLS.currentClamps;
+        if(clampsRemovedFromBalls > 0) {
             putClampsOff(BODY_PART_BALLS.currentClamps, BODY_PART_BALLS, false, true);
             removedClampsFromBalls = true;
         }
@@ -43,10 +44,13 @@ function tieBalls(force = false) {
         sendMessage("Tell me when you are ready to continue");
         waitForDone();
 
-        //TODO: Check if clamps were just applied to balls so then definitely put them back on after otherwise chance to not
-        if(removedClampsFromBalls) {
+        //Did we remove clamps before? If yes add them back if we just added them like shortly before or if we feel like punishing the slave
+        if(removedClampsFromBalls && (!clampBallInteractionDate.clone().addMinute(5).hasPassed() || feelsLikePunishingSlave())) {
             sendAlreadyKnowWhatsNext('clamps', 'clothespins', 'clothespin');
             sendMessage('Now put the clamps back on your %balls% %Grin%');
+
+            //Add clamps back to balls
+            BODY_PART_BALLS.addClamps(clampsRemovedFromBalls);
 
             let answer = sendYesOrNoQuestionTimeout('You didn\'t really think that you would be allowed to remove them permanently did you? %Lol%', 5);
 

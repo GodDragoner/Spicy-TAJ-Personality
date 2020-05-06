@@ -96,6 +96,8 @@
                 } else {
                     ballCrusher = false;
                     cbt = true;
+
+                    registerCurrentModuleCategory(MODULE.BALL_TORTURE);
                     sendMessage('I guess we have to stick to the good old basic methods then');
                     sendMessage('And because you are unable to fetch your toys and didn\'t tell me preemptively');
                     sendMessage('We will directly start with some pain');
@@ -109,6 +111,8 @@
                 } else {
 
                 }
+
+                registerCurrentModuleCategory(MODULE.STROKING);
             }
 
             let fails = 0;

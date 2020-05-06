@@ -46,6 +46,8 @@ const VARIABLE = {
 
     NEXT_TIME_ICE_CUBES: 'nextTimeIceCubes',
 
+    LAST_TIME_EXPLAINED_CBT_TERMS: 'lastTimeExplainedCBTTerms',
+
     //Chores
     CHORE_KITCHEN: 'choreKitchen',
     CHORE_BATHROOM: 'choreBathroom',
@@ -83,6 +85,8 @@ const VARIABLE = {
 
     LAST_ORGASM: "lastOrgasm",
     LAST_RUINED_ORGASM: "lastRuined",
+
+    NEXT_ORGASM_SPECIAL: "nextOrgasmSpecial",
 
     FINISHED_SETUP: "finishedSetup",
     FINISHED_FIRST_SESSION: "finishedFirstSession",

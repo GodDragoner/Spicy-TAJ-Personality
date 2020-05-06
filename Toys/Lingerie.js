@@ -78,7 +78,7 @@ function putOnLingerie() {
         accessories.push(3);
     }
 
-    //TODO: Store what lingerie is on right now
+    //TODO: Store what lingerie is on right now so have some variety
 
     if(accessories.indexOf(0) !== -1) {
         sendMessageBasedOnSender('These panties', 0);

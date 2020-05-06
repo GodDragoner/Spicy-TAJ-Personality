@@ -29,6 +29,8 @@ function setDate(message) {
     }
 }
 
+function isEdging() {}
+
 function addResponseRegex(regex) {}
 function setResponseIgnoreDisabled(boolean) {}
 function getDate(varName) {}

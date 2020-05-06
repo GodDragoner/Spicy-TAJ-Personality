@@ -7,7 +7,7 @@ const NONE = 0;
 const BODY_PARTS = [];
 const BODY_PART_NIPPLE_L = registerTwosidedBodyPart("nipple", 4);
 
-BODY_PART_NIPPLE_L.isUsed = function(toy) {
+BODY_PART_NIPPLE_L.isUsed = function (toy) {
     return NIPPLE_CLAMPS.isToyOn() || currentBodyPosition === BODY_POSITION.ON_STOMACH;
 };
 
@@ -15,7 +15,7 @@ const BODY_PART_NIPPLE_R = BODY_PARTS[currentBodyPartId - 1];
 BODY_PART_NIPPLE_R.isUsed = BODY_PART_NIPPLE_L.isUsed;
 
 const BODY_PART_BALLS = registerBodyPart("balls", 20);
-BODY_PART_BALLS.isUsed = function(toy) {
+BODY_PART_BALLS.isUsed = function (toy) {
     return isFullSizedChastityOn() || getVar(VARIABLE.IS_BALL_CRUSHER_ON, false) || E_STIM_TOY.isToyOn() || PARACHUTE_TOY.isToyOn();
 };
 
@@ -23,12 +23,11 @@ const BODY_PART_THIGH_L = registerTwosidedBodyPart("thigh", 5);
 const BODY_PART_THIGH_R = BODY_PARTS[currentBodyPartId - 1];
 
 const BODY_PART_TONGUE = registerBodyPart("tongue", 4);
-BODY_PART_TONGUE.isUsed = function(toy) {
+BODY_PART_TONGUE.isUsed = function (toy) {
     return isGaged() && currentGagType !== GAG_TYPE_SPIDER_GAG && this.currentClamps === 0;
 };
 
 const BODY_PART_PENIS_HEAD = registerBodyPart("penis head", 3);
-
 
 const BODY_PART_PENIS_SHAFT = registerBodyPart("penis shaft", 7);
 BODY_PART_PENIS_HEAD.isUsed = BODY_PART_PENIS_HEAD.isUsed();
@@ -36,9 +35,10 @@ const BODY_PART_EAR_L = registerTwosidedBodyPart("ear", 3);
 const BODY_PART_EAR_R = BODY_PARTS[currentBodyPartId - 1];
 
 const BODY_PART_ASS = registerBodyPart("ass", 0);
-BODY_PART_ASS.isUsed = function(toy) {
+BODY_PART_ASS.isUsed = function (toy) {
     return !isPlugged() && !E_STIM_PLUG_TOY.isToyOn();
 };
+
 
 function registerTwosidedBodyPart(name, maxClamps) {
     let leftPart = registerBodyPart(name, maxClamps, LEFT);
@@ -64,7 +64,7 @@ function registerBodyPart(name, maxClamps, side = NONE) {
             sendDebugMessage('Has Opposite: ' + this.hasOppositeBodyPart());
             sendDebugMessage('Side:' + this.side);
 
-            if(this.hasOppositeBodyPart()) {
+            if (this.hasOppositeBodyPart()) {
                 sendDebugMessage('Opposite:' + this.getOppositeBodyPart().sidedName);
             }
 
@@ -113,8 +113,22 @@ function registerBodyPart(name, maxClamps, side = NONE) {
             return this.side != NONE;
         },
 
+        getLastClampInteraction: function () {
+            if (LAST_BODY_PART_CLAMP_INTERACTION[this.id] !== null && LAST_BODY_PART_CLAMP_INTERACTION[this.id] !== undefined) {
+                return LAST_BODY_PART_CLAMP_INTERACTION[this.id];
+            } else {
+                return setDate().addDay(-300);
+            }
+        },
+
+        addClamps: function (amount) {
+            this.currentClamps += amount;
+            LAST_BODY_PART_CLAMP_INTERACTION[this.id] = setDate();
+        },
+
         subtractClamps: function (amount) {
             this.currentClamps = Math.max(0, this.currentClamps - amount);
+            LAST_BODY_PART_CLAMP_INTERACTION[this.id] = setDate();
         },
 
         isMaxClampsReached: function () {
@@ -125,7 +139,7 @@ function registerBodyPart(name, maxClamps, side = NONE) {
             return this.maxClamps - this.currentClamps;
         },
 
-        isUsed: function(toy) {
+        isUsed: function (toy) {
             return false;
         },
 
@@ -190,8 +204,8 @@ function registerBodyPart(name, maxClamps, side = NONE) {
 
 function afterLoadBodyParts() {
     //The toys are loaded after body parts so we need to delay this
-    BODY_PART_PENIS_SHAFT.isUsed = function(toy) {
-        if(isInChastity()) {
+    BODY_PART_PENIS_SHAFT.isUsed = function (toy) {
+        if (isInChastity()) {
             return true;
         }
 

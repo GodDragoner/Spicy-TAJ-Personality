@@ -141,9 +141,16 @@ function selectGag() {
         }
     }
 
-    //TODO: Check for clothespin in mouth and chance = 100/skip dildo gag if pin was just added (5 minute cooldown)
     if(GAG_TYPE_SPIDER_GAG.hasToy() && (feelsLikePunishingSlave() || BODY_PART_TONGUE.currentClamps > 0)) {
         spiderGagChance += 50;
+
+        //Force spider gag because we don't want to remove the pin, because we just added it like 5 minutes or less ago
+        if(BODY_PART_TONGUE.currentClamps > 0 && !BODY_PART_TONGUE.getLastClampInteraction().clone().addMinute(5).hasPassed()) {
+            dildoGagChance = 0;
+            spiderGagChance = 100;
+            ballGagChance = 0;
+            buttplugGagChance = 0;
+        }
     }
 
     if (getASMLimit() === LIMIT_ASKED_YES && feelsEvil() && getRandomUncleanedButtplug() !== null) {

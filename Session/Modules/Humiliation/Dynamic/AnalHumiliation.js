@@ -7,7 +7,7 @@
             //Try to find a different module
             tryRunModuleFetchId();
         } else {
-            if(!isVar(VARIABLE.ENEMA_INTRO) && hasEnemaKit() && isVar('assIntro')) {
+            if (!isVar(VARIABLE.ENEMA_INTRO) && hasEnemaKit() && isVar('assIntro')) {
                 //QUALITY: Based on whether contact 1 appeared yet etc.
                 runEnemaIntro();
                 sendMessage('Now that that\'s settled');
@@ -147,7 +147,7 @@ function startPenetratingSession(toy) {
     if (!finger && getVar(VARIABLE.ASS_LEVEL) >= 15 && isChance(20)) {
         sendMessage('Now I want you to to place it in front of you... %Grin%');
         sendAlreadyKnowWhatsNext('sit', 'squat');
-     
+
         sendMessage('I want you to sit down on it completely');
         sendMessage('So go ahead, squat above it and slowly go down on that ' + toy);
         sendMessage('Keep sitting on it until you hear my bell %Grin%');
@@ -335,7 +335,7 @@ function appendPenetratingSession(toy) {
         iterations--;
 
         //No new instructions if this loop is about to end
-        if(iterations > 0) {
+        if (iterations > 0) {
             if (isChance(50) || !blowjob) {
                 sendMessage("Let's change the position shall we? %Grin%");
                 toy = choosePosition(toy, currentBlowjob);
@@ -376,7 +376,7 @@ function addBlowjobToFucking(toy, mountedToWall = false, inFront = false) {
             return false;
         }
 
-        if(!ASM_LIMIT.isAllowed()) {
+        if (!ASM_LIMIT.isAllowed()) {
             sendMessage('You may clean your ' + toy + ' if need be before we are continuing');
             sendMessage('So tell me when you are ready to continue');
             waitForDone();
@@ -579,28 +579,13 @@ function startSquatAnal(toy) {
             }
         }
 
-        sendMessage("This " + random("will be", "looks like", "seems like") + " fun");
-
-        //TODO: Could need something like this more often
-        if (isChance(30)) {
-            sendMessage("Maybe only for me");
-            sendMessage("But that's all this is about");
-            sendMessage("My joy, my will, my commands and my pleasure %Grin%");
-        }
+        sendLooksLikeFun();
     } else {
         sendMessage("You may use your " + random("fingers", "hands") + " for any assistance and to keep your " +
             toy + " on the ground");
 
-        //TODO: Could need something like this more often
         if (isChance(40)) {
-            //Only send this when the sub is not in chastity
-            if (!getVar(VARIABLE.CHASTITY_ON, false)) {
-                sendMessage("But no touching that %Cock%");
-            } else {
-                sendMessage("Luckily I don't have to worry about your cock");
-                sendMessage("It's locked up in it's %ChastityCage% and it is gonna stay this way for now");
-                if (isChance(50)) sendMessage("Maybe even for ever %Grin%");
-            }
+            sendNoTouchingCock();
         }
     }
 

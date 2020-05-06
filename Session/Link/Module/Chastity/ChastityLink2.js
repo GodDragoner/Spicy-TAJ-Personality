@@ -11,7 +11,7 @@
             }
         }
 
-        if(askAndFetchIceCubes()) {
+        if(askAndFetchIceCubes(3)) {
             if(sendYesOrNoQuestion("Are you wearing any underwear right now?")) {
                 sendMessage("You know where this is going right? %Grin%");
             } else {
@@ -25,10 +25,24 @@
 
 
             if(ANAL_LIMIT.isAllowed() || askForIceCubeAnal()) {
+                let plug = BUTTPLUG_TOY.isToyOn();
+                if(plug) {
+                    sendMessage('Go ahead and remove your plug temporarily %SlaveName%');
+                    sendMessage('Tell me when you are ready %Grin%');
+                    waitForDone();
+                    sendAlreadyKnowWhatsNext('ass', 'anal', 'butt');
+                }
+
                 sendMessage("Now take one of those cubes");
                 sendMessage("And put it in your %Ass%");
                 sendMessage("Don\'t hesitate %SlaveName%, just do as I say");
-                sendMessage("Push it right in");
+                sendMessage("Push it right in", 10);
+
+                if(plug) {
+                    sendMessage('Now put the buttplug back in %Grin%');
+                    sendMessage('Tell me when you are ready to continue %SlaveNameSmiley%');
+                    waitForDone();
+                }
             }
 
             sendMessage("You have to keep those ice cubes there until they are melted away completely");

@@ -165,15 +165,11 @@ function goToCorner(durationSeconds) {
 
     sendMessage("Go to the corner");
 
-
-
-    //TODO Humbler support finish
     let humbler = !PARACHUTE_TOY.isToyOn() && feelsLikePunishingSlave() && !isInChastity();
 
     if(humbler) {
-
+        putOnHumbler();
     }
-
 
     let faceWall = isChance(50) || holdUpMoney;
     if(faceWall) {
@@ -182,7 +178,8 @@ function goToCorner(durationSeconds) {
         sendMessage("Facing the room");
     }
 
-    let voiceCommands = feelsLikePunishingSlave();
+    //Punish feeling and not already holding up money
+    let voiceCommands = feelsLikePunishingSlave() && !holdUpMoney;
 
     let sayThankYou = voiceCommands;
 
@@ -224,9 +221,9 @@ function goToCorner(durationSeconds) {
     }
 
     //We use this in parachute play and we can't do this properly with the parachute on
-    else if(!faceWall && !PARACHUTE_TOY.isToyOn() && !onToes) {
+    else if(!faceWall && !PARACHUTE_TOY.isToyOn() && !onToes && !humbler) {
         sendMessage("I want you to press your back against the wall, \"sit\" in the air and hold that position");
-    } else if(isChance(50) && !onToes) {
+    } else if(isChance(50) && !onToes && !humbler && !PARACHUTE_TOY.isToyOn()) {
         sendMessage("I want you to kneel");
     }
 
@@ -374,6 +371,10 @@ function goToCorner(durationSeconds) {
 
             sendMessage('I sincerely hope you learned your lesson and will do better next time');
         }
+    }
+
+    if(humbler) {
+        removeHumbler();
     }
 }
 

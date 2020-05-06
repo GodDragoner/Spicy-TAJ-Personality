@@ -1,5 +1,5 @@
 if(getDate(VARIABLE.EDGE_STARTED_DATE).addMinute(2).hasPassed()) {
-    //TODO: Special taunts for edging while in chastity
+    //QUALITY: Special taunts for edging while in chastity
     let answers = [
         'C\'mon %SlaveName%, don\'t you want to get close for me?',
         'You should be edging for me much quicker than this %SlaveName%',

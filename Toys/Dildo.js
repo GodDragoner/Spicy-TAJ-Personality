@@ -296,8 +296,6 @@ function setupNewDildo() {
         }
     }
 
-    //TODO: More interaction based on length and diameter etc.
-
     sendVirtualAssistantMessage('Please make sure to add a picture of your dildo named like your dildo to your Toys/Dildos folder.', false);
     sleep(2);
     sendVirtualAssistantMessage('So in this case make sure to add a picture called "' + name + '.jpg" to the dildos folder', false);

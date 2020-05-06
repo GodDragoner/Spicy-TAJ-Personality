@@ -16,8 +16,25 @@ const PUNISHMENT_LEVEL = {
      EXTREME:  {name: 'extreme', id: 3}
 };
 
+
 let PUNISHMENT_CURRENT_LEVEL = PUNISHMENT_LEVEL.EASY;
 let PUNISHMENT_OVERALL_LEVEL = PUNISHMENT_LEVEL.EASY;
+
+function getPunishmentLevelById(id) {
+    if(id === PUNISHMENT_LEVEL.EASY.id) {
+        return PUNISHMENT_LEVEL.EASY;
+    } else if(id === PUNISHMENT_LEVEL.MEDIUM.id) {
+        return PUNISHMENT_LEVEL.MEDIUM;
+    } else if(id === PUNISHMENT_LEVEL.HARD.id) {
+        return PUNISHMENT_LEVEL.HARD;
+    } else if(id === PUNISHMENT_LEVEL.EXTREME.id) {
+        return PUNISHMENT_LEVEL.EXTREME;
+    }
+
+    //Nothing
+    return null;
+}
+
 
 function isOngoingPunishment() {
     return getVar(VARIABLE.PUNISHMENT_ACTIVE, false);
@@ -186,6 +203,17 @@ function setPunishmentTransitionHandler(handler) {
 }
 
 function runPunishment(level) {
+    //Try to find some alternative (otherwise we might end up in an endless loop if some fetishes are not yet available)
+    if(getVar('findPunishmentTries', 0) > 20) {
+        let higherLevel = getPunishmentLevelById(level.id + 1);
+
+        if(higherLevel === null) {
+            higherLevel = PUNISHMENT_LEVEL.EASY;
+        }
+
+        level = higherLevel;
+    }
+
     //We need to set it to the object so we can reuse it later on
     setTempVar('lastPunishmentLevel', level);
 

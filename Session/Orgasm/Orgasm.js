@@ -88,6 +88,12 @@ function waitForCumAnswer() {
     }
 }
 
+/**
+ * This is run AFTER we've checked if we have enough orgasm points
+ * Decides how sub may cum, if at all based on many different factors
+ * @param noDenied If true denied is not an option
+ * @returns {number} The type of orgasm
+ */
 function decideOrgasm(noDenied = false) {
     let decide = 0;
 
@@ -120,12 +126,11 @@ function decideOrgasm(noDenied = false) {
 
     sendDebugMessage('Orgasm decided threshold of ' + decide + ' rolled');
 
-    //TODO: Ruined mode?
     //The smaller orgasm ratio the more ruined orgasms
     if(decide >= 100 && getVar(VARIABLE.ORGASM_RATION) >= randomInteger(1, 100)) {
         let ratioArray = [
             //First personality
-            25,
+            35,
             //Second personality
             65,
             //Third personality
@@ -181,19 +186,23 @@ function distributeOrgasmPoints() {
 
     let totalToAdd = randomInteger(points[personalityOffset + moodOffset], points[personalityOffset + moodOffset + 1]);
 
+    //Bonus lover mode
     if(getVar('loverMode', false)) {
         totalToAdd += randomInteger(points[personalityOffset + loverOffset], points[personalityOffset + loverOffset + 1]);
     }
 
-    if(getMonthlyGoodDays() > personalityOffset == 0? 20 : personalityOffset == 18? 24 : 28) {
+    //Bonus for monthly good days
+    if(getMonthlyGoodDays() > (personalityOffset === 0? 20 : personalityOffset == 18? 24 : 28)) {
         totalToAdd += randomInteger(points[personalityOffset + goodDaysOffset], points[personalityOffset + goodDaysOffset + 1]);
     }
 
+    //Bonus for lust high
     if(getVar(VARIABLE.LUST) > 28) {
         totalToAdd += randomInteger(points[personalityOffset + lustOffset], points[personalityOffset + lustOffset + 1]);
     }
 
-    if(getLastEjaculationDate().addDay(getVar(VARIABLE.DENIAL_LEVEL)).hasPassed()) {
+    //Bonus if we've exceeded denial limit in days
+    if(getLastEjaculationDate().addDay(getVar(VARIABLE.DENIAL_LIMIT)).hasPassed()) {
         totalToAdd += randomInteger(points[personalityOffset + denialOffset], points[personalityOffset + denialOffset + 1]);
     }
 
@@ -256,14 +265,6 @@ function distributeOrgasmPoints() {
             //Personality 3
             map.push(2, 10);
             break;
-        /*case ORGASM_FREQUENCY_DOM:
-            //Personality 1
-            map.push(0, 15);
-            //Personality 2
-            map.push(0, 12);
-            //Personality 3
-            map.push(0, 9);
-            break;*/
     }
 
     totalToAdd += randomInteger(map[getStrictnessForCharacter()*2], map[getStrictnessForCharacter()*2 + 1]);

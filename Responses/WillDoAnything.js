@@ -35,11 +35,11 @@ function willDoAnythingResponse(message) {
             registerRepeatingText();
             sendMessage(random(answers));
             return true;
-        } else {
+        } else if(!isEdging()) {
             let limit = getRandomLimitNotYes();
 
             if (limit != null && isChance(25)) {
-                setVar(VARIABLE.RESPONSE_WILL_DO_ANYTHING, true);
+                setTempVar(VARIABLE.RESPONSE_WILL_DO_ANYTHING, true);
                 limit.askForLimitChange();
                 return;
             }

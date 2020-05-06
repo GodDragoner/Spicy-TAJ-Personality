@@ -22,7 +22,7 @@ function redistributeModes() {
                 setVar(DOMME_MODES[x], true);
             }
         } else if(isVar(DOMME_MODES[x])) {
-            deleteVar(DOMME_MODES[x]);
+            delVar(DOMME_MODES[x]);
             sendDebugMessage('Deactivating crazy domme mode: ' + DOMME_MODES[x]);
         }
     }

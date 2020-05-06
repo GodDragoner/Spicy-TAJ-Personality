@@ -62,4 +62,13 @@ setVar(VARIABLE.CHASTITY_ON, true);
 lockChastityCage();
 */
 
-sendDebugMessage(getButtplugForTask().name);
+for(let x = 0; x < 9; x++) {
+    let chastity = random(CHASTITY_CAGES);
+    if(chastity.dialatorDetachable) {
+        sendDebugMessage(chastity.name);
+        sendDebugMessage(chastity.dialatorDetachable  + ' Wahr');
+    } else if(!chastity.dialatorDetachable) {
+        sendDebugMessage(chastity.name);
+        sendDebugMessage(chastity.dialatorDetachable  + ' Falsch');
+    }
+}

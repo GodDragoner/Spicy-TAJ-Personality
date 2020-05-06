@@ -2,7 +2,7 @@ const CLOTHESPINS_TOY = createToy('clothespins');
 
 
 const MAX_CLAMPS = 20;
-
+let LAST_BODY_PART_CLAMP_INTERACTION = [];
 
 function getClamps(index) {
     if (BODY_PARTS.length > index) {
@@ -246,7 +246,7 @@ function getClampsSentenceStart(verb) {
 
 function putClampsOnOneSide(amount, bodyPart) {
     sendMessage(getClampsOnSentenceStart() + (amount === 1? "that " : " ") + amount + pluralize(" clothespin", amount) + " and " + random("put " + pluralizeArticle("it", amount) + " on", "attach " + pluralizeArticle("it", amount) + " to") + " your " + bodyPart.sidedName);
-    bodyPart.currentClamps += amount;
+    bodyPart.addClamps(amount);
     sleep(3);
 }
 
@@ -257,8 +257,8 @@ function putClampsOnBothSides(leftAmount, rightAmount, bodyPart) {
 
     if (leftAmount === rightAmount) {
         sendMessage(getClampsOnSentenceStart() + " " + leftAmount + pluralize(" clothespin", leftAmount) + " each and " + random("put " + pluralizeArticle("it", leftAmount) + " on", "attach " + pluralizeArticle("it", leftAmount) + " to") + " both your right and left " + bodyPart.name);
-        bodyPart.getOppositeBodyPart().currentClamps += leftAmount;
-        bodyPart.currentClamps += leftAmount;
+        bodyPart.getOppositeBodyPart().addClamps(leftAmount);
+        bodyPart.addClamps(leftAmount);
         sleep(3);
     } else {
         putClampsOnOneSide(leftAmount, leftSide, getClampsOnSentenceStart());
@@ -384,7 +384,7 @@ function moveClamps(amount, bodyPart, newBodyPart, oppositeToo = false, opposite
             sendMessage(getClampsMoveSentenceStart() + " " + amount + pluralize(" clothespin", amount) + " from both your right and left " + bodyPart.name + " to both your right and left " + newBodyPart.name);
 
             //Only here because only in this case we have an opposite part of the new body part
-            newBodyPart.getOppositeBodyPart().currentClamps += amount;
+            newBodyPart.getOppositeBodyPart().addClamps(amount);
 
             //Subtract amount twice (here and end)
             bodyPart.getOppositeBodyPart().subtractClamps(amount);
@@ -393,7 +393,9 @@ function moveClamps(amount, bodyPart, newBodyPart, oppositeToo = false, opposite
         bodyPart.getOppositeBodyPart().subtractClamps(amount);
     } else if (oppositeNewPartToo && newBodyPart.hasOppositeBodyPart()) {
         sendMessage(getClampsMoveSentenceStart() + " " + amount + pluralize(" clothespin", amount) + " from your " + bodyPart.sidedName + " to your to both your right and left " + newBodyPart.name);
-        newBodyPart.getOppositeBodyPart().currentClamps += amount;
+
+        newBodyPart.getOppositeBodyPart().addClamps(amount);
+        LAST_BODY_PART_CLAMP_INTERACTION[newBodyPart.id] = setDate();
 
         //Subtract amount twice (here and end)
         bodyPart.getOppositeBodyPart().subtractClamps(amount);
@@ -401,7 +403,7 @@ function moveClamps(amount, bodyPart, newBodyPart, oppositeToo = false, opposite
         sendMessage(getClampsMoveSentenceStart() + " " + amount + pluralize(" clothespin", amount) + " from your " + bodyPart.sidedName + " to your " + newBodyPart.sidedName);
     }
 
-    newBodyPart.currentClamps += amount;
+    newBodyPart.addClamps(amount);
 
     bodyPart.subtractClamps(amount);
     sleep(3);

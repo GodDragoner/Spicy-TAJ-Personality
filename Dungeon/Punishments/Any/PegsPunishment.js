@@ -4,12 +4,13 @@
         runPunishment(PUNISHMENT_CURRENT_LEVEL);
     } else {
         if (tryRunPunishmentFetchId(MODULE.PEG)) {
-            switch (randomInteger(0, 1)) {
-                case 0:
-                    if (!fetchToy('clothespin', undefined, 2)) {
-                        runPunishment(PUNISHMENT_CURRENT_LEVEL);
-                        break;
-                    }
+            let module = randomInteger(0, 1);
+
+
+            if (module === 0) {
+                if (!fetchToy('clothespin', undefined, 2)) {
+                    runPunishment(PUNISHMENT_CURRENT_LEVEL);
+                } else {
 
                     sendMessage("Now in just a moment I will tell you attach the pegs to a certain part of your body "); //#DT4
                     sendMessage("You don't want to attach them too well..."); //#DT4
@@ -28,7 +29,7 @@
                         let attachSentence = random("Attach", "Place", "Put");
                         let onSentence = 'on';
 
-                        if(attachSentence == 'Attach') {
+                        if (attachSentence == 'Attach') {
                             onSentence = 'to';
                         }
 
@@ -41,7 +42,7 @@
                                 break;
                             case 2:
                                 //(Balls)
-                                sendMessage(attachSentence+ " the pegs " + onSentence + " %myyour% %Balls%"); //#DT4 @Wait(5)
+                                sendMessage(attachSentence + " the pegs " + onSentence + " %myyour% %Balls%"); //#DT4 @Wait(5)
                                 break;
                             case 3:
                                 //(Cock)
@@ -61,7 +62,7 @@
                                 break;
                             case 6:
                                 //(Eyebrows)
-                                sendMessage(attachSentence+ " a peg " + onSentence + " each of your eyebrows"); //#DT4 @Wait(5)
+                                sendMessage(attachSentence + " a peg " + onSentence + " each of your eyebrows"); //#DT4 @Wait(5)
                                 break;
                         }
 
@@ -83,7 +84,7 @@
 
 
                         //First run
-                        if(x === 0) {
+                        if (x === 0) {
                             sendMessage('Next you are gonna rip them off on my command %Grin%');
                         }
 
@@ -106,19 +107,17 @@
                             } else if (response.isLike("yes", 'done')) {
                                 sendMessage('%Good%');
                                 break;
-                            }  else {
+                            } else {
                                 sendMessage("I only wanna hear a firm 'Yes %DomHonorific%'..."); //#DT4
                                 break;
                             }
                         }
                     }
-                    break;
-                case 1:
-                    if(!sendYesOrNoQuestion('Do you have 10 clothespins and a string or piece of rope available right now %SlaveName%?')) {
-                        runPunishment(PUNISHMENT_CURRENT_LEVEL);
-                        break;
-                    }
-
+                }
+            } else if (module === 1) {
+                if (!sendYesOrNoQuestion('Do you have 10 clothespins and a string or piece of rope available right now %SlaveName%?')) {
+                    runPunishment(PUNISHMENT_CURRENT_LEVEL);
+                } else {
                     sendGoodForMe();
                     sendMessage('Go ahead and fetch them %SlaveName%');
 
@@ -163,20 +162,19 @@
                             } else if (response.isLike("yes", 'done')) {
                                 sendMessage('%Good%');
                                 break;
-                            }  else {
+                            } else {
                                 sendMessage("I only wanna hear a firm 'Yes %DomHonorific%'..."); //#DT4
                                 break;
                             }
                         }
                     }
+                }
 
-                    /*if (SISSY_LIMIT.isAllowed()) {
-                        playRandomSissyHypno();
-                    } else {
-                        sendMessage('Now we are just gonna make you wait %Grin%');
-                    }*/
-
-                    break;
+                /*if (SISSY_LIMIT.isAllowed()) {
+                    playRandomSissyHypno();
+                } else {
+                    sendMessage('Now we are just gonna make you wait %Grin%');
+                }*/
             }
 
 

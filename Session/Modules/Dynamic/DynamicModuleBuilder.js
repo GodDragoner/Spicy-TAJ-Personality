@@ -40,10 +40,13 @@ function hasPreviousModuleHadCategory(category) {
     return PREVIOUS_MODULE_CATEGORIES.contains(category);
 }
 
+function hasPreviousModuleHadCategory(category) {
+    return PREVIOUS_MODULE_CATEGORIES.get(PREVIOUS_MODULE_CATEGORIES.size() - 1) === category;
+}
+
 function clearPreviousModuleHistory() {
     PREVIOUS_MODULE_CATEGORIES.clear();
 }
-
 
 function registerDynamicModule(module) {
     module.moduleId = getCurrentScriptName().toLowerCase();

@@ -262,7 +262,6 @@ function sendKinkyChoreInstructions(choreType) {
         sendMessageBasedOnSender(random('Okay...', 'Okay!', 'Hmm...', 'Hehe', '%Grin%'));
 
         let tasks = 0;
-        //TODO: Multiple tasks?
         while (tasks < 1) {
             let id = randomInteger(0, 15);
 

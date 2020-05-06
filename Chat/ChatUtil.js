@@ -3,6 +3,7 @@ const TAJ_CHAT_HANDLER = Java.type('me.goddragon.teaseai.api.chat.ChatHandler');
 const LOGGER = Java.type('me.goddragon.teaseai.utils.TeaseLogger');
 const LOGGER_LEVEL = Java.type('java.util.logging.Level');
 const DEBUG_MODE = 1;
+const RAPID_TESTING = true;
 
 const SENDER_TAJ = 1;
 const SENDER_ASSISTANT = 0;
@@ -12,6 +13,11 @@ const ANSWER_NO = 1;
 const ANSWER_TIMEOUT = 2;
 
 let CURRENT_SENDER = SENDER_TAJ;
+
+if(RAPID_TESTING) {
+    TAJ_CHAT_HANDLER.getHandler().setPerMessageCharacterPauseMillis(0);
+    TAJ_CHAT_HANDLER.getHandler().setPausePerMessageCharacter(false);
+}
 
 function sendDebugMessage(message) {
     switch(DEBUG_MODE) {
@@ -95,7 +101,7 @@ function sendPinnoteMessage(message, wait, skipImage) {
     //Show image
     if (skipImage === undefined || skipImage instanceof Boolean && !skipImage) {
         if (!isImagesLocked()) {
-            showImage("Images/Spicy/Assistant/" + ASSISTANT_CURRENT_SET_ID + "/*.jpg");
+            showImage("Images/Spicy/Assistant/" + (ASSISTANT_CURRENT_SET_ID + 1) + "/*.jpg");
         }
     }
 
@@ -122,14 +128,16 @@ function sendVirtualAssistantMessage(message, wait, skipImage) {
     //Show image
     if (skipImage === undefined || skipImage instanceof Boolean && !skipImage) {
         if (!isImagesLocked()) {
-            showImage("Images/Spicy/Assistant/" + ASSISTANT_CURRENT_SET_ID + "/*.jpg");
+            showImage("Images/Spicy/Assistant/" + (ASSISTANT_CURRENT_SET_ID + 1) + "/*.jpg");
         }
     }
 
-    if (wait === undefined) {
-        sleep(1000 + message.length * 50, "MILLISECONDS");
-    } else if (wait instanceof Boolean && wait) {
-        sleep(wait * 1000, "MILLISECONDS");
+    if(!RAPID_TESTING) {
+        if (wait === undefined) {
+            sleep(1000 + message.length * 50, "MILLISECONDS");
+        } else if (wait instanceof Boolean && wait) {
+            sleep(wait * 1000, "MILLISECONDS");
+        }
     }
 }
 
@@ -372,10 +380,12 @@ function sendArbMessage(textName, message, wait, imagePath) {
        showImage(ImagePath);
     }*/
 
-    if (wait === undefined) {
-        sleep(1000 + message.length * 50, "MILLISECONDS");
-    } else if (wait) {
-        sleep(wait * 1000, "MILLISECONDS");
+    if(!RAPID_TESTING) {
+        if (wait === undefined) {
+            sleep(1000 + message.length * 50, "MILLISECONDS");
+        } else if (wait) {
+            sleep(wait * 1000, "MILLISECONDS");
+        }
     }
 }
 
@@ -425,8 +435,10 @@ function sendDungeonMessage(message, person = 0, wait) {
     }
 
 
-    if (wait === undefined || wait) {
-        sleep(.5 + message.length * .03);
+    if(!RAPID_TESTING) {
+        if (wait === undefined || wait) {
+            sleep(.5 + message.length * .03);
+        }
     }
 }
 
@@ -460,8 +472,10 @@ function sendNurseMessage(message, picset, wait, skipImage) {
         }
     }
 
-    if (wait === undefined || wait) {
-        sleep(1000 + message.length * 50, "MILLISECONDS");
+    if(!RAPID_TESTING) {
+        if (wait === undefined || wait) {
+            sleep(1000 + message.length * 50, "MILLISECONDS");
+        }
     }
 }
 

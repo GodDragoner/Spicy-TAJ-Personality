@@ -136,10 +136,22 @@ function smallCBTPunishment(balls = true, penis = true, loops = 0) {
     }
 }
 
+function shouldExplainCBTTerms() {
+    return !isVar(VARIABLE.LAST_TIME_EXPLAINED_CBT_TERMS) || getDate(VARIABLE.LAST_TIME_EXPLAINED_CBT_TERMS).addDay(random(4, 7)).hasPassed();
+}
+
+function sendExplainCBTTerms() {
+    sendMessage('Slap, hit and smack means to use your ' + random('open hand', 'palm') + ' to bust those balls');
+    sendMessage('Flick means to use your index finger to flick your balls');
+    sendMessage('And punch is my favorite one');
+    sendMessage('It means you should punch your balls with your fist');
+    setDate(VARIABLE.LAST_TIME_EXPLAINED_CBT_TERMS);
+}
+
 
 //Personality strictness should not influence pain!
 function punishSmallBustBallsMultiple(maxLoops = getVar(VARIABLE.SUB_PAIN_TOLERANCE), earlyExitChance = getEarlyPunishmentExitChance()) {
-    //TODO: "Now back to your balls" etc. kind of transitions
+    //QUALITY: "Now back to your balls" etc. kind of transitions
 
     //QUALITY: Can be used for other stuff too
     if(feelsLikeShowingPower()) {
@@ -147,6 +159,11 @@ function punishSmallBustBallsMultiple(maxLoops = getVar(VARIABLE.SUB_PAIN_TOLERA
         sendMessage('And you will thank me for EACH and EVERYONE of them');
         sendMessage('So all I want to hear is: "One... Thank you %DomHonorific%"');
         sendMessage('"Two... Thank you %DomHonorific%"');
+    }
+
+    if(shouldExplainCBTTerms()) {
+        sendMessage('Before we continue let\'s refresh the terminology real quick %SlaveName%');
+        sendExplainCBTTerms();
     }
 
     while (maxLoops > 0) {
@@ -182,16 +199,15 @@ function punishSmallBustBallsMultiple(maxLoops = getVar(VARIABLE.SUB_PAIN_TOLERA
                 waitForDone();
                 break;
             case 7:
-                sendMessage(getVar(VARIABLE.SUB_PAIN_TOLERANCE) * 2 + ' more ' + random('smacks', 'slaps', 'hits'));
+                sendMessage(getVar(VARIABLE.SUB_PAIN_TOLERANCE) * 2 + ' more ' + random('smacks', 'slaps', 'hits', 'punches'));
                 waitForDone();
                 break;
             case 8:
-                sendMessage('I want ' + getVar(VARIABLE.SUB_PAIN_TOLERANCE) * 2 + ' more ' + random('smacks', 'slaps', 'hits') + ' for %MyYour% %Balls%');
+                sendMessage('I want ' + getVar(VARIABLE.SUB_PAIN_TOLERANCE) * 2 + ' more ' + random('smacks', 'slaps', 'hits', 'punches') + ' for %MyYour% %Balls%');
                 waitForDone();
                 break;
             case 9:
-                //TODO: Punches with fist and slaps with open hand
-                sendMessage('I want you to add ' + getVar(VARIABLE.SUB_PAIN_TOLERANCE) * 2 + ' more ' + random('smacks', 'slaps', 'hits') + ' to each ball');
+                sendMessage('I want you to add ' + getVar(VARIABLE.SUB_PAIN_TOLERANCE) * 2 + ' more ' + random('smacks', 'slaps', 'hits', 'punches') + ' to each ball');
                 waitForDone();
                 break;
         }

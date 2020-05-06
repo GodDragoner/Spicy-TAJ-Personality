@@ -10,10 +10,8 @@
 
 
             sendMessage('First of all let\'s refresh the terminology a bit');
-            sendMessage('Slap means to use your open hand to bust those balls');
-            sendMessage('Flick means to use your index finger to flick your balls');
-            sendMessage('And punch is my favorite one');
-            sendMessage('It means you should punch your balls with your fist');
+
+            sendExplainCBTTerms();
 
             sendMessage('Now for the intensity scale of the hits');
             sendMessage('Light means that it should hurt but not too bad');

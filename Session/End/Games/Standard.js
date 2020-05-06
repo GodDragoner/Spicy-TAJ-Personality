@@ -35,7 +35,7 @@
 
         runOrgasmCategory(orgasmCategory);
 
-        if(getVar(VARIABLE.DENIAL_HARD_LIMIT_TYPE, 0) === 1 && orgasmCategory === ORGASM_CATEGORY_RUINED) {
+        if (getVar(VARIABLE.DENIAL_HARD_LIMIT_TYPE, 0) === 1 && orgasmCategory === ORGASM_CATEGORY_RUINED) {
             sendMessage('Poor %SlaveName%');
             //TODO: Turn into "link" thing that is more random
             sendMessage('You thought you could get a full orgasm when you reaches his your limit');
@@ -49,7 +49,21 @@
     } else {
         sendDebugMessage('Current orgasm points ' + getVar(VARIABLE.ORGASM_POINTS) + '/' + getVar(VARIABLE.REQUIRED_ORGASM_POINTS))
         if (getVar(VARIABLE.ORGASM_POINTS) >= getVar(VARIABLE.REQUIRED_ORGASM_POINTS)) {
-            runOrgasmCategory(decideOrgasm());
+            let orgasmCategory = decideOrgasm(true);
+            let ranOrgasm = false;
+
+            //Check if we promised a special orgasm next
+            if (isVar(VARIABLE.NEXT_ORGASM_SPECIAL) && orgasmCategory !== ORGASM_CATEGORY_DENIED) {
+                //Can only do this while not in chastity
+                if (getVar(VARIABLE.NEXT_ORGASM_SPECIAL) === ORGASM_SPECIAL_GAY_PICTURE && !isInChastity()) {
+                    preOrgasmSpecialGayPicture(orgasmCategory);
+                    ranOrgasm = true;
+                }
+            }
+
+            if (!ranOrgasm) {
+                runOrgasmCategory(decideOrgasm());
+            }
         } else {
             runOrgasmCategory(ORGASM_CATEGORY_DENIED);
         }
