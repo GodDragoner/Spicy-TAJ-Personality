@@ -36,7 +36,7 @@ function registerCurrentModuleCategory(category) {
     PREVIOUS_MODULE_CATEGORIES.add(category);
 }
 
-function hasPreviousModuleHadCategory(category) {
+function hasOneOfPreviousModulesHadCategory(category) {
     return PREVIOUS_MODULE_CATEGORIES.contains(category);
 }
 
