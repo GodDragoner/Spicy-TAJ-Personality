@@ -156,14 +156,15 @@ if (isVar("PunishmentFailed")) {
         }
     }
 
-    if (noAnswer == true) {
+    if (noAnswer) {
         sendNurseMessage(random("You make me sad when you don't communicate with me", "It saddens me when you don't communicate") + " " + "%SlaveName%");
         sendNurseMessage(random("Remember that I'm here to take care of your wellbeing", "Remember I'm here to look after you"));
         convNumber = 10;
     }
 
     if (convNumber == 0) {
-        answer = sendInput(random("Try to tell me why you didn't complete it", "Why couldn't you handle it?"), 20);
+        sendNurseMessage(random("Try to tell me why you didn't complete it", "Why couldn't you handle it?"), 0);
+        answer = createInput(20);
 
         while (true) {
             if (answer.containsIgnoreCase("i couldn't handle it", "handle", "couldn't", "could not")) {

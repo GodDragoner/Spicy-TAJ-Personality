@@ -45,6 +45,10 @@ function increasePainTolerance() {
     return false;
 }
 
+function hasSmallPenis() {
+    return getVar(VARIABLE.SUB_COCK_LENGTH, 1) < 18;
+}
+
 function askForPainToleranceIncrease() {
     if(sendYesOrNoQuestion('Was the level of pain %GeneralTime% bearable for you %SlaveName%?')) {
         sendMessageBasedOnSender('%Good%');

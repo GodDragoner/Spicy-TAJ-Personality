@@ -29,6 +29,8 @@
         }
     }
 
+    readyForStroking();
+
     //Hard limit forces orgasm
     if (isVar(VARIABLE.DENIAL_HARD_LIMIT_ORGASM_TODAY)) {
         let orgasmCategory = decideOrgasm(true);

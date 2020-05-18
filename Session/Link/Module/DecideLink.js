@@ -5,18 +5,26 @@
 }
 
 function findLinkAndRun() {
+    let options;
+
     if(isInChastity()) {
+        options = ['Session/Link/Module/Neutral/*.js', 'Session/Link/Module/Chastity/*.js'];
         sendDebugMessage('Trying to run chastity link');
 
-        setTempVar('minLinksSinceRun', neutralLinkAmount + chastityLinkAmount);
+        setTempVar('minLinksSinceRun', MODULE_LINK.neutralLinkAmount + MODULE_LINK.chastityLinkAmount);
 
-        run(random('Session/Link/Module/Neutral/*.js', 'Session/Link/Module/Chastity/*.js'));
+        let winner = getWinnerIndex([MODULE_LINK.neutralLinkAmount, MODULE_LINK.chastityLinkAmount]);
+
+        run(options[winner]);
     } else {
+        options = ['Session/Link/Module/Neutral/*.js', 'Session/Link/Module/NoChastity/*.js'];
         sendDebugMessage('Trying to run non chastity link');
 
-        setTempVar('minLinksSinceRun',  neutralLinkAmount + nonChastityLinkAmount);
+        setTempVar('minLinksSinceRun',  MODULE_LINK.neutralLinkAmount  + MODULE_LINK.nonChastityLinkAmount );
 
-        run(random('Session/Link/Module/NoChastity/*.js', 'Session/Link/Module/Neutral/*.js'))
+        let winner = getWinnerIndex([MODULE_LINK.neutralLinkAmount, MODULE_LINK.nonChastityLinkAmount]);
+
+        run(options[winner]);
     }
 }
 

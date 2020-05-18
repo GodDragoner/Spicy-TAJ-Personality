@@ -68,7 +68,7 @@ function readyForStroking() {
         sendMessage('I would want you to stroke now but I guess we need to make some room on that penis first %Grin%');
 
         //If we have any clamps on the cock we should move them away
-        redistributeClampsForStroking();
+        readyForStroking();
 
         let answer = sendYesOrNoQuestionTimeout('Much better isn\'t it?', 3);
         if (answer === ANSWER_YES) {
@@ -81,7 +81,8 @@ function readyForStroking() {
     }
 }
 
-function startStrokeInterval(durationMinutes) {
+
+function startStrokingSpicy() {
     readyForStroking();
 
     setAudioBlocked(true);
@@ -93,6 +94,10 @@ function startStrokeInterval(durationMinutes) {
     }
 
     startStroking(getInitialStrokingBPM());
+}
+
+function startStrokeInterval(durationMinutes) {
+    startStrokingSpicy();
     sendStrokeTaunts(durationMinutes * 60);
 
     stopStrokingMessage();
@@ -114,9 +119,14 @@ function sendNewStrokeInstruction() {
         case 1:
             sendMessage('I want you to only stroke with your thumb and index finger %Grin%');
 
-            if (isChance(25) && getVerbalHumilationLimit() == LIMIT_ASKED_YES) {
-                //TODO: New rule? So small sound? only if has small cock
-                sendMessage('Your %Cock% is so small that this should be the only way for you to masturbate %Lol%');
+            if (isChance(25) && getVerbalHumilationLimit() === LIMIT_ASKED_YES && hasSmallPenis()) {
+                sendMessage('Your %Cock% is so small that this should be the only way for you to masturbate %Lol%', 0);
+                playSound("Audio/Spicy/Humiliation/SmallDick/*.mp3");
+                sleep(3);
+
+                if(shouldIntroduceNewRule(RULE_ALWAYS_STROKE_INDEX_AND_THUMB)) {
+                    RULE_ALWAYS_STROKE_INDEX_AND_THUMB.sendIntroduction();
+                }
             }
 
             startStroking(getInitialStrokingBPM());

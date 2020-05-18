@@ -70,6 +70,8 @@ const VARIABLE = {
     DENIAL_HARD_LIMIT_ORGASM_TODAY: "denialHardLimitOrgasmToday",
     DENIAL_HARD_LIMIT_FREEDOM_TODAY: "denialHardLimitFreedomToday",
 
+    ORGASM_CATEGORY_TODAY: 'orgasmCategoryToday',
+
     GOLD: "gold",
 
     MERITS: "merits",

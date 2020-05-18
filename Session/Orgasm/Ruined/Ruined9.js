@@ -1,6 +1,6 @@
 {
-    if (tryRunOrgasmFetchId()) {
+    if(tryRunOrgasmFetchId()) {
         setTempVar(VARIABLE.ORGASM_CATEGORY_TODAY, ORGASM_CATEGORY_RUINED);
-        run('Session/Orgasm/All/AllOrgasm1.js');
+        run('Session/Orgasm/All/AllOrgasm2.js');
     }
 }

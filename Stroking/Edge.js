@@ -7,7 +7,15 @@ const EDGE_HOLD_SHORT = 1;
 const EDGE_HOLD_MEDIUM = 2;
 const EDGE_HOLD_LONG = 3;
 
-function startEdging(holdSeconds, skipStop = false, endIn = EDGE_END_NORMAL) {
+
+function startMultipleEdges(edges, breakInSeconds = 5) {
+    for(let x = 0; x < edges; x++) {
+        startEdging(0);
+        sleep(breakInSeconds);
+    }
+}
+
+function startEdging(holdSeconds = 0, skipStop = false, endIn = EDGE_END_NORMAL) {
     const answers = [
         "Get to the %EdgeNoun%",
         "Get to the %EdgeNoun% for me",
@@ -35,7 +43,7 @@ function startEdging(holdSeconds, skipStop = false, endIn = EDGE_END_NORMAL) {
     ];
 
     //If we have any clamps on the cock we should move them away
-    redistributeClampsForStroking();
+    readyForStroking();
 
     setAudioBlocked(true);
     sendMessage(answers[randomInteger(0, answers.length - 1)], 0);

@@ -30,7 +30,7 @@
                 sendMessage("Just work your way through the pain now");
             } else {
                 //If we have any clamps on the cock we should move them away
-                redistributeClampsForStroking();
+                readyForStroking();
 
                 startStroking(80);
                 sendMessage("Just stroke through the pain now");

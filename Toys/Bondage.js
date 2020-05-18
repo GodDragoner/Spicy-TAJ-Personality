@@ -56,7 +56,7 @@ const TIE_OPTION = {
         CHAIN_ANKLES_TO_HANDS: {
             id: currentBondageId++,
             sendInstructions: function () {
-                sendMessage('Chain your hands and ankles together and then connect them with a rope of roughly ' + getRandomRopeLength() * 2 + ' cm length');
+                sendMessage('Chain your hands and ankles together separately and then connect your hands to your ankles with a rope of roughly ' + getRandomRopeLength() * 2 + ' cm length');
             },
         },
         CHAIN_HANDS_EACH_ANKLE: {

@@ -145,7 +145,7 @@
             interpretLegacyTaunt(answers[Math.min(answers.length - 1, Math.max(0, tauntIndex - specialTauntAmount))], LEGACY_TAUNT_TYPE_ANAL);
             break;
         case 0:
-            if(currentDildo.diameter >= 4) {
+            if (currentDildo.diameter >= 4) {
                 sendMessage("Is your ass gaping yet?");
                 break;
             } else {
@@ -215,15 +215,30 @@
             sendMessage(random("It is so much fun", "I love") + " watching you " + random("fuck", "penetrate") + " yourself");
             break;
         case 14:
-            //TODO: Interact
-            sendMessage("Do you find this to be humiliating or is it even fun for you?");
+            var tauntAnswer = sendInput("Do you find this to be humiliating or is it even fun for you?", 6);
+
+            if (!tauntAnswer.isTimeout()) {
+                if(tauntAnswer.isLike('humiliating', 'humilation')) {
+                    sendMessage('That\'s the main thing I care about any way %Wicked%')
+                } else if(tauntAnswer.isLike('good', 'fun', 'like', 'enjoy')) {
+                    sendMessage('You are such a little pervert %SlaveName% %Lol%')
+                }
+            }
             break;
         case 15:
             sendMessage("How does it feel having your ass penetrated?");
             break;
         case 16:
-            //TODO: Interact
-            sendMessage("Seeing this I sometimes wonder whether you'd do anything for me %Lol%");
+            //Var because switch statement breaks let declarations
+            var answer = sendYesOrNoQuestionTimeout('Seeing this I sometimes wonder whether you\'d do anything for me %Lol%', 6);
+
+            if (answer === ANSWER_YES) {
+                sendMessage('Of course you would %Grin%');
+            } else if (answer === ANSWER_NO) {
+                sendMessage('Don\'t be too sure of yourself');
+                sendMessage('I can be quite convincing %Wicked%');
+            }
+
             break;
     }
 }

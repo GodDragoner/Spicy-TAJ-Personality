@@ -41,7 +41,7 @@ function hasPreviousModuleHadCategory(category) {
 }
 
 function hasPreviousModuleHadCategory(category) {
-    return PREVIOUS_MODULE_CATEGORIES.get(PREVIOUS_MODULE_CATEGORIES.size() - 1) === category;
+    return PREVIOUS_MODULE_CATEGORIES.size() > 0 && PREVIOUS_MODULE_CATEGORIES.get(PREVIOUS_MODULE_CATEGORIES.size() - 1) === category;
 }
 
 function clearPreviousModuleHistory() {

@@ -24,7 +24,7 @@
         sendDungeonMessage("Also...");
         sendDungeonMessage("You are required to have an active account to use SpankzChoir.com");
         sendDungeonMessage("An account lasts 14 days and can be paid for in the shop");
-        sendDungeonMessage('On fridays you have the chance to get some tasks from one of the Dommes to redeem a chosen amount of punishment points');
+        sendDungeonMessage('On mondays and fridays you have the chance to get some tasks from one of the Dommes to redeem a chosen amount of punishment points');
         sendDungeonMessage('Should you get punishment points while you have redeeming tasks active those punishment points will be doubled and added to your balance');
         sendDungeonMessage('You will not be able to report for another punishment while you have these tasks unfinished');
         sendDungeonMessage('So make sure to better get them done quickly');
@@ -398,8 +398,13 @@
 
                     let mode = 0;
 
-                    if (new Date().getDay() === 6) {
-                        sendDungeonMessage('It\'s friday %SlaveNam% %EmoteHappy%');
+                    if (new Date().getDay() === 6 || new Date().getDay() === 2) {
+                        if (new Date().getDay() === 6) {
+                            sendDungeonMessage('It\'s friday %SlaveNam% %EmoteHappy%');
+                        } else {
+                            sendDungeonMessage('It\'s monday %SlaveNam% %EmoteHappy%');
+                        }
+
                         if (canRequestsPunishmentTasks()) {
                             if (getVar(VARIABLE.PUNISHMENT_POINTS) >= MIN_PUNISHMENT_POINTS_FOR_TASK) {
                                 sendDungeonMessage('So what will it be today? Redeeming Tasks or a session?', 0, false);

@@ -18,6 +18,8 @@ let RULE_ALWAYS_PEE_SITTING_DOWN;
 
 let RULE_ALWAYS_WEAR_PANTIES;
 
+let RULE_ALWAYS_STROKE_INDEX_AND_THUMB;
+
 {
     let ruleId = 0;
 
@@ -443,6 +445,29 @@ let RULE_ALWAYS_WEAR_PANTIES;
         this.setActive(true);
         return true;
 
+    };
+
+    AVAILABLE_RULES.push(rule);
+
+    //Small cock stroking
+    rule = RULE_ALWAYS_STROKE_INDEX_AND_THUMB = createRule(ruleId++, false);
+
+    rule.getRulePrint = function () {
+        return 'Since your penis is so small and not worthy of a full hand you should only stroke with your thumb and index finger unless told otherwise';
+    };
+
+    rule.canBeActivated = function () {
+        return VERBAL_HUMILIATION_LIMIT.isAllowed() && hasSmallPenis();
+    };
+
+    rule.sendIntroduction = function () {
+        sendMessage('You know that might actually be a good idea %Grin%');
+        sendMessage('Your %Cock% is so small it\'s not worthy of getting the pleasure of a full hand stroking it');
+        sendMessage('Which is why you will stroke only with your thumb and index finger from now on unless told otherwise %Wicked%');
+        sendMessage('This will remind you of your pathetic %Cock% all the time %SlaveName%');
+
+        this.setActive(true);
+        return true;
     };
 
     AVAILABLE_RULES.push(rule);

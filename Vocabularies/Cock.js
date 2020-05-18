@@ -21,9 +21,5 @@ function cockVocabulary() {
         answer += size[randomInteger(0, size.length - 1)] + " ";
     }
 
-    if(randomInteger(1, 4) == 2 && !BLOCK_AUDIO) {
-        playSound("Audio/Spicy/Humiliation/SmallDick/*.mp3");
-    }
-
     return answer + answers[randomInteger(0, answers.length - 1)];
 }

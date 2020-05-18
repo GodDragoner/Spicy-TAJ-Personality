@@ -4,7 +4,7 @@ const analTasks = [];
     let taskId = 0;
 
     let analTask = {
-        id: taskId++, exp: 27, minLevel: 1,
+        id: taskId++, exp: 25, minLevel: 1,
 
         sendInstructions: function () {
             sendMessage("I want you to wear your " +  + getButtplugForTask().name +  " for " + getButtplugTaskDurationHours() + " hours today");
@@ -17,7 +17,7 @@ const analTasks = [];
     analTasks.push(analTask);
 
     analTask = {
-        id: taskId++, exp: 30, minLevel: 1,
+        id: taskId++, exp: 25, minLevel: 1,
 
         sendInstructions: function () {
             sendMessage("I want you to fuck yourself using your " + getAnalDildoForTask().name + " for " + getDildoTaskDurationMinutes() + " minutes today");
@@ -32,6 +32,23 @@ const analTasks = [];
             } else {
                 sendMessage('Use whatever position you prefer');
             }
+        },
+
+        isApplicable: function () {
+            return getVar(VARIABLE.ASS_LEVEL) >= this.minLevel;
+        },
+    };
+    analTasks.push(analTask);
+
+    analTask = {
+        id: taskId++, exp: 30, minLevel: 3,
+
+        sendInstructions: function () {
+            sendMessage('Between now and our next session together, I want you to wear your '+ getButtplugForTask().name + ' in a public place');
+            sendMessage('I don\'t care where it is, and it doesn\'t have to be a long time');
+            sendMessage('Just at least ' + random(5, 10) + ' minutes');
+            sendMessage('You could wear it all day or just during a trip to the supermarket');
+            sendMessage('It\'s up to you, as long as it\'s a public place where there are other people');
         },
 
         isApplicable: function () {

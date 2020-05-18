@@ -4,9 +4,10 @@
         sendMessage("I\'m just going to make you edge a couple more times");
         sendMessage("And then leave you with blue balls %Grin%");
 
-        for(let x = 0; x <3; x++) {
+        for(let x = 0; x < 3; x++) {
             startEdging();
-            sendMessage("%LetEdgeFade%", 6);
         }
+        
+        sendMessage("%LetEdgeFade%", 6);
     }
 }
