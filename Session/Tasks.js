@@ -127,6 +127,15 @@ function startTimePassTasks(durationMinutes, allowTeasing = true) {
     }
 }
 
+function getSlaveTrainingModuleTime(multiplier = 1) {
+    let mood = getMood();
+    let minSeconds = 240 + (mood + 1)*20*(getStrictnessForCharacter() + 1);
+    let maxSeconds = 300 + (mood + 1)*25*(getStrictnessForCharacter() + 1);
+    let random = randomInteger(minSeconds, maxSeconds);
+    sendDebugMessage('Calculated ' + random + ' slave module training time seconds based on mood ' + mood + ' and strictness ' + getStrictnessForCharacter());
+    return random*multiplier;
+}
+
 function getCornerTime(multiplier = 1) {
     let mood = getMood();
     let minSeconds = Math.max(45, (mood + 1)*10*(getStrictnessForCharacter() + 1));

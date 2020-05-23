@@ -49,6 +49,7 @@
             }
 
             run("Assistant/PinBoard.js");
+            break;
         } else if(lobbyAnswer.isLike('back', 'cancel', 'return')) {
             lobbyAnswer.clearOptions();
             break;
@@ -70,6 +71,7 @@
             }
 
             run("Assistant/PinBoard.js");
+            break;
         } else {
             sendVirtualAssistantMessage("You have the following options %SlaveName%");
             sendVirtualAssistantMessage("- Rules");

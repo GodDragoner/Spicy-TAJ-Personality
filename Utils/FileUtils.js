@@ -15,7 +15,7 @@ function getPersonalityPath() {
 }
 
 function getImageSubFolder(subPath) {
-    return new java.io.File(IMAGE_PATH + PATH_SEPARATOR + subPath);
+    return getFile(IMAGE_PATH + PATH_SEPARATOR + subPath);
 }
 
 function tryCreateFolder(folder) {
@@ -29,6 +29,13 @@ function tryCreateFolder(folder) {
 
 function copyFolder(sourceFolder, destinationFolder, ignoreHidden) {
     TAJFileUtils.copyFolder(sourceFolder, destinationFolder, ignoreHidden);
+}
+
+function getFileOrCreate(path) {
+    let file = getFile(path);
+    tryCreateFolder(file);
+
+    return file;
 }
 
 function getFile(path) {

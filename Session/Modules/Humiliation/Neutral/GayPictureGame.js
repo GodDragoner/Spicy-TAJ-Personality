@@ -30,6 +30,7 @@
         }
 
         sendMessage("%Lol%");
+        sendMessage('When you want to stop at a picture just tell me to stop and we\'ll see if you were quick enough to stop at the right time');
         sendMessage("Let the game begin!");
         startGayPictureRound();
     }

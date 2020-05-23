@@ -10,7 +10,7 @@ const GAME_E_STIM = 4;
 
 {
     let pathLength = getPersonalityPath().length;
-    let files = new java.io.File(getPersonalityPath() + PATH_SEPARATOR + 'Session' + PATH_SEPARATOR + 'Modules' + PATH_SEPARATOR + 'Games').listFiles();
+    let files = getFileOrCreate(getPersonalityPath() + PATH_SEPARATOR + 'Session' + PATH_SEPARATOR + 'Modules' + PATH_SEPARATOR + 'Games').listFiles();
 
     for (let index = 0; index < files.length; index++) {
         let file = files[index];

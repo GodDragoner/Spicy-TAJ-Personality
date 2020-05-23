@@ -62,7 +62,7 @@
             }
 
             //CBT allowed in general?
-            let goForCBT = (isChance(50) || feelsLikePunishingSlave()) && getCBTLimit().isAllowed() && !isInChastity();
+            let goForCBT = (isChance(50) || feelsLikePunishingSlave()) && CBT_LIMIT.isAllowed() && !isInChastity();
             let ballCrusher = isChance(50) && hasBallCrusher() && BALL_CRUSHER_TOY.isPlayAllowed();
             //Means either no ball crusher of 50% chance failed so we'll go with simple cbt
             let cbt = !ballCrusher && goForCBT;

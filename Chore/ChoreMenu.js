@@ -19,6 +19,7 @@
             while(true) {
                 if(answer.isLike('you', 'choose', 'me')) {
                     minutesForChores = getTimeForChores();
+                    break;
                 } else if(answer.isInteger()) {
                     minutesForChores = answer.getInt();
 

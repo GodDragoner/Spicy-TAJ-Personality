@@ -8,7 +8,7 @@
                 sendMessage("But there are other things we can do to deepen the ache in %MyYour% %Balls%");
                 sendMessage("Other... parts of your body to explore");
 
-                let answer = createInput("Would you like that?");
+                let answer = sendInput("Would you like that?");
 
                 let guessedIt = false;
 
@@ -28,7 +28,7 @@
                 }
 
                 if (!guessedIt) {
-                    answer = createInput("Does the uncertainty make you nervous, maybe even a little scared?");
+                    answer = sendInput("Does the uncertainty make you nervous, maybe even a little scared?");
 
                     if (answer.isLike("yes")) {
                         sendMessage("I like it when you\'re a little scared %Grin%");
@@ -42,13 +42,14 @@
                         sendMessage("There\'s probably no need to be nervous");
                     }
 
-                    answer = createInput("Want to guess what it is that I want you to do?");
+                    answer = sendInput("Want to guess what it is that I want you to do?");
 
                     while (true) {
                         if (answer.isLike("yes", "sure", "okay", "let me think", "alright")) {
                             sendMessage('So what do you think?');
+                            answer.loop();
                         } else if (answer.isLike("no", "tell me", "dont want", "dont like", "dont know", "what is it", "give up", "say it")) {
-
+                            break;
                         } else if (answer.isLike("anal", "ass play", "dildo", "plug", "butt", "ass")) {
                             sendMessage('Bingo!');
                             break;

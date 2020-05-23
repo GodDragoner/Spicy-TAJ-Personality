@@ -17,7 +17,7 @@ const DEFAULT_TOY_COOLDOWN_MINUTES = 5;
     run("Toys/Enema.js");*/
 
     let pathLength = getPersonalityPath().length;
-    let files = new java.io.File(getPersonalityPath() + PATH_SEPARATOR + 'Toys').listFiles();
+    let files = getFileOrCreate(getPersonalityPath() + PATH_SEPARATOR + 'Toys').listFiles();
 
     for (let index = 0; index < files.length; index++) {
         let file = files[index];

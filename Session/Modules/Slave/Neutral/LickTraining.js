@@ -98,12 +98,11 @@
         sendMessage('Now lets get started %Grin%');
         sendMessage('Start the second you see the first pictures %SlaveName%');
 
-        const timerLimitArray = [randomInteger(20, 40), randomInteger(30, 50), randomInteger(60, 80), randomInteger(80, 100), randomInteger(100, 120)];
-        let timer = timerLimitArray[getMood()];
+        //const timerLimitArray = [randomInteger(20, 40), randomInteger(30, 50), randomInteger(60, 80), randomInteger(80, 100), randomInteger(100, 120)];
+        let date = setDate();
+        date.addSecond(getSlaveTrainingModuleTime());
 
-        while (timer > 0) {
-            timer--;
-
+        while (!date.hasPassed()) {
             switch (randomInteger(0, 6)) {
                 case 0:
                     showImage('Images/Spicy/Modules\\LickExercises\\Down\\*.jpg');

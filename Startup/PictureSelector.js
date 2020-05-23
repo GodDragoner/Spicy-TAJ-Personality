@@ -14,5 +14,12 @@ let PictureTag = Java.type("me.goddragon.teaseai.api.picture.PictureTag");
 }
 
 function showDommeTaggedImage(dressState, pictureTag, duration) {
-    showImage(TAJ_CHAT_HANDLER.getHandler().getMainDomParticipant().getPictureSet().getRandomPicture(dressState, pictureTag).getFile())
+    let pictureSet = TAJ_CHAT_HANDLER.getHandler().getMainDomParticipant().getPictureSet();
+
+    if(pictureTag !== null) {
+        return showImage(pictureSet.getRandomPicture(dressState, pictureTag).getFile())
+    } else {
+        sendDebugMessage('Picture set for domme was null so showing tease image instead');
+        return showCategoryImage();
+    }
 }

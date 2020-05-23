@@ -29,6 +29,11 @@
             VERBAL_HUMILIATION_LIMIT.askForLimitChange(LIMIT_ADDRESS.DOMME);
 
             if(VERBAL_HUMILIATION_LIMIT.isAllowed()) {
+                if(isGaged()) {
+                    sendMessage('That gag isn\'t working out for what I have planned right now...');
+                    removeGag(true);
+                }
+
                 sendMessage("I want you to say it out loud, say: \"I'm a loser\"");
                 sendMessage("Yes you are %Lol%");
                 sendMessage("Say it again, over and over");

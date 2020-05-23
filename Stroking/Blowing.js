@@ -196,7 +196,7 @@ function startNormalBlowjobModule() {
     }
 
     let startDate = setDate();
-    startDate.addMinute(randomInteger(8, 15));
+    startDate.addSecond(getSlaveTrainingModuleTime());
 
     while (!startDate.hasPassed()) {
         if (isChance(25)) {

@@ -244,6 +244,10 @@ function runChoreIntroduction() {
     sendVirtualAssistantMessage('I think I know everything I need to know for now');
     sendVirtualAssistantMessage('We can get started %Grin%');
     setVar(VARIABLE.TOTAL_CHORES_DONE, 0);
+    setVar(VARIABLE.TOTAL_CHORES_TIME, 0);
+
+    setVar(VARIABLE.WEEKLY_CHORES_DONE, 0);
+    setVar(VARIABLE.WEEKLY_CHORES_TIME, 0);
 }
 
 
