@@ -67,9 +67,6 @@ function readyForStroking() {
     if (hasClampsOnPenis() && !isInChastity()) {
         sendMessage('I would want you to stroke now but I guess we need to make some room on that penis first %Grin%');
 
-        //If we have any clamps on the cock we should move them away
-        readyForStroking();
-
         let answer = sendYesOrNoQuestionTimeout('Much better isn\'t it?', 3);
         if (answer === ANSWER_YES) {
             sendMessage('Don\'t celebrate to early. I won\'t go easy on you %Grin%');
