@@ -4,16 +4,24 @@
     }
 
     if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.HUMILIATION)) {
-        if (!hasBasicLingerie() && !hasAdvancedLingerie()) {
+        let noLingerie = false;
+        if (!hasSomeLingerie()) {
             sendMessage("It\'s a shame you don\'t have any lingerie %Grin%");
-            sendMessage("I had an idea I think you would absolutely love!");
-            sendMessage("Well we can still do it");
-            sendMessage("You\'ll just look a little less lovely %Lol%");
+            noLingerie = true;
+        } else if(!isLingeriePlayAllowed()) {
+            sendMessage("It\'s a shame you don\'t want to play with your lingerie %Grin%");
+            noLingerie = true;
         } else {
             if (!putOnLingerie()) {
                 //TODO: Handle no lingerie around
                 sendMessage('')
             }
+        }
+
+        if(noLingerie) {
+            sendMessage("I had an idea I think you would absolutely love!");
+            sendMessage("Well we can still do it");
+            sendMessage("You\'ll just look a little less lovely %Lol%");
         }
 
         sendMessage(random("It\'s time for a photoshoot!", "Lets do a photoshoot!", "I want to do a photoshoot!"));

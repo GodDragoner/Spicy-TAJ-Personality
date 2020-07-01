@@ -18,7 +18,7 @@
 
             //TODO: Anal orgasm training
         } else {
-            if (!fetchToy('vibrator')) {
+            if (!MAGIC_WAND_TOY.fetchToy()) {
                 sendMessage('Well then there will be no chance to orgasm today %Lol%');
                 sendMessage('Make sure to have your toys around next time!');
             } else {

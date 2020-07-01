@@ -63,8 +63,14 @@ function stopStrokingMessage() {
     }
 }
 
+//TODO: Support for stroking while in chastity (stroking the cage). Make sure to have the taunts adapt and stroking styles as well
 function readyForStroking() {
-    if (hasClampsOnPenis() && !isInChastity()) {
+    if (hasClampsOnPenis()) {
+        if(isInChastity()) {
+            sendDebugMessage('Found clamps on penis while in chastity');
+            return;
+        }
+
         sendMessage('I would want you to stroke now but I guess we need to make some room on that penis first %Grin%');
 
         let answer = sendYesOrNoQuestionTimeout('Much better isn\'t it?', 3);
@@ -76,6 +82,37 @@ function readyForStroking() {
             sendMessage('I don\'t care anyway %SlaveName%');
         }
     }
+}
+
+function readyForVibratingCage() {
+    if(hasMagicWand()) {
+        if(MAGIC_WAND_TOY.wasUsedInActiveContext()) {
+            return true;
+        }
+
+        //Return fetch result
+        return MAGIC_WAND_TOY.fetchToy();
+    }
+
+    return false;
+}
+
+function startVibratingCage() {
+    readyForVibratingCage();
+
+    setAudioBlocked(true);
+    sendMessage("%StartStroking%", 0);
+    setAudioBlocked(false);
+
+    //QUALITY: Sound
+}
+
+function startVibratingCageInterval(durationSeconds) {
+    startVibratingCage();
+
+    sendStrokeTaunts(durationSeconds);
+
+    stopStrokingMessage();
 }
 
 
@@ -121,7 +158,7 @@ function sendNewStrokeInstruction() {
                 playSound("Audio/Spicy/Humiliation/SmallDick/*.mp3");
                 sleep(3);
 
-                if(shouldIntroduceNewRule(RULE_ALWAYS_STROKE_INDEX_AND_THUMB)) {
+                if (shouldIntroduceNewRule(RULE_ALWAYS_STROKE_INDEX_AND_THUMB)) {
                     RULE_ALWAYS_STROKE_INDEX_AND_THUMB.sendIntroduction();
                 }
             }
@@ -163,11 +200,11 @@ function sendNewStrokeInstruction() {
             } else {
                 //Too annoying to get another lube right now during stroking, so we are gonna tell him to use nothing
 
-                if(lubeType == NO_LUBE) {
+                if (lubeType == NO_LUBE) {
                     sendMessage('You are not allowed to use any lube %Grin%');
-                } else if(feelsLikePunishingSlave() && CBT_LIMIT.isAllowed()) {
+                } else if (feelsLikePunishingSlave() && CBT_LIMIT.isAllowed()) {
                     //Really wants to punish so I guess we will fetch it
-                    if(lubeType == TOOTHPASE_LUBE || lubeType == TIGER_HOT_LUBE) {
+                    if (lubeType == TOOTHPASE_LUBE || lubeType == TIGER_HOT_LUBE) {
                         let bpm = getStrokingBPM();
                         stopStrokingMessage();
 

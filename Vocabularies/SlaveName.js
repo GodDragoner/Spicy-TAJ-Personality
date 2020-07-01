@@ -31,7 +31,7 @@ function slaveNameVocabulary() {
         adjectives.push('locked', 'caged');
     }
 
-    if (getVar(VARIABLE.LINGERIE_ON, false)) {
+    if (hasLingerieOn()) {
         adjectives.push("dressed up", "dressed up");
     }
 

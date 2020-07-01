@@ -66,8 +66,7 @@ function startTimePassTasks(durationMinutes, allowTeasing = true) {
                     case 4:
                         sendMessage("I want you to pretend that you are rope skipping");
                         sendMessage("This will not only train your muscles and keep you fit...");
-                        //TODO: Some diversity?
-                        sendMessage("But it will also look hilarious with your dick dangling around");
+                        sendMessage("But it will also " + random('look', 'be')  + random('', 'quite') + " %entertaining% with your %cock%" + random('dangling around', 'hanging around', 'flopping around', 'bouncing around'));
                         sendMessage("You can stop when you hear my bell %Grin%");
                         sleep(randomInteger(20, 30));
                         returnSlave();
@@ -75,18 +74,41 @@ function startTimePassTasks(durationMinutes, allowTeasing = true) {
                 }
                 break;
             case 2:
-                if (!HUMILIATION_LIMIT.isHardLimit() || !VERBAL_HUMILIATION_LIMIT.isHardLimit()) {
+                if (HUMILIATION_LIMIT.isAllowed() || VERBAL_HUMILIATION_LIMIT.isAllowed()) {
                     sendMessage("I want you to grab your phone or a camera");
                     sendMessage("And I want you to take some humiliating pictures of yourself right now");
                     sendMessage("I don't care what you do to make them humiliating");
-                    //TODO: Has sissy outfit? And check for other stuff that the sub might be wearing right now and tell to make photos of it
-                    sendMessage("But I want them to show you either naked or in that cute little sissy outfit of yours");
+
+
+                    if(SISSY_LIMIT.isAllowed() && hasSomeLingerie() && isLingeriePlayAllowed() && isChance(50)) {
+                        sendMessage('But...');
+
+                        if(hasLingerieOn()) {
+                            sendMessage('That you\'re already wearing lingerie makes this even better %SlaveNameSmiley%');
+                        } else {
+                            putOnLingerie();
+                            sendMessage('Lingerie is always great for the purpose of humiliation %SlaveNameSmiley%');
+                        }
+                    } else {
+                        sendMessage("But I want them to show you naked");
+                    }
+
                     sendMessage("Go ahead and take some now and return when you hear my bell");
                     sleep(randomInteger(75, 120));
                     returnSlave();
+
+                    if(hasLingerieOn()) {
+                        if(feelsEvil()) {
+                            sendMessage('Stay in that lingerie for now %v%');
+                        } else {
+                            sendMessage('You can go ahead and take off all that lingerie for now');
+                            removeAllLingerie();
+                        }
+                    }
+
                     sendMessage("I want you to place those pictures inside your self humiliation folder");
                     sendMessage("But you can do so after the session");
-                    sendMessage("For now I want to continue messing with you %Grin%")
+                    sendMessage("For now I want to continue messing with you %Grin%");
                     break;
                 }
 
@@ -118,6 +140,26 @@ function startTimePassTasks(durationMinutes, allowTeasing = true) {
                     continue;
                 }
 
+                break;
+            case 6:
+                if(isInChastity()) {
+                    if(MAGIC_WAND_TOY.hasToy()) {
+
+                    }
+                } else {
+                    //Edging
+                    if(isChance(50)) {
+                        startMultipleEdges(randomInteger(3, 5));
+
+                        if(feelsLikePunishingSlave()) {
+                            startEdging(getEdgeHoldSeconds());
+                        }
+                    }
+                    //Stroking
+                    else {
+                        startStrokeInterval(randomInteger(1, 2));
+                    }
+                }
                 break;
         }
 

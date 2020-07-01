@@ -4,19 +4,15 @@ const BRA_TOY = createToy('Bra');
 const STOCKINGS_TOY = createToy('Stockings');
 const GARTER_BELT_TOY = createToy('Garter Belt');
 
-const BASIC_LINGERIE = createToy("Basic Lingerie");
-const ADVANCED_LINGERIE = createToy("Advanced Lingerie");
-
-function hasBasicLingerie() {
-    return BASIC_LINGERIE.hasToy();
-}
-
-function hasAdvancedLingerie() {
-    return ADVANCED_LINGERIE.hasToy();
-}
-
 function hasLingerieOn() {
-    return getVar(VARIABLE.LINGERIE_ON, false);
+    return PANTY_TOY.isToyOn() || BRA_TOY.isToyOn() || STOCKINGS_TOY.isToyOn() || GARTER_BELT_TOY.isToyOn();
+}
+
+function removeAllLingerie() {
+    PANTY_TOY.removeToy();
+    BRA_TOY.removeToy();
+    STOCKINGS_TOY.removeToy();
+    GARTER_BELT_TOY.removeToy();
 }
 
 function isLingeriePlayAllowed() {
@@ -53,7 +49,7 @@ function putOnLingerie() {
     //Skip if lingerie already on
     if(hasLingerieOn()) {
         return attachedToys;
-    } else if(!hasBasicLingerie() && !hasAdvancedLingerie()) {
+    } else if(!hasSomeLingerie()) {
         return attachedToys;
     }
 
@@ -110,8 +106,6 @@ function putOnLingerie() {
 
     sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
     waitForDone();
-
-    setVar(VARIABLE.LINGERIE_ON, true);
 
     return attachedToys;
 }

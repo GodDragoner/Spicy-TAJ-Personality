@@ -38,6 +38,7 @@ run("Stroking/Stroke.js");
 run("Stroking/Edge.js");
 run("Stroking/Anal.js");
 run("Stroking/Blowing.js");
+run("Stroking/Taunts/StrokeAndTeaseTaunts.js");
 run("Session/Modules/Pain/SmallPunishment.js");
 
 //Dynamic module stuff

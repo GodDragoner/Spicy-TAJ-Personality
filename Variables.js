@@ -15,8 +15,6 @@ const VARIABLE = {
     SPICY_VERSION: "latestVersion",
 
 
-    LINGERIE_ON: "lingerieOn",
-
     SLAVE_TYPE: "slaveType",
 
 
