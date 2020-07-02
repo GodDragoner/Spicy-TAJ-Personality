@@ -43,7 +43,7 @@
                 startStrokeInterval(randomInteger(Math.max(1, minutesToStroke - 1), minutesToStroke));
 
                 sendDebugMessage('End of stroking interval');
-            } else {
+            } else if(!feelsEvil() || !readyForVibratingCage()) {
                 let mood = getMood() + 1;
                 let strictness = getStrictnessForCharacter() + 1;
                 let iterationsToTease = 26 - mood*strictness*2;
@@ -57,6 +57,18 @@
                 }
 
                 sendDebugMessage('End of teasing interval');
+            }
+            //Evil vibe teasing while in cage
+            else {
+                let mood = getMood() + 1;
+                let strictness = getStrictnessForCharacter() + 1;
+                let minutesToVibe = Math.round((180 - mood*mood*strictness)/60);
+
+                sendDebugMessage('Start of vibe interval for ' + minutesToVibe);
+
+                startVibratingCageInterval(randomInteger(Math.max(1, minutesToVibe - 1), minutesToVibe));
+
+                sendDebugMessage('End of vibe interval');
             }
 
             setDate('lastStrokingPause');

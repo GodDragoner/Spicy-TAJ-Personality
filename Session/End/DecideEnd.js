@@ -7,8 +7,6 @@
         sendMessage(random('You\'re currently serving a chastity sentence', 'You are right now being punished'));
         sendMessage(random('So there won\'t be any funny business today!', 'So there is absolutely no chance of you cumming!'));
     } else {
-        run("Session/Link/End/DecideEndLink.js");
-
         //Denial limit reached
         if (getLastEjaculationDate().addDay(getVar(VARIABLE.DENIAL_LIMIT)).hasPassed()) {
             run('Session/End/HardLimit.js');

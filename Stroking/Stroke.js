@@ -1,3 +1,5 @@
+let vibingChastity = false;
+
 function stopStrokingMessage() {
 
     if (isStroking()) {
@@ -87,6 +89,8 @@ function readyForStroking() {
 function readyForVibratingCage() {
     if(hasMagicWand()) {
         if(MAGIC_WAND_TOY.wasUsedInActiveContext()) {
+            //Tell slave again so he can pick it up etc and start once this continues
+            sendMessage('Get your vibrator ready %SlaveName%', 10);
             return true;
         }
 
@@ -98,7 +102,9 @@ function readyForVibratingCage() {
 }
 
 function startVibratingCage() {
-    readyForVibratingCage();
+    if(!readyForVibratingCage()) {
+        return false;
+    }
 
     setAudioBlocked(true);
     sendMessage("%StartStroking%", 0);
@@ -110,7 +116,9 @@ function startVibratingCage() {
 function startVibratingCageInterval(durationSeconds) {
     startVibratingCage();
 
-    sendStrokeTaunts(durationSeconds);
+    vibingChastity = true;
+    sendVibeTaunts(durationSeconds);
+    vibingChastity = false;
 
     stopStrokingMessage();
 }
@@ -301,6 +309,29 @@ function sendStrokeTaunts(durationSeconds, nextInstruction) {
     //Start the whole thing all over again
     //At least 15 seconds to the next instruction if we just already send a message
     sendStrokeTaunts(durationSeconds, Math.max(15, nextInstruction));
+}
+
+
+function sendVibeTaunts(durationSeconds) {
+    //Select a random amount of iterations and we will wait based on that random amount before sending a taunt message
+    let iterationsToGo = randomInteger(30, 40);
+
+    //Start our loop and continue until iterationsToGo are equal or less than zero
+    while (iterationsToGo > 0) {
+        //Is the sub still stroking?
+        if (!vibingChastity || durationSeconds <= 0) {
+            return;
+        }
+
+        iterationsToGo--;
+        durationSeconds--;
+        sleep(1);
+    }
+
+    run("Stroking/Taunt/VibrateCage/*.js");
+
+    //Start the whole thing all over again
+    sendVibeTaunts(durationSeconds);
 }
 
 function stopStrokingEdgeMessage() {

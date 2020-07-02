@@ -1,5 +1,5 @@
 {
-    if(tryRunOrgasmFetchId()) {
+    if (tryRunOrgasmFetchId()) {
         if (!feelsLikePunishingSlave()) {
             startEdging(0, true, EDGE_END_ORGASM);
             waitForCumAnswer();
@@ -25,7 +25,8 @@
             sendMessage("Awww my poor %SlaveName%");
             sendMessage("I do love seeing you in pain %Grin%");
 
-            if(isInChastity()) {
+
+            if (isInChastity()) {
                 sendMessage("Put the vibrator on that cage and start vibrating it %SlaveName%");
                 sendMessage("Just work your way through the pain now");
             } else {
@@ -42,11 +43,11 @@
 
             let answer = sendInput("It\'s nice to have some pain mixed in with your pleasure, isn\'t it?", 5);
 
-            if(answer.isTimeout()) {
+            if (answer.isTimeout()) {
                 sendMessage('For me it definitely is %Grin%');
-            } else if(answer.isLike('yes')) {
+            } else if (answer.isLike('yes')) {
                 sendMessage('I knew that you are my little pain slut %Grin%');
-            } else if(answer.isLike('no')) {
+            } else if (answer.isLike('no')) {
                 sendMessage('Well at least for me %Grin%');
             }
         }
