@@ -237,3 +237,27 @@ function setPartTime() {
 function isFullTime() {
     return getVar(VARIABLE.SLAVE_TYPE) == 1;
 }
+
+function getMaxStartingDiameter() {
+    let diameter = getUsedToDiameter();
+
+    let assLevel = getVar(VARIABLE.ASS_LEVEL);
+
+    return Math.max(diameter, assLevel / 7.5);
+}
+
+function getMaxDiameterIncrease() {
+    let maxDiameterIncrease = 1;
+
+    let assLevel = getVar(VARIABLE.ASS_LEVEL);
+
+    if (assLevel >= 30) {
+        maxDiameterIncrease = 0.75;
+    } else if (assLevel >= 23) {
+        maxDiameterIncrease = 0.5;
+    } else if (assLevel >= 15) {
+        maxDiameterIncrease = .25;
+    }
+
+    return maxDiameterIncrease;
+}

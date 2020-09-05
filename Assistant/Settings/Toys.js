@@ -37,7 +37,7 @@
             break;
         } else if (lobbyAnswer.isLike('Stim')) {
             lobbyAnswer.clearOptions();
-            setupEStimToy(null);
+            setupEStimToy(null, true);
             run('Assistant/Settings/Toys.js');
             break;
         }  else {

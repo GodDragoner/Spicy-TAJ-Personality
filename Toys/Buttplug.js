@@ -25,6 +25,11 @@ BUTTPLUG_TOY.removeToy = function () {
     removeButtplug();
 };
 
+function getUsedToDiameter() {
+    //We can't be smaller than the smallest plug
+    return Math.max(smallestButtplug.diameter, getVar(VARIABLE.USED_TO_DIAMETER, 0));
+}
+
 function updateSessionButtplugs() {
     for (let x = 0; x < buttplugs.length; x++) {
         buttplugs[x].usedInSession = false;
@@ -44,7 +49,7 @@ function getButtplugWithBaseStyle(baseStyle) {
         }
     }
 
-    if(relevantPlugs.length === 0) {
+    if (relevantPlugs.length === 0) {
         return null;
     }
 
@@ -72,16 +77,80 @@ function getRandomCleanButtplug() {
     return null;
 }
 
-function getButtplugClosestBelow(diameter) {
-    let currentPlug = null;
+/**
+ * Get the generic small buttplug used for training, tasks etc. Depends on the used to diameter
+ * @param longtime Whether it should be suitable for longtime wear
+ * @returns {*|null}
+ */
+function getSmallButtplug(longtime) {
+    return getButtplugClosestBelow(getUsedToDiameter(), longtime ? getLongTimeWearPlugs() : buttplugs);
+}
+
+function getMediumButtplug(longtime) {
+    let smallPlug = getSmallButtplug(longtime);
+
+    let plugs = longtime ? getLongTimeWearPlugs() : buttplugs;
+
+    let index = plugs.indexOf(smallPlug);
+
+    if (index < plugs.length - 1) {
+        return plugs[index + 1];
+    } else {
+        sendDebugMessage('No medium plug found because small plug is the biggest plug available ' + longtime ? ' (longtime)' : '');
+        return smallPlug;
+    }
+}
+
+function getBigButtplug(longtime) {
+    let mediumPlug = getMediumButtplug(longtime);
+
+    let plugs = longtime ? getLongTimeWearPlugs() : buttplugs;
+
+    let index = plugs.indexOf(mediumPlug);
+
+    if (index < plugs.length - 1) {
+        return plugs[index + 1];
+    } else {
+        sendDebugMessage('No big plug found because medium plug is the biggest plug available ' + longtime ? ' (longtime)' : '');
+        return mediumPlug;
+    }
+}
+
+function getLongTimeWearPlugs(buttplugs = this.buttplugs) {
+    let longtime = [];
     for (let x = 0; x < buttplugs.length; x++) {
         //We must be <= the given diameter and bigger than the current diameter
-        if (buttplugs[x].diameter <= diameter && (currentPlug === null || buttplugs[x].diameter > currentPlug.diameter)) {
-            currentPlug = buttplugs[x];
+        if (buttplugs[x].tbase) {
+            longtime.push(buttplugs[x]);
         }
     }
 
-    return currentPlug;
+    return longtime;
+}
+
+
+function getButtplugClosestAbove(diameter, buttplugs = this.buttplugs) {
+    for (let x = buttplugs.length - 1; x >= 0; x--) {
+        //Buttplugs is sorted, ascending so we can just find the point in the list whe are looking for
+        //We must be <= the given diameter and bigger than the current diameter
+        if (buttplugs[x - 1].diameter <= diameter && (x === 0 || buttplugs[x].diameter >= diameter)) {
+            return buttplugs[x];
+        }
+    }
+
+    return null;
+}
+
+function getButtplugClosestBelow(diameter, buttplugs = this.buttplugs) {
+    for (let x = 0; x < buttplugs.length; x++) {
+        //Buttplugs is sorted, ascending so we can just find the point in the list whe are looking for
+        //We must be <= the given diameter and bigger than the current diameter
+        if (buttplugs[x].diameter <= diameter && (x + 1 === buttplugs.length || buttplugs[x + 1].diameter >= diameter)) {
+            return buttplugs[x];
+        }
+    }
+
+    return null;
 }
 
 function hasButtplugToy() {
@@ -281,44 +350,26 @@ function putinChosenButtplug(plug) {
     }
 
     BUTTPLUG_TOY.setUsedInActiveContext(true);
-    setTempVar(VARIABLE.IS_PLUGGED, true);
+
     BUTTPLUG_TOY.setLastUsage();
+
+    setPlugIn(plug);
+
+    return true;
+}
+
+function setPlugIn(plug) {
+    setTempVar(VARIABLE.IS_PLUGGED, true);
 
     //Plug was used and is no longer clean
     plug.usedInSession = true;
     plug.clean = false;
 
     currentPlug = plug;
-
-    return true;
 }
 
 function getButtplugForTask() {
     return getButtplugClosestBelow(getMaxStartingDiameter());
-}
-
-function getMaxStartingDiameter() {
-    let diameter = smallestButtplug.diameter;
-
-    let assLevel = getVar(VARIABLE.ASS_LEVEL);
-
-    return Math.max(diameter, assLevel / 7.5);
-}
-
-function getMaxDiameterIncrease() {
-    let maxDiameterIncrease = 1;
-
-    let assLevel = getVar(VARIABLE.ASS_LEVEL);
-
-    if (assLevel >= 30) {
-        maxDiameterIncrease = 0.75;
-    } else if (assLevel >= 23) {
-        maxDiameterIncrease = 0.5;
-    } else if (assLevel >= 15) {
-        maxDiameterIncrease = .25;
-    }
-
-    return maxDiameterIncrease;
 }
 
 
@@ -502,6 +553,23 @@ function endLastPlugPull() {
     sendMessage("Okay you are allowed to remove it completely now");
 }
 
+function sortPlug(a, b) {
+    if(a === undefined || b === undefined) {
+        sendDebugMessage(a);
+        sendDebugMessage(b);
+        return 0;
+    }
+
+    if (a.diameter < b.diameter) {
+        return -1;
+    }
+
+    if (a.diameter > b.diameter) {
+        return 1;
+    }
+
+    return 0;
+}
 
 function loadButtplugs() {
     if (!isVar('buttplugs')) {
@@ -525,6 +593,9 @@ function loadButtplugs() {
             }
         }
     }
+
+
+    buttplugs.sort(sortPlug);
 }
 
 function saveButtplugs() {
@@ -676,7 +747,7 @@ function setupNewButtplug() {
         } else if (answer.isLike("pig")) {
             baseStyle = BUTTPLUG_BASE_STYLE.PIG_TAIL;
             break;
-        }  else {
+        } else {
             sendVirtualAssistantMessage('Is the base of the plug plain, a crystal, a fluffy tail or a pig tail?');
             answer.loop();
         }

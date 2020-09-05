@@ -66,7 +66,7 @@
 
                 sendDebugMessage('Start of vibe interval for ' + minutesToVibe);
 
-                startVibratingCageInterval(randomInteger(Math.max(1, minutesToVibe - 1), minutesToVibe));
+                startVibratingCageInterval(randomInteger(Math.max(1, minutesToVibe - 1), minutesToVibe)*60);
 
                 sendDebugMessage('End of vibe interval');
             }

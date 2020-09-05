@@ -4,6 +4,11 @@ const TAJFileUtils = Java.type('me.goddragon.teaseai.utils.FileUtils');
 const PERSONALITY_PATH = TeaseAI.application.getSession().getActivePersonality().getFolder().getAbsolutePath();
 const PATH_SEPARATOR = java.io.File.separator;
 const IMAGE_PATH = 'Images' + PATH_SEPARATOR + 'Spicy';
+const SCRIPT_ENGINE = ScriptHandler.getHandler().getEngine();
+
+function callFunction(name) {
+    return SCRIPT_ENGINE.invokeFunction(name);
+}
 
 function getCurrentScriptName() {
     const name = ScriptHandler.getHandler().getCurrentFile().getName();

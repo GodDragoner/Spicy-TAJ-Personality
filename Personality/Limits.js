@@ -401,7 +401,7 @@ function createLimit(name, variable) {
 }
 
 function getLimit(limit) {
-    return getVar(limit);
+    return limit.getLimit();
 }
 
 function getAnalLimit() {
@@ -525,7 +525,7 @@ function askForNewLimitValue(limit) {
             answer.clearOptions();
             sendMessage('%Good%! %EmoteHappy%');
 
-            if (this.getLimit() === LIMIT_ASKED_NO) {
+            if (limit.getLimit() === LIMIT_ASKED_NO) {
                 sendMessage('I am very happy that you changed your mind about this %SlaveName%');
                 changeMeritLow(false);
             }
@@ -541,7 +541,7 @@ function askForNewLimitValue(limit) {
             answer.clearOptions();
 
             //Maybe to no change
-            if (this.getLimit() === LIMIT_ASKED_MAYBE) {
+            if (limit.getLimit() === LIMIT_ASKED_MAYBE) {
                 sendMessage('You went from maybe to a no?!');
 
                 if (isEnforcingPersonality()) {
@@ -550,7 +550,7 @@ function askForNewLimitValue(limit) {
                     sendMessage('That\'s quite disappointing %EmoteSad%');
                     sendMessage('But maybe I\'ll get you there eventually');
                 }
-            } else if (this.getLimit() === LIMIT_ASKED_NO) {
+            } else if (limit.getLimit() === LIMIT_ASKED_NO) {
                 if (isEnforcingPersonality()) {
                     sendMessage('I definitely do not like being told no multiple times %SlaveName%');
                 } else {
@@ -574,7 +574,7 @@ function askForNewLimitValue(limit) {
             answer.clearOptions();
 
             //Maybe to maybe change
-            if (this.getLimit() === LIMIT_ASKED_MAYBE) {
+            if (limit.getLimit() === LIMIT_ASKED_MAYBE) {
                 sendMessage('...');
                 sendMessage('You already said maybe last time...');
 

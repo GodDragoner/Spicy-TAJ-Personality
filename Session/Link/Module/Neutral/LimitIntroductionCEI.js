@@ -75,19 +75,19 @@
             showCategoryImage("BLOWJOB", 0);
             sendMessage("As I take it deeper and deeper");
             sendMessage("There is something I don\'t like about it though");
-            let answer0 = sendInput("Can you guess what?");
+            answer = sendInput("Can you guess what?");
 
             while (true) {
                 if (answer.isLike("yes")) {
                     sendMessage('Okay, so what do you think I don\'t like?');
                     answer.loop();
-                } else if (answer0.isLike("no")) {
+                } else if (answer.isLike("no")) {
                     sendMessage("You\'re not the guessing type then");
                     break;
-                } else if (answer0.isLike("deepthroat", "choke", "gag")) {
+                } else if (answer.isLike("deepthroat", "choke", "gag")) {
                     sendMessage("Oh no I love that %Laugh%");
                     break;
-                } else if (answer0.isLike("swallow", "cum", "taste", "ejaculate", "sperm")) {
+                } else if (answer.isLike("swallow", "cum", "taste", "ejaculate", "sperm")) {
                     sendMessage("Exactly!");
                     break;
                 }
@@ -97,8 +97,8 @@
             sendMessage('I hate the taste, the slimy texture, everything');
             unlockImages();
 
-            let answer1 = sendInput("It\'s just gross, don\'t you think?");
-            if (answer1.isLike("yes", "agree")) {
+            answer = sendInput("It\'s just gross, don\'t you think?");
+            if (answer.isLike("yes", "agree")) {
                 sendMessage('It\'s pretty disgusting really %Lol%');
 
                 sendMessage("But wait, that means you have actually tried it");
@@ -117,7 +117,7 @@
                 }
 
                 CEI_LIMIT.askForLimitChange(LIMIT_ADDRESS.DOMME);
-            } else if (answer1.isLike("no")) {
+            } else if (answer.isLike("no")) {
                 sendMessage("Wait..");
 
                 if(sendYesOrNoQuestion("So you actually tried it?")) {
@@ -127,7 +127,7 @@
                 }
 
                 CEI_LIMIT.askForLimitChange(LIMIT_ADDRESS.DOMME);
-            } else if (answer1.isLike("don't know", 'dont know', "not sure", "never")) {
+            } else if (answer.isLike("don't know", 'dont know', "not sure", "never")) {
                 sendMessage("I guess you don\'t suck cock all that often %Grin%");
 
                 if (SISSY_LIMIT.isAllowed() || SISSY_LIMIT.getLimit() === LIMIT_ASKED_MAYBE || CUCKOLD_LIMIT.isAllowed() || CUCKOLD_LIMIT.getLimit() === LIMIT_ASKED_MAYBE) {

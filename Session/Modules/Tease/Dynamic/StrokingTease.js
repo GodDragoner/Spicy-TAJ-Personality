@@ -1,5 +1,11 @@
 {
     if(tryRunModuleFetchId(2, MODULE.STROKING)) {
-        startStrokeInterval(8, 15);
+        let minutes = randomInteger(8, 15);
+        if(isInChastity()) {
+            startVibratingCageInterval(minutes*60)
+        } else {
+            startStrokeInterval(minutes);
+        }
+
     }
 }

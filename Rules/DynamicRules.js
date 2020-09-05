@@ -18,6 +18,8 @@ let RULE_ALWAYS_PEE_SITTING_DOWN;
 
 let RULE_ALWAYS_WEAR_PANTIES;
 
+let RULE_ALWAYS_WEAR_SMALL_PLUG;
+
 let RULE_ALWAYS_STROKE_INDEX_AND_THUMB;
 
 {
@@ -465,6 +467,36 @@ let RULE_ALWAYS_STROKE_INDEX_AND_THUMB;
         sendMessage('Your %Cock% is so small it\'s not worthy of getting the pleasure of a full hand stroking it');
         sendMessage('Which is why you will stroke only with your thumb and index finger from now on unless told otherwise %Wicked%');
         sendMessage('This will remind you of your pathetic %Cock% all the time %SlaveName%');
+
+        this.setActive(true);
+        return true;
+    };
+
+    AVAILABLE_RULES.push(rule);
+
+
+    rule = RULE_ALWAYS_WEAR_SMALL_PLUG = createRule(ruleId++, false);
+
+    //Put in plug on startup
+    if(RULE_ALWAYS_WEAR_SMALL_PLUG.isActive()) {
+        setPlugIn(getSmallButtplug(true));
+    }
+
+    rule.getRulePrint = function () {
+        return 'You must always wear your ' + getSmallButtplug(true).name;
+    };
+
+    rule.canBeActivated = function () {
+        return ANAL_LIMIT.isAllowed();
+    };
+
+    rule.sendIntroduction = function () {
+        sendMessage('I own your ass %Grin%');
+        sendMessage('And that is how it is supposed to be');
+        sendMessage('But I\'d like you to have a constant reminder of that');
+        sendMessage('So from now on you will always wear your ' + getSmallButtplug(true).name);
+        sendMessage('Not only is it gonna remind you of your place but it\'s also gonna make sure you are ready for whatever I have in store for that ass of mine');
+        sendMessage('I can only suggest you getting some long time wear plugs. I heard that T-Base shapes are pretty good for that purpose %Grin%');
 
         this.setActive(true);
         return true;

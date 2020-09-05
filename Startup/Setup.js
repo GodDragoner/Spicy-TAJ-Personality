@@ -208,7 +208,7 @@
         sendVirtualAssistantMessage("We're gonna have a lot of fun with this folder! %Grin%");
         sendVirtualAssistantMessage("Inside Videos/Spicy you'll find a folder with the exact same name");
         sendVirtualAssistantMessage("This folder needs a humiliating video of you");
-        sendVirtualAssistantMessage("It doesn't have to be longer than 10 seconds");
+        sendVirtualAssistantMessage("It doesn't has to be longer than 10 seconds");
         sendVirtualAssistantMessage("All I want is your face clearly on display");
         sendVirtualAssistantMessage("While doing something you would consider to be humiliating");
         sendVirtualAssistantMessage("Hopefully the video is never gonna be viewed by anyone else %Lol%");
@@ -385,31 +385,37 @@
 
     if (sendYesOrNoQuestion("Do you own a chastity device?", SENDER_ASSISTANT)) {
         setVar(VARIABLE.HAS_CHASTITY, true);
-        sendVirtualAssistantMessage('Okay %SlaveName%. Tell me, how many different chastity cages do you have?', false);
-        answer = createInput();
 
-        while (true) {
-            if (answer.isInteger()) {
-                const result = answer.getInt();
-                if (result <= 0) {
-                    sendVirtualAssistantMessage("You can't choose a number equal to 0 or lower");
-                    answer.loop();
-                } else {
-                    sendVirtualAssistantMessage('We are gonna setup your chastity cages now, one by one.');
+        if(CHASTITY_CAGES.length > 0) {
+            sendVirtualAssistantMessage('Since you already have chastity cages setup, we are not gonna setup any additional cages now. You can always add new cages in the main menu.');
+        } else {
+            sendVirtualAssistantMessage('Okay %SlaveName%. Tell me, how many different chastity cages do you have?', false);
+            answer = createInput();
 
-                    for (let x = 0; x < result; x++) {
-                        setupNewCage();
+            while (true) {
+                if (answer.isInteger()) {
+                    const result = answer.getInt();
+                    if (result <= 0) {
+                        sendVirtualAssistantMessage("You can't choose a number equal to 0 or lower");
+                        answer.loop();
+                    } else {
+                        sendVirtualAssistantMessage('We are gonna setup your chastity cages now, one by one.');
+
+                        for (let x = 0; x < result; x++) {
+                            setupNewCage();
+                        }
+
+                        sendVirtualAssistantMessage('This should do it regarding chastity cages');
+                        sendVirtualAssistantMessage('You can always setup new chastity cages in the settings menu');
+                        break;
                     }
-
-                    sendVirtualAssistantMessage('This should do it regarding chastity cages');
-                    sendVirtualAssistantMessage('You can always setup new chastity cages in the settings menu');
-                    break;
+                } else {
+                    sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
+                    answer.loop();
                 }
-            } else {
-                sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
-                answer.loop();
             }
         }
+
 
         sendVirtualAssistantMessage('Do you own something like a combination lock and some box where you can lock your keys using said lock?', false);
         answer = createInput();

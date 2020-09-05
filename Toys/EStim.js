@@ -223,15 +223,17 @@ function createEStimMode() {
     return mode;
 }
 
-function setupEStimToy(domChose) {
+function setupEStimToy(domChose, settings = false) {
 
     //Ask for dom choose if not given
     if(domChose === null || domChose === undefined) {
         domChose = askForDomChoose();
     }
 
-    //Empty array
-    E_STIM_MODES = [];
+    if(settings) {
+        //Empty array only during settings, not initial setup
+        E_STIM_MODES = [];
+    }
 
     E_STIM_TOY.askForToyAndUsage(domChose);
 
@@ -251,92 +253,96 @@ function setupEStimToy(domChose) {
 
     sendVirtualAssistantMessage('Now...');
 
-    sendVirtualAssistantMessage('Tell me %SlaveName%');
+    if(E_STIM_MODES.length > 0) {
+        sendVirtualAssistantMessage('Since you already have some estim modes setup, I am not gonna go through this again now. You can set them up later in the settings again');
+    } else {
+        sendVirtualAssistantMessage('Tell me %SlaveName%');
 
-    setCurrentSender(SENDER_ASSISTANT);
+        setCurrentSender(SENDER_ASSISTANT);
 
-    let modes = createIntegerInput('How many different modes does this device have?', 1, 1000, 'Please give me just a number like 1 or 5', 'Please only give me a number between 1 and 1000');
+        let modes = createIntegerInput('How many different modes does this device have?', 1, 1000, 'Please give me just a number like 1 or 5', 'Please only give me a number between 1 and 1000');
 
-    setVar(VARIABLE.E_STIM_MODES, modes);
-    sendVirtualAssistantMessage('Great! %EmoteHappy%');
+        setVar(VARIABLE.E_STIM_MODES, modes);
+        sendVirtualAssistantMessage('Great! %EmoteHappy%');
 
-    let maxLevel = createIntegerInput('What is the max level you can put this device on?', 1, 1000, 'Please give me just a number like 1 or 5', 'Please only give me a number between 1 and 1000');
-    E_STIM_TOY.setMaxLevel(maxLevel);
+        let maxLevel = createIntegerInput('What is the max level you can put this device on?', 1, 1000, 'Please give me just a number like 1 or 5', 'Please only give me a number between 1 and 1000');
+        E_STIM_TOY.setMaxLevel(maxLevel);
 
 
-    sendVirtualAssistantMessage('Next we should deal with each mode on its own');
+        sendVirtualAssistantMessage('Next we should deal with each mode on its own');
 
-    sendVirtualAssistantMessage('This will probably require you to take out that device and play around with it');
-    sendVirtualAssistantMessage('So go ahead and get it ready for me');
-    sendVirtualAssistantMessage('Just tell me when you are done');
-    waitForDoneVirtualAssistant(1000);
-    sendVirtualAssistantMessage('%Good%');
+        sendVirtualAssistantMessage('This will probably require you to take out that device and play around with it');
+        sendVirtualAssistantMessage('So go ahead and get it ready for me');
+        sendVirtualAssistantMessage('Just tell me when you are done');
+        waitForDoneVirtualAssistant(1000);
+        sendVirtualAssistantMessage('%Good%');
 
-    let chastity = isInChastity();
+        let chastity = isInChastity();
 
-    if(chastity) {
-        sendVirtualAssistantMessage('You are allowed to take off your chastity device for this');
-        unlockChastityKey();
-        sendVirtualAssistantMessage('Tell me when you took it off');
-        waitForDoneVirtualAssistant();
-    }
-
-    sendVirtualAssistantMessage('For best measurement somehow attach something of it to %MyYour% %Cock%');
-
-    for (let x = 0; x < modes; x++) {
-        let mode = createEStimMode();
-
-        if (domChose) {
-            mode.setInteractionMode(TOY_BOTH_MODE);
-        } else {
-            sendVirtualAssistantMessage("Do you want mode " + mode.id + " to be used for punishments, play or both?", false);
-
-            let answer = createInput();
-
-            while (true) {
-                if (answer.containsIgnoreCase("play")) {
-                    mode.setInteractionMode(TOY_PLAY_MODE);
-                    break;
-                } else if (answer.containsIgnoreCase("both")) {
-                    mode.setInteractionMode(TOY_BOTH_MODE);
-                    break;
-                } else if (answer.containsIgnoreCase("punishment")) {
-                    mode.setInteractionMode(TOY_PUNISHMENT_MODE);
-                    break;
-                } else {
-                    sendVirtualAssistantMessage("Play, punishment or both?");
-                    answer.loop();
-                }
-            }
-
-            sendVirtualAssistantMessage('Now that that\'s set lets talk about the different levels');
+        if (chastity) {
+            sendVirtualAssistantMessage('You are allowed to take off your chastity device for this');
+            unlockChastityKey();
+            sendVirtualAssistantMessage('Tell me when you took it off');
+            waitForDoneVirtualAssistant();
         }
 
+        sendVirtualAssistantMessage('For best measurement somehow attach something of it to %MyYour% %Cock%');
 
-        sendVirtualAssistantMessage('Go ahead and enable mode ' + mode.id);
-        sendVirtualAssistantMessage('If at any point there is no level that fits the description just put in -1');
+        for (let x = 0; x < modes; x++) {
+            let mode = createEStimMode();
 
-        let pleasure = createIntegerInput('What level for mode ' + mode.id + ' would you consider pleasurable?', -1, 1000, 'Please give me just a number like 1 or 5', 'Please only give me a number between -1 and 1000');
-        let lowPain = createIntegerInput('What level for mode ' + mode.id + ' would you consider inflicting a small amount of pain?', -1, 1000, 'Please give me just a number like 1 or 5', 'Please only give me a number between -1 and 1000');
-        let mediumPain = createIntegerInput('What level for mode ' + mode.id + ' would you consider inflicting a decent amount of pain?', -1, 1000, 'Please give me just a number like 1 or 5', 'Please only give me a number between -1 and 1000');
-        let highPain = createIntegerInput('What level for mode ' + mode.id + ' would you consider inflicting an almost unbearable amount of pain?', -1, 1000, 'Please give me just a number like 1 or 5', 'Please only give me a number between -1 and 1000');
+            if (domChose) {
+                mode.setInteractionMode(TOY_BOTH_MODE);
+            } else {
+                sendVirtualAssistantMessage("Do you want mode " + mode.id + " to be used for punishments, play or both?", false);
 
-        mode.setPleasureLevel(pleasure);
-        mode.setPainLevel(PAIN_LEVEL_LOW, lowPain);
-        mode.setPainLevel(PAIN_LEVEL_MEDIUM, mediumPain);
-        mode.setPainLevel(PAIN_LEVEL_HIGH, highPain);
+                let answer = createInput();
 
-        sendVirtualAssistantMessage('Moving on...');
-    }
+                while (true) {
+                    if (answer.containsIgnoreCase("play")) {
+                        mode.setInteractionMode(TOY_PLAY_MODE);
+                        break;
+                    } else if (answer.containsIgnoreCase("both")) {
+                        mode.setInteractionMode(TOY_BOTH_MODE);
+                        break;
+                    } else if (answer.containsIgnoreCase("punishment")) {
+                        mode.setInteractionMode(TOY_PUNISHMENT_MODE);
+                        break;
+                    } else {
+                        sendVirtualAssistantMessage("Play, punishment or both?");
+                        answer.loop();
+                    }
+                }
 
-    setCurrentSender(SENDER_TAJ);
-    sendVirtualAssistantMessage('That should be it regarding your E-Stim device');
-    sendVirtualAssistantMessage('%DomHonorific% %DomName% will sure have a lot of fun with this torturous device %Grin%');
+                sendVirtualAssistantMessage('Now that that\'s set lets talk about the different levels');
+            }
 
-    //Lock chastity again if we removed it before
-    if(chastity) {
-        sendVirtualAssistantMessage('Put on your chastity device again %SlaveName% and tell me when you are done');
-        waitForDoneVirtualAssistant();
-        lockAwayChastityKey();
+
+            sendVirtualAssistantMessage('Go ahead and enable mode ' + mode.id);
+            sendVirtualAssistantMessage('If at any point there is no level that fits the description just put in -1');
+
+            let pleasure = createIntegerInput('What level for mode ' + mode.id + ' would you consider pleasurable?', -1, 1000, 'Please give me just a number like 1 or 5', 'Please only give me a number between -1 and 1000');
+            let lowPain = createIntegerInput('What level for mode ' + mode.id + ' would you consider inflicting a small amount of pain?', -1, 1000, 'Please give me just a number like 1 or 5', 'Please only give me a number between -1 and 1000');
+            let mediumPain = createIntegerInput('What level for mode ' + mode.id + ' would you consider inflicting a decent amount of pain?', -1, 1000, 'Please give me just a number like 1 or 5', 'Please only give me a number between -1 and 1000');
+            let highPain = createIntegerInput('What level for mode ' + mode.id + ' would you consider inflicting an almost unbearable amount of pain?', -1, 1000, 'Please give me just a number like 1 or 5', 'Please only give me a number between -1 and 1000');
+
+            mode.setPleasureLevel(pleasure);
+            mode.setPainLevel(PAIN_LEVEL_LOW, lowPain);
+            mode.setPainLevel(PAIN_LEVEL_MEDIUM, mediumPain);
+            mode.setPainLevel(PAIN_LEVEL_HIGH, highPain);
+
+            sendVirtualAssistantMessage('Moving on...');
+        }
+
+        setCurrentSender(SENDER_TAJ);
+        sendVirtualAssistantMessage('That should be it regarding your E-Stim device');
+        sendVirtualAssistantMessage('%DomHonorific% %DomName% will sure have a lot of fun with this torturous device %Grin%');
+
+        //Lock chastity again if we removed it before
+        if (chastity) {
+            sendVirtualAssistantMessage('Put on your chastity device again %SlaveName% and tell me when you are done');
+            waitForDoneVirtualAssistant();
+            lockAwayChastityKey();
+        }
     }
 }

@@ -145,6 +145,8 @@ const VARIABLE = {
     ASS_TRAINING: 'assTraining',
     ASS_TRAININGS_DONE: 'assTrainingsDone',
 
+    USED_TO_DIAMETER: 'usedToDiameter',
+
     //Blowjob training
     BLOWJOB_LEVEL: "blowjobLevel",
     BLOWJOB_TASKS_IN_ROW: "blowjobTasksInRow",

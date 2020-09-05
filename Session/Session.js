@@ -30,6 +30,11 @@ function endSpicySession() {
                 if(shouldIntroduceNewRule(RULE_DOMME_KEYHOLDER)) {
                     RULE_DOMME_KEYHOLDER.sendIntroduction();
                 }
+
+                //Run random after chastity link if domme is keyholder
+                if(RULE_DOMME_KEYHOLDER.isActive()) {
+                    run("Session/Link/EndChastity/*.js");
+                }
             }
         }
     }

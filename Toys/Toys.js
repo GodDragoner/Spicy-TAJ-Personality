@@ -63,6 +63,7 @@ function interactWithButtplug(punishment) {
 //QUALITY: Track already fetched toys to not ask again and instead go like grab x
 //QUALITY: Could interact with buy new toys or fetish questions and better transition between different toys (additionally why not do this... etc.)
 function interactWithRandomToys() {
+    sendDebugMessage('Random toy interact');
     const punishment = isOngoingPunishment();
 
     let allowPain = true;
@@ -73,12 +74,15 @@ function interactWithRandomToys() {
     }
 
     interactWithButtplug(punishment);
+    sendDebugMessage('Random toy buttplug done');
 
     if (COLLAR_TOY.hasToy() && COLLAR_TOY.decideToyOn() && feelsLikeShowingPower()) {
         putOnCollar();
     } else if(RULE_ALWAYS_WEAR_COLLAR.isActive() && RULE_ALWAYS_WEAR_COLLAR.shouldCheckRule()) {
         RULE_ALWAYS_WEAR_COLLAR.checkRule();
     }
+
+    sendDebugMessage('Random toy collar done');
 
     if (isChance(20) && getPainLimit() === LIMIT_ASKED_YES && allowPain) {
         sendDebugMessage('Looking into clamp distribution');
@@ -107,6 +111,8 @@ function interactWithRandomToys() {
         }
     }
 
+    sendDebugMessage('Random toy pain done');
+
     //TODO: More interaction (forbid to talk etc.)
     //Do this after clamps because we might remove clamp from tongue after put on for spider gag
     if (wantsToRemoveGag()) {
@@ -115,11 +121,15 @@ function interactWithRandomToys() {
         decideGag();
     }
 
+    sendDebugMessage('Random toy gag done');
+
     if (hasBallsTied() && isChance(50)) {
         untieBalls();
     } else if (!hasBallsTied() && !isInChastity() && isChance(20) && allowPain && !BODY_PART_BALLS.isUsed()) {
         tieBalls();
     }
+
+    sendDebugMessage('Random toy balls done');
 }
 
 /**
@@ -515,10 +525,12 @@ function askForDomChoose() {
     let domChose = false;
     while (true) {
         if (answer.isLike("dom", "domme", replaceVocab('%DomHonorific%'), "her", "him", 'them', 'they')) {
+            answer.clearOptions();
             sendVirtualAssistantMessage("You're quite a willing slave %Grin%");
             domChose = true;
             break;
         } else if (answer.isLike("me", "myself", "yourself")) {
+            answer.clearOptions();
             sendVirtualAssistantMessage("%EmoteSad%");
             break;
         } else {
@@ -526,6 +538,8 @@ function askForDomChoose() {
             answer.loop();
         }
     }
+
+
 
     return domChose;
 }
@@ -548,29 +562,33 @@ function setupToys(settings) {
     //Skip buttplug and dildos if we are in the settings
     if (!settings) {
         if(BUTTPLUG_TOY.hasToy()) {
-            sendVirtualAssistantMessage('Okay %SlaveName%. Tell me, how many different buttplugs do you have?', false);
-            let answer = createInput();
+            if (buttplugs.length > 0 && !settings) {
+                sendVirtualAssistantMessage('Since you already have buttplugs setup, we are not gonna setup any additional plugs now. You can always add new plugs in the main menu.');
+            } else {
+                sendVirtualAssistantMessage('Okay %SlaveName%. Tell me, how many different buttplugs do you have?', false);
+                let answer = createInput();
 
-            while (true) {
-                if (answer.isInteger()) {
-                    const result = answer.getInt();
-                    if (result <= 0) {
-                        sendVirtualAssistantMessage("You can't choose a number equal to 0 or lower");
-                        answer.loop();
-                    } else {
-                        sendVirtualAssistantMessage('We are gonna setup your buttplugs now, one by one.');
+                while (true) {
+                    if (answer.isInteger()) {
+                        const result = answer.getInt();
+                        if (result <= 0) {
+                            sendVirtualAssistantMessage("You can't choose a number equal to 0 or lower");
+                            answer.loop();
+                        } else {
+                            sendVirtualAssistantMessage('We are gonna setup your buttplugs now, one by one.');
 
-                        for (let x = 0; x < result; x++) {
-                            setupNewButtplug();
+                            for (let x = 0; x < result; x++) {
+                                setupNewButtplug();
+                            }
+
+                            sendVirtualAssistantMessage('This should do it regarding plugs');
+                            sendVirtualAssistantMessage('You can always setup new buttplugs in the settings menu');
+                            break;
                         }
-
-                        sendVirtualAssistantMessage('This should do it regarding plugs');
-                        sendVirtualAssistantMessage('You can always setup new buttplugs in the settings menu');
-                        break;
+                    } else {
+                        sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
+                        answer.loop();
                     }
-                } else {
-                    sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
-                    answer.loop();
                 }
             }
         }
@@ -578,37 +596,41 @@ function setupToys(settings) {
         sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
         if (DILDO_TOY.hasToy()) {
-            sendVirtualAssistantMessage('Okay %SlaveName%. Tell me, how many different dildos do you have?', false);
-            let answer = createInput();
+            if (DILDOS.length > 0 && !settings) {
+                sendVirtualAssistantMessage('Since you already have dildos setup, we are not gonna setup any additional dildos now. You can always add new dildos in the main menu.');
+            } else {
+                sendVirtualAssistantMessage('Okay %SlaveName%. Tell me, how many different dildos do you have?', false);
+                let answer = createInput();
 
-            while (true) {
-                if (answer.isInteger()) {
-                    const result = answer.getInt();
-                    if (result <= 0) {
-                        sendVirtualAssistantMessage("You can't choose a number equal to 0 or lower");
-                        answer.loop();
-                    } else {
-                        sendVirtualAssistantMessage('We are gonna setup your dildos now, one by one.');
+                while (true) {
+                    if (answer.isInteger()) {
+                        const result = answer.getInt();
+                        if (result <= 0) {
+                            sendVirtualAssistantMessage("You can't choose a number equal to 0 or lower");
+                            answer.loop();
+                        } else {
+                            sendVirtualAssistantMessage('We are gonna setup your dildos now, one by one.');
 
-                        for (let x = 0; x < result; x++) {
-                            setupNewDildo();
+                            for (let x = 0; x < result; x++) {
+                                setupNewDildo();
+                            }
+
+                            sendVirtualAssistantMessage('This should do it regarding dildos');
+                            sendVirtualAssistantMessage('You can always setup new dildos in the settings menu');
+                            break;
                         }
-
-                        sendVirtualAssistantMessage('This should do it regarding dildos');
-                        sendVirtualAssistantMessage('You can always setup new dildos in the settings menu');
-                        break;
+                    } else {
+                        sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
+                        answer.loop();
                     }
-                } else {
-                    sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
-                    answer.loop();
                 }
             }
-        }
 
-        sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+            sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+        }
     }
 
-    BALL_CRUSHER_TOY.hasToy();
+    BALL_CRUSHER_TOY.askForToyAndUsage(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
     INFLATABLE_BUTT_PLUG.askForToyAndUsage(domChose);
@@ -624,7 +646,7 @@ function setupToys(settings) {
 
     //In settings this is a separate thing
     if(!settings) {
-        setupEStimToy(domChose);
+        setupEStimToy(domChose, settings);
     }
 
     setupGags(domChose);
