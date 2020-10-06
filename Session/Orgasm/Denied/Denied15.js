@@ -24,7 +24,7 @@
             }
 
             sendMessage("%LetEdgeFade%");
-            sendMessage("No orgasm for you %GeneralTime% %Name%");
+            sendMessage("No orgasm for you %GeneralTime% %SlaveName%");
         }
 
     }

@@ -3,7 +3,7 @@ const TAJ_CHAT_HANDLER = Java.type('me.goddragon.teaseai.api.chat.ChatHandler');
 const LOGGER = Java.type('me.goddragon.teaseai.utils.TeaseLogger');
 const LOGGER_LEVEL = Java.type('java.util.logging.Level');
 const DEBUG_MODE = 1;
-const RAPID_TESTING = true;
+const RAPID_TESTING = false;
 
 const SENDER_TAJ = 1;
 const SENDER_ASSISTANT = 0;
