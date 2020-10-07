@@ -178,7 +178,7 @@
                     showImage('Images/Spicy//Games/ModelGame/' + (randomIndex + 1) + '.*', 3);
                     imageToShow = randomIndex + 1;
 
-                    const answer = sendInput('So try to tell me the rating you gave this picture %SlaveName%?', 'What rating did you give this picture?');
+                    const answer = sendInput(random('So try to tell me the rating you gave this picture %SlaveName%?', 'What rating did you give this picture?'));
                     while (true) {
                         if (answer.isInteger()) {
                             if (firstPictureScore == answer.getInt()) {

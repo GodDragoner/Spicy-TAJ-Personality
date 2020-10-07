@@ -130,6 +130,7 @@ function startEdgeATon(chosenByDom, edgesToDo) {
     let impressive = 0;
 
     if (!chosenByDom) {
+        //QUALITY: Adjust
         if (getStrictnessForCharacter() == 0 && edgesToDo > 30) impressive = 2;
         if (getStrictnessForCharacter() == 1 && edgesToDo > 35) impressive = 2;
         if (getStrictnessForCharacter() == 2 && edgesToDo > 42) impressive = 2;

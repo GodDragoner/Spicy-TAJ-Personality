@@ -8,6 +8,11 @@ ASM_LIMIT.sendIntroduction = function (type) {
     sendMessage('Mind this has nothing to do with you eating your shit or anything similar');
     sendMessage('That might be a topic for a different time %Grin%');
     sendMessage('For now I am just asking you to take toys that were up your ass into your mouth');
+
+    if (!CUCKOLD_LIMIT.isAllowed()) {
+        sendMessage('Or at future time real cocks %Lol%');
+    }
+
     askForNewLimitValue(this);
 };
 ASM_LIMIT.sendDoingAnythingIntroduction = function (type) {

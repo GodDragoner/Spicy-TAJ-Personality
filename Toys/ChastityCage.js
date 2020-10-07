@@ -1,4 +1,4 @@
-const SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE = 20;
+const SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE = 30;
 const CHASTITY_TYPE_SMALL = 1;
 const CHASTITY_TYPE_BIG = 0;
 const CHASTITY_CAGES = [];
@@ -58,7 +58,7 @@ function unlockChastityCage(fakeOpening = false) {
         sleep(randomInteger(5, 10));
 
         if(sendYesOrNoQuestion(random('So close to freedom', 'So excited', 'So thrilled') + ' aren\'t you?')) {
-            sendMessage('Mhmmm yes your are %Grin%');
+            sendMessage('Mhmmm yes you are %Grin%');
         } else {
             sendMessage('No? I wonder why you feel that way %Lol%');
         }
@@ -93,11 +93,11 @@ function unlockChastityCage(fakeOpening = false) {
     if (randomInteger(0, 2) == 2) playSound("Audio/Spicy/Chastity/ChastityOff/*.mp3");
     sendMessage(random("Remove your %ChastityCage%", "Get your %ChastityCage% off", "Remove the %ChastityCage% at once", "Hurry up and remove the %ChastityCage%", "Be quick and get your %ChastityCage% off"));
 
-    let timeout = randomInteger(20, 50);
+    let timeout = randomInteger(30, 40);
     if (getStrictnessForCharacter() == 1) {
-        timeout = randomInteger(15, 40);
+        timeout = randomInteger(20, 40);
     } else if (getStrictnessForCharacter() == 2) {
-        timeout = randomInteger(10, 30);
+        timeout = randomInteger(15, 30);
     }
 
     const answer = sendInput(random("Let me know when you're done...", "Report to me when it's off", "Remember to tell me when it's off"), timeout);
@@ -143,7 +143,7 @@ function getMaxChastitySize() {
     //Smaller size if we feel like punishing
     let subtract = feelsLikePunishingSlave() ? 1 : 0;
 
-    let maxWithoutRange = 8 - (Math.max(1, strictness) + Math.max(1, mood) + Math.min(1, mood) + subtract);
+    let maxWithoutRange = 9 - (Math.max(1, strictness) + Math.max(1, mood) + Math.min(1, mood) + subtract);
     sendDebugMessage('Max chastity cage size: ' + maxWithoutRange);
 
     return Math.max(1, Math.min(5, maxWithoutRange));

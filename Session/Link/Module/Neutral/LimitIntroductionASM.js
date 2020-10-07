@@ -5,7 +5,7 @@
         } else {
             if(ASM_LIMIT.getLimit() === LIMIT_NEVER_ASKED) {
                 sendMessage('*Ewwww gross*');
-                sendMessage('Oh wait you probably don\'t know what\'s going on are you?');
+                sendMessage('Oh wait you probably don\'t know what\'s going on do you?');
                 sendMessage('I just got a video from a friend of mine that shows her sub licking clean the dildo after it came out of his ass');
                 sendMessage('She said: "Common sense: Whoever made it dirty also has to clean it *Grin*"');
                 sendMessage('On a second thought though....');

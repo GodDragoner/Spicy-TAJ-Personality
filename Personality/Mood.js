@@ -73,7 +73,15 @@ function feelsLikePunishingSlave() {
     }
 
     sendDebugMessage('Feel like punishing chance: ' + chance);
-    return isChance(chance);
+    let punish = isChance(chance);
+
+    //If chance hits twice (the higher the chance => madder domme => higher chance of increasing her mood)
+    if(punish && isChance(chance)) {
+        //Add a few merits so domme feels better since she punished slave
+        changeMeritLow(false);
+    }
+
+    return punish;
 }
 
 function wouldLikeToProlongSession() {

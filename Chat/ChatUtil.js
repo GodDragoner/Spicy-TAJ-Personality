@@ -3,7 +3,7 @@ const TAJ_CHAT_HANDLER = Java.type('me.goddragon.teaseai.api.chat.ChatHandler');
 const LOGGER = Java.type('me.goddragon.teaseai.utils.TeaseLogger');
 const LOGGER_LEVEL = Java.type('java.util.logging.Level');
 const DEBUG_MODE = 1;
-const RAPID_TESTING = false;
+const RAPID_TESTING = isVar("rapidTesting");
 
 const SENDER_TAJ = 1;
 const SENDER_ASSISTANT = 0;
@@ -53,12 +53,8 @@ function sendMessageBasedOnSender(message, secondsToWait = undefined, skipImage 
             lockImages();
         }
 
-        if (secondsToWait === undefined) {
-            sendMessage(message);
-        } else if (secondsToWait !== false) {
+        if (secondsToWait === undefined || typeof secondsToWait !== "number") {
             sendMessage(message, secondsToWait);
-        } else {
-            sendMessage(message);
         }
 
         if (skipImage) {
@@ -105,9 +101,9 @@ function sendPinnoteMessage(message, wait, skipImage) {
         }
     }
 
-    if (wait === undefined) {
+    if (wait === undefined || typeof wait !== "number") {
         sleep(1000 + message.length * 50, "MILLISECONDS");
-    } else if (wait instanceof Boolean && wait) {
+    } else {
         sleep(wait * 1000, "MILLISECONDS");
     }
 }
@@ -133,9 +129,9 @@ function sendVirtualAssistantMessage(message, wait, skipImage) {
     }
 
     if(!RAPID_TESTING) {
-        if (wait === undefined) {
+        if (wait === undefined || typeof wait !== "number") {
             sleep(1000 + message.length * 50, "MILLISECONDS");
-        } else if (wait instanceof Boolean && wait) {
+        } else {
             sleep(wait * 1000, "MILLISECONDS");
         }
     }
@@ -381,9 +377,9 @@ function sendArbMessage(textName, message, wait, imagePath) {
     }*/
 
     if(!RAPID_TESTING) {
-        if (wait === undefined) {
+        if (wait === undefined || typeof wait !== "number") {
             sleep(1000 + message.length * 50, "MILLISECONDS");
-        } else if (wait) {
+        } else {
             sleep(wait * 1000, "MILLISECONDS");
         }
     }

@@ -1,5 +1,7 @@
 {
-    if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.UNKNOWN)) {
+    if(isGaged() && currentGagType !== GAG_TYPE_SPIDER_GAG && !currentGagType.decideToyOff()) {
+        runModuleCategory(CATEGORY_SLAVE);
+    } else if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.UNKNOWN)) {
         if (getVar(VARIABLE.LICK_TRAININGS_DONE, 0) == 0) {
             sendMessage('%SlaveName%');
             sendMessage("I want to try something new today...");

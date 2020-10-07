@@ -129,7 +129,7 @@
                         if (x > 0) {
                             sendMessage('%Now%');
                         } else {
-                            sendMessage('I want you too...');
+                            sendMessage('I want you to...');
                         }
 
                         switch (randomInteger(0, 1)) {
@@ -142,7 +142,15 @@
                         }
 
                         sendMessage('Tell me when you are done');
-                        waitForDone();
+                        waitForDone(100000);
+
+                        if(x === 0) {
+                            sendMessage('In a moment I am gonna tell you to rip those clamps off using the string.');
+                            sendMessage('You will do so without hesitation and answer me immediately with done or yes in chat when you are done');
+                            sendMessage('Don\'t hesitate and don\'t be too slow otherwise you will be punished');
+                        }
+
+
                         sendMessage(random("Be ready!", "Prepare", "Prepare yourself", "Get ready", "Stay ready", "Ready yourself"));
                         showImage("Images/Spicy/Punishment/Grounding/BlackBase.*");
                         sleep(randomInteger(2, 10));

@@ -1,3 +1,5 @@
+
+//QUALITY: Add distraction such as stroking while memory
 function startMissingCardMemory(gameType) {
     sendMessage('%SlaveName%');
 
