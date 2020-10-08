@@ -134,7 +134,7 @@
 
                         switch (randomInteger(0, 1)) {
                             case 0:
-                                sendMessage('Attach all the 10 clothespins across your chest and your nipples while routing that rope underneath them %Grin%');
+                                sendMessage('Spread all the 10 clothespins across your chest and your nipples while routing that rope underneath them %Grin%');
                                 break;
                             case 1:
                                 sendMessage('Attach 5 clamps each to your inner thighs while routing that rope underneath them %Grin%');
@@ -144,12 +144,12 @@
                         sendMessage('Tell me when you are done');
                         waitForDone(100000);
 
+                        //First run message
                         if(x === 0) {
                             sendMessage('In a moment I am gonna tell you to rip those clamps off using the string.');
                             sendMessage('You will do so without hesitation and answer me immediately with done or yes in chat when you are done');
                             sendMessage('Don\'t hesitate and don\'t be too slow otherwise you will be punished');
                         }
-
 
                         sendMessage(random("Be ready!", "Prepare", "Prepare yourself", "Get ready", "Stay ready", "Ready yourself"));
                         showImage("Images/Spicy/Punishment/Grounding/BlackBase.*");

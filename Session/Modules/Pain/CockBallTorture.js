@@ -6,7 +6,6 @@ let TEMP_CBT_HISTORY = [];
 
 function decideCBTPunishment(bodyParts) {
     while (true) {
-        let tasks = 5;
         let newTask = CBT_HISTORY.getRandomAvailableId();
 
         CBT_HISTORY.addHistoryRun(newTask);
@@ -81,8 +80,15 @@ function executeCBTPunishment(bodyParts, id) {
             completed = punishRubberbandCBT(BODY_PART_BALLS);
             break;
         case 6:
-            completed = punishBookCBT();
-            break;
+            //We can only do this if not in chastity
+            if(!isInChastity()) {
+                completed = punishBookCBT();
+                break;
+            } else {
+                //Any other punishment randomly
+                executeCBTPunishment(bodyParts, decideCBTPunishment(bodyParts));
+                return false;
+            }
         //Penis part
         case 4:
             completed = punishRubberbandCBT(random(BODY_PART_PENIS_SHAFT, BODY_PART_PENIS_HEAD));
@@ -320,7 +326,7 @@ function punishBustBalls(hand = true, multiplier = 1) {
                 changeMeritLow(true);
                 sendMessage(random('I guess we have to try this again', 'Let\'s try this again shall we?'));
                 break;
-            } else if (answer.isLike('done')) {
+            } else if (answer.isLike('done', 'yes')) {
                 sendMessage('%Grin%');
 
                 sendMessage('Hit my %Balls% another ' + hits + ' times %SlaveName%');

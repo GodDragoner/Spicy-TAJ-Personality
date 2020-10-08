@@ -93,12 +93,8 @@ if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.STROKING)) {
             setVar(VARIABLE.EDGE_A_TON_EDGE_RECORD, 15);
         }
 
-        if (getStrictnessForCharacter() == 0) setVar(VARIABLE.EDGE_A_TON_EDGE_RECORD, getVar(VARIABLE.EDGE_A_TON_EDGE_RECORD) + 1);
-        if (getStrictnessForCharacter() == 1) setVar(VARIABLE.EDGE_A_TON_EDGE_RECORD, getVar(VARIABLE.EDGE_A_TON_EDGE_RECORD) + 2);
-        if (getStrictnessForCharacter() == 2) setVar(VARIABLE.EDGE_A_TON_EDGE_RECORD, getVar(VARIABLE.EDGE_A_TON_EDGE_RECORD) + 4);
-        sendMessage("Let's see...");
-        sendMessage("You will do " + getVar(VARIABLE.EDGE_A_TON_EDGE_RECORD) + " edges for me today. This will set a new record %Grin%");
-        startEdgeATon(true, getVar(VARIABLE.EDGE_A_TON_EDGE_RECORD));
+
+        startEdgeATon(true, handleDomChoseEdgeATone());
     } else {
         const answer = sendInput(random("How many edges do you wish to do for today's training?", "How many edges do you wish to do today?", "How many edges can you handle today?"));
 
@@ -109,7 +105,7 @@ if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.STROKING)) {
                     sendMessage("You can't choose a number lower than 1...");
                     answer.loop();
                 } else {
-                    if (result > getVar(VARIABLE.EDGE_A_TON_EDGE_RECORD)) {
+                    if (result > getVar(VARIABLE.EDGE_A_TON_EDGE_RECORD, -1)) {
                         sendMessage("A new record! %Grin%");
                         changeMeritMedium(false);
                         setVar(VARIABLE.EDGE_A_TON_EDGE_RECORD, result);
@@ -126,28 +122,52 @@ if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.STROKING)) {
     }
 }
 
+function handleDomChoseEdgeATone() {
+    if (getStrictnessForCharacter() == 0) setVar(VARIABLE.EDGE_A_TON_EDGE_RECORD, getVar(VARIABLE.EDGE_A_TON_EDGE_RECORD) + 1);
+    if (getStrictnessForCharacter() == 1) setVar(VARIABLE.EDGE_A_TON_EDGE_RECORD, getVar(VARIABLE.EDGE_A_TON_EDGE_RECORD) + 2);
+    if (getStrictnessForCharacter() == 2) setVar(VARIABLE.EDGE_A_TON_EDGE_RECORD, getVar(VARIABLE.EDGE_A_TON_EDGE_RECORD) + 4);
+    sendMessage("Let's see...");
+    sendMessage("You will do " + getVar(VARIABLE.EDGE_A_TON_EDGE_RECORD) + " edges for me today. This will set a new record %Grin%");
+
+    return getVar(VARIABLE.EDGE_A_TON_EDGE_RECORD);
+}
+
 function startEdgeATon(chosenByDom, edgesToDo) {
     let impressive = 0;
 
     if (!chosenByDom) {
-        //QUALITY: Adjust
-        if (getStrictnessForCharacter() == 0 && edgesToDo > 30) impressive = 2;
-        if (getStrictnessForCharacter() == 1 && edgesToDo > 35) impressive = 2;
-        if (getStrictnessForCharacter() == 2 && edgesToDo > 42) impressive = 2;
+        //Default record
+        let currentRecord = getVar(VARIABLE.EDGE_A_TON_EDGE_RECORD, (getStrictnessForCharacter() + 1)*5);
 
-        if (getStrictnessForCharacter() == 0 && edgesToDo > 15) impressive = 1;
-        if (getStrictnessForCharacter() == 1 && edgesToDo > 18) impressive = 1;
-        if (getStrictnessForCharacter() == 2 && edgesToDo > 22) impressive = 1;
-
-        if (impressive == 2) {
-            sendMessage(random("Oh wauv!", "You're really going for it!", "This is gonna be intense %Grin%", "I hope you can handle this!", "Great lets not waste a moment!"));
-            changeMeritMedium(false);
-        } else if (impressive == 1) {
-            sendMessage(random("Well then... Lets begin", "It's time to begin", "Lets get that cock to work!", "Time to work out that cock!", "I hope you're ready for some cock workout!"));
-            changeMeritLow(false);
-        } else {
-            sendMessage(random("I'm not impressed", "You really should try to do better", "You could at least try a little harder", "You need to try harder..."));
+        if(edgesToDo < currentRecord*0.75) {
+            sendMessage(random("You could at least try to roughly reach your current record", 'You could try harder and at least roughly hold your current record', 'You should really try harder and hold your current record'));
             changeMeritLow(true);
+
+            if(feelsLikePunishingSlave() && getStrictnessForCharacter() >= 1) {
+                sendMessage('And you know what? That\'s exactly what you are gonna do!');
+                edgesToDo = handleDomChoseEdgeATone();
+                sendMessage('I even added a bit on top, since you seem like you need that extra bit of push %SlaveName%');
+            }
+        } else {
+            //QUALITY: Adjust
+            if (getStrictnessForCharacter() == 0 && edgesToDo > currentRecord*1.25) impressive = 2;
+            if (getStrictnessForCharacter() == 1 && edgesToDo > currentRecord*1.25) impressive = 2;
+            if (getStrictnessForCharacter() == 2 && edgesToDo > currentRecord*1.25) impressive = 2;
+
+            if (getStrictnessForCharacter() == 0 && edgesToDo >= currentRecord*0.85) impressive = 1;
+            if (getStrictnessForCharacter() == 1 && edgesToDo >= currentRecord*0.85) impressive = 1;
+            if (getStrictnessForCharacter() == 2 && edgesToDo >= currentRecord*0.85) impressive = 1;
+
+            if (impressive === 2) {
+                sendMessage(random("Oh wauv!", "You're really going for it!", "This is gonna be intense %Grin%", "I hope you can handle this!", "Great lets not waste a moment!"));
+                changeMeritMedium(false);
+            } else if (impressive === 1) {
+                sendMessage(random("Well then... Lets begin", "It's time to begin", "Lets get that cock to work!", "Time to work out that cock!", "I hope you're ready for some cock workout!"));
+                changeMeritLow(false);
+            } else {
+                sendMessage(random("I'm not impressed", "You really should try to do better", "You could at least try a little harder", "You need to try harder..."));
+                changeMeritLow(true);
+            }
         }
     }
 
@@ -158,7 +178,7 @@ function startEdgeATon(chosenByDom, edgesToDo) {
         edgesToDo--;
 
         //Interact with toys every 10 edges
-        if(edgesToDo%10 == 0) {
+        if(edgesToDo%10 === 0) {
             sendMessage('Let\'s do a short break...');
             sendMessage('But let\'s not waste the time');
             interactWithRandomToys();

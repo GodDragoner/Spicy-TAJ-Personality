@@ -40,6 +40,8 @@ const VARIABLE = {
 
     RESPONSE_IT_HURTS_COUNT: 'responseItHurtsCount',
 
+    RESPONSE_MAY_CUM_COUNT: 'responseMayCumCount',
+
     RESPONSE_WANTS_KEYHOLDER: 'responseWantsKeyholder',
 
     NEXT_TIME_ICE_CUBES: 'nextTimeIceCubes',
@@ -113,6 +115,9 @@ const VARIABLE = {
     LOCKED_DAYS_IN_ROW: "lockedUpDaysInRow",
 
     LOCKED_UP_UNTIL: "lockedUpUntil",
+
+
+    DENIAL_UNTIL: "denialUntil",
 
     LAST_CHASTITY_CLEAN: "lastChastityCleanDate",
 

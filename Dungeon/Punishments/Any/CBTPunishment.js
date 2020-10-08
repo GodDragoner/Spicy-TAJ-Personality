@@ -1,6 +1,6 @@
 {
     //Check for CBT Limit and whether the user is wearing a full sized belt
-    if (!CBT_LIMIT.isAllowed() || isInChastity() && getActiveChastityCage().isFullSizedBelt()) {
+    if (!CBT_LIMIT.isAllowed() || isFullSizedChastityOn()) {
         runPunishment(PUNISHMENT_CURRENT_LEVEL);
     } else {
         if (tryRunPunishmentFetchId(MODULE.CBT)) {

@@ -2,6 +2,19 @@ function isForcedLockedUp() {
     return isVar(VARIABLE.LOCKED_UP_UNTIL) && !getDate(VARIABLE.LOCKED_UP_UNTIL).hasPassed();
 }
 
+function isDeniedCumming() {
+    return isVar(VARIABLE.DENIAL_UNTIL) && !getDate(VARIABLE.DENIAL_UNTIL).hasPassed();
+}
+
+function addDenialTime(hours) {
+    if (!isDeniedCumming()) {
+        setDate(VARIABLE.DENIAL_UNTIL, setDate().addHour(hours));
+    } else {
+        setDate(VARIABLE.DENIAL_UNTIL, getDate(VARIABLE.DENIAL_UNTIL).addHour(hours));
+    }
+}
+
+
 function addLockUpTime(hours) {
     if (!isForcedLockedUp()) {
         setDate(VARIABLE.LOCKED_UP_UNTIL, setDate().addHour(hours));

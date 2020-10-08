@@ -1,11 +1,15 @@
 {
-    if (isForcedLockedUp()) {
-        sendMessage('%SlaveName%');
-        sendMessage(random('We\'re at the end mark of today\'s session', 'We\'re at the end of our session', 'This is the end of our session'));
+    sendMessage('%SlaveName%');
+    sendMessage(random('We\'re at the end mark of today\'s session', 'We\'re at the end of our session', 'This is the end of our session'));
 
+    if (isForcedLockedUp()) {
         sendMessage(random('As you well know %SlaveName%', 'As you should well know', 'As is well known', 'Well'));
         sendMessage(random('You\'re currently serving a chastity sentence'));
         sendMessage(random('So there won\'t be any funny business today!', 'So there is absolutely no chance of you cumming!'));
+    } else if (isDeniedCumming()) {
+        sendMessage(random('As you well know %SlaveName%', 'As you should well know', 'As is well known', 'Well'));
+        sendMessage(random('You\'re aren\'t getting any chance to cum currently'));
+        sendMessage(random('So there won\'t be any funny business today!', 'So I got nothing else to give to you'));
     } else {
         //Denial limit reached
         if (getLastEjaculationDate().addDay(getVar(VARIABLE.DENIAL_LIMIT)).hasPassed()) {
@@ -13,7 +17,7 @@
         }
 
         //If we haven't given the sub the freedom to choose how he cums we can run our endgame
-        if(!isVar(VARIABLE.DENIAL_HARD_LIMIT_FREEDOM_TODAY)) {
+        if (!isVar(VARIABLE.DENIAL_HARD_LIMIT_FREEDOM_TODAY)) {
             runEndGame();
         }
     }

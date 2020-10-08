@@ -75,13 +75,33 @@ function readyForStroking() {
 
         sendMessage('I would want you to stroke now but I guess we need to make some room on that penis first %Grin%');
 
-        let answer = sendYesOrNoQuestionTimeout('Much better isn\'t it?', 3);
-        if (answer === ANSWER_YES) {
-            sendMessage('Don\'t celebrate to early. I won\'t go easy on you %Grin%');
-        } else if (answer === ANSWER_NO) {
-            sendMessage('Looks like my pain slut would like some more pain %Lol%');
-            sendMessage('Or maybe you just don\'t want to stroke right now');
-            sendMessage('I don\'t care anyway %SlaveName%');
+        if(feelsLikePunishingSlave()) {
+            redistributeClampsForStroking();
+
+            let answer = sendYesOrNoQuestionTimeout('You didn\'t think I would free you from the clamps did you?', 3);
+            if (answer === ANSWER_YES) {
+                sendMessage('%Grin%');
+                sendMessage('Well didn\'t feel like you deserved less pain %Lol%');
+            } else if (answer === ANSWER_NO) {
+                sendMessage('You didn\'t deserve less pain %Lol%');
+            }
+
+            sendMessage('So I just readied everything for you to stroke');
+            sendMessage('While having other body parts hurt in addition to that delicious pain of denial %EmoteHappy%');
+        } else {
+            removeClampsForStroking();
+
+            let answer = sendYesOrNoQuestionTimeout('Much better isn\'t it?', 3);
+            if (answer === ANSWER_YES) {
+                sendMessage('Don\'t celebrate to early. I won\'t go easy on you %Grin%');
+            } else if (answer === ANSWER_NO) {
+                sendMessage('Looks like my pain slut would like some more pain %Lol%');
+                sendMessage('Or maybe you just don\'t want to stroke right now');
+                sendMessage('I don\'t care anyway %SlaveName%');
+
+                sendMessage(random('Because you aren\'t getting any more pain right now but that pure ache of denial', 'Because I only want you to feel that delicious ache of denial',
+                    'Because I want you to focus on those aching blue balls', 'Because I want to see you squirm because of one thing only right now... Denial!'));
+            }
         }
     }
 }

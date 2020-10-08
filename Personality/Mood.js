@@ -75,8 +75,8 @@ function feelsLikePunishingSlave() {
     sendDebugMessage('Feel like punishing chance: ' + chance);
     let punish = isChance(chance);
 
-    //If chance hits twice (the higher the chance => madder domme => higher chance of increasing her mood)
-    if(punish && isChance(chance)) {
+    //If chance hits twice (the higher the chance => madder domme => higher chance of increasing her mood => make the chance smaller for higher strictness)
+    if(punish && isChance(Math.floor(chance/(getStrictnessForCharacter() + 1)))) {
         //Add a few merits so domme feels better since she punished slave
         changeMeritLow(false);
     }

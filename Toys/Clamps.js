@@ -270,6 +270,15 @@ function hasClampsOnPenis() {
     return BODY_PART_PENIS_SHAFT.currentClamps > 0 || BODY_PART_PENIS_HEAD.currentClamps > 0;
 }
 
+function removeClampsForStroking() {
+    BODY_PART_PENIS_SHAFT.currentClamps = 0;
+    BODY_PART_PENIS_HEAD.currentClamps = 0;
+
+    sendMessage('You may remove all clamps from %MyYour% %Cock% %SlaveName%');
+    sendMessage('Tell me when you are ready to continue');
+    waitForDone();
+}
+
 function redistributeClampsForStroking() {
     let bodyPartHistory = new java.util.ArrayList();
 

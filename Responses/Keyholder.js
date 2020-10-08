@@ -1,4 +1,4 @@
-addResponseRegex("[want|be|like you].*my keyholder");
+addResponseRegex("(want|Want|be|Be).*my keyholder");
 
 function keyholderResponse(message) {
     if(RULE_DOMME_KEYHOLDER.isActive()) {
