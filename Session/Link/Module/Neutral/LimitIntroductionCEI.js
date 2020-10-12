@@ -17,7 +17,7 @@
             let answer = sendYesOrNoQuestionTimeout(random('This is', 'That\'s', 'Blowjobs are') + ' ' + random('so', 'pretty', 'really', 'totally') + ' ' + random('sexy', 'hot', 'amazing', 'fucking great') + ' ' + random('don\'t you think', 'right') + '?', 5);
 
             if (answer === ANSWER_YES) {
-                sendMessage("I\'m glad you " + random("agree ", "like it ", "think so ") + "because " + random("to me ", "I think ", "in fact ", "I do think ") + random("blowjobs are ", "this is ") + random("amazing ", "fucking hot ", "a beautiful thing ", "the best ", "awesome ") + "%Smile%");
+                sendMessage("I\'m glad you " + random("agree ", "like it ", "think so ") + "because " + random("to me ", "I think ", "in fact ", "I do think ") + random("blowjobs are ", "this is ") + random("amazing ", "fucking hot ", "a beautiful thing ", "the best ", "awesome ") + "%Grin%");
             } else if (answer === ANSWER_NO) {
                 sendMessage("Don\'t " + random("bullshit ", "lie to ", "be coy with ", "try to be smart with ") + "me, %SlaveName%");
             } else {

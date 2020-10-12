@@ -773,7 +773,7 @@ function Abs3() {
 		
 		playAudio("Audio/Spicy/SpecialSounds/Bell.mp3"); 
 		sleep(2);
-		sendVirtualAssistantMessage(" keep on top of this exercise and we'll have you sucking your own dick in no time %Smile%");
+		sendVirtualAssistantMessage(" keep on top of this exercise and we'll have you sucking your own dick in no time %Grin%");
 
 	}
 }

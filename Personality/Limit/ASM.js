@@ -140,23 +140,27 @@ function doButtplugASMClean(cleanType, toy = 'plug') {
             sendMessage('I want you to lick it from the top to the bottom');
         }
 
-        sendMessage('Our ' + toy + ' should be shining and spotless');
+        sendMessage(random('Our ' + toy + ' should be shining and spotless', 'I want it to be spotless', 'I want it to be shiny and clean', 'Let\'s clean it properly'));
         sendMessage("Keep going until I tell you to stop");
         sleep(5);
 
         tasteAnswer.push("Licking your own ass juice %Lol%", "Licking that plug that was in your ass not too long ago %Lol%", 'Indirectly licking your ass %Lol%');
     }
 
-    //QUALITY: Generalise
-    if(VERBAL_HUMILIATION_LIMIT.isAllowed()) {
-        sendMessage(random("Look at you...", 'Think about yourself...'));
-        sendMessage(random('Pathetic...', 'Disgusting...', 'Disgusting as you are %Lol%', "Pathetic as you are %Lol%", 'Submissive as you are %Grin%', 'Obedient as you are %Grin%', 'My obedient %SlaveName%'));
-        sendMessage(tasteAnswer[randomInteger(0, tasteAnswer.length - 1)]);
-    } else {
-        sendMessage(random('You are doing great %Grin%', 'You are looking great %Lol%', 'Quite entertaining to watch %Grin%'));
-    }
+    if(isChance(50)) {
+        //QUALITY: Generalise
+        if(VERBAL_HUMILIATION_LIMIT.isAllowed()) {
+            sendMessage(random("Look at you...", 'Think about yourself...'));
+            sendMessage(random('Pathetic...', 'Disgusting...', 'Disgusting as you are %Lol%', "Pathetic as you are %Lol%", 'Submissive as you are %Grin%', 'Obedient as you are %Grin%', 'My obedient %SlaveName%'));
+            sendMessage(tasteAnswer[randomInteger(0, tasteAnswer.length - 1)]);
+        } else {
+            sendMessage(random('You are doing great %Grin%', 'You are looking great %Lol%', 'Quite entertaining to watch %Grin%'));
+        }
 
-    sendMessage("All of that just to " + random("please me", "make me happy", "entertain me", 'obey me') + " %EmoteHappy%");
+        sendMessage("All of that just to " + random("please me", "make me happy", "entertain me", 'obey me') + " %EmoteHappy%");
+    } else {
+        sleep(5);
+    }
 
     if(cleanType === ASM_CLEAN_TYPE_GAG) {
         setGaged(true);

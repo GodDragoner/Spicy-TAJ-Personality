@@ -142,7 +142,9 @@ function selectGag() {
     }
 
     if(GAG_TYPE_SPIDER_GAG.hasToy() && (feelsLikePunishingSlave() || BODY_PART_TONGUE.currentClamps > 0)) {
-        spiderGagChance += 50;
+        spiderGagChance += 35;
+
+        sendDebugMessage("Feels like punishing so +50 spider gag chance");
 
         //Force spider gag because we don't want to remove the pin, because we just added it like 5 minutes or less ago
         if(BODY_PART_TONGUE.currentClamps > 0 && !BODY_PART_TONGUE.getLastClampInteraction().clone().addMinute(5).hasPassed()) {
@@ -150,6 +152,8 @@ function selectGag() {
             spiderGagChance = 100;
             ballGagChance = 0;
             buttplugGagChance = 0;
+
+            sendDebugMessage("Chose spider gag because tongue was clamped recently");
         }
     }
 

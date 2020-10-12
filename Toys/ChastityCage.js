@@ -304,6 +304,9 @@ function selectChastityCage() {
     let punishmentChance = mood * 20 + (getStrictnessForCharacter() * 20 - (VERY_ANNOYED_MOOD - mood) * 10) - SUBTRACT_PER_CHASTITY_PUNISHMENT_STAGE * 0.5;
     sendDebugMessage('Punishment Chastity Chance: ' + punishmentChance + ' for mood ' + mood + ' and strictness ' + getStrictnessForCharacter());
 
+
+    sendDebugMessage("Min chastity size: " + getMinChastitySize());
+
     let length = findAvailableClosestToSize(randomInteger(getMinChastitySize(), getMaxChastitySize()));
 
     //let chastityCageSelection = getChastityCageSelection(punishmentChance);

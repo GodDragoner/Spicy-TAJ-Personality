@@ -62,6 +62,7 @@
                 sendMessage('At some point it\'s gonna feel natural to you and you are gonna feel empty without a buttplug in %Grin%');
             }
 
+            unlockImages();
             SISSY_LIMIT.askForLimitChange(LIMIT_ADDRESS.DOMME);
         }
     }

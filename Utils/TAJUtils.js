@@ -7,6 +7,11 @@ function incrementTempVar(varName, object, defaultValue = 0) {
 }
 
 function incrementVar(varName, object, defaultValue = 0) {
+    if(typeof getVar(varName, defaultValue) !== "number" || isNaN(getVar(varName, defaultValue))) {
+        setVar(varName, defaultValue);
+        sendDebugMessage("Reset " + varName + " to " + defaultValue + " before incrementing since it was not a supported number");
+    }
+
     setVar(varName, getVar(varName, defaultValue) + object);
 
     return getVar(varName);

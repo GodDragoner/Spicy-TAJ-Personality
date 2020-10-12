@@ -167,6 +167,9 @@ function decideOrgasm(noDenied = false) {
     }
 }
 
+/**
+ * Returns roughly 20-30 in case of personality 2 and pleased mood
+ */
 function distributeOrgasmPoints() {
     let points = [
         //First personality
@@ -185,6 +188,7 @@ function distributeOrgasmPoints() {
     const denialOffset = 8*2;
 
     let totalToAdd = randomInteger(points[personalityOffset + moodOffset], points[personalityOffset + moodOffset + 1]);
+    sendDebugMessage('Planning on adding a base line of ' + totalToAdd + " orgasm points");
 
     //Bonus lover mode
     if(getVar('loverMode', false)) {
@@ -205,6 +209,8 @@ function distributeOrgasmPoints() {
     if(getLastEjaculationDate().addDay(getVar(VARIABLE.DENIAL_LIMIT)).hasPassed()) {
         totalToAdd += randomInteger(points[personalityOffset + denialOffset], points[personalityOffset + denialOffset + 1]);
     }
+
+    sendDebugMessage('With boosts ' + totalToAdd + " orgasm points");
 
     let map = [];
 
@@ -232,7 +238,7 @@ function distributeOrgasmPoints() {
         }
     }
 
-    switch(getVar(VARIABLE.ORGASM_FREQUENCY)) {
+    switch(orgasmFrequency) {
         case ORGASM_FREQUENCY_VERY_RARE:
             //Personality 1
             map.push(1, 5);
@@ -276,8 +282,10 @@ function distributeOrgasmPoints() {
 
 function getRequiredOrgasmPoints() {
     const denialLevel = getVar(VARIABLE.DENIAL_LEVEL);
-    const minPoints = 26.87*java.lang.Math.E^(0.2598*denialLevel);
-    const maxPoints = 68.559*java.lang.Math.E^(0.2501*denialLevel);
+    let minPoints = 30*Math.pow(java.lang.Math.E, 0.2*denialLevel);
+    let maxPoints = minPoints*2;
+
+    sendDebugMessage('Calculating needed orgasm points in between ' + minPoints + " and " + maxPoints);
     return randomInteger(minPoints, maxPoints);
 }
 

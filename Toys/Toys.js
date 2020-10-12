@@ -36,7 +36,7 @@ const DEFAULT_TOY_COOLDOWN_MINUTES = 5;
 function interactWithButtplug(punishment) {
     if ((BUTTPLUG_TOY.isPunishmentAllowed() || !punishment && BUTTPLUG_TOY.isPlayAllowed()) && getAnalLimit() === LIMIT_ASKED_YES) {
         //Starting chance for plug or already plugged anyway
-        let chance = Math.max(15, getVar(VARIABLE.ASS_LEVEL, 0)) * 4;
+        let chance = Math.max(15, getVar(VARIABLE.ASS_LEVEL, 0) * 4);
         sendDebugMessage('Rolling for ' + chance + " to insert plug with random toy interaction");
 
         if (isChance(chance) || isPlugged()) {
@@ -151,7 +151,7 @@ function removeAllToys() {
         removeButtplug();
     }
 
-    if (COLLAR_TOY.isToyOn()) {
+    if (COLLAR_TOY.isToyOn() && !RULE_ALWAYS_WEAR_COLLAR.isActive()) {
         removeCollar();
     }
 

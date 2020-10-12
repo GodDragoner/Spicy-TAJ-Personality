@@ -116,12 +116,12 @@ function getBigButtplug(longtime) {
     }
 }
 
-function getLongTimeWearPlugs(buttplugs = this.buttplugs) {
+function getLongTimeWearPlugs(plugList = buttplugs) {
     let longtime = [];
-    for (let x = 0; x < buttplugs.length; x++) {
+    for (let x = 0; x < plugList.length; x++) {
         //We must be <= the given diameter and bigger than the current diameter
-        if (buttplugs[x].tbase) {
-            longtime.push(buttplugs[x]);
+        if (plugList[x].tbase) {
+            longtime.push(plugList[x]);
         }
     }
 
@@ -129,24 +129,24 @@ function getLongTimeWearPlugs(buttplugs = this.buttplugs) {
 }
 
 
-function getButtplugClosestAbove(diameter, buttplugs = this.buttplugs) {
-    for (let x = buttplugs.length - 1; x >= 0; x--) {
+function getButtplugClosestAbove(diameter, plugList = buttplugs) {
+    for (let x = plugList.length - 1; x >= 0; x--) {
         //Buttplugs is sorted, ascending so we can just find the point in the list whe are looking for
         //We must be <= the given diameter and bigger than the current diameter
-        if (buttplugs[x - 1].diameter <= diameter && (x === 0 || buttplugs[x].diameter >= diameter)) {
-            return buttplugs[x];
+        if (plugList[x - 1].diameter <= diameter && (x === 0 || plugList[x].diameter >= diameter)) {
+            return plugList[x];
         }
     }
 
     return null;
 }
 
-function getButtplugClosestBelow(diameter, buttplugs = this.buttplugs) {
-    for (let x = 0; x < buttplugs.length; x++) {
+function getButtplugClosestBelow(diameter, plugList = buttplugs) {
+    for (let x = 0; x < plugList.length; x++) {
         //Buttplugs is sorted, ascending so we can just find the point in the list whe are looking for
         //We must be <= the given diameter and bigger than the current diameter
-        if (buttplugs[x].diameter <= diameter && (x + 1 === buttplugs.length || buttplugs[x + 1].diameter >= diameter)) {
-            return buttplugs[x];
+        if (plugList[x].diameter <= diameter && (x + 1 === plugList.length || plugList[x + 1].diameter >= diameter)) {
+            return plugList[x];
         }
     }
 
@@ -433,7 +433,7 @@ function removeButtplug(end = false) {
         return;
     }
 
-    if (isChance(30)) {
+    if (isChance(10)) {
         sendMessage("%SlaveName%");
         sendMessage("I want you to remove that buttplug without using your hands");
         sendMessage(random("Use your ass muscles", "Clench your muscles", "Just squeeze your ass muscles") + " and push it all the way out");
@@ -449,7 +449,7 @@ function removeButtplug(end = false) {
             sendMessage("I know it might " + random("be difficult", "be complicated", "be unpleasant"));
         }
 
-        continueHurtResponse();
+        dontCareItHurts();
 
         let answer = sendInput("Tell me when you are done %SlaveName%");
         while (true) {

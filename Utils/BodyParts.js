@@ -30,7 +30,7 @@ BODY_PART_TONGUE.isUsed = function (toy) {
 const BODY_PART_PENIS_HEAD = registerBodyPart("penis head", 3);
 
 const BODY_PART_PENIS_SHAFT = registerBodyPart("penis shaft", 7);
-BODY_PART_PENIS_HEAD.isUsed = BODY_PART_PENIS_HEAD.isUsed();
+BODY_PART_PENIS_SHAFT.isUsed = BODY_PART_PENIS_HEAD.isUsed;
 const BODY_PART_EAR_L = registerTwosidedBodyPart("ear", 3);
 const BODY_PART_EAR_R = BODY_PARTS[currentBodyPartId - 1];
 
@@ -139,7 +139,7 @@ function registerBodyPart(name, maxClamps, side = NONE) {
             return this.maxClamps - this.currentClamps;
         },
 
-        isUsed: function (toy) {
+        isUsed: function (toy = null) {
             return false;
         },
 
@@ -155,8 +155,7 @@ function registerBodyPart(name, maxClamps, side = NONE) {
             }
 
             //Do not check for max clamps here because we might want to handle that individually
-
-            return this;
+            return true;
         },
 
         findClampAmountToAttachBothSides: function (maxAmount, preferredAmount = -1) {

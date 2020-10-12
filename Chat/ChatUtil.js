@@ -54,6 +54,8 @@ function sendMessageBasedOnSender(message, secondsToWait = undefined, skipImage 
         }
 
         if (secondsToWait === undefined || typeof secondsToWait !== "number") {
+            sendMessage(message);
+        } else {
             sendMessage(message, secondsToWait);
         }
 
@@ -129,8 +131,10 @@ function sendVirtualAssistantMessage(message, wait, skipImage) {
     }
 
     if(!RAPID_TESTING) {
-        if (wait === undefined || typeof wait !== "number") {
+        if (wait === undefined) {
             sleep(1000 + message.length * 50, "MILLISECONDS");
+        } else if(typeof wait !== "number") {
+            return;
         } else {
             sleep(wait * 1000, "MILLISECONDS");
         }
@@ -377,8 +381,10 @@ function sendArbMessage(textName, message, wait, imagePath) {
     }*/
 
     if(!RAPID_TESTING) {
-        if (wait === undefined || typeof wait !== "number") {
+        if (wait === undefined) {
             sleep(1000 + message.length * 50, "MILLISECONDS");
+        } else if(typeof wait !== "number") {
+            return;
         } else {
             sleep(wait * 1000, "MILLISECONDS");
         }

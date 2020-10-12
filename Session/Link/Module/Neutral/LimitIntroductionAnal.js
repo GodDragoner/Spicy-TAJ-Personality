@@ -19,7 +19,7 @@
                 } else if (answer.isLike("what", "have in mind", "understand")) {
                     sendMessage("Oh you\'ll find out soon enough %Grin%");
                 } else if (answer.isLike("not sure", "dont know", "don't know")) {
-                    sendMessage("You could be a little more trusting %SubName% %Smile%");
+                    sendMessage("You could be a little more trusting %SubName% %Grin%");
                 } else if (answer.isLike("anal", "ass play", "dildo", "plug", "butt", "ass")) {
                     sendMessage('That\'s amazing, you read my mind!');
                     guessedIt = true;
@@ -98,7 +98,7 @@
 
                 /*sendMessage("I could take away your orgasms, never let you cum ever again...");
                 sendMessage("In any case, I can still make %MyYour% %Cock% and %Balls% %Ache%");
-                sendMessage("And that\'ll do for now %Smile%");*/
+                sendMessage("And that\'ll do for now %Grin%");*/
             }
         }
     }

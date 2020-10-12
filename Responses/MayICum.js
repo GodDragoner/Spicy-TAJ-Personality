@@ -1,4 +1,4 @@
-addResponseRegex("(may|please|May|Please|Let).*cum");
+addResponseRegex("(may|please|May|Please|Let|allowed).*cum");
 
 function mayICumResponse(message) {
     let newValue = incrementTempVar(VARIABLE.RESPONSE_MAY_CUM_COUNT, 1);
@@ -26,13 +26,16 @@ function mayICumResponse(message) {
         return false;
     }
 
-    sendMessage('No');
-    registerRepeatingText();
-    sendMessage('Or maybe I am generous enough to let you cum?');
-    sendMessage('You couldn\'t possibly know could you? %Grin%');
-    sendMessage('Let me give you a small hint...');
-    sendMessage('Considering I like the pain of denial VERY much');
-    sendMessage('It\'s very unlikely %Lol%');
+    let answers = ['That\'s pretty easy to answer: Not without my explicit permission %SlaveName%',
+        'That is a no unless I tell you to',
+        'I will tell you when you are to cum so don\'t you worry about that',
+        'Don\'t worry I will tell you when you are to cum',
+        'You will cum when I tell you to not at any other point',
+        'Don\'t bother asking. I will tell you when you are to cum',
+    ];
+
+    sendMessage(random(answers));
+
     return false;
 }
 

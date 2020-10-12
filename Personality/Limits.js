@@ -54,7 +54,7 @@ ANAL_LIMIT.sendIntroduction = function (type) {
             sendMessage("Maybe even taking a huge cock from a lover of mine?");
         }
 
-        sendMessage("You should answer this truthfully for your own good %SlaveName%", false);
+        sendMessage("You should answer this truthfully for your own good %SlaveName%", 0);
 
         let answer = createInput();
 

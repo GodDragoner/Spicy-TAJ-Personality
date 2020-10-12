@@ -4,7 +4,8 @@
     if(isInChastity()) {
         setTempVar('minStartsSinceRun', neutralStartAmount + chastityStartAmount);
 
-        run(random('Session/Start/Neutral/*.js', 'Session/Start/Chastity/*.js'));
+        run(random('Session/Start/Neutral/*.js'));
+        //run(random('Session/Start/Neutral/*.js', 'Session/Start/Chastity/*.js'));
     } else {
         setTempVar('minStartsSinceRun',  neutralStartAmount + nonChastityStartAmount);
 

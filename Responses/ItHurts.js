@@ -7,7 +7,7 @@ function itHurtsResponse(message) {
 }
 
 function continueHurtResponse() {
-    let answer = randomInteger(0, 3);
+
     let newValue = incrementTempVar(VARIABLE.RESPONSE_IT_HURTS_COUNT, 1);
 
     registerComplain();
@@ -19,6 +19,13 @@ function continueHurtResponse() {
         registerRepeatingText();
         return false;
     }
+
+    dontCareItHurts();
+    return false;
+}
+
+function dontCareItHurts() {
+    let answer = randomInteger(0, 3);
 
     switch (answer) {
         case 0:
@@ -41,6 +48,4 @@ function continueHurtResponse() {
     if (isChance(50)) {
         sendMessage(random("So", "Which means") + " we'll keep going %Grin%");
     }
-
-    return false;
 }

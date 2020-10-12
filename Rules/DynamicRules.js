@@ -571,14 +571,19 @@ function shouldIntroduceNewRule(rule) {
     let daysPassed = 10;
 
     if(isVar(VARIABLE.LAST_RULE_PASSED)) {
-        daysPassed = millisToTimeUnit(getMillisSinecDate(getVar(VARIABLE.LAST_RULE_PASSED), TIME_UNIT_DAYS, 0));
+        daysPassed = millisToTimeUnit(getMillisSinecDate(getVar(VARIABLE.LAST_RULE_PASSED)), TIME_UNIT_DAYS, 0);
     }
 
 
     sendDebugMessage('Calculating rule passed chance with last rule passed ' + daysPassed + ' days ago');
-    setDate(VARIABLE.LAST_RULE_PASSED);
 
-    return isChance(daysPassed*10);
+
+    if(isChance(daysPassed*10)) {
+        setDate(VARIABLE.LAST_RULE_PASSED);
+        return true;
+    }
+
+    return false;
 }
 
 function createRule(id, punishment, minDays = -1, maxDays = -1) {

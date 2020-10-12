@@ -55,18 +55,18 @@ function feelsLikePunishingSlave() {
     let chance = 0;
 
     if (mood === VERY_PLEASED_MOOD) {
-        chance = getStrictnessForCharacter() * 10;
+        chance = getStrictnessForCharacter() * 5;
     } else if (mood === PLEASED_MOOD) {
-        chance = getStrictnessForCharacter() * 15;
+        chance = getStrictnessForCharacter() * 10;
     } else if (mood === NEUTRAL_MOOD) {
-        chance = (getStrictnessForCharacter() + 1) * 20;
+        chance = (getStrictnessForCharacter() + 1) * 12;
     } else if (mood === ANNOYED_MOOD) {
-        chance = (getStrictnessForCharacter() + 1) * 25;
+        chance = (getStrictnessForCharacter() + 1) * 20;
     } else if (mood === VERY_ANNOYED_MOOD) {
-        chance = (getStrictnessForCharacter() + 1) * 30;
+        chance = (getStrictnessForCharacter() + 1) * 25;
     }
 
-    chance += getVar(VARIABLE.ANGER);
+    chance += Math.floor(getVar(VARIABLE.ANGER)/2);
 
     if(getVar(VARIABLE.PUNISHMENT_POINTS) >= 250) {
         chance += 50;
@@ -190,6 +190,18 @@ function getHumiliationMood() {
 
 function getHumilationTimeModifier() {
 
+}
+
+function registerSassySub() {
+    if(getVar(VARIABLE.SASSY_SUB, 0) > 3) {
+        changeMeritHigh(true);
+    } else if(getVar(VARIABLE.SASSY_SUB) > 1) {
+        changeMeritMedium(true);
+    } else {
+        changeMeritLow(true);
+    }
+
+    setTempVar(VARIABLE.SASSY_SUB, getVar(VARIABLE.SASSY_SUB, 0) + 1);
 }
 
 function registerComplain() {

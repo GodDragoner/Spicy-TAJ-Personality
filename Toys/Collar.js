@@ -26,6 +26,7 @@ function removeCollar() {
     }
 
     sendMessage('You may remove your collar %SlaveName%');
+    sendMessage('Tell me when you are done');
     waitForDone();
 
     COLLAR_TOY.setToyOn(false);

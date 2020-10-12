@@ -41,6 +41,9 @@ const VARIABLE = {
     RESPONSE_IT_HURTS_COUNT: 'responseItHurtsCount',
 
     RESPONSE_MAY_CUM_COUNT: 'responseMayCumCount',
+    RESPONSE_BEG_CUM_COUNT: 'responseBegCumCount',
+
+    RESPONSE_WANT_CUM_COUNT: 'responseMayCumCount',
 
     RESPONSE_WANTS_KEYHOLDER: 'responseWantsKeyholder',
 
@@ -329,6 +332,7 @@ const VARIABLE = {
     COMPLAINTS: 'complaints',
     UNALLOWED_TALKS: 'unallowedTalks',
     FORGETTING_HONORIFIC_COUNT: 'forgettingHonorificCount',
+    SASSY_SUB: 'sassySub',
 
     DOMME_AFK: 'dommeAfk',
 

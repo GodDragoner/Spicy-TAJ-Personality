@@ -62,4 +62,28 @@ setVar(VARIABLE.CHASTITY_ON, true);
 lockChastityCage();
 */
 
-lockChastityCage();
+/*if (!isInChastity() && willKeepChastityOn(true)) {
+    lockChastityCage();
+
+    //This needs to be checked here again because if the sub just acquired a cage there is no such thing set in the first session
+    if(!isVar(VARIABLE.LOCKED_UP_LIMIT)) {
+        askForMaxLockupTime();
+    }
+
+    if(shouldIntroduceNewRule(RULE_DOMME_KEYHOLDER)) {
+        RULE_DOMME_KEYHOLDER.sendIntroduction();
+    }
+
+    //Run random after chastity link if domme is keyholder
+    if(RULE_DOMME_KEYHOLDER.isActive()) {
+        run("Session/Link/EndChastity/*.js");
+    }
+}
+
+//Virtual assistant takes care of that and not if partner is keyholder
+if (isInChastity() && !getVar(VARIABLE.PARTNER_IS_KEYHOLDER, false)) {
+    lockAwayChastityKey();
+}
+*/
+
+setVar(VARIABLE.DEVOTION, 5);

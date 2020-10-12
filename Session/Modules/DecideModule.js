@@ -200,10 +200,11 @@
             sendMessage('I can understand that you might have something to attend to');
             changeMeritMedium(true);
             sendMessage('It\'s okay for me');
+            run('Session/End/DecideEnd.js')
         }
+    } else {
+        run('Session/End/DecideEnd.js')
     }
-
-    run('Session/End/DecideEnd.js')
 }
 
 function runModuleCategory(category) {

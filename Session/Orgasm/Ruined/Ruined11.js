@@ -47,7 +47,7 @@
             sendMessage('Oh well... at least %DomFriendName3% and I enjoyed it, and that\'s all that matters');
 
 
-            sendMessage("As always, you\\'re right... it <i>is</i> more fun to make him ruin it! %Smile%");
+            sendMessage("As always, you\\'re right... it <i>is</i> more fun to make him ruin it! %Grin%");
             sendMessage("Well... maybe next time %EmoteHappy%");
         } else {
             startEdging(0, true, EDGE_END_ORGASM);

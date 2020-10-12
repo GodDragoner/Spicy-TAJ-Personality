@@ -1,4 +1,11 @@
 //showImage("Images/Spicy/Grounding/BlackBase.jpg");
+/*
+Ideas:
+- Remove plug just to lick clean and put back
+- Chastity spikes while watching porn as punishment
+- Game for every normal orgasm you have x ruined, increase one per normal orgasm or something
+ */
+
 
 let startMillis = new Date().getTime();
 showImage("Images/Spicy/Intro/SpicyGif*.gif");

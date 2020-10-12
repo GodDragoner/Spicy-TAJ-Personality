@@ -7,7 +7,7 @@ const analTasks = [];
         id: taskId++, exp: 25, minLevel: 1,
 
         sendInstructions: function () {
-            sendMessage("I want you to wear your " +  + getButtplugForTask().name +  " for " + getButtplugTaskDurationHours() + " hours today");
+            sendMessage("I want you to wear your " +  getButtplugForTask().name +  " for " + getButtplugTaskDurationHours() + " hours today");
         },
 
         isApplicable: function () {

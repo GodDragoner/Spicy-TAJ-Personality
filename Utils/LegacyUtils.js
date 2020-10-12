@@ -81,6 +81,12 @@ function interpretLegacyTaunt(message, tauntType = LEGACY_TAUNT_TYPE_STROKE) {
         message = message.replace(tag, '');
     }
 
+    tag = '@ShowCaptionsImage';
+    let showCaptionsImage = message.indexOf(tag) !== -1;
+    if (showCaptionsImage) {
+        message = message.replace(tag, '');
+    }
+
     message.trim();
 
     sendMessage(message, 0);
@@ -127,6 +133,8 @@ function interpretLegacyTaunt(message, tauntType = LEGACY_TAUNT_TYPE_STROKE) {
         showCategoryImage('BLOWJOB');
     } else if(showButtImage) {
         showCategoryImage('BUTTS');
+    } else if(showCaptionImage) {
+        showCategoryImage('CAPTIONS');
     }
 
     if(decideKneeling) {

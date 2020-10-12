@@ -75,26 +75,33 @@ function willKeepChastityOn(end) {
     if (end) {
         //TODO: Differentiate long term and keyholder
         if (RULE_DOMME_KEYHOLDER.isActive()) {
+            sendDebugMessage('Domme is keyholder');
             return true;
         }
 
         //Lower base chance of unlocking at end
-        choice = randomInteger(1, 100 - getVar(VARIABLE.CHASTITY_LEVEL, 0) * 3);
+        let newChoice = randomInteger(1, 100 - getVar(VARIABLE.CHASTITY_LEVEL, 0) * 3);
+
+        if(newChoice < choice) {
+            choice = newChoice;
+            sendDebugMessage('Replaced old chance with new lower end unlock chance of ' + newChoice);
+        }
     }
 
     if (getVar(VARIABLE.HAPPINESS) > getVar(VARIABLE.ANGER)) {
         sendDebugMessage('Happiness is higher than anger so increasing unlock chance');
-        choice += randomInteger(1, 25);
+        choice += randomInteger(1, 15);
     } else {
         sendDebugMessage('Anger is higher than happiness so decreasing unlock chance');
-        choice -= randomInteger(1, 25);
+        choice -= randomInteger(1, 15);
     }
 
     if (getVar(VARIABLE.LUST) > 30) {
         sendDebugMessage('Lust is bigger than 30, so increasing unlock chance');
-        choice += randomInteger(1, 25);
+        choice += randomInteger(1, 15);
     }
 
+    //Note: Non chastity mode is no longer used. The first 10 are now default
     let choices = [30, 35, 40, 45, 50, 55, 60, 65, 70, 75, /*Non chastity mode*/ 1, 5, 5, 10, 10, 15, 25, 30, 35, 40];
     let index = 0;
 
@@ -108,10 +115,6 @@ function willKeepChastityOn(end) {
         choices = [40, 45, 50, 55, 60, 70, 75, 80, 85, 90, /*Non chastity mode*/ 10, 15, 15, 20, 20, 30, 40, 50, 60, 70];
     }
 
-    if (!isVar("chastityMode")) {
-        index += 10;
-    }
-
     const mood = getMood();
     if (mood == PLEASED_MOOD) {
         index += 2;
@@ -123,7 +126,11 @@ function willKeepChastityOn(end) {
         index += 8;
     }
 
-    const choiceToReach = choices[index];
+    let choiceToReach = choices[index];
+
+    if (isVar("chastityMode")) {
+        choiceToReach *= 2;
+    }
 
     sendDebugMessage('Must reach ' + choiceToReach + ' to unlock. Current choice is ' + choice + ' and mood is ' + mood);
 
@@ -175,7 +182,7 @@ function startLongTermChastityIntro() {
     }
 
     if (!RULE_DOMME_KEYHOLDER.isActive() && hasChastityCage() && !getVar(VARIABLE.PARTNER_IS_KEYHOLDER, false)) {
-        if(!justChangedPartnerKeyholder) {
+        if (!justChangedPartnerKeyholder) {
             sendMessage('So %SlaveName%');
         }
 
@@ -226,7 +233,7 @@ function startLongTermChastityIntro() {
             sendMessage('I was wondering...');
 
             //If we just changed partner keyholder we don't need to ask again
-            if(!justChangedPartnerKeyholder) {
+            if (!justChangedPartnerKeyholder) {
                 if (getVar(VARIABLE.SUB_IS_MARRIED, false) || getVar(VARIABLE.SUB_HAS_GIRLFRIEND, false)) {
                     if (askForPartnerKeyholder()) {
                         return false;
