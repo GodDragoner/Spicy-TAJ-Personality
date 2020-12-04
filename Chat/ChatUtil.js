@@ -154,7 +154,7 @@ function addContact(id) {
     let contactName = "";
 
     if (id > 2) {
-        contactName = '%domFriend' + (id - 2) + 'Name%';
+        contactName = '%domFriend' + (id - 1) + 'Name%';
     } else {
         contactName = '%domName%';
     }

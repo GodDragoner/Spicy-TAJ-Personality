@@ -98,6 +98,9 @@ const VARIABLE = {
 
     ORGASM_FREQUENCY: "orgasmFrequency",
 
+    //Academy
+    ACADEMY_LAST_VISIT: 'academyLastVisit',
+
     //Chastity
     CHASTITY_TRAINING: "chastityTraining",
 
@@ -153,7 +156,11 @@ const VARIABLE = {
     ASS_TRAINING: 'assTraining',
     ASS_TRAININGS_DONE: 'assTrainingsDone',
 
-    USED_TO_DIAMETER: 'usedToDiameter',
+    USED_TO_DILDO_DIAMETER: 'usedToDildoDiameter',
+
+    MAX_ANAL_DIAMETER: 'maxAnalDiameter',
+    MAX_ANAL_LENGTH: 'maxAnalLength',
+
 
     //Blowjob training
     BLOWJOB_LEVEL: "blowjobLevel",
@@ -166,6 +173,9 @@ const VARIABLE = {
 
     TRAINING_ORGASM_TODAY: "trainingOrgasmToday",
     TRAINING_INTRODUCTION_DONE: 'trainingIntroductionDone',
+
+    //Sissy training
+    SISSY_TRAINING: 'sissyTraining',
 
     //Toys
     IS_PLUGGED: "isPlugged",

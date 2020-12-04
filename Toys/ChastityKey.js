@@ -63,6 +63,7 @@ function unlockChastityKey() {
         setVar(VARIABLE.CHASTITY_KEY_LOCKED_COMBINATION, false);
         sendMessage('%Good%');
         getChastityCombinationFile().delete();
+        unlockImages();
     } else {
         sendMessage('Fetch your keys for your %ChastityCage% %SlaveName%');
     }

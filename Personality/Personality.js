@@ -235,7 +235,6 @@ function sendGreeting() {
         sendMessage("I won't tolerate " + random("impolite", "rude", "disrespectful", "ignorant") + " behaviour!");
         return false;
     } else if (answer.containsIgnoreCase("Hello", "Greetings", "Hey", "Hi")) {
-        changeMeritLow(false);
         return true;
     }
 }

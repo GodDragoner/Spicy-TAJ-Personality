@@ -8,17 +8,18 @@ function slaveNameVocabulary() {
     let adjectives = [''];
 
     if (SISSY_LIMIT.isAllowed()) {
-        adjectives.push('cock hungry', 'cock craving', 'cocksucker');
+        adjectives.push('cock hungry', 'cock craving', 'cock sucking');
         answers.push("girl");
     } else {
         answers.push('boy');
     }
 
     if(CEI_LIMIT.isAllowed()) {
-        answers.push('cum consumer', 'cum craving', 'cum dripping', 'cum eating', 'cum craving', 'cum sucking', 'cum loving')
+        answers.push('cum consumer', 'cum lover');
+        adjectives.push('cum dripping', 'cum eating',  'cum sucking', 'cum craving');
     }
 
-    if (VERBAL_HUMILIATION_LIMIT.isAllowed() || getMood() > NEUTRAL_MOOD) {
+    if (VERBAL_HUMILIATION_LIMIT.isAllowed() && (getMood() > NEUTRAL_MOOD || feelsLikeShowingPower())) {
         adjectives.push('disgusting', 'tiny dick', 'worthless', 'naughty', 'stupid', 'filthy', 'nasty', 'pathetic', 'small dick');
         answers.push("slut", 'bitch', 'loser', 'idiot', 'piece of shit', 'whore');
     }
@@ -35,5 +36,7 @@ function slaveNameVocabulary() {
         adjectives.push("dressed up", "dressed up");
     }
 
-    return (random(adjectives) + ' ' + random(answers)).trim();
+    let adjective = isChance(33)? random(adjectives) : "";
+
+    return (adjective + ' ' + random(answers)).trim();
 }

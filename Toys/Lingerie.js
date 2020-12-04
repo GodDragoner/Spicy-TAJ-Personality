@@ -24,22 +24,22 @@ function hasSomeLingerie() {
 }
 
 function hasPanties() {
-    let pantiesFolder = getImageSubFolder('Lingerie' + PATH_SEPARATOR + 'Panties');
+    let pantiesFolder = getImageSubFolder('Toys' + PATH_SEPARATOR + 'Lingerie' + PATH_SEPARATOR + 'Panties');
     return pantiesFolder.listFiles().length > 0 && PANTY_TOY.hasToy();
 }
 
 function hasBra() {
-    let braFolder = getImageSubFolder('Lingerie' + PATH_SEPARATOR + 'Bras');
+    let braFolder = getImageSubFolder('Toys' + PATH_SEPARATOR + 'Lingerie' + PATH_SEPARATOR + 'Bras');
     return braFolder.listFiles().length > 0 && BRA_TOY.hasToy();
 }
 
 function hasGarterBelt() {
-    let garterBeltFolder = getImageSubFolder('Lingerie' + PATH_SEPARATOR + 'GarterBelt');
+    let garterBeltFolder = getImageSubFolder('Toys' + PATH_SEPARATOR + 'Lingerie' + PATH_SEPARATOR + 'GarterBelt');
     return garterBeltFolder.listFiles().length > 0 && GARTER_BELT_TOY.hasToy();
 }
 
 function hasStockings() {
-    let stockingFolder = getImageSubFolder('Lingerie' + PATH_SEPARATOR + 'Stockings');
+    let stockingFolder = getImageSubFolder('Toys' + PATH_SEPARATOR + 'Lingerie' + PATH_SEPARATOR + 'Stockings');
     return stockingFolder.listFiles().length > 0 && STOCKINGS_TOY.hasToy();
 }
 

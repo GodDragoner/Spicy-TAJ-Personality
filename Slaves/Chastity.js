@@ -160,7 +160,7 @@ function hasDeclinedChastityTraining() {
 function startLongTermChastityIntro() {
     let justChangedPartnerKeyholder = false;
     //Partner is currently keyholder but asked for it
-    if (isVar(VARIABLE.ASKED_FOR_KEYHOLDER) && getVar(VARIABLE.PARTNER_IS_KEYHOLDER, false)) {
+    if (isVar(VARIABLE.RESPONSE_WANTS_KEYHOLDER) && getVar(VARIABLE.PARTNER_IS_KEYHOLDER, false)) {
         sendMessage('So %SlaveName%');
         sendMessage('It looks like you want me to be your keyholder %EmoteHappy%');
         sendMessage('Hold the key to %MyYour% cock\'s freedom');
@@ -177,7 +177,7 @@ function startLongTermChastityIntro() {
 
         sendMessage('Well then %EmoteHappy%');
         setVar(VARIABLE.SUB_PARTNER_NAME, false);
-        setVar(VARIABLE.ASKED_FOR_KEYHOLDER, false);
+        setVar(VARIABLE.RESPONSE_WANTS_KEYHOLDER, false);
         justChangedPartnerKeyholder = true;
     }
 
@@ -259,6 +259,7 @@ function startLongTermChastityIntro() {
             sendMessage('You\'ll have to come to me or my assistant and ask');
 
             if (sendYesOrNoQuestion('So, do you still want to make me keyholder?')) {
+                RULE_DOMME_KEYHOLDER.setActive(true);
                 sendMessage('You won\'t regret it, %SlaveName%');
 
                 changeMeritHigh(false);
@@ -323,8 +324,8 @@ function startLongTermChastityIntro() {
 }
 
 function askForChastityTraining() {
-    sendMessage('Now that I am your full time keyholder I would want you to ideally be locked whenever I haven\'t give you the explicit permission to unlock %MyYour% cock');
-    sendMessage("Meaning you wear a chastity cage 24/7 and that you will only be released when allowed so by me");
+    sendMessage('Now that I am your full time keyholder I would want you to ideally be locked whenever I haven\'t given you the explicit permission to unlock %MyYour% cock');
+    sendMessage("Meaning you wear a chastity cage 24/7 and that you will only be released when explicitly allowed by me");
     sendMessage("Are you capable of wearing it 24/7 right now? I suggest you answer truthfully for your own sake...", 0);
 
     let answer = createInput();

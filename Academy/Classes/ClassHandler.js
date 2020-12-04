@@ -1,21 +1,149 @@
-let classes = [];
+let ACADEMY_CLASSES = [];
 
 const DAY_OF_WEEK = {
-    SUNDAY: 1,
-    MONDAY: 2,
-    TUESDAY: 3,
-    WEDNESDAY: 4,
-    THURSDAY: 5,
-    FRIDAY: 6,
-    SATURDAY: 7
+    SUNDAY: 0,
+    MONDAY: 1,
+    TUESDAY: 2,
+    WEDNESDAY: 3,
+    THURSDAY: 4,
+    FRIDAY: 5,
+    SATURDAY: 6
 };
 
-function registerClass(name, levels, fileName, weekdays, getTasks, getModifiers, getExam, onStart, onEnd) {
+const DAY_OF_WEEK_NAME = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+
+{
+    let pathLength = getPersonalityPath().length;
+    let files = getFileOrCreate(getPersonalityPath() + PATH_SEPARATOR + 'Academy' + PATH_SEPARATOR + 'Classes').listFiles();
+
+    for (let index = 0; index < files.length; index++) {
+        let file = files[index];
+        if (!file.getName().contains('ClassHandler')) {
+            let path = file.getPath();
+            run(path.substring(path.indexOf(getPersonalityPath()) + pathLength + 1, path.length));
+        }
+    }
+}
+
+function getAcademyClassByName(name) {
+    for (let x = 0; x < ACADEMY_CLASSES.length; x++) {
+        let clazz = ACADEMY_CLASSES[x];
+
+        if (clazz.name.toLowerCase() === name.toLowerCase()) {
+            return clazz;
+        }
+    }
+
+    return null;
+}
+
+function handleTodayAcademyClasses() {
+    let dayOfWeek = new Date().getDay();
+
+    let foundClass = false;
+
+    setSender(random(2, 3, 4));
+
+    for (let x = 0; x < ACADEMY_CLASSES.length; x++) {
+        let clazz = ACADEMY_CLASSES[x];
+
+        //Check if we have the correct day, whether the class is active and whether we didn't attend it today et
+        if (clazz.weekdays.indexOf(dayOfWeek) !== -1 && clazz.isActive() && (clazz.getClassesTaken() === 0 || !clazz.getLastVisitAt().sameDay(setDate()))) {
+
+            //Days that should have passed if the sub visited the classes regularly
+            let daysSinceLastMeet = 0;
+
+            if(clazz.weekdays.length > 1) {
+                let currentDayIndex = clazz.weekdays.indexOf(dayOfWeek);
+                let previousDayIndex = currentDayIndex > 0? currentDayIndex - 1 : clazz.weekdays.length - 1;
+
+                //The previous day that we were supposed to take the class
+                let previousDay = clazz.weekdays[previousDayIndex];
+
+                //Difference between days
+                daysSinceLastMeet = Math.abs(dayOfWeek - previousDay);
+            } else {
+                daysSinceLastMeet = 7;
+            }
+
+
+            foundClass = true;
+            sendVirtualAssistantMessage('Class "' + clazz.name + ' is starting now...');
+
+            //Class couldn't start for some reason
+            if(!clazz.onStart(clazz)) {
+                continue
+            }
+
+            if (clazz.getClassesTaken() > 0) {
+                if(!clazz.getLastVisitAt().addDay(daysSinceLastMeet).sameDay(setDate())) {
+                    sendMessage('You have been skipping classes %SlaveName%');
+                    sendMessage('This behaviour is not tolerated!');
+                    changeMeritMedium(true);
+                    addPunishmentPoints(250, PUNISHMENT_REASON.TOO_LAZY);
+                    sendMessage('Be sure to participate in every single class on time!');
+                }
+
+                sendMessage('The last assignment was ' + clazz.getCurrentAssignmentText());
+                if (sendYesOrNoQuestion('Did you complete your last assignment %SlaveName%?')) {
+                    sendMessage('%Good%');
+                } else {
+                    sendMessage('%EmoteSad%');
+                    sendMessage('You know you have to do your tasks to improve');
+
+                    if (sendYesOrNoQuestion('You want to please us don\'t you?')) {
+                        sendMessage('%Good%');
+                        sendMessage('Remember that before skipping your tasks next time!');
+                    } else {
+                        sendMessage('You should want to please us!');
+                        sendMessage('Otherwise you should probably leave because we don\'t deal with bratty subs here!');
+                    }
+
+                    sendMessage('However this will not be unpunished!');
+                    changeMeritMedium(true);
+                    addPunishmentPoints(250, PUNISHMENT_REASON.TOO_LAZY);
+                    sendMessage('I have given you some punishment points');
+                    sendMessage('I hope you\'ll have done your tasks next time...');
+                    continue;
+                }
+            }
+
+            sendMessage('I hope you are ready for today\'s assignment');
+            clazz.decideAssignment();
+            clazz.sendAssignment();
+            clazz.setLastVisitAt();
+            clazz.setClassesTaken(clazz.getClassesTaken() + 1);
+
+            if (clazz.getCurrentStage() === clazz.maxStage) {
+
+            }
+            //Only do this once per week
+            else if (clazz.getClassesTaken() % clazz.weekdays.length === 0) {
+                clazz.setCurrentStage(clazz.getCurrentStage() + 1);
+                sendDebugMessage('Increased class level since week has passed');
+            }
+
+            clazz.onEnd(clazz);
+
+            sendMessage('See you next time %SlaveName% %Grin%');
+
+            sendVirtualAssistantMessage('Class "' + clazz.name + ' has ended.');
+        }
+    }
+
+    setSender(1);
+
+    if (!foundClass) {
+        sendVirtualAssistantMessage('You don\'t have any classes today %SlaveName%');
+    }
+}
+
+function registerClass(name, levels, fileName, weekdays, getTasks, getModifiers, getExam, onStart, onEnd, isAvailable) {
     if (fileName === null || fileName === undefined) {
         fileName = name.replace(" ", "");
     }
 
-    classes.push({
+    ACADEMY_CLASSES.push({
         name: name,
         maxStage: levels,
         fileName: fileName,
@@ -27,6 +155,9 @@ function registerClass(name, levels, fileName, weekdays, getTasks, getModifiers,
 
         onStart: onStart,
         onEnd: onEnd,
+        isAvailable: isAvailable,
+
+        taskHistory: createHistory(fileName + "TaskHistory"),
 
         setStartedAt: function () {
             setDate(fileName + 'startedAt');
@@ -49,7 +180,7 @@ function registerClass(name, levels, fileName, weekdays, getTasks, getModifiers,
         },
 
         getClassesTaken: function () {
-            getVar(fileName + 'classesTaken', 0);
+            return getVar(fileName + 'classesTaken', 0);
         },
 
         setActive: function (active) {
@@ -95,9 +226,59 @@ function registerClass(name, levels, fileName, weekdays, getTasks, getModifiers,
             }
 
             return modifiers;
+        },
+
+        setAssignment: function (assignment) {
+            setVar(fileName + 'assignment', assignment);
+        },
+
+        getAssignment: function () {
+            return getVar(fileName + 'assignment');
+        },
+
+        decideAssignment: function () {
+            let tasks = getTasks(this);
+
+            let result = this.taskHistory.getRandomAvailableId(0, tasks.length - 1, tasks / 2);
+
+            this.setAssignment(result);
+            this.setCurrentAssignmentText(tasks[result]);
+        },
+
+        setCurrentAssignmentText: function (assignment) {
+            setVar(fileName + 'assignmentText', assignment);
+        },
+
+        getCurrentAssignmentText: function () {
+            if(isVar(fileName + 'assignmentText')) {
+                return getVar(fileName + 'assignmentText');
+            }
+
+            return getTasks(this)[this.getAssignment()];
+        },
+
+
+        sendAssignment: function () {
+            sendMessage(this.getCurrentAssignmentText());
+        },
+
+        getWeekdayString: function () {
+            let weekdayString = "";
+
+            for(let x = 0; x < this.weekdays.length; x++) {
+                weekdayString += DAY_OF_WEEK_NAME[this.weekdays[x]] + ', '
+            }
+
+            weekdayString = weekdayString.substr(0, weekdayString.length - 2);
+
+            return weekdayString;
+        },
+
+        isListed: function() {
+            return !this.isActive() && this.isAvailable();
         }
     });
 
     //Return newly added class
-    return classes[classes.length - 1];
+    return ACADEMY_CLASSES[ACADEMY_CLASSES.length - 1];
 }

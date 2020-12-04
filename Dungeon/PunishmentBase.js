@@ -398,7 +398,7 @@
 
                     let mode = 0;
 
-                    if (new Date().getDay() === 6 || new Date().getDay() === 2) {
+                    if (new Date().getDay() === 6 || new Date().getDay() === 1) {
                         if (new Date().getDay() === 6) {
                             sendDungeonMessage('It\'s friday %SlaveNam% %EmoteHappy%');
                         } else {
@@ -476,10 +476,10 @@
                 sendDungeonMessage('It\'s ' + (goldMultiplier * 1) + ' per punishment point');
 
                 sendDungeonMessage("How many punishment points do you wish to pay for?");
-                let answer = createInput();
+                let answer2 = createInput();
                 while (true) {
-                    if (answer.isInteger()) {
-                        let value = answer.getInt();
+                    if (answer2.isInteger()) {
+                        let value = answer2.getInt();
 
                         if (value > 0) {
                             if (value > getVar(VARIABLE.PUNISHMENT_POINTS)) {
@@ -495,18 +495,19 @@
                             sendDungeonMessage("Well everything checks out...");
                             addGold(-value * goldMultiplier);
                             addPunishmentPoints(-value);
-                            sendDungeonMessage(value + " points removed from your total amount of punishment points")
+                            sendDungeonMessage(value + " points removed from your total amount of punishment points");
+                            break;
                         } else {
                             sendDungeonMessage('Please give me a number greater than 0 %SlaveName%...');
                             changeMeritLow(true);
-                            answer.loop();
+                            answer2.loop();
                         }
-                    } else if (answer.isLike('no', 'abort', 'break', 'exit', 'quit')) {
+                    } else if (answer2.isLike('no', 'abort', 'break', 'exit', 'quit')) {
                         break;
                     } else {
                         sendDungeonMessage('Please just give a single number %SlaveName%...');
                         changeMeritLow(true);
-                        answer.loop();
+                        answer2.loop();
                     }
                 }
                 break;

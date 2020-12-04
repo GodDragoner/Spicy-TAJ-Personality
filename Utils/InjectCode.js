@@ -85,5 +85,6 @@ if (isInChastity() && !getVar(VARIABLE.PARTNER_IS_KEYHOLDER, false)) {
     lockAwayChastityKey();
 }
 */
-
-setVar(VARIABLE.DEVOTION, 5);
+sendDebugMessage(getSmallButtplug(true).name);
+sendDebugMessage(getMediumButtplug(true).name);
+sendDebugMessage(getBigButtplug(true).name);

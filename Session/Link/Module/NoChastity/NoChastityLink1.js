@@ -18,7 +18,7 @@
                 sendMessage("I\'m back %Grin%");
                 unlockImages();
 
-                const answer2 = sendInput("Have you been a good boy while I was away?")
+                const answer2 = sendInput("Have you been a good boy while I was away?");
 
                 while(true) {
                     if(answer2.isLike('yes')) {

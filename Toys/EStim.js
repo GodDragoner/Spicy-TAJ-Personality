@@ -73,7 +73,7 @@ function attachEStimToBodyPart(bodyPart) {
             sendMessage('And one right around your cock head %Grin%');
 
             sendMessage('Tell me when you are done');
-            waitForDone();
+            waitForDone(10000);
             break;
         case BODY_PART_NIPPLE_L:
             if (!E_STIM_PADS.fetchToy()) {
@@ -89,7 +89,7 @@ function attachEStimToBodyPart(bodyPart) {
             }
 
             sendMessage('Tell me when you are done');
-            waitForDone();
+            waitForDone(10000);
             break;
         case BODY_PART_BALLS:
             if (!E_STIM_PADS.fetchToy()) {
@@ -100,7 +100,7 @@ function attachEStimToBodyPart(bodyPart) {
 
             sendMessage('I want you to one to each side of your balls %Grin%');
             sendMessage('Tell me when you are done');
-            waitForDone();
+            waitForDone(10000);
             break;
         case BODY_PART_ASS:
             if (!E_STIM_PLUG_TOY.fetchToy()) {
@@ -122,7 +122,7 @@ function attachEStimToBodyPart(bodyPart) {
             }
 
             sendMessage('Tell me when you are done');
-            waitForDone();
+            waitForDone(10000);
             break;
     }
 

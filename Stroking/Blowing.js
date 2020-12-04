@@ -271,7 +271,6 @@ function startNormalBlowjobModule() {
                     sleep(randomInteger(5, 15));
                 }
 
-
                 sendMessage("You can stop gagging now %Grin%");
                 break;
             case 5:

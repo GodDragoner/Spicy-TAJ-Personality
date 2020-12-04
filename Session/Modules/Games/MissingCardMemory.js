@@ -174,6 +174,13 @@ function startMissingCardMemory(gameType) {
 
                         startEdging();
                         sendMessage("%LetEdgeFade%", randomInteger(5, 10));
+
+                        if(loses === 0 && isChance(20)) {
+                            sendMessage('I thought about making you do all accumulated edges at the end');
+                            sendMessage('However I think this way...');
+                            sendMessage('I can get you distracted and maybe fail more often');
+                            sendMessage('So doing the edges after every failed attempt makes sure you struggle with paying attention %Grin%');
+                        }
                         break;
                     case GAME_INFLATABLE_PLUG:
                         pumpInflatablePlug(3);
@@ -244,7 +251,7 @@ function startMissingCardMemory(gameType) {
                     sendMessage('But because you\'ve disappointed your %DomHonorific% you will not be allowed to relief the pressure just jet %Lol%');
                     startTimePassTasks(5, true);
                     break;
-                case E_STIM_TOY:
+                case GAME_E_STIM:
                     sendMessage('But because you\'ve disappointed your %DomHonorific% you will not be allowed to turn it down just jet %Lol%');
                     startTimePassTasks(5, true);
                     break;

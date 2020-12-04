@@ -285,6 +285,10 @@ function removeGag(mouthRequiredAfter = true) {
         clampOnTongue = true;
     }
 
+    if(!isGaged()) {
+        return;
+    }
+
     sendMessageBasedOnSender("%SlaveName% go ahead and remove that gag from your mouth");
     let answer = sendInput("Tell me when you are ready to continue");
     while (true) {

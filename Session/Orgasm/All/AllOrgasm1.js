@@ -26,25 +26,25 @@
 
     let chance = isChance(50);
     if (chance) {
-        sendMessage("5");
-        sendMessage("6", 0);
-        sendMessage("7", 0);
+        sendMessage("5", 2);
+        sendMessage("6", 2);
+        sendMessage("7", 2);
         sendMessage("This isn\'t going as you hoped, is it? %Lol%");
-        sendMessage("8");
-        sendMessage("9");
-        sendMessage("8");
-        sendMessage("7... that\'s better");
-        sendMessage("6... but will I get to zero...?");
-        sendMessage("5");
-        sendMessage("4");
+        sendMessage("8", 2);
+        sendMessage("9", 2);
+        sendMessage("8", 2);
+        sendMessage("7... that\'s better", 2);
+        sendMessage("6... but will I get to zero...?", 2);
+        sendMessage("5", 2);
+        sendMessage("4", 2);
     }
 
     if (!chance || orgasmType !== ORGASM_CATEGORY_DENIED) {
-        sendMessage("Almost there...");
-        sendMessage("3");
-        sendMessage("2");
+        sendMessage("Almost there...", 2);
+        sendMessage("3", 2);
+        sendMessage("2", 2);
         sleep(5);
-        sendMessage("1...");
+        sendMessage("1...", 2);
     }
 
     if (orgasmType === ORGASM_CATEGORY_DENIED) {

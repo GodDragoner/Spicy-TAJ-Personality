@@ -483,7 +483,7 @@ let RULE_ALWAYS_STROKE_INDEX_AND_THUMB;
     }
 
     rule.getRulePrint = function () {
-        return 'You must always wear your ' + getSmallButtplug(true).name;
+        return 'You must always wear your ' + getSmallButtplug(true).name + ' apart from bed time, sports and swimming';
     };
 
     rule.canBeActivated = function () {
@@ -497,12 +497,108 @@ let RULE_ALWAYS_STROKE_INDEX_AND_THUMB;
         sendMessage('So from now on you will always wear your ' + getSmallButtplug(true).name);
         sendMessage('Not only is it gonna remind you of your place but it\'s also gonna make sure you are ready for whatever I have in store for that ass of mine');
         sendMessage('I can only suggest you getting some long time wear plugs. I heard that T-Base shapes are pretty good for that purpose %Grin%');
+        sendMessage('And since I am kind, I will allow you to remove the plug during the night, when doing sports and going swimming or something similar.');
+
+        this.setActive(true);
+
+        sendMessage('And before I forget...');
+        sendMessage('Make sure to check this rule every now and then at the pin board');
+        sendMessage('I might upgrade the plug to a bigger one when I feel like you are ready %Grin%');
+
+        return true;
+    };
+
+    AVAILABLE_RULES.push(rule);
+
+    rule = RULE_ALWAYS_WEAR_PANTIES = createRule(ruleId++, false);
+
+    rule.getRulePrint = function () {
+        return 'You must always wear panties';
+    };
+
+    rule.canBeActivated = function () {
+        return SISSY_LIMIT.isAllowed() && hasPanties();
+    };
+
+    rule.sendIntroduction = function () {
+        sendMessage('Tell me...');
+        let answer = sendInput('What do you think is one of the most important things as a sissy?');
+
+        if(answer.isLike('panties', 'underwear', 'clothing', 'cloth')) {
+            sendMessage('Exactly! Clothing %Grin%');
+        } else if(answer.isLike('no idea', 'dunno', 'no clue')) {
+            sendMessage('Obviously clothing sissy %Lol%');
+        } else {
+            sendMessage('Probably true but...');
+            sendMessage('First and foremost clothing %Grin%');
+        }
+
+        if(sendYesOrNoQuestion('So we gotta do something about that, don\'t we?')) {
+            sendMessage('I am glad you agree %EmoteHappy%');
+        } else {
+            changeMeritMedium(true);
+            sendMessage('Well I will do something about it whether you like it or not %Lol%');
+        }
+
+        sendMessage('From now on any male underwear will be denied to you');
+        sendMessage('Panties only');
+        sendMessage('Exceptions can ONLY be made if you have to undress in front of others');
+        sendMessage('Otherwise it\'s slutty pink panties every god damn time');
+        sendMessage('Well I don\'t mind other colors');
+        sendMessage('But make it female and slutty if you can %Grin%');
+
+        sendMessage('Imagine someone seeing that satin underneath your trousers');
+        sendMessage('That must be so humiliating %Grin%');
+        sendMessage('But that\'s exactly what I want %EmoteHappy%');
 
         this.setActive(true);
         return true;
     };
 
     AVAILABLE_RULES.push(rule);
+
+    rule = RULE_ALWAYS_PEE_SITTING_DOWN = createRule(ruleId++, false);
+
+    rule.getRulePrint = function () {
+        return 'You must always sit down to pee';
+    };
+
+    rule.canBeActivated = function () {
+        return SISSY_LIMIT.isAllowed();
+    };
+
+    rule.sendIntroduction = function () {
+        sendMessage('You know there is another aspect to being a woman that is different from a male\'s life');
+
+        if(sendYesOrNoQuestion('Any guesses?')) {
+            let answer = sendInput('What do you think is different?');
+
+            if(answer.isLike('pee', 'piss', 'bathroom')) {
+                sendMessage('Exactly! Sitting down to pee %Grin%');
+            } else if(answer.isLike('no idea', 'dunno', 'no clue')) {
+                sendMessage('Obviously sitting down to pee %Lol%');
+            } else {
+                sendMessage('Probably true but...');
+                sendMessage('But I am talking about peeing %Grin%');
+            }
+        } else {
+            sendMessage('Silly you...');
+            sendMessage('I am talking about sitting down to pee %Grin%');
+        }
+
+        if(hasChastityCage()) {
+            sendMessage('You probably already do it when you are in chastity');
+        } else {
+            sendMessage('I don\'t know how you have been dealing with is before');
+        }
+
+        sendMessage('But I want to establish this as a rule from now on');
+        sendMessage('From now on you will sit down every time you need to pee');
+        sendMessage('Just like every girl does it %Grin%');
+
+        this.setActive(true);
+        return true;
+    };
 
     //Update all existing rules
     for (let index = 0; index < AVAILABLE_RULES.length; index++) {

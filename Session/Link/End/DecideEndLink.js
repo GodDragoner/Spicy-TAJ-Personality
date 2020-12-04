@@ -1,7 +1,7 @@
 {
     setTempVar('findLinkTries', 0);
 
-    findLinkAndRun();
+    findEndLinkAndRun();
 }
 
 function findEndLinkAndRun() {
@@ -17,7 +17,7 @@ function findEndLinkAndRun() {
 
         run(options[winner]);
     } else {
-        options = ['Session/Link/Module/Neutral/*.js', 'Session/Link/Module/NoChastity/*.js'];
+        options = ['Session/Link/End/Neutral/*.js', 'Session/Link/End/NoChastity/*.js'];
         sendDebugMessage('Trying to run non chastity end link');
 
         setTempVar('minLinksSinceRun',  END_LINK.neutralLinkAmount + END_LINK.nonChastityLinkAmount);

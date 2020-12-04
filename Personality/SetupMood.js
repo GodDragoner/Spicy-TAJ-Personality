@@ -274,7 +274,7 @@ sendDebugMessage('Mood after startup routine');
 debugPrintMood();
 
 function activateRandomScenario(scenarioArray, idOffset, moodType) {
-    const index = randomInteger(0, scenarioArray.length);
+    const index = randomInteger(0, scenarioArray.length - 1);
     const scenario = scenarioArray[index];
     const scenarioId = index + idOffset;
 

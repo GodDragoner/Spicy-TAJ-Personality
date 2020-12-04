@@ -50,6 +50,16 @@ function createHistory(name) {
             return history;
         },
 
+        getRandomAvailableId : function(min, max, minLastUsage = 2) {
+            let number = randomInteger(min, max);
+
+            while(this.isInHistory(number + "") && this.getModulesSinceHistory(number + "") < minLastUsage) {
+                number = randomInteger(min, max);
+            }
+
+            return number;
+        },
+
         clearHistory : function () {
             setVar(this.historyVar, new java.util.ArrayList());
             setTempVar(this.todaysHistoryVar, new java.util.ArrayList());

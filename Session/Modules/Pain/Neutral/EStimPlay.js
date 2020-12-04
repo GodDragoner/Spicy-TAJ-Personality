@@ -35,7 +35,7 @@
 
                 //Let declaration does not work in switch so we use if
                 if (mode === 0) {
-                    startMissingCardMemory(E_STIM_TOY);
+                    startMissingCardMemory(GAME_E_STIM);
                 } else if (mode === 1) {
                     //Enable all toys
                     for (let x = 0; x < toysAttached.length; x++) {
@@ -53,7 +53,7 @@
 
                     let mode = getRandomPainEStimMode(painLevel);
                     let level = mode.getPainLevel(painLevel);
-                    let time = getCornerTime(PAIN_LEVEL_HIGH - painLevel + 1);
+                    let time = getCornerTime(PAIN_LEVEL_HIGH*2 - painLevel + 1);
 
                     let askForIncrease = level < E_STIM_TOY.getMaxLevel() && painLevel === PAIN_LEVEL_HIGH && isChance(20);
 

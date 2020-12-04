@@ -45,10 +45,10 @@
                     }
                 } else {
                     sendMessage('Maybe in the future I get to be your keyholder');
-                    sendMessage('You entrusting me with the keys to your sexuality, your cage that is to be precise, would be mean a lot to me');
+                    sendMessage('You entrusting me with the keys to your sexuality, your cage that is, would mean a lot to me');
                     sendMessage('Allowing me to completely control your sexual drive');
                     sendMessage('Getting you more and more frustrated');
-                    sendMessage('Whilst your eagerness to please me and submit increases');
+                    sendMessage('Whilst your eagerness to please me increases');
                     sendMessage('Denial is such a great thing %EmoteHappy%');
                     sendMessage('Not only that...');
                     sendMessage('It also shows me how much you trust me');
@@ -70,6 +70,7 @@
                         sendMessage('%Grin%');
                         setTempVar(VARIABLE.RESPONSE_WANTS_KEYHOLDER, true);
                         startLongTermChastityIntro();
+                        delVar(VARIABLE.RESPONSE_WANTS_KEYHOLDER);
                     } else {
                         sendMessage('Maybe you need some more time to consider it');
                         sendMessage('I get it...');

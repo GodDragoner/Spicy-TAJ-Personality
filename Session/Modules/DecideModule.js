@@ -133,7 +133,7 @@
         let sissyModuleChance = 0;
 
         //No pain modules if pain is hard limit
-        let painModuleChance = PAIN_LIMIT.isHardLimit()? moduleChance : 0;
+        let painModuleChance = PAIN_LIMIT.isAllowed()? moduleChance : 0;
         let slaveModuleChance = moduleChance;
         let humiliationModuleChance = moduleChance;
 
@@ -141,12 +141,16 @@
             humiliationModuleChance = 0;
         }
 
-        if(!PAIN_LIMIT.isAllowed()) {
-            painModuleChance = 0;
-        }
-
         const max = teaseModuleChance + sissyModuleChance + painModuleChance + slaveModuleChance + humiliationModuleChance;
         const moduleIndicator = randomInteger(0, max);
+
+        sendDebugMessage('Choosing module based on the following chances:');
+        sendDebugMessage('Tease: ' + teaseModuleChance);
+        sendDebugMessage('Sissy: ' + sissyModuleChance);
+        sendDebugMessage('Pain: ' + painModuleChance);
+        sendDebugMessage('Slave: ' + slaveModuleChance);
+        sendDebugMessage('Humiliation: ' + humiliationModuleChance);
+        sendDebugMessage('Selector is ' + moduleIndicator);
 
         clearPreviousModuleHistory();
         setTempVar('findModuleTries', 0);
@@ -186,7 +190,7 @@
     }
 
     //Maybe prolong session if we haven't already
-    if(wouldLikeToProlongSession() && !isVar(VARIABLE.PROLONGED_SESSION_TIME)) {
+    if(!isVar(VARIABLE.PROLONGED_SESSION_TIME) && wouldLikeToProlongSession()) {
         //QUALITY: More diverse chat
         sendMessage('Looks like our time is up %SlaveName% %EmoteSad%');
         sendMessage('I am feeling like still playing for a bit though %Grin%');
@@ -195,12 +199,13 @@
             changeMeritLow(false);
             //Add another 10 to 20 minutes
             setTempVar(VARIABLE.PROLONGED_SESSION_TIME, randomInteger(10, 20));
+            setDate(VARIABLE.LAST_PROLONGED_SESSION);
             run("Session/Modules/DecideModule.js");
         } else {
             sendMessage('I can understand that you might have something to attend to');
             changeMeritMedium(true);
             sendMessage('It\'s okay for me');
-            run('Session/End/DecideEnd.js')
+            run('Session/End/DecideEnd.js');
         }
     } else {
         run('Session/End/DecideEnd.js')

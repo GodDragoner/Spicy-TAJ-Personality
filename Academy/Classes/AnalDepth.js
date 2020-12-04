@@ -6,12 +6,12 @@
         tasks.push('Sit on your ' + getDildo().name + ' for ' + stage * 8 + ' minutes while applying constant pressure to push it deeper');
         tasks.push('Fuck your ' + getDildo().name + ' for ' + stage * 8 + ' minutes as deep as it will go');
         tasks.push('Find some anal porn of at least  ' + stage * 8 + ' minutes. Try to copy it using your ' + getDildo().name + ' as well as possible');
-        tasks.push('Ride the ' + getDildo().name + ' kneeling for ' + stage * 8 + ' as deep as it will go');
-        tasks.push('Ride the ' + getDildo().name + ' squatting for ' + stage * 8 + ' as deep as it will go');
-        tasks.push('Put in your ' + getBigButtplug(true).name + ' and pull it out to the point where its thickest part is stretching your ass. Hold for 10 seconds and repeat ' + stage * 20 + ' times');
-        tasks.push('Fuck your ' + getDildo().name + ' for  ' + stage * 300 + ' thrusts as deep as it will go');
-        tasks.push('Fuck yourself with your ' + getBigButtplug(true).name + ' for ' + stage * 8 + ' minutes');
-        tasks.push('Before going to bed fuck your ass at 120 bpm as deep as it will go with your ' + getDildo().name + ' for ' + stage * 2 + ' minutes then plug yourself with your ' + getBigButtplug(true).name + ' for the night.');
+        tasks.push('Ride the ' + getDildo().name + ' kneeling for ' + stage * 8 + ' minutes as deep as it will go');
+        tasks.push('Ride the ' + getDildo().name + ' squatting for ' + stage * 8 + ' minutes as deep as it will go');
+        tasks.push('Go almost all the way out and in as far it goes using the ' + getDildo().name + ' for ' + stage*8 + ' minutes at your own speed.');
+        tasks.push('Spend ' + stage*8 + ' minutes practicing to get your ' + getDildo().name + ' in as far as possible');
+        tasks.push('Fuck your ' + getDildo().name + + ' for ' + stage * 8 + ' minutes at 60 bpm while going as deep as possible and only slightly out');
+        tasks.push('Push the '+ getDildo().name + ' in as far as possible and practice 5 minutes for every cm that didn\'t fit.');
 
         return tasks;
     }
@@ -33,19 +33,16 @@
         //Class started, introduction
         if (classesTaken === 0) {
             sendMessage('Hello %SlaveName%');
-            sendMessage('Welcome to your first anal stretching class');
-            sendMessage('This class is designed to train your ass for all the thick objects it will need to take further down the road');
+            sendMessage('Welcome to your first anal depth class');
+            sendMessage('This class will train your ass to take the longest toys someone could imagine');
 
             if (SISSY_LIMIT.isAllowed()) {
                 sendMessage('That includes all that cock you will take up your ass eventually sissy %Lol%');
             }
 
-            sendMessage('So you better be ready for intense and unrelenting training');
-            sendMessage('We won\'t stop until you are ready to take the thickest toys someone could imagine so better strap in because the ride is gonna be rough %Grin%');
-            sendMessage('Pun intended %Lol%');
-
+            sendMessage('So you better be ready for difficult and unrelenting training');
             sendMessage('So...');
-            sendMessage('You will need to pick a dildo from your collection that you are currently unable to fit in completely yet due to its girth');
+            sendMessage('You will need to pick a dildo from your collection that you are currently unable to fit in completely yet due to its length');
 
             if (sendYesOrNoQuestion('Do you have anything like that already?')) {
                 sendMessage('%Good%');
@@ -58,14 +55,29 @@
                 return false;
             }
 
-            askForMaxDiameter();
-            askForCasualDiameter();
+            if (!isVar(VARIABLE.MAX_ANAL_LENGTH)) {
+                sendMessage('Tell me %SlaveName%');
+                sendMessage('And be truthful and realistic...');
 
-            let dildo = getDildoClosestAboveDiameter(getVar(VARIABLE.MAX_ANAL_DIAMETER));
+                let length = createDoubleInput('Up to what length are you able to fit dildos up your %Ass% in cms right now?', 1, 100, 'That\'s not a valid number %SlaveName%', 'I don\'t think you are giving me a realistic diameter %SlaveName%');
+
+                if (length < 10) {
+                    sendMessage('Oh so you are a real beginner');
+                    sendMessage('No worries we will get there %Grin%');
+                } else if (length < 20) {
+                    sendMessage('Seems like you have been training quite a bit before %Lol%');
+                } else {
+                    sendMessage('Oh wow. Seems like you are a pro at this already. This is gonna be so much fun %Lol%')
+                }
+
+                setVar(VARIABLE.MAX_ANAL_LENGTH, length);
+            }
+
+            let dildo = getDildoClosestAboveLength(getVar(VARIABLE.MAX_ANAL_LENGTH));
 
             if (dildo === null) {
                 changeMeritLow(true);
-                sendMessage('I don\'t think you own any dildo bigger than that diameter');
+                sendMessage('I don\'t think you own any dildo longer than that length');
                 sendMessage('You better start shopping NOW and find one immediately');
                 sendMessage('I expect it to be available to you within the next 7 days %SlaveName%');
 
@@ -102,9 +114,9 @@
                         sendMessage('I don\'t think you own that dildo %SlaveName%');
                         sendMessage('If you do set it up correctly in the menu');
                         answer.loop();
-                    } else if (dildo.diameter < getVar(VARIABLE.MAX_ANAL_DIAMETER)) {
+                    } else if (dildo.diameter < getVar(VARIABLE.MAX_ANAL_LENGTH)) {
                         sendMessage('That dildo is not on the list I provided you with %SlaveName%');
-                        sendMessage('Don\'t try to cheat on me with a smaller diameter!');
+                        sendMessage('Don\'t try to cheat on me with a shorter length!');
                         addPunishmentPoints(250, PUNISHMENT_REASON.CHEATING);
                         answer.loop();
                     } else {
@@ -118,7 +130,7 @@
             setDildo(dildo);
 
             sendMessage('From now on you will train using your ' + dildo.name);
-            sendMessage('After you take on and pass an exam we will upgrade that dildo to a bigger one %Grin%');
+            sendMessage('After you take on and pass an exam we will upgrade that dildo to a longer one %Grin%');
             sendMessage('%Now%');
         } else {
 
@@ -128,11 +140,11 @@
     }
 
     function getDildo() {
-        return getDildoByName(getVar("analStretchingClassDildo"));
+        return getDildoByName(getVar("analDepthClassDildo"));
     }
 
     function setDildo(dildo) {
-        return setVar("analStretchingClassDildo", dildo.name);
+        return setVar("analDepthClassDildo", dildo.name);
     }
 
     function onEnd(academyClass) {
@@ -143,45 +155,5 @@
         return ANAL_LIMIT.isAllowed();
     }
 
-    registerClass("Anal Stretching", 5, null, [DAY_OF_WEEK.WEDNESDAY, DAY_OF_WEEK.SATURDAY], getTasks, getModifiers, getExam, onStart, onEnd, isAvailable)
-}
-
-function askForMaxDiameter() {
-    if (!isVar(VARIABLE.MAX_ANAL_DIAMETER)) {
-        sendMessage('Tell me %SlaveName%');
-        sendMessage('And be truthful and realistic...');
-
-        let diameter = createDoubleInput('Up to what diameter are you able to fit dildos up your %Ass% in cms right now?', 1, 15, 'That\'s not a valid number %SlaveName%', 'I don\'t think you are giving me a realistic diameter %SlaveName%');
-
-        if (diameter < 4) {
-            sendMessage('Oh so you are a real beginner');
-            sendMessage('No worries we will get there %Grin%');
-        } else if (diameter < 6) {
-            sendMessage('Seems like you have been training quite a bit before %Lol%');
-        } else {
-            sendMessage('Oh wow. Seems like you are a pro at this already. This is gonna be so much fun %Lol%')
-        }
-
-        setVar(VARIABLE.MAX_ANAL_DIAMETER, diameter);
-    }
-}
-
-function askForCasualDiameter() {
-    if (!isVar(VARIABLE.USED_TO_DILDO_DIAMETER)) {
-        sendMessage('Now %SlaveName%');
-        sendMessage('Tell me truthfully...');
-
-        let diameter = createDoubleInput('Up to what diameter are you able to fit dildos up your %Ass% without any pre stretching right now?', 1, 15, 'That\'s not a valid number %SlaveName%', 'I don\'t think you are giving me a realistic diameter %SlaveName%');
-
-        if (diameter < 3) {
-            sendMessage('Oh so you are a real beginner');
-            sendMessage('No worries we will get there %Grin%');
-        } else if (diameter < 5) {
-            sendMessage('Seems like you have been training quite a bit before %Lol%');
-        } else {
-            sendMessage('Oh wow. Seems like you are a pro at this already. This is gonna be so much fun %Lol%')
-        }
-
-        setVar(VARIABLE.USED_TO_DILDO_DIAMETER, diameter);
-    }
+    registerClass("Anal Depth", 5, null, [DAY_OF_WEEK.MONDAY, DAY_OF_WEEK.THURSDAY], getTasks, getModifiers, getExam, onStart, onEnd, isAvailable)
 }

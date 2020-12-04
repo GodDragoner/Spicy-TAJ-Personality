@@ -27,7 +27,7 @@ BUTTPLUG_TOY.removeToy = function () {
 
 function getUsedToDiameter() {
     //We can't be smaller than the smallest plug
-    return Math.max(smallestButtplug.diameter, getVar(VARIABLE.USED_TO_DIAMETER, 0));
+    return Math.max(smallestButtplug.diameter, getVar(VARIABLE.USED_TO_DILDO_DIAMETER, 0));
 }
 
 function updateSessionButtplugs() {
@@ -83,7 +83,7 @@ function getRandomCleanButtplug() {
  * @returns {*|null}
  */
 function getSmallButtplug(longtime) {
-    return getButtplugClosestBelow(getUsedToDiameter(), longtime ? getLongTimeWearPlugs() : buttplugs);
+    return getButtplugClosestAround(getUsedToDiameter(), longtime ? getLongTimeWearPlugs() : buttplugs);
 }
 
 function getMediumButtplug(longtime) {
@@ -93,12 +93,16 @@ function getMediumButtplug(longtime) {
 
     let index = plugs.indexOf(smallPlug);
 
-    if (index < plugs.length - 1) {
-        return plugs[index + 1];
-    } else {
-        sendDebugMessage('No medium plug found because small plug is the biggest plug available ' + longtime ? ' (longtime)' : '');
-        return smallPlug;
+    while (index < plugs.length - 1) {
+        let plug = plugs[++index];
+
+        if (plug.diameter > smallPlug.diameter) {
+            return plug;
+        }
     }
+
+    sendDebugMessage('No medium plug found because small plug is the biggest plug available ' + longtime ? ' (longtime)' : '');
+    return smallPlug;
 }
 
 function getBigButtplug(longtime) {
@@ -108,12 +112,16 @@ function getBigButtplug(longtime) {
 
     let index = plugs.indexOf(mediumPlug);
 
-    if (index < plugs.length - 1) {
-        return plugs[index + 1];
-    } else {
-        sendDebugMessage('No big plug found because medium plug is the biggest plug available ' + longtime ? ' (longtime)' : '');
-        return mediumPlug;
+    while (index < plugs.length - 1) {
+        let plug = plugs[++index];
+
+        if (plug.diameter > mediumPlug.diameter) {
+            return plug;
+        }
     }
+
+    sendDebugMessage('No big plug found because medium plug is the biggest plug available ' + longtime ? ' (longtime)' : '');
+    return mediumPlug;
 }
 
 function getLongTimeWearPlugs(plugList = buttplugs) {
@@ -146,6 +154,23 @@ function getButtplugClosestBelow(diameter, plugList = buttplugs) {
         //Buttplugs is sorted, ascending so we can just find the point in the list whe are looking for
         //We must be <= the given diameter and bigger than the current diameter
         if (plugList[x].diameter <= diameter && (x + 1 === plugList.length || plugList[x + 1].diameter >= diameter)) {
+            return plugList[x];
+        }
+    }
+
+    return null;
+}
+
+function getButtplugClosestAround(diameter, plugList = buttplugs) {
+    for (let x = 0; x < plugList.length; x++) {
+        //Buttplugs is sorted, ascending so we can just find the point in the list whe are looking for
+        //We must be <= the given diameter and bigger than the current diameter
+        if (plugList[x].diameter <= diameter && (x + 1 === plugList.length || plugList[x + 1].diameter >= diameter)) {
+            //If the diameter of the closest below plug is >= than twice as much away as the plug above from the searched diameter pick the one above instead
+             if(diameter - plugList[x].diameter >= (plugList[x + 1].diameter - diameter)*2) {
+                 return plugList[x + 1];
+             }
+
             return plugList[x];
         }
     }
@@ -189,11 +214,11 @@ function shouldIncreasePlugSize() {
 }
 
 function isUnexperiencedDiamater(diameter) {
-    return diameter >= 2.8;
+    return diameter >= getUsedToDiameter();
 }
 
 function isVeryUnexperiencedDiamater(diameter) {
-    return diameter >= 3.5;
+    return diameter >= getUsedToDiameter() + 0.5;
 }
 
 /*function tryIncreasePlugSize() {
@@ -369,14 +394,14 @@ function setPlugIn(plug) {
 }
 
 function getButtplugForTask() {
-    return getButtplugClosestBelow(getMaxStartingDiameter());
+    return getSmallButtplug(true);
 }
 
 
 function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
     //Get the max used thickness today to make sure we don't go too big too quickly
     //In the rare case of the biggest dildo being thicker than our biggest plug we need to watch for that
-    let maxUsedPlugThickness = Math.min(biggestButtplug.diameter, getVar(VARIABLE.MAX_DILDO_THICKNESS_TODAY, 0));
+    let maxUsedPlugThickness = Math.max(getUsedToDiameter(), Math.min(biggestButtplug.diameter, getVar(VARIABLE.MAX_DILDO_THICKNESS_TODAY, 0)));
 
     //If we want to force bigger and haven't been given a min thickness then we will make it bigger than the biggest thing we used today to make sure we go up
     if (forceBigger && minThickness === 0) {
@@ -393,7 +418,7 @@ function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
     //TODO: Handle min length too (smallest plug etc.)
 
     //Should be smallest buttplug size or if for example ass level 30 at least 3.5 (allows progression to go faster at start of session)
-    let allowedDefaultMaxDiameter = Math.max(smallestButtplug.diameter, Math.ceil(getVar(VARIABLE.ASS_LEVEL, 0) / 10) + 0.5);
+    let allowedDefaultMaxDiameter = Math.max(getUsedToDiameter(), Math.max(smallestButtplug.diameter, Math.ceil(getVar(VARIABLE.ASS_LEVEL, 0) / 10) + 0.5));
 
     while (availablePlugs.length === 0 && buttplugs.length !== 0) {
         for (let y = 0; y < buttplugs.length; y++) {
@@ -554,7 +579,7 @@ function endLastPlugPull() {
 }
 
 function sortPlug(a, b) {
-    if(a === undefined || b === undefined) {
+    if (a === undefined || b === undefined) {
         sendDebugMessage(a);
         sendDebugMessage(b);
         return 0;

@@ -42,6 +42,32 @@ function updateSessionDildos() {
     }
 }
 
+function getDildoClosestAboveDiameter(diameter = 0) {
+    let currentDildo = null;
+    for(let x = 0; x < DILDOS.length; x++) {
+        if(DILDOS[x].diameter >= diameter) {
+            if(currentDildo === null || currentDildo.diameter > DILDOS[x].diameter) {
+                currentDildo = DILDOS[x];
+            }
+        }
+    }
+
+    return currentDildo;
+}
+
+function getDildoClosestAboveLength(length = 0) {
+    let currentDildo = null;
+    for(let x = 0; x < DILDOS.length; x++) {
+        if(DILDOS[x].length >= length) {
+            if(currentDildo === null || currentDildo.length > DILDOS[x].length) {
+                currentDildo = DILDOS[x];
+            }
+        }
+    }
+
+    return currentDildo;
+}
+
 function getRandomUncleanedDildo() {
     for(let x = 0; x < DILDOS.length; x++) {
         if(DILDOS[x].usedInSession && !DILDOS[x].clean && currentPlug !== buttplugs[x]) {

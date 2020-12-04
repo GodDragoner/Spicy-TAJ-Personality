@@ -88,6 +88,8 @@ run("Startup/Versioning/VersionChecker.js");
 
 run('Dungeon/Punishments/Tasks/TaskBuilder.js');
 
+run('Academy/Classes/ClassHandler.js');
+
 afterLoadBodyParts();
 
 //Update devotion only if the setup is complete which means the variable must exist

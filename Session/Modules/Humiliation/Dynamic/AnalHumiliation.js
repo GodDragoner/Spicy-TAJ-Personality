@@ -2,7 +2,6 @@
 
 {
     if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.ANAL)) {
-        //TODO: More limit handling
         if (!ANAL_LIMIT.isAllowed()) {
             //Try to find a different module
             tryRunModuleFetchId();

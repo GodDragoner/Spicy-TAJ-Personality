@@ -219,5 +219,13 @@ function endGayPictureGame() {
     if (!feelsLikePunishingSlave() && getTotalAttachedClamps() > 0) {
         sendMessage('I will be generous today');
         sendMessage('You may already remove all clamps from your body %SlaveName%');
+
+        if(NIPPLE_CLAMPS.isToyOn()) {
+            NIPPLE_CLAMPS.setToyOn(false);
+        }
+
+        for (let x = 0; x < BODY_PARTS.length; x++) {
+            BODY_PARTS[x].currentClamps = 0;
+        }
     }
 }

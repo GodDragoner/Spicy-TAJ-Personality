@@ -359,6 +359,7 @@ function punishBustBalls(hand = true, multiplier = 1) {
 }
 
 function punishRubberbandCBT(bodyPart, multiplier = 1) {
+    let doneBefore = false;
     //Didn't do it yet in this section
     if(TEMP_CBT_HISTORY.indexOf(3) === -1 && TEMP_CBT_HISTORY.indexOf(4) === -1) {
         if (!fetchToy('small rubberband')) {
@@ -370,6 +371,7 @@ function punishRubberbandCBT(bodyPart, multiplier = 1) {
             sendAlreadyKnowWhatsNext('snap');
         }
     } else {
+        doneBefore = true;
         sendMessage('Get your rubberband ready again %SlaveName%');
     }
 
@@ -391,8 +393,11 @@ function punishRubberbandCBT(bodyPart, multiplier = 1) {
             break;
     }
 
-    sendMessage(random("With your other hand ", "Using your other hand "));
-    sendMessage(random("Pull back the rubber band as far as you can without breaking it"));
+    if(!doneBefore) {
+        sendMessage(random("With your other hand ", "Using your other hand "));
+        sendMessage(random("Pull back the rubber band as far as you can without breaking it"));
+    }
+
 
     switch (bodyPart) {
         case BODY_PART_PENIS_SHAFT:

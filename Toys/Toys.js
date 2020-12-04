@@ -1,21 +1,6 @@
 const DEFAULT_TOY_COOLDOWN_MINUTES = 5;
 
 {
-    /*run("Toys/ChastityCage.js");
-    run("Toys/Buttplug.js");
-    run("Toys/Gag.js");
-    run("Toys/Dildo.js");
-    run("Toys/Lube.js");
-    run("Toys/Clamps.js");
-    run("Toys/Clamps.js");
-    run("Toys/BallCrusher.js");
-    run("Toys/Rope.js");
-    run("Toys/Room.js");
-    run("Toys/Device.js");
-    run("Toys/Lingerie.js");
-    run("Toys/Vibrator.js");
-    run("Toys/Enema.js");*/
-
     let pathLength = getPersonalityPath().length;
     let files = getFileOrCreate(getPersonalityPath() + PATH_SEPARATOR + 'Toys').listFiles();
 
@@ -105,8 +90,14 @@ function interactWithRandomToys() {
         } else {
             distributeClamps(toDistribute);
         }
+    }
 
-        if (NIPPLE_CLAMPS.decideToyOff() && isChance(25)) {
+    if (NIPPLE_CLAMPS.decideToyOff()) {
+        let minutesSincePutOn = getMillisSinecDate(NIPPLE_CLAMPS.getLastUsage())/(1000*60);
+
+        //20 minutes should be max
+        //QUALITY: Add personal limit/modifier for sub
+        if(isChance(minutesSincePutOn*5)) {
             removeNippleClamps();
         }
     }
@@ -130,6 +121,12 @@ function interactWithRandomToys() {
     }
 
     sendDebugMessage('Random toy balls done');
+
+    if(isKneeling() && !feelsLikeShowingPower() && decideStopKneeling()) {
+        stopKneeling();
+    } else if(!isKneeling() && feelsLikeShowingPower()) {
+        startKneeling();
+    }
 }
 
 /**
@@ -148,7 +145,7 @@ function removeAllToys() {
     removeNippleClamps();
 
     if (isPlugged()) {
-        removeButtplug();
+        removeButtplug(true);
     }
 
     if (COLLAR_TOY.isToyOn() && !RULE_ALWAYS_WEAR_COLLAR.isActive()) {

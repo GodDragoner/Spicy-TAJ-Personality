@@ -245,7 +245,7 @@ function getClampsSentenceStart(verb) {
 
 
 function putClampsOnOneSide(amount, bodyPart) {
-    sendMessage(getClampsOnSentenceStart() + (amount === 1? "that " : " ") + amount + pluralize(" clothespin", amount) + " and " + random("put " + pluralizeArticle("it", amount) + " on", "attach " + pluralizeArticle("it", amount) + " to") + " your " + bodyPart.sidedName);
+    sendMessage(getClampsOnSentenceStart() + (amount === 1? " that " : " ") + amount + pluralize(" clothespin", amount) + " and " + random("put " + pluralizeArticle("it", amount) + " on", "attach " + pluralizeArticle("it", amount) + " to") + " your " + bodyPart.sidedName);
     bodyPart.addClamps(amount);
     sleep(3);
 }

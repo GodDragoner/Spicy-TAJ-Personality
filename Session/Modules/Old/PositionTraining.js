@@ -609,8 +609,12 @@ function positionTest(number, name, image) {
 }
 
 function positionTrainingEnd() {
-    sendMessage(random("We're at the end of your position training", "That was it", "We're at the end", "Well that was it", "Oh my we're finally at the end %Grin%") + " %SlaveName%");
-    sendAsMuchFun();
+    sendMessage(random("We're at the end of your position training", "That was it", "We're at the end", "Well that was it", "Oh my we're at the end %Grin%") + " %SlaveName%");
+
+    if(isChance(25)) {
+        sendAsMuchFun();
+    }
+
 
     changeMeritMedium(false);
     if (position_level < 50) {

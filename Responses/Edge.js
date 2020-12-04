@@ -10,6 +10,14 @@ function edgeResponse(message) {
             setTempVar(VARIABLE.ENDURANCE_STROKES_ATTEMPTS, getVar(VARIABLE.ENDURANCE_STROKES_ATTEMPTS) + 1);
             return true;
         } else if (!isEdging() && !isOnEdge() && !message.toLowerCase().contains('may') && !message.toLowerCase().contains('please')) {
+            let stroking = false;
+            if(isStroking()) {
+                stroking = true;
+                stopStroking();
+            } else {
+                //QUALITY: Interaction if edging without stroking
+            }
+
             //Unautherized Edge TODO: More stuff and save how many times unauthorized edging occured
             sendMessage('C\'mon %SlaveName%, you\'re only supposed to edge when I say so');
             sendMessage('For example, when I say...');
@@ -19,6 +27,12 @@ function edgeResponse(message) {
             sendMessage('Or I might have to punish you...');
             sendMessage('Actually, that sounds like fun too %Lol%');
             changeMeritMedium(true);
+
+            //Resume stroking
+            if(stroking) {
+                startStroking(getStrokingBPM());
+            }
+
             return true;
         }
     }

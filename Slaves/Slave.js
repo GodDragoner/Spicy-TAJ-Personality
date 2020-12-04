@@ -65,8 +65,9 @@ function askForPainToleranceIncrease() {
 }
 
 function startKneeling() {
+    sendMessage(random('Kneel for me', 'Get down on your knees', 'Down on your knees, right now', 'I want you to kneel for me,') + ' %SlaveName%', 0);
     playSound('Audio\\Spicy\\Commands\\Kneel\\*.mp3');
-    sendMessage(random('Kneel for me', 'Get down on your knees', 'Down on your knees, right now', 'I want you to kneel for me,') + ' %SlaveName%');
+    sleep(5);
     setTempVar(VARIABLE.IS_KNEELING, true);
     setTempVar(VARIABLE.KNEELING_STARTED, setDate());
 }
@@ -116,7 +117,7 @@ function addPunishmentPoints(amount, reason = -1) {
     let multiplier = 1;
 
     //We don't want any "last change" edit nor multiplier
-    if(amount < 0) {
+    if(amount <= 0) {
         sendDebugMessage('Subtracting ' + amount + ' punishment points');
         setVar(VARIABLE.PUNISHMENT_POINTS, Math.max(0, points + amount));
 
@@ -252,10 +253,10 @@ function getMaxDiameterIncrease() {
     let assLevel = getVar(VARIABLE.ASS_LEVEL);
 
     if (assLevel >= 30) {
-        maxDiameterIncrease = 0.75;
+        maxDiameterIncrease = 0.45;
     } else if (assLevel >= 23) {
-        maxDiameterIncrease = 0.5;
-    } else if (assLevel >= 15) {
+        maxDiameterIncrease = 0.35;
+    } else {
         maxDiameterIncrease = .25;
     }
 

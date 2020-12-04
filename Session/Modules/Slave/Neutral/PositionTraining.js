@@ -2,6 +2,8 @@
 
     //TOADD: Add toy usage
     if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.UNKNOWN)) {
+
+
         if (!getVar(VARIABLE.POSITION_TRAINING_STARTED, false)) {
             setVar(VARIABLE.POSITION_LEVEL, 1);
             setVar(VARIABLE.POSITION_TRAINING_STARTED, true);
@@ -20,6 +22,11 @@
                 sendMessage("A quick reminder of all the positions...");
                 positionWalkthrough();
             }
+        }
+
+        if(isKneeling()) {
+            sendMessage('You are allowed to stop kneeling until we are done with the positions');
+            sendMessage('Then you are to kneel without hesitation again %Grin%');
         }
 
         const positionLevel = getVar(VARIABLE.POSITION_LEVEL, 1);
