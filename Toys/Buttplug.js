@@ -738,12 +738,15 @@ function setupNewButtplug() {
     while (true) {
         if (answer.isLike("metal")) {
             material = MATERIAL.METAL;
+            answer.clearOptions();
             break;
         } else if (answer.isLike("glass")) {
             material = MATERIAL.GLASS;
+            answer.clearOptions();
             break;
         } else if (answer.isLike("silicon")) {
             material = MATERIAL.SILICON;
+            answer.clearOptions();
             break;
         } else {
             sendVirtualAssistantMessage('Is it made out of glass, metal or silicon?');

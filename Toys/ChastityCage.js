@@ -722,17 +722,20 @@ function setupNewCage() {
 
     sendVirtualAssistantMessage('Great. Now...');
     sendVirtualAssistantMessage('Is it made out of metal, plastic or silicon?', 0);
-    answer = createInput();
+    answer = createInput('metal', 'glass', 'silicon');
 
     while (true) {
         if (answer.isLike("metal")) {
             material = MATERIAL.METAL;
+            answer.clearOptions();
             break;
         } else if (answer.isLike("plastic")) {
             material = MATERIAL.PLASTIC;
+            answer.clearOptions();
             break;
         } else if (answer.isLike("silicon")) {
             material = MATERIAL.SILICON;
+            answer.clearOptions();
             break;
         } else {
             sendVirtualAssistantMessage('Is it made out of plastic, metal or silicon?');
@@ -824,12 +827,12 @@ function setupNewCage() {
                     sendVirtualAssistantMessage('I would suggest behaving properly otherwise you might be fucked or more like your cock will be');
                     spikesOverall = true;
                     break;
-                } else if (answer.isLike("anti", "base")) {
+                } else if (answer.isLike("anti", "base", "off", "ring")) {
                     sendVirtualAssistantMessage("%EmoteSad%");
                     sendVirtualAssistantMessage('Still it will be more than enough for you to suffer %Grin%');
                     break;
                 } else {
-                    sendVirtualAssistantMessage(YES_OR_NO);
+                    sendVirtualAssistantMessage("Ring/Base or everywhere?");
                     answer.loop();
                 }
             }
@@ -847,7 +850,7 @@ function setupNewCage() {
     let penisAccessible = false;
 
     sendVirtualAssistantMessage('Is it open at the front and allows access to your penis like on this photo?', 0);
-    showImage('Images/Toys/openSpikeChastity.*');
+    showImage('Images/Spicy/Toys/openSpikeChastity.*');
     answer = createInput();
 
     while (true) {

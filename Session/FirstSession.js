@@ -48,35 +48,7 @@
 
     sendMessage('Now we got a few things to clarify and talk about before we can start this agreement of ours');
 
-    sendMessage("I don't know whether you have any experience when it comes to blowjobs");
-    sendMessage("Meaning fucking your throat and caressing cocks with your mouth");
-    sendMessage("Are you experienced and capable of holding deepthroats?");
-
-    if(!CUCKOLD_LIMIT.isHardLimit()) {
-        sendMessage("Maybe even taking a huge cock from my lover down your throat?");
-    }
-
-    sendMessage("You should answer this truthfully for your own good %SlaveName%", 0);
-
-    answer = createInput();
-
-    //TODO: Bind this to sissy stuff etc.
-    while (true) {
-        if (answer.isLike("yes")) {
-            setVar(VARIABLE.BLOWJOB_LEVEL, 30);
-            sendMessage("I hope you are ready for what's about to come then %Grin%");
-            sendMessage('Because you are gonna find your throat filled a lot with me');
-            break;
-        } else if (answer.isLike("no")) {
-            setVar(VARIABLE.BLOWJOB_LEVEL, 1);
-            setVar(VARIABLE.BLOWJOB_TRAINING, true);
-            sendMessage('Don\'t worry under my guidance you will be holding deepthroats like a pro really quickly %Grin%');
-            break;
-        } else {
-            sendMessage(YES_OR_NO);
-            answer.loop();
-        }
-    }
+    setVar(VARIABLE.BLOWJOB_LEVEL, 1);
 
     sendMessage("Now...");
     sendMessage("I don't know how well you handle denial");
@@ -276,9 +248,12 @@
     sendMessage("So yes you are gonna orgasm today");
     sendMessage("It's gonna be the last time you can do so without explicit instructions so savor the moment %Grin%", 5);
 
+    sendMessage('Or don\'t do it and stay horny. But don\'t expect me to acknowledge if you haven\'t cum today in the future');
+
     setVar(VARIABLE.ORGASM_POINTS, 0);
     registerOrgasm();
 
+    sendMessage('Anyway...');
     sendMessage("You haven't earned my attention for that");
     sendMessage("So I'm gonna end our communication in a moment");
     sendMessage("When I do that");

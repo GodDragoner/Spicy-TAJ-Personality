@@ -100,7 +100,7 @@ DEEPTHROAT_TASK.sendInstructions = function () {
 };
 
 DEEPTHROAT_TASK.canUse = function() {
-    return getVar(VARIABLE.BLOWJOB_LEVEL) >= 30;
+    return getVar(VARIABLE.BLOWJOB_LEVEL) >= 30 && HUMILIATION_LIMIT.isAllowed();
 };
 
 DEEPTHROAT_TASK.generateAmount = function (points) {
