@@ -4,6 +4,7 @@ const LOGGER = Java.type('me.goddragon.teaseai.utils.TeaseLogger');
 const LOGGER_LEVEL = Java.type('java.util.logging.Level');
 const DEBUG_MODE = 1;
 const RAPID_TESTING = isVar("rapidTesting");
+const DEBUG_OPTIONS = isVar("debugOptions");
 
 const SENDER_TAJ = 1;
 const SENDER_ASSISTANT = 0;

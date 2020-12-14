@@ -18,7 +18,13 @@
     let exitRequest = false;
 
     while (!exitRequest) {
-        let lobbyAnswer = createInput("Session", "Chores", "Dungeon", "Settings", "Shop", "Fitness", "Exercise", "Study", "House Rules", "Pin Board", "Chastity", "Academy", "injectcodedebug", "End");
+        let lobbyAnswer;
+        if(DEBUG_OPTIONS) {
+            lobbyAnswer = createInput("Session", "Chores", "Dungeon", "Settings", "Shop", "Fitness", "Exercise", "Study", "House Rules", "Pin Board", "Chastity", "Academy", "injectcodedebug", "End");
+        } else {
+            lobbyAnswer = createInput("Session", "Chores", "Dungeon", "Settings", "Shop", "Fitness", "Exercise", "Study", "House Rules", "Pin Board", "Chastity", "Academy", "End");
+        }
+
         while (true) {
             if (lobbyAnswer.isLike("session", "domme")) {
                 lobbyAnswer.clearOptions();
