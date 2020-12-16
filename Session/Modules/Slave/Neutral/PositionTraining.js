@@ -934,7 +934,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             lockImages();
             showImage("Images/Spicy/Positions/Slut2.jpg");
             sendMessage("If you really want to please me then you should film yourself");
-            sendMessage("I think I would fit perfectly inside your selfhumiliation video folder %Grin%");
+            sendMessage("I think I would fit perfectly inside your selfhumiliation videos folder %Grin%");
             unlockImages();
 
             while (true) {

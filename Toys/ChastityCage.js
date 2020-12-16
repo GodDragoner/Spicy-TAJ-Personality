@@ -202,6 +202,11 @@ function findAvailableClosestToSize(length) {
 }
 
 function getRandomCageWithSize(length, punishments) {
+    //Return default cage
+    if(CHASTITY_CAGES.length === 1) {
+        return CHASTITY_CAGES[0];
+    }
+
     let cages = [];
 
     sendDebugMessage('Searching cage with length ' + length + ' and ' + punishments + ' punishments');
@@ -241,15 +246,14 @@ function getRandomCageWithSize(length, punishments) {
         }
 
         //Fitting size and enough punishment options
-        if (currentCage.length == length && punishmentOptionsOfCage >= punishments) {
+        if (currentCage.length === length && punishmentOptionsOfCage >= punishments) {
             cages.push(currentCage);
             sendDebugMessage('Pushing cage ' + currentCage.name + ' to available list');
         }
     }
 
-    if (cages.length === 0) {
-        //Reduce amount of punishments by one. If we reach -1 it won't skip any cage anymore because of forced punishments because we only check for punishments === 0
-        // -> It will at some point find a fitting cage
+    if (cages.length === 0 && punishments >= 0) {
+        //Reduce amount of punishments by one (if we can)
         return getRandomCageWithSize(length, punishments - 1);
     } else {
         return cages[randomInteger(0, cages.length - 1)];
@@ -331,7 +335,7 @@ function selectChastityCage() {
 
     let cage = getRandomCageWithSize(length, amountOfPunishments);
 
-    sendDebugMessage('Found cage ' + cage.name + " with length " + cage.length);
+    sendDebugMessage('Found cage ' + cage.name + " with length " + cage.length + " and " + cage.getPunishmentOptions() + " punish options ");
 
     let punishments = new java.util.ArrayList();
 

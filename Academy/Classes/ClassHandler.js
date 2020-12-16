@@ -84,7 +84,7 @@ function handleTodayAcademyClasses() {
                     sendMessage('Be sure to participate in every single class on time!');
                 }
 
-                sendMessage('The last assignment was ' + clazz.getCurrentAssignmentText());
+                sendMessage('The last assignment was "' + clazz.getCurrentAssignmentText() + '"');
                 if (sendYesOrNoQuestion('Did you complete your last assignment %SlaveName%?')) {
                     sendMessage('%Good%');
                 } else {
