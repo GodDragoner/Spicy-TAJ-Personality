@@ -23,7 +23,7 @@
         //, "You are still being punished", "You're serving a punishment" TODO: Punishment flag
         sendMessage(random("Meaning there will be no release from that %ChastityCage%...", "Meaning you won't be released for this session", "So there won't be any release today"));
         unlockImages();
-    } else {
+    } else if(hasChastityCage()) {
         //Force unlock
         if (getVar(VARIABLE.LOCKED_DAYS_IN_ROW, 0) > getVar(VARIABLE.LOCKED_UP_LIMIT, 3) && isInChastity()) {
             sendDebugMessage('Forced to unlock because locked in a row is higher than locked up limit');

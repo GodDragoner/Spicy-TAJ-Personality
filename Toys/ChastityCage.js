@@ -257,9 +257,13 @@ function getRandomCageWithSize(length, punishments) {
         }
     }
 
-    if (cages.length === 0 && punishments >= 0) {
-        //Reduce amount of punishments by one (if we can)
-        return getRandomCageWithSize(length, punishments - 1);
+    if (cages.length === 0) {
+        if(punishments >= 0) {
+            //Reduce amount of punishments by one (if we can)
+            return getRandomCageWithSize(length, punishments - 1);
+        } else {
+            return random(CHASTITY_CAGES);
+        }
     } else {
         return cages[randomInteger(0, cages.length - 1)];
     }
@@ -339,6 +343,11 @@ function selectChastityCage() {
     sendDebugMessage('Searching for cage with size ' + length + ' and punishments ' + amountOfPunishments);
 
     let cage = getRandomCageWithSize(length, amountOfPunishments);
+
+    if(cage == null) {
+        sendDebugMessage('Found no chastity cage in a list of ' + CHASTITY_CAGES.length + ' cages in total');
+        return null;
+    }
 
     sendDebugMessage('Found cage ' + cage.name + " with length " + cage.length + " and " + cage.getPunishmentOptions() + " punish options ");
 
@@ -426,7 +435,7 @@ function selectChastityCage() {
 }
 
 function lockChastityCage(chastityCage = undefined) {
-    if (!getVar(VARIABLE.HAS_CHASTITY) || getVar(VARIABLE.CHASTITY_ON)) {
+    if (!getVar(VARIABLE.HAS_CHASTITY, false) || getVar(VARIABLE.CHASTITY_ON)) {
         return;
     }
 
@@ -459,7 +468,7 @@ function lockChastityCage(chastityCage = undefined) {
 
     lockImages();
     showImage("Images/Spicy/Chastity/ChastityOn/*.{jpg,png,gif}");
-    if (randomInteger(0, 2) == 2) playSound("Audio/Spicy/Chastity/ChastityOn/*.mp3");
+    if (randomInteger(0, 2) === 2) playSound("Audio/Spicy/Chastity/ChastityOn/*.mp3");
 
     if (chastityCage === null || chastityCage === undefined) {
         chastityCage = selectChastityCage();

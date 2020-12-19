@@ -15,6 +15,11 @@ const DEFAULT_TOY_COOLDOWN_MINUTES = 5;
     loadDildos();
     loadButtplugs();
     loadChastityCages();
+
+    sendDebugMessage('Loaded ' + CHASTITY_CAGES.length + ' chastity cages');
+    sendDebugMessage('Loaded ' + DILDOS.length + ' dildos');
+    sendDebugMessage('Loaded ' + buttplugs.length + ' buttplugs');
+
 }
 
 
