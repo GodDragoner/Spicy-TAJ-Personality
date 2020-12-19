@@ -14,12 +14,32 @@ if (isVar(dayOfWeek + "MoodDate")) {
     //Check if we are still on the same day
     if (!(date.getDay() == todayDate.getDate() && date.getMonth() == todayDate.getMonth() && date.getYear() == todayDate.getFullYear())) {
         //Reset temp added values
-        sendDebugMessage('Before temp day of week mood:');
+        sendDebugMessage('Before temp day of week mood (' + dayOfWeek +  ')');
         debugPrintMood();
 
-        setVar(VARIABLE.HAPPINESS, Math.max(0, getVar(VARIABLE.HAPPINESS) - getVar(dayOfWeek + "Happiness")));
-        setVar(VARIABLE.LUST, Math.max(0, getVar(VARIABLE.LUST) - getVar(dayOfWeek + "Lust")));
-        setVar(VARIABLE.ANGER, Math.max(0, getVar(VARIABLE.ANGER) - getVar(dayOfWeek + "Anger")));
+        let happiness = getVar(VARIABLE.HAPPINESS) - getVar(dayOfWeek + "Happiness", 0);
+        let lust = getVar(VARIABLE.LUST) - getVar(dayOfWeek + "Lust", 0);
+        let anger = getVar(VARIABLE.ANGER) - getVar(dayOfWeek + "Anger", 0);
+
+        if(isNaN(happiness)) {
+            sendDebugMessage('Happiness was NaN with set value ' + getVar(VARIABLE.HAPPINESS) + ' and temp value ' + getVar(dayOfWeek + "Happiness", 0));
+            happiness = getVar(VARIABLE.HAPPINESS);
+        }
+
+        if(isNaN(lust)) {
+            sendDebugMessage('Happiness was NaN with set value ' + getVar(VARIABLE.LUST) + ' and temp value ' + getVar(dayOfWeek + "Lust", 0));
+            lust = getVar(VARIABLE.LUST);
+        }
+
+        if(isNaN(anger)) {
+            sendDebugMessage('Happiness was NaN with set value ' + getVar(VARIABLE.ANGER) + ' and temp value ' + getVar(dayOfWeek + "Anger", 0));
+            anger = getVar(VARIABLE.ANGER);
+        }
+
+
+        setVar(VARIABLE.HAPPINESS, Math.max(0, happiness));
+        setVar(VARIABLE.LUST, Math.max(0, lust));
+        setVar(VARIABLE.ANGER, Math.max(0, anger));
         newDay = true;
 
         sendDebugMessage('After temp day of week mood:');

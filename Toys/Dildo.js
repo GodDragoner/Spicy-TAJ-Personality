@@ -32,11 +32,11 @@ function sitOnDildo(toy) {
     sendMessage('Now...');
     sendMessage('Put your ' + toy + ' on the ground');
 
-    
+
 }
 
 function updateSessionDildos() {
-    for(let x = 0; x < DILDOS.length; x++) {
+    for (let x = 0; x < DILDOS.length; x++) {
         DILDOS[x].usedInSession = false;
         DILDOS[x].clean = true;
     }
@@ -44,9 +44,9 @@ function updateSessionDildos() {
 
 function getDildoClosestAboveDiameter(diameter = 0) {
     let currentDildo = null;
-    for(let x = 0; x < DILDOS.length; x++) {
-        if(DILDOS[x].diameter >= diameter) {
-            if(currentDildo === null || currentDildo.diameter > DILDOS[x].diameter) {
+    for (let x = 0; x < DILDOS.length; x++) {
+        if (DILDOS[x].diameter >= diameter) {
+            if (currentDildo === null || currentDildo.diameter > DILDOS[x].diameter) {
                 currentDildo = DILDOS[x];
             }
         }
@@ -57,9 +57,9 @@ function getDildoClosestAboveDiameter(diameter = 0) {
 
 function getDildoClosestAboveLength(length = 0) {
     let currentDildo = null;
-    for(let x = 0; x < DILDOS.length; x++) {
-        if(DILDOS[x].length >= length) {
-            if(currentDildo === null || currentDildo.length > DILDOS[x].length) {
+    for (let x = 0; x < DILDOS.length; x++) {
+        if (DILDOS[x].length >= length) {
+            if (currentDildo === null || currentDildo.length > DILDOS[x].length) {
                 currentDildo = DILDOS[x];
             }
         }
@@ -69,8 +69,8 @@ function getDildoClosestAboveLength(length = 0) {
 }
 
 function getRandomUncleanedDildo() {
-    for(let x = 0; x < DILDOS.length; x++) {
-        if(DILDOS[x].usedInSession && !DILDOS[x].clean && currentPlug !== buttplugs[x]) {
+    for (let x = 0; x < DILDOS.length; x++) {
+        if (DILDOS[x].usedInSession && !DILDOS[x].clean && currentDildo !== DILDOS[x]) {
             return DILDOS[x];
         }
     }
@@ -79,8 +79,8 @@ function getRandomUncleanedDildo() {
 }
 
 function getRandomCleanDildo() {
-    for(let x = 0; x < DILDOS.length; x++) {
-        if(!DILDOS[x].usedInSession || DILDOS[x].clean ) {
+    for (let x = 0; x < DILDOS.length; x++) {
+        if (!DILDOS[x].usedInSession || DILDOS[x].clean) {
             return DILDOS[x];
         }
     }
@@ -93,24 +93,24 @@ function getAnalDildoForTask(minLength = 0, minThickness = 0) {
 
     let assLevel = getVar(VARIABLE.ASS_LEVEL);
 
-    if(minLength === 0) {
-        minLength = Math.max(10, assLevel/2);
+    if (minLength === 0) {
+        minLength = Math.max(10, assLevel / 2);
     }
 
-    if(minThickness === 0) {
-        minThickness = Math.max(2.5, assLevel/6);
+    if (minThickness === 0) {
+        minThickness = Math.max(2.5, assLevel / 6);
     }
 
     for (let y = 0; y < DILDOS.length; y++) {
         let dildo = DILDOS[y];
 
-        if(dildo.diameter >= minThickness && dildo.length >= minLength && dildo.diameter <= minThickness + 2) {
+        if (dildo.diameter >= minThickness && dildo.length >= minLength && dildo.diameter <= minThickness + 2) {
             availableDildos.push(dildo);
         }
     }
 
-    if(availableDildos.length === 0) {
-        if(minThickness > 0 && minLength > 0) {
+    if (availableDildos.length === 0) {
+        if (minThickness > 0 && minLength > 0) {
             return getAnalDildoForTask(--minLength, --minThickness);
         }
 
@@ -132,17 +132,17 @@ function getAnalDildoForTask(minLength = 0, minThickness = 0) {
 function getAnalDildo(minLength = 0, minThickness = 0, forceThicker = false, forceLonger = false, smallerFactor = 0) {
     let maxDildoThickness = getVar(VARIABLE.MAX_DILDO_THICKNESS_TODAY, 0) - smallerFactor;
 
-    if(maxDildoThickness >= thickestDildo.diameter) {
+    if (maxDildoThickness >= thickestDildo.diameter) {
         //We don't have any thicker dildo
         maxDildoThickness = thickestDildo.diameter;
     }
 
-    if(forceThicker && minThickness === 0) {
+    if (forceThicker && minThickness === 0) {
         //Limit to min thickness is of course our thickest dildo
         minThickness = Math.min(maxDildoThickness + 0.1, thickestDildo.diameter);
     }
 
-    if(forceLonger && minLength === 0) {
+    if (forceLonger && minLength === 0) {
         //Limit to min length is of course our longest dildo
         minLength = Math.min(currentDildo.length + 0.1, longestDildo.length);
     }
@@ -151,29 +151,29 @@ function getAnalDildo(minLength = 0, minThickness = 0, forceThicker = false, for
 
     let maxDiameterIncrease = getMaxDiameterIncrease();
 
-    while(availableDildos.length === 0 && DILDOS.length !== 0) {
+    while (availableDildos.length === 0 && DILDOS.length !== 0) {
         for (let y = 0; y < DILDOS.length; y++) {
             let dildo = DILDOS[y];
 
-            if(dildo.diameter >= minThickness && dildo.length >= minLength) {
+            if (dildo.diameter >= minThickness && dildo.length >= minLength) {
                 //Don't over extent with too big dildos too quickly
-                if(dildo.diameter >= maxDildoThickness && dildo.diameter <= Math.max(smallestDildo.diameter, maxDildoThickness + maxDiameterIncrease)) {
+                if (dildo.diameter >= maxDildoThickness && dildo.diameter <= Math.max(smallestDildo.diameter, maxDildoThickness + maxDiameterIncrease)) {
                     availableDildos.push(dildo);
                 }
             }
         }
 
-        if(availableDildos.length === 0) {
+        if (availableDildos.length === 0) {
             //Seems like we don't have any dildo within our given diameter increase range so we are gonna increase our range
             maxDiameterIncrease += 0.25;
 
             //We are also decrease our min length and min thickness
-            if(minLength > 0) minLength -= 0.5;
-            if(minThickness > 0) minThickness -= 0.5;
+            if (minLength > 0) minLength -= 0.5;
+            if (minThickness > 0) minThickness -= 0.5;
         }
     }
 
-    if(availableDildos.length === 0) {
+    if (availableDildos.length === 0) {
         return null;
     }
 
@@ -187,8 +187,8 @@ function getAnalDildo(minLength = 0, minThickness = 0, forceThicker = false, for
 
 function fetchBlowjobDildo() {
     let toy = null;
-    if(!hasDildoToy()) {
-        if(sendYesOrNoQuestion('Since you own no dildo. Do you have anything else around that is dildo shaped?')) {
+    if (!hasDildoToy()) {
+        if (sendYesOrNoQuestion('Since you own no dildo. Do you have anything else around that is dildo shaped?')) {
             sendMessage('Then you are gonna use that instead!');
             toy = sendInput('Tell me %SlaveName%. What do you have at hand that can be used instead of a dildo?').getAnswer();
         } else {
@@ -197,12 +197,11 @@ function fetchBlowjobDildo() {
 
             return null;
         }
-    }
-    else {
+    } else {
         toy = getDildo(true).name;
     }
 
-    if(fetchDildoToy(toy)) {
+    if (fetchDildoToy(toy)) {
         return toy;
     } else {
         return null;
@@ -215,20 +214,20 @@ function getDildo(blowjob = false) {
     } else {
         let blowjobLevel = getBlowjobLevel();
 
-        let minDiameter = Math.max(smallestDildo.diameter, Math.min(thickestDildo.diameter, blowjobLevel/8));
-        let minLength = Math.max(shortestDildo.length, Math.min(longestDildo.length, blowjobLevel/3));
+        let minDiameter = Math.max(smallestDildo.diameter, Math.min(thickestDildo.diameter, blowjobLevel / 8));
+        let minLength = Math.max(shortestDildo.length, Math.min(longestDildo.length, blowjobLevel / 3));
 
-        let maxLength = minLength + blowjobLevel/3;
-        let maxDiameter = minDiameter + blowjobLevel/15;
+        let maxLength = minLength + blowjobLevel / 3;
+        let maxDiameter = minDiameter + blowjobLevel / 15;
 
         let availableDildos = [];
 
-        while(availableDildos.length === 0 && DILDOS.length !== 0) {
+        while (availableDildos.length === 0 && DILDOS.length !== 0) {
             for (let y = 0; y < DILDOS.length; y++) {
                 let dildo = DILDOS[y];
 
                 //Ignore dildos non silicone
-                if(dildo.material === MATERIAL.SILICON) {
+                if (dildo.material === MATERIAL.SILICON) {
                     continue;
                 }
 
@@ -241,7 +240,7 @@ function getDildo(blowjob = false) {
             maxDiameter += 0.5;
         }
 
-        if(availableDildos.length === 0) {
+        if (availableDildos.length === 0) {
             return getDildo(false);
         }
 
@@ -254,6 +253,8 @@ function loadDildos() {
     if (!isVar('dildos')) {
         setVar('dildos', new java.util.ArrayList());
     } else {
+        let saveD = false;
+
         let arrayList = getVar('dildos');
 
         for (let x = 0; x < arrayList.size(); x++) {
@@ -264,24 +265,65 @@ function loadDildos() {
             DILDOS.push(dildo);
 
             //Find smallest dildo
-            if(smallestDildo == null || smallestDildo.diameter > dildo.diameter) {
+            if (smallestDildo == null || smallestDildo.diameter > dildo.diameter) {
                 smallestDildo = dildo;
             }
 
             //Find shortest dildo
-            if(shortestDildo == null || shortestDildo.length > dildo.length) {
+            if (shortestDildo == null || shortestDildo.length > dildo.length) {
                 shortestDildo = dildo;
             }
 
             //Find thickest dildo
-            if(thickestDildo == null || thickestDildo.diameter < dildo.diameter) {
+            if (thickestDildo == null || thickestDildo.diameter < dildo.diameter) {
                 thickestDildo = dildo;
             }
 
             //Find longest dildo
-            if(longestDildo == null || longestDildo.length < dildo.length) {
+            if (longestDildo == null || longestDildo.length < dildo.length) {
                 longestDildo = dildo;
             }
+
+            //Conversion of old stuff
+            if (dildo.glass) {
+                delete dildo.glass;
+                dildo.material = MATERIAL.GLASS;
+                saveD = true;
+            }
+
+            if(isUndefinedString(dildo.material)) {
+                dildo.material = MATERIAL.SILICON;
+                saveD = true;
+            }
+
+            if(isUndefinedString(dildo.doubleSided)) {
+                dildo.doubleSided = false;
+                saveD = true;
+            }
+
+            if(isUndefinedString(dildo.doubleSided)) {
+                dildo.doubleSided = false;
+                saveD = true;
+            }
+
+            if(isUndefinedString(dildo.suctionCup)) {
+                dildo.suctionCup = false;
+                saveD = true;
+            }
+
+            if(isUndefinedString(dildo.textured)) {
+                dildo.textured = false;
+                saveD = true;
+            }
+
+            if(isUndefinedString(dildo.cumInjection)) {
+                dildo.cumInjection = false;
+                saveD = true;
+            }
+        }
+
+        if (saveD) {
+            saveDildos();
         }
     }
 }
@@ -337,12 +379,12 @@ function setupNewDildo() {
         if (answer.isDouble()) {
             length = answer.getDouble();
 
-            if(length < 10) {
+            if (length < 10) {
                 sendVirtualAssistantMessage('That\'s quite short however maybe the diameter will tare your ass apart %Lol%');
                 sendVirtualAssistantMessage('No matter what it sure does make a good addition to your collection');
-            } else if(length < 16) {
+            } else if (length < 16) {
                 sendVirtualAssistantMessage('Not too short. I think it\'s good enough to milk you dry %EmoteHappy%');
-            } else if(length < 22) {
+            } else if (length < 22) {
                 sendVirtualAssistantMessage('I like long dildos. Imagine how it feels like taking that monster balls deep %Grin%');
             } else {
                 sendVirtualAssistantMessage('That\'s really long. I hope for your own sake that you can take that all the way in %Wicked%');
@@ -363,15 +405,15 @@ function setupNewDildo() {
         if (answer.isDouble()) {
             diameter = answer.getDouble();
 
-            if(diameter < 3) {
+            if (diameter < 3) {
                 sendVirtualAssistantMessage('That\'s really thing. But we all need something to warm up with don\'t we?');
-            } else if(diameter < 4) {
+            } else if (diameter < 4) {
                 sendVirtualAssistantMessage('Something to start warming up with. I like those %Grin%');
-            } else if(diameter < 5) {
+            } else if (diameter < 5) {
                 sendVirtualAssistantMessage('The perfect toy to rape your ass with on a regular basis');
-            } else if(diameter < 6) {
+            } else if (diameter < 6) {
                 sendVirtualAssistantMessage('That thing will make you regret that you bought it once it is brutally raping that asshole');
-            } else if(diameter < 7) {
+            } else if (diameter < 7) {
                 sendVirtualAssistantMessage('I hope that you are able to get this all the way in for your own good %Lol%');
             } else {
                 sendVirtualAssistantMessage('I hope you are not gonna regret buying this %Lol%');
@@ -543,4 +585,70 @@ function fetchDildoToy(toy) {
 
 function getDildoImagePath(name) {
     return 'Images/Spicy/Toys/Dildos/' + name + '.*';
+}
+
+function openDildoList() {
+    let list = javafx.collections.FXCollections.observableArrayList();
+
+    for (let x = 0; x < DILDOS.length; x++) {
+        list.add(DILDOS[x].name);
+    }
+
+    createToyListGUI(function (listView, event) {
+        showDildoGUI(getDildoByName(listView.listView.getSelectionModel().getSelectedItem()));
+    }, "Dildos", list)
+}
+
+function showDildoGUI(dildo) {
+    const RunnableClass = Java.type('java.lang.Runnable');
+    let CustomRunnable = Java.extend(RunnableClass, {
+        run: function () {
+            const dialog = createDialog(dildo.name);
+
+            let gridPane = createGridPaneGUI();
+
+            let row = createToySettingGUI(gridPane, dildo.getImagePath());
+
+            let writebackGui = createWritebackGUI(dildo);
+
+            let nameBox = writebackGui.addWritebackValue(gridPane.addTextSetting(row++, "Name", dildo.name), "name");
+            let diameter = writebackGui.addWritebackValue(gridPane.addTextSetting(row++, "Diameter", dildo.diameter), "diameter");
+            diameter.setOnlyDoubles();
+            let length = writebackGui.addWritebackValue(gridPane.addTextSetting(row++, "Length", dildo.length), "length");
+            length.setOnlyDoubles();
+
+            let material = writebackGui.addWritebackValue(gridPane.addComboBox(row++, "Material"), "material");
+            material.addChildren(MATERIAL, dildo.material);
+
+            /*let vibrating = writebackGui.addWritebackValue(gridPane.addCheckBox(row++, "Vibrating"), "vibrating");
+            vibrating.setSelected(dildo.vibrating);*/
+
+            let textured = writebackGui.addWritebackValue(gridPane.addCheckBox(row++, "Textured"), "textured");
+            textured.setSelected(dildo.textured);
+
+            let doubleSided = writebackGui.addWritebackValue(gridPane.addCheckBox(row++, "Double Sided"), "doubleSided");
+            doubleSided.setSelected(dildo.doubleSided);
+
+            let suctionCup = writebackGui.addWritebackValue(gridPane.addCheckBox(row++, "Suction Cup"), "suctionCup");
+            suctionCup.setSelected(dildo.suctionCup);
+
+            let cumInjection = writebackGui.addWritebackValue(gridPane.addCheckBox(row++, "Cum Injection"), "cumInjection");
+            cumInjection.setSelected(dildo.cumInjection);
+
+            let save = createButton("Save");
+            gridPane.setConstraints(save.button, 1, row);
+            gridPane.getChildren().add(save.button);
+
+            save.setOnAction(function (handle) {
+                writebackGui.writeBack();
+                saveDildos();
+                dialog.close();
+            });
+
+            gridPane.addCloseButton(dialog, 2, row++);
+
+            dialog.readyAndShow(gridPane.gridPane);
+        }
+    });
+    runGui(new CustomRunnable());
 }

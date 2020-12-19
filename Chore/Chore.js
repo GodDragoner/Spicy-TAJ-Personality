@@ -662,4 +662,6 @@ function sendKinkyChoreInstructions(choreType) {
             //TODO: Bell tasks (corner and computer)
         }
     }
+
+    return attachedToys;
 }

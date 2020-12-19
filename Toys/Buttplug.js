@@ -167,9 +167,9 @@ function getButtplugClosestAround(diameter, plugList = buttplugs) {
         //We must be <= the given diameter and bigger than the current diameter
         if (plugList[x].diameter <= diameter && (x + 1 === plugList.length || plugList[x + 1].diameter >= diameter)) {
             //If the diameter of the closest below plug is >= than twice as much away as the plug above from the searched diameter pick the one above instead
-             if(diameter - plugList[x].diameter >= (plugList[x + 1].diameter - diameter)*2) {
-                 return plugList[x + 1];
-             }
+            if (diameter - plugList[x].diameter >= (plugList[x + 1].diameter - diameter) * 2) {
+                return plugList[x + 1];
+            }
 
             return plugList[x];
         }
@@ -602,6 +602,8 @@ function loadButtplugs() {
     } else {
         let arrayList = getVar('buttplugs');
 
+        let savePlugs = false;
+
         for (let x = 0; x < arrayList.size(); x++) {
             let entry = arrayList.get(x);
             let buttplug = createButtplug().fromString(entry);
@@ -616,6 +618,43 @@ function loadButtplugs() {
             if (biggestButtplug == null || biggestButtplug.diameter < buttplug.diameter) {
                 biggestButtplug = buttplug;
             }
+
+            //Conversion of old stuff
+            if (buttplug.crystal) {
+                delete buttplug.crystal;
+                buttplug.baseStyle = BUTTPLUG_BASE_STYLE.CRYSTAL;
+                savePlugs = true;
+            }
+
+            //Only == instead of === because it might be "undefined"
+            if (isUndefinedString(buttplug.baseStyle)) {
+                buttplug.baseStyle = BUTTPLUG_BASE_STYLE.PLAIN;
+                savePlugs = true;
+            }
+
+            if (isUndefinedString(buttplug.vibrating)) {
+                buttplug.vibrating = false;
+                savePlugs = true;
+            }
+
+            if (isUndefinedString(buttplug.textured)) {
+                buttplug.textured = false;
+                savePlugs = true;
+            }
+
+            if (isUndefinedString(buttplug.tbase)) {
+                buttplug.tbase = false;
+                savePlugs = true;
+            }
+
+            if (isUndefinedString(buttplug.hollow)) {
+                buttplug.hollow = false;
+                savePlugs = true;
+            }
+        }
+
+        if (savePlugs) {
+            saveButtplugs();
         }
     }
 
@@ -913,4 +952,71 @@ function createButtplug(name, diameter, length, vibrating, textured, material, h
 
 function getButtplugImagePath(name) {
     return 'Images/Spicy/Toys/Buttplugs/' + name + '.*';
+}
+
+
+function openButtplugList() {
+    let list = javafx.collections.FXCollections.observableArrayList();
+
+    for(let x = 0; x < buttplugs.length; x++) {
+        list.add(buttplugs[x].name);
+    }
+
+    createToyListGUI(function(listView, event) {
+        showButtplugGUI(getButtplugByName(listView.listView.getSelectionModel().getSelectedItem()));
+    }, "Buttplugs", list)
+}
+
+function showButtplugGUI(buttplug) {
+    const RunnableClass = Java.type('java.lang.Runnable');
+    let CustomRunnable = Java.extend(RunnableClass, {
+        run: function () {
+            const dialog = createDialog(buttplug.name);
+
+            let gridPane = createGridPaneGUI();
+
+            let row = createToySettingGUI(gridPane, buttplug.getImagePath());
+
+            let writebackGui = createWritebackGUI(buttplug);
+
+            let nameBox = writebackGui.addWritebackValue(gridPane.addTextSetting(row++, "Name", buttplug.name), "name");
+            let diameter = writebackGui.addWritebackValue(gridPane.addTextSetting(row++, "Diameter", buttplug.diameter), "diameter");
+            diameter.setOnlyDoubles();
+            let length =  writebackGui.addWritebackValue(gridPane.addTextSetting(row++, "Length", buttplug.length), "length");
+            length.setOnlyDoubles();
+
+            let material = writebackGui.addWritebackValue(gridPane.addComboBox(row++, "Material"), "material");
+            material.addChildren(MATERIAL, buttplug.material);
+
+            let vibrating = writebackGui.addWritebackValue(gridPane.addCheckBox(row++, "Vibrating"), "vibrating");
+            vibrating.setSelected(buttplug.vibrating);
+
+            let textured = writebackGui.addWritebackValue(gridPane.addCheckBox(row++, "Textured"), "textured");
+            textured.setSelected(buttplug.textured);
+
+            let hollow = writebackGui.addWritebackValue(gridPane.addCheckBox(row++, "Hollow"), "hollow");
+            hollow.setSelected(buttplug.hollow);
+
+            let baseStyle = writebackGui.addWritebackValue(gridPane.addComboBox(row++, "Base Style"), "baseStyle");
+            baseStyle.addChildren(BUTTPLUG_BASE_STYLE, buttplug.baseStyle);
+
+            let tBase = writebackGui.addWritebackValue(gridPane.addCheckBox(row++, "T-Base"), "tbase");
+            tBase.setSelected(buttplug.tbase);
+
+            let save = createButton("Save");
+            gridPane.setConstraints(save.button, 1, row);
+            gridPane.getChildren().add(save.button);
+
+            save.setOnAction(function(handle) {
+                writebackGui.writeBack();
+                saveButtplugs();
+                dialog.close();
+            });
+
+            gridPane.addCloseButton(dialog, 2, row++);
+
+            dialog.readyAndShow(gridPane.gridPane);
+        }
+    });
+    runGui(new CustomRunnable());
 }

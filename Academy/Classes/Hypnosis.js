@@ -20,7 +20,7 @@
         tasks.push('Spent ' + stage*10 + ' minutes watching ' + random(possibleTypes) + ' and sensually fucking yourself with a dildo of your choice');
 
         if(MAGIC_WAND_TOY.hasToy() && MAGIC_WAND_TOY.isPlayAllowed()) {
-            tasks.push('Spent ' + stage*10 + ' minutes watching ' + random(possibleTypes) + ' and while vibing your clitty');
+            tasks.push('Spent ' + stage*10 + ' minutes watching ' + random(possibleTypes) + ' while vibing your clitty');
         }
 
         if(SISSY_LIMIT.isAllowed()) {
@@ -29,7 +29,7 @@
         }
 
         if(PROSTATE_VIBRATOR_TOY.hasToy() && PROSTATE_VIBRATOR_TOY.isPlayAllowed()) {
-            tasks.push('Spent ' + stage*10 + ' minutes watching ' + random(possibleTypes) + ' and while teasing your ass with a prostate vibrator');
+            tasks.push('Spent ' + stage*10 + ' minutes watching ' + random(possibleTypes) + ' while teasing your ass with a prostate vibrator');
         }
 
         return tasks;

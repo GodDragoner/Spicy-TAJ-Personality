@@ -746,3 +746,56 @@ function setupToys(settings) {
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));*/
     unlockImages();
 }
+
+function createToyListGUI(onClick, name, list) {
+    const instance = Java.type('me.goddragon.teaseai.TeaseAI').application;
+    const controller = instance.getController();
+
+    const RunnableClass = Java.type('java.lang.Runnable');
+    let CustomRunnable = Java.extend(RunnableClass, {
+        run: function () {
+            const dialog = createDialog(name);
+
+            let gridPane = createGridPaneGUI();
+            gridPane.setPadding(10, 10, 10, 10);
+            gridPane.setHGap(5);
+            gridPane.setVGap(5);
+
+            let row = 0;
+
+            let listView = createListView();
+
+            listView.setItems(list);
+
+            gridPane.setConstraints(listView.listView, 0, row++);
+            gridPane.getChildren().add(listView.listView);
+
+            listView.setOnClick(function(event) {
+                onClick(listView, event);
+            });
+
+            gridPane.addCloseButton(dialog, 0, row++);
+
+            dialog.readyAndShow(gridPane.gridPane);
+        }
+    });
+    runGui(new CustomRunnable());
+}
+
+function createToySettingGUI(gridPane, imagePath) {
+    gridPane.setPadding(10, 10, 10, 10);
+    gridPane.setHGap(5);
+    gridPane.setVGap(5);
+
+    let row = 0;
+    let image = createImageView();
+    image.setImage(imagePath);
+    image.setFitWidth(150);
+    image.setPreserveRatio(true);
+    image.setSmooth(true);
+    image.setCache(true);
+    gridPane.setConstraints(image.imageView, 1, row++);
+    gridPane.getChildren().add(image.imageView);
+
+    return row;
+}

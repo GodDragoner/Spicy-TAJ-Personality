@@ -108,9 +108,15 @@ function readyForStroking() {
 
 function readyForVibratingCage() {
     if(hasMagicWand()) {
+        MAGIC_WAND_TOY.setLastUsage();
+
         if(MAGIC_WAND_TOY.wasUsedInActiveContext()) {
-            //Tell slave again so he can pick it up etc and start once this continues
-            sendMessage('Get your vibrator ready %SlaveName%', 10);
+            //We don't need to send this if we used this recently
+            if(MAGIC_WAND_TOY.getLastUsage().addSecond(60).hasPassed()) {
+                //Tell slave again so he can pick it up etc and start once this continues
+                sendMessage('Get your vibrator ready %SlaveName%', 10);
+            }
+
             return true;
         }
 

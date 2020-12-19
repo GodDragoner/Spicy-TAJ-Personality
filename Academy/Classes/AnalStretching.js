@@ -6,8 +6,8 @@
         tasks.push('Sit on your ' + getDildo().name + ' for ' + stage * 8 + ' minutes while applying constant pressure to push it deeper');
         tasks.push('Fuck your ' + getDildo().name + ' for ' + stage * 8 + ' minutes as deep as it will go');
         tasks.push('Find some anal porn of at least  ' + stage * 8 + ' minutes. Try to copy it using your ' + getDildo().name + ' as well as possible');
-        tasks.push('Ride the ' + getDildo().name + ' kneeling for ' + stage * 8 + ' as deep as it will go');
-        tasks.push('Ride the ' + getDildo().name + ' squatting for ' + stage * 8 + ' as deep as it will go');
+        tasks.push('Ride the ' + getDildo().name + ' kneeling for ' + stage * 8 + ' minutes as deep as it will go');
+        tasks.push('Ride the ' + getDildo().name + ' squatting for ' + stage * 8 + ' minutes as deep as it will go');
         tasks.push('Put in your ' + getBigButtplug(true).name + ' and pull it out to the point where its thickest part is stretching your ass. Hold for 10 seconds and repeat ' + stage * 20 + ' times');
         tasks.push('Fuck your ' + getDildo().name + ' for  ' + stage * 300 + ' thrusts as deep as it will go');
         tasks.push('Fuck yourself with your ' + getBigButtplug(true).name + ' for ' + stage * 8 + ' minutes');

@@ -356,7 +356,6 @@ function workmodeTease(tease) {
 
             for(let x = 0; x < randomInteger(5, 13); x++) {
                 showImage("Images/Spicy/SelfHumiliation/*.jpg", 10);
-
             }
 
             sendVirtualAssistantMessage(random("%SlaveName%, You look sooo hot!", "Those pictures are soo hot", "I would love to share these pictures with your friends!") + "%Grin%");

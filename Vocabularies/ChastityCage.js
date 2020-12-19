@@ -26,7 +26,7 @@ function chastityCageVocabulary() {
 
     //Prison is kinda strange
     const answers = /*["prison", material + " prison"]*/ [];
-    if(getActiveChastityCage().ballTrapType === 0) {
+    if(!getActiveChastityCage().isFullSizedBelt()) {
         answers.push("belt", material + " belt", "full belt", "full " + material + " belt");
     } else {
         answers.push("cage", material + " cage", "ball-trapping belt", material + " ball-trapping belt");

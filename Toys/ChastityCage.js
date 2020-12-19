@@ -11,6 +11,11 @@ if (isVar(VARIABLE.ACTIVE_CHASTITY_CAGE)) {
     currentChastityCage = null;
 }
 
+const BALL_TRAP_TYPE = {
+    FULL_BELT: 0,
+    BALL_TRAP: 1,
+};
+
 function getActiveChastityCage() {
     if (currentChastityCage === null || currentChastityCage === undefined) {
         return CHASTITY_CAGES[0];
@@ -28,7 +33,7 @@ function unlockChastityCage(fakeOpening = false) {
 
     sendMessage("%SlaveName%");
 
-    if(fakeOpening || feelsEvil()) {
+    if (fakeOpening || feelsEvil()) {
         sendMessage(random('In a moment', 'In a second', 'In a few moments', 'In a few seconds') + ' I am gonna ' + random('allow you to', '') + ' unlock %MyYour% poor little cock');
         sendMessage(random('But', 'However') + random(' today I really want you to savour the moment', ' it will be a bit different today', ' today will be different',
             ' we are gonna take it slow today', ' I want you to savour the moment'));
@@ -47,7 +52,7 @@ function unlockChastityCage(fakeOpening = false) {
 
         sendMessage('And...');
 
-        if(fakeOpening && isChance(chanceToAbort)) {
+        if (fakeOpening && isChance(chanceToAbort)) {
             sendMessage('Pull the key out again %Lol%');
             return;
         }
@@ -57,7 +62,7 @@ function unlockChastityCage(fakeOpening = false) {
         sendMessage(random('Twist the key in the lock', 'Twist the key', 'Open the lock by twisting the key'));
         sleep(randomInteger(5, 10));
 
-        if(sendYesOrNoQuestion(random('So close to freedom', 'So excited', 'So thrilled') + ' aren\'t you?')) {
+        if (sendYesOrNoQuestion(random('So close to freedom', 'So excited', 'So thrilled') + ' aren\'t you?')) {
             sendMessage('Mhmmm yes you are %Grin%');
         } else {
             sendMessage('No? I wonder why you feel that way %Lol%');
@@ -65,7 +70,7 @@ function unlockChastityCage(fakeOpening = false) {
 
         sleep(randomInteger(5, 10));
         sendMessage('%Now%');
-        if(fakeOpening && isChance(chanceToAbort)) {
+        if (fakeOpening && isChance(chanceToAbort)) {
             sendMessage('Lock the lock right up again %Lol%');
             return;
         }
@@ -79,7 +84,7 @@ function unlockChastityCage(fakeOpening = false) {
         sendMessage(random('So close!', 'Only a few more moments till freedom', 'Just a few more moments till freedom', 'Hard to ignore that %Cock% crying out for freedom isn\'t it?') + ' %Lol%');
         sleep(randomInteger(5, 10));
 
-        if(fakeOpening) {
+        if (fakeOpening) {
             sendMessage('Put the lock back on and lock everything back up %SlaveName% %Lol%');
 
             return;
@@ -203,7 +208,7 @@ function findAvailableClosestToSize(length) {
 
 function getRandomCageWithSize(length, punishments) {
     //Return default cage
-    if(CHASTITY_CAGES.length === 1) {
+    if (CHASTITY_CAGES.length === 1) {
         return CHASTITY_CAGES[0];
     }
 
@@ -644,15 +649,52 @@ function loadChastityCages() {
     if (!isVar('chastityCages')) {
         setVar('chastityCages', new java.util.ArrayList());
     } else {
+        let saveCages = false;
+
         let arrayList = getVar('chastityCages');
 
         for (let x = 0; x < arrayList.size(); x++) {
             let entry = arrayList.get(x);
-            CHASTITY_CAGES.push(createChastityCage().fromString(entry));
+            let chastityCage = createChastityCage().fromString(entry);
+            CHASTITY_CAGES.push(chastityCage);
 
             if (currentChastityCage === null) {
                 currentChastityCage = CHASTITY_CAGES[0];
             }
+
+            if (isUndefinedString(chastityCage.dialator)) {
+                chastityCage.dialator = false;
+                saveCages = true;
+            }
+
+            if (isUndefinedString(chastityCage.dialatorDetachable)) {
+                chastityCage.dialatorDetachable = false;
+                saveCages = true;
+            }
+
+            if (isUndefinedString(chastityCage.spikes)) {
+                chastityCage.spikes = false;
+                saveCages = true;
+            }
+
+            if (isUndefinedString(chastityCage.spikesDetachable)) {
+                chastityCage.spikesDetachable = false;
+                saveCages = true;
+            }
+
+            if (isUndefinedString(chastityCage.spikesOverall)) {
+                chastityCage.spikesOverall = false;
+                saveCages = true;
+            }
+
+            if (isUndefinedString(chastityCage.penisAccessible)) {
+                chastityCage.penisAccessible = false;
+                saveCages = true;
+            }
+        }
+
+        if (saveCages) {
+            saveChastityCages();
         }
     }
 }
@@ -871,17 +913,17 @@ function setupNewCage() {
         }
     }
 
-    let ballTrapType = 0;
+    let ballTrapType = BALL_TRAP_TYPE.BALL_TRAP;
     sendVirtualAssistantMessage("Last but not least is it a full belt or a ball trap device?", false);
     answer = createInput();
 
     while (true) {
         if (answer.containsIgnoreCase("full", "belt")) {
-            ballTrapType = 0;
+            ballTrapType = BALL_TRAP_TYPE.FULL_BELT;
             sendVirtualAssistantMessage("Full belt...");
             break;
         } else if (answer.containsIgnoreCase("ball", "trap")) {
-            ballTrapType = 1;
+            ballTrapType = BALL_TRAP_TYPE.BALL_TRAP;
             sendVirtualAssistantMessage("Ball trap...");
             break;
         } else {
@@ -889,7 +931,6 @@ function setupNewCage() {
             answer.loop();
         }
     }
-
 
 
     /*sendVirtualAssistantMessage("Are you pierced as a mean to secure the device?", false);
@@ -916,6 +957,8 @@ function setupNewCage() {
     sendVirtualAssistantMessage('Added your new chastity cage to %DomHonorific% %DomName%\'s collection');
     sendVirtualAssistantMessage('Enjoy %Grin%');
 }
+
+
 
 function createChastityCage(name, length, material, dialator, dialatorDetachable, spikes, spikesDetachable, spikesOverall, penisAccessible, ballTrapType) {
     return {
@@ -947,7 +990,7 @@ function createChastityCage(name, length, material, dialator, dialatorDetachable
         },
 
         isFullSizedBelt: function () {
-            return this.ballTrapType === 0;
+            return this.ballTrapType === BALL_TRAP_TYPE.FULL_BELT;
         },
 
         getPunishmentOptions: function () {
@@ -980,4 +1023,79 @@ function onChastityKeyReturn() {
     lockAwayChastityKey();
     setVar(VARIABLE.CHASTITY_ON, true);
     setVar(VARIABLE.WAITING_FOR_CHASTITY_KEY_RETURN, false);
+}
+
+function openChastityCageList() {
+    let list = javafx.collections.FXCollections.observableArrayList();
+
+    for (let x = 0; x < CHASTITY_CAGES.length; x++) {
+        list.add(CHASTITY_CAGES[x].name);
+    }
+
+    createToyListGUI(function (listView, event) {
+        showChastityCageGUI(getChastityCageByName(listView.listView.getSelectionModel().getSelectedItem()));
+    }, "Chastity Cages", list)
+}
+
+function showChastityCageGUI(chastityCage) {
+    const RunnableClass = Java.type('java.lang.Runnable');
+    let CustomRunnable = Java.extend(RunnableClass, {
+        run: function () {
+            const dialog = createDialog(chastityCage.name);
+
+            let gridPane = createGridPaneGUI();
+
+            let row = createToySettingGUI(gridPane, chastityCage.getImagePath());
+
+            let writebackGui = createWritebackGUI(chastityCage);
+
+            let nameBox = writebackGui.addWritebackValue(gridPane.addTextSetting(row++, "Name", chastityCage.name), "name");
+
+            let length = writebackGui.addWritebackValue(gridPane.addTextSetting(row++, "Length", chastityCage.length), "length");
+            length.setOnlyDoubles();
+
+            let material = writebackGui.addWritebackValue(gridPane.addComboBox(row++, "Material"), "material");
+            material.addChildren(MATERIAL, chastityCage.material);
+
+            /*let vibrating = writebackGui.addWritebackValue(gridPane.addCheckBox(row++, "Vibrating"), "vibrating");
+            vibrating.setSelected(dildo.vibrating);*/
+
+            let dialator = writebackGui.addWritebackValue(gridPane.addCheckBox(row++, "Dialator"), "dialator");
+            dialator.setSelected(chastityCage.dialator);
+
+            let dialatorDetachable = writebackGui.addWritebackValue(gridPane.addCheckBox(row++, "Dialator detachable"), "dialatorDetachable");
+            dialatorDetachable.setSelected(chastityCage.dialatorDetachable);
+
+            let spikes = writebackGui.addWritebackValue(gridPane.addCheckBox(row++, "Spikes"), "spikes");
+            spikes.setSelected(chastityCage.spikes);
+
+            let spikesDetachable = writebackGui.addWritebackValue(gridPane.addCheckBox(row++, "Spikes Detachable"), "spikesDetachable");
+            spikesDetachable.setSelected(chastityCage.spikesDetachable);
+
+            let spikesOverall = writebackGui.addWritebackValue(gridPane.addCheckBox(row++, "Spikes Overall"), "spikesOverall");
+            spikesOverall.setSelected(chastityCage.spikesOverall);
+
+            let penisAccessible = writebackGui.addWritebackValue(gridPane.addCheckBox(row++, "Penis Accessible"), "penisAccessible");
+            penisAccessible.setSelected(chastityCage.penisAccessible);
+
+            let ballTrapType = writebackGui.addWritebackValue(gridPane.addComboBox(row++, "Ball Trap Type"), "ballTrapType");
+            ballTrapType.addChildren(BALL_TRAP_TYPE, chastityCage.ballTrapType);
+
+
+            let save = createButton("Save");
+            gridPane.setConstraints(save.button, 1, row);
+            gridPane.getChildren().add(save.button);
+
+            save.setOnAction(function (handle) {
+                writebackGui.writeBack();
+                saveDildos();
+                dialog.close();
+            });
+
+            gridPane.addCloseButton(dialog, 2, row++);
+
+            dialog.readyAndShow(gridPane.gridPane);
+        }
+    });
+    runGui(new CustomRunnable());
 }

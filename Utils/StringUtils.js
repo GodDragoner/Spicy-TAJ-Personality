@@ -8,6 +8,12 @@ function deserializeObject(object, string) {
         let splitEntry = valueEntry.split(':');
         let identifier = splitEntry[0];
         let value = splitEntry[1];
+
+        //Convert boolean to bool type
+        if(value === "false" || value === "true") {
+            value = (value === "true");
+        }
+
         object[identifier] = value;
     }
 
@@ -52,4 +58,17 @@ function pluralizeArticle(article, amount = 2) {
     }
 
     return article;
+}
+
+function isUndefined(object) {
+    return object === null || object === undefined;
+}
+
+function isUndefinedString(object) {
+    return object === null || object === undefined || object === "undefined";
+}
+
+
+function isNullOrEmpty(object) {
+    return isUndefined(object) || object.length === 0;
 }

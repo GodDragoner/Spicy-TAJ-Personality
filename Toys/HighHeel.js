@@ -130,3 +130,52 @@ function createHighHeel(name, height, color) {
         },
     }
 }
+
+function openHighHeelList() {
+    let list = javafx.collections.FXCollections.observableArrayList();
+
+    for (let x = 0; x < highHeels.length; x++) {
+        list.add(highHeels[x].name);
+    }
+
+    createToyListGUI(function (listView, event) {
+        showHighHeelGUI(getHighHeelByName(listView.listView.getSelectionModel().getSelectedItem()));
+    }, "High Heels", list)
+}
+
+function showHighHeelGUI(highHeel) {
+    const RunnableClass = Java.type('java.lang.Runnable');
+    let CustomRunnable = Java.extend(RunnableClass, {
+        run: function () {
+            const dialog = createDialog(highHeel.name);
+
+            let gridPane = createGridPaneGUI();
+
+            let row = createToySettingGUI(gridPane, highHeel.getImagePath());
+
+            let writebackGui = createWritebackGUI(highHeel);
+
+            let nameBox = writebackGui.addWritebackValue(gridPane.addTextSetting(row++, "Name", highHeel.name), "name");
+
+            let height = writebackGui.addWritebackValue(gridPane.addTextSetting(row++, "Height", highHeel.height), "height");
+            height.setOnlyDoubles();
+
+            let colour = writebackGui.addWritebackValue(gridPane.addTextSetting(row++, "Color", highHeel.color), "color");
+
+            let save = createButton("Save");
+            gridPane.setConstraints(save.button, 1, row);
+            gridPane.getChildren().add(save.button);
+
+            save.setOnAction(function (handle) {
+                writebackGui.writeBack();
+                saveHighHeels();
+                dialog.close();
+            });
+
+            gridPane.addCloseButton(dialog, 2, row++);
+
+            dialog.readyAndShow(gridPane.gridPane);
+        }
+    });
+    runGui(new CustomRunnable());
+}

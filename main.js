@@ -14,6 +14,7 @@ run("Variables.js");
 run("Utils/SoundUtils.js");
 run("Utils/FileUtils.js");
 run("Utils/ArrayUtils.js");
+run("Utils/GUIUtils.js");
 run("Chat/ChatUtil.js");
 run("Slaves/Slaves.js");
 run("Session/Orgasm/Orgasm.js");

@@ -18,8 +18,11 @@ function letEdgeFadeVocabulary() {
         "Feel all that wonderful %Ache% rushing through you %Lol%",
         "I know you think I'm %Mean% but in reality you love this..",
         "I bet that edging is a pure %Pain% for you %EmoteHappy%",
-        "Just be glad you're edging, Imagine wearing a %ChastityCage%"
     ];
 
-    return answers[randomInteger(0, answers.length -1)];
+    if (!isInChastity()) {
+        answers.push("Just be glad you're edging, Imagine wearing a %ChastityCage%");
+    }
+
+    return answers[randomInteger(0, answers.length - 1)];
 }

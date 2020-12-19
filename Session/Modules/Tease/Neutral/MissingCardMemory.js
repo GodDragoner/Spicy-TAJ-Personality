@@ -1,6 +1,9 @@
 {
-
     if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.STROKING)) {
-        startMissingCardMemory(GAME_EDGE);
+        if(isInChastity() && !hasMagicWand()) {
+            runModuleCategory(CATEGORY_TEASE);
+        } else {
+            startMissingCardMemory(GAME_EDGE);
+        }
     }
 }

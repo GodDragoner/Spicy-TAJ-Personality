@@ -20,9 +20,9 @@
     while (!exitRequest) {
         let lobbyAnswer;
         if(DEBUG_OPTIONS) {
-            lobbyAnswer = createInput("Session", "Chores", "Dungeon", "Settings", "Shop", "Fitness", "Exercise", "Study", "House Rules", "Pin Board", "Chastity", "Academy", "injectcodedebug", "End");
+            lobbyAnswer = createInput("Session", "Chores", "Dungeon", "Settings", "Shop", "Fitness", "Exercise", "Study", "Pin Board", "Chastity", "Academy", "injectcodedebug", "End");
         } else {
-            lobbyAnswer = createInput("Session", "Chores", "Dungeon", "Settings", "Shop", "Fitness", "Exercise", "Study", "House Rules", "Pin Board", "Chastity", "Academy", "End");
+            lobbyAnswer = createInput("Session", "Chores", "Dungeon", "Settings", "Shop", "Fitness", "Exercise", "Study", "Pin Board", "Chastity", "Academy", "End");
         }
 
         while (true) {
@@ -63,11 +63,6 @@
                 run("WorkMode/GNMWorkMode.js");
                 sendVirtualAssistantMessage(getWelcomeMessage(), false);
                 break;
-            } else if (lobbyAnswer.isLike("rule", "house", "commands", "orders")) {
-                lobbyAnswer.clearOptions();
-                run("Rules/HouseRules.js");
-                sendVirtualAssistantMessage(getWelcomeMessage(), false);
-                break;
             } else if (lobbyAnswer.isLike("save", "end", "quit", "stop", "leave", "close", "finish")) {
                 sendVirtualAssistantMessage(random("Bye", "Until next time", "See you", "I'm waiting for the next time", "Don't leave me alone to long", "Good bye", "Have a nice day", "I saved your process you can close the program"));
                 lobbyAnswer.clearOptions();
@@ -88,6 +83,8 @@
                 run('Academy/AcademyLobby.js');
                 sendVirtualAssistantMessage(getWelcomeMessage(), false);
                 break;
+            } else if (lobbyAnswer.isLike("injectcodedebug")) {
+               break;
             } else {
                 sendVirtualAssistantMessage("You have the following options %SlaveName%");
                 sendVirtualAssistantMessage("Request a session with your %DomHonorific%");

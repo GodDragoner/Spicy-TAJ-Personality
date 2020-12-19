@@ -58,6 +58,8 @@ function startEdging(holdSeconds = 0, skipStop = false, endIn = EDGE_END_NORMAL)
     //While in chastity we don't need stroking sounds
     if(!isInChastity()) {
         startStroking(randomInteger(150, 200));
+    } else {
+        readyForVibratingCage();
     }
 
     sendDebugMessage('Starting Edge Taunts');

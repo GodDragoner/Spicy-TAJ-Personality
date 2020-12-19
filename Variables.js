@@ -14,9 +14,7 @@ const VARIABLE = {
 
     SPICY_VERSION: "latestVersion",
 
-
     SLAVE_TYPE: "slaveType",
-
 
     //Full time
     MIN_WEEKLY_VISITS: "minWeeklyVisits",
@@ -50,6 +48,10 @@ const VARIABLE = {
     NEXT_TIME_ICE_CUBES: 'nextTimeIceCubes',
 
     LAST_TIME_EXPLAINED_CBT_TERMS: 'lastTimeExplainedCBTTerms',
+
+    BEG_DOMME_TO_EDGE: 'begDommeToEdge',
+
+    RESPONSE_BEG_EDGE_COUNT: 'responseBegEdgeCount',
 
     //Chores
     CHORE_KITCHEN: 'choreKitchen',
@@ -236,6 +238,9 @@ const VARIABLE = {
     EDGE_A_TONS_DONE: "edgeATonsDone",
     EDGE_A_TON_EDGE_RECORD: "edgeATonEdgeRecord",
 
+    //Edge Training
+    EDGE_TRAININGS_DONE: "edgeTrainingsDone",
+
     //Endurance Strokes
     ENDURANCE_STROKES_ACTIVE: "enduranceStrokesActive",
     ENDURANCE_STROKES_ATTEMPTS: "enduranceStrokesAttempts",
@@ -284,6 +289,8 @@ const VARIABLE = {
     SUB_PARTNER_CUCKOLD: 'subPartnerCuckold',
 
     SUB_LEG_MAN: 'subLegMan',
+
+    SUB_PREMATURE_EJACULATE: 'subPrematureEjaculator',
 
     //Stats
     SESSION_COUNTER: "sessionCounter",

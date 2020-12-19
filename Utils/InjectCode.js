@@ -84,7 +84,86 @@ lockChastityCage();
 if (isInChastity() && !getVar(VARIABLE.PARTNER_IS_KEYHOLDER, false)) {
     lockAwayChastityKey();
 }
+
+const instance = Java.type('me.goddragon.teaseai.TeaseAI').application;
+    const controller = instance.getController();
+    const stackpane = controller.getImageView().getParent();
+    const scene = stackpane.getScene();
+    const rectangle = new javafx.scene.shape.Rectangle();
+
+//Setting the properties of the rectangle
+    rectangle.setX(150);
+    rectangle.setY(75);
+    rectangle.setWidth(300);
+    rectangle.setHeight(150);
+
+//Creating a Group object
+    const root = new javafx.scene.Group(rectangle);
+
+    const AnimationTimer = Java.type('javafx.animation.AnimationTimer');
+    let goNorth = false;
+    let goWest = false;
+    let goSouth = false;
+    let goEast = false;
+    const CustomTimer = Java.extend(AnimationTimer, {
+        handle: function (now) {
+            let dx = 0;
+            let dy = 0;
+
+            if (goNorth) dy -= 1;
+            if (goSouth) dy += 1;
+            if (goEast) dx += 1;
+            if (goWest) dx -= 1;
+
+            rectangle.setWidth(rectangle.getX() + dx * 100);
+            rectangle.setHeight(rectangle.getY() + dy * 100);
+        }
+    });
+
+    let timer = new CustomTimer();
+
+    const RunnableClass = Java.type('java.lang.Runnable');
+    let CustomRunnable = Java.extend(RunnableClass, {
+        run: function () {
+
+
+            scene.onKeyPressed = function (e) {
+                const code = e.getCode();
+                if (code == 'W') goNorth = true;
+                if (code == 'A') goWest = true;
+                if (code == 'S') goSouth = true;
+                if (code == 'D') goEast = true;
+            }
+
+            scene.onKeyReleased = function (e) {
+                const code = e.getCode();
+                if (code == 'W') goNorth = false;
+                if (code == 'A') goWest = false;
+                if (code == 'S') goSouth = false;
+                if (code == 'D') goEast = false;
+            }
+
+            stackpane.getChildren().add(root);
+            root.toFront();
+
+            timer.start();
+        }
+    });
+
+//We run the runnable code on the GUI Thread -> it actually renders the gui
+    runGui(new CustomRunnable());
+    sleep(10);
+
+    sendMessage("Test2");
+
+//Remove the rectangle again and stop the animation
+    CustomRunnable = Java.extend(RunnableClass, {
+        run: function () {
+            timer.stop();
+            stackpane.getChildren().remove(root);
+        }
+    });
+    runGui(new CustomRunnable());
 */
-sendDebugMessage(getSmallButtplug(true).name);
-sendDebugMessage(getMediumButtplug(true).name);
-sendDebugMessage(getBigButtplug(true).name);
+
+
