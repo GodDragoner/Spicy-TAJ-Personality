@@ -1,4 +1,3 @@
-
 //QUALITY: Add distraction such as stroking while memory
 function startMissingCardMemory(gameType) {
     sendMessage('%SlaveName%');
@@ -18,7 +17,7 @@ function startMissingCardMemory(gameType) {
     answerDict['queen'] = 12;
     answerDict['king'] = 13;
 
-    if(!getVar('memoryGameIntro', false)) {
+    if (!getVar('memoryGameIntro', false)) {
         sendMessage('I have a cool memory game for us');
         sendMessage('I will show you 12 out of 13 different cards from a deck of poker cards');
         sendMessage('For example I might show you ace(1), two(2), three(3), four(4), five(5), seven(7), eight(8), nine(9), ten(10), knight(11), queen(12) and king(13)');
@@ -27,15 +26,15 @@ function startMissingCardMemory(gameType) {
         let numberArray = [];
 
         for (let number = 1; number < 14; number++) {
-            if (number != numberMissing) {
-                numberArray[number - 1] = number;
-            }
+            numberArray[number - 1] = number;
         }
 
         shuffle(numberArray);
 
         for (let index = 0; index < numberArray.length; index++) {
-            showImage('Images/Spicy/Deck/' + numberArray[index] + '/*.jpg', 1);
+            if(numberMissing !== numberArray[index]) {
+                showImage('Images/Spicy/Deck/' + numberArray[index] + '/*.jpg', 1);
+            }
         }
 
         sendMessage('In this example the six was missing');
@@ -85,15 +84,15 @@ function startMissingCardMemory(gameType) {
         }
     }
 
-    if(gameType === GAME_E_STIM) {
+    if (gameType === GAME_E_STIM) {
         //Get low level mode and with a big difference between low level and high level
         let mode = getRandomPainEStimMode(PAIN_LEVEL_LOW, maxLosses);
 
         let level = mode.getPainLevel(PAIN_LEVEL_LOW);
 
         //If there is like no room for improvement we should go as low as needed
-        if(mode.getPainLevel(PAIN_LEVEL_HIGH) - level < Math.ceil(maxLosses/2)) {
-            level = Math.max(0, mode.getPainLevel(PAIN_LEVEL_HIGH) - Math.ceil(maxLosses/2));
+        if (mode.getPainLevel(PAIN_LEVEL_HIGH) - level < Math.ceil(maxLosses / 2)) {
+            level = Math.max(0, mode.getPainLevel(PAIN_LEVEL_HIGH) - Math.ceil(maxLosses / 2));
         }
 
         turnsPerLoss = Math.round((getVar(mode.getPainLevel(PAIN_LEVEL_HIGH)) + getMood() * 1.5) / maxLosses);
@@ -116,15 +115,15 @@ function startMissingCardMemory(gameType) {
         let numberArray = [];
 
         for (let number = 1; number < 14; number++) {
-            if (number !== numberMissing) {
-                numberArray[number - 1] = number;
-            }
+            numberArray[number - 1] = number;
         }
 
         shuffle(numberArray);
 
         for (let index = 0; index < numberArray.length; index++) {
-            showImage('Images/Spicy/Deck/' + numberArray[index] + '/*.jpg', 1);
+            if (numberArray[index] !== numberMissing) {
+                showImage('Images/Spicy/Deck/' + numberArray[index] + '/*.jpg', 1);
+            }
         }
 
 
@@ -175,7 +174,7 @@ function startMissingCardMemory(gameType) {
                         startEdging();
                         sendMessage("%LetEdgeFade%", randomInteger(5, 10));
 
-                        if(loses === 0 && isChance(20)) {
+                        if (loses === 0 && isChance(20)) {
                             sendMessage('I thought about making you do all accumulated edges at the end');
                             sendMessage('However I think this way...');
                             sendMessage('I can get you distracted and maybe fail more often');
