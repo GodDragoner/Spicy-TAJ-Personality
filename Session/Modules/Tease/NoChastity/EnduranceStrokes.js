@@ -87,6 +87,7 @@ if (!CBT_LIMIT.isAllowed()) {
                     if(video) {
                         const player = Java.type('me.goddragon.teaseai.api.media.MediaHandler').getHandler().getCurrentVideoPlayer();
                         player.stop();
+                        unlockImages();
                     }
 
                     stopStrokingEdgeMessage();
@@ -176,6 +177,7 @@ if (!CBT_LIMIT.isAllowed()) {
             if(video) {
                 const player = Java.type('me.goddragon.teaseai.api.media.MediaHandler').getHandler().getCurrentVideoPlayer();
                 player.stop();
+                unlockImages();
 
                 //Reset
                 video = false;

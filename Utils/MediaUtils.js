@@ -21,6 +21,7 @@ function watchVideoForDuration(durationSeconds) {
     }
 
     player.stop();
+    unlockImages();
 }
 
 function getRandomMediaCategory() {
