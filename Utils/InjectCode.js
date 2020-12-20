@@ -165,3 +165,7 @@ const instance = Java.type('me.goddragon.teaseai.TeaseAI').application;
     });
     runGui(new CustomRunnable());
 */
+
+for(let x = 0; x < 4; x++) {
+    runPunishment(getPunishmentLevelById(x));
+}

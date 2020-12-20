@@ -10,10 +10,10 @@ let PUNISHMENT_SCORE = 0;
 let PUNISHMENT_MULTIPLIER_CURRENT = 1;
 
 const PUNISHMENT_LEVEL = {
-     EASY: {name: 'easy', id: 0},
-     MEDIUM:  {name: 'medium', id: 1},
-     HARD:  {name: 'hard', id: 2},
-     EXTREME:  {name: 'extreme', id: 3}
+    EASY: {name: 'easy', id: 0},
+    MEDIUM: {name: 'medium', id: 1},
+    HARD: {name: 'hard', id: 2},
+    EXTREME: {name: 'extreme', id: 3}
 };
 
 
@@ -21,13 +21,13 @@ let PUNISHMENT_CURRENT_LEVEL = PUNISHMENT_LEVEL.EASY;
 let PUNISHMENT_OVERALL_LEVEL = PUNISHMENT_LEVEL.EASY;
 
 function getPunishmentLevelById(id) {
-    if(id === PUNISHMENT_LEVEL.EASY.id) {
+    if (id === PUNISHMENT_LEVEL.EASY.id) {
         return PUNISHMENT_LEVEL.EASY;
-    } else if(id === PUNISHMENT_LEVEL.MEDIUM.id) {
+    } else if (id === PUNISHMENT_LEVEL.MEDIUM.id) {
         return PUNISHMENT_LEVEL.MEDIUM;
-    } else if(id === PUNISHMENT_LEVEL.HARD.id) {
+    } else if (id === PUNISHMENT_LEVEL.HARD.id) {
         return PUNISHMENT_LEVEL.HARD;
-    } else if(id === PUNISHMENT_LEVEL.EXTREME.id) {
+    } else if (id === PUNISHMENT_LEVEL.EXTREME.id) {
         return PUNISHMENT_LEVEL.EXTREME;
     }
 
@@ -41,21 +41,21 @@ function isOngoingPunishment() {
 }
 
 function setupPunisherConnection() {
-    switch(getVar(VARIABLE.PUNISHMENT_PUNISHER)) {
+    switch (getVar(VARIABLE.PUNISHMENT_PUNISHER)) {
         case 1 :
-            sendDungeonMessage("Contacting %DomHonorific% %DomName% ..",1);
+            sendDungeonMessage("Contacting %DomHonorific% %DomName% ..", 1);
             setSender(1);
             break;
         case 2 :
-            sendDungeonMessage("Contacting %DomHonorific% %domFriend1Name% ..",1);
+            sendDungeonMessage("Contacting %DomHonorific% %domFriend1Name% ..", 1);
             setSender(2);
             break;
         case 3 :
-            sendDungeonMessage("Contacting %DomHonorific% %domFriend2Name% ..",1);
+            sendDungeonMessage("Contacting %DomHonorific% %domFriend2Name% ..", 1);
             setSender(3);
             break;
         case 4 :
-            sendDungeonMessage("Contacting %DomHonorific% %domFriend3Name% ..",1);
+            sendDungeonMessage("Contacting %DomHonorific% %domFriend3Name% ..", 1);
             setSender(4);
             break;
     }
@@ -71,13 +71,13 @@ function startPunishmentSession(overallLevel) {
 
     sleep(3);
 
-    if(!sendGreeting()) {
+    if (!sendGreeting()) {
     }
 
     let relockChastity = false;
 
-    if(isInChastity() && isChance(overallLevel.id*20) && (!isVar(VARIABLE.LOCKED_UP_UNTIL) || getDate(VARIABLE.LOCKED_UP_UNTIL).hasPassed())) {
-        if(getCurrentTAJSenderID() === 1) {
+    if (isInChastity() && isChance(overallLevel.id * 20) && (!isVar(VARIABLE.LOCKED_UP_UNTIL) || getDate(VARIABLE.LOCKED_UP_UNTIL).hasPassed())) {
+        if (getCurrentTAJSenderID() === 1) {
             sendMessage('I think I want your cock exposed for this %Grin%');
             unlockChastityCage();
             relockChastity = true;
@@ -86,7 +86,7 @@ function startPunishmentSession(overallLevel) {
         }
     }
 
-    PUNISHMENT_SCORE = (overallLevel.id + 1)*4;
+    PUNISHMENT_SCORE = (overallLevel.id + 1) * 4;
     sendDebugMessage('Starting punishment with score of ' + PUNISHMENT_SCORE);
 
     while (PUNISHMENT_SCORE > 0) {
@@ -95,7 +95,7 @@ function startPunishmentSession(overallLevel) {
         chooseNextPunishment(overallLevel);
 
         //Current punishment might have counted for multiple other small punishments
-        for(let x = 0; x < PUNISHMENT_MULTIPLIER_CURRENT; x++) {
+        for (let x = 0; x < PUNISHMENT_MULTIPLIER_CURRENT; x++) {
             subtractPunishmentPointsForPunishment(PUNISHMENT_CURRENT_LEVEL);
 
             //Reduce the score by the set amount
@@ -122,14 +122,14 @@ function startPunishmentSession(overallLevel) {
     }
 
     sendMessage(random('We\'re at the end mark of today\'s punishment session', 'I think I punished you enough for today %SlaveName%', 'I think this will suffice as a punishment',
-        'I think you\'ve suffered enough at my hand today' ,'We\'re at the end of our punishment session', 'I have things to do so this will be enough as a punishment for today %SlaveName%',
+        'I think you\'ve suffered enough at my hand today', 'We\'re at the end of our punishment session', 'I have things to do so this will be enough as a punishment for today %SlaveName%',
         'This is the end of our punishment session', 'I think this should be enough for this punishment session'));
 
     removeAllToys();
 
     sendMessage(random('You hopefully learned your lesson %SlaveName%', 'I hope you won\'t misbehave again', 'I hope you will behave from now on', 'Hopefully this is the last time I need to punish you %SlaveName%'));
 
-    if(relockChastity) {
+    if (relockChastity) {
         sendMessage('I don\'t need your %cock% to be exposed to me any longer so...');
         sendAlreadyKnowWhatsNext('chastity', 'lock', 'cage');
         lockChastityCage();
@@ -146,12 +146,12 @@ function chooseNextPunishment(overallLevel) {
     let level;
 
     //First punishment is always gonna be easy
-    if(PUNISHMENTS_DONE === 0) {
+    if (PUNISHMENTS_DONE === 0) {
         level = PUNISHMENT_LEVEL.EASY;
     } else {
         let levels = [];
 
-        switch(overallLevel) {
+        switch (overallLevel) {
             case PUNISHMENT_LEVEL.EASY:
                 levels.push(PUNISHMENT_LEVEL.EASY);
                 break;
@@ -181,7 +181,7 @@ function chooseNextPunishment(overallLevel) {
 }
 
 function subtractPunishmentPointsForPunishment(punishmentLevel) {
-    switch(punishmentLevel) {
+    switch (punishmentLevel) {
         case PUNISHMENT_LEVEL.EASY:
             addPunishmentPoints(-randomInteger(40, 70));
             break;
@@ -202,45 +202,70 @@ function setPunishmentTransitionHandler(handler) {
     PUNISHMENT_TRANSITION_HANDLER = handler;
 }
 
-function runPunishment(level) {
-    //Try to find some alternative (otherwise we might end up in an endless loop if some fetishes are not yet available)
-    if(getVar('findPunishmentTries', 0) > 20) {
-        let higherLevel = getPunishmentLevelById(level.id + 1);
+let availableFiles = undefined;
 
-        if(higherLevel === null) {
-            higherLevel = PUNISHMENT_LEVEL.EASY;
+function runPunishment(level) {
+    if (availableFiles === undefined) {
+        //Try to find some alternative (otherwise we might end up in an endless loop if some fetishes are not yet available)
+        /*if(getVar('findPunishmentTries', 0) > 20) {
+            let higherLevel = getPunishmentLevelById(level.id + 1);
+
+            if(higherLevel === null) {
+                higherLevel = PUNISHMENT_LEVEL.EASY;
+            }
+
+            sendDebugMessage('Trying level ' + higherLevel + ' for punishment since ' + level + ' did not offer any punishments available');
+
+            level = higherLevel;
+        }*/
+
+        //We need to set it to the object so we can reuse it later on
+        setTempVar('lastPunishmentLevel', level);
+
+        const levelPath = getPunishmentTypeCategoryPath(level);
+
+
+        if (getFile(getPersonalityPath() + PATH_SEPARATOR + levelPath).exists()) {
+            availableFiles = getScriptFilesInFolder(levelPath + PATH_SEPARATOR);
         }
 
-        sendDebugMessage('Trying level ' + higherLevel + ' for punishment since ' + level + ' did not offer any punishments available');
+        let anyFiles = getScriptFilesInFolder('Dungeon' + PATH_SEPARATOR + 'Punishments' + PATH_SEPARATOR + 'Any' + PATH_SEPARATOR);
 
-        level = higherLevel;
+        for (let x = 0; x < anyFiles.length; x++) {
+            availableFiles.push(anyFiles[x]);
+        }
+
+        shuffle(availableFiles);
     }
-
-    //Only choice remaining to clear history
-    if(getVar('findPunishmentTries', 0) > 40) {
-        PUNISHMENT_HISTORY.clearHistory();
-        sendDebugMessage('Clearing punishment history because we couldn\'t find another punishment');
-    }
-
-
-    //We need to set it to the object so we can reuse it later on
-    setTempVar('lastPunishmentLevel', level);
-
-    const levelPath = getPunishmentTypeCategoryPath(level);
-
-    const paths = [];
-
-    if (getFile(getPersonalityPath() + PATH_SEPARATOR + levelPath).exists()) {
-        paths.push(levelPath + PATH_SEPARATOR + "*.js");
-    }
-
-    //Any punishments
-    paths.push('Dungeon' + PATH_SEPARATOR + 'Punishments' + PATH_SEPARATOR + 'Any' + PATH_SEPARATOR + "*.js");
 
     //Keep track of how many times we tried to find a module in a category since last decide punishment call
-    setTempVar('findPunishmentTries', getVar('findPunishmentTries', 0) + 1);
+    incrementTempVar('findPunishmentTries', 1, 0);
 
-    run(paths[randomInteger(0, paths.length - 1)]);
+    if (availableFiles !== undefined) {
+        if (availableFiles.length === 0) {
+            availableFiles = undefined;
+
+            let higherLevel = getPunishmentLevelById(level.id + 1);
+
+            if (higherLevel === null) {
+                higherLevel = PUNISHMENT_LEVEL.EASY;
+            }
+
+            sendDebugMessage('Trying level ' + higherLevel.id + ' for punishment since ' + level.id + ' did not offer any punishments available');
+
+            //Try again with a different level
+            runPunishment(higherLevel);
+            return;
+        }
+
+        sendDebugMessage('Have ' + availableFiles.length + ' available punishments for level ' + level.id);
+        let file = availableFiles.pop();
+        let path = getRelativePersonalityFilePath(file);
+        sendDebugMessage('Trying to run ' + path);
+        run(path);
+    }
+
+    //run(paths[randomInteger(0, paths.length - 1)]);
 }
 
 function getDefaultPunishmentsSinceRun() {

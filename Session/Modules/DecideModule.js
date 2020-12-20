@@ -212,7 +212,7 @@
     }
 }
 
-function runModuleCategory(category) {
+function getModuleForCategory(category) {
     setTempVar('lastModuleCategory', category);
 
     //Infinite loop?
@@ -247,7 +247,11 @@ function runModuleCategory(category) {
     //Keep track of how many times we tried to find a module in a category since last decide Module call
     setTempVar('findModuleTries', getVar('findModuleTries', 0) + 1);
 
-    run(paths[randomInteger(0, paths.length - 1)]);
+    return paths[randomInteger(0, paths.length - 1)];
+}
+
+function runModuleCategory(category) {
+    run(getModuleForCategory(category));
 }
 
 function getDefaultModulesSinceRun() {

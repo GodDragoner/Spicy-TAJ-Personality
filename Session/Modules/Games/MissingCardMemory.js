@@ -121,7 +121,7 @@ function startMissingCardMemory(gameType) {
         shuffle(numberArray);
 
         for (let index = 0; index < numberArray.length; index++) {
-            if (numberArray[index] !== numberMissing) {
+            if(numberMissing !== numberArray[index]) {
                 showImage('Images/Spicy/Deck/' + numberArray[index] + '/*.jpg', 1);
             }
         }
