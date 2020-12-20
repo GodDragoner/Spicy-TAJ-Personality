@@ -42,6 +42,10 @@ function startEdging(holdSeconds = 0, skipStop = false, endIn = EDGE_END_NORMAL)
         "Edge! Now %SlaveName%!",
     ];
 
+    if(isInChastity()) {
+        readyForVibratingCage();
+    }
+
     //If we have any clamps on the cock we should move them away
     readyForStroking();
 
@@ -58,8 +62,6 @@ function startEdging(holdSeconds = 0, skipStop = false, endIn = EDGE_END_NORMAL)
     //While in chastity we don't need stroking sounds
     if(!isInChastity()) {
         startStroking(randomInteger(150, 200));
-    } else {
-        readyForVibratingCage();
     }
 
     sendDebugMessage('Starting Edge Taunts');

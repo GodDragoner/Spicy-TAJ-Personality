@@ -240,6 +240,7 @@ const VARIABLE = {
 
     //Edge Training
     EDGE_TRAININGS_DONE: "edgeTrainingsDone",
+    EDGE_TRAINING_RECORD: "edgeTrainingRecord",
 
     //Endurance Strokes
     ENDURANCE_STROKES_ACTIVE: "enduranceStrokesActive",

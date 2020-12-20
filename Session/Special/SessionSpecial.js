@@ -7,7 +7,10 @@ const SPECIAL_SESSION = {
         },
 
         continueSpecialSession: function() {
-            run('Session/Special/NoChastity/EdgeTraining/FollowUp/*.js');
+            let edgeTrainingFollowUpHistory = createFileHistory('edgetrainingfollow', ['Session/Special/NoChastity/EdgeTraining/FollowUp']);
+            let file = edgeTrainingFollowUpHistory.getRandomAvailableFile();
+            edgeTrainingFollowUpHistory.addHistoryRun(getFileId(file));
+            run(getRelativePersonalityFilePath(file));
         }
     },
 };

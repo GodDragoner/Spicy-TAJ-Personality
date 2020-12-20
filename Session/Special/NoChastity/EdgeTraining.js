@@ -74,10 +74,12 @@ if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.STROKING)) {
         }
 
         //The first intro
-        run('Session/Special/NoChastity/EdgeTraining/Intro/Intro1.js');
+        run('Session/Special/NoChastity/EdgeTraining/Start/Intro1.js');
     } else {
-        //TODO: Intro History
-        run('Session/Special/NoChastity/EdgeTraining/Intro/*.js');
+        let edgeTrainingIntroHistory = createFileHistory('edgetrainingintro', ['Session/Special/NoChastity/EdgeTraining/Start']);
+        let file = edgeTrainingIntroHistory.getRandomAvailableFile();
+        edgeTrainingIntroHistory.addHistoryRun(getFileId(file));
+        run(getRelativePersonalityFilePath(file));
     }
 
     incrementVar(VARIABLE.EDGE_TRAININGS_DONE, 1, 0);

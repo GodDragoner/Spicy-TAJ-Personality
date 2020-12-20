@@ -9,7 +9,7 @@ const PUNISHMENT_HISTORY = createHistory('punishment');
 function createHistory(name) {
     const history = {name: name, historyVar: name + 'History', todaysHistoryVar: 'todays' + name  + 'History',
         isInHistory : function(moduleId) {
-            return isVar(this.historyVar) && getVar(this.historyVar).contains(moduleId);
+            return isVar(this.historyVar) && getVar(this.historyVar).contains(moduleId + "");
         },
 
         getModulesSinceHistory : function(moduleId) {
@@ -21,11 +21,11 @@ function createHistory(name) {
             let historyArray = getVar(this.historyVar);
 
             //sendDebugMessage('Modules in ' + name + ' history since id: ' + (historyArray.size() - historyArray.lastIndexOf(moduleId)));
-            return historyArray.size() - historyArray.lastIndexOf(moduleId);
+            return historyArray.size() - historyArray.lastIndexOf(moduleId + "");
         },
 
         isInTodaysHistory : function(moduleId) {
-            return isVar(this.todaysHistoryVar) && getVar(this.todaysHistoryVar).contains(moduleId);
+            return isVar(this.todaysHistoryVar) && getVar(this.todaysHistoryVar).contains(moduleId + "");
         },
 
         addHistoryRun : function(moduleId) {
@@ -40,12 +40,12 @@ function createHistory(name) {
                 history = getVar(varName);
             }
 
-            if(history.contains(moduleId)) {
+            if(history.contains(moduleId  + "")) {
                 //index of because if moduleId is an integer we would try to remove the index instead of the object
-                history.remove(history.indexOf(moduleId));
+                history.remove(history.indexOf(moduleId  + ""));
             }
 
-            history.add(moduleId);
+            history.add(moduleId  + "");
 
             return history;
         },
@@ -65,6 +65,44 @@ function createHistory(name) {
             setTempVar(this.todaysHistoryVar, new java.util.ArrayList());
         }
     };
+
+    return history;
+}
+
+function createFileHistory(name, folders) {
+    let history = createHistory(name);
+
+    let availableFiles = [];
+
+    for(let x = 0; x < folders.length; x++) {
+        let folder = folders[x];
+
+        let scriptFilesInFolder = getScriptFilesInFolder(folder);
+
+        for(let y = 0; y < scriptFilesInFolder.length; y++) {
+            availableFiles.push(scriptFilesInFolder[y]);
+        }
+    }
+
+    history.availableFiles = availableFiles;
+
+    history.getRandomAvailableFile = function() {
+        let filesAvailable = history.availableFiles.length;
+
+        let file = random(history.availableFiles);
+        let fileId = getFileId(file);
+        let tries = 0;
+
+        //-2 so we don't always have the same order -1 would result in a unique file every time but the order would always be the same
+        while(this.isInHistory(fileId + "") && this.getModulesSinceHistory(fileId + "") < filesAvailable - 2 && tries < filesAvailable*filesAvailable) {
+            file = random(history.availableFiles);
+            fileId = getFileId(file);
+            tries++;
+        }
+
+        return file;
+    };
+
 
     return history;
 }

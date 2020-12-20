@@ -11,12 +11,52 @@ function callFunction(name) {
 }
 
 function getCurrentScriptName() {
-    const name = ScriptHandler.getHandler().getCurrentFile().getName();
-    return name.substring(0, name.length - 3);
+    return getFileId(ScriptHandler.getHandler().getCurrentFile());
+}
+
+function getFileId(file) {
+    return file.getName().substring(0, file.getName().length - 3);
+}
+
+function getRelativePersonalityFilePath(file) {
+    let path = file.getPath();
+    return path.substr(getPersonalityPath().length);
 }
 
 function getPersonalityPath() {
     return PERSONALITY_PATH;
+}
+
+function getFilesInFolder(folder) {
+    return getFileOrCreate(getPersonalityPath() + PATH_SEPARATOR + folder).listFiles();
+}
+
+function getScriptFilesInFolder(folder) {
+    let files = getFilesInFolder(folder);
+    let scriptFiles = [];
+
+    for (let index = 0; index < files.length; index++) {
+        let file = files[index];
+        if (isScriptFile(file)) {
+            scriptFiles.push(file);
+        }
+    }
+
+    return scriptFiles;
+}
+
+function fileListToIdList(files) {
+    let fileIds = [];
+    for (let index = 0; index < files.length; index++) {
+        let file = files[index];
+        fileIds.push(getFileId(file));
+    }
+
+    return fileIds;
+}
+
+function isScriptFile(file) {
+    return file.getName().endsWith('.js');
 }
 
 function getImageSubFolder(subPath) {
@@ -24,7 +64,7 @@ function getImageSubFolder(subPath) {
 }
 
 function tryCreateFolder(folder) {
-    if(!folder.exists()) {
+    if (!folder.exists()) {
         folder.mkdirs();
         return true;
     }
