@@ -74,10 +74,10 @@ if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.STROKING)) {
         }
 
         //The first intro
-        run('Session/Special/EdgeTraining/Intro/Intro1.js');
+        run('Session/Special/NoChastity/EdgeTraining/Intro/Intro1.js');
     } else {
         //TODO: Intro History
-        run('Session/Special/EdgeTraining/Intro/*.js');
+        run('Session/Special/NoChastity/EdgeTraining/Intro/*.js');
     }
 
     incrementVar(VARIABLE.EDGE_TRAININGS_DONE, 1, 0);

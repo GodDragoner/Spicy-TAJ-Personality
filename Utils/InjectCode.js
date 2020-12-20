@@ -166,4 +166,3 @@ const instance = Java.type('me.goddragon.teaseai.TeaseAI').application;
     runGui(new CustomRunnable());
 */
 
-

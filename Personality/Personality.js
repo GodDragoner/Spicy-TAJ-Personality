@@ -125,17 +125,17 @@ function getMood() {
     }
 }
 
-function changeMeritLow(negative) {
+function changeMeritLow(negative = false) {
     changeMerit(0, negative);
 }
 
 
-function changeMeritMedium(negative) {
+function changeMeritMedium(negative = false) {
     changeMerit(1, negative);
 }
 
 
-function changeMeritHigh(negative) {
+function changeMeritHigh(negative = false) {
     changeMerit(2, negative);
 }
 
