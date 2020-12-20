@@ -211,8 +211,17 @@ function runPunishment(level) {
             higherLevel = PUNISHMENT_LEVEL.EASY;
         }
 
+        sendDebugMessage('Trying level ' + higherLevel + ' for punishment since ' + level + ' did not offer any punishments available');
+
         level = higherLevel;
     }
+
+    //Only choice remaining to clear history
+    if(getVar('findPunishmentTries', 0) > 40) {
+        PUNISHMENT_HISTORY.clearHistory();
+        sendDebugMessage('Clearing punishment history because we couldn\'t find another punishment');
+    }
+
 
     //We need to set it to the object so we can reuse it later on
     setTempVar('lastPunishmentLevel', level);
