@@ -13,3 +13,11 @@ function removeIndexFromArray(array, removeIndex) {
 
     return newArray;
 }
+
+function pushElementsToOtherArray(input, output) {
+    for(let x = 0; x < input.length; x++) {
+        output.push(input[x]);
+    }
+
+    sendDebugMessage('Pushed ' + input.length + ' to result ' + output.length);
+}

@@ -212,11 +212,15 @@
     }
 }
 
+const MODULES_FOR_CATEGORY = new Map();
+
 function getModuleForCategory(category) {
+    //Keep track of how many times we tried to find a module in a category since last decide module call
+    incrementTempVar('findModuleTries', 1, 0);
     setTempVar('lastModuleCategory', category);
 
     //Infinite loop?
-    if(getVar('findModuleTries', 0) > 20) {
+    /*if(getVar('findModuleTries', 0) > 20) {
         if(category !== CATEGORY_TEASE) {
             sendDebugMessage('Stuck in module ' + category + ' loop . Trying tease now');
             category = CATEGORY_TEASE;
@@ -224,30 +228,54 @@ function getModuleForCategory(category) {
             sendDebugMessage('Stuck in module ' + category + ' loop . Trying slave now');
             category = CATEGORY_SLAVE;
         }
+    }*/
+
+    if(!MODULES_FOR_CATEGORY.has(category)) {
+        let availableFiles = [];
+
+        const neutralPath = getModuleTypeCategoryPath(category, 'Neutral');
+        const noChastityPath = getModuleTypeCategoryPath(category, 'NoChastity');
+        const dynamicPath = getModuleTypeCategoryPath(category, 'Dynamic');
+
+        if (getFile(getPersonalityPath() + PATH_SEPARATOR + neutralPath).exists()) {
+            pushElementsToOtherArray(getScriptFilesInFolder(neutralPath + PATH_SEPARATOR), availableFiles);
+        }
+
+        if (getFile(getPersonalityPath() + PATH_SEPARATOR + noChastityPath).exists() && !isInChastity()) {
+            pushElementsToOtherArray(getScriptFilesInFolder(noChastityPath + PATH_SEPARATOR), availableFiles);
+        }
+
+        if (getFile(getPersonalityPath() + PATH_SEPARATOR + dynamicPath).exists()) {
+            pushElementsToOtherArray(getScriptFilesInFolder(dynamicPath + PATH_SEPARATOR), availableFiles);
+        }
+
+        shuffle(availableFiles);
+
+        MODULES_FOR_CATEGORY.set(category, availableFiles);
     }
 
-    const neutralPath = getModuleTypeCategoryPath(category, 'Neutral');
-    const noChastityPath = getModuleTypeCategoryPath(category, 'NoChastity');
-    const dynamicPath = getModuleTypeCategoryPath(category, 'Dynamic');
+    if(MODULES_FOR_CATEGORY.get(category).length === 0) {
+        sendDebugMessage('Unable to find module for category ' + category + ' to run');
+        incrementTempVar('findModuleTries', 50, 0);
 
-    const paths = [];
+        if(category !== CATEGORY_TEASE) {
+            sendDebugMessage('Stuck in module ' + category + ' loop . Trying tease now');
+            category = CATEGORY_TEASE;
+        } else {
+            sendDebugMessage('Stuck in module ' + category + ' loop . Trying slave now');
+            category = CATEGORY_SLAVE;
+        }
 
-    if (getFile(getPersonalityPath() + PATH_SEPARATOR + neutralPath).exists()) {
-        paths.push(neutralPath + PATH_SEPARATOR + "*.js");
+        MODULES_FOR_CATEGORY.delete(category);
+        return getModuleForCategory(category);
+    } else {
+        let file = MODULES_FOR_CATEGORY.get(category).pop();
+        let path = getRelativePersonalityFilePath(file);
+        sendDebugMessage('Trying to run module ' + path);
+        return path;
     }
 
-    if (getFile(getPersonalityPath() + PATH_SEPARATOR + noChastityPath).exists() && !isInChastity()) {
-        paths.push(noChastityPath + PATH_SEPARATOR + "*.js");
-    }
-
-    if (getFile(getPersonalityPath() + PATH_SEPARATOR + dynamicPath).exists()) {
-        paths.push(dynamicPath + PATH_SEPARATOR + "*.js");
-    }
-
-    //Keep track of how many times we tried to find a module in a category since last decide Module call
-    setTempVar('findModuleTries', getVar('findModuleTries', 0) + 1);
-
-    return paths[randomInteger(0, paths.length - 1)];
+    //return paths[randomInteger(0, paths.length - 1)];
 }
 
 function runModuleCategory(category) {
@@ -266,7 +294,9 @@ function tryRunModule(moduleId, category, minModulesSinceRun = 3, subCategories)
     let maxTries = 10;
 
     //Check if that module category was in the previous module so we get some variation
-    let categoryInPreviousModule = subCategories != MODULE.UNKNOWN && hasPreviousModuleHadCategory(subCategories);
+    let categoryInPreviousModule = subCategories !== MODULE.UNKNOWN && hasPreviousModuleHadCategory(subCategories);
+
+    sendDebugMessage('Trying to run module ' + moduleId + ' from category ' + subCategories + ' and was in previous module is ' + categoryInPreviousModule);
 
     moduleId = moduleId.toLowerCase();
 

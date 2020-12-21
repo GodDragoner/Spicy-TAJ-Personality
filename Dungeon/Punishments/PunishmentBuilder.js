@@ -251,6 +251,8 @@ function runPunishment(level) {
                 higherLevel = PUNISHMENT_LEVEL.EASY;
             }
 
+            PUNISHMENT_CURRENT_LEVEL = higherLevel;
+
             sendDebugMessage('Trying level ' + higherLevel.id + ' for punishment since ' + level.id + ' did not offer any punishments available');
 
             //Try again with a different level
