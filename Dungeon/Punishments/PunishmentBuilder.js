@@ -227,6 +227,8 @@ function runPunishment(level) {
 
         if (getFile(getPersonalityPath() + PATH_SEPARATOR + levelPath).exists()) {
             availableFiles = getScriptFilesInFolder(levelPath + PATH_SEPARATOR);
+        } else {
+            availableFiles = [];
         }
 
         let anyFiles = getScriptFilesInFolder('Dungeon' + PATH_SEPARATOR + 'Punishments' + PATH_SEPARATOR + 'Any' + PATH_SEPARATOR);

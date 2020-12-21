@@ -96,7 +96,7 @@
                 let dildos = "";
 
                 for (let y = 0; y < DILDOS.length; y++) {
-                    if (DILDOS[y].diameter >= getVar(VARIABLE.MAX_ANAL_DIAMETER)) {
+                    if (DILDOS[y].length >= getVar(VARIABLE.MAX_ANAL_LENGTH)) {
                         dildos += DILDOS[y].name + ' (D: ' + DILDOS[y].diameter + '| L: ' + DILDOS[y].length + ')';
                         dildos += ", ";
                     }

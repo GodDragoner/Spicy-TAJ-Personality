@@ -212,7 +212,6 @@
     }
 }
 
-const MODULES_FOR_CATEGORY = new Map();
 
 function getModuleForCategory(category) {
     //Keep track of how many times we tried to find a module in a category since last decide module call
