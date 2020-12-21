@@ -137,7 +137,7 @@ let RULE_ALWAYS_STROKE_INDEX_AND_THUMB;
 
         while(true) {
             if(answer.isLike('Yes')) {
-                if(answer.toLowerCase().indexOf(honorific.toLowerCase()) === -1) {
+                if(answer.getAnswer().toLowerCase().indexOf(honorific.toLowerCase()) === -1) {
                     sendMessage('Sigh...');
                     sendMessage('What did I just tell you?');
                     sendMessage('You will address me PROPERLY %SlaveName% using %DomHonorific%');
@@ -149,7 +149,7 @@ let RULE_ALWAYS_STROKE_INDEX_AND_THUMB;
                     break;
                 }
             } else if(answer.isLike('no')) {
-                if(answer.toLowerCase().indexOf(honorific.toLowerCase()) === -1) {
+                if(answer.getAnswer().toLowerCase().indexOf(honorific.toLowerCase()) === -1) {
                     sendMessage('Sigh...');
                     sendMessage('You really didn\'t understand did you?');
                     changeMeritMedium(true);

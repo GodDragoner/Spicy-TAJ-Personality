@@ -5,11 +5,14 @@ function watchVideoForDuration(durationSeconds) {
         return;
     }
 
+    sendDebugMessage('Waiting for media player to start');
 
     //We need to wait for the player to ready up and start playing before continuing
     while (!player.getStatus().equals(javafx.scene.media.MediaPlayer.Status.PLAYING)) {
         wait(100, 'MILLISECONDS');
     }
+    sendDebugMessage('Currently playing ' + player.getMedia().getSource());
+    sendDebugMessage('Waiting for ' + durationSeconds);
 
     let startDate = setDate().getTimeInMillis();
     //Max duration in second for the video to play

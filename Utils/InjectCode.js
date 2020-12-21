@@ -166,4 +166,5 @@ const instance = Java.type('me.goddragon.teaseai.TeaseAI').application;
     runGui(new CustomRunnable());
 */
 
-sendDebugMessage(objectToArray(DAYS_IN_WEEK));
+showCategoryVideo(getRandomMediaCategory());
+watchVideoForDuration(90);
