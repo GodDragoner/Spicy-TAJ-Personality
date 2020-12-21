@@ -166,6 +166,4 @@ const instance = Java.type('me.goddragon.teaseai.TeaseAI').application;
     runGui(new CustomRunnable());
 */
 
-for(let x = 0; x < 100; x++) {
-    sendDebugMessage(getModuleForCategory(CATEGORY_TEASE));
-}
+sendDebugMessage(objectToArray(DAYS_IN_WEEK));

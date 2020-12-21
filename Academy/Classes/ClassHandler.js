@@ -60,6 +60,11 @@ function handleTodayAcademyClasses() {
                 //The previous day that we were supposed to take the class
                 let previousDay = clazz.weekdays[previousDayIndex];
 
+                //Means that previous day was for example saturday and current day is monday, to make calculation end up in 2 days (8 - 6) we need to add 7 (one week)
+                if(dayOfWeek < previousDay) {
+                    dayOfWeek += 7;
+                }
+
                 //Difference between days
                 daysSinceLastMeet = Math.abs(dayOfWeek - previousDay);
             } else {

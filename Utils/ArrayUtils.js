@@ -14,6 +14,17 @@ function removeIndexFromArray(array, removeIndex) {
     return newArray;
 }
 
+function objectToArray(object) {
+    let array = [];
+    for (let property in object) {
+        if (object.hasOwnProperty(property) && typeof object[property] !== 'function') {
+            array.push(property);
+        }
+    }
+
+    return array;
+}
+
 function pushElementsToOtherArray(input, output) {
     for(let x = 0; x < input.length; x++) {
         output.push(input[x]);

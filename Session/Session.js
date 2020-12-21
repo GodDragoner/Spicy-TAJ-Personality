@@ -114,7 +114,15 @@ function endSpicySession() {
                     setVar(VARIABLE.SISSY_TRAINING, true);
                 }
             } else {
-
+                if (!RULE_ALWAYS_WEAR_PANTIES.isActive() && RULE_ALWAYS_WEAR_PANTIES.canBeActivated()) {
+                    sendMessage('There is one last thing for today...');
+                    sendMessage('It\'s about your sissy training %Grin%');
+                    RULE_ALWAYS_WEAR_PANTIES.sendIntroduction();
+                } else if (!RULE_ALWAYS_PEE_SITTING_DOWN.isActive() && RULE_ALWAYS_PEE_SITTING_DOWN.canBeActivated()) {
+                    sendMessage('There is one last thing for today...');
+                    sendMessage('It\'s about your sissy training %Grin%');
+                    RULE_ALWAYS_PEE_SITTING_DOWN.sendIntroduction();
+                }
             }
         }
 
