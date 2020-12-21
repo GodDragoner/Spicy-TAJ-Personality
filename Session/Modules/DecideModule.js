@@ -74,104 +74,120 @@
             setDate('lastStrokingPause');
         }
 
-        const moduleChance = 50;
-        let teaseModuleChance = moduleChance;
-        const teaseModuleAdditions = [
-            //Personality strictness 1
-            teaseModuleChance / 2,
-            teaseModuleChance / 3,
-            0,
-            -teaseModuleChance / 4,
-            -teaseModuleChance / 3,
-            //Personality strictness 2
-            teaseModuleChance / 3,
-            teaseModuleChance / 4,
-            0,
-            -teaseModuleChance / 3,
-            -teaseModuleChance / 2,
-            //Personality strictness 3
-            teaseModuleChance / 4,
-            teaseModuleChance / 5,
-            0,
-            -(teaseModuleChance - teaseModuleChance / 4),
-            -(teaseModuleChance - teaseModuleChance / 5)
-        ];
 
-        let index = 0;
-        if (getStrictnessForCharacter() == 1) {
-            index += 5;
-        } else if (getStrictnessForCharacter() == 2) {
-            index += 10;
-        }
+        if(moduleCounter === 0) {
+            let specialSession = chooseSpecialSession();
 
-        if (getMood() == PLEASED_MOOD) {
-            index += 1;
-        } else if (getMood() == NEUTRAL_MOOD) {
-            index += 2;
-        } else if (getMood() == ANNOYED_MOOD) {
-            index += 3;
-        } else if (getMood() == VERY_ANNOYED_MOOD) {
-            index += 4;
-        }
-
-        //Now apply the changes
-        teaseModuleChance += teaseModuleAdditions[index];
-
-        if (getVar(VARIABLE.PUNISHMENT_POINTS) >= 250) {
-            teaseModuleChance -= 10;
-        }
-
-        if (getVar(VARIABLE.ANGER) > 25) {
-            teaseModuleChance -= 10;
-        }
-
-        //Don't go below zero
-        teaseModuleChance = Math.max(teaseModuleChance, 0);
-
-
-        //Not used atm.
-        let sissyModuleChance = 0;
-
-        //No pain modules if pain is hard limit
-        let painModuleChance = PAIN_LIMIT.isAllowed()? moduleChance : 0;
-        let slaveModuleChance = moduleChance;
-        let humiliationModuleChance = moduleChance;
-
-        if(!HUMILIATION_LIMIT.isAllowed()) {
-            humiliationModuleChance = 0;
-        }
-
-        const max = teaseModuleChance + sissyModuleChance + painModuleChance + slaveModuleChance + humiliationModuleChance;
-        const moduleIndicator = randomInteger(0, max);
-
-        sendDebugMessage('Choosing module based on the following chances:');
-        sendDebugMessage('Tease: ' + teaseModuleChance);
-        sendDebugMessage('Sissy: ' + sissyModuleChance);
-        sendDebugMessage('Pain: ' + painModuleChance);
-        sendDebugMessage('Slave: ' + slaveModuleChance);
-        sendDebugMessage('Humiliation: ' + humiliationModuleChance);
-        sendDebugMessage('Selector is ' + moduleIndicator);
-
-        clearPreviousModuleHistory();
-        setTempVar('findModuleTries', 0);
-
-        if (moduleIndicator < teaseModuleChance) {
-            runModuleCategory(CATEGORY_TEASE);
-        } else if (moduleIndicator < sissyModuleChance + teaseModuleChance) {
-            runModuleCategory(CATEGORY_SISSY);
-        } else if (moduleIndicator < sissyModuleChance + teaseModuleChance + painModuleChance) {
-            //Increase pain limit occasionally
-            let increasedPainTolerance = increasePainTolerance();
-
-            runModuleCategory(CATEGORY_PAIN);
-
-            if(increasedPainTolerance) {
-                askForPainToleranceIncrease();
+            if(specialSession !== undefined) {
+                startSpecialSession(specialSession);
             }
-        } else if (moduleIndicator < sissyModuleChance + teaseModuleChance + painModuleChance + slaveModuleChance) {
-            runModuleCategory(CATEGORY_SLAVE);
-        } else if (moduleIndicator < sissyModuleChance + teaseModuleChance + painModuleChance + slaveModuleChance + humiliationModuleChance) {
-            runModuleCategory(CATEGORY_HUMILATION);
+        } else {
+            if(isSpecialSession()) {
+                continueSpecialSession();
+            }
+        }
+
+        //If not in special session run module
+        if(!isSpecialSession()) {
+            const moduleChance = 50;
+            let teaseModuleChance = moduleChance;
+            const teaseModuleAdditions = [
+                //Personality strictness 1
+                teaseModuleChance / 2,
+                teaseModuleChance / 3,
+                0,
+                -teaseModuleChance / 4,
+                -teaseModuleChance / 3,
+                //Personality strictness 2
+                teaseModuleChance / 3,
+                teaseModuleChance / 4,
+                0,
+                -teaseModuleChance / 3,
+                -teaseModuleChance / 2,
+                //Personality strictness 3
+                teaseModuleChance / 4,
+                teaseModuleChance / 5,
+                0,
+                -(teaseModuleChance - teaseModuleChance / 4),
+                -(teaseModuleChance - teaseModuleChance / 5)
+            ];
+
+            let index = 0;
+            if (getStrictnessForCharacter() == 1) {
+                index += 5;
+            } else if (getStrictnessForCharacter() == 2) {
+                index += 10;
+            }
+
+            if (getMood() == PLEASED_MOOD) {
+                index += 1;
+            } else if (getMood() == NEUTRAL_MOOD) {
+                index += 2;
+            } else if (getMood() == ANNOYED_MOOD) {
+                index += 3;
+            } else if (getMood() == VERY_ANNOYED_MOOD) {
+                index += 4;
+            }
+
+            //Now apply the changes
+            teaseModuleChance += teaseModuleAdditions[index];
+
+            if (getVar(VARIABLE.PUNISHMENT_POINTS) >= 250) {
+                teaseModuleChance -= 10;
+            }
+
+            if (getVar(VARIABLE.ANGER) > 25) {
+                teaseModuleChance -= 10;
+            }
+
+            //Don't go below zero
+            teaseModuleChance = Math.max(teaseModuleChance, 0);
+
+
+            //Not used atm.
+            let sissyModuleChance = 0;
+
+            //No pain modules if pain is hard limit
+            let painModuleChance = PAIN_LIMIT.isAllowed()? moduleChance : 0;
+            let slaveModuleChance = moduleChance;
+            let humiliationModuleChance = moduleChance;
+
+            if(!HUMILIATION_LIMIT.isAllowed()) {
+                humiliationModuleChance = 0;
+            }
+
+            const max = teaseModuleChance + sissyModuleChance + painModuleChance + slaveModuleChance + humiliationModuleChance;
+            const moduleIndicator = randomInteger(0, max);
+
+            sendDebugMessage('Choosing module based on the following chances:');
+            sendDebugMessage('Tease: ' + teaseModuleChance);
+            sendDebugMessage('Sissy: ' + sissyModuleChance);
+            sendDebugMessage('Pain: ' + painModuleChance);
+            sendDebugMessage('Slave: ' + slaveModuleChance);
+            sendDebugMessage('Humiliation: ' + humiliationModuleChance);
+            sendDebugMessage('Selector is ' + moduleIndicator);
+
+            clearPreviousModuleHistory();
+            setTempVar('findModuleTries', 0);
+
+            if (moduleIndicator < teaseModuleChance) {
+                runModuleCategory(CATEGORY_TEASE);
+            } else if (moduleIndicator < sissyModuleChance + teaseModuleChance) {
+                runModuleCategory(CATEGORY_SISSY);
+            } else if (moduleIndicator < sissyModuleChance + teaseModuleChance + painModuleChance) {
+                //Increase pain limit occasionally
+                let increasedPainTolerance = increasePainTolerance();
+
+                runModuleCategory(CATEGORY_PAIN);
+
+                if(increasedPainTolerance) {
+                    askForPainToleranceIncrease();
+                }
+            } else if (moduleIndicator < sissyModuleChance + teaseModuleChance + painModuleChance + slaveModuleChance) {
+                runModuleCategory(CATEGORY_SLAVE);
+            } else if (moduleIndicator < sissyModuleChance + teaseModuleChance + painModuleChance + slaveModuleChance + humiliationModuleChance) {
+                runModuleCategory(CATEGORY_HUMILATION);
+            }
         }
 
         sendDebugMessage('Trying to run link');

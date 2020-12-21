@@ -474,6 +474,13 @@ function lockChastityCage(chastityCage = undefined) {
         chastityCage = selectChastityCage();
     }
 
+    if (chastityCage === null || chastityCage === undefined) {
+        sendMessage('For some reason I can\'t decide on a chastity cage today (bug)');
+        sendMessage('I figure I\'ll just not lock you up.');
+        return;
+    }
+
+
     chastityCage.fetchChastityCage();
 
     let alreadyAttached = false;

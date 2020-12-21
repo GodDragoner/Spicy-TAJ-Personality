@@ -338,6 +338,9 @@ const VARIABLE = {
     CURRENT_SESSION_DATE: "currentSessionDate",
     CURRENT_SESSION_ACTIVE: "currentSessionActive",
 
+    LAST_SPECIAL_SESSION: "lastSpecialSession",
+    LAST_SPECIAL_SESSION_ID: "lastSpecialSessionId",
+
     LAST_PROLONGED_SESSION: "lastProlongedSession",
 
     PROLONGED_SESSION_TIME: "prolongedSessionTime",
