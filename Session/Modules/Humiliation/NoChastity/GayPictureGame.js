@@ -106,23 +106,7 @@ function startGayPictureRound() {
         case 1:
             newValue = getVar("gayPictureGameBoobs", 0) + 1;
             setTempVar("gayPictureGameBoobs", newValue);
-
-            if (newValue % 5 == 0 && newValue != 0) {
-                sendMessage("That was the fifth time you hit the butt stop", 0);
-                sendMessage("Which means this game is at an end");
-                sendMessage("Be glad you didn\'t end with denial %Lol%");
-                endGayPictureGame();
-                return;
-            }
-
-            sendMessage("Just relax for a little bit");
-            sleep(randomInteger(15, 30));
-            break;
-        case 2:
-            newValue = getVar("gayPictureGameButts", 0) + 1;
-            setTempVar("gayPictureGameButts", newValue);
-
-            if (newValue % 5 == 0 && newValue != 0) {
+			if (newValue % 5 == 0 && newValue != 0) {
                 sendMessage("Boobs five times! %Grin%");
                 sendMessage("I guess that earns you 100 gold!");
                 addGold(100);
@@ -134,6 +118,20 @@ function startGayPictureRound() {
             sendMessage("Get ready!");
             playAudio('Audio/Spicy/Stroking/MetronomeNumber/20FastStrokes.mp3', true);
             break;
+        case 2:
+            newValue = getVar("gayPictureGameButts", 0) + 1;
+            setTempVar("gayPictureGameButts", newValue);
+			if (newValue % 5 == 0 && newValue != 0) {
+                sendMessage("That was the fifth time you hit the butt stop", 0);
+                sendMessage("Which means this game is at an end");
+                sendMessage("Be glad you didn\'t end with denial %Lol%");
+                endGayPictureGame();
+                return;
+            }
+
+            sendMessage("Just relax for a little bit");
+            sleep(randomInteger(15, 30));
+            break;  
         case 3:
             newValue = getVar("gayPictureGameLezdom", 0) + 1;
             setTempVar("gayPictureGameLezdom", newValue);
