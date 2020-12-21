@@ -400,7 +400,7 @@
 
                     if (new Date().getDay() === 6 || new Date().getDay() === 1) {
                         if (new Date().getDay() === 6) {
-                            sendDungeonMessage('It\'s friday %SlaveNam% %EmoteHappy%');
+                            sendDungeonMessage('It\'s friday %SlaveName% %EmoteHappy%');
                         } else {
                             sendDungeonMessage('It\'s monday %SlaveNam% %EmoteHappy%');
                         }
