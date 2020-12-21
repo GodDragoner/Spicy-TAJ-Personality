@@ -79,6 +79,10 @@ function createFileHistory(name, folders) {
 
         let scriptFilesInFolder = getScriptFilesInFolder(folder);
 
+        if(scriptFilesInFolder.length === 0) {
+            sendDebugMessage('Folder ' + folder + ' does not contain any script files');
+        }
+
         for(let y = 0; y < scriptFilesInFolder.length; y++) {
             availableFiles.push(scriptFilesInFolder[y]);
         }
