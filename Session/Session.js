@@ -5,7 +5,6 @@ function hasSessionTimePassed(timeMinutes) {
     return getDate(VARIABLE.CURRENT_SESSION_DATE).clone().addMinute(timeMinutes).hasPassed();
 }
 
-const MODULES_FOR_CATEGORY = new Map();
 
 function endSpicySession() {
     askAboutDenialLevel();

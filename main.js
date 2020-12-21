@@ -21,6 +21,8 @@ run("Session/Orgasm/Orgasm.js");
 run("Session/Interaction.js");
 run("Session/Orgasm/OrgasmSpecial.js");
 
+run('Session/Modules/ModuleHandler.js');
+
 run("Session/Special/SessionSpecial.js");
 
 run("Session/End/Training.js");
