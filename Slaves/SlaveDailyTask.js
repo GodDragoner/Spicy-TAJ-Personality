@@ -9,7 +9,7 @@ function getTodaysSlaveTask() {
 
     switch(randomInteger(0, 23)) {
         case 0:
-            let randomMeal = random('dinner', 'lunch', 'breakfast');
+            var randomMeal = random('dinner', 'lunch', 'breakfast');
             lines.add('For ' + randomMeal + ' today I want you to put on a blindfold while standing in front of your closed fridge');
             lines.add('Then you are going to open it and what ever you grab first will be your ' + randomMeal + ' for today');
             lines.add('If there is something you can mix that ingredient with that\'s fine but it must make for at least 50% of your meal');
@@ -60,7 +60,7 @@ function getTodaysSlaveTask() {
             lines.add('No carbs in your food today');
             break;
         case 11:
-            let porntype = getRandomAllowedPornCategory();
+            var porntype = getRandomAllowedPornCategory();
 
             //Higher chance for hypno if sissy limit is allowed
             if(SISSY_LIMIT.isAllowed() && isChance(75)) {
@@ -176,7 +176,7 @@ function getTodaysSlaveTask() {
 
                 lines.add('%InAddition%...');
 
-                let possibilities = [];
+                var possibilities = [];
 
                 if(hasButtplugWithBaseStyle(BUTTPLUG_BASE_STYLE.PIG_TAIL)) {
                     possibilities.push(getButtplugWithBaseStyle(BUTTPLUG_BASE_STYLE.PIG_TAIL));
@@ -185,7 +185,7 @@ function getTodaysSlaveTask() {
                 }
 
                 if(possibilities.length !== 0) {
-                    let buttplug = random(possibilities);
+                    var buttplug = random(possibilities);
 
                     if (buttplug.baseStyle === BUTTPLUG_BASE_STYLE.PIG_TAIL) {
                         lines.add('For that I will turn you into a cute little pig %SlaveName%');

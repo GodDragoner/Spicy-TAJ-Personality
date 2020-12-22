@@ -69,6 +69,7 @@ const VARIABLE = {
     WEEKLY_CHORES_DONE: "weeklyChoresDone",
     WEEKLY_CHORES_TIME: "weeklyChoresTime",
 
+    //Denial
     DENIAL_LIMIT: "denialLimit",
     DENIAL_LEVEL: "denialLevel",
     DENIAL_HARD_LIMIT_TYPE: "denialHardLimitType",
@@ -81,10 +82,10 @@ const VARIABLE = {
 
     MERITS: "merits",
 
-    LOCKED_UP_LIMIT: "lockedUpLimit",
-
+    //Orgasm
     ORGASM_POINTS: "orgasmPoints",
     REQUIRED_ORGASM_POINTS: "requiredOrgasmPoints",
+
 
     //Start chance is 50
     ORGASM_RATION: "orgasmRatio",
@@ -105,6 +106,8 @@ const VARIABLE = {
 
     //Chastity
     CHASTITY_TRAINING: "chastityTraining",
+
+    LOCKED_UP_LIMIT: "lockedUpLimit",
 
     HAS_CHASTITY: "hasChastity",
     ACTIVE_CHASTITY_CAGE: "activeChastityCage",

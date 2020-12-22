@@ -16,11 +16,14 @@ run("Utils/FileUtils.js");
 run("Utils/ArrayUtils.js");
 run("Utils/GUIUtils.js");
 run("Chat/ChatUtil.js");
+
 run("Slaves/Slaves.js");
+run("Slaves/SlaveDailyTask.js");
+
+//Session
 run("Session/Orgasm/Orgasm.js");
 run("Session/Interaction.js");
 run("Session/Orgasm/OrgasmSpecial.js");
-
 run('Session/Modules/ModuleHandler.js');
 
 run("Session/Special/SessionSpecial.js");

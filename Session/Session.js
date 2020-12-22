@@ -65,7 +65,7 @@ function endSpicySession() {
             let hypnosisClazz = getAcademyClassByName("Hypnosis");
 
             if (!isVar(VARIABLE.SISSY_TRAINING)) {
-                if (getVar(VARIABLE.SESSION_COUNTER, 0) > 5 /*&& isChance(getVar(VARIABLE.SESSION_COUNTER, 0)*5))*/) {
+                if (getVar(VARIABLE.SESSION_COUNTER, 0) > 5 && isChance(getVar(VARIABLE.SESSION_COUNTER, 0)*5)) {
                     sendMessage('So %SlaveName%');
                     sendMessage('I think the time has come %EmoteHappy%');
                     sendMessage('You are probably wondering what I am talking about aren\'t you?');
@@ -112,16 +112,20 @@ function endSpicySession() {
                     sendMessage('I will take care of that %Grin%');
 
                     setVar(VARIABLE.SISSY_TRAINING, true);
+                    setDate(VARIABLE.LAST_RULE_PASSED);
                 }
             } else {
+                //Is in sissy training
                 if (!RULE_ALWAYS_WEAR_PANTIES.isActive() && RULE_ALWAYS_WEAR_PANTIES.canBeActivated()) {
                     sendMessage('There is one last thing for today...');
                     sendMessage('It\'s about your sissy training %Grin%');
                     RULE_ALWAYS_WEAR_PANTIES.sendIntroduction();
+                    setDate(VARIABLE.LAST_RULE_PASSED);
                 } else if (!RULE_ALWAYS_PEE_SITTING_DOWN.isActive() && RULE_ALWAYS_PEE_SITTING_DOWN.canBeActivated()) {
                     sendMessage('There is one last thing for today...');
                     sendMessage('It\'s about your sissy training %Grin%');
                     RULE_ALWAYS_PEE_SITTING_DOWN.sendIntroduction();
+                    setDate(VARIABLE.LAST_RULE_PASSED);
                 }
             }
         }
@@ -138,7 +142,7 @@ function endSpicySession() {
                     sendMessage('And also the cocks that are gonna fill you ass nicely at some point %EmoteHappy%');
                 }
 
-                sendMessage('I hope you are keeping up with your tasks and being a good boy for');
+                sendMessage('I hope you are keeping up with your tasks and being a good boy for me');
                 sendMessage('Because if not I\'d have to punish you');
                 sendMessage('And we don\'t want that do we?');
 
@@ -160,6 +164,10 @@ function endSpicySession() {
 
                 RULE_ALWAYS_WEAR_SMALL_PLUG.sendIntroduction();
             }
+        }
+
+        if (!RULE_FOLLOW_DAILY_TASKS.isActive() && shouldIntroduceNewRule(RULE_FOLLOW_DAILY_TASKS)) {
+            RULE_FOLLOW_DAILY_TASKS.sendIntroduction();
         }
     }
 

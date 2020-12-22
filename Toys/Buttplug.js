@@ -397,11 +397,20 @@ function getButtplugForTask() {
     return getSmallButtplug(true);
 }
 
+/**
+ * Gets an anal diameter that should be doable in the current situation
+ * @param maxDiameterAvailable Max diameter we cannot exceed
+ * @returns {number} A diameter that is doable for the sub in the current situation
+ */
+function getFittingAnalDiameterThickness(maxDiameterAvailable) {
+    return Math.min(maxDiameterAvailable, Math.max(getUsedToDiameter(), getVar(VARIABLE.MAX_DILDO_THICKNESS_TODAY, 0)));
+}
+
 
 function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
     //Get the max used thickness today to make sure we don't go too big too quickly
     //In the rare case of the biggest dildo being thicker than our biggest plug we need to watch for that
-    let maxUsedPlugThickness = Math.max(getUsedToDiameter(), Math.min(biggestButtplug.diameter, getVar(VARIABLE.MAX_DILDO_THICKNESS_TODAY, 0)));
+    let maxUsedPlugThickness = getFittingAnalDiameterThickness(biggestButtplug.diameter);
 
     //If we want to force bigger and haven't been given a min thickness then we will make it bigger than the biggest thing we used today to make sure we go up
     if (forceBigger && minThickness === 0) {
@@ -958,11 +967,11 @@ function getButtplugImagePath(name) {
 function openButtplugList() {
     let list = javafx.collections.FXCollections.observableArrayList();
 
-    for(let x = 0; x < buttplugs.length; x++) {
+    for (let x = 0; x < buttplugs.length; x++) {
         list.add(buttplugs[x].name);
     }
 
-    createToyListGUI(function(listView, event) {
+    createToyListGUI(function (listView, event) {
         showButtplugGUI(getButtplugByName(listView.listView.getSelectionModel().getSelectedItem()));
     }, "Buttplugs", list)
 }
@@ -982,7 +991,7 @@ function showButtplugGUI(buttplug) {
             let nameBox = writebackGui.addWritebackValue(gridPane.addTextSetting(row++, "Name", buttplug.name), "name");
             let diameter = writebackGui.addWritebackValue(gridPane.addTextSetting(row++, "Diameter", buttplug.diameter), "diameter");
             diameter.setOnlyDoubles();
-            let length =  writebackGui.addWritebackValue(gridPane.addTextSetting(row++, "Length", buttplug.length), "length");
+            let length = writebackGui.addWritebackValue(gridPane.addTextSetting(row++, "Length", buttplug.length), "length");
             length.setOnlyDoubles();
 
             let material = writebackGui.addWritebackValue(gridPane.addComboBox(row++, "Material"), "material");
@@ -1007,7 +1016,7 @@ function showButtplugGUI(buttplug) {
             gridPane.setConstraints(save.button, 1, row);
             gridPane.getChildren().add(save.button);
 
-            save.setOnAction(function(handle) {
+            save.setOnAction(function (handle) {
                 writebackGui.writeBack();
                 saveButtplugs();
                 dialog.close();

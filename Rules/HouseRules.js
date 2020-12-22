@@ -20,12 +20,9 @@ showImage("Images/Spicy/HouseRules/HouseRule10.jpg", 10);
  * Always be naked at home
  * Always take a cold shower instead of warm one
  * Sleep on floor instead of bed (temporary/punishment)
- * Always start session with collar and plug maybe (full time = also outside of session)?
- * Always eat cum
  * Tied up in bed/plugged in bed?
  * Only eat x
  * Max of y toilet vists per day otherwise drink piss?
  * No toilet during x (night?) otherwise drink piss
- * Always wear panties / bra
  *
  */

@@ -130,12 +130,7 @@ function getAnalDildoForTask(minLength = 0, minThickness = 0) {
  * @returns A random dildo that fits the parameters
  */
 function getAnalDildo(minLength = 0, minThickness = 0, forceThicker = false, forceLonger = false, smallerFactor = 0) {
-    let maxDildoThickness = getVar(VARIABLE.MAX_DILDO_THICKNESS_TODAY, 0) - smallerFactor;
-
-    if (maxDildoThickness >= thickestDildo.diameter) {
-        //We don't have any thicker dildo
-        maxDildoThickness = thickestDildo.diameter;
-    }
+    let maxDildoThickness = getFittingAnalDiameterThickness(thickestDildo.diameter) - smallerFactor;
 
     if (forceThicker && minThickness === 0) {
         //Limit to min thickness is of course our thickest dildo

@@ -165,3 +165,6 @@ const instance = Java.type('me.goddragon.teaseai.TeaseAI').application;
     });
     runGui(new CustomRunnable());
 */
+
+for(let x = 0; x < 10; x++)
+sendDebugMessage(getAnalDildo().name);

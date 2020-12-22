@@ -1,14 +1,17 @@
 {
     sendVirtualAssistantMessage('Pin Board Menu:', 0);
-    sendVirtualAssistantMessage('1. List rules', 0);
+    sendVirtualAssistantMessage('- List rules', 0);
     let lobbyAnswer;
 
     if(isVar(VARIABLE.ENEMA_INTRO)) {
-        sendVirtualAssistantMessage('2. Enema', 0);
-        lobbyAnswer = createInput('List rules', 'Enema', 'Return');
-    } else {
-        lobbyAnswer = createInput('List rules', 'Return');
+        sendVirtualAssistantMessage('- Enema', 0);
     }
+
+    if(RULE_FOLLOW_DAILY_TASKS.isActive()) {
+        sendVirtualAssistantMessage('- Daily Tasks', 0);
+    }
+
+    lobbyAnswer = createInput('List rules', 'Return');
 
     while (true) {
         if (lobbyAnswer.isLike('rules')) {
@@ -60,6 +63,25 @@
                 lobbyAnswer.loop();
             } else {
                 let lines = getTodaysEnema();
+
+                sendVirtualAssistantMessage('I am gonna read %DomHonorific%\'s note to you:');
+
+                for(let x = 0; x < lines.size(); x++) {
+                    sendPinnoteMessage(lines.get(x));
+                }
+
+                sendVirtualAssistantMessage('That\'s all %SlaveName%');
+            }
+
+            run("Assistant/PinBoard.js");
+            break;
+        } else if(lobbyAnswer.isLike('daily')) {
+            lobbyAnswer.clearOptions();
+
+            if(!isFullTime() || !RULE_FOLLOW_DAILY_TASKS.isActive()) {
+                lobbyAnswer.loop();
+            } else {
+                let lines = getTodaysSlaveTask();
 
                 sendVirtualAssistantMessage('I am gonna read %DomHonorific%\'s note to you:');
 

@@ -22,6 +22,8 @@ let RULE_ALWAYS_WEAR_SMALL_PLUG;
 
 let RULE_ALWAYS_STROKE_INDEX_AND_THUMB;
 
+let RULE_FOLLOW_DAILY_TASKS;
+
 {
     let ruleId = 0;
 
@@ -595,6 +597,43 @@ let RULE_ALWAYS_STROKE_INDEX_AND_THUMB;
         sendMessage('But I want to establish this as a rule from now on');
         sendMessage('From now on you will sit down every time you need to pee');
         sendMessage('Just like every girl does it %Grin%');
+
+        this.setActive(true);
+        return true;
+    };
+
+    rule = RULE_FOLLOW_DAILY_TASKS = createRule(ruleId++, false);
+
+    rule.getRulePrint = function () {
+        return 'You must daily check the tasks provided by your %DomHonorific% on the pin board';
+    };
+
+    rule.canBeActivated = function () {
+        return isFullTime();
+    };
+
+    rule.sendIntroduction = function () {
+        sendMessage('So %SlaveName%');
+        sendMessage('A few days ago I had this feeling...');
+        sendMessage('I felt like I am not exercising enough control over you');
+        sendMessage('You are supposed to be my full time slave');
+        sendMessage('Not that I want to occupy too much of your day and free time');
+        sendMessage('However...');
+        sendMessage('I felt like controlling you more than I am already doing');
+        sendMessage('More on a daily basis outside of sessions %Grin%');
+        sendMessage('So what I will do from now on is the following:');
+        sendMessage('Each and every morning I will put up a note on the pin board for you to read');
+        sendMessage('It will contain tasks/rules that are only active during that very day');
+        sendMessage('Like doing a small workout, eating healthy and so on');
+        sendMessage('Maybe teasing yourself a bit outside of sessions as well');
+        sendMessage('You\'ll see what I come up with soon enough %Grin%');
+        sendMessage('Make sure to check the pin board daily');
+        sendMessage('I won\'t check on you each and every time but expect me to do so occasionally');
+        sendMessage('So don\'t you dare cheat or skip them!');
+        sendMessage('I will notice if you try to trick me!');
+
+        sendMessage('Tomorrow I\'ll put up the first note %EmoteHappy%');
+        sendMessage('So make sure to check the pin board tomorrow');
 
         this.setActive(true);
         return true;
