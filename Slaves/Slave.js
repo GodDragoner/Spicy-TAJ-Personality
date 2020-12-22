@@ -253,11 +253,11 @@ function getMaxDiameterIncrease() {
     let assLevel = getVar(VARIABLE.ASS_LEVEL);
 
     if (assLevel >= 30) {
-        maxDiameterIncrease = 0.45;
+        maxDiameterIncrease = 0.60;
     } else if (assLevel >= 23) {
-        maxDiameterIncrease = 0.35;
+        maxDiameterIncrease = 0.45;
     } else {
-        maxDiameterIncrease = .25;
+        maxDiameterIncrease = .35;
     }
 
     return maxDiameterIncrease;

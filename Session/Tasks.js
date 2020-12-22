@@ -267,15 +267,17 @@ function goToCorner(durationSeconds) {
     //No count seconds if we are counting the heel touches or giving voice commands
     let keepCountSeconds = feelsEvil() && !countHeelsTouch && !voiceCommands;
 
-    if(keepCountSeconds) {
-        sendMessage('I want you to keep count of the seconds you spent in the corner');
-    }
+    if(!voiceCommands) {
+        if (keepCountSeconds) {
+            sendMessage('I want you to keep count of the seconds you spent in the corner');
+        }
 
-    //We use this in parachute play and we can't do this properly with the parachute on
-    else if(!faceWall && !PARACHUTE_TOY.isToyOn() && !onToes && !humbler) {
-        sendMessage("I want you to press your back against the wall, \"sit\" in the air and hold that position");
-    } else if(isChance(50) && !onToes && !humbler && !PARACHUTE_TOY.isToyOn()) {
-        sendMessage("I want you to kneel");
+        //We use this in parachute play and we can't do this properly with the parachute on
+        else if (!faceWall && !PARACHUTE_TOY.isToyOn() && !onToes && !humbler) {
+            sendMessage("I want you to press your back against the wall, \"sit\" in the air and hold that position");
+        } else if (isChance(50) && !onToes && !humbler && !PARACHUTE_TOY.isToyOn()) {
+            sendMessage("I want you to kneel");
+        }
     }
 
     if(holdUpMoney) {
