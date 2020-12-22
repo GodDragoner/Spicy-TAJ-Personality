@@ -1,6 +1,6 @@
 {
     //Last routine check either does not exist or it is the next day
-    if (!isVar(VARIABLE.LAST_ROUTINE_CHECK) || getDate(VARIABLE.LAST_ROUTINE_CHECK).addDay(1).setHour(0).setMinute(0).setSecond(0).hasPassed()) {
+    if (!isVar(VARIABLE.LAST_ROUTINE_CHECK) || !getDate(VARIABLE.LAST_ROUTINE_CHECK).sameDay(setDate())) {
         setDate(VARIABLE.LAST_ROUTINE_CHECK);
         setVar(VARIABLE.WEEKLY_SLAVE_VISITS, getVar(VARIABLE.WEEKLY_SLAVE_VISITS, 0) + 1);
 
@@ -16,6 +16,7 @@
 
         //Full time stuff
         if(isFullTime()) {
+            //TODO: Vacation needs to be implemented (also accounted to not skipping classes etc.)
             if (isVar(VARIABLE.SLAVE_LEAVE_UNTIL)) {
                 if (getDate(VARIABLE.SLAVE_LEAVE_UNTIL).hasPassed()) {
                     slaveIsBack(true, false);

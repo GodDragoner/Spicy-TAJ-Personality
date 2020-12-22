@@ -1,4 +1,5 @@
 {
+    //TODO: Only open academy after some time
     if(!isFullTime()) {
         sendVirtualAssistantMessage('The academy is only available to full time slaves :(');
     } else {

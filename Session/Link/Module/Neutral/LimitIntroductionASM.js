@@ -22,7 +22,7 @@
                 sendMessage('His eyes are watering and full of fear, regret but most importantly utter submission');
                 sendMessage('%Moan%');
                 sendMessage('Speaking of which...');
-                HUMILIATION_LIMIT.askForLimitChange(LIMIT_ADDRESS.DOMME);
+                ASM_LIMIT.askForLimitChange(LIMIT_ADDRESS.DOMME);
             }
         }
     }

@@ -391,6 +391,8 @@ function setPlugIn(plug) {
     plug.clean = false;
 
     currentPlug = plug;
+
+    setTempVar(VARIABLE.MAX_DILDO_THICKNESS_TODAY, Math.max(getVar(VARIABLE.MAX_DILDO_THICKNESS_TODAY, 0), plug.diameter));
 }
 
 function getButtplugForTask() {

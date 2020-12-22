@@ -137,7 +137,7 @@
         if(getVar(VARIABLE.SUB_HAS_GIRLFRIEND) || getVar(VARIABLE.SUB_IS_MARRIED)) {
             sendVirtualAssistantMessage('What\'s her name?');
             setVar(VARIABLE.SUB_PARTNER_NAME, createInput().getAnswer());
-            sendVirtualAssistantMessage('Maybe we can get to know ' + VARIABLE.SUB_PARTNER_NAME + ' one day %Grin%');
+            sendVirtualAssistantMessage('Maybe we can get to know ' + getVar(VARIABLE.SUB_PARTNER_NAME) + ' one day %Grin%');
             sendVirtualAssistantMessage('Maybe even work together %EmoteHappy%');
         }
 
@@ -334,7 +334,7 @@
     //Find different random title
     do {
         enforcingDommeHonorific = getRandomHonorific();
-    } while(enforcingDommeHonorific == kindDommeHonorific);
+    } while(enforcingDommeHonorific === kindDommeHonorific);
 
     sendVirtualAssistantMessage('Now the second Domme I found is ' + enforcingDommeHonorific + ' ???');
     sendVirtualAssistantMessage('Her profile description says:');

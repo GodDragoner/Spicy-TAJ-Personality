@@ -14,7 +14,7 @@
         sendVirtualAssistantMessage("Which means it's confession day");
     }
 
-//Only continue if we haven't check this today
+    //Only continue if we haven't check this today
     if (!isVar(VARIABLE.NEXT_CONFESSION_DAY) || getDate(VARIABLE.NEXT_CONFESSION_DAY).hasPassed()) {
         if (isVar(VARIABLE.NEXT_CONFESSION_DAY) && !getDate(VARIABLE.NEXT_CONFESSION_DAY).sameDay(setDate())) {
             sendVirtualAssistantMessage("You've been skipping confession day %SlaveName%!");

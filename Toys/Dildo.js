@@ -131,7 +131,7 @@ function getAnalDildoForTask(minLength = 0, minThickness = 0) {
  */
 function getAnalDildo(minLength = 0, minThickness = 0, forceThicker = false, forceLonger = false, smallerFactor = 0) {
     let maxDildoThickness = getFittingAnalDiameterThickness(thickestDildo.diameter) - smallerFactor;
-
+a
     if (forceThicker && minThickness === 0) {
         //Limit to min thickness is of course our thickest dildo
         minThickness = Math.min(maxDildoThickness + 0.1, thickestDildo.diameter);
