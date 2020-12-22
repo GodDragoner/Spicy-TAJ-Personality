@@ -138,7 +138,7 @@ function startPunishmentSession(overallLevel) {
 
     setSender(1);
     setVar(VARIABLE.PUNISHMENT_ACTIVE, false);
-    incrementVar(PUNISHMENTS_DONE, 1, 0);
+    incrementVar(VARIABLE.PUNISHMENTS_DONE, 1, 0);
     delVar(VARIABLE.PUNISHMENT_PUNISHER);
 }
 

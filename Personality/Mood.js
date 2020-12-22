@@ -243,7 +243,7 @@ function registerUnallowedTalk() {
 function registerForgetHonorific() {
     if(getVar(VARIABLE.FORGETTING_HONORIFIC_COUNT, 0) > 3) {
         changeMeritHigh(true);
-    } else if(getVar(VARIABLE.FORGETTING_HONORIFIC_COUNT) > 1) {
+    } else if(getVar(VARIABLE.FORGETTING_HONORIFIC_COUNT, 0) > 1) {
         changeMeritMedium(true);
     } else {
         changeMeritLow(true);

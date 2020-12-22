@@ -133,6 +133,11 @@ function getLongTimeWearPlugs(plugList = buttplugs) {
         }
     }
 
+    //None found
+    if(longtime.length === 0) {
+        return buttplugs;
+    }
+
     return longtime;
 }
 
