@@ -60,7 +60,10 @@ function isScriptFile(file) {
 }
 
 function getImageSubFolder(subPath) {
-    return getFile(IMAGE_PATH + PATH_SEPARATOR + subPath);
+    let file = getFile(IMAGE_PATH + PATH_SEPARATOR + subPath);
+    tryCreateFolder(file);
+
+    return file;
 }
 
 function tryCreateFolder(folder) {

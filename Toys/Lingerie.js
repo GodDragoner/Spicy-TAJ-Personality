@@ -29,7 +29,7 @@ function hasPanties() {
 }
 
 function hasBra() {
-    let braFolder = getImageSubFolder('Toys' + PATH_SEPARATOR + 'Lingerie' + PATH_SEPARATOR + 'Bras');
+    let braFolder = getImageSubFolder('Toys' + PATH_SEPARATOR + 'Lingerie' + PATH_SEPARATOR + 'Bra');
     return braFolder.listFiles().length > 0 && BRA_TOY.hasToy();
 }
 

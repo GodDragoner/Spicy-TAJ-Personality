@@ -24,7 +24,7 @@ function loadRooms() {
 
                 if (valueEntry.indexOf('name:') !== -1) {
                     name = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('size:')  !== -1) {
+                } else if (valueEntry.indexOf('size:') !== -1) {
                     size = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
                 }
             }
@@ -87,12 +87,12 @@ function createRoom(name, size) {
             return time >= Math.floor(this.getCleanTimeBoundMin(choreType)) && time <= Math.ceil(this.getCleanTimeBoundMax(choreType));
         },
 
-        confirmAndStartChore: function(choreType) {
-            if(choreType === ROOM_CHORE_MOP) {
+        confirmAndStartChore: function (choreType) {
+            if (choreType === ROOM_CHORE_MOP) {
                 let secondsSinceVacuum = this.getSecondsSinceLastChore(ROOM_CHORE_VACUUM);
 
                 //last vacuum 4 or more days ago means we should probably do that first before mopping the floors
-                if(secondsSinceVacuum === -1 || Math.ceil(secondsSinceVacuum/(60*60*24) > 3)) {
+                if (secondsSinceVacuum === -1 || Math.ceil(secondsSinceVacuum / (60 * 60 * 24) > 3)) {
                     choreType = ROOM_CHORE_VACUUM;
                 }
             }
@@ -130,11 +130,16 @@ function createRoom(name, size) {
 
             let toysAttached = sendKinkyChoreInstructions(choreType);
 
-            for(let x = 0; x < toysAttached.length; x++) {
+            for (let x = 0; x < toysAttached.length; x++) {
                 toy = toysAttached[x];
 
                 //Will trigger scripts based on the toy
-                toy.removeToy();
+                if(toy === BUTTPLUG_TOY) {
+                    sendMessageBasedOnSender('You can now remove the plug from your ass %SlaveName%');
+                    setPlugRemoved();
+                } else {
+                    toy.removeToy();
+                }
             }
 
             sendMessageBasedOnSender('Okay then...');
@@ -154,7 +159,9 @@ function createRoom(name, size) {
 
             //Works even if IDE talks about it not being a string
             let secondsPassed = parseInt(CHORE_WATCH.getTime() / 1000, 10);
-            let minutesPassed = Math.round(secondsPassed/60);
+            let minutesPassed = Math.round(secondsPassed / 60);
+
+            sendDebugMessage('Done chore for ' + minutesPassed);
 
             //Weekly chores done
             incrementVar(VARIABLE.WEEKLY_CHORES_DONE, 1);
@@ -315,13 +322,13 @@ function createRoom(name, size) {
         },
 
         getSecondsSinceLastChore: function (choreType) {
-              let lastDate = this.getLastChoreDate(choreType);
+            let lastDate = this.getLastChoreDate(choreType);
 
-              if(lastDate === -1) {
-                  return lastDate;
-              } else {
-                  return millisToTimeUnit(getMillisSinecDate(lastDate), TIME_UNIT_SECONDS, 0);
-              }
+            if (lastDate === -1) {
+                return lastDate;
+            } else {
+                return millisToTimeUnit(getMillisSinecDate(lastDate), TIME_UNIT_SECONDS, 0);
+            }
         },
 
         getLastChoreDateVarName: function (choreType) {
@@ -333,7 +340,7 @@ function createRoom(name, size) {
         },
 
         getAverageCleanTimeVarName: function (choreType) {
-            this.getVarName() + 'Average' + capitalize(choreType.name) + 'Time';
+            return this.getVarName() + 'Average' + capitalize(choreType.name) + 'Time';
         },
 
         getAverageCleanTime: function (choreType) {
@@ -364,7 +371,7 @@ function createRoom(name, size) {
             return Math.ceil(this.getAverageCleanTime(choreType) * 5 / 4 * tempChoreTimeMultiplier);
         },
 
-        toString: function() {
+        toString: function () {
             return 'name:' + this.name + ",size:" + this.size;
         },
 

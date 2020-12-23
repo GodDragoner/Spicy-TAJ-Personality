@@ -1,6 +1,6 @@
 const CLOTHESPINS_TOY = createToy('clothespins');
 
-
+const MAX_TRIES = 1000;
 const MAX_CLAMPS = 20;
 let LAST_BODY_PART_CLAMP_INTERACTION = [];
 
@@ -115,9 +115,11 @@ function distributeClamps(amount, bodyPartHistory = new java.util.ArrayList()) {
     //Set the sentence builder variable to true
     SENTENCE_BUILDER_FIRST = true;
 
-    while (amount > 0) {
+    let tries = 0;
+    while (amount > 0 && tries < MAX_TRIES) {
+        tries++;
+        
         let randomBodyPart = findRandomBodyPartForClamps();
-
 
         //Track whether we switched to the opposite part because then we don't need to check the other part afterwards anymore
         let switchedToOpposite = false;
@@ -188,7 +190,7 @@ function findRandomBodyPart() {
 }
 
 function findRandomBodyPartWithClamps() {
-    for (let x = 0; x < 1000; x++) {
+    for (let x = 0; x < MAX_TRIES; x++) {
         let randomBodyPart = findRandomBodyPart();
 
         if (randomBodyPart.currentClamps <= 0) {
@@ -203,7 +205,7 @@ function findRandomBodyPartWithClamps() {
 }
 
 function findRandomBodyPartForClamps() {
-    for (let x = 0; x < 1000; x++) {
+    for (let x = 0; x < MAX_TRIES; x++) {
         let randomBodyPart = findRandomBodyPart();
 
         if (!randomBodyPart.canAttachClamps()) {
@@ -313,7 +315,11 @@ function redistributeRandomClamps() {
 //TODO: This amount is not accurate when having two sides but different amounts of clamps
 function redistributeClamps(bodyPart, amount, oppositeToo = false, bodyPartHistory = new java.util.ArrayList()) {
     SENTENCE_BUILDER_FIRST = true;
-    while (amount > 0) {
+    let tries = 0;
+    
+    while (amount > 0 && tries < MAX_TRIES) {
+        tries++;
+        
         let newBodyPart = findRandomBodyPartForClamps();
 
         sendDebugMessage('Trying to use ' + newBodyPart.name + ' for clamp redistribution with ' + amount + ' left to distribute');

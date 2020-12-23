@@ -257,7 +257,7 @@ function putInButtplug(forceBigger = false) {
 }
 
 function putinChosenButtplug(plug) {
-    sendMessage("%SlaveName%");
+    sendMessageBasedOnSender("%SlaveName%");
 
     if (!plug.fetchButtplug()) {
         return false;
@@ -269,32 +269,32 @@ function putinChosenButtplug(plug) {
 
     if (feelsEvil() && isChance(50) && getVar(VARIABLE.ASS_LEVEL) > 15) {
         if (!isVar(VARIABLE.LAST_ICE_CUBE_UP_ASS_DATE) || getDate(VARIABLE.LAST_ICE_CUBE_UP_ASS_DATE).addMinute(10).hasPassed()) {
-            sendMessage('But before we are gonna stick that buttplug up your %Ass%');
+            sendMessageBasedOnSender('But before we are gonna stick that buttplug up your %Ass%');
 
             let iceCubes = randomInteger(2, 5);
             if (askAndFetchIceCubes(iceCubes)) {
                 if (isVar(VARIABLE.LAST_ICE_CUBE_UP_ASS_DATE)) {
-                    sendMessage('Yet again %Grin%');
-                    sendMessage('Push them up your ass one by one %Grin%');
-                    sendMessage('And make sure that nothing sips out when you push the new ones in');
-                    sendMessage('It must be getting cold in there with all those cubes up your ass %Lol%');
+                    sendMessageBasedOnSender('Yet again %Grin%');
+                    sendMessageBasedOnSender('Push them up your ass one by one %Grin%');
+                    sendMessageBasedOnSender('And make sure that nothing sips out when you push the new ones in');
+                    sendMessageBasedOnSender('It must be getting cold in there with all those cubes up your ass %Lol%');
                 } else {
                     let answer = sendInput('%KnowWhatsNext%', 5);
 
                     if (!answer.isTimeout()) {
                         if (answer.isLike('ass', 'anal', 'butt')) {
                             changeMeritLow(false);
-                            sendMessage('I guess you know me pretty well %Grin%');
+                            sendMessageBasedOnSender('I guess you know me pretty well %Grin%');
                         }
                     }
 
-                    sendMessage('I want you to push those ice cubes up your ass one by one');
-                    sendMessage('Afterwards we are gonna plug your %Ass% and let them slowly melt inside you %Grin%');
+                    sendMessageBasedOnSender('I want you to push those ice cubes up your ass one by one');
+                    sendMessageBasedOnSender('Afterwards we are gonna plug your %Ass% and let them slowly melt inside you %Grin%');
                 }
 
-                sendMessage('Tell me when you are done...');
+                sendMessageBasedOnSender('Tell me when you are done...');
                 waitForDone();
-                sendMessage('How is it feeling? Cold? %Grin%');
+                sendMessageBasedOnSender('How is it feeling? Cold? %Grin%');
                 setTempVar(VARIABLE.LAST_ICE_CUBE_UP_ASS_DATE, setDate());
             }
         }
@@ -311,54 +311,54 @@ function putinChosenButtplug(plug) {
     } else if (lubeType === TIGER_HOT_LUBE) {
         lubeUpToyWithTigerHot(random("plug", "buttplug"));
     } else {
-        sendMessage("Today I don't you to use any lube %Grin%");
+        sendMessageBasedOnSender("Today I don't you to use any lube %Grin%");
     }
 
-    sendMessage("Now %SlaveName%");
+    sendMessageBasedOnSender("Now %SlaveName%");
 
     if (isChance(getStrictnessForCharacter() * 10) && getVar(VARIABLE.ASS_LEVEL) >= 30) {
-        sendMessage("Push it in quickly");
-        sendMessage("I don't care whether it hurts");
+        sendMessageBasedOnSender("Push it in quickly");
+        sendMessageBasedOnSender("I don't care whether it hurts");
     } else {
         if (isChance(50) && getVar(VARIABLE.ASS_LEVEL) >= 30) {
-            sendMessage("Put that plug on the ground");
-            sendMessage("You already know " + random("what I am gonna make you do now", "what comes next", "what you are gonna do next", "what I want you to do next", "what is gonna happen now"));
-            sendMessage("I want you to slowly sit down on that plug and push it all the way up your ass");
-            sendMessage("So get ready", 3);
-            sendMessage("Squat above it", 5);
-            sendMessage("And now slowly lower your ass down on that plug", 5);
-            sendMessage("Let it slowly slip into you", 5);
-            sendMessage(random("Can you feel the shape of it inside of you already?", "Can you feel it making its way into you?", "Can you feel it slowly filling your dirty hole?"));
-            sendMessage("Go all the way down until your ass cheeks are touching the floor and the plug is all the way in");
+            sendMessageBasedOnSender("Put that plug on the ground");
+            sendMessageBasedOnSender("You already know " + random("what I am gonna make you do now", "what comes next", "what you are gonna do next", "what I want you to do next", "what is gonna happen now"));
+            sendMessageBasedOnSender("I want you to slowly sit down on that plug and push it all the way up your ass");
+            sendMessageBasedOnSender("So get ready", 3);
+            sendMessageBasedOnSender("Squat above it", 5);
+            sendMessageBasedOnSender("And now slowly lower your ass down on that plug", 5);
+            sendMessageBasedOnSender("Let it slowly slip into you", 5);
+            sendMessageBasedOnSender(random("Can you feel the shape of it inside of you already?", "Can you feel it making its way into you?", "Can you feel it slowly filling your dirty hole?"));
+            sendMessageBasedOnSender("Go all the way down until your ass cheeks are touching the floor and the plug is all the way in");
         } else {
-            sendMessage("Put the tip of the plug on your asshole", 5);
-            sendMessage("Rub the tip gently along your ass crack", 5);
-            sendMessage("Now...");
+            sendMessageBasedOnSender("Put the tip of the plug on your asshole", 5);
+            sendMessageBasedOnSender("Rub the tip gently along your ass crack", 5);
+            sendMessageBasedOnSender("Now...");
 
-            sendMessage("Carefully start pushing that plug into your ass");
-            sendMessage("Push it slowly and gently...");
+            sendMessageBasedOnSender("Carefully start pushing that plug into your ass");
+            sendMessageBasedOnSender("Push it slowly and gently...");
 
             if (isUnexperiencedDiamater(plug.diameter) && getVar(VARIABLE.ASS_LEVEL) < 30 || isVeryUnexperiencedDiamater(plug.diameter)) {
-                sendMessage("Until you reach the point where it starts hurting a bit");
-                sendMessage("Now hold that position", 3);
-                sendMessage("Let that plug slip out again");
-                sendMessage("And rest for a second...", 5);
-                sendMessage("Start over...");
-                sendMessage("Gently push that plug into your ass");
-                sendMessage("Push it a bit further this time");
-                sendMessage("Hold the position again", 3);
-                sendMessage("Aaaaand...");
+                sendMessageBasedOnSender("Until you reach the point where it starts hurting a bit");
+                sendMessageBasedOnSender("Now hold that position", 3);
+                sendMessageBasedOnSender("Let that plug slip out again");
+                sendMessageBasedOnSender("And rest for a second...", 5);
+                sendMessageBasedOnSender("Start over...");
+                sendMessageBasedOnSender("Gently push that plug into your ass");
+                sendMessageBasedOnSender("Push it a bit further this time");
+                sendMessageBasedOnSender("Hold the position again", 3);
+                sendMessageBasedOnSender("Aaaaand...");
 
                 if (isVeryUnexperiencedDiamater(plug.diameter)) {
-                    sendMessage("Let that plug slip out again");
-                    sendMessage("Now...");
-                    sendMessage("This time it is gonna go all the way in %Grin%");
-                    sendMessage("Starting pushing it in");
+                    sendMessageBasedOnSender("Let that plug slip out again");
+                    sendMessageBasedOnSender("Now...");
+                    sendMessageBasedOnSender("This time it is gonna go all the way in %Grin%");
+                    sendMessageBasedOnSender("Starting pushing it in");
                 }
 
-                sendMessage("Get it all the way in there");
+                sendMessageBasedOnSender("Get it all the way in there");
             } else {
-                sendMessage("Push it all the way in...");
+                sendMessageBasedOnSender("Push it all the way in...");
             }
         }
     }
@@ -366,17 +366,17 @@ function putinChosenButtplug(plug) {
     let answer = sendInput("Tell me when you are done %SlaveName%");
     while (true) {
         if (answer.isLike("done", "yes")) {
-            sendMessage("%Good%");
+            sendMessageBasedOnSender("%Good%");
             break;
         } else {
-            sendMessage("Have you plugged yourself like a good %SlaveName%?");
+            sendMessageBasedOnSender("Have you plugged yourself like a good %SlaveName%?");
             answer.loop();
         }
     }
 
     if (plug.vibrating && isChance(40)) {
-        sendMessage('Now activate the vibration of your plug %SlaveName% %Grin%', 5);
-        sendMessage(random('You paid for it so we better make use of that now %EmoteHappy%', 'No reason to leave that feature unused is there? %EmoteHappy%', 'Let\'s see if I can drive you crazy like this %GeneralTime%'));
+        sendMessageBasedOnSender('Now activate the vibration of your plug %SlaveName% %Grin%', 5);
+        sendMessageBasedOnSender(random('You paid for it so we better make use of that now %EmoteHappy%', 'No reason to leave that feature unused is there? %EmoteHappy%', 'Let\'s see if I can drive you crazy like this %GeneralTime%'));
     }
 
     BUTTPLUG_TOY.setUsedInActiveContext(true);
@@ -579,6 +579,10 @@ function removeButtplug(end = false) {
         }
     }
 
+    setPlugRemoved();
+}
+
+function setPlugRemoved() {
     currentPlug = null;
     setTempVar(VARIABLE.IS_PLUGGED, false);
 }

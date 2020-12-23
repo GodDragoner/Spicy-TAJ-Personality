@@ -198,7 +198,7 @@
         //Unlock later chastity
         if(isInChastity() && getVar(VARIABLE.CHASTITY_REMOVE_LATER, false)) {
             //Has too much time passed or have we spend enough modules?
-            if(isInChastity(moduleChance*40) || hasSessionTimePassed(Math.round(getVar(VARIABLE.DEVOTION)/1.5))) {
+            if(isInChastity(moduleCounter*40) || hasSessionTimePassed(Math.round(getVar(VARIABLE.DEVOTION)/1.5))) {
                 unlockChastityCage();
                 delVar(VARIABLE.CHASTITY_REMOVE_LATER);
             }

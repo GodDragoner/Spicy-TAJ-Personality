@@ -70,7 +70,7 @@ function accountTimeSpendOnChore(minutes, skipGold = false) {
     let minute = Math.min(15, minutes);
 
     for(let x = 0; x < Math.floor(minute/15); x++) {
-        changeMeritLow(true);
+        changeMeritLow();
 
         if(!skipGold) {
             rewardGoldLow();
@@ -401,7 +401,7 @@ function sendKinkyChoreInstructions(choreType) {
 
 
                         if(buttplug.fetchButtplug()) {
-                            toysAttached.push(BUTTPLUG_TOY);
+                            attachedToys.push(BUTTPLUG_TOY);
                             sendMessageBasedOnSender('Now put it in and tell me when you are done');
                             waitForDone();
 
@@ -420,11 +420,11 @@ function sendKinkyChoreInstructions(choreType) {
                             if(NOSE_HOOK.hasToy() && NOSE_HOOK.isPlayAllowed() && NOSE_HOOK.fetchToy()) {
                                 sendMessageBasedOnSender('Put on the nose hook and tell me when you are done');
                                 waitForDone();
-                                toysAttached.push(NOSE_HOOK);
+                                attachedToys.push(NOSE_HOOK);
                             }
 
                             if(COLLAR_TOY.hasToy() && COLLAR_TOY.isPlayAllowed() && putOnCollar()) {
-                                toysAttached.push(COLLAR_TOY);
+                                attachedToys.push(COLLAR_TOY);
                             }
 
                             if(buttplug.baseStyle === BUTTPLUG_BASE_STYLE.PIG_TAIL) {
@@ -461,7 +461,7 @@ function sendKinkyChoreInstructions(choreType) {
                         sendMessageBasedOnSender('Don\'t you dare cum!');
                         sendMessageBasedOnSender('If you get close to cumming stop and continue once you are ready');
 
-                        toysAttached.push(PROSTATE_VIBRATOR_TOY);
+                        attachedToys.push(PROSTATE_VIBRATOR_TOY);
                         tasks++;
                     }
                 }
