@@ -39,10 +39,10 @@ function getRandomBodyPartForEStim() {
             bodyPartList.push(BODY_PART_BALLS);
         }
 
-        if(!BODY_PART_NIPPLE_L.isUsed(E_STIM_TOY)) {
+        /*if(!BODY_PART_NIPPLE_L.isUsed(E_STIM_TOY)) {
             sendDebugMessage('Pushing E-Stim nipples to body parts');
             bodyPartList.push(BODY_PART_NIPPLE_L);
-        }
+        }*/
     }
 
     if(E_STIM_STRAPS.hasToy() && !BODY_PART_PENIS_SHAFT.isUsed(E_STIM_TOY)) {
@@ -75,7 +75,7 @@ function attachEStimToBodyPart(bodyPart) {
             sendMessage('Tell me when you are done');
             waitForDone(10000);
             break;
-        case BODY_PART_NIPPLE_L:
+       /* case BODY_PART_NIPPLE_L:
             if (!E_STIM_PADS.fetchToy()) {
                 break;
             }
@@ -90,7 +90,7 @@ function attachEStimToBodyPart(bodyPart) {
 
             sendMessage('Tell me when you are done');
             waitForDone(10000);
-            break;
+            break;*/
         case BODY_PART_BALLS:
             if (!E_STIM_PADS.fetchToy()) {
                 break;

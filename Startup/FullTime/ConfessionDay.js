@@ -31,6 +31,8 @@
         while (true) {
             let answer = createInput();
 
+            let nothing = false;
+
             if (answer.containsIgnoreCase("came", "orgasm", "cum", "cumming")) {
                 sendVirtualAssistantMessage("Cumming without permission...");
                 addPunishmentPoints(400, PUNISHMENT_REASON.NO_PERM_CUM);
@@ -46,32 +48,39 @@
             } else if (answer.containsIgnoreCase("unhealthy")) {
                 sendVirtualAssistantMessage("Eating unhealthy...");
                 addPunishmentPoints(150);
+            } else if(answer.isLike('nothing')) {
+                sendVirtualAssistantMessage('There is always something to confess %SlaveName%');
+                nothing = true;
             } else {
                 sendVirtualAssistantMessage("This isn't good slave!");
                 addPunishmentPoints(150);
             }
 
-            sendVirtualAssistantMessage("Anything else?", false);
+            if(nothing) {
+                answer.loop();
+            } else {
+                sendVirtualAssistantMessage("Anything else?", false);
 
-            let more = false;
-            answer = createInput();
+                let more = false;
+                answer = createInput();
 
-            while (true) {
-                if (answer.isLike("yes")) {
-                    sendVirtualAssistantMessage("Tell me %SlaveName%!");
-                    more = true;
-                    break;
-                } else if (answer.isLike("no")) {
-                    sendVirtualAssistantMessage("Good %SlaveName%!");
-                    break;
-                } else {
-                    sendVirtualAssistantMessage(YES_OR_NO);
-                    answer.loop();
+                while (true) {
+                    if (answer.isLike("yes")) {
+                        sendVirtualAssistantMessage("Tell me %SlaveName%!");
+                        more = true;
+                        break;
+                    } else if (answer.isLike("no")) {
+                        sendVirtualAssistantMessage("Good %SlaveName%!");
+                        break;
+                    } else {
+                        sendVirtualAssistantMessage(YES_OR_NO);
+                        answer.loop();
+                    }
                 }
-            }
 
-            if (!more) {
-                break;
+                if (!more) {
+                    break;
+                }
             }
         }
 
