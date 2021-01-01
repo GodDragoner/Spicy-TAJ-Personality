@@ -100,7 +100,7 @@
     showCategoryImage('SOFTCORE', 0);
     startEdging();
 
-    sendMessage('There are so may beautiful women in the world, %SlaveName%');
+    sendMessage('There are so many beautiful women in the world, %SlaveName%');
     sendMessage('About 3 billion in fact %Grin%');
     sendMessage('That\'s... a lot of edges %Lol%');
 

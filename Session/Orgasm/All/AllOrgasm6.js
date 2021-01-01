@@ -6,9 +6,9 @@
 
     sendMessage("I\'m trying to imagine how full %MyYour% %Balls% are right now");
 
-    if(getLastEjaculationDate().add(10).hasPassed()) {
+    if(getLastEjaculationDate().addDay(10).hasPassed()) {
         sendMessage('They must be pretty full given how long it\'s been since we\'ve emptied them');
-    } else if(getLastEjaculationDate().add(3).hasPassed()) {
+    } else if(getLastEjaculationDate().addDay(3).hasPassed()) {
         sendMessage('They must be starting to fill up... it\'s been a couple of days since we\'ve emptied them after all');
     } else {
         sendMessage('Not too full I guess... it\\\'s hasn\\\'t been that long since we\\\'ve emptied them');

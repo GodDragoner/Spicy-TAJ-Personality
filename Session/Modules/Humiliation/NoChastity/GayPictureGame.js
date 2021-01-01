@@ -108,10 +108,10 @@ function startGayPictureRound() {
             setTempVar("gayPictureGameBoobs", newValue);
 
             if (newValue % 5 == 0 && newValue != 0) {
-                sendMessage("That was the fifth time you hit the butt stop", 0);
-                sendMessage("Which means this game is at an end");
-                sendMessage("Be glad you didn\'t end with denial %Lol%");
-                endGayPictureGame();
+                sendMessage("Boobs five times! %Grin%");
+                sendMessage("I guess that earns you 100 gold!");
+                addGold(100);
+                sendMessage("The gold has been transferred...");
                 return;
             }
 
@@ -123,10 +123,10 @@ function startGayPictureRound() {
             setTempVar("gayPictureGameButts", newValue);
 
             if (newValue % 5 == 0 && newValue != 0) {
-                sendMessage("Boobs five times! %Grin%");
-                sendMessage("I guess that earns you 100 gold!");
-                addGold(100);
-                sendMessage("The gold has been transferred...");
+                sendMessage("That was the fifth time you hit the butt stop", 0);
+                sendMessage("Which means this game is at an end");
+                sendMessage("Be glad you didn\'t end with denial %Lol%");
+                endGayPictureGame();
                 break;
             }
 

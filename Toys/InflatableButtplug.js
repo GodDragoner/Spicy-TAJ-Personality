@@ -30,8 +30,7 @@ function putInInflatablePlug() {
         if(isPlugged()) {
             removeButtplug();
         }
-
-        sendMessage('And now put it in %SlaveName%');
+        sendMessage('And now put the inflatable plug in %SlaveName%');
         sendMessage('Tell me when you are done');
         waitForDone();
         setTempVar(VARIABLE.IS_PLUGGED, true);

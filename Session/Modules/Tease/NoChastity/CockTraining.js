@@ -178,7 +178,7 @@ function strokeTrainingEdge() {
             }
         } else if (level > 40) {
             if (getStrictnessForCharacter() == 0) {
-                sendMessage(random("You are above level 40!", "Well done!", "Excellent job", "You did good %SlaveName", "Bravo %SlaveName", "That was excellent work %SlaveName", "I'm applauding you %SlaveName%"));
+                sendMessage(random("You are above level 40!", "Well done!", "Excellent job", "You did good %SlaveName%", "Bravo %SlaveName%", "That was excellent work %SlaveName%", "I'm applauding you %SlaveName%"));
                 addMerits(25);
             } else if (getStrictnessForCharacter() == 1) {
                 sendMessage(random("It seems you did quite alright today!", "Oh my you made it passed level 40...", "Well it seem you made it pass level 40"));

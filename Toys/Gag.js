@@ -88,7 +88,7 @@ function wantsToRemoveGag() {
         return false;
     }
 
-    return isChance(25);
+    return isChance((VERY_ANNOYED_MOOD - getMood())*25);
 }
 
 function decideGag(pain = false) {
@@ -119,7 +119,7 @@ function decideGag(pain = false) {
     }
 
     //Punishment has higher chance for gags
-    else if (isChance(isOngoingPunishment()? 75: 25)) {
+    else if (isChance(isOngoingPunishment()? 75: getMood()*10)) {
         selectAndPutInGag();
         return true;
     }

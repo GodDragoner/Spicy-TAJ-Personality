@@ -6,6 +6,11 @@ Ideas:
 - Game for every normal orgasm you have x ruined, increase one per normal orgasm or something
  */
 
+//TODO: may I remove the gag? Response
+//I came response
+//May I edge, getting close
+
+
 
 let startMillis = new Date().getTime();
 showImage("Images/Spicy/Intro/SpicyGif*.gif");

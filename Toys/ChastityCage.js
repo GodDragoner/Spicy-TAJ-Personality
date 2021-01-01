@@ -520,12 +520,13 @@ function lockChastityCage(chastityCage = undefined) {
     sendMessageBasedOnSender(random("Put on your %ChastityCage%", "Put on the %ChastityCage% at once", "Hurry up and get the %ChastityCage% back on", "Be quick and get your %ChastityCage% back on", "Lock %MyYour% %Cock% up"));
 
     const chastityLevel = getVar(VARIABLE.CHASTITY_LEVEL);
-    let timeout = randomInteger(60 - chastityLevel, 90 - chastityLevel);
+    let timeout = randomInteger(120 - chastityLevel, 180 - chastityLevel);
     if (getStrictnessForCharacter() == 1) {
-        timeout = randomInteger(55 - chastityLevel, 80 - chastityLevel);
+        timeout = randomInteger(110 - chastityLevel, 160 - chastityLevel);
     } else if (getStrictnessForCharacter() == 2) {
-        timeout = randomInteger(50 - chastityLevel, 70 - chastityLevel);
+        timeout = randomInteger(100 - chastityLevel, 140 - chastityLevel);
     }
+
 
     //Slower timeout for the dilator
     if (getVar(VARIABLE.CHASTITY_DILATOR_ON, false)) {

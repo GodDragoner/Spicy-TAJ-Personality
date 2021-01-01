@@ -1,3 +1,9 @@
+//TODO:
+/*
+Also, still on workmode, one thing that I miss about Cyber Mistress are small permissions,
+ like ask to use the bathroom; go get water, answer the phone; to eat something; etc.
+ And than the Assistant tells you if you are allowed or not, and for how much time you can be away.
+ */
 {
     sendVirtualAssistantMessage("Work mode has been activated");
     sendVirtualAssistantMessage("While this mode is active you'll slowly earn merits and gold");
@@ -370,7 +376,7 @@ function workmodeTease(tease) {
         case 11:
             sendVirtualAssistantMessage("Cocksucker I want you to go and grab your dildo.", 15);
             sendVirtualAssistantMessage("I want you to deepthroat that %Cock% until I say stop");
-            sendVirtualAssistantMessage(" ok, get that thing in the back of you're throat until I say you can take it out %Lol%", 6, 20);
+            sendVirtualAssistantMessage(" ok, get that thing in the back of you're throat until I say you can take it out %Lol%", randomInteger(6, 20));
             sendVirtualAssistantMessage("ok thats enough Cock gobbler.");
             sendVirtualAssistantMessage("take a breath then return to whatever you were doing %Lol%", 10);
             break;

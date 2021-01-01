@@ -97,6 +97,7 @@
                     sendVirtualAssistantMessage('Now have fun with your sport activity and make sure to come back to me afterwards');
                     setVar(VARIABLE.CHASTITY_ON, false);
                     setVar(VARIABLE.WAITING_FOR_CHASTITY_KEY_RETURN, true);
+                    break;
                 } else if (answer.isLike('public')) {
                     answer.clearOptions();
 
@@ -117,6 +118,7 @@
                             sendVirtualAssistantMessage('Mind this has consequences!');
                             addPunishmentPoints(250, PUNISHMENT_REASON.BREAKING_CHASTITY);
                             setVar(VARIABLE.WAITING_FOR_CHASTITY_KEY_RETURN, true);
+                            break;
                         } else {
                             sendVirtualAssistantMessage('%Good%');
                             sendVirtualAssistantMessage('You wouldn\'t want to suffer the consequences anyway %Grin%');
@@ -124,6 +126,8 @@
                     } else {
                         sendVirtualAssistantMessage('Well then don\'t bother me %EmoteRandom%');
                     }
+
+                    break;
                 } else {
                     sendVirtualAssistantMessage('Cleaning, pain, emergency or other?');
                     answer.loop();

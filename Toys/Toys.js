@@ -157,6 +157,12 @@ function removeAllToys() {
         removeCollar();
     }
 
+    if(hasLingerieOn()) {
+        sendMessage('Go ahead and undress and put your normal clothes back on %SlaveName%');
+        waitForDone();
+        removeAllLingerie();
+    }
+
     //QUALITY: Specify
     sendMessage('Remove anything else attached to your body %SlaveName%');
     sendMessage('Tell me when you are done');

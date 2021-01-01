@@ -178,9 +178,9 @@ function getWelcomeMessage() {
         "Oh you again.",
         "Happy to see you.",
         "Tell me what you want.",
-        "Hey, You have gold. Take a look in the shop what you can buy."
+        //"Hey, You have gold. Take a look in the shop what you can buy."
     ];
-    answers.push("Hey, You have " + getVar(VARIABLE.GOLD, 0) + " gold. Take a look in the shop what you can buy.");
+    //answers.push("Hey, You have " + getVar(VARIABLE.GOLD, 0) + " gold. Take a look in the shop what you can buy.");
 
     return answers[randomInteger(0, answers.length - 1)];
 }

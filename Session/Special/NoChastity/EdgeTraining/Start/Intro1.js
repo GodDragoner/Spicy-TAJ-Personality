@@ -63,7 +63,7 @@
     sendMessage('Think about what your answer will be and get to the edge', 0);
     startEdging();
 
-    if (sendYesOrNoQuestion('Now tell me, do you want to cum?')) {
+    if (!sendYesOrNoQuestion('Now tell me, do you want to cum?')) {
         sendMessage('Good boy %EmoteHappy%');
     } else {
         sendMessage('That\'s too bad, because it\'s not going to happen');

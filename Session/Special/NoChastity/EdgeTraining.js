@@ -14,7 +14,7 @@ if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.STROKING)) {
         sendMessage("Must be hard for you though when you get to %JerkOff% to someone as hot as me");
         sendMessage("I wonder, %SlaveName%...");
 
-        let answer = createInput("Do you consider yourself to be a premature ejaculator?");
+        let answer = sendInput("Do you consider yourself to be a premature ejaculator?");
         while (true) {
             if (answer.isLike("yes")) {
                 sendMessage('I though you might be %Grin%');
@@ -89,8 +89,8 @@ function askSubForBegEdge() {
     setTempVar(VARIABLE.RESPONSE_BEG_EDGE_COUNT, 0);
     setTempVar(VARIABLE.BEG_DOMME_TO_EDGE, setDate());
 
-    sendMessage("Now beg me to let you edge, %SlaveName");
-    sendMessage("Come on, beg me, %SlaveName");
+    sendMessage("Now beg me to let you edge, %SlaveName%");
+    sendMessage("Come on, beg me, %SlaveName%");
     //Reset time
     setTempVar(VARIABLE.BEG_DOMME_TO_EDGE, setDate());
     sendMessage("Beg me like you mean it... because you do %Lol%");

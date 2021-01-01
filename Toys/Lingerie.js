@@ -78,28 +78,28 @@ function putOnLingerie() {
 
     if(accessories.indexOf(0) !== -1) {
         sendMessageBasedOnSender('These panties', 0);
-        showImage('Images/Spicy/Lingerie/Panties/*.jpg', 5);
+        showImage('Images/Spicy/Toys/Lingerie/Panties/*.jpg', 5);
         PANTY_TOY.setToyOn(true);
         attachedToys.push(PANTY_TOY);
     }
 
     if(accessories.indexOf(1) !== -1) {
         sendMessageBasedOnSender('This bra', 0);
-        showImage('Images/Spicy/Lingerie/Bras/*.jpg', 5);
+        showImage('Images/Spicy/Toys/Lingerie/Bra/*.jpg', 5);
         BRA_TOY.setToyOn(true);
         attachedToys.push(BRA_TOY);
     }
 
     if(accessories.indexOf(2) !== -1) {
         sendMessageBasedOnSender('This garter belt', 0);
-        showImage('Images/Spicy/Lingerie/GarterBelt/*.jpg', 5);
+        showImage('Images/Spicy/Toys/Lingerie/GarterBelt/*.jpg', 5);
         GARTER_BELT_TOY.setToyOn(true);
         attachedToys.push(GARTER_BELT_TOY);
     }
 
     if(accessories.indexOf(3) !== -1) {
         sendMessageBasedOnSender('These stockings', 0);
-        showImage('Images/Spicy/Lingerie/Stockings/*.jpg', 5);
+        showImage('Images/Spicy/Toys/Lingerie/Stockings/*.jpg', 5);
         STOCKINGS_TOY.setToyOn(true);
         attachedToys.push(STOCKINGS_TOY);
     }

@@ -130,6 +130,17 @@ function createRoom(name, size) {
 
             let toysAttached = sendKinkyChoreInstructions(choreType);
 
+            sendMessageBasedOnSender('Okay then...');
+            sendMessageBasedOnSender('You can go ahead and start with your chore...');
+            sendMessageBasedOnSender('Just report to me when you are done');
+
+            CHORE_WATCH.reset();
+            CHORE_WATCH.start();
+            waitForDone(10000000);
+
+            sendMessageBasedOnSender('So you\'re done...');
+
+
             for (let x = 0; x < toysAttached.length; x++) {
                 toy = toysAttached[x];
 
@@ -142,15 +153,6 @@ function createRoom(name, size) {
                 }
             }
 
-            sendMessageBasedOnSender('Okay then...');
-            sendMessageBasedOnSender('You can go ahead and start with your chore...');
-            sendMessageBasedOnSender('Just report to me when you are done');
-
-            CHORE_WATCH.reset();
-            CHORE_WATCH.start();
-            waitForDone(10000000);
-
-            sendMessageBasedOnSender('So you\'re done...');
             this.endChore(choreType);
         },
 

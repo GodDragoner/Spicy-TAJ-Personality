@@ -25,8 +25,7 @@
 
 
             if(ANAL_LIMIT.isAllowed() || askForIceCubeAnal()) {
-                let plug = BUTTPLUG_TOY.isToyOn();
-                if(plug) {
+                if(isPlugged()) {
                     sendMessage('Go ahead and remove your plug temporarily %SlaveName%');
                     sendMessage('Tell me when you are ready %Grin%');
                     waitForDone();
@@ -38,7 +37,7 @@
                 sendMessage("Don\'t hesitate %SlaveName%, just do as I say");
                 sendMessage("Push it right in", 10);
 
-                if(plug) {
+                if(isPlugged()) {
                     sendMessage('Now put the buttplug back in %Grin%');
                     sendMessage('Tell me when you are ready to continue %SlaveNameSmiley%');
                     waitForDone();
