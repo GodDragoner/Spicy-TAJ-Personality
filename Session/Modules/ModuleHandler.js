@@ -1,6 +1,10 @@
 const MODULES_FOR_CATEGORY = new Map();
 
 function getModuleForCategory(category) {
+    if(isUndefined(category)) {
+        category = CATEGORY_TEASE;
+    }
+
     //Keep track of how many times we tried to find a module in a category since last decide module call
     incrementTempVar('findModuleTries', 1, 0);
     setTempVar('lastModuleCategory', category);
@@ -73,7 +77,7 @@ function getDefaultModulesSinceRun() {
 }
 
 function tryRunModuleFetchId(minModulesSinceRun = getDefaultModulesSinceRun(), subCategories = MODULE.UNKNOWN) {
-    return tryRunModule(getCurrentScriptName(), getVar('lastModuleCategory'), minModulesSinceRun, subCategories);
+    return tryRunModule(getCurrentScriptName(), getVar('lastModuleCategory', subCategories), minModulesSinceRun, subCategories);
 }
 
 function tryRunModule(moduleId, category, minModulesSinceRun = 3, subCategories) {
@@ -95,7 +99,7 @@ function tryRunModule(moduleId, category, minModulesSinceRun = 3, subCategories)
     if (MODULE_HISTORY.isInHistory(moduleId) || categoryInPreviousModule) {
         //Check whether not enough modules have passed since last time we ran this module
         if (MODULE_HISTORY.getModulesSinceHistory(moduleId) < minModulesSinceRun  || categoryInPreviousModule) {
-            let tries = getVar('findModuleTries');
+            let tries = getVar('findModuleTries', 0);
             if (tries < maxTries / 2) {
                 //Try to run from same category
                 runModuleCategory(category);

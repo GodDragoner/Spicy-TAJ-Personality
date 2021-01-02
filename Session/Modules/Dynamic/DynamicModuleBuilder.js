@@ -62,7 +62,7 @@ function registerDynamicModule(module) {
         if (MODULE_HISTORY.isInHistory(this.moduleId)) {
             //Check whether not enough modules have passed since last time we ran this module
             if (MODULE_HISTORY.getModulesSinceHistory(this.moduleId) < minModulesSinceRun) {
-                let tries = getVar('findModuleTries');
+                let tries = getVar('findModuleTries', 0);
                 /*if (tries < maxTries / 2) {
                     //Try to run from same category
                     runModuleCategory(category);
