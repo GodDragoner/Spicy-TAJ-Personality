@@ -1,4 +1,4 @@
-addResponseRegex('stop');
+addResponseRegex("I.*(beg|please).*edge");
 
 function wantToEdgeBegResponse(message) {
     let newValue = incrementTempVar(VARIABLE.RESPONSE_BEG_EDGE_COUNT, 1);
