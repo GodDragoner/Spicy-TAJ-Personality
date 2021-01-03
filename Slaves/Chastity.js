@@ -130,6 +130,7 @@ function willKeepChastityOn(end) {
 
     if (isVar("chastityMode")) {
         choiceToReach *= 2;
+        sendDebugMessage('Chastity mode is active');
     }
 
     sendDebugMessage('Must reach ' + choiceToReach + ' to unlock. Current choice is ' + choice + ' and mood is ' + mood);

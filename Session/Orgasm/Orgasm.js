@@ -282,6 +282,7 @@ function distributeOrgasmPoints() {
 
 function getRequiredOrgasmPoints() {
     const denialLevel = getVar(VARIABLE.DENIAL_LEVEL);
+    sendDebugMessage('Denial level is ' + denialLevel);
     let minPoints = 30*Math.pow(java.lang.Math.E, 0.2*denialLevel);
     let maxPoints = minPoints*2;
 

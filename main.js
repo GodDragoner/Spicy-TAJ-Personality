@@ -9,6 +9,8 @@ Ideas:
 //TODO: may I remove the gag? Response
 //I came response
 //May I edge, getting close
+//Jump into videos instead of playing from beginning if only shown for x duration
+//Adjust time given to lock up by experience (measuring the subs time he takes to put it on)
 
 
 

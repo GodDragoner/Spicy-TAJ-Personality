@@ -11,7 +11,9 @@
             sendMessage("I just like it so much better when you are horny and frustrated");
         }
 
-        sendMessage("Just go ahead and let that %Cock% go limp");
-        sendMessage("There\'s no reason for it to stay hard and erect");
+        if(!isInChastity()) {
+            sendMessage("Just go ahead and let that %Cock% go limp");
+            sendMessage("There\'s no reason for it to stay hard and erect");
+        }
     }
 }
