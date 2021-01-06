@@ -15,7 +15,12 @@
 
     }
 
-    if (isVar(VARIABLE.LOCKED_UP_UNTIL) && !getDate(VARIABLE.LOCKED_UP_UNTIL).hasPassed()) {
+
+    //Force unlock
+    if (isInChastity() && getVar(VARIABLE.LOCKED_DAYS_IN_ROW, 0) > getVar(VARIABLE.LOCKED_UP_LIMIT, 3)) {
+        sendDebugMessage('Forced to unlock because locked in a row is higher than locked up limit');
+        unlockChastityStart();
+    } else if (isVar(VARIABLE.LOCKED_UP_UNTIL) && !getDate(VARIABLE.LOCKED_UP_UNTIL).hasPassed()) {
         sendMessage(random("As you well know", "As you know", "As you should know", "Oh well", "Oh my", "Poor you"));
         lockImages();
         showPicture("Images/Spicy/Chastity/ChastityOffDenied/*.*", 5);
@@ -23,7 +28,7 @@
         //, "You are still being punished", "You're serving a punishment" TODO: Punishment flag
         sendMessage(random("Meaning there will be no release from that %ChastityCage%...", "Meaning you won't be released for this session", "So there won't be any release today"));
         unlockImages();
-    } else if(hasChastityCage()) {
+    } else if (hasChastityCage()) {
         //Force unlock
         if (getVar(VARIABLE.LOCKED_DAYS_IN_ROW, 0) > getVar(VARIABLE.LOCKED_UP_LIMIT, 3) && isInChastity()) {
             sendDebugMessage('Forced to unlock because locked in a row is higher than locked up limit');
@@ -31,10 +36,10 @@
         } else {
             //Unlock
             if (!willKeepChastityOn()) {
-                if(isInChastity()) {
+                if (isInChastity()) {
                     sendDebugMessage('Decided to unlock chastity today');
 
-                    if(isChance(50)) {
+                    if (isChance(50)) {
                         sendDebugMessage('But not now (later)');
                         setTempVar(VARIABLE.CHASTITY_REMOVE_LATER, true);
 
@@ -48,7 +53,7 @@
             else {
                 if (isInChastity()) {
                     sendDebugMessage('Decided to NOT unlock chastity');
-                    if(feelsEvil()) {
+                    if (feelsEvil()) {
                         sendDebugMessage('Faking unlock chastity');
                         unlockChastityCage(true);
                         sendMessage('I was just playing with you %Wicked%');
