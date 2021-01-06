@@ -47,7 +47,7 @@
             if (getVar(VARIABLE.DENIAL_HARD_LIMIT_TYPE, 0) === 1 && orgasmCategory === ORGASM_CATEGORY_RUINED) {
                 sendMessage('Poor %SlaveName%');
                 //TODO: Turn into "link" thing that is more random
-                sendMessage('You thought you could get a full orgasm when you reaches his your limit');
+                sendMessage('You thought you could get a full orgasm when you reach your limit');
                 sendMessage('But luckily you do not get to choose %EmoteHappy%');
                 sendMessage('I do though and I always will %Grin%');
                 sendMessage('That pathetic %Cock% is mine');

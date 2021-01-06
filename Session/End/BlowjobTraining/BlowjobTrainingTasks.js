@@ -7,7 +7,9 @@ const blowjobTasks = [];
         id: taskId++, exp: 27, minLevel: 1,
 
         sendInstructions: function () {
-            sendMessage("I want you to blow the tip of your " + getDildo(true).name + " for " + getBlowjobTaskDurationMinutes() + " minutes today");
+            let dildo =  getDildo(true);
+            sendMessage("I want you to blow the tip of your " + dildo.name + " for " + getBlowjobTaskDurationMinutes() + " minutes today", 0);
+            showImage(dildo.getImagePath(), 5);
 
             sendBlowjobTrainingPosition();
         },
@@ -22,7 +24,9 @@ const blowjobTasks = [];
         id: taskId++, exp: 30, minLevel: 1,
 
         sendInstructions: function () {
-            sendMessage("I want you to blow your " + getDildo(true).name + " for " + getBlowjobTaskDurationMinutes() + " minutes today");
+            let dildo =  getDildo(true);
+            sendMessage("I want you to blow your " + dildo.name + " for " + getBlowjobTaskDurationMinutes() + " minutes today", 0);
+            showImage(dildo.getImagePath(), 5);
 
             sendBlowjobTrainingPosition();
         },
@@ -37,7 +41,9 @@ const blowjobTasks = [];
         id: taskId++, exp: 33, minLevel: 5,
 
         sendInstructions: function () {
-            sendMessage("I want you to blow your " + getDildo(true).name + " for " + getBlowjobTaskDurationMinutes() + " minutes today");
+            let dildo =  getDildo(true);
+            sendMessage("I want you to blow your " + dildo.name + " for " + getBlowjobTaskDurationMinutes() + " minutes today", 0);
+            showImage(dildo.getImagePath(), 5);
             sendMessage('However I want you to give it at least ' + randomInteger(getVar(VARIABLE.BLOWJOB_LEVEL), getVar(VARIABLE.BLOWJOB_LEVEL) + 5) + ' deepthroats during the blowjob');
 
             sendBlowjobTrainingPosition();
@@ -53,7 +59,9 @@ const blowjobTasks = [];
         id: taskId++, exp: 40, minLevel: 10,
 
         sendInstructions: function () {
-            sendMessage("I want you to blow your " + getDildo(true).name + " for " + getBlowjobTaskDurationMinutes() + " minutes today");
+            let dildo =  getDildo(true);
+            sendMessage("I want you to blow your " + dildo.name + " for " + getBlowjobTaskDurationMinutes() + " minutes today", 0);
+            showImage(dildo.getImagePath(), 5);
             sendMessage('However I want you to give it a deepthroat every ' + randomInteger(60 - getVar(VARIABLE.BLOWJOB_LEVEL), 50 - getVar(VARIABLE.BLOWJOB_LEVEL)) + ' seconds during the blowjob');
             sendMessage('I want you to hold that deepthroat for ' + getBlowjobTaskDeepthroatHoldDuration() + ' seconds');
 
@@ -70,7 +78,9 @@ const blowjobTasks = [];
         id: taskId++, exp: 45, minLevel: 15,
 
         sendInstructions: function () {
-            sendMessage("I want you to blow your " + getDildo(true).name + " for " + getBlowjobTaskDurationMinutes() + " minutes today");
+            let dildo =  getDildo(true);
+            sendMessage("I want you to blow your " + dildo.name + " for " + getBlowjobTaskDurationMinutes() + " minutes today", 0);
+            showImage(dildo.getImagePath(), 5);
             sendMessage('However I want you to give it a deepthroat every ' + randomInteger(60 - getVar(VARIABLE.BLOWJOB_LEVEL), 50 - getVar(VARIABLE.BLOWJOB_LEVEL)) + ' seconds during the blowjob');
             sendMessage('I want you to hold that deepthroat for ' + getBlowjobTaskDeepthroatHoldDuration() + ' seconds');
             sendBlowjobTrainingPosition();
@@ -89,7 +99,9 @@ const blowjobTasks = [];
         id: taskId++, exp: 48, minLevel: 18,
 
         sendInstructions: function () {
-            sendMessage("I want you to find a deepthroat video and mimic it blowing your " + getDildo(true).name + " for " + getBlowjobTaskDurationMinutes() + " minutes today");
+            let dildo =  getDildo(true);
+            sendMessage("I want you to find a deepthroat video and mimic it blowing your " + dildo.name + " for " + getBlowjobTaskDurationMinutes() + " minutes today", 0);
+            showImage(dildo.getImagePath(), 5);
 
             sendMessage('Mimic all positions etc.');
 
@@ -108,7 +120,9 @@ const blowjobTasks = [];
         id: taskId++, exp: 50, minLevel: 20,
 
         sendInstructions: function () {
-            sendMessage("I want you to blow your " + getDildo(true).name + " for " + getBlowjobTaskDurationMinutes() + " minutes today");
+            let dildo =  getDildo(true);
+            sendMessage("I want you to blow your " + dildo.name + " for " + getBlowjobTaskDurationMinutes() + " minutes today", 0);
+            showImage(dildo.getImagePath(), 5);
             sendMessage('However I want you to give it a deepthroat every ' + randomInteger(60 - getVar(VARIABLE.BLOWJOB_LEVEL), 50 - getVar(VARIABLE.BLOWJOB_LEVEL)) + ' seconds during the blowjob');
             sendMessage('I want you to hold that deepthroat for ' + getBlowjobTaskDeepthroatHoldDuration() + ' seconds');
             sendMessage('During that deepthroat I want you to rotate the dildo in your throat by 360 degrees ' + randomInteger(3, 5) + ' times');
@@ -127,7 +141,10 @@ const blowjobTasks = [];
         id: taskId++, exp: 55, minLevel: 25,
 
         sendInstructions: function () {
-            sendMessage("I want you to blow your " + getDildo(true).name + " for " + getBlowjobTaskDurationMinutes() + " minutes today");
+            let dildo =  getDildo(true);
+            sendMessage("I want you to blow your " + dildo.name + " for " + getBlowjobTaskDurationMinutes() + " minutes today", 0);
+            showImage(dildo.getImagePath(), 5);
+
             sendMessage('However I want you to give it ' + randomInteger(5, 10) + ' deepthroats every ' + randomInteger(60 - getVar(VARIABLE.BLOWJOB_LEVEL), 50 - getVar(VARIABLE.BLOWJOB_LEVEL)) + ' seconds during the blowjob');
             sendMessage('I want you to hold the last deepthroat of each cycle for ' + getBlowjobTaskDeepthroatHoldDuration() + ' seconds');
             sendMessage('During that last deepthroat I want you to rotate the dildo in your throat by 360 degrees ' + randomInteger(3, 5) + ' times');

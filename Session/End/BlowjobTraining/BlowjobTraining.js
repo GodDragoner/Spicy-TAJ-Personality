@@ -134,5 +134,7 @@ function firstTimeBlowjobTraining() {
 
     sendMessage('In this case I don\'t care where the spit goes but you are not allowed to collect it and just pour it away');
     sendMessage('If you collect it, you will pour it all over your face after you are done %Lol%');
+    sendMessage('You can collect the spit inside a bowl or similar');
+    sendMessage('If you got any tasks at hand you can also decide to use it as lube %Grin%');
     setVar(VARIABLE.TRAINING_INTRODUCTION_DONE, true);
 }
