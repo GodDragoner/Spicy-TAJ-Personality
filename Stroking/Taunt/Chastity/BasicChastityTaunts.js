@@ -44,7 +44,7 @@
         'Well, at least now I know how you liked to be talked to %Grin% @ShowCaptionsImage',
         'So this is the kind of stuff that turns you on huh? I\'ll remember that %Grin% @ShowCaptionsImage',
         'So this is the kind of girl you really want me to be huh? %Grin% @ShowCaptionsImage',
-        'Are you getting frustrated yet? %Lol% @ResponseYes(Frustrated)',
+        //'Are you getting frustrated yet? %Lol% @ResponseYes(Frustrated)',
         //'I bet you would love to lick that pussy, wouldn\'t you?  @ShowTaggedImage @ResponseYes(WantToEatPussy)',,
         //'@Flag(pthevCEI_No) I bet if I don\'t let you #JerkOff long enough I could make you eat your cum %Grin% @ResponseYes(WantToEatMyCum) @ResponseNo(WantToEatMyCumDont)',
         //'@NotFlag(pvKneeling) Get down on your knees for me, %SlaveName% @TempFlag(pvKneeling)',
