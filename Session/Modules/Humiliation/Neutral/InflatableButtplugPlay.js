@@ -2,9 +2,8 @@
     if(getCBTLimit() != LIMIT_ASKED_YES || !INFLATABLE_BUTT_PLUG.hasToy()) {
         runModuleCategory('Pain');
     } else if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.ANAL)) {
-        if (INFLATABLE_BUTT_PLUG.fetchToy()) {
+        if (putInInflatablePlug()) {
             //QUALITY: More games and
-            putInInflatablePlug();
             startMissingCardMemory(GAME_INFLATABLE_PLUG);
             sendMessage('You can deflate the plug now and put it away %Grin%');
             deflateInflatablePlug();
