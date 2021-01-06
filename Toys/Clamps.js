@@ -413,7 +413,7 @@ function moveClamps(amount, bodyPart, newBodyPart, oppositeToo = false, opposite
         LAST_BODY_PART_CLAMP_INTERACTION[newBodyPart.id] = setDate();
 
         //Subtract amount twice (here and end)
-        bodyPart.getOppositeBodyPart().subtractClamps(amount);
+        bodyPart.subtractClamps(amount);
     } else {
         sendMessage(getClampsMoveSentenceStart() + " " + amount + pluralize(" clothespin", amount) + " from your " + bodyPart.sidedName + " to your " + newBodyPart.sidedName);
     }
