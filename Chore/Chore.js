@@ -316,6 +316,7 @@ function sendKinkyChoreInstructions(choreType) {
                     }
 
                     sendMessageBasedOnSender('Remember to remove them after you\'re done cleaning %Grin%');
+
                     tasks++;
                 }
             } else if (id === 2) {
@@ -356,6 +357,7 @@ function sendKinkyChoreInstructions(choreType) {
                     sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
                     waitForDone(1000);
                     sendMessageBasedOnSender('%Good%');
+
 
                     sendMessageBasedOnSender('Remember to remove it after you\'re done cleaning %Grin%');
 
@@ -643,7 +645,10 @@ function sendKinkyChoreInstructions(choreType) {
                     sendMessageBasedOnSender('I\'ve added extra time since this must slow you down...');
                     tempChoreTimeMultiplier += 0.3;
 
-                    sendMessageBasedOnSender('Remember to the remove the collar after you\'re done cleaning %Grin%');
+                    if(!RULE_ALWAYS_WEAR_COLLAR.isActive()) {
+                        sendMessageBasedOnSender('Remember to the remove the collar after you\'re done cleaning %Grin%');
+                    }
+
 
                     tasks++;
                 }

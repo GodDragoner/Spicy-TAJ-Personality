@@ -148,6 +148,9 @@ function createRoom(name, size) {
                 if(toy === BUTTPLUG_TOY) {
                     sendMessageBasedOnSender('You can now remove the plug from your ass %SlaveName%');
                     setPlugRemoved();
+                } else if(toy === COLLAR_TOY && RULE_ALWAYS_WEAR_COLLAR.isActive()) {
+                    //Continue, since collar stays on
+                    continue;
                 } else {
                     toy.removeToy();
                 }
@@ -320,7 +323,7 @@ function createRoom(name, size) {
         },
 
         getChoreAmount: function (choreType) {
-            return getVar(this.getChoreAmountVarName(choreType));
+            return getVar(this.getChoreAmountVarName(choreType), 0);
         },
 
         getSecondsSinceLastChore: function (choreType) {
