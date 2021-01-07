@@ -72,3 +72,32 @@ function isUndefinedString(object) {
 function isNullOrEmpty(object) {
     return isUndefined(object) || object.length === 0;
 }
+
+function tryGetArrayList(varName) {
+    let varValue = getVar(varName, new java.util.ArrayList());
+
+    //Failed somehow, so we have a string on our hands to convert
+    if(typeof varValue === 'string' || varValue instanceof String) {
+        let arrayList = new java.util.ArrayList();
+
+        if(varValue.startsWith('[')) {
+            //Remove surrounding array brackets (-2 because it does not specify the end index but the length instead)
+            let strippedString = varValue.trim().substr(1, varValue.length - 2);
+            let lines = strippedString.split(', ');
+
+            for(let x = 0; x < lines.length; x++) {
+                arrayList.add(lines[x]);
+            }
+
+            sendDebugMessage('Got array list from value ' + varValue);
+            setVar(varName, arrayList);
+            return arrayList;
+        } else {
+            sendDebugMessage('Failed to get array list from value ' + varValue);
+            return varValue;
+        }
+    }
+
+    sendDebugMessage('Loaded array list ' + varName);
+    return varValue;
+}

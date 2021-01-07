@@ -396,7 +396,7 @@ function stopBlowjobFuckingInstructions() {
 }
 
 function startBlowjobFuckingInstructions(toy, mountedToWall = false, inFront = false) {
-    let usedBlowjobInstructions = getVar("usedBlowjobInstructions", new java.util.ArrayList());
+    let usedBlowjobInstructions = tryGetArrayList("usedBlowjobInstructions");
 
     if (isGaged()) {
         removeGag();

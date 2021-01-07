@@ -620,7 +620,7 @@ function loadButtplugs() {
     if (!isVar('buttplugs')) {
         setVar('buttplugs', new java.util.ArrayList());
     } else {
-        let arrayList = getVar('buttplugs');
+        let arrayList = tryGetArrayList('buttplugs');
 
         let savePlugs = false;
 

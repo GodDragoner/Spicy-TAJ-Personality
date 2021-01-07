@@ -24,7 +24,7 @@ function loadHighHeels() {
     if (!isVar('highHeels')) {
         setVar('highHeels', new java.util.ArrayList());
     } else {
-        let arrayList = getVar('highHeels');
+        let arrayList = tryGetArrayList('highHeels');
 
         for (let x = 0; x < arrayList.size(); x++) {
             let entry = arrayList.get(x);

@@ -250,7 +250,7 @@ function loadDildos() {
     } else {
         let saveD = false;
 
-        let arrayList = getVar('dildos');
+        let arrayList = tryGetArrayList('dildos');
 
         for (let x = 0; x < arrayList.size(); x++) {
             let entry = arrayList.get(x);

@@ -9,7 +9,7 @@ const PUNISHMENT_HISTORY = createHistory('punishment');
 function createHistory(name) {
     const history = {name: name, historyVar: name + 'History', todaysHistoryVar: 'todays' + name  + 'History',
         isInHistory : function(moduleId) {
-            return isVar(this.historyVar) && getVar(this.historyVar).contains(moduleId + "");
+            return isVar(this.historyVar) && tryGetArrayList(this.historyVar).contains(moduleId + "");
         },
 
         getModulesSinceHistory : function(moduleId) {
@@ -18,7 +18,7 @@ function createHistory(name) {
                 return -1;
             }
 
-            let historyArray = getVar(this.historyVar);
+            let historyArray = tryGetArrayList(this.historyVar);
 
             //sendDebugMessage('Modules in ' + name + ' history since id: ' + (historyArray.size() - historyArray.lastIndexOf(moduleId)));
             return historyArray.size() - historyArray.lastIndexOf(moduleId + "");

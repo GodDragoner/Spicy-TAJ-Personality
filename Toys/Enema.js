@@ -24,7 +24,7 @@ function hasEnemaKit() {
 
 function getTodaysEnema() {
     if(isVar(VARIABLE.ENEMA_TASK_SET) && getDate(VARIABLE.ENEMA_TASK_SET).sameDay(setDate())) {
-        return getVar(VARIABLE.ENEMA_TASK_TODAY);
+        return tryGetArrayList(VARIABLE.ENEMA_TASK_TODAY);
     }
 
     let lines = new java.util.ArrayList();

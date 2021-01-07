@@ -140,7 +140,7 @@ function createPunishmentTask(name, array) {
         },
 
         getModifiers: function () {
-            return getVar(this.getVarName() + 'modifiers', new java.util.ArrayList());
+            return tryGetArrayList(this.getVarName() + 'modifiers');
         },
 
         setModifiers: function (arrayList) {

@@ -1,7 +1,7 @@
 
 
 function startTimePassTasks(durationMinutes, allowTeasing = true) {
-    let tasksDone = getVar("tasksDone", new java.util.ArrayList());
+    let tasksDone = tryGetArrayList("tasksDone");
     setTempVar("tasksDone", tasksDone);
 
     let iterations = 0;

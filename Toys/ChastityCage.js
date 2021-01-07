@@ -668,7 +668,7 @@ function loadChastityCages() {
     } else {
         let saveCages = false;
 
-        let arrayList = getVar('chastityCages');
+        let arrayList = tryGetArrayList('chastityCages');
 
         for (let x = 0; x < arrayList.size(); x++) {
             let entry = arrayList.get(x);

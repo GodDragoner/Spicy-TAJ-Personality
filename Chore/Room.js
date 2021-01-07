@@ -10,7 +10,7 @@ function loadRooms() {
     if (!isVar('homeRooms')) {
         setVar('homeRooms', new java.util.ArrayList());
     } else {
-        let arrayList = getVar('homeRooms');
+        let arrayList = tryGetArrayList('homeRooms');
 
         for (let x = 0; x < arrayList.size(); x++) {
             let entry = arrayList.get(x);

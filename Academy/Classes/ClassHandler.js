@@ -224,7 +224,7 @@ function registerClass(name, levels, fileName, weekdays, getTasks, getModifiers,
             let modifiers = [];
 
             if (this.isActive()) {
-                let modifierList = getVar(fileName + 'modifiers');
+                let modifierList = tryGetArrayList(fileName + 'modifiers');
                 for (let x = 0; x < modifierList.size(); x++) {
                     modifiers.push(modifierList.get(x));
                 }
