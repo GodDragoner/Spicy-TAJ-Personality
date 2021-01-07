@@ -49,14 +49,8 @@
                 let iterationsToTease = 26 - mood*strictness*2;
                 let actualLoop = randomInteger(Math.round(iterationsToTease/2), iterationsToTease);
 
-                sendDebugMessage('Start of teasing interval for ' + iterationsToTease + ' iterations');
-
-                for (let x = 0; x < actualLoop; x++) {
-                    run("Stroking/Taunt/Chastity/BasicChastityTaunts.js");
-                    sleep(5);
-                }
-
-                sendDebugMessage('End of teasing interval');
+                //Times 5 since wait time per taunt is currently 5
+                startTeaseTauntInterval(actualLoop*5);
             }
             //Evil vibe teasing while in cage
             else {

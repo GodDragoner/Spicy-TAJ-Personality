@@ -365,3 +365,19 @@ function stopStrokingEdgeMessage() {
     //TODO: Different messages and sound
     stopStrokingMessage();
 }
+
+function startTeaseTauntInterval(durationSeconds) {
+    let waitPerTaunt = 5;
+    let actualLoop = Math.ceil(durationSeconds/waitPerTaunt);
+
+    sendDebugMessage('Start of teasing interval for ' + actualLoop + ' iterations');
+
+    for (let x = 0; x < actualLoop; x++) {
+        //TODO: Non chastity taunts
+        run("Stroking/Taunt/Chastity/BasicChastityTaunts.js");
+        sleep(5);
+    }
+
+
+    sendDebugMessage('End of teasing interval');
+}
