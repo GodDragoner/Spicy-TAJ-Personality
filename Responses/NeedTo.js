@@ -1,6 +1,10 @@
 addResponseRegex("I.+(want|got|need|wanna).*");
 
 function needToResponse(message) {
+    if(!isSessionActive()) {
+        return false;
+    }
+
     //Handle want to cum message case
     if(message.toLowerCase().indexOf("cum") !== -1 || message.toLowerCase().indexOf("orgasm") !== -1) {
         let newValue = incrementTempVar(VARIABLE.RESPONSE_WANT_CUM_COUNT, 1);

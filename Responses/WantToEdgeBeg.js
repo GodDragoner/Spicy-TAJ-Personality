@@ -2,6 +2,10 @@ addResponseRegex("I.*(beg|please).*edge");
 addResponseRegex("(may|please|May|Please|Let|allowed).*edge");
 
 function wantToEdgeBegResponse(message) {
+    if(!isSessionActive()) {
+        return false;
+    }
+
     let newValue = incrementTempVar(VARIABLE.RESPONSE_BEG_EDGE_COUNT, 1);
 
     if (isVar(VARIABLE.BEG_DOMME_TO_EDGE) && !getVar(VARIABLE.BEG_DOMME_TO_EDGE).addSecond(30).hasPassed()) {

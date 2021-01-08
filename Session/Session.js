@@ -5,6 +5,10 @@ function hasSessionTimePassed(timeMinutes) {
     return getDate(VARIABLE.CURRENT_SESSION_DATE).clone().addMinute(timeMinutes).hasPassed();
 }
 
+function isSessionActive() {
+    return isSessionActive();
+}
+
 
 function endSpicySession() {
     askAboutDenialLevel();

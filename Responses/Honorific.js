@@ -2,9 +2,10 @@ addResponseRegex("yes", "no", "thanks", "thank you");
 setResponseIgnoreDisabled(true);
 
 function honorificResponse(message) {
-    if(!getVar(VARIABLE.CURRENT_SESSION_ACTIVE)) {
+    if(!isSessionActive()) {
         return false;
     }
+
 
     let honorific = replaceVocab('%DomHonorific%');
 

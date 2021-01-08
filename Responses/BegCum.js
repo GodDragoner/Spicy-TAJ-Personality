@@ -1,6 +1,11 @@
 addResponseRegex("I.*(beg|please).*cum");
 
 function begCumResponse(message) {
+    if(!isSessionActive()) {
+        return false;
+    }
+
+
     let newValue = incrementTempVar(VARIABLE.RESPONSE_BEG_CUM_COUNT, 1);
 
     if(newValue > 3) {

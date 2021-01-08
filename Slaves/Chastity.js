@@ -182,7 +182,7 @@ function startLongTermChastityIntro() {
         justChangedPartnerKeyholder = true;
     }
 
-    if (!RULE_DOMME_KEYHOLDER.isActive() && hasChastityCage() && !getVar(VARIABLE.PARTNER_IS_KEYHOLDER, false)) {
+    if (!RULE_DOMME_KEYHOLDER.isActive() && !getVar(VARIABLE.PARTNER_IS_KEYHOLDER, false)) {
         if (!justChangedPartnerKeyholder) {
             sendMessage('So %SlaveName%');
         }
@@ -220,14 +220,21 @@ function startLongTermChastityIntro() {
         } else {
             if (getVar(VARIABLE.RESPONSE_WANTS_KEYHOLDER, false)) {
                 sendMessage('It looks like you want me to be your keyholder %EmoteHappy%');
+
+                if(!hasChastityCage()) {
+                    sendMessage('Since you don\'t own a chastity cage yet, more like imaginary keyholder I guess %Grin%');
+                }
+
                 sendMessage('Hold the key to %MyYour% cock\'s freedom');
                 sendMessage('I was planning to ask you this anyway but you beat me to it %Lol%');
                 sendMessage('So since you\'ve addressed it...');
             } else {
                 if (isInChastity()) {
                     sendMessage('About that chastity cage you\'re wearing');
-                } else {
+                } else if(hasChastityCage()) {
                     sendMessage('About that chastity cage you\'re owning');
+                } else {
+                    sendMessage('About that cock between your legs');
                 }
             }
 
@@ -253,11 +260,16 @@ function startLongTermChastityIntro() {
             sendMessage('You should know what you\'re getting into here');
             sendMessage('What I mean is that, for all intents and purposes, I will hold the key');
             sendMessage('You do not get to decide when the cage comes off, period');
-            sendMessage('If at the end of a session I decide it stays on, it stays on until the next session');
-            sendMessage('Hygiene is important, %SlaveName% %EmoteHappy%');
-            sendMessage('But how you handle that is up to you');
-            sendMessage('If you want to take it off because you want to %JerkOff%...');
-            sendMessage('You\'ll have to come to me or my assistant and ask');
+
+            if(!hasChastityCage()) {
+                sendMessage('Or in your case get to jerk off that is %Grin%');
+            } else {
+                sendMessage('If at the end of a session I decide it stays on, it stays on until the next session');
+                sendMessage('Hygiene is important, %SlaveName% %EmoteHappy%');
+                sendMessage('But how you handle that is up to you');
+                sendMessage('If you want to take it off because you want to %JerkOff%...');
+                sendMessage('You\'ll have to come to me or my assistant and ask');
+            }
 
             if (sendYesOrNoQuestion('So, do you still want to make me keyholder?')) {
                 RULE_DOMME_KEYHOLDER.setActive(true);
@@ -272,6 +284,11 @@ function startLongTermChastityIntro() {
                 }
 
                 sendMessage('Just to think that I could keep you in chastity indefinitely');
+
+                if(!hasChastityCage()) {
+                    sendMessage('Or like away from cumming at all in your case');
+                }
+
                 sendMessage('It turns me on so much, %SlaveName%');
                 sendMessage('I probably won\'t, to be honest');
                 sendMessage('But I love knowing that I have that option %Grin%');
@@ -319,7 +336,13 @@ function startLongTermChastityIntro() {
         sendMessage('And that you\'ll give me the key');
         sendMessage('So that I will completely own %MyYour% %Cock% %SlaveName%');
         sendMessage('But for now...');
-        sendMessage('I can still keep you in chastity during our sessions %EmoteHappy%');
+
+        if(hasChastityCage()) {
+            sendMessage('I can still keep you in chastity during our sessions %EmoteHappy%');
+        } else {
+            sendMessage('I can still deny you your orgasm during our sessions %EmoteHappy%');
+        }
+
         return false;
     }
 }

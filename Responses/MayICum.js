@@ -1,6 +1,10 @@
 addResponseRegex("(may|please|May|Please|Let|allowed).*cum");
 
 function mayICumResponse(message) {
+    if(!isSessionActive()) {
+        return false;
+    }
+
     let newValue = incrementTempVar(VARIABLE.RESPONSE_MAY_CUM_COUNT, 1);
 
     if(newValue > 3) {
