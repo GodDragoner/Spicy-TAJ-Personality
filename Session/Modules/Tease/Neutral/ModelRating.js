@@ -66,6 +66,8 @@
             let ballCrusher = isChance(50) && hasBallCrusher() && BALL_CRUSHER_TOY.isPlayAllowed() && !isInChastity();
             //Means either no ball crusher of 50% chance failed so we'll go with simple cbt
             let cbt = !ballCrusher && goForCBT;
+            let anal = isInChastity() && ANAL_LIMIT.isAllowed() && (isChance(50) || isForcedLockedUp());
+            let replug = false;
 
             if (ballCrusher && !isInChastity()) {
                 if (fetchToy('ball crusher')) {
@@ -106,6 +108,20 @@
                     smallPunishment(true, false);
                 }
             } else {
+                if(anal) {
+                    if (!fetchDildoToy(toy = getDildo(false).name)) {
+                        anal = false;
+                    } else {
+                        sendMessage('Since we can\'t really play with that %Cock%...');
+                        sendMessage('We are gonna use your ass %Grin%');
+
+                        if(isPlugged()) {
+                            removeButtplug();
+                            replug = true;
+                        }
+                    }
+                }
+
                 if(isInChastity()) {
 
                 } else {
@@ -210,7 +226,7 @@
                             sendMessage('Oops. Did I forget to tell you that you have to edge every time you are right? %Lol%');
                             sendMessage('My bad %Grin%');
                         }
-                    } else if(isInChastity()) {
+                    } else if(isInChastity() || anal) {
                         if (wins == 0) {
                             sendMessage('Since you are in chastity and I can\'t give you a treat of some sort I am just gonna reward you with gold');
                         } else {
@@ -263,6 +279,15 @@
 
                         startEdging();
                         sendMessage("%LetEdgeFade%");
+                    } else if(anal) {
+                        if(fails === 0) {
+                            sendMessage('This is where the fun begins %Grin%');
+                        }
+
+                        sendMessage('Fuck your ass for 100 full long teasing strokes');
+                        sendMessage(random('Make sure to aim at your prostate', 'Make sure to make that cock throb', 'Make sure to make yourself leak on the other end') + ' %Wicked%');
+                        sendMessage('Report to me when you are done');
+                        waitForDone();
                     }
                     //In chastity
                     else {
@@ -283,11 +308,17 @@
                 sendMessage('You may remove the ball crusher now %SlaveName%');
                 setVar(VARIABLE.IS_BALL_CRUSHER_ON, true);
                 sendMessage('Feels good, doesn\'t it?');
+            } else if(anal) {
+                sendMessage('You may put that dildo away for now %SlaveName%');
             }
 
             sendMessage('We\'re at the end! %Grin%');
             sendMessage('Hopefully this was as much fun for you as for me');
             sendMessage('I guess it was if you have a good memory %Lol%');
+
+            if(replug) {
+                putInButtplug();
+            }
         }
 
         setVar(VARIABLE.MODEL_RATINGS_DONE, getVar(VARIABLE.MODEL_RATINGS_DONE) + 1);
