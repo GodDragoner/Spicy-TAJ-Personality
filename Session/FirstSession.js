@@ -54,10 +54,10 @@
     sendMessage("I don't know how well you handle denial");
     sendMessage("So I need you to tell me on a scale how well you handle denial");
     sendMessage("The scale ranges from 1 to 15");
-    sendMessage("1 to 5 is for beginners");
-    sendMessage("6 to 8 is for the trained");
-    sendMessage("9 to 11 is for the advanced");
-    sendMessage("12 to 15 is for the high skilled");
+    sendMessage("1 to 5 is for beginners (1-5 days)");
+    sendMessage("6 to 8 is for the trained (6-12 days)");
+    sendMessage("9 to 11 is for the advanced (12-18 days)");
+    sendMessage("12 to 15 is for the high skilled (15-40 days)");
     sendMessage("The higher your level is the less permissions for ejaculations you will get from me");
     sendMessage("So I'd prefer a high level since I basically want you horny %EmoteHappy%");
     sendMessage("Because as everyone knows a horny sub makes an obedient good little puppy");
