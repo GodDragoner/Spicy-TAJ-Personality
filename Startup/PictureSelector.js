@@ -23,3 +23,17 @@ function showDommeTaggedImage(dressState, pictureTag, duration) {
         return showCategoryImage();
     }
 }
+
+function showDommeTaggedImageForPictureTag(pictureTag, duration) {
+    let pictureSet = TAJ_CHAT_HANDLER.getHandler().getMainDomParticipant().getPictureSet();
+
+    let pictureTagArray = new java.util.ArrayList();
+    pictureTagArray.add(pictureTag);
+
+    if(pictureTag !== null) {
+        return showImage(pictureSet.getRandomPictureForTagStates(new java.util.ArrayList(), pictureTagArray).getFile())
+    } else {
+        sendDebugMessage('Picture set for domme was null so showing tease image instead');
+        return showCategoryImage();
+    }
+}

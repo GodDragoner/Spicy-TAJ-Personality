@@ -17,7 +17,11 @@
         }
 
         let tasks = [];
-        tasks.push('Spent ' + stage*10 + ' minutes watching ' + random(possibleTypes) + ' and sensually fucking yourself with a dildo of your choice');
+
+        if(hasDildoToy()) {
+            tasks.push('Spent ' + stage*10 + ' minutes watching ' + random(possibleTypes) + ' and sensually fucking yourself with a dildo of your choice');
+        }
+
 
         if(MAGIC_WAND_TOY.hasToy() && MAGIC_WAND_TOY.isPlayAllowed()) {
             tasks.push('Spent ' + stage*10 + ' minutes watching ' + random(possibleTypes) + ' while vibing your clitty');
@@ -30,6 +34,11 @@
 
         if(PROSTATE_VIBRATOR_TOY.hasToy() && PROSTATE_VIBRATOR_TOY.isPlayAllowed()) {
             tasks.push('Spent ' + stage*10 + ' minutes watching ' + random(possibleTypes) + ' while teasing your ass with a prostate vibrator');
+        }
+
+        //Fallback task
+        if(tasks.length === 0) {
+            tasks.push('Spent ' + stage*10 + ' minutes watching ' + random(possibleTypes));
         }
 
         return tasks;

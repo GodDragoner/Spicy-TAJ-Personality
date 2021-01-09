@@ -232,11 +232,11 @@ if (!CBT_LIMIT.isAllowed()) {
                     break;
                 case 1:
                     sendMessage(randomFirst + ' ' + random('for my %Boobs%', 'while looking at my %Boobs%', 'while staring at my %Boobs%', 'while my %Boobs% drive you crazy') + ' %SlaveName% %Wicked%', 0);
-                    showDommeTaggedImage(DressState.NAKED, PictureTag.BOOBS);
+                    showDommeTaggedImageForPictureTag(PictureTag.BOOBS);
                     break;
                 case 2:
                     sendMessage(randomFirst + ' ' + random('for my ass', 'while looking at my ass', 'while staring at my ass', 'while my ass drives you crazy') + ' %SlaveName% %Wicked%', 0);
-                    showDommeTaggedImage(DressState.NAKED, PictureTag.BOOBS);
+                    showDommeTaggedImageForPictureTag(PictureTag.BOOBS);
                     break;
                 case 3:
                     sendMessage(randomFirst + ' ' + random('for this picture', 'while looking at this picture', 'for this picture I found on your computer','while looking at this picture you saved', '') + ' %SlaveName% %Wicked%', 0);

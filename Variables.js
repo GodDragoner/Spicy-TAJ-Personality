@@ -253,6 +253,8 @@ const VARIABLE = {
 
     STROKE_MODULE_PAUSE_FREQUENCY: 'strokeModulePauseFrequency',
 
+    //Ass worship
+    ASS_WORSHIPS_DONE: "assWorshipsDone",
 
     //Rules
     LAST_RULE_PASSED: 'lastRulePassed',
