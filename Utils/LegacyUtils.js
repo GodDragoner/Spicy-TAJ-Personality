@@ -75,7 +75,7 @@ function interpretLegacyTaunt(message, tauntType = LEGACY_TAUNT_TYPE_STROKE) {
         message = message.replace(tag, '');
     }
 
-    tag = '@@DecideKneeling';
+    tag = '@DecideKneeling';
     let decideKneeling = message.indexOf(tag) !== -1;
     if (decideKneeling) {
         message = message.replace(tag, '');
@@ -84,6 +84,12 @@ function interpretLegacyTaunt(message, tauntType = LEGACY_TAUNT_TYPE_STROKE) {
     tag = '@ShowCaptionsImage';
     let showCaptionsImage = message.indexOf(tag) !== -1;
     if (showCaptionsImage) {
+        message = message.replace(tag, '');
+    }
+
+    tag = '@ShowHentaiImage';
+    let showHentaiImage = message.indexOf(tag) !== -1;
+    if (showHentaiImage) {
         message = message.replace(tag, '');
     }
 
@@ -135,6 +141,8 @@ function interpretLegacyTaunt(message, tauntType = LEGACY_TAUNT_TYPE_STROKE) {
         showCategoryImage('BUTTS');
     } else if(showCaptionImage) {
         showCategoryImage('CAPTIONS');
+    } else if(showHentaiImage) {
+        showCategoryImage('HENTAI');
     }
 
     if(decideKneeling) {

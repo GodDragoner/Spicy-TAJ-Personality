@@ -6,7 +6,7 @@ function hasSessionTimePassed(timeMinutes) {
 }
 
 function isSessionActive() {
-    return isSessionActive();
+    return getVar(VARIABLE.CURRENT_SESSION_ACTIVE, false);
 }
 
 

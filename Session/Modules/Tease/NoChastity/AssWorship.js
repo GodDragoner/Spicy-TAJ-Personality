@@ -10,7 +10,7 @@
         showDommeTaggedImageForPictureTag(PictureTag.ASS);
         sendMessage(random('I think you should worship my ass for a little bit', 'I\'m in the mood for some ass worship', 'I\'m in the mood for a little ass worship', 'I feel like having my ass worshipped'));
 
-        if (getVar(VARIABLE.EDGE_A_TONS_DONE, 0) === 0) {
+        if (getVar(VARIABLE.ASS_WORSHIPS_DONE, 0) === 0) {
             sendMessage('Now, I know you haven\'t worshipped me before');
             sendMessage('Besides worshipping the ground I walk on %Wicked%');
             sendMessage('So let me explain what I mean');
@@ -123,5 +123,7 @@
         sendMessage(random('This is the price you have to pay for perfection ', 'All it\'s ever going to do for you is make you suffer ', 'I only let you see it because it makes you ache ', 'I would never let you see it if it didn\'t make you suffer so much ', 'Consider yourself lucky I let you see it at all ') + '%Wicked%');
 
         unlockImages();
+
+        incrementVar(VARIABLE.ASS_WORSHIPS_DONE, 1);
     }
 }

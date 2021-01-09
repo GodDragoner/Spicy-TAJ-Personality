@@ -256,6 +256,9 @@ const VARIABLE = {
     //Ass worship
     ASS_WORSHIPS_DONE: "assWorshipsDone",
 
+    //Gooning
+    GOONINGS_DONE: "gooningsDone",
+
     //Rules
     LAST_RULE_PASSED: 'lastRulePassed',
 
