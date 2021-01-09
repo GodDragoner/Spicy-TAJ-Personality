@@ -57,11 +57,11 @@ function feelsLikePunishingSlave() {
     if (mood === VERY_PLEASED_MOOD) {
         chance = getStrictnessForCharacter() * 5;
     } else if (mood === PLEASED_MOOD) {
-        chance = getStrictnessForCharacter() * 10;
+        chance = getStrictnessForCharacter() * 7;
     } else if (mood === NEUTRAL_MOOD) {
-        chance = (getStrictnessForCharacter() + 1) * 12;
+        chance = (getStrictnessForCharacter() + 1) * 10;
     } else if (mood === ANNOYED_MOOD) {
-        chance = (getStrictnessForCharacter() + 1) * 20;
+        chance = (getStrictnessForCharacter() + 1) * 17;
     } else if (mood === VERY_ANNOYED_MOOD) {
         chance = (getStrictnessForCharacter() + 1) * 25;
     }
@@ -69,7 +69,7 @@ function feelsLikePunishingSlave() {
     chance += Math.floor(getVar(VARIABLE.ANGER)/2);
 
     if(getVar(VARIABLE.PUNISHMENT_POINTS) >= 250) {
-        chance += 50;
+        chance += 35;
     }
 
     sendDebugMessage('Feel like punishing chance: ' + chance);

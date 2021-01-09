@@ -87,21 +87,21 @@ function getMood() {
     let veryPleased, pleased, neutral, annoyed, veryAnnoyed;
     switch (getStrictnessForCharacter()) {
         case 0:
-            veryPleased = 900;
+            veryPleased = 850;
             pleased = 700;
             neutral = 500;
             annoyed = 200;
             veryAnnoyed = 125;
             break;
         case 1:
-            veryPleased = 950;
+            veryPleased = 900;
             pleased = 750;
             neutral = 550;
             annoyed = 300;
             veryAnnoyed = 200;
             break;
         case 2:
-            veryPleased = 1000;
+            veryPleased = 950;
             pleased = 800;
             neutral = 600;
             annoyed = 400;

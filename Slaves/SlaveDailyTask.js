@@ -80,7 +80,7 @@ function getTodaysSlaveTask() {
             lines.add('You will have to say yes to any request today with a smile and follow through');
             break;
         case 15:
-            lines.add('Go to bed an our earlier than usual');
+            lines.add('Go to bed an hour earlier than usual');
             break;
         case 16:
             lines.add('You will have to say yes to any request today with a smile and follow through');
