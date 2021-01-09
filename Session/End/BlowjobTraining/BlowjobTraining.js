@@ -38,7 +38,7 @@
 function sendNewBlowjobTask() {
     sendMessage(random("Your next assignment", "For your next task", "Your next task at hand", "For this exercise"));
 
-    let task = getRandomBlowjobTask(blowjobTasks);
+    let task = getRandomApplicableTask(blowjobTasks);
 
     setVar(VARIABLE.TASK_BLOWJOB_EXPERIENCE, task.exp * getTrainingEXPMultiplier(getVar(VARIABLE.BLOWJOB_TASKS_IN_ROW, 0)));
     setVar(VARIABLE.LAST_BLOWJOB_TASK_ID, task.id);

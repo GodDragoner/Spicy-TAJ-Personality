@@ -283,7 +283,7 @@ function distributeOrgasmPoints() {
 
     totalToAdd += randomInteger(map[getStrictnessForCharacter()*2], map[getStrictnessForCharacter()*2 + 1]);
 
-    //incrementVar(VARIABLE.ORGASM_POINTS, totalToAdd);
+    incrementVar(VARIABLE.ORGASM_POINTS, totalToAdd);
 
     sendDebugMessage('Added ' + totalToAdd + 'orgasm points');
 
