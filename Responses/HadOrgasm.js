@@ -1,6 +1,7 @@
 addResponseRegex("I had an orgasm", "had an orgasm", "I've had an orgasm", 'Ive had an orgasm', 'I came', 'I just came', 'I came just now');
 
 function hadOrgasmResponse(message) {
+    //QUALITY: Interaction with current theme: Like during cbt: Wtf, you came from pain?
     if(!isSessionActive()) {
         return false;
     }
@@ -33,9 +34,36 @@ function hadOrgasmResponse(message) {
 
     }
 
-
     if(now) {
+        sendMessage('Oh no no', 'Oh come on', 'What the hell', 'What the fuck', 'Oh really now', 'What', 'Unbelievable', 'That is not something I want to hear from you', 'Well...');
+        sendMessage(random('Dammit ', 'You should know better ', 'That is just terrible ', 'You are simply the worst ', 'Why would you do that ', 'Where is your self control ') + ' slave');
 
+        if(sendMessage('Did you at least ruin it?')) {
+            sendMessage('That\'s something I guess');
+            registerRuin();
+            addPunishmentPoints(getPPRuleIgnored(), PUNISHMENT_REASON.NO_PERM_RUINED);
+            changeMeritMedium(true);
+        } else {
+            sendMessage('You should ruin your orgasm when you cum without permission');
+            addPunishmentPoints(getPPRuleIgnored()*2, PUNISHMENT_REASON.NO_PERM_CUM);
+            changeMeritHigh(true);
+        }
+
+        if(CEI_LIMIT.isAllowed()) {
+            sendMessage(random('Eat ', 'Lick ') + random('all that cum up ', 'it up ', 'up your cum right fucking now ') + '%SlaveName%');
+            sendMessage(random('You should ', 'You should ALWAYS ', 'You have to ') + random('eat your cum ', 'swallow every single drop ', 'lick it up ', 'lick up your mess ', 'eat it ', 'swallow it ') + 'if you cum without permission');
+            wait(15);
+        }
+
+        if(RULE_DOMME_KEYHOLDER.isActive()) {
+            sendMessage(random('I guess you still have to learn ', 'You have to learn ', 'Get it between your ears ', 'Remember ') + 'that your orgasms ' + random('are not your own ', 'are not yours ', 'belong to me ', 'are mine ') + '%SlaveName%');
+
+            if(sendYesOrNoQuestion('I own your orgasms, and I decide ' + random('whether ', 'when ', 'when and how ') + 'you get ' + random('one ', 'to cum ', 'an orgasm ') + random('understood', 'do you understand that', 'is that clear') + '?')) {
+                sendMessage(random('Alright then', 'Good', 'Okay', 'Just remember that next time you get close', 'Do not forget that'));
+            } else {
+                sendMessage('Well you better ' + random('fucking learn ', 'get it between your ears ') + 'because that\'s the way it is');
+            }
+        }
     } else {
         if(sendYesOrNoQuestion('So... you had an orgasm without my permission?')) {
             if(sendYesOrNoQuestion('Was it a wet dream?')) {
@@ -52,7 +80,7 @@ function hadOrgasmResponse(message) {
                 sendMessage('That\'s something I guess');
                 registerRuin();
                 addPunishmentPoints(getPPRuleIgnored(), PUNISHMENT_REASON.NO_PERM_RUINED);
-                changeMeritHigh(false);
+                changeMeritMedium(false);
             } else {
                 sendMessage('You should ruin your orgasm when you cum without permission');
                 addPunishmentPoints(getPPRuleIgnored()*2, PUNISHMENT_REASON.NO_PERM_CUM);

@@ -200,7 +200,7 @@ const afraidTasks = [];
 
 function isAfraidTask(taskId) {
     for(let x = 0; x < afraidTasks.length; x++) {
-        if(afraidTasks[x].id == taskId) {
+        if(afraidTasks[x].id === taskId) {
             return true;
         }
     }

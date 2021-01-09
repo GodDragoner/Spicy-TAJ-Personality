@@ -195,7 +195,7 @@ function sendBlowjobTrainingPosition() {
     return position;
 }
 
-function getRandomBlowjobTask(array) {
+function getRandomApplicableTask(array) {
     const availableTasks = [];
 
     for(let x = 0; x < array.length; x++) {

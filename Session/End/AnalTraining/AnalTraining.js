@@ -43,7 +43,7 @@
 function sendNewAnalTask() {
     sendMessage(random("Your next assignment", "For your next task", "Your next task at hand", "For this exercise"));
 
-    let task = getRandomAnalTask(analTasks);
+    let task = getRandomApplicableTask(analTasks);
 
     setVar(VARIABLE.TASK_ASS_EXPERIENCE, task.exp * getTrainingEXPMultiplier(getVar(VARIABLE.ASS_TASKS_IN_ROW, 0)));
     setVar(VARIABLE.LAST_ASS_TASK_ID, task.id);

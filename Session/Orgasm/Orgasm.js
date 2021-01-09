@@ -187,26 +187,34 @@ function distributeOrgasmPoints() {
     const lustOffset = 7*2;
     const denialOffset = 8*2;
 
-    let totalToAdd = randomInteger(points[personalityOffset + moodOffset], points[personalityOffset + moodOffset + 1]);
+    let totalToAdd = Math.round(randomInteger(points[personalityOffset + moodOffset], points[personalityOffset + moodOffset + 1])*(getStrictnessForCharacter() + 1));
+
+    let staticAdd = [4, 4, 0];
+    totalToAdd += staticAdd[getStrictnessForCharacter()];
+
     sendDebugMessage('Planning on adding a base line of ' + totalToAdd + " orgasm points");
 
     //Bonus lover mode
     if(getVar('loverMode', false)) {
+        sendDebugMessage('Bonus points for lover mode');
         totalToAdd += randomInteger(points[personalityOffset + loverOffset], points[personalityOffset + loverOffset + 1]);
     }
 
     //Bonus for monthly good days
-    if(getMonthlyGoodDays() > (personalityOffset === 0? 20 : personalityOffset == 18? 24 : 28)) {
+    if(getMonthlyGoodDays() > (personalityOffset === 0? 20 : personalityOffset === 18? 24 : 28)) {
+        sendDebugMessage('Bonus points for more monthly good days');
         totalToAdd += randomInteger(points[personalityOffset + goodDaysOffset], points[personalityOffset + goodDaysOffset + 1]);
     }
 
     //Bonus for lust high
     if(getVar(VARIABLE.LUST) > 28) {
+        sendDebugMessage('Bonus points for high lust');
         totalToAdd += randomInteger(points[personalityOffset + lustOffset], points[personalityOffset + lustOffset + 1]);
     }
 
     //Bonus if we've exceeded denial limit in days
     if(getLastEjaculationDate().addDay(getVar(VARIABLE.DENIAL_LIMIT)).hasPassed()) {
+        sendDebugMessage('Bonus points for denial limit passed');
         totalToAdd += randomInteger(points[personalityOffset + denialOffset], points[personalityOffset + denialOffset + 1]);
     }
 
@@ -275,9 +283,11 @@ function distributeOrgasmPoints() {
 
     totalToAdd += randomInteger(map[getStrictnessForCharacter()*2], map[getStrictnessForCharacter()*2 + 1]);
 
-    incrementVar(VARIABLE.ORGASM_POINTS, totalToAdd);
+    //incrementVar(VARIABLE.ORGASM_POINTS, totalToAdd);
 
     sendDebugMessage('Added ' + totalToAdd + 'orgasm points');
+
+    return totalToAdd;
 }
 
 function getRequiredOrgasmPoints() {

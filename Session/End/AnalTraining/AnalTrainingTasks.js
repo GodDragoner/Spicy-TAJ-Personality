@@ -204,18 +204,6 @@ const analTasks = [];
     analTasks.push(analTask);
 }
 
-function getRandomAnalTask(array) {
-    const availableTasks = [];
-
-    for(let x = 0; x < array.length; x++) {
-        if(array[x].isApplicable()) {
-            availableTasks.push(array[x]);
-        }
-    }
-
-    return availableTasks[randomInteger(0, availableTasks.length - 1)];
-}
-
 function getDildoTaskDurationMinutes() {
     let min = Math.max(5, getVar(VARIABLE.ASS_LEVEL));
     return randomInteger(min, min + 5);
