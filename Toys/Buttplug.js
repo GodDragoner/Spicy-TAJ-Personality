@@ -565,7 +565,7 @@ function removeButtplug(end = false) {
         }
     }
 
-    if (getASMLimit() === LIMIT_ASKED_YES) {
+    if (getASMLimit() === LIMIT_ASKED_YES && feelsLikeShowingPower()) {
         let choice = randomInteger(ASM_CLEAN_TYPE_GAG, ASM_CLEAN_TYPE_LICK);
 
         //No buttplug gag at the end because it's useless

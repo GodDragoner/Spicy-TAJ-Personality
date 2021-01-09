@@ -222,7 +222,7 @@ function getDildo(blowjob = false) {
                 let dildo = DILDOS[y];
 
                 //Ignore dildos non silicone
-                if (dildo.material === MATERIAL.SILICON) {
+                if (dildo.material !== MATERIAL.SILICON) {
                     continue;
                 }
 
