@@ -57,21 +57,26 @@ function putOnLingerie() {
     sendMessageBasedOnSender(random("I want you to wear", "Go ahead and put on", "I need you to put on", "Go ahead and put on", "I need you to put on"));
 
     let accessories = [];
+    let tries = 0;
 
-    if(hasPanties() && isChance(80)) {
-        accessories.push(0);
-    }
+    while(accessories.length === 0 && tries < 20) {
+        if(hasPanties() && isChance(80)) {
+            accessories.push(0);
+        }
 
-    if(hasBra() && isChance(80)) {
-        accessories.push(1);
-    }
+        if(hasBra() && isChance(80)) {
+            accessories.push(1);
+        }
 
-    if(hasGarterBelt() && isChance(50)) {
-        accessories.push(2);
-    }
+        if(hasGarterBelt() && isChance(50)) {
+            accessories.push(2);
+        }
 
-    if(hasStockings() && isChance(50)) {
-        accessories.push(3);
+        if(hasStockings() && isChance(50)) {
+            accessories.push(3);
+        }
+        
+        tries++;
     }
 
     //TODO: Store what lingerie is on right now so have some variety

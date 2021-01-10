@@ -192,15 +192,15 @@ function isPlugged() {
 }
 
 function shouldIncreasePlugSize() {
-    let minTime = Math.ceil(getVar(VARIABLE.DEVOTION) / 5);
-    let maxTime = Math.ceil(getVar(VARIABLE.DEVOTION) / 3);
+    let minTime = Math.ceil(getVar(VARIABLE.DEVOTION) / 3);
+    let maxTime = Math.ceil(getVar(VARIABLE.DEVOTION) / 2);
 
     if (getVar(VARIABLE.ASS_LEVEL, 0) >= 20) {
-        minTime = Math.ceil(getVar(VARIABLE.DEVOTION) / 6);
-        maxTime = Math.ceil(getVar(VARIABLE.DEVOTION) / 5);
+        minTime = Math.ceil(getVar(VARIABLE.DEVOTION) / 4);
+        maxTime = Math.ceil(getVar(VARIABLE.DEVOTION) / 3);
     } else if (getVar(VARIABLE.ASS_LEVEL, 0) >= 30) {
-        minTime = Math.ceil(getVar(VARIABLE.DEVOTION) / 7);
-        maxTime = Math.ceil(getVar(VARIABLE.DEVOTION) / 6);
+        minTime = Math.ceil(getVar(VARIABLE.DEVOTION) / 5);
+        maxTime = Math.ceil(getVar(VARIABLE.DEVOTION) / 4);
     }
 
     if (currentPlug !== biggestButtplug) {

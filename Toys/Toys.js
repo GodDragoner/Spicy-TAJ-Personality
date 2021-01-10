@@ -26,7 +26,7 @@ const DEFAULT_TOY_COOLDOWN_MINUTES = 5;
 function interactWithButtplug(punishment) {
     if ((BUTTPLUG_TOY.isPunishmentAllowed() || !punishment && BUTTPLUG_TOY.isPlayAllowed()) && getAnalLimit() === LIMIT_ASKED_YES) {
         //Starting chance for plug or already plugged anyway
-        let chance = Math.max(15, getVar(VARIABLE.ASS_LEVEL, 0) * 4);
+        let chance = Math.max(15, getVar(VARIABLE.ASS_LEVEL, 0) * 2);
         sendDebugMessage('Rolling for ' + chance + " to insert plug with random toy interaction");
 
         if (isChance(chance) || isPlugged()) {
@@ -74,9 +74,9 @@ function interactWithRandomToys() {
 
     sendDebugMessage('Random toy collar done');
 
-    if (isChance(20) && getPainLimit() === LIMIT_ASKED_YES && allowPain) {
+    if (isChance(20) && PAIN_LIMIT.isAllowed() && allowPain) {
         sendDebugMessage('Looking into clamp distribution');
-        let toDistribute = getTotalAttachedClamps() > 20 || isChance(35) && getTotalAttachedClamps() > 0 ? 0 : randomInteger(1, 4);
+        let toDistribute = (getTotalAttachedClamps() > 20 || isChance(35) && getTotalAttachedClamps() > 0 )? 0 : randomInteger(1, 4);
         sendDebugMessage('Decided to attach ' + toDistribute + ' clamps while ' + getTotalAttachedClamps() + ' are already attached');
 
         if (toDistribute === 0 && getTotalAttachedClamps() > 0) {
@@ -96,6 +96,8 @@ function interactWithRandomToys() {
             distributeClamps(toDistribute);
         }
     }
+
+    redistributeTooLongAttachedClamps();
 
     if (NIPPLE_CLAMPS.decideToyOff()) {
         let minutesSincePutOn = getMillisSinecDate(NIPPLE_CLAMPS.getLastUsage())/(1000*60);

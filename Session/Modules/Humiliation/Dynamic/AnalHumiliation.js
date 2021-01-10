@@ -40,8 +40,6 @@
                         if (currentPlug !== biggestButtplug) {
                             tasks = increasePlugSize();
                         }
-                    } else {
-                        removeButtplug();
                     }
                 }
 
@@ -51,8 +49,9 @@
                     sendMessage("But let's not waste the time we are waiting for your ass to stretch though");
                     startTimePassTasks(5);
                     sendMessage("I think we waited long enough. Let's get back to your ass");
-                    removeButtplug();
                 }
+
+                removeButtplug();
             } else {
                 let missingPlug = false;
                 if (plugPlay) {

@@ -38,6 +38,23 @@ function removeAllClamps() {
     }
 }
 
+function redistributeTooLongAttachedClamps() {
+    let bodyPartHistory = new java.util.ArrayList();
+
+    sendDebugMessage('Looking into redistributing clamps that have been on for too long');
+
+    for (let x = 0; x < BODY_PARTS.length; x++) {
+        let bodyPart = BODY_PARTS[x];
+
+        //QUALITY: Based on sub pain tolerance
+        if(bodyPart.currentClamps > 0 && bodyPart.getLastClampInteraction().addMinute(15).hasPassed()) {
+            sendDebugMessage('Found and redistributing body part: ' + bodyPart.name);
+            bodyPartHistory.add(bodyPart.normalize());
+            redistributeClamps(bodyPart, bodyPart.currentClamps, false, bodyPartHistory);
+        }
+    }
+}
+
 function removeClamps(amount) {
     sendMessage("%SlaveName%");
 

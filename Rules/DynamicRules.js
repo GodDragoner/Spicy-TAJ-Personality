@@ -489,7 +489,7 @@ let RULE_FOLLOW_DAILY_TASKS;
     };
 
     rule.canBeActivated = function () {
-        return ANAL_LIMIT.isAllowed();
+        return ANAL_LIMIT.isAllowed() && getVar(VARIABLE.ASS_LEVEL) >= 30;
     };
 
     rule.sendIntroduction = function () {

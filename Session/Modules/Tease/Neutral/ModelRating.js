@@ -67,6 +67,7 @@
             //Means either no ball crusher of 50% chance failed so we'll go with simple cbt
             let cbt = !ballCrusher && goForCBT;
             let anal = isInChastity() && ANAL_LIMIT.isAllowed() && (isChance(50) || isForcedLockedUp());
+            //Remove buttplug for this game? Apply it again afterwards
             let replug = false;
 
             if (ballCrusher && !isInChastity()) {
