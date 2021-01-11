@@ -217,12 +217,15 @@ function getDildo(blowjob = false) {
 
         let availableDildos = [];
 
-        while (availableDildos.length === 0 && DILDOS.length !== 0) {
+        let tries = 0;
+
+        while (availableDildos.length === 0 && DILDOS.length !== 0 && tries < 20) {
             for (let y = 0; y < DILDOS.length; y++) {
                 let dildo = DILDOS[y];
 
-                //Ignore dildos non silicone
-                if (dildo.material !== MATERIAL.SILICON) {
+                //Ignore dildos non silicone, no !== because that breaks the comparison
+                if (dildo.material != MATERIAL.SILICON) {
+                    sendDebugMessage('Skipped dildo because no silicone but ' + dildo.material);
                     continue;
                 }
 
@@ -233,6 +236,9 @@ function getDildo(blowjob = false) {
 
             maxLength += 0.5;
             maxDiameter += 0.5;
+            minDiameter -= 0.5;
+            minLength -= 0.5;
+            tries++;
         }
 
         if (availableDildos.length === 0) {

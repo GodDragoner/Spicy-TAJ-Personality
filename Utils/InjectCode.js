@@ -166,16 +166,5 @@ const instance = Java.type('me.goddragon.teaseai.TeaseAI').application;
     runGui(new CustomRunnable());
 */
 {
-    let merits = getVar(VARIABLE.MERITS);
-    let strictness = getVar(VARIABLE.DOMME_STRICTNESS);
-    setVar(VARIABLE.MERITS, 1000);
-    ACTIVE_PERSONALITY_STRICTNES = 2;
-    let iterations = 500;
-    let sum = 0;
-    for(let x = 0; x < iterations; x++)
-        sum += distributeOrgasmPoints();
-
-    setVar(VARIABLE.MERITS, merits);
-    ACTIVE_PERSONALITY_STRICTNES = getVar(VARIABLE.DOMME_STRICTNESS);
-    sendDebugMessage('Average op added: ' + sum/iterations);
+    endSpicySession();
 }

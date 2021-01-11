@@ -43,6 +43,8 @@ function sendNewBlowjobTask() {
     setVar(VARIABLE.TASK_BLOWJOB_EXPERIENCE, task.exp * getTrainingEXPMultiplier(getVar(VARIABLE.BLOWJOB_TASKS_IN_ROW, 0)));
     setVar(VARIABLE.LAST_BLOWJOB_TASK_ID, task.id);
 
+    sendDebugMessage('Sending task instructions for ' + task.id);
+
     task.sendInstructions();
 }
 
@@ -56,7 +58,7 @@ function checkBlowjobExercise() {
 
         checkTasksInRow(getVar(VARIABLE.BLOWJOB_TASKS_IN_ROW), 'blowjob');
 
-        incrementVar(VARIABLE.BLOWJOB_EXPERIENCE, getVar(VARIABLE.TASK_BLOWJOB_EXPERIENCE));
+        incrementVar(VARIABLE.BLOWJOB_EXPERIENCE, getVar(VARIABLE.TASK_BLOWJOB_EXPERIENCE, 0));
 
         if (getTrainingEXPForLevel(getVar(VARIABLE.BLOWJOB_LEVEL) + 1) <= getVar(VARIABLE.BLOWJOB_EXPERIENCE)) {
             incrementVar(VARIABLE.BLOWJOB_LEVEL, 1);

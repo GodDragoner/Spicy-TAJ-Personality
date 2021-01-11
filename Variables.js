@@ -171,8 +171,8 @@ const VARIABLE = {
     BLOWJOB_LEVEL: "blowjobLevel",
     BLOWJOB_TASKS_IN_ROW: "blowjobTasksInRow",
     BLOWJOB_EXPERIENCE: 'blowjobExperience',
-    TASK_BLOWJOB_EXPERIENCE: 'taskAssExperience',
-    LAST_BLOWJOB_TASK_ID: 'lastAssTaskId',
+    TASK_BLOWJOB_EXPERIENCE: 'taskBlowjobExperience',
+    LAST_BLOWJOB_TASK_ID: 'lastBlowjobTaskId',
     BLOWJOB_TRAINING: 'blowjobTraining',
     BLOWJOB_TRAININGS_DONE: 'blowjobTrainingsDone',
 

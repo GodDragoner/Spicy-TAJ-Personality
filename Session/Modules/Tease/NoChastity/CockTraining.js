@@ -97,9 +97,9 @@ function startStrokeTraining() {
         }
 
         timeToIncreaseLevel = getVar('timeToIncreaseLevel');
-        let increaseLevelMax = 20;
+        let increaseLevelMax = 15;
 
-        timeToIncreaseLevel += randomInteger(3, 10);
+        timeToIncreaseLevel += randomInteger(5, 10);
         setTempVar('timeToIncreaseLevel', timeToIncreaseLevel);
 
         if (timeToIncreaseLevel >= increaseLevelMax) {
