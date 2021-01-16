@@ -126,7 +126,7 @@
             strokesDone += strokes;
 
             if(strokesDone < todoStrokes) {
-                sendMessage(random('You\'re at ', 'You\'ve given me ', 'You\'ve managed to give me ', 'Right now you\'re at ', 'By my count you\'re at ', 'I believe you\'re at ', 'I think you\'re at ', 'I\'m pretty sure you\'re at ', 'I think you\'ve given me ', 'I\'m pretty sure you\'ve given me ') + strokesDone + 'strokes ' + random('so far ', 'and counting ', 'and going ', 'with still more to go ', 'so far but you\'re not done yet ', 'so far, but I say let\'s keep going ') + '%SlaveName% %Wicked%');
+                sendMessage(random('You\'re at ', 'You\'ve given me ', 'You\'ve managed to give me ', 'Right now you\'re at ', 'By my count you\'re at ', 'I believe you\'re at ', 'I think you\'re at ', 'I\'m pretty sure you\'re at ', 'I think you\'ve given me ', 'I\'m pretty sure you\'ve given me ') + strokesDone + ' strokes ' + random('so far ', 'and counting ', 'and going ', 'with still more to go ', 'so far but you\'re not done yet ', 'so far, but I say let\'s keep going ') + '%SlaveName% %Wicked%');
             }
         }
 
