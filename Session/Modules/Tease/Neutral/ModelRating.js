@@ -174,7 +174,7 @@
                                 right = true;
                             }
 
-                            imageToShow = randomIndex + 2;
+                            imageToShow = randomIndex2 + 1;
                             break;
                         } else if (answer.isLike('same', 'similar')) {
                             if (firstPictureScore == secondPictureScore) {
