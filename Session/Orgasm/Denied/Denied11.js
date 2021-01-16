@@ -25,7 +25,7 @@
             sendMessage("Mmm I don\'t know...");
             startEdging(getEdgeHoldSeconds());
 
-            sendMessage("Sorry %SlaveName% but %domFriend1Name% is right");
+            sendMessage("Sorry %SlaveName% but %domFriend2Name% is right");
             sendMessage("It\'s much more fun to keep you denied %Grin%");
 
             setSender(contactId);
