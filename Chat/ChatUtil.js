@@ -154,7 +154,7 @@ function sendSystemMessage(message) {
 function addContact(id) {
     let contactName = "";
 
-    if (id > 2) {
+    if (id > 1) {
         contactName = '%domFriend' + (id - 1) + 'Name%';
     } else {
         contactName = '%domName%';
@@ -175,8 +175,8 @@ function addContact(id) {
 function removeContact(id) {
     let contactName = "";
 
-    if (id > 2) {
-        contactName = '%domFriend' + (id - 2) + 'Name%';
+    if (id > 1) {
+        contactName = '%domFriend' + (id - 1) + 'Name%';
     } else {
         contactName = '%domName%';
     }
