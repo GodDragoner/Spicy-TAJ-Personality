@@ -137,7 +137,7 @@ while((errors <=errors_allowed) && (correct < total_lines))
 		{correct=correct+1;
 		 if (correct < total_lines) {
 			 sendMessage ("correct! "+ (total_lines-correct) + " more to go!");}
-			 else{ sendMessage ("oh %Slave% " + random("thats so True", "I agree", "you're soo right!", "for once I think you understand"));
+			 else{ sendMessage ("oh %Slave% " + random("that's so True", "I agree", "you're soo right!", "for once I think you understand"));
 			 }
 		}
 	else
@@ -179,7 +179,7 @@ while((errors <=errors_allowed) && (correct < total_lines))
 		{correct=correct+1;
 		 if (correct < total_lines) {
 			 sendMessage ("correct! "+ (total_lines-correct) + " more to go!");}
-			 else{ sendMessage ("oh %Slave% " + random("thats so True", "I agree", "you're soo right!", "for once I think you understand"));
+			 else{ sendMessage ("oh %Slave% " + random("that's so True", "I agree", "you're soo right!", "for once I think you understand"));
 			 }
 		}
 	else

@@ -10,7 +10,7 @@
     sendMessage("The point is you're mine!");
     sendMessage("Let that sink in for a moment...", 10);
     sendMessage("Now what is more important for you to understand is that the thing residing in your pants");
-    sendMessage("Is not gonne be yours anymore", 0);
+    sendMessage("Is not gonna be yours anymore", 0);
     playAudio("Audio/Spicy/Starts/Intro/intro1.mp3", true);
     sendMessage("It's mine!", 0);
     playAudio("Audio/Spicy/Starts/Intro/intro2.mp3", true);

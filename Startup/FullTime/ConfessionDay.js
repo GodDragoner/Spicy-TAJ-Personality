@@ -1,16 +1,16 @@
 {
     if (!isVar(VARIABLE.NEXT_CONFESSION_DAY)) {
-        sendVirtualAssistantMessage("Today is tuesday");
+        sendVirtualAssistantMessage("Today is Tuesday");
         sendVirtualAssistantMessage("Tuesdays are special");
         sendVirtualAssistantMessage("Tuesdays are confession days");
-        sendVirtualAssistantMessage("Since you're full time it is required that you at least launch Tease-AI for a weekly confession on tuesdays");
+        sendVirtualAssistantMessage("Since you're full time it is required that you at least launch Tease-AI for a weekly confession on Tuesdays");
         sendVirtualAssistantMessage("I don't wanna hear anything about not having anything to confess either");
         sendVirtualAssistantMessage("I simply don't believe that you lead the perfect \"slave\" life without an actual domme...");
         sendVirtualAssistantMessage("So choose whatever you believe to be most severe");
         sendVirtualAssistantMessage("Whether that is cumming without permission");
         sendVirtualAssistantMessage("Or some other violation of the rules");
     } else {
-        sendVirtualAssistantMessage("Today is tuesday");
+        sendVirtualAssistantMessage("Today is Tuesday");
         sendVirtualAssistantMessage("Which means it's confession day");
     }
 
@@ -20,7 +20,7 @@
             sendVirtualAssistantMessage("You've been skipping confession day %SlaveName%!");
             sendVirtualAssistantMessage("I've added a healthy dose of punishment points for that!");
             addPunishmentPoints(300, PUNISHMENT_REASON.SKIPPING_CONFESSION_DAY);
-            sendVirtualAssistantMessage("You are expected to report on tuesdays!");
+            sendVirtualAssistantMessage("You are expected to report on Tuesdays!");
         }
 
         //Set the date to the next tuesday

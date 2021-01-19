@@ -159,7 +159,7 @@ function startEdgeATon(chosenByDom, edgesToDo) {
             if (getStrictnessForCharacter() == 2 && edgesToDo >= currentRecord*0.85) impressive = 1;
 
             if (impressive === 2) {
-                sendMessage(random("Oh wauv!", "You're really going for it!", "This is gonna be intense %Grin%", "I hope you can handle this!", "Great lets not waste a moment!"));
+                sendMessage(random("Oh wauw!", "You're really going for it!", "This is gonna be intense %Grin%", "I hope you can handle this!", "Great lets not waste a moment!"));
                 changeMeritMedium(false);
             } else if (impressive === 1) {
                 sendMessage(random("Well then... Lets begin", "It's time to begin", "Lets get that cock to work!", "Time to work out that cock!", "I hope you're ready for some cock workout!"));

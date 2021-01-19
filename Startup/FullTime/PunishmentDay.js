@@ -1,6 +1,6 @@
 {
     if (!isVar(VARIABLE.NEXT_PUNISHMENT_DAY)) {
-        sendVirtualAssistantMessage("Today is thursday");
+        sendVirtualAssistantMessage("Today is Thursday");
         sendVirtualAssistantMessage("Thursdays are special");
         sendVirtualAssistantMessage("Thursdays are punishment days");
         sendVirtualAssistantMessage("Since you're full time it is required that you at least launch TAJ for a weekly punishment check up");
@@ -8,7 +8,7 @@
         sendVirtualAssistantMessage("If you haven't I'm adding more");
         sendVirtualAssistantMessage("A lot more!");
     } else {
-        sendVirtualAssistantMessage("%SlaveName% it's thursday");
+        sendVirtualAssistantMessage("%SlaveName% it's Thursday");
         sendVirtualAssistantMessage("Which means it's punishment day");
     }
 
@@ -18,7 +18,7 @@
             sendVirtualAssistantMessage("You've been skipping punishment day %SlaveName%!");
             sendVirtualAssistantMessage("I've added a healthy dose of punishment points for that!");
             addPunishmentPoints(300, PUNISHMENT_REASON.SKIPPING_PUNISHMENT_DAY);
-            sendVirtualAssistantMessage("You are expected to report on tuesdays!");
+            sendVirtualAssistantMessage("You are expected to report on Thursdays!");
         }
 
         //Set the date to the next thursday

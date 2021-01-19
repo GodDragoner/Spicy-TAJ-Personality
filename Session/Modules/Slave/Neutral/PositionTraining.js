@@ -496,7 +496,7 @@ function positionTestReward(){
         sendMessage("Only one mistake! Well done!");
         rewardGoldMedium();
     } else if (positionTestWrong == 2) {
-        sendMessage("Since you had 2 mistakes afterall I'm not giving you too much gold");
+        sendMessage("Since you had 2 mistakes after all I'm not giving you too much gold");
         rewardGoldLow();
     }
     setVar(VARIABLE.POSITION_LEVEL, positionLevel + 1);
@@ -681,7 +681,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
         currentTraining_b6 : function () {
             sendMessage("For this one you'll need your gag and some rice.");
             sendMessage("Go and fetch them.");
-            sendMessage("Gag yourself and palce the rice where you will do the position");
+            sendMessage("Gag yourself and place the rice where you will do the position");
             if (!checkPositionToys()) {
                 return false;
             } else {
@@ -930,11 +930,11 @@ function complicatedPositionTrainingSelection(totalPositions) {
             sendMessage("%Lol%");
             sendMessage("What a sight!");
             sendMessage("This should prove fun to watch!");
-            sendMessage("Ofcourse I want you in the Slut position");
+            sendMessage("Of course I want you in the Slut position");
             lockImages();
             showImage("Images/Spicy/Positions/Slut2.jpg");
             sendMessage("If you really want to please me then you should film yourself");
-            sendMessage("I think I would fit perfectly inside your selfhumiliation videos folder %Grin%");
+            sendMessage("I think I would fit perfectly inside your self humiliation videos folder %Grin%");
             unlockImages();
 
             while (true) {
@@ -1074,7 +1074,7 @@ function positionCheckBalance() {
 
 function checkPositionToys() {
     while (true) {
-        let answer = sendInput("%Ready%  If you dont have any of the toys you need just say no.");
+        let answer = sendInput("%Ready%  If you don't have any of the toys you need just say no.");
         if (answer.containsIgnoreCase("yes")) {
             sendMessage("%Good%");
             return true;

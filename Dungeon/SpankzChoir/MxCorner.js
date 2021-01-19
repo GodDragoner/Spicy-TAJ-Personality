@@ -58,7 +58,7 @@
 		 }
 		else{
 		 sendMessage(" I only wanna hear a firm 'yes Mistress'.. "); 
-		 sendMessage(" but aparantly you're there since you pecked out '" +response+"'"); 		
+		 sendMessage(" but apparently you're there since you pecked out '" +response+"'");
 		 sendMessage(" How eloquent.... lets move on "); 
 		 break;
 		}

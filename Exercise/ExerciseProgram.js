@@ -456,7 +456,7 @@ function Dog1() {
 		sleep( 40+10* getVar("ExerciseLevel"));
 		
 		playAudio("Audio/Spicy/SpecialSounds/Bell.mp3");
-		sendVirtualAssistantMessage(random(" Take a short break ", "I think next time we're caning you in that position","MMM seeing you bent over like that makes me want to go grab my strap-on","oh, %domhonorific% %domname% could spank you nicely in that position"),1,true);
+		sendVirtualAssistantMessage(random(" Take a short break ", "I think next time we're caning you in that position","Mmm, seeing you bent over like that makes me want to go grab my strap-on","oh, %domhonorific% %domname% could spank you nicely in that position"),1,true);
 		sleep(20);
 
 	}
@@ -489,7 +489,7 @@ function Dog2a() {
 		 stopAudio();
 
 		playAudio("Audio/Spicy/SpecialSounds/Bell.mp3");
-		sendVirtualAssistantMessage(" Thats my good Doggy!!  ");
+		sendVirtualAssistantMessage(" That's my good Doggy!!  ");
 		sleep(4);
 
 	}
@@ -1214,7 +1214,7 @@ function Leg4() {
 		playAudio("Audio/Spicy/SpecialSounds/Bell.mp3"); 
 		sleep(5);
 		unlockImages();
-		sendVirtualAssistantMessage(" Feel those calfs burn.");
+		sendVirtualAssistantMessage(" Feel those calves burn.");
 		sleep(5);
 
 
@@ -1265,7 +1265,7 @@ function Leg2() {
 			sendVirtualAssistantMessage(" With the first beep bring your leg fourth",1,true);
 		showImage("Images/Spicy/Exercise/Legs/3.jpg");
 		sendVirtualAssistantMessage(" With the second beep bring the same leg to the side",1,true);
-		sendVirtualAssistantMessage(" With the third beep put the leg behing you",1,true);
+		sendVirtualAssistantMessage(" With the third beep put the leg behind you",1,true);
 		sendVirtualAssistantMessage(" Switch leg and repeat for the other leg",1,true);
 		sendVirtualAssistantMessage(" Continue until you hear my bell ",1,true);
 		playAudio("Audio/Spicy/Stroking/Metronome/40 bpm.mp3");
@@ -1571,7 +1571,7 @@ function Squat(){
 		exsquat=true;
 		NrExercise = NrExercise+1;
 
-		sendVirtualAssistantMessage(" Lets do some squating ");
+		sendVirtualAssistantMessage(" Lets do some squatting ");
 		showImage("Images/Spicy/Exercise/Squat/1.jpg");
 		sendVirtualAssistantMessage(" First beep down",1,true);
 		sendVirtualAssistantMessage(" Second beep up",1,true);

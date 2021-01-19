@@ -255,7 +255,7 @@
                         }
 
                         /*if (isVar("Preason_not_worshiping") && getVar("Preason_not_worshiping")) {
-                            sendDungeonMessage(random("Failure to respect %mistress%", "being Disrespectful towards %DomHonorific% %DomName%", "Not appropriately worshiping your Goddess %DomName%"), 2);
+                            sendDungeonMessage(random("Failure to respect %mistress%", "being Disrespectful towards %DomHonorific% %DomName%", "Not appropriately worshipping your Goddess %DomName%"), 2);
                         }*/
 
                         if (reasons.contains(PUNISHMENT_REASON.TOO_LAZY)) {

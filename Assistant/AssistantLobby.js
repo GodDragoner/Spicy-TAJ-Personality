@@ -2,7 +2,7 @@
 
     if (getVar(VARIABLE.WAITING_FOR_CHASTITY_KEY_RETURN, false)) {
         sendVirtualAssistantMessage('%SlaveName%');
-        sendVirtualAssistantMessage('Last time you left I allowed you to unlock yourself and since then I haven\'t locked you back yet');
+        sendVirtualAssistantMessage('Last time you left I allowed you to unlock yourself and since then I haven\'t locked you back up yet');
         sendVirtualAssistantMessage('Are you ready to be locked again?', 0);
 
         if (createYesOrNoQuestion()) {
@@ -64,7 +64,7 @@
                 sendVirtualAssistantMessage(getWelcomeMessage(), false);
                 break;
             } else if (lobbyAnswer.isLike("save", "end", "quit", "stop", "leave", "close", "finish")) {
-                sendVirtualAssistantMessage(random("Bye", "Until next time", "See you", "I'm waiting for the next time", "Don't leave me alone to long", "Good bye", "Have a nice day", "I saved your process you can close the program"));
+                sendVirtualAssistantMessage(random("Bye", "Until next time", "See you", "I'm waiting for the next time", "Don't leave me alone too long", "Good bye", "Have a nice day", "I saved your progress and you can close the program"));
                 lobbyAnswer.clearOptions();
                 endSession();
                 break;

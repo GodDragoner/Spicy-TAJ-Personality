@@ -310,7 +310,7 @@ function FF1()
     sendArbMessage(textName, "hmmm... lets Set the controller to "+random("5","10","15","25","50"),0); 
 	showImage("Images/Spicy/FFriends/1/*");
 		sleep(3); 
-    sendArbMessage(textName,"%SlaveName%, I want you to truely understand that you deserve this.",0);
+    sendArbMessage(textName,"%SlaveName%, I want you to truly understand that you deserve this.",0);
 	showImage("Images/Spicy/FFriends/1/*");
 	sleep(3);  	
     sendArbMessage(textName,"Slave, think of all the ways you've failed me over time",0);

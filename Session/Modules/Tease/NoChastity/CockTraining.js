@@ -195,7 +195,7 @@ function strokeTrainingEdge() {
                 sendMessage(random("Above 30 is alright slave", "Well below 40 is still OK", "You could probably do better... Maybe...", "You need to work harder slave"));
                 addMerits(5);
             } else if (getStrictnessForCharacter() == 2) {
-                sendMessage(random("Below level 40 huh...", "Oh wauv you do absolutely not impress...", "I was expecting more from you %SlaveName%"));
+                sendMessage(random("Below level 40 huh...", "Oh wauw you do absolutely not impress...", "I was expecting more from you %SlaveName%"));
                 addMerits(-10);
             }
         } else {

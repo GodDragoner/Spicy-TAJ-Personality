@@ -46,7 +46,7 @@ switch(getVar("MXR")){
 
 			MXmessage(" Hi boy ");
 			MXmessage(" I'm Miss Gigi ");
-			MXmessage(" Mhmm I'm excited about whats to come in a moment! ");
+			MXmessage(" Mhmm I'm excited about what's to come in a moment! ");
 			MXmessage(" You on the other hand look a bit shaky %Lol% ");
 			MXmessage(" I'm using my Hitachi later! "); 
 			doneend=true;
@@ -90,8 +90,8 @@ switch(getVar("MXR")){
 		MXmessage(" Hello ");
 		MXmessage(" I go by Miss Kym ");
 		MXmessage(" You look just like the right victim for a healthy spanking! ");
-		MXmessage(" I do consider spankings a neccesary part of mens life ");
-		MXmessage(" They are afterall the weaker sex.. "); 
+		MXmessage(" I do consider spankings a necessary part of a man's life ");
+		MXmessage(" They are after all the weaker sex.. "); 
 		doneend=true;
 		}
 	break;

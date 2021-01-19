@@ -16,7 +16,7 @@ if (!isVar("SpankzChoirBaseIntro")) {
         sendDungeonMessage(" Now be aware that if you do not accept the spanking won within 48 hours bidding is closed ");
         sendDungeonMessage(" You will be fined for the full amount and still owe a spanking ");
         sendDungeonMessage(" So to sum up, when you've placed your ass for auction make sure to check back 48 hours later ");
-        sendDungeonMessage(" But sooner than 96 hours to accept the topbidder ");
+        sendDungeonMessage(" But sooner than 96 hours to accept the top bidder ");
         answer = sendInput(" Understood? ", 15);
 
         if (answer.isLike("yes", "yeah", "yup", "ya")) {
@@ -84,28 +84,28 @@ if (!isVar("SpankzChoirSubscription")) {
             sendDungeonMessage(" You can't skip a session %SlaveName% ");
             setVar("SpankzChoirSkipped", true);
             if (getVar("AlexisWon") == true) {
-                sendDungeonMessage(" Since you tried to skip a session I'm transfering 20 gold to Alexis ");
+                sendDungeonMessage(" Since you tried to skip a session I'm transferring 20 gold to Alexis ");
             }
             if (getVar("AllisonWon") == true) {
-                sendDungeonMessage(" Since you tried to skip a session I'm transfering 20 gold to Allison ");
+                sendDungeonMessage(" Since you tried to skip a session I'm transferring 20 gold to Allison ");
             }
             if (getVar("gigiWon") == true) {
-                sendDungeonMessage(" Since you tried to skip a session I'm transfering 20 gold to GiGi ");
+                sendDungeonMessage(" Since you tried to skip a session I'm transferring 20 gold to GiGi ");
             }
             if (getVar("JeanetteWon") == true) {
-                sendDungeonMessage(" Since you tried to skip a session I'm transfering 20 gold to Jeanette ");
+                sendDungeonMessage(" Since you tried to skip a session I'm transferring 20 gold to Jeanette ");
             }
             if (getVar("KordeliaWon") == true) {
-                sendDungeonMessage(" Since you tried to skip a session I'm transfering 20 gold to Kordelia ");
+                sendDungeonMessage(" Since you tried to skip a session I'm transferring 20 gold to Kordelia ");
             }
             if (getVar("KymWon") == true) {
-                sendDungeonMessage(" Since you tried to skip a session I'm transfering 20 gold to Kym ");
+                sendDungeonMessage(" Since you tried to skip a session I'm transferring 20 gold to Kym ");
             }
             if (getVar("SadieWon") == true) {
-                sendDungeonMessage(" Since you tried to skip a session I'm transfering 20 gold to Sadie ");
+                sendDungeonMessage(" Since you tried to skip a session I'm transferring 20 gold to Sadie ");
             }
             if (getVar("SarahWon") == true) {
-                sendDungeonMessage(" Since you tried to skip a session I'm transfering 20 gold to Sarah");
+                sendDungeonMessage(" Since you tried to skip a session I'm transferring 20 gold to Sarah");
             }
             setVar(VARIABLE.GOLD, getVar(VARIABLE.GOLD) - 20);
             sendDungeonMessage(" Also I'm awarding you some extra spanking ");
@@ -135,7 +135,7 @@ if (!isVar("SpankzChoirSubscription")) {
 
                 switch (choice) {
                     case 1:
-                        sendDungeonMessage(" The highbidder was Alexis ");
+                        sendDungeonMessage(" The high bidder was Alexis ");
                         setVar("AlexisWon", true);
                         sendDungeonMessage(" I bet she's pleased with both getting your ass and gold %Lol% ");
                         sendDungeonMessage(" Well setting it up.. ");
@@ -143,49 +143,49 @@ if (!isVar("SpankzChoirSubscription")) {
                         break;
 
                     case 2:
-                        sendDungeonMessage(" The highbidder was Allison ");
+                        sendDungeonMessage(" The high bidder was Allison ");
                         setVar("AllisonWon", true);
                         sendDungeonMessage(" I bet she's pleased with both getting your ass and gold %Lol% ");
                         sendDungeonMessage(" Well setting it up.. ");
                         run("dungeon/SpankzChoir/MxMain.js");
                         break;
                     case 3:
-                        sendDungeonMessage(" The highbidder was Gigi ");
+                        sendDungeonMessage(" The high bidder was Gigi ");
                         setVar("GigiWon", true);
                         sendDungeonMessage(" I bet she's pleased with both getting your ass and gold %Lol% ");
                         sendDungeonMessage(" Well setting it up.. ");
                         run("dungeon/SpankzChoir/MxMain.js");
                         break;
                     case 4:
-                        sendDungeonMessage(" The highbidder was Jeanette ");
+                        sendDungeonMessage(" The high bidder was Jeanette ");
                         setVar("JeanetteWon", true);
                         sendDungeonMessage(" I bet she's pleased with both getting your ass and gold %Lol% ");
                         sendDungeonMessage(" Well setting it up.. ");
                         run("dungeon/SpankzChoir/MxMain.js");
                         break;
                     case 5:
-                        sendDungeonMessage(" The highbidder was Kordelia ");
+                        sendDungeonMessage(" The high bidder was Kordelia ");
                         setVar("KordeliaWon", true);
                         sendDungeonMessage(" I bet she's pleased with both getting your ass and gold %Lol% ");
                         sendDungeonMessage(" Well setting it up.. ");
                         run("dungeon/SpankzChoir/MxMain.js");
                         break;
                     case 6:
-                        sendDungeonMessage(" The highbidder was Kym ");
+                        sendDungeonMessage(" The high bidder was Kym ");
                         setVar("KymWon", true);
                         sendDungeonMessage(" I bet she's pleased with both getting your ass and gold %Lol% ");
                         sendDungeonMessage(" Well setting it up.. ");
                         run("dungeon/SpankzChoir/MxMain.js");
                         break;
                     case 7:
-                        sendDungeonMessage(" The highbidder was Sadie ");
+                        sendDungeonMessage(" The high bidder was Sadie ");
                         setVar("SadieWon", true);
                         sendDungeonMessage(" I bet she's pleased with both getting your ass and gold %Lol% ");
                         sendDungeonMessage(" Well setting it up.. ");
                         run("dungeon/SpankzChoir/MxMain.js");
                         break;
                     case 8:
-                        sendDungeonMessage(" The highbidder was Sarah ");
+                        sendDungeonMessage(" The high bidder was Sarah ");
                         setVar("SarahWon", true);
                         sendDungeonMessage(" I bet she's pleased with both getting your ass and gold %Lol% ");
                         sendDungeonMessage(" Well setting it up.. ");
@@ -207,56 +207,56 @@ if (!isVar("SpankzChoirSubscription")) {
                     switch (Choice) {
 
                         case 1:
-                            sendDungeonMessage(random("The highbidder!", "It seems the high bidder", "And the winner..", "Oh my it seems the highbidder") + " is Alexis! ");
+                            sendDungeonMessage(random("The high bidder!", "It seems the high bidder", "And the winner..", "Oh my it seems the high bidder") + " is Alexis! ");
                             setVar("AlexisWon", true);
                             sendDungeonMessage(" I bet she's pleased with get your %Ass% %Lol% ");
                             sendDungeonMessage(" Setting it up.. ");
                             run("dungeon/SpankzChoir/MxMain.js");
                             break;
                         case 2:
-                            sendDungeonMessage(random("The highbidder!", "It seems the high bidder", "And the winner..", "Oh my it seems the highbidder") + " is Allison! ");
+                            sendDungeonMessage(random("The high bidder!", "It seems the high bidder", "And the winner..", "Oh my it seems the high bidder") + " is Allison! ");
                             setVar("AllisonWon", true);
                             sendDungeonMessage(" I bet she's pleased with get your %Ass% %Lol% ");
                             sendDungeonMessage(" Setting it up.. ");
                             run("dungeon/SpankzChoir/MxMain.js");
                             break;
                         case 3:
-                            sendDungeonMessage(random("The highbidder!", "It seems the high bidder", "And the winner..", "Oh my it seems the highbidder") + " is Gigi! ");
+                            sendDungeonMessage(random("The high bidder!", "It seems the high bidder", "And the winner..", "Oh my it seems the high bidder") + " is Gigi! ");
                             setVar("GigiWon", true);
                             sendDungeonMessage(" I bet she's pleased with get your %Ass% %Lol% ");
                             sendDungeonMessage(" Setting it up.. ");
                             run("dungeon/SpankzChoir/MxMain.js");
                             break;
                         case 4:
-                            sendDungeonMessage(random("The highbidder!", "It seems the high bidder", "And the winner..", "Oh my it seems the highbidder") + " is Jeanette! ");
+                            sendDungeonMessage(random("The high bidder!", "It seems the high bidder", "And the winner..", "Oh my it seems the high bidder") + " is Jeanette! ");
                             setVar("JeanetteWon", true);
                             sendDungeonMessage(" I bet she's pleased with get your %Ass% %Lol% ");
                             sendDungeonMessage(" Setting it up.. ");
                             run("dungeon/SpankzChoir/MxMain.js");
                             break;
                         case 5:
-                            sendDungeonMessage(random("The highbidder!", "It seems the high bidder", "And the winner..", "Oh my it seems the highbidder") + " is Kordelia! ");
+                            sendDungeonMessage(random("The high bidder!", "It seems the high bidder", "And the winner..", "Oh my it seems the high bidder") + " is Kordelia! ");
                             setVar("KordeliaWon", true);
                             sendDungeonMessage(" I bet she's pleased with get your %Ass% %Lol% ");
                             sendDungeonMessage(" Setting it up.. ");
                             run("dungeon/SpankzChoir/MxMain.js");
                             break;
                         case 6:
-                            sendDungeonMessage(random("The highbidder!", "It seems the high bidder", "And the winner..", "Oh my it seems the highbidder") + " is Kym! ");
+                            sendDungeonMessage(random("The high bidder!", "It seems the high bidder", "And the winner..", "Oh my it seems the high bidder") + " is Kym! ");
                             setVar("KymWon", true);
                             sendDungeonMessage(" I bet she's pleased with get your %Ass% %Lol% ");
                             sendDungeonMessage(" Setting it up.. ");
                             run("dungeon/SpankzChoir/MxMain.js");
                             break;
                         case 7:
-                            sendDungeonMessage(random("The highbidder!", "It seems the high bidder", "And the winner..", "Oh my it seems the highbidder") + " is Sadie! ");
+                            sendDungeonMessage(random("The high bidder!", "It seems the high bidder", "And the winner..", "Oh my it seems the high bidder") + " is Sadie! ");
                             setVar("SadieWon", true);
                             sendDungeonMessage(" I bet she's pleased with get your %Ass% %Lol% ");
                             sendDungeonMessage(" Setting it up.. ");
                             run("dungeon/SpankzChoir/MxMain.js");
                             break;
                         case 8:
-                            sendDungeonMessage(random("The highbidder!", "It seems the high bidder", "And the winner..", "Oh my it seems the highbidder") + " is Sarah! ");
+                            sendDungeonMessage(random("The high bidder!", "It seems the high bidder", "And the winner..", "Oh my it seems the high bidder") + " is Sarah! ");
                             setVar("SarahWon", true);
                             sendDungeonMessage(" I bet she's pleased with get your %Ass% %Lol% ");
                             sendDungeonMessage(" Setting it up.. ");
@@ -350,7 +350,7 @@ if (!isVar("SpankzChoirSubscription")) {
 
             sendDungeonMessage(" The next questions are yes or no ");
             //fixme  add support for gagpunishment variable... its got hooks already in base code
-            answer = sendInput(" Would you be okay with faceslapping? ");
+            answer = sendInput(" Would you be okay with face slapping? ");
             while (true) {
                 if (answer.isLike("yes")) {
                     sendDungeonMessage(" %Good% ");

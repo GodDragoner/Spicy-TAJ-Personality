@@ -28,7 +28,7 @@
               "I want you to stay so fucking close for me",
               "I'd almost feel sorry about making you edge so long if I wasn't having so much fun turning you into a drooling mess",
               "Ohhhh, I know %SlaveName%. I know it's hard to hold. But you have to. You have to.",
-              "You should be so close, you're afraid of cuming!",
+              "You should be so close, you're afraid of cumming!",
               "Closer! Get closer for me!",
               "%SlaveName% com'on even closer than that!",
               "Push yourself %SlaveName%, you can get closer than that!",
