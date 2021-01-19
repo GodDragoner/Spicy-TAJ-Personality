@@ -32,7 +32,7 @@
     startEdging();
     sendMessage('Over and over and over...');
     startEdging();
-    sendMessage('Until your brain turns to a soft grey horny mush...');
+    sendMessage('Until your brain turns to a soft gray horny mush...');
     startEdging();
     sendMessage('%LetTheEdgeFade%');
     startEdging(2, 5);

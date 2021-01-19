@@ -52,7 +52,7 @@
         'Don\'t stop, just stroke stroke stroke %Grin%',
         'Keep stroke-stroke-stroking, %SlaveName% %Grin%',
         'Don\'t stop, stroke',
-        'Don\'t slow dow, keep stroking just like that',
+        'Don\'t slow down, keep stroking just like that',
         'You need to keep stroking %MyCock% %Cock%',
         'Keep stroking my toy, %SlaveName%',
         'Don\'t stop stroking %MyCock% %Cock%',

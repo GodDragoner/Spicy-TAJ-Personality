@@ -196,7 +196,7 @@ function createRoom(name, size) {
                 sendMessageBasedOnSender('%Good% %SlaveName%');
 
                 if (averageSet) {
-                    sendMessageBasedOnSender('Allow me to reward your ' + random('splendid', 'good', 'excellent', 'lovely') + random('behaviour', 'work'));
+                    sendMessageBasedOnSender('Allow me to reward your ' + random('splendid', 'good', 'excellent', 'lovely') + random('behavior', 'work'));
                     accountTimeSpendOnChore(minutesPassed, false);
                 } else {
                     sendMessageBasedOnSender('Good job %GeneralTime% %SlaveName%');
@@ -263,7 +263,7 @@ function createRoom(name, size) {
                     sendMessageBasedOnSender('I see but you should always be thorough!');
                     punish = false;
                 } else if (answer.isLike('toy', 'you made me', 'you told me')) {
-                    sendMessageBasedOnSender(random('Excuses! Really!?', 'Wauv you\'re gonna blame me...'))
+                    sendMessageBasedOnSender(random('Excuses! Really!?', 'Wauw you\'re gonna blame me...'))
                 } else {
                     punish = false;
                 }

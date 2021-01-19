@@ -173,7 +173,7 @@ function startNormalBlowjobModule() {
         sendMessage('I might also ask you to put your finger in your mouth and have you trigger the gag reflex...', 0);
         playSound("Audio\\Spicy\\Modules\\BJTraining\\BJFingerGagging\\*.mp3", false);
         sendMessage('You will have to do that until I tell you to stop');
-        sendMessage('It\'s important you learn to control it if you\'re ever to learn deep throating...');
+        sendMessage('It\'s important you learn to control it if you\'re ever to learn deepthroating...');
         stopAudio();
 
         sendMessage('You know this sound well, but during blowjob training it means to stroke the dildo while you blow it lightly');

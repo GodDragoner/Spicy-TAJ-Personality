@@ -5,7 +5,7 @@
                 if (CLOTHESPINS_TOY.hasToy() && CLOTHESPINS_TOY.isPlayAllowed() && CLOTHESPINS_TOY.fetchToy(4)) {
                     sendMessage('Go ahead and put 2 on each of your inner thighs %SlaveNameSmiley%');
                     sendMessage('Once you\'re done...');
-                    sendMessage('I want you to flick each clothepin 2 times');
+                    sendMessage('I want you to flick each clothespin 2 times');
                     sendMessage('If any of them fall of you will repeat this from the beginning %SlaveName%');
                     sendMessage('Tell me when you are done and don\'t make wait too long for it');
                     waitForDone(200);

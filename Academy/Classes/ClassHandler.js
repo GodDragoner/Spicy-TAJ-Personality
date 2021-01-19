@@ -83,7 +83,7 @@ function handleTodayAcademyClasses() {
             if (clazz.getClassesTaken() > 0) {
                 if(!clazz.getLastVisitAt().addDay(daysSinceLastMeet).sameDay(setDate())) {
                     sendMessage('You have been skipping classes %SlaveName%');
-                    sendMessage('This behaviour is not tolerated!');
+                    sendMessage('This behavior is not tolerated!');
                     changeMeritMedium(true);
                     addPunishmentPoints(250, PUNISHMENT_REASON.TOO_LAZY);
                     sendMessage('Be sure to participate in every single class on time!');

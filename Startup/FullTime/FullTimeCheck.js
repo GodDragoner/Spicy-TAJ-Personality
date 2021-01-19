@@ -6,7 +6,7 @@
 
         //Reduce punishment point multiplier each day if the change would be negative
         let ppMultiplier = getPunishmentPointMultiplierChange();
-        sendDebugMessage('PP Mutliplier change is ' + ppMultiplier);
+        sendDebugMessage('PP Multiplier change is ' + ppMultiplier);
 
         if(ppMultiplier < 0) {
             let currentMult = getVar(VARIABLE.PUNISHMENT_POINT_MULTIPLIER, 1);

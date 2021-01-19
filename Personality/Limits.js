@@ -508,7 +508,7 @@ function askForNewLimitValue(limit) {
     //Try to seduce sub if he said no before so we jump to the kinder variation
     if (isEnforcingPersonality() && limit.getLimit() !== LIMIT_ASKED_NO) {
         sendMessage(random('You know I don\'t like being told no', 'As you should know I don\'t like being turned down', 'You know I do not take a "no" lightly', 'You know that I really don\'t like hearing "no"'));
-        sendMessage(random('And since you wan\'t to please me and definitely do NOT want to displease me %Grin%', 'Thus I guess there is only one right answer to this', 'Which means there is practically only one way for you to answer this'));
+        sendMessage(random('And since you want to please me and definitely do NOT want to displease me %Grin%', 'Thus I guess there is only one right answer to this', 'Which means there is practically only one way for you to answer this'));
     } else {
         sendMessage(random('I would even be happy if you told me "maybe"', 'A maybe would also make me happy', '"Maybe" would also make me happy for now') + '  %Grin%');
         sendMessage(random('That way I know I can try to get you into it', 'At least that would allow me to try to get you into it', 'It would allow me to try to get you into it') + ' %EmoteHappy%');

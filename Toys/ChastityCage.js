@@ -35,8 +35,8 @@ function unlockChastityCage(fakeOpening = false) {
 
     if (fakeOpening || feelsEvil()) {
         sendMessage(random('In a moment', 'In a second', 'In a few moments', 'In a few seconds') + ' I am gonna ' + random('allow you to', '') + ' unlock %MyYour% poor little cock');
-        sendMessage(random('But', 'However') + random(' today I really want you to savour the moment', ' it will be a bit different today', ' today will be different',
-            ' we are gonna take it slow today', ' I want you to savour the moment'));
+        sendMessage(random('But', 'However') + random(' today I really want you to savor the moment', ' it will be a bit different today', ' today will be different',
+            ' we are gonna take it slow today', ' I want you to savor the moment'));
         sendMessage(random('You will not completely unlock %MyYour% cock unless I specifically stated it', 'You will not rush it and do as I say', 'You will not unlock it without my explicit permission',
             'You will obey me and not unlock it without my explicit permission'));
 

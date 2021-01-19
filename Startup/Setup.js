@@ -249,7 +249,7 @@
     sendVirtualAssistantMessage('Depending on the domme she can have one or multiple subs at a time');
 
     sendVirtualAssistantMessage('Now you gotta tell me what type of domme you are looking for');
-    sendVirtualAssistantMessage('There are 3 character types of dommes available to you as a pre selection.');
+    sendVirtualAssistantMessage('There are 3 character types of dommes available to you as a pre-selection.');
     sendVirtualAssistantMessage('Firstly there are kind and easier to please Dommes');
     sendVirtualAssistantMessage('The second type is a fairly strict but still fair Domme');
     sendVirtualAssistantMessage('Last but not least there are very strict and demanding Dommes');

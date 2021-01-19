@@ -85,7 +85,7 @@
 
     function onEnd(academyClass) {
         if(CEI_LIMIT.isAllowed() && isChance(25)) {
-            sendMessage('Remember: All pre cum produced must be consumed!');
+            sendMessage('Remember: All precum produced must be consumed!');
         }
     }
 

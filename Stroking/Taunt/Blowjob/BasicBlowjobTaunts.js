@@ -101,7 +101,7 @@
         'Don\'t stop, just blow blow blow %Grin%',
         'Keep blow-blow-blowing, %SlaveName% %Grin%',
         'Don\'t stop, blow',
-        'Don\'t slow dow, keep blowing just like that',
+        'Don\'t slow down, keep blowing just like that',
         'You need to keep blowing that dildo',
         'Keep blowing my toy, %SlaveName%',
         'Don\'t stop blowing that dildo',

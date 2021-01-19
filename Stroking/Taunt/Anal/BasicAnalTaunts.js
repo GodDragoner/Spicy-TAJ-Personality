@@ -21,7 +21,7 @@
         'Slow down %SlaveName% @StrokeSlower',
         'Slow down your thrusts for me @StrokeSlower',
         'Go a little slower now @StrokeSlower',
-        'Go as slow as you can and savour it @StrokeSlowest',
+        'Go as slow as you can and savor it @StrokeSlowest',
         'Go really slow now, until you can\'t go any slower @StrokeSlowest',
         'Speed up now %SlaveName% @StrokeFaster',
         'Speed up your thrusts a little bit @StrokeFaster',
@@ -104,7 +104,7 @@
         'Don\'t stop, just fuck fuck fuck %Grin%',
         'Keep fuck-fuck-fucking, %SlaveName% %Grin%',
         'Don\'t stop, fuck',
-        'Don\'t slow dow, keep going just like that',
+        'Don\'t slow down, keep going just like that',
         'You need to keep fucking that %Ass%',
         'Keep fucking my %Ass%, %SlaveName%',
         'Don\'t stop fucking that %Ass%',
@@ -218,7 +218,7 @@
             var tauntAnswer = sendInput("Do you find this to be humiliating or is it even fun for you?", 6);
 
             if (!tauntAnswer.isTimeout()) {
-                if(tauntAnswer.isLike('humiliating', 'humilation')) {
+                if(tauntAnswer.isLike('humiliating', 'humiliation')) {
                     sendMessage('That\'s the main thing I care about any way %Wicked%')
                 } else if(tauntAnswer.isLike('good', 'fun', 'like', 'enjoy')) {
                     sendMessage('You are such a little pervert %SlaveName% %Lol%')

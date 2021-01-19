@@ -96,7 +96,7 @@ function runChoreIntroduction() {
     sendVirtualAssistantMessage('Once in a while but on a regular schedule your chores will involve updating these budgets');
     sendVirtualAssistantMessage('If you were a real slave you wouldn\'t even be allowed access to money...');
     sendVirtualAssistantMessage('You would simply be the one keeping check on all the books...');
-    sendVirtualAssistantMessage('Well do want chores involving finances?', 0);
+    sendVirtualAssistantMessage('Well, do you want chores involving finances?', 0);
 
     if (createYesOrNoQuestion()) {
         sendVirtualAssistantMessage('Great. One more chore for you means it is less boring for all of us %Grin%');
@@ -352,7 +352,7 @@ function sendKinkyChoreInstructions(choreType) {
                     }
 
                     sendMessageBasedOnSender('Tie a robe from the handcuffs to your collar');
-                    sendMessageBasedOnSender('It shouldn\'t be more than 30-40 cm\'s long');
+                    sendMessageBasedOnSender('It shouldn\'t be more than 30-40 cm long');
 
                     sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
                     waitForDone(1000);
@@ -370,7 +370,7 @@ function sendKinkyChoreInstructions(choreType) {
                     sendMessageBasedOnSender('If you have it I want you to handcuff yourself, if not be "creative"...');
                     sendMessageBasedOnSender('I want you to put ' + 2 + pluralize('peg', 2) + ' on your balls');
                     sendMessageBasedOnSender('Tie a robe from the handcuffs to the pegs');
-                    sendMessageBasedOnSender('It shouldn\'t be more than 30-40 cm\'s long %Grin%');
+                    sendMessageBasedOnSender('It shouldn\'t be more than 30-40 cm long %Grin%');
 
                     sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
                     waitForDone(1000);
@@ -459,7 +459,7 @@ function sendKinkyChoreInstructions(choreType) {
                         sendMessageBasedOnSender('%Good%');
 
                         sendMessageBasedOnSender('Put it on a setting of your choice that\'s gonna tease you a lot %Grin%');
-                        sendMessageBasedOnSender('I want you naked while doing the chore so you can drip pre cum all over the floor');
+                        sendMessageBasedOnSender('I want you naked while doing the chore so you can drip precum all over the floor');
                         sendMessageBasedOnSender('Don\'t you dare cum!');
                         sendMessageBasedOnSender('If you get close to cumming stop and continue once you are ready');
 

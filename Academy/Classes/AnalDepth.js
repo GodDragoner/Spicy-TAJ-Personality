@@ -59,7 +59,7 @@
                 sendMessage('Tell me %SlaveName%');
                 sendMessage('And be truthful and realistic...');
 
-                let length = createDoubleInput('Up to what length are you able to fit dildos up your %Ass% in cms right now?', 1, 100, 'That\'s not a valid number %SlaveName%', 'I don\'t think you are giving me a realistic diameter %SlaveName%');
+                let length = createDoubleInput('Up to what length are you able to fit dildos up your %Ass% in cm right now?', 1, 100, 'That\'s not a valid number %SlaveName%', 'I don\'t think you are giving me a realistic diameter %SlaveName%');
 
                 if (length < 10) {
                     sendMessage('Oh so you are a real beginner');

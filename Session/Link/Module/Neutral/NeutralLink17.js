@@ -15,7 +15,7 @@
             sendMessage('So desperate you\'ll wish you didn\'t say that right now %Grin%');
             sendMessage('Anyway...');
 
-            sendMessage('I guess since you still feel fine you won\'t mind not cuming for the next 3 days %Lol%');
+            sendMessage('I guess since you still feel fine you won\'t mind not cumming for the next 3 days %Lol%');
             addDenialTime(24*3);
 
             if(sendMessage('Or do you?')) {

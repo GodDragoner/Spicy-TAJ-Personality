@@ -292,7 +292,7 @@ function tryRunPunishment(punishmentId, punishmentCategory, level, minModulesSin
     if (PUNISHMENT_HISTORY.isInTodaysHistory(punishmentId)) {
         maxTries = 30;
         minModulesSinceRun = 10;
-        sendDebugMessage('Punishment was in todays history');
+        sendDebugMessage('Punishment was in today\'s history');
     }
 
     if (PUNISHMENT_HISTORY.isInHistory(punishmentId)) {

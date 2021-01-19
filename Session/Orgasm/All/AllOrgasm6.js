@@ -11,7 +11,7 @@
     } else if(getLastEjaculationDate().addDay(3).hasPassed()) {
         sendMessage('They must be starting to fill up... it\'s been a couple of days since we\'ve emptied them after all');
     } else {
-        sendMessage('Not too full I guess... it\\\'s hasn\\\'t been that long since we\\\'ve emptied them');
+        sendMessage('Not too full I guess... it hasn\'t been that long since we\'ve emptied them');
     }
 
     sendMessage("%SlaveName%...");

@@ -102,7 +102,7 @@
                     sendMessage('And this is going to be the eternal cost of that privilege %Grin%');
                     break;
                 case 3:
-                    sendMessage('I know your %Cock% feels so achey and frustrated right now');
+                    sendMessage('I know your %Cock% feels so achy and frustrated right now');
                     sendMessage('That\'s how it <i>should</i> feel %SlaveName%');
                     sendMessage('Obviously I\'m just letting you see my ass so it will make you ache');
                     sendMessage('But all the ache in the world doesn\'t change the fact that you just don\'t deserve to see it');
