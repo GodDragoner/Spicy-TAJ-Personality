@@ -2,7 +2,7 @@
     if(getCBTLimit() != LIMIT_ASKED_YES || !hasBallCrusher()) {
         runModuleCategory('Pain');
     } else if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.BALL_TORTURE)) {
-        sendMessage("%SlaveName%... " + random("I want to have a bit of fun with %MyYour% %Balls%", "Lets play a bit with those %Balls%"));
+        sendMessage("%SlaveName%... " + random("I want to have a bit of fun with %MyYour% %Balls%", "Let's play a bit with those %Balls%"));
 
         if (fetchToy("ball crusher")) {
             sendMessage('Go ahead and attach it...');

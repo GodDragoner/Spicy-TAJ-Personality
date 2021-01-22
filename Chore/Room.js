@@ -104,21 +104,21 @@ function createRoom(name, size) {
 
             switch (choreType) {
                 case ROOM_CHORE_MOP:
-                    sendMessageBasedOnSender(random('It\'s time to mop the floor!', 'Time for you to mop the floor', 'Lets have you mop the floor!', 'Time to mop floor %Grin%'));
+                    sendMessageBasedOnSender(random('It\'s time to mop the floor!', 'Time for you to mop the floor', 'Let\'s have you mop the floor!', 'Time to mop floor %Grin%'));
                     //sendMessageBasedOnSender(random('First', 'Before that', 'Before we get to that', 'But before that') + '...');
                     //sendMessageBasedOnSender(random('The floor needs to be vacuumed', 'You have to vacuum the floor first', 'You gotta go ahead and vacuum the floor'));
                     sendMessageBasedOnSender('We are gonna work on the ' + this.name + ' right now');
                     sendMessageBasedOnSender('%Retrieve% whatever you need to mop the floors.');
                     break;
                 case ROOM_CHORE_WIPE:
-                    sendMessageBasedOnSender(random('It\'s time to wipe the surfaces!', 'Time for you to wipe the surfaces', 'Lets have you wipe the surfaces!', 'Time to wipe the surfaces %Grin%'));
+                    sendMessageBasedOnSender(random('It\'s time to wipe the surfaces!', 'Time for you to wipe the surfaces', 'Let\'s have you wipe the surfaces!', 'Time to wipe the surfaces %Grin%'));
                     //sendMessageBasedOnSender(random('First', 'Before that', 'Before we get to that', 'But before that') + '...');
                     //sendMessageBasedOnSender(random('You need to vacuum the surfaces', 'You have to vacuum the surfaces', 'You gotta go ahead and vacuum the surfaces...'));
                     sendMessageBasedOnSender('We are gonna work on the ' + this.name + ' right now');
                     sendMessageBasedOnSender('%Retrieve% whatever you need to wipe and properly clean the surfaces');
                     break;
                 case ROOM_CHORE_VACUUM:
-                    sendMessageBasedOnSender(random('It\'s time to vacuum!', 'Time for you to vacuum the floor', 'Lets have you vacuum the floors!', 'Time to vacuum the floor %Grin%'));
+                    sendMessageBasedOnSender(random('It\'s time to vacuum!', 'Time for you to vacuum the floor', 'Let\'s have you vacuum the floors!', 'Time to vacuum the floor %Grin%'));
                     //sendMessageBasedOnSender(random('You need to vacuum the floor', 'You have to vacuum the floor', 'You gotta go ahead and vacuum the floor'));
                     sendMessageBasedOnSender('We are gonna work on the ' + this.name + ' right now');
                     sendMessageBasedOnSender('%Retrieve% your vacuum cleaner');

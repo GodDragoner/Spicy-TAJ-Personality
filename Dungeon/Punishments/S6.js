@@ -53,7 +53,7 @@ switch(getVar(VARIABLE.PUNISHMENT_PUNISHER)){
 	case 2 :
 	//(Contact1)
 	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%" );// #DT4
-	sendMessage(random("I'm absolute sure you're gonna hate this and that makes me love it!","We need to correct your poor behaviour","You need a little discipline","Its about time we did something about your behaviour") );// #DT4
+	sendMessage(random("I'm absolute sure you're gonna hate this and that makes me love it!","We need to correct your poor behaviour","You need a little discipline","It's about time we did something about your behaviour") );// #DT4
 	if(getVar("SubEndurance")>=8) {
 	PS2=3;}
 	else if (getVar("SubEndurance")>4){

@@ -48,7 +48,7 @@
 
 
             if (!success) {
-                sendMessage("Lets stop this...");
+                sendMessage("Let's stop this...");
                 sendMessage("If you can't complete a simple punishment");
                 sendMessage("Then you have a long way to go to redeem yourself...");
                 run("Dungeon/PunishmentBase.js");

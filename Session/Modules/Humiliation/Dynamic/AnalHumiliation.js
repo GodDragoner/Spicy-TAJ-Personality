@@ -65,7 +65,7 @@
 
                         sendMessage("Well then...");
                     } else {
-                        sendMessage("Lets spend the time that the plug is stretching your ass with something useful");
+                        sendMessage("Let's spend the time that the plug is stretching your ass with something useful");
                         startTimePassTasks(5);
                         sendMessage("I believe we waited long enough and your ass is ready for more now");
                         removeButtplug();

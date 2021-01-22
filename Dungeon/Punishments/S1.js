@@ -29,7 +29,7 @@ switch(getVar(VARIABLE.PUNISHMENT_PUNISHER)) {
 	case 1 :
 	//(Domme)
 	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%");// #DT4
-	sendMessage(random("Lets see what we can do about you %Grin%","Its time to make you repent your sins","I suppose we need to correct your recent behaviour","I have something for you..")); //#DT4
+	sendMessage(random("Let's see what we can do about you %Grin%","It's time to make you repent your sins","I suppose we need to correct your recent behaviour","I have something for you..")); //#DT4
 
 //	sendMessage(random("It's time to pay","We need to settle your recent behaviour","I believe I have just the thing to discipline you","I believe I know how to correct your bad behaviour!")); //#DT4
 	//1 = easy, 2= medium 3= hard
@@ -67,7 +67,7 @@ switch(getVar(VARIABLE.PUNISHMENT_PUNISHER)) {
 	//(Contact2)
 	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%");// #DT4
 	sendMessage(random("Discipline, I just love that","You're not gonna like this %Grin%","I don't think %MyYour% %Cock% will enjoy this","This is fun!"));// #DT4
-sendMessage(random("Lets see what we can do about you %Grin%","Its time to make you repent your sins","I suppose we need to correct your recent behaviour","I have something for you..")); //#DT4
+sendMessage(random("Let's see what we can do about you %Grin%","It's time to make you repent your sins","I suppose we need to correct your recent behaviour","I have something for you..")); //#DT4
 
 	if (getVar("SubEndurance")>=7) {
 	PM4=3;}
@@ -153,7 +153,7 @@ while((errors <=errors_allowed) && (correct < total_lines))
 if (errors>errors_allowed) {
 	sendMessage ("It seems you failed your little assignment..");
 	sendMessage ("This is the first and last time you fail..");
-	sendMessage ("Lets try again shall we.. ");
+	sendMessage ("Let's try again shall we.. ");
 		sentence = choices[randomInteger(0, choices.length - 1)];
 		errors=0;
 correct=0;
@@ -204,7 +204,7 @@ if (correct >= total_lines) {
 	run("dungeon/PunishmentBaseEnd.js");
 	
 }else{
-sendMessage ("Lets stop this.. ");
+sendMessage ("Let's stop this.. ");
 sendMessage ("If you can't complete a simple punishment");
 sendMessage ("Then you have a long way to go to redeem yourself.. ");
 	run("dungeon/PunishmentBase.js");

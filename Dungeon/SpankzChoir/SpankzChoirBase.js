@@ -202,7 +202,7 @@ if (!isVar("SpankzChoirSubscription")) {
                     //(InTime)
                     sendDungeonMessage(" Hi %SubName% ");
                     delVar("AuctionActive");
-                    sendDungeonMessage(" Well lets see who won your %Ass% ");
+                    sendDungeonMessage(" Well let's see who won your %Ass% ");
                     Choice = randomInteger(1, 8)
                     switch (Choice) {
 

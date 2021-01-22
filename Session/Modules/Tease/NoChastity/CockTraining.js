@@ -46,7 +46,7 @@ if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.STROKING)) {
         sendMessage("It requires some serious stamina to go above level 40");
         sendMessage("Oh and on a final note...");
         sendMessage("After each training session you will be reduced by 5 levels unless you're below level 10...");
-        sendMessage("So lets stop wasting time and just get you started %Lol%");
+        sendMessage("So let's stop wasting time and just get you started %Lol%");
     }
 
     setVar(VARIABLE.STROKE_TRAININGS_DONE, getVar(VARIABLE.STROKE_TRAININGS_DONE, 0) + 1);

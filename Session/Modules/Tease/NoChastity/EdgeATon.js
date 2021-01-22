@@ -159,10 +159,10 @@ function startEdgeATon(chosenByDom, edgesToDo) {
             if (getStrictnessForCharacter() == 2 && edgesToDo >= currentRecord*0.85) impressive = 1;
 
             if (impressive === 2) {
-                sendMessage(random("Oh wauw!", "You're really going for it!", "This is gonna be intense %Grin%", "I hope you can handle this!", "Great lets not waste a moment!"));
+                sendMessage(random("Oh wauw!", "You're really going for it!", "This is gonna be intense %Grin%", "I hope you can handle this!", "Great let's not waste a moment!"));
                 changeMeritMedium(false);
             } else if (impressive === 1) {
-                sendMessage(random("Well then... Lets begin", "It's time to begin", "Lets get that cock to work!", "Time to work out that cock!", "I hope you're ready for some cock workout!"));
+                sendMessage(random("Well then... Let's begin", "It's time to begin", "Let's get that cock to work!", "Time to work out that cock!", "I hope you're ready for some cock workout!"));
                 changeMeritLow(false);
             } else {
                 sendMessage(random("I'm not impressed", "You really should try to do better", "You could at least try a little harder", "You need to try harder..."));
@@ -241,17 +241,17 @@ function growDickSoft() {
         if (getVar(VARIABLE.SECONDS_TO_GET_SOFT) > timePassed) {
             sendMessage("Which seems to be a new record!");
             setVar(VARIABLE.SECONDS_TO_GET_SOFT, timePassed);
-            sendMessage("Lets move on shall we?");
+            sendMessage("Let's move on shall we?");
             return true;
         } else {
             sendMessage("Which isn't a new record... %EmoteSad%");
-            sendMessage("Lets move on shall we?");
+            sendMessage("Let's move on shall we?");
             return false;
         }
     } else {
         setVar(VARIABLE.SECONDS_TO_GET_SOFT, timePassed);
     }
-    sendMessage("Lets move on shall we?");
+    sendMessage("Let's move on shall we?");
 }
 
 

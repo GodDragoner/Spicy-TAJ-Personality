@@ -97,7 +97,7 @@
             sendMessage('Like a proper pussy slave %Grin%');
         }
 
-        sendMessage('Now lets get started %Grin%');
+        sendMessage('Now let\'s get started %Grin%');
         sendMessage('Start the second you see the first pictures %SlaveName%');
 
         //const timerLimitArray = [randomInteger(20, 40), randomInteger(30, 50), randomInteger(60, 80), randomInteger(80, 100), randomInteger(100, 120)];

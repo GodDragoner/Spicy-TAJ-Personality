@@ -351,7 +351,7 @@ function sendKinkyChoreInstructions(choreType) {
                         sendMessageBasedOnSender('Then I want you to put on your collar');
                     }
 
-                    sendMessageBasedOnSender('Tie a robe from the handcuffs to your collar');
+                    sendMessageBasedOnSender('Tie a rope from the handcuffs to your collar');
                     sendMessageBasedOnSender('It shouldn\'t be more than 30-40 cm long');
 
                     sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
@@ -369,7 +369,7 @@ function sendKinkyChoreInstructions(choreType) {
                 if (CLOTHESPINS_TOY.hasToy() && CLOTHESPINS_TOY.isPlayAllowed() && getPainLimit() == LIMIT_ASKED_YES && CLOTHESPINS_TOY.fetchToy(2)) {
                     sendMessageBasedOnSender('If you have it I want you to handcuff yourself, if not be "creative"...');
                     sendMessageBasedOnSender('I want you to put ' + 2 + pluralize('peg', 2) + ' on your balls');
-                    sendMessageBasedOnSender('Tie a robe from the handcuffs to the pegs');
+                    sendMessageBasedOnSender('Tie a rope from the handcuffs to the pegs');
                     sendMessageBasedOnSender('It shouldn\'t be more than 30-40 cm long %Grin%');
 
                     sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
@@ -544,7 +544,7 @@ function sendKinkyChoreInstructions(choreType) {
                 }
 
                 if (hasSomeLingerie() && isLingeriePlayAllowed()) {
-                    sendMessageBasedOnSender('Lets dress you up a little');
+                    sendMessageBasedOnSender('Let\'s dress you up a little');
 
                     let lingerieAttached = putOnLingerie();
 

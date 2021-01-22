@@ -54,7 +54,7 @@ switch(getVar(VARIABLE.PUNISHMENT_PUNISHER)){
 	case 2 :
 	//(Contact1)
 	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%" );// #DT4
-	sendMessage(random("I'm absolute sure you're gonna hate this and that makes me love it!","We need to correct your poor behaviour","You need a little discipline","Its about time we did something about your behaviour") );// #DT4
+	sendMessage(random("I'm absolute sure you're gonna hate this and that makes me love it!","We need to correct your poor behaviour","You need a little discipline","It's about time we did something about your behaviour") );// #DT4
 	if(getVar("SubEndurance")>=8) {
 	PM5=3;}
 	else if (getVar("SubEndurance")>4){
@@ -116,7 +116,7 @@ sendMessage("So %slaveName% "); //#DT4
 sendMessage("The punishment you're about to be given "); //#DT4
 sendMessage("Might be considered a game to some "); //#DT4
 sendMessage("A mind game %Grin% "); //#DT4
-sendMessage("I need you to %fetch% ball crusher and put it on so its ready...",30); //#DT4 @Wait(30)
+sendMessage("I need you to %fetch% ball crusher and put it on so it's ready...",30); //#DT4 @Wait(30)
 
 crusherNotOn=true;
 while(crusherNotOn){
@@ -138,7 +138,7 @@ if(answer.isLike("yes")){
 
 
 }
-sendMessage("Now tighten the top and bottom until its a tight fit "); //#DT4
+sendMessage("Now tighten the top and bottom until it's a tight fit "); //#DT4
 sendMessage("It shouldn't be painful at all "); //#DT4
 sendMessage("Just feel <i>tight</i>.. ",10); //#DT4 @Wait(10)
 sendMessage("Every time I tell you to 'tighten' "); //#DT4

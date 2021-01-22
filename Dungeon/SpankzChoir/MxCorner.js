@@ -59,7 +59,7 @@
 		else{
 		 sendMessage(" I only wanna hear a firm 'yes Mistress'.. "); 
 		 sendMessage(" but apparently you're there since you pecked out '" +response+"'");
-		 sendMessage(" How eloquent.... lets move on "); 
+		 sendMessage(" How eloquent.... let's move on "); 
 		 break;
 		}
 	

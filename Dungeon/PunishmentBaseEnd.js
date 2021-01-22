@@ -310,11 +310,11 @@ if (isVar("PunishmentFailed")) {
             delVar("S6Complete");
             setVar(VARIABLE.PUNISHMENT_POINTS, getVar(VARIABLE.PUNISHMENT_POINTS) - randomInteger(50, 100));
             if (isVar("HasChastity")) {
-                sendNurseMessage(random("I know its not easy being chastised like that", "I know its not easy being forced into chastity"));
+                sendNurseMessage(random("I know it's not easy being chastised like that", "I know it's not easy being forced into chastity"));
                 sendNurseMessage(random("But keep your head cool and you'll make it", "But stay calm and you should be fine"));
                 sendNurseMessage(random("If it gets bad then remember that ice or a shower is great!", "Stop with all the sexy thoughts!"));
             } else {
-                sendNurseMessage(" I know its not easy being given no-touch days like that! ");
+                sendNurseMessage(" I know it's not easy being given no-touch days like that! ");
                 sendNurseMessage(" But keep your head cool and you'll make it");
                 sendNurseMessage(" If it gets bad then remember that ice or a shower is great!");
             }
@@ -360,11 +360,11 @@ if (isVar("PunishmentFailed")) {
             delVar("M6Complete");
             setVar(VARIABLE.PUNISHMENT_POINTS, getVar(VARIABLE.PUNISHMENT_POINTS) - randomInteger(90, 140));
             if (isVar("HasChastity")) {
-                sendNurseMessage(random("I know its not easy being chastised like that", "I know its not easy being forced into chastity"));
+                sendNurseMessage(random("I know it's not easy being chastised like that", "I know it's not easy being forced into chastity"));
                 sendNurseMessage(random("But keep your head cool and you'll make it", "But stay calm and you should be fine"));
                 sendNurseMessage(random("If it gets bad then remember that ice or a shower is great!", "Stop with all the sexy thoughts!"));
             } else {
-                sendNurseMessage(" I know its not easy being given no-touch days like that! ");
+                sendNurseMessage(" I know it's not easy being given no-touch days like that! ");
                 sendNurseMessage(" But keep your head cool and you'll make it");
                 sendNurseMessage(" If it gets bad then remember that ice or a shower is great!");
             }
@@ -389,7 +389,7 @@ if (isVar("PunishmentFailed")) {
             delVar("E4Complete");
             setVar(VARIABLE.PUNISHMENT_POINTS, getVar(VARIABLE.PUNISHMENT_POINTS) - randomInteger(150, 190));
             sendNurseMessage(random("enough zappings like that and we'll fully neutralize those beta balls of yours", "sniff... sniff.... um, I think you're scrotum might be smoking", "now that's how you train a bitch!"));
-			sendNurseMessage(random("we can always just remove those useless %balls% of yours if it was too much", "its amazing what a little spark can do to a relationship"));
+			sendNurseMessage(random("we can always just remove those useless %balls% of yours if it was too much", "it's amazing what a little spark can do to a relationship"));
 
             break;		
 			
@@ -400,7 +400,7 @@ if (isVar("PunishmentFailed")) {
             setVar(VARIABLE.PUNISHMENT_POINTS, getVar(VARIABLE.PUNISHMENT_POINTS) - randomInteger(130, 180));
             sendNurseMessage(" Jesus sweet boy! ");
             sendNurseMessage(" Your tushie really took a beating this time.. ");
-            sendNurseMessage(" I'm proud you made it, but lets have a look at it shall we?");
+            sendNurseMessage(" I'm proud you made it, but let's have a look at it shall we?");
             sendNurseMessage(" Please find a skin cream or something similar ");
             sendNurseMessage(" Rub it on your inner thighs and butt cheeks ", 1, 30);
             //comfort flow below
@@ -417,12 +417,12 @@ if (isVar("PunishmentFailed")) {
             delVar("H3Complete");
             setVar(VARIABLE.PUNISHMENT_POINTS, getVar(VARIABLE.PUNISHMENT_POINTS) - randomInteger(130, 180));
             if (isVar("HasChastity")) {
-                sendNurseMessage(random("I know its not easy being chastized like that", "I know its not easy being forced into chastity"));
+                sendNurseMessage(random("I know it's not easy being chastized like that", "I know it's not easy being forced into chastity"));
                 sendNurseMessage(random("But keep your head cool and you'll make it", "But stay calm and you should be fine"));
                 sendNurseMessage(random("If it gets bad then remember that ice or a shower is great!", "Stop with all the sexy thoughts!"));
 
             } else {
-                sendNurseMessage(" I know its not easy being given no-touch days like that! ");
+                sendNurseMessage(" I know it's not easy being given no-touch days like that! ");
                 sendNurseMessage(" But keep your head cool and you'll make it");
                 sendNurseMessage(" If it gets bad then remember that ice or a shower is great! ");
 
@@ -441,7 +441,7 @@ if (isVar("PunishmentFailed")) {
             sendNurseMessage(" Oh my ");
             delVar("E1Complete");
             setVar(VARIABLE.PUNISHMENT_POINTS, getVar(VARIABLE.PUNISHMENT_POINTS) - randomInteger(150, 200));
-            sendNurseMessage(random("I know its not easy being ball busted like that", "I know its not easy having your nuts treated like that"));
+            sendNurseMessage(random("I know it's not easy being ball busted like that", "I know it's not easy having your nuts treated like that"));
             sendNurseMessage(random("But keep your head cool and you'll make it", "But stay calm and you should be fine"));
             sendNurseMessage(random("Besides betas like you shouldn't procreate anyway!", "what would you use those balls for anyway!"));
             break;
@@ -449,7 +449,7 @@ if (isVar("PunishmentFailed")) {
             sendNurseMessage(" Oh my ");
             delVar("E2Complete");
             setVar(VARIABLE.PUNISHMENT_POINTS, getVar(VARIABLE.PUNISHMENT_POINTS) - randomInteger(150, 200));
-            sendNurseMessage(random("I know its not easy being ball busted like that", "I know its not easy having your nuts treated like that"));
+            sendNurseMessage(random("I know it's not easy being ball busted like that", "I know it's not easy having your nuts treated like that"));
             sendNurseMessage(random("But keep your head cool and you'll make it", "But stay calm and you should be fine"));
             sendNurseMessage(random("Besides betas like you shouldn't procreate anyway!", "what would you use those balls for anyway!"));
             break;
@@ -457,7 +457,7 @@ if (isVar("PunishmentFailed")) {
             sendNurseMessage(" Oh my ");
             delVar("E3Complete");
             setVar(VARIABLE.PUNISHMENT_POINTS, getVar(VARIABLE.PUNISHMENT_POINTS) - randomInteger(150, 200));
-            sendNurseMessage(random("I know its not easy being ball busted like that", "I know its not easy having your nuts treated like that"));
+            sendNurseMessage(random("I know it's not easy being ball busted like that", "I know it's not easy having your nuts treated like that"));
             sendNurseMessage(random("But keep your head cool and you'll make it", "But stay calm and you should be fine"));
             sendNurseMessage(random("Besides betas like you shouldn't procreate anyway!", "what would you use those balls for anyway!"));
             break;
@@ -465,9 +465,9 @@ if (isVar("PunishmentFailed")) {
             sendNurseMessage(" Oh my", " what a good bitch you were %SlaveName%");
             delVar("E4Complete");
             setVar(VARIABLE.PUNISHMENT_POINTS, getVar(VARIABLE.PUNISHMENT_POINTS) - randomInteger(150, 200));
-            sendNurseMessage(random("I know its not easy having your balls zapped like that", "I know its not easy having your nuts treated like that"));
+            sendNurseMessage(random("I know it's not easy having your balls zapped like that", "I know it's not easy having your nuts treated like that"));
             sendNurseMessage(random("I don't see any permanent scars", "I don't smell any burning... that's a good sign"));
-            sendNurseMessage(random("But its over now and I think you learned an important lesson", "But you made it through ok", " and I think you'll be more mindful of the rules now"));
+            sendNurseMessage(random("But it's over now and I think you learned an important lesson", "But you made it through ok", " and I think you'll be more mindful of the rules now"));
             sendNurseMessage(random("Besides betas like you shouldn't procreate anyway!", "what would you use those balls for anyway!"));
             break;
         default:

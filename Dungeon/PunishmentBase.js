@@ -191,7 +191,7 @@
                     showImage("Images/Spicy/Punishment/Posters/*.*", randomInteger(2, 6));
                 }
 
-                sendDungeonMessage(random("Okay then", "Lets proceed", "lets move forward", "Lets continue"));
+                sendDungeonMessage(random("Okay then", "Let's proceed", "Let's move forward", "Let's continue"));
                 playAudio("Audio/Spicy/SpecialSounds/Bell.mp3");
                 run("Dungeon/SpankzChoir/SpankzChoirBase.js");
             } else if (answer.containsIgnoreCase("report", "reporting", "punish", "punished", "punishment")) {
@@ -210,14 +210,14 @@
                     showImage("Images/Spicy/Punishment/Posters/*.*", randomInteger(2, 6));
                 }
 
-                sendDungeonMessage(random("Okay then", "Lets proceed", "Lets move forward", "Lets continue"));
+                sendDungeonMessage(random("Okay then", "Let's proceed", "Let's move forward", "Let's continue"));
                 playAudio("Audio/Spicy/SpecialSounds/Bell.mp3");
 
                 if (getVar(VARIABLE.PUNISHMENT_POINTS) < 100) {
                     sendDungeonMessage("Well %SubName% it seems you haven't been too bad recently...", 2);
                     sendDungeonMessage("So I'm afraid I have to reject you...", 2);
                 } else {
-                    sendDungeonMessage("Lets see if there is any specific reasons to why you've been given punishment points this week...");
+                    sendDungeonMessage("Let's see if there is any specific reasons to why you've been given punishment points this week...");
 
                     let reasons = getVar(VARIABLE.PUNISHMENT_REASONS, new java.util.ArrayList());
 
@@ -305,8 +305,8 @@
                         sendDungeonMessage(random("Poor attitude", "Poor performance", "Lack of performance", "Failed to perform properly", "Poor results"), 2);
                     }
 
-                    sendDungeonMessage(random("Oh my it's good you came", "Lets correct this immediately", "Time to improve your behavior"), 3);
-                    sendDungeonMessage("First lets see who will be handling your punishment..", 3);
+                    sendDungeonMessage(random("Oh my it's good you came", "Let's correct this immediately", "Time to improve your behavior"), 3);
+                    sendDungeonMessage("First let's see who will be handling your punishment..", 3);
 
                     /*if (isVar("Glitter1Bought")) {
                         setVar(VARIABLE.PUNISHMENT_PUNISHER, randomInteger(1, 2));
@@ -340,9 +340,9 @@
                     sendDungeonMessage("You can request a soft, medium, hard, or extreme punishment");
 
                     if (getVar(VARIABLE.PUNISHMENT_POINTS) >= 350) {
-                        sendDungeonMessage("I do recommend a hard one but its your choice");
+                        sendDungeonMessage("I do recommend a hard one but it's your choice");
                     } else if (getVar(VARIABLE.PUNISHMENT_POINTS) >= 200) {
-                        sendDungeonMessage("I do recommend a medium one but its your choice");
+                        sendDungeonMessage("I do recommend a medium one but it's your choice");
                     } else {
                         sendDungeonMessage("I recommend a soft punishment");
                     }

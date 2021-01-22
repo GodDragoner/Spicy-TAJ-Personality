@@ -57,7 +57,7 @@ function Info()
     }
     else
     {
-        sendMessage("well go charge it quickly and tell me when its done ");
+        sendMessage("well go charge it quickly and tell me when it's done ");
 		waitforDone();
     }
     sendMessage("Go ahead and turn it on and wrap the collar around your %balls%");
@@ -98,7 +98,7 @@ function Start()
 function Domme()
 {
     sendMessage(random("Well well ", "Oh my ", "Well ") + "%SlaveName% ");
-    sendMessage(random("Lets see what we can do about you %Grin% ", "Its time to make you repent your sins ", "I suppose we need to correct your recent behaviour ", "I have something for you.. ") );
+    sendMessage(random("Let's see what we can do about you %Grin% ", "It's time to make you repent your sins ", "I suppose we need to correct your recent behaviour ", "I have something for you.. ") );
     if(getVar("Personality1", false))
     {
         if (getVar("SubPainTolerance", 0) <= 3)
@@ -290,7 +290,7 @@ function Holdit()
 		 break;
 		 }
 		else{
-		 sendMessage(" I only wanna hear a firm 'yes Mistress'..even if its hard to hold for so long "); //#DT4
+		 sendMessage(" I only wanna hear a firm 'yes Mistress'..even if it's hard to hold for so long "); //#DT4
 		 //break
 		}
 	
@@ -307,7 +307,7 @@ function FF1()
     sleep(3);
 
     textName = "["+getVar("blackmailname1")+"] :";
-    sendArbMessage(textName, "hmmm... lets Set the controller to "+random("5","10","15","25","50"),0); 
+    sendArbMessage(textName, "hmmm... let's set the controller to "+random("5","10","15","25","50"),0); 
 	showImage("Images/Spicy/FFriends/1/*");
 		sleep(3); 
     sendArbMessage(textName,"%SlaveName%, I want you to truly understand that you deserve this.",0);
@@ -357,7 +357,7 @@ function FF2()
 		  
     textName = "["+getVar("blackmailname2")+"] :";
    
-    sendArbMessage(textName,"hmmm... lets Set the controller to "+ random("5","10","15","25","50"),0 );
+    sendArbMessage(textName,"hmmm... let's set the controller to "+ random("5","10","15","25","50"),0 );
 
 	  showImage("Images/Spicy/FFriends/2/*");
 	  sleep(3);
@@ -402,7 +402,7 @@ function FF3()
 	
     textName = "["+getVar("blackmailname3")+"] :";
 
-   sendArbMessage(textName,"hmmm... lets Set the controller to "+random("5","10","15","25","50"),0 );
+   sendArbMessage(textName,"hmmm... let's set the controller to "+random("5","10","15","25","50"),0 );
 	showImage("Images/Spicy/FFriends/3/*");
 	sleep(3);
 	

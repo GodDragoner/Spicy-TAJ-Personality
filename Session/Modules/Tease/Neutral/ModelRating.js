@@ -137,7 +137,7 @@
 
             for (let round = 0; round < 10; round++) {
                 if (round > 0 && isChance(20)) {
-                    sendMessage(random('Lets do another', 'One more', 'Lets try another one', 'Lets do it once again!'));
+                    sendMessage(random('Let\'s do another', 'One more', 'Let\'s try another one', 'Let\'s do it once again!'));
                 }
 
                 let right = false;

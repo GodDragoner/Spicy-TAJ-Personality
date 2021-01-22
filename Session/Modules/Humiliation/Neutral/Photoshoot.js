@@ -22,7 +22,7 @@
             sendMessage("You\'ll just look a little less lovely %Lol%");
         }
 
-        sendMessage(random("It\'s time for a photoshoot!", "Lets do a photoshoot!", "I want to do a photoshoot!"));
+        sendMessage(random("It\'s time for a photoshoot!", "Let's do a photoshoot!", "I want to do a photoshoot!"));
         sendMessage("%EmoteHappy%");
         sendMessage(random("Before we begin", "Before we start"));
 

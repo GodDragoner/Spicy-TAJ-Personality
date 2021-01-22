@@ -219,7 +219,7 @@ function simplePositionTrainingSelection(totalPositions) {
             showImage("Images/Spicy/Positions/Box1.jpg");
             sendMessage("This is the Box position");
             sendMessage("The box is an excellent position");
-            sendMessage("Its tougher than it looks");
+            sendMessage("It's tougher than it looks");
             sendMessage("Some might prefer a pillow, but I trust you don't");
             sendMessage("Other than that the position speaks for itself..");
             unlockImages();
@@ -279,7 +279,7 @@ function simplePositionTrainingSelection(totalPositions) {
             sendMessage("This is the Kneel position");
             sendMessage("The kneel is great, notice the hands ready to be tied");
             sendMessage("This is great as a waiting or 'pay attention' position");
-            sendMessage("With rice though its a completely different position %Lol%");
+            sendMessage("With rice though it's a completely different position %Lol%");
             unlockImages();
 
             sendMessage("Take the position.");
@@ -329,7 +329,7 @@ function simplePositionTrainingSelection(totalPositions) {
             sendMessage("This position is art %EmoteHappy%");
 
             showImage("Images/Spicy/Positions/Slut1.jpg");
-            sendMessage("Its primarily used for girls");
+            sendMessage("It's primarily used for girls");
 
             showImage("Images/Spicy/Positions/Slut2.jpg");
             sendMessage("But that's not gonna keep you from learning %Lol%");
@@ -435,13 +435,13 @@ function positionTrainingTestSelection() {
     let positionTestRight = 0;
 
     sendMessage("I think it's time for a little test");
-    sendMessage("I think its important for a %SlaveName%");
+    sendMessage("I think it's important for a %SlaveName%");
     sendMessage("To sometimes be tested");
     sendMessage("To ensure that you keep improving yourself");
     sendMessage("I will ask you some questions.");
     sendMessage("Get 6 right and I will reward you");
     sendMessage("Get 3 wrong and you will be awarded with punishment points");
-    sendMessage("So lets get to it..");
+    sendMessage("So let's get to it..");
 
     const positionTests = {
         currentTest_position1 : function(){positionTest("1", "attention", "Images/Spicy/Positions/Attention1.jpg")},        
@@ -609,7 +609,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
     sendMessage(random(
         "It's time for some real fun!",
         "Time for some fun",
-        "Lets have a little fun",
+        "Let's have a little fun",
         "I'm gonna make things interesting",
         "This should be quite interesting"
     ));

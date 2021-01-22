@@ -5,7 +5,7 @@
         while(true) {
             if(answer.isLike('yes')) {
                 sendMessage("You\'re " + random("so transparent ", "so predictable ", "so easy to read ", "like an open book ") + "%SlaveName%");
-                sendMessage('Lets see what I got in store for you %Grin%');
+                sendMessage('Let\'s see what I have in store for you %Grin%');
                 break;
             } else if(answer.isLike('no')) {
                 sendMessage("Oh good, " + random("then ", "that means ") + "I can " + random("take a moment to ", "go ") + "get myself %SomethingToDrink%");
