@@ -4,12 +4,14 @@
         sendMessage(random('I want to build up your ache even more ', 'I want to really amplify that ache ', 'You\'re not aching enough for me ', 'I want to make you ache so much more ', 'I want to draw out your ache even more ', 'I want that %Cock% to ache even more ', '%MyYour% %Cock% isn\'t aching nearly enough for me ', 'I want to torture %MyYour% %Cock% with ache ') + ' %SlaveName%');
         sendMessage(random('So I\'m going to tell you how to stroke to some pictures', 'So you\'re going to stroke to some pictures for me', 'So I\'m going to show you some pictures to stroke to', 'So I found a few pictures for you to stroke to', 'So I found some sexy pictures for you to stroke to', 'So I\'m going to let you stroke to some sexy pictures'));
         sendMessage(random('And I\'ll let you stop when you\'ve given me at least ', 'And I\'ll let you stop after ', 'Until you\'ve given me at least ', 'And you don\'t get to stop until you\'ve given me ', 'But I won\'t let you stop until I get at least ') + todoStrokes + ' strokes');
-        sendMessage(random('Let\'s get started ', 'Let\'s begin ', 'Here we go ', 'I hope you\'re ready ', 'You better be ready ', 'Better get ready ', 'Better prepare yourself ') + '%Wicked%');
-        let strokesDone = 0;
 
-        
+        readyForStroking();
+
+        sendMessage(random('Let\'s get started ', 'Let\'s begin ', 'Here we go ', 'I hope you\'re ready ', 'You better be ready ', 'Better get ready ', 'Better prepare yourself ') + '%Wicked%');
+
+        let strokesDone = 0;
         let sentenceHistory = null;
-        
+
         while(strokesDone < todoStrokes) {
             let strokes = random(50, 250);
 
