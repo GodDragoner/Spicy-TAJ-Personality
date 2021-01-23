@@ -1,29 +1,30 @@
 function watchVideoForDuration(durationSeconds) {
-    const player = Java.type('me.goddragon.teaseai.api.media.MediaHandler').getHandler().getCurrentVideoPlayer();
+    sendDebugMessage('Waiting for video player to start');
 
-    if(player == null) {
-        return;
+    // We need to wait for the player to ready up and start playing before continuing
+    let totalMillisecondsWaitedForVideoToStart = 0
+    const maxMillisecondsToWaitForVideoToStart = 2000
+
+    while (!isPlayingVideo()) {
+        if (totalMillisecondsWaitedForVideoToStart >= maxMillisecondsToWaitForVideoToStart) {
+            sendDebugMessage('Video failed to start within ' + maxMillisecondsToWaitForVideoToStart + 'ms, aborting');
+            return;
+        }
+        wait(100, 'MILLISECONDS');
+        totalMillisecondsWaitedForVideoToStart += 100
     }
 
-    sendDebugMessage('Waiting for media player to start');
+    sendDebugMessage('Playing video for ' + durationSeconds + ' seconds');
 
-    //We need to wait for the player to ready up and start playing before continuing
-    while (!player.getStatus().equals(javafx.scene.media.MediaPlayer.Status.PLAYING)) {
+    const startTimeInMillis = setDate().getTimeInMillis();
+    const endTimeInMillis =  startTimeInMillis + (durationSeconds * 1000);
+
+    // Wait for specified duration or video to finish
+    while (isPlayingVideo() && (setDate().getTimeInMillis() < endTimeInMillis)) {
         wait(100, 'MILLISECONDS');
     }
-    sendDebugMessage('Currently playing ' + player.getMedia().getSource());
-    sendDebugMessage('Waiting for ' + durationSeconds);
 
-    let startDate = setDate().getTimeInMillis();
-    //Max duration in second for the video to play
-    let maxSecondsToWatch = durationSeconds;
-
-    while (player.getStatus().equals(javafx.scene.media.MediaPlayer.Status.PLAYING) && (setDate().getTimeInMillis() - startDate) < maxSecondsToWatch * 1000) {
-        //We are waiting for it to finish in intervals fo 1/10 of a second
-        wait(100, 'MILLISECONDS');
-    }
-
-    player.stop();
+    stopVideo();
     unlockImages();
 }
 
