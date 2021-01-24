@@ -360,6 +360,7 @@ const VARIABLE = {
     REPEATING_TEXT: 'repeatingText',
     COMPLAINTS: 'complaints',
     UNALLOWED_TALKS: 'unallowedTalks',
+    UNALLOWED_EDGES: 'unallowedEdges',
     FORGETTING_HONORIFIC_COUNT: 'forgettingHonorificCount',
     SASSY_SUB: 'sassySub',
 

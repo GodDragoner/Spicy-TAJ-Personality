@@ -138,6 +138,33 @@ function unlockChastityCage(fakeOpening = false) {
 
     setVar(VARIABLE.CHASTITY_ON, false);
     unlockImages();
+
+    //Set the date to today then by default so in 2 days we can ask if the cage wasn't cleaned
+    if(!isVar(VARIABLE.LAST_CHASTITY_CLEAN)) {
+        setDate(VARIABLE.LAST_CHASTITY_CLEAN);
+    }
+
+    if(getDate(VARIABLE.LAST_CHASTITY_CLEAN, setDate()).addDay(2).hasPassed() && RULE_DOMME_KEYHOLDER.isActive()) {
+        if(sendYesOrNoQuestion('You haven\'t cleaned your cage and %MyYour% cock in the last two days, have you?')) {
+            sendMessage('Oh you have?');
+
+            if(sendYesOrNoQuestion('Strange, I could\'ve sworn I didn\'t allow you to take it off did I?')) {
+                addPPRuleIgnored();
+                sendMessage('That\'s now what I wanted to hear')
+            } else {
+                sendMessage('I must have forgotten');
+            }
+        } else {
+            sendMessage('Sigh...');
+            sendMessage('Go and do it now! You got 5 minutes %SlaveName%');
+            sendMessage('Tell me when you are done...');
+            waitForDone(60*5);
+            sendMessage('Now that\'s a clean %Cock% I can work with');
+        }
+
+        setDate(VARIABLE.LAST_CHASTITY_CLEAN);
+    }
+
     return;
 }
 

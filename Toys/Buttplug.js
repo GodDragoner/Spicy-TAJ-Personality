@@ -167,20 +167,32 @@ function getButtplugClosestBelow(diameter, plugList = buttplugs) {
 }
 
 function getButtplugClosestAround(diameter, plugList = buttplugs) {
+    let smallerPlugFound = undefined;
     for (let x = 0; x < plugList.length; x++) {
-        //Buttplugs is sorted, ascending so we can just find the point in the list whe are looking for
-        //We must be <= the given diameter and bigger than the current diameter
-        if (plugList[x].diameter <= diameter && (x + 1 === plugList.length || plugList[x + 1].diameter >= diameter)) {
-            //If the diameter of the closest below plug is >= than twice as much away as the plug above from the searched diameter pick the one above instead
-            if (diameter - plugList[x].diameter >= (plugList[x + 1].diameter - diameter) * 2) {
-                return plugList[x + 1];
-            }
+        if(plugList[x].diameter) {
+            smallerPlugFound = plugList[x];
 
-            return plugList[x];
+            //Buttplugs is sorted, ascending so we can just find the point in the list whe are looking for
+            //We must be <= the given diameter and bigger than the current diameter
+            if ((x + 1 === plugList.length || plugList[x + 1].diameter >= diameter)) {
+                //If the diameter of the closest below plug is >= than twice as much away as the plug above from the searched diameter pick the one above instead
+                if (x + 1 < plugList.length && diameter - plugList[x].diameter >= (plugList[x + 1].diameter - diameter) * 2) {
+                    return plugList[x + 1];
+                }
+
+                return plugList[x];
+            }
         }
     }
 
-    return null;
+    //Do we have any plug that is even smaller than the diameter we are looking for?
+    if(smallerPlugFound !== undefined) {
+        return smallerPlugFound;
+    }
+
+    //Default to random plug
+    sendDebugMessage('Failed to find buttplug fitting size plug, returning random one');
+    return random(buttplugs);
 }
 
 function hasButtplugToy() {

@@ -13,6 +13,8 @@
     if(isChance(50)) {
         sendMessage("You don\'t have permission to cum yet, so be careful");
         sendMessage("%StrokeSlower%");
+        sendMessage('I don\'t want you to be edging yet!');
+        sendMessage('Any minute now %Grin%');
         sendMessage("5");
         sendMessage("4");
         sendMessage("3...");

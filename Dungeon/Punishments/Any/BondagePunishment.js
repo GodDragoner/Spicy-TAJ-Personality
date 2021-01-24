@@ -24,6 +24,12 @@
         }
 
         let level = random(options);
+
+        sendMessage(random('I think it\'s time for some bondage %Grin%', 'I think I would like to see you tied up %Grin%', 'I want to see you tied up %Smile%', 'I think it\'s time for a small bondage session'));
+        sendMessage('So in a moment I am gonna tell you how I want you to tie yourself up');
+        sendMessage('Don\'t tie yourself up yet though. Rather I want you to listen up and wait for my command!');
+        sendMessage('Because I might add some toys down the road before you can tie yourself up for me %Smile%');
+
         createBondageInstructions(level);
 
         //Max 40 minutes, min 15 minutes
@@ -31,6 +37,7 @@
 
         sendMessage('I want you to stay exactly as I described for ' + timeMinutes + ' minutes');
         sendMessage('Since you probably can\'t tell me when you are ready because you are bound you will have to set a timer yourself as soon as you start');
+        sendMessage('You can start now getting all the missing instructions done and don\'t forget to set yourself a timer');
         sendMessage('Just tell me when you are back after your time has run out');
 
         let current = setDate();

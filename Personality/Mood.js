@@ -195,7 +195,7 @@ function getHumilationTimeModifier() {
 function registerSassySub() {
     if(getVar(VARIABLE.SASSY_SUB, 0) > 3) {
         changeMeritHigh(true);
-    } else if(getVar(VARIABLE.SASSY_SUB) > 1) {
+    } else if(getVar(VARIABLE.SASSY_SUB, 0) > 1) {
         changeMeritMedium(true);
     } else {
         changeMeritLow(true);
@@ -207,7 +207,7 @@ function registerSassySub() {
 function registerComplain() {
     if(getVar(VARIABLE.COMPLAINTS, 0) > 3) {
         changeMeritHigh(true);
-    } else if(getVar(VARIABLE.COMPLAINTS) > 1) {
+    } else if(getVar(VARIABLE.COMPLAINTS, 0) > 1) {
         changeMeritMedium(true);
     } else {
         changeMeritLow(true);
@@ -219,7 +219,7 @@ function registerComplain() {
 function registerRepeatingText() {
     if(getVar(VARIABLE.REPEATING_TEXT, 0) > 3) {
         changeMeritHigh(true);
-    } else if(getVar(VARIABLE.REPEATING_TEXT) > 1) {
+    } else if(getVar(VARIABLE.REPEATING_TEXT, 0) > 1) {
         changeMeritMedium(true);
     } else {
         changeMeritLow(true);
@@ -231,13 +231,25 @@ function registerRepeatingText() {
 function registerUnallowedTalk() {
     if(getVar(VARIABLE.UNALLOWED_TALKS, 0) > 3) {
         changeMeritHigh(true);
-    } else if(getVar(VARIABLE.UNALLOWED_TALKS) > 1) {
+    } else if(getVar(VARIABLE.UNALLOWED_TALKS, 0) > 1) {
         changeMeritMedium(true);
     } else {
         changeMeritLow(true);
     }
 
     setTempVar(VARIABLE.UNALLOWED_TALKS, getVar(VARIABLE.UNALLOWED_TALKS, 0) + 1);
+}
+
+function registerUnallowedEdge() {
+    if(getVar(VARIABLE.UNALLOWED_EDGES, 0) > 3) {
+        changeMeritHigh(true);
+    } else if(getVar(VARIABLE.UNALLOWED_EDGES, 0) > 1) {
+        changeMeritMedium(true);
+    } else {
+        changeMeritLow(true);
+    }
+
+    incrementTempVar(VARIABLE.UNALLOWED_EDGES, 1, 0)
 }
 
 function registerForgetHonorific() {

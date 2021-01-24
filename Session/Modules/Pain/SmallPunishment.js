@@ -30,10 +30,12 @@ function smallPunishment(cbt = true, spanking = true) {
     } else if (CBT_LIMIT.isAllowed()) {
         smallCBTPunishment();
     } else {
-        //Fallback
-        sendMessage('I am gonna only assign a few punishment points this time %SlaveName%');
+        goToCorner(getCornerTime(2));
 
-        addPunishmentPoints(75);
+        //Fallback
+        //sendMessage('I am gonna only assign a few punishment points this time %SlaveName%');
+
+        //addPunishmentPoints(75);
     }
 }
 
