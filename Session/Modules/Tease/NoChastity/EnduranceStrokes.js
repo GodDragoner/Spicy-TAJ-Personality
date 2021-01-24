@@ -85,8 +85,7 @@ if (!CBT_LIMIT.isAllowed()) {
                     currentAttempts = getVar(VARIABLE.ENDURANCE_STROKES_ATTEMPTS);
 
                     if(video) {
-                        const player = Java.type('me.goddragon.teaseai.api.media.MediaHandler').getHandler().getCurrentVideoPlayer();
-                        player.stop();
+                        stopVideo();
                         unlockImages();
                     }
 
@@ -175,8 +174,7 @@ if (!CBT_LIMIT.isAllowed()) {
             }
 
             if(video) {
-                const player = Java.type('me.goddragon.teaseai.api.media.MediaHandler').getHandler().getCurrentVideoPlayer();
-                player.stop();
+                stopVideo();
                 unlockImages();
 
                 //Reset
