@@ -1053,16 +1053,16 @@ function positionCheckBalance() {
     sendMessage("So %SlaveName%");
     while (true) {
         let answer = sendInput("How many times did you lose your balance?");
-        if (isNaN(answer)) {
+        if (!answer.isInteger()) {
             sendMessage("Just give me a number %SlaveName%");
             answer.loop();
-        } else if (parseInt(answer) < 5) {
+        } else if (answer.getInt() < 4 - getStrictnessForCharacter()) {
             sendMessage("Well I suppose that isn't too bad then");
             sendMessage("Good job!");
             changeMeritMedium(false);
             return;
         } else {
-            sendMessage("That many!");
+            sendMessage("That\'s too many times!");
             sendMessage("Not good enough %SlaveName%");
             setVar(VARIABLE.POSITION_LEVEL, positionLevel - 1);
             sendMessage("I'm disappointed..");
