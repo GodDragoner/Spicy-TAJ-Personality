@@ -34,7 +34,7 @@
     sendMessage('I know you can take more for your %DomHonorific%');
     sendMessage('You want to please me and serve me like a good edge slave');
     sendMessage('You know you can tell me when it\'s becoming too much and you can\'t handle any more');
-    sendMessage('But you won\'t, because you me to be happy');
+    sendMessage('But you won\'t, because you want me to be happy');
     startEdging(getEdgeHoldSeconds());
     sendMessage('You will keep edging for me for as long as I want');
     startEdging(getEdgeHoldSeconds());

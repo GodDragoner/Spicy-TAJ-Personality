@@ -39,7 +39,7 @@
     }
 
     sendMessage('It may not be easy');
-    sendMessage('But every agonising second will be worth it');
+    sendMessage('But every agonizing second will be worth it');
     startMultipleEdges(4, 12);
     startEdging(getEdgeHoldSeconds());
     sendMessage('%LetEdgeFade%');

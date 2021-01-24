@@ -13,26 +13,26 @@ while (SpankingCount<getVar("StrokesPerRound"))
 
 			case 10:
 			SpankingCount=SpankingCount+20;
-			MXoverlapmessage( random("Left","Top left","Buttom left")+ " " + random("ass","asscheek","Buttcheek","cheek","rear cheek","rear","sitspots!")); 
+			MXoverlapmessage( random("Left","Top left","Bottom left")+ " " + random("ass","asscheek","Buttcheek","cheek","rear cheek","rear","sitspots!")); 
 				 playAudio("Audio/Spicy/Punishment/SpankingTask/10Strikes/Spank10.mp3", true);
 
-			MXoverlapmessage( random("Right","Top Right","Buttom Right") +" "+ random("ass","asscheek","Buttcheek","cheek","rear cheek","rear","sitspots!")) ;
+			MXoverlapmessage( random("Right","Top Right","Bottom Right") +" "+ random("ass","asscheek","Buttcheek","cheek","rear cheek","rear","sitspots!")) ;
 			 playAudio("Audio/Spicy/Punishment/SpankingTask/10Strikes/Spank10.mp3", true);
 			 break;
 			case 20:
 			SpankingCount=SpankingCount+40;
-			MXoverlapmessage( random("Left","Top left","Buttom left") +" "+ random("ass","asscheek","Buttcheek","cheek","rear cheek","rear","sitspots!")); 
+			MXoverlapmessage( random("Left","Top left","Bottom left") +" "+ random("ass","asscheek","Buttcheek","cheek","rear cheek","rear","sitspots!")); 
 				 playAudio("Audio/Spicy/Punishment/SpankingTask/20Strikes/Spank20.mp3", true);
 
-			MXoverlapmessage( random("Right","Top Right","Buttom Right") +" "+ random("ass","asscheek","Buttcheek","cheek","rear cheek","rear","sitspots!"));
+			MXoverlapmessage( random("Right","Top Right","Bottom Right") +" "+ random("ass","asscheek","Buttcheek","cheek","rear cheek","rear","sitspots!"));
 			 playAudio("Audio/Spicy/Punishment/SpankingTask/20Strikes/Spank20.mp3", true);
 			 break;
 				case 30:
 			SpankingCount=SpankingCount+60;
-			MXoverlapmessage( random("Left","Top left","Buttom left")+" "+ random("ass","asscheek","Buttcheek","cheek","rear cheek","rear","sitspots!")); 
+			MXoverlapmessage( random("Left","Top left","Bottom left")+" "+ random("ass","asscheek","Buttcheek","cheek","rear cheek","rear","sitspots!")); 
 				 playAudio("Audio/Spicy/Punishment/SpankingTask/30Strikes/Spank30.mp3", true);
 
-			MXoverlapmessage( random("Right","Top Right","Buttom Right") +" "+ random("ass","asscheek","Buttcheek","cheek","rear cheek","rear","sitspots!"));
+			MXoverlapmessage( random("Right","Top Right","Bottom Right") +" "+ random("ass","asscheek","Buttcheek","cheek","rear cheek","rear","sitspots!"));
 			 playAudio("Audio/Spicy/Punishment/SpankingTask/30Strikes/Spank30.mp3", true);
 			 break;
 

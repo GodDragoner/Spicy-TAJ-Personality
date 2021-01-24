@@ -48,7 +48,7 @@ function sendNewChastityExercise() {
 function randomChastityAdvice() {
     switch (randomInteger(0, 4)) {
         case 0:
-            sendMessage(random("Remember it\'s a good idea to use moisterizer cream ", "I strongly recommend using a moisterizer ", "don\'t forget using moisterizer! "));
+            sendMessage(random("Remember it\'s a good idea to use moisturizer cream ", "I strongly recommend using a moisturizer ", "don\'t forget using moisturizer! "));
             sendMessage(random("It protects against chafing/friction and overall provides with a better experience ", "It protects against chafing ", "It will greatly enhance your lock up time %Grin% "));
             sendMessage(random("Make sure to at least use it around your scrotum ", "At least use it around your scrotum! ", "Keep your scrotum from getting irritated "));
             sendMessage(random("It can easily make all the difference during sleep ", "It might even improve your sleep! "));

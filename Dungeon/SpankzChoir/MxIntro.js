@@ -16,7 +16,7 @@ switch(getVar("MXR")){
 			MXmessage(" My name is Miss Alexis ");
 			MXmessage(" When I saw your ass up for auction I knew I had to win it! Lol ");
 			MXmessage(" Oh my is your ass getting it today! ");
-			MXmessage(" Lets not waste a moment! "); 
+			MXmessage(" Let's not waste a moment! "); 
 			doneend=true;
 			}
 	break;
@@ -46,7 +46,7 @@ switch(getVar("MXR")){
 
 			MXmessage(" Hi boy ");
 			MXmessage(" I'm Miss Gigi ");
-			MXmessage(" Mhmm I'm excited about whats to come in a moment! ");
+			MXmessage(" Mhmm I'm excited about what's to come in a moment! ");
 			MXmessage(" You on the other hand look a bit shaky %Lol% ");
 			MXmessage(" I'm using my Hitachi later! "); 
 			doneend=true;
@@ -90,8 +90,8 @@ switch(getVar("MXR")){
 		MXmessage(" Hello ");
 		MXmessage(" I go by Miss Kym ");
 		MXmessage(" You look just like the right victim for a healthy spanking! ");
-		MXmessage(" I do consider spankings a neccesary part of mens life ");
-		MXmessage(" They are afterall the weaker sex.. "); 
+		MXmessage(" I do consider spankings a necessary part of a man's life ");
+		MXmessage(" They are after all the weaker sex.. "); 
 		doneend=true;
 		}
 	break;
@@ -147,7 +147,7 @@ if (!doneend)
 			MXmessage(" Oh and also a lot of punishment points %Grin% ");
 			//#MeritChangeNHigh
 			changeMeritHigh(true);
-			MXmessage(" Well lets start your spanking all over! %Grin% ");
+			MXmessage(" Well let's start your spanking all over! %Grin% ");
 			//@End
 	 }else if (isVar("SpankzChoirLate") && getVar("SpankzChoirLate")==true) {
 		 //	(SpankzChoirLate)
@@ -165,7 +165,7 @@ if (!doneend)
 	 } else{
 		 
 		MXmessage(random("Hi","Hello","Greetings") +" " + random("%SubName%","%SlaveName%","Slave","Bitch","Slave","Slave") );
-		MXmessage(random("I can't wait to get started!","Lets start right away","Lets proceed!","Lets get that ass sore") );
+		MXmessage(random("I can't wait to get started!","Let's start right away","Let's proceed!","Let's get that ass sore") );
 		//@End
 	 }
 	

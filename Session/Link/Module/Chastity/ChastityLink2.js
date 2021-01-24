@@ -63,7 +63,7 @@
                 sendMessage('I told you last time to have ice cubes around');
                 changeMeritMedium(true);
                 addPPRuleIgnored();
-                sendMessage('I added punishment points for this misbehaviour');
+                sendMessage('I added punishment points for this misbehavior');
                 sendMessage('When I tell you to make sure of something you will MAKE SURE of it next time!');
             }
         }

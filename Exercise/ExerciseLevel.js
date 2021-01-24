@@ -12,8 +12,8 @@ if (getVar("ExerciseLevelMastered") > 4) {
     setVar("ExerciseLevelFailed", 0);
 
     sendVirtualAssistantMessage("%SlaveName%, I've noticed you've been doing really well in your workouts lately ");
-    sendVirtualAssistantMessage(random("That makes me wet", " That gets me excited", "It looks like its beginning to pay off"));
-    sendVirtualAssistantMessage(random("Its time to move you to the next level", " I think you can step it up a notch for %DomHonorific% %domName%", " I want to see if you can take a little more for %domName%")+ " %Grin%");
+    sendVirtualAssistantMessage(random("That makes me wet", " That gets me excited", "It looks like it's beginning to pay off"));
+    sendVirtualAssistantMessage(random("It's time to move you to the next level", " I think you can step it up a notch for %DomHonorific% %domName%", " I want to see if you can take a little more for %domName%")+ " %Grin%");
 }
 else {
     if (getVar("ExerciseLevelFailed") > 4) {//downlevel

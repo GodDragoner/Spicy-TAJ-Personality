@@ -46,7 +46,7 @@ if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.STROKING)) {
         sendMessage("It requires some serious stamina to go above level 40");
         sendMessage("Oh and on a final note...");
         sendMessage("After each training session you will be reduced by 5 levels unless you're below level 10...");
-        sendMessage("So lets stop wasting time and just get you started %Lol%");
+        sendMessage("So let's stop wasting time and just get you started %Lol%");
     }
 
     setVar(VARIABLE.STROKE_TRAININGS_DONE, getVar(VARIABLE.STROKE_TRAININGS_DONE, 0) + 1);
@@ -195,7 +195,7 @@ function strokeTrainingEdge() {
                 sendMessage(random("Above 30 is alright slave", "Well below 40 is still OK", "You could probably do better... Maybe...", "You need to work harder slave"));
                 addMerits(5);
             } else if (getStrictnessForCharacter() == 2) {
-                sendMessage(random("Below level 40 huh...", "Oh wauv you do absolutely not impress...", "I was expecting more from you %SlaveName%"));
+                sendMessage(random("Below level 40 huh...", "Oh wauw you do absolutely not impress...", "I was expecting more from you %SlaveName%"));
                 addMerits(-10);
             }
         } else {

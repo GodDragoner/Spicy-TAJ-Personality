@@ -314,7 +314,7 @@ function setupEStimToy(domChose, settings = false) {
                     }
                 }
 
-                sendVirtualAssistantMessage('Now that that\'s set lets talk about the different levels');
+                sendVirtualAssistantMessage('Now that that\'s set, let\'s talk about the different levels');
             }
 
 

@@ -29,7 +29,7 @@ switch(getVar(VARIABLE.PUNISHMENT_PUNISHER)) {
 	case 1 :
 	//(Domme)
 	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%");// #DT4
-	sendMessage(random("Lets see what we can do about you %Grin%","Its time to make you repent your sins","I suppose we need to correct your recent behaviour","I have something for you..")); //#DT4
+	sendMessage(random("Let's see what we can do about you %Grin%","It's time to make you repent your sins","I suppose we need to correct your recent behaviour","I have something for you..")); //#DT4
 
 //	sendMessage(random("It's time to pay","We need to settle your recent behaviour","I believe I have just the thing to discipline you","I believe I know how to correct your bad behaviour!")); //#DT4
 	//1 = easy, 2= medium 3= hard
@@ -67,7 +67,7 @@ switch(getVar(VARIABLE.PUNISHMENT_PUNISHER)) {
 	//(Contact2)
 	sendMessage(random("Well well","Oh my","Well") + " %SlaveName%");// #DT4
 	sendMessage(random("Discipline I just love that","You're not gonna like this %Grin%","I don't think %MyYour% %Cock% will enjoy this","This is fun!"));// #DT4
-sendMessage(random("Lets see what we can do about you %Grin%","Its time to make you repent your sins","I suppose we need to correct your recent behaviour","I have something for you..")); //#DT4
+sendMessage(random("Let's see what we can do about you %Grin%","It's time to make you repent your sins","I suppose we need to correct your recent behaviour","I have something for you..")); //#DT4
 
 	if (getVar("SubEndurance")>=7) {
 	PM4=3;}
@@ -98,7 +98,7 @@ sendMessage(random("Lets see what we can do about you %Grin%","Its time to make 
 sendMessage("%Grin% "); //#DT4
 sendMessage("You will not enjoy this! "); //#DT4
 sendMessage("This punishment is rather simple.. "); //#DT4
-sendMessage("But that doesn't mean its easy.. "); //#DT4
+sendMessage("But that doesn't mean it's easy.. "); //#DT4
 sendMessage("%Fetch% 2 pegs %SlaveName% ",2); //#DT4 
 response=sendInput("Got them? "); //#DT4
 while( true) {

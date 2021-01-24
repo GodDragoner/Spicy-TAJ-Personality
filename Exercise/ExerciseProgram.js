@@ -456,7 +456,7 @@ function Dog1() {
 		sleep( 40+10* getVar("ExerciseLevel"));
 		
 		playAudio("Audio/Spicy/SpecialSounds/Bell.mp3");
-		sendVirtualAssistantMessage(random(" Take a short break ", "I think next time we're caning you in that position","MMM seeing you bent over like that makes me want to go grab my strap-on","oh, %domhonorific% %domname% could spank you nicely in that position"),1,true);
+		sendVirtualAssistantMessage(random(" Take a short break ", "I think next time we're caning you in that position","Mmm, seeing you bent over like that makes me want to go grab my strap-on","oh, %domhonorific% %domname% could spank you nicely in that position"),1,true);
 		sleep(20);
 
 	}
@@ -489,7 +489,7 @@ function Dog2a() {
 		 stopAudio();
 
 		playAudio("Audio/Spicy/SpecialSounds/Bell.mp3");
-		sendVirtualAssistantMessage(" Thats my good Doggy!!  ");
+		sendVirtualAssistantMessage(" That's my good Doggy!!  ");
 		sleep(4);
 
 	}
@@ -962,7 +962,7 @@ function Gif2() {
 		if (!exgif2){
 		exgif2 = true;
 		NrExercise = NrExercise + 1;
-		sendVirtualAssistantMessage(" Its time for some leg lifts %slave%... yay!! ",2,false);
+		sendVirtualAssistantMessage(" It's time for some leg lifts %slave%... yay!! ",2,false);
 		sendVirtualAssistantMessage(" I will tell you when to switch sides ");
 		showImage("Images/Spicy/Exercise/Gifs/2.gif",3);
 		
@@ -1029,7 +1029,7 @@ function Gif4() {
 		if (!exgif4){
 		exgif4 = true;
 		NrExercise = NrExercise + 1;
-		sendVirtualAssistantMessage(" now its time for some leg exercises");
+		sendVirtualAssistantMessage(" now it's time for some leg exercises");
 		sendVirtualAssistantMessage(" I will tell you when to switch sides");
 		 showImage("Images/Spicy/Exercise/Gifs/4.gif");
 		sendVirtualAssistantMessage(" Continue until you hear my bell",1,true);
@@ -1214,7 +1214,7 @@ function Leg4() {
 		playAudio("Audio/Spicy/SpecialSounds/Bell.mp3"); 
 		sleep(5);
 		unlockImages();
-		sendVirtualAssistantMessage(" Feel those calfs burn.");
+		sendVirtualAssistantMessage(" Feel those calves burn.");
 		sleep(5);
 
 
@@ -1260,12 +1260,12 @@ function Leg2() {
 		exleg2 = true;
 		NrExercise = NrExercise + 1;
 
-		sendVirtualAssistantMessage(" Lets do some Leg Squats ");
+		sendVirtualAssistantMessage(" Let's do some Leg Squats ");
 			lockImages();
 			sendVirtualAssistantMessage(" With the first beep bring your leg fourth",1,true);
 		showImage("Images/Spicy/Exercise/Legs/3.jpg");
 		sendVirtualAssistantMessage(" With the second beep bring the same leg to the side",1,true);
-		sendVirtualAssistantMessage(" With the third beep put the leg behing you",1,true);
+		sendVirtualAssistantMessage(" With the third beep put the leg behind you",1,true);
 		sendVirtualAssistantMessage(" Switch leg and repeat for the other leg",1,true);
 		sendVirtualAssistantMessage(" Continue until you hear my bell ",1,true);
 		playAudio("Audio/Spicy/Stroking/Metronome/40 bpm.mp3");
@@ -1426,7 +1426,7 @@ if (!expushups2) {
 	expushups2=true;
     NrExercise = NrExercise+1;
 			
-		sendVirtualAssistantMessage(" its time for some regular push ups !");
+		sendVirtualAssistantMessage(" it's time for some regular push ups !");
 		showImage("Images/Spicy/Exercise/PushUps/3.jpg",2);
 		sendVirtualAssistantMessage(" First beep go down");
 		sendVirtualAssistantMessage("Second beep go up");
@@ -1515,7 +1515,7 @@ function SidePlank(){
 		exsideplank=true;
 		NrExercise = NrExercise+1;
 
-		sendVirtualAssistantMessage(" Lets do some side planking ");
+		sendVirtualAssistantMessage(" Let's do some side planking ");
 		showImage("Images/Spicy/Exercise/SidePlank/1.jpg");
 		sendVirtualAssistantMessage(" Rest on your lower arm",1,true);
 		sendVirtualAssistantMessage(" Raising your body from foot to shoulder",1,true);
@@ -1571,7 +1571,7 @@ function Squat(){
 		exsquat=true;
 		NrExercise = NrExercise+1;
 
-		sendVirtualAssistantMessage(" Lets do some squating ");
+		sendVirtualAssistantMessage(" Let's do some squatting ");
 		showImage("Images/Spicy/Exercise/Squat/1.jpg");
 		sendVirtualAssistantMessage(" First beep down",1,true);
 		sendVirtualAssistantMessage(" Second beep up",1,true);

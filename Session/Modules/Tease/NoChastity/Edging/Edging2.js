@@ -3,7 +3,7 @@
     sendMessage('%LetTheEdgeFade%');
     sendMessage('Imagine your life without this amazing feeling... how empty it would be...');
     startEdging();
-    sendMessage('It has become part of your dna, hasn\'t it?');
+    sendMessage('It has become part of your DNA, hasn\'t it?');
     sendMessage('You used to live for your orgasms, but now you live for the edge');
     startEdging();
     sendMessage('I want you to stop thinking of orgasms as the end point of masturbation');

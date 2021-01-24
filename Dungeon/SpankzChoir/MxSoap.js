@@ -28,7 +28,7 @@ switch(choice)
 	default:
 	sleep(randomInteger(20,40));
 	}
-	MXmessage(random("Enough!","Come back here!","Return to me slave..","Slave get back here..","Naugthy boy come here!"));
+	MXmessage(random("Enough!","Come back here!","Return to me slave..","Slave get back here..","Naughty boy come here!"));
 	 playAudio("Audio/Spicy/SpecialSounds/Bell.mp3", true);
 	sleep(3);
 	break;

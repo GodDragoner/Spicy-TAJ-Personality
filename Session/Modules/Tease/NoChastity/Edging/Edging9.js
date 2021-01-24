@@ -25,7 +25,7 @@
     startMultipleEdges(6, 12);
     sendMessage('Mmm... it seems discovery always comes at a price...');
 
-    if(sendYesOrNoQuestion('Do you think you can handle more, in the name of the scientific endeavour?')) {
+    if(sendYesOrNoQuestion('Do you think you can handle more, in the name of the scientific endeavor?')) {
         sendMessage('I knew you would agree!');
 
         sendMessage('Nothing is more important than our quest to discover the effects of multiple hard edgings on the male subject');

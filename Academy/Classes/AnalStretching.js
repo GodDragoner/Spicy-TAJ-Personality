@@ -151,7 +151,7 @@ function askForMaxDiameter() {
         sendMessage('Tell me %SlaveName%');
         sendMessage('And be truthful and realistic...');
 
-        let diameter = createDoubleInput('Up to what diameter are you able to fit dildos up your %Ass% in cms right now?', 1, 15, 'That\'s not a valid number %SlaveName%', 'I don\'t think you are giving me a realistic diameter %SlaveName%');
+        let diameter = createDoubleInput('Up to what diameter are you able to fit dildos up your %Ass% in cm right now?', 1, 15, 'That\'s not a valid number %SlaveName%', 'I don\'t think you are giving me a realistic diameter %SlaveName%');
 
         if (diameter < 4) {
             sendMessage('Oh so you are a real beginner');
@@ -171,7 +171,7 @@ function askForCasualDiameter() {
         sendMessage('Now %SlaveName%');
         sendMessage('Tell me truthfully...');
 
-        let diameter = createDoubleInput('Up to what diameter are you able to fit dildos up your %Ass% without any pre stretching right now?', 1, 15, 'That\'s not a valid number %SlaveName%', 'I don\'t think you are giving me a realistic diameter %SlaveName%');
+        let diameter = createDoubleInput('Up to what diameter are you able to fit dildos up your %Ass% without any pre-stretching right now?', 1, 15, 'That\'s not a valid number %SlaveName%', 'I don\'t think you are giving me a realistic diameter %SlaveName%');
 
         if (diameter < 3) {
             sendMessage('Oh so you are a real beginner');

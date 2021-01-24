@@ -219,7 +219,7 @@ function simplePositionTrainingSelection(totalPositions) {
             showImage("Images/Spicy/Positions/Box1.jpg");
             sendMessage("This is the Box position");
             sendMessage("The box is an excellent position");
-            sendMessage("Its tougher than it looks");
+            sendMessage("It's tougher than it looks");
             sendMessage("Some might prefer a pillow, but I trust you don't");
             sendMessage("Other than that the position speaks for itself..");
             unlockImages();
@@ -279,7 +279,7 @@ function simplePositionTrainingSelection(totalPositions) {
             sendMessage("This is the Kneel position");
             sendMessage("The kneel is great, notice the hands ready to be tied");
             sendMessage("This is great as a waiting or 'pay attention' position");
-            sendMessage("With rice though its a completely different position %Lol%");
+            sendMessage("With rice though it's a completely different position %Lol%");
             unlockImages();
 
             sendMessage("Take the position.");
@@ -329,7 +329,7 @@ function simplePositionTrainingSelection(totalPositions) {
             sendMessage("This position is art %EmoteHappy%");
 
             showImage("Images/Spicy/Positions/Slut1.jpg");
-            sendMessage("Its primarily used for girls");
+            sendMessage("It's primarily used for girls");
 
             showImage("Images/Spicy/Positions/Slut2.jpg");
             sendMessage("But that's not gonna keep you from learning %Lol%");
@@ -435,13 +435,13 @@ function positionTrainingTestSelection() {
     let positionTestRight = 0;
 
     sendMessage("I think it's time for a little test");
-    sendMessage("I think its important for a %SlaveName%");
+    sendMessage("I think it's important for a %SlaveName%");
     sendMessage("To sometimes be tested");
     sendMessage("To ensure that you keep improving yourself");
     sendMessage("I will ask you some questions.");
     sendMessage("Get 6 right and I will reward you");
     sendMessage("Get 3 wrong and you will be awarded with punishment points");
-    sendMessage("So lets get to it..");
+    sendMessage("So let's get to it..");
 
     const positionTests = {
         currentTest_position1 : function(){positionTest("1", "attention", "Images/Spicy/Positions/Attention1.jpg")},        
@@ -496,7 +496,7 @@ function positionTestReward(){
         sendMessage("Only one mistake! Well done!");
         rewardGoldMedium();
     } else if (positionTestWrong == 2) {
-        sendMessage("Since you had 2 mistakes afterall I'm not giving you too much gold");
+        sendMessage("Since you had 2 mistakes after all I'm not giving you too much gold");
         rewardGoldLow();
     }
     setVar(VARIABLE.POSITION_LEVEL, positionLevel + 1);
@@ -609,7 +609,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
     sendMessage(random(
         "It's time for some real fun!",
         "Time for some fun",
-        "Lets have a little fun",
+        "Let's have a little fun",
         "I'm gonna make things interesting",
         "This should be quite interesting"
     ));
@@ -681,7 +681,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
         currentTraining_b6 : function () {
             sendMessage("For this one you'll need your gag and some rice.");
             sendMessage("Go and fetch them.");
-            sendMessage("Gag yourself and palce the rice where you will do the position");
+            sendMessage("Gag yourself and place the rice where you will do the position");
             if (!checkPositionToys()) {
                 return false;
             } else {
@@ -930,11 +930,11 @@ function complicatedPositionTrainingSelection(totalPositions) {
             sendMessage("%Lol%");
             sendMessage("What a sight!");
             sendMessage("This should prove fun to watch!");
-            sendMessage("Ofcourse I want you in the Slut position");
+            sendMessage("Of course I want you in the Slut position");
             lockImages();
             showImage("Images/Spicy/Positions/Slut2.jpg");
             sendMessage("If you really want to please me then you should film yourself");
-            sendMessage("I think I would fit perfectly inside your selfhumiliation videos folder %Grin%");
+            sendMessage("I think I would fit perfectly inside your self humiliation videos folder %Grin%");
             unlockImages();
 
             while (true) {
@@ -1074,7 +1074,7 @@ function positionCheckBalance() {
 
 function checkPositionToys() {
     while (true) {
-        let answer = sendInput("%Ready%  If you dont have any of the toys you need just say no.");
+        let answer = sendInput("%Ready%  If you don't have any of the toys you need just say no.");
         if (answer.containsIgnoreCase("yes")) {
             sendMessage("%Good%");
             return true;

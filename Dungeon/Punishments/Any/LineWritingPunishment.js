@@ -20,7 +20,7 @@
             "I have been bad and this is my punishment, wasting time, doing nothing constructive or anything recreational",
             "I should try much much harder to be a proper servant. I'm blessed that %DomHonorific% %DomName% is merciful",
             "I should count myself lucky because this could be harsh caning instead",
-            "I have been a bad boy and deserve to be punished to my dommes liking",
+            "I have been a bad boy and deserve to be punished to my Domme's liking",
             "I need chastity, I crave chastity, I dream of chastity, I believe in chastity, I am chastity",
             "I will never stop serving, I will never be free, I am not equal to women nor real men",
             "I wake up, I serve, I serve some more, I sleep. Horny...",
@@ -48,7 +48,7 @@
 
 
             if (!success) {
-                sendMessage("Lets stop this...");
+                sendMessage("Let's stop this...");
                 sendMessage("If you can't complete a simple punishment");
                 sendMessage("Then you have a long way to go to redeem yourself...");
                 run("Dungeon/PunishmentBase.js");

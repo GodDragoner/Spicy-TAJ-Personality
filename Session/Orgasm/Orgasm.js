@@ -370,7 +370,7 @@ function askAboutDenialLevel() {
             //Too long after orgasm the sub might decide differently so we only ask him if he came 3 or less days ago
             if(isChance(talkChance[Math.min(denialLevelIndex, talkChance.length - 1)]) && !getLastEjaculationDate().addDay(3).hasPassed()) {
                 sendMessage("%SlaveName%");
-                sendMessage(random("Once in a while I feel it\'s important to discuss denial with you ", "As you know its important to discuss your denial practice with you.. "));
+                sendMessage(random("Once in a while I feel it\'s important to discuss denial with you ", "As you know it's important to discuss your denial practice with you.. "));
                 sendMessage(random("Today is one of those days ", "And today we\'ll do just that! "));
                 sendMessage("Currently your denial level is " + getVar(VARIABLE.DENIAL_LEVEL));
                 sendMessage(random("Just to remind you ", "Let me remind you that..."));

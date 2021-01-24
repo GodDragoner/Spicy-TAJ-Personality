@@ -73,7 +73,7 @@ function readyForStroking() {
             return;
         }
 
-        sendMessage('I would want you to stroke now but I guess we need to make some room on that penis first %Grin%');
+        sendMessage('I want you to stroke now but I guess we need to make some room on that penis first %Grin%');
 
         if(feelsLikePunishingSlave()) {
             redistributeClampsForStroking();
@@ -81,9 +81,9 @@ function readyForStroking() {
             let answer = sendYesOrNoQuestionTimeout('You didn\'t think I would free you from the clamps did you?', 3);
             if (answer === ANSWER_YES) {
                 sendMessage('%Grin%');
-                sendMessage('Well didn\'t feel like you deserved less pain %Lol%');
+                sendMessage('Well I don\'t feel like you deserve any less pain %Lol%');
             } else if (answer === ANSWER_NO) {
-                sendMessage('You didn\'t deserve less pain %Lol%');
+                sendMessage('You don\'t deserve any less pain %Lol%');
             }
 
             sendMessage('So I just readied everything for you to stroke');
@@ -93,7 +93,7 @@ function readyForStroking() {
 
             let answer = sendYesOrNoQuestionTimeout('Much better isn\'t it?', 3);
             if (answer === ANSWER_YES) {
-                sendMessage('Don\'t celebrate to early. I won\'t go easy on you %Grin%');
+                sendMessage('Don\'t celebrate too early. I won\'t go easy on you %Grin%');
             } else if (answer === ANSWER_NO) {
                 sendMessage('Looks like my pain slut would like some more pain %Lol%');
                 sendMessage('Or maybe you just don\'t want to stroke right now');

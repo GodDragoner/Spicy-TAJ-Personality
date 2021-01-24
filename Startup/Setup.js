@@ -232,7 +232,7 @@
     sendVirtualAssistantMessage("Folder 3 is for " + getVar('blackmailName3'));
     sendVirtualAssistantMessage("Let me know when you have added pictures for " + getVar('blackmailName1') + ", " + getVar('blackmailName2') + ", and " + getVar('blackmailName3') + ".");
     waitForDoneVirtualAssistant(999999);
-    sendVirtualAssistantMessage("Good, Should you ever think of quiting your service to the %DomHonorific%");
+    sendVirtualAssistantMessage("Good, Should you ever think of quitting your service to the %DomHonorific%");
     sendVirtualAssistantMessage("This will make sure you don't %Lol%");
     sendVirtualAssistantMessage("Don't worry you'll be reminded to serve properly!");
     sendVirtualAssistantMessage("Or else...");
@@ -249,7 +249,7 @@
     sendVirtualAssistantMessage('Depending on the domme she can have one or multiple subs at a time');
 
     sendVirtualAssistantMessage('Now you gotta tell me what type of domme you are looking for');
-    sendVirtualAssistantMessage('There are 3 character types of dommes available to you as a pre selection.');
+    sendVirtualAssistantMessage('There are 3 character types of dommes available to you as a pre-selection.');
     sendVirtualAssistantMessage('Firstly there are kind and easier to please Dommes');
     sendVirtualAssistantMessage('The second type is a fairly strict but still fair Domme');
     sendVirtualAssistantMessage('Last but not least there are very strict and demanding Dommes');
@@ -363,7 +363,7 @@
             sendVirtualAssistantMessage('Would\'ve gone with her too. She seems so confident and powerful %EmoteHappy%');
             break;
         } else {
-            sendVirtualAssistantMessage("The first or the secommd Domme %SubName%?");
+            sendVirtualAssistantMessage("The first or the second Domme %SubName%?");
             answer.loop();
         }
     }

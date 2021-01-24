@@ -55,7 +55,7 @@ function endSpicySession() {
 
     if (getVar(VARIABLE.BLOWJOB_TRAINING, false)) {
         if (trainings == 2) {
-            sendMessage('Last but not least lets take a look at your blowjob training %Grin%');
+            sendMessage('Last but not least, let\'s take a look at your blowjob training %Grin%');
         } else if (trainings > 0) {
             sendMessage('Next we are gonna talk about your blowjob training %SlaveName%');
         }

@@ -363,7 +363,7 @@ function askForChastityTraining() {
         } else if (answer.isLike("no")) {
             sendMessage("Don't be ashamed, we can always work on this");
 
-            sendMessage("This means we wil be working on this together %Grin%");
+            sendMessage("This means we will be working on this together %Grin%");
             setVar(VARIABLE.CHASTITY_LEVEL, 1);
             setVar(VARIABLE.CHASTITY_TRAINING, true);
 

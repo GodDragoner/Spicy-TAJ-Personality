@@ -2,7 +2,7 @@
     if(getCBTLimit() != LIMIT_ASKED_YES || !hasBallCrusher()) {
         runModuleCategory('Pain');
     } else if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.BALL_TORTURE)) {
-        sendMessage("%SlaveName%... " + random("I want to have a bit of fun with %MyYour% %Balls%", "Lets play a bit with those %Balls%"));
+        sendMessage("%SlaveName%... " + random("I want to have a bit of fun with %MyYour% %Balls%", "Let's play a bit with those %Balls%"));
 
         if (fetchToy("ball crusher")) {
             sendMessage('Go ahead and attach it...');
@@ -47,9 +47,9 @@ function ballCrusherSlideshow() {
     sendMessage('Each time the picture changes you are to twist half a round');
     sendMessage('Rather simple...');
     sendMessage('When you can\'t take anymore simply say stop');
-    sendMessage('If you break your highscore you earn 100 gold');
-    sendMessage('If you reach your highscore nothing happens');
-    sendMessage('If you perform well below your highscore I\'m gonna be rather disappointed');
+    sendMessage('If you break your high score you earn 100 gold');
+    sendMessage('If you reach your high score nothing happens');
+    sendMessage('If you perform well below your high score I\'m gonna be rather disappointed');
     sendMessage('And you probably don\'t want that %Grin%');
     sendMessage('Enjoy! %Lol%');
 
@@ -196,7 +196,7 @@ function ballCrusherRubberPlay() {
     sendMessage('We need to tighten that ball crusher');
     sendMessage('I\'m gonna give you a slideshow');
     sendMessage('With every new picture you have to twist the screws once');
-    sendMessage('I will continue until we reach your highscore...');
+    sendMessage('I will continue until we reach your high score...');
 
     let currentTwists = 0;
     while (currentTwists < getVar(VARIABLE.BALL_CRUSHER_MAX_TWISTS)) {

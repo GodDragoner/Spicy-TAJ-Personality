@@ -9,7 +9,7 @@
             if (answer2.isLike("want")) {
                 sendMessage("Okay then %SlaveName%, if that\\'s what you want");
             } else if (answer2.isLike("think")) {
-                sendMessage("That\'s what\'s called a self-fullfilling prophesy %Grin%");
+                sendMessage("That\'s what\'s called a self-fulfilling prophecy %Grin%");
             }
 
             sendMessage('Put your %CockAndChastity% back in your pants, you\'re not cumming today');

@@ -19,7 +19,7 @@
         sendVirtualAssistantMessage("I won't punish you for failing");
         sendVirtualAssistantMessage("Depending on your answer you earn points");
         sendVirtualAssistantMessage("I use these points to set the exercise difficulty to a level suiting you");
-        sendVirtualAssistantMessage("So don't worry if you feel like its too easy the first few times");
+        sendVirtualAssistantMessage("So don't worry if you feel like it's too easy the first few times");
         sendVirtualAssistantMessage("Difficulty will quickly rise");
         sendVirtualAssistantMessage("Maybe not today, but as we go");
         sendVirtualAssistantMessage("Completing exercise also gets you rewarded");
@@ -120,7 +120,7 @@
     }
 
     if (exercise) {
-        sendVirtualAssistantMessage(random("Lets get started", "Lets begin your exercise!", "Lets start the exercise", "Let the exercise commence..."));
+        sendVirtualAssistantMessage(random("Let's get started", "Let's begin your exercise!", "Let's start the exercise", "Let the exercise commence..."));
         setDate("LastExercise");
         run("Exercise/ExerciseProgram.js");
     }

@@ -68,10 +68,10 @@ const STROKE_AND_TEASE_TAUNTS = [
     'You were made to suffer for me %SlaveName%',
     'I haven\'t even begun to fuck with you yet %SlaveName% %EmoteOther%',
     'I\'m gonna make sure %MyCock% %Cock% remembers every single second %Grin%',
-    'Don \'t stop, %SlaveName%',
+    'Don\'t stop, %SlaveName%',
     'Keep teasing, %SlaveName%',
     'Keep teasing',
-    'Don \'t stop teasing',
+    'Don\'t stop teasing',
     'I want you to keep teasing',
     'Keep going, %SlaveName%',
     'Keep teasing just like that ',
@@ -79,16 +79,16 @@ const STROKE_AND_TEASE_TAUNTS = [
     'Just keep teasing',
     'You need to keep teasing %MyCock% %Cock%',
     'Keep teasing my toy, %SlaveName%',
-    'Don \'t stop teasing %MyCock% %Cock%',
+    'Don\'t stop teasing %MyCock% %Cock%',
     'Keep teasing %MyCock% %Cock%',
     'Keep going just like that, %SlaveName%',
-    'You \'re doing great, keep going%Grin%',
-    'Keep going, you don \'t deserve any mercy, %SlaveName%',
-    'Don \'t stop, just suffer %Grin%',
+    'You\'re doing great, keep going%Grin%',
+    'Keep going, you don\'t deserve any mercy, %SlaveName%',
+    'Don\'t stop, just suffer %Grin%',
     'Keep %TeaseVerb%, %SlaveName% %Grin%',
-    'Don \'t stop, ' + random('tease', 'suffer', 'ache'),
-    'Don \'t back off, keep going just like that',
-    'Keep it up, it \'s not time to stop %TeaseVerb% yet'
+    'Don\'t stop, ' + random('tease', 'suffer', 'ache'),
+    'Don\'t back off, keep going just like that',
+    'Keep it up, it\'s not time to stop %TeaseVerb% yet'
 ];
 
 function getTeaseVerb() {

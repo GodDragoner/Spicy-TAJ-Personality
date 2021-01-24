@@ -21,7 +21,7 @@
         'Slow down %SlaveName% @StrokeSlower',
         'Slow down your thrusts for me @StrokeSlower',
         'Go a little slower now @StrokeSlower',
-        'Go as slow as you can and savour it @StrokeSlowest',
+        'Go as slow as you can and savor it @StrokeSlowest',
         'Go really slow now, until you can\'t go any slower @StrokeSlowest',
         'Speed up now %SlaveName% @StrokeFaster',
         'Speed up your thrusts a little bit @StrokeFaster',
@@ -89,27 +89,27 @@
         'You were made to suffer for me %SlaveName%',
         'I haven\'t even begun to fuck with you yet %SlaveName% %EmoteOther%',
         'I\'m gonna make sure that %Ass% remember every single penetration you give to me %Grin%',
-        'Don \'t stop fucking, %SlaveName%',
+        'Don\'t stop fucking, %SlaveName%',
         'Keep going, %SlaveName%',
         'Keep going',
-        'Don \'t stop fucking',
+        'Don\'t stop fucking',
         'I want you to keep fucking',
         'Keep going, %SlaveName%',
         'Keep fucking just like that ',
         'Keep going for me',
         'Just keep fucking yourself',
         'Keep going just like that, %SlaveName%',
-        'You \'re doing great, keep going%Grin%',
-        'Keep going, you don \'t deserve any mercy, %SlaveName%',
-        'Don \'t stop, just fuck fuck fuck %Grin%',
+        'You\'re doing great, keep going%Grin%',
+        'Keep going, you don\'t deserve any mercy, %SlaveName%',
+        'Don\'t stop, just fuck fuck fuck %Grin%',
         'Keep fuck-fuck-fucking, %SlaveName% %Grin%',
-        'Don \'t stop, fuck',
-        'Don \'t slow dow, keep going just like that',
+        'Don\'t stop, fuck',
+        'Don\'t slow down, keep going just like that',
         'You need to keep fucking that %Ass%',
         'Keep fucking my %Ass%, %SlaveName%',
-        'Don \'t stop fucking that %Ass%',
+        'Don\'t stop fucking that %Ass%',
         'Keep fucking that %Ass%',
-        'Keep it up, it \'s not time to stop fucking yet',
+        'Keep it up, it\'s not time to stop fucking yet',
         'Go as fast as you possibly can @StrokeFastest',
         'Be fast %SlaveName%, I want the dildo to be a blur @StrokeFastest',
         'Gotta go fast! @StrokeFastest',
@@ -218,7 +218,7 @@
             var tauntAnswer = sendInput("Do you find this to be humiliating or is it even fun for you?", 6);
 
             if (!tauntAnswer.isTimeout()) {
-                if(tauntAnswer.isLike('humiliating', 'humilation')) {
+                if(tauntAnswer.isLike('humiliating', 'humiliation')) {
                     sendMessage('That\'s the main thing I care about any way %Wicked%')
                 } else if(tauntAnswer.isLike('good', 'fun', 'like', 'enjoy')) {
                     sendMessage('You are such a little pervert %SlaveName% %Lol%')

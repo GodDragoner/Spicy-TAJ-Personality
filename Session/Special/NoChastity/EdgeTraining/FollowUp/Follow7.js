@@ -82,7 +82,7 @@
                 totalLoops++;
                 changeMeritLow();
             } else {
-                sendMessage('Ah? It seems we\'ve reached one of your so-called \'limits\' then..');
+                sendMessage('Ah? It seems we\'ve reached one of your so-called \'limits\' then...');
                 changeMeritMedium(true);
                 break;
             }

@@ -100,7 +100,7 @@ function applyBallCrusherPressure() {
             sendMessage('OMG you have got to be kidding me... %Grin%');
             changeMeritMedium(true);
         } else {
-            sendMessage('Wauv.. that was awful! %Grin%');
+            sendMessage('Wauw.. that was awful! %Grin%');
             changeMeritHigh(true);
         }
 
