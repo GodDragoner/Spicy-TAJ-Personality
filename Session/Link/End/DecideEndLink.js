@@ -29,7 +29,7 @@ function findEndLinkAndRun() {
 }
 
 function tryRunEndLinkFetchId(minLinksSinceRun) {
-    return tryRunLink(getCurrentScriptName(),  minLinksSinceRun);
+    return tryRunEndLink(getCurrentScriptName(),  minLinksSinceRun);
 }
 
 function tryRunEndLink(linkId, minLinksSinceRun) {

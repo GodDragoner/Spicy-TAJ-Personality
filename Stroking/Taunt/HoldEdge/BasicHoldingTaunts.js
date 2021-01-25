@@ -3,12 +3,8 @@
     let generalAnswers = [
         "Stay right there for me",
         "Fuck yes, stay right there",
-        "Keep that %Cock% on the razor's edge",
-        "Keep that %Cock% right on the edge",
         "Stay right fucking there",
-        "Keep suffering right there on the edge for me",
         "Stay right there and ache for me",
-        "Keep riding it for me",
         "Stay right there and give me all that suffering",
         "Just ride that edge honey. It feels like your orgasm is so close doesn't it?",
         "Stay there! STAY RIGHT FUCKING THERE!",
@@ -36,6 +32,10 @@
               "Don't you dare cum! I will have those balls cut off if you do!",
               "Enjoy it slut, this is the closest thing to orgasm you should ever be!",
               "Enjoy the maximum of stimulation a slave like you should ever have!",
+              "Keep that %Cock% on the razor's edge",
+              "Keep that %Cock% right on the edge",
+              "Keep suffering right there on the edge for me",
+              "Keep riding it for me",
           ]);
     } else {
         let answers = generalAnswers;

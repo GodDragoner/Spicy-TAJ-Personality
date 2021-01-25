@@ -33,5 +33,14 @@ function edgeResponse(message) {
         }
     }
 
+    //End edge manually
+    if(!isEdging() && isVar(VARIABLE.EDGE_STARTED_DATE)) {
+        endEdge();
+        sendDebugMessage('Ended edge internally from custom response');
+        delVar(VARIABLE.EDGE_STARTED_DATE);
+    }
+
+    sendDebugMessage('Got edge response from sub');
+
     return false;
 }

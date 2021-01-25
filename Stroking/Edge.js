@@ -7,6 +7,7 @@ const EDGE_HOLD_SHORT = 1;
 const EDGE_HOLD_MEDIUM = 2;
 const EDGE_HOLD_LONG = 3;
 
+let CURRENTLY_EDGING = false;
 
 function startMultipleEdges(edges, breakInSeconds = 5) {
     for(let x = 0; x < edges; x++) {
@@ -129,7 +130,7 @@ function sendEdgeTaunts() {
     //Start our loop and continue until iterationsToGo are equal or less than zero
     while(iterationsToGo > 0) {
         //Is the sub on the edge?
-        if(isOnEdge() || !isEdging()) {
+        if(isOnEdge() || !isEdging() || !isVar(VARIABLE.EDGE_STARTED_DATE)) {
             return;
         }
 

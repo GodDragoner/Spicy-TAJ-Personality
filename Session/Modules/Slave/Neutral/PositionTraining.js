@@ -1075,10 +1075,11 @@ function positionCheckBalance() {
 function checkPositionToys() {
     while (true) {
         let answer = sendInput("%Ready%  If you don't have any of the toys you need just say no.");
-        if (answer.containsIgnoreCase("yes")) {
+        if (answer.isLike("yes")) {
             sendMessage("%Good%");
             return true;
-        } else if (answer.containsIgnoreCase("no")) {
+        } else if (answer.isLike("no")) {
+            //QUALITY: Ask for shopping
             sendMessage("Well, looks like somebody needs to go shopping...");
             return false;
         } else {
