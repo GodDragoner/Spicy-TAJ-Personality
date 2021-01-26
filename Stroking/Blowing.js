@@ -137,7 +137,7 @@ function randomBlowjobModule(toy) {
     let position;
     sendMessage('%SlaveName%');
 
-    if (getBlowjobLevel() < 30) {
+    if (getBlowjobLevel() < 20) {
         position = getIntoBlowjobPosition(toy, 0)
     } else {
         position = getIntoBlowjobPosition(toy, getPosition())
@@ -233,7 +233,7 @@ function startNormalBlowjobModule() {
                 stopAudio();
                 break;
             case 4:
-                if (getBlowjobLevel() >= 25) {
+                if (getBlowjobLevel() >= 20) {
                     if (isChance(50)) {
                         sendMessage(random('Deep throat!', 'Deep throat that cock', 'Deep throat the dildo', 'Get that cock into the back of your throat', 'All the way down!', 'Suck it balls deep!', 'Suck it all the way down'), 0);
 
@@ -244,7 +244,7 @@ function startNormalBlowjobModule() {
 
                         playSound("Audio\\Spicy\\Modules\\BJTraining\\BJDeepThroat\\DeepSlow1min.mp3", true);
                     } else {
-                        if (getBlowjobLevel() >= 30) {
+                        if (getBlowjobLevel() >= 25) {
                             //Teasing with words
                             if (isChance(50)) {
                                 playSound("Audio\\Spicy\\Blowjob\\Deepthroat\\*.mp3", true);

@@ -236,7 +236,7 @@ function startOrgasmSpecialGayPicture(ruin) {
             sleep(20);
 
             //TODO: More teasing with gay stuff
-            if (getBlowjobLevel() > 30) {
+            if (getBlowjobLevel() >= 30) {
                 sendMessage('In a minute I want you to deepthroat that dildo real good');
 
                 if (dildoAnal) {

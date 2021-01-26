@@ -55,7 +55,9 @@ function startBlowjobExam() {
     sendMessage("You are to fuck your throat for at least 30 minutes for 7 days in a row!");
     sendMessage("You will at least do one deepthroat every minute and hold it at least 20 seconds");
     sendMessage("You can feel free to mimic a deepthroat video if you want to instead but you still must do it for 30 minutes per day");
-    sendMessage('If you aren\'t mimicing make sure to swap positions at least every 10 minutes');
+    sendMessage('If you aren\'t mimicking make sure to swap positions at least every 10 minutes');
 
-    sendMessage(random("Remember ", "Don\'t forget ", "Keep in mind ") + "to never swallow any spit %SlaveName% %Lol%");
+    if(RULE_NEVER_SWALLOW_SPIT.isActive()) {
+        sendMessage(random("Remember ", "Don\'t forget ", "Keep in mind ") + "to never swallow any spit %SlaveName% %Lol%");
+    }
 }

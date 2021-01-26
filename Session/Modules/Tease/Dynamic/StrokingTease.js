@@ -1,6 +1,6 @@
 {
     if (tryRunModuleFetchId(2, MODULE.STROKING)) {
-        let minutes = randomInteger(8, 15);
+        let minutes = randomInteger(6, 12);
         if (isInChastity()) {
             if (hasMagicWand()) {
                 startVibratingCageInterval(minutes * 60);

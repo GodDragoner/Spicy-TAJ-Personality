@@ -136,7 +136,7 @@ function willKeepChastityOn(end) {
     let choiceToReach = choices[index];
 
     if (isVar("chastityMode")) {
-        choiceToReach *= 2;
+        choiceToReach *= 1.75;
         sendDebugMessage('Chastity mode is active');
     }
 

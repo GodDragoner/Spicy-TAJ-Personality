@@ -209,11 +209,17 @@ function getDildo(blowjob = false) {
     } else {
         let blowjobLevel = getBlowjobLevel();
 
-        let minDiameter = Math.max(smallestDildo.diameter, Math.min(thickestDildo.diameter, blowjobLevel / 8));
-        let minLength = Math.max(shortestDildo.length, Math.min(longestDildo.length, blowjobLevel / 3));
+        //Min at 30 is therefore 4.1
+        let minDiameter = Math.max(smallestDildo.diameter, Math.min(thickestDildo.diameter, 2.5 + blowjobLevel / 14));
 
+        //30: 11
+        let minLength = Math.max(shortestDildo.length, Math.min(longestDildo.length, 5 + blowjobLevel / 5));
+
+        //30: 21
         let maxLength = minLength + blowjobLevel / 3;
-        let maxDiameter = minDiameter + blowjobLevel / 15;
+
+        //Max at 30 is 5.3
+        let maxDiameter = minDiameter + blowjobLevel / 24;
 
         let availableDildos = [];
 
