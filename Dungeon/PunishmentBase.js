@@ -473,7 +473,7 @@
 
                 let goldMultiplier = 1;
                 //@Goto(Fines)
-                sendDungeonMessage('It\'s ' + (goldMultiplier * 1) + ' per punishment point');
+                sendDungeonMessage('It\'s ' + (goldMultiplier) + ' gold per punishment point');
 
                 sendDungeonMessage("How many punishment points do you wish to pay for?");
                 let answer2 = createInput();
@@ -511,7 +511,7 @@
                     }
                 }
                 break;
-            } else if (answer.containsIgnoreCase("return", "exit", "back")) {
+            } else if (answer.isLike("return", "exit", "back")) {
                 break;
             } else {
                 sendDungeonMessage("Spankz choir, punishment, pay fine or return?");

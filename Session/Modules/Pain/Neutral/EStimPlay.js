@@ -35,7 +35,7 @@
 
                 //Let declaration does not work in switch so we use if
                 if (mode === 0) {
-                    startMissingCardMemory(GAME_E_STIM);
+                    startMissingCardMemory(GAME_TYPE.GAME_E_STIM);
                 } else if (mode === 1) {
                     //Enable all toys
                     for (let x = 0; x < toysAttached.length; x++) {

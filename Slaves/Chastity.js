@@ -23,6 +23,13 @@ function addLockUpTime(hours) {
     }
 }
 
+function removeLockUpTime(hours) {
+    if (isForcedLockedUp()) {
+        addLockUpTime(-hours);
+    }
+}
+
+
 
 function isInChastity() {
     return getVar(VARIABLE.CHASTITY_ON, false);

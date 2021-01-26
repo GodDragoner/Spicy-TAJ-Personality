@@ -50,7 +50,7 @@ function startMissingCardMemory(gameType) {
     }
 
 
-    const totalMode = isChance(50) && gameType === GAME_EDGE;
+    const totalMode = isChance(50) && gameType === GAME_TYPE.GAME_EDGE;
     const maxLosses = 7;
 
     let goldEarnedPerWin = 20;
@@ -65,26 +65,26 @@ function startMissingCardMemory(gameType) {
         sendMessage('Be wrong 7 times and you will have to edge 15 times %Grin%');
     } else {
         switch (gameType) {
-            case GAME_EDGE:
+            case GAME_TYPE.GAME_EDGE:
                 sendMessage('If you are right you will earn ' + goldEarnedPerWin + ' gold');
                 sendMessage('If you are wrong you will have to edge twice %Grin%');
                 break;
-            case GAME_INFLATABLE_PLUG:
+            case GAME_TYPE.GAME_INFLATABLE_PLUG:
                 sendMessage('If you are right you will earn ' + goldEarnedPerWin + ' gold');
                 sendMessage('If you are wrong you will have to pump your plug 3 times %Grin%');
                 break;
-            case GAME_BALL_CRUSHER:
+            case GAME_TYPE.GAME_BALL_CRUSHER:
                 turnsPerLoss = Math.round((getVar(VARIABLE.BALL_CRUSHER_MAX_TWISTS) + getMood() * 1.5) / maxLosses);
                 sendMessage('If you are right you will earn ' + goldEarnedPerWin + ' gold');
                 sendMessage('If you are wrong you will have to twist each screw ' + turnsPerLoss + ' half-rounds %Grin%');
                 break;
-            case GAME_E_STIM:
+            case GAME_TYPE.GAME_E_STIM:
                 //Handled in if statement because we can't define let in switch
                 break;
         }
     }
 
-    if (gameType === GAME_E_STIM) {
+    if (gameType === GAME_TYPE.GAME_E_STIM) {
         //Get low level mode and with a big difference between low level and high level
         let mode = getRandomPainEStimMode(PAIN_LEVEL_LOW, maxLosses);
 
@@ -165,7 +165,7 @@ function startMissingCardMemory(gameType) {
 
             if (!totalMode) {
                 switch (gameType) {
-                    case GAME_EDGE:
+                    case GAME_TYPE.GAME_EDGE:
                         sendMessage('That\'s 2 more edges for you %Grin%');
 
                         startEdging();
@@ -181,14 +181,14 @@ function startMissingCardMemory(gameType) {
                             sendMessage('So doing the edges after every failed attempt makes sure you struggle with paying attention %Grin%');
                         }
                         break;
-                    case GAME_INFLATABLE_PLUG:
+                    case GAME_TYPE.GAME_INFLATABLE_PLUG:
                         pumpInflatablePlug(3);
                         sendMessage('Go ahead and pump your plug 3 times %Grin%', 10);
                         break;
-                    case GAME_BALL_CRUSHER:
+                    case GAME_TYPE.GAME_BALL_CRUSHER:
                         sendMessage('Go ahead and turn each screw ' + turnsPerLoss + ' half-rounds %Grin%', 10);
                         break;
-                    case GAME_E_STIM:
+                    case GAME_TYPE.GAME_E_STIM:
                         sendMessage('Go ahead and increase the level by ' + turnsPerLoss + ' %Grin%', 10);
                         break;
                 }
@@ -226,7 +226,7 @@ function startMissingCardMemory(gameType) {
             sendMessage('I guess that is enough for now...');
 
             switch (gameType) {
-                case GAME_EDGE:
+                case GAME_TYPE.GAME_EDGE:
                     sendMessage('But because you\'ve disappointed your %DomHonorific% you will edge 3 mores time for me %Grin%');
 
                     startEdging();
@@ -241,16 +241,16 @@ function startMissingCardMemory(gameType) {
                     sendMessage('Rest %SlaveName%', 5);
                     sendMessage('You will be happy about that rest you\'ve just had very soon %Lol%');
                     break;
-                case GAME_INFLATABLE_PLUG:
+                case GAME_TYPE.GAME_INFLATABLE_PLUG:
                     //QUALITY: Diversity
                     sendMessage('But because you\'ve disappointed your %DomHonorific% you will not be allowed to deflate it yet %Lol%');
                     startTimePassTasks(5, true);
                     break;
-                case GAME_BALL_CRUSHER:
+                case GAME_TYPE.GAME_BALL_CRUSHER:
                     sendMessage('But because you\'ve disappointed your %DomHonorific% you will not be allowed to relief the pressure just jet %Lol%');
                     startTimePassTasks(5, true);
                     break;
-                case GAME_E_STIM:
+                case GAME_TYPE.GAME_E_STIM:
                     sendMessage('But because you\'ve disappointed your %DomHonorific% you will not be allowed to turn it down just jet %Lol%');
                     startTimePassTasks(5, true);
                     break;

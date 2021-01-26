@@ -19,6 +19,7 @@ const MODULE = {
     PEG: 15,
     BONDAGE: 16,
     DEEPTHROAT: 17,
+    EDGING: 18,
 };
 
 

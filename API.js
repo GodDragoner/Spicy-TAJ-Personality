@@ -69,14 +69,19 @@ function isStroking() {}
 function sendInput(message) {}
 
 function showCategoryImage() {}
+function showCategoryVideo() {}
 
 function showTeaseImage() {}
 
 function sleep() {}
 
+
 function playAudio() {}
 function playSound() {}
 function stopAudio() {}
+
+function playVideo() {}
+function stopVideo() {}
 
 function showImage(path) {}
 

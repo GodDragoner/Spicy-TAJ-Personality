@@ -104,11 +104,11 @@ function playRandomSissyHypno() {
 }
 
 function getPunishmentPointsGoodThreshold() {
-    return 175 - (getStrictnessForCharacter()*50);
+    return 250 - (getStrictnessForCharacter()*50);
 }
 
 function getPunishmentPointsBadThreshold() {
-    return 400 - (getStrictnessForCharacter()*50);
+    return 500 - (getStrictnessForCharacter()*50);
 }
 
 function addPunishmentPoints(amount, reason = -1) {
@@ -179,7 +179,11 @@ function addPunishmentPoints(amount, reason = -1) {
 
     setDate(VARIABLE.LAST_PUNISHMENT_POINT_CHANGE);
 
-    setVar(VARIABLE.PUNISHMENT_POINTS, Math.max(0, points + amount*multiplier));
+    addPunishmentPointsDirectly(amount, multiplier, reason);
+}
+
+function addPunishmentPointsDirectly(amount, multiplier, reason = -1) {
+    setVar(VARIABLE.PUNISHMENT_POINTS, Math.max(0, amount + amount*multiplier));
 
     sendDebugMessage('Adding (with multiplier) ' + (amount*multiplier) + " punishment points");
     sendDebugMessage('Reason was ' + reason);

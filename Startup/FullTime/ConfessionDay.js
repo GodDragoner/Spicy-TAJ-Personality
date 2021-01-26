@@ -33,27 +33,28 @@
 
             let nothing = false;
 
+            //We don't want to increase the multiplier here because this would increase it every thursday, which is stupid
             if (answer.containsIgnoreCase("came", "orgasm", "cum", "cumming")) {
                 sendVirtualAssistantMessage("Cumming without permission...");
-                addPunishmentPoints(400, PUNISHMENT_REASON.NO_PERM_CUM);
+                addPunishmentPointsDirectly(400, 1, PUNISHMENT_REASON.NO_PERM_CUM);
             } else if (answer.containsIgnoreCase("ruin", "ruined")) {
                 sendVirtualAssistantMessage("Ruining without permission...");
-                addPunishmentPoints(250, PUNISHMENT_REASON.NO_PERM_RUINED);
+                addPunishmentPointsDirectly(250, 1, PUNISHMENT_REASON.NO_PERM_RUINED);
             } else if (answer.containsIgnoreCase("stroke", "stroking", "touched", "pleasured")) {
                 sendVirtualAssistantMessage("Stroking without permission...");
-                addPunishmentPoints(200, PUNISHMENT_REASON.NO_PERM_FAP);
+                addPunishmentPointsDirectly(200, 1, PUNISHMENT_REASON.NO_PERM_FAP);
             } else if (answer.containsIgnoreCase("lazy", "sloppy")) {
                 sendVirtualAssistantMessage("Lazy behaviour...");
-                addPunishmentPoints(150, PUNISHMENT_REASON.TOO_LAZY);
+                addPunishmentPointsDirectly(150, 1, PUNISHMENT_REASON.TOO_LAZY);
             } else if (answer.containsIgnoreCase("unhealthy")) {
                 sendVirtualAssistantMessage("Eating unhealthy...");
-                addPunishmentPoints(150);
+                addPunishmentPointsDirectly(150, 1);
             } else if(answer.isLike('nothing')) {
                 sendVirtualAssistantMessage('There is always something to confess %SlaveName%');
                 nothing = true;
             } else {
                 sendVirtualAssistantMessage("This isn't good slave!");
-                addPunishmentPoints(150);
+                addPunishmentPointsDirectly(150, 1);
             }
 
             if(nothing) {

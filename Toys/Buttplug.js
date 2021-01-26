@@ -452,6 +452,10 @@ function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
         for (let y = 0; y < buttplugs.length; y++) {
             let buttplug = buttplugs[y];
 
+            if(buttplug === currentPlug) {
+                continue;
+            }
+
             //Do we fulfil the min thickness and length?
             if (buttplug.diameter >= minThickness && buttplug.length >= minLength) {
                 //Don't over extent with too big plugs too quickly
@@ -470,6 +474,7 @@ function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
         }
     }
 
+    //Should only occur when buttplugs is empty (user has no plugs registered)
     if (availablePlugs.length === 0) {
         return null;
     }

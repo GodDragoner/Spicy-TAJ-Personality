@@ -1,12 +1,17 @@
-const GAME_STROKING = 0;
-const GAME_PARACHUTE = 1;
-const GAME_CBT = 2;
-const GAME_CHASTITY = 3;
-const GAME_BALL_CRUSHER = 4;
-const GAME_INFLATABLE_PLUG = 5;
-const GAME_GOLD = 6;
-const GAME_EDGE = 7;
-const GAME_E_STIM = 4;
+const GAME_TYPE = {
+    GAME_STROKING: 0,
+    GAME_PARACHUTE: 1,
+    GAME_CBT: 2,
+    GAME_CHASTITY: 3,
+    GAME_BALL_CRUSHER: 4,
+    GAME_INFLATABLE_PLUG: 5,
+    GAME_GOLD: 6,
+    GAME_EDGE: 7,
+    GAME_E_STIM: 8,
+    GAME_ANAL: 9,
+    GAME_UNLOCK_CHASTITY: 10,
+};
+
 
 {
     let pathLength = getPersonalityPath().length;

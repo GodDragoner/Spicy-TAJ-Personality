@@ -54,7 +54,7 @@ function startEdging(holdSeconds = 0, skipStop = false, endIn = EDGE_END_NORMAL)
     sendMessage(answers[randomInteger(0, answers.length - 1)], 0);
     setAudioBlocked(false);
 
-    if(randomInteger(0, 3) == 2) playSound("Audio/Spicy/Stroking/Edge/*.mp3");
+    if(isChance(33)) playSound("Audio/Spicy/Stroking/Edge/*.mp3");
 
     addEdge();
     setDate(VARIABLE.EDGE_STARTED_DATE);
@@ -74,14 +74,7 @@ function startEdging(holdSeconds = 0, skipStop = false, endIn = EDGE_END_NORMAL)
     if(holdSeconds !== undefined && holdSeconds !== 0) {
         stopStroking();
 
-        //Show the initial message to tell the sub to stay on the edge
-        setTempVar('initialEdgeHold', true);
-
-        setAudioBlocked(true);
-        run("Stroking/Taunt/HoldEdge/BasicHoldingTaunts.js");
-        setAudioBlocked(false);
-
-        sendHoldEdgeTaunts(holdSeconds);
+        holdSeconds(holdSeconds);
     }
 
     sendDebugMessage('Ending edge');
@@ -119,6 +112,40 @@ function startEdging(holdSeconds = 0, skipStop = false, endIn = EDGE_END_NORMAL)
     sendDebugMessage('Deleting Edge Variable');
 
     delVar(VARIABLE.EDGE_STARTED_DATE);
+}
+
+/**
+ * Holds an edge for a given amount of seconds
+ * @param holdSeconds The amount of seconds the edge is supposed to be held for
+ * @param disableTaunts Whether taunts should be enabled or disabled
+ * @param video Custom video object with a play function
+ */
+function holdEdge(holdSeconds, disableTaunts = false, video = null) {
+    //Show the initial message to tell the sub to stay on the edge
+    setTempVar('initialEdgeHold', true);
+
+    setAudioBlocked(true);
+    run("Stroking/Taunt/HoldEdge/BasicHoldingTaunts.js");
+    setAudioBlocked(false);
+
+    if(!disableTaunts) {
+        if(video !== null) {
+            video.play();
+        }
+
+        sendHoldEdgeTaunts(holdSeconds);
+
+        if(video !== null) {
+            stopVideo();
+        }
+    } else {
+        if(video !== null) {
+            video.play();
+            watchVideoForDuration(holdSeconds);
+        } else {
+            sleep(holdSeconds);
+        }
+    }
 }
 
 function sendEdgeTaunts() {

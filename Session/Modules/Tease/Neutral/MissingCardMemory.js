@@ -3,7 +3,7 @@
         if(isInChastity() && !hasMagicWand()) {
             runModuleCategory(CATEGORY_TEASE);
         } else {
-            startMissingCardMemory(GAME_EDGE);
+            startMissingCardMemory(GAME_TYPE.GAME_EDGE);
         }
     }
 }

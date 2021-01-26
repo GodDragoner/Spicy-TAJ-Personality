@@ -34,7 +34,7 @@
 
         if (ANAL_LIMIT.isAllowed()) {
             sendMessage('I think we should get right to business and prepare you for what might come %EmoteHappy%');
-            putInButtplug(false);
+            putInButtplug(true);
         }
 
     }

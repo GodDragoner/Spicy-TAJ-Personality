@@ -84,7 +84,7 @@
                         sendVirtualAssistantMessage(random("Good boy!", "You have!", "Good little slut", "Good girl", "Good sissy", "Good slave"));
                         sendVirtualAssistantMessage("Good behaviour is rewarded!");
                         sendVirtualAssistantMessage("Transferring gold...");
-                        addGold(randomInteger(50, 200));
+                        rewardGoldMedium(false);
                     }
                 }
 

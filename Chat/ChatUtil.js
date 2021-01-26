@@ -100,7 +100,7 @@ function sendPinnoteMessage(message, wait, skipImage) {
     //Show image
     if (skipImage === undefined || skipImage instanceof Boolean && !skipImage) {
         if (!isImagesLocked()) {
-            showImage("Images/Spicy/Assistant/" + (ASSISTANT_CURRENT_SET_ID + 1) + "/*.jpg");
+            showAssistantImage();
         }
     }
 
@@ -127,7 +127,7 @@ function sendVirtualAssistantMessage(message, wait, skipImage) {
     //Show image
     if (skipImage === undefined || skipImage instanceof Boolean && !skipImage) {
         if (!isImagesLocked()) {
-            showImage("Images/Spicy/Assistant/" + (ASSISTANT_CURRENT_SET_ID + 1) + "/*.jpg");
+            showAssistantImage();
         }
     }
 
@@ -459,20 +459,7 @@ function sendNurseMessage(message, picset, wait, skipImage) {
 
     //Show image
     if (skipImage === undefined || !skipImage) {
-        switch (picset) {
-            case 1 :
-                showImage("Images/Spicy/Punishment/Nurses/" + (ASSISTANT_CURRENT_SET_ID % 10 + 1) + "/*.jpg");
-                break;
-            case 2 :
-                showImage("Images/Spicy/Punishment/Reception/BusyPC/" + (ASSISTANT_CURRENT_SET_ID % 5 + 1) + "/*.jpg");
-                break;
-            case 3 :
-                showImage("Images/Spicy/Punishment/Reception/BusyPhone/" + (ASSISTANT_CURRENT_SET_ID % 5 + 1) + "/*.jpg");
-                break;
-            default:
-                showImage("Images/Spicy/Punishment/Nurses/" + (ASSISTANT_CURRENT_SET_ID % 10 + 1) + "/*.jpg");
-                break;
-        }
+        showImage("Images/Spicy/Punishment/Nurses/" + (ASSISTANT_CURRENT_SET_ID % 10 + 1) + "/*.jpg");
     }
 
     if(!RAPID_TESTING) {

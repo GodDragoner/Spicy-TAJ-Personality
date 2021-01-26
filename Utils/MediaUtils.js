@@ -2,8 +2,8 @@ function watchVideoForDuration(durationSeconds) {
     sendDebugMessage('Waiting for video player to start');
 
     // We need to wait for the player to ready up and start playing before continuing
-    let totalMillisecondsWaitedForVideoToStart = 0
-    const maxMillisecondsToWaitForVideoToStart = 2000
+    let totalMillisecondsWaitedForVideoToStart = 0;
+    const maxMillisecondsToWaitForVideoToStart = 2000;
 
     while (!isPlayingVideo()) {
         if (totalMillisecondsWaitedForVideoToStart >= maxMillisecondsToWaitForVideoToStart) {
@@ -44,4 +44,12 @@ function getRandomMediaCategory() {
         'BOOBS',
         'BUTTS'
     );
+}
+
+function createMediaCategoryVideo(category) {
+    return {
+        play: function() {
+            showCategoryVideo(category);
+        }
+    }
 }

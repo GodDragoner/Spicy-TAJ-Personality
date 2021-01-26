@@ -6,8 +6,10 @@ function getTodaysSlaveTask() {
 
     let lines = new java.util.ArrayList();
     lines.add('Good Morning %SlaveName%');
+    let lineCountGreeting = lines.size();
 
-    switch(randomInteger(0, 23)) {
+    //Only 23 exist so a 7/30 chance for no tasks
+    switch(randomInteger(0, 30)) {
         case 0:
             var randomMeal = random('dinner', 'lunch', 'breakfast');
             lines.add('For ' + randomMeal + ' today I want you to put on a blindfold while standing in front of your closed fridge');
@@ -106,13 +108,24 @@ function getTodaysSlaveTask() {
         case 23:
             lines.add('No coffee today. Tea should take the place of coffee today');
             break;
+        default:
+            //No tasks today
+            break;
     }
 
 
     //Today also punishment tasks
     if (feelsLikePunishingSlave()) {
-        lines.add('%InAddition% ' + random('since I am in the mood for some punishment', 'since I feel like a punishment is in place', 'since I feel like punishing you', 'since you\'ve infuriated me',
-            'since you\'ve pissed me off'));
+        let pissedOff = random('since I am in the mood for some punishment', 'since I feel like a punishment is in place', 'since I feel like punishing you', 'since you\'ve infuriated me',
+            'since you\'ve pissed me off');
+
+        //No normal task to day
+        if(lineCountGreeting === lines.size()) {
+            lines.add(capitalize(pissedOff));
+        } else {
+            lines.add('%InAddition% ' + pissedOff);
+        }
+
         switch(randomInteger(0, 11)) {
             case 0:
                 lines.add('Today I want you to stay on all fours for ' + getDailyTaskTime() + ' minutes');
@@ -236,10 +249,14 @@ function getTodaysSlaveTask() {
         }
     }
 
+    if(lineCountGreeting === lines.size()) {
+        lines.add('Today ' + random('you\'ve deserved to be free of any tasks', 'I feel like not giving you any tasks', 'I want you to be free of any tasks', 'I think you\'ve deserved to be free of tasks', 'you\'ve earned to be free of any tasks'));
+        lines.add('Enjoy!');
+    }
+
 
     //Special Tasks
     //Edge, edge and more edge between 6 and midnight.  No cumming, and any precum must be licked clean
-
 
     setVar(VARIABLE.SLAVE_TASK_TODAY, lines);
     setDate(VARIABLE.SLAVE_TASK_SET);

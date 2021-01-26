@@ -49,41 +49,53 @@ Also, still on workmode, one thing that I miss about Cyber Mistress are small pe
 
     answer1.clearOptions();
 
-    sendVirtualAssistantMessage("Would you like these activities to occur often, Sometimes, rare or completely random?", 0);
+    //0 === never interrupt
     let frequencyNumber = 0;
-    let frequencyAnswer = createInput("Often", "Sometimes", "Rare", "Completely random");
-    while (true) {
-        if (frequencyAnswer.isLike("often")) {
-            frequencyNumber = 1;
-            break;
-        } else if (frequencyAnswer.isLike("sometimes")) {
-            frequencyNumber = 2;
-            break;
-        } else if (frequencyAnswer.isLike("rare")) {
-            frequencyNumber = 3;
-            break;
-        } else if (frequencyAnswer.isLike("random")) {
-            frequencyNumber = 4;
-            break;
-        } else {
-            sendVirtualAssistantMessage("often, sometimes, rare or random?");
-            frequencyAnswer.loop();
+
+    if(teaseActive ||exerciseActive) {
+        sendVirtualAssistantMessage("Would you like these activities to occur often, sometimes, rarely or completely random?", 0);
+
+        let frequencyAnswer = createInput("Often", "Sometimes", "Rare", "Completely random");
+        while (true) {
+            if (frequencyAnswer.isLike("often")) {
+                frequencyNumber = 1;
+                break;
+            } else if (frequencyAnswer.isLike("sometimes")) {
+                frequencyNumber = 2;
+                break;
+            } else if (frequencyAnswer.isLike("rare")) {
+                frequencyNumber = 3;
+                break;
+            } else if (frequencyAnswer.isLike("random")) {
+                frequencyNumber = 4;
+                break;
+            } else {
+                sendVirtualAssistantMessage("often, sometimes, rare or random?");
+                frequencyAnswer.loop();
+            }
         }
+
+        frequencyAnswer.clearOptions();
     }
-    frequencyAnswer.clearOptions();
+
 
     sendVirtualAssistantMessage("Work hard slave");
-    sendVirtualAssistantMessage("Return to me whenever you hear my bell");
-    sendVirtualAssistantMessage("Fail to return within 20 seconds of hearing it and you will be punished.");
+
+    if(frequencyNumber !== 0) {
+        sendVirtualAssistantMessage("Return to me whenever you hear my bell");
+        sendVirtualAssistantMessage("Fail to return within 20 seconds of hearing it and you will be punished.");
+    }
 
     CHORE_WATCH.reset();
     CHORE_WATCH.start();
     let working = true;
 
     while (working) {
-        showImage("Images/Spicy/GNMBackground/StudyMode.jpg");
+        showImage("Images/Spicy/Grounding/BlackBase.jpg");
 
         switch (frequencyNumber) {
+            case 0:
+                answer1 = createInput("Exit");
             case 1:
                 answer1 = createInput(randomInteger(180, 300), "Exit");
                 break;

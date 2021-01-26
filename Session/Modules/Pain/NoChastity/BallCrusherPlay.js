@@ -25,7 +25,7 @@
                     ballCrusherGame();
                     break;
                 case 2:
-                    startMissingCardMemory(GAME_BALL_CRUSHER);
+                    startMissingCardMemory(GAME_TYPE.GAME_BALL_CRUSHER);
                     break;
             }
 

@@ -18,7 +18,7 @@ function updatePictureSet() {
         const lastAssistantDressChange = getDate("lastAssistantDressChange");
         const date = new Date();
 
-        //If the day hasn"t changed, or if it"s midnight don"t change dress
+        //If the day hasn't changed, or if it's midnight don't change dress
         if(lastAssistantDressChange.getDay() == date.getDate() || date.getHours() < 6) {
             ASSISTANT_CURRENT_SET_ID = getVar("currentAssistantSetId");
             return;
@@ -49,7 +49,7 @@ function updatePictureSet() {
     const unusedDresses = [];
 
     if(usedDressesAmount < 30) {
-        for (let x = 0; x < 31; x++) {
+        for (let x = 1; x <= 31; x++) {
             //Check whether that dress is already used
             if (!usedDresses.contains(+"," + x + ",")) {
                 unusedDresses.push(x);
@@ -67,7 +67,7 @@ function updatePictureSet() {
         }
     }
 
-    const dressNumber = unusedDresses[randomInteger(0, unusedDresses.length - 1)];
+    const dressNumber = Math.max(1, Math.min(31, unusedDresses[randomInteger(0, unusedDresses.length - 1)]));
 
     //Update the list of used dresses
     setVar("usedVirtualAssistantDresses", usedDresses + dressNumber + ",");
@@ -75,4 +75,12 @@ function updatePictureSet() {
     //Set the current set
     setVar("currentAssistantSetId", dressNumber);
     ASSISTANT_CURRENT_SET_ID = dressNumber;
+}
+
+function showAssistantImage() {
+    if(ASSISTANT_CURRENT_SET_ID === ASSISTANT_CHRISTMAS_SET_ID) {
+        showImage("Images/Spicy/Assistant/Christmas/*.jpg");
+    } else {
+        showImage("Images/Spicy/Assistant/" + ASSISTANT_CURRENT_SET_ID + "/*.jpg");
+    }
 }

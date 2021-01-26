@@ -308,6 +308,7 @@ function appendPenetratingSession(toy) {
 
     let blowjob = isChance(30);
     let currentBlowjob = false;
+
     if (blowjob) {
         blowjob = addBlowjobToFucking(toy);
         currentBlowjob = blowjob;
