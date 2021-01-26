@@ -60,7 +60,7 @@ function checkBlowjobExercise() {
 
         incrementVar(VARIABLE.BLOWJOB_EXPERIENCE, getVar(VARIABLE.TASK_BLOWJOB_EXPERIENCE, 0));
 
-        if (getTrainingEXPForLevel(getVar(VARIABLE.BLOWJOB_LEVEL) + 1) <= getVar(VARIABLE.BLOWJOB_EXPERIENCE)) {
+        while (getTrainingEXPForLevel(getVar(VARIABLE.BLOWJOB_LEVEL) + 1) <= getVar(VARIABLE.BLOWJOB_EXPERIENCE)) {
             incrementVar(VARIABLE.BLOWJOB_LEVEL, 1);
         }
 

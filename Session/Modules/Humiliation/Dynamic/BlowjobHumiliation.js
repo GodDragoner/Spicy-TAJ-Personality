@@ -49,6 +49,9 @@
 
                     sendMessage("Good work %SlaveName%");
                     sendMessage("You can put that " + toy + " aside for now");
+
+                    //Add some exp to blowjob level training
+                    incrementVar(VARIABLE.BLOWJOB_EXPERIENCE, randomInteger(45, 90));
                 }
             }
         }

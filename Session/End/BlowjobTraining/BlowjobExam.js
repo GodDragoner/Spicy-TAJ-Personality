@@ -14,11 +14,13 @@
                 sendMessage("The exam is something different");
                 sendMessage("I want you to celebrate it");
                 sendMessage("After this session you are allowed to orgasm however you like!");
-                sendMessage("You will be allowed to remove your %ChastityCage% too %EmoteHappy%");
                 sendMessage("But...");
                 sendMessage("Whenever you are stimulating yourself you must be holding a deepthroat %Grin%");
-                sendMessage('And you will only have 10 minutes to do so');
+                sendMessage('And you will only have 15 minutes to do so');
                 sendMessage('If you run out of time, it\'s no orgasm for you');
+                sendMessage("If I decide to lock you up you\'ll need to find a way to make you cum inside the %ChastityCage%");
+                sendMessage("Use your vibrator or whatever you want to");
+                sendMessage("Just don\'t remove that %ChastityCage%");
 
                 if(isVar(VARIABLE.TRAINING_ORGASM_TODAY)) {
                     sendMessage('I know I am already allowing you an orgasm for another training today');

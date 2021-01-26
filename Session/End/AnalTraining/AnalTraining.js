@@ -65,7 +65,7 @@ function checkAnalExercise() {
 
         incrementVar(VARIABLE.ASS_EXPERIENCE, getVar(VARIABLE.TASK_ASS_EXPERIENCE));
 
-        if (getTrainingEXPForLevel(getVar(VARIABLE.ASS_LEVEL) + 1) <= getVar(VARIABLE.ASS_EXPERIENCE)) {
+        while (getTrainingEXPForLevel(getVar(VARIABLE.ASS_LEVEL) + 1) <= getVar(VARIABLE.ASS_EXPERIENCE)) {
             incrementVar(VARIABLE.ASS_LEVEL, 1);
         }
 
