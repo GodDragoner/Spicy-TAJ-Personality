@@ -5,11 +5,18 @@ const CHASTITY_CAGES = [];
 
 let currentChastityCage;
 
+loadChastityCages();
+
 if (isVar(VARIABLE.ACTIVE_CHASTITY_CAGE)) {
     currentChastityCage = getChastityCageByName(getVar(VARIABLE.ACTIVE_CHASTITY_CAGE));
+
+    if(!isUndefined(currentChastityCage)) {
+        sendDebugMessage('Active chastity cage: ' + currentChastityCage.name);
+    }
 } else {
     currentChastityCage = null;
 }
+
 
 const BALL_TRAP_TYPE = {
     FULL_BELT: 0,

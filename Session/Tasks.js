@@ -131,6 +131,7 @@ function startTimePassTasks(durationMinutes, allowTeasing = true) {
 
                 break;
             case 4:
+                //TODO: Force buttplug to stay in if like this is used during inflateable plug play
                 interactWithRandomToys();
                 break;
             case 5:

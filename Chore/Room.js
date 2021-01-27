@@ -2,8 +2,11 @@ const HOME_ROOMS = [];
 loadRooms();
 
 function createNewRoom(name, size) {
-    HOME_ROOMS.push(createRoom(name, size));
+    let room = createRoom(name, size);
+    HOME_ROOMS.push(room);
     saveRooms();
+
+    return room;
 }
 
 function loadRooms() {
@@ -14,24 +17,12 @@ function loadRooms() {
 
         for (let x = 0; x < arrayList.size(); x++) {
             let entry = arrayList.get(x);
-            let splitArray = entry.split(',');
 
-            let name = 'undefined';
-            let size = -1;
-
-            for (let y = 0; y < splitArray.length; y++) {
-                let valueEntry = splitArray[y];
-
-                if (valueEntry.indexOf('name:') !== -1) {
-                    name = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                } else if (valueEntry.indexOf('size:') !== -1) {
-                    size = valueEntry.substr(valueEntry.indexOf(':') + 1, valueEntry.length);
-                }
-            }
-
-            HOME_ROOMS.push(createRoom(name, size));
+            HOME_ROOMS.push(createRoom('undefined', -1).fromString(entry));
         }
     }
+
+    sendDebugMessage('Loaded ' + HOME_ROOMS.length + ' rooms');
 }
 
 function saveRooms() {
@@ -56,7 +47,7 @@ function getRoomByName(name) {
 
 function createRoom(name, size) {
     return {
-        name: name, size: size,
+        name: name, size: size, safeForKink: undefined, windows: undefined,
 
         registerCleanTime: function (timeSeconds, choreType) {
             //Increment chore amount
@@ -68,8 +59,8 @@ function createRoom(name, size) {
             } else {
                 incrementVar(this.getAverageCleanTimeVarName(choreType), timeSeconds);
 
-                if (this.getChoreAmount(choreType) == 5) {
-                    setVar(this.getAverageCleanTimeVarName(choreType), Math.ceil(this.getAverageCleanTime(choreType) / 5));
+                if (this.getChoreAmount(choreType) == this.getChoreAmountForAverageSet()) {
+                    setVar(this.getAverageCleanTimeVarName(choreType), Math.ceil(this.getAverageCleanTime(choreType) / this.getChoreAmountForAverageSet()));
                 }
 
                 return false;
@@ -77,7 +68,11 @@ function createRoom(name, size) {
         },
 
         isAverageSet: function (choreType) {
-            return this.getChoreAmount(choreType) > 5;
+            return this.getChoreAmount(choreType) > this.getChoreAmountForAverageSet();
+        },
+
+        getChoreAmountForAverageSet: function () {
+            return 5;
         },
 
         isWithinTimeBounds: function (time, choreType) {
@@ -128,7 +123,17 @@ function createRoom(name, size) {
             sendMessageBasedOnSender('Tell me when you are ready to go.', 0);
             waitForDone(1000);
 
-            let toysAttached = sendKinkyChoreInstructions(choreType);
+            if (isUndefined(this.windows) || isUndefined(this.safeForKink)) {
+                askForRoomSafety(this);
+                saveRooms();
+            }
+
+            let toysAttached = [];
+
+            //Only do kinky stuff if the room is safe for it
+            if (!this.windows && this.safeForKink) {
+                toysAttached = sendKinkyChoreInstructions(choreType);
+            }
 
             sendMessageBasedOnSender('Okay then...');
             sendMessageBasedOnSender('You can go ahead and start with your chore...');
@@ -145,10 +150,10 @@ function createRoom(name, size) {
                 toy = toysAttached[x];
 
                 //Will trigger scripts based on the toy
-                if(toy === BUTTPLUG_TOY) {
+                if (toy === BUTTPLUG_TOY) {
                     sendMessageBasedOnSender('You can now remove the plug from your ass %SlaveName%');
                     setPlugRemoved();
-                } else if(toy === COLLAR_TOY && RULE_ALWAYS_WEAR_COLLAR.isActive()) {
+                } else if (toy === COLLAR_TOY && RULE_ALWAYS_WEAR_COLLAR.isActive()) {
                     //Continue, since collar stays on
                     continue;
                 } else {
@@ -236,7 +241,7 @@ function createRoom(name, size) {
                         sendMessageBasedOnSender('I gave you a warning last time!');
                         sendMessageBasedOnSender('%HaveToPunish%');
                         sendMessageBasedOnSender('I have assigned you punishment points');
-                        addPunishmentPoints(100), PUNISHMENT_REASON.TOO_LAZY;
+                        addPunishmentPoints(100, PUNISHMENT_REASON.TOO_LAZY);
                     } else {
                         sendMessageBasedOnSender('I\'m giving you a warning this time %SlaveName%');
                         sendMessageBasedOnSender('Don\'t disappoint me again!');
@@ -376,8 +381,20 @@ function createRoom(name, size) {
             return Math.ceil(this.getAverageCleanTime(choreType) * 5 / 4 * tempChoreTimeMultiplier);
         },
 
+        isSafeForKink: function () {
+            return this.safeForKink;
+        },
+
+        hasWindows: function () {
+            return this.windows;
+        },
+
         toString: function () {
-            return 'name:' + this.name + ",size:" + this.size;
+            return serializeObject(this);
+        },
+
+        fromString: function (string) {
+            return deserializeObject(this, string);
         },
 
     };

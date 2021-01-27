@@ -18,9 +18,12 @@
                         sendVirtualAssistantMessage('You will have to clean yourself with your %ChastityCage% on %Grin%');
                     } else {
                         answer.clearOptions();
+                        setCurrentSender(SENDER_ASSISTANT);
 
                         sendVirtualAssistantMessage('Well I won\'t deny you the possibility to clean yourself %SlaveName%');
                         unlockChastityKey();
+
+                        setCurrentSender(SENDER_TAJ);
 
                         sendVirtualAssistantMessage('Now go ahead and clean yourself and then return to me');
                         sendVirtualAssistantMessage('I will wait for you');

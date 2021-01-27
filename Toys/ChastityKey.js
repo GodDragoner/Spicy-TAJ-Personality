@@ -53,18 +53,18 @@ function getChastityCombinationFile() {
 
 function unlockChastityKey() {
     if(getVar(VARIABLE.CHASTITY_KEY_LOCKED_COMBINATION, false)) {
-        sendMessage('%SlaveName%...');
-        sendMessage('Fetch the casket with your chastity key');
+        sendMessageBasedOnSender('%SlaveName%...');
+        sendMessageBasedOnSender('Fetch the casket with your chastity key');
         lockImages();
-        sendMessage('This is your combination %SlaveName%', 0);
+        sendMessageBasedOnSender('This is your combination %SlaveName%', 0);
         showImage(getChastityCombinationFile(), 5);
-        sendMessage('Get your keys out of the box and tell me when you are ready to continue');
+        sendMessageBasedOnSender('Get your keys out of the box and tell me when you are ready to continue');
         waitForDone(100000);
         setVar(VARIABLE.CHASTITY_KEY_LOCKED_COMBINATION, false);
-        sendMessage('%Good%');
+        sendMessageBasedOnSender('%Good%');
         getChastityCombinationFile().delete();
         unlockImages();
     } else {
-        sendMessage('Fetch your keys for your %ChastityCage% %SlaveName%');
+        sendMessageBasedOnSender('Fetch your keys for your %ChastityCage% %SlaveName%');
     }
 }

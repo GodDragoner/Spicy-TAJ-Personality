@@ -32,6 +32,17 @@ function doButtplugASMClean(cleanType, toy = 'plug') {
     let toldStayGagged = false;
     let restoreGag = false;
 
+    //Check clothespins on tongue
+    if(BODY_PART_TONGUE.currentClamps > 0) {
+        if(BODY_PART_TONGUE.getLastClampInteraction().addMinute(getMinPlayTimeBeforeToySwap()).hasPassed() || isChance(50)) {
+            sendMessage('But I think you should keep that pin on your tongue so...');
+            sendMessage('I\'ll spare you today %Grin%');
+            return false;
+        }
+
+        sendMessage('Well you need your tongue so...');
+        putClampsOff(BODY_PART_TONGUE.currentClamps, BODY_PART_TONGUE, false, true);
+    }
 
     if(isGaged()) {
         //If already spider gag we are lucky
@@ -174,8 +185,8 @@ function doButtplugASMClean(cleanType, toy = 'plug') {
         sendMessage('You can stop now and put the ' + toy + ' aside');
     }
 
-    //Restore gag
-    if(restoreGag) {
+    //Restore gag (restore gag might be true, but we might end up not wanting to restore the gag so this makes sure we are)
+    if(cachedGagType !== null) {
         putInGag(cachedGagType);
     }
 

@@ -590,7 +590,7 @@ function removeButtplug(end = false) {
             choice = randomInteger(ASM_CLEAN_TYPE_BLOW, ASM_CLEAN_TYPE_LICK);
         }
 
-        if (doButtplugASMClean(choice)) {
+        if (doButtplugASMClean(choice) && currentPlug !== null) {
             //Plug was cleaned
             currentPlug.clean = true;
         }

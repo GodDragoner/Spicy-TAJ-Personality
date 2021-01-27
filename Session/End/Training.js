@@ -19,6 +19,16 @@ function getTrainingEXPForLevel(level) {
     return exp;
 }
 
+function getTrainingsLevelForExp(exp) {
+    let level = 1;
+
+    while(getTrainingEXPForLevel(level) < exp) {
+        level++;
+    }
+
+    return Math.max(1, --level);
+}
+
 function checkTasksInRow(tasks, training) {
     let happy = [
         'I am very happy %SlaveName%',

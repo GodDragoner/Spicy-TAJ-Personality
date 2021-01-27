@@ -1,4 +1,4 @@
-const analTasks = [];
+ const analTasks = [];
 
 {
     let taskId = 0;

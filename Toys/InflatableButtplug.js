@@ -35,6 +35,8 @@ function putInInflatablePlug() {
         waitForDone();
         setTempVar(VARIABLE.IS_PLUGGED, true);
 
+        currentPlug = INFLATABLE_BUTT_PLUG;
+
         return true;
     }
 

@@ -165,6 +165,33 @@ const instance = Java.type('me.goddragon.teaseai.TeaseAI').application;
     });
     runGui(new CustomRunnable());
 */
+
+//Result shows roughly 19-22 tasks before level 30 is reached
+/*let startExp = 0;
+
+let trainingsDone = 0;
+
+let restoreLevel = getVar(VARIABLE.ASS_LEVEL);
+
+while(startExp < getTrainingEXPForLevel(30)) {
+    let level = getTrainingsLevelForExp(startExp);
+    setVar(VARIABLE.ASS_LEVEL, level);
+
+    let task = getRandomApplicableTask(analTasks);
+    let mult = getTrainingEXPMultiplier(trainingsDone);
+
+    sendDebugMessage('Level currently: ' + level);
+    sendDebugMessage('Multiplier currently: ' + mult);
+    sendDebugMessage('Task awarding ' + task.exp);
+
+    startExp += mult*task.exp;
+    trainingsDone++;
+}
+
+sendDebugMessage('Simulation ended');
+sendDebugMessage('Trainings required: ' + trainingsDone + ' for a total of ' + startExp + ' exp');
+
+setVar(VARIABLE.ASS_LEVEL, restoreLevel);*/
 {
-    startEdging(5);
+    run('Session/End/DecideEnd.js')
 }

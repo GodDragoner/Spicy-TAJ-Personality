@@ -203,7 +203,21 @@ function fetchBlowjobDildo() {
     }
 }
 
-function getDildo(blowjob = false) {
+function filterListForObject(toFilterDildo, dildos = DILDOS) {
+    let returnArray = [];
+
+    for (let y = 0; y < dildos.length; y++) {
+        let dildo = dildos[y];
+
+        if(dildo !== toFilterDildo) {
+            returnArray.push(dildo);
+        }
+    }
+
+    return returnArray;
+}
+
+function getDildo(blowjob = false, dildos = DILDOS) {
     if (!blowjob) {
         return getAnalDildo();
     } else {
@@ -225,9 +239,9 @@ function getDildo(blowjob = false) {
 
         let tries = 0;
 
-        while (availableDildos.length === 0 && DILDOS.length !== 0 && tries < 20) {
-            for (let y = 0; y < DILDOS.length; y++) {
-                let dildo = DILDOS[y];
+        while (availableDildos.length === 0 && dildos.length !== 0 && tries < 20) {
+            for (let y = 0; y < dildos.length; y++) {
+                let dildo = dildos[y];
 
                 //Ignore dildos non silicone, no !== because that breaks the comparison
                 if (dildo.material != MATERIAL.SILICON) {

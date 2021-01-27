@@ -62,12 +62,14 @@ function getTimeForChores() {
 
     todo *= (1 + mood/5*(getStrictnessForCharacter() + 1));
 
+    sendDebugMessage('Decided for ' + todo + ' minutes of chores');
+
     return Math.min(200, todo);
 }
 
 function accountTimeSpendOnChore(minutes, skipGold = false) {
     //Min 15 minutes
-    let minute = Math.min(15, minutes);
+    let minute = Math.max(15, minutes);
 
     for(let x = 0; x < Math.floor(minute/15); x++) {
         changeMeritLow();
@@ -201,7 +203,10 @@ function runChoreIntroduction() {
                     }
                 }
 
-                createNewRoom(name, size);
+                let room = createNewRoom(name, size);
+
+                askForRoomSafety(room);
+                saveRooms();
             }
             break;
         } else {
@@ -669,4 +674,17 @@ function sendKinkyChoreInstructions(choreType) {
     }
 
     return attachedToys;
+}
+
+function askForRoomSafety(room) {
+    sendVirtualAssistantMessage('Next I would like to know...');
+    sendVirtualAssistantMessage('Does that room have windows that neighbours can usually see through?');
+
+    room.windows = createYesOrNoQuestion();
+
+    sendVirtualAssistantMessage('Now I need to know...');
+    sendVirtualAssistantMessage('Is that room safe for kinky chores?');
+    sendVirtualAssistantMessage('It\'s not safe if there is for example a risk of running into other people!');
+
+    room.safeForKink = createYesOrNoQuestion();
 }

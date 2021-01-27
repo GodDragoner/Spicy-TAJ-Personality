@@ -371,17 +371,30 @@ function addBlowjobToFucking(toy, mountedToWall = false, inFront = false) {
     const hasSecondDildo = DILDOS.length > 1;
 
     if (hasSecondDildo) {
-        if (!fetchDildoToy(toy = getDildo(true).name)) {
+        let dildos = DILDOS;
+        if(toy != 'finger') {
+            dildos = filterListForObject(getDildoByName(toy), DILDOS);
+        }
+
+        let secondDildo = getDildo(true, dildos);
+
+        //Check if couldn't find second dildo to use
+        if(secondDildo.name != toy) {
+            if (!fetchDildoToy(toy = secondDildo.name)) {
+                return false;
+            }
+
+            if (!ASM_LIMIT.isAllowed()) {
+                sendMessage('You may clean your ' + toy + ' if need be before we are continuing');
+                sendMessage('So tell me when you are ready to continue');
+                waitForDone();
+            }
+
+            startBlowjobFuckingInstructions(toy, mountedToWall, inFront);
+        } else {
+            sendDebugMessage('Failed to find second dildo for blowjob fucking because got ' + secondDildo.name);
             return false;
         }
-
-        if (!ASM_LIMIT.isAllowed()) {
-            sendMessage('You may clean your ' + toy + ' if need be before we are continuing');
-            sendMessage('So tell me when you are ready to continue');
-            waitForDone();
-        }
-
-        startBlowjobFuckingInstructions(toy, mountedToWall, inFront);
     }
 
     return hasSecondDildo;

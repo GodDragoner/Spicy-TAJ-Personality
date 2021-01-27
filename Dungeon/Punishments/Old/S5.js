@@ -176,7 +176,7 @@ sendMessage("%Grin%");
 	//@TempFlag(PunishmentFailed)
 	setVar("PunishmentFailed", true);
 	setVar("PunishmentComplete", true);
-	setVar("punishmentCompleted", 05);
+	setVar("punishmentCompleted", 5);
 	run("Dungeon/PunishmentBaseEnd.js");
  } else {
 	
@@ -186,7 +186,7 @@ sendMessage("%Grin%");
 	//@TempFlag(PunishmentComplete)
 
 	setVar("PunishmentComplete", true);
-	setVar("punishmentCompleted", 05);
+	setVar("punishmentCompleted", 5);
 	run("Dungeon/PunishmentBaseEnd.js");
 
  }
