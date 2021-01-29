@@ -192,7 +192,7 @@ function getButtplugClosestAround(diameter, plugList = buttplugs) {
 
     //Default to random plug
     sendDebugMessage('Failed to find buttplug fitting size plug, returning random one');
-    return random(buttplugs);
+    return random(plugList);
 }
 
 function hasButtplugToy() {

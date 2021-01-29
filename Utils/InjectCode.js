@@ -193,5 +193,19 @@ sendDebugMessage('Trainings required: ' + trainingsDone + ' for a total of ' + s
 
 setVar(VARIABLE.ASS_LEVEL, restoreLevel);*/
 {
-    run('Session/End/DecideEnd.js')
+    let out = 0;
+    let inChastity = 0;
+
+    for(let x = 0; x < 100; x++) {
+        let decision = willKeepChastityOn();
+
+        if(decision) {
+            inChastity++;
+        } else {
+            out++;
+        }
+    }
+
+    sendDebugMessage('Out: ' + out + ' In: ' + inChastity);
+    sendDebugMessage(getAnalDildoForTask().name);
 }

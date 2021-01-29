@@ -98,13 +98,14 @@ function getAnalDildoForTask(minLength = 0, minThickness = 0) {
     }
 
     if (minThickness === 0) {
-        minThickness = Math.max(2.5, assLevel / 6);
+        minThickness = Math.max(2.5, getUsedToDiameter());
     }
 
     for (let y = 0; y < DILDOS.length; y++) {
         let dildo = DILDOS[y];
 
-        if (dildo.diameter >= minThickness && dildo.length >= minLength && dildo.diameter <= minThickness + 2) {
+        //Filter dildos for min length
+        if (dildo.length >= minLength) {
             availableDildos.push(dildo);
         }
     }
@@ -117,7 +118,8 @@ function getAnalDildoForTask(minLength = 0, minThickness = 0) {
         return DILDOS[randomInteger(0, DILDOS.length - 1)];
     }
 
-    return availableDildos[randomInteger(0, availableDildos.length - 1)];
+    //Get the closest dildo around the given thickness
+    return getButtplugClosestAround(minThickness, availableDildos);
 }
 
 /**

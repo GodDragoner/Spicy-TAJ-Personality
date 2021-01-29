@@ -24,6 +24,8 @@ let RULE_ALWAYS_STROKE_INDEX_AND_THUMB;
 
 let RULE_FOLLOW_DAILY_TASKS;
 
+let RULE_ALWAYS_WEAR_WOMAN_SOCKS;
+
 {
     let ruleId = 0;
 
@@ -638,6 +640,52 @@ let RULE_FOLLOW_DAILY_TASKS;
         this.setActive(true);
         return true;
     };
+
+    rule = RULE_ALWAYS_WEAR_WOMAN_SOCKS = createRule(ruleId++, false);
+
+    rule.getRulePrint = function () {
+        return 'Home alone you must not wear male socks';
+    };
+
+    rule.canBeActivated = function () {
+        return SISSY_LIMIT.isAllowed();
+    };
+
+    rule.sendIntroduction = function () {
+        sendMessage('Tell me...');
+
+        let answer = sendInput('How did you adjust to wearing panties instead of normal underwear?');
+
+        if(answer.isLike('good', 'well', 'great')) {
+            sendMessage('Looks like you got that slut right within you %Grin%');
+        } else if(answer.isLike('bad', 'worse', 'strange', 'weird', 'awkward')) {
+            sendMessage('You can\'t complain %Lol%');
+            sendMessage('You wanted to be a sissy');
+            sendMessage('And even if you didn\'t it\'s what I want');
+            sendMessage('And that\'s all that should matter to you anyway %EmoteHappy%');
+        } else {
+
+        }
+
+        sendMessage('Well then');
+        sendMessage('I think you are ready for the next step');
+        sendMessage('Or more like you WILL take the next step %Lol%');
+
+        sendMessage('From now on any male socks will be denied to you');
+        sendMessage('You will wear pink socks, overknees, stockings or something similar');
+        sendMessage('There is always the option to go barefoot if that suits you %Lol%');
+        sendMessage('Now...');
+        sendMessage('I don\'t want to force you into any strange public situation');
+        sendMessage('So I will only force you to wear them when you are alone');
+
+        sendMessage('But if you feel bold enough to rock them in public as well');
+        sendMessage('That\'d make me very happy %EmoteHappy%');
+
+        this.setActive(true);
+        return true;
+    };
+
+    AVAILABLE_RULES.push(rule);
 
     //Update all existing rules
     for (let index = 0; index < AVAILABLE_RULES.length; index++) {

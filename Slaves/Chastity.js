@@ -75,7 +75,7 @@ function askForMaxLockupTime() {
 
 function willKeepChastityOn(end) {
     //Higher choice value -> chastity will probably be removed
-    let choice = randomInteger(1, 100);
+    let choice = randomInteger(15, 100);
 
     sendDebugMessage('Rolled initial chance of ' + choice + ' to be unlocked');
 
@@ -97,15 +97,15 @@ function willKeepChastityOn(end) {
 
     if (getVar(VARIABLE.HAPPINESS) > getVar(VARIABLE.ANGER)) {
         sendDebugMessage('Happiness is higher than anger so increasing unlock chance');
-        choice += randomInteger(1, 15);
+        choice += randomInteger(1, 10);
     } else {
         sendDebugMessage('Anger is higher than happiness so decreasing unlock chance');
-        choice -= randomInteger(1, 15);
+        choice -= randomInteger(1, 10);
     }
 
     if (getVar(VARIABLE.LUST) > 30) {
         sendDebugMessage('Lust is bigger than 30, so increasing unlock chance');
-        choice += randomInteger(1, 15);
+        choice += randomInteger(1, 10);
     }
 
     //Note: Non chastity mode is no longer used. The first 10 are now default
@@ -114,6 +114,7 @@ function willKeepChastityOn(end) {
 
     if (getMonthlyGoodDays() <= getMonthlyBadDays()) {
         index += 1;
+        sendDebugMessage('More bad than good days');
     }
 
     if (getStrictnessForCharacter() == 1) {
@@ -136,7 +137,7 @@ function willKeepChastityOn(end) {
     let choiceToReach = choices[index];
 
     if (isVar("chastityMode")) {
-        choiceToReach *= 1.75;
+        choiceToReach *= 1.5;
         sendDebugMessage('Chastity mode is active');
     }
 

@@ -31,6 +31,7 @@ run("Slaves/SlaveDailyTask.js");
 run("Session/Orgasm/Orgasm.js");
 run("Session/Interaction.js");
 run("Session/Orgasm/OrgasmSpecial.js");
+run("Session/Orgasm/AnalOrgasm.js");
 run('Session/Modules/ModuleHandler.js');
 
 run("Session/Special/SessionSpecial.js");
