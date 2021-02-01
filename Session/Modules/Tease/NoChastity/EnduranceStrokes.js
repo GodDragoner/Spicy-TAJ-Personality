@@ -245,12 +245,12 @@ if (!CBT_LIMIT.isAllowed()) {
                     showCategoryImage('BLOWJOB');
                     break;
                 case 5:
-                    sendMessage(randomFirst + ' ' + random('for me', '') + ' %SlaveName% %Wicked%', 0);
+                    sendMessage(randomFirst + ' ' + random('for me ', '') + '%SlaveName% %Wicked%', 0);
                     showCategoryVideo(getRandomMediaCategory());
                     video = true;
                     break;
                 case 6:
-                    sendMessage(randomFirst + ' ' + random('for this hentai picture', '', 'for this cartoon porn I keep finding', 'for this fucked up picture') + ' %SlaveName% %Wicked%', 0);
+                    sendMessage(randomFirst + ' ' + random('for this hentai picture ', '', 'for this cartoon porn I keep finding ', 'for this fucked up picture ') + '%SlaveName% %Wicked%', 0);
                     showCategoryImage('HENTAI');
                     break;
             }

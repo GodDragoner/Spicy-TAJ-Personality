@@ -34,10 +34,10 @@ function interactWithButtplug(punishment) {
             if (action === ACTION_BUTTPLUG_INCREASE_SIZE) {
                 increasePlugSize();
             } else if (action === ACTION_BUTTPLUG_PUT_FIRST && hasButtplugToy()) {
-                let answers = ['Let\'s prepare your %Ass% for what is up to come %Grin%', 'Let\'s plug up that %Ass%', 'Let\'s not waste anymore time by leaving that %Ass% empty'];
+                let answers = ['Let\'s prepare your %Ass% for what is to come %Grin%', 'Let\'s plug up that %Ass%', 'Let\'s not waste anymore time by leaving that %Ass% empty'];
 
                 if (getVar(VARIABLE.ASS_LEVEL) >= 30) {
-                    answers.push('You know that there is a very slow chance of you not being plugged and guess what - You won\'t be lucky now... %Lol%');
+                    answers.push('You know that there is a very slim chance of you not being plugged and guess what - You won\'t be lucky now... %Lol%');
                 }
 
                 sendMessage(answers[randomInteger(0, answers.length - 1)]);
