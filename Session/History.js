@@ -37,7 +37,7 @@ function createHistory(name) {
             let history = new java.util.ArrayList();
 
             if(isVar(varName)) {
-                history = getVar(varName);
+                history = tryGetArrayList(varName);
             }
 
             if(history.contains(moduleId  + "")) {
