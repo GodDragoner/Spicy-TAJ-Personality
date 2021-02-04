@@ -54,7 +54,7 @@
                             sendMessage('Bingo!');
                             break;
                         } else {
-                            sendMessage('Nope, try again %grin%');
+                            sendMessage('Nope, try again %Grin%');
                             answer.loop();
                         }
                     }

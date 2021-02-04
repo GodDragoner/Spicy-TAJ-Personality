@@ -30,7 +30,7 @@
             sendMessage('Come on %DomName% - you said you\'d let him cum, you have to do it!');
             sendMessage('And I think he really really REALLY wants it now %EmoteHappy%');
             setSender(1);
-            sendMessage('Yeah you\'re right, %DomFriend2Name%');
+            sendMessage('Yeah you\'re right, %domFriend2Name%');
 
             startEdging(0, true, EDGE_END_ORGASM);
             waitForCumAnswer();
@@ -42,9 +42,9 @@
             setSender(contactId);
             sendMessage('Too bad all that horny obedience is gone now, too...');
             setSender(secondContactId);
-            sendMessage('We can always rebuild, %DomFriend1Name% %EmoteHappy%');
+            sendMessage('We can always rebuild, %domFriend1Name% %EmoteHappy%');
             setSender(contactId);
-            sendMessage('True! %lol%');
+            sendMessage('True! %Lol%');
             removeContact(contactId);
             setSender(secondContactId);
             sendMessage('Bye bye, %SlaveName% %Giggles%');

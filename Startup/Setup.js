@@ -523,7 +523,7 @@
     }*/
 
     sendVirtualAssistantMessage('Oh %SlaveName%');
-    sendVirtualAssistantMessage('I just got the notification that %DomHonorific% %domName% accepted and is ready to talk to you now');
+    sendVirtualAssistantMessage('I just got the notification that %DomHonorific% %DomName% accepted and is ready to talk to you now');
     sendVirtualAssistantMessage("She wants to meet you...");
     sendVirtualAssistantMessage('So we\'ll see us again soon enough but for now I hope you\'ve found a Domme %Grin%');
     sendVirtualAssistantMessage("Transferring session...");

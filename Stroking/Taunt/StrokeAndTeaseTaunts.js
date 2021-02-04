@@ -9,7 +9,7 @@ const STROKE_AND_TEASE_TAUNTS = [
     'Keep %TeaseVerb% just like that... Good %SlaveNameSmiley%',
     'Don\'t stop %TeaseVerb%',
     'Don\'t stop %SlaveName%, I want you even ' + 'more aroused',
-    'Don\'t stop %SlaveName%, I want %MyYour% %cock% try to get even ' + 'harder',
+    'Don\'t stop %SlaveName%, I want %MyYour% %Cock% try to get even ' + 'harder',
     'I know you can keep going for me, %SlaveName%',
     'You have no choice but to keep %TeaseVerb% for me',
     'When I see a pair of %Boobs% like that, I just want to grab them %EmoteHappy% @ShowBoobsImage',

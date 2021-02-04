@@ -116,7 +116,7 @@ Also, still on workmode, one thing that I miss about Cyber Mistress are small pe
             //It's time to interrupt studying with some teasing and/or exercising
             if (answer1.isTimeout()) {
                 playAudio("Audio/Spicy/SpecialSounds/Bell.mp3", true);
-                sendVirtualAssistantMessage("are you there " + random("%SlaveName%", "%slave%") + "?", 0);
+                sendVirtualAssistantMessage("are you there " + random("%SlaveName%", "%Slave%") + "?", 0);
 
                 let presentAnswer = createInput(20, "Yes");
 

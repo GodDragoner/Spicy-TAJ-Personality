@@ -242,7 +242,7 @@ function getTodaysSlaveTask() {
                 lines.add('I want you to cover your nipples in wax thrice today at different times');
 
                 if(!isFullSizedChastityOn()) {
-                    lines.add('Do the same to %MyYour% %balls%');
+                    lines.add('Do the same to %MyYour% %Balls%');
                 }
 
                 break;

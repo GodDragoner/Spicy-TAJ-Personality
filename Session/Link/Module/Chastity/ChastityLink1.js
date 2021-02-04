@@ -4,7 +4,7 @@
             //QUALITY: Check whether CBT module was before if so, add interaction
             smallCBTPunishment(true, false);
             sendMessage('%Grin%');
-            sendMessage("I love hurting %myyour% %Balls% when %myyour% %Cock% is locked up");
+            sendMessage("I love hurting %MyYour% %Balls% when %MyYour% %Cock% is locked up");
         } else {
             sendMessage("I suppose not stroking is a form of masturbation too");
             sendMessage("You can still watch hot pictures", 0);

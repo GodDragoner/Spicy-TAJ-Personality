@@ -37,7 +37,7 @@ function Info()
     sendMessage("%Grin% ");
     sendMessage("You will not enjoy this! ");
     sendMessage("I'm about to make you my bitch! ");
-    sendMessage("%lol% ");
+    sendMessage("%Lol% ");
     sendMessage("Fetch your shock collar %SlaveName%" );
 	showImage("\GNMImages\Toys\Shock Collar.jpg");
 	sleep(10);
@@ -60,7 +60,7 @@ function Info()
         sendMessage("well go charge it quickly and tell me when it's done ");
 		waitforDone();
     }
-    sendMessage("Go ahead and turn it on and wrap the collar around your %balls%");
+    sendMessage("Go ahead and turn it on and wrap the collar around your %Balls%");
     sleep(15);
     
     sendMessage("Now in just a moment I will tell you how to adjust your zapper ");

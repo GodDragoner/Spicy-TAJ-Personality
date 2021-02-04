@@ -53,7 +53,7 @@
 
             sendMessage("Sometimes %MyYour% %Balls% need a good draining, %SlaveName%");
             sendMessage("Even if it wasn't much fun for you...");
-            sendMessage("Just remember that you made me very happy %Emotehappy%");
+            sendMessage("Just remember that you made me very happy %EmoteHappy%");
         } else {
             startEdging(0, true, EDGE_END_RUIN);
             waitForCumAnswer();

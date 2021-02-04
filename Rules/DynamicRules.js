@@ -278,7 +278,7 @@ let RULE_FOLLOW_DAILY_TASKS;
                         sendMessage("Checking out your naked body");
                         sendMessage("Every flaw and every quality");
                         sendMessage("I would point out the good...");
-                        sendMessage("And scold you for the bad %lol%");
+                        sendMessage("And scold you for the bad %Lol%");
                         sendMessage("Not just %MyYour% %Cock% is mine %SlaveName%");
                         sendMessage("Your whole body belongs to me");
                         sendMessage("Don't forget that");
@@ -415,7 +415,7 @@ let RULE_FOLLOW_DAILY_TASKS;
         sendMessage('So from now on there will be not even a single drop of cum that leaves your cock that\'s not gonna land in your dirty mouth');
         sendMessage('Which means unless I tell you otherwise you will always lick up and swallow your cum');
         sendMessage('I don\'t care whether you like it or not');
-        sendMessage('It\'s just how things are gonna be if you want to cum ever again %lol%');
+        sendMessage('It\'s just how things are gonna be if you want to cum ever again %Lol%');
 
         this.setActive(true);
         return true;

@@ -188,9 +188,9 @@ function fetchToy(toy, imagePath, amount = 0) {
     //Sub wasn't able to fetch this before so no need to ask again
     if (getVar('toy' + toy + 'UnableToFetch', false)) {
         if (amount > 0) {
-            sendMessageBasedOnSender('Sadly you weren\'t able to get ' + amount + ' ' + pluralize(toy, amount) + ' before %generaltime% %emotesad%');
+            sendMessageBasedOnSender('Sadly you weren\'t able to get ' + amount + ' ' + pluralize(toy, amount) + ' before %GeneralTime% %EmoteSad%');
         } else {
-            sendMessageBasedOnSender('Sadly you weren\'t able to get your ' + toy + ' before %generaltime% %emotesad%');
+            sendMessageBasedOnSender('Sadly you weren\'t able to get your ' + toy + ' before %GeneralTime% %EmoteSad%');
         }
 
         sendMessageBasedOnSender('So I am not gonna ask you again because I guess it does not change a thing');

@@ -52,7 +52,7 @@
                     sendMessage('But luckily you do not get to choose %EmoteHappy%');
                     sendMessage('I do though and I always will %Grin%');
                     sendMessage('That pathetic %Cock% is mine');
-                    sendMessage('Those aching %balls% are mine');
+                    sendMessage('Those aching %Balls% are mine');
                     sendMessage('All that cum is mine %EmoteHappy%');
                     sendMessage('Never forget that %SlaveName%!');
                 }

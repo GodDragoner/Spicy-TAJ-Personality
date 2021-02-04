@@ -320,7 +320,7 @@ function createLimit(name, variable) {
                         sendMessage('It has?');
                         sendMessage('This might get interesting %Grin%');
                     } else {
-                        sendMessage('I thought so %SlavenName% %EmoteSad%');
+                        sendMessage('I thought so %SlaveName% %EmoteSad%');
                         changeMeritLow(true);
 
                         if (isEnforcingPersonality()) {
