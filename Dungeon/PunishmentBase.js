@@ -456,7 +456,7 @@
                                     break;
                                 }
                             } else {
-                                sendDungeonMessage("That\'s not a valid number like 100, 250 etc...");
+                                sendDungeonMessage("That's not a valid number like 100, 250 etc...");
                                 answer2.loop();
                             }
                         }

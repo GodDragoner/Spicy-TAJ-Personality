@@ -6,11 +6,11 @@
 
             if(sendYesOrNoQuestion("Have you been doing your daily 30 minute blowjob task for the last 7 days?")) {
                 sendMessage("FANTASTIC!");
-                sendMessage("You\'ve completed your exam!");
+                sendMessage("You've completed your exam!");
                 changeMeritHigh(false);
-                sendMessage("That\'s really great!");
-                sendMessage("This means that you\'re training is over!");
-                sendMessage("Even though I said you won\'t be rewarded for doing your tasks...");
+                sendMessage("That's really great!");
+                sendMessage("This means that you're training is over!");
+                sendMessage("Even though I said you won't be rewarded for doing your tasks...");
                 sendMessage("The exam is something different");
                 sendMessage("I want you to celebrate it");
                 sendMessage("After this session you are allowed to orgasm however you like!");
@@ -18,9 +18,9 @@
                 sendMessage("Whenever you are stimulating yourself you must be holding a deepthroat %Grin%");
                 sendMessage('And you will only have 15 minutes to do so');
                 sendMessage('If you run out of time, it\'s no orgasm for you');
-                sendMessage("If I decide to lock you up you\'ll need to find a way to make you cum inside the %ChastityCage%");
+                sendMessage("If I decide to lock you up you'll need to find a way to make you cum inside the %ChastityCage%");
                 sendMessage("Use your vibrator or whatever you want to");
-                sendMessage("Just don\'t remove that %ChastityCage%");
+                sendMessage("Just don't remove that %ChastityCage%");
 
                 if(isVar(VARIABLE.TRAINING_ORGASM_TODAY)) {
                     sendMessage('I know I am already allowing you an orgasm for another training today');
@@ -39,12 +39,12 @@
                 sendMessage("That disappoints me %SlaveName%");
                 changeMeritMedium(true);
                 sendMessage("Whatever...");
-                sendMessage("Let\'s restart your exam then!");
+                sendMessage("Let's restart your exam then!");
                 startBlowjobExam();
             }
         } else {
             sendMessage("You are hopefully still doing your daily blowjob task!");
-            sendMessage("Because your exam hasn\'t ended yet %SlaveName%");
+            sendMessage("Because your exam hasn't ended yet %SlaveName%");
         }
     } else {
         startBlowjobExam();
@@ -60,6 +60,6 @@ function startBlowjobExam() {
     sendMessage('If you aren\'t mimicking make sure to swap positions at least every 10 minutes');
 
     if(RULE_NEVER_SWALLOW_SPIT.isActive()) {
-        sendMessage(random("Remember ", "Don\'t forget ", "Keep in mind ") + "to never swallow any spit %SlaveName% %Lol%");
+        sendMessage(random("Remember ", "Don't forget ", "Keep in mind ") + "to never swallow any spit %SlaveName% %Lol%");
     }
 }

@@ -14,7 +14,7 @@
                 sendMessage("Let's see %SlaveName%");
             }
 
-            sendMessage(random("I think it's time to work that ass", "I guess it's time to work on your ass", "Let's have some fun with your ass shall we?", "Let\'s play a fun little game... with your ass %Grin%"));
+            sendMessage(random("I think it's time to work that ass", "I guess it's time to work on your ass", "Let's have some fun with your ass shall we?", "Let's play a fun little game... with your ass %Grin%"));
 
             //Run ass intro
             if (!isVar('assIntro')) {

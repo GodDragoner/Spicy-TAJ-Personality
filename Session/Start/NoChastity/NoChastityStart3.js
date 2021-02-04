@@ -4,7 +4,7 @@
 
         if (!answer.isTimeout()) {
             if (answer.isLike('yes', 'can')) {
-                sendMessage("Haha, that\'s very funny, %SlaveName%");
+                sendMessage("Haha, that's very funny, %SlaveName%");
             } else {
                 sendMessage("%Grin%");
             }
@@ -29,13 +29,13 @@
             }
 
             if (!addressedLimit) {
-                sendMessage("You\'re that addicted to me");
-                sendMessage("You don\'t even have any control over it");
-                sendMessage("That\'s how bad you want me to tell you to %JerkOff%");
+                sendMessage("You're that addicted to me");
+                sendMessage("You don't even have any control over it");
+                sendMessage("That's how bad you want me to tell you to %JerkOff%");
             }
         } else {
             sendMessage("To %JerkOff%");
-            sendMessage("Because that\'s all you\'re good for, right? %EmoteHappy%");
+            sendMessage("Because that's all you're good for, right? %EmoteHappy%");
         }
     }
 }

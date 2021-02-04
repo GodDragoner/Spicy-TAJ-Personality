@@ -4,7 +4,7 @@
         startKneeling();
     }
 
-    sendMessage("I\'m trying to imagine how full %MyYour% %Balls% are right now");
+    sendMessage("I'm trying to imagine how full %MyYour% %Balls% are right now");
 
     if(getLastEjaculationDate().addDay(10).hasPassed()) {
         sendMessage('They must be pretty full given how long it\'s been since we\'ve emptied them');
@@ -17,8 +17,8 @@
     sendMessage("%SlaveName%...");
 
     if(orgasmType === ORGASM_CATEGORY_DENIED) {
-        sendMessage("You don\'t get to cum %GeneralTime%");
-        sendMessage("I\'m going to make you edge one more time");
+        sendMessage("You don't get to cum %GeneralTime%");
+        sendMessage("I'm going to make you edge one more time");
     } else if(orgasmType === ORGASM_CATEGORY_ALLOWED) {
         sendMessage('I\'m going to let you cum %GeneralTime%');
     } else if(orgasmType === ORGASM_CATEGORY_RUINED) {
@@ -27,7 +27,7 @@
 
 
     if(isChance(50) && getCBTLimit() == LIMIT_ASKED_YES) {
-        sendMessage("But you\'re going to have to endure some pain first");
+        sendMessage("But you're going to have to endure some pain first");
         smallCBTPunishment();
     }
 

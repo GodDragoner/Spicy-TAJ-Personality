@@ -10,19 +10,19 @@
             sendMessage("Get ready, %SlaveName%");
 
             setSender(contactId);
-            sendMessage("I don\'t think you should let him cum, %DomName%");
-            sendMessage("I don\'t think he deserves that kind of pleasure");
+            sendMessage("I don't think you should let him cum, %DomName%");
+            sendMessage("I don't think he deserves that kind of pleasure");
 
             setSender(1);
             sendMessage('But he\'s so ready for it now... %EmoteHappy%');
 
             setSender(contactId);
-            sendMessage("I know, that\'s exactly why you shouldn\'t let him cum %Lol%");
+            sendMessage("I know, that's exactly why you shouldn't let him cum %Lol%");
             sendMessage("Get him all worked up, ready to spray that jizz all over the place, and then...");
-            sendMessage("...DENIED... it\'s perfect! %Lol%");
+            sendMessage("...DENIED... it's perfect! %Lol%");
 
             setSender(1);
-            sendMessage("Mmm I don\'t know...");
+            sendMessage("Mmm I don't know...");
 
             let secondContactId = 4;
             addContact(secondContactId);

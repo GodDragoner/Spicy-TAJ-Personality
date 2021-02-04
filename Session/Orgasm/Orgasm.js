@@ -370,8 +370,8 @@ function askAboutDenialLevel() {
             //Too long after orgasm the sub might decide differently so we only ask him if he came 3 or less days ago
             if(isChance(talkChance[Math.min(denialLevelIndex, talkChance.length - 1)]) && !getLastEjaculationDate().addDay(3).hasPassed()) {
                 sendMessage("%SlaveName%");
-                sendMessage(random("Once in a while I feel it\'s important to discuss denial with you ", "As you know it's important to discuss your denial practice with you.. "));
-                sendMessage(random("Today is one of those days ", "And today we\'ll do just that! "));
+                sendMessage(random("Once in a while I feel it's important to discuss denial with you ", "As you know it's important to discuss your denial practice with you.. "));
+                sendMessage(random("Today is one of those days ", "And today we'll do just that! "));
                 sendMessage("Currently your denial level is " + getVar(VARIABLE.DENIAL_LEVEL));
                 sendMessage(random("Just to remind you ", "Let me remind you that..."));
                 sendMessage("Level 1 to 5 is for beginners");
@@ -382,7 +382,7 @@ function askAboutDenialLevel() {
                 sendMessage(random("I try to constantly adjust you level to be appropriate to what I think you can handle", "Often I try to adjust this little by little to keep you at your limit"));
                 sendMessage(random("But...", "But it's not that easy..."));
                 sendMessage(random("What I want to ask you is", "What I simply have to ask is"));
-                const appropiate = sendInput(random("Do you think you\'re placed at an appropriate level? ", "Do you feel your current level of denial to be appropriate? "));
+                const appropiate = sendInput(random("Do you think you're placed at an appropriate level? ", "Do you feel your current level of denial to be appropriate? "));
 
                 while(true) {
                     if(appropiate.isLike('yes')) {

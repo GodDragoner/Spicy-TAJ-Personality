@@ -34,7 +34,7 @@ if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.STROKING)) {
         }
 
         if (getVar(VARIABLE.SUB_PREMATURE_EJACULATE, false)) {
-            sendMessage("Seriously though, that is a problem isn\'t it...");
+            sendMessage("Seriously though, that is a problem isn't it...");
             sendMessage("You should learn to control yourself when having sex, %SlaveName%");
 
             if (getVar(VARIABLE.SUB_IS_VIRGIN, false)) {
@@ -43,31 +43,31 @@ if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.STROKING)) {
 
             sendMessage("Because the truth is, to please a girl");
             sendMessage("You have to be able to last longer that a minute or two");
-            sendMessage("Or she\'s not going to want to stick around");
+            sendMessage("Or she's not going to want to stick around");
         } else {
             sendMessage("Maybe I should just let you have some more of that then %EmoteHappy");
         }
 
         sendMessage("Edging is a big part of how you serve me");
-        sendMessage("So that\'s what I want to focus on %GeneralTime%");
+        sendMessage("So that's what I want to focus on %GeneralTime%");
 
         startEdging();
 
-        sendMessage("I\'m going to train you to be a good edge slut for me, %SlaveName%");
+        sendMessage("I'm going to train you to be a good edge slut for me, %SlaveName%");
 
         if (getVar(VARIABLE.SUB_PREMATURE_EJACULATE, false)) {
             sendMessage("I know this is not going to be easy, given your premature ejaculation problem");
             sendMessage("But maybe this will help you deal with that %Smile%");
         }
 
-        sendMessage("I think you\'ll understand that this training involves you edging a lot");
-        sendMessage("You\'re going to edge so much for me it\'s going to feel like torture");
-        sendMessage("And yet you\'re going to beg me for more %EmoteHappy%");
+        sendMessage("I think you'll understand that this training involves you edging a lot");
+        sendMessage("You're going to edge so much for me it's going to feel like torture");
+        sendMessage("And yet you're going to beg me for more %EmoteHappy%");
 
         sendMessage('You\'re going to thank me for the privilege of being my mindless little edge slave');
 
         if (!isKneeling()) {
-            sendMessage("Before we continue, let\'s get you in the proper submissive position");
+            sendMessage("Before we continue, let's get you in the proper submissive position");
             startKneeling();
             sendMessage('And now get down on all fours');
             startStroking(getInitialStrokingBPM());

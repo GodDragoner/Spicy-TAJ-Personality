@@ -36,7 +36,7 @@ function Info()
 {
     sendMessage("%Grin% ");
     sendMessage("You will not enjoy this! ");
-    sendMessage("I\'m about to make you my bitch! ");
+    sendMessage("I'm about to make you my bitch! ");
     sendMessage("%lol% ");
     sendMessage("Fetch your shock collar %SlaveName%" );
 	showImage("\GNMImages\Toys\Shock Collar.jpg");
@@ -64,7 +64,7 @@ function Info()
     sleep(15);
     
     sendMessage("Now in just a moment I will tell you how to adjust your zapper ");
-    sendMessage("then I\'m going to tell you to push that magical button %EmoteHappy% ");
+    sendMessage("then I'm going to tell you to push that magical button %EmoteHappy% ");
     sendMessage("Let me just check my papers.. ");
     Start();
     return;
@@ -146,7 +146,7 @@ function Contact1()
 function Contact2()
 {
     sendMessage(random("Well well ", "Oh my ", "Well ") + "%SlaveName% ");
-    sendMessage(random("You\'re not gonna like this %Grin% ", "I\'m not sure you\'ll enjoy this my bitch! ", "I don\'t think you\'ll enjoy this sparky.. ") );
+    sendMessage(random("You're not gonna like this %Grin% ", "I'm not sure you'll enjoy this my bitch! ", "I don't think you'll enjoy this sparky.. ") );
 	
 	
 		if(getVar("SubPainTolerance")>=7) {
@@ -162,7 +162,7 @@ function Contact2()
 function Contact3()
 {
     sendMessage(random("Well well ", "Oh my ", "Well ") + "%SlaveName% ");
-    sendMessage(random("This is entirely my pleasure %Lol% ", "I\'m gonna love this! ", "This is gonna be fun! ") );
+    sendMessage(random("This is entirely my pleasure %Lol% ", "I'm gonna love this! ", "This is gonna be fun! ") );
  	if(getVar("SubPainTolerance")>=6) {
 	 PM4Hard();}
 	else if (getVar("SubPainTolerance")>2){
@@ -175,7 +175,7 @@ function Contact3()
 }
 function PM4Easy()
 {
-    sendMessage("Remember to say \"yes %DomHonorific%\" right after you\'ve shocked yourself.. ");
+    sendMessage("Remember to say \"yes %DomHonorific%\" right after you've shocked yourself.. ");
     setVar("M4Round", 0);
     setVar("RipPegs", randomInteger(9,12));
     setTempVar("M4Easy", true);
@@ -185,7 +185,7 @@ function PM4Easy()
 }
 function PM4Medium()
 {
-    sendMessage("Remember to say \"yes %DomHonorific%\" right after you\'ve shocked yourself.. ");
+    sendMessage("Remember to say \"yes %DomHonorific%\" right after you've shocked yourself.. ");
     setVar("M4Round", 0);
     setVar("RipPegs",  randomInteger(12,15)); 
     setTempVar("M4Easy", true);
@@ -195,7 +195,7 @@ function PM4Medium()
 }
 function PM4Hard()
 {
-    sendMessage("Remember to say \"yes %DomHonorific%\" right after you\'ve shocked yourself.. ");
+    sendMessage("Remember to say \"yes %DomHonorific%\" right after you've shocked yourself.. ");
     setVar("M4Round", 0);
     setVar("RipPegs",  randomInteger(15,18));
     setTempVar("M4Easy", true);
@@ -273,7 +273,7 @@ function Holdit()
 {
     sendMessage("Set the controller to 5 ");
     sleep(5);
-    sendMessage("This time %SlaveName% I want you to hold the button for the duration of the sound you\'re about to hear.");
+    sendMessage("This time %SlaveName% I want you to hold the button for the duration of the sound you're about to hear.");
     sendMessage(random("Tap","press","hold")+" the controller!" );
 	playAudio("Audio/Spicy/Electricity.mp3");
 
@@ -483,8 +483,8 @@ function Slow()
     sendMessage("Remember to say 'yes %DomHonorific% ' <i>after</i> you've shocked yourself ");
 	setVar("RipPegs",getVar("RipPegs")+randomInteger(1,3));
     sendMessage("I'm expecting you to follow my commands <i>when</i> I give them");
-    sendMessage("I don\'t accept delays just because something hurts a little.. or you\'re a scared pussy");
-    sendMessage("Well then I\'m just adding a few extra rounds %Grin% ");
+    sendMessage("I don't accept delays just because something hurts a little.. or you're a scared pussy");
+    sendMessage("Well then I'm just adding a few extra rounds %Grin% ");
     RipBase();
     return;
     //End();
@@ -494,7 +494,7 @@ function End()
     sendMessage("No more rounds! ");
     setTempVar("E4Complete", true);
     sendMessage("Remember to put the shock collar back on the charger ");
-    sendMessage("we never know when I\'ll want to use it again %Grin% ");
+    sendMessage("we never know when I'll want to use it again %Grin% ");
 		setVar("PunishmentComplete", true);
 	setVar("punishmentCompleted", 24);
 	run("Dungeon/PunishmentBaseEnd.js");

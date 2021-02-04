@@ -533,7 +533,7 @@
 
 function setupBlackmail() {
     sendVirtualAssistantMessage("As you should know");
-    sendVirtualAssistantMessage("A slave doesn't have \"private\" information since a slave doesn\'t keep anything private from his Domme...");
+    sendVirtualAssistantMessage("A slave doesn't have \"private\" information since a slave doesn't keep anything private from his Domme...");
     sendVirtualAssistantMessage("As a token of complete surrender I need the phone number and name of 3 people");
     sendVirtualAssistantMessage("Preferably girls that don't know about your fetish");
     sendVirtualAssistantMessage("So tell me the full name of the first person", false);

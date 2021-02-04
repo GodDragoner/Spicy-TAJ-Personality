@@ -87,13 +87,13 @@ function checkBlowjobExercise() {
                 break;
             } else {
                 changeMeritMedium(true);
-                sendMessage("You have to complete your tasks %SlaveName%. You want to become a proper slave, don\'t you?");
+                sendMessage("You have to complete your tasks %SlaveName%. You want to become a proper slave, don't you?");
                 break;
             }
         }
 
         sendMessage("Anyhow not completing your " + random("task ", "assignment ") + "displeases me");
-        sendMessage("But I guess in the end this means you just don\'t get to cum %Grin%");
+        sendMessage("But I guess in the end this means you just don't get to cum %Grin%");
         setVar(VARIABLE.BLOWJOB_TASKS_IN_ROW, 0);
         sendMessage("Complete your task until the next session");
         return false;
@@ -109,18 +109,18 @@ function firstTimeBlowjobTraining() {
     sendMessage("Now...");
 
     if(!getVar(VARIABLE.TRAINING_INTRODUCTION_DONE, false)) {
-        sendMessage("It\'s rather simple how this works ");
+        sendMessage("It's rather simple how this works ");
         sendMessage("After each session I will ask you whether you completed your latest assignment");
         sendMessage("If you did you are rewarded with exp");
-        sendMessage("You won\'t get any bonuses other than making me happy %Grin% ");
-        sendMessage("And you want to please me, don\'t you?");
+        sendMessage("You won't get any bonuses other than making me happy %Grin% ");
+        sendMessage("And you want to please me, don't you?");
         sendMessage("I will measure your experience using a so called blowjob level");
         sendMessage("You will start at level 1, which means you are a beginner when it comes to giving blowjobs");
         sendMessage("Level 30 means that you can take anything down your throat without hesitating");
         sendMessage("EXP makes you grow in level at a slow pace");
         sendMessage("Each new level requires a higher amount of EXP");
         sendMessage("As your level grows the assignments become more difficult");
-        sendMessage("It\'s really as simple as that");
+        sendMessage("It's really as simple as that");
     } else {
         sendMessage('This just works the same as the other trainings we are doing');
         sendMessage('Just a quick reminder of the level system');

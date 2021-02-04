@@ -1,8 +1,8 @@
 {
     if (tryRunOrgasmFetchId()) {
-        sendMessage("I\'m going to make you ruin your orgasm %GeneralTime%");
-        sendMessage("You\'re going to ruin it...");
-        sendMessage("And you\'re going to thank me for it %EmoteHappy%");
+        sendMessage("I'm going to make you ruin your orgasm %GeneralTime%");
+        sendMessage("You're going to ruin it...");
+        sendMessage("And you're going to thank me for it %EmoteHappy%");
 
         for(let x = 0; x < randomInteger(3, 5); x++) {
             startEdging();

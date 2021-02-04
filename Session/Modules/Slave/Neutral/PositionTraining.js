@@ -1062,7 +1062,7 @@ function positionCheckBalance() {
             changeMeritMedium(false);
             return;
         } else {
-            sendMessage("That\'s too many times!");
+            sendMessage("That's too many times!");
             sendMessage("Not good enough %SlaveName%");
             setVar(VARIABLE.POSITION_LEVEL, positionLevel - 1);
             sendMessage("I'm disappointed..");
