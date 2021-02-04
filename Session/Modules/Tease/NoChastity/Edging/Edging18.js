@@ -1,10 +1,10 @@
 {
     startEdging();
-    sendMessage('Be careful, I don\'t want you to have any \"accidents\"...');
+    sendMessage('Be careful, I don\'t want you to have any "accidents"...');
     startEdging();
     sendMessage('Try not to think about how messed up this is, %SlaveName% %EmoteHappy%');
     startMultipleEdges(2, 7);
-    sendMessage('I\'m sorry, did I say \"messed up\"? I didn\'t mean that, %SlaveName%');
+    sendMessage('I\'m sorry, did I say "messed up"? I didn\'t mean that, %SlaveName%');
     sendMessage('You\'re just a boy who likes to edge and be denied by a hot woman');
     sendMessage('There\'s nothing wrong with that %Smile%');
     startMultipleEdges(4, 6);
