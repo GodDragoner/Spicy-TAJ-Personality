@@ -103,7 +103,7 @@ function simplePositionTrainingIntro() {
     sendMessage(random("I'll explain it in as much detail as needed","I'll tell you as much as possible","I'll go into a few details about it"));
     sendMessage(random("To make sure you understand it fully","So I'm sure you won't have any excuses","So we both know you understand it completely!","This way you won't have any excuses.."));
     sendMessage(random("When I'm done explaining","Once I've finished explaining","After I've explained it properly","Once it has been explained properly"));
-    sendMessage(random("You're going to take the position","Your gonna take the position","You will take the position"));
+    sendMessage(random("You're going to take the position","You're gonna take the position","You will take the position"));
     sendMessage(random("And you won't leave it until you hear my bell","And you'll keep the position until the sound of my bell","And only once you hear my bell may you leave it..."));
 
     while (true) {
