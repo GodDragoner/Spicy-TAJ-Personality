@@ -14,15 +14,13 @@
     }
 
     sendMessage(random("Here we go", "Let\'s do this", "Let\'s get started", "Here it comes"));
-    sendMessage("10");
-    sendMessage("9");
-    sendMessage("8");
-    sleep(4);
-    sendMessage("7");
-    sleep(5);
-    sendMessage("6");
-    sendMessage("5");
-    sendMessage("4");
+    sendMessage("10", 1);
+    sendMessage("9", 1);
+    sendMessage("8", 4);
+    sendMessage("7", 5);
+    sendMessage("6", 1);
+    sendMessage("5", 1);
+    sendMessage("4", 1);
 
     let chance = isChance(50);
     if (chance) {
