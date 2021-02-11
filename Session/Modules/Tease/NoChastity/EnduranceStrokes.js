@@ -106,7 +106,7 @@ if (!CBT_LIMIT.isAllowed()) {
                         switch(result) {
                             case 0:
                                 sendMessage('You knew what would happen if you edged %SlaveName%');
-                                sendMessage('This time I suggest you show more' + '' + random('endurance', 'restraint', 'control', 'stamina'));
+                                sendMessage('This time I suggest you show more ' + random('endurance', 'restraint', 'control', 'stamina'));
                                 sendMessage('Or I\'m going to break you all over again %Wicked%');
                                 break;
                             case 1:
@@ -149,7 +149,7 @@ if (!CBT_LIMIT.isAllowed()) {
                                 sendMessage('And by "next time" I mean right now %Wicked%');
                                 break;
                             case 9:
-                                sendMessage('I can keep this up the rest of %GeneralTime% %SlaveName%');
+                                sendMessage('I can keep this up for the rest of %GeneralTime% %SlaveName%');
                                 sendMessage('So you\'re either going to complete this exercise');
                                 sendMessage('Or I\'m going to keep breaking %MyYour% %Balls% until you do %Wicked%');
                                 break;
