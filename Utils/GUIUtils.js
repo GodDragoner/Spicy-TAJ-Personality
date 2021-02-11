@@ -154,7 +154,7 @@ function createImageView() {
             let file = TAJFileUtils.getRandomMatchingFile(pathToImage);
 
             if(file !== null) {
-                let image = new javafx.scene.image.Image(file.getPath().toString());
+                let image = new javafx.scene.image.Image("file:" + file.getPath());
                 this.imageView.setImage(image);
             }
         },
