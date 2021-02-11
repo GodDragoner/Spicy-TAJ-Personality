@@ -2,7 +2,7 @@
 {
     let exercise = true;
 
-    if (isVar("HasExercised")) {
+    if (!getVar("HasExercised", false)) {
         setVar("HasExercised", true);
         //sendVirtualAssistantMessage("TP2");
         setVar("ExerciseTimes", 0);
@@ -22,7 +22,7 @@
         sendVirtualAssistantMessage("So don't worry if you feel like it's too easy the first few times");
         sendVirtualAssistantMessage("Difficulty will quickly rise");
         sendVirtualAssistantMessage("Maybe not today, but as we go");
-        sendVirtualAssistantMessage("Completing exercise also gets you rewarded");
+        sendVirtualAssistantMessage("Completing exercise also gets rewarded");
         sendVirtualAssistantMessage("I track how many times you complete exercise for each 7 days");
         setDate("ExercisePeriod");
         //commenting out because day of week function hard to find
@@ -62,7 +62,7 @@
 
         if (isVar("LastExercise")&&getDate("LastExercise").after(setDate().addHour(-20))) {
 			//QUALITY: Format date
-            sendVirtualAssistantMessage("You last exercised at" + getDate("LastExercise"));
+            sendVirtualAssistantMessage("You last exercised at " + getDate("LastExercise"));
             sendVirtualAssistantMessage("Which is too recent");
             sendVirtualAssistantMessage("You need to wait at least 20 hours...");
             exercise = false;
