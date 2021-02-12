@@ -7,7 +7,7 @@
 
         readyForStroking();
 
-        sendMessage(random('Let\'s get started ', 'Let\'s begin ', 'Here we go ', 'I hope you\'re ready ', 'You better be ready ', 'Better get ready ', 'Better prepare yourself ') + '%Wicked%');
+        sendMessage(random('Let\'s get started ', 'Let\'s begin ', 'Here we go ', 'I hope you\'re ready ', 'You\'d better be ready ', 'Better get ready ', 'Better prepare yourself ') + '%Wicked%');
 
         let strokesDone = 0;
         let sentenceHistory = null;

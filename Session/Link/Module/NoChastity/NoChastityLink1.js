@@ -1,6 +1,6 @@
 {
     if (tryRunLinkFetchId()) {
-        const answer = sendInput(random("Do you want ", "Would you like ", "Are you ready ") + "to " + random("do some ", "start ") + "%JerkingOff% again?");
+        const answer = sendInput(random("Do you want ", "Would you like ", "Are you ready ") + "to " + random("begin ", "start ") + "%JerkingOff% again?");
 
         while(true) {
             if(answer.isLike('yes')) {

@@ -44,9 +44,9 @@
     playAudio("Audio/Spicy/Starts/Intro/intro16.mp3", true);
     sendMessage("You are once again dearly mistaken");
     sendMessage("I should be YOUR sole focus instead");
-    sendMessage("So if you want me to focus on you you better start worshipping me the way you should");
+    sendMessage("So if you want me to focus on you, you'd better start worshipping me the way you should");
 
-    sendMessage('Now we got a few things to clarify and talk about before we can start this agreement of ours');
+    sendMessage('Now we\'ve got a few things to clarify and talk about before we can start this agreement of ours');
 
     setVar(VARIABLE.BLOWJOB_LEVEL, 1);
 

@@ -18,7 +18,7 @@
     startMultipleEdges(3, 9);
     sendMessage('You didn\'t think I\'d let you cum that easy, did you?');
     sendMessage('Start stroking again, very slowly, up... down... up... down');
-    sendMessage('I\'m going to count down from 10 and you better be ready to hit the edge when I reach zero');
+    sendMessage('I\'m going to count down from 10 and you\'d better be ready to hit the edge when I reach zero');
     sendMessage('10');
     sendMessage('9');
     sendMessage('8');

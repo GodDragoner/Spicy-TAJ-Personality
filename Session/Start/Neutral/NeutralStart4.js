@@ -1,6 +1,6 @@
 {
     if (tryRunStartFetchId()) {
-        sendMessage("You better get comfortable, %SlaveName%");
+        sendMessage("You'd better get comfortable, %SlaveName%");
         sendMessage("I want to have a lot of fun with you %GeneralTime%");
         sendMessage("And I need you to last a long time for me");
         sendMessage("Maybe it\'s going to be nice and pleasurable for you");

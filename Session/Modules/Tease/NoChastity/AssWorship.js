@@ -33,20 +33,20 @@
             sendMessage('So let me show you exactly what you\'re in for %Grin%');
         } else {
             showDommeTaggedImageForPictureTag(PictureTag.ASS);
-            sendMessage(random('This is gonna hurt', 'You\'re really gonna suffer for it this time', 'And I want it to make you ache like fucking crazy', 'So I hope you\'re ready to suffer', 'So you better be ready to suffer for it', 'So I think you know what\'s coming next') + ' %SlaveName% %Grin%');
+            sendMessage(random('This is gonna hurt', 'You\'re really gonna suffer for it this time', 'And I want it to make you ache like fucking crazy', 'So I hope you\'re ready to suffer', 'So you\'d better be ready to suffer for it', 'So I think you know what\'s coming next') + ' %SlaveName% %Grin%');
         }
 
         showDommeTaggedImageForPictureTag(PictureTag.ASS);
 
         if (isChance(50)) {
-            sendMessage(random('Get', 'Bring yourself', 'Get that %Cock%', 'Bring that %Cock%', 'I want you to bring yourself', 'I want you to bring %MyYour% %Cock%') + ' to the edge for my ass and ' + random('be prepared', 'get prepared', 'be ready', 'get ready', 'I hope you\'re ready', 'you better be ready') + 'to hold it for a <i>very</i> long time %Wicked%');
+            sendMessage(random('Get', 'Bring yourself', 'Get that %Cock%', 'Bring that %Cock%', 'I want you to bring yourself', 'I want you to bring %MyYour% %Cock%') + ' to the edge for my ass and ' + random('be prepared', 'get prepared', 'be ready', 'get ready', 'I hope you\'re ready', 'you\'d better be ready') + 'to hold it for a <i>very</i> long time %Wicked%');
             startEdging(getEdgeHoldSeconds(EDGE_HOLD_LONG) * 2);
 
             switch (randomInteger(1, 3)) {
                 case 1:
                     sendMessage('You need to get used to suffering for me like that %SlaveName%');
                     sendMessage('I mean, you don\'t even deserve to see my ass in the first place...');
-                    sendMessage('So you better believe you\'re going to pay a high price for the privilege %Wicked%');
+                    sendMessage('So you\'d better believe you\'re going to pay a high price for the privilege %Wicked%');
                     break;
                 case 2:
                     sendMessage('I bet %MyYour% %Cock% is dying after holding that edge');
@@ -90,7 +90,7 @@
                 case 1:
                     sendMessage('You need to get used to suffering for me like that %SlaveName%');
                     sendMessage('I mean, you don\'t even deserve to see my ass in the first place...');
-                    sendMessage('So you better believe you\'re going to pay a high price for the privilege %Wicked%');
+                    sendMessage('So you\'d better believe you\'re going to pay a high price for the privilege %Wicked%');
                     break;
                 case 2:
                     sendMessage('I know %MyYour% %Cock% is complete agony right now');

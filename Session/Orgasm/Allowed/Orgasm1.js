@@ -10,7 +10,7 @@
             sendMessage("I want you to go get a wooden spoon or a ruler or something similar");
             sendMessage("You can cum %GeneralTime% but you have to hurt those %Balls% for me first %Grin%");
             sendMessage("I\'m going to count from 1 to 10 and with each number you will smack %MyYour% %Balls%");
-            sendMessage("And you better do it hard!");
+            sendMessage("And you'd better do it hard!");
             sendMessage("Here we go...");
             sendMessage("ONE");
             sendMessage("TWO");

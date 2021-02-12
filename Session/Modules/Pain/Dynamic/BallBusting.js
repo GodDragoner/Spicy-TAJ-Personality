@@ -259,7 +259,7 @@ function getToiletLidTask(hitLevel, hasPortableDevice, map) {
     } else {
         //First time we are doing this
         if (map.has(0) && (hitLevel == 2 || hitLevel == 1 && !map.has(2)) && hasPortableDevice) {
-            sendMessage(random('I think we can go higher than before %Grin%', 'I think we need to up that level a bit because otherwise ' + random('you might get used to it', 'I might go to easy on you') + ' %Lol%'));
+            sendMessage(random('I think we can go higher than before %Grin%', 'I think we need to up that level a bit because otherwise ' + random('you might get used to it', 'I might go too easy on you') + ' %Lol%'));
         }
 
         let answers = [
@@ -284,7 +284,7 @@ function sendBallHitTask(hitLevel, hitType, loops, isBeginning, map) {
     if (currentAmount > 0) {
         let answers = [
             'I want you to yet again ' + hitTypes[hitType] + ' %MyBalls% %Balls% ' + hitLevels[hitLevel] + ' ' + hitAmount + pluralize(' time', hitAmount),
-            random('Give', 'Go ahead and give', 'Let\'s give ') + ' %MyBalls% %Balls% another ' + hitAmount + ' ' + hitLevels[hitLevel] + ' ' + pluralize(hitTypes[hitType], hitAmount),
+            random('Give', 'Go ahead and give', 'Let\'s give') + ' %MyBalls% %Balls% another ' + hitAmount + ' ' + hitLevels[hitLevel] + ' ' + pluralize(hitTypes[hitType], hitAmount),
         ];
 
         sendMessage(answers[randomInteger(0, answers.length - 1)], 0);
@@ -292,12 +292,12 @@ function sendBallHitTask(hitLevel, hitType, loops, isBeginning, map) {
     } else {
         //First time we are doing this
         if (map.has(0) && (hitLevel == 2 || hitLevel == 1 && !map.has(2))) {
-            sendMessage(random('I think we can go harder than before %Grin%', 'I think we need to up that level a bit because otherwise ' + random('you might get used to it', 'I might go to easy on you') + ' %Lol%'));
+            sendMessage(random('I think we can go harder than before %Grin%', 'I think we need to up that level a bit because otherwise ' + random('you might get used to it', 'I might go too easy on you') + ' %Lol%'));
         }
 
         let answers = [
             'I want you to ' + hitTypes[hitType] + ' %MyBalls% %Balls% ' + hitLevels[hitLevel] + ' ' +  hitAmount + pluralize(' time', hitAmount),
-            random('Give', 'Go ahead and give', 'Let\'s give ') + ' %MyBalls% %Balls% ' + hitAmount + ' ' + hitLevels[hitLevel] + ' ' + pluralize(hitTypes[hitType], hitAmount),
+            random('Give', 'Go ahead and give', 'Let\'s give') + ' %MyBalls% %Balls% ' + hitAmount + ' ' + hitLevels[hitLevel] + ' ' + pluralize(hitTypes[hitType], hitAmount),
         ];
 
         sendMessage(answers[randomInteger(0, answers.length - 1)], 0);

@@ -51,10 +51,10 @@ if (!CBT_LIMIT.isAllowed()) {
                     'Let\'s see how that %Cock% feels about some more endurance strokes') + ' %SlaveName%');
             }
 
-            sendMessage(random('Just remember not to edge', 'You better not edge', 'You better tell me if you edge', 'Don\'t edge unless you want to get hurt', 'Remember that edge = pain',
-                'You better do whatever it takes to stay away from the edge', 'Don\'t edge', 'If you edge you\'ll regret it', 'Just remember that edging will be punished with pain',
+            sendMessage(random('Just remember not to edge', 'You\'d better not edge', 'You\'d better tell me if you edge', 'Don\'t edge unless you want to get hurt', 'Remember that edge = pain',
+                'You\'d better do whatever it takes to stay away from the edge', 'Don\'t edge', 'If you edge you\'ll regret it', 'Just remember that edging will be punished with pain',
                 'One edge will lead to pain', 'Make sure to hold yourself back', 'Don\'t let yourself get too close', 'Show me you can handle it', 'Your %Cock% better not disappoint me',
-                'You better not fail me', 'Don\'t even think about edging') + ' %Wicked%');//@Goto(Endurace Strokes Initialize)
+                'You\'d better not fail me', 'Don\'t even think about edging') + ' %Wicked%');//@Goto(Endurace Strokes Initialize)
         }
 
         incrementVar(VARIABLE.ENDURANCE_STROKES_DONE, 1);
@@ -141,7 +141,7 @@ if (!CBT_LIMIT.isAllowed()) {
                                 break;
                             case 7:
                                 sendMessage('I expect better from you %SlaveName%');
-                                sendMessage('You better get it right this time');
+                                sendMessage('You\'d better get it right this time');
                                 sendMessage('Or I\'ll just keep hurting %MyYour% %Balls% until they break %Wicked%');
                                 break;
                             case 8:
@@ -214,7 +214,7 @@ if (!CBT_LIMIT.isAllowed()) {
                     stopStroking();
                     sendMessage(random('You made it through all the rounds', 'You made it past the last round', 'You managed to make it past the last round', 'You\'ve successfully completed the exercise', 'You passed the exercise') + ' %SlaveName%');
                     sendMessage(random('You should have a little more stamina after that', 'Your endurance has surely improved after that', 'I\'m fairly sure your endurance has improved', '%MyYour% %Cock% can probably take a little more abuse now', '%MyYour% %Cock% should benefit from that training'));
-                    sendMessage(random('But there\'s only one way to find out', 'But I suppose we\'ll find out in time', 'At least you better hope so', 'If not, you\'re going to be in serious trouble', 'You\'re going to fucking need all the help you can get') + ' %Wicked%');
+                    sendMessage(random('But there\'s only one way to find out', 'But I suppose we\'ll find out in time', 'At least you\'d better hope so', 'If not, you\'re going to be in serious trouble', 'You\'re going to fucking need all the help you can get') + ' %Wicked%');
                 }
                 break;
             }
@@ -222,7 +222,7 @@ if (!CBT_LIMIT.isAllowed()) {
             enduranceStrokeSpeed += 30;
 
             let randomFirst = random('Speed up', 'Speed up a little', 'Keep going', 'Keep going', 'Stroke a little faster', 'Stroke even faster', 'Faster', 'Hold it back',
-                'Keep that cum in %MyYour% %Balls%', 'Hold back that edge', 'You better hold it back', 'You can do it');
+                'Keep that cum in %MyYour% %Balls%', 'Hold back that edge', 'You\'d better hold it back', 'You can do it');
 
             switch(randomInteger(0, 6)) {
                 case 0:

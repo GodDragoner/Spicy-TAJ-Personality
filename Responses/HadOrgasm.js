@@ -61,7 +61,7 @@ function hadOrgasmResponse(message) {
             if(sendYesOrNoQuestion('I own your orgasms, and I decide ' + random('whether ', 'when ', 'when and how ') + 'you get ' + random('one ', 'to cum ', 'an orgasm ') + random('understood', 'do you understand that', 'is that clear') + '?')) {
                 sendMessage(random('Alright then', 'Good', 'Okay', 'Just remember that next time you get close', 'Do not forget that'));
             } else {
-                sendMessage('Well you better ' + random('fucking learn ', 'get it between your ears ') + 'because that\'s the way it is');
+                sendMessage('Well you\'d better ' + random('fucking learn ', 'get it between your ears ') + 'because that\'s the way it is');
             }
         }
     } else {
