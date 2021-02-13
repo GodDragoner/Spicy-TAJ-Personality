@@ -258,6 +258,7 @@ if (!CBT_LIMIT.isAllowed()) {
             addStrokingBPM(30);
         }
 
+        setTempVar(VARIABLE.ENDURANCE_STROKES_ACTIVE, false);
         //@MetronomeOn(#Var[EnduranceStrokeSpeed]) @Wait(#Random(10, 30)) @Goto(Endurance Strokes Loop) @EdgeMode(Goto, Endurance Fail Ruin)
     }
 }
