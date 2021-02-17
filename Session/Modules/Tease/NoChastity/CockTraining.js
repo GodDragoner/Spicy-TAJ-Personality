@@ -136,6 +136,7 @@ function startStrokeTraining() {
     }
 
     if (level >= 50) {
+        stopStrokingMessage();
         sendMessage("You're at the highest level...", "You're at the very top", "You reached the highest level!");
         if (getStrictnessForCharacter() == 0) {
             sendMessage("I'm impressed!");
