@@ -13,7 +13,7 @@ INFLATABLE_BUTT_PLUG.askForVibration = function() {
             setVar('INFLATEABLE_PLUG_VIBRATING', false);
             break;
         } else {
-            sendVirtualAssistantMessage(YES_OR_NO);
+            sendVirtualAssistantMessage(YES_OR_NO, 0);
             answer.loop();
         }
     }

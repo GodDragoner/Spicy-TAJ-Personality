@@ -121,7 +121,7 @@
                 exitRequest = true;
                 break;
             } else {
-                sendVirtualAssistantMessage('Attend classes, join classes, list tasks or return?');
+                sendVirtualAssistantMessage('Attend classes, join classes, list tasks or return?', 0);
                 answer.loop();
             }
         }

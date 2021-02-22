@@ -108,7 +108,7 @@ function runChoreIntroduction() {
     }
 
     sendVirtualAssistantMessage('Next...');
-    sendVirtualAssistantMessage('Do you live in an apartment or house?');
+    sendVirtualAssistantMessage('Do you live in an apartment or house?', 0);
 
 
     let answer = createInput();
@@ -123,7 +123,7 @@ function runChoreIntroduction() {
             sendVirtualAssistantMessage('%Good%');
             break;
         } else {
-            sendVirtualAssistantMessage('Apartment or house %SlaveName%?');
+            sendVirtualAssistantMessage('Apartment or house %SlaveName%?', 0);
             answer.loop();
         }
     }
@@ -678,13 +678,13 @@ function sendKinkyChoreInstructions(choreType) {
 
 function askForRoomSafety(room) {
     sendVirtualAssistantMessage('Next I would like to know...');
-    sendVirtualAssistantMessage('Does that room have windows that neighbours can usually see through?');
+    sendVirtualAssistantMessage('Does that room have windows that neighbours can usually see through?', 0);
 
     room.windows = createYesOrNoQuestion();
 
     sendVirtualAssistantMessage('Now I need to know...');
     sendVirtualAssistantMessage('Is that room safe for kinky chores?');
-    sendVirtualAssistantMessage('It\'s not safe if there is for example a risk of running into other people!');
+    sendVirtualAssistantMessage('It\'s not safe if there is for example a risk of running into other people!', 0);
 
     room.safeForKink = createYesOrNoQuestion();
 }

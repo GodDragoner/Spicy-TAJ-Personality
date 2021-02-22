@@ -19,7 +19,7 @@
             endSession();
             break;
         } else {
-            sendVirtualAssistantMessage(YES_OR_NO);
+            sendVirtualAssistantMessage(YES_OR_NO, 0);
             answer.loop();
         }
     }
@@ -129,13 +129,13 @@
             setVar(VARIABLE.SUB_IS_MARRIED, false);
             sendVirtualAssistantMessage('Oh wow a married man! %EmoteHappy%');
         } else {
-            sendVirtualAssistantMessage("Single, Girlfriend or Married?");
+            sendVirtualAssistantMessage("Single, Girlfriend or Married?", 0);
             answer.loop();
             continue;
         }
 
         if(getVar(VARIABLE.SUB_HAS_GIRLFRIEND) || getVar(VARIABLE.SUB_IS_MARRIED)) {
-            sendVirtualAssistantMessage('What\'s her name?');
+            sendVirtualAssistantMessage('What\'s her name?', 0);
             setVar(VARIABLE.SUB_PARTNER_NAME, createInput().getAnswer());
             sendVirtualAssistantMessage('Maybe we can get to know ' + getVar(VARIABLE.SUB_PARTNER_NAME) + ' one day %Grin%');
             sendVirtualAssistantMessage('Maybe even work together %EmoteHappy%');
@@ -256,7 +256,7 @@
     sendVirtualAssistantMessage("Note that this has nothing to do with me %Lol%");
     sendVirtualAssistantMessage("I'll be strict no matter what you choose %Grin%");
     sendVirtualAssistantMessage("I would personally not go with a very strict Domme but maybe you are in need of heavy discipline");
-    sendVirtualAssistantMessage('It\'s for you to choose so what\'s it gonna be?');
+    sendVirtualAssistantMessage('It\'s for you to choose so what\'s it gonna be?', 0);
     answer = createInput('Kind', 'Fairly strict', 'Very strict');
 
     while (true) {
@@ -271,7 +271,7 @@
             id = 2;
             sendVirtualAssistantMessage('Going all in are we? Let\'s see if you regret your choice');
         } else {
-            sendVirtualAssistantMessage("1, 2 or 3?");
+            sendVirtualAssistantMessage("1, 2 or 3?", 0);
             answer.loop();
             continue;
         }
@@ -305,7 +305,7 @@
             sendVirtualAssistantMessage('I like that %Grin%');
             break;
         } else {
-            sendVirtualAssistantMessage("Full time or part time slave?");
+            sendVirtualAssistantMessage("Full time or part time slave?", 0);
             answer.loop();
         }
     }
@@ -345,7 +345,7 @@
 
     sendVirtualAssistantMessage('Both Dommes have stated that they are basically into anything that is not connected to severe dangers such as Blood Play/Cutting etc.');
     sendVirtualAssistantMessage('So now you are gonna have to make the final tough decision for today %SubName%');
-    sendVirtualAssistantMessage('Tell me: What Domme do you want to like and maybe get to message you back?');
+    sendVirtualAssistantMessage('Tell me: What Domme do you want to like and maybe get to message you back?', 0);
 
     answer = createInput("First", "Second");
 
@@ -363,7 +363,7 @@
             sendVirtualAssistantMessage('Would\'ve gone with her too. She seems so confident and powerful %EmoteHappy%');
             break;
         } else {
-            sendVirtualAssistantMessage("The first or the second Domme %SubName%?");
+            sendVirtualAssistantMessage("The first or the second Domme %SubName%?", 0);
             answer.loop();
         }
     }
@@ -430,7 +430,7 @@
                 sendVirtualAssistantMessage('Just make sure you can change the combination');
                 break;
             } else {
-                sendVirtualAssistantMessage(YES_OR_NO);
+                sendVirtualAssistantMessage(YES_OR_NO, 0);
                 answer.loop();
             }
         }
@@ -456,7 +456,7 @@
                 setVar(VARIABLE.CHASTITY_TOY_MODE, TOY_BOTH_MODE + 1);
                 break;
             } else {
-                sendVirtualAssistantMessage("Play, punishment, both or full time?");
+                sendVirtualAssistantMessage("Play, punishment, both or full time?", 0);
                 answer.loop();
             }
         }
@@ -564,7 +564,7 @@ function setupBlackmail() {
             setupBlackmail();
             break;
         } else {
-            sendVirtualAssistantMessage(YES_OR_NO);
+            sendVirtualAssistantMessage(YES_OR_NO, 0);
             answer.loop();
         }
     }

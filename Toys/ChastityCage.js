@@ -835,7 +835,7 @@ function setupNewCage() {
             answer.clearOptions();
             break;
         } else {
-            sendVirtualAssistantMessage('Is it made out of plastic, metal or silicon?');
+            sendVirtualAssistantMessage('Is it made out of plastic, metal or silicon?', 0);
             answer.loop();
         }
     }
@@ -867,7 +867,7 @@ function setupNewCage() {
                     sendVirtualAssistantMessage("I guess when %DomHonorific% %DomName% chooses it then you will always have to deal with it %Grin%");
                     break;
                 } else {
-                    sendVirtualAssistantMessage(YES_OR_NO);
+                    sendVirtualAssistantMessage(YES_OR_NO, 0);
                     answer.loop();
                 }
             }
@@ -876,7 +876,7 @@ function setupNewCage() {
             sendVirtualAssistantMessage("Too bad...");
             break;
         } else {
-            sendVirtualAssistantMessage(YES_OR_NO);
+            sendVirtualAssistantMessage(YES_OR_NO, 0);
             answer.loop();
         }
     }
@@ -909,7 +909,7 @@ function setupNewCage() {
                     sendVirtualAssistantMessage("I guess when %DomHonorific% %DomName% chooses it then you will always have to deal with those nasty psikes %Grin%");
                     break;
                 } else {
-                    sendVirtualAssistantMessage(YES_OR_NO);
+                    sendVirtualAssistantMessage(YES_OR_NO, 0);
                     answer.loop();
                 }
             }
@@ -929,7 +929,7 @@ function setupNewCage() {
                     sendVirtualAssistantMessage('Still it will be more than enough for you to suffer %Grin%');
                     break;
                 } else {
-                    sendVirtualAssistantMessage("Ring/Base or everywhere?");
+                    sendVirtualAssistantMessage("Ring/Base or everywhere?", 0);
                     answer.loop();
                 }
             }
@@ -939,7 +939,7 @@ function setupNewCage() {
             sendVirtualAssistantMessage("Too bad...");
             break;
         } else {
-            sendVirtualAssistantMessage(YES_OR_NO);
+            sendVirtualAssistantMessage(YES_OR_NO, 0);
             answer.loop();
         }
     }
@@ -959,7 +959,7 @@ function setupNewCage() {
             sendVirtualAssistantMessage("Completely encased is better in my opinion anyway %Grin%");
             break;
         } else {
-            sendVirtualAssistantMessage(YES_OR_NO);
+            sendVirtualAssistantMessage(YES_OR_NO, 0);
             answer.loop();
         }
     }
@@ -978,7 +978,7 @@ function setupNewCage() {
             sendVirtualAssistantMessage("Ball trap...");
             break;
         } else {
-            sendVirtualAssistantMessage("Full or ball trap?");
+            sendVirtualAssistantMessage("Full or ball trap?", 0);
             answer.loop();
         }
     }

@@ -22,7 +22,7 @@ Also, still on workmode, one thing that I miss about Cyber Mistress are small pe
             teaseActive = false;
             break;
         } else {
-            sendVirtualAssistantMessage(YES_OR_NO);
+            sendVirtualAssistantMessage(YES_OR_NO, 0);
             answer1.loop();
         }
     }
@@ -42,7 +42,7 @@ Also, still on workmode, one thing that I miss about Cyber Mistress are small pe
             exerciseActive = false;
             break;
         } else {
-            sendVirtualAssistantMessage(YES_OR_NO);
+            sendVirtualAssistantMessage(YES_OR_NO, 0);
             answer1.loop();
         }
     }
@@ -70,7 +70,7 @@ Also, still on workmode, one thing that I miss about Cyber Mistress are small pe
                 frequencyNumber = 4;
                 break;
             } else {
-                sendVirtualAssistantMessage("often, sometimes, rare or random?");
+                sendVirtualAssistantMessage("often, sometimes, rare or random?", 0);
                 frequencyAnswer.loop();
             }
         }
@@ -324,7 +324,7 @@ function workmodeTease(tease) {
             if (isInChastity()) {
                 sendVirtualAssistantMessage(random("Caress %MyYour% %Cock% a little", "Touch your cage a little", "Get a good feel of the cage", "Touch yourself", "Feel yourself up"));
                 sendVirtualAssistantMessage(random("Let's see if you can make it hard in that cage...", "Let's see if we can the tiny girl fight for freedom", "Let's see if you can make the sad tiny penis desperate for freedom"), 15);
-                sendVirtualAssistantMessage(random("Is it hard yet", "Is it hard", "Is it as hard as a caged cock can be") + "?");
+                sendVirtualAssistantMessage(random("Is it hard yet", "Is it hard", "Is it as hard as a caged cock can be") + "?", 0);
 
                 let answer = createInput("Yes", "No");
                 if (answer.isLike("no")) {

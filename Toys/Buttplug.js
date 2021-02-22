@@ -825,7 +825,7 @@ function setupNewButtplug() {
             answer.clearOptions();
             break;
         } else {
-            sendVirtualAssistantMessage('Is it made out of glass, metal or silicon?');
+            sendVirtualAssistantMessage('Is it made out of glass, metal or silicon?', 0);
             answer.loop();
         }
     }
@@ -883,7 +883,7 @@ function setupNewButtplug() {
                 } else if (answer.isLike("no")) {
                     break;
                 } else {
-                    sendVirtualAssistantMessage(YES_OR_NO);
+                    sendVirtualAssistantMessage(YES_OR_NO, 0);
                     answer.loop();
                 }
             }
@@ -899,7 +899,7 @@ function setupNewButtplug() {
                 } else if (answer.isLike("no")) {
                     break;
                 } else {
-                    sendVirtualAssistantMessage(YES_OR_NO);
+                    sendVirtualAssistantMessage(YES_OR_NO, 0);
                     answer.loop();
                 }
             }
@@ -915,7 +915,7 @@ function setupNewButtplug() {
                 } else if (answer.isLike("no")) {
                     break;
                 } else {
-                    sendVirtualAssistantMessage(YES_OR_NO);
+                    sendVirtualAssistantMessage(YES_OR_NO, 0);
                     answer.loop();
                 }
             }
@@ -931,7 +931,7 @@ function setupNewButtplug() {
                 } else if (answer.isLike("no")) {
                     break;
                 } else {
-                    sendVirtualAssistantMessage(YES_OR_NO);
+                    sendVirtualAssistantMessage(YES_OR_NO, 0);
                     answer.loop();
                 }
             }
@@ -944,7 +944,7 @@ function setupNewButtplug() {
             sendVirtualAssistantMessage('Finishing setup...');
             break;
         } else {
-            sendVirtualAssistantMessage(YES_OR_NO);
+            sendVirtualAssistantMessage(YES_OR_NO, 0);
             answer.loop();
         }
     }

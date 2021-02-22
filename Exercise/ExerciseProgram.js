@@ -373,7 +373,7 @@
 	sendVirtualAssistantMessage("We're at the end");
 	sendVirtualAssistantMessage("You just went through " + NrExercise + " exercises");
 
-	let answer = sendInput("How many of the " + NrExercise + " exercises do you estimate to have completed to a satisfactory level?");
+	let answer = sendInput("How many of the " + NrExercise + " exercises do you estimate to have completed to a satisfactory level?", 0);
 
 	while (true) {
 		if (answer.isInteger()) {

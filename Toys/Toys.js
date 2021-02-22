@@ -282,7 +282,7 @@ function askForToy(toyName, variableName, imageName) {
 
             break;
         } else {
-            sendVirtualAssistantMessage(YES_OR_NO);
+            sendVirtualAssistantMessage(YES_OR_NO, 0);
             answer.loop();
         }
     }
@@ -322,7 +322,7 @@ function askForToyUsage(toyName, domChose, variableName) {
             setVar("toy" + variableName + "InteractionMode", TOY_PUNISHMENT_MODE);
             break;
         } else {
-            sendVirtualAssistantMessage("Play, punishment or both?");
+            sendVirtualAssistantMessage("Play, punishment or both?", 0);
             answer.loop();
         }
     }
@@ -497,7 +497,7 @@ function createToy(name) {
                     setVar(variableName + "InteractionMode", TOY_PUNISHMENT_MODE);
                     break;
                 } else {
-                    sendVirtualAssistantMessage("Play, punishment or both?");
+                    sendVirtualAssistantMessage("Play, punishment or both?", 0);
                     answer.loop();
                 }
             }
@@ -543,7 +543,7 @@ function askForDomChoose() {
             sendVirtualAssistantMessage("%EmoteSad%");
             break;
         } else {
-            sendVirtualAssistantMessage("Do you want to leave it to your %DomHonorific% or chose yourself?");
+            sendVirtualAssistantMessage("Do you want to leave it to your %DomHonorific% or chose yourself?", 0);
             answer.loop();
         }
     }

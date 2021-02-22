@@ -11,7 +11,7 @@
             lobbyAnswer.clearOptions();
 
             sendVirtualAssistantMessage('Tell me %SlaveName%');
-            sendVirtualAssistantMessage('How much free time do you have in minutes or should I choose for you? %Grin%');
+            sendVirtualAssistantMessage('How much free time do you have in minutes or should I choose for you? %Grin%', 0);
 
             let minutesForChores = 0;
             let answer = createInput();
@@ -26,7 +26,7 @@
                     if(minutesForChores >= 10) {
                         break;
                     } else {
-                        sendVirtualAssistantMessage('You need to do chores for at least 10 minutes. Otherwise it won\'t make any sense to start at all...');
+                        sendVirtualAssistantMessage('You need to do chores for at least 10 minutes. Otherwise it won\'t make any sense to start at all...', 0);
                         answer.loop();
                     }
                 } else {
