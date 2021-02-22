@@ -766,7 +766,7 @@ function setupNewButtplug() {
 
             break;
         } else {
-            sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
+            sendVirtualAssistantMessage("Please only enter a number such as 1 now.", 0);
             answer.loop();
         }
     }
@@ -800,7 +800,7 @@ function setupNewButtplug() {
 
             break;
         } else {
-            sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
+            sendVirtualAssistantMessage("Please only enter a number such as 1 now.", 0);
             answer.loop();
         }
     }
@@ -852,7 +852,7 @@ function setupNewButtplug() {
             baseStyle = BUTTPLUG_BASE_STYLE.PIG_TAIL;
             break;
         } else {
-            sendVirtualAssistantMessage('Is the base of the plug plain, a crystal, a fluffy tail or a pig tail?');
+            sendVirtualAssistantMessage('Is the base of the plug plain, a crystal, a fluffy tail or a pig tail?', 0);
             answer.loop();
         }
     }

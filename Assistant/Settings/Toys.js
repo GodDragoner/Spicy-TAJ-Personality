@@ -67,7 +67,7 @@
             sendVirtualAssistantMessage("- Add new chastity cage");
             sendVirtualAssistantMessage("- Add new high heel");
             sendVirtualAssistantMessage("- E-Stim");
-            sendVirtualAssistantMessage("- Setup other toys");
+            sendVirtualAssistantMessage("- Setup other toys", 0);
             lobbyAnswer.loop();
         }
     }

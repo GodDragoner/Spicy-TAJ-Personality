@@ -68,7 +68,7 @@
                                 sendVirtualAssistantMessage('It takes place on ' + academyClass.getWeekdayString());
                                 break;
                             } else {
-                                sendVirtualAssistantMessage('You have already taken that class %SlaveName%');
+                                sendVirtualAssistantMessage('You have already taken that class %SlaveName%', 0);
                                 answer.loop();
                             }
                         } else if(classToTake.isLike('return', 'exit', 'none', 'abort', 'no')) {
@@ -76,7 +76,7 @@
                             sendVirtualAssistantMessage('Going back to the previous menu.');
                             break;
                         } else {
-                            sendVirtualAssistantMessage('That\'s not a valid class %SlaveName%');
+                            sendVirtualAssistantMessage('That\'s not a valid class %SlaveName%', 0);
                             answer.loop();
                         }
                     }

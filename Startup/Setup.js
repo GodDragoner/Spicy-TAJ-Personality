@@ -396,7 +396,7 @@
                 if (answer.isInteger()) {
                     const result = answer.getInt();
                     if (result <= 0) {
-                        sendVirtualAssistantMessage("You can't choose a number equal to 0 or lower");
+                        sendVirtualAssistantMessage("You can't choose a number equal to 0 or lower", 0);
                         answer.loop();
                     } else {
                         sendVirtualAssistantMessage('We are gonna setup your chastity cages now, one by one.');
@@ -410,7 +410,7 @@
                         break;
                     }
                 } else {
-                    sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
+                    sendVirtualAssistantMessage("Please only enter a number such as 1 now.", 0);
                     answer.loop();
                 }
             }

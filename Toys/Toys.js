@@ -581,7 +581,7 @@ function setupToys(settings) {
                     if (answer.isInteger()) {
                         const result = answer.getInt();
                         if (result <= 0) {
-                            sendVirtualAssistantMessage("You can't choose a number equal to 0 or lower");
+                            sendVirtualAssistantMessage("You can't choose a number equal to 0 or lower", 0);
                             answer.loop();
                         } else {
                             sendVirtualAssistantMessage('We are gonna setup your buttplugs now, one by one.');
@@ -595,7 +595,7 @@ function setupToys(settings) {
                             break;
                         }
                     } else {
-                        sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
+                        sendVirtualAssistantMessage("Please only enter a number such as 1 now.", 0);
                         answer.loop();
                     }
                 }
@@ -615,7 +615,7 @@ function setupToys(settings) {
                     if (answer.isInteger()) {
                         const result = answer.getInt();
                         if (result <= 0) {
-                            sendVirtualAssistantMessage("You can't choose a number equal to 0 or lower");
+                            sendVirtualAssistantMessage("You can't choose a number equal to 0 or lower", 0);
                             answer.loop();
                         } else {
                             sendVirtualAssistantMessage('We are gonna setup your dildos now, one by one.');
@@ -629,7 +629,7 @@ function setupToys(settings) {
                             break;
                         }
                     } else {
-                        sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
+                        sendVirtualAssistantMessage("Please only enter a number such as 1 now.", 0);
                         answer.loop();
                     }
                 }
@@ -680,7 +680,7 @@ function setupToys(settings) {
                 if (answer.isInteger()) {
                     const result = answer.getInt();
                     if (result <= 0) {
-                        sendVirtualAssistantMessage("You can't choose a number equal to 0 or lower");
+                        sendVirtualAssistantMessage("You can't choose a number equal to 0 or lower", 0);
                         answer.loop();
                     } else {
                         sendVirtualAssistantMessage('We are gonna setup your high heels now, one by one.');
@@ -694,7 +694,7 @@ function setupToys(settings) {
                         break;
                     }
                 } else {
-                    sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
+                    sendVirtualAssistantMessage("Please only enter a number such as 1 now.", 0);
                     answer.loop();
                 }
             }

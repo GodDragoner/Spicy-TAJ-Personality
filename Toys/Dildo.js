@@ -413,7 +413,7 @@ function setupNewDildo() {
 
             break;
         } else {
-            sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
+            sendVirtualAssistantMessage("Please only enter a number such as 1 now.", 0);
             answer.loop();
         }
     }

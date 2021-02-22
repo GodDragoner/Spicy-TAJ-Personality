@@ -198,7 +198,7 @@ function runChoreIntroduction() {
                         size = answer.getInt();
                         break;
                     } else {
-                        sendVirtualAssistantMessage('Please only type a number such as 10...');
+                        sendVirtualAssistantMessage('Please only type a number such as 10...', 0);
                         answer.loop();
                     }
                 }
@@ -210,7 +210,7 @@ function runChoreIntroduction() {
             }
             break;
         } else {
-            sendVirtualAssistantMessage('Please only type a number such as 5...');
+            sendVirtualAssistantMessage('Please only type a number such as 5...', 0);
             answer.loop();
         }
     }
@@ -229,7 +229,7 @@ function runChoreIntroduction() {
             let frequency = answer.getInt();
 
             if (frequency < 1 || frequency > 10) {
-                sendVirtualAssistantMessage('Please only give me a number in the range of 1 - 10...');
+                sendVirtualAssistantMessage('Please only give me a number in the range of 1 - 10...', 0);
                 answer.loop();
             } else {
                 setVar(VARIABLE.KINKY_CHORE_CHANCE, frequency);
@@ -241,7 +241,7 @@ function runChoreIntroduction() {
             sendVirtualAssistantMessage('This is gonna be much fun for me %Grin%');
             break;
         } else {
-            sendVirtualAssistantMessage('Please only type a number such as 5...');
+            sendVirtualAssistantMessage('Please only type a number such as 5...', 0);
             answer.loop();
         }
     }
