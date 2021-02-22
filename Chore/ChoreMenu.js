@@ -30,7 +30,7 @@
                         answer.loop();
                     }
                 } else {
-                    sendMessageBasedOnSender('Either give me something like "5" (minutes) or tell me to choose %SlaveName%');
+                    sendVirtualAssistantMessage('Either give me something like "10" (minutes) or tell me to choose %SlaveName%', 0);
                     answer.loop();
                 }
             }
