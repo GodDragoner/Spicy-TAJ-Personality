@@ -54,8 +54,8 @@
             break;
         } else if(lobbyAnswer.isLike('info')) {
             //lobbyAnswer.clearOptions();
-            sendVirtualAssistantMessage('You have spend ' + getVar(VARIABLE.WEEKLY_CHORES_TIME) + ' minutes this week doing ' + getVar(VARIABLE.WEEKLY_CHORES_DONE) + ' chores');
-            sendVirtualAssistantMessage('In total you have spend ' + getVar(VARIABLE.TOTAL_CHORES_TIME) + ' minutes doing a total of ' + getVar(VARIABLE.TOTAL_CHORES_DONE) + ' chores');
+            sendVirtualAssistantMessage('You have spent ' + getVar(VARIABLE.WEEKLY_CHORES_TIME) + ' minutes this week doing ' + getVar(VARIABLE.WEEKLY_CHORES_DONE) + ' chores');
+            sendVirtualAssistantMessage('In total you have spent ' + getVar(VARIABLE.TOTAL_CHORES_TIME) + ' minutes doing a total of ' + getVar(VARIABLE.TOTAL_CHORES_DONE) + ' chores');
             sendVirtualAssistantMessage('Anything else I can do for you?', 0);
             lobbyAnswer.loop();
         } else {
