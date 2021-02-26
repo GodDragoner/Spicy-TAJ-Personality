@@ -61,10 +61,10 @@
             //TODO: Implement to lick shoes or similar
             sendMessage('It\'s time to train your ability ' + random('to lick pussy', 'to please women orally', 'to worship women with your tongue') + ' %SlaveName%');
             sendMessage(random('It\'s the biggest reward a slave can earn', 'I can\'t imagine a better reward for a slave', 'The ultimate reward'));
-            sendMessage(random('So you better not suck at it', 'So it\'s best to not suck at it', 'So you better won\'t be completely awful!'));
+            sendMessage(random('So you\'d better not suck at it', 'So it\'s best to not suck at it', 'So you\'d better not be completely awful!'));
             sendMessage(random('Or it might become an extremely rare event', 'Or who knows how often you\'ll be giving it %Lol%', 'Or it might happen rarely %Grin%'));
             sendMessage("And it is the best way to worship and please your %DomHonorific%");
-            sendMessage("Who knows what rewards you'll get if you are a slave and pleasing slave");
+            sendMessage("Who knows what rewards you'll get if you are an obedient and pleasing slave");
             sendMessage('A quick refresh');
             sendMessage('Red = fast, Yellow = medium, Green = Slow');
             sendMessage('There is up, down, left and right');
