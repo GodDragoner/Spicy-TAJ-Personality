@@ -34,10 +34,10 @@ function interactWithButtplug(punishment) {
             if (action === ACTION_BUTTPLUG_INCREASE_SIZE) {
                 increasePlugSize();
             } else if (action === ACTION_BUTTPLUG_PUT_FIRST && hasButtplugToy()) {
-                let answers = ['Let\'s prepare your %Ass% for what is up to come %Grin%', 'Let\'s plug up that %Ass%', 'Let\'s not waste anymore time by leaving that %Ass% empty'];
+                let answers = ['Let\'s prepare your %Ass% for what is to come %Grin%', 'Let\'s plug up that %Ass%', 'Let\'s not waste anymore time by leaving that %Ass% empty'];
 
                 if (getVar(VARIABLE.ASS_LEVEL) >= 30) {
-                    answers.push('You know that there is a very slow chance of you not being plugged and guess what - You won\'t be lucky now... %Lol%');
+                    answers.push('You know that there is a very slim chance of you not being plugged and guess what - You won\'t be lucky now... %Lol%');
                 }
 
                 sendMessage(answers[randomInteger(0, answers.length - 1)]);
@@ -221,6 +221,10 @@ function fetchToy(toy, imagePath, amount = 0) {
             }
 
             sendMessageBasedOnSender("%Good%");
+
+            //Update the list of lovense toys
+            fetchAvailableLovenseToys();
+
             break;
         } else if (answer.isLike("no", "don't", "can't")) {
             if (imagePath !== undefined) {
@@ -743,6 +747,9 @@ function setupToys(settings) {
     BALL_STRETCHER_TOY.askForToyAndUsage(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
+    FLESH_LIGHT.askForToyAndUsage(domChose);
+    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
     CLOTHESPINS_TOY.askForToyAndUsage(domChose);
 
     sendVirtualAssistantMessage('Okay next quite similar but not the same %Grin%');
@@ -752,6 +759,7 @@ function setupToys(settings) {
     sendVirtualAssistantMessage('Okay now something yet again fairly similar but definitely more painful if used correctly %Grin%');
 
     CLOVER_CLAMPS.askForToyAndUsage(domChose);
+
 
     /*askForToy("Cock Ring");
     askForToyUsage("CockRing", domChose);

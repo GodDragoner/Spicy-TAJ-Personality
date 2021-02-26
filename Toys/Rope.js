@@ -40,7 +40,7 @@ function tieBalls(force = false) {
         //QUALITY: Show tutorials etc. and tell the sub what exactly to do
         sendMessage("Now take that rope and tie up your balls");
         sendMessage("Do it real nice and tight");
-        sendMessage('But don\'t cut the blood flow');
+        sendMessage('But don\'t cut off the blood flow');
         sendMessage("Tell me when you are ready to continue");
         waitForDone();
 

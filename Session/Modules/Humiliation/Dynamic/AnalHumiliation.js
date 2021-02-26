@@ -180,8 +180,9 @@ function getAnalSessionLength() {
 
     //TODO: Anal themed session
 
-    let min = Math.max(5, getVar(VARIABLE.ASS_LEVEL) / 2);
-    let max = Math.max(10, getVar(VARIABLE.ASS_LEVEL));
+    let min = Math.max(5, getVar(VARIABLE.ASS_LEVEL) / 3);
+    let max = Math.max(10, getVar(VARIABLE.ASS_LEVEL) / 1.5);
+
 
     let mood = getMood();
 
@@ -200,6 +201,9 @@ function getAnalSessionLength() {
         min *= 1.5;
         max *= 1.5;
     }
+
+    sendDebugMessage('Min for anal:' + min + ' Max for anal:' + max);
+    sendDebugMessage('Max (total): ' + maxMinutes);
 
     return Math.min(maxMinutes, randomInteger(Math.ceil(min), Math.ceil(max)));
 }

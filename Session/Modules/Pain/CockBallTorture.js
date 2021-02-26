@@ -181,7 +181,7 @@ function punishSmallBustBallsMultiple(maxLoops = getVar(VARIABLE.SUB_PAIN_TOLERA
                 waitForDone();
                 break;
             case 1:
-                sendMessage('I want ' + returnYourOrMy() + '%Balls% to really hurt. Give them another hard slap');
+                sendMessage('I want ' + returnYourOrMy() + ' %Balls% to really hurt. Give them another hard slap');
                 waitForDone();
                 break;
             case 2:

@@ -28,7 +28,7 @@ function sendDebugMessage(message) {
             break;
             //Log mode only
         case 1:
-            LOGGER.getLogger().log(LOGGER_LEVEL.INFO, message)
+            LOGGER.getLogger().log(LOGGER_LEVEL.INFO, message);
             break;
             //No debug at all
         default:

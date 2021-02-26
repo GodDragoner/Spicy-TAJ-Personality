@@ -211,7 +211,7 @@ function getDildoTaskDurationMinutes() {
 
 function chooseAnalPosition(needsTwoHands = false) {
     let history = createHistory('analPosition');
-    let position = findRandomUnusedIndex(5, history);
+    let position = findRandomUnusedIndex(6, history);
 
     switch (position) {
         case 0:
@@ -241,6 +241,10 @@ function chooseAnalPosition(needsTwoHands = false) {
         case 5:
             sendMessage("I want you to lay down on your back");
             sendMessage("And to bend your legs so that your feet touch the ground %Grin%");
+            break;
+        case 6:
+            sendMessage("I want you to lay down on your " + random("right", "left") + " side");
+            sendMessage("Spread your rest your legs on top of each other %Grin%");
             break;
     }
 }

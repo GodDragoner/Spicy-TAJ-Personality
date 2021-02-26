@@ -96,6 +96,10 @@ const VARIABLE = {
 
     NEXT_ORGASM_SPECIAL: "nextOrgasmSpecial",
 
+    ANAL_ORGASM_TRAINING: "analOrgasmTraining",
+
+    ANAL_ORGASM_ONLY_STATUS: "analOrgasmOnlyStatus",
+
     FINISHED_SETUP: "finishedSetup",
     FINISHED_FIRST_SESSION: "finishedFirstSession",
 

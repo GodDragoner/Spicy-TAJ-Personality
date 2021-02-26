@@ -96,6 +96,7 @@ Also, still on workmode, one thing that I miss about Cyber Mistress are small pe
         switch (frequencyNumber) {
             case 0:
                 answer1 = createInput("Exit");
+                break;
             case 1:
                 answer1 = createInput(randomInteger(180, 300), "Exit");
                 break;

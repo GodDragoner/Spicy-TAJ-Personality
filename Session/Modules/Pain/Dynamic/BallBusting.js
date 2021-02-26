@@ -11,7 +11,10 @@
 
             sendMessage('First of all let\'s refresh the terminology a bit');
 
-            sendExplainCBTTerms();
+            if(shouldExplainCBTTerms()) {
+                sendExplainCBTTerms();
+            }
+
 
             sendMessage('Now for the intensity scale of the hits');
             sendMessage('Light means that it should hurt but not too bad');

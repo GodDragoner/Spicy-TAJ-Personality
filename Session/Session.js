@@ -119,6 +119,10 @@ function endSpicySession() {
                     setDate(VARIABLE.LAST_RULE_PASSED);
                 }
             } else {
+                //Don't allow sub to be too horny to choose
+                let lastOrgasmWithinRange = !getLastEjaculationDate().addDay(3).hasPassed();
+                let introduceAnalOrgasmOnly = getVar(VARIABLE.ANAL_ORGASM_ONLY_STATUS, LIMIT_NEVER_ASKED) === LIMIT_NEVER_ASKED && !getVar(VARIABLE.ANAL_ORGASM_TRAINING, false) && lastOrgasmWithinRange;
+
                 //Is in sissy training
                 if (!RULE_ALWAYS_WEAR_PANTIES.isActive() && RULE_ALWAYS_WEAR_PANTIES.canBeActivated()) {
                     sendMessage('There is one last thing for today...');
@@ -130,6 +134,17 @@ function endSpicySession() {
                     sendMessage('It\'s about your sissy training %Grin%');
                     RULE_ALWAYS_PEE_SITTING_DOWN.sendIntroduction();
                     setDate(VARIABLE.LAST_RULE_PASSED);
+                } else if(RULE_ALWAYS_WEAR_PANTIES.isActive() && shouldIntroduceNewRule(RULE_ALWAYS_WEAR_WOMAN_SOCKS)) {
+                    sendMessage('There is one last thing for today...');
+                    sendMessage('It\'s about your sissy training %Grin%');
+
+                    //Last rule passed date is handled by shouldIntroduceNewRule function
+                    RULE_ALWAYS_WEAR_WOMAN_SOCKS.sendIntroduction();
+                } else if(introduceAnalOrgasmOnly) {
+                    sendMessage('There is one last thing for today...');
+                    sendMessage('It\'s about your sissy training %Grin%');
+
+                    getEndGameById(END_GAME_ANAL_ORGASM).sendIntroduction();
                 }
             }
         }

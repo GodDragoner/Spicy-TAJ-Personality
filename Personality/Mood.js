@@ -35,11 +35,11 @@ function feelsLikeShowingPower() {
     } else if (mood === PLEASED_MOOD) {
         chance = getStrictnessForCharacter() * 10;
     } else if (mood === NEUTRAL_MOOD) {
-        chance = (getStrictnessForCharacter() + 1) * 20;
+        chance = Math.max(getStrictnessForCharacter(), 1) * 20;
     } else if (mood === ANNOYED_MOOD) {
-        chance = (getStrictnessForCharacter() + 1) * 30;
+        chance = (getStrictnessForCharacter() + 1) * 25;
     } else if (mood === VERY_ANNOYED_MOOD) {
-        chance = (getStrictnessForCharacter() + 1) * 40;
+        chance = (getStrictnessForCharacter() + 1) * 35;
     }
 
     chance += getVar(VARIABLE.ANGER);
@@ -55,15 +55,15 @@ function feelsLikePunishingSlave() {
     let chance = 0;
 
     if (mood === VERY_PLEASED_MOOD) {
-        chance = getStrictnessForCharacter() * 5;
+        chance = getStrictnessForCharacter() * 2;
     } else if (mood === PLEASED_MOOD) {
-        chance = getStrictnessForCharacter() * 7;
+        chance = getStrictnessForCharacter() * 5;
     } else if (mood === NEUTRAL_MOOD) {
-        chance = (getStrictnessForCharacter() + 1) * 10;
+        chance = Math.max(getStrictnessForCharacter(), 1) * 10;
     } else if (mood === ANNOYED_MOOD) {
-        chance = (getStrictnessForCharacter() + 1) * 17;
+        chance = (getStrictnessForCharacter() + 1) * 15;
     } else if (mood === VERY_ANNOYED_MOOD) {
-        chance = (getStrictnessForCharacter() + 1) * 25;
+        chance = (getStrictnessForCharacter() + 1) * 20;
     }
 
     chance += Math.floor(getVar(VARIABLE.ANGER)/2);
@@ -116,7 +116,7 @@ function isAnnoyedByTalking() {
     chance += getVar(VARIABLE.FORGETTING_HONORIFIC_COUNT, 0)*10*mood;
     chance += getVar(VARIABLE.UNALLOWED_TALKS, 0)*10*mood;
     chance += getVar(VARIABLE.COMPLAINTS, 0)*10*mood;
-    chance += getVar(VARIABLE.COMPLAINTS, 0)*10*mood;
+    chance += getVar(VARIABLE.REPEATING_TEXT, 0)*10*mood;
 
     //General mood
     if(chance > 0) {
@@ -142,7 +142,7 @@ function feelsEvil() {
     } else if (mood === PLEASED_MOOD) {
         chance = getStrictnessForCharacter() * 15;
     } else if (mood === NEUTRAL_MOOD) {
-        chance = (getStrictnessForCharacter() + 1) * 20;
+        chance = Math.max(getStrictnessForCharacter(), 1) * 20;
     } else if (mood === ANNOYED_MOOD) {
         chance = (getStrictnessForCharacter() + 1) * 25;
     } else if (mood === VERY_ANNOYED_MOOD) {
@@ -171,6 +171,37 @@ function handleTodaysMood() {
     //Otherwise no change
 }
 
+//Extra teasing mood
+function feelsLikeTeasing() {
+    let mood = getMood();
+
+    let chance = getVar(VARIABLE.LUST, 0);
+
+    let multiplier = 1;
+
+    if(getStrictnessForCharacter() === 1) {
+        multiplier = 1.5;
+    } if(getStrictnessForCharacter() === 0) {
+        multiplier = 2;
+    }
+
+    if (mood === VERY_PLEASED_MOOD) {
+        chance += multiplier * 50;
+    } else if (mood === PLEASED_MOOD) {
+        chance += multiplier * 40;
+    } else if (mood === NEUTRAL_MOOD) {
+        chance += multiplier* 30;
+    } else if (mood === ANNOYED_MOOD) {
+        chance += multiplier * 10;
+    } else if (mood === VERY_ANNOYED_MOOD) {
+        chance += multiplier * 5;
+    }
+
+    sendDebugMessage('Feels like teasing chance ' + chance);
+
+    return isChance(chance);
+}
+
 //Teasing is meant to be cruel in this case => which means Happiness would cause her to be less cruel
 function getCruelTeasingMood() {
     let multiplier = 1;
@@ -183,6 +214,7 @@ function getCruelTeasingMood() {
 
     return (getVar(VARIABLE.ANGER) + getVar(VARIABLE.LUST, 0))*multiplier - getVar(VARIABLE.HAPPINESS, 0);
 }
+
 
 function getHumiliationMood() {
 
