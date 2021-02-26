@@ -1,5 +1,17 @@
 const ORGASM_SPECIAL_GAY_PICTURE = 0;
 
+function checkForOrgasmSpecial(orgasmCategory = decideOrgasm(true)) {
+    //Check if we promised a special orgasm next
+    if (isVar(VARIABLE.NEXT_ORGASM_SPECIAL) && orgasmCategory !== ORGASM_CATEGORY_DENIED) {
+        //Can only do this while not in chastity
+        if (getVar(VARIABLE.NEXT_ORGASM_SPECIAL) === ORGASM_SPECIAL_GAY_PICTURE && !isInChastity()) {
+            preOrgasmSpecialGayPicture(orgasmCategory);
+            return true;
+        }
+    }
+
+    return false;
+}
 
 function sendOrgasmChastityIntroduction() {
     if(!isVar('orgasmChastityIntroduction')) {

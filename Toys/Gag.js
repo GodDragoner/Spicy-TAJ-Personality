@@ -255,7 +255,7 @@ function putInGag(gagType = GAG_TYPE_BALL_GAG, addPinToTongue = false) {
         sendMessageBasedOnSender('And no, you won\'t be allowed to take those clothespins of your tongue');
         sendMessageBasedOnSender('They will stay where they are %Grin%');
         sendMessageBasedOnSender('That is why I made you get the spider gag anyway %Lol%');
-        sendMessageBasedOnSender('You better make it work %EmoteHappy%');
+        sendMessageBasedOnSender('You\'d better make it work %EmoteHappy%');
     } else if (addPinToTongue) {
         sendMessageBasedOnSender('This is gonna be good');
         sendMessageBasedOnSender('Your tongue clipped with that pin and your gag pulling your mouth wide open %Grin%');
@@ -292,7 +292,7 @@ function removeGag(mouthRequiredAfter = true) {
     sendMessageBasedOnSender("%SlaveName% go ahead and remove that gag from your mouth");
     let answer = sendInput("Tell me when you are ready to continue");
     while (true) {
-        if (answer.isLike("done", "yes")) {
+        if (answer.isLike("done", "yes", "ready")) {
             sendMessageBasedOnSender("%Good%");
             break;
         } else {
@@ -309,7 +309,7 @@ function removeGag(mouthRequiredAfter = true) {
     if(feelsLikePunishingSlave() && clampOnTongue && !mouthRequiredAfter) {
         sendAlreadyKnowWhatsNext('clamp', 'tongue');
         putClampsOnOneSide(1, BODY_PART_TONGUE);
-        sendMessage('Did you you really think that I was gonna remove it from your tongue alongside the gag? Poor %SlaveName%');
+        sendMessage('Did you really think that I was gonna remove it from your tongue alongside the gag? Poor %SlaveName%');
     }
 }
 
@@ -319,7 +319,7 @@ function sendConsideredRemovingGag() {
 
     switch(randomInteger(0, 3)) {
         case 0:
-            sendMessage('I don\'t think you earned that right yet');
+            sendMessage('I don\'t think you\'ve earned that right yet');
             break;
         case 1:
             sendMessage('I am just not in the mood of hearing any sound from you right now');

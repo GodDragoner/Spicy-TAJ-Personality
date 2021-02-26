@@ -130,7 +130,7 @@ function startPunishmentSession(overallLevel) {
     sendMessage(random('You hopefully learned your lesson %SlaveName%', 'I hope you won\'t misbehave again', 'I hope you will behave from now on', 'Hopefully this is the last time I need to punish you %SlaveName%'));
 
     if (relockChastity) {
-        sendMessage('I don\'t need your %cock% to be exposed to me any longer so...');
+        sendMessage('I don\'t need your %Cock% to be exposed to me any longer so...');
         sendAlreadyKnowWhatsNext('chastity', 'lock', 'cage');
         lockChastityCage();
         lockAwayChastityKey();

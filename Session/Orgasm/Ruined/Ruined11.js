@@ -5,7 +5,7 @@
 
         //Glitter
         if(isChance(50)) {
-            let contactId = 5;
+            let contactId = 4;
             addContact(contactId);
             sendMessage("Get ready, %SlaveName%");
 
@@ -21,7 +21,7 @@
             sendMessage("I think you should make it a <i>ruined</i> orgasm... %Grin%");
 
             setSender(1);
-            sendMessage("Mmm you know what, that\\'s not a bad idea, %DomFriendName3%");
+            sendMessage("Mmm you know what, that's not a bad idea, %domFriend3Name%");
             sendMessage('Alright, ruined orgasm it is %EmoteHappy%');
 
             startEdging(0, true, EDGE_END_RUIN);
@@ -44,10 +44,10 @@
 
             setSender(1);
             sendMessage('That didn\'t end quite as pleasurably as you might have hoped, did it...');
-            sendMessage('Oh well... at least %DomFriendName3% and I enjoyed it, and that\'s all that matters');
+            sendMessage('Oh well... at least %domFriend3Name% and I enjoyed it, and that\'s all that matters');
 
 
-            sendMessage("As always, you\\'re right... it <i>is</i> more fun to make him ruin it! %Grin%");
+            sendMessage("As always, you're right... it <i>is</i> more fun to make him ruin it! %Grin%");
             sendMessage("Well... maybe next time %EmoteHappy%");
         } else {
             startEdging(0, true, EDGE_END_ORGASM);

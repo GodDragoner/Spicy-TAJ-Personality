@@ -40,7 +40,7 @@
                 sendMessage('That includes all that cock you will take up your ass eventually sissy %Lol%');
             }
 
-            sendMessage('So you better be ready for intense and unrelenting training');
+            sendMessage('So you\'d better be ready for intense and unrelenting training');
             sendMessage('We won\'t stop until you are ready to take the thickest toys someone could imagine so better strap in because the ride is gonna be rough %Grin%');
             sendMessage('Pun intended %Lol%');
 
@@ -51,7 +51,7 @@
                 sendMessage('%Good%');
             } else {
                 changeMeritLow(true);
-                sendMessage('Well then you better start shopping NOW and find one immediately');
+                sendMessage('Well then you\'d better start shopping NOW and find one immediately');
                 sendMessage('I expect it to be available to you within the next 7 days %SlaveName%');
 
                 //TODO: 7 day cooldown, store purchase order given
@@ -66,7 +66,7 @@
             if (dildo === null) {
                 changeMeritLow(true);
                 sendMessage('I don\'t think you own any dildo bigger than that diameter');
-                sendMessage('You better start shopping NOW and find one immediately');
+                sendMessage('You\'d better start shopping NOW and find one immediately');
                 sendMessage('I expect it to be available to you within the next 7 days %SlaveName%');
 
                 //TODO: 7 day cooldown, store purchase order given

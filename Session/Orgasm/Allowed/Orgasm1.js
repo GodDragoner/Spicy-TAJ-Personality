@@ -6,11 +6,13 @@
         } else {
             sendMessage("Alright, I want to let you cum %GeneralTime%");
             tieBalls(true);
-            sendMessage("The thing is, I\'m not sure you\'ve quite earned it...");
+            sendMessage("The thing is, I'm not sure you've quite earned it...");
             sendMessage("I want you to go get a wooden spoon or a ruler or something similar");
             sendMessage("You can cum %GeneralTime% but you have to hurt those %Balls% for me first %Grin%");
-            sendMessage("I\'m going to count from 1 to 10 and with each number you will smack %MyYour% %Balls%");
-            sendMessage("And you better do it hard!");
+
+            sendMessage('I\'m going to count from 1 to 10 and with each number you will smack %MyYour% %Balls%');
+            sendMessage("And you'd better do it hard!");
+
             sendMessage("Here we go...");
             sendMessage("ONE");
             sendMessage("TWO");
@@ -37,11 +39,11 @@
                 sendMessage("Just stroke through the pain now");
             }
 
-            sendMessage("I told you I\'d let you cum if you hurt yourself for me, so I will");
+            sendMessage("I told you I'd let you cum if you hurt yourself for me, so I will");
             startEdging(0, true, EDGE_END_ORGASM);
             waitForCumAnswer();
 
-            let answer = sendInput("It\'s nice to have some pain mixed in with your pleasure, isn\'t it?", 5);
+            let answer = sendInput("It's nice to have some pain mixed in with your pleasure, isn't it?", 5);
 
             if (answer.isTimeout()) {
                 sendMessage('For me it definitely is %Grin%');

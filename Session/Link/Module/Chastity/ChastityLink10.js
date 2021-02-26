@@ -1,7 +1,7 @@
 {
     if (tryRunLinkFetchId()) {
-        sendMessage("It\'s hard to know what to do with your hands right now, right?");
-        sendMessage("You want to %JerkOff% but can\'t");
+        sendMessage("It's hard to know what to do with your hands right now, right?");
+        sendMessage("You want to %JerkOff% but can't");
         sendMessage("If only you could grab a nice ass");
         showCategoryImage('BUTTS', 4);
         sendMessage("Or hold these amazing %Boobs% in the palm of your hand");

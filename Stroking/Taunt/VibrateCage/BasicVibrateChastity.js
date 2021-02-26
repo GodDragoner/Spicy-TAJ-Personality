@@ -13,6 +13,7 @@
         'Increase the level now %SlaveName%',
         'Increase the level a little bit',
         'Increase the level a little',
+        'Increase the level %SlaveName%',
         'As high as it goes now!',
         'As high as it goes, but try not to edge!',
         'Increase the pressure a little bit',
@@ -42,6 +43,8 @@
         'I want you to go back to the lowest possible intensity',
         'I want you to go back to the lowest possible intensity, make it frustrating',
         'Now all the way to the lowest possible intensity',
+        'I want you to go to the highest possible intensity',
+        'Now all the way to the highest possible intensity',
     ];
 
     //Join the two lists

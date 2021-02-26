@@ -117,7 +117,7 @@ const afraidTasks = [];
         sendInstructions: function () {
             sendMessage("%InAddition% " );
             sendMessage("In that period I want you watch " + randomInteger(5, 20) + " minutes " + random("of porn ", "of a sexy slideshow"));
-            sendMessage(random("Shouldn\'t be too complicated ",  "Do it for me ", "I can\'t wait to hear about it!") );
+            sendMessage(random("Shouldn't be too complicated ",  "Do it for me ", "I can't wait to hear about it!") );
         },
     };
     chastityTasks.push(chastityTask);
@@ -138,7 +138,7 @@ const afraidTasks = [];
             }
 
             sendMessage("Of course you are not allowed to cum %SlaveName% %Lol%");
-            sendMessage(random("Shouldn\'t be too complicated ", "Do it for me ", "I can\'t wait to hear about it! ") );
+            sendMessage(random("Shouldn't be too complicated ", "Do it for me ", "I can't wait to hear about it! ") );
         },
     };
     chastityTasks.push(chastityTask);

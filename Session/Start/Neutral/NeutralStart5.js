@@ -27,7 +27,7 @@
             sendMessage('Don\'t get too cocky %SlaveName%');
             sendMessage('You might regret it %Lol%');
         } else if (answer === ANSWER_NO) {
-            sendMessage('Well you better be ready because I am not gonna make this easy on you %Grin%');
+            sendMessage('Well you\'d better be ready because I am not gonna make this easy on you %Grin%');
         } else {
             sendMessage('I guess we\'ll find out soon enough %Grin%');
         }

@@ -35,7 +35,7 @@
         sendMessage('%LetEdgeFade%');
         sendMessage('i think I better let you recover a little bit, %SlaveName%')
     } else {
-        sendMessage('Oh alright then %lol%');
+        sendMessage('Oh alright then %Lol%');
     }
 
     sendMessage('Still, I think I might have to experiment on you some more later %Grin%');

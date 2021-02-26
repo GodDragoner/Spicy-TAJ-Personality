@@ -1,6 +1,6 @@
 {
     if (tryRunLinkFetchId()) {
-        sendMessage("Even when you can\'t %JerkOff%");
+        sendMessage("Even when you can't %JerkOff%");
         lockImages();
         sendMessage("I can still tease you with hot pictures", 0);
         showTeaseImage(3);

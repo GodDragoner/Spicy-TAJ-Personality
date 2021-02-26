@@ -34,7 +34,7 @@
                 sendMessage('I don\'t know if you still remember this %SlaveName%');
                 sendMessage('I certainly do...');
                 sendMessage('That desire to humiliate you hasn\'t stopped yet');
-                sendMessage('For some reason I just can\'t get this idea of my head %Lol%');
+                sendMessage('For some reason I just can\'t get this idea out of my head %Lol%');
                 HUMILIATION_LIMIT.askForLimitChange(LIMIT_ADDRESS.DOMME);
             }
         }

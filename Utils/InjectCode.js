@@ -191,7 +191,51 @@ while(startExp < getTrainingEXPForLevel(30)) {
 sendDebugMessage('Simulation ended');
 sendDebugMessage('Trainings required: ' + trainingsDone + ' for a total of ' + startExp + ' exp');
 
+    let out = 0;
+    let inChastity = 0;
+
+    for(let x = 0; x < 100; x++) {
+        let decision = willKeepChastityOn();
+
+        if(decision) {
+            inChastity++;
+        } else {
+            out++;
+        }
+    }
+
+    sendDebugMessage('Out: ' + out + ' In: ' + inChastity);
+    sendDebugMessage(getAnalDildoForTask().name);
+
+        let dildo = 0;
+    let chastity = 0;
+    let prostate = 0;
+
+    for(let x = 0; x < 1000; x++) {
+        let type = decideAnalOrgasmType();
+
+        if(type === ANAL_ORGASM_TYPE.DILDO) {
+            dildo++;
+        } else if(type === ANAL_ORGASM_TYPE.CHASTITY_VIBE) {
+            chastity++;
+        } else if(type === ANAL_ORGASM_TYPE.PROSTATE_VIBE) {
+            prostate++;
+        }
+    }
+
+
+    sendDebugMessage("Dildo: " + dildo);
+    sendDebugMessage("Chastity: " + chastity);
+    sendDebugMessage("Prostate: " + prostate);
+let toy = LOVENSE_TOY_TYPES.MAX.getLovenseToy();
+
+sendDebugMessage(serializeObject(toy.setVibrate(1)));
+sleep(5);
+sendDebugMessage(serializeObject(toy.setVibrate(0)));
 setVar(VARIABLE.ASS_LEVEL, restoreLevel);*/
+
 {
-    run('Session/End/DecideEnd.js')
+    FLESH_LIGHT.setToyOn(false);
+    resetFleshlight();
+    setVar(VARIABLE.CHASTITY_ON, true);
 }

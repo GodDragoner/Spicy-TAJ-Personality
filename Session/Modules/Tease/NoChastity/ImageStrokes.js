@@ -7,7 +7,7 @@
 
         readyForStroking();
 
-        sendMessage(random('Let\'s get started ', 'Let\'s begin ', 'Here we go ', 'I hope you\'re ready ', 'You better be ready ', 'Better get ready ', 'Better prepare yourself ') + '%Wicked%');
+        sendMessage(random('Let\'s get started ', 'Let\'s begin ', 'Here we go ', 'I hope you\'re ready ', 'You\'d better be ready ', 'Better get ready ', 'Better prepare yourself ') + '%Wicked%');
 
         let strokesDone = 0;
         let sentenceHistory = null;
@@ -90,7 +90,7 @@
                 '' + strokes + ' strokes for these %Boobs% should make you squirm @ShowBoobsImage ',
                 '%Boobs% like these were <i>made</i> for making you suffer. ' + strokes + ' more strokes %SlaveName% @ShowBoobsImage ',
                 'More %Boobs%, ' + strokes + ' more strokes @ShowBoobsImage ',
-                '' + strokes + ' more strokes and maybe %MyYour% %Balls% will be as big as these %Boobs% %lol% @ShowBoobsImage ',
+                '' + strokes + ' more strokes and maybe %MyYour% %Balls% will be as big as these %Boobs% %Lol% @ShowBoobsImage ',
                 'Give me ' + strokes + ' more strokes while you imagine sucking on these %Boobs% @ShowBoobsImage ',
                 'Imagine how these %Boobs% would feel in your hands as you give me ' + strokes + ' more strokes @ShowBoobsImage ',
                 'Squeeze ' + strokes + ' more strokes out of %MyYour% %Cock% while you think about aqueezing these %Boobs% %Grin% @ShowBoobsImage ',

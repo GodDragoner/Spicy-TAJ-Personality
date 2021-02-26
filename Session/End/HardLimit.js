@@ -1,6 +1,6 @@
 {
     sendMessage(random("%SlaveName%"));
-    sendMessage(random("We\'ve crossed your hard limit of", "It seems we\'re at your hard limit of") + ' ' + getVar(VARIABLE.DENIAL_LIMIT) + ' days');
+    sendMessage(random("We've crossed your hard limit of", "It seems we're at your hard limit of") + ' ' + getVar(VARIABLE.DENIAL_LIMIT) + ' days');
     sendMessage(random("I do respect your limits ", "Despite what you might think, I do care about your limits...", "I fully respect your limits") + "");
     sendMessage(random("Now ", "Meaning... ", "Well ") + "");
     const answer = sendInput("Do you absolutely need to cum?");
@@ -100,8 +100,8 @@ function askForHardLimitIncrease() {
 
 function increaseHardLimit() {
     sendMessage(random("So currently your hard limit is", "At this moment your hard limit is") + ' ' + getVar(VARIABLE.DENIAL_LIMIT) + ' days');
-    sendMessage(random("I promise I\'m only changing it a little", "I\'m only increasing it a teeny tiny bit"));
+    sendMessage(random("I promise I'm only changing it a little", "I'm only increasing it a teeny tiny bit"));
     setVar(VARIABLE.DENIAL_LIMIT, getVar(VARIABLE.DENIAL_LIMIT) + randomInteger(1, 2));
-    sendMessage("I\'m so proud of you!");
+    sendMessage("I'm so proud of you!");
     changeMeritMedium(false);
 }

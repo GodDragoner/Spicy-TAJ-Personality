@@ -1,15 +1,15 @@
 {
     if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.UNKNOWN)) {
         sendMessage("%SlaveName%");
-        sendMessage(random("There is nothing more empowering ", "I can\'t imagine anything that satisfies me more ", "There is nothing that gets me more wet "));
+        sendMessage(random("There is nothing more empowering ", "I can't imagine anything that satisfies me more ", "There is nothing that gets me more wet "));
         sendMessage("Than " + random("watching a man pleasure another man against his will ", "watching a man give a blowjob despite his will ", "watching you pleasure a man against your will ") + "%Lol%");
         sendMessage("Forced into an act of homosexuality you might call it!");
-        sendMessage(random("Well since you don\'t have anyone there with you ", "Since you\'re alone ", "Because you\'re alone "));
-        sendMessage(random("We\'re gonna have to do it a bit differently ", "This is gonna be done a bit differently "));
+        sendMessage(random("Well since you don't have anyone there with you ", "Since you're alone ", "Because you're alone "));
+        sendMessage(random("We're gonna have to do it a bit differently ", "This is gonna be done a bit differently "));
         sendMessage("%Lol%");
-        sendMessage("I\'m gonna slide through images fast");
+        sendMessage("I'm gonna slide through images fast");
 
-        sendMessage("I\'m gonna draw from your gay images, Lesbian, Boobs, Butts and Lezdom images");
+        sendMessage("I'm gonna draw from your gay images, Lesbian, Boobs, Butts and Lezdom images");
 
         sendMessage('Gay image = edge');
         sendMessage('Lesbian = 100 super slow strokes');
@@ -17,7 +17,7 @@
         sendMessage('Butts = a small pause');
         sendMessage('Lezdom = add a peg to anywhere on your body');
 
-        sendMessage("Now there a few extra rules depending on how many pictures of each you\'ve landed on");
+        sendMessage("Now there a few extra rules depending on how many pictures of each you've landed on");
         sendMessage('7 gay images = orgasm to a picture of a dick');
         sendMessage('3 lesbian images = 4 edges in a row');
         sendMessage('5 boobs pictures = 100 gold');
@@ -87,7 +87,7 @@ function startGayPictureRound() {
 
             if (newValue % 3 == 0 && newValue != 0) {
                 sendMessage("Oh my!");
-                sendMessage("It\'s time for some edging!");
+                sendMessage("It's time for some edging!");
                 sendMessage("4 edges actually %Grin%");
                 for (let x = 0; x < 4; x++) {
                     startEdging();
@@ -125,7 +125,7 @@ function startGayPictureRound() {
             if (newValue % 5 == 0 && newValue != 0) {
                 sendMessage("That was the fifth time you hit the butt stop", 0);
                 sendMessage("Which means this game is at an end");
-                sendMessage("Be glad you didn\'t end with denial %Lol%");
+                sendMessage("Be glad you didn't end with denial %Lol%");
                 endGayPictureGame();
                 break;
             }
@@ -169,7 +169,7 @@ function startGayPictureRound() {
             if (newValue % 7 == 0 && newValue != 0) {
                 sendMessage("Oh my oh my!");
                 sendMessage("You actually got to the fabulous ending! %Grin%");
-                sendMessage("I hope you\'re enjoying the view!");
+                sendMessage("I hope you're enjoying the view!");
                 sendMessage("Because you will cum to it! %Grin%");
 
                 if (feelsEvil()) {

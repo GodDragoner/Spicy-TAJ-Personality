@@ -50,7 +50,7 @@
                             sendYesOrNoQuestion('She\'s *probably* not having sex with someone else right now')
                         }
 
-                        sendMessage('Or maybe she is! %lol%');
+                        sendMessage('Or maybe she is! %Lol%');
                         sendMessage('That would be so fucked up, although I guess it turns you on...');
 
                         if(getVar(VARIABLE.SUB_IS_MARRIED, false)) {
@@ -67,9 +67,9 @@
                         sendMessage('That\'s too bad for her...');
 
                         if (sendYesOrNoQuestion('Does she even know that you fantasize about being cuckolded?')) {
-                            sendMessage('Then she should probably make better use of that fact %grin%');
+                            sendMessage('Then she should probably make better use of that fact %Grin%');
                         } else {
-                            sendMessage(' She\'d probably be very interested in finding out %lol%');
+                            sendMessage(' She\'d probably be very interested in finding out %Lol%');
                         }
 
                         sendMessage('Although it might be better if it stayed a secret, I get that');

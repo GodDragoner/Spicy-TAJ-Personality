@@ -4,10 +4,10 @@
     } else if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.HUMILIATION)) {
         let noLingerie = false;
         if (!hasSomeLingerie()) {
-            sendMessage("It\'s a shame you don\'t have any lingerie %Grin%");
+            sendMessage("It's a shame you don't have any lingerie %Grin%");
             noLingerie = true;
         } else if (!isLingeriePlayAllowed()) {
-            sendMessage("It\'s a shame you don\'t want to play with your lingerie %Grin%");
+            sendMessage("It's a shame you don't want to play with your lingerie %Grin%");
             noLingerie = true;
         } else {
             if (!putOnLingerie()) {
@@ -19,10 +19,10 @@
         if (noLingerie) {
             sendMessage("I had an idea I think you would absolutely love!");
             sendMessage("Well we can still do it");
-            sendMessage("You\'ll just look a little less lovely %Lol%");
+            sendMessage("You'll just look a little less lovely %Lol%");
         }
 
-        sendMessage(random("It\'s time for a photoshoot!", "Let's do a photoshoot!", "I want to do a photoshoot!"));
+        sendMessage(random("It's time for a photoshoot!", "Let's do a photoshoot!", "I want to do a photoshoot!"));
         sendMessage("%EmoteHappy%");
         sendMessage(random("Before we begin", "Before we start"));
 
@@ -34,26 +34,26 @@
                 sleep(randomInteger(120, 180));
 
                 sendMessage(random("Now", "Well") + "%SlaveName%");
-                sendMessage(random("It\'s time for you to set up a recording device!", "You need to set up your recording device now"));
-                sendMessage(random("You\'re going to do the catwalk for me!", "You will do a lovely catwalk!"));
+                sendMessage(random("It's time for you to set up a recording device!", "You need to set up your recording device now"));
+                sendMessage(random("You're going to do the catwalk for me!", "You will do a lovely catwalk!"));
                 sendMessage(random("I want you to walk back and fourth 10 times", "You are to do the catwalk 15 times"));
                 sendMessage(random("Shake those hips", "Move your hips", "Make that ass look good", "Work those legs"));
                 sendMessage(random("Put on music as well!", "Put on a song as well!") + "%Grin%");
-                sendMessage("When you\'re done transfer the video to your humiliation folder");
+                sendMessage("When you're done, transfer the video to your humiliation folder");
                 sendMessage("Who knows");
                 sendMessage(random("Maybe ", "Perhaps ") + getVar('blackmailName1') + random(' would like to see it as well?', ' wouldn\'t mind seeing them as well', ' would enjoy watching them!') + ' %Lol%');
                 break;
             case 1:
                 sendMessage(random("I want you to", "You need to") + " find, think of, imagine as best as you can - different poses");
                 sendMessage(random("Poses you can use while lying on your bed", "Poses for to take while shooting different images") + "%Grin%");
-                sendMessage(random("It\'s really quite simple", "It\'s rather simple", "It\'s not complicated"));
-                sendMessage(random("I want you to snap a few image", "You\'re going to snap some pictures"));
+                sendMessage(random("It's really quite simple", "It's rather simple", "It's not complicated"));
+                sendMessage(random("I want you to snap a few image", "You're going to snap some pictures"));
                 sendMessage(random("In different lovely poses", "While taking some really good poses"));
                 sendMessage(random("On your bed", "And posing them on your bed"));
-                sendMessage("When You\'re done I want you to transfer those images to your self humiliation folder");
-                sendMessage(random("We\'re going to have a blast with them!", "We should be able to put them to good use!"));
+                sendMessage("When you're done, I want you to transfer those images to your self humiliation folder");
+                sendMessage(random("We're going to have a blast with them!", "We should be able to put them to good use!"));
                 sendMessage(random("Snap at least 10", "Take at least 15 pictures"));
-                sendMessage(random("But feel free to do many many more!", "But don\'t shy away from taking a lot more!") + "%Lol%");
+                sendMessage(random("But feel free to do many many more!", "But don't shy away from taking a lot more!") + "%Lol%");
                 break;
             case 2:
                 sendMessage(random("You need to choose ") + randomInteger(3, 7) + " positions");
@@ -86,14 +86,14 @@
         showImage('Images/Spicy/SelfHumiliation/*.jpg', 5);
         showImage('Images/Spicy/SelfHumiliation/*.jpg', 5);
         sendMessage(random("Quite nice", "Lovely pictures"));
-        let answer = sendInput(random("Aren\'t they?", "Right?"), 7);
+        let answer = sendInput(random("Aren't they?", "Right?"), 7);
 
         if (!answer.isTimeout()) {
             if (answer.isLike('yes')) {
-                sendMessage(random("I knew you would agree", "Of course you would agree", "%Lol% why wouldn\'t you agree!"));
+                sendMessage(random("I knew you would agree", "Of course you would agree", "%Lol% why wouldn't you agree!"));
                 changeMeritLow(false);
             } else if (answer.isLike('no')) {
-                sendMessage(random("Buhuu be glad I\'m not sending them today!", "Be thankful that I haven\'t send them yet"));
+                sendMessage(random("Buhuu be glad I'm not sending them today!", "Be thankful that I haven't send them yet"));
                 changeMeritLow(true);
             }
         }
@@ -103,16 +103,16 @@
                 sendMessage("I want to show you a video!");
                 sendMessage("Enjoy!");
                 playVideo('Videos/Spicy/SelfHumiliation/*.mp4', true);
-                sendMessage(random("This is the funniest thing ever!", "I can\'t imagine anything less sexy") + ' %Lol%');
+                sendMessage(random("This is the funniest thing ever!", "I can't imagine anything less sexy") + ' %Lol%');
             } else {
                 for (let x = 0; x < 60; x++) {
                     showImage('Images/Spicy/SelfHumiliation/*.jpg', 2);
                 }
 
                 sendMessage(random('I think I might invite', 'Perhaps I should invite', 'I bet you wouldn\'t mind if I were to invite') + ' ' + getVar('blackmailName1') + ', ' + getVar('blackmailName2') + ' and ' + getVar('blackmailName3') + ' over');
-                sendMessage(random("I\'m thinking video night!", "Maybe we\'ll take a good look at your images"));
+                sendMessage(random("I'm thinking video night!", "Maybe we'll take a good look at your images"));
                 sendMessage(random("You might even get to serve tea", "Perhaps you could make us dinner"));
-                sendMessage(random("Soo many possibilities!", "I can\'t decide!"));
+                sendMessage(random("Soo many possibilities!", "I can't decide!"));
                 sendMessage("%Lol%");
             }
         } else {

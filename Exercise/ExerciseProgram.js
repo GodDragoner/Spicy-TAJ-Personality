@@ -3,7 +3,7 @@
 
 	sendVirtualAssistantMessage("Get " + random("naked", "ready", "ready", "ready") + " slave!");
 	NrExercise = 0;
-	sendVirtualAssistantMessage("%subName%, you should get some water to drink at the break ");
+	sendVirtualAssistantMessage("%SubName%, you should get some water to drink at the break ");
 	sendVirtualAssistantMessage("if you're a proper slave, you'll put it in a bowl on the floor to drink out of like a bitch ");
 
 	sendVirtualAssistantMessage(" I hope you're ready to get that %Ass% worked out. ");
@@ -56,7 +56,7 @@
 		tempmod = NrExercise % 4;
 
 		if ((tempmod == 0) && (NrExercise > 0)) {
-			sendVirtualAssistantMessage("%subName% Take a 60 second break to grab a drink of water");
+			sendVirtualAssistantMessage("%SubName% Take a 60 second break to grab a drink of water");
 			showImage("Images/Spicy/Exercise/Drink/*", 60);
 		} else {
 			sleep(13);
@@ -373,7 +373,8 @@
 	sendVirtualAssistantMessage("We're at the end");
 	sendVirtualAssistantMessage("You just went through " + NrExercise + " exercises");
 
-	let answer = sendInput("How many of the " + NrExercise + " exercises do you estimate to have completed to a satisfactory level?");
+	sendVirtualAssistantMessage("How many of the " + NrExercise + " exercises do you estimate to have completed to a satisfactory level?");
+	let answer = createInput();
 
 	while (true) {
 		if (answer.isInteger()) {
@@ -382,15 +383,15 @@
 				sendVirtualAssistantMessage("You can't choose a number less than 0");
 				answer.loop();
 			} else if (result > NrExercise) {
-				sendMessage("You chose a number too big, you weren't assigned that many exercises");
+				sendVirtualAssistantMessage("You chose a number too big, you weren't assigned that many exercises");
 				answer.loop();
 			} else {
 				ExerciseDone = result;
 				break;
 			}
 		} else {
-			sendMessage("Slave...");
-			sendMessage("I asked you to just give me a simple number..");
+			sendVirtualAssistantMessage("Slave...");
+			sendVirtualAssistantMessage("I asked you to just give me a simple number..");
 			sendVirtualAssistantMessage("You must choose a simple number.. like");
 			sendVirtualAssistantMessage("10");
 			sendVirtualAssistantMessage("15");
@@ -456,7 +457,7 @@ function Dog1() {
 		sleep( 40+10* getVar("ExerciseLevel"));
 		
 		playAudio("Audio/Spicy/SpecialSounds/Bell.mp3");
-		sendVirtualAssistantMessage(random(" Take a short break ", "I think next time we're caning you in that position","Mmm, seeing you bent over like that makes me want to go grab my strap-on","oh, %domhonorific% %domname% could spank you nicely in that position"),1,true);
+		sendVirtualAssistantMessage(random(" Take a short break ", "I think next time we're caning you in that position","Mmm, seeing you bent over like that makes me want to go grab my strap-on","oh, %DomHonorific% %DomName% could spank you nicely in that position"),1,true);
 		sleep(20);
 
 	}
@@ -890,7 +891,7 @@ function Gif1() {
 
 
 		sendVirtualAssistantMessage("from a pushup position move your hand and foot out to the side");
-		sendVirtualAssistantMessage("%slave% follow the gif, alternating sides.");
+		sendVirtualAssistantMessage("%Slave%, follow the gif, alternating sides.");
 		
 		 showImage("Images/Spicy/Exercise/Gifs/1.gif",3);
 		sendVirtualAssistantMessage(" Use the beeps to pace yourself",1,true);
@@ -962,7 +963,7 @@ function Gif2() {
 		if (!exgif2){
 		exgif2 = true;
 		NrExercise = NrExercise + 1;
-		sendVirtualAssistantMessage(" It's time for some leg lifts %slave%... yay!! ",2,false);
+		sendVirtualAssistantMessage(" It's time for some leg lifts %Slave%... yay!! ",2,false);
 		sendVirtualAssistantMessage(" I will tell you when to switch sides ");
 		showImage("Images/Spicy/Exercise/Gifs/2.gif",3);
 		
@@ -1049,7 +1050,7 @@ function Gif4() {
 
 		playAudio("Audio/Spicy/SpecialSounds/Bell.mp3"); 
 		sleep(8);
-		sendVirtualAssistantMessage(" Other side now %subName%..",10,true);
+		sendVirtualAssistantMessage(" Other side now %SubName%..",10,true);
 		sendVirtualAssistantMessage(" Continue until you hear my bell ",1,true);
 		playAudio("Audio/Spicy/Stroking/Metronome/40 bpm.mp3");
 		sleep( 35+5* getVar("ExerciseLevel"));
@@ -1078,7 +1079,7 @@ function Gif4() {
 
 		playAudio("Audio/Spicy/SpecialSounds/Bell.mp3"); 
 		sleep(2);
-		sendVirtualAssistantMessage(" Other side now %subName%..",10,true);
+		sendVirtualAssistantMessage(" Other side now %SubName%..",10,true);
 		sleep(10);
 		sendVirtualAssistantMessage(" Continue until you hear my bell ",1,true);
 		playAudio("Audio/Spicy/Stroking/Metronome/40 bpm.mp3");
