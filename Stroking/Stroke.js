@@ -1,5 +1,6 @@
 let vibingChastity = false;
 
+
 function stopStrokingMessage() {
 
     if (isStroking()) {
@@ -68,14 +69,14 @@ function stopStrokingMessage() {
 //TODO: Support for stroking while in chastity (stroking the cage). Make sure to have the taunts adapt and stroking styles as well
 function readyForStroking() {
     if (hasClampsOnPenis()) {
-        if(isInChastity()) {
+        if (isInChastity()) {
             sendDebugMessage('Found clamps on penis while in chastity');
             return;
         }
 
         sendMessage('I want you to stroke now but I guess we need to make some room on that penis first %Grin%');
 
-        if(feelsLikePunishingSlave()) {
+        if (feelsLikePunishingSlave()) {
             redistributeClampsForStroking();
 
             let answer = sendYesOrNoQuestionTimeout('You didn\'t think I would free you from the clamps did you?', 3);
@@ -107,19 +108,20 @@ function readyForStroking() {
 }
 
 function readyForVibratingCage() {
-    if(hasMagicWand()) {
-        MAGIC_WAND_TOY.setLastUsage();
-
-        if(MAGIC_WAND_TOY.wasUsedInActiveContext()) {
+    if (hasMagicWand()) {
+        if (MAGIC_WAND_TOY.wasUsedInActiveContext()) {
             //We don't need to send this if we used this recently
-            if(MAGIC_WAND_TOY.getLastUsage().addSecond(120).hasPassed()) {
+            if (MAGIC_WAND_TOY.getLastUsage().addSecond(120).hasPassed()) {
                 //Tell slave again so he can pick it up etc and start once this continues
                 sendMessage('Get your vibrator ready %SlaveName%', 10);
             }
 
+            MAGIC_WAND_TOY.setLastUsage();
             return true;
         }
 
+
+        MAGIC_WAND_TOY.setLastUsage();
         MAGIC_WAND_TOY.setUsedInActiveContext(true);
         //Return fetch result
         return MAGIC_WAND_TOY.fetchToy();
@@ -129,7 +131,7 @@ function readyForVibratingCage() {
 }
 
 function startVibratingCage() {
-    if(!readyForVibratingCage()) {
+    if (!readyForVibratingCage()) {
         return false;
     }
 
@@ -166,10 +168,45 @@ function startStrokingSpicy() {
 }
 
 function startStrokeInterval(durationMinutes) {
+    if (!isInChastity() && FLESH_LIGHT.hasToy() && feelsLikeTeasing()) {
+        if (FLESH_LIGHT.wasUsedInActiveContext()) {
+            //We don't need to send this if we used this recently
+            if (FLESH_LIGHT.getLastUsage().addSecond(120).hasPassed()) {
+                //Tell slave again so he can pick it up etc and start once this continues
+                sendMessage('Get your fleshlight ready %SlaveName%', 10);
+            }
+
+            FLESH_LIGHT.setLastUsage();
+            return true;
+        }
+
+        FLESH_LIGHT.setLastUsage();
+        FLESH_LIGHT.setUsedInActiveContext(true);
+
+        //Return fetch result
+        if (FLESH_LIGHT.fetchToy()) {
+            FLESH_LIGHT.setToyOn(true);
+        }
+    } else {
+        if(FLESH_LIGHT.hasToy() && FLESH_LIGHT.isToyOn()) {
+            FLESH_LIGHT.setToyOn(false);
+            resetFleshlight();
+        }
+    }
+
     startStrokingSpicy();
+
     sendStrokeTaunts(durationMinutes * 60);
 
     stopStrokingMessage();
+
+    if (FLESH_LIGHT.isToyOn()) {
+        FLESH_LIGHT.setToyOn(false);
+
+        if(FLESH_LIGHT.isLovense()) {
+            resetFleshlight();
+        }
+    }
 }
 
 function getInitialStrokingBPM(modifier = 1) {
@@ -319,10 +356,20 @@ function sendStrokeTaunts(durationSeconds, nextInstruction) {
         if (nextInstruction == undefined || nextInstruction <= 0) {
             //Only send stroke instructions after the initial stroking
             if (nextInstruction !== undefined) {
-                sendNewStrokeInstruction();
+                //If we have a fleshlight do other instructions
+                if (!FLESH_LIGHT.isToyOn()) {
+                    sendNewStrokeInstruction();
+                } else if (FLESH_LIGHT.isLovense()) {
+                    randomFleshlightInteraction();
+                }
             }
 
-            nextInstruction = randomInteger(60, 90);
+            if (!FLESH_LIGHT.isToyOn()) {
+                nextInstruction = randomInteger(60, 90);
+            } else {
+                //Fleshlight interactions more often
+                nextInstruction = randomInteger(25, 45);
+            }
         }
 
         iterationsToGo--;
@@ -368,7 +415,7 @@ function stopStrokingEdgeMessage() {
 
 function startTeaseTauntInterval(durationSeconds) {
     let waitPerTaunt = 5;
-    let actualLoop = Math.ceil(durationSeconds/waitPerTaunt);
+    let actualLoop = Math.ceil(durationSeconds / waitPerTaunt);
 
     sendDebugMessage('Start of teasing interval for ' + actualLoop + ' iterations');
 

@@ -25,21 +25,21 @@ function getAssLubeType(mood, level = getVar(VARIABLE.ASS_LEVEL)) {
     const lubeTypes = [];
 
     if (mood === VERY_PLEASED_MOOD) {
-        if (isChance(getStrictnessForCharacter() * 10)) {
+        if (isChance(getStrictnessForCharacter() * 5)) {
             lubeTypes.push(SPIT_LUBE);
         } else {
             lubeTypes.push(ANY_LUBE);
         }
     } else if (mood === PLEASED_MOOD) {
-        if (isChance(getStrictnessForCharacter() * 20)) {
+        if (isChance(getStrictnessForCharacter() * 10)) {
             lubeTypes.push(SPIT_LUBE);
         } else {
             lubeTypes.push(ANY_LUBE);
         }
     } else if (mood === NEUTRAL_MOOD) {
-        if (isChance(getStrictnessForCharacter() * 25)) {
+        if (isChance(getStrictnessForCharacter() * 15)) {
             if (getStrictnessForCharacter() > 0) {
-                if (hasToothpaste()) {
+                if (hasToothpaste() && feelsLikePunishingSlave()) {
                     lubeTypes.push(TOOTHPASE_LUBE);
                 }
 
@@ -51,16 +51,16 @@ function getAssLubeType(mood, level = getVar(VARIABLE.ASS_LEVEL)) {
             lubeTypes.push(ANY_LUBE);
         }
     } else if (mood === ANNOYED_MOOD) {
-        if (isChance((getStrictnessForCharacter() + 1) * 20)) {
+        if (isChance((getStrictnessForCharacter() + 1) * 15)) {
             if (getStrictnessForCharacter() > 0) {
                 lubeTypes.push(NO_LUBE);
 
-                if (hasTigerHot()) {
+                if (hasTigerHot() && feelsLikePunishingSlave()) {
                     lubeTypes.push(TIGER_HOT_LUBE);
                 }
             }
 
-            if (hasToothpaste()) {
+            if (hasToothpaste() && feelsLikePunishingSlave()) {
                 lubeTypes.push(TOOTHPASE_LUBE);
             }
 
@@ -69,16 +69,16 @@ function getAssLubeType(mood, level = getVar(VARIABLE.ASS_LEVEL)) {
             lubeTypes.push(ANY_LUBE);
         }
     } else if (mood === VERY_ANNOYED_MOOD) {
-        if (isChance((getStrictnessForCharacter() + 1) * 25)) {
+        if (isChance((getStrictnessForCharacter() + 1) * 20)) {
             if (getStrictnessForCharacter() > 0) {
-                if (hasTigerHot()) {
+                if (hasTigerHot() && feelsLikePunishingSlave()) {
                     lubeTypes.push(TIGER_HOT_LUBE);
                 }
             }
 
             lubeTypes.push(NO_LUBE);
 
-            if (hasToothpaste()) {
+            if (hasToothpaste() && feelsLikePunishingSlave()) {
                 lubeTypes.push(TOOTHPASE_LUBE);
             }
 

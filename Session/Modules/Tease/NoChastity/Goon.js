@@ -5,7 +5,7 @@
 
         if (getVar(VARIABLE.ASS_WORSHIPS_DONE, 0) === 0) {
             sendMessage('I came across something interesting the other day...');
-            sendMessage('It\'s called \"gooning\"');
+            sendMessage('It\'s called "gooning"');
 
             if (sendYesOrNoQuestion('Have you heard of it?')) {
                 sendMessage('Okay');
@@ -20,7 +20,7 @@
                 sendMessage('And you\'re nothing more than a drooling shell of a man');
                 sendMessage('Whose only thought is to stroke and edge forever');
                 sendMessage('Then you would be nothing more than a goon');
-                sendMessage('Hence, the term \"gooning\"');
+                sendMessage('Hence, the term "gooning"');
             }
 
             sendMessage('The thing is, I kinda like the edging aspect of gooning');

@@ -90,7 +90,7 @@ CEI_LIMIT.sendIntroduction = function (type) {
     sendMessage('Play with it, slurp it, gargle it and taste it');
     sendMessage('Turn you into my personal cum dumpster %Lol%');
     sendMessage("Of course, I might keep %MyYour% %Cock% denied");
-    sendMessage("Then you\'ll have nothing to eat");
+    sendMessage("Then you'll have nothing to eat");
     sendMessage('I would be very pleased if you\'d do it for me %EmoteHappy%');
     sendMessage('And you want to please me, don\'t you? %Grin%');
     askForNewLimitValue(this);
@@ -320,7 +320,7 @@ function createLimit(name, variable) {
                         sendMessage('It has?');
                         sendMessage('This might get interesting %Grin%');
                     } else {
-                        sendMessage('I thought so %SlavenName% %EmoteSad%');
+                        sendMessage('I thought so %SlaveName% %EmoteSad%');
                         changeMeritLow(true);
 
                         if (isEnforcingPersonality()) {

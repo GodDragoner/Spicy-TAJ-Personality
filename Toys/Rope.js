@@ -40,14 +40,14 @@ function tieBalls(force = false) {
         //QUALITY: Show tutorials etc. and tell the sub what exactly to do
         sendMessage("Now take that rope and tie up your balls");
         sendMessage("Do it real nice and tight");
-        sendMessage('But don\'t cut the blood flow');
+        sendMessage('But don\'t cut off the blood flow');
         sendMessage("Tell me when you are ready to continue");
         waitForDone();
 
         //Did we remove clamps before? If yes add them back if we just added them like shortly before or if we feel like punishing the slave
         if(removedClampsFromBalls && (!clampBallInteractionDate.clone().addMinute(5).hasPassed() || feelsLikePunishingSlave())) {
             sendAlreadyKnowWhatsNext('clamps', 'clothespins', 'clothespin');
-            sendMessage('Now put the clamps back on your %balls% %Grin%');
+            sendMessage('Now put the clamps back on your %Balls% %Grin%');
 
             //Add clamps back to balls
             BODY_PART_BALLS.addClamps(clampsRemovedFromBalls);

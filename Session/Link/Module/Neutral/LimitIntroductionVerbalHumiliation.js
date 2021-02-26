@@ -20,7 +20,7 @@
             sendMessage("Is there anything worse than a woman you desire calling you a pathetic loser right to your face?");
 
             if(VERBAL_HUMILIATION_LIMIT.getLimit() === LIMIT_NEVER_ASKED) {
-                sendMessage("But let\'s be frank here, I think you like it");
+                sendMessage("But let's be frank here, I think you like it");
             }
 
             sendMessage('You know sometimes I just wanna show you your place and humiliate you');
@@ -52,7 +52,7 @@
 
                 sendMessage("Keep repeating your mantra: \"I'm a loser and I don't deserve to be with a woman\"");
                 sendMessage("I want you to say it over and over until it's burned into your brain");
-                sendMessage("\"I'm a loser and I don\'t deserve to be with a woman\"");
+                sendMessage("\"I'm a loser and I don't deserve to be with a woman\"");
                 sendMessage("It's so true, %SlaveName%");
 
                 sendMessage("Every beta male should know and accept his place in the world");

@@ -66,7 +66,7 @@ function startTimePassTasks(durationMinutes, allowTeasing = true) {
                     case 4:
                         sendMessage("I want you to pretend that you are rope skipping");
                         sendMessage("This will not only train your muscles and keep you fit...");
-                        sendMessage("But it will also " + random('look', 'be')  + random('', 'quite') + " %entertaining% with your %cock%" + random('dangling around', 'hanging around', 'flopping around', 'bouncing around'));
+                        sendMessage("But it will also " + random('look', 'be')  + random('', ' quite') + " %Entertaining% with your %Cock% " + random('dangling around', 'hanging around', 'flopping around', 'bouncing around'));
                         sendMessage("You can stop when you hear my bell %Grin%");
                         sleep(randomInteger(20, 30));
                         returnSlave();
@@ -99,7 +99,7 @@ function startTimePassTasks(durationMinutes, allowTeasing = true) {
 
                     if(hasLingerieOn()) {
                         if(feelsEvil()) {
-                            sendMessage('Stay in that lingerie for now %v%');
+                            sendMessage('Stay in that lingerie for now %Slut%');
                         } else {
                             sendMessage('You can go ahead and take off all that lingerie for now');
                             removeAllLingerie();

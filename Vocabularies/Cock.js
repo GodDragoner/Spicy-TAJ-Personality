@@ -1,7 +1,7 @@
 function cockVocabulary() {
     const size = ["little", "cute little", "small", "tiny"];
     const adjectives = ["poor", "desperate", "helpless", "sore", "frustrated", "denied", "aching", "leaky", "horny", "drippy", "dripping", "subservient", 'teased'];
-    const answers = ["dick", "cock", "fuckstick", "weiner", "pecker", "prick"];
+    const answers = ["dick", "cock", "fuckstick", "wiener", "pecker", "prick"];
 
     let answer = "";
 

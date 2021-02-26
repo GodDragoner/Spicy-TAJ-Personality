@@ -1,7 +1,7 @@
 {
     if (tryRunLinkFetchId()) {
         sendMessage("Remember when you used to %JerkOff% whenever you wanted to?");
-        sendMessage("That\'s not your life anymore is it...");
+        sendMessage("That's not your life anymore is it...");
         sendMessage("Now you only jerk that %Cock% because I said so");
 
         if(isInChastity()) {

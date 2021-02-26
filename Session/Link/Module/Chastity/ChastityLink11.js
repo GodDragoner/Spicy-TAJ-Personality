@@ -6,8 +6,8 @@
             sendMessage("With that %Cock% locked in its little cage");
         }
 
-        sendMessage("You want to badly to jerk it, don\'t you...");
-        sendMessage("Sorry %SlaveName%, but that\'s not going to happen right now");
+        sendMessage("You badly want to jerk it, don't you...");
+        sendMessage("Sorry %SlaveName%, but that's not going to happen right now");
 
         if (!isFullSizedChastityOn()) {
             if (sendYesOrNoQuestion('Would you like me to hurt %MyYour% %Balls% instead?')) {
@@ -18,7 +18,7 @@
                 sendMessage("Alright %Grin%");
             }
 
-            sendMessage("But I\'m still not letting you %JerkOff% %Grin%");
+            sendMessage("But I'm still not letting you %JerkOff% %Grin%");
         }
     }
 }

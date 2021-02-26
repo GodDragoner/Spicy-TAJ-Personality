@@ -9,21 +9,21 @@
                     sendMessage('And how much I want it to suffer %Grin%');
                 } else if (answer.isLike('too', 'as well', 'also')) {
                     sendMessage('Aww that\'s so sweet');
-                    sendMessage("But I get the feeling %MyYour% %Cock% isn\'t as glad to see me as you are");
+                    sendMessage("But I get the feeling %MyYour% %Cock% isn't as glad to see me as you are");
                     sendMessage('Especially considering what I\'m about to do to it %Grin%');
                 } else if (answer.isLike('thank', 'gracias', 'merci', 'nice', 'sweet', 'kind', 'means')) {
                     sendMessage('You\'re welcome %SlaveName%');
-                    sendMessage("But I don\'t know if you should really be thanking me");
-                    sendMessage("Considering that the reason I\'m so happy to see you");
+                    sendMessage("But I don't know if you should really be thanking me");
+                    sendMessage("Considering that the reason I'm so happy to see you");
                     sendMessage("Is that I finally get to hurt that %Cock% of yours some more %Grin%");
                 } else {
                     sendMessage('The thing is...');
-                    sendMessage("I\'ve just been sitting here thinking of all these fun ways to make a %Cock% suffer");
+                    sendMessage("I've just been sitting here thinking of all these fun ways to make a %Cock% suffer");
                     sendMessage('And we both know how much fun yours is to play with');
                 }
             } else {
                 sendMessage('The thing is...');
-                sendMessage("I\'ve just been sitting here thinking of all these fun ways to make a %Cock% suffer");
+                sendMessage("I've just been sitting here thinking of all these fun ways to make a %Cock% suffer");
                 sendMessage('And we both know how much fun yours is to play with');
             }
         } else {
@@ -32,7 +32,7 @@
             while(true) {
                 if (answer.isLike('no', 'i\'m not', 'am not')) {
                     sendMessage('No?');
-                    sendMessage("You must know what I\'m about to do to that %Cock% then %Grin%");
+                    sendMessage("You must know what I'm about to do to that %Cock% then %Grin%");
                     sendMessage("But since you knew and logged on anyway");
                     sendMessage('I don\'t have to feel guilty about it %Lol%');
                     break;
@@ -47,9 +47,9 @@
                     answer.loop();
                 }
 
-                sendMessage("I\'ve been thinking about all these fun ways to hurt that %Cock% %GeneralTime%");
-                sendMessage("And there\'s not a lot of guys who can handle that");
-                sendMessage("That\'s why I\'m always glad to see you here, so " + random("eager ", "willing ") + "to please me");
+                sendMessage("I've been thinking about all these fun ways to hurt that %Cock% %GeneralTime%");
+                sendMessage("And there's not a lot of guys who can handle that");
+                sendMessage("That's why I'm always glad to see you here, so " + random("eager ", "willing ") + "to please me");
                 sendMessage('And willing to suffer %Grin%');
             }
 

@@ -2,7 +2,7 @@
     let orgasmType = getVar(VARIABLE.ORGASM_CATEGORY_TODAY);
 
     sendMessage("You get to cum %GeneralTime%, %SlaveName%");
-    sendMessage(random("I\'m going to count you down", "Let me count you down", "I\'ll do a countdown"));
+    sendMessage(random("I'm going to count you down", "Let me count you down", "I'll do a countdown"));
     sendMessage(random("Get ready to hit the edge when I get to zero", "I want you to hit the edge when I get to zero", "You should hit the edge when I get to zero"));
     sendMessage("But ONLY at zero, %SlaveName% %Grin%");
     sendMessage("And wait for my command to cum, because I might make you hold that edge a bit too");
@@ -27,11 +27,11 @@
         sendMessage("5", 2);
         sendMessage("6", 2);
         sendMessage("7", 2);
-        sendMessage("This isn\'t going as you hoped, is it? %Lol%");
+        sendMessage("This isn't going as you hoped, is it? %Lol%");
         sendMessage("8", 2);
         sendMessage("9", 2);
         sendMessage("8", 2);
-        sendMessage("7... that\'s better", 2);
+        sendMessage("7... that's better", 2);
         sendMessage("6... but will I get to zero...?", 2);
         sendMessage("5", 2);
         sendMessage("4", 2);

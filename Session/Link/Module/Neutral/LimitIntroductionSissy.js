@@ -50,9 +50,9 @@
             sendMessage('And you\'d be dressed up as a cute little girl');
             sendMessage('Bra, panties and stockings');
             sendMessage('All nice and pink');
-            sendMessage('%MyYour% %cock% securely locked up and staying denied');
+            sendMessage('%MyYour% %Cock% securely locked up and staying denied');
 
-            sendMessage('Who knows if they\'d like to use %MyYour% %ass% too');
+            sendMessage('Who knows if they\'d like to use %MyYour% %Ass% too');
             sendMessage('I certainly would allow it %SlaveNameSmiley%');
             sendMessage('Making you wear a buttplug to get your ass wide and ready for them');
 

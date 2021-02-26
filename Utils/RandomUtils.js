@@ -92,3 +92,7 @@ function random() {
 
     return arguments[randomInteger(0, arguments.length - 1)];
 }
+
+function isWithin(number, min, max) {
+    return number >= min && number <= max;
+}
