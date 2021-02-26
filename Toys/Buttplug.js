@@ -572,7 +572,7 @@ function removeButtplug(end = false) {
 
         let answer = sendInput("Tell me when you are ready to continue.");
         while (true) {
-            if (answer.isLike("done", "yes")) {
+            if (answer.isLike("done", "yes", "ready")) {
                 sendMessage("%Good%");
                 break;
             } else {

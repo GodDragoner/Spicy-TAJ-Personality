@@ -13,7 +13,7 @@
         let sentenceHistory = null;
 
         while(strokesDone < todoStrokes) {
-            let strokes = random(50, 250);
+            let strokes = randomInteger(5, 25) * 10;
 
             let answers = [
                 'I want ' + strokes + ' more strokes for this picture @ShowBlogImage ',

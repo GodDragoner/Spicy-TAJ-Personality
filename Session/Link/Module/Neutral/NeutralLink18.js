@@ -8,7 +8,7 @@
                     } else {
                         sendMessage('You know %SlaveName%...');
                         sendMessage('Sometimes I feel like we are missing out on stuff');
-                        sendMessage('Like I have so many ideas but so few time to put you through them');
+                        sendMessage('Like I have so many ideas but so little time to put you through them');
                         sendMessage('And sometimes I think about what you do outside of sessions');
                         sendMessage('Whether you jerk off, pleasure yourself');
                         sendMessage('Which is something I can\'t really deny you currently');
@@ -88,11 +88,11 @@
                 sendMessage('%EmoteSad%');
             }
 
-            sendMessage('I do wonder what\'s it\'s like locking you up');
+            sendMessage('I do wonder what it\'ll be like locking you up');
             sendMessage('Being the owner of your sexuality');
             sendMessage('Deciding when and how you can pleasure yourself even outside of sessions');
             sendMessage('%Moan%');
-            sendMessage('I love the thought of me knowing you can\'t release all that build up pleasure without contacting me first %Grin%');
+            sendMessage('I love the thought of me knowing you can\'t release all that built up pleasure without contacting me first %Grin%');
             sendMessage('Seeing %MyYour% %Cock% trying to fight out of it\'s prison');
             sendMessage('And me just looking at it, laughing and probably saying NO %EmoteHappy%');
             sendMessage('And you knowing that\'s the only way this is supposed to be');

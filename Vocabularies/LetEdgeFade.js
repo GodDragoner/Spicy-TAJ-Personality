@@ -14,14 +14,14 @@ function letEdgeFadeVocabulary() {
         "Don't think about how close you just came to exploding %Lol%",
         "Just let the %Ache% flow through you and drive you crazy",
         "Let all that %Ache% flow from that %Cock% to %MyYour% %Balls%",
-        "%Ache% is a natural part of %SlaveName%'s life, savor it! %Lol%",
+        "%Ache% is a natural part of a %SlaveName%'s life, savor it! %Lol%",
         "Feel all that wonderful %Ache% rushing through you %Lol%",
         "I know you think I'm %Mean% but in reality you love this..",
         "I bet that edging is a pure %Pain% for you %EmoteHappy%",
     ];
 
     if (!isInChastity()) {
-        answers.push("Just be glad you're edging, Imagine wearing a %ChastityCage%");
+        answers.push("Just be glad you're edging, imagine wearing a %ChastityCage%");
     }
 
     return answers[randomInteger(0, answers.length - 1)];

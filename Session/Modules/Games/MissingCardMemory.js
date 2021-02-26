@@ -227,7 +227,7 @@ function startMissingCardMemory(gameType) {
 
             switch (gameType) {
                 case GAME_TYPE.GAME_EDGE:
-                    sendMessage('But because you\'ve disappointed your %DomHonorific% you will edge 3 mores time for me %Grin%');
+                    sendMessage('But because you\'ve disappointed your %DomHonorific% you will edge 3 more times for me %Grin%');
 
                     startEdging();
                     sendMessage("%LetEdgeFade%", randomInteger(5, 10));
@@ -247,11 +247,11 @@ function startMissingCardMemory(gameType) {
                     startTimePassTasks(5, true);
                     break;
                 case GAME_TYPE.GAME_BALL_CRUSHER:
-                    sendMessage('But because you\'ve disappointed your %DomHonorific% you will not be allowed to relief the pressure just jet %Lol%');
+                    sendMessage('But because you\'ve disappointed your %DomHonorific% you will not be allowed to relieve the pressure just yet %Lol%');
                     startTimePassTasks(5, true);
                     break;
                 case GAME_TYPE.GAME_E_STIM:
-                    sendMessage('But because you\'ve disappointed your %DomHonorific% you will not be allowed to turn it down just jet %Lol%');
+                    sendMessage('But because you\'ve disappointed your %DomHonorific% you will not be allowed to turn it down just yet %Lol%');
                     startTimePassTasks(5, true);
                     break;
             }
