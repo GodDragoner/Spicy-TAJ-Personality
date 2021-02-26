@@ -14,7 +14,7 @@ function needToResponse(message) {
             sendMessage('You know what?');
             sendMessage('You are not going to cum today');
             sendMessage('You are not going to cum tomorrow');
-            sendMessage('Actually you are not cumming for the whole next week');
+            sendMessage('Actually you are not going to cum for another week now');
             sendMessage('And that is all on you nagging me about it!');
             addDenialTime(7*24);
             registerRepeatingText();
@@ -46,7 +46,7 @@ function needToResponse(message) {
 
     let answers = [
         'You don\'t "need to" anything',
-        'There is no "I want, I got to or I need to" for you',
+        'There is no "I want, I got to, or I need to" for you',
         'I don\'t care what you want %SlaveName%',
         'Do I like like I care what you want %SlaveName%?',
         'I could act like I care but I really don\'t %SlaveName%',

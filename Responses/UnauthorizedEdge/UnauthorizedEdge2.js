@@ -20,7 +20,7 @@
         }
 
         sendMessage('Try not to edge unless I tell you to');
-        sendMessage('Or I might make you cum and eat it next time %EmoteWink%');
+        sendMessage('Or I might make you cum and eat it next time %EmoteLaugh%');
     } else if(unallowedEdges === 3) {
         sendMessage('%LetTheEdgeFade%');
 

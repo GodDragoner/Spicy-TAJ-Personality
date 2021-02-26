@@ -20,8 +20,8 @@
 
             sendMessage("Put those ice cubes in your underwear, so that %MyYour% %Balls% rest on them");
             sendMessage("Do it %SlaveName%!");
-            sendMessage("Make sure they don\'t fall out");
-            sendMessage("That\'s sooo cold %Lol%");
+            sendMessage("Make sure they don't fall out");
+            sendMessage("That's sooo cold %Lol%");
 
 
             if(ANAL_LIMIT.isAllowed() || askForIceCubeAnal()) {
@@ -34,7 +34,7 @@
 
                 sendMessage("Now take one of those cubes");
                 sendMessage("And put it in your %Ass%");
-                sendMessage("Don\'t hesitate %SlaveName%, just do as I say");
+                sendMessage("Don't hesitate %SlaveName%, just do as I say");
                 sendMessage("Push it right in", 10);
 
                 if(isPlugged()) {

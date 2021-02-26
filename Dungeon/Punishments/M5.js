@@ -112,11 +112,11 @@ case 3 :
 break;
 }
 
-sendMessage("So %slaveName% "); //#DT4
+sendMessage("So %SlaveName% "); //#DT4
 sendMessage("The punishment you're about to be given "); //#DT4
 sendMessage("Might be considered a game to some "); //#DT4
 sendMessage("A mind game %Grin% "); //#DT4
-sendMessage("I need you to %fetch% ball crusher and put it on so it's ready...",30); //#DT4 @Wait(30)
+sendMessage("I need you to %Fetch% your ball crusher and put it on so it's ready...",30); //#DT4 @Wait(30)
 
 crusherNotOn=true;
 while(crusherNotOn){
@@ -159,7 +159,7 @@ BallCrushingCount=0;
 
 keepGoing=true;
 while (keepGoing) {
-	answer=sendInput(random("Tighten..","Tighten it","Tighten the device..","Tighten","Tighten..","Tighten","Tighten...","Tighten it..","Tighten it...","Tighten it %slaveName%"),randomInteger(5,16)); //#DT4
+	answer=sendInput(random("Tighten..","Tighten it","Tighten the device..","Tighten","Tighten..","Tighten","Tighten...","Tighten it..","Tighten it...","Tighten it %SlaveName%"),randomInteger(5,16)); //#DT4
 	 BallCrushingCount=BallCrushingCount+1; 
 	 if(answer.isLike("stop")){
 		 keepGoing=false;

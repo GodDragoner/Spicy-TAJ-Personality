@@ -2,7 +2,7 @@
     startEdging();
     sendMessage('That %Cock% is no longer yours, it\'s my property now');
     sendMessage('And I decide when my property should to be touched and how...');
-    sendMessage('Just mention of it makes that %cock% hard, doesn\'t it?'); //QUALITY: @ResponseYes(MyCockIsHard)
+    sendMessage('Just mention of it makes that %Cock% hard, doesn\'t it?'); //QUALITY: @ResponseYes(MyCockIsHard)
     sendMessage('Cup those %Balls% with your hand... are they getting heavy and blue for me? '); //QUALITY: @ResponseYes(HaveBlueBalls) @ResponseNo(mbDisappointed)
 
     sendMessage('Start playing with them, roll them with the palm of your hand');
@@ -18,7 +18,7 @@
     startMultipleEdges(3, 9);
     sendMessage('You didn\'t think I\'d let you cum that easy, did you?');
     sendMessage('Start stroking again, very slowly, up... down... up... down');
-    sendMessage('I\'m going to count down from 10 and you better be ready to hit the edge when I reach zero');
+    sendMessage('I\'m going to count down from 10 and you\'d better be ready to hit the edge when I reach zero');
     sendMessage('10');
     sendMessage('9');
     sendMessage('8');

@@ -124,7 +124,7 @@ function runEnemaIntro() {
         sendMessage('So you should definitely want it to be clean too');
     }
 
-    sendMessage('So %domfriend1name% came up with an idea');
+    sendMessage('So %domFriend1Name% came up with an idea');
     sendMessage('She suggested to schedule regular enemas for you since you can\'t seem to think of them on your own');
     sendMessage("Now that you own an enema kit");
     sendMessage('I think you should put it to good use for us %Grin%');

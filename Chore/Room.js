@@ -320,7 +320,7 @@ function createRoom(name, size) {
         },
 
         getVarName: function () {
-            return 'room' + name.replace(/ /g, "");
+            return 'room' + this.name.replace(/ /g, "");
         },
 
         getChoreAmountVarName: function (choreType) {

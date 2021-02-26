@@ -12,7 +12,7 @@ function mayICumResponse(message) {
       sendMessage('You know what?');
       sendMessage('You are not going to cum today');
       sendMessage('You are not going to cum tomorrow');
-      sendMessage('Actually you are not cumming for the whole next week');
+      sendMessage('Actually you are not going to cum for another week now');
       sendMessage('And that is all on you nagging me about it!');
       addDenialTime(7*24);
       registerRepeatingText();
@@ -24,7 +24,7 @@ function mayICumResponse(message) {
         sendMessage('If I want you to take it you WILL');
         sendMessage('And let me tell you...');
         sendMessage('If YOU break MY toy by not following my strict instructions');
-        sendMessage('And releasing all that preciously build up cum without my explicit permission');
+        sendMessage('And releasing all that preciously built up cum without my explicit permission');
         sendMessage('You are in for a rough time %SlaveName%!');
         registerRepeatingText();
         return false;
@@ -34,7 +34,7 @@ function mayICumResponse(message) {
         'That is a no unless I tell you to',
         'I will tell you when you are to cum so don\'t you worry about that',
         'Don\'t worry I will tell you when you are to cum',
-        'You will cum when I tell you to not at any other point',
+        'You will cum when I tell you to, not at any other point',
         'Don\'t bother asking. I will tell you when you are to cum',
     ];
 

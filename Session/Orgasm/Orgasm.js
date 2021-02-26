@@ -27,14 +27,17 @@ function registerEjaculation() {
 
 function getLastEjaculationDate() {
     if(!isVar(VARIABLE.LAST_RUINED_ORGASM) && !isVar(VARIABLE.LAST_ORGASM)) {
+        sendDebugMessage('1');
         //Just some really old date if the sub hasn't cum yet for some reason (although the date should be set in the startup file)
         return setDate().addYear(-10);
     }
 
-    if(!isVar(VARIABLE.LAST_RUINED_ORGASM) || getDate(VARIABLE.LAST_RUINED_ORGASM).after(getDate(VARIABLE.LAST_ORGASM))) {
+    if(!isVar(VARIABLE.LAST_RUINED_ORGASM) || getDate(VARIABLE.LAST_RUINED_ORGASM).before(getDate(VARIABLE.LAST_ORGASM))) {
+        sendDebugMessage('2');
         return getDate(VARIABLE.LAST_ORGASM);
     }
 
+    sendDebugMessage('3');
     return getDate(VARIABLE.LAST_RUINED_ORGASM);
 }
 
@@ -370,19 +373,19 @@ function askAboutDenialLevel() {
             //Too long after orgasm the sub might decide differently so we only ask him if he came 3 or less days ago
             if(isChance(talkChance[Math.min(denialLevelIndex, talkChance.length - 1)]) && !getLastEjaculationDate().addDay(3).hasPassed()) {
                 sendMessage("%SlaveName%");
-                sendMessage(random("Once in a while I feel it\'s important to discuss denial with you ", "As you know it's important to discuss your denial practice with you.. "));
-                sendMessage(random("Today is one of those days ", "And today we\'ll do just that! "));
+                sendMessage(random("Once in a while I feel it's important to discuss denial with you ", "As you know it's important to discuss your denial practice with you.. "));
+                sendMessage(random("Today is one of those days ", "And today we'll do just that! "));
                 sendMessage("Currently your denial level is " + getVar(VARIABLE.DENIAL_LEVEL));
                 sendMessage(random("Just to remind you ", "Let me remind you that..."));
-                sendMessage("Level 1 to 5 is for beginners");
-                sendMessage("Level 6 to 8 is for the trained");
-                sendMessage("Level 9 to 11 is for the advanced");
-                sendMessage("Level 12 to 15 is for the high skilled");
+                sendMessage("1 to 5 is for beginners (1-5 days)");
+                sendMessage("6 to 8 is for the trained (6-12 days)");
+                sendMessage("9 to 11 is for the advanced (12-18 days)");
+                sendMessage("12 to 15 is for the high skilled (15-40 days)");
                 sendMessage("Anything above is always to my liking but you will probably not cum in a long time");
                 sendMessage(random("I try to constantly adjust you level to be appropriate to what I think you can handle", "Often I try to adjust this little by little to keep you at your limit"));
                 sendMessage(random("But...", "But it's not that easy..."));
                 sendMessage(random("What I want to ask you is", "What I simply have to ask is"));
-                const appropiate = sendInput(random("Do you think you\'re placed at an appropriate level? ", "Do you feel your current level of denial to be appropriate? "));
+                const appropiate = sendInput(random("Do you think you're placed at an appropriate level? ", "Do you feel your current level of denial to be appropriate? "));
 
                 while(true) {
                     if(appropiate.isLike('yes')) {

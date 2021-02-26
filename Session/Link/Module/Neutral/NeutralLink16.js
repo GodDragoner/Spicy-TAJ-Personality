@@ -16,7 +16,7 @@
 
             }
 
-            sendMessage("I guess you\'ll just have to wait and see... %Grin%");
+            sendMessage("I guess you'll just have to wait and see... %Grin%");
             /*--UNINTERPRETED LINE:@OrgasmRestricted Oh wait, you don't even get to cum today #Laugh @Goto(Oh Wait)
             No cum eating #GeneralTime then, lucky you #EmoteWink*/
         }

@@ -7,19 +7,19 @@
             sendVirtualAssistantMessage('This is your first time visiting the academy %SlaveName%');
             sendVirtualAssistantMessage('The academy is there to train you outside of sessions as well');
             sendVirtualAssistantMessage('It basically has a list of classes you need to take');
-            sendVirtualAssistantMessage('Each class has its own schedule so you better make sure to log in every day to catch all classes that are due');
+            sendVirtualAssistantMessage('Each class has its own schedule so you\'d better make sure to log in every day to catch all classes that are due');
             sendVirtualAssistantMessage('The classes basically give you assignments you\'ll have to complete before the next time you are visiting that class');
             sendVirtualAssistantMessage('However there is a twist');
             sendVirtualAssistantMessage('The assignments also get increasingly time consuming and difficult every week');
             sendVirtualAssistantMessage('So to reset that counter you\'ll have to take an exam');
             sendVirtualAssistantMessage('The exam usually tests your skills with a bigger task that you\'ll have to complete');
             sendVirtualAssistantMessage('Your knowledge might also be tested');
-            sendVirtualAssistantMessage('If you pass said exam the difficulty will go back to normal however new rules or upgrades might be put in place');
+            sendVirtualAssistantMessage('If you pass said exam, the difficulty will go back to normal, however new rules or upgrades might be put in place');
             sendVirtualAssistantMessage('You will pass a class once we feel like you\'re ready');
             sendVirtualAssistantMessage('Maybe we will never consider you ready so don\'t get your hopes up too high %Lol%');
-            sendVirtualAssistantMessage('Anyway in this menu you are able to attend classes, sign up for classes and so on and forth');
-            sendVirtualAssistantMessage('If you are not signing up you for enough classes you might make your %DomHonorific% angry');
-            sendVirtualAssistantMessage('She might even sign you up for classes if you seem to lazy so better make sure you are a good boy and stay occupied');
+            sendVirtualAssistantMessage('Anyway in this menu you are able to attend classes, sign up for classes and so on and so forth');
+            sendVirtualAssistantMessage('If you are not signing up for enough classes, you might make your %DomHonorific% angry');
+            sendVirtualAssistantMessage('She might even sign you up for classes if you seem too lazy so better make sure you are a good boy and stay occupied');
         }
 
         setDate(VARIABLE.ACADEMY_LAST_VISIT);

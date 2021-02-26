@@ -1,6 +1,10 @@
 function getTodaysSlaveTask() {
-    if (isVar(VARIABLE.SLAVE_TASK_SET) && getDate(VARIABLE.SLAVE_TASK_SET).sameDay(setDate().addHour(2))) {
+    if (isVar(VARIABLE.SLAVE_TASK_SET) && getDate(VARIABLE.SLAVE_TASK_SET).addHour(2).sameDay(setDate().addHour(2))) {
         return tryGetArrayList(VARIABLE.SLAVE_TASK_TODAY);
+    }
+
+    if(isVar(VARIABLE.SLAVE_TASK_SET)) {
+        sendDebugMessage('Generating new daily task since old date is ' + getDate(VARIABLE.SLAVE_TASK_SET).toString());
     }
 
 
@@ -242,7 +246,7 @@ function getTodaysSlaveTask() {
                 lines.add('I want you to cover your nipples in wax thrice today at different times');
 
                 if(!isFullSizedChastityOn()) {
-                    lines.add('Do the same to %MyYour% %balls%');
+                    lines.add('Do the same to %MyYour% %Balls%');
                 }
 
                 break;

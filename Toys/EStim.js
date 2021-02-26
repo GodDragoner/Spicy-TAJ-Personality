@@ -116,7 +116,7 @@ function attachEStimToBodyPart(bodyPart) {
             sendMessage('I want you to put it in and attach that plug to your device %Grin%');
 
             if (isInChastity()) {
-                sendMessage('If you need a second diode attached then attach it to preferably your balls or nipples');
+                sendMessage('If you need a second diode attached then attach it to preferably your balls or shaft');
             } else {
                 sendMessage('If you need a second diode attached then attach it to your penis head');
             }
@@ -125,7 +125,7 @@ function attachEStimToBodyPart(bodyPart) {
             waitForDone(10000);
             break;
     }
-
+w
     return toysAttached;
 }
 

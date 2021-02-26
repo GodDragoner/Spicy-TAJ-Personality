@@ -1,6 +1,6 @@
 {
     let orgasmType = getVar(VARIABLE.ORGASM_CATEGORY_TODAY);
-    sendMessage("That %Cock% looks like it\'s about ready to explode %Lol%");
+    sendMessage("That %Cock% looks like it's about ready to explode %Lol%");
 
     if(!isInChastity()) {
         tieBalls(true);
@@ -11,7 +11,7 @@
     }
 
     if(isChance(50)) {
-        sendMessage("You don\'t have permission to cum yet, so be careful");
+        sendMessage("You don't have permission to cum yet, so be careful");
         sendMessage("%StrokeSlower%");
         sendMessage('I don\'t want you to be edging yet!');
         sendMessage('Any minute now %Grin%');
@@ -28,9 +28,9 @@
                 smallCBTPunishment();
             }
 
-            sendMessage("Are you worried that maybe I won\'t let you cum at all now?");
-            sendMessage("You can never sure what\'s going to happen next, right?");
-            sendMessage("But isn\'t that what makes this exciting? The uncertainty...");
+            sendMessage("Are you worried that maybe I won't let you cum at all now?");
+            sendMessage("You can never be sure what's going to happen next, right?");
+            sendMessage("But isn't that what makes this exciting? The uncertainty...");
 
             sendMessage("%StartStroking%");
 
@@ -45,8 +45,8 @@
 
     if (orgasmType === ORGASM_CATEGORY_DENIED) {
         startEdging();
-        sendMessage("Awww you were so fucking close, weren\'t you... %Grin%");
-        sendMessage("Sorry %SlaveName%, but you don\'t get to cum %GeneralTime%");
+        sendMessage("Awww you were so fucking close, weren't you... %Grin%");
+        sendMessage("Sorry %SlaveName%, but you don't get to cum %GeneralTime%");
     } else if (orgasmType === ORGASM_CATEGORY_RUINED) {
         startEdging(0, true, EDGE_END_RUIN);
         waitForCumAnswer();

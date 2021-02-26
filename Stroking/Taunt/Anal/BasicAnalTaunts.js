@@ -149,7 +149,7 @@
                 sendMessage("Is your ass gaping yet?");
                 break;
             } else {
-                sendMessage("You\'re %Ass% might start gaping soon %Grin%");
+                sendMessage("Your %Ass% might start gaping soon %Grin%");
                 break;
             }
         case 1:

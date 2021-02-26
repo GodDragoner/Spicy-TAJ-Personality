@@ -66,7 +66,7 @@
         'Chastity is not fun for me if you don\'t suffer',
         'Chastity keeps pets focused',
         'You can\'t imagine how much I love opening a slave\'s cage just to ruin their orgasm',
-        'Hope you feel comfortable wearing that cage in your little cock, because I don\'t like opening it',
+        'Hope you feel comfortable wearing that cage on your little cock, because I don\'t like opening it',
         'Only caged boys are useful',
         //'@Flag(AV_Beta) Betas should remain denied in chastity forever.',
         'The idea of locking a %SlaveName% permanently always gets me horny',

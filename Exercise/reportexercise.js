@@ -5,8 +5,8 @@
 
     if (!isVar(VARIABLE.EXERCISE_TIMES)) {// this is the first time user is reporting exercise
         sendVirtualAssistantMessage("%SlaveName%, this is the first time you're reporting exercise activity");
-        sendVirtualAssistantMessage("%domName%, would prefer you to follow our integrated fitness program, but understands that might not be practical");
-        sendVirtualAssistantMessage("%domName% graciously provides you this opportunity to report exercise completed outside of TAJ");
+        sendVirtualAssistantMessage("%DomName% would prefer you to follow our integrated fitness program, but understands that might not be practical");
+        sendVirtualAssistantMessage("%DomName% graciously provides you this opportunity to report exercise completed outside of TAJ");
         sendVirtualAssistantMessage("For an exercise to count it should be at least 45 minutes of strenuous activity that makes you sweat.");
 
         let lastExercise = setDate().addDay(-2);

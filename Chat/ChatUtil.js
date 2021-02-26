@@ -28,7 +28,7 @@ function sendDebugMessage(message) {
             break;
             //Log mode only
         case 1:
-            LOGGER.getLogger().log(LOGGER_LEVEL.INFO, message)
+            LOGGER.getLogger().log(LOGGER_LEVEL.INFO, message);
             break;
             //No debug at all
         default:
@@ -157,7 +157,7 @@ function addContact(id) {
     if (id > 1) {
         contactName = '%domFriend' + (id - 1) + 'Name%';
     } else {
-        contactName = '%domName%';
+        contactName = '%DomName%';
     }
 
     let textName = new javafx.scene.text.Text(replaceVocab(contactName));
@@ -178,7 +178,7 @@ function removeContact(id) {
     if (id > 1) {
         contactName = '%domFriend' + (id - 1) + 'Name%';
     } else {
-        contactName = '%domName%';
+        contactName = '%DomName%';
     }
 
     let textName = new javafx.scene.text.Text(replaceVocab(contactName));
