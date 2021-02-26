@@ -523,7 +523,7 @@
     }*/
 
     sendVirtualAssistantMessage('Oh %SlaveName%');
-    sendVirtualAssistantMessage('I just got the notification that %DomHonorific% %domName% accepted and is ready to talk to you now');
+    sendVirtualAssistantMessage('I just got the notification that %DomHonorific% %DomName% accepted and is ready to talk to you now');
     sendVirtualAssistantMessage("She wants to meet you...");
     sendVirtualAssistantMessage('So we\'ll see us again soon enough but for now I hope you\'ve found a Domme %Grin%');
     sendVirtualAssistantMessage("Transferring session...");
@@ -533,7 +533,7 @@
 
 function setupBlackmail() {
     sendVirtualAssistantMessage("As you should know");
-    sendVirtualAssistantMessage("A slave doesn't have \"private\" information since a slave doesn\'t keep anything private from his Domme...");
+    sendVirtualAssistantMessage("A slave doesn't have \"private\" information since a slave doesn't keep anything private from his Domme...");
     sendVirtualAssistantMessage("As a token of complete surrender I need the phone number and name of 3 people");
     sendVirtualAssistantMessage("Preferably girls that don't know about your fetish");
     sendVirtualAssistantMessage("So tell me the full name of the first person", false);

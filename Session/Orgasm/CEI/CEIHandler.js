@@ -39,10 +39,10 @@ function sendEatInstructions(ceiDestination = CEI_UNDEFINED) {
             sendMessage("Now get down on all fours and lick it all up");
         }
 
-        sendMessage("Lick up every single drop until it\'s completely clean");
+        sendMessage("Lick up every single drop until it's completely clean");
 
         if(ceiDestination == CEI_FLOOR) {
-            sendMessage("You shouldn\'t need to clean the floor afterwards %Lol%");
+            sendMessage("You shouldn't need to clean the floor afterwards %Lol%");
         } else if(ceiDestination == CEI_BOWL) {
             sendMessage("You should be able to put that bowl right back in the cupboard %Lol%");
         } else if(ceiDestination == CEI_PLATE) {
@@ -59,7 +59,7 @@ function sendEatInstructions(ceiDestination = CEI_UNDEFINED) {
         if(answer.isLike('yes')) {
             if(VERBAL_HUMILIATION_LIMIT.isAllowed()) {
                 //QUALITY: More sentences
-                sendMessage(random("You\'re such a filthy little cum whore", "That\'s disgusting %SlaveName% %Lol%"));
+                sendMessage(random("You're such a filthy little cum whore", "That's disgusting %SlaveName% %Lol%"));
             } else {
                 sendMessage("%Good%");
             }
@@ -84,7 +84,7 @@ function sendEatInstructions(ceiDestination = CEI_UNDEFINED) {
                 sendMessage('%EmoteSad%');
                 sendMessage('You know that I don\'t like you disobeying me %SlaveName%...');
                 changeMeritMedium(true);
-                sendMessage("Maybe next time I\'ll warn you in advance %Lol%");
+                sendMessage("Maybe next time I'll warn you in advance %Lol%");
             }
 
             //We want to skip the last line

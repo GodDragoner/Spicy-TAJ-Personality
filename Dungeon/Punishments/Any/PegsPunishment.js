@@ -38,18 +38,18 @@
                         switch (result) {
                             case 1:
                                 //(Nipples)
-                                sendMessage(attachSentence + " a peg " + onSentence + " each of %myyour% nipples"); //#DT4
+                                sendMessage(attachSentence + " a peg " + onSentence + " each of %MyYour% nipples"); //#DT4
                                 break;
                             case 2:
                                 //(Balls)
-                                sendMessage(attachSentence + " the pegs " + onSentence + " %myyour% %Balls%"); //#DT4 @Wait(5)
+                                sendMessage(attachSentence + " the pegs " + onSentence + " %MyYour% %Balls%"); //#DT4 @Wait(5)
                                 break;
                             case 3:
                                 //(Cock)
                                 if (isInChastity()) {
-                                    sendMessage(attachSentence + " the pegs " + onSentence + " %myyour% " + random("%Balls%", "nipples")); //#DT4 @Wait(5)
+                                    sendMessage(attachSentence + " the pegs " + onSentence + " %MyYour% " + random("%Balls%", "nipples")); //#DT4 @Wait(5)
                                 } else {
-                                    sendMessage(attachSentence + " the pegs " + onSentence + " some lose skin from %myyour% %Cock%"); //#DT4 @Wait(5)
+                                    sendMessage(attachSentence + " the pegs " + onSentence + " some lose skin from %MyYour% %Cock%"); //#DT4 @Wait(5)
                                 }
                                 break;
                             case 4:

@@ -1,12 +1,12 @@
 {
     let orgasmType = getVar(VARIABLE.ORGASM_CATEGORY_TODAY);
-    sendMessage("I think today I\'m going to let you cum");
+    sendMessage("I think today I'm going to let you cum");
     sendMessage("But wait for my command, %SlaveName%");
     sendMessage("I want you to " + random("enjoy ", "savour ") + "this moment");
-    sendMessage(random("Just think about ", "Imagine ") + "how good it\'s going to feel when you go over the edge");
+    sendMessage(random("Just think about ", "Imagine ") + "how good it's going to feel when you go over the edge");
     sendMessage("When you let that orgasm course through you");
     sendMessage("Maybe your limbs will start to shudder and shake");
-    sendMessage("Maybe for a moment you\'ll feel like you\'ve just died and went to heaven %EmoteHappy%");
+    sendMessage("Maybe for a moment you'll feel like you've just died and went to heaven %EmoteHappy%");
 
     if(isInChastity()) {
         sendMessage('Well that cage might be a problem to enjoy the whole sensation but you still won\'t be allowed to take it of %Grin%');
@@ -14,12 +14,12 @@
         sendMessage('Don\'t edge yet though %Grin%');
     } else {
         sendMessage("Start touching yourself");
-        sendMessage("Don\'t %JerkOff% too hard, I don\'t want you to " + random("reach the edge ", "cum ", "orgasm ") + random("just yet", "too early"));
-        sendMessage("I want you to make " + random("it so ", "sure ") + "that once I " + random("tell you ", "give you the command ") + "to edge, you\'ll edge " + random("right away", "quickly", "without delay"));
+        sendMessage("Don't %JerkOff% too hard, I don't want you to " + random("reach the edge ", "cum ", "orgasm ") + random("just yet", "too early"));
+        sendMessage("I want you to make " + random("it so ", "sure ") + "that once I " + random("tell you ", "give you the command ") + "to edge, you'll edge " + random("right away", "quickly", "without delay"));
     }
 
     sendMessage("All that " + random("sperm ", "cum ", "jizz ") + "in %MyYour% %Balls% is just screaming to get out %Giggles%");
-    sendMessage("It\'s going to feel " + random("so fucking good ", "so damn good ", "incredible ") + "when you " + random("finally climax", "explode", "blow that hot load"));
+    sendMessage("It's going to feel " + random("so fucking good ", "so damn good ", "incredible ") + "when you " + random("finally climax", "explode", "blow that hot load"));
 
     if(isInChastity()) {
         sendMessage('Or is it?');
@@ -53,7 +53,7 @@
 
         sendMessage("Make sure you get ready to cum for me");
         lockImages();
-        sendMessage("I\'ll even show you some pictures to help you", 0);
+        sendMessage("I'll even show you some pictures to help you", 0);
         showTeaseImage(3);
         sendMessage("I want you to feel good right now, %SlaveName%");
         showTeaseImage();

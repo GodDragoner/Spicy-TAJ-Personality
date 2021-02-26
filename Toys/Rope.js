@@ -47,7 +47,7 @@ function tieBalls(force = false) {
         //Did we remove clamps before? If yes add them back if we just added them like shortly before or if we feel like punishing the slave
         if(removedClampsFromBalls && (!clampBallInteractionDate.clone().addMinute(5).hasPassed() || feelsLikePunishingSlave())) {
             sendAlreadyKnowWhatsNext('clamps', 'clothespins', 'clothespin');
-            sendMessage('Now put the clamps back on your %balls% %Grin%');
+            sendMessage('Now put the clamps back on your %Balls% %Grin%');
 
             //Add clamps back to balls
             BODY_PART_BALLS.addClamps(clampsRemovedFromBalls);

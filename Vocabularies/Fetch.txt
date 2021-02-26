@@ -1,0 +1,5 @@
+fetch
+go fetch
+go and fetch
+go and get
+

@@ -2,32 +2,32 @@
     startEdging();
     sendMessage('%LetEdgeFade%');
     sendMessage("Maybe you were hoping I had forgotten about your edge training");
-    sendMessage("I haven\'t forgotten, %SlaveName%");
+    sendMessage("I haven't forgotten, %SlaveName%");
     startKneeling();
     sendMessage('Get down on your hands and knees, edge puppy');
     startEdging();
-    sendMessage("I hope you understand why I\'m making you edge so much");
+    sendMessage("I hope you understand why I'm making you edge so much");
     sendMessage("The main reason of course is that I need you to be able to take any amount of edging I want");
     sendMessage("That requires practice");
     startEdging();
     sendMessage("As they say, practice makes perfect");
-    sendMessage("And while I don\'t expect you to be perfect");
+    sendMessage("And while I don't expect you to be perfect");
     sendMessage("I do expect you to be able to edge over and over without cumming");
     startEdging();
-    sendMessage("I\'ll be very disappointed if you can\'t take it anymore");
-    sendMessage("But you should still tell me if that\'s the case");
+    sendMessage("I'll be very disappointed if you can't take it anymore");
+    sendMessage("But you should still tell me if that's the case");
     sendMessage("My disappointment will be even greater if you cum without my permission");
     startMultipleEdges(3, 6);
     sendMessage("%LetEdgeFade%");
-    sendMessage("Edging isn\'t all that complicated, is it...");
+    sendMessage("Edging isn't all that complicated, is it...");
     sendMessage("You simply %JerkOff% like you used to do, in your old life");
     sendMessage('But instead of stroking all the way to an orgasm, you stop exactly 1 stroke before you cum');
     startEdging();
-    sendMessage("It isn\'t the simple act of getting to the edge that does it");
+    sendMessage("It isn't the simple act of getting to the edge that does it");
     sendMessage("What gets you in the end is the repetition, over and over, of that simple act");
     startEdging();
     sendMessage("Good boy");
-    sendMessage("Your %Cock% belongs to me, don\'t forget that");
+    sendMessage("Your %Cock% belongs to me, don't forget that");
     startMultipleEdges(5, 8);
     sendMessage("%LetEdgeFade%");
     sendMessage("I control how you masturbate");
@@ -40,7 +40,7 @@
         sendMessage("And lock that %Cock% in its little cage");
     }
 
-    sendMessage("Then you\'re just going to have to deal with that");
+    sendMessage("Then you're just going to have to deal with that");
     startEdging();
     sendMessage("You have no choice but to obey my every command");
     startMultipleEdges(3, 9);
@@ -48,7 +48,7 @@
 
     let endEdgeTraining = false;
     if (sendYesOrNoQuestion('Do you want me to stop, %SlaveName%?')) {
-        sendMessage("Aww it\'s too much for you isn\'t it..");
+        sendMessage("Aww it's too much for you isn't it..");
         //TODO: @NullResponse @CallReturn(Custom/Decisions/EdgingCantTakeIt.txt)
 
         changeMeritMedium(true);
@@ -66,7 +66,7 @@
 
         sendMessage("You need to make a decision now");
         sendMessage("Either you do as I say and take these final few edges");
-        sendMessage("I promise there won\'t be that many");
+        sendMessage("I promise there won't be that many");
 
         sendMessage('Or you can stop edging and disappoint your %DomHonorific%');
 
@@ -104,12 +104,12 @@
         sendMessage("Squeeze it tightly...");
         startEdging(getEdgeHoldSeconds());
         sendMessage("%LetEdgeFade%");
-        sendMessage("Only a few edges left and you will have completed today\'s training");
+        sendMessage("Only a few edges left and you will have completed today's training");
         sendMessage("Any edges after that will only be a bonus %Lol%");
-        sendMessage("You didn\'t think just because your training is done you don\'t have to edge anymore, right?");
+        sendMessage("You didn't think just because your training is done that you don't have to edge anymore, right?");
         sendMessage("The training is so that you can handle any edges I give you");
         startMultipleEdges(2, 7);
-        sendMessage("I think we\'ll do...");
+        sendMessage("I think we'll do...");
         sendMessage("7 more edges");
         startMultipleEdges(3, 9);
         sendMessage("Relax and get ready for the last few edges");

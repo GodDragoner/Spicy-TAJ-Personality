@@ -61,8 +61,8 @@
 	sendMessage("once you have emptied the bag say 'done'"); //#EnemaChat @CustomMode(done, Goto, Done)
 	sendMessage("at that point I will give you instructions on how to evacuate yourself"); //#EnemaChat
 	sendMessage("if you panic and need to use the toilet before being done say 'toilet'"); //#EnemaChat @CustomMode(toilet, Goto, Toilet)
-	sendMessage("note, this is a punishment enema, which means that if you fail to finish it, we'll fill it back up and start again. %lol%"); //#EnemaChat
-	sendMessage("%Slave%,  %domHonorific% %domName% does not accept failure", randomInteger(30, 60)); //#EnemaChat
+	sendMessage("note, this is a punishment enema, which means that if you fail to finish it, we'll fill it back up and start again. %Lol%"); //#EnemaChat
+	sendMessage("%Slave%, %DomHonorific% %DomName% does not accept failure", randomInteger(30, 60)); //#EnemaChat
 //(EnduringEnema)
 	// @Goto(E1,E2,E3,E4,E5,E6,E7,E8,E9,E10,E11,E12)
 	enemadone = false;
@@ -204,7 +204,7 @@
 				sendMessage("on the bright side we're going to get to do this again! %Lol%", randomInteger(5, 10)); //#EnemaChat
 				sendMessage("take a moment to get that last bit out", randomInteger(25, 40)); //#EnemaChat
 				sendMessage("now go refill that bag all the way to the top", randomInteger(75, 90)); //#EnemaChat
-				sendMessage("my Dearest %slave% now we get to start all over again %Grin%", randomInteger(5, 7)); //#EnemaChat
+				sendMessage("my Dearest %Slave%, now we get to start all over again %Grin%", randomInteger(5, 7)); //#EnemaChat
 
 
 				break;
@@ -222,7 +222,7 @@
 	function doneEnema() {
 		sendMessage("Good boy!  I'm so glad you took that whole bag for me."); //#EnemaChat
 		sendMessage("close the valve on the enema bag, and remove the plug/nozzle ", 5); //#EnemaChat
-		sendMessage("%SlaveName%, please keep in mind that you don't have permission to leak a drop yet. %lol%"); //#EnemaChat
+		sendMessage("%SlaveName%, please keep in mind that you don't have permission to leak a drop yet. %Lol%"); //#EnemaChat
 		sendMessage("Go position yourself on the toilet, but keep me near. ", randomInteger(10, 20)); //#EnemaChat
 		response = sendInput("well, is there anything you'd like to ask me ... hmmm? "); //#EnemaChat
 		while (true) {
@@ -235,7 +235,7 @@
 			response.loop();
 		}
 
-		response = sendInput(" to be 100 percent honest %SlaveName%, I just haven't heard enough groveling yet. %lol%"); //#EnemaChat
+		response = sendInput(" to be 100 percent honest %SlaveName%, I just haven't heard enough groveling yet. %Lol%"); //#EnemaChat
 		while (true) {
 			if (response.isLike("please", "beg", "humble", "Please", "PLEASE", "release", "poop", "shit", "dump", "evacuate", "defecate", "may", "can")) {
 				sendMessage("Hmmm, well if it means that much to you, go ahead %Lol%  ", randomInteger(10, 20)); //#EnemaCh

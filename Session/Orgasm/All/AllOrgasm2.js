@@ -1,11 +1,11 @@
 {
     let orgasmType = getVar(VARIABLE.ORGASM_CATEGORY_TODAY);
-    sendMessage("Now, let\'s see...");
+    sendMessage("Now, let's see...");
     sendMessage('I could let you cum %GeneralTime%');
     let alreadyCame = false;
 
     if(sendYesOrNoQuestion('Is that what you want?')) {
-        sendMessage("Let\'s think about that a minute though...");
+        sendMessage("Let's think about that a minute though...");
 
         if(sendYesOrNoQuestion('You do realize that this wonderful aching feeling will go away, right?')) {
             sendMessage("And you probably love that feeling more than cumming, in the end");
@@ -17,12 +17,12 @@
         sendMessage("For a while, anyway %Grin%");
         sendMessage("So instead, you could choose not to cum...");
         sendMessage("And stay on this lovely cloud of arousal a while longer");
-        sendMessage("I mean, you know you\'ll get to cum eventually...");
+        sendMessage("I mean, you know you'll get to cum eventually...");
         sendMessage('It\'s not like I\'m going to keep you denied forever %Grin%');
         sendMessage("But we could make that sensual buzz of achy longing last a little longer");
 
         if(sendYesOrNoQuestion('So, do you still want to cum?')) {
-            sendMessage("Alright I\'ll be nice this time, %SlaveName%");
+            sendMessage("Alright I'll be nice this time, %SlaveName%");
             alreadyCame = true;
 
             if (orgasmType === ORGASM_CATEGORY_DENIED) {

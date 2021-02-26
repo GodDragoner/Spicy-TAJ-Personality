@@ -1,7 +1,7 @@
 {
     if (tryRunOrgasmFetchId()) {
-        sendMessage("In a moment I\'m going to tell you to put your %CockAndChastity% back in your pants");
-        sendMessage("But not before you\'ve edged for me one last time");
+        sendMessage("In a moment I'm going to tell you to put your %CockAndChastity% back in your pants");
+        sendMessage("But not before you've edged for me one last time");
         sendMessage("Do it %SlaveName%");
         startEdging();
         sendMessage("%LetEdgeFade%");
@@ -32,7 +32,7 @@
 
         while (true) {
             if (answer.isLike("you", "thanks", "gracias", "merci", "grateful", "gratitude")) {
-                sendMessage("You\'re welcome %SlaveName% %Grin%");
+                sendMessage("You're welcome %SlaveName% %Grin%");
                 break;
             } else {
                 sendMessage('"No... try again');
@@ -40,6 +40,6 @@
             }
         }
 
-        sendMessage("It\'s always nice to get a little gratitude");
+        sendMessage("It's always nice to get a little gratitude");
     }
 }
