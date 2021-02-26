@@ -256,8 +256,9 @@ function getDildo(blowjob = false, dildos = DILDOS) {
                 }
             }
 
-            maxLength += 0.5;
-            maxDiameter += 0.5;
+            //Increase size slower than decreasing min parameters
+            maxLength += 0.1;
+            maxDiameter += 0.1;
             minDiameter -= 0.5;
             minLength -= 0.5;
             tries++;

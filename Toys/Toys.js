@@ -221,6 +221,10 @@ function fetchToy(toy, imagePath, amount = 0) {
             }
 
             sendMessageBasedOnSender("%Good%");
+
+            //Update the list of lovense toys
+            fetchAvailableLovenseToys();
+
             break;
         } else if (answer.isLike("no", "don't", "can't")) {
             if (imagePath !== undefined) {
@@ -743,6 +747,9 @@ function setupToys(settings) {
     BALL_STRETCHER_TOY.askForToyAndUsage(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
+    FLESH_LIGHT.askForToyAndUsage(domChose);
+    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
     CLOTHESPINS_TOY.askForToyAndUsage(domChose);
 
     sendVirtualAssistantMessage('Okay next quite similar but not the same %Grin%');
@@ -752,6 +759,7 @@ function setupToys(settings) {
     sendVirtualAssistantMessage('Okay now something yet again fairly similar but definitely more painful if used correctly %Grin%');
 
     CLOVER_CLAMPS.askForToyAndUsage(domChose);
+
 
     /*askForToy("Cock Ring");
     askForToyUsage("CockRing", domChose);

@@ -171,6 +171,37 @@ function handleTodaysMood() {
     //Otherwise no change
 }
 
+//Extra teasing mood
+function feelsLikeTeasing() {
+    let mood = getMood();
+
+    let chance = getVar(VARIABLE.LUST, 0);
+
+    let multiplier = 1;
+
+    if(getStrictnessForCharacter() === 1) {
+        multiplier = 1.5;
+    } if(getStrictnessForCharacter() === 0) {
+        multiplier = 2;
+    }
+
+    if (mood === VERY_PLEASED_MOOD) {
+        chance += multiplier * 50;
+    } else if (mood === PLEASED_MOOD) {
+        chance += multiplier * 40;
+    } else if (mood === NEUTRAL_MOOD) {
+        chance += multiplier* 30;
+    } else if (mood === ANNOYED_MOOD) {
+        chance += multiplier * 10;
+    } else if (mood === VERY_ANNOYED_MOOD) {
+        chance += multiplier * 5;
+    }
+
+    sendDebugMessage('Feels like teasing chance ' + chance);
+
+    return isChance(chance);
+}
+
 //Teasing is meant to be cruel in this case => which means Happiness would cause her to be less cruel
 function getCruelTeasingMood() {
     let multiplier = 1;
@@ -183,6 +214,7 @@ function getCruelTeasingMood() {
 
     return (getVar(VARIABLE.ANGER) + getVar(VARIABLE.LUST, 0))*multiplier - getVar(VARIABLE.HAPPINESS, 0);
 }
+
 
 function getHumiliationMood() {
 

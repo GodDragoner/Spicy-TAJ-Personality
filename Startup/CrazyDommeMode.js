@@ -13,13 +13,15 @@ if(!isVar("crazyDommeModeSetDate")) {
 }
 
 function redistributeModes() {
-    setDate("crazyDommeModeSetDate", setDate("crazyDommeModeSetDate").addDay(randomInteger(4, 10)));
+    setDate("crazyDommeModeSetDate", setDate("crazyDommeModeSetDate").addDay(randomInteger(3, 6)));
 
     for(let x = 0; x < DOMME_MODES.length; x++) {
         if(isChance(20)) {
             if(!isVar(DOMME_MODES[x])) {
                 sendDebugMessage('Activating crazy domme mode: ' + DOMME_MODES[x]);
                 setVar(DOMME_MODES[x], true);
+            } else {
+                sendDebugMessage('Keeping crazy domme mode: ' + DOMME_MODES[x]);
             }
         } else if(isVar(DOMME_MODES[x])) {
             delVar(DOMME_MODES[x]);

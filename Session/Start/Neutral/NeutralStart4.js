@@ -7,7 +7,7 @@
         sendMessage("And maybe I\'ll be cruel to you and make you hurt for me");
 
         if(CEI_LIMIT.isAllowed()) {
-            sendMessage("If you\'re a really good boy might even let you eat you own load");
+            sendMessage("If you\'re a really good boy I might even let you eat you own load");
             sendMessage("I know how much you enjoy the taste");
             sendMessage("And the feeling of hot cum sliding down your throat");
             sendMessage("And if you don\'t like it...");

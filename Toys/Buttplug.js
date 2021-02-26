@@ -328,11 +328,11 @@ function putinChosenButtplug(plug) {
 
     sendMessageBasedOnSender("Now %SlaveName%");
 
-    if (isChance(getStrictnessForCharacter() * 10) && getVar(VARIABLE.ASS_LEVEL) >= 30) {
+    if (feelsLikePunishingSlave() && getVar(VARIABLE.ASS_LEVEL) >= 30) {
         sendMessageBasedOnSender("Push it in quickly");
         sendMessageBasedOnSender("I don't care whether it hurts");
     } else {
-        if (isChance(50) && getVar(VARIABLE.ASS_LEVEL) >= 30) {
+        if (isChance(20) && getVar(VARIABLE.ASS_LEVEL) >= 30) {
             sendMessageBasedOnSender("Put that plug on the ground");
             sendMessageBasedOnSender("You already know " + random("what I am gonna make you do now", "what comes next", "what you are gonna do next", "what I want you to do next", "what is gonna happen now"));
             sendMessageBasedOnSender("I want you to slowly sit down on that plug and push it all the way up your ass");
