@@ -373,7 +373,8 @@
 	sendVirtualAssistantMessage("We're at the end");
 	sendVirtualAssistantMessage("You just went through " + NrExercise + " exercises");
 
-	let answer = sendInput("How many of the " + NrExercise + " exercises do you estimate to have completed to a satisfactory level?");
+	sendVirtualAssistantMessage("How many of the " + NrExercise + " exercises do you estimate to have completed to a satisfactory level?");
+	let answer = createInput();
 
 	while (true) {
 		if (answer.isInteger()) {
@@ -382,15 +383,15 @@
 				sendVirtualAssistantMessage("You can't choose a number less than 0");
 				answer.loop();
 			} else if (result > NrExercise) {
-				sendMessage("You chose a number too big, you weren't assigned that many exercises");
+				sendVirtualAssistantMessage("You chose a number too big, you weren't assigned that many exercises");
 				answer.loop();
 			} else {
 				ExerciseDone = result;
 				break;
 			}
 		} else {
-			sendMessage("Slave...");
-			sendMessage("I asked you to just give me a simple number..");
+			sendVirtualAssistantMessage("Slave...");
+			sendVirtualAssistantMessage("I asked you to just give me a simple number..");
 			sendVirtualAssistantMessage("You must choose a simple number.. like");
 			sendVirtualAssistantMessage("10");
 			sendVirtualAssistantMessage("15");
