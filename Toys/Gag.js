@@ -296,7 +296,7 @@ function removeGag(mouthRequiredAfter = true) {
             sendMessageBasedOnSender("%Good%");
             break;
         } else {
-            sendMessageBasedOnSender("Have you removed the gag yet?");
+            sendMessageBasedOnSender("Have you removed the gag yet?", 0);
             answer.loop();
         }
     }

@@ -186,7 +186,7 @@ function waitForDoneVirtualAssistant(timeout = 100) {
         } else if (answer.isLike('done', 'ready', 'yes')) {
             break;
         } else {
-            sendVirtualAssistantMessage('Are you done?');
+            sendVirtualAssistantMessage('Are you done?', 0);
             answer.loop();
         }
     }

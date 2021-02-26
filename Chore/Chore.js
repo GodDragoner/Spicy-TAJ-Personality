@@ -108,7 +108,7 @@ function runChoreIntroduction() {
     }
 
     sendVirtualAssistantMessage('Next...');
-    sendVirtualAssistantMessage('Do you live in an apartment or house?');
+    sendVirtualAssistantMessage('Do you live in an apartment or house?', 0);
 
 
     let answer = createInput();
@@ -123,7 +123,7 @@ function runChoreIntroduction() {
             sendVirtualAssistantMessage('%Good%');
             break;
         } else {
-            sendVirtualAssistantMessage('Apartment or house %SlaveName%?');
+            sendVirtualAssistantMessage('Apartment or house %SlaveName%?', 0);
             answer.loop();
         }
     }
@@ -198,7 +198,7 @@ function runChoreIntroduction() {
                         size = answer.getInt();
                         break;
                     } else {
-                        sendVirtualAssistantMessage('Please only type a number such as 10...');
+                        sendVirtualAssistantMessage('Please only type a number such as 10...', 0);
                         answer.loop();
                     }
                 }
@@ -210,7 +210,7 @@ function runChoreIntroduction() {
             }
             break;
         } else {
-            sendVirtualAssistantMessage('Please only type a number such as 5...');
+            sendVirtualAssistantMessage('Please only type a number such as 5...', 0);
             answer.loop();
         }
     }
@@ -229,7 +229,7 @@ function runChoreIntroduction() {
             let frequency = answer.getInt();
 
             if (frequency < 1 || frequency > 10) {
-                sendVirtualAssistantMessage('Please only give me a number in the range of 1 - 10...');
+                sendVirtualAssistantMessage('Please only give me a number in the range of 1 - 10...', 0);
                 answer.loop();
             } else {
                 setVar(VARIABLE.KINKY_CHORE_CHANCE, frequency);
@@ -241,7 +241,7 @@ function runChoreIntroduction() {
             sendVirtualAssistantMessage('This is gonna be much fun for me %Grin%');
             break;
         } else {
-            sendVirtualAssistantMessage('Please only type a number such as 5...');
+            sendVirtualAssistantMessage('Please only type a number such as 5...', 0);
             answer.loop();
         }
     }
@@ -678,13 +678,13 @@ function sendKinkyChoreInstructions(choreType) {
 
 function askForRoomSafety(room) {
     sendVirtualAssistantMessage('Next I would like to know...');
-    sendVirtualAssistantMessage('Does that room have windows that neighbours can usually see through?');
+    sendVirtualAssistantMessage('Does that room have windows that neighbours can usually see through?', 0);
 
     room.windows = createYesOrNoQuestion();
 
     sendVirtualAssistantMessage('Now I need to know...');
     sendVirtualAssistantMessage('Is that room safe for kinky chores?');
-    sendVirtualAssistantMessage('It\'s not safe if there is for example a risk of running into other people!');
+    sendVirtualAssistantMessage('It\'s not safe if there is for example a risk of running into other people!', 0);
 
     room.safeForKink = createYesOrNoQuestion();
 }

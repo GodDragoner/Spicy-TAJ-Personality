@@ -12,11 +12,11 @@
                 let length = answer.getInteger();
 
                 if (length < 30) {
-                    sendVirtualAssistantMessage('It must be at least 30 minutes %SlaveName%');
+                    sendVirtualAssistantMessage('It must be at least 30 minutes %SlaveName%', 0);
                     answer.loop();
                 } else if (length > 120) {
                     sendVirtualAssistantMessage('%DomHonorific% %DomName% only has time so much time for you %SlaveName%');
-                    sendVirtualAssistantMessage('You can\'t go higher than 120 minutes');
+                    sendVirtualAssistantMessage('You can\'t go higher than 120 minutes', 0);
                     answer.loop();
                 } else {
                     setVar(VARIABLE.DEVOTION, length);
@@ -25,7 +25,7 @@
                     break;
                 }
             } else {
-                sendVirtualAssistantMessage("Please only enter a number such as 40 now.");
+                sendVirtualAssistantMessage("Please only enter a number such as 40 now.", 0);
                 answer.loop();
             }
         }

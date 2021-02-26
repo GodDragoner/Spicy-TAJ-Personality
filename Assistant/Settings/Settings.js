@@ -26,7 +26,7 @@
             sendVirtualAssistantMessage("You have the following options %SlaveName%");
             sendVirtualAssistantMessage("- Toys");
             sendVirtualAssistantMessage("- Session length");
-            sendVirtualAssistantMessage("- Setup Limits");
+            sendVirtualAssistantMessage("- Setup Limits", 0);
             lobbyAnswer.loop();
         }
     }

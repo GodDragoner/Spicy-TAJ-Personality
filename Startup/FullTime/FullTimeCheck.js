@@ -112,7 +112,7 @@
                     sendVirtualAssistantMessage("Excellent choice!");
                     break;
                 } else {
-                    sendVirtualAssistantMessage("Part time or full time?");
+                    sendVirtualAssistantMessage("Part time or full time?", 0);
                     answer.loop();
                 }
             }

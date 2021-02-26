@@ -11,7 +11,7 @@
             lobbyAnswer.clearOptions();
 
             sendVirtualAssistantMessage('Tell me %SlaveName%');
-            sendVirtualAssistantMessage('How much free time do you have in minutes or should I choose for you? %Grin%');
+            sendVirtualAssistantMessage('How much free time do you have in minutes or should I choose for you? %Grin%', 0);
 
             let minutesForChores = 0;
             let answer = createInput();
@@ -26,11 +26,11 @@
                     if(minutesForChores >= 10) {
                         break;
                     } else {
-                        sendVirtualAssistantMessage('You need to do chores for at least 10 minutes. Otherwise it won\'t make any sense to start at all...');
+                        sendVirtualAssistantMessage('You need to do chores for at least 10 minutes. Otherwise it won\'t make any sense to start at all...', 0);
                         answer.loop();
                     }
                 } else {
-                    sendMessageBasedOnSender('Either give me something like "5" (minutes) or tell me to choose %SlaveName%');
+                    sendVirtualAssistantMessage('Either give me something like "10" (minutes) or tell me to choose %SlaveName%', 0);
                     answer.loop();
                 }
             }
@@ -54,8 +54,8 @@
             break;
         } else if(lobbyAnswer.isLike('info')) {
             //lobbyAnswer.clearOptions();
-            sendVirtualAssistantMessage('You have spend ' + getVar(VARIABLE.WEEKLY_CHORES_TIME) + ' minutes this week doing ' + getVar(VARIABLE.WEEKLY_CHORES_DONE) + ' chores');
-            sendVirtualAssistantMessage('In total you have spend ' + getVar(VARIABLE.TOTAL_CHORES_TIME) + ' minutes doing a total of ' + getVar(VARIABLE.TOTAL_CHORES_DONE) + ' chores');
+            sendVirtualAssistantMessage('You have spent ' + getVar(VARIABLE.WEEKLY_CHORES_TIME) + ' minutes this week doing ' + getVar(VARIABLE.WEEKLY_CHORES_DONE) + ' chores');
+            sendVirtualAssistantMessage('In total you have spent ' + getVar(VARIABLE.TOTAL_CHORES_TIME) + ' minutes doing a total of ' + getVar(VARIABLE.TOTAL_CHORES_DONE) + ' chores');
             sendVirtualAssistantMessage('Anything else I can do for you?', 0);
             lobbyAnswer.loop();
         } else {

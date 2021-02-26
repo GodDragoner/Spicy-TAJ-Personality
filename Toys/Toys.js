@@ -286,7 +286,7 @@ function askForToy(toyName, variableName, imageName) {
 
             break;
         } else {
-            sendVirtualAssistantMessage(YES_OR_NO);
+            sendVirtualAssistantMessage(YES_OR_NO, 0);
             answer.loop();
         }
     }
@@ -326,7 +326,7 @@ function askForToyUsage(toyName, domChose, variableName) {
             setVar("toy" + variableName + "InteractionMode", TOY_PUNISHMENT_MODE);
             break;
         } else {
-            sendVirtualAssistantMessage("Play, punishment or both?");
+            sendVirtualAssistantMessage("Play, punishment or both?", 0);
             answer.loop();
         }
     }
@@ -501,7 +501,7 @@ function createToy(name) {
                     setVar(variableName + "InteractionMode", TOY_PUNISHMENT_MODE);
                     break;
                 } else {
-                    sendVirtualAssistantMessage("Play, punishment or both?");
+                    sendVirtualAssistantMessage("Play, punishment or both?", 0);
                     answer.loop();
                 }
             }
@@ -547,7 +547,7 @@ function askForDomChoose() {
             sendVirtualAssistantMessage("%EmoteSad%");
             break;
         } else {
-            sendVirtualAssistantMessage("Do you want to leave it to your %DomHonorific% or chose yourself?");
+            sendVirtualAssistantMessage("Do you want to leave it to your %DomHonorific% or chose yourself?", 0);
             answer.loop();
         }
     }
@@ -585,7 +585,7 @@ function setupToys(settings) {
                     if (answer.isInteger()) {
                         const result = answer.getInt();
                         if (result <= 0) {
-                            sendVirtualAssistantMessage("You can't choose a number equal to 0 or lower");
+                            sendVirtualAssistantMessage("You can't choose a number equal to 0 or lower", 0);
                             answer.loop();
                         } else {
                             sendVirtualAssistantMessage('We are gonna setup your buttplugs now, one by one.');
@@ -599,7 +599,7 @@ function setupToys(settings) {
                             break;
                         }
                     } else {
-                        sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
+                        sendVirtualAssistantMessage("Please only enter a number such as 1 now.", 0);
                         answer.loop();
                     }
                 }
@@ -619,7 +619,7 @@ function setupToys(settings) {
                     if (answer.isInteger()) {
                         const result = answer.getInt();
                         if (result <= 0) {
-                            sendVirtualAssistantMessage("You can't choose a number equal to 0 or lower");
+                            sendVirtualAssistantMessage("You can't choose a number equal to 0 or lower", 0);
                             answer.loop();
                         } else {
                             sendVirtualAssistantMessage('We are gonna setup your dildos now, one by one.');
@@ -633,7 +633,7 @@ function setupToys(settings) {
                             break;
                         }
                     } else {
-                        sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
+                        sendVirtualAssistantMessage("Please only enter a number such as 1 now.", 0);
                         answer.loop();
                     }
                 }
@@ -684,7 +684,7 @@ function setupToys(settings) {
                 if (answer.isInteger()) {
                     const result = answer.getInt();
                     if (result <= 0) {
-                        sendVirtualAssistantMessage("You can't choose a number equal to 0 or lower");
+                        sendVirtualAssistantMessage("You can't choose a number equal to 0 or lower", 0);
                         answer.loop();
                     } else {
                         sendVirtualAssistantMessage('We are gonna setup your high heels now, one by one.');
@@ -698,7 +698,7 @@ function setupToys(settings) {
                         break;
                     }
                 } else {
-                    sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
+                    sendVirtualAssistantMessage("Please only enter a number such as 1 now.", 0);
                     answer.loop();
                 }
             }

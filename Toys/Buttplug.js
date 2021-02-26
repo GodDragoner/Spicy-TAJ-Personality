@@ -766,7 +766,7 @@ function setupNewButtplug() {
 
             break;
         } else {
-            sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
+            sendVirtualAssistantMessage("Please only enter a number such as 1 now.", 0);
             answer.loop();
         }
     }
@@ -800,7 +800,7 @@ function setupNewButtplug() {
 
             break;
         } else {
-            sendVirtualAssistantMessage("Please only enter a number such as 1 now.");
+            sendVirtualAssistantMessage("Please only enter a number such as 1 now.", 0);
             answer.loop();
         }
     }
@@ -825,7 +825,7 @@ function setupNewButtplug() {
             answer.clearOptions();
             break;
         } else {
-            sendVirtualAssistantMessage('Is it made out of glass, metal or silicon?');
+            sendVirtualAssistantMessage('Is it made out of glass, metal or silicon?', 0);
             answer.loop();
         }
     }
@@ -852,7 +852,7 @@ function setupNewButtplug() {
             baseStyle = BUTTPLUG_BASE_STYLE.PIG_TAIL;
             break;
         } else {
-            sendVirtualAssistantMessage('Is the base of the plug plain, a crystal, a fluffy tail or a pig tail?');
+            sendVirtualAssistantMessage('Is the base of the plug plain, a crystal, a fluffy tail or a pig tail?', 0);
             answer.loop();
         }
     }
@@ -883,7 +883,7 @@ function setupNewButtplug() {
                 } else if (answer.isLike("no")) {
                     break;
                 } else {
-                    sendVirtualAssistantMessage(YES_OR_NO);
+                    sendVirtualAssistantMessage(YES_OR_NO, 0);
                     answer.loop();
                 }
             }
@@ -899,7 +899,7 @@ function setupNewButtplug() {
                 } else if (answer.isLike("no")) {
                     break;
                 } else {
-                    sendVirtualAssistantMessage(YES_OR_NO);
+                    sendVirtualAssistantMessage(YES_OR_NO, 0);
                     answer.loop();
                 }
             }
@@ -915,7 +915,7 @@ function setupNewButtplug() {
                 } else if (answer.isLike("no")) {
                     break;
                 } else {
-                    sendVirtualAssistantMessage(YES_OR_NO);
+                    sendVirtualAssistantMessage(YES_OR_NO, 0);
                     answer.loop();
                 }
             }
@@ -931,7 +931,7 @@ function setupNewButtplug() {
                 } else if (answer.isLike("no")) {
                     break;
                 } else {
-                    sendVirtualAssistantMessage(YES_OR_NO);
+                    sendVirtualAssistantMessage(YES_OR_NO, 0);
                     answer.loop();
                 }
             }
@@ -944,7 +944,7 @@ function setupNewButtplug() {
             sendVirtualAssistantMessage('Finishing setup...');
             break;
         } else {
-            sendVirtualAssistantMessage(YES_OR_NO);
+            sendVirtualAssistantMessage(YES_OR_NO, 0);
             answer.loop();
         }
     }

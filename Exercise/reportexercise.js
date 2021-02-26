@@ -19,7 +19,7 @@
         changeMeritHigh(true);
     } else {
         sendVirtualAssistantMessage("%SlaveName%, Fitness and Honesty are both important");
-        sendVirtualAssistantMessage("Have you just completed an exercise?");
+        sendVirtualAssistantMessage("Have you just completed an exercise?", 0);
 
         let answer2 = createInput("Yes", "No");
         while (true) {
@@ -41,7 +41,7 @@
                 break;
             } else {
                 sendVirtualAssistantMessage("Did you exercise %SlaveName%?");
-                sendVirtualAssistantMessage("A simple YES or NO will suffice...");
+                sendVirtualAssistantMessage("A simple YES or NO will suffice...", 0);
                 answer2.loop();
             }
         }

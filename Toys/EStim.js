@@ -309,7 +309,7 @@ function setupEStimToy(domChose, settings = false) {
                         mode.setInteractionMode(TOY_PUNISHMENT_MODE);
                         break;
                     } else {
-                        sendVirtualAssistantMessage("Play, punishment or both?");
+                        sendVirtualAssistantMessage("Play, punishment or both?", 0);
                         answer.loop();
                     }
                 }

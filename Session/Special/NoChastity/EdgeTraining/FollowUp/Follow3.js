@@ -108,7 +108,7 @@
     startEdging();
 
     showCategoryImage('LESBIAN', 0);
-    sendMessage('Maybe on day you\'ll get really lucky');
+    sendMessage('Maybe one day you\'ll get really lucky');
     sendMessage('And 2 women will let you edge while watching them have sex');
 
     startEdging();

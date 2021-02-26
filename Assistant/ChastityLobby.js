@@ -132,7 +132,7 @@
 
                     break;
                 } else {
-                    sendVirtualAssistantMessage('Cleaning, pain, emergency or other?');
+                    sendVirtualAssistantMessage('Cleaning, pain, emergency or other?', 0);
                     answer.loop();
                 }
             }

@@ -74,7 +74,7 @@
                         sendVirtualAssistantMessage("Good %SlaveName%!");
                         break;
                     } else {
-                        sendVirtualAssistantMessage(YES_OR_NO);
+                        sendVirtualAssistantMessage(YES_OR_NO, 0);
                         answer.loop();
                     }
                 }
