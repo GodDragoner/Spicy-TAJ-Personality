@@ -219,7 +219,7 @@
                 } else {
                     sendDungeonMessage("Let's see if there is any specific reasons to why you've been given punishment points this week...");
 
-                    let reasons = getVar(VARIABLE.PUNISHMENT_REASONS, new java.util.ArrayList());
+                    let reasons = tryGetArrayList(VARIABLE.PUNISHMENT_REASONS);
 
                     if (!reasons.isEmpty()) {
                         if (reasons.contains(PUNISHMENT_REASON.SKIPPING_PUNISHMENT_DAY)) {
