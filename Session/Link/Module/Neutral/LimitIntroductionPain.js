@@ -7,7 +7,7 @@
                     sendMessage('Once you\'re done...');
                     sendMessage('I want you to flick each clothespin 2 times');
                     sendMessage('If any of them fall of you will repeat this from the beginning %SlaveName%');
-                    sendMessage('Tell me when you are done and don\'t make wait too long for it');
+                    sendMessage('Tell me when you are done and don\'t make me wait too long for it');
                     waitForDone(200);
                     sendMessage('You can remove the 4 clothespins now again');
 
