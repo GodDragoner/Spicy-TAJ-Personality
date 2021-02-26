@@ -45,7 +45,7 @@
 
 
             if(sendYesOrNoQuestion('Can you take more edges?')) {
-                sendMessage('Such a good edge slut %lol%');
+                sendMessage('Such a good edge slut %Lol%');
                 changeMeritLow();
 
                 sendMessage('This time you will do a series of 12');

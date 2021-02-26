@@ -162,7 +162,7 @@
                 }
 
                 if (getVar(VARIABLE.PUNISHMENT_POINTS) > 750) {
-                    sendDungeonMessage(random("Lol %SubName%, you're so fucked!", "Oh %SlaveName%, you're ass is gonna bleed ", "You should be ashamed, %Subname%", "How did you let it get so bad?"));
+                    sendDungeonMessage(random("Lol %SubName%, you're so fucked!", "Oh %SlaveName%, your ass is gonna bleed ", "You should be ashamed, %SubName%", "How did you let it get so bad?"));
 
                 } else if (getVar(VARIABLE.PUNISHMENT_POINTS) > 500) {
                     sendDungeonMessage(random("This is SERIOUS %Slave%, you need to put some time in down here", "NOT GOOD, you need to put some serious time in down here", "I have a feeling we're going to be spending lots of time together %Grin%", "That's so many your %DomHonorific% won't even hold a session with you"));
@@ -247,7 +247,7 @@
                         }
 
                         if (reasons.contains(PUNISHMENT_REASON.SKIPPING_SPANKZCHOIR_LATE)) {
-                            sendDungeonMessage("Not delivering your %ass% to the mistress that bought it via spankzchoir in time", 2);
+                            sendDungeonMessage("Not delivering your %Ass% to the mistress that bought it via spankzchoir in time", 2);
                         }
 
                         if (reasons.contains(PUNISHMENT_REASON.TOO_MANY_POINTS)) {
@@ -255,7 +255,7 @@
                         }
 
                         /*if (isVar("Preason_not_worshiping") && getVar("Preason_not_worshiping")) {
-                            sendDungeonMessage(random("Failure to respect %mistress%", "being Disrespectful towards %DomHonorific% %DomName%", "Not appropriately worshipping your Goddess %DomName%"), 2);
+                            sendDungeonMessage(random("Failure to respect %DomHonorific% %DomName%", "being Disrespectful towards %DomHonorific% %DomName%", "Not appropriately worshipping your Goddess %DomName%"), 2);
                         }*/
 
                         if (reasons.contains(PUNISHMENT_REASON.TOO_LAZY)) {
@@ -283,7 +283,7 @@
                         }
 
                         if (reasons.contains(PUNISHMENT_REASON.NO_PERM_EDGE)) {
-                            sendDungeonMessage(random("Unauthorized edging", 'Edging without permission', "Edging against %DomHonorific% %DomName%'s wishes", "Being unable to resist edging your %cock%"), 2);
+                            sendDungeonMessage(random("Unauthorized edging", 'Edging without permission', "Edging against %DomHonorific% %DomName%'s wishes", "Being unable to resist edging your %Cock%"), 2);
                         }
 
                         if (reasons.contains(PUNISHMENT_REASON.TALKING)) {
@@ -365,7 +365,7 @@
                             punishSeverity = PUNISHMENT_LEVEL.HARD;
                             break;
                         } else if (answer2.containsIgnoreCase("Extreme")) {
-                            sendDungeonMessage("%grin% a glutton for punishment... Setting it up...");
+                            sendDungeonMessage("%Grin% a glutton for punishment... Setting it up...");
                             punishSeverity = PUNISHMENT_LEVEL.EXTREME;
                             break;
                         } else if (answer2.isTimeout()) {
@@ -402,7 +402,7 @@
                         if (new Date().getDay() === 6) {
                             sendDungeonMessage('It\'s Friday %SlaveName% %EmoteHappy%');
                         } else {
-                            sendDungeonMessage('It\'s Monday %SlaveNam% %EmoteHappy%');
+                            sendDungeonMessage('It\'s Monday %SlaveName% %EmoteHappy%');
                         }
 
                         if (canRequestsPunishmentTasks()) {
@@ -456,7 +456,7 @@
                                     break;
                                 }
                             } else {
-                                sendDungeonMessage("That\'s not a valid number like 100, 250 etc...");
+                                sendDungeonMessage("That's not a valid number like 100, 250 etc...");
                                 answer2.loop();
                             }
                         }

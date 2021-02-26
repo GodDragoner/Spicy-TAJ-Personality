@@ -103,7 +103,7 @@ function doButtplugASMClean(cleanType, toy = 'plug') {
 
         if(isChance(50)) {
             if(sendYesOrNoQuestion('Do you like that sight?')) {
-                sendMessage('Ewwww... Disgusting %Slavename% %Lol%');
+                sendMessage('Ewwww... Disgusting %SlaveName% %Lol%');
             } else {
                 sendMessage('Forcing you to do stuff you dislike must be my favorite thing %Lol%');
             }

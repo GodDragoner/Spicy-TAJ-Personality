@@ -385,11 +385,11 @@ if (isVar("PunishmentFailed")) {
             sendNurseMessage(" You should be proud of yourself! ");
             break;
         case 24:
-            sendNurseMessage(random("Good boy!", "Good girl!", "Good slut", "zap, zap %lol%", "hey sparky!"));
+            sendNurseMessage(random("Good boy!", "Good girl!", "Good slut", "zap, zap %Lol%", "hey sparky!"));
             delVar("E4Complete");
             setVar(VARIABLE.PUNISHMENT_POINTS, getVar(VARIABLE.PUNISHMENT_POINTS) - randomInteger(150, 190));
             sendNurseMessage(random("enough zappings like that and we'll fully neutralize those beta balls of yours", "sniff... sniff.... um, I think you're scrotum might be smoking", "now that's how you train a bitch!"));
-			sendNurseMessage(random("we can always just remove those useless %balls% of yours if it was too much", "it's amazing what a little spark can do to a relationship"));
+			sendNurseMessage(random("we can always just remove those useless %Balls% of yours if it was too much", "it's amazing what a little spark can do to a relationship"));
 
             break;		
 			

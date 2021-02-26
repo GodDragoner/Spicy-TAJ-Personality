@@ -90,7 +90,7 @@
                 '' + strokes + ' strokes for these %Boobs% should make you squirm @ShowBoobsImage ',
                 '%Boobs% like these were <i>made</i> for making you suffer. ' + strokes + ' more strokes %SlaveName% @ShowBoobsImage ',
                 'More %Boobs%, ' + strokes + ' more strokes @ShowBoobsImage ',
-                '' + strokes + ' more strokes and maybe %MyYour% %Balls% will be as big as these %Boobs% %lol% @ShowBoobsImage ',
+                '' + strokes + ' more strokes and maybe %MyYour% %Balls% will be as big as these %Boobs% %Lol% @ShowBoobsImage ',
                 'Give me ' + strokes + ' more strokes while you imagine sucking on these %Boobs% @ShowBoobsImage ',
                 'Imagine how these %Boobs% would feel in your hands as you give me ' + strokes + ' more strokes @ShowBoobsImage ',
                 'Squeeze ' + strokes + ' more strokes out of %MyYour% %Cock% while you think about aqueezing these %Boobs% %Grin% @ShowBoobsImage ',

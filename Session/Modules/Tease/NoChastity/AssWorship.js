@@ -18,7 +18,7 @@
             sendMessage('Obviously that\'s not going to happen between us');
             showDommeTaggedImageForPictureTag(PictureTag.ASS);
             sendMessage('You will <i>never</i> touch this ass');
-            sendMessage('Or <i>any</i> part of me for that matter %lol%');
+            sendMessage('Or <i>any</i> part of me for that matter %Lol%');
             sendMessage('So you\'re probably thinking I\'m just going to make you stroke while you look at it');
             sendMessage('And you\'re right');
             sendMessage('But it\'s a little more complicated than that');

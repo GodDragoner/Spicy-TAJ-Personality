@@ -11,8 +11,8 @@
             sendMessage('Good boy %Grin%');
 
             sendMessage("Place it in front of you on the floor");
-            sendMessage("I\'m going to make you ruin it right onto the plate or bowl");
-            sendMessage("I don\'t think I have to tell you what happens next %Lol%");
+            sendMessage("I'm going to make you ruin it right onto the plate or bowl");
+            sendMessage("I don't think I have to tell you what happens next %Lol%");
             //TODO: BPM selection based on scenario like stroking to orgasm edge
 
             if(isInChastity()) {
@@ -25,13 +25,13 @@
             }
 
             startStroking(60);
-            sendMessage("Make sure you catch everything, don\'t spill a single drop");
+            sendMessage("Make sure you catch everything, don't spill a single drop");
 
             startEdging(0, true, EDGE_END_RUIN);
             waitForCumAnswer();
 
             if(isChance(50)) {
-                sendMessage("I don\'t think that\'s a very big load though");
+                sendMessage("I don't think that's a very big load though");
                 sendMessage("So what should we do...");
                 sendMessage("I think you should ruin it again and then eat everything at once");
 
@@ -45,7 +45,7 @@
             sendMessage("No pleasure for you %GeneralTime%");
             sendMessage("Just a ruined orgasm");
 
-            sendMessage("You\'ll have to " + random("clean up that mess ", "clean yourself up ", "get yourself cleaned up ") + "I guess %Grin%");
+            sendMessage("You'll have to " + random("clean up that mess ", "clean yourself up ", "get yourself cleaned up ") + "I guess %Grin%");
 
             if (!isCEI) {
                 if (sendYesOrNoQuestion('Disappointed that I didn\'t tell you to eat it?')) {

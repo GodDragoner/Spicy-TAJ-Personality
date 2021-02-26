@@ -127,7 +127,7 @@
                             sendVirtualAssistantMessage('You wouldn\'t want to suffer the consequences anyway %Grin%');
                         }
                     } else {
-                        sendVirtualAssistantMessage('Well then don\'t bother me %EmoteRandom%');
+                        sendVirtualAssistantMessage('Well then don\'t bother me %Slave%');
                     }
 
                     break;

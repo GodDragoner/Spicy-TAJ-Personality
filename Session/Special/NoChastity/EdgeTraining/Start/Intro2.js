@@ -15,7 +15,7 @@
     sendMessage('Making you go through edge after edge knowing that it\'s slowly driving you crazy');
     sendMessage('And yet you obey every single time I give the command');
     startEdging();
-    sendMessage('I know these early edges it still feel pretty good');
+    sendMessage('I know these early edges still feel pretty good');
     sendMessage('But that doesn\'t last, does it...');
     sendMessage('I want to keep going until it starts to hurt, %PetName%');
     startMultipleEdges(2, 6);
@@ -33,7 +33,7 @@
     }
 
     startMultipleEdges(3, 7);
-    sendMessage('Soon you\'re going to wish I\'d stop just stop doing this already');
+    sendMessage('Soon you\'re going to wish I\'d just stop doing this already');
     sendMessage('But I\'ll only stop when I\'m satisfied, %SlaveName%');
     startEdging();
     sendMessage('You\'re lucky I\'m not making you hold any of these edges');

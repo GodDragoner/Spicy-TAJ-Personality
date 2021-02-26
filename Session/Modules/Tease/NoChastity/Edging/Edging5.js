@@ -21,12 +21,12 @@
     startMultipleEdges(2, 6);
     sendMessage('Wouldn\'t it be great if I made you stay on the edge and then once in a while I\'d say...');
     sendMessage('<i>Get ready to back off from the edge for a few seconds</i>');
-    sendMessage('And then I\'d make get back to holding the edge all over again!');
+    sendMessage('And then I\'d make you get back to holding the edge all over again!');
     sendMessage('Well...');
     startEdging(getEdgeHoldSeconds());
     sendMessage('%LetTheEdgeFade%');
-    sendMessage('I guess I don\'t want you to <i>completely</i> lose your mind %grin%');
-    sendMessage('On more, %SlaveName%...');
+    sendMessage('I guess I don\'t want you to <i>completely</i> lose your mind %Grin%');
+    sendMessage('One more, %SlaveName%...');
     startEdging();
     sendMessage('%LetTheEdgeFade%');
     sendMessage('I\'m just going to have to edge you the old-fashioned way %Lol%')

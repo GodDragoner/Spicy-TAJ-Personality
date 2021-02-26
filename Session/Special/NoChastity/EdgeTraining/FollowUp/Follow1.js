@@ -21,14 +21,14 @@
     sendMessage('Mmm I almost forgot that this is supposed to be a training session for you %Lol%');
     sendMessage('I guess it can be two things...');
     startMultipleEdges(2, 5);
-    sendMessage('I\'ve been keeping track and I\'ve only made you do so ' + getVar(VARIABLE.EDGE_TODAY_COUNTER, 0) + ' so far %GeneralTime%');
+    sendMessage('I\'ve been keeping track and I\'ve only made you do ' + getVar(VARIABLE.EDGE_TODAY_COUNTER, 0) + ' edges so far %GeneralTime%');
     sendMessage('Time to get that number up!');
     startMultipleEdges(5, 7);
     sendMessage('By the way, I know I\'m not going to get bored with this...');
     sendMessage('But maybe you are...?');
     sendMessage('Would there ever be a time when you just go: edging? meh');
     startEdging();
-    sendMessage('I don\'t think make you edge will ever lose any of it\'s magic');
+    sendMessage('I don\'t think making you edge will ever lose any of it\'s magic');
     sendMessage('Not for me and certainly not for you');
     startEdging();
     sendMessage('Come on my little edge puppy, push a little harder against that edge!');
