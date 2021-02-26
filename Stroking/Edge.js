@@ -34,7 +34,7 @@ function startEdging(holdSeconds = 0, skipStop = false, endIn = EDGE_END_NORMAL)
         "I want you on the edge, now",
         "%Lol%, now edge!",
         "Time for an edge %SlaveName%. Now",
-        "Get so close to the edge, you are afraid of coming!",
+        "Get so close to the edge, you are afraid of cumming!",
         "%SlaveName%. It's time to edge, and edge hard for me!",
         "%SlaveName%. Give me an edge, I love to see you edge!",
         "Get to the edge for me!",

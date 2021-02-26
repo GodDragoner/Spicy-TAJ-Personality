@@ -44,7 +44,7 @@
                     if(count) {
                         //QUALITY: Change to down, up and toes at random
                         sendMessage('Additionally I want you to count out loud every single DOWN squat you do');
-                        sendMessage('You better not miss a single command %SlaveName%');
+                        sendMessage('You\'d better not miss a single command %SlaveName%');
                     }
 
                     sendMessage('Now hands above your head and get ready %EmoteHappy%');
@@ -102,10 +102,10 @@
 
                     if(count) {
                         sendMessage('Additionally I want you to count out loud every single jumping jack you do');
-                        sendMessage('You better not miss a single jump %SlaveName%');
+                        sendMessage('You\'d better not miss a single jump %SlaveName%');
                     }
 
-                    sendMessage('Get ready we will start once you hear the beat!');
+                    sendMessage('Get ready; we will start once you hear the beat!');
 
                     let bpm = 30;
                     startStroking(bpm);

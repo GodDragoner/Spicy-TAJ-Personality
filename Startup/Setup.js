@@ -371,7 +371,7 @@
     sendVirtualAssistantMessage('I guess now that you are almost ready to go it\'s time to forget about your real name');
     sendVirtualAssistantMessage('From now on you\'ll never see me or your Domme call you %SubName% again');
     sendVirtualAssistantMessage('You will always be our slave, slut and pet from now on');
-    sendVirtualAssistantMessage('You better get used to it %Grin%');
+    sendVirtualAssistantMessage('You\'d better get used to it %Grin%');
 
     sendVirtualAssistantMessage('One more thing I have to mention is our currency system');
     sendVirtualAssistantMessage('We have a currency called gold that can be used for various things');

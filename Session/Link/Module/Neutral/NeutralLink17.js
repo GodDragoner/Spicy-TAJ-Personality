@@ -27,7 +27,7 @@
 
             sendMessage('I want you desperate %SlaveName%');
             sendMessage('And if I want something I am getting it');
-            sendMessage('So you better be ready for a though ride the next days %EmoteHappy%');
+            sendMessage('So you\'d better be ready for a rough ride over the next few days %EmoteHappy%');
         }
     }
 }

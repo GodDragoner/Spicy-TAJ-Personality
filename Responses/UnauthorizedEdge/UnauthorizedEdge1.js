@@ -60,7 +60,7 @@
                 startEdging(getEdgeHoldSeconds(EDGE_HOLD_LONG)*2);
                 sendMessage('%LetTheEdgeFade%');
                 sendMessage('That\'s what I call an edge, %PetName%');
-                sendMessage('You better try to stay away from the edge if you want to avoid another one of those');
+                sendMessage('You\'d better try to stay away from the edge if you want to avoid another one of those');
                 sendMessage('Although I might have just made that pretty damn difficult %Grin%');
                 break;
             } else {

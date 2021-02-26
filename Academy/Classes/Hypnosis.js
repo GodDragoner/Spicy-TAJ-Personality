@@ -70,11 +70,11 @@
 
 
             sendMessage('Ready to follow every command and aware of its place at the bottom of a woman\'s feet');
-            sendMessage('A willing pet that sole purpose is to follow the instructions of a woman');
+            sendMessage('A willing pet whose sole purpose is to follow the instructions of a woman');
 
             sendMessage('Obviously cumming is strictly forbidden!');
 
-            sendMessage('So you better be prepared to have your mind washed %Lol%');
+            sendMessage('So you\'d better be prepared to have your mind washed %Lol%');
         } else {
 
         }
