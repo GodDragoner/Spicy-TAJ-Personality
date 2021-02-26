@@ -292,7 +292,7 @@ function removeGag(mouthRequiredAfter = true) {
     sendMessageBasedOnSender("%SlaveName% go ahead and remove that gag from your mouth");
     let answer = sendInput("Tell me when you are ready to continue");
     while (true) {
-        if (answer.isLike("done", "yes")) {
+        if (answer.isLike("done", "yes", "ready")) {
             sendMessageBasedOnSender("%Good%");
             break;
         } else {
