@@ -76,7 +76,8 @@
                 startSpecialSession(specialSession);
             }
         } else {
-            if(isSpecialSession()) {
+            //Continue special session if we've had some modules in between or half session time already passed
+            if(isSpecialSession() && (moduleCounter > 0 && isChance(moduleCounter*45) || hasSessionTimePassed(getVar(VARIABLE.DEVOTION)/2))) {
                 continueSpecialSession();
             }
         }
