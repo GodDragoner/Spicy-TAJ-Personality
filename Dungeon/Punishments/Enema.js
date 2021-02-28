@@ -11,7 +11,7 @@
         sendMessage("You may have had enema's in the past..."); //#EnemaChat
         sendMessage("You should understand I intend this to be a PUNISHMENT enema"); //#EnemaChat
         sendMessage("You should have an enema bag, lube, and potential add ins ready"); //#EnemaChat
-        sendMessage("You may feel uncomfortable or a bit of cramping..."); //#EnemaChat
+        sendMessage("You may feel uncomfortable or experience a bit of cramping..."); //#EnemaChat
         sendMessage("I just want to reassure you that this is how it always is %Laugh%"); //#EnemaChat
     }
 
@@ -26,7 +26,7 @@
     sendMessage("Hmmm how to show you that you're my special slave....", 10); //#EnemaChat @Wait(15)
     sendMessage("oh, I know!  Fill your bag with "+ random("Warm water", "Warm water with Soap", "Warm water", "Warm water with Soap", "Warm water", "Warm water with Soap", "cold water with soap", "cold water", "glycerine and water", "carbonated soda", "Epsom salts in warm water"), 30); //#EnemaChat
     sendMessage("Make sure you get all the air out of the line....", 10); //#EnemaChat @Wait(10)
-    sendMessage("or don't that might make things more uncomfortable. %EmoteHappy%", 10); //#EnemaChat @Wait(10)
+    sendMessage("or don't... that might make things more uncomfortable. %EmoteHappy%", 10); //#EnemaChat @Wait(10)
     sendMessage("now get to it! %Slave%", 45); //#EnemaChat @wait(90)
 //(filling)
     sendMessage("when your enema is prepared say 'ready'");
@@ -44,11 +44,11 @@
     }
 
 
-    sendMessage("I think for this enema I want"+ random("you on your knees", "you in doggy position", "you on your back", "you on your side. "), 15); // @Wait(15)#EnemaChat
+    sendMessage("I think for this enema I want "+ random("you on your knees", "you in the doggy position", "you on your back", "you on your side."), 15); // @Wait(15)#EnemaChat
     sendMessage("ok %Slave%, lube up that nozzle and get it in", 20); //#EnemaChat @Wait(20)
     sendMessage(random("just imagine I am sliding my finger in you", "god I wish I was there to fuck you", "imagine I'm giving you my strap on"), 20); //#EnemaChat @Wait(20)
     sendMessage("ok %Slave%, let's fill you up!... open the valve a little and let the water flow."); //#EnemaChat
-    sendMessage("while your getting full, let's go over a few rules:"); //#EnemaChat
+    sendMessage("while you're getting full, let's go over a few rules:"); //#EnemaChat
     sendMessage("If you feel like your Ass is too full or your going to squirt the plug out say 'full'"); //#EnemaChat @CustomMode(full, Goto, Full)
     sendMessage("If you feel yourself cramping and can not handle anymore just say 'cramp'"); //#EnemaChat @CustomMode(cramp, Goto, Cramp)
     sendMessage("once you have emptied the bag say 'done'"); //#EnemaChat @CustomMode(done, Goto, Done)
@@ -112,7 +112,7 @@
                 break;
             case 12:
 
-                sendMessage("I want you to get into prayer position ", randomInteger(5, 15)); //#EnemaChat
+                sendMessage("I want you to get into the prayer position ", randomInteger(5, 15)); //#EnemaChat
                 sendMessage("look at you praying to the Goddess of enemas ", randomInteger(5, 15)); //#EnemaChat
                 sendMessage("tell me aloud %SlaveName%, do you feel humble there? ", randomInteger(5, 15)); //#EnemaChat
                 sendMessage("and who is your Goddess? ", randomInteger(4, 5)); //#EnemaChat
@@ -120,7 +120,7 @@
                 break;
             case 13:
 
-                response = sendInput("here's a tip, keep your ankles together and you're knees spread wide, you can really squeeze your ass closed that way", randomInteger(20, 60)); //#EnemaChat
+                response = sendInput("here's a tip, keep your ankles together and your knees spread wide, you can really squeeze your ass closed that way", randomInteger(20, 60)); //#EnemaChat
                 //@Goto(EnduringEnema)
                 break;
         }
@@ -148,7 +148,7 @@
     function fullEnema() {
 //(Full)
         sendMessage("Stop the flow of water", 13); //#EnemaChat
-        sendMessage("Awe... does someone need a little break??? ", randomInteger(10, 20)); //#EnemaChat
+        sendMessage("Aww... does someone need a little break??? ", randomInteger(10, 20)); //#EnemaChat
         sendMessage("let's give you a little time to absorb that water... ", randomInteger(10, 20)); //#EnemaChat
         sendMessage(random("get your butt as high in the air as you can", "ass up   face down   bitch", "get your face on the ground where it belongs")); //#EnemaChat
         sendMessage("I want it to get ALL the way in you %EmoteHappy% ", randomInteger(20, 30)); //#EnemaChat
@@ -174,7 +174,7 @@
         sendMessage("mmmm, I love fucking with you ", randomInteger(5, 10)); //#EnemaChat
         sendMessage("Discomfort is my divine gift to you", randomInteger(5, 10)); //#EnemaChat
 //(cramping)
-        response = sendInput("let me know when you're cramps have SUBSIDED "); //#EnemaChat
+        response = sendInput("let me know when your cramps have SUBSIDED "); //#EnemaChat
         while (true) {
             if (response.isLike("subside", "finish", "yes")) {
                 sendMessage("good, I think you're ready to get back to that bottle of water hanging over your head. %EmoteHappy% ", randomInteger(5, 10)); //#EnemaChat
@@ -249,7 +249,7 @@
 
         while (true) {
             if (response.isLike("finish", "finished", "yes")) {
-                sendMessage("good,  I hope I'll be taking more advantage of that clean hole of yours soon. ");
+                sendMessage("good, I hope I'll be taking more advantage of that clean hole of yours soon. ");
                 break;
             } else
                 sendMessage(random("you're so full of shit, you don't make sense", "What the fuck are you saying?", "are you finished yet bitch?"));
