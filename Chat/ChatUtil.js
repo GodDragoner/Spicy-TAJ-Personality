@@ -206,11 +206,11 @@ function createDoubleInput(question, min, max, notNumberMessage, outOfRangeMessa
                     return double;
                 }
 
-                sendMessageBasedOnSender(outOfRangeMessage);
+                sendMessageBasedOnSender(outOfRangeMessage, 0);
                 answer.loop();
             }
         } else {
-            sendMessageBasedOnSender(notNumberMessage);
+            sendMessageBasedOnSender(notNumberMessage, 0);
             answer.loop();
         }
     }
@@ -230,11 +230,11 @@ function createIntegerInput(question, min, max, notNumberMessage, outOfRangeMess
                     return int;
                 }
 
-                sendMessageBasedOnSender(outOfRangeMessage);
+                sendMessageBasedOnSender(outOfRangeMessage, 0);
                 answer.loop();
             }
         } else {
-            sendMessageBasedOnSender(notNumberMessage);
+            sendMessageBasedOnSender(notNumberMessage, 0);
             answer.loop();
         }
     }
@@ -319,7 +319,7 @@ function sendYesOrNoQuestion(question, sender = null) {
         } else if (answer.isLike('no')) {
             return false;
         } else {
-            sendMessage(YES_OR_NO);
+            sendMessage(YES_OR_NO, 0);
             answer.loop();
         }
     }
@@ -342,7 +342,7 @@ function sendYesOrNoQuestionTimeout(question, timeout) {
         } else if (answer.isLike('no')) {
             return ANSWER_NO;
         } else {
-            sendMessage(YES_OR_NO);
+            sendMessage(YES_OR_NO, 0);
             answer.loop();
         }
     }
@@ -357,7 +357,7 @@ function createYesOrNoQuestion() {
         } else if (answer.isLike('no')) {
             return false;
         } else {
-            sendMessageBasedOnSender(YES_OR_NO);
+            sendMessageBasedOnSender(YES_OR_NO, 0);
             answer.loop();
         }
     }

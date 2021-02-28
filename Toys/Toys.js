@@ -250,7 +250,7 @@ function fetchToy(toy, imagePath, amount = 0) {
             setTempVar('toy' + toy + 'UnableToFetch', true);
             return false;
         } else {
-            sendMessageBasedOnSender("Are you done yet?");
+            sendMessageBasedOnSender("Are you done yet?", 0);
             answer.loop();
         }
     }

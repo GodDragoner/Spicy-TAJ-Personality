@@ -131,7 +131,7 @@
 
                     resetPunishmentTasks();
                 } else {
-                    sendMessage('Do you need a reminder of your tasks or do you want to give up?');
+                    sendMessage('Do you need a reminder of your tasks or do you want to give up?', 0);
                     answer.loop();
                 }
             }
@@ -384,7 +384,7 @@
 
                             break;
                         } else {
-                            sendDungeonMessage("%SlaveName%, are you illiterate? Soft, medium, hard, or extreme?");
+                            sendDungeonMessage("%SlaveName%, are you illiterate? Soft, medium, hard, or extreme?", 0, false);
                             answer2.loop();
                         }
                     }
@@ -417,7 +417,7 @@
                                         mode = 1;
                                         break;
                                     } else {
-                                        sendDungeonMessage("%SlaveName%, are you illiterate? A punishment session or tasks?");
+                                        sendDungeonMessage("%SlaveName%, are you illiterate? A punishment session or tasks?", 0, false);
                                         answer2.loop();
                                     }
                                 }
@@ -448,7 +448,7 @@
                                 points = Math.min(points, getVar(VARIABLE.PUNISHMENT_POINTS));
 
                                 if (points < MIN_PUNISHMENT_POINTS_FOR_TASK) {
-                                    sendDungeonMessage('You need to redeem at least ' + MIN_PUNISHMENT_POINTS_FOR_TASK + ' points %SlaveName%');
+                                    sendDungeonMessage('You need to redeem at least ' + MIN_PUNISHMENT_POINTS_FOR_TASK + ' points %SlaveName%', 0, false);
                                     answer.loop();
                                 } else {
                                     sendDungeonMessage('Fine...');
@@ -456,7 +456,7 @@
                                     break;
                                 }
                             } else {
-                                sendDungeonMessage("That's not a valid number like 100, 250 etc...");
+                                sendDungeonMessage("That's not a valid number like 100, 250 etc...", 0, false);
                                 answer2.loop();
                             }
                         }
@@ -498,14 +498,14 @@
                             sendDungeonMessage(value + " points removed from your total amount of punishment points");
                             break;
                         } else {
-                            sendDungeonMessage('Please give me a number greater than 0 %SlaveName%...');
+                            sendDungeonMessage('Please give me a number greater than 0 %SlaveName%...', 0, false);
                             changeMeritLow(true);
                             answer2.loop();
                         }
                     } else if (answer2.isLike('no', 'abort', 'break', 'exit', 'quit')) {
                         break;
                     } else {
-                        sendDungeonMessage('Please just give a single number %SlaveName%...');
+                        sendDungeonMessage('Please just give a single number %SlaveName%...', 0, false);
                         changeMeritLow(true);
                         answer2.loop();
                     }
@@ -514,7 +514,7 @@
             } else if (answer.isLike("return", "exit", "back")) {
                 break;
             } else {
-                sendDungeonMessage("Spankz choir, punishment, pay fine or return?");
+                sendDungeonMessage("Spankz choir, punishment, pay fine or return?", 0, false);
                 answer.loop();
             }
         }
@@ -548,9 +548,8 @@ function handleFailedPunishment() {
             break;
 
         } else {
-            sendNurseMessage("Yes or no %SlaveName%");
+            sendNurseMessage("Yes or no %SlaveName%", 0, false);
             answer.loop();
-            break;
         }
     }
 
