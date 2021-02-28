@@ -152,7 +152,7 @@
                         return false;
                     }
 
-                    if(!askForFeatheredToiletLit()) {
+                    if(!askForFeatheredToiletLid()) {
                         return false;
                     }
 
