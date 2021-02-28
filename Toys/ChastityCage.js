@@ -25,7 +25,11 @@ const BALL_TRAP_TYPE = {
 
 function getActiveChastityCage() {
     if (currentChastityCage === null || currentChastityCage === undefined) {
-        return CHASTITY_CAGES[0];
+        if (CHASTITY_CAGES.length == 0) {
+            return null;
+        } else {
+            return CHASTITY_CAGES[0];
+        }
     } else {
         return currentChastityCage;
     }
