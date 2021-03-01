@@ -66,7 +66,7 @@ function askForPainToleranceIncrease() {
 
 function startKneeling() {
     sendMessage(random('Kneel for me', 'Get down on your knees', 'Down on your knees, right now', 'I want you to kneel for me,') + ' %SlaveName%', 0);
-    playSound('Audio\\Spicy\\Commands\\Kneel\\*.mp3');
+    playSound('Audio/Spicy/Commands/Kneel/*.mp3');
     sleep(5);
     setTempVar(VARIABLE.IS_KNEELING, true);
     setTempVar(VARIABLE.KNEELING_STARTED, setDate());
@@ -78,7 +78,7 @@ function isKneeling() {
 
 function stopKneeling() {
     //QUALITY: SOUND
-    // playSound('Audio\\Spicy\\Commands\\Kneel\\*.mp3');
+    // playSound('Audio/Spicy/Commands/Kneel/*.mp3');
     sendMessage(random('You can stop kneeling and sit', 'You can get up from your knees now and sit', 'You can sit down') + ' %SlaveName%');
     setTempVar(VARIABLE.IS_KNEELING, false);
 }

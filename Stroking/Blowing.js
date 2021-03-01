@@ -161,33 +161,33 @@ function startNormalBlowjobModule() {
         sendMessage('Let me explain them to you first');
 
         sendMessage('This is how light sucking sounds meaning you must suck the cock head', 0);
-        playSound("Audio\\Spicy\\Modules\\BJTraining\\BJLightSucks\\MediumSuck15sec.mp3", false);
+        playSound("Audio/Spicy/Modules/BJTraining/BJLightSucks/MediumSuck15sec.mp3", false);
         sleep(5);
         stopAudio();
 
         sendMessage('When you hear something like this I want you to swirl your tongue around the cock head...', 0);
-        playSound("Audio\\Spicy\\Modules\\BJTraining\\BJTongueExercise\\*.mp3", false);
+        playSound("Audio/Spicy/Modules/BJTraining/BJTongueExercise/*.mp3", false);
         sleep(5);
         stopAudio();
 
         sendMessage('I might also ask you to put your finger in your mouth and have you trigger the gag reflex...', 0);
-        playSound("Audio\\Spicy\\Modules\\BJTraining\\BJFingerGagging\\*.mp3", false);
+        playSound("Audio/Spicy/Modules/BJTraining/BJFingerGagging/*.mp3", false);
         sendMessage('You will have to do that until I tell you to stop');
         sendMessage('It\'s important you learn to control it if you\'re ever to learn deepthroating...');
         stopAudio();
 
         sendMessage('You know this sound well, but during blowjob training it means to stroke the dildo while you blow it lightly');
-        playSound("Audio\\Spicy\\Stroking\\Metronome2\\*.mp3", false);
+        playSound("Audio/Spicy/Stroking/Metronome2/*.mp3", false);
         sleep(5);
         stopAudio();
 
         sendMessage('This is the sound for deepthroating and you will only stop holding the deepthroat when I tell you to stop!');
-        playSound("Audio\\Spicy\\Modules\\BJTraining\\BJDeepThroatLong\\DeepThroat.mp3", false);
+        playSound("Audio/Spicy/Modules/BJTraining/BJDeepThroatLong/DeepThroat.mp3", false);
         sleep(5);
         stopAudio();
 
         sendMessage('If there is no "gagging" it is a deep suck, meaning you have to suck it balls deep! Up and down...');
-        playSound("Audio\\Spicy\\Modules\\BJTraining\\BJDeepThroat\\DeepSlow1min.mp3", false);
+        playSound("Audio/Spicy/Modules/BJTraining/BJDeepThroat/DeepSlow1min.mp3", false);
         sleep(5);
         stopAudio();
 
@@ -200,35 +200,35 @@ function startNormalBlowjobModule() {
 
     while (!startDate.hasPassed()) {
         if (isChance(25)) {
-            playSound("Audio\\Spicy\\Modules\\BJTraining\\GeneralEncourage\\*.mp3", true);
+            playSound("Audio/Spicy/Modules/BJTraining/GeneralEncourage/*.mp3", true);
         }
 
         switch (randomInteger(0, 6)) {
             case 0:
                 sendMessage(random("Light sucks", "Stick with the beat!", "Follow the beat", "Light sucking to the beat", "Suck lightly to the beat", "Light sucking - only the cockhead..."));
 
-                if (isChance(50)) playSound("Audio\\Spicy\\Modules\\BJTraining\\BJLightSucksVaried\\12345_1min.mp3", true);
-                else playSound("Audio\\Spicy\\Modules\\BJTraining\\BJLightSucksVaried\\123123_1min.mp3", true);
+                if (isChance(50)) playSound("Audio/Spicy/Modules/BJTraining/BJLightSucksVaried/12345_1min.mp3", true);
+                else playSound("Audio/Spicy/Modules/BJTraining/BJLightSucksVaried/123123_1min.mp3", true);
                 break;
             case 1:
                 sendMessage(random("Light sucks", "Stick to the beat!", "Follow the beat", "Light sucking to the beat", "Suck lightly to the beat", "Light sucking - only the cockhead..."));
 
                 if (isChance(50) && getBlowjobLevel() >= 15) {
-                    playSound("Audio\\Spicy\\Modules\\BJTraining\\BJLightSucks\\MediumSuck1min.mp3", true);
+                    playSound("Audio/Spicy/Modules/BJTraining/BJLightSucks/MediumSuck1min.mp3", true);
                 } else {
-                    playSound("Audio\\Spicy\\Modules\\BJTraining\\BJLightSucks\\MediumSuck15sec.mp3", true);
+                    playSound("Audio/Spicy/Modules/BJTraining/BJLightSucks/MediumSuck15sec.mp3", true);
                 }
                 break;
             case 2:
                 sendMessage(random("Swirl your tongue", "Swirl that tongue around", "Swirl your tongue around that cockhead!", "Use the tongue!"));
-                playSound("Audio\\Spicy\\Modules\\BJTraining\\BJTongueExercise\\*.mp3", true);
+                playSound("Audio/Spicy/Modules/BJTraining/BJTongueExercise/*.mp3", true);
                 break;
             case 3:
                 sendMessage(random("Stroke it", "Stroke the dildo", "Stroke that dick", "Stroke that cock", "Stroke that huge dildo", "Stroke it!", "Stroke stroke stroke!"));
 
-                playSound("Audio\\Spicy\\Modules\\BJTraining\\BJHandStroking\\*.mp3", true);
+                playSound("Audio/Spicy/Modules/BJTraining/BJHandStroking/*.mp3", true);
 
-                playSound("Audio\\Spicy\\Stroking\\Metronome2\\*.mp3");
+                playSound("Audio/Spicy/Stroking/Metronome2/*.mp3");
                 sleep(20);
                 stopAudio();
                 break;
@@ -239,35 +239,35 @@ function startNormalBlowjobModule() {
 
                         //Teasing with words
                         if (isChance(50)) {
-                            playSound("Audio\\Spicy\\Blowjob\\Deepthroat\\*.mp3", true);
+                            playSound("Audio/Spicy/Blowjob/Deepthroat/*.mp3", true);
                         }
 
-                        playSound("Audio\\Spicy\\Modules\\BJTraining\\BJDeepThroat\\DeepSlow1min.mp3", true);
+                        playSound("Audio/Spicy/Modules/BJTraining/BJDeepThroat/DeepSlow1min.mp3", true);
                     } else {
                         if (getBlowjobLevel() >= 25) {
                             //Teasing with words
                             if (isChance(50)) {
-                                playSound("Audio\\Spicy\\Blowjob\\Deepthroat\\*.mp3", true);
+                                playSound("Audio/Spicy/Blowjob/Deepthroat/*.mp3", true);
                             }
 
                             if (isChance(50)) {
                                 sendMessage(random('All the way down and back up fast!', 'Deep fast sucks!', 'Suck it deep and fast', 'Make that cock pound your throat hard and fast'), 0);
-                                playSound("Audio\\Spicy\\Modules\\BJTraining\\BJDeepThroatFast\\FastDeep1min.mp3", true);
+                                playSound("Audio/Spicy/Modules/BJTraining/BJDeepThroatFast/FastDeep1min.mp3", true);
                             } else {
                                 sendMessage(random('Deep throat!', 'Deep throat that cock', 'Deep throat the dildo', 'Get that cock into the back of your throat', 'All the way down!', 'Suck it balls deep!', 'Suck it all the way down'));
-                                playSound("Audio\\Spicy\\Modules\\BJTraining\\BJDeepThroatLong\\DeepThroat.mp3", true);
+                                playSound("Audio/Spicy/Modules/BJTraining/BJDeepThroatLong/DeepThroat.mp3", true);
                                 sleep(randomInteger(15, 60));
                             }
                         } else {
                             sendMessage(random('Deep throat!', 'Deep throat that cock', 'Deep throat the dildo', 'Get that cock into the back of your throat', 'All the way down!', 'Suck it balls deep!', 'Suck it all the way down'));
-                            playSound("Audio\\Spicy\\Modules\\BJTraining\\BJDeepThroatLong\\DeepThroat.mp3", true);
+                            playSound("Audio/Spicy/Modules/BJTraining/BJDeepThroatLong/DeepThroat.mp3", true);
                             sleep(randomInteger(5, 20));
                         }
                     }
                 } else {
                     sendMessage(random('Finger to the back of your throat', 'Put your finger down your throat', 'Get that finger down your throat', 'Use your finger to trigger the gag reflex', 'Trigger the gag reflex with your finger'), 0);
 
-                    playSound("Audio\\Spicy\\Blowjob\\Deepthroat\\*.mp3", true);
+                    playSound("Audio/Spicy/Blowjob/Deepthroat/*.mp3", true);
                     sleep(randomInteger(5, 15));
                 }
 
@@ -276,7 +276,7 @@ function startNormalBlowjobModule() {
             case 5:
                 sendMessage(random("Suck fast!", "Fast sucking!", "Suck it fast", "Suck it swiftly", "Suck it fast!", "Make sure you suck it fast!"));
 
-                playSound("Audio\\Spicy\\Modules\\BJTraining\\BJFastSucking\\FastSuck1min.mp3", true);
+                playSound("Audio/Spicy/Modules/BJTraining/BJFastSucking/FastSuck1Min.mp3", true);
                 break;
         }
     }

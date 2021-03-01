@@ -234,7 +234,7 @@ switch (choice) {
 	while( !(getDate("donetime").hasPassed()) ) {
 		wait(randomInteger(5,25));
 		if(randomInteger(1,100) < 25 )
-			{playAudio("audio/Spicy/Punishment/Corner/OnYourToes.mp3"); 
+			{playAudio("Audio/Spicy/Punishment/Corner/OnYourToes.mp3");
 			}
 			wait(randomInteger(5,25));
 			
