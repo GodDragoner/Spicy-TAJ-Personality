@@ -47,6 +47,7 @@ function hadOrgasmResponse(message) {
             sendMessage('You should ruin your orgasm when you cum without permission');
             addPunishmentPoints(getPPRuleIgnored()*2, PUNISHMENT_REASON.NO_PERM_CUM);
             changeMeritHigh(true);
+            registerOrgasm();
         }
 
         if(CEI_LIMIT.isAllowed()) {
@@ -85,6 +86,7 @@ function hadOrgasmResponse(message) {
                 sendMessage('You should ruin your orgasm when you cum without permission');
                 addPunishmentPoints(getPPRuleIgnored()*2, PUNISHMENT_REASON.NO_PERM_CUM);
                 changeMeritHigh(true);
+                registerOrgasm();
             }
 
             sendMessage(random('You know you\'re not allowed to', 'I don\'t allow it when you', 'I don\'t want you to', 'You\'re not supposed to') + ' cum ' + random('unless I said so', 'without my permission', 'unless allowed by me', 'unless asked by me') + ' %SlaveName%');

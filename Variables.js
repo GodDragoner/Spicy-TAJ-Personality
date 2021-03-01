@@ -108,6 +108,8 @@ const VARIABLE = {
     //Academy
     ACADEMY_LAST_VISIT: 'academyLastVisit',
 
+    ACADEMY_CLASS_SKIPPED_TYPE: 'academyClassSkippedType',
+
     //Chastity
     CHASTITY_TRAINING: "chastityTraining",
 

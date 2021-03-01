@@ -235,7 +235,8 @@ sendDebugMessage(serializeObject(toy.setVibrate(0)));
 setVar(VARIABLE.ASS_LEVEL, restoreLevel);*/
 
 {
-    FLESH_LIGHT.setToyOn(false);
+    /*FLESH_LIGHT.setToyOn(false);
     resetFleshlight();
-    setVar(VARIABLE.CHASTITY_ON, true);
+    setVar(VARIABLE.CHASTITY_ON, true);*/
+    registerOrgasm();
 }

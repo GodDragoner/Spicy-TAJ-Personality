@@ -23,6 +23,7 @@ function setDate(message) {
 
         before: function () {},
         sameDay: function () {},
+        getDayOfWeek: function() {},
         after: function () {},
 
         getTimeInMillis: function() {},

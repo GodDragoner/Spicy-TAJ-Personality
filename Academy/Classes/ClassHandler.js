@@ -10,6 +10,13 @@ const DAY_OF_WEEK = {
     SATURDAY: 6
 };
 
+
+const ACADEMY_SKIPPED_CLASS_TYPE = {
+    TASKS: 0,
+    PUNISHMENT_POINTS: 1,
+};
+
+
 const DAY_OF_WEEK_NAME = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 
 {
@@ -53,15 +60,15 @@ function handleTodayAcademyClasses() {
             //Days that should have passed if the sub visited the classes regularly
             let daysSinceLastMeet = 0;
 
-            if(clazz.weekdays.length > 1) {
+            if (clazz.weekdays.length > 1) {
                 let currentDayIndex = clazz.weekdays.indexOf(dayOfWeek);
-                let previousDayIndex = currentDayIndex > 0? currentDayIndex - 1 : clazz.weekdays.length - 1;
+                let previousDayIndex = currentDayIndex > 0 ? currentDayIndex - 1 : clazz.weekdays.length - 1;
 
                 //The previous day that we were supposed to take the class
                 let previousDay = clazz.weekdays[previousDayIndex];
 
                 //Means that previous day was for example saturday and current day is monday, to make calculation end up in 2 days (8 - 6) we need to add 7 (one week)
-                if(dayOfWeek < previousDay) {
+                if (dayOfWeek < previousDay) {
                     dayOfWeek += 7;
                 }
 
@@ -76,20 +83,82 @@ function handleTodayAcademyClasses() {
             sendVirtualAssistantMessage('Class "' + clazz.name + ' is starting now...');
 
             //Class couldn't start for some reason
-            if(!clazz.onStart(clazz)) {
+            if (!clazz.onStart(clazz)) {
                 continue
             }
 
             if (clazz.getClassesTaken() > 0) {
-                if(!clazz.getLastVisitAt().addDay(daysSinceLastMeet).sameDay(setDate())) {
+                //Get this here already since we might change it if classes where skipped
+                let lastTask = clazz.getCurrentAssignmentText();
+                if (!clazz.getLastVisitAt().addDay(daysSinceLastMeet).sameDay(setDate())) {
                     sendMessage('You have been skipping classes %SlaveName%');
                     sendMessage('This behavior is not tolerated!');
-                    changeMeritMedium(true);
-                    addPunishmentPoints(250, PUNISHMENT_REASON.TOO_LAZY);
+
+                    if (!isVar(VARIABLE.ACADEMY_CLASS_SKIPPED_TYPE)) {
+                        sendMessage('Since this is the first time you skipped a class');
+                        sendMessage('I am gonna give you a choice');
+                        sendMessage('You can either take some punishment points and just deal with today\'s task');
+                        sendMessage('Or you can get assigned all tasks that you skipped');
+                        sendMessage('Without any further punishments');
+                        sendMessage('I won\'t count the skipped classes as taken or increase your level for them in either case');
+                        sendMessage('Note this choice is permanent so choose wisely');
+
+                        let answer = sendInput('Tell me, what do you prefer?', 'Tasks', 'Punishment Points');
+
+                        while (true) {
+                            if (answer.isLike('tasks')) {
+                                sendMessage('You seem eager to catch up so that\'s nice %Lol%');
+                                setVar(VARIABLE.ACADEMY_CLASS_SKIPPED_TYPE, ACADEMY_SKIPPED_CLASS_TYPE.TASKS);
+                                break;
+                            } else if (answer.isLike('punishment points')) {
+                                sendMessage('Well that\'s probably best if you skip a lot of days %Lol%');
+                                setVar(VARIABLE.ACADEMY_CLASS_SKIPPED_TYPE, ACADEMY_SKIPPED_CLASS_TYPE.PUNISHMENT_POINTS);
+                                break;
+                            } else {
+                                sendMessage('Tasks or punishment points');
+                                answer.loop();
+                            }
+                        }
+
+                        answer.clearOptions();
+                    }
+
+                    if (getVar(VARIABLE.ACADEMY_CLASS_SKIPPED_TYPE, 1) === ACADEMY_SKIPPED_CLASS_TYPE.TASKS) {
+                        let lastVisit = clazz.getLastVisitAt();
+                        lastVisit.addDay(1);
+                        let today = setDate();
+
+                        let skippedClasses = 0;
+
+                        while (!lastVisit.sameDay(today) && !lastVisit.after(today)) {
+                            //Check if we would've had a class on that day
+                            if (clazz.weekdays.indexOf(lastVisit.getDayOfWeek() - 1) !== -1) {
+                                skippedClasses++;
+                            }
+
+                            lastVisit.addDay(1);
+                        }
+
+                        sendMessage('Since you skipped a total of ' + skippedClasses);
+
+                        sendMessage('Here are all tasks you missed:');
+
+                        for(let x = 0; x < skippedClasses; x++) {
+                            clazz.decideAssignment();
+                            clazz.sendAssignment();
+                        }
+
+                        sendMessage('Mind that I won\'t keep track of them anymore so you better copy them somewhere or write them down');
+                    } else {
+                        changeMeritMedium(true);
+                        addPunishmentPoints(250, PUNISHMENT_REASON.TOO_LAZY);
+                        sendMessage('I have assigned you some punishment points to account for your sluggish behaviour')
+                    }
+
                     sendMessage('Be sure to participate in every single class on time!');
                 }
 
-                sendMessage('The last assignment was "' + clazz.getCurrentAssignmentText() + '"');
+                sendMessage('The last assignment was "' + lastTask + '"');
                 if (sendYesOrNoQuestion('Did you complete your last assignment %SlaveName%?')) {
                     sendMessage('%Good%');
                 } else {
@@ -177,7 +246,7 @@ function registerClass(name, levels, fileName, weekdays, getTasks, getModifiers,
         },
 
         getLastVisitAt: function () {
-            return getDate(fileName + 'visitAt');
+            return getDate(fileName + 'visitAt').clone();
         },
 
         setClassesTaken: function (classesTaken) {
@@ -255,7 +324,7 @@ function registerClass(name, levels, fileName, weekdays, getTasks, getModifiers,
         },
 
         getCurrentAssignmentText: function () {
-            if(isVar(fileName + 'assignmentText')) {
+            if (isVar(fileName + 'assignmentText')) {
                 return getVar(fileName + 'assignmentText');
             }
 
@@ -270,7 +339,7 @@ function registerClass(name, levels, fileName, weekdays, getTasks, getModifiers,
         getWeekdayString: function () {
             let weekdayString = "";
 
-            for(let x = 0; x < this.weekdays.length; x++) {
+            for (let x = 0; x < this.weekdays.length; x++) {
                 weekdayString += DAY_OF_WEEK_NAME[this.weekdays[x]] + ', '
             }
 
@@ -279,7 +348,7 @@ function registerClass(name, levels, fileName, weekdays, getTasks, getModifiers,
             return weekdayString;
         },
 
-        isListed: function() {
+        isListed: function () {
             return !this.isActive() && this.isAvailable();
         }
     });

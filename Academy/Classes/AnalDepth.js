@@ -5,7 +5,7 @@
         let tasks = [];
         tasks.push('Sit on your ' + getDildo().name + ' for ' + stage * 8 + ' minutes while applying constant pressure to push it deeper');
         tasks.push('Fuck your ' + getDildo().name + ' for ' + stage * 8 + ' minutes as deep as it will go');
-        tasks.push('Find some anal porn of at least  ' + stage * 8 + ' minutes. Try to copy it using your ' + getDildo().name + ' as well as possible');
+        tasks.push('Find some anal porn of at least ' + stage * 8 + ' minutes. Try to copy it using your ' + getDildo().name + ' as well as possible');
         tasks.push('Ride the ' + getDildo().name + ' kneeling for ' + stage * 8 + ' minutes as deep as it will go');
         tasks.push('Ride the ' + getDildo().name + ' squatting for ' + stage * 8 + ' minutes as deep as it will go');
         tasks.push('Go almost all the way out and in as far it goes using the ' + getDildo().name + ' for ' + stage*8 + ' minutes at your own speed.');
