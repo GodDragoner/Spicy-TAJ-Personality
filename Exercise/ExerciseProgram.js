@@ -652,26 +652,26 @@ function Abs1() {
 		showImage("Images/Spicy/Exercise/Abs/1.jpg");
 		sendVirtualAssistantMessage(" Stop when you hear me say down",1,true);
 		sendVirtualAssistantMessage(" Again we'll do it 3 times.. ",1,true);
-		playAudio("Audio/Spicy/Punishment/Corner/Up/*.mp3");
+		playAudio("Audio/Spicy/Commands/Up/*.mp3");
 		sleep( 20+5* getVar("ExerciseLevel"));
 		
-		playAudio("Audio/Spicy/Punishment/Corner/Down/*.mp3");
+		playAudio("Audio/Spicy/Commands/Down/*.mp3");
 		sendVirtualAssistantMessage(" Take a short break ",1,true);
 		sleep(20);
 		showImage("Images/Spicy/Exercise/Misc/*");
-		playAudio("Audio/Spicy/Punishment/Corner/Up/*.mp3"); 
+		playAudio("Audio/Spicy/Commands/Up/*.mp3");
 		showImage("Images/Spicy/Exercise/Abs/1.jpg");
 		sleep( 20+5* getVar("ExerciseLevel"));
 
-		playAudio("Audio/Spicy/Punishment/Corner/Down/*.mp3");
+		playAudio("Audio/Spicy/Commands/Down/*.mp3");
 		sendVirtualAssistantMessage(" Take a short break",1,true);
 		showImage("Images/Spicy/Exercise/Misc/*");
 		sleep(20);
-		playAudio("Audio/Spicy/Punishment/Corner/Up/*.mp3");
+		playAudio("Audio/Spicy/Commands/Up/*.mp3");
 		showImage("Images/Spicy/Exercise/Abs/1.jpg");
 		sleep( 20+5* getVar("ExerciseLevel"));
 
-		 playAudio("Audio/Spicy/Punishment/Corner/Down/*.mp3");
+		 playAudio("Audio/Spicy/Commands/Down/*.mp3");
 		sleep(2);
   }
 }
@@ -1303,41 +1303,41 @@ function Leg1(){
 		sendVirtualAssistantMessage(" Raise one leg and hold it until you hear my bell",1,true);
 		sendVirtualAssistantMessage(" Timer starting now.. ",1,true);
 		showImage("Images/Spicy/Exercise/Legs/4.jpg");
-		playAudio("Audio/Spicy/Punishment/Corner/Up/*.mp3");
+		playAudio("Audio/Spicy/Commands/Up/*.mp3");
 		sleep( 25+5* getVar("ExerciseLevel"));
 
-		playAudio("Audio/Spicy/Punishment/Corner/Down/*.mp3"); 
+		playAudio("Audio/Spicy/Commands/Down/*.mp3");
 		sleep(20);
 		sendVirtualAssistantMessage(" Switch leg and raise again",1,true);
 		showImage("Images/Spicy/Exercise/Legs/4.jpg");
-		 playAudio("Audio/Spicy/Punishment/Corner/Up/*.mp3");
+		 playAudio("Audio/Spicy/Commands/Up/*.mp3");
 		 sleep( 25+5* getVar("ExerciseLevel"));
 
-		playAudio("Audio/Spicy/Punishment/Corner/Down/*.mp3"); 
+		playAudio("Audio/Spicy/Commands/Down/*.mp3");
 		sleep(20);
 		sendVirtualAssistantMessage(" Switch leg and raise again",1,true);
-		playAudio("Audio/Spicy/Punishment/Corner/Up/*.mp3");
+		playAudio("Audio/Spicy/Commands/Up/*.mp3");
 		sleep( 25+5* getVar("ExerciseLevel"));
 
-		playAudio("Audio/Spicy/Punishment/Corner/Down/*.mp3"); 
+		playAudio("Audio/Spicy/Commands/Down/*.mp3");
 		sleep(20);
 		sendVirtualAssistantMessage(" Switch leg and raise again",1,true);
-		playAudio("Audio/Spicy/Punishment/Corner/Up/*.mp3");
+		playAudio("Audio/Spicy/Commands/Up/*.mp3");
 		sleep( 25+5* getVar("ExerciseLevel"));
 
-		playAudio("Audio/Spicy/Punishment/Corner/Down/*.mp3"); 
+		playAudio("Audio/Spicy/Commands/Down/*.mp3");
 		sleep(20);
 		sendVirtualAssistantMessage(" Switch leg and raise again",1,true);
-		playAudio("Audio/Spicy/Punishment/Corner/Up/*.mp3");
+		playAudio("Audio/Spicy/Commands/Up/*.mp3");
 		sleep( 25+5* getVar("ExerciseLevel"));
 
-		playAudio("Audio/Spicy/Punishment/Corner/Down/*.mp3");
+		playAudio("Audio/Spicy/Commands/Down/*.mp3");
 		sleep(20);
 		sendVirtualAssistantMessage(" Switch leg and raise again",1,true);
-		playAudio("Audio/Spicy/Punishment/Corner/Up/*.mp3");
+		playAudio("Audio/Spicy/Commands/Up/*.mp3");
 		sleep( 25+5* getVar("ExerciseLevel"));
 
-		playAudio("Audio/Spicy/Punishment/Corner/Down/*.mp3");
+		playAudio("Audio/Spicy/Commands/Down/*.mp3");
 		sleep(20);
 		unlockImages();
 }
@@ -1523,44 +1523,44 @@ function SidePlank(){
 		sendVirtualAssistantMessage(" Hold the position until you hear my bell",1,true);
 		sendVirtualAssistantMessage(" I will tell you when to switch sides",1,true);
 		sendVirtualAssistantMessage(" Get into position  ",1,true);
-		playAudio("Audio/Spicy/Punishment/Corner/Up/*.mp3");
+		playAudio("Audio/Spicy/Commands/Up/*.mp3");
 		 sleep( 25+5* getVar("ExerciseLevel"));
 
-		playAudio("Audio/Spicy/Punishment/Corner/Down/*.mp3"); 
+		playAudio("Audio/Spicy/Commands/Down/*.mp3");
 		sleep(20);
 		sendVirtualAssistantMessage(" Again.. ",1,true);
-		 playAudio("Audio/Spicy/Punishment/Corner/Up/*.mp3");
+		 playAudio("Audio/Spicy/Commands/Up/*.mp3");
 		 sleep( 25+5* getVar("ExerciseLevel"));
 
-		playAudio("Audio/Spicy/Punishment/Corner/Down/*.mp3"); 
+		playAudio("Audio/Spicy/Commands/Down/*.mp3");
 		sleep(20);
 		sendVirtualAssistantMessage(" Again..",1,true);  
-		playAudio("Audio/Spicy/Punishment/Corner/Up/*.mp3");
+		playAudio("Audio/Spicy/Commands/Up/*.mp3");
 		 sleep( 25+5* getVar("ExerciseLevel"));
 
 
-		playAudio("Audio/Spicy/Punishment/Corner/Down/*.mp3"); 
+		playAudio("Audio/Spicy/Commands/Down/*.mp3");
 		sleep(20);
 		sendVirtualAssistantMessage(" Switch sides ",1,true);
 		showImage("Images/Spicy/Exercise/SidePlank/2.jpg");
 		sendVirtualAssistantMessage(" Get into position ",1,true);
-		 playAudio("Audio/Spicy/Punishment/Corner/Up/*.mp3");
+		 playAudio("Audio/Spicy/Commands/Up/*.mp3");
 		 sleep( 25+5* getVar("ExerciseLevel"));
 
-		playAudio("Audio/Spicy/Punishment/Corner/Down/*.mp3"); 
+		playAudio("Audio/Spicy/Commands/Down/*.mp3");
 		sleep(20);
 		sendVirtualAssistantMessage(" Again.. ",1,true);
-		 playAudio("Audio/Spicy/Punishment/Corner/Up/*.mp3");
+		 playAudio("Audio/Spicy/Commands/Up/*.mp3");
 		 sleep( 25+5* getVar("ExerciseLevel"));
 
 
-		playAudio("Audio/Spicy/Punishment/Corner/Down/*.mp3"); 
+		playAudio("Audio/Spicy/Commands/Down/*.mp3");
 		sleep(20);
 		sendVirtualAssistantMessage(" Again..",1,true);
-		 playAudio("Audio/Spicy/Punishment/Corner/Up/*.mp3");
+		 playAudio("Audio/Spicy/Commands/Up/*.mp3");
 		 sleep( 25+5* getVar("ExerciseLevel"));
 
-		playAudio("Audio/Spicy/Punishment/Corner/Down/*.mp3"); 
+		playAudio("Audio/Spicy/Commands/Down/*.mp3");
 		sleep(20);
 	}
 }
@@ -1608,23 +1608,23 @@ function SquatHold(){
 		sendVirtualAssistantMessage(" Get into the squat position and hold it until you hear my bell!");
 		 showImage("Images/Spicy/Exercise/Squat/2.jpg");
 		sendVirtualAssistantMessage(" Begin!  ",1,true);
-		playAudio("Audio/Spicy/Punishment/Corner/Down/*.mp3");
+		playAudio("Audio/Spicy/Commands/Down/*.mp3");
 		 sleep( 25+5* getVar("ExerciseLevel"));
 
-		 playAudio("Audio/Spicy/Punishment/Corner/Up/*.mp3");
+		 playAudio("Audio/Spicy/Commands/Up/*.mp3");
 		sleep(20);
 		sendVirtualAssistantMessage(" Again! ",1,true);
-		playAudio("Audio/Spicy/Punishment/Corner/Down/*.mp3");
+		playAudio("Audio/Spicy/Commands/Down/*.mp3");
 		sleep( 25+5* getVar("ExerciseLevel"));
 
-		 playAudio("Audio/Spicy/Punishment/Corner/Up/*.mp3"); 
+		 playAudio("Audio/Spicy/Commands/Up/*.mp3");
 		 sleep(20);
 		sendVirtualAssistantMessage(" Again!  ",1,true);
-		playAudio("Audio/Spicy/Punishment/Corner/Down/*.mp3");
+		playAudio("Audio/Spicy/Commands/Down/*.mp3");
 		 sleep( 25+5* getVar("ExerciseLevel"));
 
 
-		 playAudio("Audio/Spicy/Punishment/Corner/Up/*.mp3"); 
+		 playAudio("Audio/Spicy/Commands/Up/*.mp3");
 		 sleep(5);
 
 

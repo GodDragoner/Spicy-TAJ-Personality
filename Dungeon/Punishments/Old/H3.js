@@ -239,13 +239,13 @@ switch (choice) {
 			wait(randomInteger(5,25));
 			
 			if(CornerTimeDown){
-				playAudio("audio/Spicy/Punishment/Corner/Down/*.mp3");
+				playAudio("Audio/Spicy/Commands/Down/*.mp3");
 				CornerCommandsGiven=CornerCommandsGiven+ 1 ;
 				wait(1);
 				CornerTimeDown=false;
 
 			}else{
-				playAudio("audio/Spicy/Punishment/Corner/Up/*.mp3");
+				playAudio("Audio/Spicy/Commands/Up/*.mp3");
 				CornerCommandsGiven=CornerCommandsGiven+ 1 ;
 				wait(1);
 				CornerTimeDown=true;
