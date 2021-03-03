@@ -748,6 +748,8 @@ function loadChastityCages() {
             }
         }
 
+        setVar(VARIABLE.HAS_CHASTITY, CHASTITY_CAGES.length > 0);
+
         if (saveCages) {
             saveChastityCages();
         }
@@ -1007,6 +1009,7 @@ function setupNewCage() {
 
     CHASTITY_CAGES.push(createChastityCage(name, length, material, dialator, dialatorDetachable, spikes, spikesDetachable, spikesOverall, penisAccessible, ballTrapType));
 
+    setVar(VARIABLE.HAS_CHASTITY, true);
     saveChastityCages();
 
     sendVirtualAssistantMessage('Added your new chastity cage to %DomHonorific% %DomName%\'s collection');

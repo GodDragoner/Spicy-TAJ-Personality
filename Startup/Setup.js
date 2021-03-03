@@ -463,6 +463,7 @@
 
         sendVirtualAssistantMessage("Okay then!");
     } else {
+        setVar(VARIABLE.HAS_CHASTITY, false);
         sendVirtualAssistantMessage("%EmoteSad%");
         sendVirtualAssistantMessage('You should consider getting one for the full experience %Grin%');
     }
