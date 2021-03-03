@@ -114,7 +114,7 @@
     sendVirtualAssistantMessage('Now I need to know your current relationship status %SubName%');
     sendVirtualAssistantMessage('So tell me: Are you married, do you have a girlfriend or are you single?', false);
 
-    answer = createInput('Single', 'Girlfriend', 'Single');
+    answer = createInput('Married', 'Girlfriend', 'Single');
 
     while (true) {
         if(answer.isLike('single')) {
@@ -208,7 +208,7 @@
         sendVirtualAssistantMessage("We're gonna have a lot of fun with this folder! %Grin%");
         sendVirtualAssistantMessage("Inside Videos/Spicy you'll find a folder with the exact same name");
         sendVirtualAssistantMessage("This folder needs a humiliating video of you");
-        sendVirtualAssistantMessage("It doesn't has to be longer than 10 seconds");
+        sendVirtualAssistantMessage("It doesn't have to be longer than 10 seconds");
         sendVirtualAssistantMessage("All I want is your face clearly on display");
         sendVirtualAssistantMessage("While doing something you would consider to be humiliating");
         sendVirtualAssistantMessage("Hopefully the video is never gonna be viewed by anyone else %Lol%");

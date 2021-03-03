@@ -93,7 +93,7 @@
             sendMessage('Deciding when and how you can pleasure yourself even outside of sessions');
             sendMessage('%Moan%');
             sendMessage('I love the thought of me knowing you can\'t release all that built up pleasure without contacting me first %Grin%');
-            sendMessage('Seeing %MyYour% %Cock% trying to fight out of it\'s prison');
+            sendMessage('Seeing %MyYour% %Cock% trying to fight out of its prison');
             sendMessage('And me just looking at it, laughing and probably saying NO %EmoteHappy%');
             sendMessage('And you knowing that\'s the only way this is supposed to be');
             sendMessage('Maybe one day you\'ll be up for it and get me a nice cage to lock %MyYour% cock up in');

@@ -814,7 +814,7 @@ function setupNewCage() {
     } else {
         sendVirtualAssistantMessage('A tiny cage for her %Cock%?');
         sendVirtualAssistantMessage('%DomHonorific% %DomName% will definitely like that %Lol%');
-        sendVirtualAssistantMessage('Make sure to not disappoint here too much otherwise you might spend a long time in this cage');
+        sendVirtualAssistantMessage('Make sure to not disappoint her too much otherwise you might spend a long time in this cage');
     }
 
     setCurrentSender(SENDER_TAJ);
