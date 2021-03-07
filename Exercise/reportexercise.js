@@ -1,8 +1,6 @@
 {
     sendVirtualAssistantMessage("Reporting exercise...");
 
-    let times = getVar(VARIABLE.EXERCISE_TIMES);
-
     if (!isVar(VARIABLE.EXERCISE_TIMES)) {// this is the first time user is reporting exercise
         sendVirtualAssistantMessage("%SlaveName%, this is the first time you're reporting exercise activity");
         sendVirtualAssistantMessage("%DomName% would prefer you to follow our integrated fitness program, but understands that might not be practical");
