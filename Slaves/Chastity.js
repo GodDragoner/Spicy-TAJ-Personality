@@ -41,7 +41,7 @@ function isFullSizedChastityOn() {
 }
 
 function askForMaxLockupTime() {
-    sendMessage("Knowing that you have a chastity cage I need to know the maximum amount of days I can lock you up in a row");
+    sendMessage("Knowing that you have a chastity cage I need to know the maximum number of days I can lock you up in a row");
     let answer = sendInput("If you don't have a maximum you can just type 99999");
 
     while (true) {
