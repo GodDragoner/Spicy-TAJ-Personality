@@ -45,10 +45,10 @@ ANAL_LIMIT.sendIntroduction = function (type) {
         sendMessage('Now that we have that sorted out there is still something I need to know');
         sendMessage("I don't know whether you have any experience when it comes to ass play");
         sendMessage("Meaning fucking yourself or wearing butt plugs");
-        showImage("Images/Spicy/Toys/ButtPlugs.jpg", 3);
+        showImage("Images/Spicy/Toys/buttplugs.jpg", 3);
         sendMessage("Are you experienced and capable of wearing butt plugs on a daily basis...");
         sendMessage("And fucking yourself with a huge dildo?");
-        showImage("Images/Spicy/Toys/Dildo.jpg", 3);
+        showImage("Images/Spicy/Toys/dildo.jpg", 3);
 
         if (!CUCKOLD_LIMIT.isAllowed()) {
             sendMessage("Maybe even taking a huge cock from a lover of mine?");

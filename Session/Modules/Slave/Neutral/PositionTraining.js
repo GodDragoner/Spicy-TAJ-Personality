@@ -69,7 +69,7 @@ function positionWalkthrough() {
     sendMessage("Bent over", 0);
     showPicture("Images/Spicy/Positions/BentOver1.jpg", 3);
     sendMessage("Bent over open", 0);
-    showPicture("Images/Spicy/Positions/BentOverOpen2.jpg", 3);
+    showPicture("Images/Spicy/Positions/bentOverOpen2.jpg", 3);
     sendMessage("Box", 0);
     showPicture("Images/Spicy/Positions/Box1.jpg", 3);
     sendMessage("Come fuck me", 0);
