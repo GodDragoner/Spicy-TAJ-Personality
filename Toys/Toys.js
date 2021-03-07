@@ -159,14 +159,14 @@ function removeAllToys() {
     }
 
     if(hasLingerieOn()) {
-        sendMessage('Go ahead and undress and put your normal clothes back on %SlaveName%');
+        sendMessage('Go ahead and undress and put your normal clothes back on %SlaveName%', 0);
         waitForDone();
         removeAllLingerie();
     }
 
     //QUALITY: Specify
     sendMessage('Remove anything else attached to your body %SlaveName%');
-    sendMessage('Tell me when you are done');
+    sendMessage('Tell me when you are done', 0);
     waitForDone();
 }
 
@@ -178,7 +178,7 @@ function readyInput() {
             sendMessage("%Good%");
             break;
         } else {
-            sendMessage("Well then, better hurry up!", "Then don't waste my time and tell me when you are ready!");
+            sendMessage("Well then, better hurry up!", "Then don't waste my time and tell me when you are ready!", 0);
             answer.loop();
         }
     }
