@@ -468,6 +468,8 @@
         sendVirtualAssistantMessage('You should consider getting one for the full experience %Grin%');
     }
 
+    setVar(VARIABLE.CHASTITY_ON, false);
+
     sendVirtualAssistantMessage("Now regarding all other toys you have");
     sendVirtualAssistantMessage("Keep in mind that you are expected to have basic items such as pegs, rope and other common household items");
     sendVirtualAssistantMessage("Of course I recommend that you have all the different toys for the full experience");
