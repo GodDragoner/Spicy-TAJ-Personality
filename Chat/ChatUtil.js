@@ -418,22 +418,22 @@ function sendDungeonMessage(message, person = 0, wait) {
     //Show image
     switch (person) {
         case 0:
-            showImage("Images/Spicy/Punishment/Reception/Chat/" + setId + "/*.jpg");
+            showImage("Images/Spicy/Punishment/Reception/Chat/" + setId + "/*.{jpg,JPG}");
             break;
         case 1:
-            showImage("Images/Spicy/Punishment/Reception/Chat/" + setId + "/*.jpg");
+            showImage("Images/Spicy/Punishment/Reception/Chat/" + setId + "/*.{jpg,JPG}");
             break;
         case 2:
-            showImage("Images/Spicy/Punishment/Reception/BusyPC/" + setId + "/*.jpg");
+            showImage("Images/Spicy/Punishment/Reception/BusyPC/" + setId + "/*.{jpg,JPG}");
             break;
         case 3:
-            showImage("Images/Spicy/Punishment/Reception/BusyPhone/" + setId + "/*.jpg");
+            showImage("Images/Spicy/Punishment/Reception/BusyPhone/" + setId + "/*.{jpg,JPG}");
             break;
         case 4:
-            showImage("Images/Spicy/Punishment/Reception/Dirty/" + setId + "/*.jpg");
+            showImage("Images/Spicy/Punishment/Reception/Dirty/" + setId + "/*.{jpg,JPG}");
             break;
         default:
-            showImage("Images/Spicy/Punishment/Reception/Chat/" + setId + "/*.jpg");
+            showImage("Images/Spicy/Punishment/Reception/Chat/" + setId + "/*.{jpg,JPG}");
             break;
     }
 

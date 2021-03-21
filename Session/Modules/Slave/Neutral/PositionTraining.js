@@ -183,7 +183,7 @@ function simplePositionTrainingSelection(totalPositions) {
             showImage("Images/Spicy/Positions/BentOver1.jpg");
             sendMessage("Even though on these pictures the heels are touching the ground");
 
-            showImage("Images/Spicy/Positions/BentOver3.jpg");
+            showImage("Images/Spicy/Positions/bentOver3.jpg");
             sendMessage("I want you to raise your heels from the ground");
 
             showImage("Images/Spicy/Positions/BentOver2.jpg");
@@ -199,14 +199,14 @@ function simplePositionTrainingSelection(totalPositions) {
         },
         currentTraining_a4 : function () {
             lockImages();
-            showImage("Images/Spicy/Positions/BentOverOpen2.jpg");
+            showImage("Images/Spicy/Positions/bentOverOpen2.jpg");
             sendMessage("This is the Bent over open position");
             sendMessage("It's a lot like the bent over with the obvious exception of the legs spread");
 
-            showImage("Images/Spicy/Positions/BentOverOpen3.jpg");
+            showImage("Images/Spicy/Positions/bentOverOpen3.jpg");
             sendMessage("Heels lifted from the ground, head down");
 
-            showImage("Images/Spicy/Positions/BentOverOpen1.jpg");
+            showImage("Images/Spicy/Positions/bentOverOpen1.jpg");
             sendMessage("It's a nice position for humiliation, punishment or both");
             sendMessage("Balance is quite a 'bitch' %Grin%");
             unlockImages();
@@ -806,7 +806,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             sendMessage("This should prove fun to watch!");
             sendMessage("I want you in the Bent over open position");
             lockImages();
-            showImage("Images/Spicy/Positions/BentOverOpen2.jpg");
+            showImage("Images/Spicy/Positions/bentOverOpen2.jpg");
             sendMessage("Head down");
             sendMessage("Stay there until you hear my bell");
             sendMessage("I want you to count every time you lose your balance");

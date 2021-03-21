@@ -301,7 +301,7 @@ function MXmessage(message,  wait) {
             showImage("Images/Spicy/Punishment/SpankzChoir/Kordelia/*.jpg");
             break;
        case 6:
-            showImage("Images/Spicy/Punishment/SpankzChoir/Kim/*.jpg");
+            showImage("Images/Spicy/Punishment/SpankzChoir/Kym/*.jpg");
             break;
        case 7:
             showImage("Images/Spicy/Punishment/SpankzChoir/Sadie/*.jpg");
@@ -403,7 +403,7 @@ function MXoverlapmessage(message,  wait) {
             showImage("Images/Spicy/Punishment/SpankzChoir/Kordelia/B"+random("8","9")+".jpg");
             break;	
 		case 61:
-            showImage("Images/Spicy/Punishment/SpankzChoir/Kym/All.jpg");
+            showImage("Images/Spicy/Punishment/SpankzChoir/Kym/A11.jpg");
             break;	
 		case 62:
             showImage("Images/Spicy/Punishment/SpankzChoir/Kym/Black.jpg");

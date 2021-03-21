@@ -39,7 +39,7 @@ function Info()
     sendMessage("I'm about to make you my bitch! ");
     sendMessage("%Lol% ");
     sendMessage("Fetch your shock collar %SlaveName%" );
-	showImage("\GNMImages\Toys\Shock Collar.jpg");
+	showImage("GNMImages/Toys/Shock Collar.jpg");
 	sleep(10);
     let answer0 = sendInput("Got it? ");
     if (answer0.isLike("yes"))
@@ -443,7 +443,7 @@ function FF3()
 function Black()
 {
     sendMessage(random("Be ready!","Prepare","Prepare yourself","Get ready","Stay ready","Ready yourself") );
-	showImage("Images/GNMImages/Punishment/Grounding/BlackBase.*"); 
+	showImage("Images/Spicy/Punishment/Grounding/BlackBase.*"); 
 	sleep(randomInteger(2,10));
     Rip();
 }
