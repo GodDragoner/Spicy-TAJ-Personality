@@ -737,7 +737,7 @@ function setupNewButtplug() {
 
     sendVirtualAssistantMessage('Please make sure to add a picture of your buttplug named like your buttplug to your Toys/Buttplugs folder.', false);
     sleep(2);
-    sendVirtualAssistantMessage('So in this case make sure to add a picture called "' + name + '.jpg" to the buttplugss folder', false);
+    sendVirtualAssistantMessage('So in this case make sure to add a picture called "' + name + '.jpg" to the buttplugs folder', false);
     sleep(2);
     sendVirtualAssistantMessage('If it already exists a picture of it should show up now', false, true);
     showImage(getButtplugImagePath(name), 5);

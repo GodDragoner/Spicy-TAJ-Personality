@@ -1,7 +1,7 @@
 {
     if (tryRunEndLinkFetchId()) {
         sendMessage('Mmmm maybe I\'m going to let you cum %GeneralTime%');
-        sendMessage('Maybe just next edge is even going to be the one where I tip you over');
+        sendMessage('Maybe the very next edge is going to be the one where I tip you over');
         sendMessage('You think...?');
         startEdging();
         sendMessage('%LetEdgeFade%');

@@ -9,8 +9,8 @@
             sendMessage('In general pleasing women should be the only thing men should be allowed to do');
             sendMessage('And pleasing a woman with your tongue is one of the best ways to do so');
             sendMessage('Which is why we are gonna train your oral abilities');
-            sendMessage('This is your first time so we better do a quick run-through');
-            sendMessage('If you have a fake pussy or something else that can be used I recommend using that');
+            sendMessage('This is your first time so we\'d better do a quick run-through');
+            sendMessage('If you have a fake pussy or something else that can be used, I recommend using that');
             sendMessage('You can choose to simply lick the air');
             //TODO: Force something like that based on strictness
             sendMessage('Or maybe you could even use a pair of dirty shoes %Grin%');
@@ -40,13 +40,13 @@
             sendMessage('And right', 0);
             showImage('Images/Spicy/Modules/LickExercises/Right/*.jpg', 5);
 
-            sendMessage('Then we have circular right', 0);
+            sendMessage('Then we have circular clockwise', 0);
             showImage('Images/Spicy/Modules/LickExercises/CircleRight/*.jpg', 5);
 
-            sendMessage('Which means moving your tounge in circular motion right');
+            sendMessage('Which means moving your tounge in circular motion clockwise');
             //showImage('Images/Spicy/Modules/LickExercises/CircleRight/*.jpg', 5);
 
-            sendMessage('And the opposite left', 0);
+            sendMessage('And the opposite, anti-clockwise', 0);
             showImage('Images/Spicy/Modules/LickExercises/CircleLeft/*.jpg', 5);
 
             sendMessage('Finally we have the alphabet', 0);
@@ -68,7 +68,7 @@
             sendMessage('A quick refresh');
             sendMessage('Red = fast, Yellow = medium, Green = Slow');
             sendMessage('There is up, down, left and right');
-            sendMessage('There is circle right and circle left');
+            sendMessage('There is circle clockwise and circle anti-clockwise');
             sendMessage('And finally we have lick the alphabet');
         }
 
@@ -98,7 +98,7 @@
         }
 
         sendMessage('Now let\'s get started %Grin%');
-        sendMessage('Start the second you see the first pictures %SlaveName%');
+        sendMessage('Start the second you see the first picture %SlaveName%');
 
         //const timerLimitArray = [randomInteger(20, 40), randomInteger(30, 50), randomInteger(60, 80), randomInteger(80, 100), randomInteger(100, 120)];
         let date = setDate();

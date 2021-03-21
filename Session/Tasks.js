@@ -305,7 +305,7 @@ function goToCorner(durationSeconds) {
     playBellSound();
 
     if(onToes) {
-        playAudio("Audio\\Spicy\\Commands\\OnYourToes.mp3");
+        playAudio("Audio/Spicy/Commands/OnYourToes.mp3");
     }
 
     do {
@@ -317,10 +317,10 @@ function goToCorner(durationSeconds) {
 
             while(secondsPassed < durationSeconds) {
                 if(up) {
-                    playAudio("Audio\\Spicy\\Commands\\Down\\*.mp3");
+                    playAudio("Audio/Spicy/Commands/Down/*.mp3");
                     up = false;
                 } else {
-                    playAudio("Audio\\Spicy\\Commands\\Up\\*.mp3");
+                    playAudio("Audio/Spicy/Commands/Up/*.mp3");
                     up = true;
                 }
 

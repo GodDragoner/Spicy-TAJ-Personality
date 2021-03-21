@@ -127,7 +127,7 @@ function startGayPictureRound() {
                 sendMessage("Which means this game is at an end");
                 sendMessage("Be glad you didn't end with denial %Lol%");
                 endGayPictureGame();
-                break;
+                return;
             }
 
             sendMessage("Time for 20 fast strokes!");

@@ -25,7 +25,11 @@ const BALL_TRAP_TYPE = {
 
 function getActiveChastityCage() {
     if (currentChastityCage === null || currentChastityCage === undefined) {
-        return CHASTITY_CAGES[0];
+        if (CHASTITY_CAGES.length == 0) {
+            return null;
+        } else {
+            return CHASTITY_CAGES[0];
+        }
     } else {
         return currentChastityCage;
     }
@@ -744,6 +748,8 @@ function loadChastityCages() {
             }
         }
 
+        setVar(VARIABLE.HAS_CHASTITY, CHASTITY_CAGES.length > 0);
+
         if (saveCages) {
             saveChastityCages();
         }
@@ -810,7 +816,7 @@ function setupNewCage() {
     } else {
         sendVirtualAssistantMessage('A tiny cage for her %Cock%?');
         sendVirtualAssistantMessage('%DomHonorific% %DomName% will definitely like that %Lol%');
-        sendVirtualAssistantMessage('Make sure to not disappoint here too much otherwise you might spend a long time in this cage');
+        sendVirtualAssistantMessage('Make sure to not disappoint her too much otherwise you might spend a long time in this cage');
     }
 
     setCurrentSender(SENDER_TAJ);
@@ -1003,6 +1009,7 @@ function setupNewCage() {
 
     CHASTITY_CAGES.push(createChastityCage(name, length, material, dialator, dialatorDetachable, spikes, spikesDetachable, spikesOverall, penisAccessible, ballTrapType));
 
+    setVar(VARIABLE.HAS_CHASTITY, true);
     saveChastityCages();
 
     sendVirtualAssistantMessage('Added your new chastity cage to %DomHonorific% %DomName%\'s collection');

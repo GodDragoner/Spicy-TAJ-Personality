@@ -41,14 +41,14 @@ function isFullSizedChastityOn() {
 }
 
 function askForMaxLockupTime() {
-    sendMessage("Knowing that you have a chastity cage I need to know the maximum amount of days I can lock you up in a row");
+    sendMessage("Knowing that you have a chastity cage I need to know the maximum number of days I can lock you up in a row");
     let answer = sendInput("If you don't have a maximum you can just type 99999");
 
     while (true) {
         if (answer.isInteger()) {
             const result = answer.getInt();
             if (result <= 0) {
-                sendMessage("You have to choose a number larger than 0...");
+                sendMessage("You have to choose a number larger than 0...", 0);
                 answer.loop();
             } else if (result <= 5) {
                 sendMessage("Looks like we have a chastity beginner. Don't worry we can work on that  %Grin%");
@@ -64,7 +64,7 @@ function askForMaxLockupTime() {
                 break;
             }
         } else {
-            sendMessage("Just give me a number like 3, 10 or 70...");
+            sendMessage("Just give me a number like 3, 10 or 70...", 0);
             answer.loop();
         }
     }

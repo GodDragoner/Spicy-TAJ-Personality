@@ -166,7 +166,7 @@ switch (choice) {
 	 CornerTimeDown = true;
 	 wait(5);
 	//(CornerTime2)
-	playAudio("audio/Spicy/Punishment/Corner/OnYourToes.mp3");
+	playAudio("Audio/Spicy/Punishment/Corner/OnYourToes.mp3");
 	//@CountVar[CornerTimeCounter2]
 	//(CornerTime1)
 	setDate("donetime").addSecond(getVar("CornerTimeCounter"));
@@ -174,7 +174,7 @@ switch (choice) {
 	while( !(getDate("donetime").hasPassed()) ) {
 		wait(randomInteger(5,25));
 		if(randomInteger(1,100) < 25 )
-			{playAudio("audio/Spicy/Punishment/Corner/OnYourToes.mp3");
+			{playAudio("Audio/Spicy/Punishment/Corner/OnYourToes.mp3");
 			}
 			wait(randomInteger(5,25));
 

@@ -150,9 +150,8 @@ if (isVar("PunishmentFailed")) {
             break;
 
         } else {
-            sendNurseMessage(" Yes or no %SlaveName%");
+            sendNurseMessage(" Yes or no %SlaveName%", 0, false);
             answer.loop();
-            break;
         }
     }
 

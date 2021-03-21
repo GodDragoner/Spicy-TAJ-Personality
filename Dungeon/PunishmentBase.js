@@ -5,7 +5,7 @@
         sendDungeonMessage(random("Hello", "Welcome", "Hi", "Greetings", "Good to see you") + ' %SlaveName%');
         sendDungeonMessage("I go by 'Miss A'");
         sendDungeonMessage("It is my job to punish you whenever you report for punishment");
-        sendDungeonMessage("The domme rarely has time to do so");
+        sendDungeonMessage("The Domme rarely has time to do so");
         sendDungeonMessage("So if you misbehave in sessions or similar you will often simply be awarded punishment points");
         sendDungeonMessage("These points accumulate over time");
         sendDungeonMessage("Don't let them grow too much");
@@ -25,13 +25,13 @@
         sendDungeonMessage("You are required to have an active account to use SpankzChoir.com");
         sendDungeonMessage("An account lasts 14 days and can be paid for in the shop");
         sendDungeonMessage('On Mondays and Fridays you have the chance to get some tasks from one of the Dommes to redeem a chosen amount of punishment points');
-        sendDungeonMessage('Should you get punishment points while you have redeeming tasks active those punishment points will be doubled and added to your balance');
+        sendDungeonMessage('Should you get punishment points while you have redeeming tasks active, those punishment points will be doubled and added to your balance');
         sendDungeonMessage('You will not be able to report for another punishment while you have these tasks unfinished');
-        sendDungeonMessage('So make sure to better get them done quickly');
+        sendDungeonMessage('So you\'d better make sure to get them done quickly');
         sendDungeonMessage('These tasks will involve solely deepthroating and anal play');
         sendDungeonMessage('So be ready to do A LOT if you have a lot punishment points');
         sendDungeonMessage('For this you can specify how many punishment points you want to redeem');
-        sendDungeonMessage('However it need to be at least ' + MIN_PUNISHMENT_POINTS_FOR_TASK + ' points');
+        sendDungeonMessage('However it needs to be at least ' + MIN_PUNISHMENT_POINTS_FOR_TASK + ' points');
         sendDungeonMessage('So it\'s pretty much only useful if you have a lot of points to redeem');
         sendDungeonMessage('It\'s basically training and redemption for you all in one');
         sendDungeonMessage('Great isn\'t it?');
@@ -48,7 +48,7 @@
         while (true) {
             if (answer.isTimeout()) {
                 answer.clearOptions();
-                sendDungeonMessage("Your lack of response leads to believe you just couldn't handle it...");
+                sendDungeonMessage("Your lack of response leads me to believe you just couldn't handle it...");
                 changeMeritLow(true);
                 sendDungeonMessage("I know your %DomHonorific% is disappointed...");
                 sendDungeonMessage("Remember to only choose punishments you can handle...");
@@ -87,7 +87,7 @@
             addPunishmentPoints(-getVar(VARIABLE.PUNISHMENT_TASK_POINTS));
             sendMessage('I removed ' + getVar(VARIABLE.PUNISHMENT_TASK_POINTS) + ' from your punishment point balance');
             resetPunishmentTasks();
-            sendMessage('I got other things to do now...');
+            sendMessage('I have other things to do now...');
 
         } else {
             sendMessage('What do you mean no? Why are you bothering me then?', 0);
@@ -106,15 +106,15 @@
                             sendMessage('Really...?');
                             sendMessage('You want to give up that easily?');
                             sendMessage('You disappoint me %SlaveName%');
-                            sendMessage('As penalty I will add 25% of the to redeem points to your balance');
+                            sendMessage('As penalty, I will add 25% of the to redeem points to your balance');
                             addPunishmentPoints(Math.floor(getVar(VARIABLE.PUNISHMENT_TASK_POINTS) * 0.25), PUNISHMENT_REASON.POOR_BEHAVIOUR);
                             sendMessage('Don\'t disappoint me ever again and don\'t bite off more than you can chew!');
                             break;
                         case 1:
-                            sendMessage('I expect more from you then giving up that easily %SlaveName%');
+                            sendMessage('I expect more from you than giving up that easily %SlaveName%');
                             sendMessage('You are supposed to follow all orders no matter how difficult');
                             sendMessage('Not mentioning you chose this yourself');
-                            sendMessage('As penalty I will add 50% of the to redeem points to your balance');
+                            sendMessage('As penalty, I will add 50% of the to redeem points to your balance');
                             addPunishmentPoints(Math.floor(getVar(VARIABLE.PUNISHMENT_TASK_POINTS) * 0.60), PUNISHMENT_REASON.POOR_BEHAVIOUR);
                             sendMessage('Don\'t disappoint me ever again and don\'t bite off more than you can chew!');
                             break;
@@ -123,7 +123,7 @@
                             sendMessage('You are fucking pathetic %SlaveName%');
                             sendMessage('You can\'t even handle the most simple tasks. This is...');
                             sendMessage('DISAPPOINTING!');
-                            sendMessage('As penalty I will add 75% of the to redeem points to your balance');
+                            sendMessage('As penalty, I will add 75% of the to redeem points to your balance');
                             addPunishmentPoints(Math.floor(getVar(VARIABLE.PUNISHMENT_TASK_POINTS) * 0.75), PUNISHMENT_REASON.POOR_BEHAVIOUR);
                             sendMessage('Don\'t disappoint me ever again and don\'t bite off more than you can chew!');
                             break;
@@ -131,7 +131,7 @@
 
                     resetPunishmentTasks();
                 } else {
-                    sendMessage('Do you need a reminder of your tasks or do you want to give up?');
+                    sendMessage('Do you need a reminder of your tasks or do you want to give up?', 0);
                     answer.loop();
                 }
             }
@@ -384,7 +384,7 @@
 
                             break;
                         } else {
-                            sendDungeonMessage("%SlaveName%, are you illiterate? Soft, medium, hard, or extreme?");
+                            sendDungeonMessage("%SlaveName%, are you illiterate? Soft, medium, hard, or extreme?", 0, false);
                             answer2.loop();
                         }
                     }
@@ -417,7 +417,7 @@
                                         mode = 1;
                                         break;
                                     } else {
-                                        sendDungeonMessage("%SlaveName%, are you illiterate? A punishment session or tasks?");
+                                        sendDungeonMessage("%SlaveName%, are you illiterate? A punishment session or tasks?", 0, false);
                                         answer2.loop();
                                     }
                                 }
@@ -448,7 +448,7 @@
                                 points = Math.min(points, getVar(VARIABLE.PUNISHMENT_POINTS));
 
                                 if (points < MIN_PUNISHMENT_POINTS_FOR_TASK) {
-                                    sendDungeonMessage('You need to redeem at least ' + MIN_PUNISHMENT_POINTS_FOR_TASK + ' points %SlaveName%');
+                                    sendDungeonMessage('You need to redeem at least ' + MIN_PUNISHMENT_POINTS_FOR_TASK + ' points %SlaveName%', 0, false);
                                     answer.loop();
                                 } else {
                                     sendDungeonMessage('Fine...');
@@ -456,7 +456,7 @@
                                     break;
                                 }
                             } else {
-                                sendDungeonMessage("That's not a valid number like 100, 250 etc...");
+                                sendDungeonMessage("That's not a valid number like 100, 250 etc...", 0, false);
                                 answer2.loop();
                             }
                         }
@@ -498,14 +498,14 @@
                             sendDungeonMessage(value + " points removed from your total amount of punishment points");
                             break;
                         } else {
-                            sendDungeonMessage('Please give me a number greater than 0 %SlaveName%...');
+                            sendDungeonMessage('Please give me a number greater than 0 %SlaveName%...', 0, false);
                             changeMeritLow(true);
                             answer2.loop();
                         }
                     } else if (answer2.isLike('no', 'abort', 'break', 'exit', 'quit')) {
                         break;
                     } else {
-                        sendDungeonMessage('Please just give a single number %SlaveName%...');
+                        sendDungeonMessage('Please just give a single number %SlaveName%...', 0, false);
                         changeMeritLow(true);
                         answer2.loop();
                     }
@@ -514,7 +514,7 @@
             } else if (answer.isLike("return", "exit", "back")) {
                 break;
             } else {
-                sendDungeonMessage("Spankz choir, punishment, pay fine or return?");
+                sendDungeonMessage("Spankz choir, punishment, pay fine or return?", 0, false);
                 answer.loop();
             }
         }
@@ -548,9 +548,8 @@ function handleFailedPunishment() {
             break;
 
         } else {
-            sendNurseMessage("Yes or no %SlaveName%");
+            sendNurseMessage("Yes or no %SlaveName%", 0, false);
             answer.loop();
-            break;
         }
     }
 

@@ -11,7 +11,7 @@
         sendMessage('Almost every time when we get to the end of a session I\'m thinking...');
         sendMessage('Why do I even give you a chance to cum at all');
         sendMessage('A good submissive boy should be denied, period');
-        sendMessage('No ifs or buts, no "oh but a guy need to ejaculate for health reasons"');
+        sendMessage('No ifs or buts, no "oh but a guy needs to ejaculate for health reasons"');
         sendMessage('We could easily do with only the occasional prostate milking');
 
         //QUALITY: Interaction

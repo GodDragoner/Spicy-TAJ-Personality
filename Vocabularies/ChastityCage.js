@@ -1,12 +1,8 @@
 function chastityCageVocabulary() {
-    const material = getActiveChastityCage().material == MATERIAL.METAL? "metal" : getActiveChastityCage().material == MATERIAL.PLASTIC? "plastic" : 'silicon';
-    const cock = random("cock", "dick");
-
     const adjectives = [];
-
     const sizeAdjective = ["little"];
-
     const descriptive = ["lust detention"];
+    const answers = [];
 
     const mood = getMood();
     if(mood == VERY_PLEASED_MOOD || mood == PLEASED_MOOD) {
@@ -24,12 +20,19 @@ function chastityCageVocabulary() {
         descriptive.push("spiky", "spike encased", "spiked");
     }
 
-    //Prison is kinda strange
-    const answers = /*["prison", material + " prison"]*/ [];
-    if(getActiveChastityCage().isFullSizedBelt()) {
-        answers.push("belt", material + " belt", "full belt", "full " + material + " belt");
+    const activeChastityCage = getActiveChastityCage();
+    if (activeChastityCage != null) {
+        const material = (activeChastityCage.material == MATERIAL.METAL) ? "metal"
+                       : (activeChastityCage.material == MATERIAL.PLASTIC) ? "plastic"
+                       : 'silicon';
+
+        if (activeChastityCage.isFullSizedBelt()) {
+            answers.push("belt", material + " belt", "full belt", "full " + material + " belt");
+        } else {
+            answers.push("cage", material + " cage", "ball-trapping belt", material + " ball-trapping belt");
+        }
     } else {
-        answers.push("cage", material + " cage", "ball-trapping belt", material + " ball-trapping belt");
+        answers.push("chastity cage", "metal cage", "steel cage");
     }
 
     let answer = "";
