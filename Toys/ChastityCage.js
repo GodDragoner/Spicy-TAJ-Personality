@@ -133,7 +133,7 @@ function unlockChastityCage(fakeOpening = false) {
                 changeMeritMedium(true);
                 answer.loop();
             }
-        } else if (answer.isLike("done", "off", "uncaged", "unlocked", "out", "belt", 'yes')) {
+        } else if (answer.isLike("done", "off", "uncaged", "unlocked", "out", "belt", "yes", "ready")) {
             if (loop == 1) {
                 sendMessage(random("Finally", "About time...", "Took you long enough", "Be faster next time", "Don't waste my time again..."));
                 break;
@@ -680,7 +680,7 @@ function lockChastityCage(chastityCage = undefined) {
                 changeMeritMedium(true);
                 answer.loop();
             }
-        } else if (answer.isLike("done", "on", "caged", "locked", "lock", "belt", 'yes')) {
+        } else if (answer.isLike("done", "on", "caged", "locked", "lock", "belt", "yes", "ready")) {
             if (loop == 1) {
                 sendMessageBasedOnSender(random("Finally", "About time...", "Took you long enough", "Be faster next time", "Don't waste my time again..."));
                 break;
