@@ -181,7 +181,7 @@ function sendBlowjobTrainingPosition() {
 
             if(feelsLikePunishingSlave()) {
                 sendMessage('And because you have been a bad %SlaveName%');
-                sendMessage('You will kneel on rise for this');
+                sendMessage('You will kneel on rice for this');
             }
             break;
         case 2:

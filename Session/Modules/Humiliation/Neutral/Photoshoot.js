@@ -105,7 +105,7 @@
                 playVideo('Videos/Spicy/SelfHumiliation/*.mp4', true);
                 sendMessage(random("This is the funniest thing ever!", "I can't imagine anything less sexy") + ' %Lol%');
             } else {
-                for (let x = 0; x < 60; x++) {
+                for (let x = 0; x < 30; x++) {
                     showImage('Images/Spicy/SelfHumiliation/*.jpg', 2);
                 }
 

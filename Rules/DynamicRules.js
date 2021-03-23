@@ -658,7 +658,7 @@ let RULE_ALWAYS_WEAR_WOMAN_SOCKS;
 
         if(answer.isLike('good', 'well', 'great')) {
             sendMessage('Looks like you got that slut right within you %Grin%');
-        } else if(answer.isLike('bad', 'worse', 'strange', 'weird', 'awkward')) {
+        } else if(answer.isLike('bad', 'worse', 'strange', 'weird', 'awkward', 'embarrassing')) {
             sendMessage('You can\'t complain %Lol%');
             sendMessage('You wanted to be a sissy');
             sendMessage('And even if you didn\'t it\'s what I want');

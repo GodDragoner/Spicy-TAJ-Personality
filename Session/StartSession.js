@@ -41,7 +41,7 @@
                 if (isInChastity()) {
                     sendDebugMessage('Decided to unlock chastity today');
 
-                    if (isChance(50)) {
+                    if (isChance(35)) {
                         sendDebugMessage('But not now (later)');
                         setTempVar(VARIABLE.CHASTITY_REMOVE_LATER, true);
 
