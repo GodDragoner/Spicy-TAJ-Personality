@@ -143,7 +143,7 @@
         return ANAL_LIMIT.isAllowed();
     }
 
-    registerClass("Anal Stretching", 5, null, [DAY_OF_WEEK.WEDNESDAY, DAY_OF_WEEK.SATURDAY], getTasks, getModifiers, getExam, onStart, onEnd, isAvailable)
+    registerClass("Anal Stretching", 5, null, [DAY_OF_WEEK.WEDNESDAY, /*DAY_OF_WEEK.SATURDAY*/], getTasks, getModifiers, getExam, onStart, onEnd, isAvailable)
 }
 
 function askForMaxDiameter() {

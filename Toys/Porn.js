@@ -30,7 +30,19 @@ const PORN_CATEGORY = {
     CENSORED: {
         id: 7,
         name: 'censored'
-    }
+    },
+    DENIAL: {
+        id: 8,
+        name: 'denial'
+    },
+    CUM_COMPILATION: {
+        id: 9,
+        name: 'cum compilation'
+    },
+    RUINED_ORGASM_COMPILATION: {
+        id: 10,
+        name: 'ruined orgasm compilation'
+    },
 };
 
 function getRandomAllowedPornCategory() {
@@ -42,6 +54,9 @@ function getAllowedPornCategories() {
 
     categories.push(PORN_CATEGORY.FEMDOM);
     categories.push(PORN_CATEGORY.CENSORED);
+
+    categories.push(PORN_CATEGORY.CUM_COMPILATION);
+    categories.push(PORN_CATEGORY.RUINED_ORGASM_COMPILATION);
 
     if(SISSY_LIMIT.isAllowed()) {
         categories.push(PORN_CATEGORY.SISSY_GENERAL);

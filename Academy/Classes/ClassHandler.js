@@ -315,6 +315,7 @@ function registerClass(name, levels, fileName, weekdays, getTasks, getModifiers,
 
             let result = this.taskHistory.getRandomAvailableId(0, tasks.length - 1, tasks / 2);
 
+            this.taskHistory.addHistoryRun(result);
             this.setAssignment(result);
             this.setCurrentAssignmentText(tasks[result]);
         },

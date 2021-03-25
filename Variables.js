@@ -113,6 +113,8 @@ const VARIABLE = {
     //Chastity
     CHASTITY_TRAINING: "chastityTraining",
 
+    CHASTITY_ALLOWED_REMOVAL_TASK: "chastityTraining",
+
     LOCKED_UP_LIMIT: "lockedUpLimit",
 
     HAS_CHASTITY: "hasChastity",
