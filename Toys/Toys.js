@@ -159,7 +159,8 @@ function removeAllToys() {
     }
 
     if(hasLingerieOn()) {
-        sendMessage('Go ahead and undress and put your normal clothes back on %SlaveName%', 0);
+        sendMessage('Go ahead and undress and put your normal clothes back on %SlaveName%');
+        sendMessage('Tell me when you are done', 0);
         waitForDone();
         removeAllLingerie();
     }
