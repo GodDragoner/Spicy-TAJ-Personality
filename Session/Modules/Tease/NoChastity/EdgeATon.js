@@ -252,10 +252,5 @@ function growDickSoft() {
         setVar(VARIABLE.SECONDS_TO_GET_SOFT, timePassed);
     }
     sendMessage("Let's move on shall we?");
+    return true;
 }
-
-
-
-
-
-
