@@ -94,12 +94,12 @@ let RULE_ALWAYS_WEAR_WOMAN_SOCKS;
         if(isEnforcingPersonality()) {
             sendMessage('And I want you to wear it whenever you can');
             sendMessage('So definitely during our sessions and additionally whenever you are home alone');
-            sendMessage('You should always feel owned by me and this will remember you of that');
+            sendMessage('You should always feel owned by me and this will remind you of that');
             sendMessage('So make sure to wear it whenever possible from now on %SlaveName%');
         } else {
             sendMessage('And I think you should wear it whenever you can');
             sendMessage('So definitely during our sessions and additionally whenever you are home alone');
-            sendMessage('You should always feel owned by me and this will remember you of that');
+            sendMessage('You should always feel owned by me and this will remind you of that');
 
             if(!sendYesOrNoQuestion('Would you do that for me %SlaveName%')) {
                 changeMeritMedium(true);

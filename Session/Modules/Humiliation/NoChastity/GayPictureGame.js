@@ -17,7 +17,7 @@
         sendMessage('Butts = a small pause');
         sendMessage('Lezdom = add a peg to anywhere on your body');
 
-        sendMessage("Now there a few extra rules depending on how many pictures of each you've landed on");
+        sendMessage("Now there are a few extra rules depending on how many pictures of each you've landed on");
         sendMessage('7 gay images = orgasm to a picture of a dick');
         sendMessage('3 lesbian images = 4 edges in a row');
         sendMessage('5 boobs pictures = 100 gold');

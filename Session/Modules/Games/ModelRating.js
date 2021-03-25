@@ -32,7 +32,7 @@ function startModelRating(gameType) {
         sendMessage('You will rate each picture from 1 to 10');
         sendMessage('I will simply show you the image');
         sendMessage('And you will simply write a number from 1 to 10');
-        sendMessage('10 meaning that the image is incredible hot');
+        sendMessage('10 meaning that the image is incredibly hot');
         sendMessage('1 being not so hot %Lol%');
         //sendMessage('@NullResponse @CallReturn(CR\Modules\Tease\ModuleParts\ModelRatingPart1.txt)');
 
