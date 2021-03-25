@@ -28,8 +28,6 @@ let RULE_ALWAYS_WEAR_WOMAN_SOCKS;
 
 let RULE_EVENING_RITUAL;
 
-let RULE_EVENING_RITUAL_EDGES_LAST_CUM;
-
 {
     let ruleId = 0;
 
@@ -701,18 +699,6 @@ let RULE_EVENING_RITUAL_EDGES_LAST_CUM;
         return isFullTime();
     };
 
-    rule = RULE_EVENING_RITUAL_EDGES_LAST_CUM = createRule(ruleId++, false);
-
-    rule.getRulePrint = function () {
-        return 'Evening Ritual: You must do ' + getDaysSinceDate(getLastEjaculationDate()) + ' edges before going to bed';
-    };
-
-    rule.canBeActivated = function () {
-        return isFullTime();
-    };
-
-    AVAILABLE_RULES.push(rule);
-
     //Update all existing rules
     for (let index = 0; index < AVAILABLE_RULES.length; index++) {
         //TODO: Notify rule ended?
@@ -795,12 +781,14 @@ function shouldIntroduceNewRule(rule) {
     return false;
 }
 
-function createRule(id, punishment, minDays = -1, maxDays = -1) {
+
+
+function createRule(id, punishment, minDays = -1, maxDays = -1, prefix = 'rule') {
     let rule = {
         id: id, punishment: punishment, minDays: minDays, maxDays: maxDays,
 
         getVarName: function () {
-            return 'rule' + this.id;
+            return prefix + this.id;
         },
 
         isActive: function () {

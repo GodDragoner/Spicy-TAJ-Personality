@@ -1,5 +1,7 @@
 let SENTENCE_BUILDER_FIRST = true;
 
+const ARRAY_UTILS = Java.type('me.goddragon.teaseai.utils.ArrayUtils');
+
 function deserializeObject(object, string) {
     let splitArray = string.split(',');
 
@@ -90,6 +92,10 @@ function tryGetArrayList(varName) {
             }
 
             sendDebugMessage('Got array list from value ' + varValue);
+
+            //Convert to fitting integer or double array if possible
+            arrayList = ARRAY_UTILS.convertToFittingType(arrayList);
+
             setVar(varName, arrayList);
             return arrayList;
         } else {

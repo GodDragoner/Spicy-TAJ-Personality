@@ -4,6 +4,7 @@ Ideas:
 - Remove plug just to lick clean and put back
 - Chastity spikes while watching porn as punishment
 - Game for every normal orgasm you have x ruined, increase one per normal orgasm or something
+- Edge for every past orgasm / hours passed since last session
  */
 
 //TODO: may I remove the gag? Response

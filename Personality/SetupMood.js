@@ -288,6 +288,8 @@ if (newDay) {
         sendDebugMessage('Changed merit because punishment points are below threshold');
         changeMeritLow(false);
     }
+
+    SetAllowedTaskChastityCageOffAmount();
 }
 
 sendDebugMessage('Mood after startup routine');

@@ -17,9 +17,8 @@
                 sendMessage('I want to keep you horny and keep driving your lust up');
                 sendMessage('Sooo...');
                 sendMessage('Before going to bed I want you to edge once for each day that has passed since your last orgasm');
-                sendMessage('This might be hard to keep track of so the active rule section will always keep track of the current section');
-                sendMessage('Just ask my assistant in the main menu to print you the current rules');
-                sendMessage('For this I will allow you to remove your chastity cage');
+                sendMessage('This might be hard to keep track of so go check the pin board for a daily amount of edges');
+                sendMessage('For the edges I will allow you to remove your chastity cage');
                 sendMessage('You\'ll have to put it on directly after again');
                 sendMessage('My assistant will gladly assist you during that process');
                 sendMessage('And by "will" I mean you must ask her to unlock you <b>everytime</b>');
@@ -30,14 +29,15 @@
                 }
 
                 sendMessage('I am leaving you the choice of edging in chastity instead to spare you the time of unlocking and locking again');
+                sendMessage('Now...');
+                sendMessage('I won\'t ask anything more from you for now but...');
                 sendMessage('I am looking to expand and modify this list in the future');
 
                 RULE_EVENING_RITUAL.setActive(true);
-                RULE_EVENING_RITUAL_EDGES_LAST_CUM.setActive(true);
+                EVENING_ROUTINE.RULE_EVENING_RITUAL_EDGES_LAST_CUM.setActive(true);
             }
         } else {
 
         }
-
     }
 }

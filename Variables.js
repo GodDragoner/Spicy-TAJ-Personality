@@ -118,6 +118,8 @@ const VARIABLE = {
     LOCKED_UP_LIMIT: "lockedUpLimit",
 
     HAS_CHASTITY: "hasChastity",
+
+    //Active cage
     ACTIVE_CHASTITY_CAGE: "activeChastityCage",
 
     CHASTITY_SPIKES_ON: "chastitySpikesOn",

@@ -8,8 +8,6 @@ function getTodaysSlaveTask() {
     }
 
 
-    setVar(VARIABLE.CHASTITY_ALLOWED_REMOVAL_TASK, false);
-
     let lines = new java.util.ArrayList();
     lines.add('Good Morning %SlaveName%');
     let lineCountGreeting = lines.size();
@@ -158,7 +156,7 @@ function getTodaysSlaveTask() {
                 if (isInChastity()) {
                     lines.add('You are allowed to take off your chastity cage for this purpose');
                     lines.add('Talk to my assistant for that purpose %EmoteHappy%');
-                    setVar(VARIABLE.CHASTITY_ALLOWED_REMOVAL_TASK, true);
+                    incrementVar(VARIABLE.CHASTITY_OFF_TASK_ALLOWED_COUNTER, 1);
                 }
 
                 generateNoCummingDailyInstructions(lines);
@@ -411,7 +409,7 @@ function generateDailyPornInstruction(lines, porntype) {
             } else {
                 lines.add('You are allowed to take off your chastity cage for this purpose');
                 lines.add('Talk to my assistant for that purpose %EmoteHappy%');
-                setVar(VARIABLE.CHASTITY_ALLOWED_REMOVAL_TASK, true);
+                incrementVar(VARIABLE.CHASTITY_OFF_TASK_ALLOWED_COUNTER, 1);
             }
         }
 
@@ -460,7 +458,7 @@ function generateDailyTeaseRouletteInstructions(lines, categoriesAllowed, teaseT
                 } else {
                     lines.add('You are allowed to take off your chastity cage for this purpose if required');
                     lines.add('Talk to my assistant for that purpose %EmoteHappy%');
-                    setVar(VARIABLE.CHASTITY_ALLOWED_REMOVAL_TASK, true);
+                    incrementVar(VARIABLE.CHASTITY_OFF_TASK_ALLOWED_COUNTER, 1);
                 }
             }
         }

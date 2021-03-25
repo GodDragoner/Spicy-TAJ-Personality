@@ -20,7 +20,7 @@
     while (!exitRequest) {
         let lobbyAnswer;
 
-        let options = ["Session", "Free Time", "Dungeon", "Settings", "Shop", "Chastity", "End"];
+        let options = ["Session", "Free Time", "Dungeon", "Pinboard", "Settings", "Shop", "Chastity", "End"];
 
         if (isFullTime()) {
             options.push('Academy');
@@ -53,7 +53,9 @@
                 sendVirtualAssistantMessage(getWelcomeMessage(), false);
                 break;
             } else if (lobbyAnswer.isLike("shop", "buy", "purchase", "spent", "gold", "store")) {
-                sendVirtualAssistantMessage("This is not supported yet!");
+                lobbyAnswer.clearOptions();
+                run("Assistant/ShopLobby.js");
+                sendVirtualAssistantMessage(getWelcomeMessage(), false);
                 break;
             } else if (lobbyAnswer.isLike("free time", "fitness", "health", "exercise", "work", "study", "chore", "clean", "dust", "wipe", "wash")) {
                 lobbyAnswer.clearOptions();
