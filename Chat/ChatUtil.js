@@ -2,9 +2,12 @@ const YES_OR_NO = "Yes or no?";
 const TAJ_CHAT_HANDLER = Java.type('me.goddragon.teaseai.api.chat.ChatHandler');
 const LOGGER = Java.type('me.goddragon.teaseai.utils.TeaseLogger');
 const LOGGER_LEVEL = Java.type('java.util.logging.Level');
+const ANSWER_CLASS = Java.type('me.goddragon.teaseai.api.chat.Answer');
+
 const DEBUG_MODE = 1;
 const RAPID_TESTING = isVar("rapidTesting");
 const DEBUG_OPTIONS = isVar("debugOptions");
+
 
 const SENDER_TAJ = 1;
 const SENDER_ASSISTANT = 0;
@@ -15,22 +18,22 @@ const ANSWER_TIMEOUT = 2;
 
 let CURRENT_SENDER = SENDER_TAJ;
 
-if(RAPID_TESTING) {
+if (RAPID_TESTING) {
     TAJ_CHAT_HANDLER.getHandler().setPerMessageCharacterPauseMillis(0);
     TAJ_CHAT_HANDLER.getHandler().setPausePerMessageCharacter(false);
 }
 
 function sendDebugMessage(message) {
-    switch(DEBUG_MODE) {
+    switch (DEBUG_MODE) {
         //Chat and log mode
         case 0:
             sendDebugMessageToChat(message, false, true);
             break;
-            //Log mode only
+        //Log mode only
         case 1:
             LOGGER.getLogger().log(LOGGER_LEVEL.INFO, message);
             break;
-            //No debug at all
+        //No debug at all
         default:
             break;
     }
@@ -131,10 +134,10 @@ function sendVirtualAssistantMessage(message, wait, skipImage) {
         }
     }
 
-    if(!RAPID_TESTING) {
+    if (!RAPID_TESTING) {
         if (wait === undefined) {
             sleep(1000 + message.length * 50, "MILLISECONDS");
-        } else if(typeof wait !== "number") {
+        } else if (typeof wait !== "number") {
             return;
         } else {
             sleep(wait * 1000, "MILLISECONDS");
@@ -254,7 +257,7 @@ function sendGoodForMe() {
     ];
 
     sendMessage('%Good%');
-    if(isChance(50)) {
+    if (isChance(50)) {
         sendMessage(random('Well at least good for me', 'Good for me at least', 'Maybe not that good for you but it makes me happy', 'Maybe not that good for you but for me at least', 'Not that good for you but for me at least')
             + ' ' + random('%Grin%', '%Lol%'));
 
@@ -285,8 +288,8 @@ function sendAlreadyKnowWhatsNext(triggerwords) {
             sendMessageBasedOnSender('Well you are gonna know pretty soon %Lol%');
             return ANSWER_NO;
         } else {
-            for(let x = 0; x < arguments.length; x++) {
-                if(answer.isLike(arguments[x])) {
+            for (let x = 0; x < arguments.length; x++) {
+                if (answer.isLike(arguments[x])) {
                     sendMessage('You must know me pretty well %SlaveName% %EmoteHappy%');
                     return ANSWER_YES;
                 }
@@ -381,10 +384,10 @@ function sendArbMessage(textName, message, wait, imagePath) {
        showImage(ImagePath);
     }*/
 
-    if(!RAPID_TESTING) {
+    if (!RAPID_TESTING) {
         if (wait === undefined) {
             sleep(1000 + message.length * 50, "MILLISECONDS");
-        } else if(typeof wait !== "number") {
+        } else if (typeof wait !== "number") {
             return;
         } else {
             sleep(wait * 1000, "MILLISECONDS");
@@ -438,7 +441,7 @@ function sendDungeonMessage(message, person = 0, wait) {
     }
 
 
-    if(!RAPID_TESTING) {
+    if (!RAPID_TESTING) {
         if (wait === undefined || wait) {
             sleep(.5 + message.length * .03);
         }
@@ -462,10 +465,28 @@ function sendNurseMessage(message, picset, wait, skipImage) {
         showImage("Images/Spicy/Punishment/Nurses/" + (ASSISTANT_CURRENT_SET_ID % 10 + 1) + "/*.jpg");
     }
 
-    if(!RAPID_TESTING) {
+    if (!RAPID_TESTING) {
         if (wait === undefined || wait) {
             sleep(1000 + message.length * 50, "MILLISECONDS");
         }
     }
 }
 
+function createAnswerInput(listOfOptions) {
+    let answerObject = new ANSWER_CLASS();
+
+
+    for(let x = 0; x < listOfOptions.length; x++) {
+        answerObject.addOption(listOfOptions[x]);
+    }
+
+    TAJ_CHAT_HANDLER.getHandler().setCurrentCallback(answerObject);
+    answerObject.setTimeout(false);
+
+    answerObject.setAnswer(null);
+
+    answerObject.setStartedAt(new Date().getTime());
+    TeaseAI.application.waitPossibleScripThread(answerObject.getMillisTimeout());
+    answerObject.checkTimeout();
+    return answerObject;
+}

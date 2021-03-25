@@ -140,6 +140,10 @@ const VARIABLE = {
 
     LAST_CHASTITY_CLEAN: "lastChastityCleanDate",
 
+    LAST_CHASTITY_OFF_TASK: "lastChastityOffTask",
+
+    CHASTITY_OFF_TASK_ALLOWED_COUNTER: "chastityOffTaskAllowedCounter",
+
     WAITING_FOR_CHASTITY_KEY_RETURN: "waitingForChastityKeyReturn",
 
     //Chastity training

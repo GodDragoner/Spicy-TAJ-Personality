@@ -238,10 +238,12 @@ setVar(VARIABLE.ASS_LEVEL, restoreLevel);*/
     /*FLESH_LIGHT.setToyOn(false);
     resetFleshlight();
     setVar(VARIABLE.CHASTITY_ON, true);*/
-    let analOrgasmType = decideAnalOrgasmType();
-    let orgasmCategory = decideOrgasm(true);
+    // let analOrgasmType = decideAnalOrgasmType();
+    // let orgasmCategory = decideOrgasm(true);
+    //
+    // if (orgasmCategory !== ORGASM_CATEGORY_DENIED) {
+    //     getAnalOrgasmInstructions(analOrgasmType, orgasmCategory);
+    // }
 
-    if (orgasmCategory !== ORGASM_CATEGORY_DENIED) {
-        getAnalOrgasmInstructions(analOrgasmType, orgasmCategory);
-    }
+    sendDebugMessage(millisToTimeUnit(getMillisSinecDate(getLastEjaculationDate()), TIME_UNIT_DAYS, 1));
 }

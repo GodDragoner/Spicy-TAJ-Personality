@@ -27,13 +27,11 @@ function registerEjaculation() {
 
 function getLastEjaculationDate() {
     if(!isVar(VARIABLE.LAST_RUINED_ORGASM) && !isVar(VARIABLE.LAST_ORGASM)) {
-        sendDebugMessage('1');
         //Just some really old date if the sub hasn't cum yet for some reason (although the date should be set in the startup file)
         return setDate().addYear(-10);
     }
 
     if(!isVar(VARIABLE.LAST_RUINED_ORGASM) || getDate(VARIABLE.LAST_RUINED_ORGASM).before(getDate(VARIABLE.LAST_ORGASM))) {
-        sendDebugMessage('2');
         return getDate(VARIABLE.LAST_ORGASM);
     }
 

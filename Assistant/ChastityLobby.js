@@ -6,7 +6,7 @@
             sendVirtualAssistantMessage('Well then...');
             sendVirtualAssistantMessage('So what is the reason for this?', 0);
 
-            let answer = createInput('Cleaning', 'Pain', 'Emergency', 'Public', 'Sport', 'Other');
+            let answer = createInput('Cleaning', 'Pain', 'Emergency', 'Public', 'Sport', 'Task', 'Other');
 
             while (true) {
                 if (answer.isLike('clean')) {
@@ -128,6 +128,47 @@
                         }
                     } else {
                         sendVirtualAssistantMessage('Well then don\'t bother me %Slave%');
+                    }
+
+                    break;
+                } else if (answer.isLike('task')) {
+                    if (isVar(VARIABLE.LAST_CHASTITY_OFF_TASK) && !getDate(VARIABLE.LAST_CHASTITY_OFF_TASK).addHour(3).hasPassed()) {
+                        answer.clearOptions();
+
+                        sendVirtualAssistantMessage('You have already done a task in the last 3 hours involving removing your chastity cage');
+                        sendVirtualAssistantMessage('Which means I am not gonna allow you to take it off');
+                        sendVirtualAssistantMessage('Plan ahead %SlaveName% %Grin%');
+                    } else if (isVar(VARIABLE.CHASTITY_OFF_TASK_ALLOWED_COUNTER) && getVar(VARIABLE.CHASTITY_OFF_TASK_ALLOWED_COUNTER) <= 0) {
+                        answer.clearOptions();
+
+                        sendVirtualAssistantMessage('You have already used up all your chances to remove your chastity cage for a task today');
+                        sendVirtualAssistantMessage('Which means I am not gonna allow you to take it off right now');
+                        sendVirtualAssistantMessage('Don\'t try to trick me %SlaveName%');
+                    } else {
+                        answer.clearOptions();
+                        setCurrentSender(SENDER_ASSISTANT);
+
+                        if (sendYesOrNoQuestion('Are you looking to remove the cage to do a task given by your %DomHonorific% %SlaveName%?', SENDER_ASSISTANT)) {
+
+                            sendVirtualAssistantMessage('Well since your %DomHonorific% granted you access to that poor little cock');
+                            sendVirtualAssistantMessage('I won\'t be the one to stop you %Grin%');
+                            unlockChastityKey();
+
+                            setCurrentSender(SENDER_TAJ);
+
+                            sendVirtualAssistantMessage('Now go ahead and do your task and then return to me');
+                            sendVirtualAssistantMessage('I will wait for you');
+
+                            setDate(VARIABLE.LAST_CHASTITY_OFF_TASK);
+                            incrementVar(VARIABLE.CHASTITY_OFF_TASK_ALLOWED_COUNTER, -1, 0);
+                            setVar(VARIABLE.WAITING_FOR_CHASTITY_KEY_RETURN, true);
+                            waitForDoneVirtualAssistant(10000);
+                            sendVirtualAssistantMessage('You\'re back!');
+
+                            onChastityKeyReturn();
+                        } else {
+                            sendVirtualAssistantMessage('Well then, don\'t bother me');
+                        }
                     }
 
                     break;

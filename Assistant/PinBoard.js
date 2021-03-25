@@ -1,17 +1,21 @@
 {
     sendVirtualAssistantMessage('Pin Board Menu:', 0);
     sendVirtualAssistantMessage('- List rules', 0);
+    let options = ['List rules', 'Return'];
+
     let lobbyAnswer;
 
     if(isVar(VARIABLE.ENEMA_INTRO)) {
         sendVirtualAssistantMessage('- Enema', 0);
+        options.push('Enema');
     }
 
     if(RULE_FOLLOW_DAILY_TASKS.isActive()) {
         sendVirtualAssistantMessage('- Daily Tasks', 0);
+        options.push('Daily Tasks');
     }
 
-    lobbyAnswer = createInput('List rules', 'Return');
+    lobbyAnswer = createAnswerInput(options);
 
     while (true) {
         if (lobbyAnswer.isLike('rules')) {

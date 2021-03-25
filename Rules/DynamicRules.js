@@ -26,6 +26,10 @@ let RULE_FOLLOW_DAILY_TASKS;
 
 let RULE_ALWAYS_WEAR_WOMAN_SOCKS;
 
+let RULE_EVENING_RITUAL;
+
+let RULE_EVENING_RITUAL_EDGES_LAST_CUM;
+
 {
     let ruleId = 0;
 
@@ -683,6 +687,28 @@ let RULE_ALWAYS_WEAR_WOMAN_SOCKS;
 
         this.setActive(true);
         return true;
+    };
+
+    AVAILABLE_RULES.push(rule);
+
+    rule = RULE_EVENING_RITUAL = createRule(ruleId++, false);
+
+    rule.getRulePrint = function () {
+        return 'You must be follow all evening ritual instructions before going to bed';
+    };
+
+    rule.canBeActivated = function () {
+        return isFullTime();
+    };
+
+    rule = RULE_EVENING_RITUAL_EDGES_LAST_CUM = createRule(ruleId++, false);
+
+    rule.getRulePrint = function () {
+        return 'Evening Ritual: You must do ' + getDaysSinceDate(getLastEjaculationDate()) + ' edges before going to bed';
+    };
+
+    rule.canBeActivated = function () {
+        return isFullTime();
     };
 
     AVAILABLE_RULES.push(rule);

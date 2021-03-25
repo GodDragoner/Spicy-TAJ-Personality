@@ -8,14 +8,26 @@ function getMillisSinecDate(date) {
 }
 
 function millisToTimeUnit(millisec, timeUnit, fraction = 1) {
+    let result = "0";
     switch(timeUnit) {
         case TIME_UNIT_SECONDS:
-            return (millisec / 1000).toFixed(fraction);
+            result = (millisec / 1000).toFixed(fraction);
+            break;
         case TIME_UNIT_MINUTES:
-            return (millisec / (1000 * 60)).toFixed(fraction);
+            result = (millisec / (1000 * 60)).toFixed(fraction);
+            break;
         case TIME_UNIT_HOURS:
-            return (millisec / (1000 * 60 * 60)).toFixed(fraction);
+            result = (millisec / (1000 * 60 * 60)).toFixed(fraction);
+            break;
         case TIME_UNIT_DAYS:
-            return (millisec / (1000 * 60 * 60 * 24)).toFixed(fraction);
+            result = (millisec / (1000 * 60 * 60 * 24)).toFixed(fraction);
+            break;
     }
+
+    return parseFloat(result);
 }
+
+function getDaysSinceDate(date) {
+    return millisToTimeUnit(getMillisSinecDate(date), TIME_UNIT_DAYS, 0);
+}
+
