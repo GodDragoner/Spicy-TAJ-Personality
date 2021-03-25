@@ -25,10 +25,10 @@ if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.STROKING)) {
                 setVar(VARIABLE.SUB_PREMATURE_EJACULATE, false);
                 break;
             } else if (answer.isLike("don't understand", "not understand", "explain", "what's that", "do you mean", "what is")) {
-                sendMessage('Is it hard to keep yourself from cumming when you\'re %JerkingOff% or having sex?');
+                sendMessage('Is it hard to keep yourself from cumming when you\'re %JerkingOff% or having sex?', 0);
                 answer.loop();
             } else {
-                sendMessage('"%YesOrNo%"');
+                sendMessage('"%YesOrNo%"', 0);
                 answer.loop();
             }
         }

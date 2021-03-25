@@ -64,7 +64,7 @@
                 sendMessage('Although I might have just made that pretty damn difficult %Grin%');
                 break;
             } else {
-                sendMessage('Do you need a pause or training?');
+                sendMessage('Do you need a pause or training?', 0);
                 answer.loop();
             }
         }

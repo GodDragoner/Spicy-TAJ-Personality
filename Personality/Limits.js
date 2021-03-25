@@ -69,7 +69,7 @@ ANAL_LIMIT.sendIntroduction = function (type) {
                 sendMessage("I guess that means we will work on this from now on %Grin%");
                 break;
             } else {
-                sendMessage(YES_OR_NO);
+                sendMessage(YES_OR_NO, 0);
                 answer.loop();
             }
         }
@@ -597,7 +597,7 @@ function askForNewLimitValue(limit) {
             limit.setLimit(LIMIT_ASKED_MAYBE);
             break;
         } else {
-            sendMessage('Yes, no or maybe %SlaveName%?');
+            sendMessage('Yes, no or maybe %SlaveName%?', 0);
             answer.loop();
         }
     }

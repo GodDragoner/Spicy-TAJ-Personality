@@ -219,7 +219,7 @@ function endSpicySession() {
                     sendMessage('Don\'t worry under my guidance you will be holding deepthroats like a pro really quickly %Grin%');
                     break;
                 } else {
-                    sendMessage(YES_OR_NO);
+                    sendMessage(YES_OR_NO, 0);
                     answer.loop();
                 }
             }

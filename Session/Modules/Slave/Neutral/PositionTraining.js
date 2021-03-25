@@ -125,7 +125,7 @@ function simplePositionTrainingIntro() {
             return;
         } else {
             changeMeritLow(true);
-            sendMessage(YES_OR_NO);
+            sendMessage(YES_OR_NO, 0);
             answer.loop();
         }
     }
@@ -563,7 +563,7 @@ function positionTest(number, name, image) {
                 sendMessage("Bad!");
                 break;
             } else {
-                sendMessage(YES_OR_NO);
+                sendMessage(YES_OR_NO, 0);
                 answer.loop();
             }
         }
@@ -587,7 +587,7 @@ function positionTest(number, name, image) {
                 sendMessage("Bad!");
                 break;
             } else {
-                sendMessage(YES_OR_NO);
+                sendMessage(YES_OR_NO, 0);
                 answer.loop();
             }
         }
@@ -869,7 +869,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
                     sendMessage("%Good%");
                     return true;
                 } else {
-                    sendMessage("Just say yes when you've finished fetching.");
+                    sendMessage("Just say yes when you've finished fetching.", 0);
                     changeMeritLow(true);
                     answer.loop();
                 }
@@ -949,7 +949,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
                     sendMessage("Aww %EmoteSad%");
                     break;
                 } else {
-                    sendMessage("Just say yes when you've finished fetching.");
+                    sendMessage("Just say yes when you've finished fetching.", 0);
                     changeMeritLow(true);
                     answer.loop();
                 }
@@ -1054,7 +1054,7 @@ function positionCheckBalance() {
     while (true) {
         let answer = sendInput("How many times did you lose your balance?");
         if (!answer.isInteger()) {
-            sendMessage("Just give me a number %SlaveName%");
+            sendMessage("Just give me a number %SlaveName%", 0);
             answer.loop();
         } else if (answer.getInt() < 4 - getStrictnessForCharacter()) {
             sendMessage("Well I suppose that isn't too bad then");
@@ -1083,7 +1083,7 @@ function checkPositionToys() {
             sendMessage("Well, looks like somebody needs to go shopping...");
             return false;
         } else {
-            sendMessage("Just say yes when you're ready %SlaveName%, or no if you don't have the items needed.");
+            sendMessage("Just say yes when you're ready %SlaveName%, or no if you don't have the items needed.", 0);
             changeMeritLow(true);
             answer.loop();
         }

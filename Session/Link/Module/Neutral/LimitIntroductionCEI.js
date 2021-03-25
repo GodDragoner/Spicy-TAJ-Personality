@@ -42,7 +42,7 @@
                 }
 
                 if (answer.isLike("yes")) {
-                    sendMessage('Really? So, what do you think I like about it?');
+                    sendMessage('Really? So, what do you think I like about it?', 0);
                     answer.loop();
                 } else if (answer.isLike("no")) {
                     break;
@@ -79,7 +79,7 @@
 
             while (true) {
                 if (answer.isLike("yes")) {
-                    sendMessage('Okay, so what do you think I don\'t like?');
+                    sendMessage('Okay, so what do you think I don\'t like?', 0);
                     answer.loop();
                 } else if (answer.isLike("no")) {
                     sendMessage("You're not the guessing type then");

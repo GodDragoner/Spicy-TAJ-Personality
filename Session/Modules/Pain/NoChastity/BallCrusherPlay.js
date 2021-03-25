@@ -133,7 +133,7 @@ function ballCrusherGame() {
                 answerType = 2;
                 break;
             } else {
-                sendMessage('Boobs, butt or hentai %SlaveName%?');
+                sendMessage('Boobs, butt or hentai %SlaveName%?', 0);
                 answer.loop();
             }
         }

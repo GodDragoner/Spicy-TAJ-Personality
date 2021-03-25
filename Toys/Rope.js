@@ -75,7 +75,7 @@ function untieBalls(force = false) {
     }
 
     sendMessage('Untie your balls %SlaveName%');
-    sendMessage('Tell me when you are done...');
+    sendMessage('Tell me when you are done...', 0);
 
     const answer = createInput();
 
@@ -85,7 +85,7 @@ function untieBalls(force = false) {
             setTempVar(VARIABLE.LAST_BALLS_UNTIE, setDate());
             break;
         } else {
-            sendMessage('Have you untied your balls yet %SlaveName%?');
+            sendMessage('Have you untied your balls yet %SlaveName%?', 0);
             answer.loop();
         }
     }

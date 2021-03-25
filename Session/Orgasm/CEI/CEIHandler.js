@@ -70,7 +70,7 @@ function sendEatInstructions(ceiDestination = CEI_UNDEFINED) {
 
             break;
         } else if(answer.isLike('no')) {
-            sendMessage(random("Yuck %Lol%", "Then hurry the fuck up, I want to wrap this up"));
+            sendMessage(random("Yuck %Lol%", "Then hurry the fuck up, I want to wrap this up"), 0);
             answer.loop();
         } else if(answer.isLike("didn't", "can't", "couldn't", "possible", "impossible", 'won\'t')) {
             if(RULE_ALWAYS_SWALLOW_CUM.isActive()) {
@@ -90,7 +90,7 @@ function sendEatInstructions(ceiDestination = CEI_UNDEFINED) {
             //We want to skip the last line
             return;
         } else {
-            sendMessage(YES_OR_NO);
+            sendMessage(YES_OR_NO, 0);
             answer.loop();
         }
     }

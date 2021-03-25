@@ -70,7 +70,7 @@ if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.STROKING)) {
                             sendMessage("Well then we're just having a normal training session today");
                             break;
                         } else {
-                            sendMessage(YES_OR_NO);
+                            sendMessage(YES_OR_NO, 0);
                             answer.loop();
                         }
                     }
@@ -102,7 +102,7 @@ if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.STROKING)) {
             if (answer.isInteger()) {
                 const result = answer.getInt();
                 if (result <= 0) {
-                    sendMessage("You can't choose a number lower than 1...");
+                    sendMessage("You can't choose a number lower than 1...", 0);
                     answer.loop();
                 } else {
                     if (result > getVar(VARIABLE.EDGE_A_TON_EDGE_RECORD, -1)) {
@@ -115,7 +115,7 @@ if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.STROKING)) {
                     break;
                 }
             } else {
-                sendMessage("You need to input a number...");
+                sendMessage("You need to input a number...", 0);
                 answer.loop();
             }
         }

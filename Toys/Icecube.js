@@ -44,7 +44,7 @@ function askForIceCubes(amount) {
         } else if(answer.isLike('no')) {
             return -1;
         } else {
-            sendMessage(YES_OR_NO);
+            sendMessage(YES_OR_NO, 0);
             answer.loop();
         }
     }

@@ -140,7 +140,7 @@ function startMissingCardMemory(gameType) {
                 rightAnswer = answerDict[answer.getAnswer().toLowerCase()] === numberMissing;
                 break;
             } else {
-                sendMessage('Which card was missing?');
+                sendMessage('Which card was missing?', 0);
                 answer.loop();
             }
         }

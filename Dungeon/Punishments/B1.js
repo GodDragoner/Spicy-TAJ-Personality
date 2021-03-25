@@ -259,7 +259,7 @@
 				sendMessage("good,  I hope I'll be taking more advantage of that clean hole of yours soon. ");
 				break;
 			} else
-				sendMessage(random("you're so full of shit, you don't make sense", "What the fuck are you saying?", "are you finished yet bitch?"));
+				sendMessage(random("you're so full of shit, you don't make sense", "What the fuck are you saying?", "are you finished yet bitch?"), 0);
 			//response = sendInput("does that mean you're finished %Slave%?"); //#EnemaChat
 			response.loop();
 		}

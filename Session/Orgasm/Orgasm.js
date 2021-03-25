@@ -84,7 +84,7 @@ function waitForCumAnswer() {
             sendMessage('You\'re welcome %SlaveName% %Grin%');
             break;
         } else {
-            sendMessage('How about you thank your %DomHonorific%?');
+            sendMessage('How about you thank your %DomHonorific%?', 0);
             changeMeritLow(true);
             answer.loop();
         }
@@ -414,14 +414,14 @@ function askAboutDenialLevel() {
                                 incrementVar(VARIABLE.DENIAL_LEVEL, 1);
                                 break;
                             } else {
-                                sendMessage('Too high or low %SlaveName%?');
+                                sendMessage('Too high or low %SlaveName%?', 0);
                                 answer.loop();
                             }
                         }
 
                         break;
                     } else {
-                        sendMessage(YES_OR_NO);
+                        sendMessage(YES_OR_NO, 0);
                         answer.loop();
                     }
                 }

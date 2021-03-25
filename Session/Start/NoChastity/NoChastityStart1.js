@@ -23,7 +23,7 @@
                 sendMessage("Those lips wrapped around %MyYour% %Cock%");
                 break;
             } else {
-                sendMessage(YES_OR_NO);
+                sendMessage(YES_OR_NO, 0);
                 answer.loop();
             }
         }

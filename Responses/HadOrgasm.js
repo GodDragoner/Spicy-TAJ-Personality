@@ -28,7 +28,7 @@ function hadOrgasmResponse(message) {
         } else if(answer.isLike('before')) {
             break;
         } else {
-            sendMessage('Right now or before the session %SlaveName%?');
+            sendMessage('Right now or before the session %SlaveName%?', 0);
             answer.loop();
         }
 

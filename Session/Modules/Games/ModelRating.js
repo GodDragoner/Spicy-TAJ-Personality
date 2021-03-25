@@ -46,11 +46,11 @@ function startModelRating(gameType) {
                 if (answer.isInteger()) {
                     const result = answer.getInt();
                     if (result > 10) {
-                        sendMessage('You can\'t choose a number higher than 10...');
+                        sendMessage('You can\'t choose a number higher than 10...', 0);
                         changeMeritLow(true);
                         answer.loop();
                     } else if (result < 1) {
-                        sendMessage('You can\'t choose a number lower than 1...');
+                        sendMessage('You can\'t choose a number lower than 1...', 0);
                         changeMeritLow(true);
                         answer.loop();
                     } else {
@@ -59,7 +59,7 @@ function startModelRating(gameType) {
                         break;
                     }
                 } else {
-                    sendMessage("What did I tell you %SlaveName%? Only give me a NUMBER and nothing else!");
+                    sendMessage("What did I tell you %SlaveName%? Only give me a NUMBER and nothing else!", 0);
                     changeMeritLow(true);
                     answer.loop();
                 }
@@ -199,7 +199,7 @@ function startModelRating(gameType) {
 
                         break;
                     } else {
-                        sendMessage('The first or the second one? Or did they share the same score? %Grin%');
+                        sendMessage('The first or the second one? Or did they share the same score? %Grin%', 0);
                         answer.loop();
                     }
                 }
@@ -220,7 +220,7 @@ function startModelRating(gameType) {
 
                         break;
                     } else {
-                        sendMessage('Just give me a number between 1 and 10 %SlaveName%...');
+                        sendMessage('Just give me a number between 1 and 10 %SlaveName%...', 0);
                         changeMeritLow(true);
                         answer.loop();
                     }

@@ -115,7 +115,7 @@ function handleTodayAcademyClasses() {
                                 setVar(VARIABLE.ACADEMY_CLASS_SKIPPED_TYPE, ACADEMY_SKIPPED_CLASS_TYPE.PUNISHMENT_POINTS);
                                 break;
                             } else {
-                                sendMessage('Tasks or punishment points');
+                                sendMessage('Tasks or punishment points', 0);
                                 answer.loop();
                             }
                         }
