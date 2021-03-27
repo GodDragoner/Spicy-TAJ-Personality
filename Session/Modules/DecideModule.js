@@ -74,6 +74,9 @@
 
             if (specialSession !== undefined) {
                 startSpecialSession(specialSession);
+
+                //Skip modules if time is running low and we need to follow up our special session
+                skipModules = hasSessionTimePassed(getVar(VARIABLE.DEVOTION) / 2);
             }
         } else {
             //Continue special session if we've had some modules in between or half session time already passed
@@ -83,7 +86,7 @@
             }
         }
 
-        if(skipModules) {
+        if(!skipModules) {
             const moduleChance = 50;
             let teaseModuleChance = moduleChance;
             const teaseModuleAdditions = [

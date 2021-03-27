@@ -15,8 +15,11 @@ function slaveNameVocabulary() {
     }
 
     if(CEI_LIMIT.isAllowed()) {
-        answers.push('cum consumer', 'cum lover', 'cum guzzler');
-        adjectives.push('cum eating',  'cum sucking', 'cum craving');
+        if(isChance(50)) {
+            answers.push('cum consumer', 'cum lover', 'cum guzzler');
+        } else {
+            adjectives.push('cum eating',  'cum sucking', 'cum craving');
+        }
     }
 
     if (VERBAL_HUMILIATION_LIMIT.isAllowed() && (getMood() > NEUTRAL_MOOD || feelsLikePunishingSlave())) {

@@ -244,6 +244,4 @@ setVar(VARIABLE.ASS_LEVEL, restoreLevel);*/
     // if (orgasmCategory !== ORGASM_CATEGORY_DENIED) {
     //     getAnalOrgasmInstructions(analOrgasmType, orgasmCategory);
     // }
-
-    EVENING_ROUTINE.RULE_EVENING_RITUAL_EDGES_LAST_CUM.setActive(true);
 }
