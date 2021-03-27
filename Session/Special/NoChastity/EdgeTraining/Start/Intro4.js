@@ -1,16 +1,22 @@
 {
-   startEdging();
-   sendMessage('%LetEdgeFade%');
-   sendMessage('Today\'s session is going to be another of our edge training sessions');
+    startEdging();
+    sendMessage('%LetEdgeFade%');
+    sendMessage('Today\'s session is going to be another of our edge training sessions');
 
-   if(sendYesOrNoQuestion('Exciting, isn\'t it? %EmoteHappy%')) {
-       sendMessage("I'm glad you feel that way, %SlaveName%");
-   } else {
-       sendMessage("Oh... I guess you do really need another round of edge training then");
-   }
+    if (sendYesOrNoQuestion('Exciting, isn\'t it? %EmoteHappy%')) {
+        sendMessage("I'm glad you feel that way, %SlaveName%");
+    } else {
+        sendMessage("Oh... I guess you do really need another round of edge training then");
+    }
 
     sendMessage("It's going to be frustrating, yes");
     sendMessage("But you know that it's worth it in the end");
+
+    if (!isKneeling()) {
+        startKneeling();
+        sendMessage('So get down on all fours like a good edge puppy');
+    }
+
     startEdging();
 
     sendMessage("There are 2 reasons why all this frustration is worth it");
@@ -53,9 +59,9 @@
     sendMessage("Imagine yourself kneeling on the floor in front of me");
     let feelsRight = sendYesOrNoQuestionTimeout('It feels so <i>right</i>, doesn\'t it?', 9);
 
-    if(feelsRight === ANSWER_YES) {
+    if (feelsRight === ANSWER_YES) {
         sendMessage('That\'s how deep your desire to submit is, %SlaveName%');
-    } else if(feelsRight === ANSWER_NO) {
+    } else if (feelsRight === ANSWER_NO) {
         sendMessage('Then you need a lot more training, %SlaveName% %EmoteSad%');
         changeMeritMedium(true);
     }
