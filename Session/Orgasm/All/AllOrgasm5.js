@@ -7,6 +7,7 @@
 
         sendMessage("%StartStroking%");
     } else {
+        readyForVibratingCage();
         sendMessage('Put the vibrator on the cage %Grin%');
     }
 
