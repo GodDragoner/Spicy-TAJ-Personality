@@ -11,10 +11,15 @@ const SPECIAL_SESSION = {
         },
 
         continueSpecialSession: function () {
-            let edgeTrainingFollowUpHistory = createFileHistory('edgetrainingfollow', ['Session/Special/NoChastity/EdgeTraining/FollowUp']);
-            let file = edgeTrainingFollowUpHistory.getRandomAvailableFile();
-            edgeTrainingFollowUpHistory.addHistoryRun(getFileId(file));
-            run(getRelativePersonalityFilePath(file));
+            //Can't continue if the sub somehow managed to end up in chastity
+            if(isInChastity()) {
+                endSpecialSession();
+            } else {
+                let edgeTrainingFollowUpHistory = createFileHistory('edgetrainingfollow', ['Session/Special/NoChastity/EdgeTraining/FollowUp']);
+                let file = edgeTrainingFollowUpHistory.getRandomAvailableFile();
+                edgeTrainingFollowUpHistory.addHistoryRun(getFileId(file));
+                run(getRelativePersonalityFilePath(file));
+            }
         }
     },
 };
@@ -52,8 +57,6 @@ function chooseSpecialSession() {
     if(daysPassed > 5) {
         if(isChance(daysPassed*10)) {
             if(SPECIAL_SESSION.EDGE_TRAINING.canBeActivated()) {
-                setDate(VARIABLE.LAST_RULE_PASSED);
-
                 //QUALITY: Add more special sessions
                 return SPECIAL_SESSION.EDGE_TRAINING;
             }

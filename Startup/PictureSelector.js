@@ -30,7 +30,7 @@ function showDommeTaggedImageForPictureTag(pictureTag, duration) {
     let pictureTagArray = new java.util.ArrayList();
     pictureTagArray.add(pictureTag);
 
-    if(pictureTag !== null) {
+    if(!isUndefined(pictureTag) && !isUndefined(pictureSet)) {
         return showImage(pictureSet.getRandomPictureForTagStates(new java.util.ArrayList(), pictureTagArray).getFile())
     } else {
         sendDebugMessage('Picture set for domme was null so showing tease image instead');

@@ -301,6 +301,11 @@ function sendAlreadyKnowWhatsNext(triggerwords) {
     }
 }
 
+function sendMakeMeProud() {
+    sendMessageBasedOnSender(random('I hope you make me proud', 'Try your best to make me proud', 'Try your best to impress me', 'I hope you try your best', 'I wanna see you at your best', 'Make sure to try your best', 'You better try to impress me', 'I hope you are trying your best to impress me'));
+}
+
+
 
 function sendYesOrNoQuestion(question, sender = null) {
     let previousSender = getCurrentSender();
