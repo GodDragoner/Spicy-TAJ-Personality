@@ -9,7 +9,7 @@
 
         startEdging();
 
-        sendMessage('Fuck, you do like like you\'re about to blow your load');
+        sendMessage('Fuck, you do look like you\'re about to blow your load');
         sendMessage('I might even have to... let you cum %GeneralTime%');
         sendMessage('Or maybe not %Grin%');
         startMultipleEdges(2);

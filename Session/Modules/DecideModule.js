@@ -3,8 +3,8 @@
 {
     let moduleCounter = 0;
 
-    //End session
-    while (!hasSessionTimePassed(getVar(VARIABLE.DEVOTION) + getVar(VARIABLE.PROLONGED_SESSION_TIME, 0))) {
+    //End session if we only have <= 10% of session time left
+    while (!hasSessionTimePassed(Math.ceil((getVar(VARIABLE.DEVOTION) + getVar(VARIABLE.PROLONGED_SESSION_TIME, 0))*0.90))) {
         checkInteraction();
 
         //Apply random toys

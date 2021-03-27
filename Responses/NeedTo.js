@@ -48,7 +48,7 @@ function needToResponse(message) {
         'You don\'t "need to" anything',
         'There is no "I want, I got to, or I need to" for you',
         'I don\'t care what you want %SlaveName%',
-        'Do I like like I care what you want %SlaveName%?',
+        'Do I look like I care what you want %SlaveName%?',
         'I could act like I care but I really don\'t %SlaveName%',
         'I think you meant "May I" %SlaveName%',
         'If you ask me politely I might consider it',
