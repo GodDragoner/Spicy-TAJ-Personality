@@ -24,16 +24,7 @@ const BALL_TRAP_TYPE = {
 };
 
 
-function SetAllowedTaskChastityCageOffAmount() {
-    let result = 0;
 
-    if(EVENING_ROUTINE.RULE_EVENING_RITUAL_EDGES_LAST_CUM.isActive()) {
-        result += 1;
-    }
-
-    //Set to amount
-    setVar(VARIABLE.CHASTITY_OFF_TASK_ALLOWED_COUNTER, result);
-}
 
 function getActiveChastityCage() {
     if (currentChastityCage === null || currentChastityCage === undefined) {
