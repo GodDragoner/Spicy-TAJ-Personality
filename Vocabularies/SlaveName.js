@@ -15,11 +15,11 @@ function slaveNameVocabulary() {
     }
 
     if(CEI_LIMIT.isAllowed()) {
-        answers.push('cum consumer', 'cum lover');
-        adjectives.push('cum dripping', 'cum eating',  'cum sucking', 'cum craving');
+        answers.push('cum consumer', 'cum lover', 'cum guzzler');
+        adjectives.push('cum eating',  'cum sucking', 'cum craving');
     }
 
-    if (VERBAL_HUMILIATION_LIMIT.isAllowed() && (getMood() > NEUTRAL_MOOD || feelsLikeShowingPower())) {
+    if (VERBAL_HUMILIATION_LIMIT.isAllowed() && (getMood() > NEUTRAL_MOOD || feelsLikePunishingSlave())) {
         adjectives.push('disgusting', 'tiny dick', 'worthless', 'naughty', 'stupid', 'filthy', 'nasty', 'pathetic', 'small dick');
         answers.push("slut", 'bitch', 'loser', 'idiot', 'piece of shit', 'whore');
     }

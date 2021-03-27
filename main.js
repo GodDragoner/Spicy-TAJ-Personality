@@ -97,6 +97,7 @@ run("Toys/Toys.js");
 run("Startup/PictureSelector.js");
 
 run("Rules/DynamicRules.js");
+run("Rules/EveningRoutine.js");
 
 run("Session/Modules/Games/Games.js");
 

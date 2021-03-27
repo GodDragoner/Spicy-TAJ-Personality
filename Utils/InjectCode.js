@@ -245,5 +245,5 @@ setVar(VARIABLE.ASS_LEVEL, restoreLevel);*/
     //     getAnalOrgasmInstructions(analOrgasmType, orgasmCategory);
     // }
 
-    sendDebugMessage(millisToTimeUnit(getMillisSinecDate(getLastEjaculationDate()), TIME_UNIT_DAYS, 1));
+    EVENING_ROUTINE.RULE_EVENING_RITUAL_EDGES_LAST_CUM.setActive(true);
 }

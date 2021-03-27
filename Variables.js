@@ -80,6 +80,12 @@ const VARIABLE = {
 
     GOLD: "gold",
 
+    LAST_MERIT_CHANGE_DATE: "lastMeritChange",
+
+    /**
+     * Holds the total accumulated daily merit change as a number
+     */
+    DAILY_MERIT_CHANGE: "dailyMeritChange",
     MERITS: "merits",
 
     //Orgasm

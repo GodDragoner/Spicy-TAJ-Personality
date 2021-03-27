@@ -52,6 +52,9 @@ if (isVar(dayOfWeek + "MoodDate")) {
 if (newDay) {
     setDate(dayOfWeek + "MoodDate");
 
+    //Reset var to zero
+    setVar(VARIABLE.DAILY_MERIT_CHANGE, 0);
+
     //Reset scenarios
     setVar("activeMoodScenarios", ",");
 

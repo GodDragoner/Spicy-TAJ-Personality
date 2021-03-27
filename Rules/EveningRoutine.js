@@ -10,7 +10,8 @@ const EVENING_ROUTINE = {
     let routineTask = EVENING_ROUTINE.RULE_EVENING_RITUAL_EDGES_LAST_CUM = createEveningRoutineRule(ruleId++, false);
 
     routineTask.getRulePrint = function () {
-        return 'Evening Ritual: You must do ' + getDaysSinceDate(getLastEjaculationDate()) + ' edges before going to bed';
+        let edges = getDaysSinceDate(getLastEjaculationDate());
+        return 'Evening Ritual: You must do ' + edges + ' ' + pluralize('edge', edges) + ' before going to bed';
     };
 
     routineTask.canBeActivated = function () {

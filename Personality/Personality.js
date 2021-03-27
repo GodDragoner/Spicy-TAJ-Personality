@@ -194,6 +194,9 @@ function changeMerit(level, negative) {
 
     sendDebugMessage('Changing merits (level ' + level + ') by ' + meritChange);
 
+    setDate(VARIABLE.LAST_MERIT_CHANGE_DATE);
+    incrementVar(VARIABLE.DAILY_MERIT_CHANGE, meritChange, 0);
+
     addMerits(meritChange);
 }
 

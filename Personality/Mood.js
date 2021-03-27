@@ -75,6 +75,11 @@ function feelsLikePunishingSlave() {
     sendDebugMessage('Feel like punishing chance: ' + chance);
     let punish = isChance(chance);
 
+    //Average merit change subtracted from chance
+    let dailyMeritChangeModifier = (Math.floor(getVar(VARIABLE.DAILY_MERIT_CHANGE, 0)/2.0));
+    sendDebugMessage('Daily merit change modifier: ' + dailyMeritChangeModifier);
+    chance -= dailyMeritChangeModifier;
+
     //If chance hits twice (the higher the chance => madder domme => higher chance of increasing her mood => make the chance smaller for higher strictness)
     if(punish && isChance(Math.floor(chance/(getStrictnessForCharacter() + 1)))) {
         //Add a few merits so domme feels better since she punished slave
