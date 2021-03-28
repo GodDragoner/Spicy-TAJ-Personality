@@ -280,6 +280,16 @@ function startModelRating(gameType) {
                         rewardGoldLow();
                     }
                 }
+                //Anal and stuff
+                else if(isInChastity()) {
+                    if (wins === 0) {
+                        sendMessage('Since you are in chastity and I can\'t give you any treat of some sort I am just gonna reward you with gold');
+                    } else {
+                        sendMessage('Some gold for you yet again %EmoteHappy%');
+                    }
+
+                    rewardGoldLow();
+                }
 
                 wins++;
             } else {
