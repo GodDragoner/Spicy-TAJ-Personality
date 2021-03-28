@@ -80,6 +80,12 @@
                     sendMessage('It\'s about your sissy training %Grin%');
 
                     getEndGameById(END_GAME_ANAL_ORGASM).sendIntroduction();
+                } else if(RULE_ALWAYS_WEAR_WOMAN_SOCKS.isActive() && shouldIntroduceNewRule(RULE_ONLY_SISSY_ADDRESS)) {
+                    sendMessage('There is one last thing for today...');
+                    sendMessage('It\'s about your sissy training %Grin%');
+
+                    RULE_ONLY_SISSY_ADDRESS.sendIntroduction();
+                    setDate(VARIABLE.LAST_RULE_PASSED);
                 }
             }
         }

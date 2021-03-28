@@ -244,5 +244,4 @@ setVar(VARIABLE.ASS_LEVEL, restoreLevel);*/
     // if (orgasmCategory !== ORGASM_CATEGORY_DENIED) {
     //     getAnalOrgasmInstructions(analOrgasmType, orgasmCategory);
     // }
-    sendDebugMessage(getDaysSinceDate(getLastEjaculationDate()));
 }

@@ -371,6 +371,7 @@ function startModelRating(gameType) {
             sendMessage('You may put that dildo away for now %SlaveName%');
         }
 
+        //QUALITY: More variation
         sendMessage('We\'re at the end! %Grin%');
         sendMessage('Hopefully this was as much fun for you as for me');
         sendMessage('I guess it was if you have a good memory %Lol%');

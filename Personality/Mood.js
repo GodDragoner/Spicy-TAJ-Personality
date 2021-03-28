@@ -90,6 +90,14 @@ function feelsLikePunishingSlave() {
     return punish;
 }
 
+/**
+ * Returns whether the domme is in a bad mood (daily merit change is beneath threshold) or mood is bad
+ * @returns {boolean|boolean} Whether the domme wants to insult slave
+ */
+function feelsLikeInsultingSlave() {
+    return (getVar(VARIABLE.DAILY_MERIT_CHANGE) < (3 - getStrictnessForCharacter())*-10 || getMood() > NEUTRAL_MOOD) && isChance(getStrictnessForCharacter()*20)
+}
+
 function wouldLikeToProlongSession() {
     let mood = getMood();
 

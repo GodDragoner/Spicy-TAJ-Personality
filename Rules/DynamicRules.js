@@ -28,6 +28,10 @@ let RULE_ALWAYS_WEAR_WOMAN_SOCKS;
 
 let RULE_EVENING_RITUAL;
 
+let RULE_ONLY_SISSY_ADDRESS;
+
+let RULE_OWNED_BODY;
+
 {
     let ruleId = 0;
 
@@ -698,6 +702,70 @@ let RULE_EVENING_RITUAL;
     rule.canBeActivated = function () {
         return isFullTime();
     };
+
+    AVAILABLE_RULES.push(rule);
+
+
+    rule = RULE_ONLY_SISSY_ADDRESS = createRule(ruleId++, false);
+
+    rule.getRulePrint = function () {
+        return 'You will be addressed like a proper sissy by your %DomHonorific%';
+    };
+
+    rule.canBeActivated = function () {
+        return getVar(VARIABLE.SISSY_TRAINING, false);
+    };
+
+    rule.sendIntroduction = function () {
+        sendMessage('First of all I hope you are adjusting well to all those changes %Wicked%');
+
+        sendMessage('I promise you that this time I won\'t make too much of a change for you');
+        sendMessage('At least nothing that would influence your daily life too much %EmoteHappy%');
+        sendMessage('It\'s more of a change of your mindset');
+
+        sendMessage('But first...');
+        let guess = sendInput('Have a guess at what I am talking about %Wicked%');
+
+        if(guess.isLike('name', 'address')) {
+           sendMessage('Exactly!');
+        } else if(guess.isLike('nail', 'hair', 'accessory', 'accessories', 'makeup', 'make up')) {
+            sendMessage('No silly %Grin%');
+            sendMessage('I said nothing that has too much impact on you');
+            sendMessage('But it\'s something for further down the road')
+        } else if(guess.isLike('no')) {
+            sendMessage('%EmoteSad%');
+            sendMessage('You are ruining the fun....');
+            sendMessage('Well...');
+        } else {
+            sendMessage('No, let me help you out then %Grin%');
+        }
+
+        sendMessage('I just want to change the way I address you %EmoteHappy%');
+        sendMessage('In the past I have been using terms like slave, pet and stroker');
+        sendMessage('You won\'t see me to stuff like that anymore');
+
+        sendMessage('From now on you will always be my sissy');
+        sendMessage('With a cute little clitty %EmoteHappy%');
+        sendMessage('I mean that\'s who you are, isn\'t it? %Lol%');
+        sendMessage('It would be just as appropriate to address you as such as well');
+        sendMessage('Just to get the mindset of yours accept your fate');
+        sendMessage('And your new identity and lifestyle %EmoteHappy%');
+
+        sendMessage('Nothing to worry about but hopefully something that\'s gonna make a difference %Wicked%');
+
+        this.setActive(true);
+        return true;
+    };
+
+    AVAILABLE_RULES.push(rule);
+
+    rule = RULE_OWNED_BODY = createRule(ruleId++, false);
+
+    rule.getRulePrint = function () {
+        return 'Your body belongs to %DomHonorific% %DomName%';
+    };
+
+    AVAILABLE_RULES.push(rule);
 
     //Update all existing rules
     for (let index = 0; index < AVAILABLE_RULES.length; index++) {

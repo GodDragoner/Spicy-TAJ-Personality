@@ -104,6 +104,6 @@ function tryGetArrayList(varName) {
         }
     }
 
-    sendDebugMessage('Loaded array list ' + varName);
+    //sendDebugMessage('Loaded array list ' + varName);
     return varValue;
 }
