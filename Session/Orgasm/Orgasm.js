@@ -32,11 +32,11 @@ function getLastEjaculationDate() {
     }
 
     if(!isVar(VARIABLE.LAST_RUINED_ORGASM) || getDate(VARIABLE.LAST_RUINED_ORGASM).before(getDate(VARIABLE.LAST_ORGASM))) {
-        return getDate(VARIABLE.LAST_ORGASM);
+        return getDate(VARIABLE.LAST_ORGASM).clone();
     }
 
     sendDebugMessage('3');
-    return getDate(VARIABLE.LAST_RUINED_ORGASM);
+    return getDate(VARIABLE.LAST_RUINED_ORGASM).clone();
 }
 
 function waitForCumAnswer() {
