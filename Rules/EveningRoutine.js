@@ -19,8 +19,24 @@ const EVENING_ROUTINE = {
     };
 
     AVAILABLE_EVENING_ROUTINES.push(routineTask);
+
+
+    if(newDay) {
+        setAllowedTaskChastityCageOffAmount();
+    }
 }
 
 function createEveningRoutineRule(id, punishment, minDays = -1, maxDays = -1) {
     return createRule(id, punishment, minDays, maxDays, 'eveningRoutine');
+}
+
+function setAllowedTaskChastityCageOffAmount() {
+    let result = 0;
+
+    if(EVENING_ROUTINE.RULE_EVENING_RITUAL_EDGES_LAST_CUM.isActive()) {
+        result += 1;
+    }
+
+    //Set to amount
+    setVar(VARIABLE.CHASTITY_OFF_TASK_ALLOWED_COUNTER, result);
 }
