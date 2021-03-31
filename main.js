@@ -109,6 +109,8 @@ run('Dungeon/Punishments/Tasks/TaskBuilder.js');
 
 run('Academy/Classes/ClassHandler.js');
 
+run('Assistant/Menu.js');
+
 afterLoadBodyParts();
 
 //Update devotion only if the setup is complete which means the variable must exist
