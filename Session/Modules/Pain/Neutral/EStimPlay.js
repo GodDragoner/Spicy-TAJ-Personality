@@ -12,11 +12,7 @@
             sendMessage('Go ahead and ready it up...');
             sendMessage('Tell me when you are done %SlaveName%');
             waitForDone();
-
-            let locations = [];
-
-            let mode = randomInteger(0, 1);
-            let unableToFetch = false;
+            let game = randomInteger(0, 2);
 
             let toysAttached = attachEStimToBodyPart(bodyPart);
 
@@ -34,66 +30,92 @@
                 }
 
                 //Let declaration does not work in switch so we use if
-                if (mode === 0) {
+                if (game === 0) {
                     startMissingCardMemory(GAME_TYPE.GAME_E_STIM);
-                } else if (mode === 1) {
-                    //Enable all toys
-                    for (let x = 0; x < toysAttached.length; x++) {
-                        toysAttached[x].setToyOn(true);
-                    }
-
+                } else if (game === 1 || game === 2) {
                     let painLevel = PAIN_LEVEL_LOW;
-                    let mood = getMood();
 
-                    if (feelsLikePunishingSlave()) {
-                        painLevel = random(PAIN_LEVEL_MEDIUM, PAIN_LEVEL_HIGH);
-                    } else if (mood === NEUTRAL_MOOD) {
-                        painLevel = random(PAIN_LEVEL_LOW, PAIN_LEVEL_MEDIUM);
+                    //We only want a different pain than low level for game 1 (not game 2)
+                    if(game === 1) {
+                        if (feelsLikePunishingSlave()) {
+                            painLevel = random(PAIN_LEVEL_MEDIUM, PAIN_LEVEL_HIGH);
+                        } else {
+                            painLevel = random(PAIN_LEVEL_LOW, PAIN_LEVEL_MEDIUM);
+                        }
                     }
 
                     let mode = getRandomPainEStimMode(painLevel);
                     let level = mode.getPainLevel(painLevel);
                     let time = getCornerTime(PAIN_LEVEL_HIGH*2 - painLevel + 1);
 
-                    let askForIncrease = level < E_STIM_TOY.getMaxLevel() && painLevel === PAIN_LEVEL_HIGH && isChance(20);
+                    if(game === 1) {
+                        let askForIncrease = level < E_STIM_TOY.getMaxLevel() && painLevel === PAIN_LEVEL_HIGH && isChance(20);
 
-                    if(askForIncrease) {
-                        //Half time
-                        time = Math.round(time/2);
-                    }
+                        //Means we aren't highest level yet and we could decide to go higher half time in
+                        let multipleSteps = !askForIncrease && isChance(50);
 
-                    mode.enableMode();
-                    mode.enableLevel(level);
-                    sendMessage('Tell me when you are done');
-                    waitForDone();
-
-                    sendMessage('Now I\'m putting on a slideshow for you');
-                    sendMessage('Enjoy %Grin%');
-
-                    playSlideshow(time, 15, 'TEASE');
-
-                    //Maybe push one higher?
-                    if(askForIncrease) {
-                        sendMessage('%SlaveName%');
-
-                        if(sendYesOrNoQuestion('Do you think you could go even one level higher for me? %Grin%')) {
-                            changeMeritLow(false);
-                            sendGoodForMe();
-                            mode.enableLevel(level + 1);
-
-                            //Increase all factors by one
-                            mode.setPainLevel(PAIN_LEVEL_LOW, mode.getPainLevel(PAIN_LEVEL_LOW) + 1);
-                            mode.setPainLevel(PAIN_LEVEL_MEDIUM, mode.getPainLevel(PAIN_LEVEL_MEDIUM) + 1);
-                            mode.setPainLevel(PAIN_LEVEL_HIGH, level + 1);
-                        } else {
-                            changeMeritLow(true);
-                            sendMessage('I see %EmoteSad%');
+                        if(askForIncrease || multipleSteps) {
+                            //Half time
+                            time = Math.round(time/2);
                         }
 
-                        sendMessage('Back to the slideshow %Grin%');
+                        mode.enableMode();
+                        mode.enableLevel(level);
+                        sendMessage('Tell me when you are done');
+                        waitForDone();
 
-                        //We halfed the time before so we can continue now
+                        sendMessage('Now I\'m putting on a slideshow for you');
+                        sendMessage('Enjoy %Grin%');
+
                         playSlideshow(time, 15, 'TEASE');
+
+                        //Maybe push one higher?
+                        if(askForIncrease) {
+                            askForIncreaseOfEstimLevel(mode, level);
+
+                            sendMessage('Back to the slideshow %Grin%');
+
+                            //We halfed the time before so we can continue now
+                            playSlideshow(time, 15, 'TEASE');
+                        } else if(multipleSteps) {
+                            sendMessage('%SlaveName%');
+                            mode.enableLevel(level + 1);
+
+                            sendMessage('Back to the slideshow %Grin%');
+
+                            //We halfed the time before so we can continue now
+                            playSlideshow(time, 15, 'TEASE');
+                        }
+                    }
+                    //Estim ladder all the way up to highest pain level
+                    else if(game === 2) {
+                        mode.enableMode();
+                        mode.enableLevel(level);
+                        sendMessage('Tell me when you are done');
+                        waitForDone();
+
+                        sendMessage('Now I\'m putting on a slideshow for you');
+                        sendMessage('Enjoy %Grin%');
+
+                        //How many iterations we'd need to go all the way up
+                        let differenceLowHigh = (mode.getPainLevel(PAIN_LEVEL_HIGH) - mode.getPainLevel(PAIN_LEVEL_LOW));
+                        time = Math.ceil(time/ differenceLowHigh);
+
+                        //NOTE: ++x so we start with an increased x
+                        for(let x = 0; x < differenceLowHigh; ++x) {
+                            //We halfed the time before so we can continue now
+                            playSlideshow(time, 15, 'TEASE');
+
+                            sendMessage('%SlaveName%');
+                            mode.enableLevel(level + x);
+
+                            sendMessage('Back to the slideshow %Grin%');
+                        }
+
+                        //Ask for potential pain level increase for that mode
+                        if(level < E_STIM_TOY.getMaxLevel() && isChance(20)) {
+                            askForIncreaseOfEstimLevel(mode, level);
+                        }
                     }
                 }
             }
@@ -109,5 +131,25 @@
         sendMessage("I guess I have to think of something different to play with your balls");
 
         run('Session/Modules/Pain/Dynamic/BallBusting.js');
+    }
+}
+
+function askForIncreaseOfEstimLevel(mode, level) {
+    sendMessage('%SlaveName%');
+
+    if(sendYesOrNoQuestion('Do you think you could even go one level higher for me? %Grin%')) {
+        changeMeritLow(false);
+        sendGoodForMe();
+        mode.enableLevel(level + 1);
+
+        //Increase all factors by one
+        mode.setPainLevel(PAIN_LEVEL_LOW, mode.getPainLevel(PAIN_LEVEL_LOW) + 1);
+        mode.setPainLevel(PAIN_LEVEL_MEDIUM, mode.getPainLevel(PAIN_LEVEL_MEDIUM) + 1);
+        mode.setPainLevel(PAIN_LEVEL_HIGH, level + 1);
+        return true;
+    } else {
+        changeMeritLow(true);
+        sendMessage('I see %EmoteSad%');
+        return false;
     }
 }
