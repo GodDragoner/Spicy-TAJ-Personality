@@ -234,5 +234,5 @@ sleep(5);
 sendDebugMessage(serializeObject(toy.setVibrate(0)));
 setVar(VARIABLE.ASS_LEVEL, restoreLevel);*/
 {
-    startModelRating(GAME_TYPE.GAME_BALL_CRUSHER);
+    RULE_ONLY_SISSY_ADDRESS.sendIntroduction();
 }

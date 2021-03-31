@@ -742,13 +742,13 @@ let RULE_OWNED_BODY;
 
         sendMessage('I just want to change the way I address you %EmoteHappy%');
         sendMessage('In the past I have been using terms like slave, pet and stroker');
-        sendMessage('You won\'t see me to stuff like that anymore');
+        sendMessage('You won\'t see me do stuff like that anymore');
 
         sendMessage('From now on you will always be my sissy');
         sendMessage('With a cute little clitty %EmoteHappy%');
         sendMessage('I mean that\'s who you are, isn\'t it? %Lol%');
         sendMessage('It would be just as appropriate to address you as such as well');
-        sendMessage('Just to get the mindset of yours accept your fate');
+        sendMessage('Just to get the mindset of yours to accept your fate');
         sendMessage('And your new identity and lifestyle %EmoteHappy%');
 
         sendMessage('Nothing to worry about but hopefully something that\'s gonna make a difference %Wicked%');
@@ -820,7 +820,7 @@ function getRandomNewRule(permanent = true) {
 }
 
 function shouldIntroduceNewRule(rule) {
-    if(isOngoingPunishment()) {
+    if(isOngoingPunishment() || rule.isActive()) {
         return false;
     }
 

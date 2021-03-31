@@ -569,8 +569,8 @@ function lockChastityCage(chastityCage = undefined) {
     }
 
 
-    //Slower timeout for the dilator
-    if (getVar(VARIABLE.CHASTITY_DILATOR_ON, false)) {
+    //Slower timeout for the dilator / spikes
+    if (getVar(VARIABLE.CHASTITY_DILATOR_ON, false) || getVar(VARIABLE.CHASTITY_SPIKES_ON, false)) {
         timeout *= 5;
     }
 
@@ -704,7 +704,8 @@ function lockChastityCage(chastityCage = undefined) {
 
 
 function loadChastityCages() {
-    if (!isVar('chastityCages')) {
+    //No var or no chastity cages anyway
+    if (!isVar('chastityCages') || !hasChastityCage()) {
         setVar('chastityCages', new java.util.ArrayList());
     } else {
         let saveCages = false;

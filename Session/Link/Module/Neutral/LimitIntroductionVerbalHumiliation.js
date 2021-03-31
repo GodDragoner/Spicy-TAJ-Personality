@@ -49,6 +49,7 @@
 
                 sendMessage("That pathetic %Cock% should never even get near a pussy");
                 sendMessage("You only get to fuck your own hand %Lol%");
+                sendMessage('And that\'s all you get with me');
 
                 sendMessage("Keep repeating your mantra: \"I'm a loser and I don't deserve to be with a woman\"");
                 sendMessage("I want you to say it over and over until it's burned into your brain");

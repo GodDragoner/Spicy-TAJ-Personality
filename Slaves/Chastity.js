@@ -75,7 +75,7 @@ function askForMaxLockupTime() {
 
 function willKeepChastityOn(end) {
     //Higher choice value -> chastity will probably be removed
-    let choice = randomInteger(15, 100);
+    let choice = randomInteger(25, 100);
 
     sendDebugMessage('Rolled initial chance of ' + choice + ' to be unlocked');
 
@@ -92,6 +92,11 @@ function willKeepChastityOn(end) {
         if(newChoice < choice) {
             choice = newChoice;
             sendDebugMessage('Replaced old chance with new lower end unlock chance of ' + newChoice);
+        }
+    } else {
+        if(getVar(VARIABLE.CHASTITY_SPIKES_ON, false) || getVar(VARIABLE.CHASTITY_DILATOR_ON, false)) {
+            sendDebugMessage('Unlocking to remove spikes/dialator');
+            return false;
         }
     }
 
