@@ -272,7 +272,6 @@ function getDildo(blowjob = false, dildos = DILDOS) {
     }
 }
 
-
 function loadDildos() {
     if (!isVar('dildos')) {
         setVar('dildos', new java.util.ArrayList());
@@ -287,26 +286,6 @@ function loadDildos() {
             let dildo = createDildo().fromString(entry);
 
             DILDOS.push(dildo);
-
-            //Find smallest dildo
-            if (smallestDildo == null || smallestDildo.diameter > dildo.diameter) {
-                smallestDildo = dildo;
-            }
-
-            //Find shortest dildo
-            if (shortestDildo == null || shortestDildo.length > dildo.length) {
-                shortestDildo = dildo;
-            }
-
-            //Find thickest dildo
-            if (thickestDildo == null || thickestDildo.diameter < dildo.diameter) {
-                thickestDildo = dildo;
-            }
-
-            //Find longest dildo
-            if (longestDildo == null || longestDildo.length < dildo.length) {
-                longestDildo = dildo;
-            }
 
             //Conversion of old stuff
             if (dildo.glass) {
@@ -350,6 +329,46 @@ function loadDildos() {
             saveDildos();
         }
     }
+
+    updateDildoMinAndMaxSizes();
+}
+
+function updateDildoMinAndMaxSizes() {
+    smallestDildo = null;
+    shortestDildo = null;
+    thickestDildo = null;
+    longestDildo = null;
+
+    DILDOS.forEach(dildo => {
+        //Find smallest dildo
+        if (smallestDildo == null || smallestDildo.diameter > dildo.diameter) {
+            smallestDildo = dildo;
+        }
+
+        //Find shortest dildo
+        if (shortestDildo == null || shortestDildo.length > dildo.length) {
+            shortestDildo = dildo;
+        }
+
+        //Find thickest dildo
+        if (thickestDildo == null || thickestDildo.diameter < dildo.diameter) {
+            thickestDildo = dildo;
+        }
+
+        //Find longest dildo
+        if (longestDildo == null || longestDildo.length < dildo.length) {
+            longestDildo = dildo;
+        }
+    });
+
+    logDildoSizeStats();
+}
+
+function logDildoSizeStats() {
+    sendDebugMessage('[Dildo] Longest: ' + (longestDildo == null ? 'none' : longestDildo.name));
+    sendDebugMessage('[Dildo] Shortest: ' + (shortestDildo == null ? 'none' : shortestDildo.name));
+    sendDebugMessage('[Dildo] Smallest: ' + (smallestDildo == null ? 'none' : smallestDildo.name));
+    sendDebugMessage('[Dildo] Thickest: ' + (thickestDildo == null ? 'none' : thickestDildo.name));
 }
 
 function saveDildos() {
@@ -404,8 +423,8 @@ function setupNewDildo() {
             length = answer.getDouble();
 
             if (length < 10) {
-                sendVirtualAssistantMessage('That\'s quite short however maybe the diameter will tare your ass apart %Lol%');
-                sendVirtualAssistantMessage('No matter what it sure does make a good addition to your collection');
+                sendVirtualAssistantMessage('That\'s quite short however maybe the diameter will tear your ass apart %Lol%');
+                sendVirtualAssistantMessage('No matter what, it sure does make a good addition to your collection');
             } else if (length < 16) {
                 sendVirtualAssistantMessage('Not too short. I think it\'s good enough to milk you dry %EmoteHappy%');
             } else if (length < 22) {
@@ -430,7 +449,7 @@ function setupNewDildo() {
             diameter = answer.getDouble();
 
             if (diameter < 3) {
-                sendVirtualAssistantMessage('That\'s really thing. But we all need something to warm up with don\'t we?');
+                sendVirtualAssistantMessage('That\'s really thin. But we all need something to warm up with don\'t we?');
             } else if (diameter < 4) {
                 sendVirtualAssistantMessage('Something to start warming up with. I like those %Grin%');
             } else if (diameter < 5) {
@@ -568,6 +587,7 @@ function setupNewDildo() {
     DILDOS.push(createDildo(name, diameter, length, doubleSided, textured, material, cumInjection, suctionCup));
 
     saveDildos();
+    updateDildoMinAndMaxSizes();
 
     sendVirtualAssistantMessage('Saved your new toy');
     sendVirtualAssistantMessage('Enjoy %Grin%');
@@ -666,6 +686,7 @@ function showDildoGUI(dildo) {
             save.setOnAction(function (handle) {
                 writebackGui.writeBack();
                 saveDildos();
+                updateDildoMinAndMaxSizes();
                 dialog.close();
             });
 
