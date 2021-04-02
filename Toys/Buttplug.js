@@ -646,16 +646,6 @@ function loadButtplugs() {
             let buttplug = createButtplug().fromString(entry);
             buttplugs.push(buttplug);
 
-            //Find smallest plug
-            if (smallestButtplug == null || smallestButtplug.diameter > buttplug.diameter) {
-                smallestButtplug = buttplug;
-            }
-
-            //Find biggest plug
-            if (biggestButtplug == null || biggestButtplug.diameter < buttplug.diameter) {
-                biggestButtplug = buttplug;
-            }
-
             //Conversion of old stuff
             if (buttplug.crystal) {
                 delete buttplug.crystal;
@@ -695,8 +685,32 @@ function loadButtplugs() {
         }
     }
 
-
     buttplugs.sort(sortPlug);
+    updatePlugMinAndMaxSizes();
+}
+
+function updatePlugMinAndMaxSizes() {
+    smallestButtplug = null;
+    biggestButtplug = null;
+
+    buttplugs.forEach(buttplug => {
+        //Find smallest plug
+        if (smallestButtplug == null || smallestButtplug.diameter > buttplug.diameter) {
+            smallestButtplug = buttplug;
+        }
+
+        //Find biggest plug
+        if (biggestButtplug == null || biggestButtplug.diameter < buttplug.diameter) {
+            biggestButtplug = buttplug;
+        }
+    });
+
+    logPlugSizeStats();
+}
+
+function logPlugSizeStats() {
+    sendDebugMessage('[ButtPlug] Smallest: ' + (smallestButtplug == null ? 'none' : smallestButtplug.name));
+    sendDebugMessage('[ButtPlug] Biggest: ' + (biggestButtplug == null ? 'none' : biggestButtplug.name));
 }
 
 function saveButtplugs() {
@@ -952,6 +966,7 @@ function setupNewButtplug() {
     buttplugs.push(createButtplug(name, diameter, length, vibrating, textured, material, hollow, baseStyle, tbase));
 
     saveButtplugs();
+    updatePlugMinAndMaxSizes();
 
     sendVirtualAssistantMessage('Saved your new toy');
     sendVirtualAssistantMessage('Enjoy %Grin%');
@@ -1047,6 +1062,7 @@ function showButtplugGUI(buttplug) {
             save.setOnAction(function (handle) {
                 writebackGui.writeBack();
                 saveButtplugs();
+                updatePlugMinAndMaxSizes();
                 dialog.close();
             });
 
