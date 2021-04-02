@@ -133,7 +133,7 @@
             'I love how submissive a guy gets the moment that lock snaps shut',
             'I think male chastity is probably actually the greatest thing before or since sliced bread');
     } else {
-        answers.push('I hope you %Cock% isn\'t getting limp',
+        answers.push('I hope your %Cock% isn\'t getting limp',
             'You, all the time now: "at some point she will let me stroke again, right???" %Lol%',
             'The longer you\'re not allowed to touch, the more grateful you\'ll be when I let you %JerkOff% again',
             'Imagine how hard those lips would make %MyYour% %Cock% right now @ShowBlowjobImage',
@@ -142,7 +142,7 @@
             'You can put your hands behind your back if you have trouble keeping them off %MyYour% %Cock%',
             'You can sit on your hands if you want %Giggles%',
             'You must be soooo anxious to start %JerkingOff% again',
-            'Try keep keep it hard, flex those little cock muscles, %SlaveName%');
+            'Try to keep it hard, flex those little cock muscles, %SlaveName%');
     }
 
     let answer = findRandomUnusedElement(answers, createHistory('basicChastityTaunt'));
