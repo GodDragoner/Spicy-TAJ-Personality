@@ -1095,7 +1095,10 @@ function openChastityCageList() {
     }
 
     createToyListGUI(function (listView, event) {
-        showChastityCageGUI(getChastityCageByName(listView.listView.getSelectionModel().getSelectedItem()));
+        const selectedCage = listView.listView.getSelectionModel().getSelectedItem();
+        if (selectedCage != null) {
+            showChastityCageGUI(getChastityCageByName(selectedCage));
+        }
     }, "Chastity Cages", list)
 }
 

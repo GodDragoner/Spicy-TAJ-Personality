@@ -139,7 +139,10 @@ function openHighHeelList() {
     }
 
     createToyListGUI(function (listView, event) {
-        showHighHeelGUI(getHighHeelByName(listView.listView.getSelectionModel().getSelectedItem()));
+        const selectedHeel = listView.listView.getSelectionModel().getSelectedItem();
+        if (selectedHeel != null) {
+            showHighHeelGUI(getHighHeelByName(selectedHeel));
+        }
     }, "High Heels", list)
 }
 

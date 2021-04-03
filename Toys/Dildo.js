@@ -639,7 +639,10 @@ function openDildoList() {
     }
 
     createToyListGUI(function (listView, event) {
-        showDildoGUI(getDildoByName(listView.listView.getSelectionModel().getSelectedItem()));
+        const selectedDildo = listView.listView.getSelectionModel().getSelectedItem();
+        if (selectedDildo != null) {
+            showDildoGUI(getDildoByName(selectedDildo));
+        }
     }, "Dildos", list)
 }
 

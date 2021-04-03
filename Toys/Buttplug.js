@@ -1015,7 +1015,10 @@ function openButtplugList() {
     }
 
     createToyListGUI(function (listView, event) {
-        showButtplugGUI(getButtplugByName(listView.listView.getSelectionModel().getSelectedItem()));
+        const selectedPlug = listView.listView.getSelectionModel().getSelectedItem();
+        if (selectedPlug != null) {
+            showButtplugGUI(getButtplugByName(selectedPlug));
+        }
     }, "Buttplugs", list)
 }
 
