@@ -62,7 +62,10 @@ function interactWithRandomToys() {
         allowPain = false;
     }
 
-    interactWithButtplug(punishment);
+    if (hasButtplugToy()) {
+        interactWithButtplug(punishment);
+    }
+
     sendDebugMessage('Random toy buttplug done');
 
     if (COLLAR_TOY.hasToy() && COLLAR_TOY.decideToyOn() && feelsLikeShowingPower()) {
