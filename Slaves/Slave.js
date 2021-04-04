@@ -189,8 +189,8 @@ function addPunishmentPointsDirectly(amount, multiplier, reason = -1) {
     sendDebugMessage('Reason was ' + reason);
 
     //-1 is unknown reason
-    if(reason >= 0) {
-        let reasonArray = getVar(VARIABLE.PUNISHMENT_REASONS, new java.util.ArrayList());
+    if (reason >= 0) {
+        let reasonArray = tryGetArrayList(VARIABLE.PUNISHMENT_REASONS);
         reasonArray.add(reason);
 
         setVar(VARIABLE.PUNISHMENT_REASONS, reasonArray);
