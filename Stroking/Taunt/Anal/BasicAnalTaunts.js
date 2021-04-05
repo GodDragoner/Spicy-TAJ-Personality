@@ -99,7 +99,7 @@
         'Keep going for me',
         'Just keep fucking yourself',
         'Keep going just like that, %SlaveName%',
-        'You\'re doing great, keep going%Grin%',
+        'You\'re doing great, keep going %Grin%',
         'Keep going, you don\'t deserve any mercy, %SlaveName%',
         'Don\'t stop, just fuck fuck fuck %Grin%',
         'Keep fuck-fuck-fucking, %SlaveName% %Grin%',

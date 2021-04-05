@@ -82,7 +82,7 @@ const STROKE_AND_TEASE_TAUNTS = [
     'Don\'t stop teasing %MyCock% %Cock%',
     'Keep teasing %MyCock% %Cock%',
     'Keep going just like that, %SlaveName%',
-    'You\'re doing great, keep going%Grin%',
+    'You\'re doing great, keep going %Grin%',
     'Keep going, you don\'t deserve any mercy, %SlaveName%',
     'Don\'t stop, just suffer %Grin%',
     'Keep %TeaseVerb%, %SlaveName% %Grin%',

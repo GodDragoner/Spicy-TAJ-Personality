@@ -244,7 +244,7 @@ function goToCorner(durationSeconds) {
         sendMessage("At no point are you allowed to rest down on your heels");
 
         if(countHeelsTouch) {
-            sendMessage("I want you to count every time your heel strikes the floor or you loose your balance...");
+            sendMessage("I want you to count every time your heel strikes the floor or you lose your balance...");
             sendMessage("If both heels strikes at the same time it counts as two!");
         }
 

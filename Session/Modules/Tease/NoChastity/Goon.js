@@ -47,7 +47,7 @@
             smallPunishment(true, false);
             sendMessage('I think you see where I\'m going with this %Grin%');
             sendMessage('Every smack brings you down a little bit further from that high');
-            sendMessage('Until your senses are are sharp as ever...');
+            sendMessage('Until your senses are as sharp as ever...');
             sendMessage('And so is the ache %EmoteHappy%');
             sendMessage('So you\'re going to be doing a lot of gooning for me %SlaveName%');
             sendMessage('But you\'re not gonna be transcending <i>shit</i> %Lol%');
@@ -73,7 +73,7 @@
             sendMessage(random('That should keep you focused', 'Stay focused on the pain for me', 'Just focus on the pain', 'Don\'t think about anything but the ache', 'Let the ache wash over you', 'Focus on the ache in %MyYour% %Cock%', 'No zoning out now', 'Keep your mind right here in the moment', 'Focus on the moment', 'Keep yourself occupied with the ache', 'Feel your zen state just slipping away', 'I want you to feel every last bit of this ache', 'Keep your mind on the ache', 'No escape for you goon slave') + ' %Wicked%')
         }
 
-        sendMessage(random('That\'s enough', 'I think that\'s enough gooning', 'That should suffice', 'That will do', 'I think you\'ve gooned enough', 'That should be enough gooning') + random('for now', 'for the moment', 'right now'));
+        sendMessage(random('That\'s enough', 'I think that\'s enough gooning', 'That should suffice', 'That will do', 'I think you\'ve gooned enough', 'That should be enough gooning') + ' ' + random('for now', 'for the moment', 'right now'));
 
         switch (randomInteger(0, 4)) {
             case 0:
