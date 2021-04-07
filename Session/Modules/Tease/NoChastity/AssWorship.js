@@ -39,7 +39,7 @@
         showDommeTaggedImageForPictureTag(PictureTag.ASS);
 
         if (isChance(50)) {
-            sendMessage(random('Get', 'Bring yourself', 'Get that %Cock%', 'Bring that %Cock%', 'I want you to bring yourself', 'I want you to bring %MyYour% %Cock%') + ' to the edge for my ass and ' + random('be prepared', 'get prepared', 'be ready', 'get ready', 'I hope you\'re ready', 'you\'d better be ready') + 'to hold it for a <i>very</i> long time %Wicked%');
+            sendMessage(random('Get', 'Bring yourself', 'Get that %Cock%', 'Bring that %Cock%', 'I want you to bring yourself', 'I want you to bring %MyYour% %Cock%') + ' to the edge for my ass and ' + random('be prepared', 'get prepared', 'be ready', 'get ready', 'I hope you\'re ready', 'you\'d better be ready') + ' to hold it for a <i>very</i> long time %Wicked%');
             startEdging(getEdgeHoldSeconds(EDGE_HOLD_LONG) * 2);
 
             switch (randomInteger(1, 3)) {
