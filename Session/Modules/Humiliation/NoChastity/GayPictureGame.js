@@ -115,8 +115,9 @@ function startGayPictureRound() {
                 return;
             }
 
-            sendMessage("Just relax for a little bit");
-            sleep(randomInteger(15, 30));
+            sendMessage("Time for 20 fast strokes!");
+            sendMessage("Get ready!");
+            playAudio('Audio/Spicy/Stroking/MetronomeNumber/20FastStrokes.mp3', true);
             break;
         case 2:
             newValue = getVar("gayPictureGameButts", 0) + 1;
@@ -130,9 +131,8 @@ function startGayPictureRound() {
                 return;
             }
 
-            sendMessage("Time for 20 fast strokes!");
-            sendMessage("Get ready!");
-            playAudio('Audio/Spicy/Stroking/MetronomeNumber/20FastStrokes.mp3', true);
+            sendMessage("Just relax for a little bit");
+            sleep(randomInteger(15, 30));
             break;
         case 3:
             newValue = getVar("gayPictureGameLezdom", 0) + 1;
