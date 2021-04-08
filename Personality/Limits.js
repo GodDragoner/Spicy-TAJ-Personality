@@ -104,9 +104,9 @@ CEI_LIMIT.sendDoingAnythingIntroduction = function (type) {
 const PAIN_LIMIT = createLimit('pain', 'painLimit');
 PAIN_LIMIT.sendIntroduction = function (type) {
     sendMessage('I think pain should be part of any BDSM relationship');
-    sendMessage('At least as a mean of punishment for bad little slaves %Grin%');
+    sendMessage('At least as a means of punishment for bad little slaves %Grin%');
     sendMessage('Hurting your nipples, spanking your ass and making you whimper would really bring this whole thing to a new level');
-    sendMessage('Making you my and only my pain slut ready for abuse if I feel like it or you have been misbehaving');
+    sendMessage('Making you my one and only pain slut ready for abuse if I feel like it or you have been misbehaving');
     sendMessage('I would be very happy if you were to tell me that we can try this %EmoteHappy%');
     sendMessage('And you want to please your %DomHonorific%, don\'t you? %Grin%');
     askForNewLimitValue(this);
