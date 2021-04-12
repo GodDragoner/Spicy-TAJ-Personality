@@ -431,7 +431,7 @@ function askForPartnerKeyholder() {
         sendMessage('But in the end, what matters it that that %Cock% is safely locked up');
         sendMessage('And under control of a woman');
         sendMessage('As all cocks should, really...');
-        sendMessage('There are too many unlocked cocks out there #Laugh');
+        sendMessage('There are too many unlocked cocks out there %Laugh%');
 
         if (sendYesOrNoQuestion('I\'m sure ' + getVar(VARIABLE.SUB_PARTNER_NAME) + ' would agree, right?')) {
             sendMessage('I thought so %Grin%')
@@ -440,7 +440,7 @@ function askForPartnerKeyholder() {
         }
 
         sendMessage('Because since you have that cage');
-        sendMessage('I\'m certainly going to use it #Grin');
+        sendMessage('I\'m certainly going to use it %Grin%');
 
         sendMessage('It\'s a great feeling to have that kind of control, %SlaveName%');
         sendMessage('Not that I\'d expect you to understand...');
