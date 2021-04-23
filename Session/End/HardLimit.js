@@ -46,7 +46,7 @@
                             sendMessage('%EmoteSad%');
                             setVar(VARIABLE.DENIAL_HARD_LIMIT_TYPE, 0);
                         } else {
-                            sendMessage('Would you like me or you to choose?');
+                            sendMessage('Would you like me or you to choose?', 0);
                             answer.loop();
                         }
                     }
@@ -74,7 +74,7 @@
             askForHardLimitIncrease();
             break;
         } else {
-            sendMessage(YES_OR_NO);
+            sendMessage(YES_OR_NO, 0);
             answer.loop();
         }
     }
@@ -92,7 +92,7 @@ function askForHardLimitIncrease() {
             sendMessage(random("That's perfectly fine ", "Okay then ") + "%EmoteHappy%");
             break;
         } else {
-            sendMessage(YES_OR_NO);
+            sendMessage(YES_OR_NO, 0);
             answer.loop();
         }
     }

@@ -70,17 +70,17 @@
         if (answer.isInteger()) {
             const result = answer.getInt();
             if (result <= 0) {
-                sendMessage("You can't choose a number equal to 0 or lower");
+                sendMessage("You can't choose a number equal to 0 or lower", 0);
                 answer.loop();
             } else if (result > 15) {
-                sendMessage("You can't choose a number higher than 15");
+                sendMessage("You can't choose a number higher than 15", 0);
                 answer.loop();
             } else {
                 setVar(VARIABLE.DENIAL_LEVEL, result);
                 break;
             }
         } else {
-            sendMessage("Please only enter a number such as 1 now.");
+            sendMessage("Please only enter a number such as 1 now.", 0);
             answer.loop();
         }
     }
@@ -110,7 +110,7 @@
         if (answer.isInteger()) {
             const result = answer.getInt();
             if (result <= 0) {
-                sendMessage("You have to choose a number higher than 0...");
+                sendMessage("You have to choose a number higher than 0...", 0);
                 answer.loop();
             } else if (result <= 5) {
                 sendMessage("So we have a beginner when it comes to denial %Grin%");
@@ -126,7 +126,7 @@
                 break;
             }
         } else {
-            sendMessage("Just give me a number like 3, 10 or 70...");
+            sendMessage("Just give me a number like 3, 10 or 70...", 0);
             answer.loop();
         }
     }
@@ -155,18 +155,18 @@
             const result = answer.getInt();
 
             if (result <= 0) {
-                sendMessage("You have to choose a number larger than 0...");
+                sendMessage("You have to choose a number larger than 0...", 0);
                 answer.loop();
             } else if (result <= 5) {
                 sendMessage("So be it...");
                 setVar(VARIABLE.STROKE_MODULE_PAUSE_FREQUENCY, result);
                 break;
             } else {
-                sendMessage('You can\'t give me a number greater than 5...');
+                sendMessage('You can\'t give me a number greater than 5...', 0);
                 answer.loop();
             }
         } else {
-            sendMessage("Just give me a number like 3, 10 or 70...");
+            sendMessage("Just give me a number like 3, 10 or 70...", 0);
             answer.loop();
         }
     }
@@ -222,7 +222,7 @@
             setVar(VARIABLE.ORGASM_FREQUENCY, ORGASM_FREQUENCY_DOM);
             break;
         } else {
-            sendMessage("Very rare, rare, semi rare, somewhat rare or up to me?");
+            sendMessage("Very rare, rare, semi rare, somewhat rare or up to me?", 0);
             answer.loop();
         }
     }

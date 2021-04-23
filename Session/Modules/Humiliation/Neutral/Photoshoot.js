@@ -38,7 +38,7 @@
                 sendMessage(random("You're going to do the catwalk for me!", "You will do a lovely catwalk!"));
                 sendMessage(random("I want you to walk back and fourth 10 times", "You are to do the catwalk 15 times"));
                 sendMessage(random("Shake those hips", "Move your hips", "Make that ass look good", "Work those legs"));
-                sendMessage(random("Put on music as well!", "Put on a song as well!") + "%Grin%");
+                sendMessage(random("Put on music as well!", "Put on a song as well!") + " %Grin%");
                 sendMessage("When you're done, transfer the video to your humiliation folder");
                 sendMessage("Who knows");
                 sendMessage(random("Maybe ", "Perhaps ") + getVar('blackmailName1') + random(' would like to see it as well?', ' wouldn\'t mind seeing them as well', ' would enjoy watching them!') + ' %Lol%');

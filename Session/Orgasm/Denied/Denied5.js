@@ -35,7 +35,7 @@
                 sendMessage("You're welcome %SlaveName% %Grin%");
                 break;
             } else {
-                sendMessage('"No... try again');
+                sendMessage('"No... try again', 0);
                 answer.loop();
             }
         }

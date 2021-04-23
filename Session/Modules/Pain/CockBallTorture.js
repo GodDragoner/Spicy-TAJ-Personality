@@ -300,7 +300,7 @@ function punishFlickCBT(bodyPart, multiplier = 1) {
                 }
                 break;
             } else {
-                sendMessage("Are you trying to write 'done'?");
+                sendMessage("Are you trying to write 'done'?", 0);
                 answer.loop();
             }
         }
@@ -342,14 +342,14 @@ function punishBustBalls(hand = true, multiplier = 1) {
                         sendMessage(random('I guess we have to try this again', 'Let\'s try this again shall we?'));
                         break;
                     } else {
-                        sendMessage("Are you trying to write 'done'?");
+                        sendMessage("Are you trying to write 'done'?", 0);
                         answer.loop();
                     }
                 }
 
                 break;
             } else {
-                sendMessage("Are you trying to write 'done'?");
+                sendMessage("Are you trying to write 'done'?", 0);
                 answer.loop();
             }
         }
@@ -463,7 +463,7 @@ function askCockPain() {
         } else if (answer.isLike('no')) {
             return false;
         } else {
-            sendMessage(YES_OR_NO);
+            sendMessage(YES_OR_NO, 0);
             answer.loop();
         }
     }
@@ -489,7 +489,7 @@ function askBallPain() {
         } else if (answer.isLike('no')) {
             return false;
         } else {
-            sendMessage(YES_OR_NO);
+            sendMessage(YES_OR_NO, 0);
             answer.loop();
         }
     }

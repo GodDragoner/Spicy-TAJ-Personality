@@ -49,7 +49,7 @@ function positionWalkthrough() {
     sendMessage("Bent over");
     showPicture("Images/Spicy/Positions/BentOver1.jpg", 3);
     sendMessage("Bent over open");
-    showPicture("Images/Spicy/Positions/BentOverOpen2.jpg", 3);
+    showPicture("Images/Spicy/Positions/bentOverOpen2.jpg", 3);
     sendMessage("Box");
     showPicture("Images/Spicy/Positions/Box1.jpg", 3);
     sendMessage("Come fuck me");
@@ -104,7 +104,7 @@ function simplePositionTrainingIntro() {
             return;
         } else {
             changeMeritLow(true);
-            sendMessage(YES_OR_NO + "%SlaveName%");
+            sendMessage(YES_OR_NO + "%SlaveName%", 0);
             answer.loop();
         }
     }
@@ -162,7 +162,7 @@ function simplePositionTrainingSelection(totalPositions) {
             showImage("Images/Spicy/Positions/BentOver1.jpg");
             sendMessage("Even though on these pictures the heels are touching the ground");
 
-            showImage("Images/Spicy/Positions/BentOver3.jpg");
+            showImage("Images/Spicy/Positions/bentOver3.jpg");
             sendMessage("I want you to raise your heels from the ground");
 
             showImage("Images/Spicy/Positions/BentOver2.jpg");
@@ -178,14 +178,14 @@ function simplePositionTrainingSelection(totalPositions) {
         },
         currentTraining_a4: function () {
             lockImages();
-            showImage("Images/Spicy/Positions/BentOverOpen2.jpg");
+            showImage("Images/Spicy/Positions/bentOverOpen2.jpg");
             sendMessage("This is the Bent over open position");
             sendMessage("It's a lot like the bent over with the obvious exception of the legs spread");
 
-            showImage("Images/Spicy/Positions/BentOverOpen3.jpg");
+            showImage("Images/Spicy/Positions/bentOverOpen3.jpg");
             sendMessage("Heels lifted from the ground, head down");
 
-            showImage("Images/Spicy/Positions/BentOverOpen1.jpg");
+            showImage("Images/Spicy/Positions/bentOverOpen1.jpg");
             sendMessage("It's a nice position for humiliation, punishment or both");
             sendMessage("Balance is quite a 'bitch' %Grin%");
             unlockImages();
@@ -577,7 +577,7 @@ function positionTest(number, name, image) {
                 sendMessage("Bad!");
                 break;
             } else {
-                sendMessage(YES_OR_NO);
+                sendMessage(YES_OR_NO, 0);
                 answer.loop();
             }
         }
@@ -601,7 +601,7 @@ function positionTest(number, name, image) {
                 sendMessage("Bad!");
                 break;
             } else {
-                sendMessage(YES_OR_NO);
+                sendMessage(YES_OR_NO, 0);
                 answer.loop();
             }
         }
@@ -823,7 +823,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             sendMessage("This should prove fun to watch!");
             sendMessage("I want you in the Bent over open position");
             lockImages();
-            showImage("Images/Spicy/Positions/BentOverOpen2.jpg");
+            showImage("Images/Spicy/Positions/bentOverOpen2.jpg");
             sendMessage("Head down");
             sendMessage("Stay there until you hear my bell");
             sendMessage("I want you to count every time you lose your balance");
@@ -886,7 +886,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
                     sendMessage("%Good%");
                     return true;
                 } else {
-                    sendMessage("Just say yes when you've finished fetching.");
+                    sendMessage("Just say yes when you've finished fetching.", 0);
                     changeMeritLow(true);
                     answer.loop();
                 }
@@ -966,7 +966,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
                     sendMessage("Aww %EmoteSad%");
                     break;
                 } else {
-                    sendMessage("Just say yes when you've finished fetching.");
+                    sendMessage("Just say yes when you've finished fetching.", 0);
                     changeMeritLow(true);
                     answer.loop();
                 }
@@ -1073,7 +1073,7 @@ function positionCheckBalance() {
     while (true) {
         let answer = sendInput("How many times did you lose your balance?");
         if (isNaN(answer)) {
-            sendMessage("Just give me a number %SlaveName%");
+            sendMessage("Just give me a number %SlaveName%", 0);
             answer.loop();
         } else if (parseInt(answer) < 5) {
             sendMessage("Well I suppose that isn't too bad then");

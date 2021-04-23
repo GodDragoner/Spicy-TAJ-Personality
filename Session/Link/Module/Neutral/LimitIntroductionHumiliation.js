@@ -4,7 +4,7 @@
             findLinkAndRun();
         } else {
             if(HUMILIATION_LIMIT.getLimit() === LIMIT_NEVER_ASKED) {
-                sendMessage('As you should know I am quite creative when it comes to make you little pet suffer for me %Grin%');
+                sendMessage('As you should know I am quite creative when it comes to making you, my little pet, suffer for me %Grin%');
                 sendMessage('My head always has so many different ideas and I never really get the time to make all of them reality');
                 sendMessage('So I have to always decide what to do next and what to discard for now');
                 sendMessage('I always try to find the most satisfying option');

@@ -206,7 +206,7 @@ function goToCorner(durationSeconds) {
                 sendMessage("%Good%");
                 break;
             } else {
-                sendMessage("If you aren't done yet don't bother me");
+                sendMessage("If you aren't done yet don't bother me", 0);
                 answer.loop();
             }
         }

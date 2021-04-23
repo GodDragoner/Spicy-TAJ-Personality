@@ -381,7 +381,7 @@ function putinChosenButtplug(plug) {
             sendMessageBasedOnSender("%Good%");
             break;
         } else {
-            sendMessageBasedOnSender("Have you plugged yourself like a good %SlaveName%?");
+            sendMessageBasedOnSender("Have you plugged yourself like a good %SlaveName%?", 0);
             answer.loop();
         }
     }
@@ -515,7 +515,7 @@ function removeButtplug(end = false) {
                 sendMessage("%Good%");
                 break;
             } else {
-                sendMessage("Have you pushed the plug out yet?");
+                sendMessage("Have you pushed the plug out yet?", 0);
                 answer.loop();
             }
         }
@@ -576,7 +576,7 @@ function removeButtplug(end = false) {
                 sendMessage("%Good%");
                 break;
             } else {
-                sendMessage("Are you done yet?");
+                sendMessage("Are you done yet?", 0);
                 answer.loop();
             }
         }

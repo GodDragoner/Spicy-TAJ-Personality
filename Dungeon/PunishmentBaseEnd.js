@@ -501,10 +501,10 @@ function sendNurseMessage(message, picset, wait, skipImage) {
                 showImage("Images/Spicy/Punishment/Nurses/" + (ASSISTANT_CURRENT_SET_ID % 10 + 1) + "/*.jpg");
                 break;
             case 2 :
-                showImage("Images/Spicy/Punishment/Reception/BusyPC/" + (ASSISTANT_CURRENT_SET_ID % 5 + 1) + "/*.jpg");
+                showImage("Images/Spicy/Punishment/Reception/BusyPC/" + (ASSISTANT_CURRENT_SET_ID % 5 + 1) + "/*.{jpg,JPG}");
                 break;
             case 3 :
-                showImage("Images/Spicy/Punishment/Reception/BusyPhone/" + (ASSISTANT_CURRENT_SET_ID % 5 + 1) + "/*.jpg");
+                showImage("Images/Spicy/Punishment/Reception/BusyPhone/" + (ASSISTANT_CURRENT_SET_ID % 5 + 1) + "/*.{jpg,JPG}");
                 break;
             default:
                 showImage("Images/Spicy/Punishment/Nurses/" + (ASSISTANT_CURRENT_SET_ID % 10 + 1) + "/*.jpg");

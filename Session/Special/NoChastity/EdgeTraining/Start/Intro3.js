@@ -6,7 +6,7 @@
             sendMessage('Yes! %EmoteHappy%');
             break;
         } else if (answer.isLike('yes')) {
-            sendMessage('So, what do you think it is?');
+            sendMessage('So, what do you think it is?', 0);
             answer.loop();
         } else if (answer.isLike('no', 'don\'t know', 'not know', 'not sure', 'tell', 'say', 'what', 'whatever', 'anything')) {
             sendMessage('Today is going to be all about EDGING! %EmoteHappy%');

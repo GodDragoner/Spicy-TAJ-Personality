@@ -17,7 +17,7 @@ function sendOrgasmChastityIntroduction() {
     if(!isVar('orgasmChastityIntroduction')) {
         sendMessage('Since this is the first time for you maybe cumming inside the chastity cage I am gonna explain the rules to you');
         sendMessage('You will have to stimulate yourself using the vibrator and maybe even edge');
-        sendMessage('If I want you to ruin the orgasm you will slowly tip you over the edge and the completely remove the vibrator from the cage');
+        sendMessage('If I want you to ruin the orgasm you will slowly tip you overself the edge and then completely remove the vibrator from the cage');
         sendMessage('If I allow you to cum you will have to do it within that small cage %Grin%');
         sendMessage('When allowed to cum you are allowed to stimulate yourself however you want');
         sendMessage('And well when I deny you...');
@@ -84,7 +84,7 @@ function startOrgasmSpecialGayPicture(ruin) {
     if (ruin) {
         registerRuin();
         sendMessage('%RuinForMe%');
-        sendMessage('Ye that\'s right %Grin%');
+        sendMessage('Yeah that\'s right %Grin%');
         sendMessage('Let that cum dribble out of %MyYour% %Cock%');
 
         if (cumOnDildo) {
@@ -100,7 +100,7 @@ function startOrgasmSpecialGayPicture(ruin) {
             changeMeritLow(true);
         }
 
-        sendMessage('Just because you got a bit lucky doesn\'t means that I am gonna let you enjoy a full orgasm');
+        sendMessage('Just because you got a bit lucky doesn\'t mean that I am gonna let you enjoy a full orgasm');
         sendMessage('Deciding about that privilege is still up to me and I don\'t think you deserve it %Lol%');
         sendMessage('Tell me when you are done letting your pathetic cum dribble out of that %Cock%');
         waitForDone();
@@ -162,7 +162,7 @@ function startOrgasmSpecialGayPicture(ruin) {
                 sendMessage('Pull it out and put that dildo in front of you');
             }
 
-            sendMessage('Just lock at it');
+            sendMessage('Just look at it');
             sendMessage('Can you smell that ass juice mixed with your cum?');
 
             let tastyAnswer = sendYesOrNoQuestionTimeout('How does it look? Does it look tasty?', 5);
@@ -212,7 +212,7 @@ function startOrgasmSpecialGayPicture(ruin) {
             sendMessage('Start by giving the cum covered tip some kisses', 3);
             sendMessage('Show it some love %Grin%', 2);
 
-            let cleanAnswer = sendYesOrNoQuestionTimeout('How does it taste? Good doesn\'t it?', 5);
+            let cleanAnswer = sendYesOrNoQuestionTimeout('How does it taste? Good isn\'t it?', 5);
 
             if(cleanAnswer === ANSWER_YES) {
                 if(VERBAL_HUMILIATION_LIMIT.isAllowed()) {
@@ -313,7 +313,7 @@ function startOrgasmSpecialGayPicture(ruin) {
                 sendMessage('Don\'t take that dildo out of your mouth!');
                 stopStroking();
                 sendMessage('If you need to you are allowed to swallow but don\'t do it unless you really need to');
-                sendMessage('Go ahead and start slowing pushing that dildo down your throat');
+                sendMessage('Go ahead and start slowly pushing that dildo down your throat');
                 sendMessage('Try to go as far as you can go. Balls deep would be the best %Grin%');
 
                 if (dildoAnal) {
@@ -322,7 +322,7 @@ function startOrgasmSpecialGayPicture(ruin) {
                     sendMessage('Press all that cum and spit down your throat %Grin%');
                 }
 
-                sendMessage('You can go back up %SlaveName%', 0);
+                sendMessage('You can come back up %SlaveName%', 0);
                 playBellSound();
                 sleep(3);
 
@@ -361,7 +361,7 @@ function startOrgasmSpecialGayPicture(ruin) {
                     changeMeritLow(false);
                     break;
                 } else {
-                    sendMessage(YES_OR_NO);
+                    sendMessage(YES_OR_NO, 0);
                     answer.loop();
                 }
             }
@@ -379,7 +379,7 @@ function startOrgasmSpecialGayPicture(ruin) {
 
     if (ruin) {
         //TODO: Could reuse for same scenarios in other cum modules
-        sendMessage('I never said that you are gonna enjoy a full orgasm');
+        sendMessage('I never said that you were gonna enjoy a full orgasm');
         sendMessage('Ruining is still an orgasm, isn\'t it?');
         sendMessage('So I kept my promise %Grin%');
     }

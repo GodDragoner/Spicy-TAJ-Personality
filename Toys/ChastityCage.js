@@ -132,7 +132,7 @@ function unlockChastityCage(fakeOpening = false) {
                 addPunishmentPoints(100, PUNISHMENT_REASON.TOO_SLOW);
                 break;
             } else {
-                sendMessage(random("Quicker!", "Faster", "Be faster", "Hurry up!", "Be quick", "Come on!", "Be quick...", "Be faster will you?", "Be faster!"));
+                sendMessage(random("Quicker!", "Faster", "Be faster", "Hurry up!", "Be quick", "Come on!", "Be quick...", "Be faster will you?", "Be faster!"), 0);
                 changeMeritMedium(true);
                 answer.loop();
             }
@@ -145,7 +145,7 @@ function unlockChastityCage(fakeOpening = false) {
                 break;
             }
         } else {
-            sendMessage('Don\'t bother me if you aren\'t done yet...');
+            sendMessage('Don\'t bother me if you aren\'t done yet...', 0);
             answer.loop();
         }
     }
@@ -679,7 +679,7 @@ function lockChastityCage(chastityCage = undefined) {
                 }
                 break;
             } else {
-                sendMessageBasedOnSender(random("Quicker!", "Faster", "Be faster", "Hurry up!", "Be quick", "Come on!", "Be quick...", "Be faster will you?", "Be faster!"));
+                sendMessageBasedOnSender(random("Quicker!", "Faster", "Be faster", "Hurry up!", "Be quick", "Come on!", "Be quick...", "Be faster will you?", "Be faster!"), 0);
                 changeMeritMedium(true);
                 answer.loop();
             }
@@ -692,7 +692,7 @@ function lockChastityCage(chastityCage = undefined) {
                 break;
             }
         } else {
-            sendMessageBasedOnSender('Don\'t bother me if you aren\'t done yet...');
+            sendMessageBasedOnSender('Don\'t bother me if you aren\'t done yet...', 0);
             answer.loop();
         }
     }
@@ -1006,7 +1006,7 @@ function setupNewCage() {
             sendVirtualAssistantMessage("Too bad...");
             break;
         } else {
-            sendVirtualAssistantMessage(YES_OR_NO);
+            sendVirtualAssistantMessage(YES_OR_NO, 0);
             answer.loop();
         }
     }*/
