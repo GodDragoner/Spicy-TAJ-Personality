@@ -102,19 +102,25 @@
                         time = Math.ceil(time/ differenceLowHigh);
 
                         //NOTE: ++x so we start with an increased x
-                        for(let x = 0; x < differenceLowHigh; ++x) {
+                        for(let x = 1; x <= differenceLowHigh + 1; x++) {
                             //We halfed the time before so we can continue now
                             playSlideshow(time, 15, 'TEASE');
 
-                            sendMessage('%SlaveName%');
-                            mode.enableLevel(level + x);
-
-                            sendMessage('Back to the slideshow %Grin%');
+                            if(x < differenceLowHigh + 1) {
+                                sendMessage('%SlaveName%');
+                                mode.enableLevel(level + x);
+                                sendMessage('Back to the slideshow %Grin%');
+                            }
                         }
 
                         //Ask for potential pain level increase for that mode
                         if(level < E_STIM_TOY.getMaxLevel() && isChance(20)) {
                             askForIncreaseOfEstimLevel(mode, level);
+
+                            sendMessage('Back to the slideshow %Grin%');
+
+                            //We halfed the time before so we can continue now
+                            playSlideshow(time, 15, 'TEASE');
                         }
                     }
                 }

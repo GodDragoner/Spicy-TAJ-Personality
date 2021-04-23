@@ -83,13 +83,13 @@
                         const hitLevel = getBallHitLevelIndex(loops, maxLoops, painLevel, isBeginning);
 
                         const hitChance = 40;
-                        const flickChance = hitLevel == 2 ? 0 : 40;
+                        const flickChance = hitLevel === 2 ? 0 : 40;
                         const punchChane = allowPunches && !isBeginning ? 20 : 0;
 
                         const hitType = getWinnerIndex([flickChance, hitChance, punchChane]);
 
                         //Tease about balls not being tied
-                        if(untieRoundsAgo == 1 && untieRoundsAgo <= 2 && isChance(33) && !untieTeased) {
+                        if(untieRoundsAgo === 1 && untieRoundsAgo <= 2 && isChance(33) && !untieTeased) {
                             if(isChance(50)) {
                                 sendMessage('Be grateful for your balls not being tied up anymore');
                                 sendMessage('Because you don\'t know how long you can enjoy this luxury %Grin%');
@@ -101,7 +101,7 @@
                         }
 
                         //Tie balls up again
-                        if (!hasBallsTied() && loops != 0 && isChance(10 + painLevel * 2) && wantsToTieBalls() && !isInChastity()) {
+                        if (!hasBallsTied() && loops !== 0 && isChance(10 + painLevel * 2) && wantsToTieBalls() && !isInChastity()) {
                             if(untieRoundsAgo < 0) {
                                 sendMessage('I think we need to change this up a bit');
                             } else {
@@ -115,7 +115,6 @@
                             } else {
                                 sendMessage('I hope you enjoyed that time while your balls were not bound %Grin%');
                             }
-
                         }
 
                         sendBallHitTask(hitLevel, hitType, loops, isBeginning, hitMap);

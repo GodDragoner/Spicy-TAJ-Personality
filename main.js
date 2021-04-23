@@ -5,6 +5,7 @@ Ideas:
 - Chastity spikes while watching porn as punishment
 - Game for every normal orgasm you have x ruined, increase one per normal orgasm or something
 - Edge for every past orgasm / hours passed since last session
+- Rub pre cum on gag before putting in
  */
 
 //TODO: may I remove the gag? Response
@@ -12,6 +13,7 @@ Ideas:
 //May I edge, getting close
 //Jump into videos instead of playing from beginning if only shown for x duration
 //Adjust time given to lock up by experience (measuring the subs time he takes to put it on)
+
 
 
 

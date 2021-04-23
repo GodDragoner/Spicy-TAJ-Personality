@@ -32,6 +32,8 @@
             //TODO: More events after first game round
 
             sendMessage('You can remove the ball crusher now %Grin%');
+            sendMessage('Tell me when you are done %SlaveName%', 0);
+            waitForDone();
             sendMessage(random('I hope they aren\'t dead!', 'I really hope those %Balls% aren\'t dead', 'You should probably take a look at those %Balls% %Lol%'));
             setTempVar(VARIABLE.IS_BALL_CRUSHER_ON, false);
         } else {
