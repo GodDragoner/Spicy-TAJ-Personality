@@ -1095,7 +1095,10 @@ function openChastityCageList() {
     }
 
     createToyListGUI(function (listView, event) {
-        showChastityCageGUI(getChastityCageByName(listView.listView.getSelectionModel().getSelectedItem()));
+        const selectedCage = listView.listView.getSelectionModel().getSelectedItem();
+        if (selectedCage != null) {
+            showChastityCageGUI(getChastityCageByName(selectedCage));
+        }
     }, "Chastity Cages", list)
 }
 
@@ -1143,14 +1146,13 @@ function showChastityCageGUI(chastityCage) {
             let ballTrapType = writebackGui.addWritebackValue(gridPane.addComboBox(row++, "Ball Trap Type"), "ballTrapType");
             ballTrapType.addChildren(BALL_TRAP_TYPE, chastityCage.ballTrapType);
 
-
             let save = createButton("Save");
             gridPane.setConstraints(save.button, 1, row);
             gridPane.getChildren().add(save.button);
 
             save.setOnAction(function (handle) {
                 writebackGui.writeBack();
-                saveDildos();
+                saveChastityCages();
                 dialog.close();
             });
 

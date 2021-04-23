@@ -45,7 +45,7 @@
             sendMessage("You have to be able to last longer that a minute or two");
             sendMessage("Or she's not going to want to stick around");
         } else {
-            sendMessage("Maybe I should just let you have some more of that then %EmoteHappy");
+            sendMessage("Maybe I should just let you have some more of that then %EmoteHappy%");
         }
 
         sendMessage("Edging is a big part of how you serve me");

@@ -11,7 +11,7 @@ function hasBallCrusher() {
 
 function applyBallCrusherPressure() {
     if (!isVar(VARIABLE.BALL_CRUSHER_MAX_TWISTS) || !isVar(VARIABLE.BALL_CRUSHER_TWISTS_TO_APPLY)) {
-        sendMessage('Since this is the first we play with %MyYour% %Balls% like this');
+        sendMessage('Since this is the first time we\'re playing with %MyYour% %Balls% like this');
 
         sendMessage('We need to first of all determine how many twists you need to apply pressure to your balls');
         sendMessage('So what you are gonna do right now is to start twisting and count the amount of twists you need to apply pressure to your balls');
@@ -22,8 +22,8 @@ function applyBallCrusherPressure() {
         sendMessage('A full twist means to tighten all the screws a full round!');
         sendMessage('As simple as that...');
 
-        sendMessage('I am gonna put on slideshow and with every picture you are gonna tighten the screws half a round');
-        sendMessage('If you found the point of it starting to really apply pressure/feeling uncomfortable simply say stop %Grin%');
+        sendMessage('I am gonna put on a slideshow, and with every picture you are gonna tighten the screws half a round');
+        sendMessage('If you reach the point of it starting to really apply pressure/feeling uncomfortable, simply say stop %Grin%');
         sendMessage('So here we go...');
 
         let stop = false;
@@ -40,6 +40,8 @@ function applyBallCrusherPressure() {
                 } else if (answer.isLike('stop', 'end')) {
                     stop = true;
                     break;
+                } else {
+                    answer.loop();
                 }
             }
 
@@ -48,13 +50,13 @@ function applyBallCrusherPressure() {
 
         unlockImages();
 
-        sendMessage('Hope it is not feeling to uncomfortable yet %Lol%');
+        sendMessage('Hope it is not feeling too uncomfortable yet %Lol%');
 
         sendMessage('Next we need to determine your threshold');
-        sendMessage('That point where you can\'t absolutely stand another single twist!');
+        sendMessage('That point where you absolutely can\'t stand another single twist!');
 
         sendMessage('Now for this next exercise');
-        sendMessage('You\'re going to twist them 1 full round each 15 seconds');
+        sendMessage('You\'re going to twist them 1 full round every 15 seconds');
         sendMessage('I want you to make me proud! ');
         sendMessage('Endure the pain!');
         sendMessage('Say stop when you reach the limit!');
@@ -73,6 +75,8 @@ function applyBallCrusherPressure() {
                 } else if (answer.isLike('stop', 'end')) {
                     stop = true;
                     break;
+                } else {
+                    answer.loop();
                 }
             }
 
