@@ -19,11 +19,18 @@
 
     while (!exitRequest) {
         let lobbyAnswer;
-        if(DEBUG_OPTIONS) {
-            lobbyAnswer = createInput("Session", "Chores", "Dungeon", "Settings", "Shop", "Fitness", "Exercise", "Study", "Pin Board", "Chastity", "Academy", "injectcodedebug", "End");
-        } else {
-            lobbyAnswer = createInput("Session", "Chores", "Dungeon", "Settings", "Shop", "Fitness", "Exercise", "Study", "Pin Board", "Chastity", "Academy", "End");
+
+        let options = ["Session", "Free Time", "Dungeon", "Pinboard", "Settings", "Shop", "Chastity", "End"];
+
+        if (isFullTime()) {
+            options.push('Academy');
         }
+
+        if (DEBUG_OPTIONS) {
+            options.push('injectcodedebug');
+        }
+
+        lobbyAnswer = createAnswerInput(options);
 
         while (true) {
             if (lobbyAnswer.isLike("session", "domme")) {
@@ -46,24 +53,16 @@
                 sendVirtualAssistantMessage(getWelcomeMessage(), false);
                 break;
             } else if (lobbyAnswer.isLike("shop", "buy", "purchase", "spent", "gold", "store")) {
-                sendVirtualAssistantMessage("This is not supported yet!");
-                break;
-            } else if (lobbyAnswer.isLike("fitness", "health")) {
                 lobbyAnswer.clearOptions();
-                run("Exercise/ExerciseBase.js");
+                run("Assistant/ShopLobby.js");
                 sendVirtualAssistantMessage(getWelcomeMessage(), false);
                 break;
-            } else if (lobbyAnswer.isLike("report", "exercise")) {
+            } else if (lobbyAnswer.isLike("free time", "fitness", "health", "exercise", "work", "study", "chore", "clean", "dust", "wipe", "wash")) {
                 lobbyAnswer.clearOptions();
-                run("Exercise/reportexercise.js");
+                run("Assistant/FreeTimeLobby.js");
                 sendVirtualAssistantMessage(getWelcomeMessage(), false);
                 break;
-            } else if (lobbyAnswer.isLike("work", "study")) {
-                lobbyAnswer.clearOptions();
-                run("WorkMode/GNMWorkMode.js");
-                sendVirtualAssistantMessage(getWelcomeMessage(), false);
-                break;
-            } else if (lobbyAnswer.isLike("save", "end", "quit", "stop", "leave", "close", "finish")) {
+            }  else if (lobbyAnswer.isLike("save", "end", "quit", "stop", "leave", "close", "finish")) {
                 sendVirtualAssistantMessage(random("Bye", "Until next time", "See you", "I'm waiting for the next time", "Don't leave me alone too long", "Good bye", "Have a nice day", "I saved your progress and you can close the program"));
                 lobbyAnswer.clearOptions();
                 endSession();
@@ -78,13 +77,13 @@
                 run('Assistant/ChastityLobby.js');
                 sendVirtualAssistantMessage(getWelcomeMessage(), false);
                 break;
-            }  else if (lobbyAnswer.isLike("academy")) {
+            } else if (lobbyAnswer.isLike("academy")) {
                 lobbyAnswer.clearOptions();
                 run('Academy/AcademyLobby.js');
                 sendVirtualAssistantMessage(getWelcomeMessage(), false);
                 break;
             } else if (lobbyAnswer.isLike("injectcodedebug")) {
-               break;
+                break;
             } else {
                 sendVirtualAssistantMessage("You have the following options %SlaveName%");
                 sendVirtualAssistantMessage("Request a session with your %DomHonorific%");

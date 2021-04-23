@@ -5,7 +5,7 @@
         if (putInInflatablePlug()) {
             //QUALITY: More games and
             startMissingCardMemory(GAME_TYPE.GAME_INFLATABLE_PLUG);
-            sendMessage('You can deflate the plug now and put it away %Grin%');
+            sendMessage('You can deflate the plug now %Grin%');
             deflateInflatablePlug();
             removeButtplug();
         } else {

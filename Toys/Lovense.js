@@ -85,6 +85,10 @@ function fetchAvailableLovenseToys() {
 
     let response = httpGet('https://api.lovense.com/api/lan/getToys');
 
+    if(isNullOrEmpty(response)) {
+        return;
+    }
+
     let obj = JSON.parse(response.data);
 
     let servers = Object.keys(obj);

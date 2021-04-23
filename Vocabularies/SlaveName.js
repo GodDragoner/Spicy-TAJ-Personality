@@ -1,5 +1,5 @@
 function slaveNameVocabulary() {
-    const answers = ["slave",
+    let answers = ["slave",
         "pet",
         "toy",
         "stroker"
@@ -7,25 +7,40 @@ function slaveNameVocabulary() {
 
     let adjectives = [''];
 
+
+    if (VERBAL_HUMILIATION_LIMIT.isAllowed() && feelsLikeInsultingSlave()) {
+        adjectives.push('disgusting', 'tiny dick', 'worthless', 'naughty', 'stupid', 'filthy', 'nasty', 'pathetic', 'small dick');
+        answers.push("slut", 'bitch', 'loser', 'idiot', 'piece of shit', 'whore');
+    }
+    //Do this after verbal humiliation to clear potential wrong answers in case of only sissy address
     if (SISSY_LIMIT.isAllowed()) {
         adjectives.push('cock hungry', 'cock craving', 'cock sucking');
-        answers.push("girl");
+
+        //Clear answers if we only address as sissy
+        if(RULE_ONLY_SISSY_ADDRESS.isActive()) {
+            answers = [];
+        }
+
+        answers.push("girl", 'bimbo', 'sissy');
     } else {
         answers.push('boy');
     }
 
-    if(CEI_LIMIT.isAllowed()) {
-        answers.push('cum consumer', 'cum lover');
-        adjectives.push('cum dripping', 'cum eating',  'cum sucking', 'cum craving');
-    }
 
-    if (VERBAL_HUMILIATION_LIMIT.isAllowed() && (getMood() > NEUTRAL_MOOD || feelsLikeShowingPower())) {
-        adjectives.push('disgusting', 'tiny dick', 'worthless', 'naughty', 'stupid', 'filthy', 'nasty', 'pathetic', 'small dick');
-        answers.push("slut", 'bitch', 'loser', 'idiot', 'piece of shit', 'whore');
+    if(CEI_LIMIT.isAllowed()) {
+        if(isChance(50)) {
+            answers.push('cum consumer', 'cum lover', 'cum guzzler');
+        } else {
+            adjectives.push('cum eating',  'cum sucking', 'cum craving');
+        }
     }
 
     if(CUCKOLD_LIMIT.isAllowed()) {
-        answers.push("cuckie", 'cuckold');
+        if(RULE_ONLY_SISSY_ADDRESS.isActive()) {
+            answers.push("sissy cuckie", 'sissy cuckold');
+        } else {
+            answers.push("cuckie", 'cuckold');
+        }
     }
 
     if (getVar(VARIABLE.CHASTITY_ON, false)) {

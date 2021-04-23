@@ -85,78 +85,8 @@
         }
     }
 
-    if (isFullTime()) {
-        sendMessage("Now as you know I expect you to serve full time");
-        sendMessage("Normally this would mean that I want you to launch Spicy at least 6 times per week");
-        sendMessage("But I would understand it if your life doesn't allow for that");
-        sendMessage("So %SlaveName%...");
-        let answer = sendInput("How many times a week do you think I should expect you to visit me?");
-
-        while (true) {
-            if (answer.isInteger()) {
-                const result = answer.getInt();
-                if (result <= 0) {
-                    sendMessage("You can't choose a number equal to 0 or lower", 0);
-                    answer.loop();
-                } else if (result > 7) {
-                    sendMessage("You chose a number too big, you can't visit me more than 7 times a week", 0);
-                    answer.loop();
-                } else {
-                    setVar(VARIABLE.MIN_WEEKLY_VISITS, result);
-                    break;
-                }
-            } else {
-                sendMessage("Slave...");
-                sendMessage("I asked you to just give me a simple number...");
-                sendMessage("You aren't supposed to write down '7 days', '4 times' or anything similar");
-                sendMessage("Just give me a number plain and simple like 5, 7 or 2", 0);
-                answer.loop();
-            }
-        }
-
-        sendMessage("Perfect " + getVar(VARIABLE.MIN_WEEKLY_VISITS) + " times a week it is.");
-        sendMessage("Next I need to know how many minutes per week you should do chores");
-        sendMessage("Right now the amount of minutes for chores is " + getVar(VARIABLE.MIN_WEEKLY_CHORE_TIME));
-        sendMessage("Which I consider to be very fair since this number will likely cover your cleaning duty");
-        sendMessage("I consider all chores beyond those to be voluntary");
-        sendMessage("Either because you want to please me or perhaps earn a bit of gold");
-
-        answer = sendInput("Do you wish to change this?");
-        while (true) {
-            if (answer.isLike("yes")) {
-                sendMessage("Okay then...");
-                answer = sendInput("So how many minutes should you be doing chores each week at least?");
-
-                while (true) {
-                    if (answer.isInteger()) {
-                        const result = answer.getInt();
-                        if (result < 60*2) {
-                            sendMessage("Nothing less than 120 minutes %SlaveName%! That would be just laziness!", 0);
-                            answer.loop();
-                        } else {
-                            sendMessage("%Good%");
-                            setVar(VARIABLE.MIN_WEEKLY_CHORE_TIME, result);
-                            break;
-                        }
-                    } else {
-                        sendMessage("All I asked you to do was input a simple number...");
-                        sendMessage("Like 120");
-                        sendMessage("or 150");
-                        sendMessage("or 400...", 0);
-                        answer.loop();
-                    }
-                }
-
-                break;
-            } else if (answer.isLike("no")) {
-                sendMessage("Very well");
-                break;
-            } else {
-                sendMessage(YES_OR_NO, 0);
-                answer.loop();
-            }
-        }
-    }
+    //Handles all things that need to be determined
+    perfomFullTimeTransition(true);
 
     sendMessage("%SlaveName%");
     sendMessage("I consider myself to be a fair %DomHonorific%");

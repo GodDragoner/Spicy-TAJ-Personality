@@ -29,7 +29,7 @@ function chastityCageVocabulary() {
         if (activeChastityCage.isFullSizedBelt()) {
             answers.push("belt", material + " belt", "full belt", "full " + material + " belt");
         } else {
-            answers.push("cage", material + " cage", "ball-trapping belt", material + " ball-trapping belt");
+            answers.push("cage", material + " cage"/*, "ball-trapping belt", material + " ball-trapping belt"*/);
         }
     } else {
         answers.push("chastity cage", "metal cage", "steel cage");

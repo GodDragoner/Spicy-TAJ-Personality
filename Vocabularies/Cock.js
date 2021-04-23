@@ -1,23 +1,36 @@
 function cockVocabulary() {
     const size = ["little", "cute little", "small", "tiny"];
-    const adjectives = ["poor", "desperate", "helpless", "sore", "frustrated", "denied", "aching", "leaky", "horny", "drippy", "dripping", "subservient", 'teased'];
-    const answers = ["dick", "cock", "fuckstick", "wiener", "pecker", "prick"];
+    const adjectives = ["poor", "desperate", "helpless", "sore", "frustrated", "denied", "aching", "leaky", "horny", "drippy", "dripping", "subservient", 'teased', 'agonized'];
+    let answers = ["dick", "cock", "fuckstick", "wiener", "pecker", "prick"];
 
     let answer = "";
 
-    if(VERBAL_HUMILIATION_LIMIT.isAllowed() || getMood() > NEUTRAL_MOOD) {
-        adjectives.push('worthless', 'disgusting', 'laughable', 'excuse for a');
+    if(VERBAL_HUMILIATION_LIMIT.isAllowed() && feelsLikeInsultingSlave()) {
+        adjectives.push('worthless', 'disgusting', 'laughable', 'excuse for a', 'sorry');
+    }
+
+    if(SISSY_LIMIT.isAllowed()) {
+        adjectives.push('cute');
+
+        //Clear answers if we only address as sissy
+        if(RULE_ONLY_SISSY_ADDRESS.isActive()) {
+            s = [];
+        }
+
+        answers.push('clit', 'clitty');
     }
 
     if(isInChastity()) {
         adjectives.push('locked up', 'caged');
     }
 
-    if(randomInteger(1, 4) == 2) {
+    //Add adjective
+    if(isChance(20)) {
         answer += adjectives[randomInteger(0, adjectives.length - 1)]  + " ";
     }
 
-    if(randomInteger(1, 4) == 2 && VERBAL_HUMILIATION_LIMIT.isAllowed()) {
+    //Add size
+    if(isChance(20) && VERBAL_HUMILIATION_LIMIT.isAllowed()) {
         answer += size[randomInteger(0, size.length - 1)] + " ";
     }
 

@@ -95,7 +95,11 @@ function interpretLegacyTaunt(message, tauntType = LEGACY_TAUNT_TYPE_STROKE) {
 
     message.trim();
 
-    sendMessage(message, 0);
+    //Only send message if it contains something
+    if(message.length > 0) {
+        sendMessage(message, 0);
+    }
+
 
     if (strokeSlower) {
         addStrokingBPM(-10);

@@ -466,8 +466,7 @@ function startDeepthroatModule(createSpitLube = false) {
 
     sendMessage('And what\'s better for that than doing a few deepthroats?');
     sendMessage('So get ready to get your throat filled!');
-
-    //TODO: Also different messages like: To make me proud etc.
+    sendMakeMeProud();
 
     let bowl = false;
 

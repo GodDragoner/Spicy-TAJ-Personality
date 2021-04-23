@@ -28,14 +28,14 @@
 
                 //Set the exercise date to now
                 setDate(VARIABLE.EXERCISE_LAST);
-                changeMeritMedium(true);
+                changeMeritMedium(false);
 
                 addGold(50);
                 break;
             } else if (answer2.containsIgnoreCase("no", "nope", "nah", "sorry", "i wish")) {
                 sendVirtualAssistantMessage("%EmoteSad%");
                 sendVirtualAssistantMessage("Then don't waste my time...");
-                changeMeritMedium(true);
+                changeMeritLow(true);
                 break;
             } else {
                 sendVirtualAssistantMessage("Did you exercise %SlaveName%?");

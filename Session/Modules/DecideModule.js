@@ -3,8 +3,8 @@
 {
     let moduleCounter = 0;
 
-    //End session
-    while (!hasSessionTimePassed(getVar(VARIABLE.DEVOTION) + getVar(VARIABLE.PROLONGED_SESSION_TIME, 0))) {
+    //End session if we only have <= 10% of session time left
+    while (!hasSessionTimePassed(Math.ceil((getVar(VARIABLE.DEVOTION) + getVar(VARIABLE.PROLONGED_SESSION_TIME, 0))*0.90))) {
         checkInteraction();
 
         //Apply random toys
@@ -17,14 +17,14 @@
         let minTimePassed = 0;
 
         //Dom choose
-        if(strokeFrequency == 0) {
+        if (strokeFrequency == 0) {
             const mood = getMood();
             const strictness = getStrictnessForCharacter();
 
-            minTimePassed = getVar(VARIABLE.DEVOTION)/Math.min(4, Math.max(1, 5 - strictness - mood - 1));
+            minTimePassed = getVar(VARIABLE.DEVOTION) / Math.min(4, Math.max(1, 5 - strictness - mood - 1));
         } else {
             //Other frequency
-            minTimePassed = getVar(VARIABLE.DEVOTION)/(strokeFrequency + 1);
+            minTimePassed = getVar(VARIABLE.DEVOTION) / (strokeFrequency + 1);
         }
 
         //testModules();
@@ -32,35 +32,35 @@
         sendDebugMessage('Min time between stroking passed: ' + minTimePassed);
 
         //Some stroking sometimes
-        if((!isVar('lastStrokingPause') || getVar('lastStrokingPause').addMinute(minTimePassed).hasPassed())) {
-            if(!isInChastity()) {
+        if ((!isVar('lastStrokingPause') || getVar('lastStrokingPause').addMinute(minTimePassed).hasPassed())) {
+            if (!isInChastity()) {
                 let mood = getMood() + 1;
                 let strictness = getStrictnessForCharacter() + 1;
-                let minutesToStroke = Math.round((180 - mood*mood*strictness)/60);
+                let minutesToStroke = Math.round((180 - mood * mood * strictness) / 60);
 
                 sendDebugMessage('Start of stroking interval for ' + minutesToStroke);
 
                 startStrokeInterval(randomInteger(Math.max(1, minutesToStroke - 1), minutesToStroke));
 
                 sendDebugMessage('End of stroking interval');
-            } else if(!feelsEvil() || !readyForVibratingCage()) {
+            } else if (!feelsEvil() || !readyForVibratingCage()) {
                 let mood = getMood() + 1;
                 let strictness = getStrictnessForCharacter() + 1;
-                let iterationsToTease = 26 - mood*strictness*2;
-                let actualLoop = randomInteger(Math.round(iterationsToTease/2), iterationsToTease);
+                let iterationsToTease = 26 - mood * strictness * 2;
+                let actualLoop = randomInteger(Math.round(iterationsToTease / 2), iterationsToTease);
 
                 //Times 5 since wait time per taunt is currently 5
-                startTeaseTauntInterval(actualLoop*5);
+                startTeaseTauntInterval(actualLoop * 5);
             }
             //Evil vibe teasing while in cage
             else {
                 let mood = getMood() + 1;
                 let strictness = getStrictnessForCharacter() + 1;
-                let minutesToVibe = Math.round((180 - mood*mood*strictness)/60);
+                let minutesToVibe = Math.round((180 - mood * mood * strictness) / 60);
 
                 sendDebugMessage('Start of vibe interval for ' + minutesToVibe);
 
-                startVibratingCageInterval(randomInteger(Math.max(1, minutesToVibe - 1), minutesToVibe)*60);
+                startVibratingCageInterval(randomInteger(Math.max(1, minutesToVibe - 1), minutesToVibe) * 60);
 
                 sendDebugMessage('End of vibe interval');
             }
@@ -68,22 +68,25 @@
             setDate('lastStrokingPause');
         }
 
-
-        if(moduleCounter === 0) {
+        let skipModules = false;
+        if (moduleCounter === 0) {
             let specialSession = chooseSpecialSession();
 
-            if(specialSession !== undefined) {
+            if (specialSession !== undefined) {
                 startSpecialSession(specialSession);
+
+                //Skip modules if time is running low and we need to follow up our special session
+                skipModules = hasSessionTimePassed(getVar(VARIABLE.DEVOTION) / 2);
             }
         } else {
             //Continue special session if we've had some modules in between or half session time already passed
-            if(isSpecialSession() && (moduleCounter > 0 && isChance(moduleCounter*45) || hasSessionTimePassed(getVar(VARIABLE.DEVOTION)/2))) {
+            if (isSpecialSession() && (moduleCounter > 0 && isChance(moduleCounter * 45) || hasSessionTimePassed(getVar(VARIABLE.DEVOTION) / 2))) {
                 continueSpecialSession();
+                skipModules = true;
             }
         }
 
-        //If not in special session run module
-        if(!isSpecialSession()) {
+        if(!skipModules) {
             const moduleChance = 50;
             let teaseModuleChance = moduleChance;
             const teaseModuleAdditions = [
@@ -143,11 +146,11 @@
             let sissyModuleChance = 0;
 
             //No pain modules if pain is hard limit
-            let painModuleChance = PAIN_LIMIT.isAllowed()? moduleChance : 0;
+            let painModuleChance = PAIN_LIMIT.isAllowed() ? moduleChance : 0;
             let slaveModuleChance = moduleChance;
             let humiliationModuleChance = moduleChance;
 
-            if(!HUMILIATION_LIMIT.isAllowed()) {
+            if (!HUMILIATION_LIMIT.isAllowed()) {
                 humiliationModuleChance = 0;
             }
 
@@ -175,7 +178,7 @@
 
                 runModuleCategory(CATEGORY_PAIN);
 
-                if(increasedPainTolerance) {
+                if (increasedPainTolerance) {
                     askForPainToleranceIncrease();
                 }
             } else if (moduleIndicator < sissyModuleChance + teaseModuleChance + painModuleChance + slaveModuleChance) {
@@ -191,9 +194,9 @@
         moduleCounter++;
 
         //Unlock later chastity
-        if(isInChastity() && getVar(VARIABLE.CHASTITY_REMOVE_LATER, false)) {
+        if (isInChastity() && getVar(VARIABLE.CHASTITY_REMOVE_LATER, false)) {
             //Has too much time passed or have we spend enough modules?
-            if(isInChastity(moduleCounter*40) || hasSessionTimePassed(Math.round(getVar(VARIABLE.DEVOTION)/1.5))) {
+            if (isInChastity(moduleCounter * 40) || hasSessionTimePassed(Math.round(getVar(VARIABLE.DEVOTION) / 1.5))) {
                 unlockChastityCage();
                 delVar(VARIABLE.CHASTITY_REMOVE_LATER);
             }
@@ -201,11 +204,11 @@
     }
 
     //Maybe prolong session if we haven't already
-    if(!isVar(VARIABLE.PROLONGED_SESSION_TIME) && wouldLikeToProlongSession()) {
+    if (!isVar(VARIABLE.PROLONGED_SESSION_TIME) && wouldLikeToProlongSession()) {
         //QUALITY: More diverse chat
         sendMessage('Looks like our time is up %SlaveName% %EmoteSad%');
         sendMessage('I am feeling like still playing for a bit though %Grin%');
-        if(sendYesOrNoQuestion('Would you be up for a longer session today?')) {
+        if (sendYesOrNoQuestion('Would you be up for a longer session today?')) {
             sendMessage('%Good%');
             changeMeritLow(false);
             //Add another 10 to 20 minutes

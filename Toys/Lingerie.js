@@ -110,7 +110,8 @@ function putOnLingerie() {
     }
 
     sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
-    waitForDone();
+    //Might take long to dress up
+    waitForDone(10000000);
 
     return attachedToys;
 }

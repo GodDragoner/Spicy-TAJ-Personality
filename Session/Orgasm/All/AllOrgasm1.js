@@ -8,6 +8,7 @@
     sendMessage("And wait for my command to cum, because I might make you hold that edge a bit too");
 
     if (isInChastity()) {
+        readyForVibratingCage();
         sendMessage("Put the vibrator on that cage and start vibrating it %SlaveName%");
     } else {
         sendMessage("Start stroking");

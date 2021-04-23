@@ -15,6 +15,7 @@
     sendMessage("So let's do this, %SlaveName%");
 
     if(isInChastity()) {
+        readyForVibratingCage();
         sendMessage("Start vibrating the cage, but make sure you don't cum before I say so!");
     } else {
         sendMessage("Start stroking, but make sure you don't cum before I say so!");

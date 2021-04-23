@@ -125,7 +125,7 @@ function attachEStimToBodyPart(bodyPart) {
             waitForDone(10000);
             break;
     }
-w
+
     return toysAttached;
 }
 

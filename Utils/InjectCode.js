@@ -233,15 +233,6 @@ sendDebugMessage(serializeObject(toy.setVibrate(1)));
 sleep(5);
 sendDebugMessage(serializeObject(toy.setVibrate(0)));
 setVar(VARIABLE.ASS_LEVEL, restoreLevel);*/
-
 {
-    /*FLESH_LIGHT.setToyOn(false);
-    resetFleshlight();
-    setVar(VARIABLE.CHASTITY_ON, true);*/
-    let analOrgasmType = decideAnalOrgasmType();
-    let orgasmCategory = decideOrgasm(true);
-
-    if (orgasmCategory !== ORGASM_CATEGORY_DENIED) {
-        getAnalOrgasmInstructions(analOrgasmType, orgasmCategory);
-    }
+    RULE_ONLY_SISSY_ADDRESS.sendIntroduction();
 }

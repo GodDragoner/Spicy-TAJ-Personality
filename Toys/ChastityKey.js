@@ -58,7 +58,7 @@ function unlockChastityKey() {
         lockImages();
         sendMessageBasedOnSender('This is your combination %SlaveName%', 0);
         showImage(getChastityCombinationFile(), 5);
-        sendMessageBasedOnSender('Get your keys out of the box and tell me when you are ready to continue');
+        sendMessageBasedOnSender('Get your keys out of the box and tell me when you are ready to continue', 0);
         waitForDone(100000);
         setVar(VARIABLE.CHASTITY_KEY_LOCKED_COMBINATION, false);
         sendMessageBasedOnSender('%Good%');

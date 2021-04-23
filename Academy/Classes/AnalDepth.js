@@ -155,5 +155,5 @@
         return ANAL_LIMIT.isAllowed();
     }
 
-    registerClass("Anal Depth", 5, null, [DAY_OF_WEEK.MONDAY, DAY_OF_WEEK.THURSDAY], getTasks, getModifiers, getExam, onStart, onEnd, isAvailable)
+    registerClass("Anal Depth", 5, null, [DAY_OF_WEEK.MONDAY, /*DAY_OF_WEEK.THURSDAY*/], getTasks, getModifiers, getExam, onStart, onEnd, isAvailable)
 }

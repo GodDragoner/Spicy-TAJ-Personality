@@ -75,6 +75,12 @@ function feelsLikePunishingSlave() {
     sendDebugMessage('Feel like punishing chance: ' + chance);
     let punish = isChance(chance);
 
+    //Average merit change subtracted from chance
+    let dailyMeritChangeModifier = (Math.floor(getVar(VARIABLE.DAILY_MERIT_CHANGE, 0)/2.0));
+    sendDebugMessage('Daily merit change modifier: ' + dailyMeritChangeModifier);
+    chance -= dailyMeritChangeModifier;
+    chance = Math.max(chance, 0);
+
     //If chance hits twice (the higher the chance => madder domme => higher chance of increasing her mood => make the chance smaller for higher strictness)
     if(punish && isChance(Math.floor(chance/(getStrictnessForCharacter() + 1)))) {
         //Add a few merits so domme feels better since she punished slave
@@ -82,6 +88,14 @@ function feelsLikePunishingSlave() {
     }
 
     return punish;
+}
+
+/**
+ * Returns whether the domme is in a bad mood (daily merit change is beneath threshold) or mood is bad
+ * @returns {boolean|boolean} Whether the domme wants to insult slave
+ */
+function feelsLikeInsultingSlave() {
+    return (getVar(VARIABLE.DAILY_MERIT_CHANGE) < (3 - getStrictnessForCharacter())*-10 || getMood() > NEUTRAL_MOOD) && isChance(getStrictnessForCharacter()*20)
 }
 
 function wouldLikeToProlongSession() {

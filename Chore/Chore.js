@@ -17,7 +17,8 @@ let tempChoreTimeMultiplier = 1;
 
 function chooseChore() {
     let biggestTimeDifferenceRoom = null;
-    let biggestTimeDifferenceChoreType = -1;
+    let biggestTimeDifferenceChoreType = null;
+    let biggestTimeDifference = -1;
 
     //TODO: Finances & other chores (like washing stuff, garden, cooking etc.)
 
@@ -29,13 +30,15 @@ function chooseChore() {
                 let chore = CHORES[x];
                 let secondsPassed = room.getSecondsSinceLastChore(chore);
 
+                // -1 => chore hasn't been done before
                 if (secondsPassed === -1) {
                     biggestTimeDifferenceRoom = room;
                     biggestTimeDifferenceChoreType = chore;
                     break outerLoop;
-                } else if (secondsPassed > biggestTimeDifferenceChoreType) {
+                } else if (secondsPassed > biggestTimeDifference) {
                     biggestTimeDifferenceRoom = room;
                     biggestTimeDifferenceChoreType = chore;
+                    biggestTimeDifference = secondsPassed;
                 }
             }
         }

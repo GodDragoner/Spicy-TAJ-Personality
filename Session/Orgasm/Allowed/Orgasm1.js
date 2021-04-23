@@ -29,6 +29,7 @@
 
 
             if (isInChastity()) {
+                readyForVibratingCage();
                 sendMessage("Put the vibrator on that cage and start vibrating it %SlaveName%");
                 sendMessage("Just work your way through the pain now");
             } else {

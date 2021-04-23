@@ -280,6 +280,16 @@ function startModelRating(gameType) {
                         rewardGoldLow();
                     }
                 }
+                //Anal and stuff
+                else if(isInChastity()) {
+                    if (wins === 0) {
+                        sendMessage('Since you are in chastity and I can\'t give you any treat of some sort I am just gonna reward you with gold');
+                    } else {
+                        sendMessage('Some gold for you yet again %EmoteHappy%');
+                    }
+
+                    rewardGoldLow();
+                }
 
                 wins++;
             } else {
@@ -356,11 +366,20 @@ function startModelRating(gameType) {
         if (gameType === GAME_TYPE.GAME_BALL_CRUSHER) {
             sendMessage('You may remove the ball crusher now %SlaveName%');
             setVar(VARIABLE.IS_BALL_CRUSHER_ON, true);
-            sendMessage('Feels good, doesn\'t it?');
+            sendMessage('Tell me when you are done %EmoteHappy%');
+            waitForDone();
+
+            if(sendYesOrNoQuestion('Feels good, doesn\'t it?')) {
+                sendMessage('%Wicked%');
+            } else {
+                sendMessage('Well maybe you need some more pain then?');
+                smallCBTPunishment();
+            }
         } else if(gameType === GAME_TYPE.GAME_ANAL) {
             sendMessage('You may put that dildo away for now %SlaveName%');
         }
 
+        //QUALITY: More variation
         sendMessage('We\'re at the end! %Grin%');
         sendMessage('Hopefully this was as much fun for you as for me');
         sendMessage('I guess it was if you have a good memory %Lol%');

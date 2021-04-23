@@ -1,4 +1,4 @@
-if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.STROKING)) {
+{
     if (isStroking()) {
         sendMessage("Stop stroking %SlaveName%", 0);
         stopStroking();
@@ -89,11 +89,11 @@ function askSubForBegEdge() {
     setTempVar(VARIABLE.RESPONSE_BEG_EDGE_COUNT, 0);
     setTempVar(VARIABLE.BEG_DOMME_TO_EDGE, setDate());
 
-    sendMessage("Now beg me to let you edge, %SlaveName%");
-    sendMessage("Come on, beg me, %SlaveName%");
+    sendMessage("Now beg me to let you edge, %SlaveName%", 10);
+    sendMessage("Come on, beg me, %SlaveName%", 10);
     //Reset time
     setTempVar(VARIABLE.BEG_DOMME_TO_EDGE, setDate());
-    sendMessage("Beg me like you mean it... because you do %Lol%");
+    sendMessage("Beg me like you mean it... because you do %Lol%", 10);
 
     if (getVar(VARIABLE.RESPONSE_BEG_EDGE_COUNT) > 2) {
         sendMessage('That\'s enough, %SlaveName% %EmoteHappy%');

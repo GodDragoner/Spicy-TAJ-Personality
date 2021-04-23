@@ -95,7 +95,7 @@ function startMissingCardMemory(gameType) {
             level = Math.max(0, mode.getPainLevel(PAIN_LEVEL_HIGH) - Math.ceil(maxLosses / 2));
         }
 
-        turnsPerLoss = Math.round((getVar(mode.getPainLevel(PAIN_LEVEL_HIGH)) + getMood() * 1.5) / maxLosses);
+        turnsPerLoss = Math.round((mode.getPainLevel(PAIN_LEVEL_HIGH) + getMood() * 1.5) / maxLosses);
 
         sendMessage('If you are right you will earn ' + goldEarnedPerWin + ' gold');
         sendMessage('If you are wrong you will have to increase the level of your e-stim device by ' + turnsPerLoss + ' %Grin%');

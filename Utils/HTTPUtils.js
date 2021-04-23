@@ -20,9 +20,13 @@ function httpPost(theUrl, data, contentType) {
 }
 
 function asResponse(con) {
-    let d = read(con.inputStream);
-
-    return {data: d, statusCode: con.responseCode};
+    try {
+        let d = read(con.inputStream);
+        return {data: d, statusCode: con.responseCode};
+    } catch (exception) {
+        sendDebugMessage('Failed to fetch response from ' + con);
+        return null;
+    }
 }
 
 function write(outputStream, data) {
