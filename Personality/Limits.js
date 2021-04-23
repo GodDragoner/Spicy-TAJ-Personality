@@ -45,7 +45,7 @@ ANAL_LIMIT.sendIntroduction = function (type) {
         sendMessage('Now that we have that sorted out there is still something I need to know');
         sendMessage("I don't know whether you have any experience when it comes to ass play");
         sendMessage("Meaning fucking yourself or wearing butt plugs");
-        showImage("Images/Spicy/Toys/buttplugs.jpg", 3);
+        showImage("Images/Spicy/Toys/buttPlugs.jpg", 3);
         sendMessage("Are you experienced and capable of wearing butt plugs on a daily basis...");
         sendMessage("And fucking yourself with a huge dildo?");
         showImage("Images/Spicy/Toys/dildo.jpg", 3);
@@ -69,7 +69,7 @@ ANAL_LIMIT.sendIntroduction = function (type) {
                 sendMessage("I guess that means we will work on this from now on %Grin%");
                 break;
             } else {
-                sendMessage(YES_OR_NO);
+                sendMessage(YES_OR_NO, 0);
                 answer.loop();
             }
         }
@@ -104,9 +104,9 @@ CEI_LIMIT.sendDoingAnythingIntroduction = function (type) {
 const PAIN_LIMIT = createLimit('pain', 'painLimit');
 PAIN_LIMIT.sendIntroduction = function (type) {
     sendMessage('I think pain should be part of any BDSM relationship');
-    sendMessage('At least as a mean of punishment for bad little slaves %Grin%');
+    sendMessage('At least as a means of punishment for bad little slaves %Grin%');
     sendMessage('Hurting your nipples, spanking your ass and making you whimper would really bring this whole thing to a new level');
-    sendMessage('Making you my and only my pain slut ready for abuse if I feel like it or you have been misbehaving');
+    sendMessage('Making you my one and only pain slut ready for abuse if I feel like it or you have been misbehaving');
     sendMessage('I would be very happy if you were to tell me that we can try this %EmoteHappy%');
     sendMessage('And you want to please your %DomHonorific%, don\'t you? %Grin%');
     askForNewLimitValue(this);
@@ -597,7 +597,7 @@ function askForNewLimitValue(limit) {
             limit.setLimit(LIMIT_ASKED_MAYBE);
             break;
         } else {
-            sendMessage('Yes, no or maybe %SlaveName%?');
+            sendMessage('Yes, no or maybe %SlaveName%?', 0);
             answer.loop();
         }
     }

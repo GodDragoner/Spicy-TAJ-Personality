@@ -150,7 +150,7 @@ function checkChastityExercise() {
                         setVar(VARIABLE.AFRAID_OF_CHASTITY, false);
                         break;
                     } else {
-                        sendMessage(YES_OR_NO);
+                        sendMessage(YES_OR_NO, 0);
                         afraidAnswer.loop();
                     }
                 }
@@ -209,7 +209,7 @@ function checkChastityExercise() {
             sendMessage("Complete your task until the next session");
             return false;
         } else {
-            sendMessage(YES_OR_NO);
+            sendMessage(YES_OR_NO, 0);
             answer.loop();
         }
     }

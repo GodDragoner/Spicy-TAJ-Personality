@@ -65,7 +65,7 @@
             sendMessage('%LetEdgeFade%');
             break;
         } else {
-            sendMessage('Is it hard or easy?');
+            sendMessage('Is it hard or easy?', 0);
             answer.loop();
         }
     }

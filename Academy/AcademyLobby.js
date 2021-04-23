@@ -77,7 +77,7 @@
                             break;
                         } else {
                             sendVirtualAssistantMessage('That\'s not a valid class %SlaveName%', 0);
-                            answer.loop();
+                            classToTake.loop();
                         }
                     }
                 }

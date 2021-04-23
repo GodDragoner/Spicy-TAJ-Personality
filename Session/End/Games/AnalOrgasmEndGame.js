@@ -26,7 +26,7 @@
                             sendMessage('Gambling aren\'t we?');
                             break;
                         } else {
-                            sendMessage('Lock or deny %SlaveName%?');
+                            sendMessage('Lock or deny %SlaveName%?', 0);
                             answer.loop();
                         }
                     }

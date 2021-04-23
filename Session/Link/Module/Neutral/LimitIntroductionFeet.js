@@ -69,10 +69,10 @@
                         FEET_LIMIT.askForLimitChange(LIMIT_ADDRESS.DOMME);
                         break;
                     } else if (answer.isLike("dont understand", "do you mean", "not understand", "explain", "what's that", "what is", "not sure", "dont know")) {
-                        sendMessage('Well, do you think legs are sexy?');
+                        sendMessage('Well, do you think legs are sexy?', 0);
                         answer.loop();
                     } else {
-                        sendMessage('%YesOrNo%');
+                        sendMessage('%YesOrNo%', 0);
                         answer.loop();
                     }
                 }

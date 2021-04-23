@@ -60,7 +60,7 @@ if (!isVar("SpankzChoirBaseIntro")) {
             run("dungeon/PunishmentBase.js");
             break;
         } else {
-            sendMessage(YES_OR_NO);
+            sendMessage(YES_OR_NO, 0);
             answer.loop();
         }
     }
@@ -281,8 +281,8 @@ if (!isVar("SpankzChoirSubscription")) {
                 if (AuctionStroke.isInteger()) {
                     result = AuctionStroke.getInt();
                     if ((result <= 99) || (result >= 1201)) {
-                        sendMessage(" You didn't provide me with a valid number, choose between 100 and 1200 ");
-                        answer.loop();
+                        sendDungeonMessage(" You didn't provide me with a valid number, choose between 100 and 1200 ");
+                        AuctionStroke.loop();
                     } else {
 
                         setVar("AuctionStrokes", result);
@@ -319,7 +319,7 @@ if (!isVar("SpankzChoirSubscription")) {
                     sendMessage("All I asked you to do was input a simple number...");
                     sendMessage("Like 2");
                     sendMessage("or 5");
-                    sendMessage("Idiot!");
+                    sendMessage("Idiot!", 0);
                     CornerTimeLimit.loop();
                 }
             }
@@ -343,7 +343,7 @@ if (!isVar("SpankzChoirSubscription")) {
                     sendMessage("All I asked you to do was input a simple number...");
                     sendMessage("Like 2");
                     sendMessage("or 5");
-                    sendMessage("Idiot!");
+                    sendMessage("Idiot!", 0);
                     CornerTimeLimit.loop();
                 }
             }
@@ -361,7 +361,7 @@ if (!isVar("SpankzChoirSubscription")) {
                     setVar("SpankChoirFaceSlap", false);
                     break;
                 } else {
-                    sendMessage(YES_OR_NO);
+                    sendMessage(YES_OR_NO, 0);
                     answer.loop();
                 }
             }
@@ -377,7 +377,7 @@ if (!isVar("SpankzChoirSubscription")) {
                     setVar("SpankChoirMouthSoap", false);
                     break;
                 } else {
-                    sendMessage(YES_OR_NO);
+                    sendMessage(YES_OR_NO, 0);
                     answer.loop();
                 }
             }
@@ -392,7 +392,7 @@ if (!isVar("SpankzChoirSubscription")) {
                     setVar("SpankChoirCaning", false);
                     break;
                 } else {
-                    sendMessage(YES_OR_NO);
+                    sendMessage(YES_OR_NO, 0);
                     answer.loop();
                 }
             }
@@ -408,7 +408,7 @@ if (!isVar("SpankzChoirSubscription")) {
                     setVar("SpankChoirSafeword", false);
                     break;
                 } else {
-                    sendMessage(YES_OR_NO);
+                    sendMessage(YES_OR_NO, 0);
                     answer.loop();
                 }
             }
@@ -424,7 +424,7 @@ if (!isVar("SpankzChoirSubscription")) {
                     delVar("ExtraStrokesOK");
                     break;
                 } else {
-                    sendMessage(YES_OR_NO);
+                    sendMessage(YES_OR_NO, 0);
                     answer.loop();
                 }
             }

@@ -21,7 +21,7 @@
 
     } else if(unallowedEdges === 2) {
         sendMessage('%LetTheEdgeFade%');
-        sendMessage('That\'s not the first time #GeneralTime you got to the edge without permission, %SlaveName%');
+        sendMessage('That\'s not the first time %GeneralTime% you got to the edge without permission, %SlaveName%');
         sendMessage('That could mean 2 things');
         sendMessage('Either you need a little break...');
         sendMessage('Or you need some more edge-training');
@@ -64,7 +64,7 @@
                 sendMessage('Although I might have just made that pretty damn difficult %Grin%');
                 break;
             } else {
-                sendMessage('Do you need a pause or training?');
+                sendMessage('Do you need a pause or training?', 0);
                 answer.loop();
             }
         }

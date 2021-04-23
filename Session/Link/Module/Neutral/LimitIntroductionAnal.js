@@ -46,7 +46,7 @@
 
                     while (true) {
                         if (answer.isLike("yes", "sure", "okay", "let me think", "alright")) {
-                            sendMessage('So what do you think?');
+                            sendMessage('So what do you think?', 0);
                             answer.loop();
                         } else if (answer.isLike("no", "tell me", "dont want", "dont like", "dont know", "what is it", "give up", "say it")) {
                             break;
@@ -54,7 +54,7 @@
                             sendMessage('Bingo!');
                             break;
                         } else {
-                            sendMessage('Nope, try again %Grin%');
+                            sendMessage('Nope, try again %Grin%', 0);
                             answer.loop();
                         }
                     }

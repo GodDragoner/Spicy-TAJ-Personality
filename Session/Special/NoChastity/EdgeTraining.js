@@ -25,10 +25,10 @@
                 setVar(VARIABLE.SUB_PREMATURE_EJACULATE, false);
                 break;
             } else if (answer.isLike("don't understand", "not understand", "explain", "what's that", "do you mean", "what is")) {
-                sendMessage('Is it hard to keep yourself from cumming when you\'re %JerkingOff% or having sex?');
+                sendMessage('Is it hard to keep yourself from cumming when you\'re %JerkingOff% or having sex?', 0);
                 answer.loop();
             } else {
-                sendMessage('"%YesOrNo%"');
+                sendMessage('"%YesOrNo%"', 0);
                 answer.loop();
             }
         }
@@ -45,7 +45,7 @@
             sendMessage("You have to be able to last longer that a minute or two");
             sendMessage("Or she's not going to want to stick around");
         } else {
-            sendMessage("Maybe I should just let you have some more of that then %EmoteHappy");
+            sendMessage("Maybe I should just let you have some more of that then %EmoteHappy%");
         }
 
         sendMessage("Edging is a big part of how you serve me");

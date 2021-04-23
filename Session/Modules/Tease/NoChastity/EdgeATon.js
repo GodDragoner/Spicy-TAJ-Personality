@@ -70,7 +70,7 @@ if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.STROKING)) {
                             sendMessage("Well then we're just having a normal training session today");
                             break;
                         } else {
-                            sendMessage(YES_OR_NO);
+                            sendMessage(YES_OR_NO, 0);
                             answer.loop();
                         }
                     }
@@ -102,7 +102,7 @@ if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.STROKING)) {
             if (answer.isInteger()) {
                 const result = answer.getInt();
                 if (result <= 0) {
-                    sendMessage("You can't choose a number lower than 1...");
+                    sendMessage("You can't choose a number lower than 1...", 0);
                     answer.loop();
                 } else {
                     if (result > getVar(VARIABLE.EDGE_A_TON_EDGE_RECORD, -1)) {
@@ -115,7 +115,7 @@ if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.STROKING)) {
                     break;
                 }
             } else {
-                sendMessage("You need to input a number...");
+                sendMessage("You need to input a number...", 0);
                 answer.loop();
             }
         }
@@ -193,7 +193,7 @@ function startEdgeATon(chosenByDom, edgesToDo) {
         }
     }
 
-    sendMessage(random("I'm gonna make you edge one final time", "You are to edge one more!", "You're gonna edge once more", "I'm gonna make you edge one more time"));
+    sendMessage(random("I'm gonna make you edge one final time", "You are to edge once more!", "You're gonna edge once more", "I'm gonna make you edge one more time"));
     sendMessage(random("You will hold it again", "You're gonna hold it", "Like before you're gonna hold it"));
     sendMessage(random("After which you are going to get completely soft!", "And then I want you get soft as fast as possible", "Then you need to get soft as fast as possible"));
     sendMessage(random("Breathe...", "Relax", "Calm yourself"));
@@ -216,7 +216,7 @@ function startEdgeATon(chosenByDom, edgesToDo) {
 }
 
 function growDickSoft() {
-    sendMessage(random("Use the ruler to determine to when you're there", "And use the ruler to determine when you're soft", "Use the ruler to measure when you're soft"));
+    sendMessage(random("Use the ruler to determine when you're there", "And use the ruler to determine when you're soft", "Use the ruler to measure when you're soft"));
     sendMessage(random("Your cock has to be shorter than ", "Your cock must be shorter than ", "Your tiny dick has to be shorter than ") + getVar(VARIABLE.SUB_SOFT_COCK_LENGTH) + " centimeters");
 
     const dateStart = new Date().getTime();
@@ -229,7 +229,7 @@ function growDickSoft() {
             break;
         } else {
             sendMessage("If your dick is soft just say \"soft\"");
-            sendMessage("Otherwise don't bother me!");
+            sendMessage("Otherwise don't bother me!", 0);
             answer.loop();
         }
     }
@@ -252,10 +252,5 @@ function growDickSoft() {
         setVar(VARIABLE.SECONDS_TO_GET_SOFT, timePassed);
     }
     sendMessage("Let's move on shall we?");
+    return true;
 }
-
-
-
-
-
-

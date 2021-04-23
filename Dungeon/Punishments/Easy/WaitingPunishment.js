@@ -3,7 +3,7 @@ if (tryRunPunishmentFetchId(MODULE.LINE_WRITING)) {
 
     //First punishment
     if (PUNISHMENTS_DONE === 1) {
-        sendMessage('Let\'s start with some nice and easy');
+        sendMessage('Let\'s start with something nice and easy');
     }
 
     sendMessage("I'm grounding you to your computer with a rather simple task.. ");

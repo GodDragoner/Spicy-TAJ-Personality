@@ -43,7 +43,7 @@
                     sendMessage('Aww, do I scare you that much? %Lol%');
                     break;
                 } else {
-                    sendMessage('Are you happy to see me or not? ');
+                    sendMessage('Are you happy to see me or not?', 0);
                     answer.loop();
                 }
 

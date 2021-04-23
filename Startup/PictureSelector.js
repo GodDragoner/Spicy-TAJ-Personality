@@ -20,7 +20,7 @@ function showDommeTaggedImage(dressState, pictureTag, duration) {
         return showImage(pictureSet.getRandomPicture(dressState, pictureTag).getFile())
     } else {
         sendDebugMessage('Picture set for domme was null so showing tease image instead');
-        return showCategoryImage();
+        return showTeaseImage();
     }
 }
 
@@ -34,6 +34,6 @@ function showDommeTaggedImageForPictureTag(pictureTag, duration) {
         return showImage(pictureSet.getRandomPictureForTagStates(new java.util.ArrayList(), pictureTagArray).getFile())
     } else {
         sendDebugMessage('Picture set for domme was null so showing tease image instead');
-        return showCategoryImage();
+        return showTeaseImage();
     }
 }

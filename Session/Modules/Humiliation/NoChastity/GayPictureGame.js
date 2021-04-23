@@ -17,7 +17,7 @@
         sendMessage('Butts = a small pause');
         sendMessage('Lezdom = add a peg to anywhere on your body');
 
-        sendMessage("Now there a few extra rules depending on how many pictures of each you've landed on");
+        sendMessage("Now there are a few extra rules depending on how many pictures of each you've landed on");
         sendMessage('7 gay images = orgasm to a picture of a dick');
         sendMessage('3 lesbian images = 4 edges in a row');
         sendMessage('5 boobs pictures = 100 gold');
@@ -115,8 +115,9 @@ function startGayPictureRound() {
                 return;
             }
 
-            sendMessage("Just relax for a little bit");
-            sleep(randomInteger(15, 30));
+            sendMessage("Time for 20 fast strokes!");
+            sendMessage("Get ready!");
+            playAudio('Audio/Spicy/Stroking/MetronomeNumber/20FastStrokes.mp3', true);
             break;
         case 2:
             newValue = getVar("gayPictureGameButts", 0) + 1;
@@ -130,9 +131,8 @@ function startGayPictureRound() {
                 return;
             }
 
-            sendMessage("Time for 20 fast strokes!");
-            sendMessage("Get ready!");
-            playAudio('Audio/Spicy/Stroking/MetronomeNumber/20FastStrokes.mp3', true);
+            sendMessage("Just relax for a little bit");
+            sleep(randomInteger(15, 30));
             break;
         case 3:
             newValue = getVar("gayPictureGameLezdom", 0) + 1;

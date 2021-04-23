@@ -107,25 +107,25 @@
         while (!date.hasPassed()) {
             switch (randomInteger(0, 6)) {
                 case 0:
-                    showImage('Images/Spicy/Modules\\LickExercises\\Down\\*.jpg');
+                    showImage('Images/Spicy/Modules/LickExercises/Down/*.jpg');
                     break;
                 case 1:
-                    showImage('Images/Spicy/Modules\\LickExercises\\Up\\*.jpg');
+                    showImage('Images/Spicy/Modules/LickExercises/Up/*.jpg');
                     break;
                 case 2:
-                    showImage('Images/Spicy/Modules\\LickExercises\\Left\\*.jpg');
+                    showImage('Images/Spicy/Modules/LickExercises/Left/*.jpg');
                     break;
                 case 3:
-                    showImage('Images/Spicy/Modules\\LickExercises\\Right\\*.jpg');
+                    showImage('Images/Spicy/Modules/LickExercises/Right/*.jpg');
                     break;
                 case 4:
-                    showImage('Images/Spicy/Modules\\LickExercises\\CircleRight\\*.jpg');
+                    showImage('Images/Spicy/Modules/LickExercises/CircleRight/*.jpg');
                     break;
                 case 5:
-                    showImage('Images/Spicy/Modules\\LickExercises\\CircleLeft\\*.jpg');
+                    showImage('Images/Spicy/Modules/LickExercises/CircleLeft/*.jpg');
                     break;
                 case 6:
-                    showImage('Images/Spicy/Modules\\LickExercises\\ABC\\*.jpg');
+                    showImage('Images/Spicy/Modules/LickExercises/ABC/*.jpg');
                     break;
             }
 

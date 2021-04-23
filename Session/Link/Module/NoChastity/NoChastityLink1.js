@@ -42,7 +42,7 @@
                                 sendMessage("So... you walked away while %JerkingOff% %EmoteFlustered%");
                                 break;
                             } else {
-                                sendMessage('"Which instruction did you not follow, the first or the second?');
+                                sendMessage('"Which instruction did you not follow, the first or the second?', 0);
                                 answer.loop();
                             }
                         }
@@ -51,7 +51,7 @@
                         sendMessage("I really shouldn't have to remind you to follow instructions %SlaveName%");
                         break;
                     } else {
-                        sendMessage(YES_OR_NO);
+                        sendMessage(YES_OR_NO, 0);
                         answer2.loop();
                     }
                 }
@@ -66,7 +66,7 @@
                 sendMessage("I know it's ready for more");
                 break;
             } else {
-                sendMessage(YES_OR_NO);
+                sendMessage(YES_OR_NO, 0);
                 answer.loop();
             }
         }

@@ -38,7 +38,7 @@
                 sendMessage(random("You're going to do the catwalk for me!", "You will do a lovely catwalk!"));
                 sendMessage(random("I want you to walk back and fourth 10 times", "You are to do the catwalk 15 times"));
                 sendMessage(random("Shake those hips", "Move your hips", "Make that ass look good", "Work those legs"));
-                sendMessage(random("Put on music as well!", "Put on a song as well!") + "%Grin%");
+                sendMessage(random("Put on music as well!", "Put on a song as well!") + " %Grin%");
                 sendMessage("When you're done, transfer the video to your humiliation folder");
                 sendMessage("Who knows");
                 sendMessage(random("Maybe ", "Perhaps ") + getVar('blackmailName1') + random(' would like to see it as well?', ' wouldn\'t mind seeing them as well', ' would enjoy watching them!') + ' %Lol%');
@@ -60,7 +60,7 @@
                 sendMessage("Your slave positions that is %Grin%");
                 sendMessage(random("Take 1 or 2 pictures of you in each position", "Snap once or twice"));
                 sendMessage("Then place those images inside your self humiliation folder");
-                sendMessage(random("They will prove to be invaluable", "We can have all the fun in the world with those!") + "%EmoteHappy%");
+                sendMessage(random("They will prove to be invaluable", "We can have all the fun in the world with those!") + " %EmoteHappy%");
                 break;
         }
 
@@ -79,7 +79,7 @@
         showImage('Images/Spicy/FFriends/' + blackmailIndex + '/*.jpg', 2);
         sendMessage("Imagine me calling her");
         sendMessage(random("Telling her all about you", "Spilling all I have about you"));
-        sendMessage(random("Think she would be", "Do you believe she would be ") + random("disgusted?", "excited?", "interested?"));
+        sendMessage(random("Think she would be ", "Do you believe she would be ") + random("disgusted?", "excited?", "interested?"));
         sendMessage(random("Maybe she would be turned on?", "Perhaps she would be calling all of her friends", "Maybe she would never talk to you again!"));
         sendMessage(random("Imagine her face as she receives my text messages", "Can you imagine her reaction as she sees all those ugly images of you"));
         showImage('Images/Spicy/SelfHumiliation/*.jpg', 5);
@@ -116,7 +116,7 @@
                 sendMessage("%Lol%");
             }
         } else {
-            sendMessage(random('Well we better end here', 'I believe we should continue with other stuff now') + ' %Grin%');
+            sendMessage(random('Well we\'d better end here', 'I believe we should continue with other stuff now') + ' %Grin%');
         }
     }
 }

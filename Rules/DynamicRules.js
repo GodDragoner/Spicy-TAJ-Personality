@@ -100,12 +100,12 @@ let RULE_OWNED_BODY;
         if(isEnforcingPersonality()) {
             sendMessage('And I want you to wear it whenever you can');
             sendMessage('So definitely during our sessions and additionally whenever you are home alone');
-            sendMessage('You should always feel owned by me and this will remember you of that');
+            sendMessage('You should always feel owned by me and this will remind you of that');
             sendMessage('So make sure to wear it whenever possible from now on %SlaveName%');
         } else {
             sendMessage('And I think you should wear it whenever you can');
             sendMessage('So definitely during our sessions and additionally whenever you are home alone');
-            sendMessage('You should always feel owned by me and this will remember you of that');
+            sendMessage('You should always feel owned by me and this will remind you of that');
 
             if(!sendYesOrNoQuestion('Would you do that for me %SlaveName%')) {
                 changeMeritMedium(true);
@@ -152,7 +152,7 @@ let RULE_OWNED_BODY;
                     sendMessage('What did I just tell you?');
                     sendMessage('You will address me PROPERLY %SlaveName% using %DomHonorific%');
                     registerForgetHonorific();
-                    sendMessage('Is this understood %SlaveName%?');
+                    sendMessage('Is this understood %SlaveName%?', 0);
                     answer.loop();
                 } else {
                     sendMessage('%Good% %EmoteHappy%');
@@ -170,10 +170,10 @@ let RULE_OWNED_BODY;
 
                 sendMessage('You will always address me as your %DomHonorific% from now on');
                 sendMessage('So if you would answer "Yes" normally you will answer with "Yes %DomHonorific%" from now one. Same goes for "please", questions and basically everything else');
-                sendMessage('Is this understood %SlaveName%?');
+                sendMessage('Is this understood %SlaveName%?', 0);
                 answer.loop();
             } else {
-                sendMessage('%YesOrNo%');
+                sendMessage('%YesOrNo%', 0);
                 answer.loop();
             }
         }
@@ -298,7 +298,7 @@ let RULE_OWNED_BODY;
                         sendMessage("Suit yourself %SlaveName%");
                         break;
                     } else {
-                        sendMessage(YES_OR_NO);
+                        sendMessage(YES_OR_NO, 0);
                         answer.loop();
                     }
                 }
@@ -627,12 +627,12 @@ let RULE_OWNED_BODY;
         sendMessage('You are supposed to be my full time slave');
         sendMessage('Not that I want to occupy too much of your day and free time');
         sendMessage('However...');
-        sendMessage('I felt like controlling you more than I am already doing');
+        sendMessage('I feel like controlling you more than I am already doing');
         sendMessage('More on a daily basis outside of sessions %Grin%');
         sendMessage('So what I will do from now on is the following:');
         sendMessage('Each and every morning I will put up a note on the pin board for you to read');
         sendMessage('It will contain tasks/rules that are only active during that very day');
-        sendMessage('Like doing a small workout, eating healthy and so on');
+        sendMessage('Like doing a small workout, eating healthily and so on');
         sendMessage('Maybe teasing yourself a bit outside of sessions as well');
         sendMessage('You\'ll see what I come up with soon enough %Grin%');
         sendMessage('Make sure to check the pin board daily');

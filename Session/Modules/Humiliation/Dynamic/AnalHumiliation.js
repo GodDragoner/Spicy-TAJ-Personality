@@ -649,7 +649,7 @@ function startSquatAnal(toy) {
                     }
                     break;
                 } else {
-                    sendMessage(YES_OR_NO);
+                    sendMessage(YES_OR_NO, 0);
                     answer.loop();
                 }
             }
@@ -683,7 +683,7 @@ function startSquatAnal(toy) {
                         sendMessage("And now go ahead and sit all they way down on that " + toy + " again");
                         break;
                     } else {
-                        sendMessage(YES_OR_NO);
+                        sendMessage(YES_OR_NO, 0);
                         answer.loop();
                     }
                 }
@@ -756,7 +756,7 @@ function startSquatAnal(toy) {
                                             sendMessage("I think we should try again");
                                             sendMessage("I don't think I have to instruct you anymore do I?");
                                             sendMessage("So just go ahead and try and tell me if you made it");
-                                            sendMessage("Did you make it this time?");
+                                            sendMessage("Did you make it this time?", 0);
                                             answer.loop();
                                         } else {
                                             sendMessage("I don't feel like trying again");
@@ -765,19 +765,19 @@ function startSquatAnal(toy) {
                                             break;
                                         }
                                     } else {
-                                        sendMessage(YES_OR_NO);
+                                        sendMessage(YES_OR_NO, 0);
                                         answer.loop();
                                     }
                                 }
                                 break;
                             } else {
-                                sendMessage(YES_OR_NO);
+                                sendMessage(YES_OR_NO, 0);
                                 answer.loop();
                             }
                         }
                         break;
                     } else {
-                        sendMessage(YES_OR_NO);
+                        sendMessage(YES_OR_NO, 0);
                         answer.loop();
                     }
                 }
@@ -808,7 +808,7 @@ function startSquatAnal(toy) {
                                 sendMessage("You can go ahead and pull that " + toy + " out of your ass now");
                                 break;
                             } else {
-                                sendMessage(YES_OR_NO);
+                                sendMessage(YES_OR_NO, 0);
                                 answer.loop();
                             }
                         }
