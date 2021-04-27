@@ -1,3 +1,6 @@
+let positionTestWrong = 0;
+let positionTestRight = 0;
+
 {
 
     //TOADD: Add toy usage
@@ -431,8 +434,8 @@ function positionTrainingTimer() {
 }
 
 function positionTrainingTestSelection() {
-    let positionTestWrong = 0;
-    let positionTestRight = 0;
+    positionTestWrong = 0;
+    positionTestRight = 0;
 
     sendMessage("I think it's time for a little test");
     sendMessage("I think it's important for a %SlaveName%");
