@@ -945,11 +945,11 @@ function complicatedPositionTrainingSelection(totalPositions) {
                     sendMessage("Get your camera ready then..");
                     sleep(40);
                     break;
-                } else if (answer.containsIgnoreCase("yes")) {
+                } else if (answer.containsIgnoreCase("no")) {
                     sendMessage("Aww %EmoteSad%");
                     break;
                 } else {
-                    sendMessage("Just say yes when you've finished fetching.", 0);
+                    sendMessage("Are you going to film yourself or not %SlaveName%?", 0);
                     changeMeritLow(true);
                     answer.loop();
                 }
