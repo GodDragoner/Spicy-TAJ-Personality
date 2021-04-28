@@ -233,6 +233,3 @@ sendDebugMessage(serializeObject(toy.setVibrate(1)));
 sleep(5);
 sendDebugMessage(serializeObject(toy.setVibrate(0)));
 setVar(VARIABLE.ASS_LEVEL, restoreLevel);*/
-{
-    RULE_ONLY_SISSY_ADDRESS.sendIntroduction();
-}

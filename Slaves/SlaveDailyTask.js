@@ -185,7 +185,7 @@ function getTodaysSlaveTask() {
             lines.add('%InAddition% ' + pissedOff);
         }
 
-        switch (randomInteger(0, 13)) {
+        switch (randomInteger(0, 14)) {
             case 0:
                 lines.add('Today I want you to stay on all fours for ' + getDailyTaskTime() + ' minutes');
                 lines.add('And...');
@@ -343,6 +343,11 @@ function getTodaysSlaveTask() {
                 }
 
                 break;
+            case 14:
+                lines.add('I want you to replace one of today\'s meal with the following');
+
+                generateSlaveFoodMeal(lines);
+                break;
             default:
                 break;
         }
@@ -489,6 +494,65 @@ function generateDailyTeaseRouletteInstructions(lines, categoriesAllowed, teaseT
     }
 
     return false;
+}
+
+function generateSlaveFoodMeal(lines) {
+    let fluid = '300ml ' + random("water", "milk");
+
+    let fluidApplication = ['Cook 50g crushed pasta for 15 minutes (lid closed) with ' + fluid,
+        'Cook 50g crushed pasta for 15 minutes (lid closed) with ' + fluid,
+        'Cook 50g rice for 15 minutes (lid closed) with ' + fluid,
+        'Soak 2 slices of bread cut into small pieces in ' + fluid,
+        'Mix ' + fluid + ' with 50g instant mashed potato mix',
+        'Mix ' + fluid + ' with 50g flour or starch',
+    ];
+
+    lines.add(random(fluidApplication));
+
+    let nutrition = ['Add an egg boiled for 3 minutes to the mix',
+        'Add 100g cheese or 200ml dairy like yogurt to the mix',
+        'Add 200g cooked beans, tofu or tempeh',
+        'Add 200g raw vegetables in small pieces',
+        'Add two pieces of fruit, mashed',
+    ];
+
+    lines.add(random(nutrition));
+
+    let temperature = ['Put it in the freezer until frigid but not frozen',
+        'Put it in the fridge until chilled',
+        'Leave it standing until room temperature',
+        'Warm it up in the microwave',
+        'Heat it up in the microwave until scalding',
+    ];
+
+    lines.add(random(temperature));
+
+    let flavor = ['Add black, szechuan and/or chili pepper',
+        'Add mayonnaise or similar sauce',
+        'Add hot sauce or chili oil',
+        'Add cooking oil',
+        'Add random spices from your spice cabinet',
+        'Add spit or snot',
+        'Add something from outside, like soil or trash',
+        'Add tooth paste',
+        'A sheet of toilet paper',
+    ];
+
+    if(PEE_LIMIT.isAllowed()) {
+        flavor.push("Add some piss");
+    }
+
+    lines.add(random('And to top if off...', 'Lastly...', 'Finally...'));
+    lines.add(random(flavor));
+
+
+    if(feelsLikePunishingSlave()) {
+        lines.add(random('Tie your hands behind your back while eating', 'Pour it on the floor and lick it all up'));
+    } else {
+        lines.add("Serve it in a bowl and it it on the floor");
+    }
+
+    return lines;
 }
 
 function generateNoCummingDailyInstructions(lines) {

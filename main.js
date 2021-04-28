@@ -46,7 +46,10 @@ sendSystemMessage("Launching Spicy " + getVar("personalityVersion"));
 //registerVariable("anallimit", "Anal Limit", "Is anal a hard limit, allowed, needs to be addressed or still a matter of discussion?");
 
 
-run("Utils/HTTPUtils.js");
+run("Utils/Web/HTTPUtils.js");
+run("Utils/Web/WebServer.js");
+run("Utils/Web/HttpServer.js");
+
 run("Utils/RandomUtils.js");
 run("Utils/StringUtils.js");
 run("Utils/BodyParts.js");

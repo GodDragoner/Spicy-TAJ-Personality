@@ -15,13 +15,23 @@ function lockAwayChastityKey() {
         sendVirtualAssistantMessage('After that I want you to lock the casket with the combination lock and randomize the selected combination so you won\'t be able to unlock it anymore');
         sendVirtualAssistantMessage('Then you will take the picture and place it inside the "Images/Spicy/Chastity/ChastityCombination" folder and make sure there is only one file inside that folder');
 
+        let port = 8080;
+        let path = 'Images' + PATH_SEPARATOR + 'Spicy' + PATH_SEPARATOR + 'Chastity' + PATH_SEPARATOR + 'ChastityCombination' + PATH_SEPARATOR;
+        let server = createHTTPServer(port, path);
+
+        sendVirtualAssistantMessage('You can alternatively open the following page on your mobile device ' + java.net.InetAddress.getLocalHost() + ':' + port + '/uploadCh.html');
+
         sendVirtualAssistantMessage('Tell me when you have done all of that');
         waitForDoneVirtualAssistant();
+
+        server.close(0);
 
         chastityCombinationImagesFolder.mkdirs();
         let filesArray = chastityCombinationImagesFolder.listFiles();
 
         while(filesArray.length !== 1) {
+            server = createHTTPServer(port, path);
+
             sendVirtualAssistantMessage('Something does not seem right with the folder');
             sendVirtualAssistantMessage('Make sure there is only that one image inside the folder and nothing else %SlaveName%');
             sendVirtualAssistantMessage('Tell me when you\'ve checked');
@@ -29,6 +39,7 @@ function lockAwayChastityKey() {
             sendVirtualAssistantMessage('Let\'s see again...');
 
             filesArray = chastityCombinationImagesFolder.listFiles();
+            server.close(0);
         }
 
         sendVirtualAssistantMessage('%Good%');
