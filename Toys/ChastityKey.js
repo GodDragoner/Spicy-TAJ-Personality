@@ -19,7 +19,7 @@ function lockAwayChastityKey() {
         let path = 'Images' + PATH_SEPARATOR + 'Spicy' + PATH_SEPARATOR + 'Chastity' + PATH_SEPARATOR + 'ChastityCombination' + PATH_SEPARATOR;
         let server = createHTTPServer(port, path);
 
-        sendVirtualAssistantMessage('You can alternatively open the following page on your mobile device ' + java.net.InetAddress.getLocalHost() + ':' + port + '/uploadCh.html');
+        sendVirtualAssistantMessage('You can alternatively open the following page on your mobile device ' + java.net.InetAddress.getLocalHost().getHostAddress() + ':' + port + '/uploadCh.html');
 
         sendVirtualAssistantMessage('Tell me when you have done all of that');
         waitForDoneVirtualAssistant();
