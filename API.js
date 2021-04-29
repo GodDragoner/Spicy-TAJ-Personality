@@ -24,7 +24,9 @@ function setDate(message) {
         before: function () {},
         sameDay: function () {},
         getDayOfWeek: function() {},
-        after: function () {},
+        after: function () {
+            return false;
+        },
 
         getTimeInMillis: function() {},
     }

@@ -2,6 +2,11 @@
     sendVirtualAssistantMessage('Free Time Menu:', 0);
     let options = ["Chores", "Fitness", "Report Exercise", 'Study', 'Return'];
 
+    if(isFullTime()) {
+        options.push('Illness');
+        options.push('Holiday');
+    }
+
     let lobbyAnswer = createAnswerInput(options);
 
     while (true) {
@@ -25,7 +30,16 @@
             run("WorkMode/GNMWorkMode.js");
             run("Assistant/FreeTimeLobby.js");
             break;
-        } else if (lobbyAnswer.isLike('back', 'cancel', 'return')) {
+        } else if (lobbyAnswer.isLike("illness", "holiday", 'sickness')) {
+            lobbyAnswer.clearOptions();
+
+            if(isFullTime()) {
+                run("Assistant/Holiday.js");
+            }
+
+            run("Assistant/FreeTimeLobby.js");
+            break;
+        }  else if (lobbyAnswer.isLike('back', 'cancel', 'return')) {
             lobbyAnswer.clearOptions();
             break;
         } else {

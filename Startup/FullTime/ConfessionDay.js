@@ -16,11 +16,13 @@
 
     //Only continue if we haven't check this today
     if (!isVar(VARIABLE.NEXT_CONFESSION_DAY) || getDate(VARIABLE.NEXT_CONFESSION_DAY).hasPassed()) {
-        if (isVar(VARIABLE.NEXT_CONFESSION_DAY) && !getDate(VARIABLE.NEXT_CONFESSION_DAY).sameDay(setDate())) {
-            sendVirtualAssistantMessage("You've been skipping confession day %SlaveName%!");
-            sendVirtualAssistantMessage("I've added a healthy dose of punishment points for that!");
-            addPunishmentPoints(300, PUNISHMENT_REASON.SKIPPING_CONFESSION_DAY);
-            sendVirtualAssistantMessage("You are expected to report on Tuesdays!");
+        if(!hasBeenAwayInThePastWeek()) {
+            if (isVar(VARIABLE.NEXT_CONFESSION_DAY) && !getDate(VARIABLE.NEXT_CONFESSION_DAY).sameDay(setDate())) {
+                sendVirtualAssistantMessage("You've been skipping confession day %SlaveName%!");
+                sendVirtualAssistantMessage("I've added a healthy dose of punishment points for that!");
+                addPunishmentPoints(300, PUNISHMENT_REASON.SKIPPING_CONFESSION_DAY);
+                sendVirtualAssistantMessage("You are expected to report on Tuesdays!");
+            }
         }
 
         //Set the date to the next tuesday

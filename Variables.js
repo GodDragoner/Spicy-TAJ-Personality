@@ -337,6 +337,10 @@ const VARIABLE = {
 
     SLAVE_LEAVE_UNTIL: "slaveLeaveUntil",
     SLAVE_VACATION_UNTIL: "slaveVacationUntil",
+    //SLAVE_ILL_UNTIL: "slaveIllUntil",
+
+    SLAVE_LAST_VACATION_UNTIL: "slaveLastVacationUntil",
+    SLAVE_LAST_ILL_UNTIL: "slaveLastIllUntil",
 
     //Punishment
     PUNISHMENT_POINT_MULTIPLIER: "punishmentPointMultiplier",

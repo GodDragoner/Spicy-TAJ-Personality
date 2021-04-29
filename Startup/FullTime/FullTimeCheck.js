@@ -8,14 +8,14 @@
         let ppMultiplier = getPunishmentPointMultiplierChange();
         sendDebugMessage('PP Multiplier change is ' + ppMultiplier);
 
-        if(ppMultiplier < 0) {
+        if (ppMultiplier < 0) {
             let currentMult = getVar(VARIABLE.PUNISHMENT_POINT_MULTIPLIER, 1);
             sendDebugMessage('Reducing pp multiplier from ' + currentMult);
             setPunishmentPointMultiplier(currentMult + ppMultiplier);
         }
 
         //Full time stuff
-        if(isFullTime()) {
+        if (isFullTime()) {
             //TODO: Vacation needs to be implemented (also accounted to not skipping classes etc.)
             if (isVar(VARIABLE.SLAVE_LEAVE_UNTIL)) {
                 if (getDate(VARIABLE.SLAVE_LEAVE_UNTIL).hasPassed()) {
@@ -32,6 +32,7 @@
                     slaveIsBack(false, true);
                 }
 
+                setDate(VARIABLE.SLAVE_LAST_VACATION_UNTIL);
                 delVar(VARIABLE.SLAVE_VACATION_UNTIL);
             }
 
@@ -61,8 +62,8 @@
             if (doWeekCheck) {
                 sendDebugMessage('Week has passed. Starting week check!');
 
-                if(isFullTime()) {
-                    if (getVar(VARIABLE.WEEKLY_SLAVE_VISITS) < getVar(VARIABLE.MIN_WEEKLY_VISITS)) {
+                if (isFullTime()) {
+                    if (getVar(VARIABLE.WEEKLY_SLAVE_VISITS) < getVar(VARIABLE.MIN_WEEKLY_VISITS) && !hasBeenAwayInThePastWeek()) {
                         sendVirtualAssistantMessage(random("You have been skipping days", "You have been skulking", "I think you missed a few sessions") + " %SlaveName%");
                         sendVirtualAssistantMessage(random("I don't accept that!", "Which is not accepted", "Which isn't tolerated"));
                         sendVirtualAssistantMessage(random("You are the property of", "You belong to", "You are owned by") + " %DomHonorific% %DomName%");
@@ -72,19 +73,22 @@
                     }
 
                     setVar(VARIABLE.WEEKLY_SLAVE_VISITS, 0);
-                    sendVirtualAssistantMessage("Let's see if you've been doing your chores like a good slave!");
 
-                    if (getVar(VARIABLE.WEEKLY_CHORES_TIME, 0) < getVar(VARIABLE.MIN_WEEKLY_CHORE_TIME)) {
-                        sendVirtualAssistantMessage("Bad %SlaveName%!");
-                        sendVirtualAssistantMessage("Bad behaviour is punished!");
-                        sendVirtualAssistantMessage("I just assigned you punishment points!");
-                        sendVirtualAssistantMessage("Do your chores!");
-                        addPunishmentPoints(200, PUNISHMENT_REASON.MISSED_CHORES);
-                    } else {
-                        sendVirtualAssistantMessage(random("Good boy!", "You have!", "Good little slut", "Good girl", "Good sissy", "Good slave"));
-                        sendVirtualAssistantMessage("Good behaviour is rewarded!");
-                        sendVirtualAssistantMessage("Transferring gold...");
-                        rewardGoldMedium(false);
+                    if (!hasBeenAwayInThePastWeek()) {
+                        sendVirtualAssistantMessage("Let's see if you've been doing your chores like a good slave!");
+
+                        if (getVar(VARIABLE.WEEKLY_CHORES_TIME, 0) < getVar(VARIABLE.MIN_WEEKLY_CHORE_TIME)) {
+                            sendVirtualAssistantMessage("Bad %SlaveName%!");
+                            sendVirtualAssistantMessage("Bad behaviour is punished!");
+                            sendVirtualAssistantMessage("I just assigned you punishment points!");
+                            sendVirtualAssistantMessage("Do your chores!");
+                            addPunishmentPoints(200, PUNISHMENT_REASON.MISSED_CHORES);
+                        } else {
+                            sendVirtualAssistantMessage(random("Good boy!", "You have!", "Good little slut", "Good girl", "Good sissy", "Good slave"));
+                            sendVirtualAssistantMessage("Good behaviour is rewarded!");
+                            sendVirtualAssistantMessage("Transferring gold...");
+                            rewardGoldMedium(false);
+                        }
                     }
                 }
 
@@ -121,13 +125,13 @@
 }
 
 function slaveIsBack(tooLate, vacation) {
-    if(tooLate) {
-        sendVirtualAssistantMessage(random("You're late!", "You're late %SlaveName%","You haven't returned in due time", "I expected you sooner!"));
+    if (tooLate) {
+        sendVirtualAssistantMessage(random("You're late!", "You're late %SlaveName%", "You haven't returned in due time", "I expected you sooner!"));
         sendVirtualAssistantMessage(random("I don't allow for you to be gone longer than permitted!", "You aren't allowed to be gone without proper agreement", "You know the rules!"));
         sendVirtualAssistantMessage(random("I'm giving you punishment points", "I'm assigning you punishment points", "I have to give you punishment points"));
         addPunishmentPoints(150);
     } else {
-        if(vacation) {
+        if (vacation) {
             sendVirtualAssistantMessage(random("You're back!", "Welcome back", "Welcome back %SlaveName%"));
             sendVirtualAssistantMessage(random("Good to see you again", "It's great to see you again", "I'm happy to see you back"));
         } else {

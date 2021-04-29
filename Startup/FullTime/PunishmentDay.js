@@ -16,10 +16,12 @@
     if (!isVar(VARIABLE.NEXT_PUNISHMENT_DAY) || getDate(VARIABLE.NEXT_PUNISHMENT_DAY).hasPassed()) {
         //Either we skipped, or we check for the current status, both don't make sense
         if (isVar(VARIABLE.NEXT_PUNISHMENT_DAY) && !getDate(VARIABLE.NEXT_PUNISHMENT_DAY).sameDay(setDate())) {
-            sendVirtualAssistantMessage("You've been skipping punishment day %SlaveName%!");
-            sendVirtualAssistantMessage("I've added a healthy dose of punishment points for that!");
-            addPunishmentPoints(300, PUNISHMENT_REASON.SKIPPING_PUNISHMENT_DAY);
-            sendVirtualAssistantMessage("You are expected to report on Thursdays!");
+            if(!hasBeenAwayInThePastWeek()) {
+                sendVirtualAssistantMessage("You've been skipping punishment day %SlaveName%!");
+                sendVirtualAssistantMessage("I've added a healthy dose of punishment points for that!");
+                addPunishmentPoints(300, PUNISHMENT_REASON.SKIPPING_PUNISHMENT_DAY);
+                sendVirtualAssistantMessage("You are expected to report on Thursdays!");
+            }
         } else {
             sendVirtualAssistantMessage("You have " + getVar(VARIABLE.PUNISHMENT_POINTS) + " punishment points");
 

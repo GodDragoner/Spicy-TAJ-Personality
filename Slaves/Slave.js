@@ -30,6 +30,40 @@ function isSubBirthday() {
     return date.getDay() === new Date().getDate() && date.getMonth() === new Date().getMonth();
 }
 
+/**
+ * Returns whether the slave has been on vacation or similar within the past week
+ * @return {boolean}
+ */
+function hasBeenAwayInThePastWeek() {
+    let date = getLatestAwayDate();
+
+    if(date == null) {
+        return false;
+    }
+
+
+    return date.after(setDate().addDay(-7));
+}
+
+/**
+ * Returns the latest date the slave was away (illness or holiday). Null if non ever occured
+ * @return {null}
+ */
+function getLatestAwayDate() {
+    let date = null;
+
+    if(isVar(VARIABLE.SLAVE_LAST_VACATION_UNTIL)) {
+        date = getDate(VARIABLE.SLAVE_LAST_VACATION_UNTIL);
+    }
+
+
+    if(isVar(VARIABLE.SLAVE_LAST_ILL_UNTIL) && (date == null || getDate(VARIABLE.SLAVE_LAST_ILL_UNTIL).after(date))) {
+        date = getDate(VARIABLE.SLAVE_LAST_ILL_UNTIL);
+    }
+
+    return date;
+}
+
 function increasePainTolerance() {
     if(!isVar(VARIABLE.LAST_PAIN_TOLERANCE_INCREASE)) {
         setDate(VARIABLE.LAST_PAIN_TOLERANCE_INCREASE);
