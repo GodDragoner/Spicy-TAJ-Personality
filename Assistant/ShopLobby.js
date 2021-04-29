@@ -75,7 +75,7 @@
                 sendVirtualAssistantMessage('In total that would be ' + convertAmount*goldCostPerPP + ' gold for you');
 
                 if (sendYesOrNoQuestion('Do you want to proceed?', SENDER_ASSISTANT)) {
-                    addGold(convertAmount*goldCostPerPP);
+                    addGold(-convertAmount*goldCostPerPP);
                     addPunishmentPoints(-convertAmount);
 
                     //Influence mood badly when paying to remove punishment points

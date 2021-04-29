@@ -32,7 +32,7 @@
                 };
 
                 var xhr = new XMLHttpRequest();
-                xhr.open("POST", "uploadImage.html",);
+                xhr.open("POST", "uploadCh.html",);
                 xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
                 //xhr.onload = requestComplete;
                 xhr.send(JSON.stringify(params));
@@ -51,7 +51,7 @@
     <form>
         <input style="height: 10em" type="file" id="myFile" name="filename" onchange="previewFile()">
     </form>
-    <img src="" height="200" alt="Image preview..."\>
+    <img style="filter: blur(5px);" src="" height="200" alt="Image preview..."\>
 </div>
 <button style="height:10em" onclick="myFunction()">Click to upload image</button>
 
