@@ -56,7 +56,7 @@
 		tempmod = NrExercise % 4;
 
 		if ((tempmod == 0) && (NrExercise > 0)) {
-			sendVirtualAssistantMessage("%SubName% Take a 60 second break to grab a drink of water");
+			sendVirtualAssistantMessage("%SubName%, take a 60 second break to grab a drink of water");
 			showImage("Images/Spicy/Exercise/Drink/*", 60);
 		} else {
 			sleep(13);
