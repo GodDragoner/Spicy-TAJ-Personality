@@ -24,7 +24,7 @@ function lockAwayChastityKey() {
         sendVirtualAssistantMessage('Tell me when you have done all of that');
         waitForDoneVirtualAssistant();
 
-        server.close(0);
+        server.stop(0);
 
         chastityCombinationImagesFolder.mkdirs();
         let filesArray = chastityCombinationImagesFolder.listFiles();
@@ -39,7 +39,7 @@ function lockAwayChastityKey() {
             sendVirtualAssistantMessage('Let\'s see again...');
 
             filesArray = chastityCombinationImagesFolder.listFiles();
-            server.close(0);
+            server.stop(0);
         }
 
         sendVirtualAssistantMessage('%Good%');

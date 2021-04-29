@@ -77,6 +77,7 @@ function unlockChastityCage(fakeOpening = false) {
         sleep(randomInteger(5, 10));
 
         if (sendYesOrNoQuestion(random('So close to freedom', 'So excited', 'So thrilled') + ' aren\'t you?')) {
+            //QUALITY: More diversity
             sendMessage('Mhmmm yes you are %Grin%');
         } else {
             sendMessage('No? I wonder why you feel that way %Lol%');
