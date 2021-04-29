@@ -66,23 +66,24 @@
 
                 if(convertAmount*goldCostPerPP > getGold()) {
                     sendVirtualAssistantMessage('You don\'t have enough gold for that %EmoteSad%');
+                    return false;
                 } else if(convertAmount > getVar(VARIABLE.PUNISHMENT_POINTS)) {
                     convertAmount = getVar(VARIABLE.PUNISHMENT_POINTS);
                     sendVirtualAssistantMessage('Since that is more than the punishment points you currently have, I have lowered the amount to ' + convertAmount);
+                }
+
+                sendVirtualAssistantMessage('In total that would be ' + convertAmount*goldCostPerPP + ' gold for you');
+
+                if (sendYesOrNoQuestion('Do you want to proceed?', SENDER_ASSISTANT)) {
+                    addGold(convertAmount*goldCostPerPP);
+                    addPunishmentPoints(-convertAmount);
+
+                    //Influence mood badly when paying to remove punishment points
+                    changeMeritHigh(true);
+
+                    sendVirtualAssistantMessage('You have successfully payed to remove ' + convertAmount + ' punishment points from your balance');
                 } else {
-                    sendVirtualAssistantMessage('In total that would be ' + convertAmount*goldCostPerPP + ' gold for you');
-
-                    if (sendYesOrNoQuestion('Do you want to proceed?', SENDER_ASSISTANT)) {
-                        addGold(convertAmount*goldCostPerPP);
-                        addPunishmentPoints(-convertAmount);
-
-                        //Influence mood badly when paying to remove punishment points
-                        changeMeritHigh(true);
-
-                        sendVirtualAssistantMessage('You have successfully payed to remove ' + convertAmount + ' punishment points from your balance');
-                    } else {
-                        sendVirtualAssistantMessage('Well then, don\'t bother me');
-                    }
+                    sendVirtualAssistantMessage('Well then, don\'t bother me');
                 }
             } else {
                 sendVirtualAssistantMessage('Well then, don\'t bother me');
