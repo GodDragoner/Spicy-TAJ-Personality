@@ -240,6 +240,17 @@ function createComboBox() {
 
         addChildren: function (object, selected) {
             let indexToSelect = -1;
+
+            if(Array.isArray(object)) {
+                let array = object;
+
+                object = {};
+
+                for(let x = 0; x < array.length; x++) {
+                    object[array[x]] = array[x];
+                }
+            }
+
             for (let property in object) {
                 if (object.hasOwnProperty(property) && typeof object[property] !== 'function') {
                     this.addChoice(property);
@@ -250,7 +261,7 @@ function createComboBox() {
                 }
             }
 
-            if (indexToSelect > -1) {
+            if (indexToSelect !== -1) {
                 this.select(indexToSelect);
             }
 

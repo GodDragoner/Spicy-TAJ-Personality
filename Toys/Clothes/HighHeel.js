@@ -1,56 +1,18 @@
 const HIGH_HEEL_LOCK = createToy('high heel lock');
 
-const HIGH_HEEL_TOY = createToy('high heel');
+const HIGH_HEEL_TOY = createMultipleToy('high heel', 'highHeels');
+HIGH_HEEL_TOY.getImagePath = function() {
+    return 'Images/Spicy/Toys/High Heels/' + this.name + '.*';
+};
 
-const highHeels = [];
+//Mkdir folder if not exists
+HIGH_HEEL_TOY.getImageFolder();
 
-loadHighHeels();
-
-function getRandomHighHeel() {
-    return random(highHeels);
-}
-
-function getHighHeelByName(name) {
-    for (let y = 0; y < highHeels.length; y++) {
-        if (name.toUpperCase() === highHeels[y].name.toUpperCase()) {
-            return highHeels[y];
-        }
-    }
-
-    return null;
-}
-
-function loadHighHeels() {
-    if (!isVar('highHeels')) {
-        setVar('highHeels', new java.util.ArrayList());
-    } else {
-        let arrayList = tryGetArrayList('highHeels');
-
-        for (let x = 0; x < arrayList.size(); x++) {
-            let entry = arrayList.get(x);
-            highHeels.push(createHighHeel().fromString(entry));
-        }
-    }
-}
-
-function setupNewHighHeel() {
-    sendVirtualAssistantMessage('Please enter a name for your new high heel', 0);
-
-    let answer = createInput();
-    let name = 'undefined';
-
-    while (true) {
-        if (getHighHeelByName(answer.getAnswer()) != null) {
-            sendVirtualAssistantMessage('A high heel with a similar name already exists. Please choose a different name.', 0);
-            answer.loop();
-        } else {
-            name = answer.getAnswer();
-            break;
-        }
-    }
+HIGH_HEEL_TOY.setupNewToy = function() {
+    let name = askForNewToyName( HIGH_HEEL_TOY);
 
     sendVirtualAssistantMessage('Next please tell me the length of the heel in centimeters', 0);
-    answer = createInput();
+    let answer = createInput();
     let height = -1;
 
     while (true) {
@@ -80,7 +42,7 @@ function setupNewHighHeel() {
     sendVirtualAssistantMessage('Now please tell me the color of the shoe', 0);
     let color = createInput().getAnswer();
 
-    let heel = createHighHeel(name, height, color);
+    let heel = HIGH_HEEL_TOY.createToyInstance(name, height, color);
 
     sendVirtualAssistantMessage('Please make sure to add a picture of your high heel named like your high heel to your Toys/High Heels folder.', false);
     sleep(2);
@@ -89,64 +51,31 @@ function setupNewHighHeel() {
     sendVirtualAssistantMessage('If it already exists a picture of it should show up now', false, true);
     showImage(heel.getImagePath(), 5);
 
-    highHeels.push(heel);
+    HIGH_HEEL_TOY.toyInstances.push(heel);
 
-    saveHighHeels();
+    HIGH_HEEL_TOY.saveToyInstances();
 
     sendVirtualAssistantMessage('Saved your new high heel');
     sendVirtualAssistantMessage('Enjoy %Grin%');
-}
+};
 
-function saveHighHeels() {
-    let arrayList = new java.util.ArrayList();
+HIGH_HEEL_TOY.createToyInstance = function(name, height, color) {
+    let toy = createToy(name);
+    toy.height = height;
+    toy.color = color;
 
-    for (let y = 0; y < highHeels.length; y++) {
-        arrayList.add(highHeels[y].toString());
-    }
+    toy.fetchToyInstance = function() {
+        return this.fetchToy(this.color + ' ' + this.name, this.getImagePath());
+    };
 
-    setVar('highheels', arrayList);
-}
+    toy.getImagePath = function() {
+        return 'Images/Spicy/Toys/High Heels/' + this.name + '.*';
+    };
 
-function createHighHeel(name, height, color) {
-    return {
-        name: name,
-        height: height,
-        color: color,
+    return toy;
+};
 
-        getImagePath: function () {
-            return 'Images/Spicy/Toys/High Heels/' + this.name + '.*';
-        },
-
-        fetchHighHeel: function () {
-            return fetchToy(this.color + ' ' + this.name, this.getImagePath());
-        },
-
-        toString: function () {
-            return serializeObject(this);
-        },
-
-        fromString: function (string) {
-            return deserializeObject(this, string);
-        },
-    }
-}
-
-function openHighHeelList() {
-    let list = javafx.collections.FXCollections.observableArrayList();
-
-    for (let x = 0; x < highHeels.length; x++) {
-        list.add(highHeels[x].name);
-    }
-
-    createToyListGUI(function (listView, event) {
-        const selectedHeel = listView.listView.getSelectionModel().getSelectedItem();
-        if (selectedHeel != null) {
-            showHighHeelGUI(getHighHeelByName(selectedHeel));
-        }
-    }, "High Heels", list)
-}
-
-function showHighHeelGUI(highHeel) {
+HIGH_HEEL_TOY.showEditGui = function(highHeel) {
     const RunnableClass = Java.type('java.lang.Runnable');
     let CustomRunnable = Java.extend(RunnableClass, {
         run: function () {
@@ -162,10 +91,13 @@ function showHighHeelGUI(highHeel) {
 
             let colour = writebackGui.addWritebackValue(gridPane.addTextSetting(row++, "Color", highHeel.color), "color");
 
-            gridPane.addSaveButton(row, dialog, writebackGui, saveHighHeels);
+            gridPane.addSaveButton(row, dialog, writebackGui, HIGH_HEEL_TOY.saveToyInstances);
             gridPane.addCloseButton(dialog, 2, row++);
             dialog.readyAndShow(gridPane.gridPane);
         }
     });
     runGui(new CustomRunnable());
-}
+};
+
+HIGH_HEEL_TOY.loadToyInstances();
+

@@ -1,0 +1,3 @@
+{
+    createToySetupMenu(STOCKING_TOY);
+}

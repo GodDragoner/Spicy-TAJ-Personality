@@ -32,7 +32,7 @@ function getTodaysSlaveTask() {
             lines.add('Today I want you to stand whenever you are eating');
 
             if (HIGH_HEEL_TOY.hasToy() && feelsLikePunishingSlave()) {
-                lines.add('Go ahead and wear your ' + getRandomHighHeel().name + ' while eating too');
+                lines.add('Go ahead and wear your ' + HIGH_HEEL_TOY.getRandom().name + ' while eating too');
             }
 
             break;

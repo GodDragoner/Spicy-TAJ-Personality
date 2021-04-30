@@ -1,0 +1,3 @@
+{
+    createToySetupMenu(PANTY_TOY);
+}

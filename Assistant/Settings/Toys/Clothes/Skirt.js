@@ -1,0 +1,3 @@
+{
+    createToySetupMenu(SKIRT_TOY);
+}

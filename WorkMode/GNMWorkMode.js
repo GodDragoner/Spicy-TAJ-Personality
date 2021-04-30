@@ -161,10 +161,11 @@ Also, still on workmode, one thing that I miss about Cyber Mistress are small pe
 
                 CHORE_WATCH.stop();
                 let secondsPassed = parseInt(CHORE_WATCH.getTime() / 1000, 10);
+                sendDebugMessage('Work mode was active for ' + secondsPassed + ' seconds');
                 let minutesPassed = Math.round(secondsPassed/60);
 
                 let goldEarned = Math.round(minutesPassed / 3);
-                let meritsEarned = goldEarned;
+                let meritsEarned = Math.round(goldEarned/1.5);
 
                 /*if (isVar("StudyMode") && getVar("StudyMode") == true) {
                     setVar("StudyHours", getVar("StudyHours") + ((WorkMode.getTime() - date.now()) / 1000));

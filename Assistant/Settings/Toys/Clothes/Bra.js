@@ -1,0 +1,3 @@
+{
+    createToySetupMenu(BRA_TOY);
+}

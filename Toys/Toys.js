@@ -70,7 +70,7 @@ function interactWithRandomToys() {
 
     if (COLLAR_TOY.hasToy() && COLLAR_TOY.decideToyOn() && feelsLikeShowingPower()) {
         putOnCollar();
-    } else if(RULE_ALWAYS_WEAR_COLLAR.isActive() && RULE_ALWAYS_WEAR_COLLAR.shouldCheckRule()) {
+    } else if (RULE_ALWAYS_WEAR_COLLAR.isActive() && RULE_ALWAYS_WEAR_COLLAR.shouldCheckRule()) {
         RULE_ALWAYS_WEAR_COLLAR.checkRule();
     }
 
@@ -78,7 +78,7 @@ function interactWithRandomToys() {
 
     if (isChance(20) && PAIN_LIMIT.isAllowed() && allowPain) {
         sendDebugMessage('Looking into clamp distribution');
-        let toDistribute = (getTotalAttachedClamps() > 20 || isChance(35) && getTotalAttachedClamps() > 0 )? 0 : randomInteger(1, 4);
+        let toDistribute = (getTotalAttachedClamps() > 20 || isChance(35) && getTotalAttachedClamps() > 0) ? 0 : randomInteger(1, 4);
         sendDebugMessage('Decided to attach ' + toDistribute + ' clamps while ' + getTotalAttachedClamps() + ' are already attached');
 
         if (toDistribute === 0 && getTotalAttachedClamps() > 0) {
@@ -102,11 +102,11 @@ function interactWithRandomToys() {
     redistributeTooLongAttachedClamps();
 
     if (NIPPLE_CLAMPS.decideToyOff()) {
-        let minutesSincePutOn = getMillisSinecDate(NIPPLE_CLAMPS.getLastUsage())/(1000*60);
+        let minutesSincePutOn = getMillisSinecDate(NIPPLE_CLAMPS.getLastUsage()) / (1000 * 60);
 
         //20 minutes should be max
         //QUALITY: Add personal limit/modifier for sub
-        if(isChance(minutesSincePutOn*5)) {
+        if (isChance(minutesSincePutOn * 5)) {
             removeNippleClamps();
         }
     }
@@ -131,9 +131,9 @@ function interactWithRandomToys() {
 
     sendDebugMessage('Random toy balls done');
 
-    if(isKneeling() && !feelsLikeShowingPower() && decideStopKneeling()) {
+    if (isKneeling() && !feelsLikeShowingPower() && decideStopKneeling()) {
         stopKneeling();
-    } else if(!isKneeling() && feelsLikeShowingPower()) {
+    } else if (!isKneeling() && feelsLikeShowingPower()) {
         startKneeling();
     }
 }
@@ -161,7 +161,7 @@ function removeAllToys() {
         removeCollar();
     }
 
-    if(hasLingerieOn()) {
+    if (hasLingerieOn()) {
         sendMessage('Go ahead and undress and put your normal clothes back on %SlaveName%');
         sendMessage('Tell me when you are done', 0);
         waitForDone();
@@ -260,42 +260,6 @@ function fetchToy(toy, imagePath, amount = 0) {
     }
 
     return true;
-}
-
-function askForToy(toyName, variableName, imageName) {
-    if (variableName === undefined) {
-        variableName = decapitalize(toyName).replace(/ /g, "");
-    }
-
-    if (imageName === undefined) {
-        imageName = variableName;
-    }
-
-    sendVirtualAssistantMessage(toyName + "?", false);
-    showPicture("Images/Spicy/Toys/" + imageName + ".jpg");
-
-    let answer = createInput();
-
-    while (true) {
-        if (answer.isLike("yes")) {
-            setVar("toy" + variableName, true);
-            sendVirtualAssistantMessage("%Good%");
-            return true;
-        } else if (answer.isLike("no")) {
-            sendVirtualAssistantMessage("%EmoteSad%");
-
-            if (isVar("toy" + variableName)) {
-                delVar("toy" + variableName);
-            }
-
-            break;
-        } else {
-            sendVirtualAssistantMessage(YES_OR_NO, 0);
-            answer.loop();
-        }
-    }
-
-    return false;
 }
 
 function askForToyUsage(toyName, domChose, variableName) {
@@ -405,6 +369,20 @@ function createToy(name) {
             return imageName;
         },
 
+        getImagePath: function () {
+            return "Images/Spicy/Toys/" + this.getImageName() + ".jpg";
+        },
+
+        getImageFolder: function () {
+            let file = new java.io.File(this.getImagePath()).getParentFile();
+
+            if (!file.exists()) {
+                file.mkdirs();
+            }
+
+            return file;
+        },
+
         setHasToy: function (hasToy) {
             setVar(this.getVarName(), hasToy);
         },
@@ -440,7 +418,7 @@ function createToy(name) {
         },
 
         fetchToy: function (amount = 0) {
-            return fetchToy(name, "Images/Spicy/Toys/" + this.getImageName() + ".jpg", amount);
+            return fetchToy(name, this.getImagePath(), amount);
         },
 
         askForToy: function (variableName, imageName) {
@@ -453,7 +431,7 @@ function createToy(name) {
             }
 
             sendVirtualAssistantMessage(capitalize(this.name) + "?", false);
-            showPicture("Images/Spicy/Toys/" + imageName + ".jpg", 0);
+            showPicture(this.getImagePath(), 0);
 
             setCurrentSender(SENDER_ASSISTANT);
 
@@ -529,8 +507,85 @@ function createToy(name) {
             let mode = getVar(variableName + "InteractionMode");
 
             return mode === undefined || mode === null || mode === TOY_PUNISHMENT_MODE || mode === TOY_BOTH_MODE;
-        }
+        },
+
+
+        toString: function () {
+            return serializeObject(this);
+        },
+
+        fromString: function (string) {
+            return deserializeObject(this, string);
+        },
     };
+}
+
+function createMultipleToy(name, variableName = undefined) {
+    let toy = createToy(name);
+    return extend(toy, {
+        toyInstances: [],
+
+        loadToyInstances: function () {
+            if (!isVar(variableName)) {
+                setVar(variableName, new java.util.ArrayList());
+            } else {
+                //Clear array
+                this.toyInstances = [];
+
+                let arrayList = tryGetArrayList(variableName);
+
+                for (let x = 0; x < arrayList.size(); x++) {
+                    let entry = arrayList.get(x);
+                    this.toyInstances.push(this.createToyInstance().fromString(entry));
+                }
+            }
+        },
+
+        saveToyInstances: function () {
+            let arrayList = new java.util.ArrayList();
+
+            for (let y = 0; y < this.toyInstances.length; y++) {
+                arrayList.add(this.toyInstances[y].toString());
+            }
+
+            setVar(variableName, arrayList);
+        },
+
+        getRandom: function () {
+            return random(this.toyInstances);
+        },
+
+        getByName: function (name) {
+            for (let y = 0; y < this.toyInstances.length; y++) {
+                if (name.toUpperCase() === this.toyInstances[y].name.toUpperCase()) {
+                    return this.toyInstances[y];
+                }
+            }
+
+            return null;
+        },
+
+        openListGui: function () {
+            let list = javafx.collections.FXCollections.observableArrayList();
+
+            for (let x = 0; x < this.toyInstances.length; x++) {
+                list.add(this.toyInstances[x].name);
+            }
+
+            let toyInstance = this;
+
+            createToyListGUI(function (listView, event) {
+                const selectedItem = listView.listView.getSelectionModel().getSelectedItem();
+                if (selectedItem != null) {
+                    toyInstance.showEditGui(toyInstance.getByName(selectedItem));
+                }
+            }, "High Heels", list)
+        },
+
+        hasToy: function () {
+            return this.toyInstances.length > 0;
+        },
+    });
 }
 
 function askForDomChoose() {
@@ -557,7 +612,6 @@ function askForDomChoose() {
     }
 
 
-
     return domChose;
 }
 
@@ -578,7 +632,7 @@ function setupToys(settings) {
 
     //Skip buttplug and dildos if we are in the settings
     if (!settings) {
-        if(BUTTPLUG_TOY.hasToy()) {
+        if (BUTTPLUG_TOY.hasToy()) {
             if (buttplugs.length > 0 && !settings) {
                 sendVirtualAssistantMessage('Since you already have buttplugs setup, we are not gonna setup any additional plugs now. You can always add new plugs in the main menu.');
             } else {
@@ -662,7 +716,7 @@ function setupToys(settings) {
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
     //In settings this is a separate thing
-    if(!settings) {
+    if (!settings) {
         setupEStimToy(domChose, settings);
     }
 
@@ -670,45 +724,30 @@ function setupToys(settings) {
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
     PANTY_TOY.askForToyAndUsage(domChose, undefined, "basicLingerie");
+
+    if (PANTY_TOY.hasToy() && !settings) {
+        askForMultipleToyCount(PANTY_TOY);
+    }
+
     BRA_TOY.askForToyAndUsage(domChose, undefined, "basicLingerie");
 
+    if (BRA_TOY.hasToy() && !settings) {
+        askForMultipleToyCount(BRA_TOY);
+    }
+
     GARTER_BELT_TOY.askForToyAndUsage(domChose, undefined, "advancedLingerie");
-    STOCKINGS_TOY.askForToyAndUsage(domChose, undefined, "advancedLingerie");
+
+    STOCKING_TOY.askForToyAndUsage(domChose, undefined, "advancedLingerie");
+
+    if (STOCKING_TOY.hasToy() && !settings) {
+        askForMultipleToyCount(STOCKING_TOY);
+    }
 
 
     HIGH_HEEL_TOY.askForToyAndUsage(domChose, undefined);
 
-    //Skip high heels if in settings
-    if (!settings) {
-        if(HIGH_HEEL_TOY.hasToy()) {
-            sendVirtualAssistantMessage('Okay %SlaveName%. Tell me, how many different high heels do you have?', false);
-            let answer = createInput();
-
-            while (true) {
-                if (answer.isInteger()) {
-                    const result = answer.getInt();
-                    if (result <= 0) {
-                        sendVirtualAssistantMessage("You can't choose a number equal to 0 or lower", 0);
-                        answer.loop();
-                    } else {
-                        sendVirtualAssistantMessage('We are gonna setup your high heels now, one by one.');
-
-                        for (let x = 0; x < result; x++) {
-                            setupNewHighHeel();
-                        }
-
-                        sendVirtualAssistantMessage('This should do it regarding high heels');
-                        sendVirtualAssistantMessage('You can always setup new high heels in the settings menu');
-                        break;
-                    }
-                } else {
-                    sendVirtualAssistantMessage("Please only enter a number such as 1 now.", 0);
-                    answer.loop();
-                }
-            }
-        }
-
-        sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+    if (HIGH_HEEL_TOY.hasToy() && !settings) {
+        askForMultipleToyCount(HIGH_HEEL_TOY);
     }
 
     HIGH_HEEL_LOCK.askForToyAndUsage(domChose);
@@ -771,6 +810,53 @@ function setupToys(settings) {
     unlockImages();
 }
 
+function askForMultipleToyCount(toyMultiple) {
+    sendVirtualAssistantMessage('Okay %SlaveName%. Tell me, how many different ' + pluralize(toyMultiple.name) + ' do you have?', false);
+    let answer = createInput();
+
+    while (true) {
+        if (answer.isInteger()) {
+            const result = answer.getInt();
+            if (result <= 0) {
+                sendVirtualAssistantMessage("You can't choose a number equal to 0 or lower", 0);
+                answer.loop();
+            } else {
+                sendVirtualAssistantMessage('We are gonna setup your ' + pluralize(toyMultiple.name) + ' now, one by one.');
+
+                for (let x = 0; x < result; x++) {
+                    toyMultiple.setupNewToy();
+                }
+
+                sendVirtualAssistantMessage('This should do it regarding ' + pluralize(toyMultiple.name));
+                sendVirtualAssistantMessage('You can always setup new ' + pluralize(toyMultiple.name) + ' in the settings menu');
+                break;
+            }
+        } else {
+            sendVirtualAssistantMessage("Please only enter a number such as 1 now.", 0);
+            answer.loop();
+        }
+    }
+}
+
+function askForNewToyName(toyMultiple) {
+    sendVirtualAssistantMessage('Please enter a name for your new ' + toyMultiple.name, 0);
+
+    let answer = createInput();
+    let name = 'undefined';
+
+    while (true) {
+        if (toyMultiple.getByName(answer.getAnswer()) != null) {
+            sendVirtualAssistantMessage('A ' + toyMultiple.name + ' with a similar name already exists. Please choose a different name.', 0);
+            answer.loop();
+        } else {
+            name = answer.getAnswer();
+            break;
+        }
+    }
+
+    return name;
+}
+
 function createToyListGUI(onClick, name, list) {
     const instance = Java.type('me.goddragon.teaseai.TeaseAI').application;
     const controller = instance.getController();
@@ -794,7 +880,7 @@ function createToyListGUI(onClick, name, list) {
             gridPane.setConstraints(listView.listView, 0, row++);
             gridPane.getChildren().add(listView.listView);
 
-            listView.setOnClick(function(event) {
+            listView.setOnClick(function (event) {
                 onClick(listView, event);
             });
 

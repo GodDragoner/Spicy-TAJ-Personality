@@ -1,0 +1,3 @@
+{
+    createToySetupMenu(BUTTPLUG_TOY);
+}

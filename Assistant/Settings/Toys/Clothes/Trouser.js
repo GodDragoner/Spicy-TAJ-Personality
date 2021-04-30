@@ -1,0 +1,3 @@
+{
+    createToySetupMenu(TROUSER_TOY);
+}

@@ -523,8 +523,8 @@ function sendKinkyChoreInstructions(choreType) {
             } else if (id === 11) {
                 let taskCreated = false;
                 if(HIGH_HEEL_TOY.hasToy()) {
-                    let highHeel = getRandomHighHeel();
-                    if(highHeel.fetchHighHeel()) {
+                    let highHeel = HIGH_HEEL_TOY.getRandom();
+                    if(highHeel.fetchToyInstance()) {
                         let lock = false;
                         if(HIGH_HEEL_LOCK.hasToy()) {
                             if(HIGH_HEEL_LOCK.fetchToy()) {

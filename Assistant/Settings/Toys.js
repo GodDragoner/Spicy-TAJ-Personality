@@ -1,7 +1,7 @@
 {
     sendVirtualAssistantMessage('Toy Settings Menu:', 0);
 
-    let lobbyAnswer = createInput("Add new dildo", 'Edit dildos', 'Add new buttplug', 'Edit buttplugs', 'Add new chastity cage', 'Edit chastity cages',  'Add new high heel', 'Edit high heel', 'E-Stim', 'Setup Other Toys', 'Return');
+    let lobbyAnswer = createInput("Add new dildo", 'Edit dildos', 'Add new buttplug', 'Edit buttplugs', 'Add new chastity cage', 'Edit chastity cages',  'Clothing', 'E-Stim', 'Setup Other Toys', 'Return');
     while (true) {
         if (lobbyAnswer.isLike("new dildo", "add dildo")) {
             lobbyAnswer.clearOptions();
@@ -36,15 +36,9 @@
             openChastityCageList();
             run('Assistant/Settings/Toys.js');
             break;
-        } else if (lobbyAnswer.isLike("new high", "add high", "add heel", "new heel")) {
+        } else if (lobbyAnswer.isLike("clothing", 'clothes')) {
             lobbyAnswer.clearOptions();
-            sendVirtualAssistantMessage('Bought a new high heel? How exciting! %Grin%');
-            setupNewHighHeel();
-            run('Assistant/Settings/Toys.js');
-            break;
-        } else if (lobbyAnswer.isLike("edit high", "modify high", "edit heel", "modify heel")) {
-            lobbyAnswer.clearOptions();
-            openHighHeelList();
+            run('Assistant/Settings/Toys/Clothes/Clothes.js');
             run('Assistant/Settings/Toys.js');
             break;
         } else if (lobbyAnswer.isLike('back', 'cancel', 'return')) {

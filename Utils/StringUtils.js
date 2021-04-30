@@ -34,6 +34,16 @@ function serializeObject(object) {
     return string.substr(0, string.length - 1);
 }
 
+function extend(superObject, object) {
+    for (let property in object) {
+        if (object.hasOwnProperty(property)) {
+            superObject[property] = object[property];
+        }
+    }
+
+    return superObject;
+}
+
 function decapitalize(string) {
     return string.charAt(0).toLowerCase() + string.substr(1);
 }
