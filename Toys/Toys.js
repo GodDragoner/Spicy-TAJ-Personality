@@ -2,7 +2,7 @@ const DEFAULT_TOY_COOLDOWN_MINUTES = 5;
 
 {
     let pathLength = getPersonalityPath().length;
-    let files = getFileOrCreate(getPersonalityPath() + PATH_SEPARATOR + 'Toys').listFiles();
+    let files = getScriptFilesInFolder('Toys', true);
 
     for (let index = 0; index < files.length; index++) {
         let file = files[index];

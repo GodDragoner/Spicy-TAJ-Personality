@@ -128,7 +128,7 @@ function handleTodayAcademyClasses() {
                         lastVisit.addDay(1);
                         let today = setDate();
 
-                        let skippedClasses = 0;
+                        let skippedClasses = 1;
 
                         while (!lastVisit.sameDay(today) && !lastVisit.after(today)) {
                             //Check if we would've had a class on that day

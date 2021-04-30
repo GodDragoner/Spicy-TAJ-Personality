@@ -1,22 +1,22 @@
 {
     sendVirtualAssistantMessage('Pin Board Menu:', 0);
-    sendVirtualAssistantMessage('- List rules', 0);
+    sendVirtualAssistantMessage('- List rules', 0, true);
     let options = ['List rules', 'Return'];
 
     let lobbyAnswer;
 
     if (isVar(VARIABLE.ENEMA_INTRO)) {
-        sendVirtualAssistantMessage('- Enema', 0);
+        sendVirtualAssistantMessage('- Enema', 0, true);
         options.push('Enema');
     }
 
     if (RULE_FOLLOW_DAILY_TASKS.isActive()) {
-        sendVirtualAssistantMessage('- Daily Tasks', 0);
+        sendVirtualAssistantMessage('- Daily Tasks', 0, true);
         options.push('Daily Tasks');
     }
 
     if (RULE_EVENING_RITUAL.isActive()) {
-        sendVirtualAssistantMessage('- Evening Ritual', 0);
+        sendVirtualAssistantMessage('- Evening Ritual', 0, true);
         options.push('Evening Ritual');
     }
 

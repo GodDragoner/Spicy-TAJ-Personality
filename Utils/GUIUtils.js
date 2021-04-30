@@ -126,6 +126,18 @@ function createGridPaneGUI() {
             close.setOnAction(function(handle) {
                 dialog.close();
             });
+        },
+
+        addSaveButton: function(row, dialog, writebackGui, saveFunction) {
+            let save = createButton("Save");
+            this.setConstraints(save.button, 1, row);
+            this.getChildren().add(save.button);
+
+            save.setOnAction(function (handle) {
+                writebackGui.writeBack();
+                saveFunction();
+                dialog.close();
+            });
         }
     }
 }

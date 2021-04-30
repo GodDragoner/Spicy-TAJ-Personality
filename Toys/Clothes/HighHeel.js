@@ -151,11 +151,8 @@ function showHighHeelGUI(highHeel) {
     let CustomRunnable = Java.extend(RunnableClass, {
         run: function () {
             const dialog = createDialog(highHeel.name);
-
             let gridPane = createGridPaneGUI();
-
             let row = createToySettingGUI(gridPane, highHeel.getImagePath());
-
             let writebackGui = createWritebackGUI(highHeel);
 
             let nameBox = writebackGui.addWritebackValue(gridPane.addTextSetting(row++, "Name", highHeel.name), "name");
@@ -165,18 +162,8 @@ function showHighHeelGUI(highHeel) {
 
             let colour = writebackGui.addWritebackValue(gridPane.addTextSetting(row++, "Color", highHeel.color), "color");
 
-            let save = createButton("Save");
-            gridPane.setConstraints(save.button, 1, row);
-            gridPane.getChildren().add(save.button);
-
-            save.setOnAction(function (handle) {
-                writebackGui.writeBack();
-                saveHighHeels();
-                dialog.close();
-            });
-
+            gridPane.addSaveButton(row, dialog, writebackGui, saveHighHeels);
             gridPane.addCloseButton(dialog, 2, row++);
-
             dialog.readyAndShow(gridPane.gridPane);
         }
     });

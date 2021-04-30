@@ -27,12 +27,38 @@ function getPersonalityPath() {
     return PERSONALITY_PATH;
 }
 
-function getFilesInFolder(folder) {
-    return getFileOrCreate(getPersonalityPath() + PATH_SEPARATOR + folder).listFiles();
+/**
+ * Returns a list of all files within the given folder path
+ * @param folder The folder path as string relative to the personality base path
+ * @param recursion Whether we want to go into folders within that folder too
+ */
+function getFilesInFolder(folder, recursion = false) {
+    return getFilesInFolderFile(getFileOrCreate(getPersonalityPath() + PATH_SEPARATOR + folder), recursion);
 }
 
-function getScriptFilesInFolder(folder) {
-    let files = getFilesInFolder(folder);
+/**
+ * Returns a list of all files within the given folder
+ * @param folder The folder as a file
+ * @param recursion Whether we want to go into folders within that folder too
+ */
+function getFilesInFolderFile(folder, recursion = false) {
+    let files = folder.listFiles();
+    let allFiles = [];
+
+    for(let x = 0; x < files.length; x++) {
+        if(files[x].isDirectory() && recursion) {
+            let subFiles = getFilesInFolderFile(files[x], true);
+            pushElementsToOtherArray(subFiles, allFiles);
+        }
+
+        allFiles.push(files[x]);
+    }
+
+    return allFiles;
+}
+
+function getScriptFilesInFolder(folder, recursion = false) {
+    let files = getFilesInFolder(folder, recursion);
     let scriptFiles = [];
 
     for (let index = 0; index < files.length; index++) {

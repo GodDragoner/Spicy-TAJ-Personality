@@ -47,7 +47,6 @@ sendSystemMessage("Launching Spicy " + getVar("personalityVersion"));
 
 
 run("Utils/Web/HTTPUtils.js");
-run("Utils/Web/WebServer.js");
 run("Utils/Web/HttpServer.js");
 
 run("Utils/RandomUtils.js");
