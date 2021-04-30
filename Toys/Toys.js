@@ -608,7 +608,7 @@ function createMultipleToy(name, variableName = undefined) {
             let toys = [];
 
             for (let x = 0; x < this.toyInstances.length; x++) {
-                if(types.indexOf(this.toyInstances[x]) !== -1) {
+                if(types.indexOf(this.toyInstances[x].type) !== -1) {
                     toys.push(this.toyInstances[x]);
                 }
             }
@@ -620,7 +620,7 @@ function createMultipleToy(name, variableName = undefined) {
             let toys = [];
 
             for (let x = 0; x < this.toyInstances.length; x++) {
-                if(types.indexOf(this.toyInstances[x]) === -1) {
+                if(types.indexOf(this.toyInstances[x].type) === -1) {
                     toys.push(this.toyInstances[x]);
                 }
             }

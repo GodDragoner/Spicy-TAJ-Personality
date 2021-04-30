@@ -120,6 +120,33 @@ function decideOutfit() {
     return lines;
 }
 
+
+
+function decideNightwear(includePanty = false) {
+    let lines = new java.util.ArrayList();
+
+    let tops = getNightwearTops();
+
+    //TODO: Consider buttplug or bondage
+
+    if(tops.length > 0) {
+        let top = random(tops);
+        lines.add('Put on your ' + top.getName() + ' <showImage=' + top.getImagePath() + '>');
+    }
+
+    if(includePanty) {
+        let panty = PANTY_TOY.getRandom();
+        lines.add('Put on your ' + panty.getName() + ' <showImage=' + panty.getImagePath() + '>');
+    }
+
+    if(isChance(25)) {
+        let sock = STOCKING_TOY.getToysOfType('striped');
+        lines.add('Put on your ' + sock.getName() + ' <showImage=' + sock.getImagePath() + '>');
+    }
+
+    return lines;
+}
+
 function putOnLingerie() {
     let attachedToys = [];
 

@@ -235,7 +235,7 @@ sendDebugMessage(serializeObject(toy.setVibrate(0)));
 setVar(VARIABLE.ASS_LEVEL, restoreLevel);*/
 
 {
-    let outfitLines = decideOutfit();
+    let outfitLines = decideNightwear();
 
     for(let x = 0; x < outfitLines.size(); x++) {
         sendPinnoteMessage(outfitLines.get(x));

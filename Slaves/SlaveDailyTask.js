@@ -149,7 +149,7 @@ function getTodaysSlaveTask() {
                 break;
             }
         //Fallthrough if forced locked up
-        case 28:
+        case 26:
             if (!isForcedLockedUp()) {
                 lines.add('I want you to follow JOI videos for a total of 60 minutes today');
 
@@ -172,6 +172,27 @@ function getTodaysSlaveTask() {
             break;
     }
 
+    //Daily outfit
+    if (SISSY_LIMIT.isAllowed()) {
+        if (isChance(25)) {
+
+            let outfit = decideOutfit();
+
+            if (outfit.size() > 0) {
+                lines.add('Today I want you to put on the following outfit while at home');
+                lines.addAll(outfit);
+            }
+        }
+
+        if (isChance(25)) {
+            let nightwear = decideNightwear();
+
+            if (nightwear.size() > 0) {
+                lines.add('For the night I want you to wear the following outfit');
+                lines.addAll(nightwear);
+            }
+        }
+    }
 
     //Today also punishment tasks
     if (feelsLikePunishingSlave()) {
@@ -185,7 +206,7 @@ function getTodaysSlaveTask() {
             lines.add('%InAddition% ' + pissedOff);
         }
 
-        switch (randomInteger(0, 14)) {
+        switch (randomInteger(0, 15)) {
             case 0:
                 lines.add('Today I want you to stay on all fours for ' + getDailyTaskTime() + ' minutes');
                 lines.add('And...');
@@ -348,6 +369,13 @@ function getTodaysSlaveTask() {
 
                 generateSlaveFoodMeal(lines);
                 break;
+            case 15:
+                if (HIGH_HEEL_TOY.hasToy()) {
+                    //QUALITY: Determine highest heels
+                    lines.add('I want you to wear your most uncomfortable high heels to bed');
+                    lines.add('You may take them off the next morning');
+                }
+                break;
             default:
                 break;
         }
@@ -357,10 +385,9 @@ function getTodaysSlaveTask() {
         lines.add('Today ' + random('you\'ve deserved to be free of any tasks', 'I feel like not giving you any tasks', 'I want you to be free of any tasks', 'I think you\'ve deserved to be free of tasks', 'you\'ve earned to be free of any tasks'));
         lines.add('Enjoy!');
     }
-
-
-//Special Tasks
-//Edge, edge and more edge between 6 and midnight.  No cumming, and any precum must be licked clean
+    
+    //Special Tasks
+    //Edge, edge and more edge between 6 and midnight.  No cumming, and any precum must be licked clean
 
     setVar(VARIABLE.SLAVE_TASK_TODAY, lines);
     setDate(VARIABLE.SLAVE_TASK_SET);
@@ -538,7 +565,7 @@ function generateSlaveFoodMeal(lines) {
         'A sheet of toilet paper',
     ];
 
-    if(PEE_LIMIT.isAllowed()) {
+    if (PEE_LIMIT.isAllowed()) {
         flavor.push("Add some piss");
     }
 
@@ -546,7 +573,7 @@ function generateSlaveFoodMeal(lines) {
     lines.add(random(flavor));
 
 
-    if(feelsLikePunishingSlave()) {
+    if (feelsLikePunishingSlave()) {
         lines.add(random('Tie your hands behind your back while eating', 'Pour it on the floor and lick it all up'));
     } else {
         lines.add("Serve it in a bowl and it it on the floor");

@@ -315,18 +315,25 @@ function startModelRating(gameType) {
                 }
                 //Non pain slaves
                 else if(gameType === GAME_TYPE.GAME_STROKING) {
+                    lockImages();
+                    showImage('Images/Spicy/Games/ModelGame/' + imageToShow + '.*');
                     startEdging();
                     sendMessage("%LetEdgeFade%");
 
+                    showImage('Images/Spicy/Games/ModelGame/' + imageToShow + '.*');
+
                     sendMessage('Be ready for a second one %Grin%');
 
-                    if (fails === 0) {
+                    if (fails === 0 && wins > 0) {
                         sendMessage('You will do twice the edges when you are wrong %EmoteHappy%');
+                    } else {
+                        sendMessage('Did you really think you are gonna just play this game without consequences? %Lol%');
                     }
 
                     sendMessage('Here it comes...');
 
                     startEdging();
+                    unlockImages();
                     sendMessage("%LetEdgeFade%");
                 } else if(gameType === GAME_TYPE.GAME_ANAL) {
                     if(fails === 0) {

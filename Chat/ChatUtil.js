@@ -5,7 +5,7 @@ const LOGGER_LEVEL = Java.type('java.util.logging.Level');
 const ANSWER_CLASS = Java.type('me.goddragon.teaseai.api.chat.Answer');
 
 const DEBUG_MODE = 1;
-const RAPID_TESTING = isVar("rapidTesting") || true;
+const RAPID_TESTING = isVar("rapidTesting");
 const DEBUG_OPTIONS = isVar("debugOptions");
 
 
@@ -19,6 +19,7 @@ const ANSWER_TIMEOUT = 2;
 let CURRENT_SENDER = SENDER_TAJ;
 
 if (RAPID_TESTING) {
+    sendDebugMessage("Rapid testing enabled!");
     TAJ_CHAT_HANDLER.getHandler().setPerMessageCharacterPauseMillis(0);
     TAJ_CHAT_HANDLER.getHandler().setPausePerMessageCharacter(false);
 }

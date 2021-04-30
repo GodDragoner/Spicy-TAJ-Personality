@@ -51,7 +51,7 @@ function slaveNameVocabulary() {
         adjectives.push("dressed up", "dressed up");
     }
 
-    let adjective = isChance(33)? random(adjectives) : "";
+    let adjective = isChance(15)? random(adjectives) : "";
 
     return (adjective + ' ' + random(answers)).trim();
 }

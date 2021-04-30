@@ -10,6 +10,6 @@
         sendMessage('Don\'t you dare look away and make sure your volume is up');
         playRandomSissyHypno();
 
-        sendMessage(random('I hope you\'re feeling more submissive', 'If you were here you would stuff like this daily') + ' %EmoteHappy%');
+        sendMessage(random('I hope you\'re feeling more submissive', 'If you were here you would watch stuff like this daily') + ' %EmoteHappy%');
     }
 }
