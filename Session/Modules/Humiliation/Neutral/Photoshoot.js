@@ -45,7 +45,7 @@
                 break;
             case 1:
                 sendMessage(random("I want you to", "You need to") + " find, think of, imagine as best as you can - different poses");
-                sendMessage(random("Poses you can use while lying on your bed", "Poses for to take while shooting different images") + "%Grin%");
+                sendMessage(random("Poses you can use while lying on your bed", "Poses for to take while shooting different images") + " %Grin%");
                 sendMessage(random("It's really quite simple", "It's rather simple", "It's not complicated"));
                 sendMessage(random("I want you to snap a few image", "You're going to snap some pictures"));
                 sendMessage(random("In different lovely poses", "While taking some really good poses"));
@@ -53,7 +53,7 @@
                 sendMessage("When you're done, I want you to transfer those images to your self humiliation folder");
                 sendMessage(random("We're going to have a blast with them!", "We should be able to put them to good use!"));
                 sendMessage(random("Snap at least 10", "Take at least 15 pictures"));
-                sendMessage(random("But feel free to do many many more!", "But don't shy away from taking a lot more!") + "%Lol%");
+                sendMessage(random("But feel free to do many many more!", "But don't shy away from taking a lot more!") + " %Lol%");
                 break;
             case 2:
                 sendMessage(random("You need to choose ") + randomInteger(3, 7) + " positions");

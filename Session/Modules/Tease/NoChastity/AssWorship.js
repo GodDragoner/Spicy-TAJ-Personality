@@ -93,7 +93,7 @@
                     sendMessage('So you\'d better believe you\'re going to pay a high price for the privilege %Wicked%');
                     break;
                 case 2:
-                    sendMessage('I know %MyYour% %Cock% is complete agony right now');
+                    sendMessage('I know %MyYour% %Cock% is in complete agony right now');
                     sendMessage('But my ass deserves that kind of sacrifice');
                     sendMessage('Even if it teases you');
                     sendMessage('Torments you');

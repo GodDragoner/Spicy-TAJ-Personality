@@ -70,7 +70,7 @@
 
         if (isVar("ExercisePeriod")&&(getDate("ExercisePeriod").before(setDate().addHour(-160)))) {
             sendVirtualAssistantMessage("A seven day cycle has ended");
-            sendVirtualAssistantMessage("This past week you've spent" + getVar("ExerciseTimes") + " times exercising with me");
+            sendVirtualAssistantMessage("This past week you've spent " + getVar("ExerciseTimes") + " times exercising with me");
             switch (getVar("ExerciseTimes")) {
                 case 6:
                     sendVirtualAssistantMessage("Which is Excellent!! And it earns you 450 gold");
@@ -110,7 +110,7 @@
             if (getVar("ExerciseLevel") > getVar("ExerciseLevelOld")) {
                 sendVirtualAssistantMessage("Which is an improvement! %EmoteHappy%");
             } else if (getVar("ExerciseLevel") == getVar("ExerciseLevelOld")) {
-                sendVirtualAssistantMessage("Which is a stay still :/");
+                sendVirtualAssistantMessage("Which is neither better or worse :/");
             } else {
                 sendVirtualAssistantMessage("Which is sadly a decline! %EmoteSad%");
             }

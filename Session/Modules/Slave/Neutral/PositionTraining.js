@@ -1,3 +1,6 @@
+let positionTestWrong = 0;
+let positionTestRight = 0;
+
 {
 
     //TOADD: Add toy usage
@@ -431,8 +434,8 @@ function positionTrainingTimer() {
 }
 
 function positionTrainingTestSelection() {
-    let positionTestWrong = 0;
-    let positionTestRight = 0;
+    positionTestWrong = 0;
+    positionTestRight = 0;
 
     sendMessage("I think it's time for a little test");
     sendMessage("I think it's important for a %SlaveName%");
@@ -447,7 +450,7 @@ function positionTrainingTestSelection() {
         currentTest_position1 : function(){positionTest("1", "attention", "Images/Spicy/Positions/Attention1.jpg")},        
         currentTest_position2 : function(){positionTest("2", "bad bitch", "Images/Spicy/Positions/BadBitch2.jpg")},
         currentTest_position3 : function(){positionTest("3", "bent over", "Images/Spicy/Positions/BentOver2.jpg")},
-        currentTest_position4 : function(){positionTest("4", "bent over open", "Images/Spicy/Positions/BentOverOpen1.jpg")},
+        currentTest_position4 : function(){positionTest("4", "bent over open", "Images/Spicy/Positions/bentOverOpen1.jpg")},
         currentTest_position5 : function(){positionTest("5", "box", "Images/Spicy/Positions/Box1.jpg")},
         currentTest_position6 : function(){positionTest("6", "come fuck me", "Images/Spicy/Positions/CFM1.jpg")},
         currentTest_position7 : function(){positionTest("7", "dog", "Images/Spicy/Positions/Dog1.jpg")},
@@ -945,11 +948,11 @@ function complicatedPositionTrainingSelection(totalPositions) {
                     sendMessage("Get your camera ready then..");
                     sleep(40);
                     break;
-                } else if (answer.containsIgnoreCase("yes")) {
+                } else if (answer.containsIgnoreCase("no")) {
                     sendMessage("Aww %EmoteSad%");
                     break;
                 } else {
-                    sendMessage("Just say yes when you've finished fetching.", 0);
+                    sendMessage("Are you going to film yourself or not %SlaveName%?", 0);
                     changeMeritLow(true);
                     answer.loop();
                 }
