@@ -70,7 +70,7 @@
                 if(PUNISHMENTS_DONE === 1) {
                     sendMessage('I hope this quite long "pause" helped you calm down %Grin%');
                 } else {
-                    sendMessage('I hope this time you spend bound up helped you remember your place %Grin%');
+                    sendMessage('I hope this time you spent bound up helped you remember your place %Grin%');
                 }
             }
         });
