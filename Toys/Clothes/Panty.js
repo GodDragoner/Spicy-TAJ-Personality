@@ -34,9 +34,12 @@ PANTY_TOY.createToyInstance = function(name, color, type, sexAppeal, comfort) {
     toy.sexAppeal = sexAppeal;
     toy.comfort = comfort;
 
+    toy.getName = function() {
+        return this.color + ' ' + this.type + ' ' + PANTY_TOY.name;
+    };
 
     toy.fetchToyInstance = function() {
-        return this.fetchToy(this.color + ' ' + this.type + ' ' + PANTY_TOY.name, this.getImagePath());
+        return this.fetchToy(this.getName(), this.getImagePath());
     };
 
     toy.getImagePath = function() {

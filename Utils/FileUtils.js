@@ -1,6 +1,7 @@
 const TeaseAI = Java.type("me.goddragon.teaseai.TeaseAI");
 const ScriptHandler = Java.type('me.goddragon.teaseai.api.scripts.ScriptHandler');
 const TAJFileUtils = Java.type('me.goddragon.teaseai.utils.FileUtils');
+const StringUtils = Java.type("me.goddragon.teaseai.utils.StringUtils");
 const PERSONALITY_PATH = TeaseAI.application.getSession().getActivePersonality().getFolder().getAbsolutePath();
 const PATH_SEPARATOR = java.io.File.separator;
 const IMAGE_PATH = 'Images' + PATH_SEPARATOR + 'Spicy';

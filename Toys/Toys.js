@@ -585,6 +585,48 @@ function createMultipleToy(name, variableName = undefined) {
         hasToy: function () {
             return this.toyInstances.length > 0;
         },
+
+        hasToyVar: function() {
+            return getVar(this.getVarName(), false);
+        },
+
+        getToyOfType: function(type) {
+            let toys = this.getToysOfType(type);
+
+            if(toys.length === 0) {
+                return undefined;
+            }
+
+            return random(toys);
+        },
+
+        getToysOfType: function(type) {
+            return this.getToysOfTypes([type]);
+        },
+
+        getToysOfTypes: function(types) {
+            let toys = [];
+
+            for (let x = 0; x < this.toyInstances.length; x++) {
+                if(types.indexOf(this.toyInstances[x]) !== -1) {
+                    toys.push(this.toyInstances[x]);
+                }
+            }
+
+            return toys;
+        },
+
+        getToysNotOfTypes: function(types) {
+            let toys = [];
+
+            for (let x = 0; x < this.toyInstances.length; x++) {
+                if(types.indexOf(this.toyInstances[x]) === -1) {
+                    toys.push(this.toyInstances[x]);
+                }
+            }
+
+            return toys;
+        },
     });
 }
 
@@ -725,13 +767,13 @@ function setupToys(settings) {
 
     PANTY_TOY.askForToyAndUsage(domChose, undefined, "basicLingerie");
 
-    if (PANTY_TOY.hasToy() && !settings) {
+    if (PANTY_TOY.hasToyVar() && !settings) {
         askForMultipleToyCount(PANTY_TOY);
     }
 
     BRA_TOY.askForToyAndUsage(domChose, undefined, "basicLingerie");
 
-    if (BRA_TOY.hasToy() && !settings) {
+    if (BRA_TOY.hasToyVar() && !settings) {
         askForMultipleToyCount(BRA_TOY);
     }
 
@@ -739,14 +781,14 @@ function setupToys(settings) {
 
     STOCKING_TOY.askForToyAndUsage(domChose, undefined, "advancedLingerie");
 
-    if (STOCKING_TOY.hasToy() && !settings) {
+    if (STOCKING_TOY.hasToyVar() && !settings) {
         askForMultipleToyCount(STOCKING_TOY);
     }
 
 
     HIGH_HEEL_TOY.askForToyAndUsage(domChose, undefined);
 
-    if (HIGH_HEEL_TOY.hasToy() && !settings) {
+    if (HIGH_HEEL_TOY.hasToyVar() && !settings) {
         askForMultipleToyCount(HIGH_HEEL_TOY);
     }
 

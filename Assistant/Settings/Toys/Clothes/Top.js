@@ -1,0 +1,3 @@
+{
+    createToySetupMenu(TOP_TOY);
+}

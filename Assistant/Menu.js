@@ -32,10 +32,11 @@ function createMenu(name) {
             let answer = createAnswerInput(nameOptions);
 
             while(true) {
+                let found = false;
+
                 for(let index = 0; index < this.options.length; index++) {
                     let option = this.options[index];
 
-                    let found = true;
                     for(let regexIndex = 0; regexIndex < option.regexList.length; regexIndex++) {
                         if(answer.isLike(option.regexList[regexIndex])) {
                             answer.clearOptions();
@@ -52,14 +53,14 @@ function createMenu(name) {
                             break;
                         }
                     }
+                }
 
-                    //Reprint options (QUALITY: This is not an applicable option text)
-                    if(!found) {
-                        sendVirtualAssistantMessage("You have the following options %SlaveName%");
+                //Reprint options (QUALITY: This is not an applicable option text)
+                if(!found) {
+                    sendVirtualAssistantMessage("You have the following options %SlaveName%");
 
-                        this.printMenu();
-                        answer.loop();
-                    }
+                    this.printMenu();
+                    answer.loop();
                 }
             }
         }

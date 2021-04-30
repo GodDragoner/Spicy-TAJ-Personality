@@ -5,7 +5,7 @@ const LOGGER_LEVEL = Java.type('java.util.logging.Level');
 const ANSWER_CLASS = Java.type('me.goddragon.teaseai.api.chat.Answer');
 
 const DEBUG_MODE = 1;
-const RAPID_TESTING = isVar("rapidTesting");
+const RAPID_TESTING = isVar("rapidTesting") || true;
 const DEBUG_OPTIONS = isVar("debugOptions");
 
 
@@ -88,17 +88,21 @@ function sendDebugMessageToChat(message) {
 }
 
 function sendPinnoteMessage(message, wait, skipImage) {
-    let textName = new javafx.scene.text.Text(replaceVocab("[%DomHonorific% %DomName%]: "));
-    textName.setFill(javafx.scene.paint.Color.INDIANRED);
-    textName.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.BOLD, 14));
+    let textName = "<c=INDIANRED><weight=BOLD><fs=" + (TeaseAI.application.CHAT_TEXT_SIZE.getDouble() - 2) + ">" + replaceVocab("[%DomHonorific% %DomName%]: ");
 
     message = replaceVocab(message);
-    let text = new javafx.scene.text.Text(message);
-    text.setFill(javafx.scene.paint.Color.GRAY);
-    text.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.LIGHT, 13));
+    message = textName + "<c=INDIANRED><weight=LIGHT><fs="  + (TeaseAI.application.CHAT_TEXT_SIZE.getDouble() - 3) + ">" + message;
 
-//test below to see if tts is supported and sendmessage can be swapped for sendcustom message
-    sendCustomMessage(textName, text);
+    let processedMessageArray = findImageToShow(message);
+    let imageToShow = processedMessageArray[1];
+    message = processedMessageArray[0];
+
+    TAJ_CHAT_HANDLER.getHandler().addLine(StringUtils.processString(message));
+
+    if(imageToShow !== undefined) {
+        skipImage = true;
+        showImage(imageToShow);
+    }
 
     //Show image
     if (skipImage === undefined || skipImage instanceof Boolean && !skipImage) {
@@ -115,17 +119,21 @@ function sendPinnoteMessage(message, wait, skipImage) {
 }
 
 function sendVirtualAssistantMessage(message, wait, skipImage) {
-    let textName = new javafx.scene.text.Text("[Vivienne]: ");
-    textName.setFill(javafx.scene.paint.Color.ROYALBLUE);
-    textName.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.BOLD, TeaseAI.application.CHAT_TEXT_SIZE.getDouble() + 1));
+    let textName = "<c=royalblue><weight=BOLD><fs=" + TeaseAI.application.CHAT_TEXT_SIZE.getDouble() + 1 + ">[Vivienne]: ";
 
     message = replaceVocab(message);
-    let text = new javafx.scene.text.Text(message);
-    text.setFill(javafx.scene.paint.Color.ROYALBLUE);
-    text.setFont(javafx.scene.text.Font.font(null, javafx.scene.text.FontWeight.MEDIUM, TeaseAI.application.CHAT_TEXT_SIZE.getDouble()));
+    message = textName + "<c=royalblue><weight=MEDIUM><fs="  + TeaseAI.application.CHAT_TEXT_SIZE.getDouble() + ">" + message;
 
-//test below to see if tts is supported and sendmessage can be swapped for sendcustom message
-    sendCustomMessage(textName, text);
+    let processedMessageArray = findImageToShow(message);
+    let imageToShow = processedMessageArray[1];
+    message = processedMessageArray[0];
+
+    TAJ_CHAT_HANDLER.getHandler().addLine(StringUtils.processString(message));
+
+    if(imageToShow !== undefined) {
+        skipImage = true;
+        showImage(imageToShow);
+    }
 
     //Show image
     if (skipImage === undefined || skipImage instanceof Boolean && !skipImage) {
@@ -133,6 +141,7 @@ function sendVirtualAssistantMessage(message, wait, skipImage) {
             showAssistantImage();
         }
     }
+
 
     if (!RAPID_TESTING) {
         if (wait === undefined) {
@@ -143,6 +152,21 @@ function sendVirtualAssistantMessage(message, wait, skipImage) {
             sleep(wait * 1000, "MILLISECONDS");
         }
     }
+}
+
+function findImageToShow(message) {
+    let showImageStr = '<showImage=';
+    let showImageIndex = message.indexOf(showImageStr);
+    let imageToShow = undefined;
+
+    if(showImageIndex !== -1) {
+        //No idea why it's 11 but it works
+        let length = message.indexOf('>', showImageIndex) - showImageIndex - 11;
+        imageToShow = message.substr(showImageIndex + showImageStr.length, length);
+        message = message.substr(0, showImageIndex) + message.substr(message.indexOf('>', showImageIndex) + 1);
+    }
+
+    return [message, imageToShow];
 }
 
 function sendSystemMessage(message) {

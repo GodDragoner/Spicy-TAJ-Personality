@@ -1,6 +1,12 @@
 {
     let menu = createMenu('Clothing');
 
+    menu.registerOption('Top', ['top'], function (answer) {
+        setCurrentSender(SENDER_ASSISTANT);
+        run('Assistant/Settings/Toys/Clothes/Top.js');
+        return false;
+    });
+
     menu.registerOption('Bra', ['bra'], function (answer) {
         setCurrentSender(SENDER_ASSISTANT);
         run('Assistant/Settings/Toys/Clothes/Bra.js');

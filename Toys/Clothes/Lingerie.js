@@ -36,6 +36,90 @@ function hasStockings() {
     return STOCKING_TOY.hasToy();
 }
 
+function decideOutfit() {
+    let lines = new java.util.ArrayList();
+
+    let pickSkirt = isChance(50) && SKIRT_TOY.hasToy();
+
+    let pickTrousers = !pickSkirt && TROUSER_TOY.hasToy();
+
+    //If no trousers and decided against skirt we force skirt if we own one
+    if(!pickTrousers && !pickSkirt && SKIRT_TOY.hasToy()) {
+        pickSkirt = true;
+    }
+
+
+    let pickBra = BRA_TOY.hasToy();
+
+    let skipPanties = pickSkirt && feelsLikeTeasing();
+    let pickPanties = PANTY_TOY.hasToy() && !skipPanties;
+
+    let pickStockings = (isChance(50) || pickSkirt && isChance(80)) && STOCKING_TOY.hasToy();
+
+    let highHeel = feelsLikePunishingSlave() && HIGH_HEEL_TOY.hasToy();
+
+
+
+    if(pickSkirt) {
+        let skirt = SKIRT_TOY.getRandom();
+
+        lines.add('Put on your ' + skirt.getName() + ' <showImage=' + skirt.getImagePath() + '>');
+    } else if(pickTrousers) {
+        let trouser = TROUSER_TOY.getRandom();
+
+        lines.add('Put on your ' + trouser.getName() + ' <showImage=' + trouser.getImagePath() + '>');
+    } else {
+        lines.add('Go with whatever trousers you have');
+    }
+
+    if(pickStockings) {
+        let stockings = STOCKING_TOY.getRandom();
+
+        lines.add('Put on your ' + stockings.getName() + ' <showImage=' + stockings.getImagePath() + '>');
+
+        if(feelsLikeTeasing() && GARTER_BELT_TOY.hasToy()) {
+            lines.add('Put on a garter belt alongside those stockings');
+        }
+    }
+
+    if(pickPanties) {
+        let panty = PANTY_TOY.getRandom();
+
+        lines.add('Put on your ' + panty.getName() + ' <showImage=' + panty.getImagePath() + '>');
+    } else if(skipPanties) {
+        lines.add('No underwear for you today');
+
+        if(pickSkirt) {
+            lines.add('You\'ll have to wear that skirt with your %Cock% freely exposed between your legs')
+        }
+    }
+
+    if(pickBra) {
+        let bra = BRA_TOY.getRandom();
+
+        lines.add('Put on your ' + bra.getName() + ' <showImage=' + bra.getImagePath() + '>');
+    }
+
+    let tops = getDailyWearTops();
+
+    if(tops.length > 0) {
+        let top = random(tops);
+        lines.add('Put on your ' + top.getName() + ' <showImage=' + top.getImagePath() + '>');
+    }
+
+    if(highHeel) {
+        let heel = HIGH_HEEL_TOY.getRandom();
+
+        lines.add('Put on your ' + heel.getName() + ' <showImage=' + heel.getImagePath() + '>');
+
+        if(feelsLikePunishingSlave() && HIGH_HEEL_LOCK.hasToy()) {
+            lines.add('Furthermore lock yourself to the heels with your high heel locks %Grin%');
+        }
+    }
+
+    return lines;
+}
+
 function putOnLingerie() {
     let attachedToys = [];
 

@@ -26,8 +26,12 @@ STOCKING_TOY.createToyInstance = function(name, color, type) {
     toy.type = type;
     toy.color = color;
 
+    toy.getName = function() {
+        return this.color + ' ' + this.type + ' ' + STOCKING_TOY.name;
+    };
+
     toy.fetchToyInstance = function() {
-        return this.fetchToy(this.color + ' ' + this.type + ' ' + STOCKING_TOY.name, this.getImagePath());
+        return this.fetchToy(this.getName(), this.getImagePath());
     };
 
     toy.getImagePath = function() {

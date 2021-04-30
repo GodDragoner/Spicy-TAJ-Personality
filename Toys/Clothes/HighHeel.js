@@ -64,8 +64,12 @@ HIGH_HEEL_TOY.createToyInstance = function(name, height, color) {
     toy.height = height;
     toy.color = color;
 
+    toy.getName = function() {
+        return this.color + ' ' + this.name;
+    };
+
     toy.fetchToyInstance = function() {
-        return this.fetchToy(this.color + ' ' + this.name, this.getImagePath());
+        return this.fetchToy(this.getName(), this.getImagePath());
     };
 
     toy.getImagePath = function() {
