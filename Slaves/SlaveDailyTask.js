@@ -385,7 +385,7 @@ function getTodaysSlaveTask() {
         lines.add('Today ' + random('you\'ve deserved to be free of any tasks', 'I feel like not giving you any tasks', 'I want you to be free of any tasks', 'I think you\'ve deserved to be free of tasks', 'you\'ve earned to be free of any tasks'));
         lines.add('Enjoy!');
     }
-    
+
     //Special Tasks
     //Edge, edge and more edge between 6 and midnight.  No cumming, and any precum must be licked clean
 
