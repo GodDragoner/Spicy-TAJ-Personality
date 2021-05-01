@@ -54,11 +54,25 @@ function decideOutfit() {
     let skipPanties = pickSkirt && feelsLikeTeasing();
     let pickPanties = PANTY_TOY.hasToy() && !skipPanties;
 
-    let pickStockings = (isChance(50) || pickSkirt && isChance(80)) && STOCKING_TOY.hasToy();
-
     let highHeel = feelsLikePunishingSlave() && HIGH_HEEL_TOY.hasToy();
 
+    let dress = false;
+    let tops = getDailyWearTops();
 
+    if(tops.length > 0) {
+        let top = random(tops);
+
+        if(top.type === 'dress') {
+            dress = true;
+            pickSkirt = false;
+            pickTrousers = false;
+        }
+
+        lines.add('Put on your ' + top.getName() + ' <showImage=' + top.getImagePath() + '>');
+    }
+
+
+    let pickStockings = (isChance(50) || pickSkirt && isChance(80)) && STOCKING_TOY.hasToy();
 
     if(pickSkirt) {
         let skirt = SKIRT_TOY.getRandom();
@@ -68,7 +82,7 @@ function decideOutfit() {
         let trouser = TROUSER_TOY.getRandom();
 
         lines.add('Put on your ' + trouser.getName() + ' <showImage=' + trouser.getImagePath() + '>');
-    } else {
+    } else if(!dress) {
         lines.add('Go with whatever trousers you have');
     }
 
@@ -100,12 +114,6 @@ function decideOutfit() {
         lines.add('Put on your ' + bra.getName() + ' <showImage=' + bra.getImagePath() + '>');
     }
 
-    let tops = getDailyWearTops();
-
-    if(tops.length > 0) {
-        let top = random(tops);
-        lines.add('Put on your ' + top.getName() + ' <showImage=' + top.getImagePath() + '>');
-    }
 
     if(highHeel) {
         let heel = HIGH_HEEL_TOY.getRandom();
@@ -114,6 +122,32 @@ function decideOutfit() {
 
         if(feelsLikePunishingSlave() && HIGH_HEEL_LOCK.hasToy()) {
             lines.add('Furthermore lock yourself to the heels with your high heel locks %Grin%');
+        }
+    }
+
+    if(JEWELLERY_TOY.hasToy()) {
+        let types = pushElementsToOtherArray(JEWELLERY_TYPES, []);
+        let repeat = false;
+        sendDebugMessage('Looking into jewellery  ' + types.length);
+
+        while(isChance(50) || repeat) {
+            repeat = false;
+            let type = random(types);
+            sendDebugMessage('Searching for jewellery of type ' + type);
+
+            let jewellery = JEWELLERY_TOY.getToyOfType(type);
+
+            if(jewellery === undefined) {
+                repeat = true;
+            } else {
+                lines.add('Put on your ' + jewellery.getName() + ' <showImage=' + jewellery.getImagePath() + '>');
+            }
+
+            types = removeIndexFromArray(types, types.indexOf(type));
+
+            if(types.length === 0) {
+                break;
+            }
         }
     }
 
@@ -140,7 +174,7 @@ function decideNightwear(includePanty = false) {
     }
 
     if(isChance(25)) {
-        let sock = STOCKING_TOY.getToysOfType('striped');
+        let sock = random(STOCKING_TOY.getToysOfType('striped'));
         lines.add('Put on your ' + sock.getName() + ' <showImage=' + sock.getImagePath() + '>');
     }
 

@@ -235,9 +235,9 @@ sendDebugMessage(serializeObject(toy.setVibrate(0)));
 setVar(VARIABLE.ASS_LEVEL, restoreLevel);*/
 
 {
-    let outfitLines = decideNightwear();
-
+    let outfitLines = decideOutfit();
+   //let outfitLines = generateSlaveFoodMeal(new java.util.ArrayList());
     for(let x = 0; x < outfitLines.size(); x++) {
-        sendPinnoteMessage(outfitLines.get(x));
+        sendPinnoteMessage(outfitLines.get(x), 0);
     }
 }

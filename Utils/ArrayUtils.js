@@ -31,4 +31,5 @@ function pushElementsToOtherArray(input, output) {
     }
 
     sendDebugMessage('Pushed ' + input.length + ' to result ' + output.length);
+    return output;
 }

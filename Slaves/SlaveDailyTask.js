@@ -576,7 +576,7 @@ function generateSlaveFoodMeal(lines) {
     if (feelsLikePunishingSlave()) {
         lines.add(random('Tie your hands behind your back while eating', 'Pour it on the floor and lick it all up'));
     } else {
-        lines.add("Serve it in a bowl and it it on the floor");
+        lines.add("Serve it in a bowl and eat it on the floor");
     }
 
     return lines;

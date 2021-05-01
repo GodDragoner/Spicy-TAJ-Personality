@@ -44,6 +44,13 @@
         return false;
     });
 
+
+    menu.registerOption('Jewellery', ['Jewellery', 'Jewelery'], function (answer) {
+        setCurrentSender(SENDER_ASSISTANT);
+        run('Assistant/Settings/Toys/Clothes/Jewellery.js');
+        return false;
+    });
+
     menu.registerOption("Return", ["return"], function (answer) {
         return true;
     });

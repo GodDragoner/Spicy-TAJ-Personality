@@ -61,12 +61,12 @@ STOCKING_TOY.setupNewToy = function() {
 function askForToyType(toyObject, types, reference = undefined) {
     sendVirtualAssistantMessage('Next please tell me the type of the ' + toyObject.name, 0);
 
-    sendVirtualAssistantMessage('The following types are available:');
+    sendVirtualAssistantMessage('The following types are available:', 0);
 
-    sendVirtualAssistantMessage(types.join(', '));
+    sendVirtualAssistantMessage(types.join(', '), 0);
 
     if(reference !== undefined) {
-        sendVirtualAssistantMessage('For reference check this out: ' + reference);
+        sendVirtualAssistantMessage('For reference check this out: ' + reference, 0);
     }
 
     let answer = createInput();

@@ -1,0 +1,3 @@
+{
+    createToySetupMenu(JEWELLERY_TOY);
+}
