@@ -431,17 +431,25 @@ function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
     //In the rare case of the biggest dildo being thicker than our biggest plug we need to watch for that
     let maxUsedPlugThickness = getFittingAnalDiameterThickness(biggestButtplug.diameter);
 
+    let minDiameterIncrease = 0;
+
+    //Max diameter increase
+    let maxDiameterIncrease = getMaxDiameterIncrease();
+
+    //Force to use the bigger diameter increase
+    if(getVar(VARIABLE.ASS_LEVEL, 0) >= 25) {
+        minDiameterIncrease = Math.round(maxDiameterIncrease/2);
+    }
+
+
     //If we want to force bigger and haven't been given a min thickness then we will make it bigger than the biggest thing we used today to make sure we go up
     if (forceBigger && minThickness === 0) {
         //Make sure our min thickness does not exceed the biggest plug we have-
-        minThickness = Math.min(maxUsedPlugThickness + 0.1, biggestButtplug.diameter);
+        minThickness = Math.min(maxUsedPlugThickness + 0.1 + minDiameterIncrease, biggestButtplug.diameter);
     }
 
     let availablePlugs = [];
 
-
-    //Max diameter increase
-    let maxDiameterIncrease = getMaxDiameterIncrease();
 
     //TODO: Handle min length too (smallest plug etc.)
 
@@ -468,6 +476,7 @@ function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
         if (availablePlugs.length === 0) {
             //Seems like we don't have any plug within our given diameter increase range so we are gonna increase our range
             maxDiameterIncrease += 0.25;
+            minDiameterIncrease -= 0.25;
 
             if (minLength > 0) minLength -= 0.5;
             //if(minThickness > 0) minThickness -= 0.5;

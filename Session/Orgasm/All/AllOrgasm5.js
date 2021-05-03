@@ -16,10 +16,10 @@
         //sendMessage("%StrokeSlower%");
         sendMessage('I don\'t want you to be edging yet!');
         sendMessage('Any minute now %Grin%');
-        sendMessage("5");
-        sendMessage("4");
-        sendMessage("3...");
-        sendMessage("2...");
+        sendMessage("5", 5);
+        sendMessage("4", 5);
+        sendMessage("3...", 5);
+        sendMessage("2...", 5);
 
         if(isChance(50)) {
             stopStrokingMessage();
@@ -33,15 +33,20 @@
             sendMessage("You can never be sure what's going to happen next, right?");
             sendMessage("But isn't that what makes this exciting? The uncertainty...");
 
-            sendMessage("%StartStroking%");
+            if(!isInChastity()) {
+                sendMessage("%StartStroking%");
+            } else {
+                readyForVibratingCage();
+                sendMessage('Put the vibrator on the cage %Grin%');
+            }
 
-            sendMessage("5");
-            sendMessage("4");
-            sendMessage("3");
-            sendMessage("2");
+            sendMessage("5", 5);
+            sendMessage("4", 5);
+            sendMessage("3", 5);
+            sendMessage("2", 5);
         }
 
-        sendMessage("1...");
+        sendMessage("1...", 5);
     }
 
     if (orgasmType === ORGASM_CATEGORY_DENIED) {

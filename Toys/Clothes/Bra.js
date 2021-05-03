@@ -32,6 +32,7 @@ const BRA_TYPES = [
     'halter',
     'vintage',
     'seamless',
+    'bodysuit',
 ];
 
 

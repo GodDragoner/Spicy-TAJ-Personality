@@ -315,9 +315,26 @@ function registerClass(name, levels, fileName, weekdays, getTasks, getModifiers,
 
             let result = this.taskHistory.getRandomAvailableId(0, tasks.length - 1, tasks / 2);
 
+            let resultArray = this.assignmentToArray(result);
             this.taskHistory.addHistoryRun(result);
             this.setAssignment(result);
-            this.setCurrentAssignmentText(tasks[result]);
+            this.setCurrentAssignmentText(resultArray);
+        },
+
+        assignmentToArray: function(assignmentIndex) {
+            let resultText = getTasks(this)[assignmentIndex];
+            let resultArray = new java.util.ArrayList();
+
+            //Somet asks are one liners some arent't
+            if(Array.isArray(resultText)) {
+                for(let x = 0; x < resultText.length; x++) {
+                    resultArray.add(resultText[x]);
+                }
+            } else {
+                resultArray.add(resultText);
+            }
+
+            return resultArray;
         },
 
         setCurrentAssignmentText: function (assignment) {
@@ -326,15 +343,28 @@ function registerClass(name, levels, fileName, weekdays, getTasks, getModifiers,
 
         getCurrentAssignmentText: function () {
             if (isVar(fileName + 'assignmentText')) {
-                return getVar(fileName + 'assignmentText');
+                let array = tryGetArrayList(fileName + 'assignmentText');
+
+                //Backwards compatibility with string only tasks
+                if(array instanceof String) {
+                    let newArray = new java.util.ArrayList();
+                    newArray.add(array);
+                    array = newArray;
+                }
+
+                return array;
             }
 
-            return getTasks(this)[this.getAssignment()];
+            return this.assignmentToArray[this.getAssignment()];
         },
 
 
         sendAssignment: function () {
-            sendMessage(this.getCurrentAssignmentText());
+            let resultArray = this.getCurrentAssignmentText();
+
+            for(let x = 0; x < resultArray.size(); x++) {
+                sendMessage(resultArray.get(x));
+            }
         },
 
         getWeekdayString: function () {

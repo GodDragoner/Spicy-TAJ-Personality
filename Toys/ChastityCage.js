@@ -113,11 +113,11 @@ function unlockChastityCage(fakeOpening = false) {
     if (randomInteger(0, 2) == 2) playSound("Audio/Spicy/Chastity/ChastityOff/*.mp3");
     sendMessage(random("Remove your %ChastityCage%", "Get your %ChastityCage% off", "Remove the %ChastityCage% at once", "Hurry up and remove the %ChastityCage%", "Be quick and get your %ChastityCage% off"));
 
-    let timeout = randomInteger(30, 40);
+    let timeout = randomInteger(50, 60);
     if (getStrictnessForCharacter() == 1) {
-        timeout = randomInteger(20, 40);
+        timeout = randomInteger(40, 50);
     } else if (getStrictnessForCharacter() == 2) {
-        timeout = randomInteger(15, 30);
+        timeout = randomInteger(30, 40);
     }
 
     const answer = sendInput(random("Let me know when you're done...", "Report to me when it's off", "Remember to tell me when it's off"), timeout);

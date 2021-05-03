@@ -146,7 +146,7 @@ function getMinPlayTimeBeforeToySwap() {
     return 7;
 }
 
-function removeAllToys() {
+function removeAllToys(end = false) {
     removeAllClamps();
 
     removeGag();
@@ -154,7 +154,15 @@ function removeAllToys() {
     removeNippleClamps();
 
     if (isPlugged()) {
-        removeButtplug(true);
+        //Put in right plug afterwards again
+        if(end && RULE_ALWAYS_WEAR_SMALL_PLUG.isActive()) {
+            if(currentPlug !== getSmallButtplug(true)) {
+                removeButtplug(true);
+                sendMessage('And now put back in your ' + getSmallButtplug(true).name + ' again');
+            }
+        } else {
+            removeButtplug(true);
+        }
     }
 
     if (COLLAR_TOY.isToyOn() && !RULE_ALWAYS_WEAR_COLLAR.isActive()) {
@@ -538,6 +546,8 @@ function createMultipleToy(name, variableName = undefined) {
                     let entry = arrayList.get(x);
                     this.toyInstances.push(this.createToyInstance().fromString(entry));
                 }
+
+                sendDebugMessage('Loaded ' + this.toyInstances.length + ' ' + pluralize(name))
             }
         },
 

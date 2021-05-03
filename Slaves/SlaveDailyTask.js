@@ -12,8 +12,8 @@ function getTodaysSlaveTask() {
     lines.add('Good Morning %SlaveName%');
     let lineCountGreeting = lines.size();
 
-    //Only 26 exist so a 7/33 chance for no tasks
-    switch (randomInteger(0, 33)) {
+    //Only 33 exist so a 10/43 chance for no tasks
+    switch (randomInteger(0, 43)) {
         case 0:
             var randomMeal = random('dinner', 'lunch', 'breakfast');
             lines.add('For ' + randomMeal + ' today I want you to put on a blindfold while standing in front of your closed fridge');
@@ -167,6 +167,50 @@ function getTodaysSlaveTask() {
             //TODO: Replace by other task (duplicate with task 8)
             generateDailyPornInstruction(lines, random(PORN_CATEGORY.DENIAL, PORN_CATEGORY.RUINED_ORGASM_COMPILATION, PORN_CATEGORY.CUM_COMPILATION));
             break;
+        case 28:
+            if (ANAL_LIMIT.isAllowed()) {
+                if (BUTTPLUG_TOY.hasToy()) {
+                    let buttplug = getSmallButtplug(true);
+
+                    if (buttplug !== null) {
+                        lines.add('Today I want you to wear your ' + buttplug.name + ' to bed');
+                        break;
+                    }
+                }
+
+            }
+        //Fallthrough if limit
+        case 29:
+            if (ANAL_LIMIT.isAllowed()) {
+                if (ANAL_BEADS_TOY.hasToy()) {
+                    lines.add('Today I want you to wear anal beads to bed');
+                    break;
+                }
+            }
+        //Fallthrough if limit
+        case 30:
+            if (ANAL_LIMIT.isAllowed()) {
+                if (BUTTPLUG_TOY.hasToy()) {
+                    let buttplug = getMediumButtplug(true);
+
+                    if (buttplug !== null) {
+                        lines.add('Today I want you to wear your ' + buttplug.name + ' the whole day');
+                        lines.add('You may remove it before going to bed');
+                        break;
+                    }
+                }
+
+            }
+        //Fallthrough if limit
+        case 31:
+            lines.add('Today I want you to wear a blindfold to bed');
+            break;
+        case 32:
+            lines.add('Today I want you to wear a collar to bed');
+            break;
+        case 33:
+            lines.add('Today I want you to wear a blindfold to bed');
+            break;
         default:
             //No tasks today
             break;
@@ -206,7 +250,7 @@ function getTodaysSlaveTask() {
             lines.add('%InAddition% ' + pissedOff);
         }
 
-        switch (randomInteger(0, 15)) {
+        switch (randomInteger(0, 17)) {
             case 0:
                 lines.add('Today I want you to stay on all fours for ' + getDailyTaskTime() + ' minutes');
                 lines.add('And...');
@@ -365,16 +409,54 @@ function getTodaysSlaveTask() {
 
                 break;
             case 14:
-                lines.add('I want you to replace one of today\'s meal with the following');
+                if (ANAL_LIMIT.isAllowed()) {
+                    if (BUTTPLUG_TOY.hasToy()) {
+                        let buttplug = getMediumButtplug(true);
 
-                generateSlaveFoodMeal(lines);
-                break;
+                        if (buttplug !== null) {
+                            lines.add('Today I want you to wear your ' + buttplug.name + ' to bed');
+                            break;
+                        }
+                    }
+                }
+            //Fallthrough if limit
             case 15:
+                if (ANAL_LIMIT.isAllowed()) {
+                    if (BUTTPLUG_TOY.hasToy()) {
+                        let buttplug = getBigButtplug(true);
+
+                        if (buttplug !== null) {
+                            lines.add('Today I want you to wear your ' + buttplug.name + ' to bed');
+                            break;
+                        }
+                    }
+                }
+            //Fallthrough if limit
+            case 16:
+                if (ANAL_LIMIT.isAllowed()) {
+                    if (BUTTPLUG_TOY.hasToy()) {
+                        let buttplug = getBigButtplug(true);
+
+                        if (buttplug !== null) {
+                            lines.add('Today I want you to wear your ' + buttplug.name + ' the whole day');
+                            lines.add('You may remove it before going to bed');
+                            break;
+                        }
+                    }
+                }
+            //Fallthrough if limit
+            case 17:
                 if (HIGH_HEEL_TOY.hasToy()) {
                     //QUALITY: Determine highest heels
                     lines.add('I want you to wear your most uncomfortable high heels to bed');
                     lines.add('You may take them off the next morning');
+                    break;
                 }
+            //Fallthrough if no toy
+            case 18:
+                lines.add('I want you to replace one of today\'s meal with the following');
+
+                generateSlaveFoodMeal(lines);
                 break;
             default:
                 break;

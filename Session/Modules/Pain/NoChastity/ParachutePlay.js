@@ -113,6 +113,7 @@
                     let timeInSeconds = getCornerTime();
 
                     sleep(timeInSeconds);
+                    stopStroking();
                     returnSlave();
 
                     let resultingJacks = Math.round(getCornerTime()/(60/bpm));
@@ -195,6 +196,7 @@
 
             //QUALITY: Ask if balls hurt, interact
             sendMessage('You can remove the parachute now %SlaveName% %EmoteHappy%');
+            waitForDone();
             sendMessage('I hope your balls aren\'t falling of yet %Lol%');
 
             sendAsMuchFun();

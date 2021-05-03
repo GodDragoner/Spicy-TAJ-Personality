@@ -23,6 +23,7 @@ const PANTY_TYPES = [
     'high-leg',
     'high-waist',
     'shapewear',
+    'crotchless'
 ];
 
 

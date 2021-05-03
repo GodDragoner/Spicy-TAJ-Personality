@@ -49,7 +49,7 @@ function decideOutfit() {
     }
 
 
-    let pickBra = BRA_TOY.hasToy();
+    let pickBra = BRA_TOY.hasToy() && isChance(50);
 
     let skipPanties = pickSkirt && feelsLikeTeasing();
     let pickPanties = PANTY_TOY.hasToy() && !skipPanties;
@@ -58,6 +58,12 @@ function decideOutfit() {
 
     let dress = false;
     let tops = getDailyWearTops();
+
+    if(pickBra) {
+        let bra = BRA_TOY.getRandom();
+
+        lines.add('Put on your ' + bra.getName() + ' <showImage=' + bra.getImagePath() + '>');
+    }
 
     if(tops.length > 0) {
         let top = random(tops);
@@ -72,7 +78,7 @@ function decideOutfit() {
     }
 
 
-    let pickStockings = (isChance(50) || pickSkirt && isChance(80)) && STOCKING_TOY.hasToy();
+    let pickStockings = (isChance(50) || (pickSkirt || dress) && isChance(75)) && STOCKING_TOY.hasToy();
 
     if(pickSkirt) {
         let skirt = SKIRT_TOY.getRandom();
@@ -108,11 +114,6 @@ function decideOutfit() {
         }
     }
 
-    if(pickBra) {
-        let bra = BRA_TOY.getRandom();
-
-        lines.add('Put on your ' + bra.getName() + ' <showImage=' + bra.getImagePath() + '>');
-    }
 
 
     if(highHeel) {

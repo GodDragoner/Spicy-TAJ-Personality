@@ -22,7 +22,7 @@ TROUSER_TOY.createToyInstance = function(name, color, type) {
     toy.color = color;
 
     toy.getName = function() {
-        return this.color + ' ' + this.type + ' ' + this.name;
+        return this.color + ' ' + this.type;
     };
 
     toy.fetchToyInstance = function() {

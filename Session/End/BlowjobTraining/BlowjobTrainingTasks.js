@@ -159,7 +159,9 @@ const blowjobTasks = [];
     blowjobTasks.push(blowjobTask);
 }
 
-function sendBlowjobTrainingPosition() {
+function getBlowjobTrainingPosition() {
+    let lines = [];
+
     let position = 0;
 
     if(getVar(VARIABLE.BLOWJOB_LEVEL) > 10) {
@@ -168,31 +170,39 @@ function sendBlowjobTrainingPosition() {
 
     switch (position) {
         case 0:
-            sendMessage('For this I want you to place your toy in front of you');
+            lines.push('For this I want you to place your toy in front of you');
             break;
         case 1:
-            sendMessage('For this I want you to get that dildo and either attach or hold it against the wall');
+            lines.push('For this I want you to get that dildo and either attach or hold it against the wall');
 
             if (feelsEvil()) {
-                sendMessage('I want you to place the dildo on a height that requires you to completely sit up while kneeling to reach it %EmoteHappy%');
+                lines.push('I want you to place the dildo on a height that requires you to completely sit up while kneeling to reach it %EmoteHappy%');
             } else {
-                sendMessage('You can place the dildo on a comfortable height');
+                lines.push('You can place the dildo on a comfortable height');
             }
 
             if(feelsLikePunishingSlave()) {
-                sendMessage('And because you have been a bad %SlaveName%');
-                sendMessage('You will kneel on rice for this');
+                lines.push('And because you have been a bad %SlaveName%');
+                lines.push('You will kneel on rice for this');
             }
             break;
         case 2:
-            sendMessage('For this I want you to go to the nearest couch, bed or something similar');
-            sendMessage('You will lay down on your back and then you will put your head over the corner of your bed or couch');
-            sendMessage('In the end your head should be upside down');
-            sendMessage('This definitely will be a different experience %Lol%');
+            lines.push('For this I want you to go to the nearest couch, bed or something similar');
+            lines.push('You will lay down on your back and then you will put your head over the corner of your bed or couch');
+            lines.push('In the end your head should be upside down');
+            lines.push('This definitely will be a different experience %Lol%');
             break;
     }
 
-    return position;
+    return [position, lines];
+}
+
+function sendBlowjobTrainingPosition() {
+    let lines = getBlowjobTrainingPosition()[1];
+
+    for(let x = 0; x < lines.length; x++) {
+        sendMessage(lines[x]);
+    }
 }
 
 function getRandomApplicableTask(array) {

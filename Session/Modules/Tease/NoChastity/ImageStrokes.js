@@ -124,7 +124,7 @@
 
             interpretLegacyTaunt(sentence);
 
-            waitForDone();
+            waitForDone(10000);
             strokesDone += strokes;
 
             if(strokesDone < todoStrokes) {

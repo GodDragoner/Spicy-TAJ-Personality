@@ -77,17 +77,21 @@ function wantsToGagSub() {
 
 function wantsToRemoveGag() {
     if(!isGaged()) {
+        sendDebugMessage('Sub is not gagged, no gag removed');
         return false;
     }
 
     if(isAnnoyedByTalking()) {
+        sendDebugMessage('Domme is annoyed by talking, no gag removed');
         return false;
     }
 
     if(!currentGagType.decideToyOff()) {
+        sendDebugMessage('Toy gag prevented removing gag');
         return false;
     }
 
+    sendDebugMessage('Chance to remove gag: ' + (VERY_ANNOYED_MOOD - getMood())*25);
     return isChance((VERY_ANNOYED_MOOD - getMood())*25);
 }
 

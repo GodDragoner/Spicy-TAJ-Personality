@@ -232,12 +232,25 @@ let toy = LOVENSE_TOY_TYPES.MAX.getLovenseToy();
 sendDebugMessage(serializeObject(toy.setVibrate(1)));
 sleep(5);
 sendDebugMessage(serializeObject(toy.setVibrate(0)));
-setVar(VARIABLE.ASS_LEVEL, restoreLevel);*/
+setVar(VARIABLE.ASS_LEVEL, restoreLevel);
+
+
+let tasks = getAcademyClassByName("blowjob").getTasks(getAcademyClassByName("blowjob"));
+
+for(let x = 0; x < tasks.length; x++) {
+    sendDebugMessage(tasks[x]);
+
+    sendDebugMessage(Array.isArray(tasks[x]))
+}
+*/
+
 
 {
-    let outfitLines = decideOutfit();
-   //let outfitLines = generateSlaveFoodMeal(new java.util.ArrayList());
-    for(let x = 0; x < outfitLines.size(); x++) {
-        sendPinnoteMessage(outfitLines.get(x), 0);
-    }
+   //  let outfitLines = decideOutfit();
+   // //let outfitLines = generateSlaveFoodMeal(new java.util.ArrayList());
+   //  for(let x = 0; x < outfitLines.size(); x++) {
+   //      sendPinnoteMessage(outfitLines.get(x), 0);
+   //  }
+
+
 }
