@@ -194,7 +194,7 @@
         moduleCounter++;
 
         //Unlock later chastity
-        if (isInChastity() && getVar(VARIABLE.CHASTITY_REMOVE_LATER, false)) {
+        if (isInChastity() && getVar(VARIABLE.CHASTITY_REMOVE_LATER, false) && !isForcedLockedUp()) {
             //Has too much time passed or have we spend enough modules?
             if (isInChastity(moduleCounter * 40) || hasSessionTimePassed(Math.round(getVar(VARIABLE.DEVOTION) / 1.5))) {
                 unlockChastityCage();

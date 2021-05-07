@@ -246,11 +246,7 @@ for(let x = 0; x < tasks.length; x++) {
 
 
 {
-   //  let outfitLines = decideOutfit();
-   // //let outfitLines = generateSlaveFoodMeal(new java.util.ArrayList());
-   //  for(let x = 0; x < outfitLines.size(); x++) {
-   //      sendPinnoteMessage(outfitLines.get(x), 0);
-   //  }
-
+    let analOrgasmType = decideAnalOrgasmType();
+    getAnalOrgasmInstructions(analOrgasmType, ORGASM_CATEGORY_RUINED);
 
 }

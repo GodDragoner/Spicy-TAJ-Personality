@@ -59,6 +59,7 @@
                 sendMessage('Otherwise there will be consequences');
                 setVar(VARIABLE.NEXT_TIME_ICE_CUBES, true);
             } else {
+                //TODO: Use at other locations as well (ice cubes)
                 sendMessage('%SlaveName%');
                 sendMessage('I told you last time to have ice cubes around');
                 changeMeritMedium(true);

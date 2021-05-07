@@ -637,6 +637,30 @@ function createMultipleToy(name, variableName = undefined) {
 
             return toys;
         },
+
+        getToysWithComfort: function(min, max) {
+            let toys = [];
+
+            for (let x = 0; x < this.toyInstances.length; x++) {
+                if(this.toyInstances[x].comfort >= min && this.toyInstances[x].comfort <= max) {
+                    toys.push(this.toyInstances[x]);
+                }
+            }
+
+            return toys;
+        },
+
+        getToysWithSexAppeal: function(min, max) {
+            let toys = [];
+
+            for (let x = 0; x < this.toyInstances.length; x++) {
+                if(this.toyInstances[x].sexAppeal >= min && this.toyInstances[x].sexAppeal <= max) {
+                    toys.push(this.toyInstances[x]);
+                }
+            }
+
+            return toys;
+        },
     });
 }
 

@@ -44,12 +44,12 @@ function decideOutfit() {
     let pickTrousers = !pickSkirt && TROUSER_TOY.hasToy();
 
     //If no trousers and decided against skirt we force skirt if we own one
-    if(!pickTrousers && !pickSkirt && SKIRT_TOY.hasToy()) {
+    if (!pickTrousers && !pickSkirt && SKIRT_TOY.hasToy()) {
         pickSkirt = true;
     }
 
 
-    let pickBra = BRA_TOY.hasToy() && isChance(50);
+    let pickBra = BRA_TOY.hasToy() && isChance(75);
 
     let skipPanties = pickSkirt && feelsLikeTeasing();
     let pickPanties = PANTY_TOY.hasToy() && !skipPanties;
@@ -58,17 +58,23 @@ function decideOutfit() {
 
     let dress = false;
     let tops = getDailyWearTops();
+    let sportsBra = false;
 
-    if(pickBra) {
+    if (pickBra) {
         let bra = BRA_TOY.getRandom();
+
+        if (bra.type === 'sports') {
+            sportsBra = true;
+        }
 
         lines.add('Put on your ' + bra.getName() + ' <showImage=' + bra.getImagePath() + '>');
     }
 
-    if(tops.length > 0) {
+    //50 : 50 chance for no top if we have sports bra underneath
+    if (tops.length > 0 && (!sportsBra || isChance(50))) {
         let top = random(tops);
 
-        if(top.type === 'dress') {
+        if (top.type === 'dress') {
             dress = true;
             pickSkirt = false;
             pickTrousers = false;
@@ -80,65 +86,98 @@ function decideOutfit() {
 
     let pickStockings = (isChance(50) || (pickSkirt || dress) && isChance(75)) && STOCKING_TOY.hasToy();
 
-    if(pickSkirt) {
+    if (pickSkirt) {
         let skirt = SKIRT_TOY.getRandom();
 
         lines.add('Put on your ' + skirt.getName() + ' <showImage=' + skirt.getImagePath() + '>');
-    } else if(pickTrousers) {
+    } else if (pickTrousers) {
         let trouser = TROUSER_TOY.getRandom();
 
         lines.add('Put on your ' + trouser.getName() + ' <showImage=' + trouser.getImagePath() + '>');
-    } else if(!dress) {
+    } else if (!dress) {
         lines.add('Go with whatever trousers you have');
     }
 
-    if(pickStockings) {
+    if (pickStockings) {
         let stockings = STOCKING_TOY.getRandom();
 
         lines.add('Put on your ' + stockings.getName() + ' <showImage=' + stockings.getImagePath() + '>');
 
-        if(feelsLikeTeasing() && GARTER_BELT_TOY.hasToy()) {
+        //No garter belt if those are striped socks stockings
+        if (feelsLikeTeasing() && GARTER_BELT_TOY.hasToy() && stockings.type !== 'striped') {
             lines.add('Put on a garter belt alongside those stockings');
         }
     }
 
-    if(pickPanties) {
+    if (pickPanties) {
         let panty = PANTY_TOY.getRandom();
 
-        lines.add('Put on your ' + panty.getName() + ' <showImage=' + panty.getImagePath() + '>');
-    } else if(skipPanties) {
-        lines.add('No underwear for you today');
+        let punishment = false;
 
-        if(pickSkirt) {
+        if (feelsLikePunishingSlave()) {
+            let punishmentPanties = PANTY_TOY.getToysWithComfort(0, 2);
+
+            if (punishmentPanties.length > 0) {
+                panty = random(punishmentPanties);
+                punishment = true;
+            }
+        }
+
+        lines.add('Put on your ' + panty.getName() + ' <showImage=' + panty.getImagePath() + '>');
+
+        if (punishment) {
+            lines.add('Mind that panty serves as a punishment. So I hope it\'s as uncomfortable as it gets');
+        } else if(panty.type === 'high-waist') {
+            lines.add('I hope no one will see the panty sticking out because if you leave the house you\'ll have to keep it on %Grin%');
+        }
+    } else if (skipPanties) {
+        let crotchlessFound = false;
+        if (isChance(50)) {
+            let crotchless = PANTY_TOY.getToysOfType('crotchless');
+
+            if (crotchless.length > 0) {
+                let panty = random(crotchless);
+                lines.add('Put on your ' + panty.getName() + ' <showImage=' + panty.getImagePath() + '>');
+                crotchlessFound = true;
+            }
+        }
+
+        if (crotchlessFound) {
+            lines.add('Just crotchless panties for you today');
+        } else {
+            lines.add('No underwear for you today');
+        }
+
+
+        if (pickSkirt) {
             lines.add('You\'ll have to wear that skirt with your %Cock% freely exposed between your legs')
         }
     }
 
 
-
-    if(highHeel) {
+    if (highHeel) {
         let heel = HIGH_HEEL_TOY.getRandom();
 
         lines.add('Put on your ' + heel.getName() + ' <showImage=' + heel.getImagePath() + '>');
 
-        if(feelsLikePunishingSlave() && HIGH_HEEL_LOCK.hasToy()) {
+        if (feelsLikePunishingSlave() && HIGH_HEEL_LOCK.hasToy()) {
             lines.add('Furthermore lock yourself to the heels with your high heel locks %Grin%');
         }
     }
 
-    if(JEWELLERY_TOY.hasToy()) {
+    if (JEWELLERY_TOY.hasToy()) {
         let types = pushElementsToOtherArray(JEWELLERY_TYPES, []);
         let repeat = false;
         sendDebugMessage('Looking into jewellery  ' + types.length);
 
-        while(isChance(50) || repeat) {
+        while (isChance(50) || repeat) {
             repeat = false;
             let type = random(types);
             sendDebugMessage('Searching for jewellery of type ' + type);
 
             let jewellery = JEWELLERY_TOY.getToyOfType(type);
 
-            if(jewellery === undefined) {
+            if (jewellery === undefined) {
                 repeat = true;
             } else {
                 lines.add('Put on your ' + jewellery.getName() + ' <showImage=' + jewellery.getImagePath() + '>');
@@ -146,7 +185,7 @@ function decideOutfit() {
 
             types = removeIndexFromArray(types, types.indexOf(type));
 
-            if(types.length === 0) {
+            if (types.length === 0) {
                 break;
             }
         }
@@ -156,7 +195,6 @@ function decideOutfit() {
 }
 
 
-
 function decideNightwear(includePanty = false) {
     let lines = new java.util.ArrayList();
 
@@ -164,17 +202,17 @@ function decideNightwear(includePanty = false) {
 
     //TODO: Consider buttplug or bondage
 
-    if(tops.length > 0) {
+    if (tops.length > 0) {
         let top = random(tops);
         lines.add('Put on your ' + top.getName() + ' <showImage=' + top.getImagePath() + '>');
     }
 
-    if(includePanty) {
+    if (includePanty) {
         let panty = PANTY_TOY.getRandom();
         lines.add('Put on your ' + panty.getName() + ' <showImage=' + panty.getImagePath() + '>');
     }
 
-    if(isChance(25)) {
+    if (isChance(25)) {
         let sock = random(STOCKING_TOY.getToysOfType('striped'));
         lines.add('Put on your ' + sock.getName() + ' <showImage=' + sock.getImagePath() + '>');
     }
