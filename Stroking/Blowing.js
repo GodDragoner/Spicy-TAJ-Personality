@@ -347,7 +347,7 @@ function startDeepthroatTasks(tasksToDo = 10, createSpiLube = false, bowl = fals
                     "Push it down your throat, rotate it 360° two times and pull it out as fast you can 3 times, repeat it 3 times"];
                 break;
             case 2:
-                tasks = ["You have to hold it in your throat for 8 seconds}",
+                tasks = ["You have to hold it in your throat for 8 seconds",
                     "You have to hold it in your throat for 10 seconds",
                     "You have to hold it in your throat for 12 seconds",
                     "You have to hold it in your throat for 18 seconds",

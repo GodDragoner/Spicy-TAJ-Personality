@@ -123,7 +123,7 @@
             'Does this make %MyYour% %Balls% ache? %Grin% @ShowBoobsImage',
             'I wonder how long it takes for %MyYour% %Cock% to forget how to get hard...',
             'If you asked nicely maybe she would deepthroat your cock cage? %Lol%',
-            'Does it hurt when you\'re %Cock% tries to get hard in its cage?',
+            'Does it hurt when %MyYour% %Cock% tries to get hard in its cage?',
             'You can do the math: %SlaveName% x Time In Chastity = a happy %DomHonorific% %DomName%',
             'The longer you\'re locked up, the more grateful you\'ll be when I let you %JerkOff% again',
             'If anything, being locked up is a good reminder of who owns that %Cock%',
