@@ -339,8 +339,9 @@ function startModelRating(gameType) {
                     if(fails === 0) {
                         sendMessage('This is where the fun begins %Grin%');
                     }
-
-                    sendMessage('Fuck your ass for 100 full long teasing strokes');
+					
+					const randomStrokes = randomInteger(75, 100);
+                    sendMessage('Fuck your ass for ' + randomStrokes + ' full long teasing strokes');
                     sendMessage(random('Make sure to aim at your prostate', 'Make sure to make that cock throb', 'Make sure to make yourself leak on the other end') + ' %Wicked%');
                     sendMessage('Report to me when you are done');
                     waitForDone();
