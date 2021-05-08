@@ -389,7 +389,15 @@ function startModelRating(gameType) {
 
         //QUALITY: More variation
         sendMessage('We\'re at the end! %Grin%');
-        sendMessage('Hopefully this was as much fun for you as for me');
+		if(gameType === GAME_TYPE.GAME_ANAL)
+		{
+			sendMessage('Hopefully this was as much fun for your ass as it was for me');
+		}
+		else
+		{
+			sendMessage('Hopefully this was as much fun for you as for me');
+		}
+        
         sendMessage('I guess it was if you have a good memory %Lol%');
 
         if(replug) {
