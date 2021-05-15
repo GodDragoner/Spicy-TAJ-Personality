@@ -50,7 +50,7 @@
     sendMessage('Where the people in charge are all dominant women eager to take advantage of you');
     sendMessage('Stripping you naked in their offices, making you edge right there in front of them');
     sendMessage('Punishing you when you make a mistake');
-    sendMessage('I\'d work at company like that %Lol%');
+    sendMessage('I\'d work at a company like that %Lol%');
     startEdging(getEdgeHoldSeconds());
     sendMessage('%LetEdgeFade%');
     startEdging(getEdgeHoldSeconds());
