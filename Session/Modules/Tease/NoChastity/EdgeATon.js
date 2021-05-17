@@ -79,44 +79,61 @@ if(tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.STROKING)) {
         }*/
     }
 
-    setVar(VARIABLE.EDGE_A_TONS_DONE, getVar(VARIABLE.EDGE_A_TONS_DONE, 0) + 1);
+    incrementVar(VARIABLE.EDGE_A_TONS_DONE, 1, 0);
 
     sendMessage(random("So, Well, Hmm") + "...");
 
-//Will dom determine the edges? Only if  this is not the first run
-    if (isChance(30 * (getStrictnessForCharacter() + 1)) && getVar(VARIABLE.EDGE_A_TONS_DONE) !== 1) {
-        sendMessage("Let's do this a bit differently today %SlaveName%");
-        sendMessage("I feel like taking some more control today");
-        sendMessage("I will choose how many edges you'll do today %EmoteHappy%");
+    let maxEdges = 25 + getStrictnessForCharacter()*5;
 
-        if (getVar(VARIABLE.EDGE_A_TON_EDGE_RECORD) <= 0) {
-            setVar(VARIABLE.EDGE_A_TON_EDGE_RECORD, 15);
-        }
+    if(getVar(VARIABLE.EDGE_A_TON_EDGE_RECORD, 0) > maxEdges) {
+        let subtractEdges = 20;
+        sendMessage('Since you have been exceeding ' + maxEdges + ' the last time');
+        sendMessage('I think we should just lower that amount a bit so you can keep up %Grin%');
+        sendMessage('So... %EmoteHappy%');
+        sendMessage('I\'ll reduce your score by ' + subtractEdges + ' after you\'ve done ' + subtractEdges + ' edges for me');
+        sendMessage('Sounds like a good deal, doesn\'t it? %Wicked%');
+        //QUALITY: Add response
+        sendMessage('So that next time we can start of with a fresh low score');
 
-
-        startEdgeATon(true, handleDomChoseEdgeATone());
+        doEdgesForEdgeATon(subtractEdges);
+        incrementVar(VARIABLE.EDGE_A_TON_EDGE_RECORD, -20, 0);
+        endEdgeATon();
     } else {
-        const answer = sendInput(random("How many edges do you wish to do for today's training?", "How many edges do you wish to do today?", "How many edges can you handle today?"));
+        //Will dom determine the edges? Only if  this is not the first run
+        if (isChance(30 * (getStrictnessForCharacter() + 1)) && getVar(VARIABLE.EDGE_A_TONS_DONE) !== 1) {
+            sendMessage("Let's do this a bit differently today %SlaveName%");
+            sendMessage("I feel like taking some more control today");
+            sendMessage("I will choose how many edges you'll do today %EmoteHappy%");
 
-        while (true) {
-            if (answer.isInteger()) {
-                const result = answer.getInt();
-                if (result <= 0) {
-                    sendMessage("You can't choose a number lower than 1...", 0);
-                    answer.loop();
-                } else {
-                    if (result > getVar(VARIABLE.EDGE_A_TON_EDGE_RECORD, -1)) {
-                        sendMessage("A new record! %Grin%");
-                        changeMeritMedium(false);
-                        setVar(VARIABLE.EDGE_A_TON_EDGE_RECORD, result);
+            if (getVar(VARIABLE.EDGE_A_TON_EDGE_RECORD) <= 0) {
+                setVar(VARIABLE.EDGE_A_TON_EDGE_RECORD, 15);
+            }
+
+
+            startEdgeATon(true, handleDomChoseEdgeATone());
+        } else {
+            const answer = sendInput(random("How many edges do you wish to do for today's training?", "How many edges do you wish to do today?", "How many edges can you handle today?"));
+
+            while (true) {
+                if (answer.isInteger()) {
+                    const result = answer.getInt();
+                    if (result <= 0) {
+                        sendMessage("You can't choose a number lower than 1...", 0);
+                        answer.loop();
+                    } else {
+                        if (result > getVar(VARIABLE.EDGE_A_TON_EDGE_RECORD, -1)) {
+                            sendMessage("A new record! %Grin%");
+                            changeMeritMedium(false);
+                            setVar(VARIABLE.EDGE_A_TON_EDGE_RECORD, result);
+                        }
+
+                        startEdgeATon(false, result);
+                        break;
                     }
-
-                    startEdgeATon(false, result);
-                    break;
+                } else {
+                    sendMessage("You need to input a number...", 0);
+                    answer.loop();
                 }
-            } else {
-                sendMessage("You need to input a number...", 0);
-                answer.loop();
             }
         }
     }
@@ -171,6 +188,13 @@ function startEdgeATon(chosenByDom, edgesToDo) {
         }
     }
 
+    doEdgesForEdgeATon(edgesToDo);
+    edgesToDo = 0;
+
+    endEdgeATon();
+}
+
+function doEdgesForEdgeATon(edgesToDo) {
     while (edgesToDo > 0) {
         startEdging(getEdgeHoldSeconds(EDGE_HOLD_SHORT));
         sendMessage("%LetEdgeFade%");
@@ -192,7 +216,9 @@ function startEdgeATon(chosenByDom, edgesToDo) {
             growDickSoft();
         }
     }
+}
 
+function endEdgeATon() {
     sendMessage(random("I'm gonna make you edge one final time", "You are to edge once more!", "You're gonna edge once more", "I'm gonna make you edge one more time"));
     sendMessage(random("You will hold it again", "You're gonna hold it", "Like before you're gonna hold it"));
     sendMessage(random("After which you are going to get completely soft!", "And then I want you get soft as fast as possible", "Then you need to get soft as fast as possible"));
