@@ -93,5 +93,5 @@
         return SISSY_LIMIT.isAllowed();
     }
 
-    registerClass("Hypnosis", 5, null, [/*DAY_OF_WEEK.MONDAY*/, DAY_OF_WEEK.TUESDAY, DAY_OF_WEEK.WEDNESDAY, /*DAY_OF_WEEK.THURSDAY*/, DAY_OF_WEEK.FRIDAY, DAY_OF_WEEK.SATURDAY], getTasks, getModifiers, getExam, onStart, onEnd, isAvailable)
+    registerClass("Hypnosis", 5, null, [/*DAY_OF_WEEK.MONDAY,*/ DAY_OF_WEEK.TUESDAY, DAY_OF_WEEK.WEDNESDAY, /*DAY_OF_WEEK.THURSDAY,*/ DAY_OF_WEEK.FRIDAY, DAY_OF_WEEK.SATURDAY], getTasks, getModifiers, getExam, onStart, onEnd, isAvailable)
 }

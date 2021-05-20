@@ -72,8 +72,6 @@ function startEdging(holdSeconds = 0, skipStop = false, endIn = EDGE_END_NORMAL)
     sendDebugMessage('Sub send edge message');
 
     if(holdSeconds !== undefined && holdSeconds !== 0) {
-        stopStroking();
-
         holdEdge(holdSeconds);
     }
 

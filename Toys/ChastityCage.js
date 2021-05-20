@@ -159,7 +159,7 @@ function unlockChastityCage(fakeOpening = false) {
         setDate(VARIABLE.LAST_CHASTITY_CLEAN);
     }
 
-    if(getDate(VARIABLE.LAST_CHASTITY_CLEAN, setDate()).addDay(2).hasPassed() && RULE_DOMME_KEYHOLDER.isActive()) {
+    if(getDate(VARIABLE.LAST_CHASTITY_CLEAN, setDate()).clone().addDay(2).hasPassed() && RULE_DOMME_KEYHOLDER.isActive()) {
         if(sendYesOrNoQuestion('You haven\'t cleaned your cage and %MyYour% cock in the last two days, have you?')) {
             sendMessage('Oh you have?');
 

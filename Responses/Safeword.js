@@ -26,13 +26,14 @@ function safewordResponse(message) {
 
         let willEndSession = false;
 
+        sendMessageBasedOnSender('I think it\'s very good you showed the courage and stopped the session');
+        sendMessageBasedOnSender('It\'s important you always stop when something is wrong');
+        sendMessageBasedOnSender('And I will never be angry at you for it');
+        sendMessageBasedOnSender('Make sure to remember that pet');
+
         if(sendMessageBasedOnSender('Do you want to stop for today?' , getCurrentSender())) {
             willEndSession = true;
             sendMessageBasedOnSender('I hope you are able to sort out whatever went wrong... %EmoteSad%');
-            sendMessageBasedOnSender('I think it\'s very good you showed courage and stopped the session');
-            sendMessageBasedOnSender('It\'s important you always stop when something is wrong');
-            sendMessageBasedOnSender('And I will never be angry at you for it');
-            sendMessageBasedOnSender('Make sure to remember that!');
             sendMessageBasedOnSender('Now...');
         } else if(sendMessageBasedOnSender('Do you want to take a break?' , getCurrentSender())) {
             sendMessageBasedOnSender('I hope you are able to sort out whatever went wrong... %EmoteSad%');

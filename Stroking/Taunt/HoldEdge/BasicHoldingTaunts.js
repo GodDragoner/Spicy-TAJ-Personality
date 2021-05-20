@@ -46,6 +46,12 @@
 
     lockImages();
     sendMessage(findRandomUnusedElement(answers, createHistory('basicHoldingTaunt')), 0);
+
+    //stop metronome right after message
+    if(isVar('initialEdgeHold') && isStroking()) {
+        stopStroking();
+    }
+
     showTeaseImage(3);
     unlockImages();
 }

@@ -10,7 +10,7 @@
 
             while (true) {
                 if (answer.isLike('clean')) {
-                    if (isVar(VARIABLE.LAST_CHASTITY_CLEAN) && !getDate(VARIABLE.LAST_CHASTITY_CLEAN).addHour(6).hasPassed()) {
+                    if (isVar(VARIABLE.LAST_CHASTITY_CLEAN) && !getDate(VARIABLE.LAST_CHASTITY_CLEAN).clone().addHour(6).hasPassed()) {
                         answer.clearOptions();
 
                         sendVirtualAssistantMessage('You have already cleaned your %ChastityCage% in the last 6 hours');
