@@ -147,7 +147,7 @@
 
         while (true) {
             sendDungeonMessage("Yes %SlaveName%?", 0, false);
-            let answer = createInput("Report for punishment", "SpankzChoir", "Pay fine", "Points?", "Return");
+            let answer = createInput("Report for punishment", "SpankzChoir", "Points?", "Return");
 
             if (answer.containsIgnoreCase("how many", "point", "punishment point")) {
                 answer.clearOptions();
@@ -467,50 +467,6 @@
                         break;
                     }
                 }
-            } else if (answer.containsIgnoreCase("pay", "fine", "gold")) {
-                answer.clearOptions();
-                sendDungeonMessage(random("Here to reduce your sentence huh...", "Well you want to pay your fines", "You wish to pay for your sins..."));
-
-                let goldMultiplier = 1;
-                //@Goto(Fines)
-                sendDungeonMessage('It\'s ' + (goldMultiplier) + ' gold per punishment point');
-
-                sendDungeonMessage("How many punishment points do you wish to pay for?");
-                let answer2 = createInput();
-                while (true) {
-                    if (answer2.isInteger()) {
-                        let value = answer2.getInt();
-
-                        if (value > 0) {
-                            if (value > getVar(VARIABLE.PUNISHMENT_POINTS)) {
-                                value = getVar(VARIABLE.PUNISHMENT_POINTS);
-                            }
-
-                            if (value * goldMultiplier > getGold()) {
-                                sendDungeonMessage('You don\'t have enough gold %SlaveName%...');
-                                changeMeritLow(true);
-                                break;
-                            }
-
-                            sendDungeonMessage("Well everything checks out...");
-                            addGold(-value * goldMultiplier);
-                            addPunishmentPoints(-value);
-                            sendDungeonMessage(value + " points removed from your total amount of punishment points");
-                            break;
-                        } else {
-                            sendDungeonMessage('Please give me a number greater than 0 %SlaveName%...', 0, false);
-                            changeMeritLow(true);
-                            answer2.loop();
-                        }
-                    } else if (answer2.isLike('no', 'abort', 'break', 'exit', 'quit')) {
-                        break;
-                    } else {
-                        sendDungeonMessage('Please just give a single number %SlaveName%...', 0, false);
-                        changeMeritLow(true);
-                        answer2.loop();
-                    }
-                }
-                break;
             } else if (answer.isLike("return", "exit", "back")) {
                 break;
             } else {
