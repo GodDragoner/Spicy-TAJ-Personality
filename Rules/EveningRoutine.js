@@ -3,6 +3,7 @@ const AVAILABLE_EVENING_ROUTINES = [];
 
 const EVENING_ROUTINE = {
     RULE_EVENING_RITUAL_EDGES_LAST_CUM: null,
+    RULE_EVENING_RITUAL_CENSOR_PORN: null,
 };
 
 {
@@ -20,6 +21,17 @@ const EVENING_ROUTINE = {
 
     AVAILABLE_EVENING_ROUTINES.push(routineTask);
 
+    routineTask = EVENING_ROUTINE.RULE_EVENING_RITUAL_CENSOR_PORN = createEveningRoutineRule(ruleId++, false);
+
+    routineTask.getRulePrint = function () {
+        return 'Evening Ritual: You must censor 10 images before going to bed';
+    };
+
+    routineTask.canBeActivated = function () {
+        return isFullTime();
+    };
+
+    AVAILABLE_EVENING_ROUTINES.push(routineTask);
 
     if(newDay) {
         setAllowedTaskChastityCageOffAmount();

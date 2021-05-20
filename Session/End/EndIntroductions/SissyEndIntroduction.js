@@ -68,7 +68,6 @@
                     sendMessage('There is one last thing for today...');
                     sendMessage('It\'s about your sissy training %Grin%');
                     RULE_ALWAYS_PEE_SITTING_DOWN.sendIntroduction();
-                    setDate(VARIABLE.LAST_RULE_PASSED);
                 } else if (RULE_ALWAYS_WEAR_PANTIES.isActive() && RULE_ALWAYS_WEAR_WOMAN_SOCKS.canBeActivated() && shouldIntroduceNewRule(RULE_ALWAYS_WEAR_WOMAN_SOCKS)) {
                     sendMessage('There is one last thing for today...');
                     sendMessage('It\'s about your sissy training %Grin%');
@@ -85,7 +84,10 @@
                     sendMessage('It\'s about your sissy training %Grin%');
 
                     RULE_ONLY_SISSY_ADDRESS.sendIntroduction();
-                    setDate(VARIABLE.LAST_RULE_PASSED);
+                } else if(RULE_ONLY_SISSY_ADDRESS.isActive() && RULE_ONLY_CENSORED_PORN.canBeActivated() && shouldIntroduceNewRule(RULE_ONLY_CENSORED_PORN)) {
+                    sendMessage('There is one last thing for today...');
+
+                    RULE_ONLY_CENSORED_PORN.sendIntroduction();
                 }
             }
         }

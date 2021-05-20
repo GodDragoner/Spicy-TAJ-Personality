@@ -32,6 +32,9 @@ let RULE_ONLY_SISSY_ADDRESS;
 
 let RULE_OWNED_BODY;
 
+let RULE_ONLY_CENSORED_PORN;
+
+
 {
     let ruleId = 0;
 
@@ -763,6 +766,141 @@ let RULE_OWNED_BODY;
 
     rule.getRulePrint = function () {
         return 'Your body belongs to %DomHonorific% %DomName%';
+    };
+
+    AVAILABLE_RULES.push(rule);
+
+    rule = RULE_ONLY_CENSORED_PORN = createRule(ruleId++, false);
+
+    rule.getRulePrint = function () {
+        return 'You should try to only consume censored and feet porn';
+    };
+
+    rule.canBeActivated = function () {
+        return getVar(VARIABLE.SISSY_TRAINING, false) && (VERBAL_HUMILIATION_LIMIT.isAllowed() || HUMILIATION_LIMIT.isAllowed());
+    };
+
+    rule.sendIntroduction = function () {
+        sendMessage('I have been thinking %SlaveName%');
+        sendMessage('About porn to be precise');
+
+        if(SISSY_LIMIT.isAllowed()) {
+            sendMessage('I think it only distracts you from what you should truly focus on');
+
+            let answer = sendInput('Can you guess what I am talking about? %Grin%');
+
+            while(true) {
+                if(answer.isLike('yes')) {
+                    sendMessage('So what do you think am I talking about? %Grin%');
+                    answer.loop();
+                } else if(answer.isLike('cock', 'penis', 'dick', 'men')) {
+                    sendMessage('Exactly %EmoteHappy%');
+                    sendMessage('You seem to be adjusting well to your new mindset %Lol%');
+                    changeMeritLow(false);
+                    break;
+                } else {
+                    sendMessage('About cock you silly %SlaveName%');
+                    sendMessage('Looks like we have some more mindset training to do %Grin%');
+                    break;
+                }
+            }
+
+            sendMessage('Well anyway...');
+            sendMessage('I think seeing all those naked women is just too distracting');
+            sendMessage('Additionally...');
+        } else {
+
+        }
+
+        //Humiliation limit is active anyway, so we don't need to check
+        sendMessage('It\'s misleading isn\'t it?');
+        sendMessage('I mean it\'s showing you things that you\'ll never get to see in real life %Lol%');
+        sendMessage('Let alone touch %Grin%');
+        sendMessage('You simply don\'t deserve that...');
+        sendMessage('EVER %Wicked%');
+
+        if(sendYesOrNoQuestion('And you know that, don\'t you?')) {
+            sendMessage('Of course you do %Grin%');
+        } else {
+            sendMessage('No? I think you do. And if not you should');
+        }
+
+        sendMessage('You are nothing more than a pathetic little loser getting off on being used, dominated and humiliated by powerful woman');
+
+        if(sendYesOrNoQuestion('And you don\'t even want to change that, do you?')) {
+            sendMessage('Oh you want to? %Lol%');
+            sendMessage('Poor you %Grin%');
+            sendMessage('I don\'t think there is any chance you are gonna get to change that %Lol%');
+        } else {
+            sendMessage('I figured');
+            sendMessage('I mean it\'s all nice and good this way');
+            sendMessage('It\'s so easy bowing to my will');
+            sendMessage('Just doing what you are told');
+        }
+
+        sendMessage('I don\'t think it should be any other way %SlaveName%');
+
+        sendMessage('I want you to say it!');
+        sendMessage('Say it out loud!');
+
+        sendMessage('Say: "I am a pathetic loser"', 5);
+        sendMessage('"I don\'t deserve to touch women"', 5);
+        sendMessage('"I don\'t deserve to see naked women"', 5);
+
+        if(SISSY_LIMIT.isAllowed()) {
+            sendMessage('"I should focus on cock instead"');
+            sendMessage('"Because that\'s all I am good for"');
+            sendMessage('"Making other <b>real</b> men feel good"');
+            sendMessage('"My pleasure is irrelevant"');
+        }
+
+        sendMessage('That\'s it... %Grin%');
+        sendMessage('You\'ve found your place');
+        sendMessage('On your knees and worshiping my legs and feet');
+        sendMessage('That\'s the only place you belong');
+        sendMessage('And I want you to remember that %Wicked%');
+        sendMessage('I\'ll make sure of it %Grin%');
+
+        sendMessage('So any way...');
+
+        if(sendYesOrNoQuestion('Have you ever heard of censored porn?')) {
+            sendMessage('I wouldn\'t have thought any less of you %Lol%');
+        } else {
+            sendMessage('Well...');
+            sendMessage('It\'s simply just normal porn');
+            sendMessage('But it\'s loser and beta safe');
+            sendMessage('All parts you are unworthy of are censored');
+        }
+
+        sendMessage('What I want you to do now is the following');
+        sendMessage('I want you to go and create a small collection of censored porn %EmoteHappy%');
+        sendMessage('I want you to replace all porn links and media folders of Tease AI with your collection');
+        sendMessage('There should be no media linked that would include naked women in any form');
+        sendMessage('I know this takes some time to do, so I want you to go and find at least 10 censored pictures each day');
+        sendMessage('You can find those on reddit and other sites');
+        sendMessage('Just look them up with "loser safe porn" or a similar search term');
+        sendMessage('I want you to keep doing that until you have a folder with at least 5 images per category');
+        sendMessage('Once a folder has at least 5 images I want you to link it to Tease AI and remove any other media files (folders, urls etc.) that might be linked to that category/tag');
+        sendMessage('So that when you are done with all of them the only porn you\'ll see in Tease AI is either censored or a picture of me, my friends or my lovely assistants');
+        sendMessage('That\'s all you deserve to see');
+        sendMessage('I own you %SlaveName% %Grin%');
+        sendMessage('And I don\'t think you should ever get to see naked women');
+        sendMessage('I think it\'s bad for you');
+        sendMessage('And I care about you and thus I restrict your access to it');
+
+        sendMessage('Which means I also want you to try not to see any sexual pictures or videos on the internet %Grin%');
+        sendMessage('Of course that\'s hard to do');
+        sendMessage('But I want you to try your best');
+
+        sendMessage('Just so you know...');
+        sendMessage('The only things you are allowed to see are armpits, feet, legs and occasionally a few nice bellies and faces %EmoteHappy%');
+        sendMessage('So make sure to watch out for that');
+        sendMessage('No breasts, no cleavage, no pussy, no ass');
+        sendMessage('I\'ll trust you to stick to this rule');
+        sendMessage('Don\'t try to circumvent it %Wicked%');
+
+        this.setActive(true);
+        return true;
     };
 
     AVAILABLE_RULES.push(rule);

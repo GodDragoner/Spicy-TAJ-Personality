@@ -36,8 +36,40 @@
                 RULE_EVENING_RITUAL.setActive(true);
                 EVENING_ROUTINE.RULE_EVENING_RITUAL_EDGES_LAST_CUM.setActive(true);
             }
-        } else {
+        } else if(EVENING_ROUTINE.RULE_EVENING_RITUAL_EDGES_LAST_CUM.isActive() && !EVENING_ROUTINE.RULE_EVENING_RITUAL_CENSOR_PORN.isActive() && RULE_ONLY_CENSORED_PORN.isActive() && EVENING_ROUTINE.RULE_EVENING_RITUAL_CENSOR_PORN.canBeActivated()) {
+            if(shouldIntroduceNewRule(EVENING_ROUTINE.RULE_EVENING_RITUAL_CENSOR_PORN)) {
+                sendMessage('I had an idea %SlaveName% %Grin%');
+                sendMessage('Since I already introduced the rule of censored porn to you');
+                sendMessage('I think we should make you create your own %EmoteHappy%');
+                sendMessage('To supply yourself and other losers with new pictures to get off to');
+                sendMessage('I think it should be part of your daily evening routine');
+                sendMessage('So...');
+                sendMessage('How many should you do per day? %Grin%');
+                sendMessage('5?');
+                sendMessage('No, that\'s too few... %Wicked%');
+                sendMessage('30...');
+                sendMessage('Sounds good...');
+                sendMessage('But might too much considering the time you have to spend on creating them');
+                sendMessage('10...?');
+                sendMessage('Seems about right %Grin%');
+                sendMessage('Let\'s go with 10 for now %EmoteHappy%');
+                sendMessage('So you\'ll censor 10 pictures every day');
+                sendMessage('Grab some pictures from reddit or wherever you find the most attractive images');
+                sendMessage('You\'ll always censor cleavage, asses (naked and clothed), breasts, pussy (naked and behind lingerie) %Wicked%');
+                sendMessage('You\'ll censor faces on 9 out of the 10 images');
+                sendMessage('You\'ll write some captions on 2 out of the 10 images');
+                sendMessage('You\'ll have to find 2 images out of the 10 where you can focus on feet, armpits, cocks or bellies');
+                sendMessage('Which means you\'ll censor the whole image but the sections including the body parts I just listed');
+                sendMessage('And on 2 of the 10 images I want you to use pictures of cocks to censor the body parts instead of blurring or colored rectangles %Lol%');
+                sendMessage('Feel free to bump those numbers up. They are just a minimum %Grin%');
+                sendMessage('If it\'s just feet feel free to use them without any censoring. But add some captions');
+                sendMessage('After you are done place the min the appropriate category folders for my and your entertainment  %Grin%');
+                sendMessage('Feel free to share them on reddit as well');
+                sendMessage('That\'s all for today %EmoteHappy%');
+                sendMessage('Make sure to start with the first images today %SlaveName% %Wicked%');
 
+                EVENING_ROUTINE.RULE_EVENING_RITUAL_CENSOR_PORN.setActive(true);
+            }
         }
     }
 }
