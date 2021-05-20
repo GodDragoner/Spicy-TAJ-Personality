@@ -245,8 +245,11 @@ for(let x = 0; x < tasks.length; x++) {
 */
 
 
+/*
 {
     let analOrgasmType = decideAnalOrgasmType();
     getAnalOrgasmInstructions(analOrgasmType, ORGASM_CATEGORY_RUINED);
 
-}
+}*/
+
+setDate(VARIABLE.LAST_SPECIAL_SESSION);

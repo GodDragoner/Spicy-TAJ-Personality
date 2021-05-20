@@ -34,16 +34,29 @@ function endSpecialSession() {
     setVar(VARIABLE.LAST_SPECIAL_SESSION_ID, ACTIVE_SPECIAL_SESSION.id);
     setDate(VARIABLE.LAST_SPECIAL_SESSION);
 
+    //Delete var
+    delVar(VARIABLE.CURRENT_SPECIAL_SESSION);
+
     ACTIVE_SPECIAL_SESSION = undefined;
 }
 
 function startSpecialSession(type) {
     ACTIVE_SPECIAL_SESSION = type;
+    setVar(VARIABLE.CURRENT_SPECIAL_SESSION, ACTIVE_SPECIAL_SESSION.id);
     type.startIntro();
 }
 
 function continueSpecialSession() {
     ACTIVE_SPECIAL_SESSION.continueSpecialSession();
+}
+
+function getSpecialSessionById(id) {
+    if(id === SPECIAL_SESSION.EDGE_TRAINING.id) {
+        return SPECIAL_SESSION.EDGE_TRAINING;
+    }
+
+    sendDebugMessage('Unknown special session with type ' + id);
+    return undefined;
 }
 
 function chooseSpecialSession() {

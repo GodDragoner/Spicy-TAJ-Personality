@@ -70,13 +70,23 @@
 
         let skipModules = false;
         if (moduleCounter === 0) {
-            let specialSession = chooseSpecialSession();
+            //Continue special session (if session ended early)
+            if(isVar(VARIABLE.CURRENT_SPECIAL_SESSION)) {
+                let specialSession = getSpecialSessionById(getVar(VARIABLE.CURRENT_SPECIAL_SESSION));
 
-            if (specialSession !== undefined) {
-                startSpecialSession(specialSession);
+                if(specialSession !== undefined) {
+                    ACTIVE_SPECIAL_SESSION = specialSession;
+                    continueSpecialSession();
+                }
+            } else {
+                let specialSession = chooseSpecialSession();
 
-                //Skip modules if time is running low and we need to follow up our special session
-                skipModules = hasSessionTimePassed(getVar(VARIABLE.DEVOTION) / 2);
+                if (specialSession !== undefined) {
+                    startSpecialSession(specialSession);
+
+                    //Skip modules if time is running low and we need to follow up our special session
+                    skipModules = hasSessionTimePassed(getVar(VARIABLE.DEVOTION) / 2);
+                }
             }
         } else {
             //Continue special session if we've had some modules in between or half session time already passed
