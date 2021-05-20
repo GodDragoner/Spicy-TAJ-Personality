@@ -126,7 +126,8 @@
             setVar(VARIABLE.SUB_HAS_GIRLFRIEND, true);
             sendVirtualAssistantMessage('Lucky you! %EmoteHappy%');
         } else if(answer.isLike('married')) {
-            setVar(VARIABLE.SUB_IS_MARRIED, false);
+            setVar(VARIABLE.SUB_IS_MARRIED, true);
+            setVar(VARIABLE.SUB_HAS_GIRLFRIEND, true);
             sendVirtualAssistantMessage('Oh wow a married man! %EmoteHappy%');
         } else {
             sendVirtualAssistantMessage("Single, Girlfriend or Married?", 0);

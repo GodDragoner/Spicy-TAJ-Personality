@@ -62,7 +62,7 @@
                 sendMessage('Which means you\'ll censor the whole image but the sections including the body parts I just listed');
                 sendMessage('And on 2 of the 10 images I want you to use pictures of cocks to censor the body parts instead of blurring or colored rectangles %Lol%');
                 sendMessage('Feel free to bump those numbers up. They are just a minimum %Grin%');
-                sendMessage('If it\'s just feet feel free to use them without any censoring. But add some captions');
+                sendMessage('If it\'s just feet feel free to use them without any censoring. But add some nice captions');
                 sendMessage('After you are done place the min the appropriate category folders for my and your entertainment  %Grin%');
                 sendMessage('Feel free to share them on reddit as well');
                 sendMessage('That\'s all for today %EmoteHappy%');
