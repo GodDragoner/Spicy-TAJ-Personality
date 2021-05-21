@@ -25,7 +25,7 @@
                 let mood = getMood();
 
                 if (PUNISHMENT_CURRENT_LEVEL === PUNISHMENT_LEVEL.MEDIUM) {
-                    painLevel = random(PAIN_LEVEL_LOW, PAIN_LEVEL_MEDIUM);
+                    painLevel = PAIN_LEVEL_MEDIUM;
                 } else if (PUNISHMENT_CURRENT_LEVEL === PUNISHMENT_LEVEL.HARD) {
                     painLevel = random(PAIN_LEVEL_MEDIUM, PAIN_LEVEL_HIGH);
                 } else if (PUNISHMENT_CURRENT_LEVEL === PUNISHMENT_LEVEL.EXTREME) {
