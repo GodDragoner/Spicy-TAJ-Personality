@@ -253,6 +253,5 @@ for(let x = 0; x < tasks.length; x++) {
 }*/
 {
     //sendDebugMessage(getChastityCageWithBool('penisAccessible').name);
-    sendDebugMessage(selectChastityCage().name);
 }
 

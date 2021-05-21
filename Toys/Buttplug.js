@@ -441,7 +441,7 @@ function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
 
     //Force to use the bigger diameter increase
     if(getVar(VARIABLE.ASS_LEVEL, 0) >= 25) {
-        minDiameterIncrease = Math.round(maxDiameterIncrease/2);
+        minDiameterIncrease = maxDiameterIncrease/2;
         sendDebugMessage('Min diameter increase is ' + minDiameterIncrease);
     }
 

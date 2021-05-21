@@ -61,6 +61,7 @@ function getRandomBodyPartForEStim() {
     if(!isUndefined(E_STIM_CAGE) && isInChastity() && currentChastityCage === E_STIM_CAGE) {
         bodyPartList = [];
         bodyPartList.push(BODY_PART_PENIS_SHAFT);
+        sendDebugMessage('Pushing E-Stim shaft to body parts because of chastity cage');
     }
 
     return random(bodyPartList);
