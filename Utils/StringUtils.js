@@ -16,6 +16,15 @@ function deserializeObject(object, string) {
             value = (value === "true");
         }
 
+        //Don't cast name to integers
+        if(identifier != 'name' && !isNaN(value)) {
+            if(!isNaN(parseInt(value))) {
+                value = parseInt(value);
+            } else {
+                value = parseFloat(value)
+            }
+        }
+
         object[identifier] = value;
     }
 

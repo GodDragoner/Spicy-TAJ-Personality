@@ -355,9 +355,9 @@ function getTodaysSlaveTask() {
                 lines.add('For the night you will be sleeping on the floor. Use blankets, a pillow and or a pet bed');
                 lines.add('You will also only be allowed to eat and drink from a bowl on the floor for the whole day');
                 lines.add('In the evening and morning I want you to additionally spend at least 15 minutes playing fetch with a ball');
-                lines.add('The rules from above also apply to this time frame');
+                lines.add('The rules and toys from above also apply to this time frame');
                 lines.add('Additionally in the evening you will be waiting not less 20 minutes in the front of your door for your %DomHonorific% to come home');
-                lines.add('Same as for your play time the rules from above also apply to this time frame');
+                lines.add('Same as for your play time the rules and toys from above also apply to this time frame');
                 break;
             case 10:
                 lines.add('Take a humiliating photo of yourself and use it as your phone wallpaper and lock screen for the rest of the day');

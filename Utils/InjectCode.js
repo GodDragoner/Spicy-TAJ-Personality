@@ -252,6 +252,64 @@ for(let x = 0; x < tasks.length; x++) {
 
 }*/
 {
-    //sendDebugMessage(getChastityCageWithBool('penisAccessible').name);
+    let lines = new java.util.ArrayList();
+    lines.add('Today you will spent ' + getDailyTaskTime() + ' minutes being my pet');
+    lines.add('During that time the following rules are in place');
+    lines.add('Only crawl on all fours');
+    lines.add('No wearing any human clothes');
+    lines.add('No human entertainment. You may only watch videos of other pets playing');
+    lines.add('No usage of the human toilet. Use your bathtub or a container of some sort');
+
+    lines.add('%InAddition%...');
+
+    var possibilities = [];
+
+    if (hasButtplugWithBaseStyle(BUTTPLUG_BASE_STYLE.PIG_TAIL)) {
+        possibilities.push(getButtplugWithBaseStyle(BUTTPLUG_BASE_STYLE.PIG_TAIL));
+    } else if (hasButtplugWithBaseStyle(BUTTPLUG_BASE_STYLE.FLUFFY_TAIL)) {
+        possibilities.push(getButtplugWithBaseStyle(BUTTPLUG_BASE_STYLE.FLUFFY_TAIL));
+    }
+
+    if (possibilities.length !== 0) {
+        var buttplug = random(possibilities);
+
+        if (buttplug.baseStyle === BUTTPLUG_BASE_STYLE.PIG_TAIL) {
+            lines.add('For that I will turn you into a cute little pig %SlaveName%');
+            lines.add('You are gonna wear your ' + buttplug.name);
+        } else {
+            lines.add('For that I will turn you into a cute little animal %SlaveName%');
+            lines.add('You are gonna wear your ' + buttplug.name);
+        }
+
+        lines.add('%InAddition%...');
+    }
+
+    if (NOSE_HOOK.hasToy() && NOSE_HOOK.isPunishmentAllowed()) {
+        lines.add('Put on the nose hook');
+        lines.add('%InAddition%...');
+    }
+
+    if (GAG_TYPE_BALL_GAG.hasToy() && GAG_TYPE_BALL_GAG.isPunishmentAllowed()) {
+        lines.add('Pets don\'t talk do they?');
+        lines.add('That is why you will be wearing your ball gag');
+        lines.add('%InAddition%...');
+    }
+
+    if (COLLAR_TOY.hasToy() && COLLAR_TOY.isPunishmentAllowed()) {
+        lines.add('Wear your collar with a leash attached to it');
+        lines.add('%InAddition%...');
+    }
+
+    lines.add('Apart of that time I want you to do the following:');
+    lines.add('For the night you will be sleeping on the floor. Use blankets, a pillow and or a pet bed');
+    lines.add('You will also only be allowed to eat and drink from a bowl on the floor for the whole day');
+    lines.add('In the evening and morning I want you to additionally spend at least 15 minutes playing fetch with a ball');
+    lines.add('The rules from above also apply to this time frame');
+    lines.add('Additionally in the evening you will be waiting not less 20 minutes in the front of your door for your %DomHonorific% to come home');
+    lines.add('Same as for your play time the rules from above also apply to this time frame');
+
+    for (let x = 0; x < lines.size(); x++) {
+        sendPinnoteMessage(lines.get(x), 0);
+    }
 }
 

@@ -4,11 +4,7 @@ const chastityCombinationImagesBackupFolder = getImageSubFolder('Chastity' + PAT
 function lockAwayChastityKey() {
     if(getVar(VARIABLE.CHASTITY_HAS_COMBINATION_LOCK, false) && !getVar(VARIABLE.CHASTITY_KEY_LOCKED_COMBINATION, false)) {
         sendVirtualAssistantMessage('Go ahead and fetch your combination lock and some casket you can lock with it %Grin%');
-        sendVirtualAssistantMessage('Tell me when you are ready');
-        waitForDoneVirtualAssistant();
-        sendVirtualAssistantMessage("%Good%");
-
-        sendVirtualAssistantMessage('Now go ahead and put the keys for the %ChastityCage% inside the casket');
+        sendVirtualAssistantMessage('Go ahead and put the keys for the %ChastityCage% inside the casket');
         sendVirtualAssistantMessage('Next you will go ahead and set a new code for your combination lock at random. You will not look at it');
         sendVirtualAssistantMessage('Instead you will take your phone or a camera and you will take a picture of the new combination');
         sendVirtualAssistantMessage('Don\'t you dare look at the combination in any way');
