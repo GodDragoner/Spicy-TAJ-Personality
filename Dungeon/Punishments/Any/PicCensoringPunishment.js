@@ -1,6 +1,6 @@
 {
-    //No punishments with higher than medium should be pic censoring, TODO: Add back after todays session
-    if (PUNISHMENT_CURRENT_LEVEL.id > PUNISHMENT_LEVEL.MEDIUM.id /*|| !RULE_ONLY_CENSORED_PORN.isActive()*/) {
+    //No punishments with higher than medium should be pic censoring
+    if (PUNISHMENT_CURRENT_LEVEL.id > PUNISHMENT_LEVEL.MEDIUM.id || !RULE_ONLY_CENSORED_PORN.isActive()) {
         runPunishment(PUNISHMENT_CURRENT_LEVEL);
     } else if (tryRunPunishmentFetchId(MODULE.LINE_WRITING)) {
         sendMessage('%SlaveName%');

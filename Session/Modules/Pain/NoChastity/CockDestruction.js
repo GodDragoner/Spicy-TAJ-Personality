@@ -120,13 +120,14 @@
                 break;
         }
 
-        while (true) {
-            if (crop) {
+        doCockDestructionLoop(crop, 1);
 
-            } else {
-                smallPunishment(true, false);
+        if (isChance(getVar(VARIABLE.SUB_PAIN_TOLERANCE) * (getStrictnessForCharacter() + 1 + getMood()))) {
+            doCockDestructionLoop(crop, 2);
+
+            if (isChance(Math.round(getVar(VARIABLE.SUB_PAIN_TOLERANCE) / 2 * (getStrictnessForCharacter() + 1 + getMood())))) {
+                doCockDestructionLoop(crop, 3);
             }
-
         }
     }
 
@@ -134,15 +135,21 @@
     function startCockDestructionLoop() {
         let startWith = random('Start with ', 'Let\'s start with ', 'I think we should start with ', 'Go ahead and start with ', 'Begin with ', 'Let\'s begin with ', 'I think you should start with ', 'I want ', 'Give me ', 'Give yourself ', 'I want you to suffer ', 'I want you to feel ', 'I think you should feel ', 'I think you should give me ', 'Go ahead and give me ');
         let light = random('light taps ', 'light hits ', 'soft taps ', 'soft hits ', 'gentle taps ', 'gentle hits ', 'light smacks ', 'soft smacks ', 'gentle smacks ');
-        let medium =  random('medium taps ', 'medium hits ', 'good taps ', 'good hits ', 'decent taps ', 'decent hits ', 'medium smacks ', 'decent smacks ', 'good smacks ');
+        let medium = random('medium taps ', 'medium hits ', 'good taps ', 'good hits ', 'decent taps ', 'decent hits ', 'medium smacks ', 'decent smacks ', 'good smacks ');
         let hard = random('hard blows ', 'hard hits ', 'hard strikes ', 'hard smacks ', 'good hard smacks ', 'hard fucking smacks ', 'devastating smacks ', 'hard fucking hits ', 'hard fucking blows ', 'seriously hard smacks ', 'hard smacks ', 'hard smacks ', 'very hard smacks ', 'really hard smacks ');
+        let prepare = random('%Cock% ', '%Cock% ', '%Cock% ', '%Cock% just to warm you up ', '%Cock% while you think about what\'s coming next ', '%Cock% to prepare you for what\'s coming ',
+            '%Cock% to prepare you for what\'s about to happen ', '%Cock% to prepare you for what\'s about to happen to it ', '%Cock% to build up a little anticipation ', '%Cock% to soften it up a little ',
+            '%Cock% to get it all nice and sensitive ', '%Cock% while you think about how much worse it\'s gonna get ', '%Cock% to prepare you for what\'s coming after that ',
+            '%Cock% to prepare you for what\'s about to happen next ', '%Cock% to prepare you for when I make you hit it even harder ', '%Cock% to build up a little fear in you ',
+            '%Cock% to tenderize it a little bit ', '%Cock% so you\'re hurting right out of the gate ', '%Cock% to warm you up right ');
+
         let startSentence = [
-            startWith +  getCockCropSmacks() + ' ' + light  + random('with the crop on ', 'with the crop on ', 'with the riding crop on ', 'on ', 'on ', 'on ', 'on ', 'just on ', 'over ', 'just over ') + random('the top of %MyYour% ', '%MyYour% ', '%MyYour% ') + random('%Cock% ', '%Cock% ', '%Cock% ', '%Cock% just to warm you up ', '%Cock% while you think about what\'s coming next ', '%Cock% to prepare you for what\'s coming ', '%Cock% to prepare you for what\'s about to happen ', '%Cock% to prepare you for what\'s about to happen to it ', '%Cock% to build up a little anticipation ') + '%SlaveName% %Wicked%',
-            startWith +  getCockCropSmacks() + ' ' + light + random('with the crop on ', 'with the crop on ', 'with the riding crop on ', 'right on ', 'on ') + 'on the ' + random('head ', 'head ', 'tip ', 'very tip ') + 'of %MyYour% ' + random('%Cock% ', '%Cock% ', '%Cock% ', '%Cock% just to warm you up ', '%Cock% while you think about what\'s coming next ', '%Cock% to prepare you for what\'s coming ', '%Cock% to prepare you for what\'s about to happen ', '%Cock% to prepare you for what\'s about to happen to it ', '%Cock% to build up a little anticipation ', '%Cock% to soften it up a little ', '%Cock% to get it all nice and sensitive ') + '%SlaveName% %Wicked%',
-            startWith +  getCockCropSmacks() + ' ' + medium + random('with the crop on ', 'with the crop on ', 'with the riding crop on ', 'on ', 'on ', 'on ', 'on ', 'just on ', 'over ', 'just over ') + random('the top of %MyYour% ', '%MyYour% ', '%MyYour% ') + random('%Cock% ', '%Cock% ', '%Cock% ', '%Cock% to warm you up right ', '%Cock% while you think about how much worse it\'s gonna get ', '%Cock% to prepare you for what\'s coming after that ', '%Cock% to prepare you for what\'s about to happen next ', '%Cock% to prepare you for when I make you hit it even harder ', '%Cock% to build up a little fear in you ') + '%SlaveName% %Wicked%',
-            startWith +  getCockCropSmacks() + ' ' + medium + random('with the crop on ', 'with the crop on ', 'with the riding crop on ', 'right on ', 'on ') + 'on the ' + random('head ', 'head ', 'tip ', 'very tip ') + 'of %MyYour% ' + random('%Cock% ', '%Cock% ', '%Cock% ', '%Cock% to warm you up right ', '%Cock% while you think about how much worse it\'s gonna get ', '%Cock% to prepare you for what\'s coming after that ', '%Cock% to prepare you for what\'s about to happen next ', '%Cock% to prepare you for when I make you hit it even harder ', '%Cock% to build up a little fear in you ', '%Cock% to tenderize it a little bit ', '%Cock% so you\'re hurting right out of the gate ') + '%SlaveName% %Wicked%',
-            startWith +  getCockCropSmacks() + ' ' + hard + random('with the crop on ', 'with the crop on ', 'with the riding crop on ', 'on ', 'on ', 'on ', 'on ', 'just on ', 'over ', 'just over ') + random('the top of %MyYour% ', '%MyYour% ', '%MyYour% ') + random('%Cock% ', '%Cock% ', '%Cock% ', '%Cock% and just skip the warm up entirely ', '%Cock% while you think about how this is just the beginning ', '%Cock% to start you off in total agony ', '%Cock% while you think about how I\'m just getting started ', '%Cock% to prepare you for when I make you hit it even harder still ', '%Cock% so you see just how fucking serious I am ') + '%SlaveName% %Wicked%',
-            startWith +  getCockCropSmacks() + ' ' + hard + 'on the ' + random('head ', 'head ', 'tip ', 'very tip ') + 'of %MyYour% ' + random('%Cock% ', '%Cock% ', '%Cock% ', '%Cock% and just skip the warm up entirely ', '%Cock% while you think about how this is just the beginning ', '%Cock% to start you off in total agony ', '%Cock% while you think about how I\'m just getting started ', '%Cock% to prepare you for when I make you hit it even harder still ', '%Cock% so you see just how fucking serious I am ', '%Cock% just to make you fucking miserable ', '%Cock% while you squeal in agony ') + '%SlaveName% %Wicked%',
+            startWith + getCockCropSmacks() + ' ' + light + random('with the crop on ', 'with the crop on ', 'with the riding crop on ', 'on ', 'on ', 'on ', 'on ', 'just on ', 'over ', 'just over ') + random('the top of %MyYour% ', '%MyYour% ', '%MyYour% ') + prepare + '%SlaveName% %Wicked%',
+            startWith + getCockCropSmacks() + ' ' + light + random('with the crop on ', 'with the crop on ', 'with the riding crop on ', 'right on ', 'on ') + 'on the ' + random('head ', 'head ', 'tip ', 'very tip ') + 'of %MyYour% ' + prepare + '%SlaveName% %Wicked%',
+            startWith + getCockCropSmacks() + ' ' + medium + random('with the crop on ', 'with the crop on ', 'with the riding crop on ', 'on ', 'on ', 'on ', 'on ', 'just on ', 'over ', 'just over ') + random('the top of %MyYour% ', '%MyYour% ', '%MyYour% ') + prepare + '%SlaveName% %Wicked%',
+            startWith + getCockCropSmacks() + ' ' + medium + random('with the crop on ', 'with the crop on ', 'with the riding crop on ', 'right on ', 'on ') + 'on the ' + random('head ', 'head ', 'tip ', 'very tip ') + 'of %MyYour% ' + prepare + '%SlaveName% %Wicked%',
+            startWith + getCockCropSmacks() + ' ' + hard + random('with the crop on ', 'with the crop on ', 'with the riding crop on ', 'on ', 'on ', 'on ', 'on ', 'just on ', 'over ', 'just over ') + random('the top of %MyYour% ', '%MyYour% ', '%MyYour% ') + random('%Cock% ', '%Cock% ', '%Cock% ', '%Cock% and just skip the warm up entirely ', '%Cock% while you think about how this is just the beginning ', '%Cock% to start you off in total agony ', '%Cock% while you think about how I\'m just getting started ', '%Cock% to prepare you for when I make you hit it even harder still ', '%Cock% so you see just how fucking serious I am ') + '%SlaveName% %Wicked%',
+            startWith + getCockCropSmacks() + ' ' + hard + 'on the ' + random('head ', 'head ', 'tip ', 'very tip ') + 'of %MyYour% ' + random('%Cock% ', '%Cock% ', '%Cock% ', '%Cock% and just skip the warm up entirely ', '%Cock% while you think about how this is just the beginning ', '%Cock% to start you off in total agony ', '%Cock% while you think about how I\'m just getting started ', '%Cock% to prepare you for when I make you hit it even harder still ', '%Cock% so you see just how fucking serious I am ', '%Cock% just to make you fucking miserable ', '%Cock% while you squeal in agony ') + '%SlaveName% %Wicked%',
         ];
 
         sendMessage(startSentence);
@@ -151,28 +158,80 @@
     function getNextCropTask() {
         let smack = random('Smack ', 'Whack ', 'Hit ', 'Strike ', 'Smack ', 'Smack ', 'Whip ');
         let your = random('%MyCock% ', '%MyCock% ', '%MyCock% ', '%MyCock% ', 'the top of %MyCock% ', 'just the top of %MyCock% ', 'the right side of %MyCock% ', 'the left side of %MyCock% ', 'the bottom of %MyCock% ', 'the head of %MyCock% ', 'the tip of %MyCock% ');
-        
-        let answers = [
-            smack + your + random('%Cock% ', '%Cock% ', '%Cock% ', '%Cock% with the crop ', '%Cock% with the riding crop ') + ' ' + getCockSmacks() + ' times %SlaveName% %Wicked%',
-            random('Just barely ', 'Just lightly ', 'Now just barely ', 'Now just lightly ', 'Gently ', 'Lightly ') + random('smack ', 'flick ', 'hit ', 'tap ', 'smack ', 'smack ', 'whip ') + random('your ', 'your ', 'your ', 'your ', 'the top of your ', 'just the top of your ', 'the right side of your ', 'the left side of your ', 'the bottom of your ', 'the head of your ', 'the tip of your ') + random('%Cock% ', '%Cock% ', '%Cock% ', '%Cock% with the crop ', '%Cock% with the riding crop ') + '%AMT_CockSmacks% times %SlaveName% %Wicked%',
-            smack + your + random('%Cock% ', '%Cock% ', '%Cock% ', '%Cock% with the crop ', '%Cock% with the riding crop ') + '%AMT_CockSmacks% times ' + random('<i>hard</i> ', 'really hard ', 'really hard ', 'devastatingly hard ', 'excruciatingly hard ', 'so hard it makes you want to cry ', '<i>hard</i> ', 'hard ', 'really hard ', 'really hard ', 'as hard as you can ', 'as hard as I would ') + '%SlaveName% %Wicked%',
-            'Give yourself %AMT_CockSmacks% ' + random('light ', 'light ', 'gentle ', 'soft ') + random('smacks ', 'smacks ', 'hits ', 'taps ', 'hits ', 'blows ') + 'on ' + random('your ', 'your ', 'your ', 'your ', 'the top of your ', 'just the top of your ', 'the right side of your ', 'the left side of your ', 'the bottom of your ', 'the head of your ', 'the tip of your ') + random('%Cock% ', '%Cock% ', '%Cock% ', '%Cock% with the crop ', '%Cock% with the riding crop ') + '%SlaveName% %Wicked%',
-            'Give yourself %AMT_CockSmacks% ' + random('hard ', 'hard ', 'really hard ', 'very hard ', 'vicious ', 'devastating ') + random('smacks ', 'smacks ', 'hits ', 'taps ', 'hits ', 'blows ') + 'on ' + random('your ', 'your ', 'your ', 'your ', 'the top of your ', 'just the top of your ', 'the right side of your ', 'the left side of your ', 'the bottom of your ', 'the head of your ', 'the tip of your ') + random('%Cock% ', '%Cock% ', '%Cock% ', '%Cock% with the crop ', '%Cock% with the riding crop ') + '%SlaveName% %Wicked%',
-            random('Smack ', 'Smack ', 'Strike ', 'Whack ', 'Hit ') + 'your %Cock% ' + random('one time as hard as you can ', 'just one time as hard as you can ', 'one time ', 'just one time ', 'a single time ', 'just once ', 'one time as hard as you can for me ', 'just one time for me ', 'just once for me ') + '%SlaveName% %Wicked%',
-            random('Smack ', 'Smack ', 'Smack ', 'Whip ', 'Whack ', 'Hit ', 'Strike ') + 'your %Cock% %AMT_CockSmacks% times %SlaveName% %Wicked%',
-            random('Smack ', 'Smack ', 'Smack ', 'Whip ', 'Whack ', 'Hit ', 'Strike ') + 'your %Cock% %AMT_CockSmacks% more times %SlaveName% %Wicked%',
-            random('Let\'s see how ', 'I want to see how ', 'Show me how ', 'Let\'s find out how ') + random('your ', 'that ') + '%Cock% ' + random('handles ', 'handles ', 'takes ', 'endures ', 'holds up to ') + '%AMT_CockSmacks% more ' + random('smacks ', 'smacks ', 'whacks ', 'hits ', 'blows ') + '%SlaveName% %Wicked%',
+        let location = random('%MyCock ', '%MyCock ', '%MyCock ', '%MyCock ', 'the top of %MyCock ', 'just the top of %MyCock ', 'the right side of %MyCock ', 'the left side of %MyCock ', 'the bottom of %MyCock ', 'the head of %MyCock ', 'the tip of %MyCock ');
+        let cockNoun = random('%Cock% ', '%Cock% ', '%Cock% ', '%Cock% with the crop ', '%Cock% with the riding crop ');
 
-        ]
+        let start = random('Smack', 'Whack', 'Hit', 'Strike', 'Smack', 'Smack', 'Whip') + '  ' + random('that', '%MyCock%') + '  %Cock% ' + getCockSmacks() + ' times ' + random('in a row', 'back to back', 'over and over', 'one after another', 'in a row', '', '', '', '') + '  ' + random('with the crop', 'with the riding crop', '', '', '', '', '', '') + '  ' + random('right on top', 'right on  the top of it', 'right on the head', 'right on the very tip of the head', 'right on the bottom', 'right underneath the head', '', '', '', '', '', '', '', '', '', '', '', '', '');
+
+        let goAhead = random('Give yourself', 'Go ahead and give yourself', 'Now give yourself', 'Give me', 'Go ahead and give me', 'Now give me', 'Give yourself', 'Now just give yourself', 'Now just give me');
+
+        let answers = [
+            smack + your + random('%Cock% ', '%Cock% ', '%Cock% ', '%Cock% with the crop ', '%Cock% with the riding crop ') + getCockSmacks() + ' times %SlaveName% %Wicked%',
+            random('Just barely ', 'Just lightly ', 'Now just barely ', 'Now just lightly ', 'Gently ', 'Lightly ') + random('smack ', 'flick ', 'hit ', 'tap ', 'smack ', 'smack ', 'whip ') + location + random('%Cock% ', '%Cock% ', '%Cock% ', '%Cock% with the crop ', '%Cock% with the riding crop ') + getCockSmacks() + ' times %SlaveName% %Wicked%',
+            smack + your + random('%Cock% ', '%Cock% ', '%Cock% ', '%Cock% with the crop ', '%Cock% with the riding crop ') + getCockSmacks() + ' times ' + random('<i>hard</i> ', 'really hard ', 'really hard ', 'devastatingly hard ', 'excruciatingly hard ', 'so hard it makes you want to cry ', '<i>hard</i> ', 'hard ', 'really hard ', 'really hard ', 'as hard as you can ', 'as hard as I would ') + '%SlaveName% %Wicked%',
+            'Give yourself ' + getCockSmacks() + random('light ', 'light ', 'gentle ', 'soft ') + random('smacks ', 'smacks ', 'hits ', 'taps ', 'hits ', 'blows ') + 'on ' + location + cockNoun + '%SlaveName% %Wicked%',
+            'Give yourself ' + getCockSmacks() + random('hard ', 'hard ', 'really hard ', 'very hard ', 'vicious ', 'devastating ') + random('smacks ', 'smacks ', 'hits ', 'taps ', 'hits ', 'blows ') + 'on ' + location + cockNoun + '%SlaveName% %Wicked%',
+            random('Smack ', 'Smack ', 'Strike ', 'Whack ', 'Hit ') + 'your %Cock% ' + random('one time as hard as you can ', 'just one time as hard as you can ', 'one time ', 'just one time ', 'a single time ', 'just once ', 'one time as hard as you can for me ', 'just one time for me ', 'just once for me ') + '%SlaveName% %Wicked%',
+            smack + 'your %Cock% ' + getCockSmacks() + ' times %SlaveName% %Wicked%',
+            smack + 'your %Cock% ' + getCockSmacks() + ' more times %SlaveName% %Wicked%',
+            random('Let\'s see how ', 'I want to see how ', 'Show me how ', 'Let\'s find out how ') + random('your ', 'that ') + '%Cock% ' + random('handles ', 'handles ', 'takes ', 'endures ', 'holds up to ') + getCockSmacks() + ' more ' + random('smacks ', 'smacks ', 'whacks ', 'hits ', 'blows ') + '%SlaveName% %Wicked%',
+            start + ' %SlaveName% %Wicked% ',
+            random('Just barely', 'Just lightly', 'Now just barely', 'Now just lightly', 'Gently', 'Lightly') + '  ' + random('smack', 'flick', 'hit', 'tap', 'smack', 'smack', 'whip') + '  ' + random('that', '%MyCock%') + '  %Cock% ' + getCockSmacks() + ' times ' + random('in a row', 'back to back', 'over and over', 'one after another', 'in a row', '', '', '', '') + '  ' + random('with the crop', 'with the riding crop', '', '', '', '', '', '') + '  ' + random('right on top', 'right on  the top of it', 'right on the head', 'right on the very tip of the head', 'right on the bottom', 'right underneath the head', '', '', '', '', '', '', '', '', '', '', '', '', '') + '  %SlaveName% %Wicked% ',
+            start + ' ' + random('<i>hard</i>', 'really hard', 'really hard', 'devastatingly hard', 'excruciatingly hard', 'so hard it makes you want to cry', '<i>hard</i>', 'hard', 'really hard', 'really hard', 'as hard as you can', 'as hard as I would') + '  %SlaveName% %Wicked% ',
+            goAhead + ' ' + random('one', 'one', 'one', 'a single', 'one lonely', 'one solitary', 'one', 'one good', 'once decent') + '  ' + random('smack', 'smack', 'smack', 'smack', 'hit', 'strike', 'blow', 'whack') + '  ' + random('on the head of %MyCock% %Cock%', 'on the tip of %MyCock% %Cock%', 'on the top of %MyCock% %Cock%', 'just underneath %MyCock% %Cock%', 'on the bottom of %MyCock% %Cock%', 'on that little sensitive area beneath the head', '', '', '', '', '', '', '', '', '') + '  %SlaveName% %Wicked% ',
+            goAhead + ' ' + random('one light', 'a light', 'one gentle', 'a gentle', 'one soft', 'a soft') + '  ' + random('smack', 'flick', 'hit', 'tap', 'smack', 'smack', 'smack') + '  ' + random('on the head of %MyCock% %Cock%', 'on the tip of %MyCock% %Cock%', 'on the top of %MyCock% %Cock%', 'just underneath %MyCock% %Cock%', 'on the bottom of %MyCock% %Cock%', 'on that little sensitive area beneath the head', '', '', '', '', '', '', '', '', '') + '  %SlaveName% %Wicked%',
+            goAhead + ' ' + random('one hard', 'one really hard. one very hard', 'a hard', 'a really hard', 'a very hard', 'once vicious', 'one devastating. one hard', 'a hard', 'one hard', 'a hard', 'one really hard', 'a really hard') + '  ' + random('smack', 'flick', 'hit', 'tap', 'smack', 'smack', 'smack') + '  ' + random('right on the head of %MyCock% %Cock%', 'right on the tip of %MyCock% %Cock%', 'on the top of %MyCock% %Cock%', 'just underneath %MyCock% %Cock%', 'on the bottom of %MyCock% %Cock%', 'on that little sensitive area beneath the head', '', '', '', '', '', '', '', '', '') + '  %SlaveName% %Wicked%',
+            random('Now I want', 'Now give me') + '  ' + getCockSmacks() + ' ' + random('smacks', 'smacks', 'whacks', 'strikes', 'smacks') + '  ' + random('right on top', 'right on  the top of it', 'right on the head', 'right on the very tip of the head', 'right on the bottom', 'right underneath the head', '', '', '', '', '', '', '', '', '', '', '', '', '') + '  %SlaveName% %Wicked% ',
+            random('Now I want', 'Now give me') + '  ' + getCockSmacks() + ' ' + random('light', 'gentle', 'soft') + '  ' + random('smacks', 'smacks', 'taps', 'taps', 'smacks') + '  ' + random('right on top', 'right on  the top of it', 'right on the head', 'right on the very tip of the head', 'right on the bottom', 'right underneath the head', '', '', '', '', '', '', '', '', '', '', '', '', '') + '  %SlaveName% %Wicked% ',
+            random('Now I want', 'Now give me') + '  ' + getCockSmacks() + ' ' + random('hard', 'hard', 'hard', 'really hard', 'very hard', 'vicious', 'devastating', 'devastatingly hard', 'unbearably hard', '<i>hard</i>', '<i>hard</i>', '<i>really</i> hard', 'brutal') + '  ' + random('smacks', 'smacks', 'whacks', 'strikes', 'smacks') + '  ' + random('right on top', 'right on  the top of it', 'right on the head', 'right on the very tip of the head', 'right on the bottom', 'right underneath the head', '', '', '', '', '', '', '', '', '', '', '', '', '') + '  %SlaveName% %Wicked% ',
+            goAhead + ' ' + getCockSmacks() + ' ' + random('smacks', 'smacks', 'smacks', 'smacks', 'hits', 'strikes', 'blows', 'whacks') + '  ' + random('on the head of %MyCock% %Cock%', 'on the tip of %MyCock% %Cock%', 'on the top of %MyCock% %Cock%', 'just underneath %MyCock% %Cock%', 'on the bottom of %MyCock% %Cock%', 'on that little sensitive area beneath the head', '', '', '', '', '', '', '', '', '') + '  %SlaveName% %Wicked% ',
+            goAhead + ' ' + getCockSmacks() + ' ' + random('light smacks', 'little flicks', 'light hits', 'gentle taps', 'gentle smacks', 'gentle hits', 'light smacks') + '  ' + random('on the head of %MyCock% %Cock%', 'on the tip of %MyCock% %Cock%', 'on the top of %MyCock% %Cock%', 'just underneath %MyCock% %Cock%', 'on the bottom of %MyCock% %Cock%', 'on that little sensitive area beneath the head', '', '', '', '', '', '', '', '', '') + '  %SlaveName% %Wicked%',
+            goAhead + ' ' + getCockSmacks() + ' ' + random('hard smacks', 'really hard smacks', 'hard hits', 'vicious whacks', 'vicious smacks', 'very hard smacks', 'insanely hard smacks', 'unbearably hard smacks') + '  ' + random('right on the head of %MyCock% %Cock%', 'right on the tip of %MyCock% %Cock%', 'on the top of %MyCock% %Cock%', 'just underneath %MyCock% %Cock%', 'on the bottom of %MyCock% %Cock%', 'on that little sensitive area beneath the head', '', '', '', '', '', '', '', '', '') + '  %SlaveName% %Wicked%',
+            goAhead + ' ' + getCockSmacks() + ' ' + random('good', 'decent', '', '', '', '') + '  ' + random('smacks', 'smacks', 'hits', 'taps', 'hits', 'blows') + ' on ' + random('%MyCock%', '%MyCock%', '%MyCock%', '%MyCock%', 'the top of %MyCock%', 'just the top of %MyCock%', 'the right side of %MyCock%', 'the left side of %MyCock%', 'the bottom of %MyCock%', 'the head of %MyCock%', 'the tip of %MyCock%') + '  ' + cockNoun + '  %SlaveName% %Wicked% ',
+        ];
+
+        return random(answers);
+    }
+
+    function doCockDestructionLoop(crop, round) {
+        if (crop) {
+            if (round === 1) {
+                startCockDestructionLoop();
+                waitForDone();
+            } else if (round === 2) {
+                sendMessage(random('Actually I\'m not satisfied just yet', 'I think %MyCock% %Cock% could stand a few more bruises actually',
+                    'Actually I see no reason to stop just yet', 'Fuck it, let\'s smack it around some more', 'I\'m actually not sure I\'ve tortured it enough',
+                    'I think you could stand a little more abuse actually', 'You know what, I don\'t feel like stopping just yet', 'You know, I don\'t think that was actually sufficient') + ' %SlaveName% %Wicked%');
+            } else if (round === 3) {
+                sendMessage(random('I\'m still not satisfied yet', 'Really, %MyCock% %Cock% just isn\'t bruised enough yet', 'I\'m still not ready to stop abusing that %Cock%',
+                    'Fuck it, let\'s smack it around even more', 'Even after all that I <i>still</i> want to torture you', 'I think you could stand even more abuse',
+                    'You know what, I just don\'t feel like stopping yet', 'I want to pull even more suffering out of that %Cock%') + ' %SlaveName% %Wicked%');
+            }
+
+            for (let x = 0; x < getVar(VARIABLE.SUB_PAIN_TOLERANCE); x++) {
+                sendMessage(getNextCropTask());
+                waitForDone();
+            }
+        } else {
+            smallPunishment(true, false);
+        }
+
+        sendMessage(random('That should keep %MyCock% %Cock% hurting for a while', 'I think %MyCock% %Cock% is a little bit closer to breaking now', 'I wonder how much closer I am to breaking %MyCock% %Cock% now',
+            'I hope %MyCock% %Cock% hurts like hell now', 'I hope it\'s fucking unbearable to touch that %Cock% now', 'I can\'t wait for the smack that finally breaks %MyCock% %Cock%',
+            'I hope you got some nice bruises after that', 'I love the thought of making you stroke that %Cock% after I\'ve bruised it up', 'Now just wait until I make you start stroking it again',
+            'It\'s not going to be much fun when I make you start stroking that %Cock% again', 'This is exactly what %MyCock% %Cock% deserves to feel', 'Too bad this is all %MyCock% %Cock% deserves to feel',
+            'I\'m going to make sure that %MyCock% %Cock% never feels pleasure again', 'I\'m only giving that %Cock% what it deserves', 'I\'m not sure how much longer %MyCock% %Cock% is going to last',
+            '%MyCock% %Cock% is going to be permanently bruised by the time I\'m done', 'It\'s going to be so much fun to make you start stroking again', 'I hope %MyCock% %Cock% is in fucking agony right now',
+            'That should make sure %MyCock% %Cock% doesn\'t stop throbbing any time soon') + ' %SlaveName% %Wicked%');
     }
 
     function getCockCropSmacks() {
-        let smacks = randomInteger(getVar(VARIABLE.SUB_PAIN_TOLERANCE), Math.round(getVar(VARIABLE.SUB_PAIN_TOLERANCE)*(getStrictnessForCharacter() + 1)));
-        return Math.round(smacks/2);
+        let smacks = randomInteger(getVar(VARIABLE.SUB_PAIN_TOLERANCE), Math.round(getVar(VARIABLE.SUB_PAIN_TOLERANCE) * (getStrictnessForCharacter() + 1)));
+        return Math.round(smacks / 2);
     }
 
     function getCockSmacks() {
-        let smacks = randomInteger(getVar(VARIABLE.SUB_PAIN_TOLERANCE), Math.round(getVar(VARIABLE.SUB_PAIN_TOLERANCE)*(getStrictnessForCharacter() + 1)));
-        return Math.round(smacks/1.5);
+        let smacks = randomInteger(getVar(VARIABLE.SUB_PAIN_TOLERANCE), Math.round(getVar(VARIABLE.SUB_PAIN_TOLERANCE) * (getStrictnessForCharacter() + 1)));
+        return Math.round(smacks / 1.5);
     }
 }
