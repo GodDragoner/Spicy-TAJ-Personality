@@ -649,7 +649,7 @@ function lockChastityCage(chastityCage = undefined) {
                                     }
                                 case 1:
                                     sendMessageBasedOnSender('Bring me a bowl with some water in it and...');
-                                    if (askAndFetchIceCubes(5)) {
+                                    if (askAndFetchIceCubesWithConsequences(5)) {
                                         sendMessageBasedOnSender('Put those ice cubes into the bowl and dip your balls and cock into it until they are soft %Grin%');
                                         sendMessageBasedOnSender('I don\'t care how long it takes or how much it hurts, just report back to me %Lol%');
                                         waitForDone(100000);

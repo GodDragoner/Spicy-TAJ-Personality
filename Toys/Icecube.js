@@ -6,6 +6,30 @@ function askAndFetchIceCubes(amount) {
     return false;
 }
 
+function askAndFetchIceCubesWithConsequences(amount) {
+    if(askForIceCubes(amount) === amount) {
+        return fetchIceCubes(amount);
+    } else {
+        if(!isVar(VARIABLE.NEXT_TIME_ICE_CUBES)) {
+            sendMessage("Too bad...");
+            sendMessage("Maybe another time %EmoteSad%");
+            sendMessage('But next time you should have ice cubes around');
+            sendMessage('Otherwise there will be consequences');
+            setVar(VARIABLE.NEXT_TIME_ICE_CUBES, true);
+        } else {
+            //TODO: Use at other locations as well (ice cubes)
+            sendMessage('%SlaveName%');
+            sendMessage('I told you last time to have ice cubes around');
+            changeMeritMedium(true);
+            addPPRuleIgnored();
+            sendMessage('I added punishment points for this misbehavior');
+            sendMessage('When I tell you to make sure of something you will MAKE SURE of it next time!');
+        }
+    }
+
+    return false;
+}
+
 function askForIceCubeAnal() {
     //CHeck if we haven't asked this before
     if(!ANAL_LIMIT.isAllowed() && !isVar(VARIABLE.IS_ICECUBE_BYPASS_ANAL)) {

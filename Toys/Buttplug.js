@@ -285,7 +285,7 @@ function putinChosenButtplug(plug) {
 
             //QUALITY: Add same interaction as link (told you before to have them ready)
             let iceCubes = randomInteger(2, 5);
-            if (askAndFetchIceCubes(iceCubes)) {
+            if (askAndFetchIceCubesWithConsequences(iceCubes)) {
                 if (isVar(VARIABLE.LAST_ICE_CUBE_UP_ASS_DATE)) {
                     sendMessageBasedOnSender('Yet again %Grin%');
                     sendMessageBasedOnSender('Push them up your ass one by one %Grin%');
