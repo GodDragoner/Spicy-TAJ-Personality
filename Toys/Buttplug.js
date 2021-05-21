@@ -437,9 +437,12 @@ function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
     //Max diameter increase
     let maxDiameterIncrease = getMaxDiameterIncrease();
 
+    sendDebugMessage('Max diameter increase is ' + maxDiameterIncrease);
+
     //Force to use the bigger diameter increase
     if(getVar(VARIABLE.ASS_LEVEL, 0) >= 25) {
         minDiameterIncrease = Math.round(maxDiameterIncrease/2);
+        sendDebugMessage('Min diameter increase is ' + minDiameterIncrease);
     }
 
 
@@ -447,6 +450,7 @@ function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
     if (forceBigger && minThickness === 0) {
         //Make sure our min thickness does not exceed the biggest plug we have-
         minThickness = Math.min(maxUsedPlugThickness + 0.1 + minDiameterIncrease, biggestButtplug.diameter);
+        sendDebugMessage('Min thickness is ' + minThickness);
     }
 
     let availablePlugs = [];

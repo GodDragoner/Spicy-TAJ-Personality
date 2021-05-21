@@ -29,7 +29,7 @@
                 sendMessage('Because what else are you useful for? %Lol%');
             }
 
-            sendMessage('So what I need you to do is create folder contain images of feet. Optionally you can use the tag tool to tag them as well');
+            sendMessage('So what I need you to do is create folder containing images of feet. Optionally you can use the tag tool to tag them as well');
             sendMessage('Like image tags as face, ass etc.');
             sendMessage('But it\'s not a must');
             sendMessage('I just need you to create and fill a folder with a few files of feet');
@@ -61,7 +61,7 @@
                 runGui(new CustomRunnable());
 
                 while(!isVar(VARIABLE.FEET_WORSHIP_FOLDER)) {
-                    sleep(100);
+                    sleep(100, "MILLISECONDS");
                 }
 
                 let directory = new java.io.File(getVar(VARIABLE.FEET_WORSHIP_FOLDER));

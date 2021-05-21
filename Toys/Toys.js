@@ -159,6 +159,7 @@ function removeAllToys(end = false) {
             if(currentPlug !== getSmallButtplug(true)) {
                 removeButtplug(true);
                 sendMessage('And now put back in your ' + getSmallButtplug(true).name + ' again');
+                setPlugIn(getSmallButtplug(true));
             }
         } else {
             removeButtplug(true);

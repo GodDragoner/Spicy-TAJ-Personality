@@ -168,7 +168,7 @@ function startStrokingSpicy() {
 }
 
 function startStrokeInterval(durationMinutes) {
-    if (!isInChastity() && FLESH_LIGHT.hasToy() && feelsLikeTeasing() && isChance(10)) {
+    if (!isInChastity() && FLESH_LIGHT.hasToy() && (feelsLikeTeasing() && isChance(15) || FLESH_LIGHT.wasUsedInActiveContext())) {
         if (FLESH_LIGHT.wasUsedInActiveContext()) {
             //We don't need to send this if we used this recently
             if (FLESH_LIGHT.getLastUsage().addSecond(120).hasPassed()) {

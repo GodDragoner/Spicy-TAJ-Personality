@@ -314,7 +314,7 @@ function getRandomCageWithSize(length, punishments) {
     }
 
     if (cages.length === 0) {
-        if(punishments >= 0) {
+        if(punishments > 0) {
             //Reduce amount of punishments by one (if we can)
             return getRandomCageWithSize(length, punishments - 1);
         } else if(length < 5) {
@@ -576,6 +576,8 @@ function lockChastityCage(chastityCage = undefined) {
 
             sendMessageBasedOnSender('Turn each screw till it\'s ' + percentage + '% in %Grin%');
         }
+    } else if(chastityCage.spikesVariable) {
+        sendMessageBasedOnSender('You may remove all spikes currently attached to the cage %EmoteHappy%');
     }
 
     if (getVar(VARIABLE.CHASTITY_DILATOR_ON, false)) {
