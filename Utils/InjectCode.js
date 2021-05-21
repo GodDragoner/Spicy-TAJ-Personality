@@ -251,5 +251,7 @@ for(let x = 0; x < tasks.length; x++) {
     getAnalOrgasmInstructions(analOrgasmType, ORGASM_CATEGORY_RUINED);
 
 }*/
+{
 
-RIDING_CROP_TOY.askForToyAndUsage(true);
+}
+

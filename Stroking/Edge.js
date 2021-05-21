@@ -9,6 +9,13 @@ const EDGE_HOLD_LONG = 3;
 
 let CURRENTLY_EDGING = false;
 
+const EDGE_MODE = {
+    NORMAL: 0,
+    SKIP_TAUNTS: 1,
+};
+
+let CURRENT_EDGE_MODE = EDGE_MODE.NORMAL;
+
 function startMultipleEdges(edges, breakInSeconds = 5) {
     for(let x = 0; x < edges; x++) {
         startEdging(0);
@@ -72,7 +79,7 @@ function startEdging(holdSeconds = 0, skipStop = false, endIn = EDGE_END_NORMAL)
     sendDebugMessage('Sub send edge message');
 
     if(holdSeconds !== undefined && holdSeconds !== 0) {
-        holdEdge(holdSeconds);
+        holdEdge(holdSeconds, CURRENT_EDGE_MODE === EDGE_MODE.SKIP_TAUNTS);
     }
 
     sendDebugMessage('Ending edge');
@@ -164,7 +171,10 @@ function sendEdgeTaunts() {
         sleep(millisecondsToWait, "MILLISECONDS");
     }
 
-    run("Stroking/Taunt/Edging/*.js");
+    if(CURRENT_EDGE_MODE !== EDGE_MODE.SKIP_TAUNTS) {
+        run("Stroking/Taunt/Edging/*.js");
+    }
+
 
     //Start the whole thing all over again
     sendEdgeTaunts();

@@ -87,6 +87,8 @@ function random() {
             }
 
             return arguments[0][randomInteger(0, arguments[0].length - 1)];
+        } else if(arguments[0] instanceof java.util.ArrayList) {
+            return arguments[0].get(randomInteger(0, arguments[0].size() - 1));
         }
     }
 

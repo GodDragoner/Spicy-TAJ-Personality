@@ -276,6 +276,10 @@ const VARIABLE = {
     //Ass worship
     ASS_WORSHIPS_DONE: "assWorshipsDone",
 
+    //Feet worship
+    FEET_WORSHIPS_DONE: "feetWorshipsDone",
+    FEET_WORSHIP_FOLDER: 'feetWorshipFolder',
+
     //Gooning
     GOONINGS_DONE: "gooningsDone",
 

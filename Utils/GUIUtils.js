@@ -310,3 +310,14 @@ function generateSettingGUI(object, gridPane) {
         }
     }
 }
+
+function getFolderFromSelector(title, defaultDir = new java.io.File(java.lang.System.getProperty("user.dir"))) {
+    let chooser = new javafx.stage.DirectoryChooser();
+    chooser.setTitle(title);
+
+    chooser.setInitialDirectory(defaultDir);
+    let stage = new javafx.stage.Stage();
+    let selectedDirectory = chooser.showDialog(stage);
+
+    return selectedDirectory;
+}
