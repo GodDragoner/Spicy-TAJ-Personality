@@ -869,6 +869,9 @@ function setupToys(settings) {
     FLESH_LIGHT.askForToyAndUsage(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
+    RIDING_CROP_TOY.askForToyAndUsage(domChose);
+    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
     CLOTHESPINS_TOY.askForToyAndUsage(domChose);
 
     sendVirtualAssistantMessage('Okay next quite similar but not the same %Grin%');

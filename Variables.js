@@ -279,6 +279,9 @@ const VARIABLE = {
     //Gooning
     GOONINGS_DONE: "gooningsDone",
 
+    //Cock Destruction
+    COCK_DESTRUCTIONS_DONE: "cockDestructionsDone",
+
     //Rules
     LAST_RULE_PASSED: 'lastRulePassed',
 

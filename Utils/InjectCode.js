@@ -252,4 +252,4 @@ for(let x = 0; x < tasks.length; x++) {
 
 }*/
 
-setDate(VARIABLE.LAST_SPECIAL_SESSION);
+RIDING_CROP_TOY.askForToyAndUsage(true);

@@ -283,6 +283,7 @@ function putinChosenButtplug(plug) {
         if (!isVar(VARIABLE.LAST_ICE_CUBE_UP_ASS_DATE) || getDate(VARIABLE.LAST_ICE_CUBE_UP_ASS_DATE).addMinute(10).hasPassed()) {
             sendMessageBasedOnSender('But before we are gonna stick that buttplug up your %Ass%');
 
+            //QUALITY: Add same interaction as link (told you before to have them ready)
             let iceCubes = randomInteger(2, 5);
             if (askAndFetchIceCubes(iceCubes)) {
                 if (isVar(VARIABLE.LAST_ICE_CUBE_UP_ASS_DATE)) {

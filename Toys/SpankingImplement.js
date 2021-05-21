@@ -1,4 +1,6 @@
 
+const RIDING_CROP_TOY = createToy('Riding Crop');
+
 //-1 == based on mood. 0 = lowest, 1 = medium, 2 = hard
 function fetchSpankingImplement(level = -1) {
     let spankingImplement;

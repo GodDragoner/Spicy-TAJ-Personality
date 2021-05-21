@@ -59,6 +59,10 @@ function setupPunisherConnection() {
             setSender(4);
             break;
     }
+
+    sleep(3);
+
+    if (!sendGreeting()) {}
 }
 
 
@@ -68,11 +72,6 @@ function startPunishmentSession(overallLevel) {
 
     sendDebugMessage('Starting punishment with level ' + overallLevel.id);
     setupPunisherConnection();
-
-    sleep(3);
-
-    if (!sendGreeting()) {
-    }
 
     let relockChastity = false;
 

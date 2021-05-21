@@ -422,7 +422,7 @@ function startTeaseTauntInterval(durationSeconds) {
     for (let x = 0; x < actualLoop; x++) {
         //TODO: Non chastity taunts
         run("Stroking/Taunt/Chastity/BasicChastityTaunts.js");
-        sleep(5);
+        sleep(10);
     }
 
 

@@ -825,7 +825,7 @@ let RULE_ONLY_CENSORED_PORN;
             sendMessage('No? I think you do. And if not you should');
         }
 
-        sendMessage('You are nothing more than a pathetic little loser getting off on being used, dominated and humiliated by powerful woman');
+        sendMessage('You are nothing more than a pathetic little loser getting off on being used, dominated and humiliated by a powerful woman');
 
         if(sendYesOrNoQuestion('And you don\'t even want to change that, do you?')) {
             sendMessage('Oh you want to? %Lol%');

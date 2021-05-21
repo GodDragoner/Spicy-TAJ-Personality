@@ -55,12 +55,7 @@
                 sendMessage('Let\'s go with 10 for now %EmoteHappy%');
                 sendMessage('So you\'ll censor 10 pictures every day');
                 sendMessage('Grab some pictures from reddit or wherever you find the most attractive images');
-                sendMessage('You\'ll always censor cleavage, asses (naked and clothed), breasts, pussy (naked and behind lingerie) %Wicked%');
-                sendMessage('You\'ll censor faces on 9 out of the 10 images');
-                sendMessage('You\'ll write some captions on 2 out of the 10 images');
-                sendMessage('You\'ll have to find 2 images out of the 10 where you can focus on feet, armpits, cocks or bellies');
-                sendMessage('Which means you\'ll censor the whole image but the sections including the body parts I just listed');
-                sendMessage('And on 2 of the 10 images I want you to use pictures of cocks to censor the body parts instead of blurring or colored rectangles %Lol%');
+                sendCensorInstructions(10);
                 sendMessage('Feel free to bump those numbers up. They are just a minimum %Grin%');
                 sendMessage('If it\'s just feet feel free to use them without any censoring. But add some nice captions');
                 sendMessage('After you are done place the min the appropriate category folders for my and your entertainment  %Grin%');

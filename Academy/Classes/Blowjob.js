@@ -73,7 +73,6 @@
             sendMessage('You can pick any dildo of your choice that you feel works well');
 
             sendMessage('You may also switch down the road as long as you can do proper deepthroats with it %Grin%');
-            sendMessage('After you take on and pass an exam we will upgrade that dildo to a longer one');
             sendMessage('%Now%');
         } else {
 

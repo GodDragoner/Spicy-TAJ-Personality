@@ -202,7 +202,7 @@ function decideNightwear(includePanty = false) {
 
     //TODO: Consider buttplug or bondage
 
-    if (tops.length > 0) {
+    if (tops.length > 0 && isChance(75)) {
         let top = random(tops);
         lines.add('Put on your ' + top.getName() + ' <showImage=' + top.getImagePath() + '>');
     }
@@ -215,6 +215,33 @@ function decideNightwear(includePanty = false) {
     if (isChance(25)) {
         let sock = random(STOCKING_TOY.getToysOfType('striped'));
         lines.add('Put on your ' + sock.getName() + ' <showImage=' + sock.getImagePath() + '>');
+    }
+
+
+    if (JEWELLERY_TOY.hasToy() && isChance(25)) {
+        let types = pushElementsToOtherArray(JEWELLERY_TYPES, []);
+        let repeat = false;
+        sendDebugMessage('Looking into jewellery  ' + types.length);
+
+        while (isChance(repeat? 50 : 100) || repeat) {
+            repeat = false;
+            let type = random(types);
+            sendDebugMessage('Searching for jewellery of type ' + type);
+
+            let jewellery = JEWELLERY_TOY.getToyOfType(type);
+
+            if (jewellery === undefined) {
+                repeat = true;
+            } else {
+                lines.add('Put on your ' + jewellery.getName() + ' <showImage=' + jewellery.getImagePath() + '>');
+            }
+
+            types = removeIndexFromArray(types, types.indexOf(type));
+
+            if (types.length === 0) {
+                break;
+            }
+        }
     }
 
     return lines;

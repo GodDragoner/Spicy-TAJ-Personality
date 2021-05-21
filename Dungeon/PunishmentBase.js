@@ -80,15 +80,12 @@
         sendDungeonMessage('You still have unredeemed tasks %SlaveName%');
         setupPunisherConnection();
 
-        sendMessage('Hello %SlaveName%');
-
         if (sendYesOrNoQuestion('I hope you finished the tasks as instructed?')) {
             sendMessage('I expect nothing less from you %SlaveName%');
             addPunishmentPoints(-getVar(VARIABLE.PUNISHMENT_TASK_POINTS));
             sendMessage('I removed ' + getVar(VARIABLE.PUNISHMENT_TASK_POINTS) + ' from your punishment point balance');
             resetPunishmentTasks();
             sendMessage('I have other things to do now...');
-
         } else {
             sendMessage('What do you mean no? Why are you bothering me then?', 0);
             let answer = createInput('forgot', 'give up');
@@ -204,11 +201,11 @@
 
                 showImage("Images/Spicy/Punishment/SpankzChoir/chair1.jpg", 3);
 
-                showImage("Images/Spicy/Punishment/Posters/*.*", randomInteger(2, 6));
+                /*showImage("Images/Spicy/Punishment/Posters/!*.*", randomInteger(2, 6));
 
                 for (let x = 0; x < randomInteger(1, 5); x++) {
-                    showImage("Images/Spicy/Punishment/Posters/*.*", randomInteger(2, 6));
-                }
+                    showImage("Images/Spicy/Punishment/Posters/!*.*", randomInteger(2, 6));
+                }*/
 
                 sendDungeonMessage(random("Okay then", "Let's proceed", "Let's move forward", "Let's continue"));
                 playAudio("Audio/Spicy/SpecialSounds/Bell.mp3");
@@ -398,8 +395,8 @@
 
                     let mode = 0;
 
-                    if (new Date().getDay() === 6 || new Date().getDay() === 1) {
-                        if (new Date().getDay() === 6) {
+                    if (new Date().getDay() === 5 || new Date().getDay() === 1) {
+                        if (new Date().getDay() === 5) {
                             sendDungeonMessage('It\'s Friday %SlaveName% %EmoteHappy%');
                         } else {
                             sendDungeonMessage('It\'s Monday %SlaveName% %EmoteHappy%');
