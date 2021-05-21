@@ -130,6 +130,7 @@ const VARIABLE = {
 
     CHASTITY_SPIKES_ON: "chastitySpikesOn",
     CHASTITY_DILATOR_ON: "chastityDilatorOn",
+    CHASTITY_ESTIM_ON: "chastityDilatorOn",
     CHASTITY_CAGE_IS_PIERCED: "chastityCageIsPierced",
 
     CHASTITY_HAS_TIMED_LOCKBOX: "chastityHasTimedLockBox",

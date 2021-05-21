@@ -251,6 +251,7 @@ function findAvailableClosestToSize(length) {
 function getRandomCageWithSize(length, punishments) {
     //Return default cage
     if (CHASTITY_CAGES.length === 1) {
+        sendDebugMessage('Only found one cage, so returning the only cage');
         return CHASTITY_CAGES[0];
     }
 
@@ -261,6 +262,11 @@ function getRandomCageWithSize(length, punishments) {
     for (let y = 0; y < CHASTITY_CAGES.length; y++) {
         let currentCage = CHASTITY_CAGES[y];
         let punishmentOptionsOfCage = 0;
+
+        //No !== because one seems to be a string the other a number or something, so we need cross type comparison
+        if(currentCage.length != length) {
+            continue
+        }
 
         //Skip cages with accessible penis for daily use
         if(currentCage.penisAccessible) {
@@ -287,18 +293,21 @@ function getRandomCageWithSize(length, punishments) {
             }
         }
 
-        //Don't need to search for a smaller cage because we won't be able to fulfill the request anyway
-        if (punishmentOptionsOfCage < punishments - 1) {
-            continue;
-        }
-
-        //Punishment of smaller cage (check if we can find a smaller cage)
-        if (punishments > 0 && length > 1 && getRandomCageWithSize(length - 1, punishments - 1).length === length - 1) {
+        if (currentCage.estim) {
             punishmentOptionsOfCage++;
         }
 
+        //Punishment of smaller cage (check if we can find a smaller cage)
+        if (punishments > 0 && length > 1) {
+            sendDebugMessage('Looking for a smaller cage to replace a punishment option of ' + punishments + ' total');
+            if(getRandomCageWithSize(length - 1, punishments - 1).length === length - 1) {
+                punishmentOptionsOfCage++;
+            }
+        }
+
         //Fitting size and enough punishment options
-        if (currentCage.length === length && punishmentOptionsOfCage >= punishments) {
+        //No === because one seems to be a string the other a number or something, so we need cross type comparison
+        if (currentCage.length == length && punishmentOptionsOfCage >= punishments) {
             cages.push(currentCage);
             sendDebugMessage('Pushing cage ' + currentCage.name + ' to available list');
         }
@@ -308,7 +317,11 @@ function getRandomCageWithSize(length, punishments) {
         if(punishments >= 0) {
             //Reduce amount of punishments by one (if we can)
             return getRandomCageWithSize(length, punishments - 1);
+        } else if(length < 5) {
+            //Increase length but also increase punishments
+            return getRandomCageWithSize(length + 1, punishments + 1);
         } else {
+            sendDebugMessage('Returning random cage, because no fitting cage found');
             return random(CHASTITY_CAGES);
         }
     } else {
@@ -371,8 +384,6 @@ function selectChastityCage() {
 
     //let chastityCageSelection = getChastityCageSelection(punishmentChance);
 
-    sendDebugMessage('Found closest chastity size: ' + length + " and n");
-
     let amountOfPunishments = 0;
 
     //First punishment roll
@@ -405,7 +416,8 @@ function selectChastityCage() {
         if (cage.length > 1 && amountOfPunishments > 0) {
             let smallerCage = getRandomCageWithSize(cage.length - 1, amountOfPunishments - 1);
             sendDebugMessage("Looking for smaller cage as punishment and got " + smallerCage.name + " with length " + smallerCage.length);
-            if (smallerCage.length == cage.length - 1) {
+
+            if (smallerCage.length === cage.length - 1) {
                 sendDebugMessage('Found fitting smaller cage. Rolling for chance to replace one punishment');
 
                 //Either not feeling like punishing then go smaller or not enough punishment options
@@ -426,6 +438,7 @@ function selectChastityCage() {
 
     setVar(VARIABLE.CHASTITY_DILATOR_ON, false);
     setVar(VARIABLE.CHASTITY_SPIKES_ON, false);
+    setVar(VARIABLE.CHASTITY_ESTIM_ON, false);
 
     if (cage.spikes) {
         //If spikes are forced we need to calculate that into the remaining chance
@@ -452,8 +465,16 @@ function selectChastityCage() {
             punishments.add(1);
 
             sendDebugMessage('Added dilator as punishment option');
+
         }
     }
+
+    if (cage.estim) {
+        //Estim isn't forced so we should roll for it
+        punishments.add(2);
+        sendDebugMessage('Added estim as punishment option');
+    }
+
 
     //Randomize punishment rolling order
     while (!punishments.isEmpty() && amountOfPunishments > 0) {
@@ -466,6 +487,10 @@ function selectChastityCage() {
             case 1:
                 setVar(VARIABLE.CHASTITY_DILATOR_ON, true);
                 sendDebugMessage('Selected dilator as punishment');
+                break;
+            case 2:
+                setVar(VARIABLE.CHASTITY_ESTIM_ON, true);
+                sendDebugMessage('Selected estim as punishment');
                 break;
         }
 
@@ -568,6 +593,22 @@ function lockChastityCage(chastityCage = undefined) {
         }
 
         alreadyAttached = true;
+    }
+
+    if (getVar(VARIABLE.CHASTITY_ESTIM_ON, false)) {
+        if (alreadyAttached) {
+            sendMessageBasedOnSender('And...');
+        }
+
+        sendMessageBasedOnSender('I want you to put on a painful estim stimulation every other hour for 15 minutes as long as you are awake %Wicked%');
+        sendMessageBasedOnSender('Further I want you to do that for 30 minutes before going to bed as well');
+        sendMessageBasedOnSender('If you have to skip it it will accumulate and add to the next hour %Grin%');
+
+
+        if(alreadyAttached) {
+            sendMessageBasedOnSender('We are going full punishment mode %SlaveName%');
+            sendMessageBasedOnSender('You know you don\'t deserve anything different %GeneralTime% %Lol%');
+        }
     }
 
     if (alreadyAttached) {

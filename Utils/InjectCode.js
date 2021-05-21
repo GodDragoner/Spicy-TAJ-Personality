@@ -252,6 +252,7 @@ for(let x = 0; x < tasks.length; x++) {
 
 }*/
 {
-    sendDebugMessage(getChastityCageWithBool('estim').name);
+    //sendDebugMessage(getChastityCageWithBool('penisAccessible').name);
+    sendDebugMessage(selectChastityCage().name);
 }
 
