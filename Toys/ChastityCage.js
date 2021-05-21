@@ -262,6 +262,11 @@ function getRandomCageWithSize(length, punishments) {
         let currentCage = CHASTITY_CAGES[y];
         let punishmentOptionsOfCage = 0;
 
+        //Skip cages with accessible penis for daily use
+        if(currentCage.penisAccessible) {
+            continue
+        }
+
         if (currentCage.dialator) {
             punishmentOptionsOfCage++;
 
@@ -530,6 +535,22 @@ function lockChastityCage(chastityCage = undefined) {
     if (getVar(VARIABLE.CHASTITY_SPIKES_ON, false)) {
         sendMessageBasedOnSender('I want you to attach the spikes to it %Grin%');
         alreadyAttached = true;
+
+        if(chastityCage.spikesVariable) {
+            let min = Math.max(1, Math.round(chastityCage.spikesVariableAmount*0.25));
+            let max = Math.round(chastityCage.spikesVariableAmount*0.25*(getMood() + 1));
+            let spikes = randomInteger(min, max);
+
+            sendMessageBasedOnSender('I want you to attach a total of ' + spikes + ' spikes to it');
+
+            let percentage = random(25, 50);
+
+            if(feelsLikePunishingSlave()) {
+                percentage = random(50, 75, 100);
+            }
+
+            sendMessageBasedOnSender('Turn each screw till it\'s ' + percentage + '% in %Grin%');
+        }
     }
 
     if (getVar(VARIABLE.CHASTITY_DILATOR_ON, false)) {
@@ -747,8 +768,23 @@ function loadChastityCages() {
                 saveCages = true;
             }
 
+            if (isUndefinedString(chastityCage.spikesVariable)) {
+                chastityCage.spikesVariable = false;
+                saveCages = true;
+            }
+
+            if (isUndefinedString(chastityCage.spikesVariableAmount)) {
+                chastityCage.spikesVariableAmount = 0;
+                saveCages = true;
+            }
+
             if (isUndefinedString(chastityCage.penisAccessible)) {
                 chastityCage.penisAccessible = false;
+                saveCages = true;
+            }
+
+            if (isUndefinedString(chastityCage.estim)) {
+                chastityCage.estim = false;
                 saveCages = true;
             }
         }
@@ -774,6 +810,17 @@ function saveChastityCages() {
 function getChastityCageByName(name) {
     for (let y = 0; y < CHASTITY_CAGES.length; y++) {
         if (name.toUpperCase() === CHASTITY_CAGES[y].name.toUpperCase()) {
+            return CHASTITY_CAGES[y];
+        }
+    }
+
+    return null;
+}
+
+
+function getChastityCageWithBool(attribute) {
+    for (let y = 0; y < CHASTITY_CAGES.length; y++) {
+        if (CHASTITY_CAGES[y][attribute]) {
             return CHASTITY_CAGES[y];
         }
     }
@@ -895,6 +942,8 @@ function setupNewCage() {
     let spikes = false;
     let spikesDetachable = false;
     let spikesOverall = false;
+    let spikesVariable = false;
+    let spikesVariableAmount = 0;
 
     sendVirtualAssistantMessage("If you have it, we might consider using spikes as a punishment...");
     sendVirtualAssistantMessage('Does it have spikes?', 0);
@@ -926,7 +975,7 @@ function setupNewCage() {
             }
 
 
-            sendVirtualAssistantMessage('Are they spikes attached to an anti off ring/at the base only or everywhere in the cage?', 0);
+            sendVirtualAssistantMessage('Are the spikes attached to an anti off ring/at the base only or everywhere in the cage?', 0);
             answer = createInput();
 
             while (true) {
@@ -943,6 +992,15 @@ function setupNewCage() {
                     sendVirtualAssistantMessage("Ring/Base or everywhere?", 0);
                     answer.loop();
                 }
+            }
+
+            if(sendYesOrNoQuestion('Are the spikes like screws that can be added one by one?', SENDER_ASSISTANT)) {
+                spikesVariable = true;
+                sendVirtualAssistantMessage("You will regret buying this %Grin%");
+
+                spikesVariableAmount = createIntegerInput('How many spikes can be added at once?', 0, 1000, 'That\'s not a valid number of spikes', 'You can\'t have less than 0 spikes attached');
+            } else {
+                sendVirtualAssistantMessage("Still something cruel to play with %Grin%");
             }
 
             break;
@@ -975,6 +1033,26 @@ function setupNewCage() {
         }
     }
 
+    let estim = false;
+
+    sendVirtualAssistantMessage('Is it specifically made for estim?', 0);
+    answer = createInput();
+
+    while (true) {
+        if (answer.isLike("yes")) {
+            estim = true;
+            sendVirtualAssistantMessage("You will not like what %DomHonorific% %DomName% is planning with that %Grin%");
+            break;
+        } else if (answer.isLike("no")) {
+            sendVirtualAssistantMessage("It can be quite fun so you might want to get one %Grin%");
+            break;
+        } else {
+            sendVirtualAssistantMessage(YES_OR_NO, 0);
+            answer.loop();
+        }
+    }
+
+
     let ballTrapType = BALL_TRAP_TYPE.BALL_TRAP;
     sendVirtualAssistantMessage("Last but not least is it a full belt or a ball trap device?", false);
     answer = createInput();
@@ -995,6 +1073,8 @@ function setupNewCage() {
     }
 
 
+
+
     /*sendVirtualAssistantMessage("Are you pierced as a mean to secure the device?", false);
     answer = createInput();
 
@@ -1012,7 +1092,7 @@ function setupNewCage() {
         }
     }*/
 
-    CHASTITY_CAGES.push(createChastityCage(name, length, material, dialator, dialatorDetachable, spikes, spikesDetachable, spikesOverall, penisAccessible, ballTrapType));
+    CHASTITY_CAGES.push(createChastityCage(name, length, material, dialator, dialatorDetachable, spikes, spikesDetachable, spikesOverall, penisAccessible, ballTrapType, estim, spikesVariable, spikesVariableAmount));
 
     setVar(VARIABLE.HAS_CHASTITY, true);
     saveChastityCages();
@@ -1023,7 +1103,7 @@ function setupNewCage() {
 
 
 
-function createChastityCage(name, length, material, dialator, dialatorDetachable, spikes, spikesDetachable, spikesOverall, penisAccessible, ballTrapType) {
+function createChastityCage(name, length, material, dialator, dialatorDetachable, spikes, spikesDetachable, spikesOverall, penisAccessible, ballTrapType, estim, spikesVariable, spikesVariableAmount) {
     return {
         name: name,
         length: length,
@@ -1035,6 +1115,9 @@ function createChastityCage(name, length, material, dialator, dialatorDetachable
         spikesOverall: spikesOverall,
         penisAccessible: penisAccessible,
         ballTrapType: ballTrapType,
+        estim: estim,
+        spikesVariable: spikesVariable,
+        spikesVariableAmount: spikesVariableAmount,
 
         getImagePath: function () {
             return 'Images/Spicy/Toys/Chastity Cages/' + this.name + '.*';
@@ -1141,11 +1224,21 @@ function showChastityCageGUI(chastityCage) {
             let spikesOverall = writebackGui.addWritebackValue(gridPane.addCheckBox(row++, "Spikes Overall"), "spikesOverall");
             spikesOverall.setSelected(chastityCage.spikesOverall);
 
+            let spikesVariable = writebackGui.addWritebackValue(gridPane.addCheckBox(row++, "Spikes variable"), "spikesVariable");
+            spikesVariable.setSelected(chastityCage.spikesVariable);
+
+            let spikesVariableAmount = writebackGui.addWritebackValue(gridPane.addTextSetting(row++, "Spikes variable amount"), "spikesVariableAmount");
+            spikesVariableAmount.setOnlyIntegers();
+
             let penisAccessible = writebackGui.addWritebackValue(gridPane.addCheckBox(row++, "Penis Accessible"), "penisAccessible");
             penisAccessible.setSelected(chastityCage.penisAccessible);
 
             let ballTrapType = writebackGui.addWritebackValue(gridPane.addComboBox(row++, "Ball Trap Type"), "ballTrapType");
             ballTrapType.addChildren(BALL_TRAP_TYPE, chastityCage.ballTrapType);
+
+            let estim = writebackGui.addWritebackValue(gridPane.addCheckBox(row++, "Estim"), "estim");
+            estim.setSelected(chastityCage.estim);
+
 
             let save = createButton("Save");
             gridPane.setConstraints(save.button, 1, row);
