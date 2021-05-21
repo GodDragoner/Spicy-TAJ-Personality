@@ -19,6 +19,8 @@ const E_STIM_PLUG_TOY = createToy("e stim plug");
 const E_STIM_STRAPS = createToy("e stim straps");
 const E_STIM_PADS = createToy("e stim pads");
 
+const E_STIM_CAGE = getChastityCageWithBool('estim');
+
 let E_STIM_MODES = [];
 
 let CURRENT_E_STIM_BODY_PARTS = [];
@@ -55,6 +57,12 @@ function getRandomBodyPartForEStim() {
         bodyPartList.push(BODY_PART_ASS);
     }
 
+    //Use estim cage now that it's here already
+    if(!isUndefined(E_STIM_CAGE) && isInChastity() && currentChastityCage === E_STIM_CAGE) {
+        bodyPartList = [];
+        bodyPartList.push(BODY_PART_PENIS_SHAFT);
+    }
+
     return random(bodyPartList);
 }
 
@@ -63,17 +71,27 @@ function attachEStimToBodyPart(bodyPart) {
 
     switch (bodyPart) {
         case BODY_PART_PENIS_SHAFT:
-            if (!E_STIM_STRAPS.fetchToy()) {
-                break;
+            if(isInChastity() && currentChastityCage === E_STIM_CAGE) {
+                toysAttached.push(E_STIM_CAGE);
+
+                sendMessage('I want you to attach the diodes to your estim chastity cage %Grin%');
+
+                sendMessage('Tell me when you are done');
+                waitForDone(10000);
+            } else {
+                if (!E_STIM_STRAPS.fetchToy()) {
+                    break;
+                }
+
+                toysAttached.push(E_STIM_STRAPS);
+
+                sendMessage('I want you to attach one to the base of %MyYour% %Cock%');
+                sendMessage('And one right around your cock head %Grin%');
+
+                sendMessage('Tell me when you are done');
+                waitForDone(10000);
             }
 
-            toysAttached.push(E_STIM_STRAPS);
-
-            sendMessage('I want you to attach one to the base of %MyYour% %Cock%');
-            sendMessage('And one right around your cock head %Grin%');
-
-            sendMessage('Tell me when you are done');
-            waitForDone(10000);
             break;
        /* case BODY_PART_NIPPLE_L:
             if (!E_STIM_PADS.fetchToy()) {
