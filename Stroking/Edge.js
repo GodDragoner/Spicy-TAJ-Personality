@@ -129,9 +129,13 @@ function holdEdge(holdSeconds, disableTaunts = false, video = null) {
     //Show the initial message to tell the sub to stay on the edge
     setTempVar('initialEdgeHold', true);
 
-    setAudioBlocked(true);
-    run("Stroking/Taunt/HoldEdge/BasicHoldingTaunts.js");
-    setAudioBlocked(false);
+    if(disableTaunts) {
+        sendMessage(random('Stay right there', 'Hold that edge', 'Stay on the edge', 'Hold the edge') + ' %SlaveName% %Wicked%');
+    } else {
+        setAudioBlocked(true);
+        run("Stroking/Taunt/HoldEdge/BasicHoldingTaunts.js");
+        setAudioBlocked(false);
+    }
 
     if(!disableTaunts) {
         if(video !== null) {

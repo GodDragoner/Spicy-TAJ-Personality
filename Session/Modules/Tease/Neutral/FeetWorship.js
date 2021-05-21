@@ -92,13 +92,14 @@
             readyForVibratingCage();
         }
 
-        let loops = getMood() + getStrictnessForCharacter() + 3;
+        let loops = Math.max(3, getMood() + getStrictnessForCharacter());
 
         lockImages();
 
         CURRENT_EDGE_MODE = EDGE_MODE.SKIP_TAUNTS;
 
         for(let x = 0; x < loops; x++) {
+            lockImages();
             let resultingFile = random(files).getFile();
             showImage(resultingFile);
 
@@ -106,12 +107,13 @@
                 'Let\'s dedicate some edges to these feet', 'Let\'s worship these feet properly', 'Let\'s focus on these nice feet for now', 'Let\'s make you suffer for these feet',
             'Let\'s make you pay your tribute for these feet'));
 
-            let edgesToDo = randomInteger(2, 8);
+            let edgesToDo = randomInteger(2, 6);
 
             sendMessage(random('I think ' + edgesToDo + ' edges will be sufficient', 'I think they are worth ' + edgesToDo + ' edges', 'I think you should pay tribute with ' + edgesToDo + ' edges',
             'They are at least worth ' + edgesToDo + ' edges', 'Let\'s do ' + edgesToDo + ' edges for them', 'Let\'s worship them with ' + edgesToDo + ' edges'));
 
             while(edgesToDo > 0) {
+                sleep(randomInteger(10, 15));
                 startEdging();
                 edgesToDo--;
             }
@@ -120,12 +122,16 @@
                 sendMessage('I think we should do one last edge %Grin%');
                 sendMessage('And I think you should hold that edge');
                 sendMessage('To show me how much you worship these feet');
-
                 startEdging(getEdgeHoldSeconds());
             }
 
+            sendMessage('%LetEdgeFade%');
+            sleep(randomInteger(15, 30));
             sendMessage('%Now% %Grin%');
         }
+
+
+        unlockImages();
 
         sendMessage('I think that\'s enough for now %Grin%');
 
@@ -142,7 +148,5 @@
         }
 
         CURRENT_EDGE_MODE = EDGE_MODE.NORMAL;
-
-        unlockImages();
     }
 }
