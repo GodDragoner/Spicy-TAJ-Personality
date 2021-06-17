@@ -302,6 +302,8 @@ function goToCorner(durationSeconds) {
 
     sendMessage("We will start once you hear my bell %Grin%");
 
+    sleep(10);
+
     playBellSound();
 
     if(onToes) {
