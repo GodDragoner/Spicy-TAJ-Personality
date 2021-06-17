@@ -31,7 +31,7 @@
     sendMessage("Every single edge strengthens my control over you");
     sendMessage("Each time you reach the brink of orgasm and back off...");
     sendMessage("The ties that bind you to me get tighter");
-    sendMessage("And your resolve to submit to be settles deeper in your weak little mind");
+    sendMessage("And your resolve to submit to me settles deeper in your weak little mind");
     startMultipleEdges(5, 7);
     sendMessage("When I do allow you to cum, the inevitable happens");
     sendMessage("Your resolve to serve me weakens");
