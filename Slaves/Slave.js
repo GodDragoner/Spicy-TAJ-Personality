@@ -217,7 +217,7 @@ function addPunishmentPoints(amount, reason = -1) {
 }
 
 function addPunishmentPointsDirectly(amount, multiplier, reason = -1) {
-    setVar(VARIABLE.PUNISHMENT_POINTS, Math.max(0, amount + amount*multiplier));
+    setVar(VARIABLE.PUNISHMENT_POINTS, Math.max(0, getVar(VARIABLE.PUNISHMENT_POINTS, 0) + amount*multiplier));
 
     sendDebugMessage('Adding (with multiplier) ' + (amount*multiplier) + " punishment points");
     sendDebugMessage('Reason was ' + reason);
