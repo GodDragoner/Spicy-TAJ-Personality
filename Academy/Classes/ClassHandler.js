@@ -158,7 +158,15 @@ function handleTodayAcademyClasses() {
                     sendMessage('Be sure to participate in every single class on time!');
                 }
 
-                sendMessage('The last assignment was "' + lastTask + '"');
+
+
+
+                sendMessage('The last assignment was:');
+
+                for(let x = 0; x < lastTask.size(); x++) {
+                    sendMessage(lastTask.get(x));
+                }
+
                 if (sendYesOrNoQuestion('Did you complete your last assignment %SlaveName%?')) {
                     sendMessage('%Good%');
                 } else {
@@ -355,7 +363,7 @@ function registerClass(name, levels, fileName, weekdays, getTasks, getModifiers,
                 return array;
             }
 
-            return this.assignmentToArray[this.getAssignment()];
+            return this.assignmentToArray(this.getAssignment());
         },
 
 

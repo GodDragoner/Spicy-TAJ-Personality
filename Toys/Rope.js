@@ -4,7 +4,7 @@ function hasBallsTied() {
 
 function wantsToTieBalls() {
     //Prevent tieing balls over and over again
-    if(isVar(VARIABLE.LAST_BALLS_UNTIE) && !getDate(VARIABLE.LAST_BALLS_UNTIE).addMinute(5).hasPassed()) {
+    if(isVar(VARIABLE.LAST_BALLS_UNTIE) && !getDate(VARIABLE.LAST_BALLS_UNTIE).clone().addMinute(5).hasPassed()) {
         return false;
     }
 
@@ -13,7 +13,7 @@ function wantsToTieBalls() {
 
 function wantsToUntieBalls() {
     //Prevent untieing balls over and over again
-    if(isVar(VARIABLE.LAST_BALLS_TIE) && !getDate(VARIABLE.LAST_BALLS_TIE).addMinute(5).hasPassed()) {
+    if(isVar(VARIABLE.LAST_BALLS_TIE) && !getDate(VARIABLE.LAST_BALLS_TIE).clone().addMinute(5).hasPassed()) {
         return false;
     }
 

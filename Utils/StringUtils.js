@@ -11,19 +11,20 @@ function deserializeObject(object, string) {
         let identifier = splitEntry[0];
         let value = splitEntry[1];
 
+
         //Convert boolean to bool type
         if(value === "false" || value === "true") {
             value = (value === "true");
         }
-
         //Don't cast name to integers
-        if(identifier != 'name' && !isNaN(value)) {
+        else if(identifier != 'name' && !isNaN(value)) {
             if(!isNaN(parseInt(value))) {
                 value = parseInt(value);
             } else {
                 value = parseFloat(value)
             }
         }
+
 
         object[identifier] = value;
     }

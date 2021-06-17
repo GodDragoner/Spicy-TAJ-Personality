@@ -13,10 +13,13 @@
 
             if(shouldExplainCBTTerms()) {
                 sendExplainCBTTerms();
+                sendMessage('Now for the intensity scale of the hits');
+            } else {
+
+                sendMessage('For the intensity scale of the hits');
             }
 
 
-            sendMessage('Now for the intensity scale of the hits');
             sendMessage('Light means that it should hurt but not too bad');
             sendMessage('You should have no problems keeping your position');
             sendMessage('Medium hits should definitely hurt you and might make you flinch');
@@ -71,7 +74,7 @@
                     doneModules.add(this.id);
 
                     let hitMap = new Map();
-                    let maxLoops = Math.max(1, painLevel*2);
+                    let maxLoops = Math.max(1, painLevel);
 
                     //Start with light ones
                     let isBeginning = doneModules.size() < 3;
@@ -211,7 +214,7 @@
             };
             modules.push(toiletCrushing);
 
-            const maxLoops = Math.max(1, painLevel / 2);
+            const maxLoops = Math.max(1, Math.floor(painLevel / 1.5));
 
             while (doneModules.size() < maxLoops) {
                 modules[randomInteger(0, modules.length - 1)].startModule();

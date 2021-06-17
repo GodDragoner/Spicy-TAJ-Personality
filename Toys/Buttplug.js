@@ -461,6 +461,9 @@ function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
     //Should be smallest buttplug size or if for example ass level 30 at least 3.5 (allows progression to go faster at start of session)
     let allowedDefaultMaxDiameter = Math.max(getUsedToDiameter(), Math.max(smallestButtplug.diameter, Math.ceil(getVar(VARIABLE.ASS_LEVEL, 0) / 10) + 0.5));
 
+    sendDebugMessage('Allowed default max diameter ' + allowedDefaultMaxDiameter);
+    sendDebugMessage('Max used diameter ' + maxUsedPlugThickness);
+
     while (availablePlugs.length === 0 && buttplugs.length !== 0) {
         for (let y = 0; y < buttplugs.length; y++) {
             let buttplug = buttplugs[y];
@@ -482,6 +485,8 @@ function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
             //Seems like we don't have any plug within our given diameter increase range so we are gonna increase our range
             maxDiameterIncrease += 0.25;
             minDiameterIncrease -= 0.25;
+            minThickness = Math.min(maxUsedPlugThickness + 0.1 + minDiameterIncrease, biggestButtplug.diameter);
+            sendDebugMessage('Increasing bounds for search of buttplug');
 
             if (minLength > 0) minLength -= 0.5;
             //if(minThickness > 0) minThickness -= 0.5;
