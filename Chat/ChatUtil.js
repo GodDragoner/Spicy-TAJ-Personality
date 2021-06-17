@@ -120,7 +120,7 @@ function sendPinnoteMessage(message, wait, skipImage) {
 }
 
 function sendVirtualAssistantMessage(message, wait, skipImage) {
-    let textName = "<c=royalblue><weight=BOLD><fs=" + TeaseAI.application.CHAT_TEXT_SIZE.getDouble() + 1 + ">[Vivienne]: ";
+    let textName = "<c=royalblue><weight=BOLD><fs=" + (TeaseAI.application.CHAT_TEXT_SIZE.getDouble() + 1) + ">[Vivienne]: ";
 
     message = replaceVocab(message);
     message = textName + "<c=royalblue><weight=MEDIUM><fs="  + TeaseAI.application.CHAT_TEXT_SIZE.getDouble() + ">" + message;
