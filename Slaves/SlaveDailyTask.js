@@ -64,6 +64,7 @@ function getTodaysSlaveTask() {
         case 11:
             var porntype = getRandomAllowedPornCategory();
 
+            //Higher chance for hypno if sissy limit is allowed
             if (SISSY_LIMIT.isAllowed() && isChance(33)) {
                 porntype = PORN_CATEGORY.SISSY_HYPNO;
             }
@@ -365,6 +366,10 @@ function getTodaysSlaveTask() {
             case 11:
                 var categoriesAllowed = ['bondage'];
 
+                if (ANAL_LIMIT.isAllowed()) {
+                    categoriesAllowed.push('anal');
+                }
+
                 if (CBT_LIMIT.isAllowed()) {
                     categoriesAllowed.push('cbt');
                 }
@@ -383,6 +388,11 @@ function getTodaysSlaveTask() {
             //Fallthrough
             case 12:
                 var categoriesAllowed = [];
+
+
+                if (ANAL_LIMIT.isAllowed()) {
+                    categoriesAllowed.push('anal');
+                }
 
                 if (CBT_LIMIT.isAllowed()) {
                     categoriesAllowed.push('cbt');
@@ -490,12 +500,11 @@ const ONLINE_TEASE_TYPE = {
 };
 
 function generateDailyPornInstruction(lines, porntype) {
-    //Higher chance for hypno if sissy limit is allowed
-    if (porntype.name === PORN_CATEGORY.SISSY_HYPNO.name) {
-        lines.add('I want you to watch ' + PORN_CATEGORY.SISSY_HYPNO.name + ' for ' + random(30, 45, 60) + ' minutes');
-    } else {
-        lines.add('I want you to watch ' + porntype.name + ' porn for ' + random(30, 45, 60) + ' minutes');
-    }
+    let minutes = random(30, 45, 60, 90, 120);
+
+    lines.add('I want you to watch ' + porntype.name + ' porn for ' + minutes + ' minutes');
+
+    let noEdging = false;
 
     if (feelsLikeTeasing() && !isForcedLockedUp()) {
         if (feelsEvil()) {
@@ -508,6 +517,7 @@ function generateDailyPornInstruction(lines, porntype) {
             if (feelsLikeShowingPower()) {
                 lines.add('But no edging allowed!');
                 lines.add('For each unauthorized edge you will add 10 minutes additional watch and stimulating time');
+                noEdging = true;
             }
         }
 
@@ -519,7 +529,9 @@ function generateDailyPornInstruction(lines, porntype) {
                     lines.add('That cage stays on, so just stroke your cage instead');
                 }
 
-                lines.add('If you can\'t edge this way just try your best to follow the instructions %Grin%');
+                if(!noEdging) {
+                    lines.add('If you can\'t edge this way just try your best to follow the instructions %Grin%');
+                }
             } else {
                 lines.add('You are allowed to take off your chastity cage for this purpose');
                 lines.add('Talk to my assistant for that purpose %EmoteHappy%');
@@ -547,9 +559,10 @@ function generateDailyPornInstruction(lines, porntype) {
 
 function generateDailyTeaseRouletteInstructions(lines, categoriesAllowed, teaseType, forceCategories = false) {
     if (categoriesAllowed.length > 0) {
-        lines.add('Go and play ' + pluralize(teaseType.name) + ' on ' + teaseType.site + ' for at least 1 hour today');
+        let minutes = random(60, 90, 120);
+        lines.add('Go and play ' + pluralize(teaseType.name) + ' on ' + teaseType.site + ' for at least ' + minutes + ' minutes today');
 
-        if (isChance(50) && !forceCategories) {
+        if (isChance(50) || forceCategories) {
             lines.add('Category must be / include ' + random(categoriesAllowed));
         } else {
             lines.add('Category and type are up to you to choose');
@@ -563,9 +576,9 @@ function generateDailyTeaseRouletteInstructions(lines, categoriesAllowed, teaseT
             } else {
                 if (feelsLikeShowingPower()) {
                     if (hasMagicWand()) {
-                        lines.add('That cage stays on, so use your magic wand to simulate stroking. Or just stroke your cage instead');
+                        lines.add('That cage stays on, so use your magic wand to replace stroking instructions. Or just stroke your cage instead');
                     } else {
-                        lines.add('That cage stays on, so just stroke your cage instead');
+                        lines.add('That cage stays on, so just stroke your cage instead if necessary');
                     }
 
                     lines.add('If you can\'t edge this way just try your best to follow the instructions %Grin%');
@@ -587,7 +600,7 @@ function generateDailyTeaseRouletteInstructions(lines, categoriesAllowed, teaseT
         if (teaseType.name === ONLINE_TEASE_TYPE.ROULETTE.name) {
             if (feelsEvil()) {
                 lines.add('You will choose the roulette at random using the roll function');
-                lines.add('And you have a total of 3 chances to roll for a new roulettes');
+                lines.add('And you have a total of 3 chances to roll for a new roulette');
                 lines.add('But once you\'ve used your third one you must use any roulette that comes up');
             }
 

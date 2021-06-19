@@ -251,9 +251,40 @@ for(let x = 0; x < tasks.length; x++) {
     getAnalOrgasmInstructions(analOrgasmType, ORGASM_CATEGORY_RUINED);
 
 }*/
+/*
 {
     let analOrgasmType = decideAnalOrgasmType();
     let orgasmCategory = decideOrgasm(false);
     getAnalOrgasmInstructions(analOrgasmType, orgasmCategory);
 }
+*/
 
+
+{
+    let lines = new java.util.ArrayList();
+    var categoriesAllowed = ['bondage'];
+
+    if (ANAL_LIMIT.isAllowed()) {
+        categoriesAllowed.push('anal');
+    }
+
+    if (CBT_LIMIT.isAllowed()) {
+        categoriesAllowed.push('cbt');
+    }
+
+    if (PAIN_LIMIT.isAllowed()) {
+        categoriesAllowed.push('pain');
+    }
+
+    if (getBlowjobLevel() >= 20) {
+        categoriesAllowed.push('deepthroat');
+    }
+
+    if (generateDailyTeaseRouletteInstructions(lines, categoriesAllowed, ONLINE_TEASE_TYPE.ROULETTE, true)) {
+
+    }
+
+    for (let x = 0; x < lines.size(); x++) {
+        sendPinnoteMessage(lines.get(x));
+    }
+}
