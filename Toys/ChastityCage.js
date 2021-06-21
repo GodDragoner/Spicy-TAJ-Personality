@@ -506,6 +506,7 @@ function selectChastityCage() {
     return cage;
 }
 
+//TODO: Add force punishment (spikes etc.) when locked up for punishment
 function lockChastityCage(chastityCage = undefined) {
     if (!getVar(VARIABLE.HAS_CHASTITY, false) || getVar(VARIABLE.CHASTITY_ON)) {
         return;
@@ -1207,7 +1208,7 @@ function getChastityImagePath(name) {
 
 function onChastityKeyReturn() {
     //TODO: Virtual assistant lockup same as mistress lockup
-    sendVirtualAssistantMessage('Now go ahead and lock yourself back up and tell me when you are ready to continue');
+    sendVirtualAssistantMessage('Now go ahead and lock yourself back up and tell me when you are ready to continue', 0);
     waitForDone();
     lockAwayChastityKey();
     setVar(VARIABLE.CHASTITY_ON, true);

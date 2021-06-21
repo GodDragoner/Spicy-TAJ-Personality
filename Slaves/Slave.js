@@ -142,7 +142,7 @@ function getPunishmentPointsGoodThreshold() {
 }
 
 function getPunishmentPointsBadThreshold() {
-    return 500 - (getStrictnessForCharacter()*50);
+    return 500 - ((getStrictnessForCharacter() + 1)*50);
 }
 
 function addPunishmentPoints(amount, reason = -1) {

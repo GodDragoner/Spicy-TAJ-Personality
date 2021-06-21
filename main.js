@@ -92,7 +92,6 @@ run("Session/Session.js");
 run("Session/Modules/LineWriting.js");
 run("Session/End/Games/EndGames.js");
 
-run("Startup/CrazyDommeMode.js");
 run("Personality/SetupMood.js");
 
 //Toys

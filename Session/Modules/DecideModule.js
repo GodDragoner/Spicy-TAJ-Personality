@@ -77,6 +77,8 @@
                 if(specialSession !== undefined) {
                     ACTIVE_SPECIAL_SESSION = specialSession;
                     continueSpecialSession();
+
+                    skipModules = true;
                 }
             } else {
                 let specialSession = chooseSpecialSession();
@@ -99,6 +101,12 @@
         if(!skipModules) {
             const moduleChance = 50;
             let teaseModuleChance = moduleChance;
+
+            if(MOOD.TEASE.isActive()) {
+                sendDebugMessage('Mood ' + MOOD.TEASE.name + ' is active, boosting module chance');
+                teaseModuleChance += MOOD.TEASE.getChanceBooster();
+            }
+
             const teaseModuleAdditions = [
                 //Personality strictness 1
                 teaseModuleChance / 2,
@@ -151,17 +159,38 @@
             //Don't go below zero
             teaseModuleChance = Math.max(teaseModuleChance, 0);
 
-
             //Not used atm.
             let sissyModuleChance = 0;
 
+            /*if(MOOD.SISSY.isActive()) {
+                sendDebugMessage('Mood ' + MOOD.SISSY.name + ' is active, boosting module chance');
+                sissyModuleChance += MOOD.SISSY.getChanceBooster();
+            }*/
+
             //No pain modules if pain is hard limit
             let painModuleChance = PAIN_LIMIT.isAllowed() ? moduleChance : 0;
+
+            if(MOOD.PUNISH.isActive()) {
+                sendDebugMessage('Mood ' + MOOD.PUNISH.name + ' is active, boosting module chance');
+                painModuleChance += MOOD.PUNISH.getChanceBooster();
+            }
+
             let slaveModuleChance = moduleChance;
+
+            if(MOOD.SLAVE.isActive()) {
+                sendDebugMessage('Mood ' + MOOD.SLAVE.name + ' is active, boosting module chance');
+                slaveModuleChance += MOOD.SLAVE.getChanceBooster();
+            }
+
             let humiliationModuleChance = moduleChance;
 
             if (!HUMILIATION_LIMIT.isAllowed()) {
                 humiliationModuleChance = 0;
+            } else {
+                if(MOOD.HUMILIATION.isActive()) {
+                    sendDebugMessage('Mood ' + MOOD.HUMILIATION.name + ' is active, boosting module chance');
+                    humiliationModuleChance += MOOD.HUMILIATION.getChanceBooster();
+                }
             }
 
             const max = teaseModuleChance + sissyModuleChance + painModuleChance + slaveModuleChance + humiliationModuleChance;

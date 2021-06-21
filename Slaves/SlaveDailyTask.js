@@ -53,7 +53,7 @@ function getTodaysSlaveTask() {
             }
             break;
         case 8:
-            generateDailyPornInstruction(lines, random(PORN_CATEGORY.DENIAL, PORN_CATEGORY.RUINED_ORGASM_COMPILATION, PORN_CATEGORY.CUM_COMPILATION));
+            generateDailyPornInstruction(lines, random(getAllowedPornPunishmentCategories()));
             break;
         case 9:
             lines.add('Today you are gonna have dinner for breakfast, breakfast for lunch, lunch for dinner');
@@ -166,7 +166,7 @@ function getTodaysSlaveTask() {
         //Fallthrough if forced locked up
         case 27:
             //TODO: Replace by other task (duplicate with task 8)
-            generateDailyPornInstruction(lines, random(PORN_CATEGORY.DENIAL, PORN_CATEGORY.RUINED_ORGASM_COMPILATION, PORN_CATEGORY.CUM_COMPILATION));
+            generateDailyPornInstruction(lines, random(getAllowedPornPunishmentCategories()));
             break;
         case 28:
             if (ANAL_LIMIT.isAllowed()) {
@@ -500,7 +500,12 @@ const ONLINE_TEASE_TYPE = {
 };
 
 function generateDailyPornInstruction(lines, porntype) {
-    let minutes = random(30, 45, 60, 90, 120);
+    //Handle sissy limit
+    if(porntype === PORN_CATEGORY.SISSY_GASM_COMPILATION && !SISSY_LIMIT.isAllowed()) {
+        porntype = PORN_CATEGORY.RUINED_ORGASM_COMPILATION;
+    }
+
+    let minutes = random(30, 45, 60, 90);
 
     lines.add('I want you to watch ' + porntype.name + ' porn for ' + minutes + ' minutes');
 
@@ -554,12 +559,14 @@ function generateDailyPornInstruction(lines, porntype) {
         lines.add('Suffer while seeing all those men getting their well earned release while you are nowhere close it')
     } else if (porntype === PORN_CATEGORY.RUINED_ORGASM_COMPILATION) {
         lines.add('Suffer while watching how your next release is probably gonna look as well')
+    } else if(porntype === PORN_CATEGORY.SISSY_GASM_COMPILATION) {
+        lines.add('Suffer while watching how your next release might look like as well')
     }
 }
 
 function generateDailyTeaseRouletteInstructions(lines, categoriesAllowed, teaseType, forceCategories = false) {
     if (categoriesAllowed.length > 0) {
-        let minutes = random(60, 90, 120);
+        let minutes = random(45, 60, 90);
         lines.add('Go and play ' + pluralize(teaseType.name) + ' on ' + teaseType.site + ' for at least ' + minutes + ' minutes today');
 
         if (isChance(50) || forceCategories) {

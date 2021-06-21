@@ -43,10 +43,42 @@ const PORN_CATEGORY = {
         id: 10,
         name: 'ruined orgasm compilation'
     },
+    SISSY_GASM_COMPILATION: {
+        id: 11,
+        name: 'sissygasm compilation'
+    },
+    HUMILIATION: {
+        id: 13,
+        name: 'humiliation'
+    },
+    SPH_HUMILIATION: {
+        id: 14,
+        name: 'small penis humiliation'
+    },
 };
 
 function getRandomAllowedPornCategory() {
     return random(getAllowedPornCategories());
+}
+
+function getAllowedPornPunishmentCategories() {
+    let categories = [];
+
+
+    categories.push(PORN_CATEGORY.CUM_COMPILATION);
+    categories.push(PORN_CATEGORY.RUINED_ORGASM_COMPILATION);
+    categories.push(PORN_CATEGORY.DENIAL);
+
+    if(SISSY_LIMIT.isAllowed()) {
+        categories.push(PORN_CATEGORY.SISSY_GASM_COMPILATION);
+    }
+
+    if(HUMILIATION_LIMIT.isAllowed()) {
+        categories.push(PORN_CATEGORY.SPH_HUMILIATION);
+        categories.push(PORN_CATEGORY.HUMILIATION);
+    }
+
+    return categories;
 }
 
 function getAllowedPornCategories() {
@@ -58,11 +90,14 @@ function getAllowedPornCategories() {
     categories.push(PORN_CATEGORY.CUM_COMPILATION);
     categories.push(PORN_CATEGORY.RUINED_ORGASM_COMPILATION);
 
+    categories.push(PORN_CATEGORY.DENIAL);
+
     if(SISSY_LIMIT.isAllowed()) {
         categories.push(PORN_CATEGORY.SISSY_GENERAL);
         categories.push(PORN_CATEGORY.SISSY_HYPNO);
         categories.push(PORN_CATEGORY.GAY);
         categories.push(PORN_CATEGORY.TRAPS);
+        categories.push(PORN_CATEGORY.SISSY_GASM_COMPILATION);
     }
 
     if(CUCKOLD_LIMIT.isAllowed()) {
@@ -71,6 +106,11 @@ function getAllowedPornCategories() {
 
     if(FEET_LIMIT.isAllowed()) {
         categories.push(PORN_CATEGORY.FEET);
+    }
+
+    if(HUMILIATION_LIMIT.isAllowed()) {
+        categories.push(PORN_CATEGORY.SPH_HUMILIATION);
+        categories.push(PORN_CATEGORY.HUMILIATION);
     }
 
     return categories;

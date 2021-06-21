@@ -140,7 +140,7 @@ function decideOrgasm(noDenied = false) {
 
         incrementVar(VARIABLE.ORGASM_RATION, -ratioArray[getStrictnessForCharacter()]);
 
-        if(getVar('slaveMode', false)) {
+        if(MOOD.DENIED.isActive()) {
             incrementVar(VARIABLE.ORGASM_RATION, -45);
         }
 
@@ -157,7 +157,7 @@ function decideOrgasm(noDenied = false) {
 
         incrementVar(VARIABLE.ORGASM_RATION, ratioArray[getStrictnessForCharacter()]);
 
-        if(getVar('slaveMode', false)) {
+        if(MOOD.DENIED.isActive()) {
             incrementVar(VARIABLE.ORGASM_RATION, -4);
         }
 
@@ -196,7 +196,7 @@ function distributeOrgasmPoints() {
     sendDebugMessage('Planning on adding a base line of ' + totalToAdd + " orgasm points");
 
     //Bonus lover mode
-    if(getVar('loverMode', false)) {
+    if(MOOD.LOVER.isActive()) {
         sendDebugMessage('Bonus points for lover mode');
         totalToAdd += randomInteger(points[personalityOffset + loverOffset], points[personalityOffset + loverOffset + 1]);
     }

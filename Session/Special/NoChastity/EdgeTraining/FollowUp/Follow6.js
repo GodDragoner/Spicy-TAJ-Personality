@@ -51,12 +51,12 @@
     if(isVar(VARIABLE.EDGE_TRAINING_RECORD)) {
         let record = getVar(VARIABLE.EDGE_TRAINING_RECORD);
 
-        if(edgesDone > record) {
+        if(edgesDone >= record) {
             goodEnough = true;
 
         }
     } else {
-        if(edgesDone > (getStrictnessForCharacter() + 1)*5 + 10) {
+        if(edgesDone >= (getStrictnessForCharacter() + 1)*5 + 10) {
             goodEnough = true;
         }
     }

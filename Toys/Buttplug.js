@@ -279,6 +279,7 @@ function putinChosenButtplug(plug) {
         removeButtplug();
     }
 
+    //Ice cubes
     if (feelsEvil() && isChance(50) && getVar(VARIABLE.ASS_LEVEL) > 15) {
         if (!isVar(VARIABLE.LAST_ICE_CUBE_UP_ASS_DATE) || getDate(VARIABLE.LAST_ICE_CUBE_UP_ASS_DATE).addMinute(10).hasPassed()) {
             sendMessageBasedOnSender('But before we are gonna stick that buttplug up your %Ass%');
@@ -329,11 +330,11 @@ function putinChosenButtplug(plug) {
 
     sendMessageBasedOnSender("Now %SlaveName%");
 
-    if (feelsLikePunishingSlave() && getVar(VARIABLE.ASS_LEVEL) >= 30) {
+    if (feelsLikePunishingSlave() && getVar(VARIABLE.ASS_LEVEL, 0) >= 30) {
         sendMessageBasedOnSender("Push it in quickly");
         sendMessageBasedOnSender("I don't care whether it hurts");
     } else {
-        if (isChance(20) && getVar(VARIABLE.ASS_LEVEL) >= 30) {
+        if (isChance(20) && getVar(VARIABLE.ASS_LEVEL, 0) >= 30) {
             sendMessageBasedOnSender("Put that plug on the ground");
             sendMessageBasedOnSender("You already know " + random("what I am gonna make you do now", "what comes next", "what you are gonna do next", "what I want you to do next", "what is gonna happen now"));
             sendMessageBasedOnSender("I want you to slowly sit down on that plug and push it all the way up your ass");
@@ -343,7 +344,9 @@ function putinChosenButtplug(plug) {
             sendMessageBasedOnSender("Let it slowly slip into you", 5);
             sendMessageBasedOnSender(random("Can you feel the shape of it inside of you already?", "Can you feel it making its way into you?", "Can you feel it slowly filling your dirty hole?"));
             sendMessageBasedOnSender("Go all the way down until your ass cheeks are touching the floor and the plug is all the way in");
-        } else {
+        }
+        //Only play around with the plug if ass level is low or in 50% of the cases
+        else if(isChance(50) || getVar(VARIABLE.ASS_LEVEL, 0) < 20) {
             sendMessageBasedOnSender("Put the tip of the plug on your asshole", 5);
             sendMessageBasedOnSender("Rub the tip gently along your ass crack", 5);
             sendMessageBasedOnSender("Now...");
@@ -373,6 +376,9 @@ function putinChosenButtplug(plug) {
             } else {
                 sendMessageBasedOnSender("Push it all the way in...");
             }
+        } else {
+            //Just a quick one liner
+            sendMessageBasedOnSender("Push it all the way in...");
         }
     }
 

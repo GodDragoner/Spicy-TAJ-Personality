@@ -234,8 +234,8 @@ function getDildo(blowjob = false, dildos = DILDOS) {
         //30: 21
         let maxLength = minLength + blowjobLevel / 3;
 
-        //Max at 30 is 5.3
-        let maxDiameter = minDiameter + blowjobLevel / 24;
+        //Max at 30 is 5.3 so 5
+        let maxDiameter = Math.min(5, minDiameter + blowjobLevel / 24);
 
         let availableDildos = [];
 

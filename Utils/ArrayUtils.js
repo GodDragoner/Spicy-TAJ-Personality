@@ -25,6 +25,16 @@ function objectToArray(object) {
     return array;
 }
 
+function cloneArray(array) {
+    let barray = [];
+
+    for(let x = 0; x < array.length; x++) {
+        barray.push(array[x]);
+    }
+
+    return barray;
+}
+
 function pushElementsToOtherArray(input, output) {
     for(let x = 0; x < input.length; x++) {
         output.push(input[x]);

@@ -195,7 +195,7 @@ function getAnalSessionLength() {
     max = Math.max(previousMin, max);
 
     //Domme mode
-    if (isVar('analWhoreMode')) {
+    if (MOOD.ANAL.isActive()) {
         maxMinutes = Math.ceil(getVar(VARIABLE.DEVOTION) / 2);
 
         min *= 1.5;

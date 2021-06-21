@@ -18,17 +18,25 @@ const DEFAULT_TOY_COOLDOWN_MINUTES = 5;
     sendDebugMessage('Loaded ' + CHASTITY_CAGES.length + ' chastity cages');
     sendDebugMessage('Loaded ' + DILDOS.length + ' dildos');
     sendDebugMessage('Loaded ' + buttplugs.length + ' buttplugs');
-
 }
 
 
 function interactWithButtplug(punishment) {
     if ((BUTTPLUG_TOY.isPunishmentAllowed() || !punishment && BUTTPLUG_TOY.isPlayAllowed()) && getAnalLimit() === LIMIT_ASKED_YES) {
-        //Starting chance for plug or already plugged anyway
-        let chance = Math.max(15, getVar(VARIABLE.ASS_LEVEL, 0) * 2);
-        sendDebugMessage('Rolling for ' + chance + " to insert plug with random toy interaction");
 
-        if (isChance(chance) || isPlugged()) {
+        let chance;
+
+        if(isPlugged()) {
+            //This makes anal plug depend on anal mood more heavily
+            chance = Math.max(15, getVar(VARIABLE.ASS_LEVEL, 0)) + MOOD.ANAL.getChanceBooster()*3;
+            sendDebugMessage('Rolling for ' + chance + " to upgrade plug size");
+        } else {
+            //This makes anal plug depend on anal mood more heavily
+            chance = Math.max(15, getVar(VARIABLE.ASS_LEVEL, 0)) + MOOD.ANAL.getChanceBooster()*3;
+            sendDebugMessage('Rolling for ' + chance + " to insert plug");
+        }
+
+        if (isChance(chance)) {
             let action = shouldIncreasePlugSize();
 
             if (action === ACTION_BUTTPLUG_INCREASE_SIZE) {
@@ -36,7 +44,7 @@ function interactWithButtplug(punishment) {
             } else if (action === ACTION_BUTTPLUG_PUT_FIRST && hasButtplugToy()) {
                 let answers = ['Let\'s prepare your %Ass% for what is to come %Grin%', 'Let\'s plug up that %Ass%', 'Let\'s not waste anymore time by leaving that %Ass% empty'];
 
-                if (getVar(VARIABLE.ASS_LEVEL) >= 30) {
+                if (getVar(VARIABLE.ASS_LEVEL) >= 30 && isChance(30)) {
                     answers.push('You know that there is a very slim chance of you not being plugged and guess what - You won\'t be lucky now... %Lol%');
                 }
 

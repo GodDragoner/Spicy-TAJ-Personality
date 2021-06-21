@@ -291,6 +291,21 @@ if (newDay) {
         sendDebugMessage('Changed merit because punishment points are below threshold');
         changeMeritLow(false);
     }
+
+    //Shuffle them so it's random which one is checked/activated first
+    let shuffledMoods = shuffle(cloneArray(MOODS));
+
+    for(let x = 0; x < shuffledMoods.length; x++) {
+        let mood = shuffledMoods[x];
+
+        sendDebugMessage('Checking mood "' + mood.name + '"')
+
+        if(mood.isActive()) {
+            mood.checkActive();
+        } else if(mood.shouldActivate()) {
+            mood.setActive(true, randomInteger(mood.minHours, mood.maxHours));
+        }
+    }
 }
 
 sendDebugMessage('Mood after startup routine');
@@ -313,6 +328,14 @@ function debugPrintMood() {
     sendDebugMessage("Lust: " + getVar(VARIABLE.LUST));
     sendDebugMessage("Happiness: " + getVar(VARIABLE.HAPPINESS));
     sendDebugMessage("Anger: " + getVar(VARIABLE.ANGER));
+
+    for(let x = 0; x < MOODS.length; x++) {
+        let mood = MOODS[x];
+
+        if (mood.isActive()) {
+            sendDebugMessage('Mood "' + mood.name + '" is active')
+        }
+    }
 }
 
 function isScenarioActive(scenarioId) {

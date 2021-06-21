@@ -55,6 +55,13 @@ function createHTTPServer(port, saveFilePath) {
                     let path = getPersonalityPath() + PATH_SEPARATOR + "Utils" + PATH_SEPARATOR + "Web" + PATH_SEPARATOR + "Pages" + PATH_SEPARATOR + url.getPath().replace('/', '');
                     sendDebugMessage('Returning ' + path);
 
+                    let file = new java.io.File(path);
+
+                    //Overwrite path if not found
+                    if(!file.exists() || !file.isFile()) {
+                        path = getPersonalityPath() + PATH_SEPARATOR + "Utils" + PATH_SEPARATOR + "Web" + PATH_SEPARATOR + "Pages" + PATH_SEPARATOR + "NotFound.html";
+                    }
+
                     let responseBody = java.nio.file.Files.readString(java.nio.file.Path.of(path));
 
                     headers.set("Content-Type", java.lang.String.format("text/html; charset=%s", CHARSET));
