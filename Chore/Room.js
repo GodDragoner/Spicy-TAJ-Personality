@@ -95,7 +95,21 @@ function createRoom(name, size) {
             this.startChore(choreType);
         },
 
+        canBeUsedForKink: function () {
+            return !this.windows && this.safeForKink;
+        },
+
         startChore: function (choreType) {
+            let overwriteKink = false;
+
+            let kinkyChance = getVar(VARIABLE.KINKY_CHORE_CHANCE);
+
+            //Let the dom choose mode
+            if (kinkyChance === 11) {
+                kinkyChance = randomInteger(6, 10);
+            }
+
+            let wantsKink = isChance((kinkyChance - 1) * 10);
 
             switch (choreType) {
                 case ROOM_CHORE_MOP:
@@ -130,8 +144,8 @@ function createRoom(name, size) {
 
             let toysAttached = [];
 
-            //Only do kinky stuff if the room is safe for it
-            if (!this.windows && this.safeForKink) {
+            //Only do kinky stuff if the room is safe for it or we were specifically allowed to do so
+            if ((this.canBeUsedForKink() || !getVar(VARIABLE.CHORE_KINK_SAFE_TODAY, false)) && wantsKink) {
                 toysAttached = sendKinkyChoreInstructions(choreType);
             }
 
@@ -147,12 +161,15 @@ function createRoom(name, size) {
 
 
             for (let x = 0; x < toysAttached.length; x++) {
-                toy = toysAttached[x];
+                let toy = toysAttached[x];
 
                 //Will trigger scripts based on the toy
+                //We don't need to prevent this if the always plug rule is active because then it's not pushed to the stack
                 if (toy === BUTTPLUG_TOY) {
                     sendMessageBasedOnSender('You can now remove the plug from your ass %SlaveName%');
                     setPlugRemoved();
+
+                    restoreSmallButtplug();
                 } else if (toy === COLLAR_TOY && RULE_ALWAYS_WEAR_COLLAR.isActive()) {
                     //Continue, since collar stays on
                     continue;
@@ -178,8 +195,13 @@ function createRoom(name, size) {
 
             incrementVar(VARIABLE.TOTAL_CHORES_DONE, 1);
 
+
+
             //Time in minutes spend doing chores
             incrementVar(VARIABLE.WEEKLY_CHORES_TIME, minutesPassed);
+
+            //Track the value in a temporary tracker so we can sum them up for the reward until 15 minutes have build up
+            incrementTempVar(VARIABLE.TEMP_CHORES_TIME, minutesPassed);
 
             incrementVar(VARIABLE.TOTAL_CHORES_TIME, minutesPassed);
 
@@ -202,10 +224,10 @@ function createRoom(name, size) {
 
                 if (averageSet) {
                     sendMessageBasedOnSender('Allow me to reward your ' + random('splendid', 'good', 'excellent', 'lovely') + random('behavior', 'work'));
-                    accountTimeSpendOnChore(minutesPassed, false);
+                    accountTimeSpendOnChore(false);
                 } else {
                     sendMessageBasedOnSender('Good job %GeneralTime% %SlaveName%');
-                    accountTimeSpendOnChore(minutesPassed, true);
+                    accountTimeSpendOnChore(true);
                 }
 
                 //Reset warnings

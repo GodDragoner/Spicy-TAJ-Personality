@@ -26,13 +26,13 @@ function interactWithButtplug(punishment) {
 
         let chance;
 
-        if(isPlugged()) {
+        if (isPlugged()) {
             //This makes anal plug depend on anal mood more heavily
-            chance = Math.max(15, getVar(VARIABLE.ASS_LEVEL, 0)) + MOOD.ANAL.getChanceBooster()*3;
+            chance = Math.max(15, getVar(VARIABLE.ASS_LEVEL, 0)) + MOOD.ANAL.getChanceBooster() * 3;
             sendDebugMessage('Rolling for ' + chance + " to upgrade plug size");
         } else {
             //This makes anal plug depend on anal mood more heavily
-            chance = Math.max(15, getVar(VARIABLE.ASS_LEVEL, 0)) + MOOD.ANAL.getChanceBooster()*3;
+            chance = Math.max(15, getVar(VARIABLE.ASS_LEVEL, 0)) + MOOD.ANAL.getChanceBooster() * 3;
             sendDebugMessage('Rolling for ' + chance + " to insert plug");
         }
 
@@ -154,6 +154,7 @@ function getMinPlayTimeBeforeToySwap() {
     return 7;
 }
 
+
 function removeAllToys(end = false) {
     removeAllClamps();
 
@@ -163,12 +164,8 @@ function removeAllToys(end = false) {
 
     if (isPlugged()) {
         //Put in right plug afterwards again
-        if(end && RULE_ALWAYS_WEAR_SMALL_PLUG.isActive()) {
-            if(currentPlug !== getSmallButtplug(true)) {
-                removeButtplug(true);
-                sendMessage('And now put back in your ' + getSmallButtplug(true).name + ' again');
-                setPlugIn(getSmallButtplug(true));
-            }
+        if (end) {
+            restoreSmallButtplug();
         } else {
             removeButtplug(true);
         }
@@ -570,12 +567,65 @@ function createMultipleToy(name, variableName = undefined) {
             setVar(variableName, arrayList);
         },
 
+        addCurrentToy: function (toyInstance) {
+            let arrayList = new java.util.ArrayList();
+
+            if (isVar(this.getVarName() + 'CurrentOn')) {
+                arrayList = tryGetArrayList(this.getVarName() + 'CurrentOn');
+            }
+
+            //Don't use getName since this is overwritten as a display name
+            arrayList.add(toyInstance.name);
+
+            setVar(this.getVarName() + 'CurrentOn', arrayList);
+        },
+
+        removeCurrentToy: function (toyInstance) {
+            //Only works if we already have stored what's on
+            if (isVar(this.getVarName() + 'CurrentOn')) {
+                let arrayList = tryGetArrayList(this.getVarName() + 'CurrentOn');
+
+                //Don't use getName since this is overwritten as a display name
+                arrayList.add(toyInstance.name);
+
+                setVar(this.getVarName() + 'CurrentOn', arrayList);
+                return true;
+            }
+
+            return false;
+        },
+
+        getCurrentToys: function () {
+            let current = [];
+
+            if (isVar(this.getVarName() + 'CurrentOn')) {
+                let arrayList = tryGetArrayList(this.getVarName() + 'CurrentOn');
+
+                for (let x = 0; x < arrayList.size(); x++) {
+                    let toyInstance = this.getByName(arrayList.get(x));
+
+                    if (isUndefined(toyInstance)) {
+                        sendDebugMessage('Unknown toy "' + arrayList.get(x) + '" of type ' + this.getVarName());
+                    } else {
+                        current.push(toyInstance);
+                    }
+                }
+            }
+
+            return current;
+        },
+
+        clearCurrentToys: function () {
+            setVar(this.getVarName() + 'CurrentOn', new java.util.ArrayList());
+        },
+
         getRandom: function () {
             return random(this.toyInstances);
         },
 
         getByName: function (name) {
             for (let y = 0; y < this.toyInstances.length; y++) {
+                //Don't use getName since this is overwritten as a display name
                 if (name.toUpperCase() === this.toyInstances[y].name.toUpperCase()) {
                     return this.toyInstances[y];
                 }
@@ -605,29 +655,29 @@ function createMultipleToy(name, variableName = undefined) {
             return this.toyInstances.length > 0;
         },
 
-        hasToyVar: function() {
+        hasToyVar: function () {
             return getVar(this.getVarName(), false);
         },
 
-        getToyOfType: function(type) {
+        getToyOfType: function (type) {
             let toys = this.getToysOfType(type);
 
-            if(toys.length === 0) {
+            if (toys.length === 0) {
                 return undefined;
             }
 
             return random(toys);
         },
 
-        getToysOfType: function(type) {
+        getToysOfType: function (type) {
             return this.getToysOfTypes([type]);
         },
 
-        getToysOfTypes: function(types) {
+        getToysOfTypes: function (types) {
             let toys = [];
 
             for (let x = 0; x < this.toyInstances.length; x++) {
-                if(types.indexOf(this.toyInstances[x].type) !== -1) {
+                if (types.indexOf(this.toyInstances[x].type) !== -1) {
                     toys.push(this.toyInstances[x]);
                 }
             }
@@ -635,11 +685,11 @@ function createMultipleToy(name, variableName = undefined) {
             return toys;
         },
 
-        getToysNotOfTypes: function(types) {
+        getToysNotOfTypes: function (types) {
             let toys = [];
 
             for (let x = 0; x < this.toyInstances.length; x++) {
-                if(types.indexOf(this.toyInstances[x].type) === -1) {
+                if (types.indexOf(this.toyInstances[x].type) === -1) {
                     toys.push(this.toyInstances[x]);
                 }
             }
@@ -647,11 +697,11 @@ function createMultipleToy(name, variableName = undefined) {
             return toys;
         },
 
-        getToysWithComfort: function(min, max) {
+        getToysWithComfort: function (min, max) {
             let toys = [];
 
             for (let x = 0; x < this.toyInstances.length; x++) {
-                if(this.toyInstances[x].comfort >= min && this.toyInstances[x].comfort <= max) {
+                if (this.toyInstances[x].comfort >= min && this.toyInstances[x].comfort <= max) {
                     toys.push(this.toyInstances[x]);
                 }
             }
@@ -659,11 +709,11 @@ function createMultipleToy(name, variableName = undefined) {
             return toys;
         },
 
-        getToysWithSexAppeal: function(min, max) {
+        getToysWithSexAppeal: function (min, max) {
             let toys = [];
 
             for (let x = 0; x < this.toyInstances.length; x++) {
-                if(this.toyInstances[x].sexAppeal >= min && this.toyInstances[x].sexAppeal <= max) {
+                if (this.toyInstances[x].sexAppeal >= min && this.toyInstances[x].sexAppeal <= max) {
                     toys.push(this.toyInstances[x]);
                 }
             }

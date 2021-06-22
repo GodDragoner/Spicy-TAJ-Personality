@@ -88,7 +88,7 @@ function startPunishmentSession(overallLevel) {
     PUNISHMENT_SCORE = (overallLevel.id + 1) * 4;
     sendDebugMessage('Starting punishment with score of ' + PUNISHMENT_SCORE);
 
-    while (PUNISHMENT_SCORE > 0) {
+    while (PUNISHMENT_SCORE > 0 && getVar(VARIABLE.PUNISHMENT_ACTIVE, false)) {
         interactWithRandomToys();
 
         chooseNextPunishment(overallLevel);
@@ -118,6 +118,12 @@ function startPunishmentSession(overallLevel) {
 
         //Reset
         PUNISHMENT_MULTIPLIER_CURRENT = 1;
+    }
+
+    //Somehow the punishment was cancelled. Exit punishment
+    if(!getVar(VARIABLE.PUNISHMENT_ACTIVE, false)) {
+        setSender(1);
+        return;
     }
 
     sendMessage(random('We\'re at the end mark of today\'s punishment session', 'I think I punished you enough for today %SlaveName%', 'I think this will suffice as a punishment',

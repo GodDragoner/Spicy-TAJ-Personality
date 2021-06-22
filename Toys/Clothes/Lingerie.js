@@ -1,7 +1,10 @@
 const GARTER_BELT_TOY = createToy('Garter Belt');
 
+checkClearOutfitOn();
+
 function hasLingerieOn() {
-    return PANTY_TOY.isToyOn() || BRA_TOY.isToyOn() || STOCKING_TOY.isToyOn() || GARTER_BELT_TOY.isToyOn();
+    //TODO: This is a whole outfit (hasOutfitOn check), not lingerie specifically
+    return PANTY_TOY.isToyOn() || BRA_TOY.isToyOn() || STOCKING_TOY.isToyOn() || GARTER_BELT_TOY.isToyOn() || hasOutfitOn();
 }
 
 function removeAllLingerie() {
@@ -17,6 +20,32 @@ function isLingeriePlayAllowed() {
 
 function hasSomeLingerie() {
     return hasPanties() || hasBra() || hasGarterBelt() || hasStockings();
+}
+
+function hasOutfitOn() {
+    let stuffOnCount = BRA_TOY.getCurrentToys().length + HIGH_HEEL_TOY.getCurrentToys().length + JEWELLERY_TOY.getCurrentToys().length + PANTY_TOY.getCurrentToys().length +
+        SKIRT_TOY.getCurrentToys().length + STOCKING_TOY.getCurrentToys().length + TOP_TOY.getCurrentToys().length + TROUSER_TOY.getCurrentToys().length;
+
+    sendDebugMessage('Outfit pieces on right now: ' + stuffOnCount);
+    return stuffOnCount < 0;
+}
+
+function checkClearOutfitOn() {
+    if(isVar(VARIABLE.CURRENT_OUTFIT_EXPIRY) && getVar(VARIABLE.CURRENT_OUTFIT_EXPIRY).hasPassed()) {
+        clearOutfitOn();
+        delVar(VARIABLE.CURRENT_OUTFIT_EXPIRY);
+    }
+}
+
+function clearOutfitOn() {
+    BRA_TOY.clearCurrentToys();
+    HIGH_HEEL_TOY.clearCurrentToys();
+    JEWELLERY_TOY.clearCurrentToys();
+    PANTY_TOY.clearCurrentToys();
+    SKIRT_TOY.clearCurrentToys();
+    STOCKING_TOY.clearCurrentToys();
+    TOP_TOY.clearCurrentToys();
+    TROUSER_TOY.clearCurrentToys();
 }
 
 function hasPanties() {
@@ -68,6 +97,7 @@ function decideOutfit() {
         }
 
         lines.add('Put on your ' + bra.getName() + ' <showImage=' + bra.getImagePath() + '>');
+        BRA_TOY.addCurrentToy(bra);
     }
 
     //50 : 50 chance for no top if we have sports bra underneath
@@ -81,6 +111,7 @@ function decideOutfit() {
         }
 
         lines.add('Put on your ' + top.getName() + ' <showImage=' + top.getImagePath() + '>');
+        TOP_TOY.addCurrentToy(top);
     }
 
 
@@ -90,10 +121,12 @@ function decideOutfit() {
         let skirt = SKIRT_TOY.getRandom();
 
         lines.add('Put on your ' + skirt.getName() + ' <showImage=' + skirt.getImagePath() + '>');
+        SKIRT_TOY.addCurrentToy(skirt);
     } else if (pickTrousers) {
         let trouser = TROUSER_TOY.getRandom();
 
         lines.add('Put on your ' + trouser.getName() + ' <showImage=' + trouser.getImagePath() + '>');
+        TROUSER_TOY.addCurrentToy(trouser);
     } else if (!dress) {
         lines.add('Go with whatever trousers you have');
     }
@@ -102,6 +135,8 @@ function decideOutfit() {
         let stockings = STOCKING_TOY.getRandom();
 
         lines.add('Put on your ' + stockings.getName() + ' <showImage=' + stockings.getImagePath() + '>');
+
+        STOCKING_TOY.addCurrentToy(stockings);
 
         //No garter belt if those are striped socks stockings
         if (feelsLikeTeasing() && GARTER_BELT_TOY.hasToy() && stockings.type !== 'striped') {
@@ -123,6 +158,8 @@ function decideOutfit() {
             }
         }
 
+        PANTY_TOY.addCurrentToy(panty);
+
         lines.add('Put on your ' + panty.getName() + ' <showImage=' + panty.getImagePath() + '>');
 
         if (punishment) {
@@ -139,6 +176,7 @@ function decideOutfit() {
                 let panty = random(crotchless);
                 lines.add('Put on your ' + panty.getName() + ' <showImage=' + panty.getImagePath() + '>');
                 crotchlessFound = true;
+                PANTY_TOY.addCurrentToy(crotchless);
             }
         }
 
@@ -150,7 +188,7 @@ function decideOutfit() {
 
 
         if (pickSkirt) {
-            lines.add('You\'ll have to wear that skirt with your %Cock% freely exposed between your legs')
+            lines.add('You\'ll have to wear that skirt with %MyYour% %Cock% freely exposed between your legs')
         }
     }
 
@@ -159,6 +197,8 @@ function decideOutfit() {
         let heel = HIGH_HEEL_TOY.getRandom();
 
         lines.add('Put on your ' + heel.getName() + ' <showImage=' + heel.getImagePath() + '>');
+
+        HIGH_HEEL_TOY.addCurrentToy(heel);
 
         if (feelsLikePunishingSlave() && HIGH_HEEL_LOCK.hasToy()) {
             lines.add('Furthermore lock yourself to the heels with your high heel locks %Grin%');
@@ -181,6 +221,7 @@ function decideOutfit() {
                 repeat = true;
             } else {
                 lines.add('Put on your ' + jewellery.getName() + ' <showImage=' + jewellery.getImagePath() + '>');
+                JEWELLERY_TOY.addCurrentToy(jewellery);
             }
 
             types = removeIndexFromArray(types, types.indexOf(type));
@@ -247,75 +288,20 @@ function decideNightwear(includePanty = false) {
     return lines;
 }
 
+//TODO: Only lingerie items? Not whole outfit, maybe skirt is okay
 function putOnLingerie() {
-    let attachedToys = [];
-
-    //Skip if lingerie already on
-    if (hasLingerieOn()) {
-        return attachedToys;
-    } else if (!hasSomeLingerie()) {
-        return attachedToys;
-    }
+    let outfit = decideOutfit();
 
     sendMessageBasedOnSender("%SlaveName%");
-    sendMessageBasedOnSender(random("I want you to wear", "Go ahead and put on", "I need you to put on", "Go ahead and put on", "I need you to put on"));
+    sendMessageBasedOnSender('I want you to put on the following outfit');
 
-    let accessories = [];
-    let tries = 0;
-
-    while (accessories.length === 0 && tries < 20) {
-        if (hasPanties() && isChance(80)) {
-            accessories.push(0);
-        }
-
-        if (hasBra() && isChance(80)) {
-            accessories.push(1);
-        }
-
-        if (hasGarterBelt() && isChance(50)) {
-            accessories.push(2);
-        }
-
-        if (hasStockings() && isChance(50)) {
-            accessories.push(3);
-        }
-
-        tries++;
-    }
-
-    //TODO: Store what lingerie is on right now so have some variety
-
-    if (accessories.indexOf(0) !== -1) {
-        sendMessageBasedOnSender('These panties', 0);
-        showImage('Images/Spicy/Toys/Lingerie/Panties/*.jpg', 5);
-        PANTY_TOY.setToyOn(true);
-        attachedToys.push(PANTY_TOY);
-    }
-
-    if (accessories.indexOf(1) !== -1) {
-        sendMessageBasedOnSender('This bra', 0);
-        showImage('Images/Spicy/Toys/Lingerie/Bra/*.jpg', 5);
-        BRA_TOY.setToyOn(true);
-        attachedToys.push(BRA_TOY);
-    }
-
-    if (accessories.indexOf(2) !== -1) {
-        sendMessageBasedOnSender('This garter belt', 0);
-        showImage('Images/Spicy/Toys/Lingerie/GarterBelt/*.jpg', 5);
-        GARTER_BELT_TOY.setToyOn(true);
-        attachedToys.push(GARTER_BELT_TOY);
-    }
-
-    if (accessories.indexOf(3) !== -1) {
-        sendMessageBasedOnSender('These stockings', 0);
-        showImage('Images/Spicy/Toys/Lingerie/Stockings/*.jpg', 5);
-        STOCKING_TOY.setToyOn(true);
-        attachedToys.push(STOCKING_TOY);
+    for(let x = 0; x < outfit.size(); x++) {
+        sendMessageBasedOnSender(outfit.get(x));
     }
 
     sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
     //Might take long to dress up
     waitForDone(10000000);
 
-    return attachedToys;
+    return true;
 }

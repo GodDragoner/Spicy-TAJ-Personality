@@ -49,12 +49,12 @@ function chooseChore() {
 
 function getTimeForChores() {
     let weeklyTimeSpend = getVar(VARIABLE.WEEKLY_CHORES_TIME, 0);
-    let todo = 0;
+    let todo;
 
-    if(isFullTime()) {
+    if (isFullTime()) {
         todo = getVar(VARIABLE.MIN_WEEKLY_CHORE_TIME, 0) - weeklyTimeSpend;
     } else {
-        todo = 60*3 - weeklyTimeSpend;
+        todo = 60 * 3 - weeklyTimeSpend;
     }
 
     //Min 30 minutes of chores and max 60 at this point
@@ -63,21 +63,30 @@ function getTimeForChores() {
     //Now combine with mood
     let mood = getMood();
 
-    todo *= (1 + mood/5*(getStrictnessForCharacter() + 1));
+    todo *= (1 + mood / 5 * (getStrictnessForCharacter() + 1));
 
     sendDebugMessage('Decided for ' + todo + ' minutes of chores');
 
     return Math.min(200, todo);
 }
 
-function accountTimeSpendOnChore(minutes, skipGold = false) {
-    //Min 15 minutes
-    let minute = Math.max(15, minutes);
+function accountTimeSpendOnChore(skipGold = false) {
+    const minM = 15;
 
-    for(let x = 0; x < Math.floor(minute/15); x++) {
+    const minutes = getVar(VARIABLE.TEMP_CHORES_TIME, 0);
+
+    //At least 15 minutes
+    if(minutes < minM) {
+        return;
+    }
+
+    //Reset
+    setTempVar(VARIABLE.TEMP_CHORES_TIME, 0);
+
+    for (let x = 0; x < Math.floor(minutes / minM); x++) {
         changeMeritLow();
 
-        if(!skipGold) {
+        if (!skipGold) {
             rewardGoldLow();
         }
     }
@@ -238,7 +247,7 @@ function runChoreIntroduction() {
                 setVar(VARIABLE.KINKY_CHORE_CHANCE, frequency);
                 break;
             }
-        } else if(answer.isLike('you')) {
+        } else if (answer.isLike('you')) {
             //Assistant choose
             setVar(VARIABLE.KINKY_CHORE_CHANCE, 11);
             sendVirtualAssistantMessage('This is gonna be much fun for me %Grin%');
@@ -263,417 +272,404 @@ function sendKinkyChoreInstructions(choreType) {
     //Track all attached toys to remove them later on again
     let attachedToys = [];
 
-    let kinkyChance = getVar(VARIABLE.KINKY_CHORE_CHANCE);
 
-    //Let the dom choose mode
-    if(kinkyChance == 11) {
-        kinkyChance = randomInteger(6, 10);
-    }
+    sendMessageBasedOnSender(random('Okay...', 'Okay!', 'Hmm...', 'Hehe', '%Grin%'));
 
-    if (isChance((kinkyChance - 1)*10)) {
-        sendMessageBasedOnSender(random('Okay...', 'Okay!', 'Hmm...', 'Hehe', '%Grin%'));
+    let tasks = 0;
+    while (tasks < 1) {
+        let id = randomInteger(0, 15);
 
-        let tasks = 0;
-        while (tasks < 1) {
-            let id = randomInteger(0, 15);
+        //No switch because switch doesn't support variables inside switch cases
+        if (id === 0) {
+            sendMessageBasedOnSender('I want you to tie your hands and your feet');
+            sendMessageBasedOnSender('Not completely though...');
+            sendMessageBasedOnSender('Make it so that there is ' + random(10, 15) + ' cm string left giving you a little mobility %Lol%');
+            sendMessageBasedOnSender('I am generous Assistant... %Grin%');
+            sendMessageBasedOnSender('Go ahead and tie yourself up %SlaveName%', 20);
+            sendMessageBasedOnSender('Are you done tying yourself?');
+            waitForDone();
+            sendMessageBasedOnSender('%Good%');
 
-            //No switch because switch doesn't support variables inside switch cases
-            if (id === 0) {
-                sendMessageBasedOnSender('I want you to tie your hands and your feet');
-                sendMessageBasedOnSender('Not completely though...');
-                sendMessageBasedOnSender('Make it so that there is ' + random(10, 15) + ' cm string left giving you a little mobility %Lol%');
-                sendMessageBasedOnSender('I am generous Assistant... %Grin%');
-                sendMessageBasedOnSender('Go ahead and tie yourself up %SlaveName%', 20);
-                sendMessageBasedOnSender('Are you done tying yourself?');
+            sendMessageBasedOnSender('I\'ve added a little extra time for you to clean due to your predicament %Grin%');
+            tempChoreTimeMultiplier += 0.2;
+            tasks++;
+        } else if (id === 1) {
+            let amount = randomInteger(1, 2) * 2;
+            let thighOrBalls = randomInteger(0, 1);
+
+            if (CLOTHESPINS_TOY.hasToy() && CLOTHESPINS_TOY.isPlayAllowed() && getPainLimit() == LIMIT_ASKED_YES && CLOTHESPINS_TOY.fetchToy(amount)) {
+                if (thighOrBalls === 0) {
+                    sendMessageBasedOnSender('I want you to put ' + amount / 2 + pluralize('peg', amount / 2) + ' on each inner thigh');
+                    sendMessageBasedOnSender('I want them pointing inward');
+                    sendMessageBasedOnSender('In a manner that they force you to walk with your legs spread');
+                    sendMessageBasedOnSender('And so they might hit each other each time you take a step...');
+                    sendMessageBasedOnSender('Step carefully %Lol%');
+                } else {
+                    sendMessageBasedOnSender('I want you to put ' + amount / 2 + pluralize('peg', amount / 2) + ' on each nipple');
+                }
+
+                sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
+
                 waitForDone();
+
                 sendMessageBasedOnSender('%Good%');
 
-                sendMessageBasedOnSender('I\'ve added a little extra time for you to clean due to your predicament %Grin%');
-                tempChoreTimeMultiplier += 0.2;
-                tasks++;
-            } else if (id === 1) {
-                let amount = randomInteger(1, 2) * 2;
-                let thighOrBalls = randomInteger(0, 1);
-
-                if (CLOTHESPINS_TOY.hasToy() && CLOTHESPINS_TOY.isPlayAllowed() && getPainLimit() == LIMIT_ASKED_YES && CLOTHESPINS_TOY.fetchToy(amount)) {
-                    if (thighOrBalls === 0) {
-                        sendMessageBasedOnSender('I want you to put ' + amount / 2 + pluralize('peg', amount / 2) + ' on each inner thigh');
-                        sendMessageBasedOnSender('I want them pointing inward');
-                        sendMessageBasedOnSender('In a manner that they force you to walk with your legs spread');
-                        sendMessageBasedOnSender('And so they might hit each other each time you take a step...');
-                        sendMessageBasedOnSender('Step carefully %Lol%');
-                    } else {
-                        sendMessageBasedOnSender('I want you to put ' + amount / 2 + pluralize('peg', amount / 2) + ' on each nipple');
-                    }
-
-                    sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
-
-                    waitForDone();
-
-                    sendMessageBasedOnSender('%Good%');
-
-                    if (thighOrBalls === 0) {
-                        sendMessageBasedOnSender('I\'ve added a little extra time for you to clean due to your predicament %Grin%');
-                        tempChoreTimeMultiplier += 0.2;
-                    } else {
-                        sendMessageBasedOnSender('I\'ve removed a little time from the clock');
-                        sendMessageBasedOnSender('I expect that you might clean a little faster due to your predicament %Grin%');
-                        sendMessageBasedOnSender('Just a few minutes');
-                        sendMessageBasedOnSender('No more than 5 %Lol%');
-                        tempChoreTimeMultiplier -= 0.1;
-                    }
-
-                    sendMessageBasedOnSender('Remember to remove them after you\'re done cleaning %Grin%');
-
-                    tasks++;
-                }
-            } else if (id === 2) {
-                if (PARACHUTE_TOY.hasToy() && PARACHUTE_TOY.isPlayAllowed()) {
-                    if (PARACHUTE_TOY.fetchToy()) {
-                        PARACHUTE_TOY.setToyOn(true);
-                        sendMessageBasedOnSender('I want you to attach your parachute on to %MyYour% %Balls%');
-
-                        sendMessageBasedOnSender('Add some weight to it. At least ' + getWeightForParachute()/2 + 'kg %Grin%');
-
-                        sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
-                        waitForDone(1000);
-                        sendMessageBasedOnSender('%Good%');
-
-                        sendMessageBasedOnSender('Remember to remove it after you\'re done cleaning %Grin%');
-
-                        sendMessageBasedOnSender('I\'ve added a little extra time for you to clean due to your predicament %Grin%');
-                        tempChoreTimeMultiplier += 0.2;
-                        tasks++;
-
-                        attachedToys.push(PARACHUTE_TOY);
-                    }
-                }
-            } else if (id === 3) {
-                if (COLLAR_TOY.hasToy() && COLLAR_TOY.isPlayAllowed() && COLLAR_TOY.fetchToy()) {
-
-                    sendMessageBasedOnSender('If you have it I want you to handcuff yourself, if not be "creative"...');
-
-                    if(!COLLAR_TOY.isToyOn()) {
-                        COLLAR_TOY.setToyOn(true);
-                        attachedToys.push(COLLAR_TOY);
-                        sendMessageBasedOnSender('Then I want you to put on your collar');
-                    }
-
-                    sendMessageBasedOnSender('Tie a rope from the handcuffs to your collar');
-                    sendMessageBasedOnSender('It shouldn\'t be more than 30-40 cm long');
-
-                    sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
-                    waitForDone(1000);
-                    sendMessageBasedOnSender('%Good%');
-
-
-                    sendMessageBasedOnSender('Remember to remove it after you\'re done cleaning %Grin%');
-
+                if (thighOrBalls === 0) {
                     sendMessageBasedOnSender('I\'ve added a little extra time for you to clean due to your predicament %Grin%');
                     tempChoreTimeMultiplier += 0.2;
-                    tasks++;
-                }
-            } else if (id === 4) {
-                if (CLOTHESPINS_TOY.hasToy() && CLOTHESPINS_TOY.isPlayAllowed() && getPainLimit() == LIMIT_ASKED_YES && CLOTHESPINS_TOY.fetchToy(2)) {
-                    sendMessageBasedOnSender('If you have it I want you to handcuff yourself, if not be "creative"...');
-                    sendMessageBasedOnSender('I want you to put ' + 2 + pluralize('peg', 2) + ' on your balls');
-                    sendMessageBasedOnSender('Tie a rope from the handcuffs to the pegs');
-                    sendMessageBasedOnSender('It shouldn\'t be more than 30-40 cm long %Grin%');
-
-                    sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
-                    waitForDone(1000);
-                    sendMessageBasedOnSender('%Good%');
-
-                    sendMessageBasedOnSender('Remember to remove it after you\'re done cleaning %Grin%');
-
-                    sendMessageBasedOnSender('I\'ve added a little extra time for you to clean due to your predicament %Grin%');
-                    tempChoreTimeMultiplier += 0.2;
-                    tasks++;
-                }
-            } else if (id === 5) {
-                if (BUTTPLUG_TOY.isPlayAllowed()) {
-                    let possibilities = [];
-
-                    if(hasButtplugWithBaseStyle(BUTTPLUG_BASE_STYLE.PIG_TAIL)) {
-                        possibilities.push(getButtplugWithBaseStyle(BUTTPLUG_BASE_STYLE.PIG_TAIL));
-                    } else if(hasButtplugWithBaseStyle(BUTTPLUG_BASE_STYLE.FLUFFY_TAIL)) {
-                        possibilities.push(getButtplugWithBaseStyle(BUTTPLUG_BASE_STYLE.FLUFFY_TAIL));
-                    }
-
-                    if(possibilities.length !== 0) {
-                        let buttplug = random(possibilities);
-
-                        if(buttplug.baseStyle === BUTTPLUG_BASE_STYLE.PIG_TAIL) {
-                            sendMessageBasedOnSender('Let\'s turn you into a cute little pig %SlaveName%');
-                        } else {
-                            sendMessageBasedOnSender('Let\'s turn you into a cute little animal %SlaveName%');
-                        }
-
-
-                        if(buttplug.fetchButtplug()) {
-                            attachedToys.push(BUTTPLUG_TOY);
-                            sendMessageBasedOnSender('Now put it in and tell me when you are done');
-                            waitForDone();
-
-                            if(hasAnyGag()) {
-                                if (buttplug.baseStyle === BUTTPLUG_BASE_STYLE.PIG_TAIL) {
-                                    sendMessageBasedOnSender('Pigs don\'t talk do they?');
-                                    selectAndPutInGag();
-                                } else {
-                                    sendMessageBasedOnSender('Pets don\'t talk do they?');
-                                    selectAndPutInGag();
-                                }
-
-                                attachedToys.push(currentGagType);
-                            }
-
-                            if(NOSE_HOOK.hasToy() && NOSE_HOOK.isPlayAllowed() && NOSE_HOOK.fetchToy()) {
-                                sendMessageBasedOnSender('Put on the nose hook and tell me when you are done');
-                                waitForDone();
-                                attachedToys.push(NOSE_HOOK);
-                            }
-
-                            if(COLLAR_TOY.hasToy() && COLLAR_TOY.isPlayAllowed() && putOnCollar()) {
-                                attachedToys.push(COLLAR_TOY);
-                            }
-
-                            if(buttplug.baseStyle === BUTTPLUG_BASE_STYLE.PIG_TAIL) {
-                                sendMessageBasedOnSender('Now you are a proper pig %SlaveName%');
-                            } else {
-                                sendMessageBasedOnSender('Now that\'s a proper pet %Grin%');
-                            }
-
-                            if (choreType === ROOM_CHORE_MOP) {
-                                sendMessageBasedOnSender('While cleaning the floor today I want you to stay on all fours');
-                                sendMessageBasedOnSender('You are ONLY allowed to stand up if you need to reach something high...');
-                            } else {
-                                sendMessageBasedOnSender('Whenever possible you are to stay down on all fours during your chore');
-                            }
-
-                            sendMessageBasedOnSender('I\'ve added extra time since this must slow you down...');
-
-                            tempChoreTimeMultiplier += 0.5;
-
-                            tasks++;
-                        }
-                    }
-                }
-            } else if (id === 6) {
-                if (PROSTATE_VIBRATOR_TOY.hasToy() && PROSTATE_VIBRATOR_TOY.isPlayAllowed()) {
-                    if(PROSTATE_VIBRATOR_TOY.fetchToy()) {
-                        sendMessageBasedOnSender('Now lube it up and put it in');
-                        sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
-                        waitForDone(1000);
-                        sendMessageBasedOnSender('%Good%');
-
-                        sendMessageBasedOnSender('Put it on a setting of your choice that\'s gonna tease you a lot %Grin%');
-                        sendMessageBasedOnSender('I want you naked while doing the chore so you can drip precum all over the floor');
-                        sendMessageBasedOnSender('Don\'t you dare cum!');
-                        sendMessageBasedOnSender('If you get close to cumming stop and continue once you are ready');
-
-                        attachedToys.push(PROSTATE_VIBRATOR_TOY);
-                        tasks++;
-                    }
-                }
-            } else if (id === 7) {
-                if (hasAnyGag() && !isGaged() && isGagPlay() && selectAndPutInGag()) {
-                    tasks++;
-
-                    attachedToys.push(currentGagType);
-
-                    sendMessageBasedOnSender('Remember to remove it after you\'re done cleaning %Grin%');
-                }
-            } else if (id === 8) {
-                if (hasButtplugToy() && BUTTPLUG_TOY.isPlayAllowed() && putInButtplug()) {
-                    tasks++;
-
-                    attachedToys.push(BUTTPLUG_TOY);
-
-                    sendMessageBasedOnSender('Remember to remove it after you\'re done cleaning %Grin%');
-                }
-            } else if (id === 9) {
-                let amount = randomInteger(4, 8);
-
-                if (CLOTHESPINS_TOY.hasToy() && CLOTHESPINS_TOY.isPlayAllowed() && getPainLimit() == LIMIT_ASKED_YES && CLOTHESPINS_TOY.fetchToy(amount)) {
-                    sendMessageBasedOnSender('I want you to put ' + amount + ' on your balls');
-
-                    sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
-
-                    waitForDone();
-
-                    sendMessageBasedOnSender('%Good%');
-
-                    sendMessageBasedOnSender('Remember to remove them after you\'re done cleaning %Grin%');
-                    tasks++;
-
+                } else {
                     sendMessageBasedOnSender('I\'ve removed a little time from the clock');
                     sendMessageBasedOnSender('I expect that you might clean a little faster due to your predicament %Grin%');
                     sendMessageBasedOnSender('Just a few minutes');
                     sendMessageBasedOnSender('No more than 5 %Lol%');
                     tempChoreTimeMultiplier -= 0.1;
                 }
-            } else if (id === 10) {
-                if (choreType === ROOM_CHORE_MOP) {
-                    sendMessageBasedOnSender('While cleaning the floor today I want you to stay on all fours');
-                    sendMessageBasedOnSender('You are ONLY allowed to stand up if you need to reach something high...');
-                    sendMessageBasedOnSender('I\'ve added extra time since this must slow you down...');
-                    tempChoreTimeMultiplier += 0.5;
+
+                sendMessageBasedOnSender('Remember to remove them after you\'re done cleaning %Grin%');
+
+                tasks++;
+            }
+        } else if (id === 2) {
+            if (PARACHUTE_TOY.hasToy() && PARACHUTE_TOY.isPlayAllowed()) {
+                if (PARACHUTE_TOY.fetchToy()) {
+                    PARACHUTE_TOY.setToyOn(true);
+                    sendMessageBasedOnSender('I want you to attach your parachute on to %MyYour% %Balls%');
+
+                    sendMessageBasedOnSender('Add some weight to it. At least ' + getWeightForParachute() / 2 + 'kg %Grin%');
+
+                    sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
+                    waitForDone(1000);
+                    sendMessageBasedOnSender('%Good%');
+
+                    sendMessageBasedOnSender('Remember to remove it after you\'re done cleaning %Grin%');
+
+                    sendMessageBasedOnSender('I\'ve added a little extra time for you to clean due to your predicament %Grin%');
+                    tempChoreTimeMultiplier += 0.2;
                     tasks++;
+
+                    attachedToys.push(PARACHUTE_TOY);
                 }
-            } else if (id === 11) {
-                let taskCreated = false;
-                if(HIGH_HEEL_TOY.hasToy()) {
-                    let highHeel = HIGH_HEEL_TOY.getRandom();
-                    if(highHeel.fetchToyInstance()) {
-                        let lock = false;
-                        if(HIGH_HEEL_LOCK.hasToy()) {
-                            if(HIGH_HEEL_LOCK.fetchToy()) {
-                                lock = true;
-                            }
-                        }
+            }
+        } else if (id === 3) {
+            if (COLLAR_TOY.hasToy() && COLLAR_TOY.isPlayAllowed() && COLLAR_TOY.fetchToy()) {
 
-                        if(lock) {
-                            sendMessageBasedOnSender('Now put on the high heels and attach the lock to them');
-                        } else {
-                            sendMessageBasedOnSender('Now put on the high heels and tell me when you are ready');
-                        }
+                sendMessageBasedOnSender('If you have it I want you to handcuff yourself, if not be "creative"...');
 
-                        HIGH_HEEL_LOCK.setToyOn(true);
-                        HIGH_HEEL_TOY.setToyOn(true);
-                        sendMessageBasedOnSender('Tell me when you are done');
+                if (!COLLAR_TOY.isToyOn()) {
+                    COLLAR_TOY.setToyOn(true);
+                    attachedToys.push(COLLAR_TOY);
+                    sendMessageBasedOnSender('Then I want you to put on your collar');
+                }
+
+                sendMessageBasedOnSender('Tie a rope from the handcuffs to your collar');
+                sendMessageBasedOnSender('It shouldn\'t be more than 30-40 cm long');
+
+                sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
+                waitForDone(1000);
+                sendMessageBasedOnSender('%Good%');
+
+
+                sendMessageBasedOnSender('Remember to remove it after you\'re done cleaning %Grin%');
+
+                sendMessageBasedOnSender('I\'ve added a little extra time for you to clean due to your predicament %Grin%');
+                tempChoreTimeMultiplier += 0.2;
+                tasks++;
+            }
+        } else if (id === 4) {
+            if (CLOTHESPINS_TOY.hasToy() && CLOTHESPINS_TOY.isPlayAllowed() && getPainLimit() == LIMIT_ASKED_YES && CLOTHESPINS_TOY.fetchToy(2)) {
+                sendMessageBasedOnSender('If you have it I want you to handcuff yourself, if not be "creative"...');
+                sendMessageBasedOnSender('I want you to put ' + 2 + pluralize('peg', 2) + ' on your balls');
+                sendMessageBasedOnSender('Tie a rope from the handcuffs to the pegs');
+                sendMessageBasedOnSender('It shouldn\'t be more than 30-40 cm long %Grin%');
+
+                sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
+                waitForDone(1000);
+                sendMessageBasedOnSender('%Good%');
+
+                sendMessageBasedOnSender('Remember to remove it after you\'re done cleaning %Grin%');
+
+                sendMessageBasedOnSender('I\'ve added a little extra time for you to clean due to your predicament %Grin%');
+                tempChoreTimeMultiplier += 0.2;
+                tasks++;
+            }
+        } else if (id === 5) {
+            if (BUTTPLUG_TOY.isPlayAllowed()) {
+                let possibilities = [];
+
+                if (hasButtplugWithBaseStyle(BUTTPLUG_BASE_STYLE.PIG_TAIL)) {
+                    possibilities.push(getButtplugWithBaseStyle(BUTTPLUG_BASE_STYLE.PIG_TAIL));
+                } else if (hasButtplugWithBaseStyle(BUTTPLUG_BASE_STYLE.FLUFFY_TAIL)) {
+                    possibilities.push(getButtplugWithBaseStyle(BUTTPLUG_BASE_STYLE.FLUFFY_TAIL));
+                }
+
+                if (possibilities.length !== 0) {
+                    if(isPlugged()) {
+                        sendMessageBasedOnSender('Go ahead and remove the buttplug from your rump');
+                    }
+
+                    let buttplug = random(possibilities);
+
+                    if (buttplug.baseStyle === BUTTPLUG_BASE_STYLE.PIG_TAIL) {
+                        sendMessageBasedOnSender('Let\'s turn you into a cute little pig %SlaveName%');
+                    } else {
+                        sendMessageBasedOnSender('Let\'s turn you into a cute little animal %SlaveName%');
+                    }
+
+
+                    if (buttplug.fetchButtplug()) {
+                        attachedToys.push(BUTTPLUG_TOY);
+                        sendMessageBasedOnSender('Now put it in and tell me when you are done');
                         waitForDone();
 
-                        attachedToys.push(HIGH_HEEL_TOY);
-                        attachedToys.push(HIGH_HEEL_LOCK);
+                        if (hasAnyGag()) {
+                            if (buttplug.baseStyle === BUTTPLUG_BASE_STYLE.PIG_TAIL) {
+                                sendMessageBasedOnSender('Pigs don\'t talk do they?');
+                                selectAndPutInGag();
+                            } else {
+                                sendMessageBasedOnSender('Pets don\'t talk do they?');
+                                selectAndPutInGag();
+                            }
 
-                        taskCreated = true;
+                            attachedToys.push(currentGagType);
+                        }
+
+                        if (NOSE_HOOK.hasToy() && NOSE_HOOK.isPlayAllowed() && NOSE_HOOK.fetchToy()) {
+                            sendMessageBasedOnSender('Put on the nose hook and tell me when you are done');
+                            waitForDone();
+                            attachedToys.push(NOSE_HOOK);
+                        }
+
+                        if (COLLAR_TOY.hasToy() && COLLAR_TOY.isPlayAllowed() && putOnCollar()) {
+                            attachedToys.push(COLLAR_TOY);
+                        }
+
+                        if (buttplug.baseStyle === BUTTPLUG_BASE_STYLE.PIG_TAIL) {
+                            sendMessageBasedOnSender('Now you are a proper pig %SlaveName%');
+                        } else {
+                            sendMessageBasedOnSender('Now that\'s a proper pet %Grin%');
+                        }
+
+                        if (choreType === ROOM_CHORE_MOP) {
+                            sendMessageBasedOnSender('While cleaning the floor today I want you to stay on all fours');
+                            sendMessageBasedOnSender('You are ONLY allowed to stand up if you need to reach something high...');
+                        } else {
+                            sendMessageBasedOnSender('Whenever possible you are to stay down on all fours during your chore');
+                        }
+
+                        sendMessageBasedOnSender('I\'ve added extra time since this must slow you down...');
+
+                        tempChoreTimeMultiplier += 0.5;
+
                         tasks++;
                     }
                 }
+            }
+        } else if (id === 6) {
+            if (PROSTATE_VIBRATOR_TOY.hasToy() && PROSTATE_VIBRATOR_TOY.isPlayAllowed()) {
+                if (PROSTATE_VIBRATOR_TOY.fetchToy()) {
+                    sendMessageBasedOnSender('Now lube it up and put it in');
+                    sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
+                    waitForDone(1000);
+                    sendMessageBasedOnSender('%Good%');
 
-                if (hasSomeLingerie() && isLingeriePlayAllowed()) {
-                    sendMessageBasedOnSender('Let\'s dress you up a little');
+                    sendMessageBasedOnSender('Put it on a setting of your choice that\'s gonna tease you a lot %Grin%');
+                    sendMessageBasedOnSender('I want you naked while doing the chore so you can drip precum all over the floor');
+                    sendMessageBasedOnSender('Don\'t you dare cum!');
+                    sendMessageBasedOnSender('If you get close to cumming stop and continue once you are ready');
 
-                    let lingerieAttached = putOnLingerie();
-
-                    if(lingerieAttached.length > 0) {
-                        sendMessageBasedOnSender('%Good%');
-
-                        for(let x = 0; x < lingerieAttached.length; x++) {
-                            attachedToys.push(lingerieAttached[x]);
-                        }
-
-                        sendMessageBasedOnSender('You can undress once you are done %Grin%');
-
-                        //High heels might have failed
-                        if(!taskCreated) {
-                            taskCreated = true;
-                            tasks++;
-                        }
-                    }
+                    attachedToys.push(PROSTATE_VIBRATOR_TOY);
+                    tasks++;
                 }
+            }
+        } else if (id === 7) {
+            if (hasAnyGag() && !isGaged() && isGagPlay() && selectAndPutInGag()) {
+                tasks++;
 
-                if(taskCreated) {
+                attachedToys.push(currentGagType);
+
+                sendMessageBasedOnSender('Remember to remove it after you\'re done cleaning %Grin%');
+            }
+        } else if (id === 8) {
+            if (hasButtplugToy() && BUTTPLUG_TOY.isPlayAllowed() && putInButtplug()) {
+                tasks++;
+
+                attachedToys.push(BUTTPLUG_TOY);
+
+                sendMessageBasedOnSender('Remember to remove it after you\'re done cleaning %Grin%');
+            }
+        } else if (id === 9) {
+            let amount = randomInteger(4, 8);
+
+            if (CLOTHESPINS_TOY.hasToy() && CLOTHESPINS_TOY.isPlayAllowed() && getPainLimit() == LIMIT_ASKED_YES && CLOTHESPINS_TOY.fetchToy(amount)) {
+                sendMessageBasedOnSender('I want you to put ' + amount + ' on your balls');
+
+                sendMessageBasedOnSender('Tell me when you are done %SlaveName%');
+
+                waitForDone();
+
+                sendMessageBasedOnSender('%Good%');
+
+                sendMessageBasedOnSender('Remember to remove them after you\'re done cleaning %Grin%');
+                tasks++;
+
+                sendMessageBasedOnSender('I\'ve removed a little time from the clock');
+                sendMessageBasedOnSender('I expect that you might clean a little faster due to your predicament %Grin%');
+                sendMessageBasedOnSender('Just a few minutes');
+                sendMessageBasedOnSender('No more than 5 %Lol%');
+                tempChoreTimeMultiplier -= 0.1;
+            }
+        } else if (id === 10) {
+            if (choreType === ROOM_CHORE_MOP) {
+                sendMessageBasedOnSender('While cleaning the floor today I want you to stay on all fours');
+                sendMessageBasedOnSender('You are ONLY allowed to stand up if you need to reach something high...');
+                sendMessageBasedOnSender('I\'ve added extra time since this must slow you down...');
+                tempChoreTimeMultiplier += 0.5;
+                tasks++;
+            }
+        } else if (id === 11) {
+            // let taskCreated = false;
+            // if (HIGH_HEEL_TOY.hasToy()) {
+            //     let highHeel = HIGH_HEEL_TOY.getRandom();
+            //     if (highHeel.fetchToyInstance()) {
+            //         let lock = false;
+            //         if (HIGH_HEEL_LOCK.hasToy()) {
+            //             if (HIGH_HEEL_LOCK.fetchToy()) {
+            //                 lock = true;
+            //             }
+            //         }
+            //
+            //         if (lock) {
+            //             sendMessageBasedOnSender('Now put on the high heels and attach the lock to them');
+            //         } else {
+            //             sendMessageBasedOnSender('Now put on the high heels and tell me when you are ready');
+            //         }
+            //
+            //         HIGH_HEEL_LOCK.setToyOn(true);
+            //         HIGH_HEEL_TOY.setToyOn(true);
+            //         sendMessageBasedOnSender('Tell me when you are done');
+            //         waitForDone();
+            //
+            //         attachedToys.push(HIGH_HEEL_TOY);
+            //         attachedToys.push(HIGH_HEEL_LOCK);
+            //
+            //         taskCreated = true;
+            //         tasks++;
+            //     }
+            // }
+
+            //Only do this if the sub has no outfit on yet
+            if (hasSomeLingerie() && isLingeriePlayAllowed() && !hasOutfitOn()) {
+                sendMessageBasedOnSender('Let\'s dress you up a little');
+
+                let lingerieAttached = putOnLingerie();
+
+                if(lingerieAttached) {
+                    sendMessageBasedOnSender('%Good%');
+
+                    //TODO: Save what's attached right now in lingerie
+
+                    sendMessageBasedOnSender('You can undress once you are done with this task %Grin%');
+                    tasks++;
+
                     if (NIPPLE_CLAMPS.decideToyOn() && feelsLikePunishingSlave()) {
                         if (putNippleClampsOn()) {
                             attachedToys.push(NIPPLE_CLAMPS);
                         }
                     }
                 }
+            }
+        } else if (id === 12) {
+            if (COLLAR_TOY.hasToy() && COLLAR_TOY.isPlayAllowed() && COLLAR_TOY.fetchToy()) {
+                sendMessageBasedOnSender('This is gonna be a little complicated %Lol%');
+                sendMessageBasedOnSender('But it should prove fun to watch!');
 
-            } else if (id === 12) {
-                if (COLLAR_TOY.hasToy() && COLLAR_TOY.isPlayAllowed() && COLLAR_TOY.fetchToy()) {
-                    sendMessageBasedOnSender('This is gonna be a little complicated %Lol%');
-                    sendMessageBasedOnSender('But it should prove fun to watch!');
+                if (!COLLAR_TOY.isToyOn()) {
+                    COLLAR_TOY.setToyOn(true);
+                    attachedToys.push(COLLAR_TOY);
+                    sendMessageBasedOnSender('I want you to put on your collar');
+                } else {
+                    sendMessageBasedOnSender('I want you to attach a leash to your collar');
+                }
 
-                    if(!COLLAR_TOY.isToyOn()) {
-                        COLLAR_TOY.setToyOn(true);
-                        attachedToys.push(COLLAR_TOY);
-                        sendMessageBasedOnSender('I want you to put on your collar');
-                    } else {
-                        sendMessageBasedOnSender('I want you to attach a leash to your collar');
-                    }
+                sendMessageBasedOnSender('The leash shouldn\'t be any longer than 2m');
+                sendMessageBasedOnSender('During your cleaning today I want you to tie that leash to different objects');
+                sendMessageBasedOnSender('Could be a door handle, a table leg or something similar');
+                sendMessageBasedOnSender('I want you to carry a timer with you');
+                sendMessageBasedOnSender('You are only allowed to relocate the leash every 5\'th minute!');
 
-                    sendMessageBasedOnSender('The leash shouldn\'t be any longer than 2m');
-                    sendMessageBasedOnSender('During your cleaning today I want you to tie that leash to different objects');
-                    sendMessageBasedOnSender('Could be a door handle, a table leg or something similar');
-                    sendMessageBasedOnSender('I want you to carry a timer with you');
-                    sendMessageBasedOnSender('You are only allowed to relocate the leash every 5\'th minute!');
-
-                    if (sendYesOrNoQuestion('Understood?')) {
-                        sendMessageBasedOnSender('%Good%');
-                    } else {
-                        sendMessageBasedOnSender('Then read what I said again...', 20);
-                    }
-
-                    sendMessageBasedOnSender('Tell me when you are ready %SlaveName%');
-                    waitForDone(1000);
+                if (sendYesOrNoQuestion('Understood?')) {
                     sendMessageBasedOnSender('%Good%');
-
-                    sendMessageBasedOnSender('I\'ve added extra time since this must slow you down...');
-                    tempChoreTimeMultiplier += 0.3;
-
-                    sendMessageBasedOnSender('Remember to remove the collar after you\'re done cleaning %Grin%');
-                    tasks++;
-                }
-            } else if (id === 13) {
-                sendMessageBasedOnSender('While cleaning today I want you naked');
-                sendMessageBasedOnSender('If your %Home% isn\'t warm this should help you work faster %Grin%');
-
-                if (!isInChastity() && isChastityPlay()) {
-                    sendMessageBasedOnSender('Also I want you to wear your chastity cage');
-                    setCurrentSender(SENDER_ASSISTANT);
-                    lockChastityCage();
-                    setCurrentSender(SENDER_TAJ);
-                    sendMessageBasedOnSender('Remember I am generous and you can remove it if you are done');
+                } else {
+                    sendMessageBasedOnSender('Then read what I said again...', 20);
                 }
 
+                sendMessageBasedOnSender('Tell me when you are ready %SlaveName%');
+                waitForDone(1000);
+                sendMessageBasedOnSender('%Good%');
+
+                sendMessageBasedOnSender('I\'ve added extra time since this must slow you down...');
+                tempChoreTimeMultiplier += 0.3;
+
+                sendMessageBasedOnSender('Remember to remove the collar after you\'re done cleaning %Grin%');
                 tasks++;
-            } else if (id === 14) {
-                if (COLLAR_TOY.hasToy() && COLLAR_TOY.isPlayAllowed() && COLLAR_TOY.fetchToy()) {
-                    sendMessageBasedOnSender('This is gonna get a little complicated %Lol%');
-                    sendMessageBasedOnSender('But it should prove fun to watch!');
+            }
+        } else if (id === 13) {
+            sendMessageBasedOnSender('While cleaning today I want you naked');
+            sendMessageBasedOnSender('If your %Home% isn\'t warm this should help you work faster %Grin%');
 
-                    if(!COLLAR_TOY.isToyOn()) {
-                        COLLAR_TOY.setToyOn(true);
-                        attachedToys.push(COLLAR_TOY);
-                        sendMessageBasedOnSender('I want you to put on your collar');
-                    } else {
-                        sendMessageBasedOnSender('I want you to attach a leash to your collar');
-                    }
+            if (!isInChastity() && isChastityPlay()) {
+                sendMessageBasedOnSender('Also I want you to wear your chastity cage');
+                setCurrentSender(SENDER_ASSISTANT);
+                lockChastityCage();
+                setCurrentSender(SENDER_TAJ);
+                sendMessageBasedOnSender('Remember I am generous and you can remove it if you are done');
+            }
 
-                    sendMessageBasedOnSender('During the cleaning today I want you to tie that leash to a cup filled with sugar');
-                    sendMessageBasedOnSender('You aren\'t allowed to move the cup around with your hands');
-                    sendMessageBasedOnSender('Use your lower arms or something else %Grin%');
-                    sendMessageBasedOnSender('Move carefully %Grin%');
+            tasks++;
+        } else if (id === 14) {
+            if (COLLAR_TOY.hasToy() && COLLAR_TOY.isPlayAllowed() && COLLAR_TOY.fetchToy()) {
+                sendMessageBasedOnSender('This is gonna get a little complicated %Lol%');
+                sendMessageBasedOnSender('But it should prove fun to watch!');
 
-                    sendMessageBasedOnSender('Tell me when you are ready to go %SlaveName%');
-                    waitForDone(1000);
-
-                    sendMessageBasedOnSender('I\'ve added extra time since this must slow you down...');
-                    tempChoreTimeMultiplier += 0.3;
-
-                    if(!RULE_ALWAYS_WEAR_COLLAR.isActive()) {
-                        sendMessageBasedOnSender('Remember to the remove the collar after you\'re done cleaning %Grin%');
-                    }
-
-
-                    tasks++;
+                if (!COLLAR_TOY.isToyOn()) {
+                    COLLAR_TOY.setToyOn(true);
+                    attachedToys.push(COLLAR_TOY);
+                    sendMessageBasedOnSender('I want you to put on your collar');
+                } else {
+                    sendMessageBasedOnSender('I want you to attach a leash to your collar');
                 }
-            } else if (id === 15) {
-                sendMessageBasedOnSender('Before cleaning today I want you to drink 1L of water');
-                sendMessageBasedOnSender('You aren\'t allowed to pee starting now before you\'re done cleaning');
 
-                sendMessageBasedOnSender('Tell me when you are done drinking %SlaveName%');
+                sendMessageBasedOnSender('During the cleaning today I want you to tie that leash to a cup filled with sugar');
+                sendMessageBasedOnSender('You aren\'t allowed to move the cup around with your hands');
+                sendMessageBasedOnSender('Use your lower arms or something else %Grin%');
+                sendMessageBasedOnSender('Move carefully %Grin%');
+
+                sendMessageBasedOnSender('Tell me when you are ready to go %SlaveName%');
                 waitForDone(1000);
 
-                sendMessageBasedOnSender('%Good%');
+                sendMessageBasedOnSender('I\'ve added extra time since this must slow you down...');
+                tempChoreTimeMultiplier += 0.3;
+
+                if (!RULE_ALWAYS_WEAR_COLLAR.isActive()) {
+                    sendMessageBasedOnSender('Remember to the remove the collar after you\'re done cleaning %Grin%');
+                }
+
 
                 tasks++;
             }
+        } else if (id === 15) {
+            sendMessageBasedOnSender('Before cleaning today I want you to drink 1L of water');
+            sendMessageBasedOnSender('You aren\'t allowed to pee starting now before you\'re done cleaning');
 
-            //TODO: Bell tasks (corner and computer)
+            sendMessageBasedOnSender('Tell me when you are done drinking %SlaveName%');
+            waitForDone(1000);
+
+            sendMessageBasedOnSender('%Good%');
+
+            tasks++;
         }
+
+        //TODO: Bell tasks (corner and computer)
     }
 
     return attachedToys;

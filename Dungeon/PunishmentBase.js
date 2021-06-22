@@ -44,7 +44,7 @@
         sendDungeonMessage("It seems you didn't complete your last punishment...", 0);
         sendDungeonMessage("Was this due to a bug or because you couldn't handle it? ", 0, false);
 
-        let answer = createInput(10, "Bug", "Couldn't handle it");
+        let answer = createInput(15, "Bug", "Couldn't handle it");
         while (true) {
             if (answer.isTimeout()) {
                 answer.clearOptions();
@@ -518,6 +518,10 @@ function handleFailedPunishment() {
                 sendNurseMessage(random("Aww sugar", "Aww Honey", "Aww dear"));
                 convNumber = 3;
                 break;
+            }  else if (answer.containsIgnoreCase("too many mistakes", 'bad day', 'slacking', 'less effort', 'bad result')) {
+                sendNurseMessage(random("Aww sugar", "Aww Honey", "Aww dear"));
+                convNumber = 4;
+                break;
             } else if (answer.containsIgnoreCase("boring", "Bored")) {
                 sendNurseMessage(random("It was boring?...", "Boring huh?", "Boring you say?"));
                 convNumber = 1;
@@ -579,8 +583,8 @@ function handleFailedPunishment() {
         case 3 :
             sendNurseMessage(random("Sorry to hear you couldn't handle it", "I'm sorry to hear it was too much for you"));
             sendNurseMessage(random("Perhaps you asked for a little too much", "Maybe you asked for too much?"));
-            sendNurseMessage(random("If not then remember...", "But if not remember", "Well if not remember..."));
-            sendNurseMessage("That settings let you change a lot of different things *smiles*");
+            sendNurseMessage(random("If not, then remember...", "But if not, remember", "Well if not, remember..."));
+            sendNurseMessage("The settings let you change a lot of different things *smiles*");
 
             if (getVar(VARIABLE.SUB_PAIN_TOLERANCE) > 1) {
                 incrementVar(VARIABLE.SUB_PAIN_TOLERANCE, -1);
@@ -588,6 +592,14 @@ function handleFailedPunishment() {
 
             sendNurseMessage("I just lowered your values a little");
             sendNurseMessage("That might make it a little easier next time sweety");
+            break;
+        case 4:
+            //Failed
+            sendNurseMessage(random("Sorry to hear you weren\'t able to keep up with what was asked from you", "I'm sorry to hear it was too challenging for you"));
+            sendNurseMessage('Everyone has a bad day sometimes');
+            sendNurseMessage(random("However you should always bring your best to the table", "However you should never be slacking"));
+            sendNurseMessage(random("Try better next time", "Just try to not disappoint your %DomHonorific% next time", "Try to stay at your all time high all the time"));
+            sendNurseMessage("If you are just failing since you had a bad day there is sadly nothing more I can do for you right now *sad*");
             break;
         case 9 :
             // bug

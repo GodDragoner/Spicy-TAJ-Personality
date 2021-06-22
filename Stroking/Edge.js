@@ -17,40 +17,83 @@ const EDGE_MODE = {
 let CURRENT_EDGE_MODE = EDGE_MODE.NORMAL;
 
 function startMultipleEdges(edges, breakInSeconds = 5) {
-    for(let x = 0; x < edges; x++) {
+    for (let x = 0; x < edges; x++) {
         startEdging(0);
         sleep(breakInSeconds);
     }
 }
 
 function startEdging(holdSeconds = 0, skipStop = false, endIn = EDGE_END_NORMAL) {
-    const answers = [
-        "Get to the %EdgeNoun%",
-        "Get to the %EdgeNoun% for me",
-        "I want you to get close to the edge",
-        "Edge for me",
-        "Edge now, %SlaveName%",
-        "Edge for me %SlaveName%",
-        "Get near to the edge, %SlaveName%",
-        "Get near to the edge, %SlaveName%",
-        "Now... Edge!",
-        "Now, edge hard for me. HARD!",
-        "Edge for me %SlaveName%. Now",
-        "Time to get on the edge! %EmoteHappy% Now",
-        "Edge that %Cock% for me, %SlaveName%.  Now",
-        "I want you on the edge, now",
-        "%Lol%, now edge!",
-        "Time for an edge %SlaveName%. Now",
-        "Get so close to the edge, you are afraid of cumming!",
-        "%SlaveName%. It's time to edge, and edge hard for me!",
-        "%SlaveName%. Give me an edge, I love to see you edge!",
-        "Get to the edge for me!",
-        "Get Your %Cock% on the brink of orgasm!",
-        "Gently and slowly bring yourself to the edge...",
-        "Edge! Now %SlaveName%!",
-    ];
+    let answers;
 
-    if(isInChastity()) {
+    //Edge again custom lines
+    if (isVar(VARIABLE.LAST_EDGE_END_DATE) && !getVar(VARIABLE.LAST_EDGE_END_DATE).addMinute(1).hasPassed()) {
+        answers = [
+            'Edge again',
+            'Bring yourself to the %EdgeNoun% again',
+            'I want you to edge for me again',
+            'I think you should edge for me again',
+            'Now back to the %EdgeNoun% for me',
+            'Now bring yourself back to the %EdgeNoun%',
+            'Now bring %MyYour% %Cock% back to the %EdgeNoun%',
+            'Now I want you back on the %EdgeNoun%',
+            'Bring %MyYour% %Cock% back to the %EdgeNoun% for me',
+            'I think %MyYour% %Cock% needs to be back on the %EdgeNoun% for me',
+            'Go ahead and get back to the %EdgeNoun%',
+            'Bring yourself back to the %EdgeNoun% for me',
+            'Edge again',
+            'Edge for me again',
+            "Get to the %EdgeNoun% again",
+            "Get to the %EdgeNoun% for me again",
+            "I want you to get close to the %EdgeNoun% again",
+            "Edge for me again",
+            "Edge again, %SlaveName%",
+            "Edge for me again %SlaveName%",
+            "Get near the %EdgeNoun% again, %SlaveName%",
+            "Now... Edge again!",
+            "Now, edge hard again for me. HARD!",
+            "Edge for me again %SlaveName%. Now",
+            "Time to get on the %EdgeNoun% again! %EmoteHappy% Now",
+            "Edge that %Cock% for me again, %SlaveName%.  Now",
+            "I want you on the %EdgeNoun% again, now",
+            "%Lol%, now edge again!",
+            "Time for another edge %SlaveName%. Now",
+            "%SlaveName%. It's time to edge again, and edge hard for me!",
+            "%SlaveName%. Give me another edge, I love to see you edge!",
+            "Get to the edge for me again!",
+            "Get Your %Cock% on the brink of orgasm again!",
+            "Gently and slowly bring yourself to the edge again...",
+            "Edge again! Now %SlaveName%!",
+        ]
+    } else {
+        answers = [
+            "Get to the %EdgeNoun%",
+            "Get to the %EdgeNoun% for me",
+            "I want you to get close to the edge",
+            "Edge for me",
+            "Edge now, %SlaveName%",
+            "Edge for me %SlaveName%",
+            "Get near the %EdgeNoun%, %SlaveName%",
+            "Now... Edge!",
+            "Now, edge hard for me. HARD!",
+            "Edge for me %SlaveName%. Now",
+            "Time to get on the edge! %EmoteHappy% Now",
+            "Edge that %Cock% for me, %SlaveName%.  Now",
+            "I want you on the edge, now",
+            "%Lol%, now edge!",
+            "Time for an edge %SlaveName%. Now",
+            "Get so close to the edge, you are afraid of cumming!",
+            "%SlaveName%. It's time to edge, and edge hard for me!",
+            "%SlaveName%. Give me an edge, I love to see you edge!",
+            "Get to the edge for me!",
+            "Get Your %Cock% on the brink of orgasm!",
+            "Gently and slowly bring yourself to the edge...",
+            "Edge! Now %SlaveName%!",
+        ];
+
+    }
+
+    if (isInChastity()) {
         readyForVibratingCage();
     }
 
@@ -61,14 +104,14 @@ function startEdging(holdSeconds = 0, skipStop = false, endIn = EDGE_END_NORMAL)
     sendMessage(answers[randomInteger(0, answers.length - 1)], 0);
     setAudioBlocked(false);
 
-    if(isChance(33)) playSound("Audio/Spicy/Stroking/Edge/*.mp3");
+    if (isChance(33)) playSound("Audio/Spicy/Stroking/Edge/*.mp3");
 
     addEdge();
     setDate(VARIABLE.EDGE_STARTED_DATE);
     startEdge();
 
     //While in chastity we don't need stroking sounds
-    if(!isInChastity()) {
+    if (!isInChastity()) {
         startStroking(randomInteger(150, 200));
     }
 
@@ -78,13 +121,13 @@ function startEdging(holdSeconds = 0, skipStop = false, endIn = EDGE_END_NORMAL)
 
     sendDebugMessage('Sub send edge message');
 
-    if(holdSeconds !== undefined && holdSeconds !== 0) {
+    if (holdSeconds !== undefined && holdSeconds !== 0) {
         holdEdge(holdSeconds, CURRENT_EDGE_MODE === EDGE_MODE.SKIP_TAUNTS);
     }
 
     sendDebugMessage('Ending edge');
 
-    if(!skipStop) {
+    if (!skipStop) {
         sendDebugMessage('Stop edge message is not skipped');
 
         setAudioBlocked(true);
@@ -94,19 +137,19 @@ function startEdging(holdSeconds = 0, skipStop = false, endIn = EDGE_END_NORMAL)
 
     sendDebugMessage('Checking for edge orgasm');
 
-    if(endIn == EDGE_END_RUIN) {
+    if (endIn == EDGE_END_RUIN) {
         setAudioBlocked(true);
         sendMessage('%RuinForMe%', 0);
         setAudioBlocked(false);
         registerRuin();
-    } else if(endIn == EDGE_END_ORGASM) {
+    } else if (endIn == EDGE_END_ORGASM) {
         setAudioBlocked(true);
         sendMessage('%CumForMe%', 0);
         setAudioBlocked(false);
         registerOrgasm();
     }
 
-    if(isStroking()) {
+    if (isStroking()) {
         stopStroking();
     }
 
@@ -116,6 +159,7 @@ function startEdging(holdSeconds = 0, skipStop = false, endIn = EDGE_END_NORMAL)
 
     sendDebugMessage('Deleting Edge Variable');
 
+    setTempVar(VARIABLE.LAST_EDGE_END_DATE, setDate());
     delVar(VARIABLE.EDGE_STARTED_DATE);
 }
 
@@ -129,7 +173,7 @@ function holdEdge(holdSeconds, disableTaunts = false, video = null) {
     //Show the initial message to tell the sub to stay on the edge
     setTempVar('initialEdgeHold', true);
 
-    if(disableTaunts) {
+    if (disableTaunts) {
         sendMessage(random('Stay right there', 'Hold that edge', 'Stay on the edge', 'Hold the edge') + ' %SlaveName% %Wicked%');
     } else {
         setAudioBlocked(true);
@@ -137,18 +181,18 @@ function holdEdge(holdSeconds, disableTaunts = false, video = null) {
         setAudioBlocked(false);
     }
 
-    if(!disableTaunts) {
-        if(video !== null) {
+    if (!disableTaunts) {
+        if (video !== null) {
             video.play();
         }
 
         sendHoldEdgeTaunts(holdSeconds);
 
-        if(video !== null) {
+        if (video !== null) {
             stopVideo();
         }
     } else {
-        if(video !== null) {
+        if (video !== null) {
             video.play();
             watchVideoForDuration(holdSeconds);
         } else {
@@ -164,9 +208,9 @@ function sendEdgeTaunts() {
     //Just how long you want each iteration to take
     const millisecondsToWait = 500;
     //Start our loop and continue until iterationsToGo are equal or less than zero
-    while(iterationsToGo > 0) {
+    while (iterationsToGo > 0) {
         //Is the sub on the edge?
-        if(isOnEdge() || !isEdging() || !isVar(VARIABLE.EDGE_STARTED_DATE)) {
+        if (isOnEdge() || !isEdging() || !isVar(VARIABLE.EDGE_STARTED_DATE)) {
             return;
         }
 
@@ -175,7 +219,7 @@ function sendEdgeTaunts() {
         sleep(millisecondsToWait, "MILLISECONDS");
     }
 
-    if(CURRENT_EDGE_MODE !== EDGE_MODE.SKIP_TAUNTS) {
+    if (CURRENT_EDGE_MODE !== EDGE_MODE.SKIP_TAUNTS) {
         run("Stroking/Taunt/Edging/*.js");
     }
 
@@ -189,10 +233,10 @@ function sendHoldEdgeTaunts(seconds) {
     let iterationsToGo = randomInteger(8, 16);
 
     //Start our loop and continue until iterationsToGo are equal or less than zero
-    while(iterationsToGo > 0) {
+    while (iterationsToGo > 0) {
         seconds--;
 
-        if(seconds <= 0) {
+        if (seconds <= 0) {
             return;
         }
 
@@ -227,7 +271,7 @@ function getEdgeHoldSeconds(edgeHold = EDGE_HOLD_DOM) {
             break;
     }
 
-    return randomInteger((mood + 1)*(5 + strictness*4), (mood + 1)*(10 + strictness*4))
+    return randomInteger((mood + 1) * (5 + strictness * 4), (mood + 1) * (10 + strictness * 4))
 }
 
 function addEdge() {

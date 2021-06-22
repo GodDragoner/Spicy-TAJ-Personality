@@ -219,13 +219,17 @@ function getTodaysSlaveTask() {
 
     //Daily outfit
     if (SISSY_LIMIT.isAllowed()) {
-        if (isChance(25)) {
+        if (isChance(25) && hasSomeLingerie()) {
 
             let outfit = decideOutfit();
 
             if (outfit.size() > 0) {
                 lines.add('Today I want you to put on the following outfit while at home');
                 lines.addAll(outfit);
+
+                //Expiry of outfit at least 24 hours in the future
+                //Can be overwritten anyway
+                setVar(VARIABLE.CURRENT_OUTFIT_EXPIRY, setDate().addHour(24));
             }
         }
 

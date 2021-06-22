@@ -150,23 +150,24 @@ function changeMerit(level, negative) {
     }
     const mood = getMood();
 
-    if (mood == PLEASED_MOOD) {
+    //The worse the mood the more impact positive and the less impact negative has
+    if (mood == VERY_ANNOYED_MOOD) {
         index += 1;
-    } else if (mood == NEUTRAL_MOOD) {
-        index += 2;
     } else if (mood == ANNOYED_MOOD) {
+        index += 2;
+    } else if (mood == NEUTRAL_MOOD) {
         index += 3;
-    } else if (mood == VERY_ANNOYED_MOOD) {
+    } else if (mood == PLEASED_MOOD) {
         index += 4;
     }
 
     if (level == 0) {
         if (negative) {
-            minChange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 11, 12, 13, 14, 15, 12, 14, 16, 18, 20];
-            maxChange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 20, 6, 7, 8, 9, 20, 21, 22, 23, 24, 25, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
+            minChange = [/*Strict 0*/ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, /*Strict 1*/ 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, /*Strict 2*/ 11, 12, 13, 14, 15, 12, 14, 16, 18, 20];
+            maxChange = [/*Strict 0*/ 1, 2, 3, 4, 5, 6, 7, 8, 9, 20, /*Strict 1*/ 6, 7, 8, 9, 20, 21, 22, 23, 24, 25, /*Strict 2*/ 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
         } else {
-            minChange = [20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
-            maxChange = [30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 25, 24, 23, 22, 21, 20, 9, 8, 7, 6, 20, 8, 6, 4, 2, 5, 4, 3, 2, 1];
+            minChange = [/*Strict 0*/ 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, /*Strict 1*/ 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, /*Strict 2*/ 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+            maxChange = [/*Strict 0*/ 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, /*Strict 1*/ 25, 24, 23, 22, 21, 20, 9, 8, 7, 6, /*Strict 2*/ 20, 19, 18, 17, 16, 15, 14, 13, 12, 11];
         }
     } else if (level == 1) {
         if (negative) {

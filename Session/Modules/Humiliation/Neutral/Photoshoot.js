@@ -3,14 +3,19 @@
         runModuleCategory('Humiliation');
     } else if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.HUMILIATION)) {
         let noLingerie = false;
+
+        let clearLingerie = false;
+
         if (!hasSomeLingerie()) {
             sendMessage("It's a shame you don't have any lingerie %Grin%");
             noLingerie = true;
         } else if (!isLingeriePlayAllowed()) {
             sendMessage("It's a shame you don't want to play with your lingerie %Grin%");
             noLingerie = true;
-        } else {
-            if (!putOnLingerie()) {
+        } else if(!hasOutfitOn()) {
+            clearLingerie = putOnLingerie();
+
+            if (!clearLingerie) {
                 //TODO: Handle no lingerie around
                 sendMessage('')
             }
@@ -117,6 +122,10 @@
             }
         } else {
             sendMessage(random('Well we\'d better end here', 'I believe we should continue with other stuff now') + ' %Grin%');
+        }
+
+        if(clearLingerie) {
+            clearOutfitOn();
         }
     }
 }

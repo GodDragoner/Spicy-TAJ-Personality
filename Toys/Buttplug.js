@@ -134,7 +134,7 @@ function getLongTimeWearPlugs(plugList = buttplugs) {
     }
 
     //None found
-    if(longtime.length === 0) {
+    if (longtime.length === 0) {
         return buttplugs;
     }
 
@@ -169,7 +169,7 @@ function getButtplugClosestBelow(diameter, plugList = buttplugs) {
 function getButtplugClosestAround(diameter, plugList = buttplugs) {
     let smallerPlugFound = undefined;
     for (let x = 0; x < plugList.length; x++) {
-        if(plugList[x].diameter) {
+        if (plugList[x].diameter) {
             smallerPlugFound = plugList[x];
 
             //Buttplugs is sorted, ascending so we can just find the point in the list whe are looking for
@@ -186,7 +186,7 @@ function getButtplugClosestAround(diameter, plugList = buttplugs) {
     }
 
     //Do we have any plug that is even smaller than the diameter we are looking for?
-    if(smallerPlugFound !== undefined) {
+    if (smallerPlugFound !== undefined) {
         return smallerPlugFound;
     }
 
@@ -346,7 +346,7 @@ function putinChosenButtplug(plug) {
             sendMessageBasedOnSender("Go all the way down until your ass cheeks are touching the floor and the plug is all the way in");
         }
         //Only play around with the plug if ass level is low or in 50% of the cases
-        else if(isChance(50) || getVar(VARIABLE.ASS_LEVEL, 0) < 20) {
+        else if (isChance(50) || getVar(VARIABLE.ASS_LEVEL, 0) < 20) {
             sendMessageBasedOnSender("Put the tip of the plug on your asshole", 5);
             sendMessageBasedOnSender("Rub the tip gently along your ass crack", 5);
             sendMessageBasedOnSender("Now...");
@@ -446,8 +446,8 @@ function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
     sendDebugMessage('Max diameter increase is ' + maxDiameterIncrease);
 
     //Force to use the bigger diameter increase
-    if(getVar(VARIABLE.ASS_LEVEL, 0) >= 25) {
-        minDiameterIncrease = maxDiameterIncrease/2;
+    if (getVar(VARIABLE.ASS_LEVEL, 0) >= 25) {
+        minDiameterIncrease = maxDiameterIncrease / 2;
         sendDebugMessage('Min diameter increase is ' + minDiameterIncrease);
     }
 
@@ -474,7 +474,7 @@ function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
         for (let y = 0; y < buttplugs.length; y++) {
             let buttplug = buttplugs[y];
 
-            if(buttplug === currentPlug) {
+            if (buttplug === currentPlug) {
                 continue;
             }
 
@@ -517,19 +517,19 @@ function removeButtplug(end = false) {
     }
 
     if (isChance(10)) {
-        sendMessage("%SlaveName%");
-        sendMessage("I want you to remove that buttplug without using your hands");
-        sendMessage(random("Use your ass muscles", "Clench your muscles", "Just squeeze your ass muscles") + " and push it all the way out");
+        sendMessageBasedOnSender("%SlaveName%");
+        sendMessageBasedOnSender("I want you to remove that buttplug without using your hands");
+        sendMessageBasedOnSender(random("Use your ass muscles", "Clench your muscles", "Just squeeze your ass muscles") + " and push it all the way out");
         if (getStrictnessForCharacter() == 0 || isChance(100 - getStrictnessForCharacter() * 30)) {
-            sendMessage("Slowly...");
+            sendMessageBasedOnSender("Slowly...");
         } else {
-            sendMessage("Do it as fast as possible! %Grin%");
+            sendMessageBasedOnSender("Do it as fast as possible! %Grin%");
         }
 
         if (isVeryUnexperiencedDiamater(currentPlug.diameter)) {
-            sendMessage("I know it might " + random("be painful", "hurt", "be unpleasant"));
+            sendMessageBasedOnSender("I know it might " + random("be painful", "hurt", "be unpleasant"));
         } else {
-            sendMessage("I know it might " + random("be difficult", "be complicated", "be unpleasant"));
+            sendMessageBasedOnSender("I know it might " + random("be difficult", "be complicated", "be unpleasant"));
         }
 
         dontCareItHurts();
@@ -537,47 +537,47 @@ function removeButtplug(end = false) {
         let answer = sendInput("Tell me when you are done %SlaveName%");
         while (true) {
             if (answer.isLike("done", "yes")) {
-                sendMessage("%Good%");
+                sendMessageBasedOnSender("%Good%");
                 break;
             } else {
-                sendMessage("Have you pushed the plug out yet?", 0);
+                sendMessageBasedOnSender("Have you pushed the plug out yet?", 0);
                 answer.loop();
             }
         }
     } else {
-        sendMessage("I want you to remove the plug from your %Ass%");
+        sendMessageBasedOnSender("I want you to remove the plug from your %Ass%");
 
         if (isChance(10)) {
-            sendMessage("But don't pull it all the way out yet %Grin%");
-            sendMessage("Pull it until the biggest part of the plug is spreading your ass apart");
-            sendMessage("Keep it there until I tell you to move on");
+            sendMessageBasedOnSender("But don't pull it all the way out yet %Grin%");
+            sendMessageBasedOnSender("Pull it until the biggest part of the plug is spreading your ass apart");
+            sendMessageBasedOnSender("Keep it there until I tell you to move on");
             sleep(randomInteger(5, 10));
-            sendMessage("And now push it all the way back in %Lol%");
-            sendMessage("Let's do that again");
-            sendMessage("Pull it out until the thickest part of the plug is spreading your sphincter");
-            sendMessage("Hold it...");
+            sendMessageBasedOnSender("And now push it all the way back in %Lol%");
+            sendMessageBasedOnSender("Let's do that again");
+            sendMessageBasedOnSender("Pull it out until the thickest part of the plug is spreading your sphincter");
+            sendMessageBasedOnSender("Hold it...");
             sleep(randomInteger(5, 10));
             if (isChance(70)) {
                 if (isChance(50)) {
-                    sendMessage("Just let go and if the plug pops out you are done");
-                    sendMessage("If it slips back in you'll have to get it out again I guess %EmoteHappy%");
+                    sendMessageBasedOnSender("Just let go and if the plug pops out you are done");
+                    sendMessageBasedOnSender("If it slips back in you'll have to get it out again I guess %EmoteHappy%");
                 } else {
                     endLastPlugPull();
                 }
             } else {
-                sendMessage("Back into your ass it goes %EmoteHappy%");
-                sendMessage("One more time");
-                sendMessage("Pull and hold it in place...");
+                sendMessageBasedOnSender("Back into your ass it goes %EmoteHappy%");
+                sendMessageBasedOnSender("One more time");
+                sendMessageBasedOnSender("Pull and hold it in place...");
                 sleep(randomInteger(5, 10));
                 if (isChance(30)) {
                     if (isChance(50)) {
-                        sendMessage("Just let go and if the plug pops out you are done");
-                        sendMessage("If it slips back in you'll have to get it out again I guess %EmoteHappy%");
+                        sendMessageBasedOnSender("Just let go and if the plug pops out you are done");
+                        sendMessageBasedOnSender("If it slips back in you'll have to get it out again I guess %EmoteHappy%");
                     } else {
-                        sendMessage("I think I am enjoying this too much to stop yet %Grin%");
-                        sendMessage("Slip it back in %SlaveName%");
-                        sendMessage("Okay, let's do this yet another time");
-                        sendMessage("Pull and hold it in place...");
+                        sendMessageBasedOnSender("I think I am enjoying this too much to stop yet %Grin%");
+                        sendMessageBasedOnSender("Slip it back in %SlaveName%");
+                        sendMessageBasedOnSender("Okay, let's do this yet another time");
+                        sendMessageBasedOnSender("Pull and hold it in place...");
                         sleep(randomInteger(5, 10));
                         endLastPlugPull();
                     }
@@ -586,22 +586,22 @@ function removeButtplug(end = false) {
                 }
             }
         } else {
-            sendMessage("Pull it out");
+            sendMessageBasedOnSender("Pull it out");
 
             if (getStrictnessForCharacter() === 0 || isChance(100 - getStrictnessForCharacter() * 30)) {
-                sendMessage("Slowly...");
+                sendMessageBasedOnSender("Slowly...");
             } else {
-                sendMessage("Do it as fast as possible! %Grin%");
+                sendMessageBasedOnSender("Do it as fast as possible! %Grin%");
             }
         }
 
         let answer = sendInput("Tell me when you are ready to continue.");
         while (true) {
             if (answer.isLike("done", "yes", "ready")) {
-                sendMessage("%Good%");
+                sendMessageBasedOnSender("%Good%");
                 break;
             } else {
-                sendMessage("Are you done yet?", 0);
+                sendMessageBasedOnSender("Are you done yet?", 0);
                 answer.loop();
             }
         }
@@ -1024,6 +1024,24 @@ function createButtplug(name, diameter, length, vibrating, textured, material, h
         fromString: function (string) {
             return deserializeObject(this, string);
         },
+    }
+}
+
+function restoreSmallButtplug() {
+    if (RULE_ALWAYS_WEAR_SMALL_PLUG.isActive()) {
+        if (isPlugged()) {
+            if (currentPlug !== getSmallButtplug(true)) {
+                removeButtplug(true);
+                sendMessageBasedOnSender('And now put back in your ' + getSmallButtplug(true).name + ' again');
+            } else {
+                //We are already correctly plugged
+                return false;
+            }
+        } else {
+            sendMessageBasedOnSender('Now put back in your ' + getSmallButtplug(true).name + ' again');
+        }
+
+        setPlugIn(getSmallButtplug(true));
     }
 }
 

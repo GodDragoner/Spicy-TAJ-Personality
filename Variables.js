@@ -54,6 +54,8 @@ const VARIABLE = {
     RESPONSE_BEG_EDGE_COUNT: 'responseBegEdgeCount',
 
     //Chores
+    CHORE_KINK_SAFE_TODAY: "choreKinkSafeToday",
+
     CHORE_KITCHEN: 'choreKitchen',
     CHORE_BATHROOM: 'choreBathroom',
     CHORE_FINANCE: 'choreFinance',
@@ -68,6 +70,8 @@ const VARIABLE = {
 
     WEEKLY_CHORES_DONE: "weeklyChoresDone",
     WEEKLY_CHORES_TIME: "weeklyChoresTime",
+
+    TEMP_CHORES_TIME: "tempChoresTime",
 
     //Denial
     DENIAL_LIMIT: "denialLimit",
@@ -209,6 +213,7 @@ const VARIABLE = {
     TOY_GAG_INTERACTION_MODE: "toyGagInteractionMode",
     IS_GAGED: "isGaged",
 
+    CURRENT_OUTFIT_EXPIRY: "currentOutfitExpiry",
 
     IS_BALLS_TIED: "isBallsTied",
     LAST_BALLS_TIE: "lastBallsTie",
@@ -303,6 +308,7 @@ const VARIABLE = {
     LAST_PAIN_TOLERANCE_INCREASE: "lastPainToleranceIncrease",
 
     EDGE_STARTED_DATE: "edgeStartedDate",
+    LAST_EDGE_END_DATE: "lastEdgeEndDate",
     EDGE_WITHOUT_PERMISSION: "edgeWithoutPermission",
 
 

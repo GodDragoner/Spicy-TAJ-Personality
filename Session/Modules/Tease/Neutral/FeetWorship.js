@@ -92,13 +92,12 @@
             readyForVibratingCage();
         }
 
-        let loops = Math.max(3, getMood() + getStrictnessForCharacter());
-
-        lockImages();
+        //Min 13, max is 24 with worst mood and strictness 2
+        let edgesToDoTotal = Math.max(13, getMood() + getStrictnessForCharacter()*10);
 
         CURRENT_EDGE_MODE = EDGE_MODE.SKIP_TAUNTS;
 
-        for(let x = 0; x < loops; x++) {
+        while(edgesToDoTotal > 0) {
             lockImages();
             let resultingFile = random(files).getFile();
             showImage(resultingFile);
@@ -118,12 +117,15 @@
                 edgesToDo--;
             }
 
-            if(isChance(25)) {
+            if(isChance(25 + MOOD.TEASE.getChanceBooster())) {
                 sendMessage('I think we should do one last edge %Grin%');
                 sendMessage('And I think you should hold that edge');
                 sendMessage('To show me how much you worship these feet');
                 startEdging(getEdgeHoldSeconds());
+                edgesToDoTotal -= 1;
             }
+
+            edgesToDoTotal -= edgesToDo;
 
             sendMessage('%LetEdgeFade%');
             sleep(randomInteger(15, 30));
