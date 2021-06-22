@@ -184,7 +184,7 @@ function getCornerTime(multiplier = 1) {
     let minSeconds = Math.max(45, (mood + 1)*10*(getStrictnessForCharacter() + 1));
     let maxSeconds = Math.max(75, (mood + 1)*15*(getStrictnessForCharacter() + 1));
     let random = randomInteger(minSeconds, maxSeconds);
-    sendDebugMessage('Calculated ' + random + ' corner time seconds based on mood ' + mood + ' and strictness ' + getStrictnessForCharacter());
+    sendDebugMessage('Calculated ' + random + ' corner time seconds based on mood ' + mood + ' and strictness ' + getStrictnessForCharacter() + '. Multiplying with ' + multiplier);
     return random*multiplier;
 }
 

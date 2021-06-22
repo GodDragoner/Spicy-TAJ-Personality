@@ -112,6 +112,7 @@ function interactWithRandomToys() {
     if (NIPPLE_CLAMPS.decideToyOff()) {
         let minutesSincePutOn = getMillisSinecDate(NIPPLE_CLAMPS.getLastUsage()) / (1000 * 60);
 
+        sendDebugMessage('Nipple clamps have been on for ' + minutesSincePutOn);
         //20 minutes should be max
         //QUALITY: Add personal limit/modifier for sub
         if (isChance(minutesSincePutOn * 5)) {

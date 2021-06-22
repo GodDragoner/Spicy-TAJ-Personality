@@ -47,10 +47,13 @@ function redistributeTooLongAttachedClamps() {
         let bodyPart = BODY_PARTS[x];
 
         //QUALITY: Based on sub pain tolerance
-        if(bodyPart.currentClamps > 0 && bodyPart.getLastClampInteraction().addMinute(15).hasPassed()) {
-            sendDebugMessage('Found and redistributing body part: ' + bodyPart.name);
-            bodyPartHistory.add(bodyPart.normalize());
-            redistributeClamps(bodyPart, bodyPart.currentClamps, false, bodyPartHistory);
+        if(bodyPart.currentClamps > 0) {
+            sendDebugMessage('Found body part with clamps: ' + bodyPart.name + ' and last interaction ' + bodyPart.getLastClampInteraction());
+            if(bodyPart.getLastClampInteraction().addMinute(15).hasPassed()) {
+                sendDebugMessage('Have been on too long. Redistributing...');
+                bodyPartHistory.add(bodyPart.normalize());
+                redistributeClamps(bodyPart, bodyPart.currentClamps, false, bodyPartHistory);
+            }
         }
     }
 }

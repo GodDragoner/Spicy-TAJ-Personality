@@ -115,7 +115,7 @@ function registerBodyPart(name, maxClamps, side = NONE) {
 
         getLastClampInteraction: function () {
             if (LAST_BODY_PART_CLAMP_INTERACTION[this.id] !== null && LAST_BODY_PART_CLAMP_INTERACTION[this.id] !== undefined) {
-                return LAST_BODY_PART_CLAMP_INTERACTION[this.id];
+                return LAST_BODY_PART_CLAMP_INTERACTION[this.id].clone();
             } else {
                 return setDate().addDay(-300);
             }

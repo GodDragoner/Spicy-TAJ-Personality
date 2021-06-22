@@ -67,13 +67,15 @@
                         currentId = newId;
 
                         if(currentId === 0) {
-                            playSound('Audio/Spicy/Commands/Up/*.mp3');
+                            playSound('Audio/Spicy/Commands/Up/*.mp3', true);
                         } else if(currentId === 1) {
-                            playSound('Audio/Spicy/Commands/Down/*.mp3');
+                            playSound('Audio/Spicy/Commands/Down/*.mp3', true);
                             downCommands++;
                         } else if(currentId === 2) {
-                            playSound('Audio/Spicy/Commands/OnYourToes.mp3');
+                            playSound('Audio/Spicy/Commands/OnYourToes.mp3', true);
                         }
+
+                        sleep(randomInteger(3, 7));
                     }
 
                     taskWatch.stop();
