@@ -1,7 +1,7 @@
 function myBallsVocabulary() {
     if(RULE_OWNED_BODY.isActive()) {
-        return 'my';
+        return '%MyYour%';
     }
 
-    return random('my', 'those', 'your');
+    return random('%MyYour%', 'those');
 }

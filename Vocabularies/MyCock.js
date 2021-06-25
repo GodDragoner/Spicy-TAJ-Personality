@@ -1,7 +1,7 @@
 function myCockVocabulary() {
     if(RULE_OWNED_BODY.isActive()) {
-        return 'my';
+        return '%MyYour%';
     }
 
-    return random('my', 'that', 'your');
+    return random('%MyYour%', 'that');
 }

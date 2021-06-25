@@ -76,6 +76,7 @@ function startPunishmentSession(overallLevel) {
     let relockChastity = false;
 
     if (isInChastity() && isChance(overallLevel.id * 20) && (!isVar(VARIABLE.LOCKED_UP_UNTIL) || getDate(VARIABLE.LOCKED_UP_UNTIL).hasPassed())) {
+        //Only out of chastity if domme punishes
         if (getCurrentTAJSenderID() === 1) {
             sendMessage('I think I want your cock exposed for this %Grin%');
             unlockChastityCage();

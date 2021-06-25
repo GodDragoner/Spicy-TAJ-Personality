@@ -470,6 +470,7 @@ function getAnalPlug(minLength = 0, minThickness = 0, forceBigger = true) {
     sendDebugMessage('Allowed default max diameter ' + allowedDefaultMaxDiameter);
     sendDebugMessage('Max used diameter ' + maxUsedPlugThickness);
 
+    //TODO: Figure out why this needs to increase diameter (increasing bounds twice) in like 4cm start setting
     while (availablePlugs.length === 0 && buttplugs.length !== 0) {
         for (let y = 0; y < buttplugs.length; y++) {
             let buttplug = buttplugs[y];

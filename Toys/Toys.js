@@ -84,6 +84,8 @@ function interactWithRandomToys() {
 
     sendDebugMessage('Random toy collar done');
 
+
+    //TODO: If this puts a new pin on a body part that already has a pin the last interaction date is reset and removing the pin due to being on too long won't work anymore
     if (isChance(20) && PAIN_LIMIT.isAllowed() && allowPain) {
         sendDebugMessage('Looking into clamp distribution');
         let toDistribute = (getTotalAttachedClamps() > 20 || isChance(35) && getTotalAttachedClamps() > 0) ? 0 : randomInteger(1, 4);
