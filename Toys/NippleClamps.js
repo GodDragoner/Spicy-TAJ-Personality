@@ -135,5 +135,5 @@ function getNippleClampWeight() {
 }
 
 function shouldReplaceSpinsWithNippleClamps() {
-    return feelsLikePunishingSlave() && NIPPLE_CLAMPS.hasToy();
+    return NIPPLE_CLAMPS.hasToy() && feelsLikePunishingSlave();
 }

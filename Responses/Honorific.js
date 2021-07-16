@@ -25,7 +25,7 @@ function honorificResponse(message) {
         sendMessage('And you have to ALWAYS address me like that');
         registerForgetHonorific();
 
-        if(feelsLikePunishingSlave() && CBT_LIMIT.isAllowed()) {
+        if(CBT_LIMIT.isAllowed() && feelsLikePunishingSlave() ) {
             sendMessage('You know what?');
             sendMessage('I feel like punishing you for that right now in addition to those punishment points I just assigned you');
             smallCBTPunishment();

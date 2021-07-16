@@ -131,7 +131,7 @@
         }
     }
 
-    if (getVar(VARIABLE.HAS_CHASTITY)) {
+    if (hasChastityCage()) {
         sendMessage("There is another thing I love");
         sendMessage("And that is locking %MyYour% %Cock% up");
         askForMaxLockupTime();

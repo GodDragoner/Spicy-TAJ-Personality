@@ -286,7 +286,7 @@ function distributeOrgasmPoints() {
 
     incrementVar(VARIABLE.ORGASM_POINTS, totalToAdd);
 
-    sendDebugMessage('Added ' + totalToAdd + 'orgasm points');
+    sendDebugMessage('Added ' + totalToAdd + ' orgasm points');
 
     return totalToAdd;
 }

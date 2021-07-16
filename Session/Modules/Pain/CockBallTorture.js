@@ -160,7 +160,7 @@ function punishSmallBustBallsMultiple(maxLoops = getVar(VARIABLE.SUB_PAIN_TOLERA
     //QUALITY: "Now back to your balls" etc. kind of transitions
 
     //QUALITY: Can be used for other stuff too
-    if(feelsLikeShowingPower()) {
+    if(feelsLikeShowingPower() && !isGaged()) {
         sendMessage('I want you to count the next hits out loud %SlaveName%');
         sendMessage('And you will thank me for EACH and EVERYONE of them');
         sendMessage('So all I want to hear is: "One... Thank you %DomHonorific%"');
@@ -172,6 +172,7 @@ function punishSmallBustBallsMultiple(maxLoops = getVar(VARIABLE.SUB_PAIN_TOLERA
         sendExplainCBTTerms();
     }
 
+    //TODO: "Another"  only after first loop
     while (maxLoops > 0) {
         maxLoops--;
 

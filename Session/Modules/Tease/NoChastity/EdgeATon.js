@@ -160,7 +160,7 @@ function startEdgeATon(chosenByDom, edgesToDo) {
             sendMessage(random("You could at least try to roughly reach your current record", 'You could try harder and at least roughly hold your current record', 'You should really try harder and hold your current record'));
             changeMeritLow(true);
 
-            if(feelsLikePunishingSlave() && getStrictnessForCharacter() >= 1) {
+            if(getStrictnessForCharacter() >= 1 && feelsLikePunishingSlave()) {
                 sendMessage('And you know what? That\'s exactly what you are gonna do!');
                 edgesToDo = handleDomChoseEdgeATone();
                 sendMessage('I even added a bit on top, since you seem like you need that extra bit of push %SlaveName%');
@@ -227,7 +227,7 @@ function endEdgeATon() {
     startEdging(10);
     sendMessage("%LetEdgeFade%");
 
-    if(!growDickSoft() && feelsLikePunishingSlave() && hasChastityCage()) {
+    if(!growDickSoft() && hasChastityCage() && feelsLikePunishingSlave()) {
         sendMessage('You know what?');
         sendMessage('Since it took you that long to get soft and you are already soft');
         sendMessage('Why don\'t we keep it that way for now? %Grin%');

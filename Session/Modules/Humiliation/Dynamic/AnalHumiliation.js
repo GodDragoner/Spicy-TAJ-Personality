@@ -99,7 +99,7 @@
             } else if (lubeType === TIGER_HOT_LUBE) {
                 lubeUpToyWithTigerHot(toy);
             } else {
-                sendMessage("Today I don't you to use any lube %Grin%");
+                sendMessage("Today I don't want you to use any lube %Grin%");
             }
 
             runAssCrackPreparation(toy);

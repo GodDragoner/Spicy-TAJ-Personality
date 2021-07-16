@@ -2,6 +2,11 @@
     if (tryRunLinkFetchId()) {
         sendMessage('I\'m going to show you one of your videos');
         sendMessage("But NO touching! Sit on your hands if you have to, %SlaveName%");
+
+        if(isInChastity()) {
+            sendMessage('Not that you really could, locked up like that %Lol%');
+        }
+
         sendMessage('I\'ll be right back %EmoteHappy%');
         setTempVar(VARIABLE.DOMME_AFK, true);
         showCategoryVideo(getRandomMediaCategory());

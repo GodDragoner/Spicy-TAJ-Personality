@@ -1050,3 +1050,24 @@ function createToySettingGUI(gridPane, imagePath) {
 
     return row;
 }
+
+function removeToysFromList(toysAttached) {
+    for (let x = 0; x < toysAttached.length; x++) {
+        let toy = toysAttached[x];
+
+        //Will trigger scripts based on the toy
+        //We don't need to prevent this if the always plug rule is active because then it's not pushed to the stack
+        if (toy === BUTTPLUG_TOY) {
+            sendMessageBasedOnSender('You can now remove the plug from your ass %SlaveName%');
+            setPlugRemoved();
+
+            restoreSmallButtplug();
+        } else if (toy === COLLAR_TOY && RULE_ALWAYS_WEAR_COLLAR.isActive()) {
+            //Continue, since collar stays on
+            continue;
+        } else {
+            //Gag toy for example has custom remove function that overwrites this
+            toy.removeToy();
+        }
+    }
+}

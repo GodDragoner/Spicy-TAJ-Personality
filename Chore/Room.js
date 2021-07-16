@@ -159,24 +159,8 @@ function createRoom(name, size) {
 
             sendMessageBasedOnSender('So you\'re done...');
 
-
-            for (let x = 0; x < toysAttached.length; x++) {
-                let toy = toysAttached[x];
-
-                //Will trigger scripts based on the toy
-                //We don't need to prevent this if the always plug rule is active because then it's not pushed to the stack
-                if (toy === BUTTPLUG_TOY) {
-                    sendMessageBasedOnSender('You can now remove the plug from your ass %SlaveName%');
-                    setPlugRemoved();
-
-                    restoreSmallButtplug();
-                } else if (toy === COLLAR_TOY && RULE_ALWAYS_WEAR_COLLAR.isActive()) {
-                    //Continue, since collar stays on
-                    continue;
-                } else {
-                    toy.removeToy();
-                }
-            }
+            removeToysFromList(toysAttached);
+            toysAttached = [];
 
             this.endChore(choreType);
         },

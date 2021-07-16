@@ -60,7 +60,7 @@
     //Only if not denied
     if (orgasmType !== ORGASM_CATEGORY_DENIED) {
         //Check if the sub didn't cum already and whether we don't feel like punishing the slave
-        if (!feelsLikePunishingSlave() && !alreadyCame) {
+        if (!alreadyCame && !feelsLikePunishingSlave()) {
             sendMessage('But then again, it\'s not about what <i>you</i> want, it\'s about what <i>I</i> want');
             sendMessage('And I want to make you cum %GeneralTime%');
 

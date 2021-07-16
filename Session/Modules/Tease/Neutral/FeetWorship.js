@@ -47,9 +47,7 @@
 
 
             while(true) {
-
                 delVar(VARIABLE.FEET_WORSHIP_FOLDER);
-
 
                 const RunnableClass = Java.type('java.lang.Runnable');
                 let CustomRunnable = Java.extend(RunnableClass, {
@@ -108,6 +106,9 @@
 
             let edgesToDo = randomInteger(2, 6);
 
+            //Decrease the total before we decrease the edgesToDo down to 0
+            edgesToDoTotal -= edgesToDo;
+
             sendMessage(random('I think ' + edgesToDo + ' edges will be sufficient', 'I think they are worth ' + edgesToDo + ' edges', 'I think you should pay tribute with ' + edgesToDo + ' edges',
             'They are at least worth ' + edgesToDo + ' edges', 'Let\'s do ' + edgesToDo + ' edges for them', 'Let\'s worship them with ' + edgesToDo + ' edges'));
 
@@ -124,8 +125,6 @@
                 startEdging(getEdgeHoldSeconds());
                 edgesToDoTotal -= 1;
             }
-
-            edgesToDoTotal -= edgesToDo;
 
             sendMessage('%LetEdgeFade%');
             sleep(randomInteger(15, 30));

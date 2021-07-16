@@ -4,7 +4,7 @@ function decideModelRatingGameType() {
     if(!isInChastity()) {
         availableTypes.push(GAME_TYPE.GAME_STROKING);
 
-        if(feelsLikePunishingSlave() && CBT_LIMIT.isAllowed()) {
+        if(CBT_LIMIT.isAllowed() && feelsLikePunishingSlave()) {
             availableTypes.push(GAME_TYPE.GAME_CBT);
         }
 

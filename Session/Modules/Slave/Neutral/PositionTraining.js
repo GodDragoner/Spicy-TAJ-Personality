@@ -649,6 +649,8 @@ function complicatedPositionTrainingSelection(totalPositions) {
 
     sendMessage(random("A real challenge", "A bit of a challenge", "A fun challenge", "An exciting challenge", "Definitely a challenge") + " %Lol%");
 
+    let toysToRemove = [];
+
     //TOADD: Fix this mess up lul
     const complicatedTraining = {
         currentTraining_b1: function () {
@@ -662,6 +664,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
 
             if (GAG_TYPE_BALL_GAG.hasToy() && !isGaged()) {
                 putInGag();
+                toysToRemove.push(GAG_TYPE_BALL_GAG);
             }
 
             sendMessage("For this one you'll additionally need " + randomInteger(4, 8) + " pegs");
@@ -683,6 +686,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
 
             if (!isGaged()) {
                 putInGag();
+                toysToRemove.push(GAG_TYPE_BALL_GAG);
             }
 
             if (!isPlugged()) {
@@ -707,6 +711,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
 
             if (GAG_TYPE_BALL_GAG.hasToy() && !isGaged()) {
                 putInGag();
+                toysToRemove.push(GAG_TYPE_BALL_GAG);
             }
 
             if (BUTTPLUG_TOY.hasToy() && !isPlugged()) {
@@ -736,6 +741,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
 
             if (GAG_TYPE_BALL_GAG.hasToy() && !isGaged()) {
                 putInGag();
+                toysToRemove.push(GAG_TYPE_BALL_GAG);
             }
 
             sendMessage("For this one you'll additionally need " + randomInteger(4, 8) + " pegs");
@@ -755,7 +761,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
                 return false;
             }
 
-            if (!PARACHUTE_TOY.hasToy()) {
+            if (!PARACHUTE_TOY.hasToy() || isInChastity()) {
                 return false;
             }
 
@@ -765,6 +771,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
 
             if (GAG_TYPE_BALL_GAG.hasToy() && !isGaged()) {
                 putInGag();
+                toysToRemove.push(GAG_TYPE_BALL_GAG);
             }
 
             if (CLOTHESPINS_TOY.hasToy()) {
@@ -789,6 +796,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
 
             if (GAG_TYPE_BALL_GAG.hasToy() && !isGaged()) {
                 putInGag();
+                toysToRemove.push(GAG_TYPE_BALL_GAG);
             }
 
             sendMessage("For this one you'll additionally need some rice.");
@@ -807,7 +815,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
                 return false;
             }
 
-            if (!PARACHUTE_TOY.hasToy()) {
+            if (!PARACHUTE_TOY.hasToy() || isInChastity()) {
                 return false;
             }
 
@@ -817,6 +825,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
 
             if (GAG_TYPE_BALL_GAG.hasToy() && !isGaged()) {
                 putInGag();
+                toysToRemove.push(GAG_TYPE_BALL_GAG);
             }
 
             sendMessage("Put on the parachute, attach " + getWeightForParachute() + "kg's to it");
@@ -832,7 +841,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
                 return false;
             }
 
-            if (!PARACHUTE_TOY.hasToy()) {
+            if (!PARACHUTE_TOY.hasToy() || isInChastity()) {
                 return false;
             }
 
@@ -1028,6 +1037,8 @@ function complicatedPositionTrainingSelection(totalPositions) {
                     answer.loop();
                 }
             }
+
+            return true;
         },
         currentTraining_c8: function () {
             sendMessage("%Grin%");
@@ -1131,6 +1142,7 @@ function complicatedPositionTrainingSelection(totalPositions) {
             sleep(randomInteger(10, 200));
             unlockImages();
             complicatedPositionTrainingTimer();
+            return true;
         },
         currentTraining_c14: function () {
             sendMessage("%Grin%");
@@ -1207,6 +1219,13 @@ function complicatedPositionTrainingSelection(totalPositions) {
             // incompleteTraining++;
         } else {
             positionsDone++;
+        }
+
+        if(toysToRemove.length > 0) {
+            removeToysFromList(toysToRemove);
+
+            //Reset list+
+            toysToRemove = [];
         }
     }
 }

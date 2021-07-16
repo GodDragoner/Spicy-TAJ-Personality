@@ -225,8 +225,6 @@ function runPunishment(level) {
             level = higherLevel;
         }*/
 
-        //We need to set it to the object so we can reuse it later on
-        setTempVar('lastPunishmentLevel', level);
 
         const levelPath = getPunishmentTypeCategoryPath(level);
 
@@ -245,6 +243,10 @@ function runPunishment(level) {
 
         shuffle(availableFiles);
     }
+
+
+    //We need to set it to the object so we can reuse it later on
+    setTempVar('lastPunishmentLevel', level);
 
     //Keep track of how many times we tried to find a module in a category since last decide punishment call
     incrementTempVar('findPunishmentTries', 1, 0);

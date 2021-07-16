@@ -214,7 +214,7 @@ function strokeTrainingEdge() {
                 addMerits(-25*meritMult);
             }
 
-            if(feelsLikePunishingSlave() && getStrictnessForCharacter() >= 1) {
+            if(getStrictnessForCharacter() >= 1 && feelsLikePunishingSlave()) {
                 sendMessage('I guess locking up that %Cock% is the right choice now %Lol%');
                 lockChastityCage();
                 sendMessage('Feels much more adequate, right?');

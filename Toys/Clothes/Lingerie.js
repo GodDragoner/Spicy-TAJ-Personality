@@ -83,7 +83,7 @@ function decideOutfit() {
     let skipPanties = pickSkirt && feelsLikeTeasing();
     let pickPanties = PANTY_TOY.hasToy() && !skipPanties;
 
-    let highHeel = feelsLikePunishingSlave() && HIGH_HEEL_TOY.hasToy();
+    let highHeel = HIGH_HEEL_TOY.hasToy() && feelsLikePunishingSlave();
 
     let dress = false;
     let tops = getDailyWearTops();
@@ -200,7 +200,7 @@ function decideOutfit() {
 
         HIGH_HEEL_TOY.addCurrentToy(heel);
 
-        if (feelsLikePunishingSlave() && HIGH_HEEL_LOCK.hasToy()) {
+        if (HIGH_HEEL_LOCK.hasToy() && feelsLikePunishingSlave()) {
             lines.add('Furthermore lock yourself to the heels with your high heel locks %Grin%');
         }
     }

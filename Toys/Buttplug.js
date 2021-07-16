@@ -325,12 +325,12 @@ function putinChosenButtplug(plug) {
     } else if (lubeType === TIGER_HOT_LUBE) {
         lubeUpToyWithTigerHot(random("plug", "buttplug"));
     } else {
-        sendMessageBasedOnSender("Today I don't you to use any lube %Grin%");
+        sendMessageBasedOnSender("Today I don't want you to use any lube %Grin%");
     }
 
     sendMessageBasedOnSender("Now %SlaveName%");
 
-    if (feelsLikePunishingSlave() && getVar(VARIABLE.ASS_LEVEL, 0) >= 30) {
+    if (getVar(VARIABLE.ASS_LEVEL, 0) >= 30 && feelsLikePunishingSlave()) {
         sendMessageBasedOnSender("Push it in quickly");
         sendMessageBasedOnSender("I don't care whether it hurts");
     } else {
@@ -1033,13 +1033,13 @@ function restoreSmallButtplug() {
         if (isPlugged()) {
             if (currentPlug !== getSmallButtplug(true)) {
                 removeButtplug(true);
-                sendMessageBasedOnSender('And now put back in your ' + getSmallButtplug(true).name + ' again');
+                sendMessageBasedOnSender('And now put in your ' + getSmallButtplug(true).name + ' back again');
             } else {
                 //We are already correctly plugged
                 return false;
             }
         } else {
-            sendMessageBasedOnSender('Now put back in your ' + getSmallButtplug(true).name + ' again');
+            sendMessageBasedOnSender('Now put back in your ' + getSmallButtplug(true).name + ' back again');
         }
 
         setPlugIn(getSmallButtplug(true));

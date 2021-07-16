@@ -216,7 +216,7 @@ function startGayPictureRound() {
 function endGayPictureGame() {
     unlockImages();
 
-    if (!feelsLikePunishingSlave() && getTotalAttachedClamps() > 0) {
+    if (getTotalAttachedClamps() > 0 && !feelsLikePunishingSlave()) {
         sendMessage('I will be generous today');
         sendMessage('You may already remove all clamps from your body %SlaveName%');
 

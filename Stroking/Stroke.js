@@ -2,11 +2,6 @@ let vibingChastity = false;
 
 
 function stopStrokingMessage() {
-
-    if (isStroking()) {
-        stopStroking();
-    }
-
     let answers;
 
     //Block audio for cock vocabulary stuff
@@ -63,6 +58,9 @@ function stopStrokingMessage() {
 
     if (isChance(80) && !isInChastity()) {
         playSound("Audio/Spicy/Stroking/StopStroking/*.mp3");
+    }
+    if (isStroking()) {
+        stopStroking();
     }
 }
 
@@ -274,7 +272,7 @@ function sendNewStrokeInstruction() {
 
                 if (lubeType == NO_LUBE) {
                     sendMessage('You are not allowed to use any lube %Grin%');
-                } else if (feelsLikePunishingSlave() && CBT_LIMIT.isAllowed()) {
+                } else if (CBT_LIMIT.isAllowed() && feelsLikePunishingSlave()) {
                     //Really wants to punish so I guess we will fetch it
                     if (lubeType == TOOTHPASE_LUBE || lubeType == TIGER_HOT_LUBE) {
                         let bpm = getStrokingBPM();

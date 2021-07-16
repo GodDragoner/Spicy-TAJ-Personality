@@ -74,7 +74,7 @@ function getAnalOrgasmInstructions(analOrgasmType, orgasmCategory) {
         sendMessage('Regarding the position...');
         sendMessage('%Thinking%');
 
-        if(feelsLikePunishingSlave() && CEI_LIMIT.isAllowed()) {
+        if(CEI_LIMIT.isAllowed() && feelsLikePunishingSlave()) {
             sendMessage('You will throw your legs above your head and point your clit at your face');
         } else {
             sendMessage('You may pick your most comfortable position for this %EmoteHappy%');

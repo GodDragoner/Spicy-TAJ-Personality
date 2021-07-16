@@ -217,7 +217,7 @@ function goToCorner(durationSeconds) {
 
     sendMessage("Go to the corner");
 
-    let humbler = !PARACHUTE_TOY.isToyOn() && feelsLikePunishingSlave() && !isInChastity();
+    let humbler = !PARACHUTE_TOY.isToyOn() && !isInChastity() && feelsLikePunishingSlave();
 
     if(humbler) {
         putOnHumbler();
@@ -231,7 +231,7 @@ function goToCorner(durationSeconds) {
     }
 
     //Punish feeling and not already holding up money
-    let voiceCommands = feelsLikePunishingSlave() && !holdUpMoney;
+    let voiceCommands = !holdUpMoney && feelsLikePunishingSlave();
 
     let sayThankYou = voiceCommands;
 

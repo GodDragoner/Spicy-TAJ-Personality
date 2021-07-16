@@ -310,7 +310,7 @@ function removeGag(mouthRequiredAfter = true) {
     sendMessageBasedOnSender("Put the gag aside for now");
     setGaged(false);
 
-    if(feelsLikePunishingSlave() && clampOnTongue && !mouthRequiredAfter) {
+    if(clampOnTongue && !mouthRequiredAfter && feelsLikePunishingSlave()) {
         sendAlreadyKnowWhatsNext('clamp', 'tongue');
         putClampsOnOneSide(1, BODY_PART_TONGUE);
         sendMessage('Did you really think that I was gonna remove it from your tongue alongside the gag? Poor %SlaveName%');

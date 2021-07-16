@@ -8,7 +8,7 @@ function chastityCageVocabulary() {
     if(mood == VERY_PLEASED_MOOD || mood == PLEASED_MOOD) {
         adjectives.push("sweet", "delicious", "adorable", "delightful", "lovely");
     } else {
-        adjectives.push("nasty", "perfect", "evil");
+        adjectives.push("nasty", "evil");
         sizeAdjective.push("teeny", "tiny");
     }
 
