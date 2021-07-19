@@ -1,5 +1,5 @@
 {
-    if (!getCBTLimit().isAllowed() || !RIDING_CROP_TOY.hasToy()) {
+    if (!CBT_LIMIT.isAllowed() || !RIDING_CROP_TOY.hasToy()) {
         runModuleCategory('Pain');
     } else if (tryRunModuleFetchId(getDefaultModulesSinceRun(), MODULE.COCK_TORTURE)) {
         if (getVar(VARIABLE.COCK_DESTRUCTIONS_DONE, 0) === 0) {
