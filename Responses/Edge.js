@@ -1,15 +1,22 @@
 addResponseRegex("on the edge", "edge([ ]|$)");
 
 function edgeResponse(message) {
+    sendDebugMessage('Received edge response!');
+
     if(getVar(VARIABLE.CURRENT_SESSION_ACTIVE, false)) {
+        sendDebugMessage('Session is active!')
         if (getVar(VARIABLE.STROKE_TRAINING_ACTIVE, false)) {
             strokeTrainingEdge();
+            sendDebugMessage('Stroke training is active');
             return true;
         } else if (getVar(VARIABLE.ENDURANCE_STROKES_ACTIVE, false)) {
             //Increment var
             setTempVar(VARIABLE.ENDURANCE_STROKES_ATTEMPTS, getVar(VARIABLE.ENDURANCE_STROKES_ATTEMPTS) + 1);
+            sendDebugMessage('Endurance strokes is active');
             return true;
         } else if (!isEdging() && !isOnEdge() && !message.toLowerCase().contains('may') && !message.toLowerCase().contains('please')) {
+            sendDebugMessage('Unauthorized edge');
+
             let stroking = false;
             if(isStroking()) {
                 stroking = true;
@@ -39,8 +46,6 @@ function edgeResponse(message) {
         sendDebugMessage('Ended edge internally from custom response');
         delVar(VARIABLE.EDGE_STARTED_DATE);
     }
-
-    sendDebugMessage('Got edge response from sub');
 
     return false;
 }
