@@ -1,6 +1,6 @@
-addResponseRegex('May.*bathroom');
-addResponseRegex('May.*toilet');
-addResponseRegex('May.*pee');
+addResponseRegex('(may|May).*bathroom');
+addResponseRegex('(may|May).*toilet');
+addResponseRegex('(may|May).*pee');
 
 function useBathroomResponse(message) {
     let pauseStroke = pauseStroking();

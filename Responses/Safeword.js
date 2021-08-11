@@ -1,7 +1,7 @@
 addResponseRegex('safeword red');
 
 function safewordResponse(message) {
-    if(!getVar(VARIABLE.PUNISHMENT_ACTIVE, false) && isSessionActive()) {
+    if(!getVar(VARIABLE.PUNISHMENT_ACTIVE, false) && !isSessionActive()) {
         sendMessageBasedOnSender('I wouldn\'t know what you would use your safeword for now %SlaveName%');
         return false;
     }
