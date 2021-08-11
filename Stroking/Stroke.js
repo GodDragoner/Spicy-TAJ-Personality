@@ -1,5 +1,7 @@
 let vibingChastity = false;
 
+let edgingDisabled = false;
+
 
 function stopStrokingMessage() {
     let answers;
@@ -148,6 +150,27 @@ function startVibratingCageInterval(durationSeconds) {
     vibingChastity = false;
 
     stopStrokingMessage();
+}
+
+function pauseStroking() {
+    //Save state before
+    let wasStroking = isStroking() || vibingChastity;
+
+    if(wasStroking) {
+        stopStrokingMessage();
+    }
+
+    return wasStroking;
+}
+
+function resumeStroking(wasStroking) {
+    if(wasStroking) {
+        if(vibingChastity) {
+            startVibratingCage();
+        } else {
+            startStrokingSpicy();
+        }
+    }
 }
 
 
@@ -425,4 +448,8 @@ function startTeaseTauntInterval(durationSeconds) {
 
 
     sendDebugMessage('End of teasing interval');
+}
+
+function isEdgingAllowed() {
+    return edgingDisabled;
 }

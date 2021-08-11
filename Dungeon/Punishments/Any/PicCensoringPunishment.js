@@ -9,7 +9,7 @@
         if (PUNISHMENTS_DONE === 1) {
             sendMessage('Let\'s start with something mildly punishing');
         } else {
-            sendMessage('Be ready to repeat the following lines to me %EmoteHappy%');
+
         }
 
         let times = randomInteger((PUNISHMENT_CURRENT_LEVEL.id + 1) * 4, (PUNISHMENT_CURRENT_LEVEL.id + 2) * 4);

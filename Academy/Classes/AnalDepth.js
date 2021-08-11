@@ -17,14 +17,22 @@
     }
 
     function getModifiers(classObject) {
+        let modifiers = [];
+        modifiers.push('If you can\'t yet train getting the ' + getDildo().name + ' fully in for 10 minutes daily');
+        modifiers.push('You will watch at least 5 minutes of hypno (any kind) after waking up and 5 minutes before going to sleep');
 
+        return modifiers;
     }
 
     function getExam(classObject) {
         let stage = classObject.getCurrentStage();
 
         let exam = [];
-        exam.push('Fuck your ass with the dildo going all the way in and almost all the way out for 10 minutes at 25 bpm');
+        exam.push('Fuck your ass with the dildo going all the way in and almost all the way out for 30 minutes');
+        exam.push('Practice for at least 8 hours this week. Task time not included.');
+        exam.push('Fuck your ass for 4 hours with your dildo balls deep at any speed within one day. You may take breaks but only if you are leaving that dildo inside.');
+
+        return exam[stage];
     }
 
     function onStart(classObject) {

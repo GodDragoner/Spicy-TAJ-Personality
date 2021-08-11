@@ -13,6 +13,7 @@ const SPECIAL_SESSION = {
         continueSpecialSession: function () {
             //Can't continue if the sub somehow managed to end up in chastity
             if(isInChastity()) {
+                sendDebugMessage('Ending special edge training due to chastity');
                 endSpecialSession();
             } else {
                 let edgeTrainingFollowUpHistory = createFileHistory('edgetrainingfollow', ['Session/Special/NoChastity/EdgeTraining/FollowUp']);

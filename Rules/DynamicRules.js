@@ -1,5 +1,7 @@
 const AVAILABLE_RULES = [];
 
+//General 24/7 applicable rules
+
 let RULE_ALWAYS_WEAR_COLLAR;
 
 let RULE_ALWAYS_NAKED_SESSIONS;
@@ -762,6 +764,7 @@ let RULE_ONLY_CENSORED_PORN;
 
     AVAILABLE_RULES.push(rule);
 
+    //TODO: Add (introduction) and enable it at some point
     rule = RULE_OWNED_BODY = createRule(ruleId++, false);
 
     rule.getRulePrint = function () {

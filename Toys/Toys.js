@@ -20,6 +20,9 @@ const DEFAULT_TOY_COOLDOWN_MINUTES = 5;
     sendDebugMessage('Loaded ' + buttplugs.length + ' buttplugs');
 }
 
+//Do this after loading all toys
+checkClearOutfitOn();
+
 
 function interactWithButtplug(punishment) {
     if ((BUTTPLUG_TOY.isPunishmentAllowed() || !punishment && BUTTPLUG_TOY.isPlayAllowed()) && getAnalLimit() === LIMIT_ASKED_YES) {
@@ -605,7 +608,8 @@ function createMultipleToy(name, variableName = undefined) {
                 let arrayList = tryGetArrayList(this.getVarName() + 'CurrentOn');
 
                 for (let x = 0; x < arrayList.size(); x++) {
-                    let toyInstance = this.getByName(arrayList.get(x));
+                    //Turn into string for the function call
+                    let toyInstance = this.getByName(arrayList.get(x) + "");
 
                     if (isUndefined(toyInstance)) {
                         sendDebugMessage('Unknown toy "' + arrayList.get(x) + '" of type ' + this.getVarName());

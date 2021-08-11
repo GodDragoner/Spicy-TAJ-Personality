@@ -274,3 +274,7 @@ function sendAsMuchFun() {
         sendMessage(random('I certainly enjoyed it %Lol%', 'It was fun for me at least %Lol%', 'I certainly had a lot of fun %Grin%', 'I certainly had a blast %Grin%', 'I certainly really enjoyed this %Lol%'));
     }
 }
+
+function hasCompleteOrgasmControl() {
+    return true;
+}

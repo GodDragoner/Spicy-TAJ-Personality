@@ -2,7 +2,7 @@
     let answer = sendInput('Can you guess what today is going to be all about?');
 
     while (true) {
-        if (answer.isLike('edge')) {
+        if (answer.isLike('edge', 'edging')) {
             sendMessage('Yes! %EmoteHappy%');
             break;
         } else if (answer.isLike('yes')) {
@@ -100,7 +100,7 @@
     sendMessage('Remember that you <i>are</i> here by your own free will, %SlaveName%');
     startEdging();
     sendMessage('Free will is a funny thing');
-    sendMessage('It\'s the only force in the world than can negate itself');
+    sendMessage('It\'s the only force in the world that can negate itself');
     startEdging();
     sendMessage('The question is though, did you really choose to give up control?');
     sendMessage('The desire to submit is so strong, isn\'t it...');

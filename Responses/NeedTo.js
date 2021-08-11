@@ -10,17 +10,17 @@ function needToResponse(message) {
         let newValue = incrementTempVar(VARIABLE.RESPONSE_WANT_CUM_COUNT, 1);
 
         if(newValue > 3) {
-            sendMessage('You don\'t seem to get it do you?');
-            sendMessage('You know what?');
-            sendMessage('You are not going to cum today');
-            sendMessage('You are not going to cum tomorrow');
-            sendMessage('Actually you are not going to cum for another week now');
-            sendMessage('And that is all on you nagging me about it!');
+            sendMessageBasedOnSender('You don\'t seem to get it do you?');
+            sendMessageBasedOnSender('You know what?');
+            sendMessageBasedOnSender('You are not going to cum today');
+            sendMessageBasedOnSender('You are not going to cum tomorrow');
+            sendMessageBasedOnSender('Actually you are not going to cum for another week now');
+            sendMessageBasedOnSender('And that is all on you nagging me about it!');
             addDenialTime(7*24);
             registerRepeatingText();
             return false;
         } else if (newValue > 2) {
-            sendMessage('And I need you to shut up about it');
+            sendMessageBasedOnSender('And I need you to shut up about it');
             registerRepeatingText();
             return false;
         }
@@ -40,7 +40,7 @@ function needToResponse(message) {
             'Don\'t worry I think I know exactly what you need and want to and what you don\'t'
         ];
 
-        sendMessage(random(answers));
+        sendMessageBasedOnSender(random(answers));
         return false;
     }
 
@@ -50,13 +50,18 @@ function needToResponse(message) {
         'I don\'t care what you want %SlaveName%',
         'Do I look like I care what you want %SlaveName%?',
         'I could act like I care but I really don\'t %SlaveName%',
-        'I think you meant "May I" %SlaveName%',
+        'I think you meant "May I..." %SlaveName%',
         'If you ask me politely I might consider it',
         'And I think there is nothing you "want, need or got to"',
         'Since when are you determining what I am gonna do and what I don\'t?',
     ];
 
-    sendMessage(random(answers));
+    sendMessageBasedOnSender(random(answers));
+
+
+    if(message.indexOf('bathroom') !== -1 || message.indexOf('toilet') !== -1 || message.indexOf('pee') !== -1) {
+        sendMessageBasedOnSender('If you want permission to use the bathroom you will ask politely %SlaveName%');
+    }
 
     registerSassySub();
     return false;

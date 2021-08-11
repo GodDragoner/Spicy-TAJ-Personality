@@ -150,10 +150,9 @@ function waitForBack(timeout = 100) {
     const answer = createInput(timeout);
     while (true) {
         if (answer.isTimeout()) {
-            //TODO: Better timeout options?
-            break;
+            return ANSWER_TIMEOUT;
         } else if (answer.isLike('back', 'here', 'return')) {
-            break;
+            return ANSWER_YES;
         } else {
             sendMessage(random('Are you back?', 'If you aren\'t back yet don\'t bother me.'), 0);
             answer.loop();
@@ -166,12 +165,11 @@ function waitForDone(timeout = 100) {
     const answer = createInput(timeout);
     while (true) {
         if (answer.isTimeout()) {
-            //TODO: Better timeout options?
-            break;
+            return ANSWER_TIMEOUT;
         } else if (answer.isLike('done', 'ready', 'yes')) {
-            break;
+            return ANSWER_YES;
         } else {
-            sendMessage(random('Are you done?', 'If you aren\'t done yet don\'t bother me.'), 0);
+            sendMessageBasedOnSender(random('Are you done?', 'If you aren\'t done yet don\'t bother me.'), 0);
             answer.loop();
         }
     }
@@ -181,10 +179,9 @@ function waitForDoneVirtualAssistant(timeout = 100) {
     const answer = createInput(timeout);
     while (true) {
         if (answer.isTimeout()) {
-            //TODO: Better timeout options?
-            break;
+            return ANSWER_TIMEOUT;
         } else if (answer.isLike('done', 'ready', 'yes')) {
-            break;
+            return ANSWER_YES;
         } else {
             sendVirtualAssistantMessage('Are you done?', 0);
             answer.loop();

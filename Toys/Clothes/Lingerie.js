@@ -1,6 +1,5 @@
 const GARTER_BELT_TOY = createToy('Garter Belt');
 
-checkClearOutfitOn();
 
 function hasLingerieOn() {
     //TODO: This is a whole outfit (hasOutfitOn check), not lingerie specifically

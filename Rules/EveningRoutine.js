@@ -4,6 +4,7 @@ const AVAILABLE_EVENING_ROUTINES = [];
 const EVENING_ROUTINE = {
     RULE_EVENING_RITUAL_EDGES_LAST_CUM: null,
     RULE_EVENING_RITUAL_CENSOR_PORN: null,
+    RULE_EVENING_RITUAL_BODY_HYGIENE: null,
 };
 
 {
@@ -28,7 +29,19 @@ const EVENING_ROUTINE = {
     };
 
     routineTask.canBeActivated = function () {
-        return isFullTime();
+        return isFullTime() && RULE_ONLY_CENSORED_PORN.isActive();
+    };
+
+    AVAILABLE_EVENING_ROUTINES.push(routineTask);
+
+    routineTask = EVENING_ROUTINE.RULE_EVENING_RITUAL_BODY_HYGIENE = createEveningRoutineRule(ruleId++, false);
+
+    routineTask.getRulePrint = function () {
+        return 'Evening Ritual: Use hygiene products to take care of your lips, face, hands and other body parts before going to bed';
+    };
+
+    routineTask.canBeActivated = function () {
+        return isFullTime() && SISSY_LIMIT.isAllowed() && getVar(VARIABLE.SISSY_TRAINING, false);
     };
 
     AVAILABLE_EVENING_ROUTINES.push(routineTask);

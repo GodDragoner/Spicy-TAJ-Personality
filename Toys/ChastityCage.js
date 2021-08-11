@@ -579,6 +579,8 @@ function lockChastityCage(chastityCage = undefined) {
         }
     } else if(chastityCage.spikesVariable) {
         sendMessageBasedOnSender('You may remove all spikes currently attached to the cage %EmoteHappy%');
+        sendMessage('Tell me when you are done');
+        waitForDone();
     }
 
     if (getVar(VARIABLE.CHASTITY_DILATOR_ON, false)) {

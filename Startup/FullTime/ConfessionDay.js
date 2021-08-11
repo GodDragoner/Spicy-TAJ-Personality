@@ -38,10 +38,10 @@
             //We don't want to increase the multiplier here because this would increase it every thursday, which is stupid
             if (answer.containsIgnoreCase("came", "orgasm", "cum", "cumming")) {
                 sendVirtualAssistantMessage("Cumming without permission...");
-                addPunishmentPointsDirectly(400, 1, PUNISHMENT_REASON.NO_PERM_CUM);
+                addPunishmentPointsDirectly(getPPRuleIgnored()*2, 1, PUNISHMENT_REASON.NO_PERM_CUM);
             } else if (answer.containsIgnoreCase("ruin", "ruined")) {
                 sendVirtualAssistantMessage("Ruining without permission...");
-                addPunishmentPointsDirectly(250, 1, PUNISHMENT_REASON.NO_PERM_RUINED);
+                addPunishmentPointsDirectly(getPPRuleIgnored(), 1, PUNISHMENT_REASON.NO_PERM_RUINED);
             } else if (answer.containsIgnoreCase("stroke", "stroking", "touched", "pleasured")) {
                 sendVirtualAssistantMessage("Stroking without permission...");
                 addPunishmentPointsDirectly(200, 1, PUNISHMENT_REASON.NO_PERM_FAP);

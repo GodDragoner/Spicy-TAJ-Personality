@@ -36,7 +36,7 @@ function slaveNameVocabulary() {
     }
 
     if(CUCKOLD_LIMIT.isAllowed()) {
-        if(RULE_ONLY_SISSY_ADDRESS.isActive()) {
+        if(RULE_ONLY_SISSY_ADDRESS.isActive() && isChance(20)) {
             answers.push("sissy cuckie", 'sissy cuckold');
         } else {
             answers.push("cuckie", 'cuckold');

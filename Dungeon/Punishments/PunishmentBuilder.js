@@ -89,7 +89,9 @@ function startPunishmentSession(overallLevel) {
     PUNISHMENT_SCORE = (overallLevel.id + 1) * 4;
     sendDebugMessage('Starting punishment with score of ' + PUNISHMENT_SCORE);
 
-    while (PUNISHMENT_SCORE > 0 && getVar(VARIABLE.PUNISHMENT_ACTIVE, false)) {
+
+    //Only while we have score left, the punishment is active and the points are > 0
+    while (PUNISHMENT_SCORE > 0 && getVar(VARIABLE.PUNISHMENT_ACTIVE, false) && getVar(VARIABLE.PUNISHMENT_POINTS, 0) > 0) {
         interactWithRandomToys();
 
         chooseNextPunishment(overallLevel);

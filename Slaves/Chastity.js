@@ -14,6 +14,10 @@ function addDenialTime(hours) {
     }
 }
 
+function canOrgasmToday() {
+    return !isForcedLockedUp() && !isDeniedCumming() && getVar(VARIABLE.ORGASM_CATEGORY_TODAY, null) !== ORGASM_CATEGORY_DENIED_RESTRICTED;
+}
+
 
 function addLockUpTime(hours) {
     if (!isForcedLockedUp()) {
@@ -28,7 +32,6 @@ function removeLockUpTime(hours) {
         addLockUpTime(-hours);
     }
 }
-
 
 
 function isInChastity() {
@@ -89,12 +92,12 @@ function willKeepChastityOn(end) {
         //Lower base chance of unlocking at end
         let newChoice = randomInteger(1, 100 - getVar(VARIABLE.CHASTITY_LEVEL, 0) * 3);
 
-        if(newChoice < choice) {
+        if (newChoice < choice) {
             choice = newChoice;
             sendDebugMessage('Replaced old chance with new lower end unlock chance of ' + newChoice);
         }
     } else {
-        if(getVar(VARIABLE.CHASTITY_SPIKES_ON, false) || getVar(VARIABLE.CHASTITY_DILATOR_ON, false)) {
+        if (getVar(VARIABLE.CHASTITY_SPIKES_ON, false) || getVar(VARIABLE.CHASTITY_DILATOR_ON, false)) {
             sendDebugMessage('Unlocking to remove spikes/dialator');
             return false;
         }
@@ -234,7 +237,7 @@ function startLongTermChastityIntro() {
             if (getVar(VARIABLE.RESPONSE_WANTS_KEYHOLDER, false)) {
                 sendMessage('It looks like you want me to be your keyholder %EmoteHappy%');
 
-                if(!hasChastityCage()) {
+                if (!hasChastityCage()) {
                     sendMessage('Since you don\'t own a chastity cage yet, more like imaginary keyholder I guess %Grin%');
                 }
 
@@ -244,7 +247,7 @@ function startLongTermChastityIntro() {
             } else {
                 if (isInChastity()) {
                     sendMessage('About that chastity cage you\'re wearing');
-                } else if(hasChastityCage()) {
+                } else if (hasChastityCage()) {
                     sendMessage('About that chastity cage you\'re owning');
                 } else {
                     sendMessage('About that cock between your legs');
@@ -274,7 +277,7 @@ function startLongTermChastityIntro() {
             sendMessage('What I mean is that, for all intents and purposes, I will hold the key');
             sendMessage('You do not get to decide when the cage comes off, period');
 
-            if(!hasChastityCage()) {
+            if (!hasChastityCage()) {
                 sendMessage('Or in your case get to jerk off that is %Grin%');
             } else {
                 sendMessage('If at the end of a session I decide it stays on, it stays on until the next session');
@@ -298,7 +301,7 @@ function startLongTermChastityIntro() {
 
                 sendMessage('Just to think that I could keep you in chastity indefinitely');
 
-                if(!hasChastityCage()) {
+                if (!hasChastityCage()) {
                     sendMessage('Or like away from cumming at all in your case');
                 }
 
@@ -350,7 +353,7 @@ function startLongTermChastityIntro() {
         sendMessage('So that I will completely own %MyYour% %Cock% %SlaveName%');
         sendMessage('But for now...');
 
-        if(hasChastityCage()) {
+        if (hasChastityCage()) {
             sendMessage('I can still keep you in chastity during our sessions %EmoteHappy%');
         } else {
             sendMessage('I can still deny you your orgasm during our sessions %EmoteHappy%');

@@ -18,7 +18,7 @@ function deserializeObject(object, string) {
         }
         //Don't cast name to integers
         else if(identifier != 'name' && !isNaN(value)) {
-            if(!isNaN(parseInt(value))) {
+            if(value.indexOf('.') === -1 && !isNaN(parseInt(value))) {
                 value = parseInt(value);
             } else {
                 value = parseFloat(value)
@@ -30,6 +30,14 @@ function deserializeObject(object, string) {
     }
 
     return object;
+}
+
+function replaceAll(s, target, replace) {
+    while(s.indexOf(target) !== -1) {
+        s = s.replace(target, replace);
+    }
+
+    return s;
 }
 
 function serializeObject(object) {

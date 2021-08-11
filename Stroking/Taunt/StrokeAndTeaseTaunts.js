@@ -91,6 +91,165 @@ const STROKE_AND_TEASE_TAUNTS = [
     'Keep it up, it\'s not time to stop %TeaseVerb% yet'
 ];
 
+const TAUNT_CATEGORY = {
+    TAUNT_CATEGORIES: [],
+}
+
+//Do this after to have the array initialized above so we can append to it
+TAUNT_CATEGORY.SPH = createTauntCategory(0, "SPH", ['Stroking/Taunt/Fetish/SPH/'])
+TAUNT_CATEGORY.SPH.isAllowed = function () {
+    return VERBAL_HUMILIATION_LIMIT.isAllowed();
+}
+
+TAUNT_CATEGORY.SISSY = createTauntCategory(1, "Sissy", ['Stroking/Taunt/Fetish/Sissy/'])
+TAUNT_CATEGORY.SISSY.isAllowed = function () {
+    return SISSY_LIMIT.isAllowed();
+}
+
+TAUNT_CATEGORY.HUMILIATION = createTauntCategory(2, "Humiliation", ['Stroking/Taunt/Fetish/Degrading/'])
+TAUNT_CATEGORY.HUMILIATION.isAllowed = function () {
+    return VERBAL_HUMILIATION_LIMIT.isAllowed();
+}
+
+
+function getAllowedTauntCategories() {
+    return getAllowedTauntCategoriesFromList(TAUNT_CATEGORY.TAUNT_CATEGORIES);
+}
+
+
+function getAllowedTauntCategoriesFromList(categories) {
+    let allowed = [];
+
+    for (let x = 0; x < categories.length; x++) {
+        let tauntCategory = categories[x];
+
+        if (tauntCategory.isAllowed()) {
+            allowed.push(tauntCategory);
+        }
+    }
+
+    return allowed;
+}
+
+
+function createTauntCategory(id, name, paths) {
+    let fileCount = [];
+    let overallFileCount = 0;
+
+    for (let x = 0; x < paths.length; x++) {
+        let path = paths[x];
+
+        //Add path seperators
+        replaceAll(path, '/', PATH_SEPARATOR);
+
+        fileCount[x] = getScriptFilesInFolder(path).length;
+        overallFileCount += fileCount[x];
+
+        //Add *.js to the path
+        paths[x] = path + '*.js';
+    }
+
+    sendDebugMessage('Loaded ' + fileCount + ' ' + name + ' taunts');
+
+    let taunt = {
+        id: id,
+        name: name,
+        paths: paths,
+        fileCount: fileCount,
+        overallFileCount: overallFileCount,
+        history: createHistory(name + 'Taunt'),
+    }
+
+    TAUNT_CATEGORY.TAUNT_CATEGORIES.push(taunt);
+    return taunt;
+}
+
+function findTauntAndRun(tauntCategory) {
+    let options = tauntCategory.paths;
+
+    sendDebugMessage('Trying to run ' + tauntCategory.name + ' taunt');
+
+    setTempVar('minTauntsSinceRun', tauntCategory.overallFileCount);
+
+    //Find winner in all the list of the different directories (if there are multiple)
+    let winner = getWinnerIndex(tauntCategory.fileCount);
+
+    sendDebugMessage('Running from path ' + tauntCategory.paths[winner])
+
+    run(tauntCategory.paths[winner]);
+}
+
+function getTauntCategoryByFilePath(path) {
+    for (let x = 0; x < TAUNT_CATEGORY.TAUNT_CATEGORIES.length; x++) {
+        let tauntCategory = TAUNT_CATEGORY.TAUNT_CATEGORIES[x];
+
+        for (let y = 0; y < tauntCategory.paths.length; y++) {
+            let categoryPath = tauntCategory.paths[y];
+
+            categoryPath = replaceAll(categoryPath, '/', PATH_SEPARATOR);
+
+            //Cut off \*.js at the end
+            categoryPath = categoryPath.substr(0, categoryPath.length - 5);
+
+            if (categoryPath.substr(0, 1) !== PATH_SEPARATOR) {
+                categoryPath = PATH_SEPARATOR + categoryPath;
+            }
+
+            if (categoryPath.toLowerCase() === path.toLowerCase()) {
+                return tauntCategory;
+            }
+        }
+    }
+
+    sendDebugMessage('Unable to find taunt category for taunt path "' + path + '"');
+    return undefined;
+}
+
+function tryRunTauntFetchId(minTauntsSinceRun) {
+    let currentFile = ScriptHandler.getHandler().getCurrentFile();
+    let category = getTauntCategoryByFilePath(getRelativePersonalityFilePath(currentFile.getParentFile()));
+
+    if (category === undefined) {
+        return true;
+    }
+
+    return tryRunTaunt(getCurrentScriptName(), category, minTauntsSinceRun);
+}
+
+function tryRunTaunt(tauntId, category, minTauntsSinceRun) {
+    if (minTauntsSinceRun === undefined) {
+        minTauntsSinceRun = getVar('minTauntsSinceRun', 0);
+    }
+
+    //Keep track of how many times we tried to find a taunt
+    setTempVar('findTauntTries', getVar('findTauntTries', 0) + 1);
+
+    let maxTries = 10;
+
+    tauntId = tauntId.toLowerCase();
+
+    //If we already ran that module today try more than 10 times
+    if (category.history.isInTodaysHistory(tauntId)) {
+        maxTries = 30;
+    }
+
+    if (category.history.isInHistory(tauntId)) {
+        //Check whether not enough modules have passed since last time we ran this module
+        if (category.history.getModulesSinceHistory(tauntId) < minTauntsSinceRun) {
+            if (getVar('findTauntTries') < maxTries) {
+                //Try to find a different taunt
+                findTauntAndRun(category);
+                return false;
+            }
+        }
+    }
+
+    sendDebugMessage('Executing taunt and adding to history');
+
+    category.history.addHistoryRun(tauntId);
+    return true;
+}
+
 function getTeaseVerb() {
     return random('suffering', 'dripping', 'teasing', 'aching');
 }

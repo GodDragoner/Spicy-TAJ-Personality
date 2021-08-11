@@ -333,7 +333,7 @@ function registerClass(name, levels, fileName, weekdays, getTasks, getModifiers,
             let resultText = getTasks(this)[assignmentIndex];
             let resultArray = new java.util.ArrayList();
 
-            //Somet asks are one liners some arent't
+            //Some tasks are one liners some aren't
             if(Array.isArray(resultText)) {
                 for(let x = 0; x < resultText.length; x++) {
                     resultArray.add(resultText[x]);

@@ -137,6 +137,10 @@ function runEnemaIntro() {
     sendMessage("Make sure to do them regularly");
     sendMessage("Otherwise you will have to face consequence %SlaveName% %EmoteHappy%");
 
+    if(SISSY_LIMIT.isAllowed()) {
+        sendMessage('This isn\'t about your pleasure, it\'s about keeping your slutty ass clean for real men!');
+    }
+
     if(sendYesOrNoQuestion('Is that understood?')) {
         sendGoodForMe();
     } else {

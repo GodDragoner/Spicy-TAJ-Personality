@@ -259,7 +259,6 @@ for(let x = 0; x < tasks.length; x++) {
 }
 */
 {
-    let analOrgasmType = decideAnalOrgasmType();
-    let orgasmCategory = decideOrgasm(false);
-    getAnalOrgasmInstructions(analOrgasmType, orgasmCategory);
+    let plug = getAnalPlug(0, 0, true);
+    sendDebugMessage(plug.name);
 }

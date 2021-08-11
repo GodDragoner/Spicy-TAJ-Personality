@@ -301,6 +301,10 @@ function sendGoodForMe() {
 function sendAlreadyKnowWhatsNext(triggerwords) {
     sendMessageBasedOnSender("You already know " + random("what I am gonna make you do now", "what I am gonna to do you now", "what comes next", "what you are gonna do next", "what I want you to do next", "what is gonna happen now", "what we are gonna do to you now", "what we are gonna do now") + random('', ', don\'t you? %EmoteHappy%'), 0);
 
+    sendHaveAGuess(triggerwords);
+}
+
+function sendHaveAGuess(triggerwords) {
     let answer = createInput(4);
 
     while (true) {
@@ -329,8 +333,6 @@ function sendAlreadyKnowWhatsNext(triggerwords) {
 function sendMakeMeProud() {
     sendMessageBasedOnSender(random('I hope you make me proud', 'Try your best to make me proud', 'Try your best to impress me', 'I hope you try your best', 'I wanna see you at your best', 'Make sure to try your best', 'You better try to impress me', 'I hope you are trying your best to impress me'));
 }
-
-
 
 function sendYesOrNoQuestion(question, sender = null) {
     let previousSender = getCurrentSender();

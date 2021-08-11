@@ -49,6 +49,16 @@
                     sendMessage('You will no longer crave those silly full blown orgasms');
                     sendMessage('And %MyYour% %Cock% will shrink down to a small little clitty throughout the months');
                     sendMessage('I will take care of that %Grin%');
+                    sendMessage('We\'ll start slow, but make no mistakes, by the time we\'re done you\'ll be a dick chugging');
+                    sendMessage('Sperm swallowing');
+
+                    if(!PEE_LIMIT.isHardLimit()) {
+                        sendMessage('Piss drinking');
+                    }
+
+                    sendMessage('Ass raped sissy');
+                    sendMessage('That begs to be used and abused by real men %Wicked%');
+                    sendMessage('I will turn you into the cock hungry sissy slut you long to be %EmoteHappy%');
 
                     setVar(VARIABLE.SISSY_TRAINING, true);
                     setDate(VARIABLE.LAST_RULE_PASSED);

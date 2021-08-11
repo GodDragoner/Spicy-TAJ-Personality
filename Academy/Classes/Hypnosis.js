@@ -22,7 +22,6 @@
             tasks.push('Spent ' + stage*10 + ' minutes watching ' + random(possibleTypes) + ' and sensually fucking yourself with a dildo of your choice');
         }
 
-
         if(MAGIC_WAND_TOY.hasToy() && MAGIC_WAND_TOY.isPlayAllowed()) {
             tasks.push('Spent ' + stage*10 + ' minutes watching ' + random(possibleTypes) + ' while vibing your clitty');
         }
@@ -45,14 +44,21 @@
     }
 
     function getModifiers(classObject) {
+        let modifiers = [];
+        modifiers.push('Whenever you are doing other classes try to watch or hear hypno (any kind) during them');
+        modifiers.push('You will watch at least 5 minutes of hypno (any kind) after waking up and 5 minutes before going to sleep');
 
+        return modifiers;
     }
 
     function getExam(classObject) {
         let stage = classObject.getCurrentStage();
 
         let exam = [];
-        exam.push('Fuck your ass with the dildo going all the way in and almost all the way out for 10 minutes at 25 bpm');
+        exam.push('Spent 4 hours watching hypno (any kind) within one day. Any sort of stimulation is up to you.');
+        exam.push('Spent 20 hours watching hypno (any kind) within the next week. Any sort of stimulation is up to you.');
+
+        return exam[stage];
     }
 
     function onStart(classObject) {

@@ -36,7 +36,7 @@
                 RULE_EVENING_RITUAL.setActive(true);
                 EVENING_ROUTINE.RULE_EVENING_RITUAL_EDGES_LAST_CUM.setActive(true);
             }
-        } else if(EVENING_ROUTINE.RULE_EVENING_RITUAL_EDGES_LAST_CUM.isActive() && !EVENING_ROUTINE.RULE_EVENING_RITUAL_CENSOR_PORN.isActive() && RULE_ONLY_CENSORED_PORN.isActive() && EVENING_ROUTINE.RULE_EVENING_RITUAL_CENSOR_PORN.canBeActivated()) {
+        } else if(EVENING_ROUTINE.RULE_EVENING_RITUAL_EDGES_LAST_CUM.isActive() && !EVENING_ROUTINE.RULE_EVENING_RITUAL_CENSOR_PORN.isActive() && EVENING_ROUTINE.RULE_EVENING_RITUAL_CENSOR_PORN.canBeActivated()) {
             if(shouldIntroduceNewRule(EVENING_ROUTINE.RULE_EVENING_RITUAL_CENSOR_PORN)) {
                 sendMessage('I had an idea %SlaveName% %Grin%');
                 sendMessage('Since I already introduced the rule of censored porn to you');
@@ -64,6 +64,24 @@
                 sendMessage('Make sure to start with the first images today %SlaveName% %Wicked%');
 
                 EVENING_ROUTINE.RULE_EVENING_RITUAL_CENSOR_PORN.setActive(true);
+            }
+        } else if(EVENING_ROUTINE.RULE_EVENING_RITUAL_EDGES_LAST_CUM.isActive() && !EVENING_ROUTINE.RULE_EVENING_RITUAL_BODY_HYGIENE.isActive() && EVENING_ROUTINE.RULE_EVENING_RITUAL_BODY_HYGIENE.canBeActivated()) {
+            if(shouldIntroduceNewRule(EVENING_ROUTINE.RULE_EVENING_RITUAL_BODY_HYGIENE)) {
+                sendMessage('There is a thing I want to address for today');
+                sendMessage('And that is regarding your evening ritual %Grin%');
+                sendMessage('Since you are a good sissy in training for me...');
+                sendMessage('I also want you to look and feel like one');
+                sendMessage('So what I want you to do is pretty simple');
+                sendMessage('I want you to get some lotion, lip balm, hand lotion and so on and forth');
+                sendMessage('And before going to bed I want you to take care of your face, hands, lips, clitty and so on and forth');
+                sendMessage('Make them feel good, smooth and girly %EmoteHappy%');
+                sendMessage('Bonus points if you buy products with a feminine smell %Wicked%');
+                sendMessage('I also want you to do something against pimples if you happen to have any');
+                sendMessage('So overall just take care of your body parts before going to bed');
+                sendMessage('Make sure to get all the things needed on your next shopping trip %SlaveName% %Wicked%');
+                sendMessage('That\'s all for today %EmoteHappy%');
+
+                EVENING_ROUTINE.RULE_EVENING_RITUAL_BODY_HYGIENE.setActive(true);
             }
         }
     }

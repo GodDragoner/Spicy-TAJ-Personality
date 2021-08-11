@@ -53,6 +53,8 @@ const VARIABLE = {
 
     RESPONSE_BEG_EDGE_COUNT: 'responseBegEdgeCount',
 
+    EDGING_DISABLED: 'edgingDisabled',
+
     //Chores
     CHORE_KINK_SAFE_TODAY: "choreKinkSafeToday",
 
@@ -321,6 +323,8 @@ const VARIABLE = {
     SUB_SOFT_COCK_LENGTH: 'subSoftCockLength',
     SUB_HEIGHT: 'subHeight',
     SUB_WEIGHT: 'subWeight',
+
+    SUB_THINKS_COCK_SMALL: 'subThinksCockSmall',
 
     //Sub status
     SUB_IS_VIRGIN: 'subIsVirgin',

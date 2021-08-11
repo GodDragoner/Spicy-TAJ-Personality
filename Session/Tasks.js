@@ -389,6 +389,7 @@ function goToCorner(durationSeconds) {
                 sendMessage('Which means we will try again');
 
                 sendMessage('But first a little punishment should be in place');
+                smallPunishment();
 
                 sendMessage('Go back to the corner and try harder this time');
                 sendMessage('Time starts with my bell!', 10);

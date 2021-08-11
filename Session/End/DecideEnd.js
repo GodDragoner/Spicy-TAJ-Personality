@@ -12,7 +12,13 @@
         sendMessage(random('You\'re aren\'t getting any chance to cum currently'));
         sendMessage(random('So there won\'t be any funny business today!', 'So I got nothing else to give to you'));
         SKIP_END_GAME = true;
-    } else {
+    } else if (getVar(VARIABLE.ORGASM_CATEGORY_TODAY, null) === ORGASM_CATEGORY_DENIED_RESTRICTED) {
+        //TODO: more interaction
+        sendMessage(random('As you well know %SlaveName%', 'As you should well know', 'As is well known', 'Well'));
+        sendMessage(random('You\'re aren\'t getting any chance to cum currently'));
+        sendMessage(random('So there won\'t be any funny business today!', 'So I got nothing else to give to you'));
+        SKIP_END_GAME = true;
+    }  else {
         //Denial limit reached
         if (getLastEjaculationDate().addDay(getVar(VARIABLE.DENIAL_LIMIT)).hasPassed()) {
             run('Session/End/HardLimit.js');

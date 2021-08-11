@@ -237,6 +237,8 @@ function strokeTrainingEdge() {
 
     interactWithRandomToys();
 
+    readyForStroking()
+
     sendMessage('Be ready for it to start again very soon %Grin%');
 
     sleep(randomInteger(10, 25));
