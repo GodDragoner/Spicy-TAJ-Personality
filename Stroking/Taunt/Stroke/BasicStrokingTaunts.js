@@ -3,7 +3,7 @@
 
     //Run a bigger taunt special instead of a normal taunt (1/20)
     if(randInt <= 5 && getAllowedTauntCategories().length > 0) {
-        findTauntAndRun(getAllowedTauntCategories());
+        findTauntAndRun(random(getAllowedTauntCategories()));
     } else {
         let answers = [
             'Make %MyCock% %Cock% hard as a rock for me',

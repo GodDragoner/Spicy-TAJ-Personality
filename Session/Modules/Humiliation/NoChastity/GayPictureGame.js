@@ -112,7 +112,7 @@ function startGayPictureRound() {
                 sendMessage("I guess that earns you 100 gold!");
                 addGold(100);
                 sendMessage("The gold has been transferred...");
-                return;
+                break;
             }
 
             sendMessage("Time for 20 fast strokes!");
@@ -159,6 +159,7 @@ function startGayPictureRound() {
                 return;
             }
 
+            //TODO: No clamps on penis
             distributeClamps(1);
             sendMessage('Well that\'s another peg on your body');
             break;

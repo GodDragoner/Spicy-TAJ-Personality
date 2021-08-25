@@ -354,7 +354,7 @@ function registerClass(name, levels, fileName, weekdays, getTasks, getModifiers,
                 let array = tryGetArrayList(fileName + 'assignmentText');
 
                 //Backwards compatibility with string only tasks
-                if(array instanceof String) {
+                if(array instanceof String || typeof array === 'string') {
                     let newArray = new java.util.ArrayList();
                     newArray.add(array);
                     array = newArray;

@@ -123,35 +123,5 @@
                 }
             }
         }
-        if (VERBAL_HUMILIATION_LIMIT.isAllowed()) {
-            sendMessage('Look at %MyYour% %Cock%');
-            sendMessage('Isn\'t it cute?');
-            sendMessage('Look down at that worthless bit of meat hanging between your legs %Wicked%');
-            sendMessage('Remember: It\'s not a dick %Lol%');
-            sendMessage('Dick\'s are big, luscious objects of desire that women crave to have thrust inside them');
-            sendMessage('What you have could never pleasure a woman');
-
-            if (getVar(VARIABLE.SUB_IS_VIRGIN, false)) {
-
-            }
-        } else {
-
-            if (sendYesOrNoQuestion('Do you ever wonder what it\'s like to be locked in chastity %SlaveName%?')) {
-                sendMessage('Well you aren\'t the only one with that thought');
-            } else {
-                sendMessage('%EmoteSad%');
-            }
-
-            sendMessage('I do wonder what it\'ll be like locking you up');
-            sendMessage('Being the owner of your sexuality');
-            sendMessage('Deciding when and how you can pleasure yourself even outside of sessions');
-            sendMessage('%Moan%');
-            sendMessage('I love the thought of me knowing you can\'t release all that built up pleasure without contacting me first %Grin%');
-            sendMessage('Seeing %MyYour% %Cock% trying to fight out of its prison');
-            sendMessage('And me just looking at it, laughing and probably saying NO %EmoteHappy%');
-            sendMessage('And you knowing that\'s the only way this is supposed to be');
-            sendMessage('Maybe one day you\'ll be up for it and get me a nice cage to lock %MyYour% cock up in');
-            //QUALITY: Really buying promises
-        }
     }
 }

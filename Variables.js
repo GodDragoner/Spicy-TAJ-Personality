@@ -288,6 +288,11 @@ const VARIABLE = {
     FEET_WORSHIPS_DONE: "feetWorshipsDone",
     FEET_WORSHIP_FOLDER: 'feetWorshipFolder',
 
+    //Beta Humiliation
+    BETA_HUMILIATIONS_DONE: "betaHumiliationsDone",
+    BETA_HUMILIATION_FOLDER: 'betaHumiliationFolder',
+    BETA_HUMILIATION_FOLDER_TAGGED: 'betaHumiliationFolderTagged',
+
     //Gooning
     GOONINGS_DONE: "gooningsDone",
 

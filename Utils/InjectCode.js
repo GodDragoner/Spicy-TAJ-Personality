@@ -259,6 +259,5 @@ for(let x = 0; x < tasks.length; x++) {
 }
 */
 {
-    let plug = getAnalPlug(0, 0, true);
-    sendDebugMessage(plug.name);
+
 }

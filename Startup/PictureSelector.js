@@ -1,6 +1,4 @@
-let DressState = Java.type("me.goddragon.teaseai.api.picture.DressState");
-let PictureTag = Java.type("me.goddragon.teaseai.api.picture.PictureTag");
-let PictureHandler = Java.type("me.goddragon.teaseai.api.picture.PictureHandler");
+
 
 {
     let PictureSelector = Java.type("me.goddragon.teaseai.api.picture.PictureSelector");

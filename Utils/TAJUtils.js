@@ -1,5 +1,7 @@
 let StopWatch = Java.type("org.apache.commons.lang.time.StopWatch");
 
+let MEDIA_COLLECTION = TeaseAI.application.getMediaCollection();
+
 function incrementTempVar(varName, object, defaultValue = 0) {
     setTempVar(varName, getVar(varName, defaultValue) + object);
 

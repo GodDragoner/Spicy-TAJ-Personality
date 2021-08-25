@@ -78,6 +78,11 @@ function updatePictureSet() {
 }
 
 function showAssistantImage() {
+    if(RULE_ONLY_CENSORED_PORN.isActive()) {
+        showCategoryImage('TEASE');
+        return;
+    }
+
     if(ASSISTANT_CURRENT_SET_ID === ASSISTANT_CHRISTMAS_SET_ID) {
         showImage("Images/Spicy/Assistant/Christmas/*.jpg");
     } else {

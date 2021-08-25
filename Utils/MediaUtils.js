@@ -1,3 +1,10 @@
+let DressState = Java.type("me.goddragon.teaseai.api.picture.DressState");
+let PictureTag = Java.type("me.goddragon.teaseai.api.picture.PictureTag");
+let PictureHandler = Java.type("me.goddragon.teaseai.api.picture.PictureHandler");
+let MediaType = Java.type("me.goddragon.teaseai.api.media.MediaType");
+
+let MediaFolder = Java.type("me.goddragon.teaseai.api.media.MediaFolder");
+
 function watchVideoForDuration(durationSeconds) {
     sendDebugMessage('Waiting for video player to start');
 
@@ -52,4 +59,42 @@ function createMediaCategoryVideo(category) {
             showCategoryVideo(category);
         }
     }
+}
+
+function getRandomTaggedImageFromMediaFolder(mediaFolder, mustHaveTags, mustNotHaveTags) {
+    let tagList = new java.util.ArrayList();
+
+    for(let x = 0; x < mustHaveTags.length; x++) {
+        tagList.add(mustHaveTags[x]);
+    }
+
+    let noTagList = new java.util.ArrayList();
+
+    for(let x = 0; x < mustNotHaveTags.length; x++) {
+        noTagList.add(mustNotHaveTags[x]);
+    }
+
+
+    let pick = random(mediaFolder.filterForTags(tagList, noTagList));
+
+    return pick.getRandomMedia();
+}
+
+function getRandomCustomTaggedImage(mustHaveTags, mustNotHaveTags) {
+    let tagList = new java.util.ArrayList();
+
+    for(let x = 0; x < mustHaveTags.length; x++) {
+        tagList.add(mustHaveTags[x]);
+    }
+
+    let noTagList = new java.util.ArrayList();
+
+    for(let x = 0; x < mustNotHaveTags.length; x++) {
+        noTagList.add(mustNotHaveTags[x]);
+    }
+
+
+    let pick = random(MEDIA_COLLECTION.getCustomTagged(MediaType.IMAGE, tagList, noTagList));
+
+    return pick.getRandomMedia();
 }

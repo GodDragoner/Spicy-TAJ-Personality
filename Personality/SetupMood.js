@@ -253,8 +253,8 @@ if (newDay) {
 
     //Summer
     else if (todayDate.getMonth() == 6 || todayDate.getMonth() == 7 || todayDate.getMonth() == 8) {
-        tempHappiness += 8;
-        tempLust += 5;
+        tempHappiness += 1;
+        tempLust += 1;
     }
 
 
