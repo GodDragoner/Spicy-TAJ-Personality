@@ -140,7 +140,7 @@ function createTauntCategory(id, name, paths) {
         let path = paths[x];
 
         //Add path seperators
-        replaceAll(path, '/', PATH_SEPARATOR);
+        path = path.replaceAll(/\//g, PATH_SEPARATOR);
 
         fileCount[x] = getScriptFilesInFolder(path).length;
         overallFileCount += fileCount[x];
@@ -186,7 +186,7 @@ function getTauntCategoryByFilePath(path) {
         for (let y = 0; y < tauntCategory.paths.length; y++) {
             let categoryPath = tauntCategory.paths[y];
 
-            categoryPath = replaceAll(categoryPath, '/', PATH_SEPARATOR);
+            categoryPath = categoryPath.replaceAll(/\//, PATH_SEPARATOR);
 
             //Cut off \*.js at the end
             categoryPath = categoryPath.substr(0, categoryPath.length - 5);
