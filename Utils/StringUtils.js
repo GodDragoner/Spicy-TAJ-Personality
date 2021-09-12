@@ -32,14 +32,6 @@ function deserializeObject(object, string) {
     return object;
 }
 
-function replaceAll(s, target, replace) {
-    while(s.indexOf(target) !== -1) {
-        s = s.replace(target, replace);
-    }
-
-    return s;
-}
-
 function serializeObject(object) {
     let string = '';
     for (let property in object) {
