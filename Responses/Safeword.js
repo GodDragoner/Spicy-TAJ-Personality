@@ -31,11 +31,11 @@ function safewordResponse(message) {
         sendMessageBasedOnSender('And I will never be angry at you for it');
         sendMessageBasedOnSender('Make sure to remember that pet');
 
-        if(sendMessageBasedOnSender('Do you want to stop for today?' , getCurrentSender())) {
+        if(sendYesOrNoQuestion('Do you want to stop for today?', getCurrentSender())) {
             willEndSession = true;
             sendMessageBasedOnSender('I hope you are able to sort out whatever went wrong... %EmoteSad%');
             sendMessageBasedOnSender('Now...');
-        } else if(sendMessageBasedOnSender('Do you want to take a break?' , getCurrentSender())) {
+        } else if(sendYesOrNoQuestion('Do you want to take a break?' , getCurrentSender())) {
             sendMessageBasedOnSender('I hope you are able to sort out whatever went wrong... %EmoteSad%');
             sendMessageBasedOnSender('Make sure to only return once you feel comfortable with continuing again');
             sendMessageBasedOnSender('I\'ll be here and wait for you to return');
@@ -43,7 +43,7 @@ function safewordResponse(message) {
             waitForDone(100000000000);
 
             while(true) {
-                if(sendMessageBasedOnSender('Are you ready to continue?' , getCurrentSender())) {
+                if(sendYesOrNoQuestion('Are you ready to continue?' , getCurrentSender())) {
                     break;
                 } else {
                     waitForDone(100000000000);
@@ -51,7 +51,7 @@ function safewordResponse(message) {
             }
 
             sendMessageBasedOnSender('I hope you feel better now %EmoteHappy%');
-        } else if(sendMessageBasedOnSender('Well then do you want to continue?' , getCurrentSender())) {
+        } else if(sendYesOrNoQuestion('Well then do you want to continue?' , getCurrentSender())) {
 
         } else {
             sendMessageBasedOnSender('You\'ll have to do one of the above');

@@ -16,7 +16,7 @@ function wantToEdgeBegResponse(message) {
             'You sound pretty desperate, %SlaveName% %EmoteHappy%',
             'It makes me so wet when you beg me to edge',
             'I want more, keep begging',
-            'Your begging turn me on so much %Moan%',
+            'Your begging turns me on so much %Moan%',
             '%Moan%',
             '%EmoteHappy%',
             '%Grin%',

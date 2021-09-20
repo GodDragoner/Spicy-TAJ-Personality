@@ -47,7 +47,7 @@ function getAnalOrgasmInstructions(analOrgasmType, orgasmCategory) {
 
         if(feelsLikePunishingSlave()) {
             let bpm = random(30, 40, 45, 50);
-            sendMessage('And you will not be allowed to go lower than ' + bpm);
+            sendMessage('And you will not be allowed to go lower than ' + bpm + ' bpm');
             sendMessage('If you go lower than that it\'s game over and a forfeited orgasm %Grin%');
         }
 

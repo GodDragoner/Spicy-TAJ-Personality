@@ -17,7 +17,7 @@
         let minTimePassed = 0;
 
         //Dom choose
-        if (strokeFrequency == 0) {
+        if (strokeFrequency === 0) {
             const mood = getMood();
             const strictness = getStrictnessForCharacter();
 
@@ -69,7 +69,7 @@
         }
 
         let skipModules = false;
-        if (moduleCounter === 0) {
+        if (moduleCounter === 0 && !hasSessionTimePassed(getVar(VARIABLE.DEVOTION))) {
             //Continue special session (if session ended early)
             if(isVar(VARIABLE.CURRENT_SPECIAL_SESSION)) {
                 let specialSession = getSpecialSessionById(getVar(VARIABLE.CURRENT_SPECIAL_SESSION));

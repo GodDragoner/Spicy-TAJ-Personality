@@ -15,30 +15,32 @@ function endSpicySession() {
 
     let trainings = 0;
 
-    if (getVar(VARIABLE.CHASTITY_TRAINING, false) && !isForcedLockedUp()) {
-        trainings++;
-        run('Session/End/ChastityTraining/ChastityTraining.js');
-    } else {
-        if (getVar(VARIABLE.PARTNER_IS_KEYHOLDER, false)) {
-            //QUALITY: More sentences
-            sendMessage('Since your partner is your keyholder I will leave the decision regarding chastity to her');
+    if(hasChastityCage()) {
+        if (getVar(VARIABLE.CHASTITY_TRAINING, false) && !isForcedLockedUp()) {
+            trainings++;
+            run('Session/End/ChastityTraining/ChastityTraining.js');
         } else {
-            //Lock up part
-            if (!isInChastity() && willKeepChastityOn(true)) {
-                lockChastityCage();
+            if (getVar(VARIABLE.PARTNER_IS_KEYHOLDER, false)) {
+                //QUALITY: More sentences
+                sendMessage('Since your partner is your keyholder I will leave the decision regarding chastity to her');
+            } else {
+                //Lock up part
+                if (!isInChastity() && willKeepChastityOn(true)) {
+                    lockChastityCage();
 
-                //This needs to be checked here again because if the sub just acquired a cage there is no such thing set in the first session
-                if (!isVar(VARIABLE.LOCKED_UP_LIMIT)) {
-                    askForMaxLockupTime();
-                }
+                    //This needs to be checked here again because if the sub just acquired a cage there is no such thing set in the first session
+                    if (!isVar(VARIABLE.LOCKED_UP_LIMIT)) {
+                        askForMaxLockupTime();
+                    }
 
-                if (shouldIntroduceNewRule(RULE_DOMME_KEYHOLDER)) {
-                    RULE_DOMME_KEYHOLDER.sendIntroduction();
-                }
+                    if (shouldIntroduceNewRule(RULE_DOMME_KEYHOLDER)) {
+                        RULE_DOMME_KEYHOLDER.sendIntroduction();
+                    }
 
-                //Run random after chastity link if domme is keyholder
-                if (RULE_DOMME_KEYHOLDER.isActive()) {
-                    run("Session/Link/EndChastity/*.js");
+                    //Run random after chastity link if domme is keyholder
+                    if (RULE_DOMME_KEYHOLDER.isActive()) {
+                        run("Session/Link/EndChastity/*.js");
+                    }
                 }
             }
         }

@@ -622,6 +622,23 @@ function generateDailyTeaseRouletteInstructions(lines, categoriesAllowed, teaseT
         lines.add('Once started you will not be allowed to end early or skip anything');
         lines.add('Fulfill any instruction to your best capabilities');
 
+        if(feelsEvil()) {
+            lines.add('I want you to create an account and activate the bad gambler option for this');
+        }
+
+        if (feelsEvil()) {
+            lines.add('Once you\'ve picked a roulette');
+            lines.add('You will roll 3 times');
+            lines.add('And you will go with the worst/hardest of the 3 results');
+            lines.add('You can either us the one with the highest sum of numbers');
+            lines.add('Or use the one that seems worst to you (dubs, triples or whatever)');
+            lines.add('Remember to do the same for all the roulettes you do for this task');
+        } else if(feelsLikePunishingSlave()) {
+            lines.add('I don\'t want you roll in this case');
+            lines.add('I want you to pick the worst/hardest possible outcome by hand for each roulette you do for this task');
+            lines.add('Enjoy *lol*')
+        }
+
         generateNoCummingDailyInstructions(lines);
         return true;
     }

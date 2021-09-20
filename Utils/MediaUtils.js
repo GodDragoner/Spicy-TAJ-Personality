@@ -10,7 +10,9 @@ function watchVideoForDuration(durationSeconds) {
 
     // We need to wait for the player to ready up and start playing before continuing
     let totalMillisecondsWaitedForVideoToStart = 0;
-    const maxMillisecondsToWaitForVideoToStart = 2000;
+
+    //15 seconds
+    const maxMillisecondsToWaitForVideoToStart = 1000*15;
 
     while (!isPlayingVideo()) {
         if (totalMillisecondsWaitedForVideoToStart >= maxMillisecondsToWaitForVideoToStart) {
