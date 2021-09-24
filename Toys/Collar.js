@@ -1,6 +1,15 @@
 const COLLAR_TOY = createToy('collar');
-COLLAR_TOY.removeToy = function () {
-    removeCollar();
+COLLAR_TOY.removeToyText = function () {
+    if (!COLLAR_TOY.hasToy() || !COLLAR_TOY.isToyOn()) {
+        return false;
+    }
+
+    sendMessage('You may remove your collar %SlaveName%');
+    sendMessage('Tell me when you are done');
+    waitForDone();
+
+    COLLAR_TOY.setToyOn(false);
+    return true;
 };
 
 function putOnCollar() {
@@ -17,18 +26,5 @@ function putOnCollar() {
         RULE_ALWAYS_WEAR_COLLAR.sendIntroduction();
     }
 
-    return true;
-}
-
-function removeCollar() {
-    if (!COLLAR_TOY.hasToy() || !COLLAR_TOY.isToyOn()) {
-        return false;
-    }
-
-    sendMessage('You may remove your collar %SlaveName%');
-    sendMessage('Tell me when you are done');
-    waitForDone();
-
-    COLLAR_TOY.setToyOn(false);
     return true;
 }

@@ -257,9 +257,50 @@ for(let x = 0; x < tasks.length; x++) {
     let orgasmCategory = decideOrgasm(false);
     getAnalOrgasmInstructions(analOrgasmType, orgasmCategory);
 }
-*/
+
 {
+    setTempVar(VARIABLE.PUNISHMENT_ACTIVE, true);
+    PUNISHMENT_OVERALL_LEVEL = PUNISHMENT_LEVEL.EXTREME;
+    PUNISHMENT_CURRENT_LEVEL = PUNISHMENT_LEVEL.EXTREME;
+    setTempVar('lastPunishmentLevel', PUNISHMENT_CURRENT_LEVEL);
+    run('Dungeon/Punishments/Any/BondagePunishment.js');
 
-
-
+    for (let x = 0; x < PUNISHMENT_MULTIPLIER_CURRENT; x++) {
+        subtractPunishmentPointsForPunishment(PUNISHMENT_CURRENT_LEVEL);
+    }
 }
+*/
+// {
+//     const DAYS_IN_WEEK = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+//
+//     let happiness = 0;
+//     let lust = 0;
+//     for (let x = 0; x < DAYS_IN_WEEK.length; x++) {
+//         const dayOfWeek = DAYS_IN_WEEK[x];
+//         const todayDate = new Date();
+//
+//         let currentDay = todayDate.getDay();
+//         let distance = x - currentDay;
+//         todayDate.setDate(todayDate.getDate() + distance);
+//
+//         sendDebugMessage('Day of week ' + dayOfWeek + " (" + x + ")");
+//         sendDebugMessage('Today Date ' + todayDate.getDay());
+//         // happiness += getVar(dayOfWeek + "Lust", 0)
+//         if (resetMoodForDay(dayOfWeek, todayDate)) {
+//             handleMoodForDay(dayOfWeek, todayDate);
+//         }
+//
+//         if(getVar(VARIABLE.HAPPINESS) >= getHighMoodAttributeThreshold(1)) {
+//             happiness++;
+//         }
+//
+//         if(getVar(VARIABLE.LUST) >= getHighMoodAttributeThreshold(1)) {
+//             lust++;
+//         }
+//         // sendDebugMessage('Happiness: ' +happiness);
+//     }
+//
+//     sendDebugMessage('happiness high threshold: ' + happiness);
+//     sendDebugMessage('Lust high threshold: ' + lust);
+//     debugPrintMood();
+// }

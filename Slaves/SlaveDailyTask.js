@@ -255,7 +255,7 @@ function getTodaysSlaveTask() {
             lines.add('%InAddition% ' + pissedOff);
         }
 
-        switch (randomInteger(0, 17)) {
+        switch (randomInteger(0, 19)) {
             case 0:
                 lines.add('Today I want you to stay on all fours for ' + getDailyTaskTime() + ' minutes');
                 lines.add('And...');
@@ -472,6 +472,9 @@ function getTodaysSlaveTask() {
 
                 generateSlaveFoodMeal(lines);
                 break;
+            case 19:
+                lines.add('You have to be naked all day. For every 5 steps you want to take you have to give your balls one hard slap.');
+                break;
             default:
                 break;
         }
@@ -505,7 +508,7 @@ const ONLINE_TEASE_TYPE = {
 
 function generateDailyPornInstruction(lines, porntype) {
     //Handle sissy limit
-    if(porntype === PORN_CATEGORY.SISSY_GASM_COMPILATION && !SISSY_LIMIT.isAllowed()) {
+    if (porntype === PORN_CATEGORY.SISSY_GASM_COMPILATION && !SISSY_LIMIT.isAllowed()) {
         porntype = PORN_CATEGORY.RUINED_ORGASM_COMPILATION;
     }
 
@@ -538,7 +541,7 @@ function generateDailyPornInstruction(lines, porntype) {
                     lines.add('That cage stays on, so just stroke your cage instead');
                 }
 
-                if(!noEdging) {
+                if (!noEdging) {
                     lines.add('If you can\'t edge this way just try your best to follow the instructions %Grin%');
                 }
             } else {
@@ -563,15 +566,14 @@ function generateDailyPornInstruction(lines, porntype) {
         lines.add('Suffer while seeing all those men getting their well earned release while you are nowhere close it')
     } else if (porntype === PORN_CATEGORY.RUINED_ORGASM_COMPILATION) {
         lines.add('Suffer while watching how your next release is probably gonna look as well')
-    } else if(porntype === PORN_CATEGORY.SISSY_GASM_COMPILATION) {
+    } else if (porntype === PORN_CATEGORY.SISSY_GASM_COMPILATION) {
         lines.add('Suffer while watching how your next release might look like as well')
     }
 }
 
-function generateDailyTeaseRouletteInstructions(lines, categoriesAllowed, teaseType, forceCategories = false) {
+function generateDailyTeaseRouletteInstructions(lines, categoriesAllowed, teaseType, forceCategories = false, minutes = random(45, 60, 90), dailyTask = true) {
     if (categoriesAllowed.length > 0) {
-        let minutes = random(45, 60, 90);
-        lines.add('Go and play ' + pluralize(teaseType.name) + ' on ' + teaseType.site + ' for at least ' + minutes + ' minutes today');
+        lines.add('Go and play ' + pluralize(teaseType.name) + ' on ' + teaseType.site + ' for at least ' + minutes + ' minutes ' + (dailyTask ? 'today' : ''));
 
         if (isChance(50) || forceCategories) {
             lines.add('Category must be / include ' + random(categoriesAllowed));
@@ -622,19 +624,20 @@ function generateDailyTeaseRouletteInstructions(lines, categoriesAllowed, teaseT
         lines.add('Once started you will not be allowed to end early or skip anything');
         lines.add('Fulfill any instruction to your best capabilities');
 
-        if(feelsEvil()) {
-            lines.add('I want you to create an account and activate the bad gambler option for this');
-        }
 
         if (feelsEvil()) {
-            lines.add('Once you\'ve picked a roulette');
-            lines.add('You will roll 3 times');
-            lines.add('And you will go with the worst/hardest of the 3 results');
-            lines.add('You can either us the one with the highest sum of numbers');
-            lines.add('Or use the one that seems worst to you (dubs, triples or whatever)');
-            lines.add('Remember to do the same for all the roulettes you do for this task');
-        } else if(feelsLikePunishingSlave()) {
-            lines.add('I don\'t want you roll in this case');
+            lines.add('I want you to create an account and activate the bad gambler option for this');
+
+            if (feelsEvil()) {
+                lines.add('Once you\'ve picked a roulette');
+                lines.add('You will roll 3 times');
+                lines.add('And you will go with the worst/hardest of the 3 results');
+                lines.add('You can either us the one with the highest sum of numbers');
+                lines.add('Or use the one that seems worst to you (dubs, triples or whatever)');
+                lines.add('Remember to do the same for all the roulettes you do for this task');
+            }
+        } else if (feelsLikePunishingSlave()) {
+            lines.add('I don\'t want you to roll in this case');
             lines.add('I want you to pick the worst/hardest possible outcome by hand for each roulette you do for this task');
             lines.add('Enjoy *lol*')
         }

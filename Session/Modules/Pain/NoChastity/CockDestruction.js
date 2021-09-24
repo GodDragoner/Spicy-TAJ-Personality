@@ -83,7 +83,7 @@
 
         let crop = false;
 
-        if (isChance(getVar(VARIABLE.SUB_PAIN_TOLERANCE * 5 * (getStrictnessForCharacter() + 1))) && RIDING_CROP_TOY.fetchToy()) {
+        if (isChance(getVar(VARIABLE.SUB_PAIN_TOLERANCE) * 5 * (getStrictnessForCharacter() + 1)) && RIDING_CROP_TOY.fetchToy()) {
             crop = true;
         }
 
@@ -152,13 +152,13 @@
             startWith + getCockCropSmacks() + ' ' + hard + 'on the ' + random('head ', 'head ', 'tip ', 'very tip ') + 'of %MyYour% ' + random('%Cock% ', '%Cock% ', '%Cock% ', '%Cock% and just skip the warm up entirely ', '%Cock% while you think about how this is just the beginning ', '%Cock% to start you off in total agony ', '%Cock% while you think about how I\'m just getting started ', '%Cock% to prepare you for when I make you hit it even harder still ', '%Cock% so you see just how fucking serious I am ', '%Cock% just to make you fucking miserable ', '%Cock% while you squeal in agony ') + '%SlaveName% %Wicked%',
         ];
 
-        sendMessage(startSentence);
+        sendMessage(random(startSentence));
     }
 
     function getNextCropTask() {
         let smack = random('Smack ', 'Whack ', 'Hit ', 'Strike ', 'Smack ', 'Smack ', 'Whip ');
         let your = random('%MyCock% ', '%MyCock% ', '%MyCock% ', '%MyCock% ', 'the top of %MyCock% ', 'just the top of %MyCock% ', 'the right side of %MyCock% ', 'the left side of %MyCock% ', 'the bottom of %MyCock% ', 'the head of %MyCock% ', 'the tip of %MyCock% ');
-        let location = random('%MyCock ', '%MyCock ', '%MyCock ', '%MyCock ', 'the top of %MyCock ', 'just the top of %MyCock ', 'the right side of %MyCock ', 'the left side of %MyCock ', 'the bottom of %MyCock ', 'the head of %MyCock ', 'the tip of %MyCock ');
+        let location = random('%MyCock% ', '%MyCock% ', '%MyCock% ', '%MyCock% ', 'the top of %MyCock% ', 'just the top of %MyCock% ', 'the right side of %MyCock% ', 'the left side of %MyCock% ', 'the bottom of %MyCock% ', 'the head of %MyCock% ', 'the tip of %MyCock% ');
         let cockNoun = random('%Cock% ', '%Cock% ', '%Cock% ', '%Cock% with the crop ', '%Cock% with the riding crop ');
 
         let start = random('Smack', 'Whack', 'Hit', 'Strike', 'Smack', 'Smack', 'Whip') + '  ' + random('that', '%MyCock%') + '  %Cock% ' + getCockSmacks() + ' times ' + random('in a row', 'back to back', 'over and over', 'one after another', 'in a row', '', '', '', '') + '  ' + random('with the crop', 'with the riding crop', '', '', '', '', '', '') + '  ' + random('right on top', 'right on  the top of it', 'right on the head', 'right on the very tip of the head', 'right on the bottom', 'right underneath the head', '', '', '', '', '', '', '', '', '', '', '', '', '');

@@ -2,7 +2,7 @@
     let bodyPart = getRandomBodyPartForEStim();
 
     //No CBT, no E Stim or no available body part found
-    if (getCBTLimit() != LIMIT_ASKED_YES || !E_STIM_TOY.hasToy() || bodyPart === null) {
+    if (!CBT_LIMIT.isAllowed() || !E_STIM_TOY.hasToy() || bodyPart === null) {
         runPunishment(PUNISHMENT_CURRENT_LEVEL);
     } else {
         if (tryRunPunishmentFetchId(MODULE.E_STIM)) {
@@ -16,32 +16,14 @@
                 //This toy is always attached
                 toysAttached.push(E_STIM_TOY);
 
-                //Enable all toys
-                for (let x = 0; x < toysAttached.length; x++) {
-                    toysAttached[x].setToyOn(true);
-                }
 
-                let painLevel = PAIN_LEVEL_LOW;
-                let mood = getMood();
+                let prevChastity = isInChastity();
 
-                if (PUNISHMENT_CURRENT_LEVEL === PUNISHMENT_LEVEL.MEDIUM) {
-                    painLevel = PAIN_LEVEL_MEDIUM;
-                } else if (PUNISHMENT_CURRENT_LEVEL === PUNISHMENT_LEVEL.HARD) {
-                    painLevel = random(PAIN_LEVEL_MEDIUM, PAIN_LEVEL_HIGH);
-                } else if (PUNISHMENT_CURRENT_LEVEL === PUNISHMENT_LEVEL.EXTREME) {
-                    painLevel = PAIN_LEVEL_HIGH;
-                }
+                setEstimToysOn(toysAttached, true, prevChastity);
 
-                let mode = getRandomPainEStimMode(painLevel);
-                let level = mode.getPainLevel(painLevel);
-
-                //Increase by one if we are extreme and want to punish
-                if (PUNISHMENT_CURRENT_LEVEL === PUNISHMENT_LEVEL.EXTREME && feelsLikePunishingSlave() && level < E_STIM_TOY.getMaxLevel()) {
-                    sendMessage('You know what?');
-                    sendMessage('I want you to suffer because you freaking deserve it %SlaveName%');
-                    sendMessage('So I am this time going to break you and your old pathetic limits');
-                    level++;
-                }
+                let decide = decidePunishmentEstimModeAndLevel();
+                let mode = decide[0];
+                let level = decide[1];
 
                 let time = getCornerTime(PUNISHMENT_CURRENT_LEVEL.id + 1);
 
@@ -54,6 +36,7 @@
 
                 mode.enableMode();
                 mode.enableLevel(level);
+
                 sendMessage('Tell me when you are done');
                 waitForDone();
 
@@ -82,10 +65,7 @@
                     playSlideshow(time, 15, 'TEASE');
                 }
 
-                //Disable all toys
-                for (let x = 0; x < toysAttached.length; x++) {
-                    toysAttached[x].setToyOn(false);
-                }
+                setEstimToysOn(toysAttached, false, prevChastity);
 
                 sendMessage('You can detach the e-stim toy and the utilities for now and put them aside');
 

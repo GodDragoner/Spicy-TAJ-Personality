@@ -86,6 +86,10 @@ function getSmallButtplug(longtime) {
     return getButtplugClosestAround(getUsedToDiameter(), longtime ? getLongTimeWearPlugs() : buttplugs);
 }
 
+function isWearingRulePlug() {
+    return isPlugged() && currentPlug === getSmallButtplug(true);
+}
+
 function getMediumButtplug(longtime) {
     let smallPlug = getSmallButtplug(longtime);
 
@@ -201,6 +205,11 @@ function hasButtplugToy() {
 
 function isPlugged() {
     return getVar(VARIABLE.IS_PLUGGED, false);
+}
+
+
+function isAssInUse() {
+    return isPlugged() || ANAL_HOOK_TOY.isToyOn();
 }
 
 function shouldIncreasePlugSize() {

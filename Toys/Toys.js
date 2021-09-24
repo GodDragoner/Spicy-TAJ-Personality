@@ -110,6 +110,15 @@ function interactWithRandomToys() {
         } else {
             distributeClamps(toDistribute);
         }
+
+        if(NIPPLE_SUCKERS.hasToy() && !isNipplesOccupied() && feelsLikePunishingSlave()) {
+            if(NIPPLE_SUCKERS.fetchToy()) {
+                sendMessageBasedOnSender('Now put the nipple suckers on %SlaveName%');
+                sendMessageBasedOnSender('Tell me when you are done');
+                waitForDone();
+                NIPPLE_SUCKERS.setToyOn(true);
+            }
+        }
     }
 
     redistributeTooLongAttachedClamps();
@@ -118,6 +127,18 @@ function interactWithRandomToys() {
         let minutesSincePutOn = getMillisSinecDate(NIPPLE_CLAMPS.getLastUsage()) / (1000 * 60);
 
         sendDebugMessage('Nipple clamps have been on for ' + minutesSincePutOn);
+        //20 minutes should be max
+        //QUALITY: Add personal limit/modifier for sub
+        if (isChance(minutesSincePutOn * 5)) {
+            removeNippleClamps();
+        }
+    }
+
+    if (NIPPLE_SUCKERS.decideToyOff()) {
+        let minutesSincePutOn = getMillisSinecDate(NIPPLE_SUCKERS.getLastUsage()) / (1000 * 60);
+
+        sendDebugMessage('Nipple suckers have been on for ' + minutesSincePutOn);
+
         //20 minutes should be max
         //QUALITY: Add personal limit/modifier for sub
         if (isChance(minutesSincePutOn * 5)) {
@@ -178,7 +199,7 @@ function removeAllToys(end = false) {
     }
 
     if (COLLAR_TOY.isToyOn() && !RULE_ALWAYS_WEAR_COLLAR.isActive()) {
-        removeCollar();
+        COLLAR_TOY.removeToyText();
     }
 
     if (hasLingerieOn()) {
@@ -187,6 +208,15 @@ function removeAllToys(end = false) {
         waitForDone();
         removeAllLingerie();
     }
+
+    HOOD_TOY.setToyOn(false);
+    NOSE_HOOK.setToyOn(false);
+    HUMBLER_TOY.setToyOn(false);
+
+    ANAL_HOOK_TOY.setToyOn(false);
+
+    PARACHUTE_TOY.setToyOn(false);
+    BALL_CRUSHER_TOY.setToyOn(false);
 
     //QUALITY: Specify
     sendMessage('Remove anything else attached to your body %SlaveName%');
@@ -362,6 +392,23 @@ function createToy(name) {
 
         removeToy: function () {
             this.setToyOn(false);
+        },
+
+        removeToyText: function () {
+            if (!this.hasToy() || !this.isToyOn()) {
+                return false;
+            }
+
+            sendMessageBasedOnSender(this.getTakeOffCommand());
+            sendMessageBasedOnSender('Tell me once you are done');
+            waitForDone(100000);
+
+            this.setToyOn(false);
+            return true;
+        },
+
+        getTakeOffCommand: function () {
+            return 'Go ahead and take off/remove the ' + this.name;
         },
 
         setToyOn: function (on) {
@@ -901,6 +948,10 @@ function setupToys(settings) {
     ANAL_BEADS_TOY.askForToyAndUsage(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
+    ANAL_HOOK_TOY.askForToyAndUsage(domChose);
+    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
+
     PROSTATE_VIBRATOR_TOY.askForToyAndUsage(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
@@ -918,6 +969,9 @@ function setupToys(settings) {
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
     NOSE_HOOK.askForToyAndUsage(domChose);
+    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
+    HOOD_TOY.askForToyAndUsage(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
     SOUND_TOY.askForToyAndUsage(domChose);
@@ -939,6 +993,10 @@ function setupToys(settings) {
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
     CLOTHESPINS_TOY.askForToyAndUsage(domChose);
+
+    sendVirtualAssistantMessage('Okay next quite similar but not the same %Grin%');
+
+    NIPPLE_SUCKERS.askForToyAndUsage(domChose);
 
     sendVirtualAssistantMessage('Okay next quite similar but not the same %Grin%');
 

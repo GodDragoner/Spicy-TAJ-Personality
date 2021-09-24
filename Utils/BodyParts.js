@@ -8,7 +8,7 @@ const BODY_PARTS = [];
 const BODY_PART_NIPPLE_L = registerTwosidedBodyPart("nipple", 4);
 
 BODY_PART_NIPPLE_L.isUsed = function (toy) {
-    return NIPPLE_CLAMPS.isToyOn() || currentBodyPosition === BODY_POSITION.ON_STOMACH;
+    return isToyOnNipples() || currentBodyPosition === BODY_POSITION.ON_STOMACH;
 };
 
 const BODY_PART_NIPPLE_R = BODY_PARTS[currentBodyPartId - 1];

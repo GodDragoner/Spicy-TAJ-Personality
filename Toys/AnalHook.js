@@ -1,0 +1,1 @@
+const ANAL_HOOK_TOY = createToy('anal hook');

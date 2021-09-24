@@ -16,6 +16,7 @@ const EDGE_MODE = {
 
 let CURRENT_EDGE_MODE = EDGE_MODE.NORMAL;
 
+//QUALITY: Oops, I miscounted, did one more or x more or do all again
 function startMultipleEdges(edges, breakInSeconds = 5) {
     for (let x = 0; x < edges; x++) {
         startEdging(0);

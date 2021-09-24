@@ -571,9 +571,13 @@ function sendKinkyChoreInstructions(choreType) {
                     sendMessageBasedOnSender('You can undress once you are done with this task %Grin%');
                     tasks++;
 
-                    if (NIPPLE_CLAMPS.decideToyOn() && feelsLikePunishingSlave()) {
-                        if (putNippleClampsOn()) {
-                            attachedToys.push(NIPPLE_CLAMPS);
+                    if (decideNippleToyOn() && feelsLikePunishingSlave()) {
+                        if (putSomethingOnNipples()) {
+                            let result = putSomethingOnNipples();
+
+                            if(result !== null) {
+                                attachedToys.push(result);
+                            }
                         }
                     }
                 }

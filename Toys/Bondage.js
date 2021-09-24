@@ -115,20 +115,25 @@ function createBondageInstructions(level) {
         let feetTie = random(tieFeetOptions);
 
         handTie.sendInstructions();
-        sendMessage('%InAddition%...');
+        sendMessageBasedOnSender('%InAddition%...');
         feetTie.sendInstructions();
     } else {
         general.sendInstructions();
     }
 
-    if (currentBodyPosition === BODY_POSITION.ON_STOMACH && isNipplesClamped()) {
+    if (currentBodyPosition === BODY_POSITION.ON_STOMACH && isNipplesOccupied()) {
         //We are on the stomach and should free the nipples
         removeAnythingOnNipples();
     }
 
+    //Remove rule plug to allow for better plug
+    if(isWearingRulePlug()) {
+        removeButtplug();
+    }
+
     let toys = new java.util.ArrayList();
 
-    sendMessage('Now let\'s see how I can put the finishing touches on this setup %Grin%');
+    sendMessageBasedOnSender('Now let\'s see how I can put the finishing touches on this setup %Grin%');
 
     let keepInCounter = 0;
 
@@ -139,17 +144,16 @@ function createBondageInstructions(level) {
             maxToys--;
 
             if (keepInCounter === 0) {
-                sendMessage('You will keep that gag in ' + random('for this', '') + ' %SlaveName%');
+                sendMessageBasedOnSender('You will keep that gag in ' + random('for this', '') + ' %SlaveName%');
             } else {
-                sendMessage('You will also keep that gag in ' + random('for this', '') + ' %SlaveName%');
+                sendMessageBasedOnSender('You will also keep that gag in ' + random('for this', '') + ' %SlaveName%');
             }
 
             keepInCounter++;
         }
     } else if (hasAnyGag() && GAG_TYPE_BALL_GAG.isPunishmentAllowed()) {
-        toys.add(0);
+        toys.add(GAG_TYPE_BALL_GAG);
     }
-
 
     if (isPlugged()) {
         if (maxToys <= 0) {
@@ -159,33 +163,33 @@ function createBondageInstructions(level) {
             maxToys--;
 
             if (keepInCounter === 0) {
-                sendMessage('You will stay plugged ' + random('for this', '') + ' %SlaveName%');
+                sendMessageBasedOnSender('You will stay plugged ' + random('for this', '') + ' %SlaveName%');
             } else {
-                sendMessage('You will also stay plugged ' + random('for this', '') + ' %SlaveName%');
+                sendMessageBasedOnSender('You will also stay plugged ' + random('for this', '') + ' %SlaveName%');
             }
 
             keepInCounter++;
         }
     } else if (hasButtplugToy() && BUTTPLUG_TOY.isPunishmentAllowed()) {
-        toys.add(1);
+        toys.add(BUTTPLUG_TOY);
     }
 
-    if (isNipplesClamped()) {
+    if (isNipplesOccupied()) {
         if (maxToys <= 0) {
             removeNippleClamps();
         } else {
             maxToys--;
 
             if (keepInCounter === 0) {
-                sendMessage('You will keep those clamps on your nipples ' + random('for this', '') + ' %SlaveName%');
+                sendMessageBasedOnSender('You will keep those clamps on your nipples ' + random('for this', '') + ' %SlaveName%');
             } else {
-                sendMessage('You will also keep those clamps on your nipples ' + random('for this', '') + ' %SlaveName%');
+                sendMessageBasedOnSender('You will also keep those clamps on your nipples ' + random('for this', '') + ' %SlaveName%');
             }
 
             keepInCounter++;
         }
     } else if (currentBodyPosition !== BODY_POSITION.ON_STOMACH) {
-        toys.add(2);
+        toys.add(NIPPLE_CLAMPS);
     }
 
     if (getTotalAttachedClamps() > 0) {
@@ -196,13 +200,13 @@ function createBondageInstructions(level) {
             keepInCounter++;
 
             if (keepInCounter === 0) {
-                sendMessage('You will keep those clamps ' + random('on', 'attached to') + ' your body ' + random('for this', '') + ' %SlaveName%');
+                sendMessageBasedOnSender('You will keep those clamps ' + random('on', 'attached to') + ' your body ' + random('for this', '') + ' %SlaveName%');
             } else {
-                sendMessage('You will also keep those clamps ' + random('on', 'attached to') + ' your body ' + random('for this', '') + ' %SlaveName%');
+                sendMessageBasedOnSender('You will also keep those clamps ' + random('on', 'attached to') + ' your body ' + random('for this', '') + ' %SlaveName%');
             }
         }
     } else {
-        toys.add(3);
+        toys.add(CLOTHESPINS_TOY);
     }
 
     if (HUMBLER_TOY.isToyOn()) {
@@ -212,35 +216,125 @@ function createBondageInstructions(level) {
             maxToys--;
 
             if (keepInCounter === 0) {
-                sendMessage('You will keep that humbler on ' + random('for this', '') + ' %SlaveName%');
+                sendMessageBasedOnSender('You will keep that humbler on ' + random('for this', '') + ' %SlaveName%');
             } else {
-                sendMessage('You will also keep that humbler on ' + random('for this', '') + ' %SlaveName%');
+                sendMessageBasedOnSender('You will also keep that humbler on ' + random('for this', '') + ' %SlaveName%');
             }
 
             keepInCounter++;
         }
     } else if (HUMBLER_TOY.hasToy() && HUMBLER_TOY.isPunishmentAllowed()) {
-        toys.add(4);
+        toys.add(HUMBLER_TOY);
+    }
+
+    if(NOSE_HOOK.isToyOn()) {
+        if (maxToys <= 0) {
+            NOSE_HOOK.removeToyText();
+        } else {
+            maxToys--;
+
+            if (keepInCounter === 0) {
+                sendMessageBasedOnSender('You will keep that nose hook on ' + random('for this', '') + ' %SlaveName%');
+            } else {
+                sendMessageBasedOnSender('You will also keep that nose hook on ' + random('for this', '') + ' %SlaveName%');
+            }
+
+            keepInCounter++;
+        }
+    } else if (NOSE_HOOK.hasToy()) {
+        toys.add(NOSE_HOOK);
+    }
+
+    if(HOOD_TOY.isToyOn()) {
+        if (maxToys <= 0) {
+            HOOD_TOY.removeToyText();
+        } else {
+            maxToys--;
+
+            if (keepInCounter === 0) {
+                sendMessageBasedOnSender('You will keep that hood on ' + random('for this', '') + ' %SlaveName%');
+            } else {
+                sendMessageBasedOnSender('You will also keep that hood on ' + random('for this', '') + ' %SlaveName%');
+            }
+
+            keepInCounter++;
+        }
+    } else if (HOOD_TOY.hasToy() && HOOD_TOY.isPunishmentAllowed()) {
+        toys.add(HOOD_TOY);
+    }
+
+    if(NIPPLE_SUCKERS.isToyOn()) {
+        if (maxToys <= 0) {
+            NIPPLE_SUCKERS.removeToyText();
+        } else {
+            maxToys--;
+
+            if (keepInCounter === 0) {
+                sendMessageBasedOnSender('You will keep those suckers on your nipples ' + random('for this', '') + ' %SlaveName%');
+            } else {
+                sendMessageBasedOnSender('You will also keep those suckers on your nipples ' + random('for this', '') + ' %SlaveName%');
+            }
+
+            keepInCounter++;
+        }
+    } else if (NIPPLE_SUCKERS.hasToy() && NIPPLE_SUCKERS.isPunishmentAllowed() && currentBodyPosition !== BODY_POSITION.ON_STOMACH) {
+        toys.add(NIPPLE_SUCKERS);
+    }
+
+    if (ANAL_HOOK_TOY.isToyOn()) {
+        if (maxToys <= 0) {
+            ANAL_HOOK_TOY.removeToyText();
+        } else {
+            maxToys--;
+
+            if (keepInCounter === 0) {
+                sendMessageBasedOnSender('You will keep that anal hook in ' + random('for this', '') + ' %SlaveName%');
+            } else {
+                sendMessageBasedOnSender('You will also keep anal hook in' + random('for this', '') + ' %SlaveName%');
+            }
+
+            keepInCounter++;
+        }
+    } else if (ANAL_HOOK_TOY.hasToy() && ANAL_HOOK_TOY.isPunishmentAllowed()) {
+        toys.add(ANAL_HOOK_TOY);
+    }
+
+    if (E_STIM_TOY.isToyOn()) {
+        if (maxToys <= 0) {
+            E_STIM_TOY.removeToyText();
+        } else {
+            maxToys--;
+
+            if (keepInCounter === 0) {
+                sendMessageBasedOnSender('You will keep that estim on ' + random('for this', '') + ' %SlaveName%');
+            } else {
+                sendMessageBasedOnSender('You will also keep that estim on ' + random('for this', '') + ' %SlaveName%');
+            }
+
+            keepInCounter++;
+        }
+    } else if (E_STIM_TOY.hasToy() && E_STIM_TOY.isPunishmentAllowed() && CBT_LIMIT.isAllowed()) {
+        toys.add(E_STIM_TOY);
     }
 
     while (maxToys > 0 && toys.size() > 0) {
         let randomIndex = randomInteger(0, toys.size() - 1);
         switch (toys.get(randomIndex)) {
             //Gag
-            case 0:
-                if (!selectAndPutInGag()) {
+            case GAG_TYPE_BALL_GAG:
+                if (isGaged() || !selectAndPutInGag()) {
                     maxToys++;
                 }
                 break;
             //Plug
-            case 1:
-                if (!putInButtplug()) {
+            case BUTTPLUG_TOY:
+                if (isAssInUse() || !putInButtplug()) {
                     maxToys++;
                 }
                 break;
             //Nipple clamps
-            case 2:
-                if (!isNipplesClamped() && putNippleClampsOn()) {
+            case NIPPLE_CLAMPS:
+                if (!isNipplesOccupied() && putNippleClampsOn()) {
 
                 } else {
                     //Increase by one because we were unable to put them on
@@ -248,14 +342,90 @@ function createBondageInstructions(level) {
                 }
                 break;
             //Clamps
-            case 3:
+            case CLOTHESPINS_TOY:
                 distributeClamps(randomInteger((level + 1) * 2, (level + 1) * 3));
                 break;
             //Humbler
-            case 4:
-                if (!putOnHumbler()) {
+            case HUMBLER_TOY:
+                if (isInChastity() || !putOnHumbler()) {
                     maxToys++;
                 }
+                break;
+            //Nose Hook
+            case NOSE_HOOK:
+                if (!HOOD_TOY.isToyOn() && NOSE_HOOK.fetchToy()) {
+                    sendMessageBasedOnSender('Put on the nose hook and tell me when you are done');
+                    waitForDone();
+                    NOSE_HOOK.setToyOn(true);
+                } else {
+                    maxToys++;
+                }
+
+                break;
+            case HOOD_TOY:
+                if (NOSE_HOOK.isToyOn() || !HOOD_TOY.fetchToy()) {
+                    maxToys++;
+                    break;
+                }
+
+                sendMessageBasedOnSender('Now put it on. Tell me when you are done %SlaveName%');
+                waitForDone();
+                HOOD_TOY.setToyOn(true);
+
+                if(!isGaged() && hasAnyGag() && GAG_TYPE_BALL_GAG.isPunishmentAllowed()) {
+                    selectAndPutInGag();
+                }
+
+                if(feelsLikePunishingSlave()) {
+                    sendMessageBasedOnSender('I want you to blindfold yourself %SlaveName%');
+                }
+
+                break;
+            case NIPPLE_SUCKERS:
+                if(!isNipplesOccupied() && NIPPLE_SUCKERS.fetchToy()) {
+                    sendMessageBasedOnSender('Now put the nipple suckers on %SlaveName%');
+                    sendMessageBasedOnSender('Tell me when you are done');
+                    waitForDone();
+                    NIPPLE_SUCKERS.setToyOn(true);
+                } else {
+                    maxToys++;
+                }
+
+                break;
+            case ANAL_HOOK_TOY:
+                if(!isAssInUse() && ANAL_HOOK_TOY.fetchToy()) {
+                    sendMessageBasedOnSender('Now put the anal hook in %SlaveName%');
+                    sendMessageBasedOnSender('Tell me when you are done');
+                    waitForDone();
+                    ANAL_HOOK_TOY.setToyOn(true);
+                    sendMessageBasedOnSender('Once you start I want you to attach the hook to your neck');
+                    sendMessageBasedOnSender('Make the string as short as possible %Grin%');
+                } else {
+                    maxToys++;
+                }
+
+                break;
+            case E_STIM_TOY:
+                //Ignore estim plugs for bondage
+                var bodyPart = getRandomBodyPartForEStim([E_STIM_PLUG_TOY]);
+
+                if(bodyPart !== null && E_STIM_TOY.fetchToy()) {
+                    var toysAttached = attachEStimToBodyPart(bodyPart);
+
+                    //This toy is always attached
+                    toysAttached.push(E_STIM_TOY);
+
+                    setEstimToysOn(toysAttached, true, false);
+
+                    var decide = decidePunishmentEstimModeAndLevel();
+                    var mode = decide[0];
+                    var level = decide[1];
+
+                    sendMessageBasedOnSender('Once you start your timer I want you to enable mode ' + mode.id + ' on level ' + level);
+                } else {
+                    maxToys++;
+                }
+
                 break;
         }
 

@@ -1,6 +1,7 @@
 {
     //No easy punishments bondage and no bondage after three punishments were already done
-    if (PUNISHMENT_CURRENT_LEVEL.id < PUNISHMENT_LEVEL.MEDIUM.id || PUNISHMENTS_DONE >= 2) {
+    if (PUNISHMENT_CURRENT_LEVEL.id < PUNISHMENT_LEVEL.MEDIUM.id || PUNISHMENTS_DONE > 2) {
+        sendDebugMessage('Skipping bondage punishment with current level ' + PUNISHMENT_CURRENT_LEVEL.id  + ' and ' + PUNISHMENTS_DONE + ' done');
         runPunishment(PUNISHMENT_CURRENT_LEVEL);
     } else if (tryRunPunishmentFetchId(MODULE.BONDAGE)) {
         PUNISHMENT_MULTIPLIER_CURRENT = randomInteger(3, 4);

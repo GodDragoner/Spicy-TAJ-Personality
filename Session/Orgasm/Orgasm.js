@@ -122,7 +122,7 @@ function decideOrgasm(noDenied = false) {
         decide -= getVar(VARIABLE.ANGER);
     }
 
-    if(getVar(VARIABLE.LUST) > 27) {
+    if(getVar(VARIABLE.LUST) >= getHighMoodAttributeThreshold(1)) {
         decide += getVar(VARIABLE.LUST);
     }
 
@@ -209,7 +209,7 @@ function distributeOrgasmPoints() {
     }
 
     //Bonus for lust high
-    if(getVar(VARIABLE.LUST) > 28) {
+    if(getVar(VARIABLE.LUST) >= getHighMoodAttributeThreshold(1)) {
         sendDebugMessage('Bonus points for high lust');
         totalToAdd += randomInteger(points[personalityOffset + lustOffset], points[personalityOffset + lustOffset + 1]);
     }
@@ -364,6 +364,7 @@ function askAboutDenialLevel() {
             if(getVar(VARIABLE.DENIAL_LEVEL) < 15) {
                 if(isChance(chancesIncrease[Math.min(denialLevelIndex, chancesIncrease.length - 1)])) {
                     incrementVar(VARIABLE.DENIAL_LEVEL, 1);
+                    sendDebugMessage('"Randomly" increased denial level to ' + getVar(VARIABLE.DENIAL_LEVEL, 0));
                 }
             }
 

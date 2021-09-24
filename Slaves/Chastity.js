@@ -111,7 +111,7 @@ function willKeepChastityOn(end) {
         choice -= randomInteger(1, 10);
     }
 
-    if (getVar(VARIABLE.LUST) > 30) {
+    if (getVar(VARIABLE.LUST) > getHighMoodAttributeThreshold(1)) {
         sendDebugMessage('Lust is bigger than 30, so increasing unlock chance');
         choice += randomInteger(1, 10);
     }

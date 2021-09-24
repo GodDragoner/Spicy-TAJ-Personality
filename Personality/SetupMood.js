@@ -2,54 +2,72 @@ run("Personality/Mood.js");
 
 const DAYS_IN_WEEK = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
 
-const todayDate = new Date();
-const dayOfWeek = DAYS_IN_WEEK[todayDate.getDay()];
 let newDay = false;
 
-//Basically every days value change lasts for one week after that it is removed
-
-//Have we had this day before?
-if (isVar(dayOfWeek + "MoodDate")) {
-    const date = getVar(dayOfWeek + "MoodDate");
-    //Check if we are still on the same day
-    if (!(date.getDay() == todayDate.getDate() && date.getMonth() == todayDate.getMonth() && date.getYear() == todayDate.getFullYear())) {
-        //Reset temp added values
-        sendDebugMessage('Before temp day of week mood (' + dayOfWeek +  ')');
-        debugPrintMood();
-
-        let happiness = getVar(VARIABLE.HAPPINESS) - getVar(dayOfWeek + "Happiness", 0);
-        let lust = getVar(VARIABLE.LUST) - getVar(dayOfWeek + "Lust", 0);
-        let anger = getVar(VARIABLE.ANGER) - getVar(dayOfWeek + "Anger", 0);
-
-        if(isNaN(happiness)) {
-            sendDebugMessage('Happiness was NaN with set value ' + getVar(VARIABLE.HAPPINESS) + ' and temp value ' + getVar(dayOfWeek + "Happiness", 0));
-            happiness = getVar(VARIABLE.HAPPINESS);
-        }
-
-        if(isNaN(lust)) {
-            sendDebugMessage('Happiness was NaN with set value ' + getVar(VARIABLE.LUST) + ' and temp value ' + getVar(dayOfWeek + "Lust", 0));
-            lust = getVar(VARIABLE.LUST);
-        }
-
-        if(isNaN(anger)) {
-            sendDebugMessage('Happiness was NaN with set value ' + getVar(VARIABLE.ANGER) + ' and temp value ' + getVar(dayOfWeek + "Anger", 0));
-            anger = getVar(VARIABLE.ANGER);
-        }
+{
+    const todayDate = new Date();
+    const dayOfWeek = DAYS_IN_WEEK[todayDate.getDay()];
 
 
-        setVar(VARIABLE.HAPPINESS, Math.max(0, happiness));
-        setVar(VARIABLE.LUST, Math.max(0, lust));
-        setVar(VARIABLE.ANGER, Math.max(0, anger));
-        newDay = true;
-
-        sendDebugMessage('After temp day of week mood:');
-        debugPrintMood();
+    if (resetMoodForDay(dayOfWeek, todayDate)) {
+        handleMoodForDay(dayOfWeek, todayDate);
     }
-} else {
-    newDay = true;
 }
 
-if (newDay) {
+sendDebugMessage('Mood after startup routine');
+debugPrintMood();
+
+function resetMoodForDay(dayOfWeek, todayDate) {
+    newDay = false;
+
+
+    //Basically every days value change lasts for one week after that it is removed
+
+    //Have we had this day before?
+    if (isVar(dayOfWeek + "MoodDate")) {
+        const date = getVar(dayOfWeek + "MoodDate");
+        //Check if we are still on the same day
+        if (!(date.getDay() == todayDate.getDate() && date.getMonth() == todayDate.getMonth() && date.getYear() == todayDate.getFullYear())) {
+            //Reset temp added values
+            sendDebugMessage('Before temp day of week mood (' + dayOfWeek + ')');
+            debugPrintMood();
+
+            let happiness = getVar(VARIABLE.HAPPINESS) - getVar(dayOfWeek + "Happiness", 0);
+            let lust = getVar(VARIABLE.LUST) - getVar(dayOfWeek + "Lust", 0);
+            let anger = getVar(VARIABLE.ANGER) - getVar(dayOfWeek + "Anger", 0);
+
+            if (isNaN(happiness)) {
+                sendDebugMessage('Happiness was NaN with set value ' + getVar(VARIABLE.HAPPINESS) + ' and temp value ' + getVar(dayOfWeek + "Happiness", 0));
+                happiness = getVar(VARIABLE.HAPPINESS);
+            }
+
+            if (isNaN(lust)) {
+                sendDebugMessage('Happiness was NaN with set value ' + getVar(VARIABLE.LUST) + ' and temp value ' + getVar(dayOfWeek + "Lust", 0));
+                lust = getVar(VARIABLE.LUST);
+            }
+
+            if (isNaN(anger)) {
+                sendDebugMessage('Happiness was NaN with set value ' + getVar(VARIABLE.ANGER) + ' and temp value ' + getVar(dayOfWeek + "Anger", 0));
+                anger = getVar(VARIABLE.ANGER);
+            }
+
+
+            setVar(VARIABLE.HAPPINESS, Math.max(0, happiness));
+            setVar(VARIABLE.LUST, Math.max(0, lust));
+            setVar(VARIABLE.ANGER, Math.max(0, anger));
+            newDay = true;
+
+            sendDebugMessage('After temp day of week mood:');
+            debugPrintMood();
+        }
+    } else {
+        newDay = true;
+    }
+
+    return newDay;
+}
+
+function handleMoodForDay(dayOfWeek, todayDate) {
     setDate(dayOfWeek + "MoodDate");
 
     //Reset var to zero
@@ -138,7 +156,7 @@ if (newDay) {
         2, //Had fun with the sybian yesterday
         2, //Made a sub suck lovers cock
         3, //Made a sub wear lingerie for a full day
-        3, //Had 2 subs compete in a ball busting competition, the winner didn"t get a punishment lock up period
+        3, //Had 2 subs compete in a ball busting competition, the winner didnt get a punishment lock up period
         3, //Found a new way fun self bondage scenario for you
         3, //Had a hot dream last night
         3, //Lover gave an erotic massage last night
@@ -163,7 +181,7 @@ if (newDay) {
         5, //Had a kinky evening with glitter friend
         5, //Had a sub tied with the genitalia given a healthy dose of whipping/Hot sauce
         5, //Had 2 denied subs tied, gagged and watching me getting fucked
-        5, //Didn"t have an orgasm yesterday
+        5, //Didnt have an orgasm yesterday
         5, //Had x orgasms yesterday
         5, //Made a sub ruin after x weeks of denial
     ];
@@ -172,11 +190,11 @@ if (newDay) {
 
     idOffset += lustScenarios.length;
 
-    const angerScenarious = [
+    const angerScenarios = [
         1, //Finished a great book
         1, //Had a bad day at work
         1, //A sub came without permission
-        1, //A sub didn"t do as told
+        1, //A sub didnt do as told
         1, //Had an argument with lover
         1, //Had an argument with a family member
         1, //Had an argument with a glitter friend
@@ -201,20 +219,20 @@ if (newDay) {
         3, //Went to a boring lecture
         3, //Favourite pants broke
         3, //Favourite shoes broke
-        3, //Had familiy dinner
+        3, //Had family dinner
         3, //Favourite vibrator broke
         4, //Got rejected for a date
         4, //A slave used a safeword yesterday
         4, //Tease and denied a sub, but he got a ruined by accident
-        4, //Had a threesome, wasn"t the center of attention
+        4, //Had a threesome, wasnt the center of attention
         4, //Had a sub cry yesterday
-        4, //Vibrator, battery ran out, didn"t have new ones
+        4, //Vibrator, battery ran out, didnt have new ones
         4, //A sub was late for his cleaning duties yesterday
         4, //Hair dresser cancelled an appointment
         4, //Manicure cancelled an appointment
         4, //Went shopping without buying anything
-        5, //A sub didn"t thank properly for an orgasm
-        5, //A sub didn"t do his chores
+        5, //A sub didnt thank properly for an orgasm
+        5, //A sub didnt do his chores
         5, //Lover came too fast
         5, //Lover cancelled a date
         5, //Lover hit on glitter friend at partyce
@@ -222,10 +240,10 @@ if (newDay) {
         5, //2 glitter friends had dinner without me
         5, //Boss at work, gave me extra work
         5, //An ugly tried to make a move at a party
-        5, //A new sex toy didn"t live to expectations
+        5, //A new sex toy didnt live to expectations
     ];
 
-    let tempAnger = activateRandomScenario(angerScenarious, idOffset, "Anger");
+    let tempAnger = activateRandomScenario(angerScenarios, idOffset, "Anger");
 
     //Handle special days
     //Christmas
@@ -257,13 +275,26 @@ if (newDay) {
         tempLust += 1;
     }
 
+    //More anger if we are crossing the bad threshold
+    if (getVar(VARIABLE.PUNISHMENT_POINTS) >= getPunishmentPointsBadThreshold()) {
+        tempAnger += 2;
+
+        sendDebugMessage('Increasing anger due too many punishment points');
+    }
+
+    if (getMood() >= NEUTRAL_MOOD) {
+        tempHappiness -= 2;
+        tempLust -= 1;
+
+        sendDebugMessage('Reducing lust and happiness due to bad merit mood');
+    }
 
     //Sub birthday
-    if(isSubBirthday()) {
+    if (isSubBirthday()) {
         tempLust += 12;
     }
 
-    if(isDomBirthday()) {
+    if (isDomBirthday()) {
         tempLust += 15;
         tempHappiness += 15;
     }
@@ -280,36 +311,37 @@ if (newDay) {
 
     //Add the daily based values
     setVar(VARIABLE.HAPPINESS, Math.max(0, getVar(VARIABLE.HAPPINESS, 0) + tempHappiness));
-    setVar(VARIABLE.LUST,  Math.max(0, getVar(VARIABLE.LUST, 0) + tempLust));
-    setVar(VARIABLE.ANGER,  Math.max(0, getVar(VARIABLE.ANGER, 0) + tempAnger));
+    setVar(VARIABLE.LUST, Math.max(0, getVar(VARIABLE.LUST, 0) + tempLust));
+    setVar(VARIABLE.ANGER, Math.max(0, getVar(VARIABLE.ANGER, 0) + tempAnger));
 
     //Change merits based on punishment points at that day
-    if(getVar(VARIABLE.PUNISHMENT_POINTS) >= getPunishmentPointsBadThreshold()) {
-        sendDebugMessage('Changed merit because punishment points are above threshold');
-        changeMeritMedium(true);
-    } else if(getVar(VARIABLE.PUNISHMENT_POINTS) <= getPunishmentPointsGoodThreshold()) {
-        sendDebugMessage('Changed merit because punishment points are below threshold');
-        changeMeritLow(false);
-    }
-
-    //Shuffle them so it's random which one is checked/activated first
-    let shuffledMoods = shuffle(cloneArray(MOODS));
-
-    for(let x = 0; x < shuffledMoods.length; x++) {
-        let mood = shuffledMoods[x];
-
-        sendDebugMessage('Checking mood "' + mood.name + '"')
-
-        if(mood.isActive()) {
-            mood.checkActive();
-        } else if(mood.shouldActivate()) {
-            mood.setActive(true, randomInteger(mood.minHours, mood.maxHours));
-        }
-    }
+    // if (getVar(VARIABLE.PUNISHMENT_POINTS) >= getPunishmentPointsBadThreshold()) {
+    //     sendDebugMessage('Changed merit because punishment points are above threshold');
+    //     changeMeritMedium(true);
+    // } else if (getVar(VARIABLE.PUNISHMENT_POINTS) <= getPunishmentPointsGoodThreshold()) {
+    //     sendDebugMessage('Changed merit because punishment points are below threshold');
+    //     changeMeritLow(false);
+    // }
+    //
+    // //Shuffle them so it's random which one is checked/activated first
+    // let shuffledMoods = shuffle(cloneArray(MOODS));
+    //
+    // for (let x = 0; x < shuffledMoods.length; x++) {
+    //     let mood = shuffledMoods[x];
+    //
+    //     sendDebugMessage('Checking mood "' + mood.name + '"')
+    //
+    //     if (mood.isActive()) {
+    //         mood.checkActive();
+    //     } else if (mood.shouldActivate()) {
+    //         mood.setActive(true, randomInteger(mood.minHours, mood.maxHours));
+    //     }
+    // }
 }
 
-sendDebugMessage('Mood after startup routine');
-debugPrintMood();
+function getHighMoodAttributeThreshold(multiplier = 1) {
+    return 30*multiplier;
+}
 
 function activateRandomScenario(scenarioArray, idOffset, moodType) {
     const index = randomInteger(0, scenarioArray.length - 1);
@@ -329,7 +361,7 @@ function debugPrintMood() {
     sendDebugMessage("Happiness: " + getVar(VARIABLE.HAPPINESS));
     sendDebugMessage("Anger: " + getVar(VARIABLE.ANGER));
 
-    for(let x = 0; x < MOODS.length; x++) {
+    for (let x = 0; x < MOODS.length; x++) {
         let mood = MOODS[x];
 
         if (mood.isActive()) {

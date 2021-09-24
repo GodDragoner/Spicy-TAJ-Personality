@@ -16,6 +16,8 @@
 
             let toysAttached = attachEStimToBodyPart(bodyPart);
 
+            let prevChastity = isInChastity();
+
             //This means the sub was unable to fetch some stuff for some reason
             if (toysAttached.length === 0) {
                 sendMessage('I guess you can put your e-stim device aside again %EmoteSad%');
@@ -24,10 +26,7 @@
                 //This toy is always attached
                 toysAttached.push(E_STIM_TOY);
 
-                //Enable all toys
-                for (let x = 0; x < toysAttached.length; x++) {
-                    toysAttached[x].setToyOn(true);
-                }
+                setEstimToysOn(toysAttached, true, prevChastity);
 
                 //Let declaration does not work in switch so we use if
                 if (game === 0) {
@@ -126,10 +125,7 @@
                 }
             }
 
-            //Disable all toys
-            for (let x = 0; x < toysAttached.length; x++) {
-                toysAttached[x].setToyOn(false);
-            }
+            setEstimToysOn(toysAttached, false, prevChastity);
 
             sendMessage('You can detach the e-stim toy and the utilities for now and put them aside');
         }

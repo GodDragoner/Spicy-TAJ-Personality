@@ -1,10 +1,29 @@
 const E_STIM_TOY = createToy("e stim");
+
+E_STIM_TOY.removeToyText = function () {
+    if (!E_STIM_TOY.hasToy() || !E_STIM_TOY.isToyOn()) {
+        return false;
+    }
+
+    sendMessage('You may remove the estim toy and put it aside %SlaveName%');
+    sendMessage('Tell me when you are done');
+    waitForDone();
+
+    E_STIM_TOY.setToyOn(false);
+    E_STIM_PLUG_TOY.setToyOn(false);
+    E_STIM_STRAPS.setToyOn(false);
+    E_STIM_PADS.setToyOn(false);
+    E_STIM_CAGE.setToyOn(false);
+
+    return true;
+};
+
 E_STIM_TOY.setMaxLevel = function(value) {
     setVar(this.getVarName() + 'maxLevel', value);
 };
 
 E_STIM_TOY.getMaxLevel = function() {
-    getVar(this.getVarName() + 'maxLevel', -1);
+    return getVar(this.getVarName() + 'maxLevel', -1);
 };
 
 E_STIM_TOY.hasToy = function() {
@@ -32,10 +51,10 @@ for (let x = 0; x < getVar(VARIABLE.E_STIM_MODES, 0); x++) {
 
 sendDebugMessage('Loaded ' + E_STIM_MODES.length + ' e stim modes');
 
-function getRandomBodyPartForEStim() {
+function getRandomBodyPartForEStim(toIgnore = []) {
     let bodyPartList = [];
 
-    if(E_STIM_PADS.hasToy()) {
+    if(E_STIM_PADS.hasToy() && toIgnore.indexOf(E_STIM_PADS) === -1) {
         if(!BODY_PART_BALLS.isUsed(E_STIM_TOY)) {
             sendDebugMessage('Pushing E-Stim Balls to body parts');
             bodyPartList.push(BODY_PART_BALLS);
@@ -47,12 +66,12 @@ function getRandomBodyPartForEStim() {
         }*/
     }
 
-    if(E_STIM_STRAPS.hasToy() && !BODY_PART_PENIS_SHAFT.isUsed(E_STIM_TOY)) {
+    if(E_STIM_STRAPS.hasToy() && !BODY_PART_PENIS_SHAFT.isUsed(E_STIM_TOY) && toIgnore.indexOf(E_STIM_STRAPS) === -1) {
         sendDebugMessage('Pushing E-Stim shaft to body parts');
         bodyPartList.push(BODY_PART_PENIS_SHAFT)
     }
 
-    if(E_STIM_PLUG_TOY.hasToy()) {
+    if(E_STIM_PLUG_TOY.hasToy() && toIgnore.indexOf(E_STIM_PLUG_TOY) === -1) {
         sendDebugMessage('Pushing E-Stim ass to body parts');
         bodyPartList.push(BODY_PART_ASS);
     }
@@ -65,6 +84,20 @@ function getRandomBodyPartForEStim() {
     }
 
     return random(bodyPartList);
+}
+
+
+function setEstimToysOn(toyList, on, prevChastity = false) {
+    let inChastityBeforeEstim = isInChastity() && (on || prevChastity);
+
+    //Enable all toys
+    for (let x = 0; x < toyList.length; x++) {
+        if(inChastityBeforeEstim && currentChastityCage === toyList[x]) {
+            //Nothing, because we already have that cage on (estim cage)
+        } else {
+            toyList[x].setToyOn(on);
+        }
+    }
 }
 
 function attachEStimToBodyPart(bodyPart) {
@@ -364,4 +397,30 @@ function setupEStimToy(domChose, settings = false) {
             lockAwayChastityKey();
         }
     }
+}
+
+function decidePunishmentEstimModeAndLevel() {
+    let painLevel = PAIN_LEVEL_LOW;
+    let mood = getMood();
+
+    if (PUNISHMENT_CURRENT_LEVEL === PUNISHMENT_LEVEL.MEDIUM) {
+        painLevel = PAIN_LEVEL_MEDIUM;
+    } else if (PUNISHMENT_CURRENT_LEVEL === PUNISHMENT_LEVEL.HARD) {
+        painLevel = random(PAIN_LEVEL_MEDIUM, PAIN_LEVEL_HIGH);
+    } else if (PUNISHMENT_CURRENT_LEVEL === PUNISHMENT_LEVEL.EXTREME) {
+        painLevel = PAIN_LEVEL_HIGH;
+    }
+
+    let mode = getRandomPainEStimMode(painLevel);
+    let level = mode.getPainLevel(painLevel);
+
+    //Increase by one if we are extreme and want to punish
+    if (PUNISHMENT_CURRENT_LEVEL === PUNISHMENT_LEVEL.EXTREME && feelsLikePunishingSlave() && level < E_STIM_TOY.getMaxLevel()) {
+        sendMessage('You know what?');
+        sendMessage('I want you to suffer because you freaking deserve it %SlaveName%');
+        sendMessage('So I am this time going to break you and your old pathetic limits');
+        level++;
+    }
+
+    return [mode, level];
 }

@@ -152,8 +152,9 @@
                 teaseModuleChance -= 10;
             }
 
-            if (getVar(VARIABLE.ANGER) > 25) {
+            if (getVar(VARIABLE.ANGER) >= getHighMoodAttributeThreshold(0.7)) {
                 teaseModuleChance -= 10;
+                sendDebugMessage('Anger high, reducing tease chance');
             }
 
             //Don't go below zero

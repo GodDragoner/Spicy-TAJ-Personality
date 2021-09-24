@@ -47,9 +47,9 @@ function redistributeTooLongAttachedClamps() {
         let bodyPart = BODY_PARTS[x];
 
         //QUALITY: Based on sub pain tolerance
-        if(bodyPart.currentClamps > 0) {
+        if (bodyPart.currentClamps > 0) {
             sendDebugMessage('Found body part with clamps: ' + bodyPart.name + ' and last interaction ' + bodyPart.getLastClampInteraction());
-            if(bodyPart.getLastClampInteraction().addMinute(15).hasPassed()) {
+            if (bodyPart.getLastClampInteraction().addMinute(15).hasPassed()) {
                 sendDebugMessage('Have been on too long. Redistributing...');
                 bodyPartHistory.add(bodyPart.normalize());
                 redistributeClamps(bodyPart, bodyPart.currentClamps, false, bodyPartHistory);
@@ -138,7 +138,7 @@ function distributeClamps(amount, bodyPartHistory = new java.util.ArrayList()) {
     let tries = 0;
     while (amount > 0 && tries < MAX_TRIES) {
         tries++;
-        
+
         let randomBodyPart = findRandomBodyPartForClamps();
 
         //Track whether we switched to the opposite part because then we don't need to check the other part afterwards anymore
@@ -163,7 +163,7 @@ function distributeClamps(amount, bodyPartHistory = new java.util.ArrayList()) {
         }
 
         //Nipple clamps instead?
-        if ((randomBodyPart === BODY_PART_NIPPLE_L || randomBodyPart === BODY_PART_NIPPLE_R) && shouldReplaceSpinsWithNippleClamps() && !isNipplesClamped()) {
+        if ((randomBodyPart === BODY_PART_NIPPLE_L || randomBodyPart === BODY_PART_NIPPLE_R) && shouldReplaceSpinsWithNippleClamps() && !isNipplesOccupied()) {
             putNippleClampsOn();
             continue;
         }
@@ -267,7 +267,7 @@ function getClampsSentenceStart(verb) {
 
 
 function putClampsOnOneSide(amount, bodyPart) {
-    sendMessage(getClampsOnSentenceStart() + (amount === 1? " that " : " ") + amount + pluralize(" clothespin", amount) + " and " + random("put " + pluralizeArticle("it", amount) + " on", "attach " + pluralizeArticle("it", amount) + " to") + " your " + bodyPart.sidedName);
+    sendMessage(getClampsOnSentenceStart() + (amount === 1 ? " that " : " ") + amount + pluralize(" clothespin", amount) + " and " + random("put " + pluralizeArticle("it", amount) + " on", "attach " + pluralizeArticle("it", amount) + " to") + " your " + bodyPart.sidedName);
     bodyPart.addClamps(amount);
     sleep(3);
 }
@@ -336,10 +336,10 @@ function redistributeRandomClamps() {
 function redistributeClamps(bodyPart, amount, oppositeToo = false, bodyPartHistory = new java.util.ArrayList()) {
     SENTENCE_BUILDER_FIRST = true;
     let tries = 0;
-    
+
     while (amount > 0 && tries < MAX_TRIES) {
         tries++;
-        
+
         let newBodyPart = findRandomBodyPartForClamps();
 
         sendDebugMessage('Trying to use ' + newBodyPart.name + ' for clamp redistribution with ' + amount + ' left to distribute');

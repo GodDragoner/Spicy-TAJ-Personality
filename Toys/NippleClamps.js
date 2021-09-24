@@ -1,14 +1,6 @@
 const NIPPLE_CLAMPS = createToy('nipple clamps');
 NIPPLE_CLAMPS.decideToyOn = function (asked = false) {
-    if(isNipplesClamped()) {
-        return false;
-    }
-
-    if(!this.getLastRemoval().addMinute(DEFAULT_TOY_COOLDOWN_MINUTES).hasPassed()) {
-        return false;
-    }
-
-    return true;
+    return decideNippleToyOn();
 };
 
 NIPPLE_CLAMPS.removeToy = function () {
@@ -17,92 +9,115 @@ NIPPLE_CLAMPS.removeToy = function () {
 
 const CLOVER_CLAMPS = createToy('clover clamps');
 CLOVER_CLAMPS.decideToyOn = function (asked = false) {
-    if(isNipplesClamped()) {
-        return false;
-    }
-
-    if(!this.getLastRemoval().addMinute(DEFAULT_TOY_COOLDOWN_MINUTES).hasPassed()) {
-        return false;
-    }
-
-    return true;
+    return decideNippleToyOn();
 };
 
 CLOVER_CLAMPS.removeToy = function () {
     removeNippleClamps();
 };
 
-function isNipplesClamped() {
-    //No current nipple clamps attached
-    if (!NIPPLE_CLAMPS.isToyOn() && BODY_PART_NIPPLE_L.currentClamps === 0 && BODY_PART_NIPPLE_R.currentClamps === 0 && !CLOVER_CLAMPS.isToyOn()) {
+const NIPPLE_SUCKERS = createToy('nipple suckers');
+NIPPLE_SUCKERS.decideToyOn = function (asked = false) {
+    return decideNippleToyOn();
+};
+NIPPLE_SUCKERS.getTakeOffCommand = function() {
+    return 'You may remove those nipple suckers';
+}
+
+function decideNippleToyOn() {
+    if(isNipplesOccupied()) {
+        return false;
+    }
+
+    if(!NIPPLE_SUCKERS.getLastRemoval().addMinute(DEFAULT_TOY_COOLDOWN_MINUTES).hasPassed()) {
+        return false;
+    }
+
+    if(!NIPPLE_CLAMPS.getLastRemoval().addMinute(DEFAULT_TOY_COOLDOWN_MINUTES).hasPassed()) {
+        return false;
+    }
+
+    if(!CLOVER_CLAMPS.getLastRemoval().addMinute(DEFAULT_TOY_COOLDOWN_MINUTES).hasPassed()) {
         return false;
     }
 
     return true;
 }
 
-function clampNipples() {
-    if (isNipplesClamped()) {
-        return false;
+function isNipplesOccupied() {
+    //No current nipple clamps attached
+    return isToyOnNipples() || BODY_PART_NIPPLE_L.currentClamps !== 0 || BODY_PART_NIPPLE_R.currentClamps !== 0;
+}
+
+function isToyOnNipples() {
+    //No current nipple clamps attached
+    return NIPPLE_CLAMPS.isToyOn() || CLOVER_CLAMPS.isToyOn() || NIPPLE_SUCKERS.isToyOn();
+}
+
+function putSomethingOnNipples(forceToy = false) {
+    if (isNipplesOccupied()) {
+        return null;
     }
 
-    if (shouldReplaceSpinsWithNippleClamps()) {
+    if (NIPPLE_CLAMPS.hasToy() && (shouldReplaceSpinsWithNippleClamps() || forceToy)) {
         if (putNippleClampsOn()) {
-            return true;
+            return NIPPLE_CLAMPS;
+        }
+    }
+
+    if (NIPPLE_SUCKERS.hasToy() && (isChance(25) || forceToy)) {
+        if(NIPPLE_SUCKERS.fetchToy()) {
+            sendMessageBasedOnSender('Now put the nipple suckers on %SlaveName%');
+            sendMessageBasedOnSender('Tell me when you are done');
+            waitForDone();
+            NIPPLE_SUCKERS.setToyOn(true);
+            return NIPPLE_SUCKERS;
         }
     }
 
     if (!fetchToy('clothespin', undefined, 2)) {
-        return false;
+        return null;
     }
 
     putClampsOnBothSides(1, 1, BODY_PART_NIPPLE_R);
 
-    return true;
+    return CLOTHESPINS_TOY;
 }
 
 function removeAnythingOnNipples() {
-    if(NIPPLE_CLAMPS.isToyOn() || CLOVER_CLAMPS.isToyOn()) {
-        sendMessage('%SlaveName% go ahead and remove those nipple clamps and put them aside', 5);
-        if(sendYesOrNoQuestion('Much better isn\'t it? %Grin%')) {
-            sendMessage(random('You\'re welcome', 'Well then thank your %DomHonorific% %Grin%', 'No problem %SlaveName%'));
-        } else {
-            sendMessage('Really? I would put them back but I got other plans %Grin%');
-        }
+    removeNippleClamps();
 
-
-        NIPPLE_CLAMPS.setToyOn(false);
-        CLOVER_CLAMPS.setToyOn(false);
-        return true;
-    } else if(isNipplesClamped()) {
+    if(isNipplesOccupied()) {
         //Means there is at least a clothespin on one of the nipples
         sendMessage('Go ahead and remove all clothespins from your nipples %SlaveName%', 5);
         BODY_PART_NIPPLE_L.currentClamps = 0;
         BODY_PART_NIPPLE_R.currentClamps = 0;
-
-        return true;
     }
-
-    return false;
 }
 
 function removeNippleClamps() {
-    if(!NIPPLE_CLAMPS.isToyOn() && !CLOVER_CLAMPS.isToyOn()) {
-        return false;
+    if(NIPPLE_SUCKERS.isToyOn()) {
+        sendMessage('%SlaveName% go ahead and remove those nipple suckers and put them aside', 0);
+        waitForDone();
+
+        NIPPLE_SUCKERS.setToyOn(false);
     }
 
-    sendMessage('%SlaveName% go ahead and remove those nipple clamps and put them aside', 5);
+    if(NIPPLE_CLAMPS.isToyOn() || CLOVER_CLAMPS.isToyOn()) {
+        sendMessage('%SlaveName% go ahead and remove those nipple clamps and put them aside', 5);
 
-    let answer = sendYesOrNoQuestionTimeout('Much better isn\'t it? %Grin%', 3);
+        let answer = sendYesOrNoQuestionTimeout('Much better isn\'t it? %Grin%', 3);
 
-    if(answer === ANSWER_YES) {
-        sendMessage('Don\'t celebrate to early though %Grin%');
-    } else if(answer === ANSWER_NO) {
-        sendMessage('Looks like my pain slut would like some more pain %Lol%');
+        if(answer === ANSWER_YES) {
+            sendMessage(random('You\'re welcome', 'Well then thank your %DomHonorific% %Grin%', 'No problem %SlaveName%'));
+            sendMessage('Don\'t celebrate to early though %Grin%');
+        } else if(answer === ANSWER_NO) {
+            sendMessage(random('Looks like my pain slut would like some more pain %Lol%', 'Really? I would put them back but I got other plans %Grin%'));
+        }
+
+        NIPPLE_CLAMPS.setToyOn(false);
+        CLOVER_CLAMPS.setToyOn(false);
     }
-
-    NIPPLE_CLAMPS.setToyOn(false);
-    CLOVER_CLAMPS.setToyOn(false);
 }
 
 

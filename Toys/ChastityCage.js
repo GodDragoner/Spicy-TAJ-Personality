@@ -10,7 +10,7 @@ loadChastityCages();
 if (isVar(VARIABLE.ACTIVE_CHASTITY_CAGE)) {
     currentChastityCage = getChastityCageByName(getVar(VARIABLE.ACTIVE_CHASTITY_CAGE));
 
-    if(!isUndefined(currentChastityCage)) {
+    if (!isUndefined(currentChastityCage)) {
         sendDebugMessage('Active chastity cage: ' + currentChastityCage.name);
     }
 } else {
@@ -22,8 +22,6 @@ const BALL_TRAP_TYPE = {
     FULL_BELT: 0,
     BALL_TRAP: 1,
 };
-
-
 
 
 function getActiveChastityCage() {
@@ -155,15 +153,15 @@ function unlockChastityCage(fakeOpening = false) {
     unlockImages();
 
     //Set the date to today then by default so in 2 days we can ask if the cage wasn't cleaned
-    if(!isVar(VARIABLE.LAST_CHASTITY_CLEAN)) {
+    if (!isVar(VARIABLE.LAST_CHASTITY_CLEAN)) {
         setDate(VARIABLE.LAST_CHASTITY_CLEAN);
     }
 
-    if(getDate(VARIABLE.LAST_CHASTITY_CLEAN, setDate()).clone().addDay(2).hasPassed() && RULE_DOMME_KEYHOLDER.isActive()) {
-        if(sendYesOrNoQuestion('You haven\'t cleaned your cage and %MyYour% cock in the last two days, have you?')) {
+    if (getDate(VARIABLE.LAST_CHASTITY_CLEAN, setDate()).clone().addDay(2).hasPassed() && RULE_DOMME_KEYHOLDER.isActive()) {
+        if (sendYesOrNoQuestion('You haven\'t cleaned your cage and %MyYour% cock in the last two days, have you?')) {
             sendMessage('Oh you have?');
 
-            if(sendYesOrNoQuestion('Strange, I could\'ve sworn I didn\'t allow you to take it off did I?')) {
+            if (sendYesOrNoQuestion('Strange, I could\'ve sworn I didn\'t allow you to take it off did I?')) {
                 addPPRuleIgnored();
                 sendMessage('That\'s now what I wanted to hear')
             } else {
@@ -171,9 +169,10 @@ function unlockChastityCage(fakeOpening = false) {
             }
         } else {
             sendMessage('Sigh...');
+            changeMeritMedium(true);
             sendMessage('Go and do it now! You got 5 minutes %SlaveName%');
             sendMessage('Tell me when you are done...');
-            waitForDone(60*5);
+            waitForDone(60 * 5);
             sendMessage('Now that\'s a clean %Cock% I can work with');
         }
 
@@ -264,12 +263,12 @@ function getRandomCageWithSize(length, punishments) {
         let punishmentOptionsOfCage = 0;
 
         //No !== because one seems to be a string the other a number or something, so we need cross type comparison
-        if(currentCage.length != length) {
+        if (currentCage.length != length) {
             continue
         }
 
         //Skip cages with accessible penis for daily use
-        if(currentCage.penisAccessible) {
+        if (currentCage.penisAccessible) {
             continue
         }
 
@@ -300,7 +299,7 @@ function getRandomCageWithSize(length, punishments) {
         //Punishment of smaller cage (check if we can find a smaller cage)
         if (punishments > 0 && length > 1) {
             sendDebugMessage('Looking for a smaller cage to replace a punishment option of ' + punishments + ' total');
-            if(getRandomCageWithSize(length - 1, punishments - 1).length === length - 1) {
+            if (getRandomCageWithSize(length - 1, punishments - 1).length === length - 1) {
                 punishmentOptionsOfCage++;
             }
         }
@@ -314,10 +313,10 @@ function getRandomCageWithSize(length, punishments) {
     }
 
     if (cages.length === 0) {
-        if(punishments > 0) {
+        if (punishments > 0) {
             //Reduce amount of punishments by one (if we can)
             return getRandomCageWithSize(length, punishments - 1);
-        } else if(length < 5) {
+        } else if (length < 5) {
             //Increase length but also increase punishments
             return getRandomCageWithSize(length + 1, punishments + 1);
         } else {
@@ -402,7 +401,7 @@ function selectChastityCage() {
 
     let cage = getRandomCageWithSize(length, amountOfPunishments);
 
-    if(cage == null) {
+    if (cage == null) {
         sendDebugMessage('Found no chastity cage in a list of ' + CHASTITY_CAGES.length + ' cages in total');
         return null;
     }
@@ -562,22 +561,22 @@ function lockChastityCage(chastityCage = undefined) {
         sendMessageBasedOnSender('I want you to attach the spikes to it %Grin%');
         alreadyAttached = true;
 
-        if(chastityCage.spikesVariable) {
-            let min = Math.max(1, Math.round(chastityCage.spikesVariableAmount*0.25));
-            let max = Math.round(chastityCage.spikesVariableAmount*0.25*(getMood() + 1));
+        if (chastityCage.spikesVariable) {
+            let min = Math.max(1, Math.round(chastityCage.spikesVariableAmount * 0.25));
+            let max = Math.round(chastityCage.spikesVariableAmount * 0.25 * (getMood() + 1));
             let spikes = randomInteger(min, max);
 
             sendMessageBasedOnSender('I want you to attach a total of ' + spikes + ' spikes to it');
 
             let percentage = random(25, 50);
 
-            if(feelsLikePunishingSlave()) {
+            if (feelsLikePunishingSlave()) {
                 percentage = random(50, 75, 100);
             }
 
             sendMessageBasedOnSender('Turn each screw till it\'s ' + percentage + '% in %Grin%');
         }
-    } else if(chastityCage.spikesVariable) {
+    } else if (chastityCage.spikesVariable) {
         sendMessageBasedOnSender('You may remove all spikes currently attached to the cage %EmoteHappy%');
         sendMessage('Tell me when you are done');
         waitForDone();
@@ -610,7 +609,7 @@ function lockChastityCage(chastityCage = undefined) {
         sendMessageBasedOnSender('If you have to skip it it will accumulate and add to the next hour %Grin%');
 
 
-        if(alreadyAttached) {
+        if (alreadyAttached) {
             sendMessageBasedOnSender('We are going full punishment mode %SlaveName%');
             sendMessageBasedOnSender('You know you don\'t deserve anything different %GeneralTime% %Lol%');
         }
@@ -1040,7 +1039,7 @@ function setupNewCage() {
                 }
             }
 
-            if(sendYesOrNoQuestion('Are the spikes like screws that can be added one by one?', SENDER_ASSISTANT)) {
+            if (sendYesOrNoQuestion('Are the spikes like screws that can be added one by one?', SENDER_ASSISTANT)) {
                 spikesVariable = true;
                 sendVirtualAssistantMessage("You will regret buying this %Grin%");
 
@@ -1119,8 +1118,6 @@ function setupNewCage() {
     }
 
 
-
-
     /*sendVirtualAssistantMessage("Are you pierced as a mean to secure the device?", false);
     answer = createInput();
 
@@ -1146,7 +1143,6 @@ function setupNewCage() {
     sendVirtualAssistantMessage('Added your new chastity cage to %DomHonorific% %DomName%\'s collection');
     sendVirtualAssistantMessage('Enjoy %Grin%');
 }
-
 
 
 function createChastityCage(name, length, material, dialator, dialatorDetachable, spikes, spikesDetachable, spikesOverall, penisAccessible, ballTrapType, estim, spikesVariable, spikesVariableAmount) {
@@ -1196,6 +1192,23 @@ function createChastityCage(name, length, material, dialator, dialatorDetachable
             }
 
             return amount;
+        },
+
+        setToyOn: function (bool) {
+            sendDebugMessage('Setting chastity cage ' + this.name + ' on to ' + bool);
+            if (bool) {
+                setVar(VARIABLE.CHASTITY_ON, true);
+
+                setVar(VARIABLE.ACTIVE_CHASTITY_CAGE, this.name);
+
+                currentChastityCage = this;
+            } else {
+                setVar(VARIABLE.CHASTITY_ON, false);
+
+                //setVar(VARIABLE.ACTIVE_CHASTITY_CAGE, this.name);
+
+                currentChastityCage = null;
+            }
         },
     }
 }

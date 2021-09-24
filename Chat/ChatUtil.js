@@ -54,20 +54,28 @@ function setCurrentSender(sender) {
 
 function sendMessageBasedOnSender(message, secondsToWait = undefined, skipImage = false) {
     if (getCurrentSender() === SENDER_TAJ) {
-        if (skipImage) {
-            lockImages();
-        }
+        let processedMessageArray = findImageToShow(message);
+        let imageToShow = processedMessageArray[1];
 
-        if (secondsToWait === undefined || typeof secondsToWait !== "number") {
-            sendMessage(message);
+        //Found image in text, display
+        if(imageToShow !== undefined) {
+            sendImageNormalMessage(message, secondsToWait);
         } else {
-            sendMessage(message, secondsToWait);
-        }
+            if (skipImage) {
+                lockImages();
+            }
 
-        if (skipImage) {
-            unlockImages();
+            if (secondsToWait === undefined || typeof secondsToWait !== "number") {
+                sendMessage(message);
+            } else {
+                sendMessage(message, secondsToWait);
+            }
+
+            if (skipImage) {
+                unlockImages();
+            }
         }
-    } else if (getCurrentSender() == SENDER_ASSISTANT) {
+    } else if (getCurrentSender() === SENDER_ASSISTANT) {
         sendVirtualAssistantMessage(message, secondsToWait, skipImage);
     } else {
         sendVirtualAssistantMessage('Error: Sender id ' + getCurrentSender() + ' is unknown');
@@ -110,6 +118,27 @@ function sendPinnoteMessage(message, wait, skipImage) {
         if (!isImagesLocked()) {
             showAssistantImage();
         }
+    }
+
+    if (wait === undefined || typeof wait !== "number") {
+        sleep(1000 + message.length * 50, "MILLISECONDS");
+    } else {
+        sleep(wait * 1000, "MILLISECONDS");
+    }
+}
+
+
+function sendImageNormalMessage(message, wait) {
+    let processedMessageArray = findImageToShow(message);
+    let imageToShow = processedMessageArray[1];
+    message = processedMessageArray[0];
+
+    lockImages();
+    sendMessage(message, 0);
+    unlockImages();
+
+    if(imageToShow !== undefined) {
+        showImage(imageToShow);
     }
 
     if (wait === undefined || typeof wait !== "number") {
