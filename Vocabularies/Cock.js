@@ -14,7 +14,7 @@ function cockVocabulary() {
 
         //Clear answers if we only address as sissy
         if(RULE_ONLY_SISSY_ADDRESS.isActive()) {
-            s = [];
+            answers = [];
         }
 
         answers.push('clit', 'clitty');

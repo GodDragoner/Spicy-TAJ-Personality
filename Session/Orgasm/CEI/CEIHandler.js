@@ -49,7 +49,7 @@ function sendEatInstructions(ceiDestination = CEI_UNDEFINED) {
             sendMessage("You should be able to put that plate right back in the cupboard %Lol%");
         }
     } else {
-        sendMessage("Go ahead and lick it up %SubName%");
+        sendMessage("Go ahead and lick it up %SlaveName%");
         sendMessage("Just lick it up from wherever you spurted it on");
     }
 

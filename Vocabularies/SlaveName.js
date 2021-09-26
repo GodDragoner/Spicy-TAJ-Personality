@@ -21,7 +21,7 @@ function slaveNameVocabulary() {
             answers = [];
         }
 
-        answers.push("girl", 'bimbo', 'sissy');
+        answers.push("girl", 'bimbo', 'sissy', 'panty boy');
     } else {
         answers.push('boy');
     }

@@ -30,7 +30,7 @@ function updatePictureSet() {
 
     const date = new Date();
 
-    if(date.getMonth() == 12) {
+    if(date.getMonth() === 11) {
         //Set the current set
         setVar("currentAssistantSetId", ASSISTANT_CHRISTMAS_SET_ID);
         ASSISTANT_CURRENT_SET_ID = ASSISTANT_CHRISTMAS_SET_ID;

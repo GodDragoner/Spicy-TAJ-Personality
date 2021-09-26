@@ -112,7 +112,7 @@
                 } else if (answer0.isLike("neither", "didn't", "haven't", "have not", "did not")) {
                     sendMessage("So you just assume it's disgusting");
                 } else {
-                    sendMessage("I'm a bit confused by all this %SubName%");
+                    sendMessage("I'm a bit confused by all this %SlaveName%");
                     sendInput('But anyway...');
                 }
 

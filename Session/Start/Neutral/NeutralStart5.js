@@ -11,7 +11,6 @@
                 changeMeritMedium(true);
                 sendMessage('I do not condone this behaviour!');
 
-
                 putinChosenButtplug(getSmallButtplug(true).name);
             }
         }
@@ -36,6 +35,5 @@
             sendMessage('I think we should get right to business and prepare you for what might come %EmoteHappy%');
             putInButtplug(true);
         }
-
     }
 }

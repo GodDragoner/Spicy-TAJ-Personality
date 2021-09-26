@@ -13,7 +13,7 @@ if (!CBT_LIMIT.isAllowed()) {
         if (!isVar(VARIABLE.ENDURANCE_STROKES_DONE)) {
             sendMessage('I\'m sure by now you\'ve figured out just how demanding I am');
             sendMessage('I\'m going to expect you to do some things that most men would find impossible');
-            sendMessage('Well %SubName%');
+            sendMessage('Well %SlaveName%');
             sendMessage('Your job is going to be to <i>make</i> them possible');
             sendMessage('Because this is about what I want');
             sendMessage('Your limits and abilities mean absolutely fucking nothing');

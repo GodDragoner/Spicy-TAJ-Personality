@@ -3,7 +3,7 @@
 
 	sendVirtualAssistantMessage("Get " + random("naked", "ready", "ready", "ready") + " slave!");
 	NrExercise = 0;
-	sendVirtualAssistantMessage("%SubName%, you should get some water to drink at the break ");
+	sendVirtualAssistantMessage("%SlaveName%, you should get some water to drink at the break ");
 	sendVirtualAssistantMessage("if you're a proper slave, you'll put it in a bowl on the floor to drink out of like a bitch ");
 
 	sendVirtualAssistantMessage(" I hope you're ready to get that %Ass% worked out. ");
@@ -56,7 +56,7 @@
 		tempmod = NrExercise % 4;
 
 		if ((tempmod == 0) && (NrExercise > 0)) {
-			sendVirtualAssistantMessage("%SubName%, take a 60 second break to grab a drink of water");
+			sendVirtualAssistantMessage("%SlaveName%, take a 60 second break to grab a drink of water");
 			showImage("Images/Spicy/Exercise/Drink/*", 60);
 		} else {
 			sleep(13);
@@ -1050,7 +1050,7 @@ function Gif4() {
 
 		playAudio("Audio/Spicy/SpecialSounds/Bell.mp3"); 
 		sleep(8);
-		sendVirtualAssistantMessage(" Other side now %SubName%..",10,true);
+		sendVirtualAssistantMessage(" Other side now %SlaveName%..",10,true);
 		sendVirtualAssistantMessage(" Continue until you hear my bell ",1,true);
 		playAudio("Audio/Spicy/Stroking/Metronome/40 bpm.mp3");
 		sleep( 35+5* getVar("ExerciseLevel"));
@@ -1079,7 +1079,7 @@ function Gif4() {
 
 		playAudio("Audio/Spicy/SpecialSounds/Bell.mp3"); 
 		sleep(2);
-		sendVirtualAssistantMessage(" Other side now %SubName%..",10,true);
+		sendVirtualAssistantMessage(" Other side now %SlaveName%..",10,true);
 		sleep(10);
 		sendVirtualAssistantMessage(" Continue until you hear my bell ",1,true);
 		playAudio("Audio/Spicy/Stroking/Metronome/40 bpm.mp3");

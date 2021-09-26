@@ -90,6 +90,7 @@ function handleTodayAcademyClasses() {
             if (clazz.getClassesTaken() > 0) {
                 //Get this here already since we might change it if classes where skipped
                 let lastTask = clazz.getCurrentAssignmentText();
+                setCurrentSender(SENDER_TAJ);
                 if (!clazz.getLastVisitAt().addDay(daysSinceLastMeet).sameDay(setDate()) && !hasBeenAwayInThePastWeek()) {
                     sendMessage('You have been skipping classes %SlaveName%');
                     sendMessage('This behavior is not tolerated!');
@@ -209,6 +210,7 @@ function handleTodayAcademyClasses() {
 
             sendMessage('See you next time %SlaveName% %Grin%');
 
+            setCurrentSender(SENDER_ASSISTANT);
             sendVirtualAssistantMessage('Class "' + clazz.name + ' has ended.');
         }
     }

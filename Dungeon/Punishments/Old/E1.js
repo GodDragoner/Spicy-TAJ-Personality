@@ -47,7 +47,7 @@ function a1()
 {
     sendMessage("Grab my %Balls% and squeeze them ");
     wait(10);
-    sendMessage("Squeeze them " + random("as hard as you can ", "so hard that your eyes start to tear ") + "until I tell you to release your grip " + random("%SlaveName% ", "%Slut% ", "%SubName% ") );
+    sendMessage("Squeeze them " + random("as hard as you can ", "so hard that your eyes start to tear ") + "until I tell you to release your grip " + random("%SlaveName% ", "%Slut% ") );
     if(getVar("Personality1", false))
     {
         wait(5);

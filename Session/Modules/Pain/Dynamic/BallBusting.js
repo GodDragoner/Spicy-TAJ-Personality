@@ -128,6 +128,12 @@
 
                         loops++;
 
+                        //End early, that is a chance of 20 on loop reached
+                        if(isChance(Math.floor((loops/maxLoops)*20))) {
+                            sendDebugMessage('Ending ball busting loop early at ' + loops + '/' + maxLoops);
+                            break;
+                        }
+
                         if(untieRoundsAgo >= 0) {
                             untieRoundsAgo++;
                         }
@@ -150,7 +156,7 @@
                 id: currentModuleId++,
                 startModule: function () {
                     //Pain level too low
-                    if (painLevel < 6 || !askForBathroom() || isInChastity()) {
+                    if (painLevel < 6 || isInChastity() || !askForBathroom()) {
                         return false;
                     }
 

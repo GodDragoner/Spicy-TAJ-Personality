@@ -19,7 +19,7 @@
                 } else if (answer.isLike("what", "have in mind", "understand")) {
                     sendMessage("Oh you'll find out soon enough %Grin%");
                 } else if (answer.isLike("not sure", "dont know", "don't know")) {
-                    sendMessage("You could be a little more trusting %SubName% %Grin%");
+                    sendMessage("You could be a little more trusting %SlaveName% %Grin%");
                 } else if (answer.isLike("anal", "ass play", "dildo", "plug", "butt", "ass")) {
                     sendMessage('That\'s amazing, you read my mind!');
                     guessedIt = true;

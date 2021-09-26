@@ -304,3 +304,7 @@ for(let x = 0; x < tasks.length; x++) {
 //     sendDebugMessage('Lust high threshold: ' + lust);
 //     debugPrintMood();
 // }
+
+{
+    checkEndIntroductions();
+}

@@ -178,9 +178,11 @@
 
         if(sendYesOrNoQuestion('Have you ever had an anal orgasm?')) {
             sendMessage('Now that\'s what I wanted to hear %Wicked%');
+            setVar(VARIABLE.ANAL_ORGASMS_COUNT, 1);
         } else {
             sendMessage('Well then I guess we got ourselves some work on our hands');
             setVar(VARIABLE.ANAL_ORGASM_TRAINING, true);
+            setVar(VARIABLE.ANAL_ORGASMS_COUNT, 0);
             sendMessage('Which means for now you can consider yourself lucky');
             sendMessage('I will not enforce this orgasm rule on you yet');
             sendMessage('But you probably won\'t like what I\'ll come up with later either %Grin%');

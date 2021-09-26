@@ -108,6 +108,9 @@ const VARIABLE = {
 
     NEXT_ORGASM_SPECIAL: "nextOrgasmSpecial",
 
+    LOCKTOBER_LAST_ASKED: "locktoberLastAsked",
+
+    ANAL_ORGASMS_COUNT: "analOrgasmsCount",
     ANAL_ORGASM_TRAINING: "analOrgasmTraining",
 
     ANAL_ORGASM_ONLY_STATUS: "analOrgasmOnlyStatus",
@@ -136,11 +139,13 @@ const VARIABLE = {
 
     CHASTITY_SPIKES_ON: "chastitySpikesOn",
     CHASTITY_DILATOR_ON: "chastityDilatorOn",
-    CHASTITY_ESTIM_ON: "chastityDilatorOn",
+    CHASTITY_ESTIM_ON: "chastityEstimOn",
     CHASTITY_CAGE_IS_PIERCED: "chastityCageIsPierced",
 
     CHASTITY_HAS_TIMED_LOCKBOX: "chastityHasTimedLockBox",
     CHASTITY_HAS_COMBINATION_LOCK: "chastityHasCombinationLock",
+
+    CHASTITY_COMBINATION_LOCK_EXPLAINED: "chastityCombinationLockExplained",
 
     CHASTITY_KEY_LOCKED_COMBINATION: "chastityKeyLockedCombination",
 

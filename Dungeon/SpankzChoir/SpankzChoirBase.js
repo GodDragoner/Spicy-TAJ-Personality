@@ -121,7 +121,7 @@ if (!isVar("SpankzChoirSubscription")) {
             //(AuctionActive) //Checks if sub returns in time, late or early
 
             if (getDate("SpankzChoir2").hasPassed()) {//slave is late!!!
-                sendDungeonMessage(" You are late %SubName% ");
+                sendDungeonMessage(" You are late %SlaveName% ");
                 changeMeritLow(true);
                 setVar("AuctionActive", false);
                 setVar("SpankzChoirLate", true);
@@ -200,7 +200,7 @@ if (!isVar("SpankzChoirSubscription")) {
                     run("dungeon/PunishmentBase.js");
                 } else {/// slave is on time
                     //(InTime)
-                    sendDungeonMessage(" Hi %SubName% ");
+                    sendDungeonMessage(" Hi %SlaveName% ");
                     delVar("AuctionActive");
                     sendDungeonMessage(" Well let's see who won your %Ass% ");
                     Choice = randomInteger(1, 8)
@@ -275,7 +275,7 @@ if (!isVar("SpankzChoirSubscription")) {
             //reset some flags
             setVar("FirstCornerMx", true);
 
-            sendDungeonMessage(" So tell me %SubName% ");
+            sendDungeonMessage(" So tell me %SlaveName% ");
             AuctionStroke = sendInput(" How many strokes do you wish to put up for auction? ");
             while (true) {
                 if (AuctionStroke.isInteger()) {

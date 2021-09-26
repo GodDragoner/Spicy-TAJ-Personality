@@ -36,6 +36,7 @@ let RULE_OWNED_BODY;
 
 let RULE_ONLY_CENSORED_PORN;
 
+let RULE_LOCKTOBER;
 
 {
     let ruleId = 0;
@@ -908,6 +909,22 @@ let RULE_ONLY_CENSORED_PORN;
 
     AVAILABLE_RULES.push(rule);
 
+    rule = RULE_LOCKTOBER = createRule(ruleId++, false);
+
+    rule.getRulePrint = function () {
+        return 'It\'s locktober, therefore you are locked for the whole october. Ruined anal orgasms only';
+    };
+
+    rule.canBeActivated = function () {
+        return !this.isActive() && hasChastityCage() && getVar(VARIABLE.CHASTITY_LEVEL, 0) >= 30 && RULE_DOMME_KEYHOLDER.isActive() && ANAL_LIMIT.isAllowed() && MAGIC_WAND_TOY.hasToy();
+    };
+
+    rule.isEffectivelyActive = function() {
+        return this.isActive() && new Date().getMonth() === 9;
+    }
+
+    AVAILABLE_RULES.push(rule);
+
     //Update all existing rules
     for (let index = 0; index < AVAILABLE_RULES.length; index++) {
         //TODO: Notify rule ended?
@@ -1021,6 +1038,10 @@ function createRule(id, punishment, minDays = -1, maxDays = -1, prefix = 'rule')
 
         setActive: function (active) {
             setVar(this.getVarName() + 'active', active);
+
+            if(active) {
+                this.addActivatedCount();
+            }
         },
 
         getActiveUntil: function () {
@@ -1028,8 +1049,21 @@ function createRule(id, punishment, minDays = -1, maxDays = -1, prefix = 'rule')
         },
 
         addActiveUntil: function (days) {
-            setDate(this.getVarName() + 'activeUntil', this.getActiveUntil().addDay(days));
+            this.setActiveUntil(this.getActiveUntil().addDay(days));
         },
+
+        setActiveUntil: function (date) {
+            setDate(this.getVarName() + 'activeUntil', date);
+        },
+
+        getActivatedCount: function () {
+            return getVar(this.getVarName() + 'Counter', this.isActive()? 1 : 0);
+        },
+
+        addActivatedCount: function () {
+            incrementVar(this.getVarName() + 'Counter', 1);
+        },
+
 
         hasPassed: function () {
             return this.getActiveUntil().hasPassed();

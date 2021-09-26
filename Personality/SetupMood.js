@@ -247,7 +247,7 @@ function handleMoodForDay(dayOfWeek, todayDate) {
 
     //Handle special days
     //Christmas
-    if (todayDate.getMonth() == 12) {
+    if (todayDate.getMonth() == 11) {
         if (todayDate.getDate() == 24 || todayDate.getDate() == 25) {
             tempHappiness += 10;
         }
@@ -260,17 +260,17 @@ function handleMoodForDay(dayOfWeek, todayDate) {
     }
 
     //Halloween
-    else if (todayDate.getMonth() == 10 && todayDate.getDate() == 31) {
+    else if (todayDate.getMonth() == 9 && todayDate.getDate() == 31) {
         tempLust += 15;
     }
 
     //Valentines day
-    else if (todayDate.getMonth() == 2 && todayDate.getDate() == 14) {
+    else if (todayDate.getMonth() == 1 && todayDate.getDate() == 14) {
         tempLust += 15;
     }
 
     //Summer
-    else if (todayDate.getMonth() == 6 || todayDate.getMonth() == 7 || todayDate.getMonth() == 8) {
+    else if (todayDate.getMonth() == 5 || todayDate.getMonth() == 6 || todayDate.getMonth() == 7) {
         tempHappiness += 1;
         tempLust += 1;
     }

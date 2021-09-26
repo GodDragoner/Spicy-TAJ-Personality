@@ -149,17 +149,17 @@
             if (answer.containsIgnoreCase("how many", "point", "punishment point")) {
                 answer.clearOptions();
 
-                sendDungeonMessage(random("Hmm, give me just a moment to check your records", "2 seconds %SlaveName%", "Just a moment %SubName%", "Let me just check my computer..."), 2);
+                sendDungeonMessage(random("Hmm, give me just a moment to check your records", "2 seconds %SlaveName%", "Just a moment %SlaveName%", "Let me just check my computer..."), 2);
                 sendDungeonMessage(random("It looks like", "According to my records", "It says") + " you have " + getVar(VARIABLE.PUNISHMENT_POINTS) + " punishment points.", 2);
 
                 if (isChance(15)) {
                     addPunishmentPoints(randomInteger(25, 75));
                     sendDungeonMessage(random("Hey, while I have this file open let me add a few more", "Well that's what you did have before I made a little addition", "That seems low, let me add some"), 2, 5);
-                    sendDungeonMessage(random("You're welcome %SubName%", "%SlaveName%, you're welcome", "Aren't you lucky I'm watching out for you?"), 2);
+                    sendDungeonMessage(random("You're welcome %SlaveName%", "%SlaveName%, you're welcome", "Aren't you lucky I'm watching out for you?"), 2);
                 }
 
                 if (getVar(VARIABLE.PUNISHMENT_POINTS) > 750) {
-                    sendDungeonMessage(random("Lol %SubName%, you're so fucked!", "Oh %SlaveName%, your ass is gonna bleed ", "You should be ashamed, %SubName%", "How did you let it get so bad?"));
+                    sendDungeonMessage(random("Lol %SlaveName%, you're so fucked!", "Oh %SlaveName%, your ass is gonna bleed ", "You should be ashamed, %SlaveName%", "How did you let it get so bad?"));
 
                 } else if (getVar(VARIABLE.PUNISHMENT_POINTS) > 500) {
                     sendDungeonMessage(random("This is SERIOUS %Slave%, you need to put some time in down here", "NOT GOOD, you need to put some serious time in down here", "I have a feeling we're going to be spending lots of time together %Grin%", "That's so many your %DomHonorific% won't even hold a session with you"));
@@ -177,7 +177,7 @@
                 sendDungeonMessage(random("Well my favorite activity!", "Sounds nice!", "Well well...", "Uhh oh my oh my..."));
 
                 //(SpankzChoir)
-                sendDungeonMessage(random("Give me just a moment", "2 seconds %SlaveName%", "Just a moment %SubName%", "Let me just check my computer.."), 2);
+                sendDungeonMessage(random("Give me just a moment", "2 seconds %SlaveName%", "Just a moment %SlaveName%", "Let me just check my computer.."), 2);
                 sendDungeonMessage("Take a seat and enjoy the posters on the wall..");
                 showImage("Images/Spicy/Punishment/SpankzChoir/chair1.jpg");
 
@@ -211,7 +211,7 @@
                 playAudio("Audio/Spicy/SpecialSounds/Bell.mp3");
 
                 if (getVar(VARIABLE.PUNISHMENT_POINTS) < 100) {
-                    sendDungeonMessage("Well %SubName% it seems you haven't been too bad recently...", 2);
+                    sendDungeonMessage("Well %SlaveName% it seems you haven't been too bad recently...", 2);
                     sendDungeonMessage("So I'm afraid I have to reject you...", 2);
                 } else {
                     sendDungeonMessage("Let's see if there is any specific reasons to why you've been given punishment points this week...");

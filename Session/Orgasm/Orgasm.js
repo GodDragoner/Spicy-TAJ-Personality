@@ -134,9 +134,9 @@ function decideOrgasm(noDenied = false) {
             //First personality
             35,
             //Second personality
-            65,
+            50,
             //Third personality
-            100,
+            60,
         ];
 
         incrementVar(VARIABLE.ORGASM_RATION, -ratioArray[getStrictnessForCharacter()]);
@@ -149,11 +149,11 @@ function decideOrgasm(noDenied = false) {
     } else if(decide >= 80 || noDenied) {
         let ratioArray = [
             //First personality
-            9,
+            35,
             //Second personality
-            8,
+            25,
             //Third personality
-            6,
+            15,
         ];
 
         incrementVar(VARIABLE.ORGASM_RATION, ratioArray[getStrictnessForCharacter()]);

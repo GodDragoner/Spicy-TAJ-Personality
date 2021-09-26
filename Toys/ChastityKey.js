@@ -4,12 +4,18 @@ const chastityCombinationImagesBackupFolder = getImageSubFolder('Chastity' + PAT
 function lockAwayChastityKey() {
     if(getVar(VARIABLE.CHASTITY_HAS_COMBINATION_LOCK, false) && !getVar(VARIABLE.CHASTITY_KEY_LOCKED_COMBINATION, false)) {
         sendVirtualAssistantMessage('Go ahead and fetch your combination lock and some casket you can lock with it %Grin%');
-        sendVirtualAssistantMessage('Go ahead and put the keys for the %ChastityCage% inside the casket');
-        sendVirtualAssistantMessage('Next you will go ahead and set a new code for your combination lock at random. You will not look at it');
-        sendVirtualAssistantMessage('Instead you will take your phone or a camera and you will take a picture of the new combination');
-        sendVirtualAssistantMessage('Don\'t you dare look at the combination in any way');
-        sendVirtualAssistantMessage('After that I want you to lock the casket with the combination lock and randomize the selected combination so you won\'t be able to unlock it anymore');
-        sendVirtualAssistantMessage('Then you will take the picture and place it inside the "Images/Spicy/Chastity/ChastityCombination" folder and make sure there is only one file inside that folder');
+
+        //Only do this 5 times
+        if(getVar(VARIABLE.CHASTITY_COMBINATION_LOCK_EXPLAINED, 0) < 7) {
+            sendVirtualAssistantMessage('Go ahead and put the keys for the %ChastityCage% inside the casket');
+            sendVirtualAssistantMessage('Next you will go ahead and set a new code for your combination lock at random. You will not look at it');
+            sendVirtualAssistantMessage('Instead you will take your phone or a camera and you will take a picture of the new combination');
+            sendVirtualAssistantMessage('Don\'t you dare look at the combination in any way');
+            sendVirtualAssistantMessage('After that I want you to lock the casket with the combination lock and randomize the selected combination so you won\'t be able to unlock it anymore');
+            sendVirtualAssistantMessage('Then you will take the picture and place it inside the "Images/Spicy/Chastity/ChastityCombination" folder and make sure there is only one file inside that folder');
+        } else {
+            sendVirtualAssistantMessage('You know the drill by now');
+        }
 
         let port = 8080;
         let path = 'Images' + PATH_SEPARATOR + 'Spicy' + PATH_SEPARATOR + 'Chastity' + PATH_SEPARATOR + 'ChastityCombination' + PATH_SEPARATOR;
@@ -51,6 +57,7 @@ function lockAwayChastityKey() {
         setVar(VARIABLE.CHASTITY_KEY_LOCKED_COMBINATION, true);
 
         sendVirtualAssistantMessage('You can request me to tell you the chastity combination in the main menu');
+        incrementVar(VARIABLE.CHASTITY_COMBINATION_LOCK_EXPLAINED, 1);
     }
 }
 

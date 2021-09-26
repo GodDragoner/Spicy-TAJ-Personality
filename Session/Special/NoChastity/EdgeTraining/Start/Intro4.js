@@ -52,7 +52,7 @@
     startEdging();
     sendMessage("If that powerlessness sounds like a bad thing to you, it isn't");
     sendMessage("It's far from a bad thing");
-    sendMessage("This is who you are, %SubName%");
+    sendMessage("This is who you are, %SlaveName%");
     sendMessage("There's no reason to fight it");
     startEdging();
     sendMessage("%LetEdgeFade%");
