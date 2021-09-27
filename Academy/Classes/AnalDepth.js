@@ -122,7 +122,7 @@
                         sendMessage('I don\'t think you own that dildo %SlaveName%');
                         sendMessage('If you do set it up correctly in the menu', 0);
                         answer.loop();
-                    } else if (dildo.diameter < getVar(VARIABLE.MAX_ANAL_LENGTH)) {
+                    } else if (dildo.length < getVar(VARIABLE.MAX_ANAL_LENGTH)) {
                         sendMessage('That dildo is not on the list I provided you with %SlaveName%');
                         sendMessage('Don\'t try to cheat on me with a shorter length!', 0);
                         addPunishmentPoints(250, PUNISHMENT_REASON.CHEATING);
