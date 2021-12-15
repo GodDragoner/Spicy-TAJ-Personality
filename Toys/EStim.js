@@ -225,7 +225,7 @@ function createEStimMode() {
         },
 
         getInteractionMode: function () {
-            getVar(this.getName() + 'InteractionMode');
+            return getVar(this.getName() + 'InteractionMode');
         },
 
         setInteractionMode: function (interactionMode) {

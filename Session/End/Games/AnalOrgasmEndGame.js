@@ -2,8 +2,6 @@
     let endGame = registerEndGame(END_GAME_ANAL_ORGASM);
     endGame.run = function () {
         //Double the points
-
-        //TODO: Restore session time and these lines!
         distributeOrgasmPoints();
         distributeOrgasmPoints();
 
@@ -48,32 +46,27 @@
 
             //Only run game if sub is in chastity
             if (isInChastity()) {
-                let skipOrgasm = false;
+                //Hard limit forces orgasm
+                if (isVar(VARIABLE.DENIAL_HARD_LIMIT_ORGASM_TODAY)) {
+                    let orgasmCategory = decideOrgasm(true);
+                    let orgasmType = decideAnalOrgasmType();
+                } else {
+                    sendDebugMessage('Current orgasm points ' + getVar(VARIABLE.ORGASM_POINTS) + '/' + getVar(VARIABLE.REQUIRED_ORGASM_POINTS));
+                    if (getVar(VARIABLE.ORGASM_POINTS) >= getVar(VARIABLE.REQUIRED_ORGASM_POINTS)) {
+                        let ranOrgasm = checkForOrgasmSpecial();
 
-                //Check if we are supposed to skip the orgasm roll
-                if (!skipOrgasm) {
-                    //Hard limit forces orgasm
-                    if (isVar(VARIABLE.DENIAL_HARD_LIMIT_ORGASM_TODAY)) {
-                        let orgasmCategory = decideOrgasm(true);
-                        let orgasmType = decideAnalOrgasmType();
-                    } else {
-                        sendDebugMessage('Current orgasm points ' + getVar(VARIABLE.ORGASM_POINTS) + '/' + getVar(VARIABLE.REQUIRED_ORGASM_POINTS));
-                        if (getVar(VARIABLE.ORGASM_POINTS) >= getVar(VARIABLE.REQUIRED_ORGASM_POINTS)) {
-                            let ranOrgasm = checkForOrgasmSpecial();
+                        if (!ranOrgasm) {
+                            let analOrgasmType = decideAnalOrgasmType();
+                            let orgasmCategory = decideOrgasm(false);
 
-                            if (!ranOrgasm) {
-                                let analOrgasmType = decideAnalOrgasmType();
-                                let orgasmCategory = decideOrgasm(false);
-
-                                if (orgasmCategory !== ORGASM_CATEGORY_DENIED) {
-                                    getAnalOrgasmInstructions(analOrgasmType, orgasmCategory);
-                                } else {
-                                    runOrgasmCategory(ORGASM_CATEGORY_DENIED);
-                                }
+                            if (orgasmCategory !== ORGASM_CATEGORY_DENIED) {
+                                getAnalOrgasmInstructions(analOrgasmType, orgasmCategory);
+                            } else {
+                                runOrgasmCategory(ORGASM_CATEGORY_DENIED);
                             }
-                        } else {
-                            runOrgasmCategory(ORGASM_CATEGORY_DENIED);
                         }
+                    } else {
+                        runOrgasmCategory(ORGASM_CATEGORY_DENIED);
                     }
                 }
             } else {
@@ -128,7 +121,7 @@
 
         sendMessage('It\'s all about serving me and not caring about your own pleasure');
 
-        if(sendYesOrNoQuestion('Wouldn\'t you agree?')) {
+        if (sendYesOrNoQuestion('Wouldn\'t you agree?')) {
             sendMessage('See %Grin%');
             sendMessage('That\'s a good sissy %Moan%');
             changeMeritLow(false);
@@ -165,7 +158,7 @@
         sendMessage('But there is also a positive side to this %Grin%');
         sendMessage('In "compensation" I will allow you to orgasm twice as much');
 
-        if(sendYesOrNoQuestion('Isn\'t that too generous of me?')) {
+        if (sendYesOrNoQuestion('Isn\'t that too generous of me?')) {
             sendMessage('%Grin%');
             changeMeritLow(false);
         } else {
@@ -176,7 +169,7 @@
         sendMessage('Now I can already see you thinking: Where is the catch to that generosity?');
         sendMessage('Well... Let me ask you a question instead %Grin%');
 
-        if(sendYesOrNoQuestion('Have you ever had an anal orgasm?')) {
+        if (sendYesOrNoQuestion('Have you ever had an anal orgasm?')) {
             sendMessage('Now that\'s what I wanted to hear %Wicked%');
             setVar(VARIABLE.ANAL_ORGASMS_COUNT, 1);
         } else {
@@ -225,7 +218,7 @@
         sendMessage('But I don\'t know how far you\'d go for me');
         sendMessage('So...');
 
-        if(sendYesOrNoQuestion('Would you put your orgasms completely into my hands for this purpose?')) {
+        if (sendYesOrNoQuestion('Would you put your orgasms completely into my hands for this purpose?')) {
             sendMessage('%EmoteHappy%');
             changeMeritHigh(false);
             sendMessage('That just elevated this to a whole new level');

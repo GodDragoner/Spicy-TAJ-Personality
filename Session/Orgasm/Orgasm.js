@@ -129,7 +129,9 @@ function decideOrgasm(noDenied = false) {
     sendDebugMessage('Orgasm decided threshold of ' + decide + ' rolled');
 
     //The smaller orgasm ratio the more ruined orgasms
-    if(decide >= 100 && getVar(VARIABLE.ORGASM_RATION) >= randomInteger(1, 100)) {
+    //Always ruin in locktober
+    if(decide >= 100 && getVar(VARIABLE.ORGASM_RATION) >= randomInteger(1, 100) && !RULE_LOCKTOBER.isEffectivelyActive()) {
+
         let ratioArray = [
             //First personality
             35,
@@ -146,7 +148,9 @@ function decideOrgasm(noDenied = false) {
         }
 
         return ORGASM_CATEGORY_ALLOWED;
-    } else if(decide >= 80 || noDenied) {
+    }
+    //This is also triggered when locktober is active but we would be cumming otherwise
+    else if(decide >= 80 || noDenied) {
         let ratioArray = [
             //First personality
             35,

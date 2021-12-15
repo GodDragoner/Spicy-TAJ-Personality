@@ -36,6 +36,16 @@ function getActiveChastityCage() {
     }
 }
 
+function isChastityUnlockBlocked() {
+    let result = RULE_LOCKTOBER.isEffectivelyActive();
+
+    if(result) {
+        sendDebugMessage('Chastity unlock blocked');
+    }
+
+    return result;
+}
+
 function unlockChastityCage(fakeOpening = false) {
     if (!getVar(VARIABLE.HAS_CHASTITY) || !getVar(VARIABLE.CHASTITY_ON)) {
         return;
@@ -517,20 +527,11 @@ function lockChastityCage(chastityCage = undefined) {
         sendMessageBasedOnSender('Go ahead and remove all clamps from your penis and balls');
         sendMessageBasedOnSender('Tell me when you are done');
         waitForDone();
-        sendMessageBasedOnSender('Aren\'t I nice to you? %Grin%');
 
-        let answer = createInput(5);
-
-        if (answer.isTimeout()) {
-            //sendMessage('I don\'t care about your opinion though');
-        } else if (answer.isLike('yes', 'thank you')) {
-            sendMessage('You are welcome %SlaveName% %EmoteHappy%');
-            changeMeritLow(false);
-        } else if (answer.isLike('no', 'hurt', 'pain')) {
-            sendMessage('Not nice enough huh?');
-            sendMessage('Well I don\'t care about your opinion though %Lol%');
-            registerComplain();
+        if(isChance(50)) {
+            sendArentINice();
         }
+
 
         //Set clamps on those parts to zero
         BODY_PART_PENIS_SHAFT.currentClamps = 0;

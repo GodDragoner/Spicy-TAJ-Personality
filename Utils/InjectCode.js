@@ -306,5 +306,26 @@ for(let x = 0; x < tasks.length; x++) {
 // }
 
 {
-    checkEndIntroductions();
+    if(LOVENSE_TOY_TYPES.HUSH.hasLovenseToy()) {
+        let toy = LOVENSE_TOY_TYPES.HUSH.getLovenseToy();
+
+        for(let x = 1; x <= 20; x++) {
+            sendDebugMessage(x);
+            toy.setVibrate(x);
+            sleep(2);
+        }
+
+        toy.setVibrate(0);
+    } else {
+        sendDebugMessage('No hush toy present');
+    }
+
+
+    // LOVENSE_PATTERNS.WAVE.doPattern(LOVENSE_TOY_TYPES.HUSH.getLovenseToy(), {
+    //     min: 0,
+    //     max: 5,
+    //     delayFunction: function () {
+    //         return 500;
+    //     }
+    // });
 }

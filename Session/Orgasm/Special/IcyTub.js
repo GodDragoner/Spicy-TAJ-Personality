@@ -5,7 +5,7 @@
     sendMessage('However I won\'t make it easy for you...');
     sendMessage('I want you to earn it %Grin%');
 
-    let shouldUnlockChastity = true;
+    let shouldUnlockChastity = true && !isChastityUnlockBlocked();
     let analOrgasmGameActive = getVar(VARIABLE.ACTIVE_END_GAME_ID, 0) === END_GAME_ANAL_ORGASM;
 
     if (analOrgasmGameActive) {

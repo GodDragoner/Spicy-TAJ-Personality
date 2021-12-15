@@ -224,7 +224,7 @@ function startStrokeInterval(durationMinutes) {
     if (FLESH_LIGHT.isToyOn()) {
         FLESH_LIGHT.setToyOn(false);
 
-        if(FLESH_LIGHT.isLovense()) {
+        if(FLESH_LIGHT.isLovense() && LOVENSE_TOY_TYPES.MAX.hasLovenseToy()) {
             resetFleshlight();
         }
     }
@@ -380,7 +380,7 @@ function sendStrokeTaunts(durationSeconds, nextInstruction) {
                 //If we have a fleshlight do other instructions
                 if (!FLESH_LIGHT.isToyOn()) {
                     sendNewStrokeInstruction();
-                } else if (FLESH_LIGHT.isLovense()) {
+                } else if (FLESH_LIGHT.isLovense() && LOVENSE_TOY_TYPES.MAX.hasLovenseToy()) {
                     randomFleshlightInteraction();
                 }
             }

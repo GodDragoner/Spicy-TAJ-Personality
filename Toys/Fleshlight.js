@@ -1,7 +1,11 @@
 const FLESH_LIGHT = createToy('fleshlight');
 
 FLESH_LIGHT.isLovense = function() {
-    return LOVENSE_TOY_TYPES.MAX.hasLovenseToy();
+    return getVar(this.getVarName() + 'Lovense', false);
+};
+
+FLESH_LIGHT.setLovense = function(bool) {
+    setVar(this.getVarName() + 'Lovense', bool);
 };
 
 FLESH_LIGHT.vibrationLevel = 0;
@@ -34,7 +38,7 @@ FLESH_LIGHT.removeAir = function() {
 };
 
 function resetFleshlight() {
-    if(!FLESH_LIGHT.isLovense()) {
+    if(!FLESH_LIGHT.isLovense() || !LOVENSE_TOY_TYPES.MAX.hasLovenseToy()) {
         return;
     }
 

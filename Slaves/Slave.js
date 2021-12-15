@@ -24,6 +24,10 @@ function getSubAge() {
     return Math.abs(ageDate.getUTCFullYear() - 1970);
 }
 
+function hasSubHadAnalOrgasmBefore() {
+    return getVar(VARIABLE.ANAL_ORGASMS_COUNT) > 0;
+}
+
 function isSubBirthday() {
     let date = getSubBirthday();
 

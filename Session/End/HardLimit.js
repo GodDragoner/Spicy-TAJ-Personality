@@ -60,6 +60,12 @@
             } else {
                 sendMessage('Well then...');
                 sendMessage('You are allowed to cum however you want to %SlaveName%');
+
+                if(RULE_LOCKTOBER.isEffectivelyActive()) {
+                    sendMessage('Well I mean it\'s locktober, so you know how you are allowed to cum');
+                    sendMessage('And make sure to ruin it %Grin%');
+                }
+
                 sendMessage('I am gonna wait for you to return. Just tell me when you are done');
                 waitForDone(1000000);
                 registerOrgasm();

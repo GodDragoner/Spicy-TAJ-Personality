@@ -408,7 +408,7 @@ function createToy(name) {
         },
 
         getTakeOffCommand: function () {
-            return 'Go ahead and take off/remove the ' + this.name;
+            return 'Go ahead and take off/remove the ' + this.getDisplayName();
         },
 
         setToyOn: function (on) {
@@ -497,7 +497,7 @@ function createToy(name) {
                 imageName = this.getImageName();
             }
 
-            sendVirtualAssistantMessage(capitalize(this.name) + "?", false);
+            sendVirtualAssistantMessage(capitalize(this.getDisplayName()) + "?", false);
             showPicture(this.getImagePath(), 0);
 
             setCurrentSender(SENDER_ASSISTANT);
@@ -535,25 +535,33 @@ function createToy(name) {
                 return;
             }
 
-            sendVirtualAssistantMessage("Do you want the " + this.name + " to be used for punishments, play or both?", false);
+            sendVirtualAssistantMessage("Do you want the " + this.getDisplayName() + " to be used for punishments, play or both?", false);
 
             let answer = createInput();
 
             while (true) {
                 if (answer.containsIgnoreCase("play")) {
-                    setVar(variableName + "InteractionMode", TOY_PLAY_MODE);
+                    this.setInteractionMode(variableName, TOY_PLAY_MODE);
                     break;
                 } else if (answer.containsIgnoreCase("both")) {
-                    setVar(variableName + "InteractionMode", TOY_BOTH_MODE);
+                    this.setInteractionMode(variableName, TOY_BOTH_MODE);
                     break;
                 } else if (answer.containsIgnoreCase("punishment")) {
-                    setVar(variableName + "InteractionMode", TOY_PUNISHMENT_MODE);
+                    this.setInteractionMode(variableName, TOY_PUNISHMENT_MODE);
                     break;
                 } else {
                     sendVirtualAssistantMessage("Play, punishment or both?", 0);
                     answer.loop();
                 }
             }
+        },
+
+        setInteractionMode: function(variableName, mode) {
+            setVar(variableName + "InteractionMode", mode);
+        },
+
+        getInteractionMode: function () {
+            return getVar(this.getVarName() + 'InteractionMode');
         },
 
         isPlayAllowed: function (variableName) {
@@ -576,6 +584,9 @@ function createToy(name) {
             return mode === undefined || mode === null || mode === TOY_PUNISHMENT_MODE || mode === TOY_BOTH_MODE;
         },
 
+        getDisplayName: function() {
+            return this.name;
+        },
 
         toString: function () {
             return serializeObject(this);
@@ -986,7 +997,27 @@ function setupToys(settings) {
     BALL_STRETCHER_TOY.askForToyAndUsage(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
-    FLESH_LIGHT.askForToyAndUsage(domChose);
+    LOVENSE_TOY_TYPES.MAX.askForToyAndUsage(domChose);
+    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
+    //Check if we have a separate fleshlight or not
+    if(LOVENSE_TOY_TYPES.MAX.hasToy()) {
+        if(sendYesOrNoQuestion('Do you own a separate fleshlight that is not remote controlled?', SENDER_ASSISTANT)) {
+            FLESH_LIGHT.askForToyAndUsage(domChose);
+            FLESH_LIGHT.setLovense(false);
+        } else {
+            //Set values the same as the max values
+            FLESH_LIGHT.setLovense(true);
+            FLESH_LIGHT.setHasToy(true);
+            FLESH_LIGHT.setInteractionMode(LOVENSE_TOY_TYPES.MAX.getInteractionMode())
+        }
+    } else {
+        FLESH_LIGHT.askForToyAndUsage(domChose);
+    }
+
+    sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
+
+    LOVENSE_TOY_TYPES.HUSH.askForToyAndUsage(domChose);
     sendVirtualAssistantMessage(random("Okay then...", "Next...", "Let's see...", "Moving on..."));
 
     RIDING_CROP_TOY.askForToyAndUsage(domChose);

@@ -76,6 +76,10 @@ function askForMaxLockupTime() {
     sendMessage("We're gonna have a lot of fun! %Lol%");
 }
 
+function isChastityPunishmentAttached() {
+    return (getVar(VARIABLE.CHASTITY_SPIKES_ON, false) || getVar(VARIABLE.CHASTITY_DILATOR_ON, false));
+}
+
 function willKeepChastityOn(end) {
     //Higher choice value -> chastity will probably be removed
     let choice = randomInteger(25, 100);
@@ -97,7 +101,7 @@ function willKeepChastityOn(end) {
             sendDebugMessage('Replaced old chance with new lower end unlock chance of ' + newChoice);
         }
     } else {
-        if (getVar(VARIABLE.CHASTITY_SPIKES_ON, false) || getVar(VARIABLE.CHASTITY_DILATOR_ON, false)) {
+        if (isChastityPunishmentAttached()) {
             sendDebugMessage('Unlocking to remove spikes/dialator');
             return false;
         }

@@ -19,7 +19,10 @@ function decideModelRatingGameType() {
         //availableTypes.push(GAME_TYPE.GAME_CHASTITY);
 
         //Allows sub to potentially unlock the chastity cage
-        availableTypes.push(GAME_TYPE.GAME_UNLOCK_CHASTITY);
+        if(!isChastityUnlockBlocked()) {
+            availableTypes.push(GAME_TYPE.GAME_UNLOCK_CHASTITY);
+        }
+
     }
 
     return random(availableTypes);

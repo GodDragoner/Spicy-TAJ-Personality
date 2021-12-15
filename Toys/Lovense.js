@@ -4,10 +4,13 @@ const LOVENSE_COMMANDS = {
     AIR_OUT: createLovenseCommand("AirOut"),
     BATTERY: createLovenseCommand("Battery"),
     VIBRATE: createLovenseCommand("Vibrate"),
+    A_VIBRATE: createLovenseCommand("AVibrate"),
+    PRESET: createLovenseCommand("Preset"),
 };
 
 const LOVENSE_TOY_TYPES = {
     MAX: createLovenseToyType('max'),
+    HUSH: createLovenseToyType('hush'),
 };
 
 
@@ -16,7 +19,7 @@ let LOVENSE_TOY_SERVERS = [];
 fetchAvailableLovenseToys();
 
 function createLovenseToyType(name) {
-    return {
+    return extend(createToy(name), {
         name: name,
 
         getLovenseToy: function () {
@@ -26,7 +29,7 @@ function createLovenseToyType(name) {
                 for (let toyIndex = 0; toyIndex < toyServer.toys.length; toyIndex++) {
                     let toy = toyServer.toys[toyIndex];
 
-                    if (toy.name == this.name) {
+                    if (toy.name === this.name) {
                         return toy;
                     }
                 }
@@ -35,10 +38,61 @@ function createLovenseToyType(name) {
             return null;
         },
 
+        fetchToy: function (amount = 0) {
+            let result = fetchToy(name, this.getImagePath(), amount);
+
+            if(result) {
+                //Check if toy online in the network
+                if(!this.hasLovenseToy()) {
+                    sendMessageBasedOnSender('Seems like your toy is not connected');
+
+                    sendMessageBasedOnSender('Do you want to connect and try again?');
+                    let answer = createInput();
+
+                    while(true) {
+                        if(answer.isLike('Yes')) {
+                            sendMessageBasedOnSender('Connect the device and tell me when you are done');
+                            waitForDone();
+                            let result = fetchAvailableLovenseToys();
+
+                            //Undefined is also false, so we check if it is false specifically and not undefined
+                            if(result === false) {
+                                sendMessageBasedOnSender('I failed to find any available lovense server');
+                                sendMessageBasedOnSender('Do you want to try again?');
+                                answer.loop();
+                            } else if(result === undefined) {
+                                sendMessageBasedOnSender('Apparently you don\'t own any lovense toys. Please report this bug');
+                                break;
+                            } else {
+                                if(this.hasLovenseToy()) {
+                                    sendMessageBasedOnSender('I am successfully connected to the device now %EmoteHappy%');
+                                    break;
+                                } else {
+                                    sendMessageBasedOnSender('I found a lovense server but your ' + this.getDisplayName() + ' was not connected apparently');
+                                    sendMessageBasedOnSender('Do you want to try again?');
+                                    answer.loop();
+                                }
+                            }
+                        } else if(answer.isLike('No')) {
+                            break;
+                        }
+                    }
+
+                    return this.hasLovenseToy();
+                }
+            }
+
+            return result;
+        },
+
+        getDisplayName: function() {
+            return 'lovense ' + this.name;
+        },
+
         hasLovenseToy: function () {
             return !isUndefined(this.getLovenseToy());
         }
-    }
+    });
 }
 
 function createLovenseCommand(urlParam) {
@@ -76,17 +130,17 @@ function createLovenseCommand(urlParam) {
 
 
 function fetchAvailableLovenseToys() {
-    //Only fleshlight is currently supported, without it no need to check for it
-    if(!FLESH_LIGHT.hasToy()) {
-        return;
+    //Only these two are supported rn, without it no need to check for it
+    if (!LOVENSE_TOY_TYPES.MAX.hasToy && !LOVENSE_TOY_SERVERS.HUSH.has()) {
+        return undefined;
     }
 
     LOVENSE_TOY_SERVERS = [];
 
     let response = httpGet('https://api.lovense.com/api/lan/getToys');
 
-    if(isNullOrEmpty(response)) {
-        return;
+    if (isNullOrEmpty(response)) {
+        return false;
     }
 
     let obj = JSON.parse(response.data);
@@ -133,6 +187,7 @@ function fetchAvailableLovenseToys() {
                 battery: toyJson.battery,
                 version: toyJson.version,
                 status: toyJson.status,
+                vibrationLevel: 0,
 
                 getJSONFromString: function (data) {
                     return JSON.parse(data);
@@ -174,13 +229,53 @@ function fetchAvailableLovenseToys() {
                  */
                 setVibrate: function (intensity) {
                     if (!isWithin(intensity, 0, 20)) {
-                        sendDebugMessage('Vibrate intensity ' + intensity + ' was out of bouds for toy ' + this.name);
+                        sendDebugMessage('Vibrate intensity ' + intensity + ' was out of bounds for toy ' + this.name);
                         return undefined;
                     }
+
+                    this.vibrationLevel = intensity;
 
                     return this.getJSONFromString(LOVENSE_COMMANDS.VIBRATE.sendRequest(toyServer, this.id, {
                         key: 'v',
                         value: intensity
+                    }));
+                },
+
+                getVibrationLevel: function() {
+                    return this.vibrationLevel;
+                },
+
+                /**
+                 *
+                 * @param intensity Intensity 0-20
+                 * @returns {any}
+                 */
+                setAVibrate: function (intensity) {
+                    if (!isWithin(intensity, 0, 20)) {
+                        sendDebugMessage('Vibrate intensity ' + intensity + ' was out of bounds for toy ' + this.name);
+                        return undefined;
+                    }
+
+                    return this.getJSONFromString(LOVENSE_COMMANDS.A_VIBRATE.sendRequest(toyServer, this.id, {
+                        key: 'v',
+                        value: intensity
+                    }));
+                },
+
+                /**
+                 *
+                 * @param presetId Preset
+                 * @returns {any}
+                 */
+                setPreset: function (presetId) {
+                    if (!isWithin(presetId, 0, 3)) {
+                        sendDebugMessage('Preset ' + presetId + ' was out of bounds for toy ' + this.name);
+                        return undefined;
+                    }
+
+                    return this.getJSONFromString(LOVENSE_COMMANDS.PRESET.sendRequest(toyServer, this.id, {
+                        key: 'v',
+                        value: presetId
                     }));
                 },
             };
@@ -194,5 +289,7 @@ function fetchAvailableLovenseToys() {
 
             LOVENSE_TOY_SERVERS.push(toyServer);
         }
+
+        return true;
     }
 }

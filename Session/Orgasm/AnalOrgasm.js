@@ -17,9 +17,11 @@ function decideAnalOrgasmType() {
     let choice = randomInteger(0, 100);
     sendDebugMessage('Choice picked: ' + choice);
 
-    if(choice < vibeChance) {
+    //No chance in locktober for magic wand
+    if(choice < vibeChance && !RULE_LOCKTOBER.isEffectivelyActive()) {
         return ANAL_ORGASM_TYPE.CHASTITY_VIBE;
-    } else if(choice < prostateVibeChance + vibeChance) {
+    }
+    else if(choice < prostateVibeChance + vibeChance) {
         return ANAL_ORGASM_TYPE.PROSTATE_VIBE;
     } else {
         return ANAL_ORGASM_TYPE.DILDO;

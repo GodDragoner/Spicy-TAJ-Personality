@@ -173,7 +173,7 @@ function startGayPictureRound() {
                 sendMessage("I hope you're enjoying the view!");
                 sendMessage("Because you will cum to it! %Grin%");
 
-                if (feelsEvil()) {
+                if (feelsEvil() || RULE_LOCKTOBER.isEffectivelyActive()) {
                     sendMessage('But I never said that you are gonna cum now %Grin%');
 
                     let answer = sendYesOrNoQuestionTimeout('Oh wait... Did you really think I was gonna let you cum now? %Lol%', 5);

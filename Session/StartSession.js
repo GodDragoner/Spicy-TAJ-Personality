@@ -15,9 +15,58 @@
 
     }
 
+    //End locktober
+    if(getVar(VARIABLE.LOCKTOBER_SESSION_COUNT, 0) > 0 && !RULE_LOCKTOBER.isEffectivelyActive()) {
+        if(RULE_LOCKTOBER.isActive()) {
+            RULE_LOCKTOBER.setActive(false);
+        }
 
+        setVar(VARIABLE.ACTIVE_END_GAME_ID, getVar(VARIABLE.PREVIOUS_END_GAME_ID, 0));
+        setVar(VARIABLE.LOCKTOBER_SESSION_COUNT, 0);
+        //TODO: Locktober has ended script
+    }
+
+
+    //Locktober
+    if(RULE_LOCKTOBER.isEffectivelyActive()) {
+        //First session
+        if(getVar(VARIABLE.LOCKTOBER_SESSION_COUNT, 0) === 0) {
+            sendMessage('Welcome to locktober %SlaveNameSmiley%');
+
+            sendMessage('From today onward you will not be unlocked for a whole month');
+            sendMessage('%Grin%');
+            sendMessage('But what am I telling you that');
+            sendMessage('You probably still remember the drill %Lol%');
+        }
+
+        //Save previous end game
+        setVar(VARIABLE.PREVIOUS_END_GAME_ID, getVar(VARIABLE.ACTIVE_END_GAME_ID, END_GAME_STANDARD_ID));
+        setVar(VARIABLE.ACTIVE_END_GAME_ID, END_GAME_LOCKTOBER);
+
+        if(!isInChastity()) {
+            sendMessage('Well, you aren\'t in chastity right now so we definitely gotta change this asap %Grin%');
+            lockChastityCage();
+        }
+
+        if (isChastityPunishmentAttached() && isInChastity()) {
+            sendDebugMessage('Unlocking to remove spikes/dialator');
+            sendMessage('You\'ll stay in chastity, but let\'s get rid of those nasty punishment attachments');
+            unlockChastityStart();
+
+            lockChastityCage();
+
+            //Check if we attached new punishments again
+            if(!isChastityPunishmentAttached()) {
+                sendArentINice();
+            } else {
+                sendMessage('Just kidding. You know you deserve to still be punished %SlaveName%');
+            }
+        }
+
+        incrementVar(VARIABLE.LOCKTOBER_SESSION_COUNT, 1, 0);
+    }
     //Force unlock
-    if (isInChastity() && getVar(VARIABLE.LOCKED_DAYS_IN_ROW, 0) > getVar(VARIABLE.LOCKED_UP_LIMIT, 3)) {
+    else if (isInChastity() && getVar(VARIABLE.LOCKED_DAYS_IN_ROW, 0) > getVar(VARIABLE.LOCKED_UP_LIMIT, 3)) {
         sendDebugMessage('Forced to unlock because locked in a row is higher than locked up limit');
         unlockChastityStart();
     } else if (isVar(VARIABLE.LOCKED_UP_UNTIL) && !getDate(VARIABLE.LOCKED_UP_UNTIL).hasPassed()) {

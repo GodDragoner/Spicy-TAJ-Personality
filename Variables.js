@@ -110,6 +110,8 @@ const VARIABLE = {
 
     LOCKTOBER_LAST_ASKED: "locktoberLastAsked",
 
+    LOCKTOBER_SESSION_COUNT: "locktoberSessionCount",
+
     ANAL_ORGASMS_COUNT: "analOrgasmsCount",
     ANAL_ORGASM_TRAINING: "analOrgasmTraining",
 
@@ -420,6 +422,7 @@ const VARIABLE = {
     DOMME_AFK: 'dommeAfk',
 
     //End
+    PREVIOUS_END_GAME_ID: 'previousEndGameId',
     ACTIVE_END_GAME_ID: 'activeEndGameId',
 };
 

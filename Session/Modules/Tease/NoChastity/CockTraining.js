@@ -178,7 +178,7 @@ function strokeTrainingEdge() {
                 sendMessage(random("Well well I suppose that was okay", "Oh wauw you actually went higher than level 20...", "I'm surprised you even lasted for a few minutes..."));
                 addMerits(25);
             }
-        } else if (level > 40) {
+        } else if (level >= 40) {
             if (getStrictnessForCharacter() == 0) {
                 sendMessage(random("You are above level 40!", "Well done!", "Excellent job", "You did good %SlaveName%", "Bravo %SlaveName%", "That was excellent work %SlaveName%", "I'm applauding you %SlaveName%"));
                 addMerits(25);
@@ -189,7 +189,7 @@ function strokeTrainingEdge() {
                 sendMessage(random("Not at level 50 huh...", "Oh you actually went higher than 40", "I feel like you've cheated a little..."));
                 addMerits(10);
             }
-        } else if (level > 30) {
+        } else if (level >= 30) {
             if (getStrictnessForCharacter() == 0) {
                 sendMessage(random("You did okay", "You effort was mediocre", "I must admit I expected a little more", "I suppose I really wasn't expecting much more from you"));
                 addMerits(10);

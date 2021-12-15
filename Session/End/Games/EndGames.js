@@ -1,5 +1,6 @@
 const END_GAME_STANDARD_ID = 0;
 const END_GAME_ANAL_ORGASM = 1;
+const END_GAME_LOCKTOBER = 2;
 
 let SKIP_END_GAME = false;
 

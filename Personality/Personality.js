@@ -264,6 +264,23 @@ function sendLooksLikeFun() {
     }
 }
 
+function sendArentINice() {
+    sendMessageBasedOnSender('Aren\'t I nice to you? %Grin%');
+
+    let answer = createInput(5);
+
+    if (answer.isTimeout()) {
+        //sendMessage('I don\'t care about your opinion though');
+    } else if (answer.isLike('yes', 'thank you')) {
+        sendMessage('You are welcome %SlaveName% %EmoteHappy%');
+        changeMeritLow(false);
+    } else if (answer.isLike('no', 'hurt', 'pain')) {
+        sendMessage('Not nice enough huh?');
+        sendMessage('Well I don\'t care about your opinion though %Lol%');
+        registerComplain();
+    }
+}
+
 function sendAsMuchFun() {
     sendMessage(random("Hopefully ", 'I hope ') + random("that was as much fun for you as for me", 'you enjoyed this as much as I did', 'you enjoyed this too', 'this was fun for you too'));
 
