@@ -55,7 +55,7 @@ function getFilesInFolderFile(folder, recursion = false) {
         allFiles.push(files[x]);
     }
 
-    return allFiles;
+    return allFiles.sort();
 }
 
 function getScriptFilesInFolder(folder, recursion = false) {
